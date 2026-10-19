@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Daily Current Affairs CBT Test - 19 Oct 2026 | Gyanverse</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    * { box-sizing: border-box; touch-action: manipulation; }
+    body { 
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; 
+      margin: 0;
+      padding: 0;
+      background-color: #f1f5f9;
+    }
+    .custom-scroll::-webkit-scrollbar { width: 4px; height: 4px; }
+    .custom-scroll::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
+  </style>
+</head>
+<body class="text-slate-800 antialiased select-none pb-6">
+
+  <!-- ==================== SCREEN 1: QUICK REVISION & TOP START ==================== -->
+  <div id="revision-screen" class="max-w-3xl mx-auto min-h-screen flex flex-col p-2.5 sm:p-4 space-y-3">
+    <!-- Header -->
+    <header class="bg-gradient-to-r from-blue-900 to-indigo-900 text-white p-3 rounded-xl flex items-center justify-between shadow">
+      <div>
+        <span class="bg-amber-400 text-blue-950 font-black px-1.5 py-0.5 rounded text-[10px] uppercase">CBT TCS</span>
+        <h1 class="font-bold text-xs sm:text-sm mt-0.5">Gyanverse Daily Test Portal</h1>
+      </div>
+      <a href="https://t.me/GYANVERSET" target="_blank" class="bg-blue-600 hover:bg-blue-500 text-white text-[11px] px-2.5 py-1 rounded-full shadow transition">
+        <i class="fab fa-telegram-plane mr-1"></i>@GYANVERSET
+      </a>
+    </header>
+
+    <!-- Top Action Banner with Start Button -->
+    <div class="bg-white border-2 border-emerald-500 p-3 rounded-xl flex items-center justify-between gap-2 shadow-sm">
+      <div>
+        <h2 class="text-xs sm:text-sm font-bold text-slate-900">19 Oct 2026 CA Mock Test</h2>
+        <p class="text-[10px] text-slate-500">15 Qs • 15 Mins • +1.0 / -0.25 Mark</p>
+      </div>
+      <button onclick="startTest()" class="px-5 py-2.5 bg-emerald-600 hover:bg-emerald-700 active:scale-95 text-white text-xs sm:text-sm font-black rounded-lg shadow-md flex items-center gap-1.5 transition">
+        <span>Start Test</span>
+        <i class="fas fa-play text-[10px]"></i>
+      </button>
+    </div>
+
+    <!-- Quick Revision List -->
+    <div class="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden">
+      <div class="bg-indigo-900 text-white px-3 py-2 flex items-center justify-between">
+        <span class="text-xs font-bold flex items-center gap-1.5">
+          <i class="fas fa-bolt text-amber-300"></i> 17-18 October Quick Revision (15 One-Liners)
+        </span>
+        <span class="text-[10px] bg-indigo-800 text-indigo-200 px-2 py-0.5 rounded">15 Points</span>
+      </div>
+      <div id="revision-list" class="divide-y divide-slate-100 text-xs max-h-[60vh] overflow-y-auto custom-scroll">
+        <!-- Injected via JS -->
+      </div>
+    </div>
+
+    <!-- Bottom Secondary Start Button -->
+    <div class="pt-1">
+      <button onclick="startTest()" class="w-full py-3 bg-emerald-600 hover:bg-emerald-700 active:scale-95 text-white text-xs sm:text-sm font-black rounded-xl shadow-md flex items-center justify-center gap-2 transition">
+        <span>Proceed to CBT Test</span>
+        <i class="fas fa-arrow-right"></i>
+      </button>
+    </div>
+  </div>
+
+  <!-- ==================== SCREEN 2: TCS CBT TEST WORKSPACE ==================== -->
+  <div id="cbt-screen" class="max-w-3xl mx-auto min-h-screen flex flex-col p-2 sm:p-3 space-y-2 hidden">
+    <!-- Header with Timer and Palette Toggle -->
+    <header class="bg-slate-900 text-white p-2.5 rounded-lg flex items-center justify-between border-b-2 border-amber-400 shadow">
+      <div class="flex items-center space-x-2">
+        <span class="bg-blue-600 text-white font-black px-1.5 py-0.5 rounded text-[10px]">TCS-iON</span>
+        <span class="text-xs font-semibold">19 Oct 2026 Mock</span>
+      </div>
+      <div class="flex items-center space-x-2">
+        <div class="flex items-center gap-1 bg-slate-800 px-2.5 py-1 rounded border border-slate-700 text-amber-400 font-mono text-xs font-bold">
+          <i class="far fa-clock"></i>
+          <span id="timer-display">15:00</span>
+        </div>
+        <button onclick="togglePaletteView()" class="bg-slate-800 text-slate-200 px-2.5 py-1 rounded border border-slate-700 text-xs font-bold flex items-center gap-1">
+          <i class="fas fa-th"></i>
+          <span class="text-[11px]">Palette</span>
+        </button>
+      </div>
+    </header>
+
+    <!-- Collapsible Palette Grid -->
+    <div id="palette-box" class="hidden bg-white p-2.5 rounded-lg border border-slate-300 shadow-sm space-y-2">
+      <div class="flex items-center justify-between text-xs font-bold text-slate-700 border-b pb-1">
+        <span>Question Palette (Select Question)</span>
+        <button onclick="togglePaletteView()" class="text-slate-400 hover:text-slate-700"><i class="fas fa-times"></i></button>
+      </div>
+      <div class="grid grid-cols-5 sm:grid-cols-8 gap-1.5" id="palette-grid">
+        <!-- Palette numbers -->
+      </div>
+    </div>
+
+    <!-- Question Card (Question + Options + Immediate Buttons under it) -->
+    <main class="bg-white rounded-xl border border-slate-300 shadow-sm overflow-hidden flex flex-col">
+      <!-- Question Info Bar -->
+      <div class="bg-slate-100 border-b border-slate-200 px-3 py-1.5 flex items-center justify-between text-xs">
+        <span class="font-bold text-slate-800 text-[11px]" id="q-number-title">Question 1 of 15</span>
+        <div class="flex items-center gap-2 text-[10px]">
+          <span class="text-emerald-700 font-bold">+1.00</span>
+          <span class="text-rose-700 font-bold">-0.25</span>
+          <button onclick="toggleInstantSolution()" class="bg-amber-50 hover:bg-amber-100 text-amber-900 border border-amber-300 font-bold px-2 py-0.5 rounded flex items-center gap-1 transition">
+            <i class="fas fa-lightbulb text-amber-500"></i>
+            <span>Solution</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Question Text & Options -->
+      <div class="p-3 sm:p-4 space-y-3">
+        <h3 id="question-text" class="text-xs sm:text-sm font-semibold text-slate-900 leading-snug"></h3>
+        
+        <div id="options-container" class="space-y-2 pt-1">
+          <!-- Dynamic Options -->
+        </div>
+
+        <!-- Inline Solution Card -->
+        <div id="instant-solution-card" class="hidden p-2.5 bg-amber-50 border border-amber-200 rounded-lg text-xs space-y-1">
+          <div class="flex items-center justify-between text-amber-950 font-bold border-b border-amber-200 pb-1">
+            <span><i class="fas fa-info-circle mr-1"></i> Quick Solution & Analysis</span>
+            <button onclick="toggleInstantSolution(false)" class="text-slate-400 hover:text-slate-700"><i class="fas fa-times"></i></button>
+          </div>
+          <div id="instant-solution-text" class="text-slate-700 leading-relaxed text-[11px]"></div>
+        </div>
+
+        <!-- ================= ALL BUTTONS RIGHT UNDER THE QUESTION ================= -->
+        <div class="pt-2 border-t border-slate-200 space-y-2">
+          <!-- Primary Row: Prev, Next, Save -->
+          <div class="grid grid-cols-3 gap-1.5">
+            <button onclick="prevQuestion()" id="btn-prev" class="py-2.5 bg-slate-200 hover:bg-slate-300 text-slate-800 rounded-lg font-bold text-xs transition flex items-center justify-center gap-1">
+              <i class="fas fa-chevron-left text-[10px]"></i> Prev
+            </button>
+            <button onclick="clearResponse()" class="py-2.5 bg-slate-100 hover:bg-slate-200 text-slate-700 border border-slate-300 rounded-lg font-semibold text-xs transition">
+              Clear
+            </button>
+            <button onclick="saveAndNext()" class="py-2.5 bg-blue-700 hover:bg-blue-800 active:scale-95 text-white rounded-lg font-bold text-xs transition flex items-center justify-center gap-1 shadow">
+              Save & Next <i class="fas fa-chevron-right text-[10px]"></i>
+            </button>
+          </div>
+
+          <!-- Secondary Row: Mark Review & Direct Submit -->
+          <div class="grid grid-cols-2 gap-1.5">
+            <button onclick="markForReview()" class="py-2 bg-amber-500 hover:bg-amber-600 text-white rounded-lg font-bold text-xs transition flex items-center justify-center gap-1 shadow-sm">
+              <i class="far fa-bookmark text-[10px]"></i> Mark Review
+            </button>
+            <button onclick="confirmSubmitTest()" class="py-2 bg-emerald-600 hover:bg-emerald-700 active:scale-95 text-white rounded-lg font-bold text-xs transition flex items-center justify-center gap-1 shadow-sm">
+              <i class="fas fa-check-circle text-[10px]"></i> Submit Test
+            </button>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- ==================== SCREEN 3: SCORECARD & DETAILED SOLUTIONS ==================== -->
+  <div id="result-screen" class="max-w-3xl mx-auto min-h-screen flex flex-col p-2.5 sm:p-4 space-y-3 hidden">
+    <!-- Header -->
+    <header class="bg-indigo-900 text-white p-3 rounded-xl flex items-center justify-between shadow">
+      <div class="flex items-center space-x-2">
+        <i class="fas fa-award text-amber-400"></i>
+        <h1 class="font-bold text-xs sm:text-sm">Gyanverse Scorecard & Solutions</h1>
+      </div>
+      <a href="https://t.me/GYANVERSET" target="_blank" class="bg-blue-600 text-white text-[11px] px-2.5 py-1 rounded-full shadow">
+        @GYANVERSET
+      </a>
+    </header>
+
+    <!-- Score Grid -->
+    <div class="bg-white rounded-xl shadow-sm border border-slate-200 p-3">
+      <div class="grid grid-cols-4 gap-2 text-center">
+        <div class="bg-slate-50 p-2 rounded-lg border border-slate-200">
+          <div class="text-[10px] text-slate-500 font-bold uppercase">Score</div>
+          <div id="res-score" class="text-base sm:text-xl font-black text-indigo-700">0 / 15</div>
+        </div>
+        <div class="bg-emerald-50 p-2 rounded-lg border border-emerald-200">
+          <div class="text-[10px] text-emerald-700 font-bold uppercase">Correct</div>
+          <div id="res-correct" class="text-base sm:text-xl font-black text-emerald-600">0</div>
+        </div>
+        <div class="bg-rose-50 p-2 rounded-lg border border-rose-200">
+          <div class="text-[10px] text-rose-700 font-bold uppercase">Wrong</div>
+          <div id="res-wrong" class="text-base sm:text-xl font-black text-rose-600">0</div>
+        </div>
+        <div class="bg-amber-50 p-2 rounded-lg border border-amber-200">
+          <div class="text-[10px] text-amber-700 font-bold uppercase">Accuracy</div>
+          <div id="res-accuracy" class="text-base sm:text-xl font-black text-amber-600">0%</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Re-test Action Button -->
+    <div>
+      <button onclick="restartTest()" class="w-full py-2.5 bg-slate-800 hover:bg-slate-900 text-white text-xs font-bold rounded-xl shadow flex items-center justify-center gap-1.5 transition">
+        <i class="fas fa-redo-alt text-[10px]"></i> Re-attempt Test
+      </button>
+    </div>
+
+    <!-- Detailed Solutions List -->
+    <div class="space-y-2.5">
+      <h3 class="text-xs font-bold text-slate-800 flex items-center gap-1.5">
+        <i class="fas fa-file-alt text-blue-600"></i> All 15 Detailed Solutions
+      </h3>
+      <div id="solutions-container" class="space-y-2.5">
+        <!-- Inserted by JS -->
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== LOGIC JAVASCRIPT ==================== -->
+  <script>
+    const quickRevisionData = [
+      { id: 1, q: "अक्टूबर 2026 में सुखना आर्द्रभूमि (चंडीगढ़) और सौं झील (उत्तर प्रदेश) को रामसर सूची में शामिल किए जाने के बाद भारत में कुल रामसर स्थल कितने हो गए?", a: "103" },
+      { id: 2, q: "इंडोनेशिया के जकार्ता स्थित भारतीय दूतावास ने लोगों तक भारत से जुड़ी जानकारी पहुंचाने के लिए किस नाम से AI डिजिटल अवतार लॉन्च किया?", a: "देवी (Devi)" },
+      { id: 3, q: "भारत का पहला राज्य-स्तरीय पारिस्थितिकी तंत्र रेड लिस्ट मूल्यांकन (Ecosystem Red List Assessment) किस राज्य ने शुरू किया है?", a: "केरल (Kerala)" },
+      { id: 4, q: "अंतरराष्ट्रीय गरीबी उन्मूलन दिवस 2026 कब मनाया गया? (थीम: सभी के लिए सुरक्षित घर)", a: "17 अक्टूबर" },
+      { id: 5, q: "भारतीय नौसेना ने किस शहर में आयोजित समारोह में संयुक्त टास्क फोर्स 154 (CTF-154) की कमान हस्तांतरित की?", a: "मनामा (बहरीन)" },
+      { id: 6, q: "16-17 अक्टूबर 2026 को ई-गवर्नेस सुधारों पर दो दिवसीय राष्ट्रीय सम्मेलन कहां आयोजित हुआ?", a: "धर्मशाला (हिमाचल प्रदेश)" },
+      { id: 7, q: "केंद्रीय मंत्रिमंडल ने IDBI बैंक में सरकार और LIC की कुल कितने प्रतिशत हिस्सेदारी कनाडा की फेयरफैक्स को बेचने की मंजूरी दी?", a: "60.72%" },
+      { id: 8, q: "किस संस्थान ने चक्रवात चेतावनी व समुद्री मौसम सेवाओं हेतु डिसीजन सपोर्ट सिस्टम लॉन्च किया?", a: "भारत मौसम विज्ञान विभाग (IMD)" },
+      { id: 9, q: "अक्टूबर 2026 में भारत ने किस मध्य अमेरिकी देश की राजधानी सैन होजे (San José) में अपना नया रेजिडेंट राजनयिक मिशन शुरू किया?", a: "कोस्टा रिका (Costa Rica)" },
+      { id: 10, q: "पीएम मोदी ने किसकी आत्मकथा 'ट्रायम्फ ऑफ द इंडियन रिपब्लिक: माय लाइफ, माय स्ट्रगल्स' का हिंदी संस्करण लॉन्च किया?", a: "रामनाथ कोविंद (पूर्व राष्ट्रपति)" },
+      { id: 11, q: "केंद्रीय मंत्रिमंडल ने राष्ट्रीय सामाजिक सहायता कार्यक्रम (NSAP) को 2026-31 तक जारी रखने के लिए कितने वित्तीय परिव्यय को मंजूरी दी?", a: "₹53,428 करोड़" },
+      { id: 12, q: "नई दिल्ली में आयोजित कौमारभृत्य पर अंतरराष्ट्रीय सम्मेलन 'कौमाराकॉन 2026' का उद्घाटन किसने किया?", a: "उपराष्ट्रपति सी.पी. राधाकृष्णन" },
+      { id: 13, q: "अक्टूबर 2026 में DRDO ने क्वांटम की डिस्ट्रीब्यूशन (QKD) प्लेटफॉर्म का लाइव नेटवर्क पर सफल परीक्षण कहां से किया?", a: "चांदीपुर (ओडिशा)" },
+      { id: 14, q: "किस राज्य के वन विभाग ने छात्रों को व्यावहारिक रूप से प्रकृति से जोड़ने हेतु 'नामेरी वाइल्ड क्लासरूम' पर्यावरण शिक्षा पहल शुरू की?", a: "असम (Assam)" },
+      { id: 15, q: "विश्वजीत रामचंद्र मौर्य ने लास वेगास (USA) में अंडर-23 विश्व कुश्ती चैंपियनशिप 2026 (55 किग्रा) में कौन सा पदक जीता?", a: "रजत पदक (Silver Medal)" }
+    ];
+
+    const questionsData = [
+      {
+        id: 1,
+        question: "अक्टूबर 2026 में रेलवे सुरक्षा बल (RPF) के नए महानिदेशक (Director General) कौन बन गए हैं?",
+        options: ["राकेश अस्थाना", "जितेंद्र कुमार", "मनोज यादव", "सोनाली मिश्रा"],
+        correct: 1,
+        solution: "• वरिष्ठ आईपीएस अधिकारी जितेंद्र कुमार को RPF का नया महानिदेशक नियुक्त किया गया है।<br>• उनका कार्यकाल 31 मार्च 2030 तक रहेगा। इन्होंने सोनाली मिश्रा का स्थान लिया।<br>• RPF स्थापना: 2 जुलाई 1872 | ध्येय वाक्य: 'यशो लभस्व'।"
+      },
+      {
+        id: 2,
+        question: "वैश्विक भूख सूचकांक (Global Hunger Index 2026) में भारत को कौन सा स्थान मिला है?",
+        options: ["95वां", "105वां", "100वां", "111वां"],
+        correct: 2,
+        solution: "• GHI 2026 में भारत 122 देशों में से 100वें स्थान पर रहा (स्कोर 24.1, गंभीर श्रेणी)।<br>• जारीकर्ता: वेल्थुगरहिल्फे व कंसर्न वर्ल्डवाइड। थीम: 'No Security Without Food Security'।"
+      },
+      {
+        id: 3,
+        question: "अक्टूबर 2026 में किस भारतीय सामाजिक कार्यकर्ता को 'हिलेरी रोडम क्लिंटन पुरस्कार 2026' से सम्मानित किया गया?",
+        options: ["मेधा पाटकर", "सुनीता नारायण", "इला भट्ट", "रीमा नानावती"],
+        correct: 3,
+        solution: "• SEWA की निदेशक रीमा नानावती को महिला अधिकार व शांति निर्माण के लिए यह सम्मान मिला।<br>• संस्था: जॉर्जटाउन इंस्टीट्यूट फॉर वूमेन, पीस एंड सिक्योरिटी।"
+      },
+      {
+        id: 4,
+        question: "अक्टूबर 2026 में जारी हेनले पासपोर्ट इंडेक्स 2026 के क्वार्टर-4 (Q4) में भारत को कौन सा स्थान मिला है?",
+        options: ["75वां", "81वां", "84वां", "87वां"],
+        correct: 2,
+        solution: "• Q4 2026 में भारत 84वें स्थान पर रहा। भारतीय नागरिक 55 देशों में वीजा-मुक्त यात्रा कर सकते हैं। शीर्ष पर सिंगापुर रहा।"
+      },
+      {
+        id: 5,
+        question: "16 अक्टूबर 2026 को भारतीय नौसेना के कारवार नौसैनिक अड्डे (कर्नाटक) में शामिल किए गए पहले स्वदेशी बहु-उद्देशीय पोत (MPV) का नाम क्या है?",
+        options: ["INS विक्रांत", "INS मंगरोल", "INS निस्तार", "INS समर्थक (INS Samarthak)"],
+        correct: 3,
+        solution: "• INS कदंब (कारवार) में पहले स्वदेशी MPV 'INS समर्थक' को शामिल किया गया। निर्माण: L&T कट्टुपल्ली शिपयार्ड। मोटो: 'विजय ही हमारा एकमात्र लक्ष्य है'।"
+      },
+      {
+        id: 6,
+        question: "अक्टूबर 2026 में एशिया में अंतः क्रिया और विश्वास निर्माण उपायों (CICA) का 7वां मंत्रिस्तरीय शिखर सम्मेलन कहां आयोजित हुआ?",
+        options: ["बाकू (अजरबैजान)", "अस्ताना (कजाकिस्तान)", "ताशकंद (उज्बेकिस्तान)", "नई दिल्ली (भारत)"],
+        correct: 0,
+        solution: "• CICA का 7वां सम्मेलन बाकू (अजरबैजान) में आयोजित हुआ। लाओस 29वां सदस्य बना। सुल्तान हाजियेव नए महासचिव नियुक्त हुए।"
+      },
+      {
+        id: 7,
+        question: "अक्टूबर 2026 में 57वीं GST परिषद बैठक के दौरान गठित नई 'GST स्थायी समिति' में किन राज्यों को स्थायी सदस्य के रूप में शामिल किया गया?",
+        options: ["कर्नाटक एवं गुजरात", "महाराष्ट्र एवं तमिलनाडु", "उत्तर प्रदेश", "उपरोक्त सभी"],
+        correct: 3,
+        solution: "• 5 बड़े राज्यों- कर्नाटक, महाराष्ट्र, उत्तर प्रदेश, गुजरात और तमिलनाडु को स्थायी सदस्य बनाया गया है। इसमें कुल 12 राज्य शामिल हैं।"
+      },
+      {
+        id: 8,
+        question: "अक्टूबर 2026 में भारत के सबसे बड़े एकीकृत फिनोल (Phenol) और एसीटोन (Acetone) संयंत्र का उद्घाटन कहां किया गया?",
+        options: ["जामनगर (गुजरात)", "हल्दिया (पश्चिम बंगाल)", "पारादीप (ओडिशा)", "विशाखापत्तनम (आंध्र प्रदेश)"],
+        correct: 1,
+        solution: "• हल्दिया (पश्चिम बंगाल) में ₹6,000 करोड़ की लागत से निर्मित संयंत्र का उद्घाटन हुआ। यह पूर्वी तट पर भारत का पहला फिनोल संयंत्र है।"
+      },
+      {
+        id: 9,
+        question: "5G कैप्टिव नॉन-पब्लिक नेटवर्क (CNPN) की अनुमति प्राप्त करने वाला भारत का पहला प्रमुख बंदरगाह (Major Port) कौन सा बना है?",
+        options: ["जवाहरलाल नेहरू पोर्ट (JNPT)", "चेन्नई बंदरगाह", "मोरमुगाओ बंदरगाह (गोवा)", "कोचीन पोर्ट ट्रस्ट"],
+        correct: 2,
+        solution: "• मोरमुगाओ पोर्ट प्राधिकरण (गोवा) देश का पहला 5G CNPN लाइसेंसी पोर्ट बना है। इसका उपयोग रियल-टाइम कार्गो ट्रैकिंग में होगा।"
+      },
+      {
+        id: 10,
+        question: "अक्टूबर 2026 में उपराष्ट्रपति सी.पी. राधाकृष्णन ने किसकी आत्मकथा 'डांसिंग विद जॉय' (Dancing with Joy) का विमोचन किया?",
+        options: ["सोनल मानसिंह", "शोभना नारायण", "डॉ. यामिनी कृष्णमूर्ति", "डॉ. आनंदा शंकर जयंती"],
+        correct: 3,
+        solution: "• प्रख्यात नृत्यांगना पद्मश्री डॉ. आनंदा शंकर जयंती की आत्मकथा 'डांसिंग विद जॉय' का विमोचन हुआ।"
+      },
+      {
+        id: 11,
+        question: "23-24 अक्टूबर 2026 को क्षमता निर्माण आयोग (CBC) द्वारा 'तीसरी साधना श्रृंखला 2026' कार्यशाला का आयोजन कहां किया जाएगा?",
+        options: ["लखनऊ (उत्तर प्रदेश)", "वाराणसी (उत्तर प्रदेश)", "नई दिल्ली", "जयपुर (राजस्थान)"],
+        correct: 0,
+        solution: "• लखनऊ में यह कार्यशाला आयोजित की जा रही है। उद्घाटन सीएम योगी आदित्यनाथ द्वारा किया गया।"
+      },
+      {
+        id: 12,
+        question: "अक्टूबर 2026 में हिमाचल प्रदेश ने बैटरी ऊर्जा भंडारण (BESS) से संचालित अपनी पहली सौर ऊर्जा परियोजना का उद्घाटन कहां किया?",
+        options: ["शिमला", "धर्मशाला", "मनाली", "रोंगटोंग, स्पीति घाटी (Rongtong)"],
+        correct: 3,
+        solution: "• लाहौल-स्पीति के रोंगटोंग में पहली बैटरी स्टोरेज सौर परियोजना (2 MW Solar + 1 MWh BESS) का उद्घाटन सीएम सुखविंदर सिंह सुक्खू ने किया।"
+      },
+      {
+        id: 13,
+        question: "अक्टूबर 2026 में भारतीय वनस्पति सर्वेक्षण (BSI) के वैज्ञानिकों ने पौधों की एक नई बारहमासी शाकीय प्रजाति 'सेरोपेगिया तमिलनाडुएन्सिस' की खोज कहां की?",
+        options: ["मुदुमलाई राष्ट्रीय उद्यान", "नेल्लई वन्यजीव अभयारण्य (Nellai WLS)", "अगस्त्यमलाई बायोस्फीयर", "अनामलाई टाइगर रिजर्व"],
+        correct: 1,
+        solution: "• नेल्लई वन्यजीव अभयारण्य (तमिलनाडु) में इस नई प्रजाति की खोज की गई है। यह पौधा सेरोपेगिया जीनस से संबंधित है।"
+      },
+      {
+        id: 14,
+        question: "अक्टूबर 2026 में केंद्र सरकार ने गन्ना किसानों की समस्याओं की जांच हेतु किसकी अध्यक्षता में उच्च स्तरीय समिति गठित की?",
+        options: ["प्रो. एम.एस. स्वामीनाथन", "प्रो. रमेश चंद (Prof. Ramesh Chand)", "डॉ. अशोक दलवई", "अनुराग जैन"],
+        correct: 1,
+        solution: "• नीति आयोग के सदस्य प्रो. रमेश चंद की अध्यक्षता में समिति का गठन किया गया है।"
+      },
+      {
+        id: 15,
+        question: "सड़क परिवहन और राजमार्ग मंत्रालय ने भारत में वाहनों के लिए 'BS-VII' (भारत स्टेज 7) उत्सर्जन मानक किस वर्ष से लागू करने का मसौदा प्रस्तावित किया है?",
+        options: ["अप्रैल 2027", "जनवरी 2028", "अप्रैल 2029", "अप्रैल 2030"],
+        correct: 2,
+        solution: "• 1 अप्रैल 2029 से चरणबद्ध तरीके से BS-VII उत्सर्जन मानक लागू करने का मसौदा जारी किया गया है।"
+      }
+    ];
+
+    let currentQ = 0;
+    const totalQ = questionsData.length;
+    let userAnswers = new Array(totalQ).fill(null);
+    let questionStatus = new Array(totalQ).fill("not-visited");
+    let timerInterval = null;
+    let timeRemaining = 15 * 60;
+
+    window.addEventListener("DOMContentLoaded", () => {
+      const listEl = document.getElementById("revision-list");
+      quickRevisionData.forEach(item => {
+        const div = document.createElement("div");
+        div.className = "p-2.5 flex items-start gap-2 hover:bg-slate-50";
+        div.innerHTML = `
+          <span class="w-5 h-5 rounded bg-indigo-100 text-indigo-800 font-bold flex-shrink-0 flex items-center justify-center text-[10px]">${item.id}</span>
+          <div class="flex-1 space-y-0.5">
+            <p class="text-slate-800 font-medium leading-tight">${item.q}</p>
+            <p class="text-emerald-700 font-bold"><i class="fas fa-check-circle text-[10px] mr-1"></i>${item.a}</p>
+          </div>
+        `;
+        listEl.appendChild(div);
+      });
+      renderPalette();
+    });
+
+    function startTest() {
+      document.getElementById("revision-screen").classList.add("hidden");
+      document.getElementById("cbt-screen").classList.remove("hidden");
+      loadQuestion(0);
+      startTimer();
+    }
+
+    function startTimer() {
+      const display = document.getElementById("timer-display");
+      timerInterval = setInterval(() => {
+        if (timeRemaining <= 0) {
+          clearInterval(timerInterval);
+          finishTest();
+          return;
+        }
+        timeRemaining--;
+        const m = String(Math.floor(timeRemaining / 60)).padStart(2, '0');
+        const s = String(timeRemaining % 60).padStart(2, '0');
+        display.innerText = `${m}:${s}`;
+      }, 1000);
+    }
+
+    function togglePaletteView() {
+      document.getElementById("palette-box").classList.toggle("hidden");
+    }
+
+    function renderPalette() {
+      const grid = document.getElementById("palette-grid");
+      grid.innerHTML = "";
+      for (let i = 0; i < totalQ; i++) {
+        const btn = document.createElement("button");
+        btn.innerText = i + 1;
+        let base = "h-7 rounded text-xs font-bold flex items-center justify-center border ";
+        if (i === currentQ) base += "ring-2 ring-blue-500 ";
+        if (questionStatus[i] === "answered") base += "bg-emerald-600 text-white border-emerald-700";
+        else if (questionStatus[i] === "review") base += "bg-amber-500 text-white border-amber-600";
+        else if (questionStatus[i] === "not-answered") base += "bg-rose-600 text-white border-rose-700";
+        else base += "bg-slate-200 text-slate-700 border-slate-300";
+
+        btn.className = base;
+        btn.onclick = () => {
+          loadQuestion(i);
+          document.getElementById("palette-box").classList.add("hidden");
+        };
+        grid.appendChild(btn);
+      }
+    }
+
+    function loadQuestion(index) {
+      if (questionStatus[index] === "not-visited") {
+        questionStatus[index] = "not-answered";
+      }
+      currentQ = index;
+      const q = questionsData[index];
+
+      document.getElementById("q-number-title").innerText = `Question ${index + 1} of 15`;
+      document.getElementById("question-text").innerHTML = `${index + 1}. ${q.question}`;
+      document.getElementById("instant-solution-text").innerHTML = q.solution;
+      toggleInstantSolution(false);
+
+      const optContainer = document.getElementById("options-container");
+      optContainer.innerHTML = "";
+      const letters = ["A", "B", "C", "D"];
+
+      q.options.forEach((opt, optIdx) => {
+        const isSelected = userAnswers[index] === optIdx;
+        const optBtn = document.createElement("div");
+        optBtn.className = `flex items-center p-2.5 rounded-lg border cursor-pointer transition text-xs sm:text-sm ${
+          isSelected ? "bg-blue-50 border-blue-600 font-semibold text-blue-950 shadow-sm" : "bg-slate-50 border-slate-200 text-slate-800 hover:bg-slate-100"
+        }`;
+        optBtn.innerHTML = `
+          <span class="w-5 h-5 rounded-full border border-slate-300 flex items-center justify-center font-bold text-xs mr-2 flex-shrink-0 ${
+            isSelected ? "bg-blue-600 text-white border-blue-600" : "bg-white text-slate-600"
+          }">${letters[optIdx]}</span>
+          <span class="flex-1">${opt}</span>
+        `;
+        optBtn.onclick = () => selectOption(optIdx);
+        optContainer.appendChild(optBtn);
+      });
+
+      document.getElementById("btn-prev").disabled = (index === 0);
+      document.getElementById("btn-prev").style.opacity = (index === 0) ? "0.4" : "1";
+
+      renderPalette();
+    }
+
+    function selectOption(optIdx) {
+      userAnswers[currentQ] = optIdx;
+      questionStatus[currentQ] = "answered";
+      loadQuestion(currentQ);
+    }
+
+    function clearResponse() {
+      userAnswers[currentQ] = null;
+      questionStatus[currentQ] = "not-answered";
+      loadQuestion(currentQ);
+    }
+
+    function markForReview() {
+      questionStatus[currentQ] = "review";
+      nextQuestion();
+    }
+
+    function saveAndNext() {
+      if (userAnswers[currentQ] !== null) {
+        questionStatus[currentQ] = "answered";
+      } else if (questionStatus[currentQ] !== "review") {
+        questionStatus[currentQ] = "not-answered";
+      }
+      nextQuestion();
+    }
+
+    function nextQuestion() {
+      if (currentQ < totalQ - 1) loadQuestion(currentQ + 1);
+      else renderPalette();
+    }
+
+    function prevQuestion() {
+      if (currentQ > 0) loadQuestion(currentQ - 1);
+    }
+
+    function toggleInstantSolution(show) {
+      const drawer = document.getElementById("instant-solution-card");
+      if (show === undefined) drawer.classList.toggle("hidden");
+      else if (show) drawer.classList.remove("hidden");
+      else drawer.classList.add("hidden");
+    }
+
+    function confirmSubmitTest() {
+      const answered = userAnswers.filter(a => a !== null).length;
+      if (confirm(`Aapne 15 me se ${answered} prashn hal kiye hain. Test submit karein?`)) {
+        finishTest();
+      }
+    }
+
+    function finishTest() {
+      clearInterval(timerInterval);
+      document.getElementById("cbt-screen").classList.add("hidden");
+      document.getElementById("result-screen").classList.remove("hidden");
+
+      let correct = 0, wrong = 0;
+      questionsData.forEach((q, idx) => {
+        if (userAnswers[idx] === q.correct) correct++;
+        else if (userAnswers[idx] !== null) wrong++;
+      });
+
+      const score = (correct * 1.0 - wrong * 0.25).toFixed(2);
+      const totalAttempts = correct + wrong;
+      const accuracy = totalAttempts > 0 ? ((correct / totalAttempts) * 100).toFixed(1) : 0;
+
+      document.getElementById("res-score").innerText = `${score} / 15`;
+      document.getElementById("res-correct").innerText = correct;
+      document.getElementById("res-wrong").innerText = wrong;
+      document.getElementById("res-accuracy").innerText = `${accuracy}%`;
+
+      const solContainer = document.getElementById("solutions-container");
+      solContainer.innerHTML = "";
+      const letters = ["A", "B", "C", "D"];
+
+      questionsData.forEach((q, idx) => {
+        const uAns = userAnswers[idx];
+        const isCorrect = (uAns === q.correct);
+        const isSkipped = (uAns === null);
+
+        const card = document.createElement("div");
+        card.className = "bg-white rounded-lg border border-slate-200 p-3 space-y-2 shadow-sm text-xs";
+        
+        let statusBadge = isSkipped 
+          ? `<span class="bg-slate-100 text-slate-600 font-bold px-2 py-0.5 rounded text-[10px]">Unattempted</span>`
+          : (isCorrect 
+            ? `<span class="bg-emerald-100 text-emerald-800 font-bold px-2 py-0.5 rounded text-[10px]">Correct (+1.0)</span>`
+            : `<span class="bg-rose-100 text-rose-800 font-bold px-2 py-0.5 rounded text-[10px]">Wrong (-0.25)</span>`);
+
+        let optionsHtml = q.options.map((opt, oIdx) => {
+          let optBg = "bg-slate-50 border-slate-200 text-slate-700";
+          if (oIdx === q.correct) optBg = "bg-emerald-50 border-emerald-500 text-emerald-900 font-bold";
+          else if (oIdx === uAns && !isCorrect) optBg = "bg-rose-50 border-rose-400 text-rose-900 line-through";
+
+          return `
+            <div class="p-2 rounded border flex items-center justify-between ${optBg}">
+              <div class="flex items-center gap-1.5">
+                <span class="w-4 h-4 rounded-full bg-white border text-[10px] font-bold flex items-center justify-center">${letters[oIdx]}</span>
+                <span>${opt}</span>
+              </div>
+              ${oIdx === q.correct ? '<i class="fas fa-check text-emerald-600"></i>' : ''}
+              ${(oIdx === uAns && !isCorrect) ? '<i class="fas fa-times text-rose-600"></i>' : ''}
+            </div>
+          `;
+        }).join("");
+
+        card.innerHTML = `
+          <div class="flex items-start justify-between gap-2 border-b border-slate-100 pb-1.5">
+            <h4 class="font-bold text-slate-900 leading-tight">${idx + 1}. ${q.question}</h4>
+            <div class="flex-shrink-0">${statusBadge}</div>
+          </div>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-1.5 pt-1">
+            ${optionsHtml}
+          </div>
+          <div class="mt-2 p-2 bg-amber-50 border-l-4 border-amber-500 rounded text-slate-700 space-y-1">
+            <span class="font-bold text-amber-950 flex items-center gap-1"><i class="fas fa-lightbulb text-amber-600"></i> विस्तृत विश्लेषण:</span>
+            <div class="leading-relaxed pl-1">${q.solution}</div>
+          </div>
+        `;
+        solContainer.appendChild(card);
+      });
+    }
+
+    function restartTest() {
+      userAnswers = new Array(totalQ).fill(null);
+      questionStatus = new Array(totalQ).fill("not-visited");
+      timeRemaining = 15 * 60;
+      document.getElementById("result-screen").classList.add("hidden");
+      document.getElementById("revision-screen").classList.remove("hidden");
+    }
+  </script>
+</body>
+</html>
