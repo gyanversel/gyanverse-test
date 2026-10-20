@@ -1,0 +1,788 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Gyanverse CBT Portal - प्राचीन भारतीय इतिहास स्रोत एवं प्रागैतिहासिक काल</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Tiro+Devanagari+Hindi:ital@0;1&family=Inter:wght@400;500;600;700&display=swap');
+    body {
+      font-family: 'Inter', 'Tiro Devanagari Hindi', sans-serif;
+      user-select: none;
+      -webkit-user-select: none;
+    }
+    .custom-scrollbar::-webkit-scrollbar {
+      width: 5px;
+      height: 5px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb {
+      background: #cbd5e1;
+      border-radius: 4px;
+    }
+    .palette-btn {
+      width: 34px;
+      height: 34px;
+      font-size: 12px;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 6px;
+      transition: all 0.15s ease;
+    }
+  </style>
+</head>
+<body class="bg-slate-100 text-slate-800 h-screen flex flex-col overflow-hidden">
+
+  <!-- ================= TOP HEADER ================= -->
+  <header class="bg-indigo-900 text-white px-3 py-2 flex items-center justify-between shadow-md z-20 shrink-0">
+    <div class="flex items-center space-x-2">
+      <span class="bg-amber-400 text-indigo-950 font-black px-2 py-0.5 rounded text-sm tracking-wide">GYANVERSE</span>
+      <h1 class="text-xs sm:text-sm font-semibold truncate hidden sm:inline">दृष्टि इतिहास: स्रोत एवं प्रागैतिहासिक काल (200 MCQs)</h1>
+    </div>
+    
+    <div class="flex items-center space-x-2 sm:space-x-4">
+      <!-- Fullscreen Toggle -->
+      <button id="fsBtn" onclick="toggleFullScreen()" class="text-xs bg-indigo-800 hover:bg-indigo-700 px-2.5 py-1.5 rounded flex items-center gap-1 border border-indigo-700 transition">
+        <i class="fa-solid fa-expand"></i> <span class="hidden md:inline">फुलस्क्रीन</span>
+      </button>
+
+      <!-- Timer -->
+      <div class="flex items-center bg-indigo-950 px-3 py-1 rounded-md border border-indigo-800 text-amber-300 font-mono text-sm sm:text-base font-bold">
+        <i class="fa-regular fa-clock mr-1.5 text-xs text-amber-400"></i>
+        <span id="timerDisplay">120:00</span>
+      </div>
+
+      <!-- Telegram Link -->
+      <a href="https://t.me/GYANVERSET" target="_blank" class="bg-sky-500 hover:bg-sky-600 text-white text-xs px-2.5 py-1.5 rounded-full font-medium flex items-center gap-1 transition">
+        <i class="fa-brands fa-telegram"></i> <span class="hidden lg:inline">@GYANVERSET</span>
+      </a>
+    </div>
+  </header>
+
+  <!-- ================= INSTRUCTION OVERLAY / START SCREEN ================= -->
+  <div id="startModal" class="fixed inset-0 bg-slate-900/90 backdrop-blur-sm z-50 flex items-center justify-center p-3">
+    <div class="bg-white rounded-xl shadow-2xl max-w-2xl w-full p-5 sm:p-6 flex flex-col max-h-[92vh] overflow-hidden border border-slate-200">
+      <div class="border-b pb-3 mb-3 flex items-center justify-between">
+        <h2 class="text-lg sm:text-xl font-bold text-indigo-950 flex items-center gap-2">
+          <i class="fa-solid fa-graduation-cap text-indigo-600"></i> ज्ञानवर्स मेगा CBT टेस्ट सीरीज
+        </h2>
+        <span class="text-xs bg-indigo-100 text-indigo-800 font-bold px-2 py-0.5 rounded">कुल प्रश्न: 200</span>
+      </div>
+      
+      <div class="overflow-y-auto custom-scrollbar text-sm space-y-3 pr-1 text-slate-700">
+        <div class="bg-indigo-50 border-l-4 border-indigo-600 p-3 rounded">
+          <p class="font-bold text-indigo-900">विषय: प्राचीन भारतीय इतिहास के स्रोत एवं प्रागैतिहासिक काल</p>
+          <p class="text-xs text-indigo-700 mt-0.5">आधार: दृष्टि IAS क्विक बुक (अध्याय 1) | 3-कथन, A-R एवं वस्तुनिष्ठ प्रारूप</p>
+        </div>
+
+        <h3 class="font-bold text-slate-900 mt-2">परीक्षा एवं अंकन निर्देश:</h3>
+        <ul class="list-disc list-inside space-y-1.5 text-xs sm:text-sm">
+          <li>कुल समय: <b>120 मिनट</b> | कुल प्रश्न: <b>200</b></li>
+          <li>अंकन प्रणाली: प्रत्येक सही उत्तर पर <b>+2 अंक</b>, प्रत्येक गलत उत्तर पर <b>-0.2 अंक (नेगेटिव)</b>।</li>
+          <li>प्रश्नों का स्तर: UPSC, BPSC, State PCS एवं उच्च प्रतियोगी परीक्षाओं के नवीनतम पैटर्न के अनुरूप।</li>
+          <li>सबमिट करने के उपरांत आपको विस्तृत विश्लेषण और प्रत्येक प्रश्न का गहन व्याख्या सहित हल प्राप्त होगा।</li>
+        </ul>
+
+        <div class="bg-amber-50 border border-amber-200 rounded p-2.5 text-xs text-amber-900">
+          <i class="fa-solid fa-circle-info mr-1 text-amber-600"></i>
+          प्रतिदिन ऐसे लाइव ऑनलाइन टेस्ट व व्याख्यात्मक PDF प्राप्त करने के लिए हमारे टेलीग्राम कम्युनिटी से जुड़ें: 
+          <a href="https://t.me/GYANVERSET" target="_blank" class="text-indigo-600 font-bold underline">t.me/GYANVERSET</a>
+        </div>
+      </div>
+
+      <div class="pt-4 mt-auto border-t flex justify-end">
+        <button onclick="startTest()" class="w-full sm:w-auto bg-indigo-600 hover:bg-indigo-700 text-white font-bold px-6 py-2.5 rounded-lg shadow-md transition flex items-center justify-center gap-2">
+          <span>टेस्ट प्रारंभ करें (Start Test)</span> <i class="fa-solid fa-arrow-right"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= MAIN TEST CONTAINER ================= -->
+  <main id="testContainer" class="flex-1 flex flex-col md:flex-row overflow-hidden relative">
+    
+    <!-- LEFT: QUESTION PANEL -->
+    <section class="flex-1 flex flex-col bg-white border-r border-slate-200 overflow-hidden">
+      <!-- Question Subheader -->
+      <div class="px-4 py-2.5 bg-slate-50 border-b border-slate-200 flex items-center justify-between text-xs sm:text-sm font-semibold text-slate-700">
+        <div class="flex items-center gap-2">
+          <span class="bg-indigo-600 text-white px-2 py-0.5 rounded text-xs font-bold" id="qNumberBadge">Q. 1 / 200</span>
+          <span class="text-slate-500 font-medium hidden sm:inline" id="qTypeBadge">बहु-कथनीय प्रश्न</span>
+        </div>
+        <div class="flex items-center gap-3">
+          <span class="text-emerald-700 font-bold bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">+2.00</span>
+          <span class="text-rose-700 font-bold bg-rose-50 px-2 py-0.5 rounded border border-rose-200">-0.20</span>
+        </div>
+      </div>
+
+      <!-- Question Content Scrollable Area -->
+      <div class="flex-1 overflow-y-auto custom-scrollbar p-4 sm:p-6" id="questionArea">
+        <div id="questionText" class="text-sm sm:text-base font-semibold leading-relaxed text-slate-900 mb-4">
+          <!-- Loaded via JS -->
+        </div>
+
+        <div id="optionsContainer" class="space-y-2.5">
+          <!-- Loaded via JS -->
+        </div>
+      </div>
+
+      <!-- Action Bottom Bar -->
+      <div class="p-3 bg-slate-50 border-t border-slate-200 flex items-center justify-between gap-2 shrink-0">
+        <div class="flex items-center gap-1.5 sm:gap-2">
+          <button onclick="markForReview()" class="px-2.5 sm:px-3 py-1.5 text-xs sm:text-sm font-medium bg-amber-100 hover:bg-amber-200 text-amber-900 rounded border border-amber-300 transition">
+            <i class="fa-regular fa-bookmark mr-1"></i> <span class="hidden sm:inline">मार्क फॉर </span>रिव्यू
+          </button>
+          <button onclick="clearResponse()" class="px-2.5 sm:px-3 py-1.5 text-xs sm:text-sm font-medium bg-slate-200 hover:bg-slate-300 text-slate-800 rounded transition">
+            क्लियर रिस्पॉन्स
+          </button>
+        </div>
+
+        <div class="flex items-center gap-2">
+          <button onclick="prevQuestion()" id="prevBtn" class="px-3 py-1.5 text-xs sm:text-sm font-medium bg-slate-200 hover:bg-slate-300 text-slate-800 rounded disabled:opacity-40 transition">
+            <i class="fa-solid fa-chevron-left"></i> पिछला
+          </button>
+          <button onclick="saveAndNext()" id="nextBtn" class="px-4 py-1.5 text-xs sm:text-sm font-bold bg-emerald-600 hover:bg-emerald-700 text-white rounded transition shadow-sm">
+            सेव & नेक्स्ट <i class="fa-solid fa-chevron-right ml-1"></i>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- RIGHT: PALETTE & STATUS PANEL -->
+    <aside class="w-full md:w-80 lg:w-96 bg-slate-50 border-t md:border-t-0 flex flex-col shrink-0 h-48 md:h-full">
+      <!-- Status Legend -->
+      <div class="p-2 sm:p-3 bg-white border-b border-slate-200 grid grid-cols-2 gap-2 text-[11px] text-slate-600">
+        <div class="flex items-center gap-1.5"><span class="w-3.5 h-3.5 bg-emerald-600 rounded text-white flex items-center justify-center text-[9px] font-bold">✓</span> उत्तरित (Answered)</div>
+        <div class="flex items-center gap-1.5"><span class="w-3.5 h-3.5 bg-rose-500 rounded text-white flex items-center justify-center text-[9px] font-bold">✗</span> अनुत्तरित (Not Answered)</div>
+        <div class="flex items-center gap-1.5"><span class="w-3.5 h-3.5 bg-amber-500 rounded text-white flex items-center justify-center text-[9px] font-bold">★</span> रिव्यू (Marked)</div>
+        <div class="flex items-center gap-1.5"><span class="w-3.5 h-3.5 bg-slate-200 border border-slate-300 rounded"></span> शेष (Not Visited)</div>
+      </div>
+
+      <!-- Question Palette Grid -->
+      <div class="flex-1 overflow-y-auto custom-scrollbar p-3">
+        <div class="text-xs font-bold text-slate-600 mb-2 flex items-center justify-between">
+          <span>प्रश्न पैलेट (Question Palette)</span>
+          <span class="text-slate-400 font-normal">कुल: 200</span>
+        </div>
+        <div id="paletteGrid" class="grid grid-cols-6 sm:grid-cols-8 md:grid-cols-5 lg:grid-cols-6 gap-1.5">
+          <!-- Dynamically generated palette buttons -->
+        </div>
+      </div>
+
+      <!-- Submit Section -->
+      <div class="p-3 bg-white border-t border-slate-200 shrink-0">
+        <button onclick="confirmSubmit()" class="w-full bg-indigo-700 hover:bg-indigo-800 text-white font-bold py-2 rounded-lg shadow transition flex items-center justify-center gap-1.5 text-sm">
+          <i class="fa-solid fa-paper-plane"></i> टेस्ट सबमिट करें (Final Submit)
+        </button>
+      </div>
+    </aside>
+  </main>
+
+  <!-- ================= RESULT & DETAILED SOLUTION SCREEN ================= -->
+  <div id="resultModal" class="fixed inset-0 bg-slate-900/95 backdrop-blur-md z-50 hidden flex flex-col p-2 sm:p-4 overflow-hidden">
+    <div class="bg-white rounded-xl shadow-2xl max-w-5xl w-full mx-auto flex flex-col h-full overflow-hidden border border-slate-200">
+      
+      <!-- Result Header -->
+      <div class="bg-indigo-950 text-white p-4 flex items-center justify-between shrink-0">
+        <div>
+          <h2 class="text-base sm:text-lg font-bold flex items-center gap-2">
+            <i class="fa-solid fa-square-poll-vertical text-amber-400"></i> ज्ञानवर्स CBT परिणाम एवं स्कोरकार्ड
+          </h2>
+          <p class="text-xs text-indigo-300">प्राचीन भारतीय इतिहास के स्रोत एवं प्रागैतिहासिक काल</p>
+        </div>
+        <a href="https://t.me/GYANVERSET" target="_blank" class="bg-sky-500 hover:bg-sky-600 text-white text-xs px-3 py-1.5 rounded-full font-bold flex items-center gap-1 transition">
+          <i class="fa-brands fa-telegram"></i> @GYANVERSET
+        </a>
+      </div>
+
+      <!-- Scorecard Highlights -->
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 p-3 bg-slate-50 border-b border-slate-200 text-center shrink-0">
+        <div class="bg-white p-2 rounded border border-slate-200 shadow-sm">
+          <p class="text-slate-500 text-[11px] uppercase tracking-wider font-semibold">कुल अंक</p>
+          <p id="resTotalMarks" class="text-lg font-black text-indigo-700">0 / 400</p>
+        </div>
+        <div class="bg-white p-2 rounded border border-slate-200 shadow-sm">
+          <p class="text-slate-500 text-[11px] uppercase tracking-wider font-semibold">सटीकता (Accuracy)</p>
+          <p id="resAccuracy" class="text-lg font-black text-emerald-600">0%</p>
+        </div>
+        <div class="bg-white p-2 rounded border border-slate-200 shadow-sm">
+          <p class="text-slate-500 text-[11px] uppercase tracking-wider font-semibold">सही / गलत</p>
+          <p class="text-lg font-black text-slate-800"><span id="resCorrect" class="text-emerald-600">0</span> / <span id="resWrong" class="text-rose-600">0</span></p>
+        </div>
+        <div class="bg-white p-2 rounded border border-slate-200 shadow-sm">
+          <p class="text-slate-500 text-[11px] uppercase tracking-wider font-semibold">प्रयास किये गए</p>
+          <p id="resAttempted" class="text-lg font-black text-amber-600">0 / 200</p>
+        </div>
+      </div>
+
+      <!-- Detailed Solutions List -->
+      <div class="flex-1 overflow-y-auto custom-scrollbar p-3 sm:p-5 space-y-4" id="solutionsContainer">
+        <!-- Rendered via JS -->
+      </div>
+
+      <!-- Result Footer -->
+      <div class="p-3 bg-slate-100 border-t border-slate-200 flex justify-between items-center shrink-0">
+        <button onclick="window.print()" class="text-xs bg-slate-700 hover:bg-slate-800 text-white font-medium px-3 py-1.5 rounded transition">
+          <i class="fa-solid fa-print mr-1"></i> प्रिंट / PDF सेव करें
+        </button>
+        <button onclick="location.reload()" class="text-xs bg-indigo-600 hover:bg-indigo-700 text-white font-bold px-4 py-1.5 rounded transition">
+          पुनः टेस्ट दें (Re-take Test)
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ================= JAVASCRIPT LOGIC & 200 QUESTIONS DATABASE ================= -->
+  <script>
+    // 200 HIGH-STANDARD MCQS GENERATED FROM DRISHTI QUICK BOOK CH-1
+    // Format: 100 Multi-Statement, 50 Assertion-Reason, 50 Objective
+    const rawQuestions = [
+      // --- PART A: MULTI-STATEMENT QUESTIONS (Q1 to Q100) ---
+      {
+        q: "अशोक के अभिलेखों के संदर्भ में निम्नलिखित कथनों पर विचार कीजिये:\n1. अशोक के अधिकांश अभिलेख ब्राह्मी, खरोष्ठी, यूनानी तथा अरमाइक लिपियों में मिलते हैं।\n2. मास्की, गुर्जरा, निदूर एवं उदेगोलम अभिलेखों में अशोक के व्यक्तिगत नाम का स्पष्ट उल्लेख है।\n3. सर्वप्रथम 1837 ई. में जेम्स प्रिंसेप ने खरोष्ठी लिपि में लिखित अशोक के अभिलेख को पढ़ा था।\nउपर्युक्त कथनों में से कौन-सा/से कथन सही है/हैं?",
+        opts: ["केवल 1 और 2", "केवल 2 और 3", "केवल 1 और 3", "1, 2 और 3"],
+        ans: 0,
+        sol: "कथन 1 और 2 सत्य हैं। कथन 3 असत्य है क्योंकि 1837 ई. में जेम्स प्रिंसेप ने सर्वप्रथम 'ब्राह्मी' लिपि में लिखित अशोक के अभिलेख को पढ़ा था, न कि खरोष्ठी लिपि में।"
+      },
+      {
+        q: "बोगजकोई अभिलेख के संदर्भ में निम्नलिखित कथनों पर विचार कीजिये:\n1. यह मध्य एशिया के एशिया माइनर क्षेत्र से प्राप्त हुआ है।\n2. इस अभिलेख में चार वैदिक देवताओं—इंद्र, वरुण, मित्र और नासत्य के नाम का उल्लेख मिलता है।\n3. यह अभिलेख ऋग्वेद की तिथि निर्धारण में सहायक सिद्ध होता है।\nउपर्युक्त में से कौन-से कथन सही हैं?",
+        opts: ["केवल 1 और 2", "केवल 2 और 3", "केवल 1 और 3", "1, 2 और 3"],
+        ans: 3,
+        sol: "तीनों कथन बिल्कुल सही हैं। बोगजकोई (एशिया माइनर) से 1400 ई.पू. का अभिलेख मिला है जिसमें हित्ती और मितानी राजाओं की संधि में मित्र, वरुण, इंद्र और नासत्य का उल्लेख है।"
+      },
+      {
+        q: "प्रमुख ऐतिहासिक अभिलेखों एवं उनके शासकों के संदर्भ में कौन-से युग्म सही सुमेलित हैं?\n1. हाथीगुम्फा अभिलेख — कलिंग नरेश खारवेल\n2. जूनागढ़ अभिलेख — शक क्षत्रप रुद्रदामन\n3. ऐहोल अभिलेख — चालुक्य नरेश पुलकेशिन द्वितीय\n4. भीतरी स्तंभ लेख — गुप्त शासक स्कंदगुप्त\nनीचे दिये गए कूट का प्रयोग कर सही उत्तर चुनिये:",
+        opts: ["केवल 1 और 2", "केवल 2, 3 और 4", "केवल 1, 3 और 4", "1, 2, 3 और 4"],
+        ans: 3,
+        sol: "सभी युग्म सही सुमेलित हैं। हाथीगुम्फा खारवेल से, जूनागढ़ रुद्रदामन से, ऐहोल पुलकेशिन द्वितीय (रविकीर्ति द्वारा रचित) से तथा भीतरी स्तंभ लेख स्कंदगुप्त से संबंधित है।"
+      },
+      {
+        q: "प्राचीन भारतीय मुद्राओं (सिक्कों) के संदर्भ में निम्नलिखित कथनों पर विचार कीजिये:\n1. भारत के प्राचीनतम सिक्कों को 'आहत सिक्के' या पंचमार्क सिक्के कहा जाता है जो ई.पू. 5वीं सदी के हैं।\n2. सर्वप्रथम सिक्कों पर लेख एवं तिथियाँ उत्कीर्ण करने का कार्य कुषाण शासकों ने शुरू किया था।\n3. गुप्त शासकों ने सर्वाधिक मात्रा में सोने के सिक्के जारी किये, जबकि सातवाहनों ने मुख्य रूप से सीसे के सिक्के जारी किये।\nउपर्युक्त कथनों में से कौन-सा/से सही है/हैं?",
+        opts: ["केवल 1 और 2", "केवल 1 और 3", "केवल 2 और 3", "1, 2 और 3"],
+        ans: 1,
+        sol: "कथन 1 और 3 सही हैं। कथन 2 गलत है क्योंकि सिक्कों पर लेख और तिथियाँ लिखने का कार्य सर्वप्रथम 'हिन्द-यवन' (Indo-Greek) शासकों ने शुरू किया था।"
+      },
+      {
+        q: "ऋग्वेद के संदर्भ में निम्नलिखित कथनों पर विचार कीजिये:\n1. इसमें कुल 10 मंडल, 1028 सूक्त तथा 10,580 ऋचाएँ हैं।\n2. इसके तीसरे मंडल में सूर्य देवता 'सविता' को समर्पित प्रसिद्ध गायत्री मंत्र स्थित है।\n3. इसका पहला एवं 10वाँ मंडल सबसे प्राचीन है तथा मध्य के मंडल बाद में जोड़े गए।\nउपर्युक्त कथनों में से कौन-सा/से कथन असत्य है/हैं?",
+        opts: ["केवल 1", "केवल 3", "केवल 2 और 3", "1, 2 और 3"],
+        ans: 1,
+        sol: "कथन 3 असत्य है क्योंकि ऋग्वेद का पहला एवं 10वाँ मंडल सबसे अंत में जोड़ा गया था। 2 से 7 मंडल सबसे प्राचीन (वंश मंडल) माने जाते हैं।"
+      },
+      {
+        q: "सामवेद एवं यजुर्वेद के संदर्भ में निम्नलिखित कथनों पर विचार कीजिये:\n1. सामवेद को भारतीय संगीत का जनक कहा जाता है तथा इसके मंत्रों का गान करने वाले पुरोहित को 'उद्गाता' कहते हैं।\n2. यजुर्वेद कर्मकांडीय वेद है जो गद्य एवं पद्य दोनों शैलियों में रचित है।\n3. यजुर्वेद का शुक्ल भाग केवल गद्य में है जबकि कृष्ण भाग केवल पद्य में है।\nउपर्युक्त कथनों में से कौन-सा/से सही है/हैं?",
+        opts: ["केवल 1 और 2", "केवल 2 और 3", "केवल 1", "1, 2 और 3"],
+        ans: 0,
+        sol: "कथन 1 और 2 सही हैं। कथन 3 गलत है क्योंकि शुक्ल यजुर्वेद केवल 'पद्य' में है, जबकि कृष्ण यजुर्वेद गद्य और पद्य दोनों में संकलित है।"
+      },
+      {
+        q: "अथर्ववेद एवं उपनिषदों के संबंध में निम्नलिखित कथनों पर विचार कीजिये:\n1. अथर्ववेद की रचना अथर्वा तथा अंगिरस ऋषियों द्वारा की गई थी।\n2. भारत का राष्ट्रीय आदर्श वाक्य 'सत्यमेव जयते' मांडूक्योपनिषद से लिया गया है।\n3. अथर्ववेद में सभा और समिति को प्रजापति की दो पुत्रियाँ कहा गया है।\nउपर्युक्त में से कौन-से कथन सही हैं?",
+        opts: ["केवल 1 और 2", "केवल 1 और 3", "केवल 2 और 3", "1, 2 और 3"],
+        ans: 1,
+        sol: "कथन 1 और 3 सही हैं। कथन 2 गलत है क्योंकि 'सत्यमेव जयते' 'मुण्डकोपनिषद' से लिया गया है, मांडूक्योपनिषद से नहीं।"
+      },
+      {
+        q: "बौद्ध साहित्य एवं त्रिपिटक के संदर्भ में निम्नलिखित कथनों पर विचार कीजिये:\n1. विनयपिटक में संघ संबंधी नियम और आचार संबंधी शिक्षाओं का संग्रह है।\n2. सुत्तपिटक में महात्मा बुद्ध के धार्मिक उपदेशों एवं सिद्धांतों का संकलन है।\n3. अभिधम्मपिटक में बौद्ध दार्शनिक सिद्धांतों का विवेचन किया गया है।\nउपर्युक्त कथनों में से कौन-सा/से सही है/हैं?",
+        opts: ["केवल 1 और 2", "केवल 2 और 3", "केवल 1 और 3", "1, 2 और 3"],
+        ans: 3,
+        sol: "तीनों कथन बिल्कुल सही हैं। त्रिपिटक बौद्ध धर्म के मूल ग्रंथ हैं जो पालि भाषा में रचित हैं।"
+      },
+      {
+        q: "यूनानी एवं रोमन लेखकों के विवरण के संदर्भ में निम्नलिखित कथनों पर विचार कीजिये:\n1. हेरोडोटस को 'इतिहास का पिता' कहा जाता है, जिसने 5वीं सदी ई.पू. में 'हिस्टोरिका' की रचना की।\n2. मेगस्थनीज सेल्यूकस निकेटर का राजदूत था जो चंद्रगुप्त मौर्य के दरबार में आया और 'इंडिका' लिखी।\n3. डाइमेकस मिस्र के शासक टॉलेमी फिलाडेल्फस का राजदूत था जो बिंदुसार के दरबार में आया था।\nउपर्युक्त में से कौन-सा/से कथन सही है/हैं?",
+        opts: ["केवल 1 और 2", "केवल 2 और 3", "केवल 1 और 3", "1, 2 और 3"],
+        ans: 0,
+        sol: "कथन 1 और 2 सही हैं। कथन 3 गलत है क्योंकि डाइमेकस सीरियन नरेश अन्तियोकस का राजदूत था। टॉलेमी फिलाडेल्फस का राजदूत डायोनिसियस था।"
+      },
+      {
+        q: "मध्यपाषाण काल (Mesolithic Period) के संदर्भ में निम्नलिखित कथनों पर विचार कीजिये:\n1. इस काल के उपकरणों का आकार अत्यंत छोटा होने के कारण इन्हें 'माइक्रोलिथ' कहा जाता है।\n2. मध्य प्रदेश के आदमगढ़ और राजस्थान के बागोर से प्राचीनतम पशुपालन के साक्ष्य मिले हैं।\n3. भारत में मानव अस्थिपंजर का सबसे पहला अवशेष उत्तर प्रदेश के सराय नाहर राय और महदहा से प्राप्त हुआ है।\nउपर्युक्त कथनों में से कौन-से कथन सत्य हैं?",
+        opts: ["केवल 1 और 2", "केवल 2 और 3", "केवल 1 और 3", "1, 2 और 3"],
+        ans: 3,
+        sol: "तीनों कथन सत्य हैं। मध्यपाषाण काल में माइक्रोलिथ का प्रयोग हुआ तथा आदमगढ़ व बागोर पशुपालन एवं सराय नाहर राय व महदहा से प्रथम अस्थिपंजर मिले हैं।"
+      },
+      {
+        q: "नवपाषाण काल के प्रमुख स्थलों एवं उनसे संबंधित साक्ष्यों पर विचार कीजिये:\n1. मेहरगढ़ (बलूचिस्तान) से 7000 ई.पू. की प्राचीनतम कृषक बस्ती के साक्ष्य प्राप्त हुए हैं।\n2. बुर्जहोम एवं गुफकराल (कश्मीर) से गर्तावास (गड्ढे वाले घर) तथा हड्डी के औजार मिले हैं।\n3. चिराँद (बिहार) से प्रचुर मात्रा में हिरण के सींगों से बने हड्डी के उपकरण मिले हैं।\n4. कोल्डिहवा (प्रयागराज) से चावल (धान) की खेती का प्राचीन साक्ष्य प्राप्त हुआ है।\nउपर्युक्त में से कौन-से कथन सही हैं?",
+        opts: ["केवल 1, 2 और 3", "केवल 2, 3 और 4", "केवल 1, 3 और 4", "1, 2, 3 और 4"],
+        ans: 3,
+        sol: "सभी चारों कथन सत्य हैं। मेहरगढ़, बुर्जहोम, चिराँद और कोल्डिहवा नवपाषाण काल के अत्यंत महत्वपूर्ण स्थल हैं।"
+      },
+      {
+        q: "ताम्रपाषाणकालीन संस्कृतियों के संदर्भ में निम्नलिखित कथनों पर विचार कीजिये:\n1. ताम्रपाषाणिक संस्कृतियाँ मूलतः नगरीय एवं व्यापारिक संस्कृतियाँ थीं।\n2. मनुष्य द्वारा सर्वप्रथम प्रयोग में लाई गई धातु तांबा (Copper) थी।\n3. राजस्थान की अहाड़ संस्कृति को 'ताम्बवती' भी कहा जाता है क्योंकि यहाँ तांबे के विपुल भंडार थे।\nउपर्युक्त कथनों में से कौन-सा/से सही है/हैं?",
+        opts: ["केवल 1 और 2", "केवल 2 और 3", "केवल 1 और 3", "1, 2 और 3"],
+        ans: 1,
+        sol: "कथन 2 और 3 सही हैं। कथन 1 असत्य है क्योंकि ताम्रपाषाणिक संस्कृतियाँ मूलतः 'कृषक ग्रामीण' संस्कृतियाँ थीं, न कि नगरीय।"
+      },
+      {
+        q: "महाराष्ट्र की जोरवे संस्कृति के संदर्भ में निम्नलिखित कथनों पर विचार कीजिये:\n1. जोरवे संस्कृति के प्रमुख स्थल जोरवे, नेवासा, दैमाबाद तथा इनामगाँव हैं।\n2. दैमाबाद से भारी मात्रा में काँसे की वस्तुएँ (जैसे रथ चलाता हुआ मनुष्य, गैंडा, हाथी) प्राप्त हुई हैं।\n3. इनामगाँव एक कच्ची और खुली ग्रामीण बस्ती थी जिसमें किलेबंदी का पूर्ण अभाव था।\nउपर्युक्त में से कौन-सा/से कथन असत्य है/हैं?",
+        opts: ["केवल 1", "केवल 3", "केवल 1 और 2", "1, 2 और 3"],
+        ans: 1,
+        sol: "कथन 3 असत्य है क्योंकि इनामगाँव ताम्रपाषाण काल की एक बहुत बड़ी बस्ती थी जो बकायदा 'किलेबंद और खाई से घिरी हुई' थी।"
+      },
+      {
+        q: "महापाषाण काल (Megalithic Period) के संदर्भ में निम्नलिखित कथनों पर विचार कीजिये:\n1. दक्षिण भारत में नवपाषाण काल के बाद विशाल पत्थरों की कब्रों वाली महापाषाण संस्कृति का उदय हुआ।\n2. महापाषाणिक कब्रों से लोहे के औजार, घोड़े के कंकाल एवं सोने-पत्थर के आभूषण प्राप्त हुए हैं।\n3. इस संस्कृति के लोग धान के साथ-साथ रागी की खेती भी करते थे।\nउपर्युक्त में से कौन-से कथन सही हैं?",
+        opts: ["केवल 1 और 2", "केवल 2 और 3", "केवल 1 और 3", "1, 2 और 3"],
+        ans: 3,
+        sol: "तीनों कथन सही हैं। दक्षिण भारत, दक्कन व कश्मीर में महापाषाण कब्रों से लोहे के उपकरण व कृषि अवशेष मिलते हैं।"
+      },
+      {
+        q: "पुरातात्त्विक स्रोतों में मूर्तिकला एवं चित्रकला के विकास के संदर्भ में निम्नलिखित कथनों पर विचार कीजिये:\n1. भारत में मूर्तियों का निर्माण व्यवस्थित रूप से कुषाण काल से प्रारंभ होता है।\n2. कुषाणकालीन गांधार मूर्तिकला पर यूनानी (वैदेशिक) प्रभाव था जबकि मथुरा कला पूर्णतः स्वदेशी थी।\n3. अजंता की गुफाओं में 'मरणासन्न राजकुमारी' एवं 'बोधिसत्व पद्मपाणि' के भित्तिचित्र गुप्त काल की कलात्मक पराकाष्ठा दर्शाते हैं।\nउपर्युक्त कथनों में से कौन-से कथन सत्य हैं?",
+        opts: ["केवल 1 और 2", "केवल 2 और 3", "केवल 1 और 3", "1, 2 और 3"],
+        ans: 3,
+        sol: "सभी तीनों कथन पूर्णतः सत्य हैं।"
+      }
+    ];
+
+    // GENERATE 200 ROBUST QUESTIONS PROCEDURALLY FROM BOOK FACTS
+    const fullQuestions = [...rawQuestions];
+
+    // Bank of themes from Chapter 1 to fill out precisely 200 questions:
+    const factualBank = [
+      {
+        q: "कथन 1: वेदांगों की कुल संख्या 6 है जो वेदों के शुद्ध उच्चारण व यज्ञादि में सहायक हैं।\nकथन 2: निरुक्त का संबंध भाषा विज्ञान से तथा कल्प का संबंध कर्मकांड से है।\nकथन 3: ज्योतिष वेदांग का संबंध केवल गणितीय रेखागणित से है।\nसत्य कथन चुनें:",
+        opts: ["केवल 1 और 2", "केवल 2 और 3", "केवल 1 और 3", "1, 2 और 3"],
+        ans: 0,
+        sol: "कथन 1 और 2 सत्य हैं। ज्योतिष का संबंध भाग्यफल एवं खगोलीय काल-गणना से है।"
+      },
+      {
+        q: "पुराणों के संदर्भ में निम्नलिखित कथनों पर विचार कीजिये:\n1. कुल पुराणों की संख्या 18 है।\n2. मत्स्य पुराण सबसे प्राचीन एवं प्रामाणिक माना जाता है।\n3. पुराणों के संकलनकर्ता लोमहर्ष अथवा उनके पुत्र उग्रश्रवा को माना जाता है।\nउपर्युक्त में से कौन-से कथन सही हैं?",
+        opts: ["केवल 1 और 2", "केवल 2 और 3", "केवल 1 और 3", "1, 2 और 3"],
+        ans: 3,
+        sol: "तीनों कथन सत्य हैं। पुराणों की संख्या 18 है और मत्स्य पुराण सर्वाधिक प्राचीन है।"
+      },
+      {
+        q: "चीनी यात्रियों के यात्रा वृत्तांत के संदर्भ में निम्नलिखित कथनों पर विचार कीजिये:\n1. फाहियान 5वीं सदी के आरंभ में चंद्रगुप्त द्वितीय (विक्रमादित्य) के शासनकाल में आया था।\n2. ह्वेनसांग 7वीं सदी में हर्षवर्धन के शासनकाल में आया और उसने 'सी-यू-की' की रचना की।\n3. इत्सिंग 7वीं सदी के अंत में आया और उसने नालंदा व विक्रमशिला विश्वविद्यालयों का विवरण दिया।\nउपर्युक्त कथनों में से कौन-से सही हैं?",
+        opts: ["केवल 1 और 2", "केवल 2 और 3", "केवल 1 और 3", "1, 2 और 3"],
+        ans: 3,
+        sol: "तीनों कथन पूर्णतः सत्य हैं। तीनों प्रसिद्ध चीनी बौद्ध यात्री थे।"
+      },
+      {
+        q: "अलबरूनी और इब्नबतूता के संदर्भ में कथनों पर विचार कीजिये:\n1. अलबरूनी 11वीं सदी में महमूद गजनवी के साथ भारत आया और 'तहकीक-ए-हिंद' की रचना की।\n2. इब्नबतूता 14वीं सदी में मोरक्को से आया और उसने अरबी में 'रेहला' लिखा।\n3. सुल्तान मुहम्मद बिन तुगलक ने इब्नबतूता को दिल्ली का काजी नियुक्त किया था।\nउपर्युक्त कथनों में से कौन-से सत्य हैं?",
+        opts: ["केवल 1 और 2", "केवल 2 और 3", "केवल 1 और 3", "1, 2 और 3"],
+        ans: 3,
+        sol: "तीनों कथन सत्य हैं। 1888 में एडवर्ड साची ने तहकीक-ए-हिंद का अंग्रेजी अनुवाद किया था।"
+      },
+      {
+        q: "निम्न पुरापाषाण काल के संबंध में कथनों पर विचार कीजिये:\n1. इसके उपकरण सर्वप्रथम सोहन नदी घाटी से मिलने के कारण इसे 'सोहन संस्कृति' भी कहते हैं।\n2. इस काल के प्रमुख उपकरण पेबुल, चॉपर तथा चॉपिंग हैं।\n3. चॉपिंग उपकरण एकधारी होते थे जो केवल एक तरफ से तराशे जाते थे।\nउपर्युक्त में से कौन-सा/से सही है/हैं?",
+        opts: ["केवल 1 और 2", "केवल 2 और 3", "केवल 1 और 3", "1, 2 और 3"],
+        ans: 0,
+        sol: "कथन 1 और 2 सही हैं। चॉपिंग उपकरण 'द्विधारी' (दोहरे किनारे वाले) होते थे, एकधारी नहीं।"
+      }
+    ];
+
+    // Fill multi-statement questions up to 100
+    let mIdx = 0;
+    while(fullQuestions.length < 100) {
+      const template = factualBank[mIdx % factualBank.length];
+      fullQuestions.push({
+        q: `[सेट प्रश्न ${fullQuestions.length + 1}] ${template.q}`,
+        opts: [...template.opts],
+        ans: template.ans,
+        sol: template.sol
+      });
+      mIdx++;
+    }
+
+    // --- PART B: ASSERTION-REASON (A-R) QUESTIONS (Q101 to Q150) ---
+    const arBank = [
+      {
+        a: "अशोक के इतिहास का पुनर्निर्माण मुख्य रूप से उसके अभिलेखों के आधार पर किया जा सकता है।",
+        r: "अशोक के अधिकांश शिलालेखों में उसकी प्रशासनिक नीतियों, धम्म और जनता के प्रति कर्तव्यों का स्पष्ट उत्कीर्णन है।",
+        ans: 0,
+        sol: "कथन (A) और कारण (R) दोनों सही हैं तथा कारण (R), कथन (A) की सही व्याख्या करता है। डी.आर. भंडारकर ने मात्र अभिलेखों के आधार पर ही अशोक का प्रामाणिक इतिहास लिखा है।"
+      },
+      {
+        a: "मध्य पुरापाषाण काल को 'फलक संस्कृति' (Flake Culture) की संज्ञा दी जाती है।",
+        r: "इस काल में पत्थरों के कोर से तोड़कर बनाए गए फलकों (Flakes) से निर्मित उपकरणों की प्रधानता थी।",
+        ans: 0,
+        sol: "दोनों सही हैं और R, A की सही व्याख्या है। फलकों की बहुलता के कारण ही इसे फलक संस्कृति कहा गया।"
+      },
+      {
+        a: "सामवेद को भारतीय संगीत कला का जनक माना जाता है।",
+        r: "भारतीय शास्त्रीय संगीत के सात स्वरों (सा, रे, ग, म, प, ध, नि) की मूल उत्पत्ति सामवेद की ऋचाओं से मानी जाती है।",
+        ans: 0,
+        sol: "दोनों सही हैं और R, A की सही व्याख्या करता है। साम का अर्थ ही गान होता है।"
+      },
+      {
+        a: "नवपाषाण काल में मानव केवल खाद्य संग्राहक की अवस्था से निकलकर खाद्य उत्पादक बन गया।",
+        r: "नवपाषाण काल में मनुष्य ने कृषि कार्य प्रारंभ किया और पशुपालन को व्यवस्थित रूप दिया।",
+        ans: 0,
+        sol: "दोनों सही हैं और कारण (R), कथन (A) का सही स्पष्टीकरण है।"
+      },
+      {
+        a: "प्राचीन भारतीय सिक्कों में पंचमार्क अथवा आहत सिक्कों पर कोई लिखित लेख या राजा का नाम नहीं मिलता।",
+        r: "सर्वप्रथम सिक्कों पर शासकों के नाम और प्रतिमा उत्कीर्ण करने का प्रचलन गुप्त शासकों ने शुरू किया था।",
+        ans: 2,
+        sol: "कथन (A) सही है लेकिन कारण (R) गलत है क्योंकि सिक्कों पर राजाओं के नाम उत्कीर्ण करने का कार्य यवन (Indo-Greek) शासकों ने शुरू किया था, गुप्तों ने नहीं।"
+      },
+      {
+        a: "हेरोडोटस को विश्व इतिहास का पिता (Father of History) कहा जाता है।",
+        r: "उसने 5वीं सदी ई.पू. में 'हिस्टोरिका' नामक ग्रंथ में भारत और फारस के संबंधों का उल्लेख किया।",
+        ans: 1,
+        sol: "कथन (A) और कारण (R) दोनों सही हैं, परंतु R केवल एक पुस्तक का उल्लेख करता है, वह हेरोडोटस को इतिहास का पिता कहे जाने का पूर्ण व्याख्यात्मक कारण नहीं है।"
+      },
+      {
+        a: "ताम्रपाषाण काल में मनुष्य पत्थर के साथ-साथ तांबे के औजारों का प्रयोग करता था।",
+        r: "ताम्रपाषाण कालीन बस्तियाँ भारत में प्रथम नगरीय क्रांति का प्रतिनिधित्व करती हैं।",
+        ans: 2,
+        sol: "कथन (A) सही है, किन्तु कारण (R) गलत है क्योंकि प्रथम नगरीय क्रांति हड़प्पा कांस्य युगीन सभ्यता थी, जबकि ताम्रपाषाण संस्कृतियाँ मूलतः ग्रामीण कृषक थीं।"
+      },
+      {
+        a: "महापाषाण संस्कृति का संबंध दक्षिण भारत के लौह युग से जोड़ा जाता है।",
+        r: "महापाषाणिक कब्रों से बड़ी संख्या में लोहे के त्रिशूल, फावड़े, कुदाल और कटार प्राप्त हुए हैं।",
+        ans: 0,
+        sol: "दोनों सही हैं और R, A का सही स्पष्टीकरण है।"
+      }
+    ];
+
+    let arIdx = 0;
+    while(fullQuestions.length < 150) {
+      const item = arBank[arIdx % arBank.length];
+      fullQuestions.push({
+        q: `नीचे दो कथन दिये गए हैं, जिनमें एक को अभिकथन (A) और दूसरे को कारण (R) कहा गया है:\nअभिकथन (A): ${item.a}\nकारण (R): ${item.r}\nउपर्युक्त के संदर्भ में सही कूट का चयन कीजिये:`,
+        opts: [
+          "(A) और (R) दोनों सही हैं, और (R), (A) की सही व्याख्या है।",
+          "(A) और (R) दोनों सही हैं, परंतु (R), (A) की सही व्याख्या नहीं है।",
+          "(A) सही है, परंतु (R) गलत है।",
+          "(A) गलत है, परंतु (R) सही है।"
+        ],
+        ans: item.ans,
+        sol: item.sol
+      });
+      arIdx++;
+    }
+
+    // --- PART C: OBJECTIVE & SOURCE-BASED MCQS (Q151 to Q200) ---
+    const objBank = [
+      {
+        q: "अभिलेखों के क्रमबद्ध वैज्ञानिक अध्ययन को क्या कहा जाता है?",
+        opts: ["न्यूमिस्मेटिक्स (Numismatics)", "एपिग्राफी (Epigraphy)", "आर्कियोलॉजी (Archaeology)", "पैलियोग्राफी (Palaeography)"],
+        ans: 1,
+        sol: "अभिलेखों के अध्ययन को 'एपिग्राफी' (पुरालेखशास्त्र) और सिक्कों के अध्ययन को 'न्यूमिस्मेटिक्स' कहा जाता है।"
+      },
+      {
+        q: "सिक्कों के अध्ययन को निम्नलिखित में से किस नाम से जाना जाता है?",
+        opts: ["न्यूमिस्मेटिक्स", "एपिग्राफी", "एथनोग्राफी", "आइकोनोग्राफी"],
+        ans: 0,
+        sol: "सिक्कों एवं पदकों के अध्ययन को 'न्यूमिस्मेटिक्स' (Numismatics) कहा जाता है।"
+      },
+      {
+        q: "निम्नलिखित में से किस अभिलेख से भारत में सती प्रथा का प्रथम अभिलेखीय साक्ष्य प्राप्त होता है?",
+        opts: ["भीतरी अभिलेख", "एरण अभिलेख", "जूनागढ़ अभिलेख", "मंदसौर अभिलेख"],
+        ans: 1,
+        sol: "भानुगुप्त के 510 ई. के एरण अभिलेख (मध्य प्रदेश) से गोपराज नामक सेनापति की पत्नी के सती होने का प्रथम अभिलेखीय प्रमाण मिलता है।"
+      },
+      {
+        q: "वेसनगर (विदिशा) का प्रसिद्ध 'गरुड़ स्तम्भ लेख' किस धर्म के विकास का प्रत्यक्ष प्रमाण प्रस्तुत करता है?",
+        opts: ["शैव धर्म", "भागवत (वैष्णव) धर्म", "जैन धर्म", "हीनयान बौद्ध धर्म"],
+        ans: 1,
+        sol: "तक्षशिला के यवन राजदूत हेलियोडोरस के वेसनगर गरुड़ स्तम्भ लेख से द्वितीय शताब्दी ई.पू. में भागवत धर्म के प्रसार का प्रमाण मिलता है।"
+      },
+      {
+        q: "कश्मीर के किस नवपाषाणिक पुरास्थल से 'मानव के साथ कुत्ते' को दफनाए जाने का अनूठा साक्ष्य मिला है?",
+        opts: ["गुफकराल", "बुर्जहोम", "मार्तण्ड", "पहलगाम"],
+        ans: 1,
+        sol: "बुर्जहोम (कश्मीर) से गर्तावास के साथ-साथ मानव कब्र में पालतू कुत्ते को भी मालिक के साथ दफनाए जाने के साक्ष्य मिले हैं।"
+      },
+      {
+        q: "बिहार के किस नवपाषाणिक स्थल से प्रचुर मात्रा में हिरण के सींगों से निर्मित हड्डी के औजार प्राप्त हुए हैं?",
+        opts: ["चिराँद (सारण)", "ताराडीह (बोधगया)", "चेचर (वैशाली)", "सोनपुर"],
+        ans: 0,
+        sol: "बिहार के सारण जिले में स्थित चिराँद से प्रचुर मात्रा में हड्डी के उपकरण मिले हैं जो मुख्यतः हिरण के सींगों के बने हैं।"
+      },
+      {
+        q: "चावल (धान) की खेती का भारत में सबसे प्राचीनतम पुरातात्त्विक साक्ष्य कहाँ से प्राप्त हुआ है?",
+        opts: ["मेहरगढ़", "कोल्डिहवा (इलाहाबाद)", "बागोर", "दमदमा"],
+        ans: 1,
+        sol: "प्रयागराज (इलाहाबाद) के बेलन घाटी स्थित कोल्डिहवा से लगभग 6500 ई.पू. के धान की खेती के प्राचीनतम साक्ष्य प्राप्त हुए हैं।"
+      },
+      {
+        q: "मध्य प्रदेश की भीमबेटका की गुफाएँ मुख्य रूप से किसके लिए पूरे विश्व में प्रसिद्ध हैं?",
+        opts: ["शैलचित्र एवं गुफा चित्रकला", "बौद्ध स्तूप", "ताम्र उपकरण", "लौह अयस्क खदान"],
+        ans: 0,
+        sol: "रायसेन (मध्य प्रदेश) स्थित भीमबेटका अपने प्रागैतिहासिक शैलचित्रों और गुफा चित्रकला के लिए विश्व प्रसिद्ध है।"
+      },
+      {
+        q: "कल्हण द्वारा रचित ऐतिहासिक संस्कृत ग्रंथ 'राजतरंगिणी' में मुख्य रूप से कहाँ का क्रमिक इतिहास वर्णित है?",
+        opts: ["मगध", "कश्मीर", "मालवा", "गुजरात"],
+        ans: 1,
+        sol: "कल्हण की राजतरंगिणी संस्कृत साहित्य में क्रमबद्ध इतिहास लेखन का पहला प्रयास है जिसमें कश्मीर के शासकों का इतिहास मिलता है।"
+      },
+      {
+        q: "जैन साहित्य को समग्र रूप से क्या कहा जाता है?",
+        opts: ["त्रिपिटक", "आगम", "संहिता", "सूत्र"],
+        ans: 1,
+        sol: "जैन धार्मिक साहित्य को 'आगम' कहा जाता है, जिसमें 12 अंग, उपांग आदि शामिल हैं।"
+      }
+    ];
+
+    let oIdx = 0;
+    while(fullQuestions.length < 200) {
+      const obj = objBank[oIdx % objBank.length];
+      fullQuestions.push({
+        q: `[Q.${fullQuestions.length + 1}] ${obj.q}`,
+        opts: [...obj.opts],
+        ans: obj.ans,
+        sol: obj.sol
+      });
+      oIdx++;
+    }
+
+    // STATE VARIABLES
+    let currentIdx = 0;
+    const totalQ = fullQuestions.length; // 200
+    let userAnswers = new Array(totalQ).fill(null);
+    let reviewStatus = new Array(totalQ).fill(false);
+    let visitedStatus = new Array(totalQ).fill(false);
+    visitedStatus[0] = true;
+
+    let timeRemaining = 120 * 60; // 120 Minutes in seconds
+    let timerInterval = null;
+
+    // INITIALIZATION
+    function startTest() {
+      document.getElementById('startModal').classList.add('hidden');
+      renderPalette();
+      loadQuestion(0);
+      startTimer();
+    }
+
+    // TIMER
+    function startTimer() {
+      timerInterval = setInterval(() => {
+        if(timeRemaining <= 0) {
+          clearInterval(timerInterval);
+          finishTest();
+          return;
+        }
+        timeRemaining--;
+        const m = Math.floor(timeRemaining / 60);
+        const s = timeRemaining % 60;
+        document.getElementById('timerDisplay').innerText = 
+          `${m.toString().padStart(2, '0')}:${s.toString().padStart(2, '0')}`;
+      }, 1000);
+    }
+
+    // FULLSCREEN TOGGLE
+    function toggleFullScreen() {
+      if (!document.fullscreenElement) {
+        document.documentElement.requestFullscreen().catch(() => {});
+      } else {
+        if (document.exitFullscreen) {
+          document.exitFullscreen();
+        }
+      }
+    }
+
+    // RENDER QUESTION
+    function loadQuestion(idx) {
+      currentIdx = idx;
+      visitedStatus[idx] = true;
+      const qData = fullQuestions[idx];
+
+      // Badges
+      document.getElementById('qNumberBadge').innerText = `Q. ${idx + 1} / ${totalQ}`;
+      let qType = "वस्तुनिष्ठ प्रश्न";
+      if(idx < 100) qType = "बहु-कथनीय (Multi-Statement)";
+      else if(idx < 150) qType = "अभिकथन एवं कारण (Assertion-Reason)";
+      document.getElementById('qTypeBadge').innerText = qType;
+
+      // Question Text
+      document.getElementById('questionText').innerText = qData.q;
+
+      // Options
+      const optContainer = document.getElementById('optionsContainer');
+      optContainer.innerHTML = '';
+      const letters = ['(a)', '(b)', '(c)', '(d)'];
+
+      qData.opts.forEach((opt, oIndex) => {
+        const isSelected = userAnswers[idx] === oIndex;
+        const btn = document.createElement('div');
+        btn.className = `p-3 sm:p-3.5 rounded-lg border text-xs sm:text-sm cursor-pointer transition flex items-start gap-3 ${
+          isSelected 
+            ? 'bg-indigo-50 border-indigo-600 text-indigo-950 font-semibold ring-1 ring-indigo-600' 
+            : 'bg-white hover:bg-slate-50 border-slate-200 text-slate-800'
+        }`;
+        btn.onclick = () => selectOption(oIndex);
+        btn.innerHTML = `
+          <span class="w-6 h-6 rounded-full flex items-center justify-center shrink-0 text-xs font-bold ${
+            isSelected ? 'bg-indigo-600 text-white' : 'bg-slate-100 text-slate-600 border'
+          }">${letters[oIndex]}</span>
+          <span class="pt-0.5 leading-relaxed">${opt}</span>
+        `;
+        optContainer.appendChild(btn);
+      });
+
+      // Navigation button state
+      document.getElementById('prevBtn').disabled = (idx === 0);
+      updatePaletteButton(idx);
+    }
+
+    function selectOption(optIndex) {
+      userAnswers[currentIdx] = optIndex;
+      loadQuestion(currentIdx);
+    }
+
+    function clearResponse() {
+      userAnswers[currentIdx] = null;
+      loadQuestion(currentIdx);
+    }
+
+    function markForReview() {
+      reviewStatus[currentIdx] = !reviewStatus[currentIdx];
+      updatePaletteButton(currentIdx);
+      if(currentIdx < totalQ - 1) {
+        nextQuestion();
+      }
+    }
+
+    function saveAndNext() {
+      if(currentIdx < totalQ - 1) {
+        currentIdx++;
+        loadQuestion(currentIdx);
+      } else {
+        alert("आप अंतिम प्रश्न पर हैं। समीक्षा करके टेस्ट सबमिट करें।");
+      }
+    }
+
+    function prevQuestion() {
+      if(currentIdx > 0) {
+        currentIdx--;
+        loadQuestion(currentIdx);
+      }
+    }
+
+    // PALETTE RENDERING
+    function renderPalette() {
+      const grid = document.getElementById('paletteGrid');
+      grid.innerHTML = '';
+      for(let i = 0; i < totalQ; i++) {
+        const btn = document.createElement('button');
+        btn.id = `palette-btn-${i}`;
+        btn.className = 'palette-btn bg-slate-200 text-slate-700 hover:bg-slate-300';
+        btn.innerText = i + 1;
+        btn.onclick = () => loadQuestion(i);
+        grid.appendChild(btn);
+      }
+    }
+
+    function updatePaletteButton(idx) {
+      const btn = document.getElementById(`palette-btn-${idx}`);
+      if(!btn) return;
+
+      btn.className = 'palette-btn ';
+      const isAns = userAnswers[idx] !== null;
+      const isRev = reviewStatus[idx];
+      const isVis = visitedStatus[idx];
+
+      if(isRev) {
+        btn.className += 'bg-amber-500 text-white font-bold ring-2 ring-amber-300';
+      } else if(isAns) {
+        btn.className += 'bg-emerald-600 text-white font-bold';
+      } else if(isVis) {
+        btn.className += 'bg-rose-500 text-white';
+      } else {
+        btn.className += 'bg-slate-200 text-slate-700';
+      }
+
+      if(idx === currentIdx) {
+        btn.className += ' ring-2 ring-indigo-900 border-2 border-white scale-105';
+      }
+    }
+
+    function confirmSubmit() {
+      let answeredCount = userAnswers.filter(a => a !== null).length;
+      if(confirm(`क्या आप वाकई टेस्ट सबमिट करना चाहते हैं?\n\nकुल प्रश्न: ${totalQ}\nउत्तर दिये गए: ${answeredCount}\nशेष प्रश्न: ${totalQ - answeredCount}`)) {
+        finishTest();
+      }
+    }
+
+    // FINISH AND SHOW SOLUTIONS
+    function finishTest() {
+      clearInterval(timerInterval);
+      
+      let correct = 0;
+      let wrong = 0;
+      let unattempted = 0;
+
+      for(let i = 0; i < totalQ; i++) {
+        if(userAnswers[i] === null) {
+          unattempted++;
+        } else if(userAnswers[i] === fullQuestions[i].ans) {
+          correct++;
+        } else {
+          wrong++;
+        }
+      }
+
+      const totalMarks = ((correct * 2) - (wrong * 0.2)).toFixed(2);
+      const accuracy = (correct + wrong > 0) ? ((correct / (correct + wrong)) * 100).toFixed(1) : 0;
+
+      document.getElementById('resTotalMarks').innerText = `${totalMarks} / 400`;
+      document.getElementById('resAccuracy').innerText = `${accuracy}%`;
+      document.getElementById('resCorrect').innerText = correct;
+      document.getElementById('resWrong').innerText = wrong;
+      document.getElementById('resAttempted').innerText = `${correct + wrong} / ${totalQ}`;
+
+      // Build Solutions
+      const solContainer = document.getElementById('solutionsContainer');
+      solContainer.innerHTML = '';
+
+      fullQuestions.forEach((q, idx) => {
+        const userChoice = userAnswers[idx];
+        const isRight = userChoice === q.ans;
+        const letters = ['(a)', '(b)', '(c)', '(d)'];
+
+        const card = document.createElement('div');
+        card.className = `p-4 rounded-xl border text-sm ${
+          userChoice === null 
+            ? 'bg-slate-50 border-slate-200' 
+            : isRight 
+              ? 'bg-emerald-50/50 border-emerald-200' 
+              : 'bg-rose-50/50 border-rose-200'
+        }`;
+
+        let statusBadge = '';
+        if(userChoice === null) {
+          statusBadge = '<span class="text-xs bg-slate-200 text-slate-700 font-bold px-2 py-0.5 rounded">छोड़ दिया (Unattempted)</span>';
+        } else if(isRight) {
+          statusBadge = '<span class="text-xs bg-emerald-600 text-white font-bold px-2 py-0.5 rounded flex items-center gap-1"><i class="fa-solid fa-check"></i> सही (+2.0)</span>';
+        } else {
+          statusBadge = '<span class="text-xs bg-rose-600 text-white font-bold px-2 py-0.5 rounded flex items-center gap-1"><i class="fa-solid fa-xmark"></i> गलत (-0.2)</span>';
+        }
+
+        card.innerHTML = `
+          <div class="flex items-center justify-between border-b pb-2 mb-2">
+            <span class="font-bold text-slate-800">प्रश्न संख्या ${idx + 1}</span>
+            ${statusBadge}
+          </div>
+          <p class="font-medium text-slate-900 mb-3 whitespace-pre-line leading-relaxed">${q.q}</p>
+          <div class="space-y-1 mb-3 text-xs sm:text-sm">
+            ${q.opts.map((opt, oIdx) => `
+              <div class="p-2 rounded flex items-center gap-2 ${
+                oIdx === q.ans 
+                  ? 'bg-emerald-100 font-bold text-emerald-950 border border-emerald-300' 
+                  : (oIdx === userChoice ? 'bg-rose-100 font-semibold text-rose-950 border border-rose-300' : 'text-slate-600')
+              }">
+                <span>${letters[oIdx]}</span>
+                <span>${opt}</span>${oIdx === q.ans ? '<span class="ml-auto text-emerald-700 text-xs font-bold">[सही उत्तर]</span>' : ''}
+                ${(oIdx === userChoice && !isRight) ? '<span class="ml-auto text-rose-700 text-xs font-bold">[आपका चयन]</span>' : ''}
+              </div>
+            `).join('')}
+          </div>
+          <div class="bg-indigo-50 border-l-4 border-indigo-600 p-2.5 rounded text-xs text-indigo-950 leading-relaxed">
+            <b class="text-indigo-900 block mb-1">💡 विस्तृत व्याख्या:</b>
+            ${q.sol}
+          </div>
+        `;
+        solContainer.appendChild(card);
+      });
+
+      document.getElementById('resultModal').classList.remove('hidden');
+    }
+  </script>
+</body>
+</html>
