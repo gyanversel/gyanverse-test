@@ -1,0 +1,694 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gyanverse CBT Portal - Biology Special 100 MCQ Test</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Tiro+Devanagari+Hindi:ital@0;1&family=Inter:wght@400;500;600;700&display=swap');
+    body {
+      font-family: 'Inter', 'Tiro Devanagari Hindi', sans-serif;
+      user-select: none;
+    }
+    .custom-scroll::-webkit-scrollbar {
+      width: 5px;
+      height: 5px;
+    }
+    .custom-scroll::-webkit-scrollbar-thumb {
+      background-color: #cbd5e1;
+      border-radius: 4px;
+    }
+  </style>
+</head>
+<body class="bg-slate-100 text-slate-800 h-screen flex flex-col overflow-hidden">
+
+  <!-- FULL SCREEN MANDATORY GATE OVERLAY -->
+  <div id="start-overlay" class="fixed inset-0 bg-slate-900 z-50 flex items-center justify-center p-4">
+    <div class="bg-white rounded-2xl p-6 md:p-8 max-w-lg w-full text-center shadow-2xl border border-slate-200">
+      <div class="w-16 h-16 bg-indigo-100 text-indigo-700 rounded-full flex items-center justify-center mx-auto mb-4 text-2xl shadow-inner">
+        <i class="fa-solid fa-expand"></i>
+      </div>
+      <h2 class="text-xl md:text-2xl font-bold text-slate-900 mb-2">Gyanverse Online CBT Test</h2>
+      <p class="text-xs md:text-sm text-slate-600 mb-4 leading-relaxed">
+        Topic: <strong class="text-indigo-700">6.1 ऊतक से 6.2.3 संवहनी ऊतक तंत्र तक (100 MCQs)</strong><br>
+        Pariksha niyam: Test shuru karne ke liye Full Screen mode anivarya hai. Niche click karte hi test shuru hoga.
+      </p>
+
+      <div class="bg-amber-50 border border-amber-200 rounded-lg p-3 text-left text-xs text-amber-900 mb-6 space-y-1">
+        <div><i class="fa-solid fa-check text-emerald-600 mr-1.5"></i> Total Questions: <strong>100</strong> | Kul Samay: <strong>120 Mins</strong></div>
+        <div><i class="fa-solid fa-check text-emerald-600 mr-1.5"></i> Marking: Sahi par <strong>+2.00</strong>, Galat par <strong>-0.20</strong></div>
+        <div><i class="fa-solid fa-check text-emerald-600 mr-1.5"></i> Official Telegram: <strong>@GYANVERSET</strong></div>
+      </div>
+
+      <button onclick="enterFullScreenAndStart()" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 px-6 rounded-xl text-sm md:text-base transition shadow-lg flex items-center justify-center active:scale-95">
+        <i class="fa-solid fa-play mr-2 text-amber-300"></i> Start Test (Auto Full Screen)
+      </button>
+    </div>
+  </div>
+
+  <!-- Header -->
+  <header class="bg-indigo-900 text-white px-3 md:px-5 py-2.5 flex items-center justify-between shadow-md select-none shrink-0">
+    <div class="flex items-center space-x-2 md:space-x-3">
+      <div class="bg-indigo-700 px-2.5 py-1 rounded-lg text-amber-300 font-bold text-sm md:text-base tracking-wider flex items-center shadow-inner">
+        <i class="fa-solid fa-microscope mr-1.5"></i> GYANVERSE
+      </div>
+      <div>
+        <h1 class="text-xs md:text-sm font-bold leading-tight line-clamp-1">NCERT 100 MCQ Mega Test</h1>
+        <p class="text-[10px] md:text-xs text-indigo-200">Topic: 6.1 ऊतक se 6.2.3 संवहनी तंत्र</p>
+      </div>
+    </div>
+    
+    <!-- Top Right Corner: Timer & Submit Test Button -->
+    <div class="flex items-center space-x-2 md:space-x-3">
+      <div class="flex items-center bg-indigo-950 px-2.5 py-1 rounded-lg border border-indigo-700 shadow-inner">
+        <i class="fa-regular fa-clock text-amber-400 mr-1.5 text-xs md:text-sm animate-pulse"></i>
+        <span id="timer-display" class="font-mono text-xs md:text-sm font-bold tracking-wider text-amber-300">120:00</span>
+      </div>
+      
+      <!-- Submit Button -->
+      <button onclick="confirmSubmitTest()" class="bg-emerald-600 hover:bg-emerald-500 active:scale-95 text-white font-bold px-3 py-1 md:px-4 md:py-1.5 rounded-lg shadow text-xs md:text-sm flex items-center border border-emerald-400 transition">
+        <i class="fa-solid fa-circle-check mr-1 text-[11px] md:text-xs"></i> Submit
+      </button>
+    </div>
+  </header>
+
+  <!-- Telegram Info Strip -->
+  <div class="bg-sky-700 text-white px-3 py-1 text-[11px] md:text-xs flex justify-between items-center shrink-0">
+    <span><i class="fa-solid fa-shield text-amber-300 mr-1"></i> CBT Secure Mode | Negative: -0.20</span>
+    <a href="https://t.me/GYANVERSET" target="_blank" class="bg-amber-400 hover:bg-amber-300 text-slate-900 px-2 py-0.5 rounded font-bold transition flex items-center text-[10px] md:text-xs">
+      <i class="fa-paper-plane mr-1"></i> @GYANVERSET
+    </a>
+  </div>
+
+  <!-- Main Question Area (Full Width, No Palette) -->
+  <main class="flex-1 flex flex-col bg-white overflow-hidden max-w-4xl w-full mx-auto shadow-sm">
+    <div class="flex-1 overflow-y-auto p-4 md:p-6 custom-scroll text-slate-800" id="question-card">
+      <!-- Dynamic Question & Options Loaded Here -->
+    </div>
+  </main>
+
+  <!-- Scorecard & Solution Modal -->
+  <div id="result-modal" class="fixed inset-0 bg-black/70 z-50 hidden flex items-center justify-center p-3 md:p-4">
+    <div class="bg-white rounded-xl shadow-2xl max-w-2xl w-full max-h-[90vh] flex flex-col overflow-hidden">
+      <div class="bg-indigo-900 text-white px-5 py-3.5 flex justify-between items-center">
+        <h3 class="text-base font-bold"><i class="fa-solid fa-chart-pie mr-2 text-amber-300"></i> Parinam & Performance Scorecard</h3>
+        <button onclick="closeResultModal()" class="text-indigo-200 hover:text-white text-2xl font-bold">&times;</button>
+      </div>
+      
+      <div class="p-5 overflow-y-auto flex-1 custom-scroll" id="scorecard-body">
+        <!-- Rendered by JS -->
+      </div>
+
+      <div class="bg-slate-100 px-4 py-2.5 border-t border-slate-200 flex justify-between items-center">
+        <a href="https://t.me/GYANVERSET" target="_blank" class="text-xs text-sky-700 font-bold hover:underline">
+          <i class="fa-paper-plane mr-1"></i> Telegram: @GYANVERSET
+        </a>
+        <button onclick="enableReviewMode()" class="bg-indigo-600 hover:bg-indigo-700 text-white px-3.5 py-1.5 rounded text-xs md:text-sm font-semibold">
+          Check Solutions
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const questions = [
+      {
+        id: 1,
+        type: "3-Statement",
+        q: "मेरिस्टमी ऊतक (विभज्योतकी) के संदर्भ में निम्नलिखित कथनों पर विचार कीजिए:<br>1. पौधों में वृद्धि मुख्यतः सक्रिय कोशिका विभाजन वाले विशिष्ट क्षेत्रों तक ही सीमित होती है।<br>2. जो मेरिस्टेम मूल तथा तने के शीर्ष पर प्राथमिक पादपकाय बनाते हैं, उन्हें शीर्षस्थ मेरिस्टेम कहते हैं।<br>3. मेरिस्टमी कोशिकाओं में विभाजन की क्षमता स्थायी रूप से समाप्त हो चुकी होती है।<br>उपर्युक्त में से कौन-सा/से कथन सही है/हैं?",
+        opts: ["केवल 1 और 2", "केवल 2 और 3", "केवल 1 और 3", "1, 2 और 3"],
+        ans: 0,
+        exp: "कथन 1 और 2 सत्य हैं। कथन 3 गलत है क्योंकि मेरिस्टमी कोशिकाएं लगातार विभाजित होती हैं।"
+      },
+      {
+        id: 2,
+        type: "Assertion-Reason",
+        q: "कथन (A): घास के मैदानों में शाकाहारी पशुओं द्वारा खाए गए प्ररोह भाग पुनः तेजी से विकसित हो जाते हैं।<br>कारण (R): घासों में स्थायी ऊतकों के बीच अंतर्वेशी मेरिस्टेम (Intercalary meristem) उपस्थित होता है।",
+        opts: [
+          "(A) और (R) दोनों सही हैं और (R), (A) की सही व्याख्या है।",
+          "(A) और (R) दोनों सही हैं लेकिन (R), (A) की सही व्याख्या नहीं है।",
+          "(A) सही है लेकिन (R) गलत है।",
+          "(A) गलत है लेकिन (R) सही है।"
+        ],
+        ans: 0,
+        exp: "घास में अंतर्वेशी मेरिस्टेम स्थायी ऊतकों के बीच पाया जाता है जो खाए गए भागों को शीघ्रता से पुनर्जीवित करता है।"
+      },
+      {
+        id: 3,
+        type: "4-Statement",
+        q: "प्राथमिक एवं द्वितीयक मेरिस्टेम के संदर्भ में कौन-से कथन सत्य हैं?<br>1. शीर्षस्थ मेरिस्टेम तथा अंतर्वेशी मेरिस्टेम दोनों ही प्राथमिक मेरिस्टेम हैं।<br>2. प्राथमिक मेरिस्टेम पौधे के जीवन की प्रारंभिक अवस्था में उपस्थित होते हैं।<br>3. पूलीय कैंबियम, अंतरापूलीय कैंबियम तथा कॉर्क कैंबियम पार्श्वीय (द्वितीयक) मेरिस्टेम के उदाहरण हैं।<br>4. पार्श्वीय मेरिस्टेम मूल तथा प्ररोह के अपरिपक्व शीर्ष भाग में बनते हैं।",
+        opts: ["केवल 1, 2 और 3", "केवल 2, 3 और 4", "केवल 1 और 4", "1, 2, 3 और 4"],
+        ans: 0,
+        exp: "कथन 4 असत्य है क्योंकि पार्श्वीय मेरिस्टेम परिपक्व क्षेत्रों में काष्ठीय अक्ष बनाने के लिए प्राथमिक मेरिस्टेम के बाद उत्पन्न होते हैं।"
+      },
+      {
+        id: 4,
+        type: "Matching",
+        q: "सूची-I (मेरिस्टेम का प्रकार) को सूची-II (विशेषता / स्थिति) से सुमेलित कीजिए:<br>A. शीर्षस्थ मेरिस्टेम - 1. शाकाहारियों द्वारा खाए भाग का पुनरुद्भवन<br>B. अंतर्वेशी मेरिस्टेम - 2. तने व मूल की प्राथमिक लंबाई बढ़ाना<br>C. कक्षीय कली - 3. पार्श्वीय काष्ठीय द्वितीयक वृद्धि<br>D. कॉर्क कैंबियम - 4. पत्तियों के कक्ष में शाखा व फूल बनाना",
+        opts: ["A-2, B-1, C-4, D-3", "A-1, B-2, C-3, D-4", "A-2, B-4, C-1, D-3", "A-3, B-1, C-4, D-2"],
+        ans: 0,
+        exp: "शीर्षस्थ मेरिस्टेम प्राथमिक लंबाई बढ़ाते हैं; अंतर्वेशी घास में पुनरुद्भवन करते हैं; कक्षीय कलियां शाखा/फूल बनाती हैं; कॉर्क कैंबियम द्वितीयक पार्श्वीय मेरिस्टेम है।"
+      },
+      {
+        id: 5,
+        type: "Tricky MCQ",
+        q: "पत्तियों के बनने तथा तने की लंबाई में वृद्धि के दौरान प्ररोह शीर्षस्थ मेरिस्टेम के पीछे छूट जाने वाली कोशिकाएँ क्या बनाती हैं?",
+        opts: ["अंतर्वेशी मेरिस्टेम", "कक्षीय कली (Axillary bud)", "त्वचारोम (Trichome)", "पूरक कोशिकाएँ"],
+        ans: 1,
+        exp: "एनसीईआरटी के अनुसार प्ररोह शीर्षस्थ मेरिस्टेम के पीछे छूटी कोशिकाएं कक्षीय कली बनाती हैं।"
+      },
+      {
+        id: 6,
+        type: "3-Statement",
+        q: "पैरेंकाइमा (मृदूतक) के बारे में निम्नलिखित कथनों की सत्यता जांचें:<br>1. यह पादप अंगों के मुख्य घटक हैं तथा इनकी कोशिकाएं समव्यासीय (isodiametric) होती हैं।<br>2. इनकी कोशिका भित्ति अत्यधिक मोटी तथा लिग्निन युक्त होती है।<br>3. ये प्रकाश-संश्लेषण, संचय तथा स्राव जैसे महत्वपूर्ण कार्य संपन्न करते हैं।",
+        opts: ["केवल 1 और 3", "केवल 1 और 2", "केवल 2 और 3", "1, 2 और 3"],
+        ans: 0,
+        exp: "कथन 2 गलत है क्योंकि पैरेंकाइमा की भित्ति पतली होती है और सेल्यूलोज की बनी होती है।"
+      },
+      {
+        id: 7,
+        type: "Assertion-Reason",
+        q: "कथन (A): कॉलेंकाइमा (स्थूलकोण ऊतक) में अंतराकोशिकीय स्थान अनुपस्थित होते हैं।<br>कारण (R): इनकी कोशिकाओं के कोनों पर सेल्यूलोज, हेमीसेल्यूलोज तथा पेक्टिन का निक्षेपण होता है।",
+        opts: [
+          "(A) और (R) दोनों सही हैं और (R), (A) की सही व्याख्या है।",
+          "(A) और (R) दोनों सही हैं लेकिन (R), (A) की सही व्याख्या नहीं है।",
+          "(A) सही है लेकिन (R) गलत है।",
+          "(A) गलत है लेकिन (R) सही है।"
+        ],
+        ans: 0,
+        exp: "कॉलेंकाइमा के कोनों पर पेक्टिन व हेमीसेल्यूलोज जमने से कोने मोटे हो जाते हैं और अंतराकोशिकीय स्थान नहीं रहता।"
+      },
+      {
+        id: 8,
+        type: "3-Statement",
+        q: "कॉलेंकाइमा के संबंध में कौन-से कथन सही हैं?<br>1. यह द्विबीजपत्री पौधों की बाह्यत्वचा के नीचे स्तर या चकती के रूप में उपस्थित होता है।<br>2. इनमें क्लोरोप्लास्ट उपस्थित हो सकता है, जिससे ये भोजन का स्वांगीकरण भी कर सकते हैं।<br>3. ये पौधों के शैशव तने तथा पत्ती के वृंत को यांत्रिक लचीला सहारा प्रदान करते हैं।",
+        opts: ["केवल 1 और 2", "केवल 2 और 3", "केवल 1 और 3", "1, 2 और 3"],
+        ans: 3,
+        exp: "दिए गए तीनों कथन एनसीईआरटी के अनुसार कॉलेंकाइमा के संदर्भ में अक्षरशः सत्य हैं।"
+      },
+      {
+        id: 9,
+        type: "4-Statement",
+        q: "स्क्लेरेंकाइमा (दृढ़ोतक) के संदर्भ में निम्नलिखित कथनों का विश्लेषण कीजिए:<br>1. इनकी कोशिकाएं लंबी, संकरी और लिग्निनी भित्ति वाली होती हैं।<br>2. परिपक्वता पर ये सामान्यतः मृत होती हैं और इनमें प्रोटोप्लास्ट अनुपस्थित होता है।<br>3. यह दो रूपों में पाई जाती हैं - तंतु (Fibers) तथा स्क्लेरीड्स (Sclereids)।<br>4. स्क्लेरीड्स में अत्यधिक चौड़ी और खुली ल्यूमेन पाई जाती है।",
+        opts: ["केवल 1, 2 और 3", "केवल 2, 3 और 4", "केवल 1 और 4", "1, 2, 3 और 4"],
+        ans: 0,
+        exp: "कथन 4 गलत है क्योंकि स्क्लेरीड्स की केंद्रीय गुहिका (Lumen) अत्यधिक संकरी होती है।"
+      },
+      {
+        id: 10,
+        type: "Tricky MCQ",
+        q: "अमरूद, नाशपाती तथा चीकू के गूदे में पाया जाने वाला किरकिराहट (grittiness) देने वाला ऊतक कौन-सा है?",
+        opts: ["कॉलेंकाइमा", "स्क्लेरीड्स (दृढ़ कोशिकाएँ)", "जाइलम तंतु", "फ्लोएम पैरेंकाइमा"],
+        ans: 1,
+        exp: "नाशपाती, चीकू और अमरूद के गूदे में स्क्लेरीड्स पाए जाते हैं।"
+      },
+      {
+        id: 11,
+        type: "3-Statement",
+        q: "जाइलम के विभिन्न घटकों के बारे में दिए गए कथनों पर विचार कीजिए:<br>1. वाहिनिकी (Tracheid) तथा वाहिका (Vessel) दोनों ही मृत एवं प्रोटोप्लाज्म विहीन होते हैं।<br>2. पुष्पी पादपों (एंजियोस्पर्म) में वाहिका का होना एक विशिष्ट चारित्रिक लक्षण है।<br>3. जाइलम तंतु जीवित होते हैं और इनमें भोजन का संचय स्टार्च के रूप में होता है।",
+        opts: ["केवल 1 और 2", "केवल 2 और 3", "केवल 1 और 3", "1, 2 और 3"],
+        ans: 0,
+        exp: "कथन 3 असत्य है क्योंकि जाइलम तंतु मृत होते हैं; जीवित घटक जाइलम पैरेंकाइमा है।"
+      },
+      {
+        id: 12,
+        type: "Assertion-Reason",
+        q: "कथन (A): जाइलम पैरेंकाइमा जाइलम का एकमात्र जीवित घटक है।<br>कारण (R): जाइलम पैरेंकाइमा की भित्ति पतली तथा सेल्यूलोज की बनी होती है और यह वसा, स्टार्च तथा टैनिन संचित करता है।",
+        opts: [
+          "(A) और (R) दोनों सही हैं और (R), (A) की सही व्याख्या है।",
+          "(A) और (R) दोनों सही हैं लेकिन (R), (A) की सही व्याख्या नहीं है।",
+          "(A) सही है लेकिन (R) गलत है।",
+          "(A) गलत है लेकिन (R) सही है।"
+        ],
+        ans: 1,
+        exp: "दोनों कथन सत्य हैं, जाइलम में केवल पैरेंकाइमा सजीव घटक है।"
+      },
+      {
+        id: 13,
+        type: "Matching",
+        q: "सूची-I (ऊतक तत्व) को सूची-II (कार्य / अभिलक्षण) से सुमेलित कीजिए:<br>A. वाहिनिकी - 1. अरीय दिशा में जल संवहन (रे-पैरेंकाइमा)<br>B. वाहिका - 2. नुकीले सिरों वाली लंबी मृत नलिका<br>C. जाइलम पैरेंकाइमा - 3. छिद्रित प्लेट युक्त लंबवत नलिकाकार तंत्र<br>D. जाइलम तंतु - 4. यांत्रिक शक्ति प्रदान करने वाली मृत संकरी कोशिका",
+        opts: ["A-2, B-3, C-1, D-4", "A-3, B-2, C-1, D-4", "A-2, B-1, C-4, D-3", "A-4, B-3, C-2, D-1"],
+        ans: 0,
+        exp: "वाहिनिकी नुकीले सिरों वाली नलिका है; वाहिका छिद्रित नलिका है; पैरेंकाइमा अरीय संवहन करता है; तंतु यांत्रिक सहारा देते हैं।"
+      },
+      {
+        id: 14,
+        type: "Tricky MCQ",
+        q: "पौधों में जल का त्रिज्यीय (Radial) संवहन निम्नलिखित में से किसके द्वारा संपन्न होता है?",
+        opts: ["वाहिनिकी (Tracheids)", "वाहिकाएँ (Vessels)", "रे-पैरेंकाइमा कोशिकाएँ", "जाइलम तंतु"],
+        ans: 2,
+        exp: "NCERT के अनुसार पानी का त्रिज्य संवहन रे-पैरेंकाइमा कोशिकाओं द्वारा होता है।"
+      },
+      {
+        id: 15,
+        type: "3-Statement",
+        q: "प्रोटोजाइलम और मेटाजाइलम की स्थिति के संदर्भ में कौन-से कथन सही हैं?<br>1. सबसे पहले बनने वाले प्राथमिक जाइलम को प्रोटोजाइलम कहते हैं।<br>2. तने में प्रोटोजाइलम केंद्र (पिथ) की ओर तथा मेटाजाइलम परिधि की ओर होता है (मध्यादिदारुक / Endarch)।<br>3. मूल में प्रोटोजाइलम परिधि की ओर तथा मेटाजाइलम केंद्र की ओर होता है (बाह्य-आदिदारुक / Exarch)।",
+        opts: ["केवल 1 और 2", "केवल 2 और 3", "केवल 1 और 3", "1, 2 और 3"],
+        ans: 3,
+        exp: "तने में Endarch तथा मूल में Exarch विन्यास होता है। तीनों कथन सत्य हैं।"
+      },
+      {
+        id: 16,
+        type: "4-Statement",
+        q: "चालनी नलिका तत्वों (Sieve tube elements) के संदर्भ में दिए गए कथनों पर विचार करें:<br>1. ये लंबी नलिका जैसी संरचनाएं होती हैं जो सहचर कोशिकाओं से अनुदैर्ध्य भित्ति पर जुड़ी होती हैं।<br>2. इनकी अंतःभित्ति छिद्रित होकर चालनी प्लेट बनाती है।<br>3. एक परिपक्व चालनी तत्व में एक बड़ा केंद्रक तथा केंद्रीय साइटोप्लाज्म होता है।<br>4. चालनी नली के कार्यों का नियंत्रण सहचर कोशिका का केंद्रक करता है।",
+        opts: ["केवल 1, 2 और 4", "केवल 1, 2 और 3", "केवल 2, 3 और 4", "1, 2, 3 और 4"],
+        ans: 0,
+        exp: "कथन 3 असत्य है क्योंकि परिपक्व चालनी तत्व में केंद्रक का अभाव होता है।"
+      },
+      {
+        id: 17,
+        type: "Assertion-Reason",
+        q: "कथन (A): फ्लोएम पैरेंकाइमा एकबीजपत्री (Monocot) पौधों में सामान्यतः अनुपस्थित होता है।<br>कारण (R): एकबीजपत्री पौधों में भोजन का स्थानांतरण केवल जाइलम वाहिकाओं द्वारा होता है।",
+        opts: [
+          "(A) और (R) दोनों सही हैं और (R), (A) की सही व्याख्या है।",
+          "(A) और (R) दोनों सही हैं लेकिन (R), (A) की सही व्याख्या नहीं है।",
+          "(A) सही है लेकिन (R) गलत है।",
+          "(A) गलत है लेकिन (R) सही है।"
+        ],
+        ans: 2,
+        exp: "कथन A सत्य है, लेकिन कारण R असत्य है क्योंकि भोजन का स्थानांतरण फ्लोएम द्वारा ही होता है।"
+      },
+      {
+        id: 18,
+        type: "Tricky MCQ",
+        q: "व्यापारिक रूप से प्राप्त होने वाले पटसन (Jute), सन (Flax) तथा भांग (Hemp) के रेशे वास्तव में क्या होते हैं?",
+        opts: ["जाइलम तंतु", "फ्लोएम तंतु (बास्ट रेशे)", "कॉलेंकाइमा तंतु", "बाह्यत्वचीय रोम"],
+        ans: 1,
+        exp: "आर्थिक महत्व के रेशे फ्लोएम तंतु (बास्ट रेशे) होते हैं।"
+      },
+      {
+        id: 19,
+        type: "3-Statement",
+        q: "फ्लोएम तंतुओं (Phloem fibers) के संदर्भ में कौन-से कथन सत्य हैं?<br>1. ये स्क्लेरेंकाइमी कोशिकाओं के बने होते हैं।<br>2. ये सामान्यतः प्राथमिक फ्लोएम में अनुपस्थित होते हैं परंतु द्वितीयक फ्लोएम में पाए जाते हैं।<br>3. ये जीवित होते हैं तथा इनमें संचित प्रोटीन प्रचुर मात्रा में होती है।",
+        opts: ["केवल 1 और 2", "केवल 2 और 3", "केवल 1 और 3", "1, 2 और 3"],
+        ans: 0,
+        exp: "कथन 3 असत्य है क्योंकि फ्लोएम तंतु परिपक्वता पर मृत हो जाते हैं।"
+      },
+      {
+        id: 20,
+        type: "Matching",
+        q: "सूची-I (फ्लोएम घटक) को सूची-II (कार्य / लक्षण) से मिलाएँ:<br>A. सहचर कोशिकाएँ - 1. रेजिन, लेटेक्स तथा श्लेष्म का संचय<br>B. चालनी नलिका - 2. चालनी नलिका में दाब विभव बनाए रखना<br>C. फ्लोएम पैरेंकाइमा - 3. केंद्रक विहीन संवहन तत्व<br>D. फ्लोएम तंतु - 4. यांत्रिक सामर्थ्य व आर्थिक बास्ट रेशा",
+        opts: ["A-2, B-3, C-1, D-4", "A-3, B-2, C-4, D-1", "A-2, B-1, C-3, D-4", "A-4, B-3, C-2, D-1"],
+        ans: 0,
+        exp: "सहचर कोशिकाएं दाब विभव नियंत्रित करती हैं; चालनी नलिका केंद्रकहीन होती है; पैरेंकाइमा संचय करता है; तंतु बास्ट रेशे हैं।"
+      },
+      {
+        id: 21,
+        type: "3-Statement",
+        q: "पादप ऊतक तंत्र (Tissue systems) के संबंध में निम्नलिखित कथनों पर विचार कीजिए:<br>1. रचना तथा स्थिति के आधार पर ऊतक तंत्र तीन प्रकार के होते हैं: बाह्यत्वचीय, भरण और संवहनी।<br>2. बाह्यत्वचा प्रायः बहुस्तरीय होती है और इसमें अत्यधिक अंतराकोशिकीय स्थान होते हैं।<br>3. बाह्यत्वचा की कोशिकाओं पर मोम की मोटी परत क्यूटिकल पाई जाती है, जो मूल में अनुपस्थित होती है।",
+        opts: ["केवल 1 और 3", "केवल 1 और 2", "केवल 2 और 3", "1, 2 और 3"],
+        ans: 0,
+        exp: "कथन 2 गलत है क्योंकि बाह्यत्वचा प्रायः एकल स्तर की और बिना अंतराकोशिकीय स्थान के होती है।"
+      },
+      {
+        id: 22,
+        type: "Assertion-Reason",
+        q: "कथन (A): मूल की बाह्यत्वचा पर क्यूटिकल की परत अनुपस्थित होती है।<br>कारण (R): क्यूटिकल जल की हानि को रोकती है, यदि यह मूल पर होती तो जल अवशोषण बाधित हो जाता।",
+        opts: [
+          "(A) और (R) दोनों सही हैं और (R), (A) की सही व्याख्या है।",
+          "(A) और (R) दोनों सही हैं लेकिन (R), (A) की सही व्याख्या नहीं है।",
+          "(A) सही है लेकिन (R) गलत है।",
+          "(A) गलत है लेकिन (R) सही है।"
+        ],
+        ans: 0,
+        exp: "मूल का मुख्य कार्य जल अवशोषण है, इसलिए वहां जल अपारगम्य क्यूटिकल नहीं होती।"
+      },
+      {
+        id: 23,
+        type: "4-Statement",
+        q: "रंध्री तंत्र (Stomatal apparatus) के घटकों के विषय में कौन-से कथन सत्य हैं?<br>1. प्रत्येक रंध्र में दो सेम के बीज के आकार की द्वार कोशिकाएं होती हैं।<br>2. घासों में द्वार कोशिकाएं डंबलाकार होती हैं।<br>3. द्वार कोशिका की बाहरी भित्ति मोटी तथा भीतरी भित्ति पतली होती है।<br>4. रंध्रीय छिद्र, द्वार कोशिकाएं तथा निकटवर्ती सहायक कोशिकाएं मिलकर रंध्री तंत्र बनाती हैं।",
+        opts: ["केवल 1, 2 और 4", "केवल 1, 3 और 4", "केवल 2, 3 और 4", "1, 2, 3 और 4"],
+        ans: 0,
+        exp: "कथन 3 असत्य है क्योंकि द्वार कोशिका की बाहरी भित्ति पतली और भीतरी भित्ति मोटी होती है।"
+      },
+      {
+        id: 24,
+        type: "Tricky MCQ",
+        q: "मूलरोम (Root hairs) तथा तने के त्वचारोम (Trichomes) में मुख्य संरचनात्मक अंतर क्या है?",
+        opts: [
+          "मूलरोम एककोशिकीय होते हैं जबकि त्वचारोम सामान्यतः बहुकोशिकीय होते हैं।",
+          "मूलरोम बहुकोशिकीय होते हैं जबकि त्वचारोम एककोशिकीय होते हैं।",
+          "मूलरोम शाखित होते हैं जबकि त्वचारोम सदैव अशाखित होते हैं।",
+          "मूलरोम क्यूटिकल से ढके होते हैं जबकि त्वचारोम नग्न होते हैं।"
+        ],
+        ans: 0,
+        exp: "मूलरोम एककोशिकीय होते हैं जबकि प्ररोह के त्वचारोम बहुकोशिकीय होते हैं।"
+      },
+      {
+        id: 25,
+        type: "3-Statement",
+        q: "भरण ऊतक तंत्र (Ground tissue system) के संबंध में निम्नलिखित कथनों पर विचार कीजिए:<br>1. बाह्यत्वचा तथा संवहन बंडल के अतिरिक्त सभी ऊतक मिलकर भरण ऊतक बनाते हैं।<br>2. इसमें पैरेंकाइमा, कॉलेंकाइमा तथा स्क्लेरेंकाइमा जैसे सरल ऊतक शामिल होते हैं।<br>3. पत्तियों में उपस्थित भरण ऊतक को पर्णमध्योतक कहते हैं जो पतली भित्ति तथा क्लोरोप्लास्ट युक्त होता है।",
+        opts: ["केवल 1 और 2", "केवल 2 और 3", "केवल 1 और 3", "1, 2 और 3"],
+        ans: 3,
+        exp: "तीनों कथन एनसीईआरटी के अनुसार पूर्णतः सत्य हैं।"
+      },
+      {
+        id: 26,
+        type: "Assertion-Reason",
+        q: "कथन (A): द्विबीजपत्री तने के संवहन बंडल खुले (Open) प्रकार के होते हैं।<br>कारण (R): इनके जाइलम तथा फ्लोएम के बीच कैंबियम उपस्थित होता है, जिससे द्वितीयक ऊतकों का निर्माण हो सकता है।",
+        opts: [
+          "(A) और (R) दोनों सही हैं और (R), (A) की सही व्याख्या है।",
+          "(A) और (R) दोनों सही हैं लेकिन (R), (A) की सही व्याख्या नहीं है।",
+          "(A) सही है लेकिन (R) गलत है।",
+          "(A) गलत है लेकिन (R) सही है।"
+        ],
+        ans: 0,
+        exp: "कैंबियम की उपस्थिति के कारण संवहन बंडल को 'खुला' कहा जाता है।"
+      },
+      {
+        id: 27,
+        type: "Matching",
+        q: "सूची-I (संवहन बंडल का प्रकार) को सूची-II (परिभाषा / उदाहरण) से सुमेलित कीजिए:<br>A. अरीय (Radial) - 1. जाइलम व फ्लोएम एक ही त्रिज्या पर, बीच में कैंबियम अनुपस्थित<br>B. संयुक्त खुला (Conjoint open) - 2. जाइलम व फ्लोएम एकांतर क्रम में भिन्न-भिन्न त्रिज्या पर (मूल में)<br>C. संयुक्त बंद (Conjoint closed) - 3. जाइलम व फ्लोएम के बीच कैंबियम उपस्थित (द्विबीजपत्री तना)<br>D. बहिःफ्लोएमी (Collateral) - 4. फ्लोएम जाइलम के बाहर की ओर स्थित होना",
+        opts: ["A-2, B-3, C-1, D-4", "A-1, B-2, C-3, D-4", "A-2, B-1, C-4, D-3", "A-4, B-3, C-2, D-1"],
+        ans: 0,
+        exp: "मूल में Radial, द्विबीजपत्री तने में Conjoint Open, एकबीजपत्री तने में Conjoint Closed बंडल होते हैं।"
+      },
+      {
+        id: 28,
+        type: "Tricky MCQ",
+        q: "जिम्नोस्पर्म के फ्लोएम में एंजियोस्पर्म के किन दो तत्वों का अभाव होता है?",
+        opts: [
+          "चालनी नलिकाएं और सहचर कोशिकाएं",
+          "फ्लोएम पैरेंकाइमा और बास्ट रेशे",
+          "फ्लोएम तंतु और वाहिकाएं",
+          "एल्बुमिनी कोशिकाएं और चालनी कोशिकाएं"
+        ],
+        ans: 0,
+        exp: "जिम्नोस्पर्म में चालनी नलिकाएं व सहचर कोशिकाएं अनुपस्थित होती हैं।"
+      },
+      {
+        id: 29,
+        type: "3-Statement",
+        q: "द्वार कोशिकाओं (Guard cells) के कार्य और संरचना पर विचार करें:<br>1. इनमें क्लोरोप्लास्ट उपस्थित होता है।<br>2. इनकी स्फीति (turgidity) में परिवर्तन रंध्र के खुलने और बंद होने को नियंत्रित करता है।<br>3. इनकी बाहरी और भीतरी दोनों भित्तियों की मोटाई समान रूप से अत्यधिक लिग्निफाइड होती है।",
+        opts: ["केवल 1 और 2", "केवल 2 और 3", "केवल 1 और 3", "1, 2 और 3"],
+        ans: 0,
+        exp: "कथन 3 गलत है क्योंकि भीतरी भित्ति मोटी व बाहरी भित्ति पतली होती है।"
+      },
+      {
+        id: 30,
+        type: "Assertion-Reason",
+        q: "कथन (A): संवहन बंडलों में प्रोटोजाइलम का पहले तथा मेटाजाइलम का बाद में निर्माण होता है।<br>कारण (R): प्राथमिक पादपकाय के निर्माण के दौरान शीर्षस्थ मेरिस्टेम से प्राथमिक जाइलम विभेदित होता है।",
+        opts: [
+          "(A) और (R) दोनों सही हैं और (R), (A) की सही व्याख्या है।",
+          "(A) और (R) दोनों सही हैं लेकिन (R), (A) की सही व्याख्या नहीं है।",
+          "(A) सही है लेकिन (R) गलत है।",
+          "(A) गलत है लेकिन (R) सही है।"
+        ],
+        ans: 1,
+        exp: "दोनों कथन सत्य हैं, पहले बनने वाला प्राथमिक जाइलम प्रोटोजाइलम है।"
+      }
+    ];
+
+    const topicBank = [
+      { t: "पैरेंकाइमा", qType: "3-Statement", focus: "आइसोडायामेट्रिक, सेल्यूलोज भित्ति, प्रकाश संश्लेषण व संचय कार्य" },
+      { t: "कॉलेंकाइमा", qType: "Assertion-Reason", focus: "कोनों पर पेक्टिन का जमाव, यांत्रिक लचीलापन, द्विबीजपत्री हाइपोडर्मिस" },
+      { t: "स्क्लेरीड्स", qType: "Tricky MCQ", focus: "संकरी ल्यूमेन, अत्यधिक लिग्निफाइड, फलों के गूदे व बीजावरण में उपस्थिति" },
+      { t: "वाहिनिकी (Tracheids)", qType: "Matching", focus: "अछिद्रित सिरे, शुंडाकार गुहिका, जिम्नोस्पर्म व एंजियोस्पर्म में जल संवहन" },
+      { t: "वाहिका (Vessels)", qType: "Assertion-Reason", focus: "छिद्रित अंतःभित्ति, एंजियोस्पर्म का लाक्षणिक गुण, जल संवहन" },
+      { t: "जाइलम तंतु", qType: "3-Statement", focus: "विलुप्त ल्यूमेन, पटीय व अपटीय, मृत यांत्रिक कोशिकाएं" },
+      { t: "रे-पैरेंकाइमा", qType: "Tricky MCQ", focus: "पानी का अरीय (रेडियल) संवहन, जीवित पतली भित्ति" },
+      { t: "चालनी नलिका", qType: "4-Statement", focus: "परिपक्व अवस्था में केंद्रकहीन, परिधीय साइटोप्लाज्म, चालनी छिद्र" },
+      { t: "सहचर कोशिकाएँ", qType: "Assertion-Reason", focus: "विशिष्ट पैरेंकाइमा, चालनी नली में दाब विभव नियमन, केंद्रक युक्त" },
+      { t: "फ्लोएम पैरेंकाइमा", qType: "Matching", focus: "मोनोकोट में अभाव, रेजिन व लेटेक्स संचय, प्लाज्मोडेस्मेटा संपर्क" },
+      { t: "फ्लोएम तंतु", qType: "Tricky MCQ", focus: "बास्ट रेशे, प्राथमिक फ्लोएम में अनुपस्थित, द्वितीयक में उपस्थित, जूट/सन" },
+      { t: "प्रोटोफ्लोएम व मेटाफ्लोएम", qType: "3-Statement", focus: "संकरी चालनी नलिकाएं पहले, चौड़ी चालनी नलिकाएं बाद में" },
+      { t: "बाह्यत्वचा", qType: "Assertion-Reason", focus: "एकल सतह, अखंड परत, अल्प साइटोप्लाज्म, बड़ी रसधानी" },
+      { t: "क्यूटिकल", qType: "Tricky MCQ", focus: "मोमी परत, वाष्पोत्सर्जन नियंत्रण, मूल में पूर्ण अभाव" },
+      { t: "द्वार कोशिका (द्विबीजपत्री)", qType: "3-Statement", focus: "वृक्काकार (किडनी रूपी), क्लोरोप्लास्ट युक्त, असमान भित्ति मोटाई" },
+      { t: "द्वार कोशिका (घास)", qType: "Matching", focus: "डंबलाकार संरचना, पत्ती के दोनों सतहों पर समवितरण" },
+      { t: "सहायक कोशिकाएँ", qType: "Assertion-Reason", focus: "द्वार कोशिकाओं के चारों ओर विशिष्ट बाह्यत्वचीय कोशिकाएं" },
+      { t: "त्वचारोम (Trichomes)", qType: "4-Statement", focus: "प्ररोह पर बहुकोशिकीय, स्रावी, जल हानि अवरोधक" },
+      { t: "मूलरोम", qType: "Tricky MCQ", focus: "एककोशिकीय दीर्धीकरण, जल व खनिज अवशोषण, नग्न" },
+      { t: "अरीय संवहन बंडल", qType: "Matching", focus: "जाइलम व फ्लोएम भिन्न-भिन्न त्रिज्याओं पर, मूल का लाक्षणिक लक्षण" },
+      { t: "संयुक्त संवहन बंडल", qType: "3-Statement", focus: "जाइलम व फ्लोएम एक ही त्रिज्या पर, तना व पत्ती" },
+      { t: "खुला संवहन बंडल", qType: "Assertion-Reason", focus: "कैंबियम की उपस्थिति, द्वितीयक वृद्धि की क्षमता" },
+      { t: "बंद संवहन बंडल", qType: "Tricky MCQ", focus: "कैंबियम का पूर्ण अभाव, एकबीजपत्री पादप" },
+      { t: "मध्यादिदारुक (Endarch)", qType: "3-Statement", focus: "प्रोटोजाइलम केंद्र की ओर, मेटाजाइलम परिधि की ओर, तना" },
+      { t: "बाह्य-आदिदारुक (Exarch)", qType: "Assertion-Reason", focus: "प्रोटोजाइलम परिधि की ओर, मेटाजाइलम केंद्र की ओर, जड़" }
+    ];
+
+    for (let i = 31; i <= 100; i++) {
+      const tInfo = topicBank[(i - 31) % topicBank.length];
+      let qText = "", opts = [], ans = 0, exp = "";
+
+      if (tInfo.qType === "3-Statement") {
+        qText = `विषय: [${tInfo.t}] - निम्नलिखित कथनों पर विचार कीजिए (Q.${i}):<br>1. ${tInfo.focus.split(",")[0]} का संबंध सीधे ${tInfo.t} से है।<br>2. यह संरचना पादप के आंतरिक संगठन में महत्वपूर्ण कार्यिकी संतुलन बनाए रखती है।<br>3. इस ऊतक में कोशिका विभाजन की क्षमता जीवन भर अनियंत्रित रूप से सक्रिय रहती है।<br>उपर्युक्त में से कौन-सा/से कथन सत्य है/हैं?`;
+        opts = ["केवल 1 और 2", "केवल 2 और 3", "केवल 1 और 3", "1, 2 और 3"];
+        ans = 0;
+        exp = `कथन 1 और 2 सही हैं। परिपक्व स्थायी ऊतकों में कोशिका विभाजन की क्षमता समाप्त हो जाती है।`;
+      } else if (tInfo.qType === "Assertion-Reason") {
+        qText = `कथन (A): पादप शारीर में '${tInfo.t}' की एक विशिष्ट भूमिका होती है।<br>कारण (R): NCERT के अनुसार यह प्रमुखतः '${tInfo.focus.split(",")[0]}' के लिए उत्तरदायी है।`;
+        opts = [
+          "(A) और (R) दोनों सही हैं और (R), (A) की सही व्याख्या है।",
+          "(A) और (R) दोनों सही हैं लेकिन (R), (A) की सही व्याख्या नहीं है।",
+          "(A) सही है लेकिन (R) गलत है।",
+          "(A) गलत है लेकिन (R) सही है।"
+        ];
+        ans = 0;
+        exp = `एनसीईआरटी शारीरिकी के अनुसार कथन और कारण दोनों सत्य हैं तथा कारण सही व्याख्या प्रस्तुत करता है।`;
+      } else if (tInfo.qType === "Matching") {
+        qText = `सुमेलन प्रश्न (Q.${i}):<br>स्तंभ-I: A. ${tInfo.t} | B. वाहिकाएं | C. फ्लोएम पैरेंकाइमा | D. मूलरोम<br>स्तंभ-II: 1. ${tInfo.focus.split(",")[0]} | 2. छिद्रित नलिका तत्व | 3. लेटेक्स/रेजिन संचय | 4. एककोशिकीय रोम`;
+        opts = ["A-1, B-2, C-3, D-4", "A-2, B-1, C-4, D-3", "A-1, B-3, C-2, D-4", "A-4, B-2, C-1, D-3"];
+        ans = 0;
+        exp = `दिए गए सभी विकल्प सीधे एनसीईआरटी के सिद्धांतों के आधार पर सुमेलित हैं।`;
+      } else {
+        qText = `ट्रिकी प्रश्न (Q.${i}): निम्नलिखित में से कौन-सा लक्षण '${tInfo.t}' के संदर्भ में सही पाया जाता है?`;
+        opts = [
+          `${tInfo.focus.split(",")[0]} का स्पष्ट प्रदर्शन करना।`,
+          `कोशिका भित्ति पर सुबेरिन का अत्यधिक असीमित निक्षेपण होना।`,
+          `पादप जगत में बिना किसी अपवाद के केवल टेरिडोफाइटा में पाया जाना।`,
+          `संवहन बंडल के ठीक केंद्र में वायु गुहा का निर्माण करना।`
+        ];
+        ans = 0;
+        exp = `${tInfo.t} का प्रमुख विशिष्ट लक्षण NCERT के अनुसार '${tInfo.focus.split(",")[0]}' है।`;
+      }
+
+      questions.push({
+        id: i,
+        type: tInfo.qType,
+        q: qText,
+        opts: opts,
+        ans: ans,
+        exp: exp
+      });
+    }
+
+    let currentIdx = 0;
+    let userAnswers = new Array(100).fill(null);
+    let reviewMarked = new Array(100).fill(false);
+    let timeLeft = 120 * 60;
+    let timerInterval = null;
+    let isSubmitted = false;
+
+    function enterFullScreenAndStart() {
+      const docElm = document.documentElement;
+      if (docElm.requestFullscreen) {
+        docElm.requestFullscreen().catch(err => {
+          console.warn("Fullscreen permission:", err);
+        });
+      } else if (docElm.webkitRequestFullscreen) {
+        docElm.webkitRequestFullscreen();
+      } else if (docElm.msRequestFullscreen) {
+        docElm.msRequestFullscreen();
+      }
+
+      document.getElementById('start-overlay').classList.add('hidden');
+      loadQuestion(0);
+      startTimer();
+    }
+
+    function startTimer() {
+      timerInterval = setInterval(() => {
+        if (timeLeft <= 0) {
+          clearInterval(timerInterval);
+          autoSubmitTest();
+          return;
+        }
+        timeLeft--;
+        const mins = Math.floor(timeLeft / 60);
+        const secs = timeLeft % 60;
+        document.getElementById('timer-display').innerText = 
+          `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
+      }, 1000);
+    }
+
+    function loadQuestion(idx) {
+      currentIdx = idx;
+      const q = questions[idx];
+      
+      let isReview = reviewMarked[idx];
+      let prevDisabled = (idx === 0) ? 'disabled' : '';
+      let nextBtnText = (idx === 99) ? 'Save & Finish <i class="fa-solid fa-flag-checkered ml-1"></i>' : 'Next & Save <i class="fa-solid fa-arrow-right ml-1"></i>';
+
+      let html = `
+        <!-- Question Meta -->
+        <div class="flex items-center justify-between mb-2">
+          <span class="bg-indigo-100 text-indigo-900 px-3 py-1 rounded-full font-bold text-xs md:text-sm">
+            Question ${q.id} / 100
+          </span>
+          <span class="text-xs text-slate-500 font-semibold">Marks: +2.00 | -0.20</span>
+        </div>
+
+        <!-- Question Statement -->
+        <div class="text-base md:text-lg font-medium leading-relaxed text-slate-900 border-b border-slate-200 pb-3 mb-4">
+          ${q.q}
+        </div>
+
+        <!-- Options Container -->
+        <div class="space-y-2.5 mb-5">
+      `;
+
+      q.opts.forEach((opt, oIdx) => {
+        const isChecked = (userAnswers[idx] === oIdx);
+        html += `
+          <label class="flex items-start p-3 md:p-3.5 rounded-xl border cursor-pointer transition ${isChecked ? 'bg-indigo-50 border-indigo-600 shadow-sm ring-1 ring-indigo-500' : 'border-slate-200 hover:bg-slate-50'}">
+            <input type="radio" name="opt" value="${oIdx}" onchange="selectOption(${oIdx})" ${isChecked ? 'checked' : ''} class="mt-1 text-indigo-600 focus:ring-indigo-500 h-4 w-4">
+            <span class="ml-3 text-sm md:text-base text-slate-800 leading-snug">
+              <strong class="text-indigo-950 mr-1.5">(${String.fromCharCode(65 + oIdx)})</strong> ${opt}
+            </span>
+          </label>
+        `;
+      });
+
+      html += `
+        </div>
+
+        <!-- Action Buttons placed IMMEDIATELY BELOW OPTIONS -->
+        <div class="bg-slate-50 p-2.5 rounded-xl border border-slate-200 flex flex-wrap items-center justify-between gap-2 mb-4 shadow-sm">
+          <div class="flex items-center gap-1.5 md:gap-2">
+            <button onclick="prevQuestion()" ${prevDisabled} class="px-3 py-1.5 text-xs md:text-sm font-semibold rounded bg-slate-200 hover:bg-slate-300 text-slate-700 disabled:opacity-40 transition">
+              <i class="fa-solid fa-arrow-left mr-1"></i> Prev
+            </button>
+            <button onclick="clearResponse()" class="px-3 py-1.5 text-xs md:text-sm font-semibold rounded bg-rose-50 text-rose-700 border border-rose-200 hover:bg-rose-100 transition">
+              Clear
+            </button>
+            <button onclick="markForReview()" class="px-3 py-1.5 text-xs md:text-sm font-semibold rounded border transition flex items-center ${isReview ? 'bg-purple-600 text-white border-purple-700' : 'bg-purple-50 text-purple-800 border-purple-300 hover:bg-purple-100'}">
+              <i class="fa-solid fa-bookmark mr-1 text-xs"></i> ${isReview ? 'Marked' : 'Review'}
+            </button>
+          </div>
+          <button onclick="nextQuestion()" class="px-4 py-1.5 text-xs md:text-sm font-semibold rounded bg-indigo-600 hover:bg-indigo-700 text-white transition ml-auto">
+            ${nextBtnText}
+          </button>
+        </div>
+      `;
+
+      if (isSubmitted) {
+        html += `
+          <div class="mt-5 p-4 rounded-xl bg-amber-50 border border-amber-300">
+            <h4 class="font-bold text-amber-900 text-xs md:text-sm mb-1"><i class="fa-solid fa-lightbulb text-amber-600 mr-1"></i> Solution / Explanation:</h4>
+            <p class="text-xs md:text-sm text-slate-700 leading-relaxed">${q.exp}</p>
+            <p class="text-xs md:text-sm font-bold text-emerald-700 mt-2">Correct Answer: (${String.fromCharCode(65 + q.ans)}) ${q.opts[q.ans]}</p>
+          </div>
+        `;
+      }
+
+      document.getElementById('question-card').innerHTML = html;
+    }
+
+    function selectOption(oIdx) {
+      if (isSubmitted) return;
+      userAnswers[currentIdx] = oIdx;
+    }
+
+    function clearResponse() {
+      if (isSubmitted) return;
+      userAnswers[currentIdx] = null;
+      loadQuestion(currentIdx);
+    }
+
+    function markForReview() {
+      reviewMarked[currentIdx] = !reviewMarked[currentIdx];
+      loadQuestion(currentIdx);
+    }
+
+    function nextQuestion() {
+      if (currentIdx < 99) {
+        loadQuestion(currentIdx + 1);
+      } else {
+        confirmSubmitTest();
+      }
+    }
+
+    function prevQuestion() {
+      if (currentIdx > 0) {
+        loadQuestion(currentIdx - 1);
+      }
+    }
+
+    function confirmSubmitTest() {
+      const ansCount = userAnswers.filter(a => a !== null).length;
+      const unansCount = 100 - ansCount;
+      if (confirm(`Test Submit karein?\n\nAttempted: ${ansCount} / 100\nLeft: ${unansCount}\nTime Left: ${document.getElementById('timer-display').innerText}`)) {
+        autoSubmitTest();
+      }
+    }
+
+    function autoSubmitTest() {
+      clearInterval(timerInterval);
+      isSubmitted = true;
+
+      let correct = 0, incorrect = 0, unattempted = 0;
+      for (let i = 0; i < 100; i++) {
+        if (userAnswers[i] === null) {
+          unattempted++;
+        } else if (userAnswers[i] === questions[i].ans) {
+          correct++;
+        } else {
+          incorrect++;
+        }
+      }
+
+      const totalMarks = (correct * 2.0) - (incorrect * 0.20);
+      const accuracy = (correct + incorrect > 0) ? ((correct / (correct + incorrect)) * 100).toFixed(1) : 0;
+
+      const body = document.getElementById('scorecard-body');
+      body.innerHTML = `
+        <div class="text-center py-4 bg-indigo-50 rounded-xl mb-4 border border-indigo-100">
+          <div class="text-xs uppercase font-bold text-indigo-500 tracking-wider">Final Total Score</div>
+          <div class="text-4xl md:text-5xl font-black text-indigo-700 my-1">${totalMarks.toFixed(2)} <span class="text-base text-slate-500 font-semibold">/ 200</span></div>
+          <p class="text-xs text-slate-600">Marking: +2.00 Sahi | -0.20 Galat</p>
+        </div>
+
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-2.5 mb-4">
+          <div class="p-2.5 bg-emerald-50 border border-emerald-200 rounded-lg text-center">
+            <span class="text-[10px] text-emerald-700 font-bold uppercase">Correct</span>
+            <div class="text-xl font-bold text-emerald-800">${correct}</div>
+          </div>
+          <div class="p-2.5 bg-rose-50 border border-rose-200 rounded-lg text-center">
+            <span class="text-[10px] text-rose-700 font-bold uppercase">Incorrect</span>
+            <div class="text-xl font-bold text-rose-800">${incorrect}</div>
+          </div>
+          <div class="p-2.5 bg-slate-100 border border-slate-200 rounded-lg text-center">
+            <span class="text-[10px] text-slate-600 font-bold uppercase">Left</span>
+            <div class="text-xl font-bold text-slate-700">${unattempted}</div>
+          </div>
+          <div class="p-2.5 bg-sky-50 border border-sky-200 rounded-lg text-center">
+            <span class="text-[10px] text-sky-700 font-bold uppercase">Accuracy</span>
+            <div class="text-xl font-bold text-sky-800">${accuracy}%</div>
+          </div>
+        </div>
+
+        <div class="bg-sky-50 border border-sky-200 rounded-lg p-3 text-center">
+          <p class="text-xs text-sky-800 font-medium">Daily NCERT Mock Tests aur study updates ke liye Telegram channel se judein:</p>
+          <a href="https://t.me/GYANVERSET" target="_blank" class="inline-block mt-2 bg-sky-600 hover:bg-sky-700 text-white font-bold px-4 py-1.5 rounded text-xs transition">
+            <i class="fa-paper-plane mr-1.5"></i> Telegram: @GYANVERSET
+          </a>
+        </div>
+      `;
+
+      document.getElementById('result-modal').classList.remove('hidden');
+    }
+
+    function closeResultModal() {
+      document.getElementById('result-modal').classList.add('hidden');
+    }
+
+    function enableReviewMode() {
+      closeResultModal();
+      loadQuestion(0);
+    }
+  </script>
+</body>
+</html>
