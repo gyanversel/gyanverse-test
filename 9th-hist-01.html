@@ -1,0 +1,1586 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GYANVERSE CBT - BPSC TRE 4.0 Sectional Test: History</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Tiro+Devanagari+Hindi:ital@0;1&family=Inter:wght@400;500;600;700;800&display=swap');
+        body {
+            font-family: 'Inter', 'Tiro Devanagari Hindi', sans-serif;
+            user-select: none;
+            -webkit-user-select: none;
+        }
+        .devanagari {
+            font-family: 'Tiro Devanagari Hindi', serif;
+        }
+    </style>
+</head>
+<body class="bg-slate-100 text-slate-800 antialiased min-h-screen flex flex-col justify-between">
+
+    <!-- START SCREEN / AUTO FULLSCREEN GATE -->
+    <div id="startScreen" class="fixed inset-0 z-50 bg-slate-900/95 backdrop-blur-md flex items-center justify-center p-4">
+        <div class="bg-white rounded-3xl max-w-xl w-full p-6 md:p-8 shadow-2xl border border-slate-200 text-center">
+            <div class="inline-flex items-center justify-center w-20 h-20 bg-blue-100 text-blue-600 rounded-full mb-4 text-3xl font-extrabold shadow-inner">
+                <i class="fa-solid fa-graduation-cap"></i>
+            </div>
+            
+            <!-- EXAM SPECIFIC TITLE -->
+            <div class="inline-block bg-blue-50 border border-blue-200 text-blue-700 text-xs md:text-sm font-bold px-3 py-1 rounded-full mb-2 uppercase tracking-wide">
+                BPSC TRE 4.0 Sectional Test &bull; History (इतिहास)
+            </div>
+            <h1 class="text-2xl md:text-3xl font-black text-slate-900 tracking-tight">GYANVERSE ONLINE CBT</h1>
+            <p class="text-slate-600 font-semibold text-sm md:text-base mt-1">NCERT Class 9 History &bull; Chapter 1: फ्रांसीसी क्रांति</p>
+            <p class="text-xs text-slate-400 font-medium mt-0.5">Complete 100 MCQs Master Sectional Test</p>
+            
+            <div class="my-6 bg-slate-50 border border-slate-200 rounded-2xl p-4 text-left text-xs md:text-sm space-y-2.5 text-slate-700">
+                <div class="flex justify-between items-center pb-2 border-b border-slate-200">
+                    <span class="font-medium text-slate-500">परीक्षा का नाम:</span>
+                    <span class="font-bold text-slate-900">BPSC TRE 4.0 Sectional Test (इतिहास)</span>
+                </div>
+                <div class="flex justify-between items-center pb-2 border-b border-slate-200">
+                    <span class="font-medium text-slate-500">कुल प्रश्न (Total Questions):</span>
+                    <span class="font-bold text-slate-900">100 प्रश्न (NCERT Line-by-Line)</span>
+                </div>
+                <div class="flex justify-between items-center pb-2 border-b border-slate-200">
+                    <span class="font-medium text-slate-500">समय सीमा (Time Limit):</span>
+                    <span class="font-bold text-slate-800">120 मिनट</span>
+                </div>
+                <div class="flex justify-between items-center pb-2 border-b border-slate-200">
+                    <span class="font-medium text-slate-500">अंकन योजना (Marking):</span>
+                    <span class="font-bold text-emerald-600">+2.00 सही | <span class="text-rose-500">-0.20 गलत</span></span>
+                </div>
+                <div class="flex items-center gap-2 pt-1 text-amber-700 font-medium">
+                    <i class="fa-solid fa-circle-exclamation text-amber-500 text-base"></i>
+                    <span>स्टार्ट बटन दबाते ही टेस्ट स्वतः फुल-स्क्रीन मोड में शुरू होगा।</span>
+                </div>
+            </div>
+
+            <div class="mb-6 p-3 bg-blue-50 border border-blue-200 rounded-xl flex items-center justify-center gap-2 text-blue-700 text-xs md:text-sm">
+                <i class="fa-brands fa-telegram text-lg text-blue-500"></i>
+                <span>ऐसे ऑनलाइन टेस्ट देने के लिए टेलीग्राम जॉइन करें:</span>
+                <a href="https://t.me/GYANVERSET" target="_blank" class="font-bold underline hover:text-blue-900">@GYANVERSET</a>
+            </div>
+
+            <button onclick="startTestWithFullScreen()" class="w-full py-4 px-6 bg-blue-600 hover:bg-blue-700 active:scale-[0.99] text-white font-bold rounded-2xl shadow-xl shadow-blue-500/25 transition duration-200 flex items-center justify-center gap-2 text-base md:text-lg">
+                <i class="fa-solid fa-expand"></i>
+                Start Test (Auto Full Screen)
+            </button>
+        </div>
+    </div>
+
+    <!-- MAIN CBT TEST INTERFACE -->
+    <div id="cbtInterface" class="hidden flex flex-col min-h-screen">
+        <!-- TOP STICKY HEADER -->
+        <header class="sticky top-0 z-40 bg-white border-b border-slate-200 shadow-sm px-4 md:px-8 py-3 flex items-center justify-between">
+            <div class="flex items-center gap-2 md:gap-3">
+                <span class="text-xl md:text-2xl font-black text-blue-700 tracking-wider">GYANVERSE</span>
+                <span class="inline-block text-[11px] md:text-xs bg-blue-50 text-blue-700 border border-blue-200 px-2.5 py-1 rounded-full font-bold">
+                    BPSC TRE 4.0: History
+                </span>
+            </div>
+
+            <!-- TIMER & SUBMIT BUTTON -->
+            <div class="flex items-center gap-3 md:gap-5">
+                <div class="flex items-center gap-2 bg-amber-50 text-amber-800 border border-amber-200 px-3 md:px-3.5 py-1.5 rounded-lg text-sm md:text-base font-bold shadow-inner">
+                    <i class="fa-regular fa-clock text-amber-600 animate-pulse"></i>
+                    <span id="timerDisplay">120:00</span>
+                </div>
+                <button onclick="submitTestConfirmation()" class="px-3 md:px-4 py-2 bg-emerald-600 hover:bg-emerald-700 active:scale-95 text-white font-bold text-xs md:text-sm rounded-lg shadow transition flex items-center gap-1.5">
+                    <i class="fa-solid fa-cloud-arrow-up"></i>
+                    <span>Submit</span>
+                </button>
+            </div>
+        </header>
+
+        <!-- QUESTION AREA -->
+        <main class="flex-1 max-w-4xl w-full mx-auto p-4 md:p-6 flex flex-col justify-between">
+            <div class="bg-white rounded-2xl border border-slate-200 shadow-sm p-5 md:p-8">
+                <!-- QUESTION HEADER META -->
+                <div class="flex items-center justify-between pb-4 border-b border-slate-100 text-xs md:text-sm text-slate-500 font-semibold">
+                    <div class="flex items-center gap-2">
+                        <span class="bg-blue-50 text-blue-700 px-2.5 py-1 rounded-md border border-blue-100">
+                            Question <span id="currentQNum">1</span> of <span id="totalQNum">100</span>
+                        </span>
+                        <span id="reviewTag" class="hidden bg-amber-100 text-amber-700 px-2 py-0.5 rounded text-xs font-bold">Marked For Review</span>
+                    </div>
+                    <span class="text-emerald-600 font-bold">+2.00 / -0.20 Marks</span>
+                </div>
+
+                <!-- QUESTION TEXT -->
+                <div class="mt-4 text-slate-900 text-base md:text-lg leading-relaxed devanagari font-medium" id="questionText">
+                    <!-- Dynamic Question Text -->
+                </div>
+
+                <!-- OPTIONS CONTAINER -->
+                <div class="mt-6 space-y-3" id="optionsContainer">
+                    <!-- Dynamic Options -->
+                </div>
+
+                <!-- BRAND WATERMARK TAG -->
+                <div class="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-xs text-slate-400 font-medium">
+                    <span>BPSC TRE 4.0 Sectional &bull; NCERT Class 9 History Ch-1</span>
+                    <a href="https://t.me/GYANVERSET" target="_blank" class="text-blue-500 hover:underline font-bold">@GYANVERSET</a>
+                </div>
+
+                <!-- NAVIGATION BUTTONS (DIRECTLY BELOW OPTIONS) -->
+                <div class="mt-6 pt-4 border-t border-slate-200 grid grid-cols-2 sm:grid-cols-4 gap-2.5">
+                    <button onclick="prevQuestion()" id="prevBtn" class="w-full py-2.5 px-3 bg-slate-100 hover:bg-slate-200 text-slate-700 font-semibold rounded-xl text-xs md:text-sm border border-slate-300 transition flex items-center justify-center gap-1.5">
+                        <i class="fa-solid fa-arrow-left"></i> Previous
+                    </button>
+                    <button onclick="clearCurrentResponse()" class="w-full py-2.5 px-3 bg-slate-100 hover:bg-rose-50 text-rose-600 hover:text-rose-700 font-semibold rounded-xl text-xs md:text-sm border border-slate-300 hover:border-rose-200 transition flex items-center justify-center gap-1.5">
+                        <i class="fa-solid fa-rotate-left"></i> Clear
+                    </button>
+                    <button onclick="toggleMarkReview()" id="reviewBtn" class="w-full py-2.5 px-3 bg-amber-50 hover:bg-amber-100 text-amber-700 font-semibold rounded-xl text-xs md:text-sm border border-amber-300 transition flex items-center justify-center gap-1.5">
+                        <i class="fa-regular fa-bookmark"></i> Review
+                    </button>
+                    <button onclick="nextAndSaveQuestion()" id="nextBtn" class="w-full py-2.5 px-3 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-xl text-xs md:text-sm shadow-md shadow-blue-500/20 transition flex items-center justify-center gap-1.5">
+                        Save & Next <i class="fa-solid fa-arrow-right"></i>
+                    </button>
+                </div>
+            </div>
+        </main>
+
+        <!-- FOOTER BRAND -->
+        <footer class="py-3 bg-slate-200 text-center text-xs text-slate-600 border-t border-slate-300">
+            GYANVERSE Test Series &bull; Join Official Telegram: <a href="https://t.me/GYANVERSET" target="_blank" class="font-bold text-blue-700 hover:underline">@GYANVERSET</a>
+        </footer>
+    </div>
+
+    <!-- SCORECARD & RESULT MODAL -->
+    <div id="scorecardModal" class="hidden fixed inset-0 z-50 bg-slate-900/90 backdrop-blur-sm flex items-center justify-center p-4 overflow-y-auto">
+        <div class="bg-white rounded-3xl max-w-lg w-full p-6 md:p-8 shadow-2xl border border-slate-200 text-center my-6">
+            <div class="inline-flex items-center justify-center w-16 h-16 bg-emerald-100 text-emerald-600 rounded-full mb-3 text-3xl">
+                <i class="fa-solid fa-chart-pie"></i>
+            </div>
+            <div class="text-xs font-bold text-blue-600 uppercase tracking-wide">BPSC TRE 4.0 Sectional Test</div>
+            <h2 class="text-2xl font-black text-slate-900 mt-0.5">परीक्षा परिणाम (Scorecard)</h2>
+            <p class="text-xs text-slate-500">History: Chapter 1 (फ्रांसीसी क्रांति - 100 MCQs)</p>
+
+            <div class="my-6 grid grid-cols-2 gap-3 text-left">
+                <div class="bg-slate-50 p-3.5 rounded-xl border border-slate-200">
+                    <span class="text-xs text-slate-500 font-medium">कुल प्राप्तांक (Total Marks)</span>
+                    <div class="text-2xl font-black text-blue-600 mt-1" id="scoreMarks">0.00 / 200.00</div>
+                </div>
+                <div class="bg-slate-50 p-3.5 rounded-xl border border-slate-200">
+                    <span class="text-xs text-slate-500 font-medium">सटीकता (Accuracy)</span>
+                    <div class="text-2xl font-black text-emerald-600 mt-1" id="scoreAccuracy">0%</div>
+                </div>
+                <div class="bg-emerald-50 p-3 rounded-xl border border-emerald-200">
+                    <span class="text-xs text-emerald-700 font-medium">सही उत्तर (+2.00)</span>
+                    <div class="text-xl font-bold text-emerald-800" id="scoreCorrect">0</div>
+                </div>
+                <div class="bg-rose-50 p-3 rounded-xl border border-rose-200">
+                    <span class="text-xs text-rose-700 font-medium">गलत उत्तर (-0.20)</span>
+                    <div class="text-xl font-bold text-rose-800" id="scoreWrong">0</div>
+                </div>
+                <div class="bg-amber-50 p-3 rounded-xl border border-amber-200">
+                    <span class="text-xs text-amber-700 font-medium">छोड़े गए प्रश्न (Skipped)</span>
+                    <div class="text-xl font-bold text-amber-800" id="scoreSkipped">0</div>
+                </div>
+                <div class="bg-indigo-50 p-3 rounded-xl border border-indigo-200">
+                    <span class="text-xs text-indigo-700 font-medium">समीक्षित प्रश्न (Reviewed)</span>
+                    <div class="text-xl font-bold text-indigo-800" id="scoreReviewed">0</div>
+                </div>
+            </div>
+
+            <div class="space-y-3">
+                <button onclick="openSolutionView()" class="w-full py-3 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-xl shadow transition">
+                    <i class="fa-solid fa-book-open mr-2"></i> Check Detailed Solutions (100 Qs)
+                </button>
+                <a href="https://t.me/GYANVERSET" target="_blank" class="block w-full py-2.5 bg-slate-100 hover:bg-slate-200 text-slate-800 font-semibold rounded-xl text-xs md:text-sm border border-slate-300 transition">
+                    <i class="fa-brands fa-telegram text-blue-500 mr-1.5 text-base"></i> Join @GYANVERSET on Telegram
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- DETAILED SOLUTION REVIEW SECTION -->
+    <div id="solutionInterface" class="hidden min-h-screen bg-slate-100 flex flex-col justify-between">
+        <header class="sticky top-0 z-40 bg-white border-b border-slate-200 shadow-sm px-4 md:px-8 py-3 flex items-center justify-between">
+            <span class="text-base md:text-lg font-black text-blue-700">BPSC TRE 4.0: 100 MCQs DETAILED SOLUTIONS</span>
+            <button onclick="backToScorecard()" class="px-4 py-1.5 bg-slate-100 hover:bg-slate-200 text-slate-700 font-semibold text-xs md:text-sm rounded-lg border border-slate-300">
+                <i class="fa-solid fa-arrow-left mr-1"></i> Back to Scorecard
+            </button>
+        </header>
+
+        <div class="max-w-4xl w-full mx-auto p-4 md:p-6 space-y-6" id="solutionItemsList">
+            <!-- Dynamic 100 Solution Cards -->
+        </div>
+
+        <footer class="py-4 bg-slate-200 text-center text-xs text-slate-600 border-t border-slate-300">
+            NCERT Class 9 History Ch-1 Detailed Analysis &bull; Telegram: <a href="https://t.me/GYANVERSET" class="font-bold text-blue-700">@GYANVERSET</a>
+        </footer>
+    </div>
+
+    <script>
+        // FULL 100 QUESTIONS DATASET: NCERT Class 9 History Ch-1 (The French Revolution)
+        const quizData = [
+            {
+                id: 1,
+                question: `18वीं सदी के उत्तरार्द्ध में फ्रांसीसी समाज के संदर्भ में निम्नलिखित कथनों पर विचार कीजिए:<br>
+                1. तृतीय एस्टेट में केवल गरीब किसान और भूमिहीन मजदूर ही शामिल थे, इसमें शिक्षित अथवा समृद्ध वर्ग का पूर्ण अभाव था।<br>
+                2. 'टाइद' (Tithe) चर्च द्वारा किसानों से वसूला जाने वाला एक प्रत्यक्ष धार्मिक कर था, जो कृषि उपज के दसवें हिस्से के बराबर होता था।<br>
+                3. 'ताइल' (Taille) सीधे राज्य को अदा किया जाने वाला प्रत्यक्ष कर था।<br>
+                उपर्युक्त में से <strong>कौन-सा/से कथन सही है/हैं?</strong>`,
+                options: ["केवल 1 और 2", "केवल 2 और 3", "1, 2 और 3", "केवल 1 और 3"],
+                correct: 1,
+                explanation: "तृतीय एस्टेट तीन भागों में बंटा था: बड़े व्यवसायी, व्यापारी, अदालती कर्मचारी, वकील; किसान और कारीगर; तथा छोटे किसान व भूमिहीन मजदूर। अतः कथन 1 गलत है। टाइद धार्मिक कर और ताइल राज्य का प्रत्यक्ष कर था।"
+            },
+            {
+                id: 2,
+                question: `नीचे दो कथन दिए गए हैं, एक को कथन (A) तथा दूसरे को कारण (R) कहा गया है:<br><br>
+                <strong>कथन (A):</strong> 1774 में बूर्बों राजवंश का लुई सोलहवां जब फ्रांस की राजगद्दी पर बैठा, तो उसे राजकोष पूरी तरह खाली मिला।<br>
+                <strong>कारण (R):</strong> लंबे समय तक चले युद्धों के कारण फ्रांस के वित्तीय संसाधन नष्ट हो चुके थे और अमेरिकी स्वतंत्रता संग्राम में ब्रिटेन के विरुद्ध 13 अमेरिकी उपनिवेशों की सहायता करने से 10 अरब लिब्रे से अधिक का अतिरिक्त कर्ज जुड़ गया था।`,
+                options: [
+                    "(A) और (R) दोनों सही हैं और (R), (A) की सही व्याख्या है।",
+                    "(A) और (R) दोनों सही हैं लेकिन (R), (A) की सही व्याख्या नहीं है।",
+                    "(A) सही है लेकिन (R) गलत है।",
+                    "(A) गलत है लेकिन (R) सही है।"
+                ],
+                correct: 0,
+                explanation: "लुई 16वें के राज्यारोहण के समय राजकोष खाली होने का मुख्य कारण लंबे युद्ध तथा अमेरिकी स्वतंत्रता संग्राम में ब्रिटेन के खिलाफ सहायता देना था, जिससे कर्ज 2 अरब लिब्रे से बढ़कर 12 अरब लिब्रे से भी अधिक हो गया।"
+            },
+            {
+                id: 3,
+                question: `18वीं सदी के फ्रांस में प्रचलित मुद्रा 'लिब्रे' (Livre) के संदर्भ में निम्नलिखित में से कौन-सा कथन असत्य है?`,
+                options: [
+                    "लिब्रे फ्रांस की प्रचलित मुद्रा इकाई थी।",
+                    "इसे 1794 में आधिकारिक रूप से समाप्त कर दिया गया था।",
+                    "यह पूरे यूरोप में समान रूप से स्वीकार्य अंतरराष्ट्रीय स्वर्ण मुद्रा थी।",
+                    "फ्रांस सरकार पर 2 अरब लिब्रे से अधिक का राष्ट्रीय ऋण भार मौजूद था।"
+                ],
+                correct: 2,
+                explanation: "लिब्रे केवल फ्रांस की मुद्रा इकाई थी जिसे नेशनल कन्वेंशन द्वारा 1794 में समाप्त कर दिया गया था। यह पूरे यूरोप की मुद्रा नहीं थी।"
+            },
+            {
+                id: 4,
+                question: `फ्रांसीसी समाज में जमीन के स्वामित्व के संदर्भ में निम्नलिखित कथनों पर विचार कीजिए:<br>
+                1. पूरी आबादी में लगभग 90 प्रतिशत किसान थे, लेकिन जमीन के मालिक किसानों की संख्या बहुत कम थी।<br>
+                2. लगभग 60 प्रतिशत जमीन पर कुलीनों, चर्च और तीसरे एस्टेट के अमीरों का अधिकार था।<br>
+                3. प्रथम दो एस्टेट्स (पादरी व कुलीन) को राज्य को दिए जाने वाले सभी प्रकार के करों से जन्मना छूट प्राप्त थी।<br>
+                उपर्युक्त कथनों में से <strong>कौन-से कथन सत्य हैं?</strong>`,
+                options: ["केवल 1 और 2", "केवल 2 और 3", "केवल 1 और 3", "1, 2 और 3"],
+                correct: 3,
+                explanation: "NCERT के अनुसार तीनों कथन सत्य हैं। 90% आबादी किसानों की थी, लेकिन 60% भूमि पर कुलीन, चर्च और तीसरे एस्टेट के अमीरों का आधिपत्य था।"
+            },
+            {
+                id: 5,
+                question: `नीचे दो कथन दिए गए हैं, एक को कथन (A) तथा दूसरे को कारण (R) कहा गया है:<br><br>
+                <strong>कथन (A):</strong> 1789 के पूर्व फ्रांस में 'जीविका संकट' (Subsistence Crisis) की स्थिति बार-बार उत्पन्न होती थी।<br>
+                <strong>कारण (R):</strong> फ्रांस की जनसंख्या 1715 में 2.3 करोड़ से बढ़कर 1789 में 2.8 करोड़ हो गई, जिससे अनाज की मांग तेजी से बढ़ी लेकिन उत्पादन उस अनुपात में नहीं बढ़ सका।`,
+                options: [
+                    "(A) और (R) दोनों सही हैं और (R), (A) की सही व्याख्या है।",
+                    "(A) और (R) दोनों सही हैं लेकिन (R), (A) की सही व्याख्या नहीं है।",
+                    "(A) सही है लेकिन (R) गलत है।",
+                    "(A) गलत है लेकिन (R) सही है।"
+                ],
+                correct: 0,
+                explanation: "जनसंख्या विस्फोट (2.3 से 2.8 करोड़) के कारण खाद्यान्न मांग बढ़ी, मुख्य खाद्य पावरोटी के दाम आसमान छू गए और मजदूरी न बढ़ने से जीविका संकट उत्पन्न हुआ।"
+            },
+            {
+                id: 6,
+                question: `दार्शनिकों तथा उनके द्वारा प्रतिपादित विचारों/पुस्तकों का कौन-सा युग्म सही सुमेलित नहीं है?`,
+                options: [
+                    "जॉन लॉक — 'टू ट्रीटाइज़ेज़ ऑफ़ गवर्नमेंट' (दैवी अधिकारों का खंडन)",
+                    "ज्यां-जाक रूसो — 'द सोशल कॉन्ट्रैक्ट' (जनता और प्रतिनिधियों के बीच अनुबंध)",
+                    "मॉन्तेस्क्यू — 'द स्पिरिट ऑफ़ द लॉज़' (सरकार के अंगों में शक्ति पृथक्करण)",
+                    "वोल्टेयर — 'दास कैपिटल' (वर्ग संघर्ष का वैज्ञानिक विश्लेषण)"
+                ],
+                correct: 3,
+                explanation: "'दास कैपिटल' कार्ल मार्क्स की 19वीं सदी की रचना है, न कि वोल्टेयर की।"
+            },
+            {
+                id: 7,
+                question: `18वीं सदी के फ्रांस में 'कुलीन वर्ग' के विशेषाधिकारों के संदर्भ में क्या असत्य है?`,
+                options: [
+                    "उन्हें राज्य को दिए जाने वाले प्रत्यक्ष करों से पूर्ण मुक्ति प्राप्त थी।",
+                    "वे किसानों से सामंती कर (Feudal dues) वसूलते थे।",
+                    "किसान कुलीन स्वामियों के खेतों में बेगार और सैन्य सेवा करने के लिए बाध्य थे।",
+                    "कुलीन वर्ग को चर्च द्वारा वसूले जाने वाले 'टाइद' कर का 50% हिस्सा अनिवार्य रूप से मिलता था।"
+                ],
+                correct: 3,
+                explanation: "'टाइद' विशुद्ध रूप से चर्च (पादरी वर्ग) द्वारा वसूला जाने वाला धार्मिक कर था, कुलीनों का इसमें कोई हिस्सा नहीं था।"
+            },
+            {
+                id: 8,
+                question: `18वीं सदी में उभरे 'मध्यम वर्ग' (Middle Class) के संदर्भ में निम्नलिखित कथनों पर विचार कीजिए:<br>
+                1. इस वर्ग ने रेशमी और ऊनी कपड़ों के विदेशी व्यापार तथा विनिर्माण के बल पर संपत्ति अर्जित की थी।<br>
+                2. इस वर्ग का मानना था कि समाज के किसी भी समूह के पास जन्मना विशेषाधिकार नहीं होने चाहिए।<br>
+                3. इस वर्ग में प्रशासनिक सेवा के अधिकारी, वकील और व्यापारी भी शामिल थे।<br>
+                उपर्युक्त में से <strong>कौन-सा/से कथन सत्य है/हैं?</strong>`,
+                options: ["केवल 1 और 2", "केवल 2 और 3", "केवल 1 और 3", "1, 2 और 3"],
+                correct: 3,
+                explanation: "तीनों कथन सत्य हैं। 18वीं सदी के तीसरे एस्टेट के इस नए शिक्षित व आर्थिक रूप से सशक्त समूह ने जन्मना विशेषाधिकारों पर प्रहार किया।"
+            },
+            {
+                id: 9,
+                question: `फ्रांस में नमक और तंबाकू जैसी दैनिक उपभोग की वस्तुओं पर लगाए जाने वाले कर को क्या कहा जाता था?`,
+                options: ["ताइल (Taille)", "टाइद (Tithe)", "अप्रत्यक्ष कर (Indirect Taxes)", "मैनोरियल कर"],
+                correct: 2,
+                explanation: "नमक और तंबाकू जैसी रोजाना उपभोग की वस्तुओं पर भारी अप्रत्यक्ष कर (Indirect taxes) लगाए जाते थे, जिसका बोझ आम जनता पर पड़ता था।"
+            },
+            {
+                id: 10,
+                question: `लुई सोलहवें की पत्नी मेरी आंतवानेत (Marie Antoinette) किस देश की राजकुमारी थीं?`,
+                options: ["प्रशिया", "ऑस्ट्रिया", "स्पेन", "ब्रिटेन"],
+                correct: 1,
+                explanation: "लुई सोलहवें का विवाह 20 वर्ष की आयु में ऑस्ट्रिया की राजकुमारी मेरी आंतवानेत से हुआ था।"
+            },
+            {
+                id: 11,
+                question: `फ्रांस के संदर्भ में 'एस्टेट्स' (Estates) शब्द किसे परिभाषित करता है?`,
+                options: [
+                    "राजा के व्यक्तिगत महलों और उद्यानों का क्षेत्रफल",
+                    "फ्रांसीसी समाज का तीन श्रेणियों में कानूनी व सामाजिक विभाजन",
+                    "सेना की तीन अलग-अलग सैन्य टुकड़ियां",
+                    "चर्च के अधीन आने वाली कुल कृषि योग्य भूमि"
+                ],
+                correct: 1,
+                explanation: "फ्रांसीसी समाज मध्यकालीन सामंती व्यवस्था के तहत तीन एस्टेट्स (प्रथम: पादरी, द्वितीय: कुलीन, तृतीय: जनसामान्य) में विभाजित था।"
+            },
+            {
+                id: 12,
+                question: `18वीं सदी में दार्शनिकों के विचारों का प्रसार फ्रांस में मुख्य रूप से किन माध्यमों से हुआ?<br>
+                1. सैलूनों (Salons) और कॉफी-घरों की संगोष्ठियों द्वारा<br>
+                2. पुस्तकों और दैनिक अखबारों द्वारा<br>
+                3. अनपढ़ लोगों के लिए इन विचारों को जोर-जोर से पढ़कर सुनाने द्वारा<br>
+                उपर्युक्त में से <strong>कौन-से सही हैं?</strong>`,
+                options: ["केवल 1 और 2", "केवल 2 और 3", "केवल 1 और 3", "1, 2 और 3"],
+                correct: 3,
+                explanation: "दार्शनिकों के तर्कसंगत विचार सैलून, कॉफी हाउस, पुस्तकों और अखबारों तथा अनपढ़ों के बीच सामूहिक पठन द्वारा व्यापक रूप से फैले।"
+            },
+            {
+                id: 13,
+                question: `नीचे दो कथन दिए गए हैं, एक को कथन (A) तथा दूसरे को कारण (R) कहा गया है:<br><br>
+                <strong>कथन (A):</strong> अमेरिकी स्वतंत्रता संग्राम के बाद संयुक्त राज्य अमेरिका का संविधान फ्रांसीसी विचारकों के लिए प्रेरणा का एक बड़ा स्रोत था।<br>
+                <strong>कारण (R):</strong> अमेरिकी संविधान में व्यक्तिगत अधिकारों की गारंटी और सरकार के अंगों में शक्ति विभाजन का प्रत्यक्ष मॉडल प्रस्तुत किया गया था।`,
+                options: [
+                    "(A) और (R) दोनों सही हैं और (R), (A) की सही व्याख्या है।",
+                    "(A) और (R) दोनों सही हैं लेकिन (R), (A) की सही व्याख्या नहीं है।",
+                    "(A) सही है लेकिन (R) गलत है।",
+                    "(A) गलत है लेकिन (R) सही है।"
+                ],
+                correct: 0,
+                explanation: "अमेरिकी संविधान में मॉन्तेस्क्यू के शक्ति पृथक्करण सिद्धांत और नागरिक स्वतंत्रताओं को औपचारिक रूप दिए जाने से फ्रांसीसी बुद्धिजीवी अत्यंत प्रभावित हुए।"
+            },
+            {
+                id: 14,
+                question: `फ्रांसीसी सामंती समाज के संदर्भ में 'मैनर' (Manor) शब्द का क्या अर्थ था?`,
+                options: [
+                    "चर्च का आंतरिक प्रार्थना सभागार",
+                    "सामंत की जागीर, जिसमें उसके महल और उसकी जमीनें शामिल होती थीं",
+                    "किसानों द्वारा दिया जाने वाला एक वार्षिक भू-राजस्व",
+                    "शहरों में व्यापारियों का एक व्यापारिक संघ"
+                ],
+                correct: 1,
+                explanation: "मैनर (Manor) सामंत या जागीरदार का विस्तृत एस्टेट होता था जिसमें उसका दुर्ग/महल और उससे जुड़ी कृषि भूमि शामिल थी।"
+            },
+            {
+                id: 15,
+                question: `18वीं सदी के फ्रांस में 'प्राचीन राजतंत्र' (Old Regime) पद का प्रयोग सामान्यतः किसके लिए किया जाता है?`,
+                options: [
+                    "रोमन साम्राज्य के समय के फ्रांस के लिए",
+                    "1789 से पहले के फ्रांसीसी समाज और संस्थाओं के लिए",
+                    "नेपोलियन के पतन के बाद के फ्रांस के लिए",
+                    "शार्लेमेन (Charlemagne) के मध्यकालीन शासन के लिए"
+                ],
+                correct: 1,
+                explanation: "NCERT के अनुसार 'Old Regime' (प्राचीन राजतंत्र) शब्द का प्रयोग सन 1789 से पूर्व के फ्रांसीसी समाज और उसकी राजनीतिक संस्थाओं के लिए किया जाता है।"
+            },
+            {
+                id: 16,
+                question: `फ्रांस में 1789 के पूर्व जीविका संकट की श्रृंखला में निम्नलिखित चरणों का सही क्रम क्या था?`,
+                options: [
+                    "सूखा या ओला पड़ना &rarr; फसल खराब होना &rarr; खाद्य संकट &rarr; महामारी व मौतें",
+                    "महामारी &rarr; फसल खराब &rarr; खाद्यान्न मूल्य में वृद्धि &rarr; सूखा",
+                    "खाद्यान्न मूल्य वृद्धि &rarr; सूखा &rarr; कमजोर शरीर &rarr; फसल विनाश",
+                    "मृत्यु &rarr; महामारी &rarr; सूखा &rarr; अकाल"
+                ],
+                correct: 0,
+                explanation: "NCERT आरेख के अनुसार: खराब मौसम (सूखा/ओला) &rarr; पैदावार में गिरावट &rarr; अन्न का अभाव &rarr; कीमतें बढ़ना &rarr; कमजोर शरीर &rarr; महामारी और मृत्यु।"
+            },
+            {
+                id: 17,
+                question: `5 मई 1789 को बुलाई गई स्टेट्स जनरल (Estates General) की बैठक के संदर्भ में निम्नलिखित कथनों पर विचार कीजिए:<br>
+                1. इस बैठक में प्रथम और द्वितीय एस्टेट ने 300-300 प्रतिनिधि भेजे।<br>
+                2. तृतीय एस्टेट के कुल 600 प्रतिनिधि थे, जिनका नेतृत्व समृद्ध और शिक्षित वर्ग कर रहा था।<br>
+                3. किसानों, कारीगरों और औरतों को इस सभा भवन में सीधे प्रवेश करने की पूरी अनुमति थी।<br>
+                उपर्युक्त में से <strong>कौन-सा/से कथन सत्य है/हैं?</strong>`,
+                options: ["केवल 1 और 2", "केवल 2 और 3", "केवल 1 और 3", "1, 2 और 3"],
+                correct: 0,
+                explanation: "कथन 3 गलत है क्योंकि किसानों, औरतों और कारीगरों का सभा में प्रवेश वर्जित था। वे केवल लगभग 40,000 पत्रों द्वारा अपनी शिकायतें भेज सके थे।"
+            },
+            {
+                id: 18,
+                question: `स्टेट्स जनरल में मतदान प्रणाली को लेकर राजा और तीसरे एस्टेट के बीच विवाद का मुख्य कारण क्या था?`,
+                options: [
+                    "राजा केवल महिलाओं को मतदान का अधिकार देना चाहता था।",
+                    "परंपरा के अनुसार प्रत्येक एस्टेट को 1 मत देने का अधिकार था, जबकि तीसरा एस्टेट प्रत्येक सदस्य को 1 मत देने की मांग कर रहा था।",
+                    "तीसरे एस्टेट के लोग मतदान में धन आधारित योग्यता का विरोध कर रहे थे।",
+                    "कुलीन वर्ग ने राजा को मतदान प्रक्रिया से बाहर रखने की मांग की थी।"
+                ],
+                correct: 1,
+                explanation: "पुराने नियम से प्रत्येक एस्टेट को 1 वोट था, जिससे पादरी+कुलीन (2 वोट) मिलकर तीसरे एस्टेट (1 वोट) को हरा देते थे। तीसरे एस्टेट ने रूसो के लोकतांत्रिक सिद्धांत पर प्रति व्यक्ति एक मत की मांग रखी।"
+            },
+            {
+                id: 19,
+                question: `20 जून 1789 को तीसरे एस्टेट के प्रतिनिधियों ने वर्साय के इंडोर टेनिस कोर्ट में एकत्र होकर क्या ऐतिहासिक शपथ ली?`,
+                options: [
+                    "जब तक लुई सोलहवें को फांसी नहीं दी जाती, वे अलग नहीं होंगे।",
+                    "जब तक वे फ्रांस के लिए ऐसा संविधान तैयार न कर लें जो सम्राट की शक्तियों को सीमित करे, तब तक सभा भंग नहीं होगी।",
+                    "वे संपूर्ण यूरोप के विरुद्ध तत्काल युद्ध की घोषणा करेंगे।",
+                    "वे तीसरे एस्टेट को कैथोलिक चर्च की सारी संपत्ति तत्काल सौंप देंगे।"
+                ],
+                correct: 1,
+                explanation: "टेनिस कोर्ट की ऐतिहासिक शपथ (Tennis Court Oath) में उन्होंने खुद को 'नेशनल असेंबली' घोषित किया और फ्रांस के लिए संविधान बनाए बिना न हटने की शपथ ली।"
+            },
+            {
+                id: 20,
+                question: `टेनिस कोर्ट में तीसरे एस्टेट की नेशनल असेंबली का नेतृत्व करने वाले 'मीराब्यो' (Mirabeau) और 'आबे सिएए' (Abbé Sieyès) की पृष्ठभूमि क्या थी?`,
+                options: [
+                    "मीराब्यो एक किसान था और आबे सिएए एक मजदूर संघ का नेता था।",
+                    "मीराब्यो कुलीन परिवार का था लेकिन सामंती विशेषाधिकारों का विरोधी था, जबकि आबे सिएए एक पादरी था जिसने 'तीसरा एस्टेट क्या है?' शीर्षक से प्रभावशाली पुस्तिका लिखी।",
+                    "दोनों पेरिस के पेशेवर सेनापति थे।",
+                    "दोनों ब्रिटिश संसद के निर्वाचित सदस्य थे।"
+                ],
+                correct: 1,
+                explanation: "मीराब्यो का जन्म कुलीन परिवार में हुआ था पर वह विशेषाधिकारों के खिलाफ था। आबे सिएए मूलतः पादरी था जिसने 'तीसरा एस्टेट क्या है?' (Qu'est-ce que le Tiers-État?) पंपलेट लिखा।"
+            },
+            {
+                id: 21,
+                question: `14 जुलाई 1789 को बास्तिल (Bastille) के किले-जेल पर पेरिस की जनता द्वारा किए गए आक्रमण के संदर्भ में क्या सही नहीं है?`,
+                options: [
+                    "बास्तिल का किला सम्राट की निरंकुश शक्तियों का घृणित प्रतीक माना जाता था।",
+                    "क्रांतिकारी भीड़ को वहां भारी मात्रा में गोला-बारूद मिलने की उम्मीद थी।",
+                    "हमले के दौरान किले के कमांडर को मार दिया गया और सभी 7 कैदियों को रिहा करा लिया गया।",
+                    "बास्तिल के पतन के बाद उसके मलबे को फेंक दिया गया क्योंकि उसकी कोई ऐतिहासिक मांग नहीं थी।"
+                ],
+                correct: 3,
+                explanation: "बास्तिल के मलबे और पत्थरों को बाजार में उन लोगों को स्मृति-चिह्न (Souvenirs) के रूप में बेचा गया जो इसके विनाश को सहेज कर रखना चाहते थे।"
+            },
+            {
+                id: 22,
+                question: `नीचे दो कथन दिए गए हैं, एक को कथन (A) तथा दूसरे को कारण (R) कहा गया है:<br><br>
+                <strong>कथन (A):</strong> 1789 की गर्मियों में फ्रांस के ग्रामीण इलाकों में 'महा भय' (Great Fear) की लहर फैल गई।<br>
+                <strong>कारण (R):</strong> गांव-गांव यह अफवाह फैल गई थी कि जागीरों के मालिकों ने लठैतों (डाकुओं) के गिरोह बुला लिए हैं जो पकी फसलों को नष्ट करने के लिए निकल पड़े हैं।`,
+                options: [
+                    "(A) और (R) दोनों सही हैं और (R), (A) की सही व्याख्या है।",
+                    "(A) और (R) दोनों सही हैं लेकिन (R), (A) की सही व्याख्या नहीं है।",
+                    "(A) सही है लेकिन (R) गलत है।",
+                    "(A) गलत है लेकिन (R) सही है।"
+                ],
+                correct: 0,
+                explanation: "अफवाहों के इस डर को 'महा भय' कहा गया। आतंकित होकर किसानों ने कुलीनों के दुर्गों (Châteaux) पर हमला किया, अन्न भंडार लूटे और लगान के अभिलेख जला डाले।"
+            },
+            {
+                id: 23,
+                question: `फ्रांसीसी देहात में कुलीनों के महलों/दुर्गों को क्या कहा जाता था?`,
+                options: ["मैनर", "शातो (Château)", "गिल्ड", "कम्यून"],
+                correct: 1,
+                explanation: "शातो (Château) सामंत या कुलीन का भव्य ग्रामीण महल या किला होता था।"
+            },
+            {
+                id: 24,
+                question: `नेशनल असेंबली द्वारा 4 अगस्त 1789 की रात को पारित ऐतिहासिक अध्यादेश के प्रावधानों में क्या शामिल था?<br>
+                1. सामंती व्यवस्था, करों और विशेषाधिकारों का पूर्ण उन्मूलन।<br>
+                2. चर्च द्वारा वसूले जाने वाले 'टाइद' कर की समाप्ति।<br>
+                3. चर्च के स्वामित्व वाली संपूर्ण भूमि को जब्त कर राज्य की संपत्ति बनाना।<br>
+                उपर्युक्त में से <strong>कौन-से कथन सही हैं?</strong>`,
+                options: ["केवल 1 और 2", "केवल 2 और 3", "केवल 1 और 3", "1, 2 और 3"],
+                correct: 3,
+                explanation: "4 अगस्त 1789 के ऐतिहासिक आदेश द्वारा सामंती कर समाप्त हुए, टाइद का उन्मूलन हुआ और चर्च की भूमि जब्त हुई, जिससे राज्य को कम से कम 20 अरब लिब्रे की संपत्ति मिली।"
+            },
+            {
+                id: 25,
+                question: `14 जुलाई 1789 को पेरिस में हिंसक उथल-पुथल का तात्कालिक कारण क्या था?`,
+                options: [
+                    "कड़ाके की ठंड से फसल खराब होना और बेकरों द्वारा पावरोटी की जमाखोरी के कारण महिलाओं का बेकरी पर धावा बोलना तथा राजा द्वारा सेना को शहर में घुसने का आदेश देना।",
+                    "ब्रिटिश सेना का पेरिस पर अचानक आक्रमण।",
+                    "नेशनल असेंबली द्वारा पेरिस के नागरिकों पर नया कर लगाना।",
+                    "रोबेस्पेयर द्वारा राजा की गिरफ्तारी का आदेश देना।"
+                ],
+                correct: 0,
+                explanation: "भीषण ठंड से पावरोटी की जमाखोरी, बेकरी दुकानों पर घंटों कतार में खड़ी महिलाओं का गुस्सा और राजा द्वारा पेरिस में सैनिकों के मार्च के आदेश ने विस्फोट की स्थिति बना दी।"
+            },
+            {
+                id: 26,
+                question: `1789 की क्रांति के दौरान किसानों ने कुलीनों के घरों में घुसकर किस प्रकार के दस्तावेजों को जला दिया था?`,
+                options: [
+                    "भूमि स्वामित्व और सामंती लगान से संबंधित अभिलेख (Manorial records)",
+                    "सेना में भर्ती के दस्तावेज",
+                    "पेरिस बैंक की चेक बुक",
+                    "धार्मिक बाइबिल की प्रतियां"
+                ],
+                correct: 0,
+                explanation: "किसानों ने सामंती लगान और देनदारियों के सरकारी रिकॉर्ड्स (Manorial records) के अभिलेखागारों को राख के ढेर में बदल दिया।"
+            },
+            {
+                id: 27,
+                question: `नेशनल असेंबली के दबाव के सामने झुकते हुए अंततः लुई 16वें ने क्या स्वीकार किया?`,
+                options: [
+                    "अपनी सत्ता का तत्काल त्याग और निर्वासन",
+                    "नेशनल असेंबली को मान्यता देना और यह स्वीकार करना कि उसकी सत्ता पर अब से संविधान का अंकुश होगा",
+                    "रोबेस्पेयर को प्रधानमंत्री नियुक्त करना",
+                    "तीसरे एस्टेट को सेना का पूर्ण नियंत्रण सौंपना"
+                ],
+                correct: 1,
+                explanation: "विद्रोही प्रजा की शक्ति को देखकर लुई सोलहवें ने नेशनल असेंबली को मान्यता दी और संवैधानिक राजतंत्र स्वीकार किया।"
+            },
+            {
+                id: 28,
+                question: `स्टेट्स जनरल की बैठक 1789 से पहले अंतिम बार किस वर्ष आयोजित की गई थी?`,
+                options: ["1614 में", "1715 में", "1550 में", "1688 में"],
+                correct: 0,
+                explanation: "फ्रांसीसी सम्राट को नए कर लगाने के लिए स्टेट्स जनरल बुलानी पड़ती थी, जिसकी पिछली बैठक 175 साल पहले सन 1614 में बुलाई गई थी।"
+            },
+            {
+                id: 29,
+                question: `स्टेट्स जनरल के तीसरे एस्टेट के प्रतिनिधियों की सामाजिक पृष्ठभूमि क्या थी?`,
+                options: [
+                    "वे केवल अनपढ़ दिहाड़ी मजदूर थे।",
+                    "वे मुख्यतः संपन्न, शिक्षित वर्ग (वकील, व्यापारी और प्रशासनिक अधिकारी) थे।",
+                    "वे कैथोलिक मिशनरी के पादरी थे।",
+                    "वे शाही सेना के उच्च अधिकारी थे।"
+                ],
+                correct: 1,
+                explanation: "तीसरे एस्टेट के 600 प्रतिनिधियों में केवल समृद्ध, शिक्षित व्यापारी, वकील और बुद्धिजीवी शामिल थे; मजदूरों-किसानों का सीधे प्रतिनिधित्व नहीं था।"
+            },
+            {
+                id: 30,
+                question: `1789 में वर्साय के भव्य महल के किस हिस्से में स्टेट्स जनरल की बैठक आयोजित की गई थी?`,
+                options: [
+                    "शीशमहल (Hall of Mirrors)",
+                    "रेशेदार कालीन से सजाया गया एक शानदार सभाभवन",
+                    "शाही अस्तबल",
+                    "वर्साय का खुला बगीचा"
+                ],
+                correct: 1,
+                explanation: "वर्साय के एक भव्य सभागार को प्रथम और द्वितीय एस्टेट के स्वागत हेतु अत्यंत शानदार ढंग से सजाया गया था।"
+            },
+            {
+                id: 31,
+                question: `तीसरे एस्टेट के प्रतिनिधियों ने 1789 में खुद को क्या घोषित करके राष्ट्रीय संप्रभुता का दावा किया?`,
+                options: ["स्टेट्स जनरल", "नेशनल असेंबली (National Assembly)", "कन्वेंशन", "जैकोबिन क्लब"],
+                correct: 1,
+                explanation: "उन्होंने 17 जून 1789 को स्वयं को 'नेशनल असेंबली' घोषित किया और दावा किया कि वही संपूर्ण फ्रांसीसी राष्ट्र का वास्तविक प्रतिनिधित्व करते हैं।"
+            },
+            {
+                id: 32,
+                question: `बास्तिल किले पर हमले के समय वहां कितने कैदी बंद थे?`,
+                options: ["700", "7", "70", "शून्य (बिल्कुल खाली था)"],
+                correct: 1,
+                explanation: "उस समय बास्तिल में केवल 7 बंदी कैद थे, लेकिन यह किला राजा की निरंकुशता का प्रतीक होने के कारण जनता के आक्रोश का शिकार बना।"
+            },
+            {
+                id: 33,
+                question: `वर्साय से पेरिस की दूरी लगभग कितनी थी, जहां से क्रांतिकारी घटनाएं नियंत्रित हो रही थीं?`,
+                options: ["लगभग 20 किलोमीटर", "लगभग 200 किलोमीटर", "लगभग 500 किलोमीटर", "लगभग 5 किलोमीटर"],
+                correct: 0,
+                explanation: "वर्साय पेरिस से लगभग 20 किलोमीटर दक्षिण-पश्चिम में स्थित फ्रांस का शाही प्रशासनिक केंद्र था।"
+            },
+            {
+                id: 34,
+                question: `4 अगस्त 1789 के आदेश से चर्च की संपत्ति जब्त होने पर फ्रांस सरकार को लगभग कितनी राशि की संपत्ति हासिल हुई?`,
+                options: ["2 अरब लिब्रे", "10 अरब लिब्रे", "20 अरब लिब्रे", "50 अरब लिब्रे"],
+                correct: 2,
+                explanation: "NCERT अध्याय 1 के अनुसार, चर्च की जमीन जब्त होने से सरकार को कम से कम 20 अरब लिब्रे की मूल्यवान परिसंपत्तियां प्राप्त हुईं।"
+            },
+            {
+                id: 35,
+                question: `ग्रामीण क्षेत्रों में दंगे भड़कने पर कुलीन वर्ग की तात्कालिक प्रतिक्रिया क्या थी?`,
+                options: [
+                    "उन्होंने किसानों के साथ मिलकर राजा के विरुद्ध बगावत कर दी।",
+                    "बड़ी संख्या में कुलीन अपनी जागीरें छोड़कर पड़ोसी देशों में भाग गए।",
+                    "उन्होंने अपनी संपूर्ण जमीन स्वेच्छा से दान कर दी।",
+                    "उन्होंने चर्च में जाकर शरण ले ली।"
+                ],
+                correct: 1,
+                explanation: "किसानों के हमलों से डरकर बहुत से कुलीन अपनी जागीरें छोड़कर भाग गए और पड़ोसी मुल्कों में शरणार्थी बन गए।"
+            },
+            {
+                id: 36,
+                question: `स्टेट्स जनरल के तीसरे एस्टेट द्वारा लाई गई 40,000 शिकायतों में मुख्य मांगें क्या थीं?`,
+                options: [
+                    "करों में समानता, सामंती करों की समाप्ति और अभिव्यक्ति की स्वतंत्रता",
+                    "राजतंत्र को समाप्त कर सेना का शासन",
+                    "चर्च को राज्य का सर्वोच्च शासक बनाना",
+                    "व्यापार पर पूर्ण सरकारी नियंत्रण"
+                ],
+                correct: 0,
+                explanation: "शिकायत पत्रों में मुख्य मांगें कर प्रणाली का न्यायसंगत वितरण, सामंती विशेषाधिकारों की समाप्ति और मौलिक अधिकारों से संबंधित थीं।"
+            },
+            {
+                id: 37,
+                question: `1791 के फ्रांसीसी संविधान के मुख्य उद्देश्य के संदर्भ में कौन-सा कथन सत्य है?`,
+                options: [
+                    "फ्रांस में तुरंत एक साम्यवादी गणतंत्र की स्थापना करना।",
+                    "सम्राट की निरंकुश शक्तियों को सीमित करना तथा शासन शक्तियों को विधायिका, कार्यपालिका और न्यायपालिका में विभाजित करना।",
+                    "कैथोलिक चर्च को राज्य का प्रधान घोषित करना।",
+                    "महिलाओं को पुरुषों से अधिक राजनीतिक मताधिकार देना।"
+                ],
+                correct: 1,
+                explanation: "1791 के संविधान का मुख्य लक्ष्य सम्राट की शक्तियों को सीमित कर सत्ता को तीन अंगों (विधायिका, कार्यपालिका, न्यायपालिका) में विकेंद्रीकृत करना था।"
+            },
+            {
+                id: 38,
+                question: `1791 के संविधान के अनुसार 'सक्रिय नागरिक' (Active Citizens) बनने की न्यूनतम पात्रता क्या थी?<br>
+                1. केवल पुरुष होना और आयु कम से कम 25 वर्ष होना।<br>
+                2. कम से कम 3 दिन की मजदूरी के बराबर प्रत्यक्ष कर अदा करना।<br>
+                3. विश्वविद्यालय से स्नातक डिग्री प्राप्त होना।<br>
+                उपर्युक्त में से <strong>कौन-से सही हैं?</strong>`,
+                options: ["केवल 1 और 2", "केवल 2 और 3", "केवल 1 और 3", "1, 2 और 3"],
+                correct: 0,
+                explanation: "सक्रिय नागरिक केवल 25 वर्ष से अधिक उम्र के पुरुष थे जो न्यूनतम 3 दिन की मजदूरी के बराबर प्रत्यक्ष कर देते थे। शिक्षा की कोई अनिवार्य शर्त नहीं थी।"
+            },
+            {
+                id: 39,
+                question: `1791 के संविधान में 'निष्क्रिय नागरिक' (Passive Citizens) की श्रेणी में किन्हें रखा गया था?`,
+                options: [
+                    "केवल विदेशी शरणार्थियों को",
+                    "वे सभी पुरुष जो कर-पात्रता पूरी नहीं करते थे तथा समाज की सभी महिलाएं",
+                    "पादरी और कुलीन वर्ग के सभी लोगों को",
+                    "केवल सेना के सिपाहियों को"
+                ],
+                correct: 1,
+                explanation: "2.8 करोड़ की आबादी में लगभग 30 लाख पुरुष जो कर नहीं भरते थे और सभी महिलाओं व बच्चों को मताधिकार से वंचित रखकर निष्क्रिय नागरिक माना गया।"
+            },
+            {
+                id: 40,
+                question: `1791 के संविधान के तहत 'नेशनल असेंबली' के चुनाव की प्रक्रिया कैसी थी?`,
+                options: [
+                    "सभी व्यस्क नागरिकों द्वारा प्रत्यक्ष मतदान द्वारा",
+                    "सक्रिय नागरिकों द्वारा पहले 50,000 निर्वाचकों (Electors) का चुनाव, फिर निर्वाचकों द्वारा 745 सदस्यीय असेंबली का चुनाव",
+                    "राजा द्वारा सीधे मनोनीत",
+                    "प्रत्येक नगर निगम द्वारा 10-10 सदस्यों का चयन"
+                ],
+                correct: 1,
+                explanation: "नेशनल असेंबली का चुनाव अप्रत्यक्ष था: सक्रिय नागरिक 50,000 निर्वाचक चुनते थे, और वे निर्वाचक 745 सदस्यों वाली नेशनल असेंबली चुनते थे।"
+            },
+            {
+                id: 41,
+                question: `1791 के संविधान के तहत राजा (सम्राट) के पास कौन-सी महत्वपूर्ण संवैधानिक शक्ति बनी रही?`,
+                options: [
+                    "विधायिका के निर्णयों पर वीटो (Veto - निषेधाधिकार) की शक्ति",
+                    "न्यायाधीशों को बिना सुनवाई के फांसी देने की शक्ति",
+                    "अपनी मर्जी से नए कर लगाने का एकाधिकार",
+                    "संविधान को अकेले निरस्त करने का अधिकार"
+                ],
+                correct: 0,
+                explanation: "सम्राट कार्यपालिका का मुखिया था और उसके पास असेंबली के कानूनों पर वीटो (Veto) की शक्ति थी, हालांकि उस पर असेंबली का नियंत्रण था।"
+            },
+            {
+                id: 42,
+                question: `1789 में नेशनल असेंबली द्वारा अपनाए गए 'मनुष्य एवं नागरिक अधिकार घोषणापत्र' (Declaration of the Rights of Man and Citizen) में किन अधिकारों को 'नैसर्गिक एवं अहरणीय' (Natural and Inalienable) घोषित किया गया?`,
+                options: [
+                    "जीवन का अधिकार, अभिव्यक्ति की स्वतंत्रता और कानून के समक्ष समानता",
+                    "निःशुल्क आवास और राज्य द्वारा अनिवार्य भोजन",
+                    "राजा को बिना कारण किसी को भी दंडित करने का अधिकार",
+                    "दास व्यापार को कानूनी रूप से जारी रखने का अधिकार"
+                ],
+                correct: 0,
+                explanation: "जीवन का अधिकार, विचार व अभिव्यक्ति की स्वतंत्रता तथा कानूनी समानता को जन्मसिद्ध और अहरणीय अधिकार घोषित किया गया जिन्हें छीना नहीं जा सकता।"
+            },
+            {
+                id: 43,
+                question: `क्रांतिकारी फ्रांस के राजनीतिक प्रतीकों और उनके अर्थों का कौन-सा युग्म असत्य है?`,
+                options: [
+                    "टूटी हुई जंजीर — आजादी का प्रतीक (दासों की बेड़ियों से मुक्ति)",
+                    "छड़ों का बर्छीदार गट्ठा — एकता में बल है",
+                    "अपनी पूंछ मुंह में लिए सांप — समानता और बंधुत्व का प्रतीक",
+                    "लाल फ्राइजियन टोपी — दासों द्वारा स्वतंत्र होने के बाद पहनी जाने वाली टोपी"
+                ],
+                correct: 2,
+                explanation: "'अपनी पूंछ मुंह में लिए सांप' सनातनता (Eternity) का प्रतीक था, समानता का नहीं।"
+            },
+            {
+                id: 44,
+                question: `फ्रांसीसी क्रांति के दौरान प्रयुक्त प्रतीक 'विधि-पट' (The Law Tablet) क्या संदेश देता था?`,
+                options: [
+                    "राजा का आदेश ही सर्वोच्च कानून है।",
+                    "कानून सबके लिए समान है और उसकी नजर में सब बराबर हैं।",
+                    "केवल पादरी वर्ग ही कानून की व्याख्या कर सकता है।",
+                    "कानून केवल कर देने वाले सक्रिय नागरिकों पर लागू होता है।"
+                ],
+                correct: 1,
+                explanation: "विधि-पट का स्पष्ट संदेश था: 'कानून सबके लिए समान है और उसकी नज़र में सब बराबर हैं।'"
+            },
+            {
+                id: 45,
+                question: `फ्रांस के राष्ट्रीय रंगों (National Colours) के रूप में किन तीन रंगों को अपनाया गया था?`,
+                options: [
+                    "लाल, हरा और सफेद",
+                    "नीला, सफेद और लाल",
+                    "पीला, लाल और काला",
+                    "नीला, पीला और हरा"
+                ],
+                correct: 1,
+                explanation: "नीला-सफेद-लाल (Blue, White, Red) फ्रांस के राष्ट्रीय रंग बने, जिन्हें 'द विंग्ड वुमन' के वस्त्रों और फ्रांसीसी ध्वज में देखा गया।"
+            },
+            {
+                id: 46,
+                question: `प्रतीक 'डेने वाली स्त्री' (The Winged Woman) किसका मानवीकरण करती थी?`,
+                options: ["युद्ध की देवी का", "कानून के मानवीय रूप का", "फ्रांस की महारानी का", "पेरिस शहर की संरक्षिका का"],
+                correct: 1,
+                explanation: "NCERT के अनुसार पंखों वाली स्त्री कानून के मानवीय रूप (Personification of the Law) का प्रतीक थी।"
+            },
+            {
+                id: 47,
+                question: `1791 के संविधान के घोषणापत्र का अनुच्छेद 1 क्या कहता है?`,
+                options: [
+                    "मनुष्य स्वतंत्र जन्म लेते हैं, स्वतंत्र रहते हैं और उनके अधिकार समान होते हैं।",
+                    "राजा ईश्वर का प्रतिनिधि है और उसकी आज्ञा ही कानून है।",
+                    "संपत्ति केवल राज्य की होगी, व्यक्तिगत संपत्ति अमान्य है।",
+                    "केवल उच्च एस्टेट के लोग ही शासन के पद धारण कर सकते हैं।"
+                ],
+                correct: 0,
+                explanation: "अनुच्छेद 1: 'Men are born and remain free and equal in rights.' (आदमी स्वतंत्र पैदा होते हैं, स्वतंत्र रहते हैं और उनके अधिकार समान होते हैं)।"
+            },
+            {
+                id: 48,
+                question: `1791 के संविधान में 'कानून' (Law) को किस प्रकार परिभाषित किया गया था?`,
+                options: [
+                    "सम्राट के मुख से निकला प्रत्येक शब्द कानून है।",
+                    "कानून सामान्य इच्छा की अभिव्यक्ति है; सभी नागरिकों को इसके निर्माण में भाग लेने का अधिकार है।",
+                    "चर्च की धार्मिक संहिताओं का संकलन ही कानून है।",
+                    "सैनिक न्यायालय द्वारा पारित निर्णय ही एकमात्र कानून है।"
+                ],
+                correct: 1,
+                explanation: "घोषणापत्र के अनुच्छेद 6 के अनुसार: 'कानून सामान्य इच्छा की अभिव्यक्ति है।' (Law is the expression of the general will)."
+            },
+            {
+                id: 49,
+                question: `1791 के संविधान में निर्वाचक (Elector) बनने और असेंबली के सदस्य के रूप में चुने जाने के लिए क्या अतिरिक्त शर्त थी?`,
+                options: [
+                    "शाही परिवार से संबंध होना",
+                    "करों के उच्चतम वर्ग (Highest bracket of taxpayers) में शामिल होना",
+                    "कम से कम 5 वर्ष सेना में सेवा देना",
+                    "लैटिन भाषा में निपुण होना"
+                ],
+                correct: 1,
+                explanation: "निर्वाचकों और असेंबली के सदस्यों की पात्रता के लिए नागरिकों का करदाताओं के उच्चतम स्लैब में होना अनिवार्य था।"
+            },
+            {
+                id: 50,
+                question: `फ्रांस में 1791 के संविधान के तहत न्यायपालिका का गठन किस प्रकार किया गया था?`,
+                options: [
+                    "न्यायाधीशों का पद वंशानुगत रखा गया था।",
+                    "न्यायाधीशों का चुनाव सक्रिय नागरिकों द्वारा मतदान से किया जाता था।",
+                    "सम्राट अपनी इच्छानुसार न्यायाधीश नियुक्त करता था।",
+                    "चर्च के मुख्य पादरी ही सर्वोच्च न्यायाधीश होते थे।"
+                ],
+                correct: 1,
+                explanation: "1791 के संविधान में न्यायाधीशों का चुनाव भी सक्रिय नागरिकों के मतदान द्वारा किया जाता था।"
+            },
+            {
+                id: 51,
+                question: `घोषणापत्र के अनुसार 'स्वतंत्रता' (Liberty) का क्या अभिप्राय बताया गया था?`,
+                options: [
+                    "बिना किसी नियम के जो मन में आए वह करना",
+                    "ऐसा हर काम करने की शक्ति जिससे औरों को नुकसान न पहुंचे",
+                    "केवल विदेशी शासन से मुक्ति",
+                    "राज्य को कोई भी कर न देना"
+                ],
+                correct: 1,
+                explanation: "घोषणापत्र के अनुसार: स्वतंत्रता का अर्थ ऐसे किसी भी कार्य को करने की शक्ति है जो दूसरों के अधिकारों को क्षति न पहुंचाए।"
+            },
+            {
+                id: 52,
+                question: `1791 के संविधान के लागू होने के बावजूद पेरिस के गरीब और आम लोग असंतुष्ट क्यों थे?`,
+                options: [
+                    "क्योंकि राजतंत्र को तुरंत बहाल नहीं किया गया था।",
+                    "क्योंकि मताधिकार केवल धनी वर्ग तक सीमित था और आबादी के विशाल हिस्से को राजनीतिक अधिकारों से बाहर रखा गया था।",
+                    "क्योंकि फ्रांस ने ब्रिटेन पर तुरंत आक्रमण नहीं किया।",
+                    "क्योंकि चर्चों को फिर से सारे अधिकार दे दिए गए थे।"
+                ],
+                correct: 1,
+                explanation: "संविधान ने राजनीतिक सत्ता केवल धनी वर्ग के हाथों में केंद्रित कर दी थी, जिससे कामगार, मजदूर और किसान राजनीतिक रूप से उपेक्षित महसूस कर रहे थे।"
+            },
+            {
+                id: 53,
+                question: `1792 में नेशनल असेंबली ने किन दो देशों के विरुद्ध युद्ध की घोषणा का प्रस्ताव पारित किया?`,
+                options: ["ब्रिटेन और रूस", "प्रशिया और ऑस्ट्रिया", "स्पेन और पुर्तगाल", "स्वीडन और डेनमार्क"],
+                correct: 1,
+                explanation: "लुई 16वें द्वारा पड़ोसी राजाओं के साथ गुप्त साजिश रचने और फ्रांस पर हमले की तैयारी की भनक लगते ही असेंबली ने अप्रैल 1792 में प्रशिया और ऑस्ट्रिया के खिलाफ युद्ध की घोषणा कर दी।"
+            },
+            {
+                id: 54,
+                question: `फ्रांस का वर्तमान राष्ट्रगान 'मार्सीले' (Marseillaise) किसके द्वारा रचित किया गया था?`,
+                options: ["रॉगे द लायल (Roget de L'Isle)", "मैक्समिलियन रोबेस्पेयर", "ज्यां-पॉल मारा", "नेपोलियन बोनापार्ट"],
+                correct: 0,
+                explanation: "कवि रॉगे द लायल द्वारा रचित यह देशभक्ति गीत जब मार्सीले के स्वयंसेवकों ने पेरिस कूच करते समय गाया, तो इसका नाम 'मार्सीले' पड़ गया।"
+            },
+            {
+                id: 55,
+                question: `फ्रांसीसी क्रांति के दौरान गठित प्रसिद्ध 'जैकोबिन क्लब' का नाम किस पर आधारित था?`,
+                options: [
+                    "इंग्लैंड के राजा जेम्स प्रथम पर",
+                    "पेरिस के भूतपूर्व कॉन्वेंट ऑफ सेंट जेकब के नाम पर",
+                    "फ्रांस के एक महान वैज्ञानिक जेकब पर",
+                    "क्रांतिकारी सैनिकों के एक गुप्त कोड पर"
+                ],
+                correct: 1,
+                explanation: "जैकोबिन क्लब का नाम पेरिस के भूतपूर्व 'कॉन्वेंट ऑफ सेंट जेकब' (Convent of St. Jacob) के नाम पर पड़ा था।"
+            },
+            {
+                id: 56,
+                question: `जैकोबिन क्लब के मुख्य सदस्यों में समाज के कौन-से तबके शामिल थे?<br>
+                1. छोटे दुकानदार और कारीगर (जूता बनाने वाले, पेस्ट्री बनाने वाले, घड़ीसाज)<br>
+                2. छपाई करने वाले, नौकर और दिहाड़ी मजदूर<br>
+                3. बड़े सामंत और शाही सेनापति<br>
+                उपर्युक्त में से <strong>कौन-से सही हैं?</strong>`,
+                options: ["केवल 1 और 2", "केवल 2 और 3", "केवल 1 और 3", "1, 2 और 3"],
+                correct: 0,
+                explanation: "जैकोबिन क्लब मुख्यतः समाज के कम समृद्ध हिस्सों का मंच था (दुकानदार, कारीगर, नौकर, मजदूर)। बड़े सामंत इसमें शामिल नहीं थे।"
+            },
+            {
+                id: 57,
+                question: `जैकोबिन सदस्यों को 'सौं-कुलॉत' (Sans-culottes) क्यों कहा गया?`,
+                options: [
+                    "क्योंकि वे युद्ध में बिना वर्दी के लड़ते थे।",
+                    "क्योंकि वे फैशनपरस्त कुलीनों द्वारा पहने जाने वाले 'ब्रीचेस' (घुटना) के विपरीत लंबी धारीदार पतलून पहनते थे।",
+                    "क्योंकि वे केवल लाल रंग का कोट पहनते थे।",
+                    "क्योंकि वे हथियारों से पूरी तरह रहित होते थे।"
+                ],
+                correct: 1,
+                explanation: "सौं-कुलॉत का शाब्दिक अर्थ 'बिना घुटने वाले' था। वे कुलीनों की तरह घुटने तक का ब्रीचेस न पहनकर लंबी धारीदार पतलून पहनते थे।"
+            },
+            {
+                id: 58,
+                question: `10 अगस्त 1792 की सुबह जैकोबिनों और पेरिसवासियों ने किस शाही महल पर धावा बोलकर राजा के अंगरक्षकों को मार डाला?`,
+                options: ["वर्साय का महल", "त्यूलरी का महल (Palace of the Tuileries)", "फांतेनब्लो", "बास्तिल"],
+                correct: 1,
+                explanation: "10 अगस्त 1792 को क्रांतिकारियों ने त्यूलरी के महल पर धावा बोला, राजा के गार्ड्स को मार दिया और शाही परिवार को बंधक बना लिया।"
+            },
+            {
+                id: 59,
+                question: `10 अगस्त 1792 के विद्रोह के बाद नए चुनाव में मताधिकार के नियमों में क्या क्रांतिकारी परिवर्तन किया गया?`,
+                options: [
+                    "केवल संपत्ति वाले पुरुषों को मताधिकार दिया गया।",
+                    "21 वर्ष और उससे अधिक उम्र के सभी पुरुषों को, चाहे उनके पास संपत्ति हो या न हो, मतदान का अधिकार दिया गया।",
+                    "सभी महिलाओं को अनिवार्य मतदान का अधिकार दिया गया।",
+                    "केवल सैन्य अधिकारियों को मतदान का अधिकार दिया गया।"
+                ],
+                correct: 1,
+                explanation: "नए चुनावों में संपत्ति की शर्त हटाकर 21 वर्ष या उससे अधिक आयु के सभी पुरुषों को सार्वभौमिक मताधिकार दिया गया।"
+            },
+            {
+                id: 60,
+                question: `21 सितंबर 1792 को नवनिर्वाचित असेंबली ने कौन-सा ऐतिहासिक कदम उठाया?`,
+                options: [
+                    "राजतंत्र का उन्मूलन किया और फ्रांस को एक गणतंत्र घोषित किया।",
+                    "ब्रिटेन के साथ एक शांति संधि पर हस्ताक्षर किए।",
+                    "नेपोलियन को फ्रांस का आजीवन चांसलर नियुक्त किया।",
+                    "रोबेस्पेयर को राजा के रूप में ताज पहनाया।"
+                ],
+                correct: 0,
+                explanation: "21 सितंबर 1792 को नई असेंबली (कन्वेंशन) ने राजतंत्र को समाप्त कर फ्रांस को औपचारिक रूप से एक गणतंत्र (Republic) घोषित किया।"
+            },
+            {
+                id: 61,
+                question: `फ्रांस के अपदस्थ राजा लुई सोलहवें को किस आरोप में 21 जनवरी 1793 को सार्वजनिक रूप से मृत्युदंड दिया गया?`,
+                options: ["भ्रष्टाचार", "देशद्रोह (Treason)", "चर्च की संपत्ति चुराना", "सैन्य नियमों का उल्लंघन"],
+                correct: 1,
+                explanation: "अदालत द्वारा 'देशद्रोह' (Treason - अपने देश या सरकार के साथ गद्दारी) के आरोप में लुई 16वें को 'प्लेस डे ला कॉनकॉर्ड' पर गिलोटिन द्वारा मृत्युदंड दिया गया।"
+            },
+            {
+                id: 62,
+                question: `फ्रांसीसी क्रांति के इतिहास में 'आतंक का राज' (Reign of Terror) किस समयावधि को कहा जाता है?`,
+                options: ["1789 से 1791", "1791 से 1792", "1793 से 1794", "1799 से 1804"],
+                correct: 2,
+                explanation: "रोबेस्पेयर के शासनकाल (1793 से 1794) को उसके कठोर नियंत्रण और निर्मम दंड नीति के कारण 'आतंक का राज' कहा जाता है।"
+            },
+            {
+                id: 63,
+                question: `'गिलोटिन' (Guillotine) क्या था और इसका आविष्कार किसने किया था?`,
+                options: [
+                    "अनाज पीसने की एक पवन चक्की, जिसका आविष्कार लायल ने किया था।",
+                    "सिर धड़ से अलग करने वाली दो खंभों के बीच लटकते आरे वाली मशीन, जिसका नाम इसके आविष्कारक डॉ. गिलोटिन पर पड़ा था।",
+                    "शाही तोप का एक प्रकार, जिसका आविष्कार आबे सिएए ने किया था।",
+                    "एक प्रकार का गुप्त कारागार, जिसे लुई 16वें ने बनाया था।"
+                ],
+                correct: 1,
+                explanation: "गिलोटिन दो खंभों के बीच लटकती ब्लेड वाली मशीन थी जिससे दोषी का सिर काटा जाता था। इसका नाम डॉ. गिलोटिन के नाम पर रखा गया था।"
+            },
+            {
+                id: 64,
+                question: `रोबेस्पेयर सरकार द्वारा फ्रांस में लागू किए गए आर्थिक सुधारों में क्या शामिल था?<br>
+                1. मजदूरी एवं कीमतों की अधिकतम सीमा तय करना।<br>
+                2. गोश्त (मांस) और पावरोटी की राशनिंग करना।<br>
+                3. महंगे सफेद आटे के उपयोग पर रोक लगाकर साबुत गेहूं की 'समता रोटी' (Pain d'égalité) अनिवार्य करना।<br>
+                उपर्युक्त में से <strong>कौन-से सही हैं?</strong>`,
+                options: ["केवल 1 और 2", "केवल 2 और 3", "केवल 1 और 3", "1, 2 और 3"],
+                correct: 3,
+                explanation: "रोबेस्पेयर ने सामाजिक समानता के लिए मजदूरी-मूल्य नियंत्रण, मांस व रोटी की राशनिंग और सफेद आटे पर प्रतिबंध लगाकर 'समता रोटी' खाना अनिवार्य किया।"
+            },
+            {
+                id: 65,
+                question: `रोबेस्पेयर के शासनकाल में फ्रांसीसी नागरिकों के पारंपरिक संबोधन 'मोंस्योर' (Monsieur - जनाब) और 'मदाम' (Madame - महोदया) के स्थान पर क्या संबोधन अनिवार्य किया गया?`,
+                options: [
+                    "कॉमरेड और सिटिजन",
+                    "सितोयेन (Citoyen - नागरिक) और सितोयिन (Citoyenne - नागरिकता/नागरिक स्त्री)",
+                    "ब्रदर और सिस्टर",
+                    "पैट्रियट और रिपब्लिकन"
+                ],
+                correct: 1,
+                explanation: "समानता स्थापित करने के लिए मोंस्योर और मदाम के स्थान पर सभी पुरुषों को 'सितोयेन' और महिलाओं को 'सितोयिन' कहना अनिवार्य किया गया।"
+            },
+            {
+                id: 66,
+                question: `जुलाई 1794 में रोबेस्पेयर के पतन और मृत्युदंड का मुख्य कारण क्या था?`,
+                options: [
+                    "उसकी नीतियों का अत्यधिक क्रूर व निर्मम होना, जिससे उसके अपने समर्थक भी त्राहि-त्राहि करने लगे थे।",
+                    "प्रशिया की सेना द्वारा पेरिस पर कब्जा।",
+                    "उसके द्वारा राजतंत्र को पुनः स्थापित करने का प्रयास।",
+                    "उसका कैथोलिक धर्म स्वीकार कर लेना।"
+                ],
+                correct: 0,
+                explanation: "रोबेस्पेयर ने अपनी नीतियों को इतनी कठोरता से लागू किया कि उसके अपने समर्थक भी संयम की मांग करने लगे। अंततः जुलाई 1794 में न्यायालय ने उसे दोषी ठहराकर गिलोटिन पर चढ़ा दिया।"
+            },
+            {
+                id: 67,
+                question: `जैकोबिन सरकार के पतन के बाद सत्ता में आए मध्यम वर्ग के संपन्न तबके ने शासन व्यवस्था में क्या बड़ा बदलाव किया?`,
+                options: [
+                    "एक नया संविधान बनाकर गैर-संपत्तिधारक तबके से मताधिकार पुनः छीन लिया गया और 5 सदस्यीय 'डिरेक्ट्री' (Directory) गठित की गई।",
+                    "लुई 16वें के पुत्र को तुरंत नया राजा बना दिया गया।",
+                    "सभी सैनिकों को संसद में सीधे बैठा दिया गया।",
+                    "फ्रांस को 10 अलग-अलग स्वतंत्र राज्यों में बांट दिया गया।"
+                ],
+                correct: 0,
+                explanation: "जैकोबिन पतन के बाद 1795 के नए संविधान में संपत्तिहीन पुरुषों से मताधिकार छीना गया और सत्ता के केंद्रीकरण से बचने के लिए 5 सदस्यीय कार्यपालिका 'डिरेक्ट्री' बनाई गई।"
+            },
+            {
+                id: 68,
+                question: `डिरेक्ट्री के शासनकाल की राजनीतिक अस्थिरता ने अंततः किसके उत्थान का मार्ग प्रशस्त किया?`,
+                options: ["जार निकोलस", "सैन्य तानाशाह नेपोलियन बोनापार्ट", "ड्यूक ऑफ वेलिंगटन", "बिस्मार्क"],
+                correct: 1,
+                explanation: "डिरेक्ट्री के निदेशकों और विधान परिषदों के बीच निरंतर झगड़ों की राजनीतिक अस्थिरता ने सैनिक तानाशाह नेपोलियन बोनापार्ट के उदय का रास्ता साफ किया।"
+            },
+            {
+                id: 69,
+                question: `फ्रांसीसी पत्रकार ज्यां-पॉल मारा (Jean-Paul Marat) के प्रसिद्ध क्रांतिकारी अखबार का क्या नाम था?`,
+                options: ["ल'अमी दु प्योप्ल (L'Ami du peuple - जनता का मित्र)", "द पेरिस टाइम्स", "ले मोंद", "द नेशनल"],
+                correct: 0,
+                explanation: "ज्यां-पॉल मारा 'ल'अमी दु प्योप्ल' (जनता का मित्र) नामक प्रसिद्ध क्रांतिकारी अखबार निकालता था जिसने गरीबों के अधिकारों की वकालत की।"
+            },
+            {
+                id: 70,
+                question: `जैकोबिन शासन में चर्च भवनों का क्या उपयोग किया गया था?`,
+                options: [
+                    "उन्हें केवल शाही परिवारों के विश्राम गृह बना दिया गया।",
+                    "उन्हें बंद कर दिया गया और उनके भवनों को बैरक या सरकारी दफ्तर बना दिया गया।",
+                    "उन्हें संग्रहालयों में बदल दिया गया।",
+                    "उन्हें पूरी तरह बारूद से उड़ा दिया गया।"
+                ],
+                correct: 1,
+                explanation: "रोबेस्पेयर ने सभी चर्च बंद कर दिए और उनके भवनों को सैनिकों के बैरक या प्रशासनिक कार्यालयों में परिवर्तित कर दिया।"
+            },
+            {
+                id: 71,
+                question: `1792 में फ्रांस की नवनिर्वाचित असेंबली को क्या नाम दिया गया था?`,
+                options: ["स्टेट्स जनरल", "नेशनल असेंबली", "कन्वेंशन (Convention)", "हाउस ऑफ कॉमन्स"],
+                correct: 2,
+                explanation: "21 सितंबर 1792 को चुनी गई नई क्रांतिकारी असेंबली को 'कन्वेंशन' (Convention) नाम दिया गया।"
+            },
+            {
+                id: 72,
+                question: `फ्रांसीसी क्रांति के दौरान गिलोटिन से मृत्युदंड पाने वाली महारानी मेरी आंतवानेत को कब मृत्युदंड दिया गया?`,
+                options: [
+                    "लुई सोलहवें से पहले ही 1789 में",
+                    "लुई सोलहवें की फांसी के कुछ महीनों बाद अक्टूबर 1793 में",
+                    "नेपोलियन के शासनकाल में 1804 में",
+                    "उन्हें कभी फांसी नहीं दी गई, वे ऑस्ट्रिया भाग गईं।"
+                ],
+                correct: 1,
+                explanation: "लुई सोलहवें को जनवरी 1793 में और महारानी मेरी आंतवानेत को उसी वर्ष अक्टूबर 1793 में गिलोटिन पर मृत्युदंड दिया गया।"
+            },
+            {
+                id: 73,
+                question: `फ्रांसीसी क्रांति में महिलाओं की भूमिका और स्थिति के संदर्भ में निम्नलिखित कथनों पर विचार कीजिए:<br>
+                1. तीसरे एस्टेट की अधिकांश महिलाएं जीविका निर्वाह के लिए सिलाई-बुनाई, कपड़े धोने, बाजारों में फल-सब्जियां बेचने या घरेलू नौकर के रूप में काम करती थीं।<br>
+                2. अधिकांश महिलाओं के पास पढ़ाई-लिखाई और व्यावसायिक प्रशिक्षण के कोई अवसर नहीं थे।<br>
+                3. महिलाओं की मजदूरी पुरुषों की तुलना में हमेशा कम होती थी।<br>
+                उपर्युक्त में से <strong>कौन-से कथन सत्य हैं?</strong>`,
+                options: ["केवल 1 और 2", "केवल 2 और 3", "केवल 1 और 3", "1, 2 और 3"],
+                correct: 3,
+                explanation: "NCERT अध्याय 1 के अनुसार तीनों कथन अक्षरशः सत्य हैं। कामकाजी महिलाओं का जीवन अत्यधिक कठोर था और मजदूरी पुरुषों से कम थी।"
+            },
+            {
+                id: 74,
+                question: `फ्रांस के विभिन्न नगरों में महिलाओं द्वारा शुरू किए गए लगभग 60 राजनीतिक क्लबों में से सबसे प्रसिद्ध क्लब कौन-सा था?`,
+                options: [
+                    "द सोसाइटी ऑफ रिवोल्यूशनरी एंड रिपब्लिकन विमेन",
+                    "द फेमिनिस्ट लीग ऑफ पेरिस",
+                    "द विमेन सफ्रेज यूनियन",
+                    "द डॉटर्स ऑफ लिबर्टी"
+                ],
+                correct: 0,
+                explanation: "महिलाओं का सबसे मशहूर राजनीतिक क्लब 'द सोसाइटी ऑफ रिवोल्यूशनरी एंड रिपब्लिकन विमेन' (The Society of Revolutionary and Republican Women) था।"
+            },
+            {
+                id: 75,
+                question: `फ्रांसीसी महिलाओं के राजनीतिक क्लबों की मुख्य मांग क्या थी?`,
+                options: [
+                    "महिलाओं को पुरुषों के समान राजनीतिक अधिकार, मताधिकार और असेंबली में चुने जाने का अधिकार मिले।",
+                    "सभी पुरुषों को काम से हटाकर केवल महिलाओं को सेना में भर्ती किया जाए।",
+                    "चर्च की संपूर्ण संपत्ति महिलाओं को सौंप दी जाए।",
+                    "विवाह की संस्था को कानूनी रूप से अवैध घोषित किया जाए।"
+                ],
+                correct: 0,
+                explanation: "उनकी सबसे प्रमुख मांग थी कि महिलाओं को पुरुषों के समान मताधिकार, असेंबली के लिए चुने जाने और राजनीतिक पदों पर आसीन होने का अधिकार दिया जाए।"
+            },
+            {
+                id: 76,
+                question: `क्रांतिकारी सरकार ने शुरुआती वर्षों में महिलाओं के जीवन में सुधार लाने के लिए कौन-से कानून बनाए?<br>
+                1. सरकारी विद्यालयों की स्थापना के साथ सभी लड़कियों के लिए स्कूली शिक्षा अनिवार्य की गई।<br>
+                2. पिता अब अपनी मर्जी से बेटियों को विवाह के लिए बाध्य नहीं कर सकते थे।<br>
+                3. विवाह को एक स्वैच्छिक अनुबंध मानकर नागरिक कानून के तहत पंजीकृत किया जाने लगा और तलाक को कानूनी मान्यता दी गई।<br>
+                उपर्युक्त में से <strong>कौन-से सुधार सही हैं?</strong>`,
+                options: ["केवल 1 और 2", "केवल 2 और 3", "केवल 1 और 3", "1, 2 और 3"],
+                correct: 3,
+                explanation: "क्रांतिकारी सरकार ने लड़कियों के लिए अनिवार्य शिक्षा, विवाह अनुबंध, स्वैच्छिक विवाह और महिला-पुरुष दोनों के लिए तलाक की अर्जी देने का कानूनी अधिकार दिया।"
+            },
+            {
+                id: 77,
+                question: `रोबेस्पेयर के 'आतंक राज' के दौरान महिला आंदोलनों पर क्या दमनकारी नीतियां लागू की गईं?`,
+                options: [
+                    "महिला क्लबों को बंद करने और उनकी राजनीतिक गतिविधियों पर प्रतिबंध लगाने का कानून बना, तथा कई प्रमुख महिलाओं को गिरफ्तार कर गिलोटिन पर चढ़ा दिया गया।",
+                    "महिलाओं को अनिवार्य रूप से सेना में भर्ती किया गया।",
+                    "सभी महिलाओं को देश छोड़ने का आदेश दिया गया।",
+                    "महिलाओं के स्कूल जाने पर आजीवन प्रतिबंध लगा दिया गया।"
+                ],
+                correct: 0,
+                explanation: "आतंक राज के दौरान महिला क्लबों को प्रतिबंधित किया गया, उनकी राजनीतिक सभाएं रोकी गईं और ओलम्प दे गूज़ जैसी कई नेत्रियों को गिलोटिन पर चढ़ा दिया गया।"
+            },
+            {
+                id: 78,
+                question: `फ्रांसीसी क्रांतिकारी महिला 'ओलम्प दे गूज़' (Olympe de Gouges) के संदर्भ में कौन-सा कथन असत्य है?`,
+                options: [
+                    "उन्होंने 1791 में 'महिला एवं नागरिक अधिकार घोषणापत्र' तैयार किया।",
+                    "उन्होंने नेशनल असेंबली के घोषणापत्र में महिलाओं को नजरअंदाज किए जाने का कड़ा विरोध किया।",
+                    "उन्होंने जैकोबिन सरकार द्वारा महिला क्लबों को बंद करने के फैसले की तीखी आलोचना की।",
+                    "वे आतंक राज के दौरान रोबेस्पेयर की मुख्य वित्त मंत्री थीं।"
+                ],
+                correct: 3,
+                explanation: "ओलम्प दे गूज़ रोबेस्पेयर की मंत्री नहीं बल्कि उनकी नीतियों की मुखर आलोचक थीं। नेशनल कन्वेंशन ने उन पर देशद्रोह का मुकदमा चलाकर उन्हें फांसी दी थी।"
+            },
+            {
+                id: 79,
+                question: `फ्रांस में महिलाओं को अंततः पुरुषों के समान मतदान का अधिकार किस वर्ष प्राप्त हुआ?`,
+                options: ["1793 में", "1848 में", "1914 में", "1946 में"],
+                correct: 3,
+                explanation: "मताधिकार के लिए लगभग दो सदियों तक चले अंतरराष्ट्रीय संघर्ष के बाद अंततः सन 1946 में फ्रांसीसी महिलाओं को मताधिकार हासिल हुआ।"
+            },
+            {
+                id: 80,
+                question: `ओलम्प दे गूज़ द्वारा तैयार घोषणापत्र में महारानी से क्या मांग की गई थी?`,
+                options: [
+                    "कि वह सभी महिलाओं को हथियार बांट दें।",
+                    "कि वह महिलाओं की मांगों का समर्थन करें क्योंकि वह लिंग के आधार पर स्वयं एक महिला हैं।",
+                    "कि वह ऑस्ट्रिया लौट जाएं।",
+                    "कि वह अपने पुत्र को अगला सम्राट घोषित करें।"
+                ],
+                correct: 1,
+                explanation: "ओलम्प दे गूज़ ने अपना घोषणापत्र महारानी को समर्पित करते हुए अपील की थी कि वे महिलाओं के अधिकारों की रक्षा में आगे आएं।"
+            },
+            {
+                id: 81,
+                question: `डिरेक्ट्री शासित फ्रांस में कार्यपालिका कितने सदस्यों की परिषद से बनती थी?`,
+                options: ["3 सदस्य", "5 सदस्य", "10 सदस्य", "12 सदस्य"],
+                correct: 1,
+                explanation: "जैकोबिन शासन के एक व्यक्ति केंद्रित शासन से सबक लेते हुए 1795 के संविधान में 5 सदस्यों वाली कार्यपालिका 'डिरेक्ट्री' (Directory) बनाई गई थी।"
+            },
+            {
+                id: 82,
+                question: `डिरेक्ट्री और विधान परिषदों के बीच टकराव का मुख्य परिणाम क्या हुआ?`,
+                options: [
+                    "विधान परिषद ने सम्राट को पुनः गद्दी पर बैठा दिया।",
+                    "निदेशकों को बार-बार बर्खास्त करने का प्रयास किया गया, जिससे राजनीतिक पंगुता आई और नेपोलियन का मार्ग प्रशस्त हुआ।",
+                    "फ्रांस ने सभी यूरोपीय देशों को जीत लिया।",
+                    "चर्च ने संसद को भंग कर दिया।"
+                ],
+                correct: 1,
+                explanation: "डिरेक्टरों और विधान परिषदों के बीच निरंतर झगड़ों ने शासन को कमजोर किया, जिसका लाभ उठाकर नेपोलियन ने सैन्य तख्तापलट किया।"
+            },
+            {
+                id: 83,
+                question: `5 अक्टूबर 1789 को लगभग 7,000 पेरिस की महिलाएं पेरिस से वर्साय क्यों मार्च कर गईं?`,
+                options: [
+                    "महारानी के जन्मदिन के उत्सव में भाग लेने।",
+                    "पावरोटी की भीषण कमी और महंगाई के विरोध में राजा को पेरिस वापस लाने के लिए।",
+                    "ब्रिटिश सेना के स्वागत के लिए।",
+                    "टेनिस कोर्ट की शपथ में भाग लेने के लिए।"
+                ],
+                correct: 1,
+                explanation: "पावरोटी के संकट और जमाखोरी से त्रस्त महिलाओं ने हथियारों के साथ वर्साय मार्च किया और राजा व शाही परिवार को पेरिस लाकर ही दम लिया।"
+            },
+            {
+                id: 84,
+                question: `कुलीन वर्ग और तीसरे एस्टेट की धनी महिलाओं की बेटियां ही केवल कहां पढ़ाई कर सकती थीं?`,
+                options: ["पेरिस विश्वविद्यालय में", "कॉन्वेंट (Convent) में", "सैन्य अकादमी में", "ब्रिटिश बोर्डिंग स्कूल में"],
+                correct: 1,
+                explanation: "NCERT के अनुसार केवल कुलीनों या तीसरे एस्टेट के धनी परिवारों की लड़कियां ही कॉन्वेंट (ईसाई धार्मिक शिक्षण संस्थान) में पढ़ पाती थीं।"
+            },
+            {
+                id: 85,
+                question: `फ्रांसीसी महिलाओं के मताधिकार आंदोलन को किस अंतरराष्ट्रीय आंदोलन से संबल मिला?`,
+                options: [
+                    "19वीं सदी और 20वीं सदी के प्रारंभ में चले अंतरराष्ट्रीय मताधिकार आंदोलन (International Suffrage Movement) से",
+                    "अमेरिकी गृहयुद्ध से",
+                    "रूसी बोल्शेविक क्रांति से",
+                    "गुटनिरपेक्ष आंदोलन से"
+                ],
+                correct: 0,
+                explanation: "अंतरराष्ट्रीय महिला मताधिकार आंदोलन (Suffrage Movement) ने फ्रांसीसी महिलाओं के संघर्ष को प्रेरणा और गति प्रदान की।"
+            },
+            {
+                id: 86,
+                question: `ओलम्प दे गूज़ के घोषणापत्र के अनुसार 'संपत्ति का अधिकार' महिलाओं के लिए कैसा अधिकार था?`,
+                options: [
+                    "महिलाओं को संपत्ति रखने का कोई अधिकार नहीं होना चाहिए।",
+                    "संपत्ति पर सभी का पवित्र और अहरणीय अधिकार है, चाहे वह पुरुष हो या महिला।",
+                    "संपत्ति केवल राज्य की होगी।",
+                    "संपत्ति का अधिकार केवल विवाहित माताओं को मिलना चाहिए।"
+                ],
+                correct: 1,
+                explanation: "घोषणापत्र के अनुच्छेद 17 में स्पष्ट किया गया कि संपत्ति दोनों लिंगों (महिला और पुरुष) का पवित्र और अहरणीय अधिकार है।"
+            },
+            {
+                id: 87,
+                question: `17वीं सदी में शुरू हुए 'त्रिकोणीय दास व्यापार' (Triangular Slave Trade) में कौन-से तीन क्षेत्र शामिल थे?`,
+                options: [
+                    "यूरोप, अफ्रीका और अमेरिका",
+                    "यूरोप, एशिया और ऑस्ट्रेलिया",
+                    "भारत, चीन और ब्रिटेन",
+                    "अफ्रीका, भारत और दक्षिण अमेरिका"
+                ],
+                correct: 0,
+                explanation: "त्रिकोणीय दास व्यापार यूरोप (फ्रांस आदि), अफ्रीका (जहां से दास खरीदे जाते थे) और अमेरिका (कैरेबियाई बागान) के मध्य चलता था।"
+            },
+            {
+                id: 88,
+                question: `कैरेबियाई उपनिवेश (मार्टीनिक, ग्वाडेलोप और सैन डोमिंगो) यूरोपीय देशों के लिए किन वस्तुओं के प्रमुख आपूर्तिकर्ता थे?`,
+                options: [
+                    "तंबाकू, नील, चीनी और कॉफी",
+                    "गेहूं, चावल और दालें",
+                    "कोयला, लोहा और इस्पात",
+                    "रेशमी वस्त्र और हस्तशिल्प"
+                ],
+                correct: 0,
+                explanation: "कैरेबियाई बागान यूरोप में आवश्यक बागानी फसलें—चीनी, कॉफी, नील और तंबाकू के विशाल उत्पादक और आपूर्तिकर्ता थे।"
+            },
+            {
+                id: 89,
+                question: `फ्रांस के कौन-से दो प्रमुख बंदरगाह नगर फलते-फूलते दास व्यापार के कारण ही अत्यधिक समृद्ध और संपन्न बने?`,
+                options: ["बॉर्दे (Bordeaux) और नान्ते (Nantes)", "मार्सीले और नाइस", "कैले और डंकर्क", "लियोन और स्ट्रासबर्ग"],
+                correct: 0,
+                explanation: "बॉर्दे और नान्ते जैसे फ्रांसीसी बंदरगाह अफ्रीकी दासों के अमानवीय व्यापार और बागानी अर्थव्यवस्था के कारण ही विशाल आर्थिक केंद्र बने।"
+            },
+            {
+                id: 90,
+                question: `नेशनल असेंबली (1789-1791) दास प्रथा के उन्मूलन का कानून तुरंत पारित क्यों नहीं कर सकी?`,
+                options: [
+                    "क्योंकि वे दास प्रथा को ईश्वर का आदेश मानते थे।",
+                    "क्योंकि उन्हें बड़े व्यापारियों और बागान मालिकों के विरोध का भय था, जिनकी आय दास व्यापार पर निर्भर थी।",
+                    "क्योंकि दासों ने खुद मुक्ति पाने से इनकार कर दिया था।",
+                    "क्योंकि ब्रिटिश नौसेना ने फ्रांसीसी जहाजों को रोक रखा था।"
+                ],
+                correct: 1,
+                explanation: "नेशनल असेंबली में लंबी बहस हुई, लेकिन वे बागान मालिकों और व्यापारियों को नाराज नहीं करना चाहते थे जिनका आर्थिक दबदबा था।"
+            },
+            {
+                id: 91,
+                question: `फ्रांसीसी उपनिवेशों से सभी दासों की मुक्ति का क्रांतिकारी कानून सर्वप्रथम किस सभा ने पारित किया?`,
+                options: [
+                    "1789 की स्टेट्स जनरल ने",
+                    "1794 के कन्वेंशन (Convention) ने",
+                    "1791 की नेशनल असेंबली ने",
+                    "1804 में नेपोलियन बोनापार्ट ने"
+                ],
+                correct: 1,
+                explanation: "रोबेस्पेयर के समय 1794 के कन्वेंशन ने फ्रांसीसी उपनिवेशों में दासों की मुक्ति का पहला ऐतिहासिक कानून पारित किया।"
+            },
+            {
+                id: 92,
+                question: `1794 में दास प्रथा समाप्त होने के 10 वर्ष बाद दास प्रथा को पुनः किसने शुरू कर दिया?`,
+                options: ["लुई अठारहवां", "नेपोलियन बोनापार्ट", "ड्यूक ऑफ वेलिंगटन", "कार्ल मार्क्स"],
+                correct: 1,
+                explanation: "नेपोलियन बोनापार्ट ने 1804 में सत्ता संभालने के बाद बागान मालिकों के आर्थिक हितों की रक्षा के लिए दास प्रथा दोबारा लागू कर दी।"
+            },
+            {
+                id: 93,
+                question: `फ्रांसीसी उपनिवेशों से अंतिम रूप से दास प्रथा का उन्मूलन किस वर्ष हुआ?`,
+                options: ["1794 में", "1804 में", "1815 में", "1848 में"],
+                correct: 3,
+                explanation: "फ्रांसीसी उपनिवेशों में दास प्रथा का अंतिम और स्थायी रूप से उन्मूलन 1848 की फ्रांसीसी क्रांति के दौरान हुआ।"
+            },
+            {
+                id: 94,
+                question: `1789 की क्रांति के बाद आम लोगों के दैनिक जीवन में आए सबसे बड़े बदलावों में से एक 'सेंसरशिप की समाप्ति' का क्या प्रभाव पड़ा?`,
+                options: [
+                    "किताबों और नाटकों के प्रकाशन पर पूरी तरह रोक लग गई।",
+                    "'मनुष्य एवं नागरिक अधिकार घोषणापत्र' ने भाषण एवं अभिव्यक्ति की स्वतंत्रता को नैसर्गिक अधिकार घोषित किया, जिससे अखबारों, पर्चों और नाटकों की बाढ़ आ गई।",
+                    "सभी नागरिकों को लैटिन भाषा बोलना अनिवार्य कर दिया गया।",
+                    "केवल सरकारी समाचार पत्रों को छपने की अनुमति दी गई।"
+                ],
+                correct: 1,
+                explanation: "प्राचीन राजतंत्र में पुस्तकों-अखबारों पर शाही सेंसरशिप थी। 1789 में सेंसरशिप हटने से विचार व अभिव्यक्ति की स्वतंत्रता फैली और विचारों का लोकतांत्रिक प्रसार हुआ।"
+            },
+            {
+                id: 95,
+                question: `नेपोलियन बोनापार्ट ने स्वयं को फ्रांस का सम्राट किस वर्ष घोषित किया?`,
+                options: ["1799 में", "1804 में", "1815 में", "1793 में"],
+                correct: 1,
+                explanation: "1804 में नेपोलियन बोनापार्ट ने स्वयं को फ्रांस का सम्राट घोषित किया और पड़ोसी यूरोपीय मुल्कों पर विजय अभियान शुरू किया।"
+            },
+            {
+                id: 96,
+                question: `नेपोलियन बोनापार्ट ने आधुनिक समाज के निर्माण के लिए कौन-से प्रमुख प्रशासनिक कानून लागू किए?<br>
+                1. निजी संपत्ति की सुरक्षा के कड़े कानून।<br>
+                2. दशमलव पद्धति पर आधारित नाप-तौल की समान प्रणाली।<br>
+                3. सामंती व्यवस्था की पुनः कानूनी बहाली।<br>
+                उपर्युक्त में से <strong>कौन-से सही हैं?</strong>`,
+                options: ["केवल 1 और 2", "केवल 2 और 3", "केवल 1 और 3", "1, 2 और 3"],
+                correct: 0,
+                explanation: "नेपोलियन ने निजी संपत्ति की सुरक्षा और दशमलव नाप-तौल प्रणाली दी और सामंती विशेषाधिकारों को समाप्त किया, न कि उन्हें बहाल किया।"
+            },
+            {
+                id: 97,
+                question: `नेपोलियन बोनापार्ट की अंतिम निर्णायक पराजय 1815 में किस प्रसिद्ध युद्ध में हुई थी?`,
+                options: ["वाटरलू का युद्ध (Battle of Waterloo)", "प्लासी का युद्ध", "लाइपत्सिग का युद्ध", "ट्राफलगर का युद्ध"],
+                correct: 0,
+                explanation: "1815 में वाटरलू की ऐतिहासिक लड़ाई में संयुक्त यूरोपीय सेनाओं (ब्रिटेन, प्रशिया आदि) ने नेपोलियन को अंतिम रूप से पराजित किया।"
+            },
+            {
+                id: 98,
+                question: `फ्रांसीसी क्रांति की सबसे महत्वपूर्ण विरासत (Legacy) क्या थी जो पूरी 19वीं सदी में दुनिया भर में फैली?`,
+                options: [
+                    "सैन्य तानाशाही और उपनिवेशवाद",
+                    "स्वतंत्रता और जनवादी अधिकारों (Liberty and Democratic rights) के विचार",
+                    "धार्मिक रूढ़िवाद और चर्च का प्रभुत्व",
+                    "सामंती व्यवस्था का सुदृढ़ीकरण"
+                ],
+                correct: 1,
+                explanation: "स्वतंत्रता, समानता, बंधुत्व और लोकतांत्रिक अधिकारों के विचार फ्रांसीसी क्रांति की सबसे महान विरासत थे, जिसने दुनिया भर के मुक्ति आंदोलनों को प्रेरित किया।"
+            },
+            {
+                id: 99,
+                question: `भारत के किन दो प्रमुख ऐतिहासिक व्यक्तित्वों ने फ्रांसीसी क्रांति और उसके विचारों से गहरी प्रेरणा ली थी?`,
+                options: [
+                    "टीपू सुल्तान और राजा राममोहन राय",
+                    "अकबर और औरंगजेब",
+                    "शिवाजी और महाराणा प्रताप",
+                    "स्वामी दयानंद और रामकृष्ण परमहंस"
+                ],
+                correct: 0,
+                explanation: "टीपू सुल्तान (जिन्होंने श्रीरंगपट्टनम में 'स्वतंत्रता का वृक्ष' लगाया और जैकोबिन क्लब के सदस्य बने) तथा समाज सुधारक राजा राममोहन राय फ्रांसीसी क्रांति के विचारों से अत्यधिक प्रभावित थे।"
+            },
+            {
+                id: 100,
+                question: `राजा राममोहन राय के संदर्भ में यह तथ्य किसने दर्ज किया कि 1830 में इंग्लैंड जाते समय जब उन्हें फ्रांसीसी क्रांति (जुलाई क्रांति) के तिरंगे झंडे वाले जहाज दिखे, तो वे उस पर चढ़कर सम्मान प्रकट करने के लिए लालायित हो उठे थे?`,
+                options: [
+                    "उनके तत्कालीन समकालीनों और जीवनीकारों ने",
+                    "रॉगे द लायल ने अपनी डायरी में",
+                    "मैक्समिलियन रोबेस्पेयर ने अपने पत्र में",
+                    "नेपोलियन ने सेंट हेलेना द्वीप पर"
+                ],
+                correct: 0,
+                explanation: "NCERT अध्याय 1 के अंतिम बॉक्स के अनुसार, राममोहन राय फ्रांसीसी क्रांति के आदर्शों के प्रति इतने निष्ठावान थे कि चोटिल पैर के बावजूद वे क्रांति के तिरंगे से सुसज्जित जहाज देखने गए थे।"
+            }
+        ];
+
+        // CBT STATE
+        let currentIndex = 0;
+        let userResponses = new Array(quizData.length).fill(null);
+        let reviewList = new Array(quizData.length).fill(false);
+        let timerSeconds = 120 * 60; // 120 Minutes
+        let timerInterval = null;
+        let testSubmitted = false;
+
+        // FULL SCREEN ENTRY GATE
+        function startTestWithFullScreen() {
+            const docEl = document.documentElement;
+            if (docEl.requestFullscreen) {
+                docEl.requestFullscreen().catch(err => {
+                    console.warn("Fullscreen error:", err);
+                });
+            } else if (docEl.mozRequestFullScreen) {
+                docEl.mozRequestFullScreen();
+            } else if (docEl.webkitRequestFullscreen) {
+                docEl.webkitRequestFullscreen();
+            } else if (docEl.msRequestFullscreen) {
+                docEl.msRequestFullscreen();
+            }
+
+            document.getElementById('startScreen').classList.add('hidden');
+            document.getElementById('cbtInterface').classList.remove('hidden');
+            
+            initTest();
+        }
+
+        // TIMER
+        function startTimer() {
+            const timerDisplay = document.getElementById('timerDisplay');
+            timerInterval = setInterval(() => {
+                if (timerSeconds <= 0) {
+                    clearInterval(timerInterval);
+                    autoSubmitTest();
+                    return;
+                }
+                timerSeconds--;
+                const hrs = Math.floor(timerSeconds / 3600);
+                const mins = Math.floor((timerSeconds % 3600) / 60);
+                const secs = timerSeconds % 60;
+                
+                timerDisplay.textContent = `${hrs.toString().padStart(2, '0')}:${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
+            }, 1000);
+        }
+
+        // INIT
+        function initTest() {
+            document.getElementById('totalQNum').textContent = quizData.length;
+            startTimer();
+            renderQuestion(0);
+        }
+
+        // RENDER CURRENT QUESTION
+        function renderQuestion(index) {
+            currentIndex = index;
+            const q = quizData[index];
+
+            document.getElementById('currentQNum').textContent = index + 1;
+            document.getElementById('questionText').innerHTML = q.question;
+
+            // Mark for review tag update
+            const reviewTag = document.getElementById('reviewTag');
+            const reviewBtn = document.getElementById('reviewBtn');
+            if (reviewList[index]) {
+                reviewTag.classList.remove('hidden');
+                reviewBtn.classList.replace('bg-amber-50', 'bg-amber-500');
+                reviewBtn.classList.replace('text-amber-700', 'text-white');
+            } else {
+                reviewTag.classList.add('hidden');
+                reviewBtn.classList.replace('bg-amber-500', 'bg-amber-50');
+                reviewBtn.classList.replace('text-white', 'text-amber-700');
+            }
+
+            // Options container
+            const container = document.getElementById('optionsContainer');
+            container.innerHTML = '';
+
+            const optionPrefixes = ['(A)', '(B)', '(C)', '(D)'];
+            q.options.forEach((opt, optIdx) => {
+                const isSelected = userResponses[index] === optIdx;
+                const optDiv = document.createElement('div');
+                optDiv.onclick = () => selectOption(optIdx);
+                optDiv.className = `p-3.5 md:p-4 rounded-xl border cursor-pointer transition flex items-start gap-3 ${
+                    isSelected 
+                    ? 'bg-blue-50 border-blue-600 ring-2 ring-blue-500/30' 
+                    : 'bg-white border-slate-200 hover:bg-slate-50'
+                }`;
+
+                optDiv.innerHTML = `
+                    <div class="mt-0.5 flex items-center justify-center w-5 h-5 rounded-full border ${
+                        isSelected ? 'border-blue-600 bg-blue-600 text-white' : 'border-slate-400 bg-white'
+                    } text-xs font-bold shrink-0">
+                        ${isSelected ? '<i class="fa-solid fa-check text-[10px]"></i>' : ''}
+                    </div>
+                    <div class="text-sm md:text-base text-slate-800 leading-snug devanagari">
+                        <strong class="text-slate-900 mr-1">${optionPrefixes[optIdx]}</strong> ${opt}
+                    </div>
+                `;
+                container.appendChild(optDiv);
+            });
+
+            // Prev Button
+            document.getElementById('prevBtn').disabled = (index === 0);
+            if (index === 0) {
+                document.getElementById('prevBtn').classList.add('opacity-50', 'cursor-not-allowed');
+            } else {
+                document.getElementById('prevBtn').classList.remove('opacity-50', 'cursor-not-allowed');
+            }
+
+            // Next button text
+            const nextBtn = document.getElementById('nextBtn');
+            if (index === quizData.length - 1) {
+                nextBtn.innerHTML = 'Save & Review <i class="fa-solid fa-flag-checkered"></i>';
+            } else {
+                nextBtn.innerHTML = 'Save & Next <i class="fa-solid fa-arrow-right"></i>';
+            }
+        }
+
+        // OPTION SELECTION
+        function selectOption(optIndex) {
+            userResponses[currentIndex] = optIndex;
+            renderQuestion(currentIndex);
+        }
+
+        // CLEAR CURRENT RESPONSE
+        function clearCurrentResponse() {
+            userResponses[currentIndex] = null;
+            renderQuestion(currentIndex);
+        }
+
+        // TOGGLE REVIEW
+        function toggleMarkReview() {
+            reviewList[currentIndex] = !reviewList[currentIndex];
+            renderQuestion(currentIndex);
+        }
+
+        // PREVIOUS QUESTION
+        function prevQuestion() {
+            if (currentIndex > 0) {
+                renderQuestion(currentIndex - 1);
+            }
+        }
+
+        // SAVE & NEXT QUESTION
+        function nextAndSaveQuestion() {
+            if (currentIndex < quizData.length - 1) {
+                renderQuestion(currentIndex + 1);
+            } else {
+                submitTestConfirmation();
+            }
+        }
+
+        // SUBMIT CONFIRMATION
+        function submitTestConfirmation() {
+            const attempted = userResponses.filter(r => r !== null).length;
+            const msg = `क्या आप परीक्षा सबमिट करना चाहते हैं?\n\nकुल प्रश्न: ${quizData.length}\nहल किए गए: ${attempted}\nछोड़े गए: ${quizData.length - attempted}`;
+            if (confirm(msg)) {
+                finalizeEvaluation();
+            }
+        }
+
+        function autoSubmitTest() {
+            alert("120 मिनट समाप्त हो गए हैं! आपकी परीक्षा स्वतः सबमिट की जा रही है।");
+            finalizeEvaluation();
+        }
+
+        // SCORING: +2.00 सही, -0.20 गलत
+        function finalizeEvaluation() {
+            clearInterval(timerInterval);
+            testSubmitted = true;
+
+            let correct = 0;
+            let wrong = 0;
+            let skipped = 0;
+            let reviewed = reviewList.filter(Boolean).length;
+
+            quizData.forEach((q, idx) => {
+                const ans = userResponses[idx];
+                if (ans === null) {
+                    skipped++;
+                } else if (ans === q.correct) {
+                    correct++;
+                } else {
+                    wrong++;
+                }
+            });
+
+            const totalScore = (correct * 2.0) - (wrong * 0.20);
+            const maxMarks = quizData.length * 2.0; // 200.00
+            const accuracy = (correct + wrong) > 0 ? Math.round((correct / (correct + wrong)) * 100) : 0;
+
+            document.getElementById('scoreMarks').textContent = `${totalScore.toFixed(2)} / ${maxMarks.toFixed(2)}`;
+            document.getElementById('scoreAccuracy').textContent = `${accuracy}%`;
+            document.getElementById('scoreCorrect').textContent = correct;
+            document.getElementById('scoreWrong').textContent = wrong;
+            document.getElementById('scoreSkipped').textContent = skipped;
+            document.getElementById('scoreReviewed').textContent = reviewed;
+
+            document.getElementById('cbtInterface').classList.add('hidden');
+            document.getElementById('scorecardModal').classList.remove('hidden');
+        }
+
+        // DETAILED 100 SOLUTIONS VIEW
+        function openSolutionView() {
+            document.getElementById('scorecardModal').classList.add('hidden');
+            const solInterface = document.getElementById('solutionInterface');
+            solInterface.classList.remove('hidden');
+
+            const listContainer = document.getElementById('solutionItemsList');
+            listContainer.innerHTML = '';
+
+            const prefixes = ['(A)', '(B)', '(C)', '(D)'];
+
+            quizData.forEach((q, idx) => {
+                const userAns = userResponses[idx];
+                const isCorrect = (userAns === q.correct);
+                const isSkipped = (userAns === null);
+
+                let statusBadge = '';
+                if (isSkipped) {
+                    statusBadge = '<span class="bg-amber-100 text-amber-800 text-xs font-semibold px-2.5 py-1 rounded-md">छोड़ा गया (Not Attempted)</span>';
+                } else if (isCorrect) {
+                    statusBadge = '<span class="bg-emerald-100 text-emerald-800 text-xs font-semibold px-2.5 py-1 rounded-md">+2.00 सही (Correct)</span>';
+                } else {
+                    statusBadge = '<span class="bg-rose-100 text-rose-800 text-xs font-semibold px-2.5 py-1 rounded-md">-0.20 गलत (Incorrect)</span>';
+                }
+
+                const card = document.createElement('div');
+                card.className = "bg-white rounded-2xl border border-slate-200 p-5 md:p-6 shadow-sm";
+
+                let optionsHTML = '';
+                q.options.forEach((opt, optIdx) => {
+                    let borderClass = 'border-slate-200 bg-slate-50 text-slate-700';
+                    let markerIcon = '';
+
+                    if (optIdx === q.correct) {
+                        borderClass = 'border-emerald-500 bg-emerald-50/70 text-emerald-950 font-bold';
+                        markerIcon = '<i class="fa-solid fa-circle-check text-emerald-600 ml-auto"></i>';
+                    }
+                    if (optIdx === userAns && !isCorrect) {
+                        borderClass = 'border-rose-500 bg-rose-50/70 text-rose-950 font-semibold';
+                        markerIcon = '<i class="fa-solid fa-circle-xmark text-rose-600 ml-auto"></i>';
+                    }
+
+                    optionsHTML += `
+                        <div class="p-3 rounded-xl border ${borderClass} flex items-center justify-between text-xs md:text-sm devanagari">
+                            <div><strong class="mr-1">${prefixes[optIdx]}</strong> ${opt}</div>
+                            ${markerIcon}
+                        </div>
+                    `;
+                });
+
+                card.innerHTML = `
+                    <div class="flex items-center justify-between pb-3 border-b border-slate-100 mb-3">
+                        <span class="text-xs font-bold text-slate-500">QUESTION ${idx + 1} OF 100</span>
+                        ${statusBadge}
+                    </div>
+                    <div class="text-slate-900 text-sm md:text-base leading-relaxed devanagari mb-4 font-medium">
+                        ${q.question}
+                    </div>
+                    <div class="space-y-2 mb-4">
+                        ${optionsHTML}
+                    </div>
+                    <div class="p-4 bg-blue-50/80 rounded-xl border border-blue-200">
+                        <div class="text-xs font-bold text-blue-900 flex items-center gap-1.5 mb-1.5">
+                            <i class="fa-solid fa-lightbulb text-amber-500"></i> NCERT Line-by-Line Detailed Explanation:
+                        </div>
+                        <div class="text-xs md:text-sm text-slate-800 leading-relaxed devanagari">
+                            ${q.explanation}
+                        </div>
+                    </div>
+                    <div class="mt-3 text-right">
+                        <a href="https://t.me/GYANVERSET" target="_blank" class="text-[11px] text-blue-600 font-bold hover:underline">
+                            Telegram: @GYANVERSET
+                        </a>
+                    </div>
+                `;
+
+                listContainer.appendChild(card);
+            });
+        }
+
+        // RETURN BACK TO SCORECARD
+        function backToScorecard() {
+            document.getElementById('solutionInterface').classList.add('hidden');
+            document.getElementById('scorecardModal').classList.remove('hidden');
+        }
+    </script>
+</body>
+</html>
