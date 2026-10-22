@@ -1,0 +1,880 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GYANVERSE CBT Web App - 22 October 2026 Daily Current Affairs</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Tiro+Devanagari+Hindi:ital@0;1&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', 'Tiro Devanagari Hindi', sans-serif;
+            user-select: none;
+            -webkit-user-select: none;
+        }
+        .devanagari {
+            font-family: 'Tiro Devanagari Hindi', serif;
+        }
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body class="bg-slate-100 text-slate-800 antialiased min-h-screen flex flex-col">
+
+    <!-- ==================== 1. MANDATORY FULLSCREEN ENTRY GATE ==================== -->
+    <div id="start-overlay" class="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/90 backdrop-blur-md p-4">
+        <div class="bg-white rounded-2xl shadow-2xl max-w-lg w-full p-6 sm:p-8 text-center border border-slate-200">
+            <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-blue-100 text-blue-600 mb-4 font-black text-2xl">
+                GV
+            </div>
+            <h1 class="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">GYANVERSE CBT PORTAL</h1>
+            <p class="text-sm font-semibold text-blue-600 mt-1">दैनिक समसामयिकी विशेषांक : 22 अक्टूबर 2026 (सम्पूर्ण 15 प्रश्न)</p>
+            
+            <div class="my-6 bg-slate-50 border border-slate-200 rounded-xl p-4 text-left text-xs sm:text-sm space-y-2 text-slate-700">
+                <div class="flex justify-between pb-1 border-b border-slate-200">
+                    <span class="font-medium">कुल प्रश्न:</span>
+                    <span class="font-bold text-slate-900">15 MCQs (मूल PDF पर आधारित)</span>
+                </div>
+                <div class="flex justify-between pb-1 border-b border-slate-200">
+                    <span class="font-medium">कुल समय:</span>
+                    <span class="font-bold text-amber-600">120 मिनट</span>
+                </div>
+                <div class="flex justify-between pb-1 border-b border-slate-200">
+                    <span class="font-medium">मार्किंग स्कीम:</span>
+                    <span class="font-bold text-emerald-600">+2.00 सही | -0.20 गलत</span>
+                </div>
+                <div class="flex justify-between">
+                    <span class="font-medium">व्याख्या (Solution):</span>
+                    <span class="font-bold text-blue-700">PDF के हूबहू विस्तृत विश्लेषण सहित</span>
+                </div>
+            </div>
+
+            <p class="text-xs text-slate-500 mb-6">
+                कृपया ध्यान दें: टेस्ट शुरू करने के लिए नीचे दिए गए बटन पर क्लिक करें। टेस्ट स्वतः <span class="font-semibold text-slate-700">Full-Screen</span> मोड में प्रारंभ होगा।
+            </p>
+
+            <button id="btn-start-test" class="w-full py-4 px-6 bg-gradient-to-r from-blue-600 to-indigo-700 hover:from-blue-700 hover:to-indigo-800 text-white font-bold text-base rounded-xl shadow-lg shadow-blue-500/25 active:scale-[0.99] transition transform flex items-center justify-center gap-2">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4" />
+                </svg>
+                Start Test (Auto Full Screen)
+            </button>
+            <div class="mt-4">
+                <a href="https://t.me/GYANVERSET" target="_blank" class="text-xs text-blue-500 hover:underline font-medium">
+                    ऐसे ऑनलाइन टेस्ट देने के लिए टेलीग्राम जॉइन करें: @GYANVERSET
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== 2. MAIN APP CONTAINER ==================== -->
+    <div id="cbt-app" class="flex flex-col min-h-screen">
+
+        <!-- Top Header Navigation -->
+        <header class="sticky top-0 z-40 bg-white border-b border-slate-200 shadow-sm px-4 py-3 flex items-center justify-between">
+            <div class="flex items-center space-x-3">
+                <div class="bg-blue-600 text-white px-2.5 py-1 rounded-lg font-black text-lg tracking-wider">
+                    GV
+                </div>
+                <div>
+                    <h2 class="text-base sm:text-lg font-extrabold text-slate-900 leading-none">GYANVERSE</h2>
+                    <a href="https://t.me/GYANVERSET" target="_blank" class="text-[11px] text-blue-600 font-semibold hover:underline">
+                        Join Telegram: @GYANVERSET
+                    </a>
+                </div>
+            </div>
+
+            <div class="flex items-center space-x-3 sm:space-x-4">
+                <!-- 120-minute Live Countdown Timer -->
+                <div class="flex items-center space-x-1.5 bg-amber-50 border border-amber-300 text-amber-900 px-3 py-1.5 rounded-lg shadow-inner">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-amber-600 animate-pulse" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                    <span class="text-xs font-medium text-amber-700 hidden sm:inline">Time Left:</span>
+                    <span id="timer-display" class="font-mono font-bold text-sm sm:text-base">120:00</span>
+                </div>
+
+                <!-- Submit Button in Top Right Header -->
+                <button id="btn-submit-header" class="bg-red-600 hover:bg-red-700 text-white text-xs sm:text-sm font-bold px-3.5 py-1.5 sm:px-4 sm:py-2 rounded-lg shadow-md shadow-red-500/20 active:scale-95 transition">
+                    Submit Test
+                </button>
+            </div>
+        </header>
+
+        <!-- Full-width Main Area (No Question Palette / Sidebar) -->
+        <main class="flex-1 w-full max-w-4xl mx-auto px-4 py-6 sm:py-8 flex flex-col justify-start">
+
+            <div id="question-card" class="bg-white rounded-2xl border border-slate-200 shadow-sm p-5 sm:p-7 flex flex-col relative transition-all">
+                
+                <!-- Header Stats of Card -->
+                <div class="flex items-center justify-between border-b border-slate-100 pb-3 mb-4">
+                    <span id="q-counter" class="text-xs sm:text-sm font-extrabold text-blue-700 bg-blue-50 px-3 py-1 rounded-full border border-blue-200">
+                        प्रश्न 1 / 15
+                    </span>
+                    <div class="flex items-center space-x-2 text-xs">
+                        <span id="review-badge" class="hidden px-2.5 py-0.5 rounded-full bg-purple-100 text-purple-700 font-bold border border-purple-300">
+                            Marked for Review
+                        </span>
+                        <span class="text-emerald-700 font-semibold bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">+2.00</span>
+                        <span class="text-red-700 font-semibold bg-red-50 px-2 py-0.5 rounded border border-red-200">-0.20</span>
+                    </div>
+                </div>
+
+                <!-- Question Text -->
+                <div id="q-content" class="devanagari text-slate-900 text-base sm:text-lg leading-relaxed space-y-2">
+                    <!-- Dynamic Question Injected -->
+                </div>
+
+                <!-- Gyanverse Official Watermark Tag Under Every Question -->
+                <div class="mt-4 pt-2 border-t border-dashed border-slate-200 flex items-center justify-between text-xs text-slate-400">
+                    <span class="font-medium text-slate-500">Official Gyanverse Exam Series</span>
+                    <a href="https://t.me/GYANVERSET" target="_blank" class="text-blue-600 font-semibold hover:underline">
+                        @GYANVERSET
+                    </a>
+                </div>
+
+                <!-- Options Radio Container -->
+                <div id="options-container" class="mt-5 space-y-2.5">
+                    <!-- Dynamic Options Injected -->
+                </div>
+
+                <!-- ==================== NAVIGATION BAR DIRECTLY BELOW OPTIONS ==================== -->
+                <div class="mt-6 pt-4 border-t border-slate-200 flex flex-wrap items-center justify-between gap-2.5">
+                    <div class="flex items-center space-x-2">
+                        <button id="btn-prev" class="px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs sm:text-sm font-semibold rounded-xl border border-slate-300 transition active:scale-95 disabled:opacity-40 disabled:pointer-events-none">
+                            &larr; Prev
+                        </button>
+                        <button id="btn-clear" class="px-3.5 py-2 bg-slate-100 hover:bg-red-50 hover:text-red-600 text-slate-600 text-xs sm:text-sm font-semibold rounded-xl border border-slate-300 transition active:scale-95">
+                            Clear
+                        </button>
+                    </div>
+
+                    <div class="flex items-center space-x-2">
+                        <button id="btn-review" class="px-3.5 py-2 bg-purple-50 hover:bg-purple-100 text-purple-700 text-xs sm:text-sm font-semibold rounded-xl border border-purple-300 transition active:scale-95">
+                            Mark for Review
+                        </button>
+                        <button id="btn-next" class="px-5 py-2 bg-blue-600 hover:bg-blue-700 text-white text-xs sm:text-sm font-bold rounded-xl shadow-md shadow-blue-500/20 transition active:scale-95 flex items-center space-x-1">
+                            <span>Next &amp; Save</span>
+                            <span>&rarr;</span>
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+
+        </main>
+
+        <footer class="bg-white border-t border-slate-200 text-center py-3 text-xs text-slate-500">
+            &copy; 2026 GYANVERSE CBT Examination Portal | Telegram: <a href="https://t.me/GYANVERSET" target="_blank" class="text-blue-600 font-semibold underline">@GYANVERSET</a>
+        </footer>
+    </div>
+
+    <!-- ==================== 3. DETAILED SCORECARD MODAL ==================== -->
+    <div id="scorecard-modal" class="fixed inset-0 z-50 hidden bg-slate-900/80 backdrop-blur-sm p-4 overflow-y-auto flex items-center justify-center">
+        <div class="bg-white rounded-2xl max-w-lg w-full p-6 sm:p-7 shadow-2xl border border-slate-200 text-center my-8">
+            <div class="w-16 h-16 rounded-full bg-emerald-100 text-emerald-600 mx-auto flex items-center justify-center text-3xl mb-3">
+                &#10003;
+            </div>
+            <h3 class="text-2xl font-black text-slate-900">Test Submitted Successfully!</h3>
+            <p class="text-xs text-slate-500">22 अक्टूबर 2026 - दैनिक करेंट अफेयर्स मॉक एनालिसिस</p>
+
+            <!-- Metrics Grid -->
+            <div class="grid grid-cols-2 gap-3 my-6 text-left">
+                <div class="bg-blue-50 border border-blue-200 p-3.5 rounded-xl">
+                    <p class="text-xs text-blue-600 font-semibold uppercase">Total Score</p>
+                    <p id="res-score" class="text-2xl font-black text-blue-900 mt-1">0.00 / 30</p>
+                </div>
+                <div class="bg-indigo-50 border border-indigo-200 p-3.5 rounded-xl">
+                    <p class="text-xs text-indigo-600 font-semibold uppercase">Accuracy</p>
+                    <p id="res-accuracy" class="text-2xl font-black text-indigo-900 mt-1">0%</p>
+                </div>
+                <div class="bg-emerald-50 border border-emerald-200 p-3.5 rounded-xl">
+                    <p class="text-xs text-emerald-700 font-semibold uppercase">Correct (+2.00)</p>
+                    <p id="res-correct" class="text-2xl font-black text-emerald-900 mt-1">0</p>
+                </div>
+                <div class="bg-rose-50 border border-rose-200 p-3.5 rounded-xl">
+                    <p class="text-xs text-rose-700 font-semibold uppercase">Incorrect (-0.20)</p>
+                    <p id="res-incorrect" class="text-2xl font-black text-rose-900 mt-1">0</p>
+                </div>
+            </div>
+
+            <div class="bg-slate-50 border border-slate-200 rounded-xl p-3 flex justify-between text-xs text-slate-600 mb-6">
+                <span>Left / Unattempted: <strong id="res-left" class="text-slate-900">0</strong></span>
+                <span>Time Spent: <strong id="res-time-spent" class="text-slate-900">00:00</strong></span>
+            </div>
+
+            <div class="flex flex-col sm:flex-row gap-3">
+                <button id="btn-show-solutions" class="flex-1 py-3 bg-emerald-600 hover:bg-emerald-700 text-white font-bold rounded-xl shadow-md transition text-sm">
+                    Check Solutions &amp; Detailed Analysis
+                </button>
+                <a href="https://t.me/GYANVERSET" target="_blank" class="flex-1 py-3 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-xl shadow-md transition text-sm flex items-center justify-center">
+                    Join Telegram @GYANVERSET
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== 4. SOLUTIONS & REVIEW CONTAINER ==================== -->
+    <div id="solution-view" class="hidden min-h-screen bg-slate-100 flex-col">
+        <header class="sticky top-0 z-40 bg-white border-b border-slate-200 shadow-sm px-4 py-3 flex items-center justify-between">
+            <div>
+                <h2 class="text-base sm:text-lg font-extrabold text-slate-900">GYANVERSE Solutions &amp; Analysis</h2>
+                <p class="text-xs text-slate-500">22 अक्टूबर 2026 - मूल PDF के अनुसार सम्पूर्ण 15 विस्तृत हल</p>
+            </div>
+            <a href="https://t.me/GYANVERSET" target="_blank" class="bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold px-3 py-1.5 rounded-lg shadow">
+                Join @GYANVERSET
+            </a>
+        </header>
+
+        <main id="solutions-list" class="max-w-4xl mx-auto px-4 py-6 space-y-6">
+            <!-- Dynamic Solution Cards Injected -->
+        </main>
+    </div>
+
+    <!-- ==================== 5. COMPLETE DATA & LOGIC ==================== -->
+    <script>
+        // Exactly all 15 questions & explanations matching the provided 22 October 2026 Gyanverse PDF
+        const testQuestions = [
+            {
+                id: 1,
+                questionHtml: `भारत के मुख्य न्यायाधीश (CJI) जस्टिस सूर्यकांत ने देश की सबसे ऊंची (समुद्र तल से करीब 3500 मीटर) हाई कोर्ट बेंच का उद्घाटन कहाँ पर किया है?`,
+                options: [
+                    "शिमला (हिमाचल प्रदेश)",
+                    "लेह (लद्दाख)",
+                    "श्रीनगर (जम्मू-कश्मीर)",
+                    "गंगटोक (सिक्किम)"
+                ],
+                correctIndex: 1,
+                correctLetter: "B",
+                correctAnswerText: "लेह (लद्दाख)",
+                explanation: `
+                    <p class="font-bold text-slate-900 mb-1">विस्तृत विश्लेषण:</p>
+                    <p>अक्टूबर 2026 में भारत के मुख्य न्यायाधीश जस्टिस सूर्यकांत ने जम्मू-कश्मीर एवं लद्दाख उच्च न्यायालय की एक विशेष स्थायी पीठ (High Court Bench) का उद्घाटन लेह (लद्दाख) में किया। यह बेंच समुद्र तल से लगभग 3,500 मीटर की ऊंचाई पर स्थित है, जो इसे भारत तथा दुनिया की सबसे अधिक ऊंचाई पर स्थित न्यायिक पीठों में से एक बनाती है। इससे लद्दाख के दूरदराज के नागरिकों को त्वरित व सुलभ न्याय मिलेगा।</p>
+                    <div class="mt-2.5 p-2.5 bg-blue-100/60 rounded-lg text-xs leading-relaxed space-y-1">
+                        <strong class="text-blue-900">परीक्षा उपयोगी लद्दाख विशेष तथ्य:</strong><br>
+                        • <strong>गठन:</strong> 31 अक्टूबर 2019 (जम्मू-कश्मीर पुनर्गठन अधिनियम, 2019 के तहत UT बना)।<br>
+                        • <strong>राजधानी:</strong> लेह और कारगिल | <strong>उपराज्यपाल (LG):</strong> विनय कुमार सक्सेना।<br>
+                        • <strong>कुल जिले (अब 8):</strong> पूर्ववर्ती लेह व कारगिल के अलावा 5 नए जिले- जांस्कर, द्रास, शाम, नुब्रा, चांगथांग तथा हाल ही में शामिल 8वाँ जिला शांकू (Sankoo)।<br>
+                        • <strong>अन्य महत्वपूर्ण तथ्य:</strong> देश की पहली हाई-एल्टीट्यूड स्नो लेपर्ड सफारी भी लद्दाख में शुरू की जा रही है।
+                    </div>
+                    <div class="mt-2.5 p-2.5 bg-amber-100/60 rounded-lg text-xs leading-relaxed space-y-0.5">
+                        <strong class="text-amber-900">2026 के प्रमुख राष्ट्रीय उद्घाटन (Quick Revision):</strong><br>
+                        • इंटरनेशनल बिग कैट अलायंस (IBCA) नया कार्यालय: नई दिल्ली (उद्घाटन: भूपेंद्र यादव)।<br>
+                        • भारत का पहला हाई-एल्टीट्यूड स्वास्थ्य अनुसंधान केंद्र: केलांग (लाहौल-स्पीति, हिमाचल प्रदेश)।<br>
+                        • आबे मेमोरियल कॉरिडोर (शिंजो आबे की स्मृति में): वाराणसी (उत्तर प्रदेश)।<br>
+                        • प्रथम स्वदेशी फ्लीट सपोर्ट शिप (FSS) 'सूर्य' का जलावतरण: HSL विशाखापत्तनम (राजनाथ सिंह द्वारा)।<br>
+                        • देश का पहला पीड़ित अधिकार केंद्र (Victims' Rights Centre): पटना, बिहार (CJI सूर्यकांत द्वारा)।<br>
+                        • ग्लोबल स्पिरिचुअल पैलेस रिट्रीट सेंटर: वडोदरा, गुजरात (राष्ट्रपति द्रौपदी मुर्मू द्वारा)।
+                    </div>
+                `
+            },
+            {
+                id: 2,
+                questionHtml: `अक्टूबर 2026 में यूनेस्को (UNESCO) ने विश्व धरोहर स्थलों की संभावित (Tentative) सूची में किन भारतीय स्थलों को शामिल किया है?`,
+                options: [
+                    "सिरपुर सांस्कृतिक और पुरातात्विक परिदृश्य (छत्तीसगढ़)",
+                    "बाराटांग का कार्स्ट मड ज्वालामुखी कॉम्प्लेक्स (अंडमान)",
+                    "अंडमान सबडक्शन वोल्केनो (अंडमान निकोबार)",
+                    "उपर्युक्त सभी"
+                ],
+                correctIndex: 3,
+                correctLetter: "D",
+                correctAnswerText: "उपर्युक्त सभी",
+                explanation: `
+                    <p class="font-bold text-slate-900 mb-1">विस्तृत विश्लेषण:</p>
+                    <p>20 अक्टूबर 2026 को यूनेस्को ने भारत के तीन नए और अद्वितीय प्राकृतिक व सांस्कृतिक स्थलों को विश्व धरोहर स्थलों की संभावित सूची (Tentative List) में औपचारिक रूप से शामिल किया है:</p>
+                    <ol class="list-decimal list-inside my-1.5 space-y-1">
+                        <li><strong>सिरपुर सांस्कृतिक परिदृश्य (छत्तीसगढ़):</strong> महानदी के तट पर स्थित ऐतिहासिक बौद्ध, शैव व वैष्णव मंदिरों का समृद्ध केंद्र।</li>
+                        <li><strong>बाराटांग कार्स्ट मड ज्वालामुखी कॉम्प्लेक्स (अंडमान):</strong> भारत का दुर्लभ सक्रिय कीचड़ ज्वालामुखी (Mud Volcano)।</li>
+                        <li><strong>अंडमान सबडक्शन ज़ोन ज्वालामुखी:</strong> भूगर्भीय दृष्टि से अत्यंत संवेदनशील व महत्वपूर्ण टेक्टोनिक प्लेट सबडक्शन संरचना।</li>
+                    </ol>
+                    <div class="mt-2.5 p-2.5 bg-blue-100/60 rounded-lg text-xs leading-relaxed space-y-1">
+                        <strong class="text-blue-900">यूनेस्को (UNESCO) स्टेटिक GK:</strong><br>
+                        • <strong>पूर्ण रूप:</strong> United Nations Educational, Scientific and Cultural Organization.<br>
+                        • <strong>स्थापना:</strong> 16 नवंबर 1945 | <strong>मुख्यालय:</strong> पेरिस (फ्रांस)।<br>
+                        • <strong>महानिदेशक:</strong> खालिद अल-अनानी (मिस्र) | <strong>सदस्य देश:</strong> 194 सदस्य + 11 सहयोगी।<br>
+                        • <strong>भारत की सदस्यता:</strong> वर्ष 1946 में भारत यूनेस्को का सदस्य बना।<br>
+                        • <strong>प्रमुख रिपोर्ट:</strong> 'ग्लोबल एजुकेशन मॉनिटरिंग रिपोर्ट' (GEM Report) यूनेस्को द्वारा जारी होती है।<br>
+                        • <strong>हालिया रामसर स्थल अपडेट:</strong> भारत में रामसर स्थलों की कुल संख्या बढ़कर 103 हो गई है (नवीनतम: सौं झील, उत्तर प्रदेश एवं सुखना वेटलैंड, चंडीगढ़)।
+                    </div>
+                `
+            },
+            {
+                id: 3,
+                questionHtml: `सार्वजनिक वितरण प्रणाली (PDS) को सुदृढ़ करने हेतु महाराष्ट्र का पहला 'अन्नपूर्ति अनाज एटीएम' (Grain ATM) किस शहर में शुरू किया गया?`,
+                options: [
+                    "नासिक",
+                    "पुणे",
+                    "छत्रपति संभाजीनगर",
+                    "नागपुर"
+                ],
+                correctIndex: 0,
+                correctLetter: "A",
+                correctAnswerText: "नासिक",
+                explanation: `
+                    <p class="font-bold text-slate-900 mb-1">विस्तृत विश्लेषण:</p>
+                    <p>महाराष्ट्र राज्य का पहला 'अन्नपूर्ति धान्य/अनाज एटीएम' नासिक शहर में स्थापित किया गया है। इसका उद्घाटन महाराष्ट्र के खाद्य, नागरिक आपूर्ति एवं उपभोक्ता संरक्षण मंत्री छगन भुजबल ने किया।</p>
+                    <p class="mt-1"><strong>उद्देश्य:</strong> इस स्वचालित प्रणाली (Automated Dispensing Machine) से राष्ट्रीय खाद्य सुरक्षा अधिनियम (NFSA) के तहत पंजीकृत राशन कार्ड धारकों तथा विशेष रूप से प्रवासी मजदूरों को 24 घंटे किसी भी समय सटीक मात्रा में खाद्यान्न (चावल व गेहूं) उपलब्ध हो सकेगा, जिससे राशन की दुकानों पर लंबी कतारों और कालाबाजारी से मुक्ति मिलेगी।</p>
+                    <div class="mt-2.5 p-2.5 bg-blue-100/60 rounded-lg text-xs leading-relaxed space-y-1">
+                        <strong class="text-blue-900">परीक्षा उपयोगी संबंधित तथ्य:</strong><br>
+                        • <strong>ट्रेन में पहला बैंक ATM:</strong> बैंक ऑफ महाराष्ट्र ने देश में पहली बार 'पंचवटी एक्सप्रेस' (मुंबई-मनमाड) ट्रेन के अंदर एटीएम स्थापित किया था।<br>
+                        • <strong>देश का पहला अनाज एटीएम:</strong> भारत का सर्वप्रथम ग्रेन एटीएम गुरुग्राम (हरियाणा) में पायलट प्रोजेक्ट के तहत स्थापित किया गया था।
+                    </div>
+                `
+            },
+            {
+                id: 4,
+                questionHtml: `19 से 30 अक्टूबर 2026 तक संयुक्त राष्ट्र जैव विविधता सम्मेलन (CBD COP-17) की बैठक किस शहर में आयोजित की जा रही है?`,
+                options: [
+                    "येरेवन (आर्मेनिया)",
+                    "बाकू (अज़रबैजान)",
+                    "नैरोबी (केन्या)",
+                    "ओसाका (जापान)"
+                ],
+                correctIndex: 0,
+                correctLetter: "A",
+                correctAnswerText: "येरेवन (आर्मेनिया)",
+                explanation: `
+                    <p class="font-bold text-slate-900 mb-1">विस्तृत विश्लेषण:</p>
+                    <p>जैविक विविधता पर संयुक्त राष्ट्र अभिसमय (Convention on Biological Diversity - CBD) के पक्षकारों का 17वां सम्मेलन (COP-17) आर्मेनिया की राजधानी <strong>येरेवन (Yerevan)</strong> में आयोजित हो रहा है।</p>
+                    <p class="mt-1"><strong>थीम (Theme):</strong> "प्रकृति के लिए ठोस कार्रवाई करना" (Taking Action for Nature)।</p>
+                    <p><strong>मुख्य एजेंडा:</strong> वर्ष 2022 में अपनाए गए 'कुनमिंग-मॉन्ट्रियल ग्लोबल बायोडायवर्सिटी फ्रेमवर्क' (KMGBF) के लक्ष्यों के कार्यान्वयन की यह पहली औपचारिक वैश्विक समीक्षा (First Global Review) है।</p>
+                    <div class="mt-2.5 p-2.5 bg-blue-100/60 rounded-lg text-xs leading-relaxed space-y-1">
+                        <strong class="text-blue-900">जलवायु परिवर्तन सम्मेलन (UNFCCC COP) आगामी स्थल:</strong><br>
+                        • COP-30 (2025): बेलेम (ब्राजील)।<br>
+                        • COP-31 (2026): तुर्किये (सह-मेजबान: ऑस्ट्रेलिया)।<br>
+                        • COP-32 (2027): इथियोपिया (अफ्रीका)।
+                    </div>
+                `
+            },
+            {
+                id: 5,
+                questionHtml: `20 अक्टूबर 2026 से भारत और किस देश के बीच ऐतिहासिक मुक्त व्यापार समझौता (FTA) पूर्ण रूप से प्रभावी (लागू) हो गया है?`,
+                options: [
+                    "न्यूजीलैंड",
+                    "ऑस्ट्रेलिया",
+                    "यूनाइटेड किंगडम",
+                    "ओमान"
+                ],
+                correctIndex: 0,
+                correctLetter: "A",
+                correctAnswerText: "न्यूजीलैंड",
+                explanation: `
+                    <p class="font-bold text-slate-900 mb-1">विस्तृत विश्लेषण:</p>
+                    <p>भारत और न्यूजीलैंड के बीच हस्ताक्षरित द्विपक्षीय मुक्त व्यापार समझौता 20 अक्टूबर 2026 से आधिकारिक तौर पर लागू हो गया। इस समझौते पर 27 अप्रैल 2026 को नई दिल्ली में हस्ताक्षर किए गए थे।</p>
+                    <p class="mt-1"><strong>समझौते का प्रभाव:</strong> इस FTA के तहत भारतीय निर्यातकों को न्यूजीलैंड के बाजार में 100% टैरिफ लाइनों पर शून्य शुल्क (Duty-Free Access) पहुंच मिलेगी। इससे भारत के वस्त्र, परिधान, चमड़ा, फुटवियर, जेनेरिक दवाएं और ऑटो-इंजीनियरिंग निर्यात में भारी वृद्धि होगी।</p>
+                    <div class="mt-2.5 p-2.5 bg-blue-100/60 rounded-lg text-xs leading-relaxed space-y-1">
+                        <strong class="text-blue-900">न्यूजीलैंड देश विशेष:</strong><br>
+                        • राजधानी: वेलिंगटन | मुद्रा: न्यूजीलैंड डॉलर (NZD) | प्रधानमंत्री: क्रिस्टोफर लक्सन।<br><br>
+                        <strong class="text-blue-900">राष्ट्रमंडल खेल (Commonwealth Games) रिलेटिव GK:</strong><br>
+                        • <strong>CWG 2026:</strong> ग्लासगो (स्कॉटलैंड) में आयोजित | पदक तालिका शीर्ष: ऑस्ट्रेलिया (कुल 171 पदक)।<br>
+                        • <strong>भारत की स्थिति:</strong> भारत चौथे स्थान पर रहा (कुल 39 पदक)।<br>
+                        • <strong>CWG 2030 (आगामी):</strong> अहमदाबाद (भारत) को आगामी खेलों की मेजबानी सौंपी गई है।
+                    </div>
+                `
+            },
+            {
+                id: 6,
+                questionHtml: `अक्टूबर 2026 में भारतीय सेना का संयुक्त युद्धभ्यास 'अखंड प्रहार-2' (Akhand Prahar-II) कहाँ संपन्न हुआ?`,
+                options: [
+                    "बबीना (मध्य प्रदेश)",
+                    "पोखरण/जैसलमेर (राजस्थान)",
+                    "महाजन फील्ड फायरिंग रेंज (बीकानेर)",
+                    "उमरोई (मेघालय)"
+                ],
+                correctIndex: 1,
+                correctLetter: "B",
+                correctAnswerText: "पोखरण/जैसलमेर (राजस्थान)",
+                explanation: `
+                    <p class="font-bold text-slate-900 mb-1">विस्तृत विश्लेषण:</p>
+                    <p>भारतीय सेना के दक्षिणी कमान के अंतर्गत 'अखंड प्रहार-2' युद्धाभ्यास राजस्थान के जैसलमेर स्थित थार रेगिस्तानी क्षेत्र में सफलतापूर्वक संपन्न हुआ। यह अभ्यास भारतीय सेना की प्रतिष्ठित 'ब्लैक मेस ब्रिगेड' और 'बैटल एक्स डिवीजन' द्वारा संयुक्त रूप से आयोजित किया गया।</p>
+                    <p class="mt-1"><strong>प्रमुख लक्ष्य:</strong> मरुस्थलीय एवं अत्यधिक तापमान वाले युद्धक्षेत्र में आधुनिक ड्रोन टेक्नोलॉजी, एंटी-ड्रोन सिस्टम, इलेक्ट्रॉनिक वॉरफेयर और नए सैन्य साजो-सामान के त्वरित समन्वय का गहन परीक्षण करना।</p>
+                    <div class="mt-2.5 p-2.5 bg-blue-100/60 rounded-lg text-xs leading-relaxed space-y-1">
+                        <strong class="text-blue-900">हालिया चर्चा में रहे परिवर्तित नाम (UP Special GK):</strong><br>
+                        • <strong>भदोही जिला:</strong> अब आधिकारिक रूप से 'संत रविदास नगर भदोही' के रूप में जाना जाएगा।<br>
+                        • <strong>जलालाबाद कस्बा (शाहजहांपुर, UP):</strong> ऐतिहासिक नाम बदलकर 'परशुरामपुरी' किया गया।
+                    </div>
+                `
+            },
+            {
+                id: 7,
+                questionHtml: `पूर्वोत्तर भारत का पहला बहुदेशीय वीजा आवेदन केंद्र (Multi-Country Visa Application Centre) कहाँ स्थापित किया गया है?`,
+                options: [
+                    "शिलांग (मेघालय)",
+                    "ईटानगर (अरुणाचल प्रदेश)",
+                    "गुवाहाटी (असम)",
+                    "अगरतला (त्रिपुरा)"
+                ],
+                correctIndex: 2,
+                correctLetter: "C",
+                correctAnswerText: "गुवाहाटी (असम)",
+                explanation: `
+                    <p class="font-bold text-slate-900 mb-1">विस्तृत विश्लेषण:</p>
+                    <p>पूर्वोत्तर भारत के नागरिकों को अंतरराष्ट्रीय यात्रा सुगम बनाने के लिए असम के गुवाहाटी में खानपारा स्थित अंतर-राज्यीय बस टर्मिनल (ISBT) परिसर में पहले मल्टी-कंट्री वीजा एप्लिकेशन सेंटर का उद्घाटन मुख्यमंत्री हिमंत बिस्वा सरमा द्वारा किया गया।</p>
+                    <p class="mt-1"><strong>सुविधा:</strong> इस केंद्र के माध्यम से पूर्वोत्तर के यात्रियों को ब्रिटेन (UK), फ्रांस, जर्मनी, जापान, ऑस्ट्रिया सहित 14 प्रमुख देशों के वीजा आवेदन और बायोमेट्रिक सत्यापन के लिए दिल्ली या कोलकाता नहीं जाना पड़ेगा।</p>
+                    <div class="mt-2.5 p-2.5 bg-blue-100/60 rounded-lg text-xs leading-relaxed space-y-1">
+                        <strong class="text-blue-900">असम राज्य विशेष तथ्य:</strong><br>
+                        • राजधानी: दिसपुर | मुख्यमंत्री: डॉ. हिमंत बिस्वा सरमा | राज्यपाल: लक्ष्मण प्रसाद आचार्य।
+                    </div>
+                `
+            },
+            {
+                id: 8,
+                questionHtml: `न्यूयॉर्क स्थित प्रसिद्ध पत्रिका 'ग्लोबल फाइनेंस' द्वारा लगातार दूसरे वर्ष 'विश्व का सर्वश्रेष्ठ उपभोक्ता बैंक 2026' (World's Best Consumer Bank) किसे चुना गया?`,
+                options: [
+                    "भारतीय स्टेट बैंक (SBI)",
+                    "एचडीएफसी बैंक (HDFC Bank)",
+                    "आईसीआईसीआई बैंक (ICICI Bank)",
+                    "बैंक ऑफ बड़ौदा (BOB)"
+                ],
+                correctIndex: 0,
+                correctLetter: "A",
+                correctAnswerText: "भारतीय स्टेट बैंक (SBI)",
+                explanation: `
+                    <p class="font-bold text-slate-900 mb-1">विस्तृत विश्लेषण:</p>
+                    <p>भारत के सबसे बड़े सार्वजनिक क्षेत्र के वाणिज्यिक बैंक भारतीय स्टेट बैंक (SBI) को न्यूयॉर्क स्थित ग्लोबल फाइनेंस मैगजीन द्वारा लगातार दूसरे वर्ष "World's Best Consumer Bank 2026" तथा "Best Bank in India 2026" के प्रतिष्ठित खिताब से नवाजा गया है।</p>
+                    <div class="mt-2.5 p-2.5 bg-blue-100/60 rounded-lg text-xs leading-relaxed space-y-1">
+                        <strong class="text-blue-900">भारतीय स्टेट बैंक (SBI) स्टेटिक प्रोफाइल:</strong><br>
+                        • <strong>ऐतिहासिक पृष्ठभूमि:</strong> 2 जून 1806 को 'बैंक ऑफ कलकत्ता' के रूप में शुरुआत; बाद में बैंक ऑफ बॉम्बे और बैंक ऑफ मद्रास के विलय से 1921 में 'इंपीरियल बैंक ऑफ इंडिया' बना।<br>
+                        • <strong>राष्ट्रीयकरण:</strong> 1 जुलाई 1955 को इंपीरियल बैंक का राष्ट्रीयकरण कर स्टेट बैंक ऑफ इंडिया (SBI) नाम दिया गया।<br>
+                        • <strong>मुख्यालय:</strong> मुंबई (महाराष्ट्र) | <strong>अध्यक्ष:</strong> सी.एस. सेट्टी (Challa Sreenivasulu Setty)।<br><br>
+                        <strong class="text-blue-900">बैंकिंग सेक्टर हालिया नियुक्तियां:</strong><br>
+                        • HDFC बैंक: शशिधर जगदीशन के स्थान पर नए CEO अनूप बागची (Anoop Bagchi) नियुक्त किए गए।
+                    </div>
+                `
+            },
+            {
+                id: 9,
+                questionHtml: `रात में पृथ्वी पर ऑन-डिमांड सौर प्रकाश उपलब्ध कराने वाले उपग्रहों को लॉन्च करने हेतु किस भारतीय स्पेस स्टार्टअप ने अमेरिकी कंपनी 'रिफ्लेक्ट ऑर्बिटल' (Reflect Orbital) से समझौता किया है?`,
+                options: [
+                    "अग्निकुल कॉस्मॉस (Agnikul Cosmos)",
+                    "पिक्सेल (Pixxel)",
+                    "ध्रुव स्पेस (Dhruva Space)",
+                    "स्काईरूट एयरोस्पेस (Skyroot Aerospace)"
+                ],
+                correctIndex: 3,
+                correctLetter: "D",
+                correctAnswerText: "स्काईरूट एयरोस्पेस",
+                explanation: `
+                    <p class="font-bold text-slate-900 mb-1">विस्तृत विश्लेषण:</p>
+                    <p>हैदराबाद स्थित भारतीय निजी अंतरिक्ष स्टार्टअप स्काईरूट एयरोस्पेस ने कैलिफोर्निया स्थित अमेरिकी कंपनी Reflect Orbital के साथ समझौता किया है। इसके तहत स्काईरूट अपने विक्रम-1 (Vikram-1) तथा उन्नत विक्रम-1 यू रॉकेट के जरिए अंतरिक्ष में विशालकाय परावर्तक शीशे (Mirror Reflectors) वाले उपग्रह स्थापित करेगा।</p>
+                    <p class="mt-1"><strong>कार्यप्रणाली:</strong> ये सैटेलाइट्स सूर्य की किरणों को परावर्तित करके रात के समय पृथ्वी पर लक्षित 5 वर्ग किमी के दायरे में आवश्यकतानुसार तीव्र सौर ऊर्जा / रोशनी उपलब्ध कराएंगे, जिससे सौर ऊर्जा फार्म रात में भी बिजली पैदा कर सकेंगे और आपदा राहत में मदद मिलेगी।</p>
+                    <div class="mt-2.5 p-2.5 bg-blue-100/60 rounded-lg text-xs leading-relaxed space-y-1">
+                        <strong class="text-blue-900">स्काईरूट एयरोस्पेस महत्वपूर्ण तथ्य:</strong><br>
+                        • मुख्यालय: हैदराबाद | संस्थापक: पवन कुमार चंदना व नागा भरत डाका (पूर्व इसरो वैज्ञानिक)।<br>
+                        • उपलब्धि: भारत का पहला निजी रॉकेट 'विक्रम-एस' (नवंबर 2022) और पहला ऑर्बिटल क्लास निजी रॉकेट 'विक्रम-1' स्काईरूट द्वारा ही विकसित किया गया है।
+                    </div>
+                `
+            },
+            {
+                id: 10,
+                questionHtml: `डेनमार्क ओपन 2026 महिला एकल का खिताब जीतकर विश्व बैडमिंटन में सर्वाधिक 47 टाइटल जीतने का ऐतिहासिक वर्ल्ड रिकॉर्ड किस शटलर ने बनाया?`,
+                options: [
+                    "अकाने यामागुची (जापान)",
+                    "ताई त्जु-यिंग (ताइवान)",
+                    "पी.वी. सिंधु (भारत)",
+                    "एन से-यंग (An Se-young दक्षिण कोरिया)"
+                ],
+                correctIndex: 3,
+                correctLetter: "D",
+                correctAnswerText: "एन से-यंग (दक्षिण कोरिया)",
+                explanation: `
+                    <p class="font-bold text-slate-900 mb-1">विस्तृत विश्लेषण:</p>
+                    <p>दक्षिण कोरिया की विश्व नंबर 1 शटलर और पेरिस ओलंपिक स्वर्ण पदक विजेता एन से-यंग (An Se-young) ने डेनमार्क ओपन 2026 (BWF Super 750) के फाइनल में जापान की पूर्व विश्व चैंपियन अकाने यामागुची को सीधे सेटों में पराजित कर अपने करियर का 47वां BWF टाइटल जीता। वह आधुनिक बैडमिंटन इतिहास में सर्वाधिक खिताब जीतने वाली महिला खिलाड़ी बन गई हैं।</p>
+                    <div class="mt-2.5 p-2.5 bg-blue-100/60 rounded-lg text-xs leading-relaxed space-y-1">
+                        <strong class="text-blue-900">डेनमार्क ओपन 2026 परिणाम सारिणी:</strong><br>
+                        • <strong>महिला एकल विजेता:</strong> एन से-यंग (दक्षिण कोरिया) | <strong>उपविजेता:</strong> अकाने यामागुची (जापान)।<br>
+                        • <strong>पुरुष एकल विजेता:</strong> एलेक्स लैनियर (Alex Lanier - फ्रांस)।<br><br>
+                        <strong class="text-blue-900">बैडमिंटन ऐतिहासिक करंट अफेयर्स:</strong><br>
+                        • <strong>जापान ओपन 2026:</strong> भारत की स्टार खिलाड़ी पी.वी. सिंधु ने जापान ओपन का महिला एकल खिताब जीतकर इतिहास रचा (यह खिताब जीतने वाली पहली भारतीय महिला बनीं)।
+                    </div>
+                `
+            },
+            {
+                id: 11,
+                questionHtml: `जापान के आइची-नागोया में आयोजित एशियाई पैरा खेल 2026 में महिलाओं की 400 मीटर (T-20 वर्ग) दौड़ में नए गेम्स रिकॉर्ड के साथ स्वर्ण पदक किसने जीता?`,
+                options: [
+                    "प्रीति पाल",
+                    "सिमरन शर्मा",
+                    "दीप्ति जीवनजी (Deepthi Jeevanji)",
+                    "मोना अग्रवाल"
+                ],
+                correctIndex: 2,
+                correctLetter: "C",
+                correctAnswerText: "दीप्ति जीवनजी",
+                explanation: `
+                    <p class="font-bold text-slate-900 mb-1">विस्तृत विश्लेषण:</p>
+                    <p>भारतीय पैरा एथलीट दीप्ति जीवनजी ने एशियाई पैरा खेल 2026 (नागोया, जापान) में महिलाओं की 400 मीटर T-20 दौड़ स्पर्धा में 56.36 सेकंड का शानदार समय निकालते हुए नए गेम्स रिकॉर्ड के साथ गोल्ड मेडल हासिल किया।</p>
+                    <div class="mt-2.5 p-2.5 bg-blue-100/60 rounded-lg text-xs leading-relaxed space-y-1">
+                        <strong class="text-blue-900">एशियाई खेल 2026 एवं पैरा खेल 2026 शुभंकर तुलना:</strong><br>
+                        • <strong>एशियाई पैरा खेल 2026 (Asian Para Games):</strong> आधिकारिक शुभंकर 'उजुमिन' (Ujjumin) है।<br>
+                        • <strong>एशियाई खेल 2026 (Asian Games 2026):</strong> आधिकारिक शुभंकर 'होनोहोन' (Honohon - Flame / ज्वाला) है।
+                    </div>
+                `
+            },
+            {
+                id: 12,
+                questionHtml: `कुफरी नीलकंठ, कुफरी माणिक और कुफरी जामुनिया जैसी बायो-फोर्टिफाइड रंगीन आलू की नई किस्में किस राष्ट्रीय अनुसंधान संस्थान द्वारा विकसित की गई हैं?`,
+                options: [
+                    "भारतीय कृषि अनुसंधान संस्थान (IARI), नई दिल्ली",
+                    "केंद्रीय आलू अनुसंधान संस्थान (ICAR-CPRI), शिमला",
+                    "राष्ट्रीय पादप आनुवंशिक संसाधन ब्यूरो (NBPGR)",
+                    "भारतीय सब्जी अनुसंधान संस्थान (IIVR), वाराणसी"
+                ],
+                correctIndex: 1,
+                correctLetter: "B",
+                correctAnswerText: "केंद्रीय आलू अनुसंधान संस्थान (ICAR-CPRI), शिमला",
+                explanation: `
+                    <p class="font-bold text-slate-900 mb-1">विस्तृत विश्लेषण:</p>
+                    <p>शिमला (हिमाचल प्रदेश) स्थित भारतीय कृषि अनुसंधान परिषद के केंद्रीय आलू अनुसंधान संस्थान (CPRI) ने पारंपरिक प्लांट ब्रीडिंग तकनीक के माध्यम से एन्थोसायनिन, आयरन, जिंक और एंटीऑक्सीडेंट से भरपूर बायो-फोर्टिफाइड रंगीन आलू की तीन विशेष किस्में विकसित की हैं:</p>
+                    <ul class="list-disc list-inside my-1.5 space-y-0.5">
+                        <li><strong>कुफरी नीलकंठ:</strong> बैंगनी रंग का छिलका व गूदा (एंटीऑक्सीडेंट प्रचुर)।</li>
+                        <li><strong>कुफरी माणिक:</strong> गहरा लाल रंग का आलू (विटामिन C और आयरन से भरपूर)।</li>
+                        <li><strong>कुफरी जामुनिया:</strong> गहरा जामुनी रंग (उच्च एन्थोसायनिन सामग्री युक्त)।</li>
+                    </ul>
+                    <p class="mt-1"><strong>उद्देश्य:</strong> देश में 'छिपी हुई भूख' (Hidden Hunger - सूक्ष्म पोषक तत्वों की कमी) से लड़ना और पोषण सुरक्षा को सुदृढ़ करना।</p>
+                `
+            },
+            {
+                id: 13,
+                questionHtml: `अक्टूबर 2026 में बी. बी. निम्बालकर (1948) के बाद भारत के रणजी ट्रॉफी इतिहास में 400 रन की नाबाद पारी खेलने वाले दूसरे बल्लेबाज कौन बन गए हैं?`,
+                options: [
+                    "पृथ्वी शॉ",
+                    "सरफराज खान",
+                    "अभिमन्यु ईश्वरन",
+                    "चिन्मय सुतार (Chinmay Sutar)"
+                ],
+                correctIndex: 3,
+                correctLetter: "D",
+                correctAnswerText: "चिन्मय सुतार",
+                explanation: `
+                    <p class="font-bold text-slate-900 mb-1">विस्तृत विश्लेषण:</p>
+                    <p>रणजी ट्रॉफी 2026-27 के प्लेट ग्रुप मुकाबले में मिजोरम की ओर से खेलते हुए युवा बल्लेबाज चिन्मय सुतार ने नागालैंड के खिलाफ मात्र 517 गेंदों में नाबाद 400 रन (400*) बनाकर ऐतिहासिक कीर्तिमान रचा।</p>
+                    <div class="mt-2.5 p-2.5 bg-blue-100/60 rounded-lg text-xs leading-relaxed space-y-1">
+                        <strong class="text-blue-900">ऐतिहासिक संदर्भ:</strong><br>
+                        • रणजी इतिहास में 400+ रन बनाने वाले वह केवल दूसरे खिलाड़ी हैं।<br>
+                        • उनसे पूर्व महाराष्ट्र के भाऊसाहेब (बी.बी.) निम्बालकर ने दिसंबर 1948 में काठियावाड़ के विरुद्ध नाबाद 443 रन बनाए थे।<br><br>
+                        <strong class="text-blue-900">क्रिकेट स्पेशल फैक्ट:</strong><br>
+                        • शुभमन गिल ने एकदिवसीय अंतरराष्ट्रीय (ODI) क्रिकेट में वेस्टइंडीज के खिलाफ सबसे तेज दोहरा शतक लगाने का गौरव हासिल किया था।
+                    </div>
+                `
+            },
+            {
+                id: 14,
+                questionHtml: `अक्टूबर 2026 में सुप्रीम कोर्ट ने संविधान के किन अनुच्छेदों के तहत 'बच्चों की इंटरनेट तक पहुंच' (Right to Internet Access) को मौलिक अधिकार का अभिन्न अंग घोषित किया?`,
+                options: [
+                    "अनुच्छेद 21 एवं अनुच्छेद 19 (1) (a)",
+                    "अनुच्छेद 14 एवं अनुच्छेद 15",
+                    "अनुच्छेद 25 एवं अनुच्छेद 28",
+                    "अनुच्छेद 32 एवं अनुच्छेद 226"
+                ],
+                correctIndex: 0,
+                correctLetter: "A",
+                correctAnswerText: "अनुच्छेद 21 एवं अनुच्छेद 19 (1) (a)",
+                explanation: `
+                    <p class="font-bold text-slate-900 mb-1">विस्तृत विश्लेषण:</p>
+                    <p>सर्वोच्च न्यायालय की संवैधानिक पीठ ने एक ऐतिहासिक फैसले में बच्चों के इंटरनेट तक पहुंच को अनुच्छेद 21 (गरिमापूर्ण जीवन और शिक्षा का अधिकार) तथा अनुच्छेद 19 (1) (a) (वाक् एवं अभिव्यक्ति की स्वतंत्रता तथा ज्ञान प्राप्ति) के तहत मौलिक अधिकार के हिस्से के रूप में मान्यता दी है।</p>
+                    <p class="mt-1">कोर्ट ने टिप्पणी की कि आधुनिक डिजिटल युग में इंटरनेट के अभाव में शिक्षा की समानता अधूरी है, इसलिए राज्य का दायित्व है कि वह डिजिटल विभाजन (Digital Divide) को समाप्त करे।</p>
+                    <div class="mt-2.5 p-2.5 bg-blue-100/60 rounded-lg text-xs leading-relaxed space-y-1">
+                        <strong class="text-blue-900">परीक्षा उपयोगी संविधान अनुच्छेद:</strong><br>
+                        • <strong>अनुच्छेद 21A:</strong> 86वें संविधान संशोधन अधिनियम, 2002 द्वारा जोड़ा गया। यह 6 से 14 वर्ष के बच्चों हेतु 'निःशुल्क एवं अनिवार्य प्राथमिक शिक्षा' को मौलिक अधिकार बनाता है।<br>
+                        • <strong>अनुच्छेद 21:</strong> प्राण एवं दैहिक स्वतंत्रता का संरक्षण (Right to Life & Personal Liberty)।
+                    </div>
+                `
+            },
+            {
+                id: 15,
+                questionHtml: `केंद्रीय वाणिज्य एवं उद्योग मंत्री पीयूष गोयल ने 'राष्ट्रीय रणनीतिक व्यापार कमान केंद्र' (National Strategic Trade Command Centre) का उद्घाटन कहाँ किया?`,
+                options: [
+                    "नई दिल्ली (वाणिज्य भवन)",
+                    "मुंबई (JNPT)",
+                    "बेंगलुरु (कर्नाटक)",
+                    "गांधीनगर (GIFT City)"
+                ],
+                correctIndex: 0,
+                correctLetter: "A",
+                correctAnswerText: "नई दिल्ली (वाणिज्य भवन)",
+                explanation: `
+                    <p class="font-bold text-slate-900 mb-1">विस्तृत विश्लेषण:</p>
+                    <p>केंद्रीय वाणिज्य एवं उद्योग मंत्री पीयूष गोयल ने नई दिल्ली स्थित वाणिज्य भवन में भारत के पहले राष्ट्रीय रणनीतिक व्यापार कमान केंद्र (National Strategic Trade Command Centre - NSTCC) का भव्य उद्घाटन किया।</p>
+                    <p class="mt-1"><strong>मुख्य कार्य:</strong> यह अत्याधुनिक डिजिटल वॉर-रूम की तरह काम करेगा जो रियल-टाइम ग्लोबल ट्रेड डेटा, सप्लाई चेन व्यवधानों, वैश्विक टैरिफ बदलावों और रणनीतिक निर्यात-आयात की चौबीसों घंटे निगरानी व नीतिगत विश्लेषण करेगा।</p>
+                `
+            }
+        ];
+
+        // State Management
+        let currentQuestionIdx = 0;
+        let userResponses = new Array(testQuestions.length).fill(null);
+        let reviewStatus = new Array(testQuestions.length).fill(false);
+        let totalSecondsLeft = 120 * 60; // 120 minutes countdown
+        let timerInterval = null;
+        let testFinished = false;
+
+        // Elements
+        const overlay = document.getElementById('start-overlay');
+        const btnStart = document.getElementById('btn-start-test');
+        const timerDisplay = document.getElementById('timer-display');
+        const qCounter = document.getElementById('q-counter');
+        const reviewBadge = document.getElementById('review-badge');
+        const qContent = document.getElementById('q-content');
+        const optionsContainer = document.getElementById('options-container');
+        const btnPrev = document.getElementById('btn-prev');
+        const btnClear = document.getElementById('btn-clear');
+        const btnReview = document.getElementById('btn-review');
+        const btnNext = document.getElementById('btn-next');
+        const btnSubmitHeader = document.getElementById('btn-submit-header');
+        const scorecardModal = document.getElementById('scorecard-modal');
+        const btnShowSolutions = document.getElementById('btn-show-solutions');
+        const solutionView = document.getElementById('solution-view');
+        const cbtApp = document.getElementById('cbt-app');
+        const solutionsList = document.getElementById('solutions-list');
+
+        // Scorecard Elements
+        const resScore = document.getElementById('res-score');
+        const resAccuracy = document.getElementById('res-accuracy');
+        const resCorrect = document.getElementById('res-correct');
+        const resIncorrect = document.getElementById('res-incorrect');
+        const resLeft = document.getElementById('res-left');
+        const resTimeSpent = document.getElementById('res-time-spent');
+
+        // 1. Fullscreen Entry Trigger
+        btnStart.addEventListener('click', () => {
+            const docElm = document.documentElement;
+            if (docElm.requestFullscreen) {
+                docElm.requestFullscreen().catch(err => console.warn(err));
+            } else if (docElm.webkitRequestFullscreen) {
+                docElm.webkitRequestFullscreen();
+            } else if (docElm.msRequestFullscreen) {
+                docElm.msRequestFullscreen();
+            }
+            overlay.classList.add('hidden');
+            startTimer();
+            renderQuestion(0);
+        });
+
+        // 2. Countdown Timer
+        function startTimer() {
+            timerInterval = setInterval(() => {
+                if (totalSecondsLeft <= 0) {
+                    clearInterval(timerInterval);
+                    finishTest();
+                    return;
+                }
+                totalSecondsLeft--;
+                const mins = Math.floor(totalSecondsLeft / 60);
+                const secs = totalSecondsLeft % 60;
+                timerDisplay.innerText = `${String(mins).padStart(2, '0')}:${String(secs).padStart(2, '0')}`;
+            }, 1000);
+        }
+
+        // 3. Render Question Card
+        function renderQuestion(idx) {
+            currentQuestionIdx = idx;
+            const q = testQuestions[idx];
+
+            qCounter.innerText = `प्रश्न ${idx + 1} / ${testQuestions.length}`;
+            
+            if (reviewStatus[idx]) {
+                reviewBadge.classList.remove('hidden');
+                btnReview.innerText = "Unmark Review";
+                btnReview.className = "px-3.5 py-2 bg-purple-600 text-white text-xs sm:text-sm font-semibold rounded-xl border border-purple-600 transition active:scale-95";
+            } else {
+                reviewBadge.classList.add('hidden');
+                btnReview.innerText = "Mark for Review";
+                btnReview.className = "px-3.5 py-2 bg-purple-50 hover:bg-purple-100 text-purple-700 text-xs sm:text-sm font-semibold rounded-xl border border-purple-300 transition active:scale-95";
+            }
+
+            qContent.innerHTML = `<p class="font-bold">${q.questionHtml}</p>`;
+
+            // Options Rendering
+            optionsContainer.innerHTML = '';
+            const alphabet = ['A', 'B', 'C', 'D'];
+            q.options.forEach((optText, oIdx) => {
+                const isChecked = userResponses[idx] === oIdx;
+                const optDiv = document.createElement('label');
+                optDiv.className = `flex items-start p-3 sm:p-4 rounded-xl border cursor-pointer transition ${
+                    isChecked 
+                    ? 'border-blue-600 bg-blue-50/70 shadow-sm ring-1 ring-blue-500' 
+                    : 'border-slate-200 hover:bg-slate-50'
+                }`;
+                optDiv.innerHTML = `
+                    <div class="flex items-center h-5 mt-0.5">
+                        <input type="radio" name="cbt_option" value="${oIdx}" ${isChecked ? 'checked' : ''} class="w-4 h-4 text-blue-600 border-slate-300 focus:ring-blue-500">
+                    </div>
+                    <div class="ml-3 text-sm sm:text-base text-slate-800 devanagari">
+                        <span class="font-bold text-blue-900 mr-1.5">(${alphabet[oIdx]})</span> ${optText}
+                    </div>
+                `;
+                optDiv.addEventListener('click', () => {
+                    userResponses[idx] = oIdx;
+                    renderQuestion(idx);
+                });
+                optionsContainer.appendChild(optDiv);
+            });
+
+            // Navigation Buttons Handling
+            btnPrev.disabled = (idx === 0);
+            if (idx === testQuestions.length - 1) {
+                btnNext.innerHTML = `<span>Save &amp; Finish</span><span>&check;</span>`;
+            } else {
+                btnNext.innerHTML = `<span>Next &amp; Save</span><span>&rarr;</span>`;
+            }
+        }
+
+        // Nav Handlers
+        btnPrev.addEventListener('click', () => {
+            if (currentQuestionIdx > 0) renderQuestion(currentQuestionIdx - 1);
+        });
+
+        btnClear.addEventListener('click', () => {
+            userResponses[currentQuestionIdx] = null;
+            renderQuestion(currentQuestionIdx);
+        });
+
+        btnReview.addEventListener('click', () => {
+            reviewStatus[currentQuestionIdx] = !reviewStatus[currentQuestionIdx];
+            renderQuestion(currentQuestionIdx);
+        });
+
+        btnNext.addEventListener('click', () => {
+            if (currentQuestionIdx < testQuestions.length - 1) {
+                renderQuestion(currentQuestionIdx + 1);
+            } else {
+                if (confirm("क्या आप 15 प्रश्नों का यह टेस्ट सबमिट करना चाहते हैं?")) {
+                    finishTest();
+                }
+            }
+        });
+
+        btnSubmitHeader.addEventListener('click', () => {
+            if (confirm("क्या आप अपना टेस्ट अभी सबमिट करना चाहते हैं?")) {
+                finishTest();
+            }
+        });
+
+        // 4. Test Submission & Evaluation (+2 / -0.2)
+        function finishTest() {
+            if (testFinished) return;
+            testFinished = true;
+            clearInterval(timerInterval);
+
+            let correct = 0;
+            let incorrect = 0;
+            let unattempted = 0;
+
+            testQuestions.forEach((q, idx) => {
+                const ans = userResponses[idx];
+                if (ans === null || ans === undefined) {
+                    unattempted++;
+                } else if (ans === q.correctIndex) {
+                    correct++;
+                } else {
+                    incorrect++;
+                }
+            });
+
+            const score = (correct * 2.0) - (incorrect * 0.2);
+            const totalMax = testQuestions.length * 2.0;
+            const accuracy = (correct + incorrect) > 0 ? ((correct / (correct + incorrect)) * 100).toFixed(1) : 0;
+            
+            const timeTakenSec = (120 * 60) - totalSecondsLeft;
+            const tMins = Math.floor(timeTakenSec / 60);
+            const tSecs = timeTakenSec % 60;
+
+            resScore.innerText = `${score.toFixed(2)} / ${totalMax.toFixed(0)}`;
+            resAccuracy.innerText = `${accuracy}%`;
+            resCorrect.innerText = correct;
+            resIncorrect.innerText = incorrect;
+            resLeft.innerText = unattempted;
+            resTimeSpent.innerText = `${tMins}m ${tSecs}s`;
+
+            scorecardModal.classList.remove('hidden');
+        }
+
+        // 5. Solution Render Mode (Matching PDF's Detailed Solution)
+        btnShowSolutions.addEventListener('click', () => {
+            scorecardModal.classList.add('hidden');
+            cbtApp.classList.add('hidden');
+            solutionView.classList.remove('hidden');
+            renderSolutions();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        function renderSolutions() {
+            solutionsList.innerHTML = '';
+            const alphabet = ['A', 'B', 'C', 'D'];
+
+            testQuestions.forEach((q, idx) => {
+                const uAns = userResponses[idx];
+                const isCorrect = uAns === q.correctIndex;
+                const isLeft = uAns === null || uAns === undefined;
+
+                const solCard = document.createElement('div');
+                solCard.className = "bg-white p-5 sm:p-7 rounded-2xl border border-slate-200 shadow-sm space-y-4";
+
+                let statusBadge = '';
+                if (isLeft) {
+                    statusBadge = `<span class="bg-slate-100 text-slate-600 px-3 py-1 rounded-full text-xs font-bold border border-slate-300">छोड़ा गया (0.0)</span>`;
+                } else if (isCorrect) {
+                    statusBadge = `<span class="bg-emerald-100 text-emerald-800 px-3 py-1 rounded-full text-xs font-bold border border-emerald-300">सही उत्तर (+2.00)</span>`;
+                } else {
+                    statusBadge = `<span class="bg-rose-100 text-rose-800 px-3 py-1 rounded-full text-xs font-bold border border-rose-300">गलत उत्तर (-0.20)</span>`;
+                }
+
+                solCard.innerHTML = `
+                    <div class="flex items-center justify-between border-b pb-2">
+                        <span class="text-sm font-black text-slate-800">Q.${idx + 1}</span>
+                        ${statusBadge}
+                    </div>
+
+                    <div class="devanagari text-slate-900 text-base font-semibold leading-relaxed">
+                        ${q.questionHtml}
+                    </div>
+
+                    <div class="space-y-2 text-sm devanagari">
+                        ${q.options.map((opt, oIdx) => {
+                            let optBg = "bg-slate-50 border-slate-200";
+                            let tag = "";
+                            if (oIdx === q.correctIndex) {
+                                optBg = "bg-emerald-50 border-emerald-500 font-bold text-emerald-950";
+                                tag = "<span class='text-emerald-700 text-xs font-bold'>✓ सही उत्तर (" + alphabet[oIdx] + ")</span>";
+                            } else if (oIdx === uAns && !isCorrect) {
+                                optBg = "bg-rose-50 border-rose-400 font-bold text-rose-950";
+                                tag = "<span class='text-rose-600 text-xs font-bold'>✗ आपका उत्तर</span>";
+                            }
+                            return `
+                                <div class="p-3 rounded-lg border ${optBg} flex justify-between items-center">
+                                    <span>(${alphabet[oIdx]}) ${opt}</span>${tag}
+                                </div>
+                            `;
+                        }).join('')}
+                    </div>
+
+                    <!-- PDF Exact Solution Section -->
+                    <div class="mt-4 p-4 rounded-xl bg-blue-50/70 border border-blue-200 text-slate-800 text-xs sm:text-sm devanagari leading-relaxed">
+                        <div class="font-extrabold text-blue-900 mb-2 flex items-center justify-between">
+                            <span>✓ सही उत्तर: (${q.correctLetter}) ${q.correctAnswerText}</span>
+                            <span class="text-xs text-blue-600 font-medium">@GYANVERSET</span>
+                        </div>
+                        ${q.explanation}
+                    </div>
+
+                    <div class="pt-2 border-t border-slate-100 flex items-center justify-between text-xs text-slate-400">
+                        <span>ज्ञान से सफलता की ओर | दैनिक समसामयिकी विशेषांक</span>
+                        <a href="https://t.me/GYANVERSET" target="_blank" class="text-blue-600 font-semibold hover:underline">@GYANVERSET</a>
+                    </div>
+                `;
+                solutionsList.appendChild(solCard);
+            });
+        }
+    </script>
+</body>
+</html>
