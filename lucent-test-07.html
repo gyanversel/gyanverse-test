@@ -1,0 +1,2529 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GYANVERSE - Physics Bilingual CBT Mock Test (80 MCQs)</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Tiro+Devanagari+Hindi:ital@0;1&family=Inter:wght@400;500;600;700;800&display=swap');
+        body {
+            font-family: 'Inter', 'Tiro Devanagari Hindi', sans-serif;
+            user-select: none;
+            -webkit-user-select: none;
+        }
+        .devanagari {
+            font-family: 'Tiro Devanagari Hindi', serif;
+        }
+    </style>
+</head>
+<body class="bg-slate-100 text-slate-800 min-h-screen flex flex-col">
+
+    <!-- START TEST MODAL / MANDATORY AUTO FULL-SCREEN GATE -->
+    <div id="startModal" class="fixed inset-0 z-50 flex items-center justify-center bg-slate-900 bg-opacity-95 p-4">
+        <div class="bg-white rounded-2xl shadow-2xl max-w-lg w-full p-6 md:p-8 text-center border-t-8 border-indigo-600">
+            <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-indigo-100 text-indigo-600 mb-4 text-3xl font-black">
+                GV
+            </div>
+            <h1 class="text-2xl md:text-3xl font-extrabold text-slate-800 mb-1">GYANVERSE CBT PORTAL</h1>
+            <p class="text-xs md:text-sm font-bold text-indigo-600 tracking-wide uppercase mb-4">Physics Chapters 01 to 04 (Bilingual Mega Test)</p>
+            
+            <div class="bg-slate-50 border border-slate-200 rounded-xl p-4 text-left text-sm text-slate-600 mb-6 space-y-2">
+                <div class="flex justify-between items-center py-1 border-b border-slate-200">
+                    <span class="font-medium">Total Questions:</span>
+                    <span class="font-bold text-slate-800">80 High-Level MCQs</span>
+                </div>
+                <div class="flex justify-between items-center py-1 border-b border-slate-200">
+                    <span class="font-medium">Time Allowed:</span>
+                    <span class="font-bold text-slate-800">120 Minutes</span>
+                </div>
+                <div class="flex justify-between items-center py-1 border-b border-slate-200">
+                    <span class="font-medium">Marking Scheme:</span>
+                    <span class="font-bold text-emerald-600">+2.00 / <span class="text-rose-600">-0.20</span></span>
+                </div>
+                <div class="flex justify-between items-center py-1 border-b border-slate-200">
+                    <span class="font-medium">Language (भाषा):</span>
+                    <span class="font-bold text-indigo-600">Bilingual (हिंदी / English)</span>
+                </div>
+                <div class="pt-2 text-xs text-amber-700 bg-amber-50 p-2.5 rounded border border-amber-200">
+                    <i class="fa-solid fa-triangle-exclamation mr-1"></i> Yah test auto full-screen mode me chalega. Aap test ke dauran kisi bhi samay upar diye gaye button se bhasha badal sakte hain.
+                </div>
+            </div>
+
+            <button onclick="startCBT()" class="w-full py-4 px-6 bg-gradient-to-r from-indigo-600 to-indigo-800 hover:from-indigo-700 hover:to-indigo-900 text-white font-bold rounded-xl shadow-lg hover:shadow-indigo-500/30 transition flex items-center justify-center gap-2 text-base md:text-lg">
+                <i class="fa-solid fa-expand"></i> Start Test (Auto Full Screen)
+            </button>
+            <div class="mt-4">
+                <a href="https://t.me/GYANVERSET" target="_blank" class="text-xs text-indigo-600 hover:underline inline-flex items-center gap-1 font-semibold">
+                    <i class="fa-brands fa-telegram"></i> Aise mock tests ke liye Telegram join karein: @GYANVERSET
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- MAIN APP CONTAINER -->
+    <div id="cbtApp" class="flex-1 flex flex-col hidden">
+        <!-- HEADER -->
+        <header class="bg-slate-900 text-white px-4 md:px-8 py-3.5 shadow-md flex items-center justify-between sticky top-0 z-30">
+            <div class="flex items-center gap-3">
+                <span class="bg-indigo-600 text-white font-black px-2.5 py-1 rounded text-sm tracking-wider">GV</span>
+                <div>
+                    <h2 class="font-extrabold text-base md:text-lg tracking-wide leading-tight">GYANVERSE</h2>
+                    <p class="text-[10px] md:text-xs text-slate-400">Physics 80 MCQs CBT (Bilingual)</p>
+                </div>
+            </div>
+
+            <div class="flex items-center gap-2 md:gap-4">
+                <!-- LANGUAGE SWITCHER TOGGLE -->
+                <button onclick="toggleLanguage()" class="bg-indigo-700 hover:bg-indigo-600 text-white px-2.5 md:px-3 py-1.5 rounded-lg text-xs font-bold border border-indigo-500 flex items-center gap-1.5 shadow transition">
+                    <i class="fa-solid fa-language text-sm"></i>
+                    <span id="currentLangLabel">Eng</span>
+                </button>
+
+                <!-- LIVE TIMER -->
+                <div class="flex items-center gap-1.5 md:gap-2 bg-slate-800 border border-slate-700 px-3 py-1.5 rounded-lg shadow-inner">
+                    <i class="fa-regular fa-clock text-amber-400 text-sm"></i>
+                    <span id="timerDisplay" class="font-mono text-sm md:text-base font-bold text-amber-400">120:00</span>
+                </div>
+
+                <!-- SUBMIT TEST BUTTON -->
+                <button onclick="confirmSubmitTest()" class="bg-rose-600 hover:bg-rose-700 text-white px-3 md:px-5 py-1.5 rounded-lg text-xs md:text-sm font-bold shadow transition flex items-center gap-1.5">
+                    <i class="fa-solid fa-flag-checkered"></i> <span>Submit</span>
+                </button>
+            </div>
+        </header>
+
+        <!-- SUB HEADER BAR -->
+        <div class="bg-white border-b border-slate-200 px-4 md:px-8 py-2.5 flex justify-between items-center text-xs md:text-sm shadow-sm">
+            <div class="font-bold text-slate-700 flex items-center gap-2">
+                <span class="bg-slate-100 text-slate-700 border border-slate-300 px-2.5 py-0.5 rounded-full" id="questionIndicator">Question 1 of 80</span>
+                <span id="reviewBadge" class="hidden bg-amber-100 text-amber-800 text-xs px-2 py-0.5 rounded-full font-semibold border border-amber-300">
+                    <i class="fa-solid fa-bookmark text-[10px] mr-1"></i> Marked for Review
+                </span>
+            </div>
+            <div class="text-slate-500 font-medium">
+                Marking: <span class="text-emerald-600 font-semibold">+2.00</span> | <span class="text-rose-600 font-semibold">-0.20</span>
+            </div>
+        </div>
+
+        <!-- FULL WIDTH CLEAN VIEWPORT -->
+        <main class="flex-1 max-w-4xl w-full mx-auto p-4 md:p-6 flex flex-col justify-start">
+            <div class="bg-white rounded-2xl border border-slate-200 shadow-sm p-5 md:p-7 flex-1 flex flex-col justify-between">
+                <div>
+                    <!-- QUESTION TEXT CONTAINER -->
+                    <div id="questionContainer" class="text-slate-800 text-base md:text-lg leading-relaxed font-normal mb-6">
+                        <!-- Injected by JS -->
+                    </div>
+
+                    <!-- OPTIONS CONTAINER -->
+                    <div id="optionsContainer" class="space-y-3 mb-6">
+                        <!-- Injected by JS -->
+                    </div>
+                </div>
+
+                <!-- NAVIGATION BUTTONS CONTAINER (EXACTLY BELOW OPTIONS) -->
+                <div>
+                    <div class="border-t border-slate-100 pt-5 grid grid-cols-2 md:grid-cols-4 gap-2.5">
+                        <button onclick="prevQuestion()" id="btnPrev" class="w-full py-2.5 px-4 bg-slate-100 hover:bg-slate-200 text-slate-700 font-semibold rounded-xl text-sm transition flex items-center justify-center gap-1.5 disabled:opacity-40 disabled:cursor-not-allowed">
+                            <i class="fa-solid fa-arrow-left text-xs"></i> Previous
+                        </button>
+                        <button onclick="clearResponse()" class="w-full py-2.5 px-4 bg-slate-100 hover:bg-rose-50 hover:text-rose-600 text-slate-600 font-semibold rounded-xl text-sm transition border border-slate-200">
+                            Clear Response
+                        </button>
+                        <button onclick="toggleMarkReview()" id="btnReview" class="w-full py-2.5 px-4 bg-amber-50 hover:bg-amber-100 text-amber-700 font-semibold rounded-xl text-sm transition border border-amber-200 flex items-center justify-center gap-1">
+                            <i class="fa-regular fa-bookmark"></i> Review
+                        </button>
+                        <button onclick="nextQuestion()" id="btnNext" class="w-full py-2.5 px-4 bg-indigo-600 hover:bg-indigo-700 text-white font-bold rounded-xl text-sm shadow hover:shadow-indigo-500/20 transition flex items-center justify-center gap-1.5">
+                            Save & Next <i class="fa-solid fa-arrow-right text-xs"></i>
+                        </button>
+                    </div>
+
+                    <!-- WATERMARK TAG -->
+                    <div class="mt-4 pt-3 border-t border-dashed border-slate-200 flex items-center justify-between text-xs text-slate-400">
+                        <span class="font-medium tracking-wide">Lucent GK Physics Mega Test (Bilingual)</span>
+                        <a href="https://t.me/GYANVERSET" target="_blank" class="text-indigo-600 font-semibold hover:underline">@GYANVERSET</a>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- SCORECARD MODAL -->
+    <div id="scoreModal" class="fixed inset-0 z-50 flex items-center justify-center bg-slate-900 bg-opacity-95 p-4 hidden">
+        <div class="bg-white rounded-2xl shadow-2xl max-w-xl w-full p-6 md:p-8 border-t-8 border-indigo-600 max-h-[90vh] overflow-y-auto">
+            <div class="text-center mb-6">
+                <span class="bg-indigo-100 text-indigo-700 text-xs font-bold px-3 py-1 rounded-full uppercase">Official Result</span>
+                <h2 class="text-2xl font-black text-slate-800 mt-2">GYANVERSE Scorecard</h2>
+                <p class="text-xs text-slate-500">Lucent Physics Chapters 01 to 04 (80 Questions)</p>
+            </div>
+
+            <!-- SCORE METRICS -->
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-6">
+                <div class="bg-slate-50 p-3.5 rounded-xl border border-slate-200 text-center">
+                    <p class="text-xs text-slate-500 font-medium">Final Score</p>
+                    <p id="resScore" class="text-xl font-black text-indigo-600">0.00</p>
+                    <span class="text-[10px] text-slate-400">/ 160.00</span>
+                </div>
+                <div class="bg-emerald-50 p-3.5 rounded-xl border border-emerald-200 text-center">
+                    <p class="text-xs text-emerald-700 font-medium">Correct</p>
+                    <p id="resCorrect" class="text-xl font-black text-emerald-600">0</p>
+                    <span class="text-[10px] text-emerald-600">+2.00 ea</span>
+                </div>
+                <div class="bg-rose-50 p-3.5 rounded-xl border border-rose-200 text-center">
+                    <p class="text-xs text-rose-700 font-medium">Incorrect</p>
+                    <p id="resIncorrect" class="text-xl font-black text-rose-600">0</p>
+                    <span class="text-[10px] text-rose-600">-0.20 ea</span>
+                </div>
+                <div class="bg-amber-50 p-3.5 rounded-xl border border-amber-200 text-center">
+                    <p class="text-xs text-amber-700 font-medium">Accuracy</p>
+                    <p id="resAccuracy" class="text-xl font-black text-amber-600">0%</p>
+                    <span class="text-[10px] text-amber-600">Precision</span>
+                </div>
+            </div>
+
+            <div class="bg-slate-50 rounded-xl p-4 border border-slate-200 text-xs text-slate-600 space-y-1.5 mb-6">
+                <div class="flex justify-between">
+                    <span>Total Attempted:</span>
+                    <span class="font-bold text-slate-800" id="resAttempted">0 / 80</span>
+                </div>
+                <div class="flex justify-between">
+                    <span>Unattempted (Skipped):</span>
+                    <span class="font-bold text-slate-800" id="resUnattempted">0</span>
+                </div>
+            </div>
+
+            <div class="flex flex-col sm:flex-row gap-3">
+                <button onclick="openSolutionReview()" class="flex-1 py-3 px-4 bg-indigo-600 hover:bg-indigo-700 text-white font-bold rounded-xl text-sm transition shadow flex items-center justify-center gap-1.5">
+                    <i class="fa-solid fa-list-check"></i> Check Detailed Solutions
+                </button>
+                <a href="https://t.me/GYANVERSET" target="_blank" class="flex-1 py-3 px-4 bg-sky-500 hover:bg-sky-600 text-white font-bold rounded-xl text-sm transition shadow flex items-center justify-center gap-1.5">
+                    <i class="fa-brands fa-telegram"></i> Join Telegram (@GYANVERSET)
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- DETAILED SOLUTION REVIEW OVERLAY -->
+    <div id="solutionReviewModal" class="fixed inset-0 z-50 flex items-center justify-center bg-slate-900 bg-opacity-95 p-2 md:p-6 hidden">
+        <div class="bg-white rounded-2xl shadow-2xl max-w-4xl w-full h-full max-h-[92vh] flex flex-col overflow-hidden">
+            <div class="bg-slate-900 text-white px-6 py-4 flex items-center justify-between">
+                <div>
+                    <h3 class="font-bold text-lg">Detailed Solutions & Explanations (Bilingual)</h3>
+                    <p class="text-xs text-slate-400">Lucent GK Physics - Complete 80 Questions Line-by-Line Analysis</p>
+                </div>
+                <button onclick="closeSolutionReview()" class="text-slate-400 hover:text-white text-xl">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+
+            <div id="solutionsList" class="flex-1 overflow-y-auto p-4 md:p-6 space-y-6">
+                <!-- Solutions injected here -->
+            </div>
+
+            <div class="bg-slate-50 border-t border-slate-200 p-4 flex justify-between items-center text-xs text-slate-500">
+                <span>GYANVERSE Telegram Community</span>
+                <a href="https://t.me/GYANVERSET" target="_blank" class="text-indigo-600 font-bold hover:underline">@GYANVERSET</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- BILINGUAL QUESTION REPOSITORY (80 QUESTIONS) -->
+    <script>
+        // GLOBAL APP STATE
+        let currentLang = 'hi'; // 'hi' or 'en'
+        let currentQIndex = 0;
+        let timerSeconds = 120 * 60;
+        let timerInterval = null;
+
+        const questions = [
+            // CHAPTER 01: UNITS & DIMENSIONS (Q1 - Q20)
+            {
+                id: 1,
+                type: { hi: "कथन प्रकार", en: "Statement Type" },
+                qText: {
+                    hi: `S.I. पद्धति के मूल मात्रकों और संपूरक मूल मात्रकों के संबंध में निम्नलिखित कथनों पर विचार कीजिए:<br><br>
+                    1. S.I. पद्धति में मूल मात्रकों की कुल संख्या सात है, जिनमें पदार्थ के परिमाण का मात्रक मोल (mol) है।<br>
+                    2. समतल कोण का संपूरक मात्रक रेडियन (rad) तथा ठोस कोण का स्टेरेडियन (sr) है।<br>
+                    3. ज्योति-तीव्रता का पुराना मात्रक 'कैण्डिल शक्ति' (C.P.) था, जिसे नया नाम 'कैण्डेला' (cd) दिया गया है।<br>
+                    4. ताप का नया S.I. संकेत डिग्री सेन्टीग्रेड (°C) है और पुराना संकेत डिग्री सेल्सियस था।<br><br>
+                    उपर्युक्त कथनों में से कौन-सा/से <strong>सही</strong> है/हैं?`,
+                    en: `Consider the following statements regarding the fundamental and supplementary units of the S.I. system:<br><br>
+                    1. The total number of base units in S.I. system is seven, in which the unit of amount of substance is mole (mol).<br>
+                    2. The supplementary unit for plane angle is radian (rad) and for solid angle is steradian (sr).<br>
+                    3. The old unit of luminous intensity was 'Candle Power' (C.P.), which has been given the new name 'candela' (cd).<br>
+                    4. The new S.I. symbol of temperature is degree Centigrade (°C) and the old symbol was degree Celsius.<br><br>
+                    Which of the above statements is/are <strong>correct</strong>?`
+                },
+                options: {
+                    hi: ["केवल 1, 2 और 3", "केवल 2 और 4", "केवल 1 और 4", "1, 2, 3 और 4 सभी"],
+                    en: ["Only 1, 2 and 3", "Only 2 and 4", "Only 1 and 4", "All 1, 2, 3 and 4"]
+                },
+                correct: 0,
+                explanation: {
+                    hi: "कथन 1, 2 और 3 सही हैं। कथन 4 गलत है क्योंकि डिग्री सेन्टीग्रेड पुराना नाम था और डिग्री सेल्सियस नया नाम है।",
+                    en: "Statements 1, 2 and 3 are correct. Statement 4 is incorrect because degree Centigrade was the old name and degree Celsius is the new S.I. name."
+                }
+            },
+            {
+                id: 2,
+                type: { hi: "असंगत युग्म", en: "Mismatch Pair" },
+                qText: {
+                    hi: `दस की घातों के पूर्व-प्रत्ययों (Prefixes) और उनके संकेतों के संबंध में निम्नलिखित में से <strong>कौन-सा युग्म सही सुमेलित नहीं है</strong>?<br><br>
+                    (A) योटा (Yotta, 10²⁴) — Y<br>
+                    (B) एक्सा (Exa, 10¹⁸) — E<br>
+                    (C) जेप्टो (Zepto, 10⁻²¹) — z<br>
+                    (D) फेम्टो (Femto, 10⁻¹⁵) — P`,
+                    en: `Which of the following pairs regarding the prefixes for powers of 10 and their symbols is <strong>NOT correctly matched</strong>?<br><br>
+                    (A) Yotta (10²⁴) — Y<br>
+                    (B) Exa (10¹⁸) — E<br>
+                    (C) Zepto (10⁻²¹) — z<br>
+                    (D) Femto (10⁻¹⁵) — P`
+                },
+                options: {
+                    hi: ["युग्म (A)", "युग्म (B)", "युग्म (C)", "युग्म (D)"],
+                    en: ["Pair (A)", "Pair (B)", "Pair (C)", "Pair (D)"]
+                },
+                correct: 3,
+                explanation: {
+                    hi: "युग्म (D) गलत है क्योंकि फेम्टो (10⁻¹⁵) का प्रतीक 'f' होता है। प्रतीक 'P' पेटा (Peta, 10¹⁵) का संकेत है।",
+                    en: "Pair (D) is incorrect because the symbol for femto (10⁻¹⁵) is 'f'. 'P' is the symbol for peta (10¹⁵)."
+                }
+            },
+            {
+                id: 3,
+                type: { hi: "कथन-कारण", en: "Assertion-Reason" },
+                qText: {
+                    hi: `नीचे दो कथन दिए गए हैं, एक को कथन (A) तथा दूसरे को कारण (R) कहा गया है:<br><br>
+                    <strong>कथन (A):</strong> खगोलीय दूरियों को मापने के लिए प्रकाशवर्ष (Light Year) का प्रयोग किया जाता है।<br>
+                    <strong>कारण (R):</strong> ब्रह्मांड में निर्वात के भीतर प्रकाश की चाल सदैव एकसमान रहती है।<br><br>
+                    उपर्युक्त के संदर्भ में सही उत्तर का चयन कीजिए:`,
+                    en: `Given below are two statements, one labeled as Assertion (A) and the other as Reason (R):<br><br>
+                    <strong>Assertion (A):</strong> Light year is used to measure astronomical distances.<br>
+                    <strong>Reason (R):</strong> The speed of light in vacuum always remains uniform throughout the universe.<br><br>
+                    Select the correct answer from the options below:`
+                },
+                options: {
+                    hi: [
+                        "(A) और (R) दोनों सही हैं और (R), (A) की सही व्याख्या है।",
+                        "(A) और (R) दोनों सही हैं लेकिन (R), (A) की सही व्याख्या नहीं है।",
+                        "(A) सही है लेकिन (R) गलत है।",
+                        "(A) गलत है लेकिन (R) सही है।"
+                    ],
+                    en: [
+                        "Both (A) and (R) are true and (R) is the correct explanation of (A).",
+                        "Both (A) and (R) are true but (R) is NOT the correct explanation of (A).",
+                        "(A) is true but (R) is false.",
+                        "(A) is false but (R) is true."
+                    ]
+                },
+                correct: 0,
+                explanation: {
+                    hi: "प्रकाशवर्ष दूरी मापने की मानक इकाई है क्योंकि निर्वात में प्रकाश की चाल पूर्णतः नियत (3 × 10⁸ मी./से.) रहती है।",
+                    en: "Light year is used as a standard astronomical distance unit because the speed of light in vacuum is constant (3 × 10⁸ m/s)."
+                }
+            },
+            {
+                id: 4,
+                type: { hi: "नकारात्मक प्रश्न", en: "Negative Fact" },
+                qText: {
+                    hi: `खगोलीय दूरियों एवं मात्रकों के संदर्भ में निम्नलिखित कथनों में से कौन-सा <strong>असत्य</strong> है?`,
+                    en: `Which of the following statements is <strong>INCORRECT</strong> regarding astronomical distances and units?`
+                },
+                options: {
+                    hi: [
+                        "1 प्रकाश वर्ष का मान 9.46 × 10¹⁵ मीटर या 9.46 × 10¹² किमी होता है।",
+                        "पारसेक (Parsec) दूरी मापने की सबसे बड़ी इकाई है और 1 पारसेक = 3.26 प्रकाशवर्ष होता है।",
+                        "पृथ्वी और सूर्य के बीच की माध्य दूरी खगोलीय इकाई (AU) कहलाती है (1.496 × 10¹¹ मीटर)।",
+                        "पृथ्वी और सूर्य की औसत दूरी प्रकाशवर्ष के संदर्भ में प्रकाशवर्ष का लगभग 50% होती है।"
+                    ],
+                    en: [
+                        "1 Light year is equal to 9.46 × 10¹⁵ m or 9.46 × 10¹² km.",
+                        "Parsec is the largest unit of distance and 1 Parsec = 3.26 Light years.",
+                        "The mean distance between Earth and Sun is called Astronomical Unit (1.496 × 10¹¹ m).",
+                        "The average distance between Earth and Sun is approximately 50% of a light year."
+                    ]
+                },
+                correct: 3,
+                explanation: {
+                    hi: "विकल्प (D) गलत है। पृथ्वी और सूर्य की औसत दूरी प्रकाशवर्ष के संदर्भ में प्रकाशवर्ष का केवल 8.311 मिनट प्रकाश-दूरी है।",
+                    en: "Option (D) is incorrect. The average distance between the Earth and the Sun in terms of light travel time is only about 8.311 minutes, not 50%."
+                }
+            },
+            {
+                id: 5,
+                type: { hi: "कथन प्रकार", en: "Statement Type" },
+                qText: {
+                    hi: `विभिन्न भौतिक राशियों के विमीय सूत्रों के संदर्भ में निम्नलिखित पर विचार कीजिए:<br><br>
+                    1. कार्य और ऊर्जा दोनों का विमीय सूत्र [ML²T⁻²] होता है।<br>
+                    2. संवेग और आवेग दोनों का विमीय सूत्र [MLT⁻¹] होता है।<br>
+                    3. दाब और प्रतिबल का विमीय सूत्र [ML⁻¹T⁻²] होता है।<br>
+                    4. पृष्ठ तनाव का विमीय सूत्र [ML⁰T⁻²] होता है।<br><br>
+                    उपर्युक्त में से कौन-से कथन <strong>सत्य</strong> हैं?`,
+                    en: `Consider the following statements regarding the dimensional formulae of physical quantities:<br><br>
+                    1. Both Work and Energy have the dimensional formula [ML²T⁻²].<br>
+                    2. Both Momentum and Impulse have the dimensional formula [MLT⁻¹].<br>
+                    3. Both Pressure and Stress have the dimensional formula [ML⁻¹T⁻²].<br>
+                    4. Surface Tension has the dimensional formula [ML⁰T⁻²].<br><br>
+                    Which of the above statements are <strong>correct</strong>?`
+                },
+                options: {
+                    hi: ["केवल 1 और 2", "केवल 1, 2 और 3", "केवल 2, 3 और 4", "1, 2, 3 और 4 सभी"],
+                    en: ["Only 1 and 2", "Only 1, 2 and 3", "Only 2, 3 and 4", "All 1, 2, 3 and 4"]
+                },
+                correct: 3,
+                explanation: {
+                    hi: "सभी चारों कथन पूर्णतः सत्य हैं।",
+                    en: "All four statements are completely correct."
+                }
+            },
+            {
+                id: 6,
+                type: { hi: "पहचान प्रकार", en: "Identification" },
+                qText: {
+                    hi: `निम्नलिखित में से किस भौतिक राशि के विमीय सूत्र का मान <strong>[M⁰L⁰T⁻¹]</strong> होता है?`,
+                    en: `Which of the following physical quantities has the dimensional formula <strong>[M⁰L⁰T⁻¹]</strong>?`
+                },
+                options: {
+                    hi: [
+                        "कोणीय संवेग (Angular Momentum)",
+                        "वेग प्रवणता (Velocity Gradient)",
+                        "श्यानता गुणांक (Coefficient of Viscosity)",
+                        "प्रत्यास्थता गुणांक (Modulus of Elasticity)"
+                    ],
+                    en: [
+                        "Angular Momentum",
+                        "Velocity Gradient",
+                        "Coefficient of Viscosity",
+                        "Modulus of Elasticity"
+                    ]
+                },
+                correct: 1,
+                explanation: {
+                    hi: "वेग प्रवणता = (dv / dx) = (LT⁻¹) / L = [M⁰L⁰T⁻¹]। श्यानता गुणांक [ML⁻¹T⁻¹] होता है।",
+                    en: "Velocity gradient = dv/dx = (LT⁻¹)/L = [M⁰L⁰T⁻¹]. Coefficient of viscosity is [ML⁻¹T⁻¹]."
+                }
+            },
+            {
+                id: 7,
+                type: { hi: "कथन-कारण", en: "Assertion-Reason" },
+                qText: {
+                    hi: `नीचे दो कथन दिए गए हैं, एक को कथन (A) तथा दूसरे को कारण (R) कहा गया है:<br><br>
+                    <strong>कथन (A):</strong> समतलीय कोण (Plane angle) की कोई भौतिक विमा नहीं होती है परंतु इसका मात्रक होता है।<br>
+                    <strong>कारण (R):</strong> समतल कोण चाप की लंबाई (ds) और त्रिज्या (r) का अनुपात (dθ = ds/r) होता है, जिससे दोनों लंबाइयों की विमाएँ निरस्त हो जाती हैं।<br><br>
+                    उपर्युक्त के संदर्भ में सही उत्तर का चयन कीजिए:`,
+                    en: `Given below are two statements, one labeled as Assertion (A) and the other as Reason (R):<br><br>
+                    <strong>Assertion (A):</strong> Plane angle is dimensionless but possesses an S.I. unit.<br>
+                    <strong>Reason (R):</strong> Plane angle is the ratio of arc length (ds) to radius (r) [dθ = ds/r], cancelling the dimensions of length.<br><br>
+                    Select the correct answer:`
+                },
+                options: {
+                    hi: [
+                        "(A) और (R) दोनों सही हैं और (R), (A) की सही व्याख्या है।",
+                        "(A) और (R) दोनों सही हैं लेकिन (R), (A) की सही व्याख्या नहीं है।",
+                        "(A) सही है लेकिन (R) गलत है।",
+                        "(A) गलत है लेकिन (R) सही है।"
+                    ],
+                    en: [
+                        "Both (A) and (R) are true and (R) is the correct explanation of (A).",
+                        "Both (A) and (R) are true but (R) is NOT the correct explanation of (A).",
+                        "(A) is true but (R) is false.",
+                        "(A) is false but (R) is true."
+                    ]
+                },
+                correct: 0,
+                explanation: {
+                    hi: "समतल कोण दो लंबाइयों का अनुपात होने के कारण विमाहीन [M⁰L⁰T⁰] है, परंतु S.I. में इसका मात्रक रेडियन (rad) है।",
+                    en: "Being a ratio of two lengths, plane angle is dimensionless [M⁰L⁰T⁰], but its S.I. unit is radian (rad)."
+                }
+            },
+            {
+                id: 8,
+                type: { hi: "असंगत युग्म", en: "Mismatch Pair" },
+                qText: {
+                    hi: `भौतिक राशियों और उनके विमीय सूत्रों के संबंध में गलत सुमेलन की पहचान कीजिए:<br><br>
+                    (A) प्लांक नियतांक (h) — [ML²T⁻¹]<br>
+                    (B) गुरुत्वीय नियतांक (G) — [M⁻¹L³T⁻²]<br>
+                    (C) विद्युत क्षेत्र — [MLT⁻³A⁻¹]<br>
+                    (D) विद्युत प्रतिरोध (Resistance) — [ML²T⁻²A⁻¹]`,
+                    en: `Identify the <strong>incorrectly matched</strong> pair of physical quantities and their dimensional formulas:<br><br>
+                    (A) Planck's constant (h) — [ML²T⁻¹]<br>
+                    (B) Gravitational constant (G) — [M⁻¹L³T⁻²]<br>
+                    (C) Electric Field — [MLT⁻³A⁻¹]<br>
+                    (D) Resistance — [ML²T⁻²A⁻¹]`
+                },
+                options: {
+                    hi: ["युग्म (A)", "युग्म (B)", "युग्म (C)", "युग्म (D)"],
+                    en: ["Pair (A)", "Pair (B)", "Pair (C)", "Pair (D)"]
+                },
+                correct: 3,
+                explanation: {
+                    hi: "प्रतिरोध का सही विमीय सूत्र [ML²T⁻³A⁻²] होता है। अतः युग्म (D) गलत है।",
+                    en: "The correct dimensional formula for electrical resistance is [ML²T⁻³A⁻²]. Hence (D) is incorrect."
+                }
+            },
+            {
+                id: 9,
+                type: { hi: "तथ्यात्मक प्रश्न", en: "Factual" },
+                qText: {
+                    hi: `जल के गंदलापन (Turbidity) को मापने की वैज्ञानिक इकाई निम्नलिखित में से कौन-सी है?`,
+                    en: `Which of the following is the standard scientific unit used for measuring the Turbidity of water?`
+                },
+                options: {
+                    hi: ["डॉप्सन (Dobson)", "NTU (Nephelometric Turbidity Unit)", "पास्कल (Pascal)", "लक्स (Lux)"],
+                    en: ["Dobson Unit", "NTU (Nephelometric Turbidity Unit)", "Pascal", "Lux"]
+                },
+                correct: 1,
+                explanation: {
+                    hi: "जल की गंदलापन मापने की मानक इकाई NTU (Nephelometric Turbidity Unit) है।",
+                    en: "Turbidity of water is measured in NTU (Nephelometric Turbidity Unit)."
+                }
+            },
+            {
+                id: 10,
+                type: { hi: "कथन प्रकार", en: "Statement Type" },
+                qText: {
+                    hi: `दस की ऋणात्मक घातों (Negative powers of 10) के संबंध में निम्नलिखित कथनों पर विचार कीजिए:<br><br>
+                    1. 10⁻¹² को 'पीको' (pico) कहा जाता है और इसका प्रतीक 'p' है।<br>
+                    2. 10⁻¹⁸ को 'एटो' (atto) कहा जाता है और इसका प्रतीक 'a' है।<br>
+                    3. 10⁻²⁴ को 'योक्टो' (yocto) कहा जाता है और इसका प्रतीक 'y' है।<br>
+                    4. 10⁻⁹ को 'माइक्रो' (micro) कहा जाता है और इसका प्रतीक 'μ' है।<br><br>
+                    उपर्युक्त में से कौन-से कथन <strong>सत्य</strong> हैं?`,
+                    en: `Consider the following statements regarding negative powers of 10:<br><br>
+                    1. 10⁻¹² is called 'pico' with symbol 'p'.<br>
+                    2. 10⁻¹⁸ is called 'atto' with symbol 'a'.<br>
+                    3. 10⁻²⁴ is called 'yocto' with symbol 'y'.<br>
+                    4. 10⁻⁹ is called 'micro' with symbol 'μ'.<br><br>
+                    Which of the above statements are <strong>correct</strong>?`
+                },
+                options: {
+                    hi: ["केवल 1, 2 और 3", "केवल 2 और 4", "केवल 1 और 4", "1, 2, 3 और 4 सभी"],
+                    en: ["Only 1, 2 and 3", "Only 2 and 4", "Only 1 and 4", "All 1, 2, 3 and 4"]
+                },
+                correct: 0,
+                explanation: {
+                    hi: "कथन 1, 2 और 3 सत्य हैं। 10⁻⁹ को 'नैनो' (n) कहते हैं, जबकि 10⁻⁶ को 'माइक्रो' (μ) कहा जाता है।",
+                    en: "Statements 1, 2 and 3 are correct. 10⁻⁹ is 'nano' (n), whereas 'micro' (μ) is 10⁻⁶."
+                }
+            },
+            {
+                id: 11,
+                type: { hi: "नकारात्मक प्रश्न", en: "Negative Fact" },
+                qText: {
+                    hi: `C.G.S. और S.I. पद्धतियों के मध्य संबंधों के विषय में निम्नलिखित में से कौन-सा संबंध <strong>गलत</strong> है?`,
+                    en: `Which of the following relations between C.G.S. and S.I. units is <strong>INCORRECT</strong>?`
+                },
+                options: {
+                    hi: ["1 न्यूटन = 10⁵ डाइन", "1 जूल = 10⁷ अर्ग", "1 अर्ग = 10⁻⁷ जूल", "1 डाइन = 10⁵ न्यूटन"],
+                    en: ["1 Newton = 10⁵ Dyne", "1 Joule = 10⁷ Erg", "1 Erg = 10⁻⁷ Joule", "1 Dyne = 10⁵ Newton"]
+                },
+                correct: 3,
+                explanation: {
+                    hi: "1 डाइन = 10⁻⁵ न्यूटन होता है। अतः विकल्प (D) गलत है।",
+                    en: "1 Dyne = 10⁻⁵ Newton. Hence option (D) is incorrect."
+                }
+            },
+            {
+                id: 12,
+                type: { hi: "कथन प्रकार", en: "Statement Type" },
+                qText: {
+                    hi: `ठोस कोण (Solid Angle, dΩ) के संदर्भ में निम्नलिखित कथनों पर विचार कीजिए:<br><br>
+                    1. ठोस कोण गोलीय पृष्ठ के क्षेत्रफल dA तथा त्रिज्या के वर्ग (r²) का अनुपात होता है (dΩ = dA / r²)।<br>
+                    2. इसका S.I. पद्धति में मात्रक स्टेरेडियन (sr) है।<br>
+                    3. यह एक त्रिविमीय (3D) ज्यामितीय कोण को प्रदर्शित करता है।<br><br>
+                    उपर्युक्त में से कौन-से कथन <strong>सत्य</strong> हैं?`,
+                    en: `Consider the following statements regarding Solid Angle (dΩ):<br><br>
+                    1. Solid angle is the ratio of spherical surface area dA to the square of radius (r²) [dΩ = dA / r²].<br>
+                    2. Its unit in S.I. system is steradian (sr).<br>
+                    3. It represents a three-dimensional (3D) geometrical angle.<br><br>
+                    Which of the above statements are <strong>correct</strong>?`
+                },
+                options: {
+                    hi: ["केवल 1 और 2", "केवल 2 और 3", "केवल 1 और 3", "1, 2 और 3 सभी"],
+                    en: ["Only 1 and 2", "Only 2 and 3", "Only 1 and 3", "All 1, 2 and 3"]
+                },
+                correct: 3,
+                explanation: {
+                    hi: "सभी तीनों कथन ठोस कोण के संबंध में सत्य हैं।",
+                    en: "All three statements regarding solid angle are true."
+                }
+            },
+            {
+                id: 13,
+                type: { hi: "कथन-कारण", en: "Assertion-Reason" },
+                qText: {
+                    hi: `नीचे दो कथन दिए गए हैं, एक को कथन (A) तथा दूसरे को कारण (R) कहा गया है:<br><br>
+                    <strong>कथन (A):</strong> आवृत्ति का पुराना मात्रक 'कम्पन प्रति सेकेण्ड' (cps) था जिसे अब 'हर्ट्ज' (Hz) कहा जाता है।<br>
+                    <strong>कारण (R):</strong> हेनरिक हर्ट्ज के सम्मान में आवृत्ति के S.I. मात्रक का नया नाम हर्ट्ज रखा गया है।<br><br>
+                    सही विकल्प का चुनाव कीजिए:`,
+                    en: `Given below are two statements, labeled as Assertion (A) and Reason (R):<br><br>
+                    <strong>Assertion (A):</strong> The old unit of frequency was 'cycles per second' (cps), which is now designated as 'Hertz' (Hz).<br>
+                    <strong>Reason (R):</strong> The unit was named in honor of physicist Heinrich Hertz.<br><br>
+                    Select the correct option:`
+                },
+                options: {
+                    hi: [
+                        "(A) और (R) दोनों सही हैं और (R), (A) की सही व्याख्या है।",
+                        "(A) और (R) दोनों सही हैं लेकिन (R), (A) की सही व्याख्या नहीं है।",
+                        "(A) सही है लेकिन (R) गलत है।",
+                        "(A) गलत है लेकिन (R) सही है।"
+                    ],
+                    en: [
+                        "Both (A) and (R) are true and (R) is the correct explanation of (A).",
+                        "Both (A) and (R) are true but (R) is NOT the correct explanation of (A).",
+                        "(A) is true but (R) is false.",
+                        "(A) is false but (R) is true."
+                    ]
+                },
+                correct: 0,
+                explanation: {
+                    hi: "दोनों कथन सत्य हैं और कारण कथन की सही व्याख्या करता है।",
+                    en: "Both statements are correct and Reason correctly explains the Assertion."
+                }
+            },
+            {
+                id: 14,
+                type: { hi: "पहचान प्रकार", en: "Identification" },
+                qText: {
+                    hi: `पलायन वेग (Escape Velocity) और कक्षीय वेग (Orbital Velocity) का विमीय सूत्र निम्नलिखित में से किसके समान होता है?`,
+                    en: `The dimensional formula of Escape Velocity and Orbital Velocity is identical to which of the following?`
+                },
+                options: {
+                    hi: ["त्वरण [MLT⁻²]", "चाल एवं वेग [M⁰LT⁻¹]", "संवेग [MLT⁻¹]", "बल [MLT⁻²]"],
+                    en: ["Acceleration [MLT⁻²]", "Speed and Velocity [M⁰LT⁻¹]", "Momentum [MLT⁻¹]", "Force [MLT⁻²]"]
+                },
+                correct: 1,
+                explanation: {
+                    hi: "पलायन वेग व कक्षीय वेग दोनों वेग हैं, अतः इनका विमीय सूत्र चाल/वेग [M⁰LT⁻¹] के समान होता है।",
+                    en: "Both escape and orbital velocities are forms of velocity, having the dimension [M⁰LT⁻¹]."
+                }
+            },
+            {
+                id: 15,
+                type: { hi: "क्रम व्यवस्था", en: "Ordering" },
+                qText: {
+                    hi: `दस की धनात्मक घातों के पूर्व-प्रत्ययों में सबसे बड़े से छोटे का सही अवरोही क्रम (Descending Order) कौन-सा है?`,
+                    en: `Which of the following is the correct descending order of the prefixes for positive powers of 10?`
+                },
+                options: {
+                    hi: [
+                        "योटा (Y) > ज़ेटा (Z) > एक्सा (E) > पेटा (P) > टेरा (T) > गीगा (G)",
+                        "गीगा (G) > टेरा (T) > पेटा (P) > एक्सा (E) > ज़ेटा (Z) > योटा (Y)",
+                        "एक्सा (E) > पेटा (P) > योटा (Y) > ज़ेटा (Z) > टेरा (T)",
+                        "टेरा (T) > गीगा (G) > मेगा (M) > एक्सा (E) > पेटा (P)"
+                    ],
+                    en: [
+                        "Yotta (Y) > Zetta (Z) > Exa (E) > Peta (P) > Tera (T) > Giga (G)",
+                        "Giga (G) > Tera (T) > Peta (P) > Exa (E) > Zetta (Z) > Yotta (Y)",
+                        "Exa (E) > Peta (P) > Yotta (Y) > Zetta (Z) > Tera (T)",
+                        "Tera (T) > Giga (G) > Mega (M) > Exa (E) > Peta (P)"
+                    ]
+                },
+                correct: 0,
+                explanation: {
+                    hi: "10²⁴ (योटा) > 10²¹ (ज़ेटा) > 10¹⁸ (एक्सा) > 10¹⁵ (पेटा) > 10¹² (टेरा) > 10⁹ (गीगा) सही अवरोही क्रम है।",
+                    en: "10²⁴ (Yotta) > 10²¹ (Zetta) > 10¹⁸ (Exa) > 10¹⁵ (Peta) > 10¹² (Tera) > 10⁹ (Giga) is correct."
+                }
+            },
+            {
+                id: 16,
+                type: { hi: "कथन प्रकार", en: "Statement Type" },
+                qText: {
+                    hi: `जड़त्व आघूर्ण (Moment of Inertia) और बल-आघूर्ण (Torque) के संदर्भ में निम्नलिखित कथनों पर विचार कीजिए:<br><br>
+                    1. जड़त्व आघूर्ण का विमीय सूत्र [ML²T⁰] होता है।<br>
+                    2. बल-आघूर्ण का विमीय सूत्र [ML²T⁻²] होता है।<br>
+                    3. बल-आघूर्ण का S.I. मात्रक न्यूटन-मीटर (N-m) होता है।<br><br>
+                    उपर्युक्त में से कौन-से कथन <strong>सत्य</strong> हैं?`,
+                    en: `Consider the following statements regarding Moment of Inertia and Torque:<br><br>
+                    1. The dimensional formula of Moment of Inertia is [ML²T⁰].<br>
+                    2. The dimensional formula of Torque is [ML²T⁻²].<br>
+                    3. The S.I. unit of Torque is Newton-meter (N-m).<br><br>
+                    Which of the above statements are <strong>correct</strong>?`
+                },
+                options: {
+                    hi: ["केवल 1 और 2", "केवल 2 और 3", "केवल 1 और 3", "1, 2 और 3 सभी"],
+                    en: ["Only 1 and 2", "Only 2 and 3", "Only 1 and 3", "All 1, 2 and 3"]
+                },
+                correct: 3,
+                explanation: {
+                    hi: "तीनों कथन सत्य हैं। I = mr² [ML²] तथा τ = F × r [ML²T⁻²]।",
+                    en: "All three statements are true. I = mr² [ML²] and τ = F × r [ML²T⁻²]."
+                }
+            },
+            {
+                id: 17,
+                type: { hi: "पहचान प्रकार", en: "Identification" },
+                qText: {
+                    hi: `ऊर्जा घनत्व (Energy Density) का विमीय सूत्र निम्नलिखित में से किस भौतिक राशि के विमीय सूत्र के <strong>समान</strong> होता है?`,
+                    en: `The dimensional formula of Energy Density is identical to the dimensional formula of which of the following?`
+                },
+                options: {
+                    hi: ["कार्य (Work)", "दाब एवं प्रतिबल (Pressure & Stress)", "शक्ति (Power)", "संवेग (Momentum)"],
+                    en: ["Work", "Pressure & Stress", "Power", "Momentum"]
+                },
+                correct: 1,
+                explanation: {
+                    hi: "ऊर्जा घनत्व = ऊर्जा / आयतन = [ML²T⁻²] / [L³] = [ML⁻¹T⁻²], जो कि दाब और प्रतिबल का भी विमीय सूत्र है।",
+                    en: "Energy Density = Energy/Volume = [ML²T⁻²]/[L³] = [ML⁻¹T⁻²], which is equal to Pressure and Stress."
+                }
+            },
+            {
+                id: 18,
+                type: { hi: "कथन-कारण", en: "Assertion-Reason" },
+                qText: {
+                    hi: `नीचे दो कथन दिए गए हैं, एक को कथन (A) तथा दूसरे को कारण (R) कहा गया है:<br><br>
+                    <strong>कथन (A):</strong> प्रकाशवर्ष समय का मात्रक न होकर खगोलीय दूरी का मात्रक है।<br>
+                    <strong>कारण (R):</strong> प्रकाश द्वारा निर्वात में एक वर्ष के कुल समयान्तराल में तय की गई कुल दूरी को एक प्रकाशवर्ष कहते हैं।<br><br>
+                    उपर्युक्त के संदर्भ में सही उत्तर का चयन कीजिए:`,
+                    en: `Given below are two statements, labeled as Assertion (A) and Reason (R):<br><br>
+                    <strong>Assertion (A):</strong> Light year is a unit of astronomical distance, not of time.<br>
+                    <strong>Reason (R):</strong> The total distance travelled by light in vacuum in one year is defined as one light year.<br><br>
+                    Select the correct answer:`
+                },
+                options: {
+                    hi: [
+                        "(A) और (R) दोनों सही हैं और (R), (A) की सही व्याख्या है।",
+                        "(A) और (R) दोनों सही हैं लेकिन (R), (A) की सही व्याख्या नहीं है।",
+                        "(A) सही है लेकिन (R) गलत है।",
+                        "(A) गलत है लेकिन (R) सही है।"
+                    ],
+                    en: [
+                        "Both (A) and (R) are true and (R) is the correct explanation of (A).",
+                        "Both (A) and (R) are true but (R) is NOT the correct explanation of (A).",
+                        "(A) is true but (R) is false.",
+                        "(A) is false but (R) is true."
+                    ]
+                },
+                correct: 0,
+                explanation: {
+                    hi: "प्रकाशवर्ष दूरी का मात्रक है क्योंकि यह प्रकाश द्वारा 1 वर्ष में तय की गई दूरी को दर्शाता है। दोनों सत्य हैं।",
+                    en: "Both statements are correct and Reason correctly explains the Assertion."
+                }
+            },
+            {
+                id: 19,
+                type: { hi: "असंगत युग्म", en: "Mismatch Pair" },
+                qText: {
+                    hi: `निम्नलिखित में से कौन-सा पूर्व-प्रत्यय और मान का मिलान <strong>असत्य</strong> है?`,
+                    en: `Which of the following prefix-to-value matches is <strong>INCORRECT</strong>?`
+                },
+                options: {
+                    hi: ["डेका (deca) = 10¹", "हेक्टो (hecto) = 10²", "डेसी (deci) = 10⁻¹", "सेण्टी (centi) = 10⁻³"],
+                    en: ["Deca = 10¹", "Hecto = 10²", "Deci = 10⁻¹", "Centi = 10⁻³"]
+                },
+                correct: 3,
+                explanation: {
+                    hi: "सेण्टी (centi) = 10⁻² होता है, जबकि मिली (milli) = 10⁻³ होता है।",
+                    en: "Centi is 10⁻², while milli is 10⁻³."
+                }
+            },
+            {
+                id: 20,
+                type: { hi: "पहचान प्रकार", en: "Identification" },
+                qText: {
+                    hi: `कोणीय आवेग (Angular Impulse) का विमीय सूत्र निम्नलिखित में से क्या होता है?`,
+                    en: `What is the dimensional formula of Angular Impulse?`
+                },
+                options: {
+                    hi: ["[MLT⁻¹]", "[ML²T⁻¹]", "[ML²T⁻²]", "[M⁰L²T⁻¹]"],
+                    en: ["[MLT⁻¹]", "[ML²T⁻¹]", "[ML²T⁻²]", "[M⁰L²T⁻¹]"]
+                },
+                correct: 1,
+                explanation: {
+                    hi: "कोणीय आवेग का विमीय सूत्र [ML²T⁻¹] होता है (जो कोणीय संवेग और प्लांक नियतांक के समान है)।",
+                    en: "The dimensional formula of Angular Impulse is [ML²T⁻¹] (same as angular momentum and Planck's constant)."
+                }
+            },
+
+            // CHAPTER 02: MOTION & LAWS OF MOTION (Q21 - Q46)
+            {
+                id: 21,
+                type: { hi: "कथन प्रकार", en: "Statement Type" },
+                qText: {
+                    hi: `अदिश और सदिश राशियों के संदर्भ में निम्नलिखित कथनों का विश्लेषण कीजिए:<br><br>
+                    1. विद्युत धारा (Current), ताप (Temperature) और दाब (Pressure) तीनों ही अदिश राशियाँ हैं।<br>
+                    2. विस्थापन, वेग, त्वरण, बल, संवेग और आवेग सदिश राशियाँ हैं।<br>
+                    3. सदिश राशियों को सामान्य बीजगणितीय नियमों से सीधे जोड़ा जाता है।<br><br>
+                    उपर्युक्त में से कौन-सा/से कथन <strong>सत्य</strong> है/हैं?`,
+                    en: `Analyze the following statements regarding scalar and vector quantities:<br><br>
+                    1. Electric Current, Temperature, and Pressure are all scalar quantities.<br>
+                    2. Displacement, Velocity, Acceleration, Force, Momentum, and Impulse are vector quantities.<br>
+                    3. Vector quantities are added directly following simple algebraic laws.<br><br>
+                    Which of the above statements is/are <strong>correct</strong>?`
+                },
+                options: {
+                    hi: ["केवल 1 और 2", "केवल 2 और 3", "केवल 1 और 3", "1, 2 और 3 सभी"],
+                    en: ["Only 1 and 2", "Only 2 and 3", "Only 1 and 3", "All 1, 2 and 3"]
+                },
+                correct: 0,
+                explanation: {
+                    hi: "कथन 1 और 2 सत्य हैं। कथन 3 गलत है क्योंकि सदिश राशियों को जोड़ने हेतु निश्चित सदिश योग नियमों (Triangle/Parallelogram Law) का पालन करना पड़ता है।",
+                    en: "Statements 1 and 2 are true. Statement 3 is false because vectors require specific vector addition rules, not simple algebra."
+                }
+            },
+            {
+                id: 22,
+                type: { hi: "नकारात्मक प्रश्न", en: "Negative Fact" },
+                qText: {
+                    hi: `दूरी (Distance) और विस्थापन (Displacement) के संदर्भ में निम्नलिखित में से कौन-सा कथन <strong>असत्य</strong> है?`,
+                    en: `Which of the following statements is <strong>INCORRECT</strong> regarding Distance and Displacement?`
+                },
+                options: {
+                    hi: [
+                        "दूरी एक अदिश राशि है, जबकि विस्थापन एक सदिश राशि है।",
+                        "दूरी सदैव धनात्मक (+ve) या शून्य होती है, यह कभी ऋणात्मक नहीं हो सकती।",
+                        "विस्थापन का मान धनात्मक, ऋणात्मक और शून्य कुछ भी हो सकता है।",
+                        "किसी गतिशील वस्तु द्वारा तय की गई दूरी का मान विस्थापन के परिमाण से कभी भी अधिक नहीं हो सकता।"
+                    ],
+                    en: [
+                        "Distance is a scalar quantity, while displacement is a vector quantity.",
+                        "Distance is always positive or zero; it can never be negative.",
+                        "Displacement can be positive, negative, or zero.",
+                        "The distance travelled by a moving body can never exceed the magnitude of displacement."
+                    ]
+                },
+                correct: 3,
+                explanation: {
+                    hi: "विकल्प (D) गलत है क्योंकि दूरी सदैव विस्थापन के परिमाण से बड़ी या उसके बराबर होती है (Distance ≥ |Displacement|)।",
+                    en: "Option (D) is incorrect because distance is always greater than or equal to the magnitude of displacement."
+                }
+            },
+            {
+                id: 23,
+                type: { hi: "कथन प्रकार", en: "Statement Type" },
+                qText: {
+                    hi: `औसत चाल (Average Speed) के सूत्रों के संबंध में निम्नलिखित कथनों पर विचार कीजिए:<br><br>
+                    1. यदि कोई वस्तु किसी दूरी को v₁ चाल से तय करती है और उतनी ही दूरी v₂ चाल से तय करती है, तो संपूर्ण यात्रा में औसत चाल = (2v₁v₂) / (v₁ + v₂) होती है।<br>
+                    2. जब कोई वस्तु अपनी यात्रा के आधे समय तक v₁ चाल से और शेष आधे समय तक v₂ चाल से चलती है, तो औसत चाल = (v₁ + v₂) / 2 होती है।<br><br>
+                    उपर्युक्त में से कौन-सा/से कथन <strong>सत्य</strong> है/हैं?`,
+                    en: `Consider the following statements regarding the formulas of Average Speed:<br><br>
+                    1. If an object travels a distance at speed v₁ and covers the equal distance at speed v₂, the average speed = 2v₁v₂ / (v₁ + v₂).<br>
+                    2. When an object travels for half of the time at speed v₁ and the remaining half time at speed v₂, the average speed = (v₁ + v₂) / 2.<br><br>
+                    Which of the above statements is/are <strong>true</strong>?`
+                },
+                options: {
+                    hi: ["केवल 1", "केवल 2", "1 और 2 दोनों", "न तो 1 और न ही 2"],
+                    en: ["Only 1", "Only 2", "Both 1 and 2", "Neither 1 nor 2"]
+                },
+                correct: 2,
+                explanation: {
+                    hi: "दोनों कथन पूर्णतः सत्य हैं। समान दूरी होने पर हार्मोनिक माध्य और समान समय होने पर समांतर माध्य सूत्र लागू होता है।",
+                    en: "Both statements are correct (harmonic mean for equal distances, arithmetic mean for equal times)."
+                }
+            },
+            {
+                id: 24,
+                type: { hi: "कथन-कारण", en: "Assertion-Reason" },
+                qText: {
+                    hi: `नीचे दो कथन दिए गए हैं, एक को कथन (A) तथा दूसरे को कारण (R) कहा गया है:<br><br>
+                    <strong>कथन (A):</strong> प्रक्षेप्य गति (Projectile Motion) एक समतल में द्विविमीय गति होती है और इसका प्रक्षेप्य पथ सदैव परवलयाकार (Parabolic) होता है।<br>
+                    <strong>कारण (R):</strong> प्रक्षेप्य गति में पिंड एक ही समय में क्षैतिज तथा ऊर्ध्वाधर दोनों दूरियाँ तय करता है और इसके वेग का परिमाण व दिशा दोनों बदलते रहते हैं।<br><br>
+                    उपर्युक्त के संदर्भ में सही उत्तर चुनिए:`,
+                    en: `Given below are two statements, labeled as Assertion (A) and Reason (R):<br><br>
+                    <strong>Assertion (A):</strong> Projectile motion is a two-dimensional motion in a plane and its trajectory is always parabolic.<br>
+                    <strong>Reason (R):</strong> In projectile motion, the body covers both horizontal and vertical distances simultaneously, and its velocity magnitude and direction change with time.<br><br>
+                    Select the correct answer:`
+                },
+                options: {
+                    hi: [
+                        "(A) और (R) दोनों सही हैं और (R), (A) की सही व्याख्या है।",
+                        "(A) और (R) दोनों सही हैं लेकिन (R), (A) की सही व्याख्या नहीं है।",
+                        "(A) सही है लेकिन (R) गलत है।",
+                        "(A) गलत है लेकिन (R) सही है।"
+                    ],
+                    en: [
+                        "Both (A) and (R) are true and (R) is the correct explanation of (A).",
+                        "Both (A) and (R) are true but (R) is NOT the correct explanation of (A).",
+                        "(A) is true but (R) is false.",
+                        "(A) is false but (R) is true."
+                    ]
+                },
+                correct: 0,
+                explanation: {
+                    hi: "प्रक्षेप्य गति द्विविमीय गति है और गुरुत्वीय त्वरण के कारण इसका पथ परवलयाकार होता है। दोनों सत्य हैं।",
+                    en: "Both statements are correct and Reason correctly explains the parabolic nature of projectile motion."
+                }
+            },
+            {
+                id: 25,
+                type: { hi: "नकारात्मक प्रश्न", en: "Negative Fact" },
+                qText: {
+                    hi: `प्रक्षेप्य गति (Projectile Motion) के संदर्भ में निम्नलिखित में से कौन-सा कथन <strong>असत्य</strong> है?`,
+                    en: `Which of the following statements is <strong>INCORRECT</strong> regarding Projectile Motion?`
+                },
+                options: {
+                    hi: [
+                        "प्रक्षेप्य को अधिकतम दूरी तक फेंकने के लिए क्षैतिज से 45° के कोण पर प्रक्षेपित करना चाहिए।",
+                        "प्रक्षेपण कोण θ एवं (90° - θ) दोनों के लिए क्षैतिज परास समान होता है।",
+                        "प्रक्षेप्य पथ के उच्चतम बिंदु पर वेग एवं त्वरण के बीच 0° का कोण बनता है।",
+                        "धनुष से छूटा बाण और तोप से छूटा गोला प्रक्षेप्य गति के उदाहरण हैं।"
+                    ],
+                    en: [
+                        "To achieve maximum horizontal range, projectile must be launched at 45° to the horizontal.",
+                        "The horizontal range is identical for angles of projection θ and (90° - θ).",
+                        "At the highest point of trajectory, the angle between velocity and acceleration is 0°.",
+                        "An arrow released from a bow and an artillery shell are examples of projectile motion."
+                    ]
+                },
+                correct: 2,
+                explanation: {
+                    hi: "उच्चतम बिंदु पर केवल क्षैतिज वेग होता है और गुरुत्वीय त्वरण लंबवत नीचे लगता है, अतः कोण 90° होता है, 0° नहीं।",
+                    en: "At the peak, velocity is purely horizontal while acceleration due to gravity is vertically downward, making an angle of 90°, not 0°."
+                }
+            },
+            {
+                id: 26,
+                type: { hi: "कथन प्रकार", en: "Statement Type" },
+                qText: {
+                    hi: `एकसमान वृत्तीय गति (Uniform Circular Motion) के संबंध में निम्नलिखित कथनों पर विचार कीजिए:<br><br>
+                    1. यह एक त्वरित गति होती है क्योंकि वेग की दिशा प्रत्येक बिंदु पर बदलती रहती है।<br>
+                    2. त्वरण की दिशा वेग की दिशा के लंबवत् (केंद्र की ओर) होती है।<br>
+                    3. डोरी टूटने पर पत्थर स्पर्श रैखिकतः (Tangentially) गति करता है।<br>
+                    4. रेखीय चाल और कोणीय चाल में संबंध: v = ω × r होता है।<br><br>
+                    उपर्युक्त में से कौन-से कथन <strong>सत्य</strong> हैं?`,
+                    en: `Consider the following statements regarding Uniform Circular Motion:<br><br>
+                    1. It is an accelerated motion because direction of velocity continuously changes.<br>
+                    2. Acceleration is directed perpendicular to velocity towards the center.<br>
+                    3. If the string breaks, the whirling stone flies off tangentially.<br>
+                    4. Relation between linear and angular speed: v = ω × r.<br><br>
+                    Which of the above statements are <strong>correct</strong>?`
+                },
+                options: {
+                    hi: ["केवल 1, 2 और 3", "केवल 2 और 4", "केवल 1 और 4", "1, 2, 3 और 4 सभी"],
+                    en: ["Only 1, 2 and 3", "Only 2 and 4", "Only 1 and 4", "All 1, 2, 3 and 4"]
+                },
+                correct: 3,
+                explanation: {
+                    hi: "सभी चारों कथन एकसमान वृत्तीय गति के नियमों के अनुसार सत्य हैं।",
+                    en: "All four statements are completely accurate for uniform circular motion."
+                }
+            },
+            {
+                id: 27,
+                type: { hi: "तथ्यात्मक प्रश्न", en: "Factual" },
+                qText: {
+                    hi: `वृत्तीय गति में प्रयुक्त पाई (π) के मान की गणना सबसे पहले किस भारतीय खगोलशास्त्री ने की थी?`,
+                    en: `The calculation of the mathematical constant Pi (π) was first performed by which ancient Indian mathematician/astronomer?`
+                },
+                options: {
+                    hi: ["वराहमिहिर", "भास्कराचार्य", "आर्यभट्ट", "ब्रह्मगुप्त"],
+                    en: ["Varahamihira", "Bhaskaracharya", "Aryabhata", "Brahmagupta"]
+                },
+                correct: 2,
+                explanation: {
+                    hi: "पुस्तक के स्पष्ट नोट के अनुसार π के मान की गणना सर्वप्रथम आर्यभट्ट ने की थी।",
+                    en: "According to the textbook note, the value of π was first calculated by Aryabhata."
+                }
+            },
+            {
+                id: 28,
+                type: { hi: "कथन प्रकार", en: "Statement Type" },
+                qText: {
+                    hi: `न्यूटन के गति-नियमों के संदर्भ में निम्नलिखित कथनों पर विचार कीजिए:<br><br>
+                    1. न्यूटन ने सन् 1687 ई. में अपनी पुस्तक 'प्रिंसिपिया' में गति के नियमों को प्रतिपादित किया था।<br>
+                    2. न्यूटन के प्रथम गति-नियम को गैलीलियो का नियम या जड़त्व का नियम भी कहते हैं।<br>
+                    3. किसी वस्तु के जड़त्व (Inertia) की माप उसका द्रव्यमान (Mass) होता है।<br>
+                    4. प्रथम नियम से बल की परिभाषा तथा द्वितीय नियम से बल का व्यंजक प्राप्त होता है।<br><br>
+                    उपर्युक्त में से कौन-से कथन <strong>सत्य</strong> हैं?`,
+                    en: `Consider the following statements regarding Newton's Laws of Motion:<br><br>
+                    1. Newton formulated the laws of motion in 1687 in his book 'Principia'.<br>
+                    2. Newton's first law of motion is also called Galileo's law or law of inertia.<br>
+                    3. The measure of inertia of an object is its mass.<br>
+                    4. Definition of force is obtained from the 1st law, and mathematical formula from the 2nd law.<br><br>
+                    Which of the above statements are <strong>correct</strong>?`
+                },
+                options: {
+                    hi: ["केवल 1 और 2", "केवल 2, 3 और 4", "केवल 1, 3 और 4", "1, 2, 3 और 4 सभी"],
+                    en: ["Only 1 and 2", "Only 2, 3 and 4", "Only 1, 3 and 4", "All 1, 2, 3 and 4"]
+                },
+                correct: 3,
+                explanation: {
+                    hi: "सभी चारों कथन पूर्णतः सत्य हैं।",
+                    en: "All four statements are completely true."
+                }
+            },
+            {
+                id: 29,
+                type: { hi: "कथन-कारण", en: "Assertion-Reason" },
+                qText: {
+                    hi: `नीचे दो कथन दिए गए हैं, एक को कथन (A) तथा दूसरे को कारण (R) कहा गया है:<br><br>
+                    <strong>कथन (A):</strong> कंबल को हाथ से पकड़कर डंडे से पीटने पर धूल के कण झड़कर गिर पड़ते हैं।<br>
+                    <strong>कारण (R):</strong> डंडे के प्रहार से कंबल गतिशील हो जाता है, जबकि धूल के कण विराम के जड़त्व के कारण स्थिर रहने का प्रयास करते हैं।<br><br>
+                    उपर्युक्त के संदर्भ में सही उत्तर का चयन कीजिए:`,
+                    en: `Given below are two statements, labeled as Assertion (A) and Reason (R):<br><br>
+                    <strong>Assertion (A):</strong> Dust particles fall off when a hanging carpet is beaten with a stick.<br>
+                    <strong>Reason (R):</strong> The carpet moves into motion due to the strike, whereas dust particles tend to remain at rest due to inertia of rest.<br><br>
+                    Select the correct answer:`
+                },
+                options: {
+                    hi: [
+                        "(A) और (R) दोनों सही हैं और (R), (A) की सही व्याख्या है।",
+                        "(A) और (R) दोनों सही हैं लेकिन (R), (A) की सही व्याख्या नहीं है।",
+                        "(A) सही है लेकिन (R) गलत है।",
+                        "(A) गलत है लेकिन (R) सही है।"
+                    ],
+                    en: [
+                        "Both (A) and (R) are true and (R) is the correct explanation of (A).",
+                        "Both (A) and (R) are true but (R) is NOT the correct explanation of (A).",
+                        "(A) is true but (R) is false.",
+                        "(A) is false but (R) is true."
+                    ]
+                },
+                correct: 0,
+                explanation: {
+                    hi: "यह विराम के जड़त्व (Inertia of Rest) का क्लासिकल उदाहरण है। दोनों सही हैं।",
+                    en: "Both are true and Reason provides the exact physical explanation based on inertia of rest."
+                }
+            },
+            {
+                id: 30,
+                type: { hi: "तथ्यात्मक प्रश्न", en: "Factual" },
+                qText: {
+                    hi: `यदि k बल नियतांक वाले स्प्रिंग को n समान भागों में काट दिया जाए, तो प्रत्येक छोटे भाग का नया बल नियतांक क्या होगा?`,
+                    en: `If a spring having force constant k is cut into n equal parts, what will be the spring constant of each resulting part?`
+                },
+                options: {
+                    hi: ["k / n", "nk", "k", "n²k"],
+                    en: ["k / n", "nk", "k", "n²k"]
+                },
+                correct: 1,
+                explanation: {
+                    hi: "पुस्तक के स्पष्ट सूत्र के अनुसार n समान भागों में काटने पर प्रत्येक भाग का नया बल नियतांक nk हो जाता है।",
+                    en: "Cutting the spring into n equal segments increases the stiffness of each part to nk."
+                }
+            },
+            {
+                id: 31,
+                type: { hi: "कथन प्रकार", en: "Statement Type" },
+                qText: {
+                    hi: `संघट्ट (Collisions) के विभिन्न प्रकारों के संबंध में निम्नलिखित कथनों पर विचार कीजिए:<br><br>
+                    1. प्रत्यास्थ टक्कर में गतिज ऊर्जा एवं संवेग दोनों संरक्षित रहते हैं तथा e = 1 होता है।<br>
+                    2. अप्रत्यास्थ टक्कर में संवेग संरक्षित रहता है परंतु गतिज ऊर्जा संरक्षित नहीं रहती तथा e < 1 होता है।<br>
+                    3. पूर्णतः अप्रत्यास्थ टक्कर में संघट्ट के पश्चात दोनों पिंड चिपक कर एक ही वेग से चलते हैं।<br><br>
+                    उपर्युक्त में से कौन-से कथन <strong>सत्य</strong> हैं?`,
+                    en: `Consider the following statements regarding types of collisions:<br><br>
+                    1. In elastic collision, both kinetic energy and momentum are conserved and coefficient of restitution e = 1.<br>
+                    2. In inelastic collision, momentum is conserved but KE is not conserved and e < 1.<br>
+                    3. In perfectly inelastic collision, bodies stick together after impact and move with a common velocity.<br><br>
+                    Which of the above statements are <strong>correct</strong>?`
+                },
+                options: {
+                    hi: ["केवल 1 और 2", "केवल 2 और 3", "केवल 1 और 3", "1, 2 और 3 सभी"],
+                    en: ["Only 1 and 2", "Only 2 and 3", "Only 1 and 3", "All 1, 2 and 3"]
+                },
+                correct: 3,
+                explanation: {
+                    hi: "सभी तीनों कथन संघट्ट के वैज्ञानिक नियमों के अनुसार पूर्णतः सत्य हैं।",
+                    en: "All three statements are completely valid definitions in mechanics."
+                }
+            },
+            {
+                id: 32,
+                type: { hi: "कथन-कारण", en: "Assertion-Reason" },
+                qText: {
+                    hi: `नीचे दो कथन दिए गए हैं, एक को कथन (A) तथा दूसरे को कारण (R) कहा गया है:<br><br>
+                    <strong>कथन (A):</strong> कपड़ा सुखाने की मशीन एवं मक्खन निकालने की मशीन अपकेन्द्रीय बल (Centrifugal Force) के सिद्धांत पर कार्य करती है।<br>
+                    <strong>कारण (R):</strong> अपकेन्द्रीय बल अजड़त्वीय फ्रेम में लागू एक छद्म या जड़त्वीय बल (Pseudo force) है जिसकी दिशा केंद्र से बाहर की ओर होती है।<br><br>
+                    उपर्युक्त के संदर्भ में सही उत्तर का चयन कीजिए:`,
+                    en: `Given below are two statements, labeled as Assertion (A) and Reason (R):<br><br>
+                    <strong>Assertion (A):</strong> Washing machine spin dryer and cream separator work on the principle of centrifugal force.<br>
+                    <strong>Reason (R):</strong> Centrifugal force is a pseudo/inertial force acting outwards in a non-inertial rotating frame of reference.<br><br>
+                    Select the correct answer:`
+                },
+                options: {
+                    hi: [
+                        "(A) और (R) दोनों सही हैं और (R), (A) की सही व्याख्या है।",
+                        "(A) और (R) दोनों सही हैं लेकिन (R), (A) की सही व्याख्या नहीं है।",
+                        "(A) सही है लेकिन (R) गलत है।",
+                        "(A) गलत है लेकिन (R) सही है।"
+                    ],
+                    en: [
+                        "Both (A) and (R) are true and (R) is the correct explanation of (A).",
+                        "Both (A) and (R) are true but (R) is NOT the correct explanation of (A).",
+                        "(A) is true but (R) is false.",
+                        "(A) is false but (R) is true."
+                    ]
+                },
+                correct: 0,
+                explanation: {
+                    hi: "दोनों कथन सत्य हैं और कारण अपकेन्द्रीय बल की भौतिक प्रकृति को सही ढंग से स्पष्ट करता है।",
+                    en: "Both statements are true and Reason accurately explains the working principle of cream separators."
+                }
+            },
+            {
+                id: 33,
+                type: { hi: "सुमेलन", en: "Matching" },
+                qText: {
+                    hi: `उत्तोलक के वर्गों और उनके यांत्रिक लाभ (Mechanical Advantage) का सही सुमेलन कीजिए:<br><br>
+                    1. प्रथम श्रेणी का उत्तोलक — a. सदैव 1 से अधिक (M.A. > 1)<br>
+                    2. द्वितीय श्रेणी का उत्तोलक — b. सदैव 1 से कम (M.A. < 1)<br>
+                    3. तृतीय श्रेणी का उत्तोलक — c. 1 से अधिक, 1 के बराबर तथा 1 से कम भी<br><br>
+                    सही कूट का चयन कीजिए:`,
+                    en: `Match the classes of levers with their respective Mechanical Advantage (M.A.):<br><br>
+                    1. Class I Lever — a. Always greater than 1 (M.A. > 1)<br>
+                    2. Class II Lever — b. Always less than 1 (M.A. < 1)<br>
+                    3. Class III Lever — c. Can be greater than, equal to, or less than 1<br><br>
+                    Select the correct code:`
+                },
+                options: {
+                    hi: ["1-c, 2-a, 3-b", "1-a, 2-b, 3-c", "1-b, 2-a, 3-c", "1-c, 2-b, 3-a"],
+                    en: ["1-c, 2-a, 3-b", "1-a, 2-b, 3-c", "1-b, 2-a, 3-c", "1-c, 2-b, 3-a"]
+                },
+                correct: 0,
+                explanation: {
+                    hi: "प्रथम श्रेणी (1-c), द्वितीय श्रेणी सदैव > 1 (2-a), तृतीय श्रेणी सदैव < 1 (3-b)।",
+                    en: "Class I (1-c), Class II is always > 1 (2-a), Class III is always < 1 (3-b)."
+                }
+            },
+            {
+                id: 34,
+                type: { hi: "पहचान प्रकार", en: "Identification" },
+                qText: {
+                    hi: `निम्नलिखित में से कौन-सा उपकरण <strong>तृतीय श्रेणी के उत्तोलक (Class III Lever)</strong> का उदाहरण है?`,
+                    en: `Which of the following devices is an example of a <strong>Class III Lever</strong>?`
+                },
+                options: {
+                    hi: ["नींबू निचोड़ने की मशीन", "चिमटा एवं मनुष्य का हाथ", "कील उखाड़ने की मशीन", "साइकिल का ब्रेक"],
+                    en: ["Lemon squeezer", "Tongs and human forearm", "Claw hammer / nail puller", "Bicycle brake"]
+                },
+                correct: 1,
+                explanation: {
+                    hi: "चिमटा और मनुष्य का हाथ तृतीय श्रेणी के उत्तोलक हैं, जहाँ आलंब और भार के बीच में आयास लगाया जाता है।",
+                    en: "Tongs and human arm are class III levers where effort is applied between fulcrum and load."
+                }
+            },
+            {
+                id: 35,
+                type: { hi: "कथन प्रकार", en: "Statement Type" },
+                qText: {
+                    hi: `संतुलन के प्रकारों (Equilibrium) के संबंध में निम्नलिखित कथनों पर विचार कीजिए:<br><br>
+                    1. स्थायी संतुलन में विस्थापित करने पर वस्तु स्वतः पूर्व स्थिति में लौट आती है।<br>
+                    2. उदासीन संतुलन में विस्थापन के बाद भी गुरुत्व केंद्र (G) उसी ऊँचाई पर बना रहता है।<br>
+                    3. स्थायी संतुलन के लिए वस्तु का गुरुत्व केंद्र अधिकाधिक नीचे होना चाहिए।<br>
+                    4. स्थायी संतुलन के लिए गुरुत्व केंद्र से जाने वाली ऊर्ध्वाधर रेखा आधार से बाहर निकलनी चाहिए।<br><br>
+                    उपर्युक्त में से कौन-से कथन <strong>सत्य</strong> हैं?`,
+                    en: `Consider the following statements regarding Equilibrium:<br><br>
+                    1. In stable equilibrium, an object returns to its original position upon release.<br>
+                    2. In neutral equilibrium, center of gravity (G) remains at the same height upon displacement.<br>
+                    3. For stable equilibrium, center of gravity must be as low as possible.<br>
+                    4. For stable equilibrium, vertical line from center of gravity must pass outside its base.<br><br>
+                    Which of the above statements are <strong>correct</strong>?`
+                },
+                options: {
+                    hi: ["केवल 1, 2 और 3", "केवल 1, 3 और 4", "केवल 2 और 3", "1, 2, 3 और 4 सभी"],
+                    en: ["Only 1, 2 and 3", "Only 1, 3 and 4", "Only 2 and 3", "All 1, 2, 3 and 4"]
+                },
+                correct: 0,
+                explanation: {
+                    hi: "कथन 1, 2 और 3 सत्य हैं। कथन 4 असत्य है क्योंकि ऊर्ध्वाधर रेखा वस्तु के आधार से होकर गुजरनी चाहिए, बाहर नहीं।",
+                    en: "Statements 1, 2 and 3 are correct. Statement 4 is false because vertical line must pass through the base, not outside."
+                }
+            },
+            {
+                id: 36,
+                type: { hi: "क्रम व्यवस्था", en: "Ordering" },
+                qText: {
+                    hi: `घर्षण बल के विभिन्न प्रकारों के परिमाण का सही अवरोही क्रम (मान के घटते क्रम में) कौन-सा है?`,
+                    en: `What is the correct descending order of magnitude for different types of friction?`
+                },
+                options: {
+                    hi: [
+                        "लोटनिक घर्षण > सर्पी घर्षण > स्थैतिक घर्षण",
+                        "स्थैतिक घर्षण > सर्पी (गतिज) घर्षण > लोटनिक घर्षण",
+                        "सर्पी घर्षण > लोटनिक घर्षण > स्थैतिक घर्षण",
+                        "स्थैतिक घर्षण > लोटनिक घर्षण > सर्पी घर्षण"
+                    ],
+                    en: [
+                        "Rolling friction > Sliding friction > Static friction",
+                        "Static friction > Sliding/Kinetic friction > Rolling friction",
+                        "Sliding friction > Rolling friction > Static friction",
+                        "Static friction > Rolling friction > Sliding friction"
+                    ]
+                },
+                correct: 1,
+                explanation: {
+                    hi: "स्थैतिक घर्षण > सर्पी घर्षण > लोटनिक घर्षण सही क्रम है। लोटनिक घर्षण सबसे कम होता है।",
+                    en: "Static friction > Sliding friction > Rolling friction is the verified descending order."
+                }
+            },
+            {
+                id: 37,
+                type: { hi: "कथन-कारण", en: "Assertion-Reason" },
+                qText: {
+                    hi: `नीचे दो कथन दिए गए हैं, एक को कथन (A) तथा दूसरे को कारण (R) कहा गया है:<br><br>
+                    <strong>कथन (A):</strong> घर्षण गुणांक (μ) एक मात्रकहीन और विमाहीन राशि है जिसका मान सामान्यतः 0 से 1 के बीच होता है।<br>
+                    <strong>कारण (R):</strong> घर्षण गुणांक घर्षण बल तथा अभिलंब प्रतिक्रिया बल का अनुपात (μ = F / R) होता है, जिससे दोनों बलों के मात्रक परस्पर निरस्त हो जाते हैं।<br><br>
+                    उपर्युक्त के संदर्भ में सही उत्तर का चयन कीजिए:`,
+                    en: `Given below are two statements, labeled as Assertion (A) and Reason (R):<br><br>
+                    <strong>Assertion (A):</strong> Coefficient of friction (μ) is a dimensionless and unitless quantity with values between 0 and 1.<br>
+                    <strong>Reason (R):</strong> Coefficient of friction is the ratio of frictional force to normal reaction (μ = F / R), canceling out units.<br><br>
+                    Select the correct answer:`
+                },
+                options: {
+                    hi: [
+                        "(A) और (R) दोनों सही हैं और (R), (A) की सही व्याख्या है।",
+                        "(A) और (R) दोनों सही हैं लेकिन (R), (A) की सही व्याख्या नहीं है।",
+                        "(A) सही है लेकिन (R) गलत है।",
+                        "(A) गलत है लेकिन (R) सही है।"
+                    ],
+                    en: [
+                        "Both (A) and (R) are true and (R) is the correct explanation of (A).",
+                        "Both (A) and (R) are true but (R) is NOT the correct explanation of (A).",
+                        "(A) is true but (R) is false.",
+                        "(A) is false but (R) is true."
+                    ]
+                },
+                correct: 0,
+                explanation: {
+                    hi: "समान भौतिक राशियों का अनुपात होने से μ मात्रकहीन व विमाहीन होता है। दोनों सही हैं।",
+                    en: "Both statements are correct and Reason correctly explains why μ is dimensionless."
+                }
+            },
+            {
+                id: 38,
+                type: { hi: "नकारात्मक प्रश्न", en: "Negative Fact" },
+                qText: {
+                    hi: `आवेग (Impulse) के संबंध में निम्नलिखित में से कौन-सा कथन <strong>असत्य</strong> है?`,
+                    en: `Which of the following statements is <strong>INCORRECT</strong> regarding Impulse?`
+                },
+                options: {
+                    hi: [
+                        "आवेग = बल × समय-अन्तराल = संवेग में परिवर्तन।",
+                        "आवेग एक अदिश राशि है जिसका मात्रक जूल-सेकेण्ड होता है।",
+                        "आवेग की दिशा वही होती है जो आरोपित बल की होती है।",
+                        "इसका S.I. मात्रक न्यूटन-सेकेण्ड (N-s) होता है।"
+                    ],
+                    en: [
+                        "Impulse = Force × Time interval = Change in momentum.",
+                        "Impulse is a scalar quantity with unit Joule-second.",
+                        "Direction of impulse is the same as that of applied force.",
+                        "Its S.I. unit is Newton-second (N-s)."
+                    ]
+                },
+                correct: 1,
+                explanation: {
+                    hi: "आवेग एक सदिश राशि है और इसका मात्रक न्यूटन-सेकेण्ड होता है, जूल-सेकेण्ड नहीं।",
+                    en: "Impulse is a vector quantity and its unit is Newton-second, not Joule-second."
+                }
+            },
+            {
+                id: 39,
+                type: { hi: "कथन प्रकार", en: "Statement Type" },
+                qText: {
+                    hi: `सरल मशीन (Simple Machines) के संदर्भ में निम्नलिखित कथनों पर विचार कीजिए:<br><br>
+                    1. सरल मशीन बल-आघूर्ण (Moment of Force) के सिद्धांत पर कार्य करती है।<br>
+                    2. घिरनी, आनत तल, स्क्रू जैक और उत्तोलक इसके प्रमुख उदाहरण हैं।<br>
+                    3. उत्तोलक के सिद्धांत का प्रतिपादन सर्वप्रथम आर्किमिडीज ने किया था।<br><br>
+                    उपर्युक्त में से कौन-से कथन <strong>सत्य</strong> हैं?`,
+                    en: `Consider the following statements regarding Simple Machines:<br><br>
+                    1. Simple machines work on the principle of moment of force (torque).<br>
+                    2. Pulley, inclined plane, screw jack, and lever are key examples.<br>
+                    3. The principle of lever was first formulated by Archimedes.<br><br>
+                    Which of the above statements are <strong>correct</strong>?`
+                },
+                options: {
+                    hi: ["केवल 1 और 2", "केवल 2 और 3", "केवल 1 और 3", "1, 2 और 3 सभी"],
+                    en: ["Only 1 and 2", "Only 2 and 3", "Only 1 and 3", "All 1, 2 and 3"]
+                },
+                correct: 3,
+                explanation: {
+                    hi: "तीनों कथन सरल मशीन के संदर्भ में पूर्णतः सत्य हैं।",
+                    en: "All three statements are completely true."
+                }
+            },
+            {
+                id: 40,
+                type: { hi: "सुमेलन", en: "Matching" },
+                qText: {
+                    hi: `उत्तोलक के तीन बिंदुओं की परिभाषाओं का सही मिलान कीजिए:<br><br>
+                    1. आलंब (Fulcrum) — a. उठाया जाने वाला बोझ या रुकावट<br>
+                    2. आयास (Effort) — b. जिसके चारों ओर छड़ स्वतंत्रतापूर्वक घूमती है<br>
+                    3. भार (Load) — c. उत्तोलक को उपयोग में लाने हेतु लगाया गया बल<br><br>
+                    सही कूट चुनिए:`,
+                    en: `Match the three components of a lever with their definitions:<br><br>
+                    1. Fulcrum — a. The resistance or weight to be lifted<br>
+                    2. Effort — b. The fixed pivot point around which the rod rotates<br>
+                    3. Load — c. The force applied to operate the lever<br><br>
+                    Select the correct code:`
+                },
+                options: {
+                    hi: ["1-b, 2-c, 3-a", "1-a, 2-b, 3-c", "1-c, 2-a, 3-b", "1-b, 2-a, 3-c"],
+                    en: ["1-b, 2-c, 3-a", "1-a, 2-b, 3-c", "1-c, 2-a, 3-b", "1-b, 2-a, 3-c"]
+                },
+                correct: 0,
+                explanation: {
+                    hi: "आलंब (1-b), आयास (2-c), भार (3-a)।",
+                    en: "Fulcrum (1-b), Effort (2-c), Load (3-a)."
+                }
+            },
+            {
+                id: 41,
+                type: { hi: "तथ्यात्मक प्रश्न", en: "Factual" },
+                qText: {
+                    hi: `यदि किसी गतिशील पिंड का वेग एकसमान (Uniform Velocity) बना रहे, तो उसके त्वरण का मान क्या होगा?`,
+                    en: `If a body moves with a uniform velocity, what will be the value of its acceleration?`
+                },
+                options: {
+                    hi: ["धनात्मक", "ऋणात्मक", "शून्य", "अनंत"],
+                    en: ["Positive", "Negative", "Zero", "Infinite"]
+                },
+                correct: 2,
+                explanation: {
+                    hi: "वेग में परिवर्तन की दर त्वरण कहलाती है। एकसमान वेग होने पर वेग परिवर्तन शून्य होता है, अतः त्वरण शून्य होगा।",
+                    en: "Acceleration is rate of change of velocity. For uniform velocity, acceleration is zero."
+                }
+            },
+            {
+                id: 42,
+                type: { hi: "कथन प्रकार", en: "Statement Type" },
+                qText: {
+                    hi: `रेखीय संवेग संरक्षण के संदर्भ में निम्नलिखित पर विचार करें:<br><br>
+                    1. बाह्य बल के अभाव में निकाय का कुल संवेग सदैव नियत रहता है।<br>
+                    2. रॉकेट का प्रक्षेपण रेखीय संवेग संरक्षण के सिद्धांत पर आधारित है।<br>
+                    3. रेखीय संवेग संरक्षण का सिद्धांत न्यूटन के तृतीय गति-नियम का ही दूसरा रूप है।<br><br>
+                    उपर्युक्त में से कौन-से कथन <strong>सत्य</strong> हैं?`,
+                    en: `Consider the following regarding conservation of linear momentum:<br><br>
+                    1. In the absence of external force, total momentum of the system remains constant.<br>
+                    2. Rocket propulsion is based on the principle of conservation of linear momentum.<br>
+                    3. Law of conservation of momentum is equivalent to Newton's third law of motion.<br><br>
+                    Which of the above statements are <strong>correct</strong>?`
+                },
+                options: {
+                    hi: ["केवल 1 और 2", "केवल 2 और 3", "केवल 1 और 3", "1, 2 और 3 सभी"],
+                    en: ["Only 1 and 2", "Only 2 and 3", "Only 1 and 3", "All 1, 2 and 3"]
+                },
+                correct: 3,
+                explanation: {
+                    hi: "तीनों कथन भौतिक विज्ञान के अनुसार पूर्णतः सत्य हैं।",
+                    en: "All three statements are completely true."
+                }
+            },
+            {
+                id: 43,
+                type: { hi: "पहचान प्रकार", en: "Identification" },
+                qText: {
+                    hi: `सरोता (Nutcracker) और एक पहिये की कूड़ा गाड़ी (Wheelbarrow) किस श्रेणी के उत्तोलक हैं?`,
+                    en: `Nutcracker and single-wheeled wheelbarrow belong to which class of levers?`
+                },
+                options: {
+                    hi: ["प्रथम श्रेणी", "द्वितीय श्रेणी", "तृतीय श्रेणी", "चतुर्थ श्रेणी"],
+                    en: ["Class I", "Class II", "Class III", "Class IV"]
+                },
+                correct: 1,
+                explanation: {
+                    hi: "ये दोनों द्वितीय श्रेणी के उत्तोलक हैं क्योंकि इनमें भार आलंब और आयास के बीच में होता है।",
+                    en: "These are Class II levers because the load lies between fulcrum and effort."
+                }
+            },
+            {
+                id: 44,
+                type: { hi: "कथन-कारण", en: "Assertion-Reason" },
+                qText: {
+                    hi: `नीचे दो कथन दिए गए हैं, एक को कथन (A) तथा दूसरे को कारण (R) कहा गया है:<br><br>
+                    <strong>कथन (A):</strong> चलती हुई मोटरकार के अचानक रुकने पर उसमें बैठे यात्री आगे की ओर झुक जाते हैं।<br>
+                    <strong>कारण (R):</strong> कार रुकने पर शरीर का निचला भाग तुरंत स्थिर हो जाता है जबकि ऊपरी भाग गति के जड़त्व के कारण गतिमान रहना चाहता है।<br><br>
+                    सही विकल्प का चयन कीजिए:`,
+                    en: `Given below are two statements, labeled as Assertion (A) and Reason (R):<br><br>
+                    <strong>Assertion (A):</strong> When a moving car stops abruptly, the passengers lean forward.<br>
+                    <strong>Reason (R):</strong> The lower part of the body comes to rest with the car while the upper part tends to stay in motion due to inertia of motion.<br><br>
+                    Select the correct answer:`
+                },
+                options: {
+                    hi: [
+                        "(A) और (R) दोनों सही हैं और (R), (A) की सही व्याख्या है।",
+                        "(A) और (R) दोनों सही हैं लेकिन (R), (A) की सही व्याख्या नहीं है।",
+                        "(A) सही है लेकिन (R) गलत है।",
+                        "(A) गलत है लेकिन (R) सही है।"
+                    ],
+                    en: [
+                        "Both (A) and (R) are true and (R) is the correct explanation of (A).",
+                        "Both (A) and (R) are true but (R) is NOT the correct explanation of (A).",
+                        "(A) is true but (R) is false.",
+                        "(A) is false but (R) is true."
+                    ]
+                },
+                correct: 0,
+                explanation: {
+                    hi: "यह गति के जड़त्व (Inertia of Motion) का प्रत्यक्ष उदाहरण है और व्याख्या सही है।",
+                    en: "This is a direct demonstration of inertia of motion. Both statements are correct."
+                }
+            },
+            {
+                id: 45,
+                type: { hi: "कथन प्रकार", en: "Statement Type" },
+                qText: {
+                    hi: `घर्षण बल (Friction) के संदर्भ में निम्नलिखित तथ्यों पर विचार कीजिए:<br><br>
+                    1. घर्षण बल हमेशा प्रयुक्त बलों तथा गति का विरोध करता है।<br>
+                    2. घर्षण के कारण नष्ट हुई ऊर्जा तापीय ऊर्जा में बदल जाती है।<br>
+                    3. सीमांत घर्षण बल का मान अभिलंब प्रतिक्रिया के समानुपाती (F ∝ R) होता है।<br><br>
+                    उपर्युक्त में से कौन-से कथन <strong>सत्य</strong> हैं?`,
+                    en: `Consider the following facts regarding Frictional Force:<br><br>
+                    1. Frictional force always opposes the applied force and relative motion.<br>
+                    2. Energy dissipated due to friction converts into thermal energy.<br>
+                    3. Limiting frictional force is directly proportional to normal reaction (F ∝ R).<br><br>
+                    Which of the above statements are <strong>correct</strong>?`
+                },
+                options: {
+                    hi: ["केवल 1 और 2", "केवल 2 और 3", "केवल 1 और 3", "1, 2 और 3 सभी"],
+                    en: ["Only 1 and 2", "Only 2 and 3", "Only 1 and 3", "All 1, 2 and 3"]
+                },
+                correct: 3,
+                explanation: {
+                    hi: "तीनों कथन घर्षण के नियमों के अनुसार पूर्णतः सत्य हैं।",
+                    en: "All three statements are completely true according to laws of friction."
+                }
+            },
+            {
+                id: 46,
+                type: { hi: "तथ्यात्मक प्रश्न", en: "Factual" },
+                qText: {
+                    hi: `कोणीय वेग (Angular Velocity, ω) का सही गणितीय सूत्र निम्नलिखित में से कौन-सा है?`,
+                    en: `Which of the following is the correct mathematical formula for Angular Velocity (ω)?`
+                },
+                options: {
+                    hi: ["ω = θ × t", "ω = θ / t", "ω = 2π / n", "ω = v × r"],
+                    en: ["ω = θ × t", "ω = θ / t", "ω = 2π / n", "ω = v × r"]
+                },
+                correct: 1,
+                explanation: {
+                    hi: "कोणीय वेग = कोणीय विस्थापन / समय = θ / t होता है।",
+                    en: "Angular velocity is angular displacement per unit time: ω = θ / t."
+                }
+            },
+
+            // CHAPTER 03: WORK, ENERGY & POWER (Q47 - Q62)
+            {
+                id: 47,
+                type: { hi: "कथन प्रकार", en: "Statement Type" },
+                qText: {
+                    hi: `कार्य (Work) के संदर्भ में निम्नलिखित कथनों पर विचार कीजिए:<br><br>
+                    1. कार्य एक अदिश राशि है और इसका S.I. मात्रक जूल है।<br>
+                    2. यदि बल तथा विस्थापन के मध्य 0° का कोण हो, तो किया गया कार्य अधिकतम धनात्मक होता है।<br>
+                    3. यदि बल तथा विस्थापन के मध्य 90° का कोण हो, तो किया गया कार्य शून्य होता है।<br>
+                    4. किया गया कार्य धनात्मक, ऋणात्मक तथा शून्य तीनों हो सकता है।<br><br>
+                    उपर्युक्त में से कौन-से कथन <strong>सत्य</strong> हैं?`,
+                    en: `Consider the following statements regarding Work:<br><br>
+                    1. Work is a scalar quantity and its S.I. unit is Joule.<br>
+                    2. If angle between force and displacement is 0°, work done is maximum positive.<br>
+                    3. If angle between force and displacement is 90°, work done is zero.<br>
+                    4. Work done can be positive, negative, or zero.<br><br>
+                    Which of the above statements are <strong>correct</strong>?`
+                },
+                options: {
+                    hi: ["केवल 1 और 3", "केवल 2 और 4", "केवल 1, 2 और 3", "1, 2, 3 और 4 सभी"],
+                    en: ["Only 1 and 3", "Only 2 and 4", "Only 1, 2 and 3", "All 1, 2, 3 and 4"]
+                },
+                correct: 3,
+                explanation: {
+                    hi: "सभी चारों कथन W = Fs cos θ के आधार पर पूर्णतः सत्य हैं।",
+                    en: "All four statements are valid based on W = Fs cos θ."
+                }
+            },
+            {
+                id: 48,
+                type: { hi: "कथन-कारण", en: "Assertion-Reason" },
+                qText: {
+                    hi: `नीचे दो कथन दिए गए हैं, एक को कथन (A) तथा दूसरे को कारण (R) कहा गया है:<br><br>
+                    <strong>कथन (A):</strong> यदि दो भिन्न द्रव्यमानों के गतिशील पिंडों की गतिज ऊर्जा समान हो, तो अधिक द्रव्यमान वाले पिंड का संवेग अधिक होगा।<br>
+                    <strong>कारण (R):</strong> संवेग तथा गतिज ऊर्जा में संबंध p = √(2mE) होता है, जिसके अनुसार नियत ऊर्जा पर संवेग द्रव्यमान के वर्गमूल के समानुपाती होता है।<br><br>
+                    सही उत्तर का चयन कीजिए:`,
+                    en: `Given below are two statements, labeled as Assertion (A) and Reason (R):<br><br>
+                    <strong>Assertion (A):</strong> If two bodies of different masses possess the same kinetic energy, the heavier body will have greater momentum.<br>
+                    <strong>Reason (R):</strong> Momentum and kinetic energy are related by p = √(2mE); hence at constant KE, momentum is proportional to √m.<br><br>
+                    Select the correct answer:`
+                },
+                options: {
+                    hi: [
+                        "(A) और (R) दोनों सही हैं और (R), (A) की सही व्याख्या है।",
+                        "(A) और (R) दोनों सही हैं लेकिन (R), (A) की सही व्याख्या नहीं है।",
+                        "(A) सही है लेकिन (R) गलत है।",
+                        "(A) गलत है लेकिन (R) सही है।"
+                    ],
+                    en: [
+                        "Both (A) and (R) are true and (R) is the correct explanation of (A).",
+                        "Both (A) and (R) are true but (R) is NOT the correct explanation of (A).",
+                        "(A) is true but (R) is false.",
+                        "(A) is false but (R) is true."
+                    ]
+                },
+                correct: 0,
+                explanation: {
+                    hi: "सूत्र p = √(2mE) से स्पष्ट है कि अधिक द्रव्यमान वाले का संवेग अधिक होगा। दोनों सत्य हैं।",
+                    en: "Both are true and Reason accurately provides the mathematical proof p = √(2mE)."
+                }
+            },
+            {
+                id: 49,
+                type: { hi: "तथ्यात्मक प्रश्न", en: "Factual" },
+                qText: {
+                    hi: `यदि दो अलग-अलग द्रव्यमान की वस्तुओं का रेखीय संवेग (Momentum) समान हो, तो किसकी गतिज ऊर्जा अधिक होगी?`,
+                    en: `If two bodies of different masses have equal linear momentum, which body will possess greater kinetic energy?`
+                },
+                options: {
+                    hi: ["भारी वस्तु की", "हल्की वस्तु की", "दोनों की गतिज ऊर्जा समान होगी", "कहा नहीं जा सकता"],
+                    en: ["Heavier body", "Lighter body", "Both will have equal KE", "Cannot be determined"]
+                },
+                correct: 1,
+                explanation: {
+                    hi: "KE = p² / 2m होता है। समान संवेग होने पर KE द्रव्यमान के व्युत्क्रमानुपाती होती है, अतः हल्की वस्तु की गतिज ऊर्जा अधिक होगी।",
+                    en: "KE = p² / 2m. At constant momentum, KE ∝ 1/m, so the lighter body has higher KE."
+                }
+            },
+            {
+                id: 50,
+                type: { hi: "सुमेलन", en: "Matching" },
+                qText: {
+                    hi: `ऊर्जा रूपांतरण करने वाले उपकरणों का सही सुमेलन कीजिए:<br><br>
+                    1. मोमबत्ती — a. रासायनिक ऊर्जा को विद्युत ऊर्जा में<br>
+                    2. ट्यूबलाइट — b. रासायनिक ऊर्जा को प्रकाश एवं ऊष्मा ऊर्जा में<br>
+                    3. विद्युत सेल — c. यांत्रिक ऊर्जा को ध्वनि ऊर्जा में<br>
+                    4. सितार — d. विद्युत ऊर्जा को प्रकाश ऊर्जा में<br><br>
+                    सही कूट का चयन कीजिए:`,
+                    en: `Match the energy-converting devices with their processes:<br><br>
+                    1. Candle — a. Chemical energy into electrical energy<br>
+                    2. Tube light — b. Chemical energy into light and heat energy<br>
+                    3. Electric cell — c. Mechanical energy into sound energy<br>
+                    4. Sitar — d. Electrical energy into light energy<br><br>
+                    Select the correct code:`
+                },
+                options: {
+                    hi: ["1-b, 2-d, 3-a, 4-c", "1-a, 2-b, 3-c, 4-d", "1-c, 2-d, 3-a, 4-b", "1-b, 2-a, 3-d, 4-c"],
+                    en: ["1-b, 2-d, 3-a, 4-c", "1-a, 2-b, 3-c, 4-d", "1-c, 2-d, 3-a, 4-b", "1-b, 2-a, 3-d, 4-c"]
+                },
+                correct: 0,
+                explanation: {
+                    hi: "मोमबत्ती (1-b), ट्यूबलाइट (2-d), विद्युत सेल (3-a), सितार (4-c)।",
+                    en: "Candle (1-b), Tube light (2-d), Electric cell (3-a), Sitar (4-c)."
+                }
+            },
+            {
+                id: 51,
+                type: { hi: "कथन प्रकार", en: "Statement Type" },
+                qText: {
+                    hi: `स्थितिज ऊर्जा (Potential Energy) के विभिन्न रूपों के संदर्भ में निम्नलिखित पर विचार करें:<br><br>
+                    1. बाँध बनाकर इकट्ठा किए गए पानी में स्थितिज ऊर्जा संचित होती है।<br>
+                    2. घड़ी की कमानी में संचित ऊर्जा स्थितिज ऊर्जा होती है।<br>
+                    3. तनी हुई स्प्रिंग की स्थितिज ऊर्जा PE = 1/2 kx² होती है।<br>
+                    4. गुरुत्वीय स्थितिज ऊर्जा का व्यंजक PE = mgh होता है।<br><br>
+                    उपर्युक्त में से कौन-से कथन <strong>सत्य</strong> हैं?`,
+                    en: `Consider the following regarding forms of Potential Energy:<br><br>
+                    1. Water stored in a dam possesses potential energy.<br>
+                    2. Energy stored in a wound spring of a watch is potential energy.<br>
+                    3. Potential energy of a stretched spring is PE = 1/2 kx².<br>
+                    4. Gravitational potential energy is given by PE = mgh.<br><br>
+                    Which of the above statements are <strong>correct</strong>?`
+                },
+                options: {
+                    hi: ["केवल 1 और 2", "केवल 3 और 4", "केवल 1, 2 और 4", "1, 2, 3 और 4 सभी"],
+                    en: ["Only 1 and 2", "Only 3 and 4", "Only 1, 2 and 4", "All 1, 2, 3 and 4"]
+                },
+                correct: 3,
+                explanation: {
+                    hi: "सभी चारों कथन स्थितिज ऊर्जा के संबंध में सत्य हैं।",
+                    en: "All four statements are valid examples and formulas of potential energy."
+                }
+            },
+            {
+                id: 52,
+                type: { hi: "नकारात्मक प्रश्न", en: "Negative Fact" },
+                qText: {
+                    hi: `शक्ति (Power) और उसके मात्रकों के संबंध में निम्नलिखित में से कौन-सा कथन <strong>असत्य</strong> है?`,
+                    en: `Which of the following statements is <strong>INCORRECT</strong> regarding Power and its units?`
+                },
+                options: {
+                    hi: [
+                        "कार्य करने की दर को शक्ति कहते हैं और इसका S.I. मात्रक वाट (W) है।",
+                        "1 अश्व शक्ति (H.P.) = 746 वाट = 550 ft-lbs/sec होता है।",
+                        "1 किलोवाट (kW) = 1.34 अश्व शक्ति (H.P.) के बराबर होता है।",
+                        "किलोवाट-घंटा (kWh) शक्ति का मात्रक है, विद्युत ऊर्जा का नहीं।"
+                    ],
+                    en: [
+                        "Rate of doing work is power and its S.I. unit is Watt (W).",
+                        "1 Horsepower (H.P.) = 746 Watts = 550 ft-lbs/sec.",
+                        "1 Kilowatt (kW) = 1.34 Horsepower (H.P.).",
+                        "Kilowatt-hour (kWh) is a unit of power, not of electrical energy."
+                    ]
+                },
+                correct: 3,
+                explanation: {
+                    hi: "किलोवाट-घंटा (kWh) विद्युत ऊर्जा का व्यावसायिक मात्रक है, शक्ति का नहीं।",
+                    en: "Kilowatt-hour (kWh) is a unit of electrical energy, not of power."
+                }
+            },
+            {
+                id: 53,
+                type: { hi: "कथन-कारण", en: "Assertion-Reason" },
+                qText: {
+                    hi: `नीचे दो कथन दिए गए हैं, एक को कथन (A) तथा दूसरे को कारण (R) कहा गया है:<br><br>
+                    <strong>कथन (A):</strong> ऊर्जा संरक्षण के नियमानुसार विश्व की संपूर्ण ऊर्जा का परिमाण सदैव स्थिर रहता है।<br>
+                    <strong>कारण (R):</strong> ऊर्जा न तो उत्पन्न की जा सकती है और न नष्ट, इसे केवल एक रूप से दूसरे रूप में परिवर्तित किया जा सकता है।<br><br>
+                    उपर्युक्त के संदर्भ में सही उत्तर चुनिए:`,
+                    en: `Given below are two statements, labeled as Assertion (A) and Reason (R):<br><br>
+                    <strong>Assertion (A):</strong> According to law of conservation of energy, the total energy of the universe remains constant.<br>
+                    <strong>Reason (R):</strong> Energy can neither be created nor destroyed; it can only be transformed from one form to another.<br><br>
+                    Select the correct answer:`
+                },
+                options: {
+                    hi: [
+                        "(A) और (R) दोनों सही हैं और (R), (A) की सही व्याख्या है।",
+                        "(A) और (R) दोनों सही हैं लेकिन (R), (A) की सही व्याख्या नहीं है।",
+                        "(A) सही है लेकिन (R) गलत है।",
+                        "(A) गलत है लेकिन (R) सही है।"
+                    ],
+                    en: [
+                        "Both (A) and (R) are true and (R) is the correct explanation of (A).",
+                        "Both (A) and (R) are true but (R) is NOT the correct explanation of (A).",
+                        "(A) is true but (R) is false.",
+                        "(A) is false but (R) is true."
+                    ]
+                },
+                correct: 0,
+                explanation: {
+                    hi: "ऊर्जा संरक्षण के नियम की यह शास्त्रीय व्याख्या है। दोनों सही हैं।",
+                    en: "Both statements are true and Reason provides the fundamental law."
+                }
+            },
+            {
+                id: 54,
+                type: { hi: "तथ्यात्मक प्रश्न", en: "Factual" },
+                qText: {
+                    hi: `1 किलोवाट घंटा (1 kWh) विद्युत ऊर्जा का मान जूल में कितना होता है?`,
+                    en: `What is the value of 1 Kilowatt-hour (1 kWh) of electrical energy in Joules?`
+                },
+                options: {
+                    hi: ["3.6 × 10⁵ जूल", "3.6 × 10⁶ जूल", "746 जूल", "10⁷ जूल"],
+                    en: ["3.6 × 10⁵ J", "3.6 × 10⁶ J", "746 J", "10⁷ J"]
+                },
+                correct: 1,
+                explanation: {
+                    hi: "1 kWh = 1000 W × 3600 s = 3.6 × 10⁶ जूल।",
+                    en: "1 kWh = 1000 W × 3600 s = 3.6 × 10⁶ Joules."
+                }
+            },
+            {
+                id: 55,
+                type: { hi: "कथन प्रकार", en: "Statement Type" },
+                qText: {
+                    hi: `ऊर्जा रूपांतरण के संदर्भ में निम्नलिखित कथनों पर विचार कीजिए:<br><br>
+                    1. विद्युत मोटर विद्युत ऊर्जा को यांत्रिक ऊर्जा में परिवर्तित करती है।<br>
+                    2. लाउडस्पीकर विद्युत ऊर्जा को ध्वनि ऊर्जा में परिवर्तित करता है।<br>
+                    3. माइक्रोफोन ध्वनि ऊर्जा को विद्युत ऊर्जा में परिवर्तित करता है।<br><br>
+                    उपर्युक्त में से कौन-से कथन <strong>सत्य</strong> हैं?`,
+                    en: `Consider the following statements regarding energy transformation:<br><br>
+                    1. Electric motor converts electrical energy into mechanical energy.<br>
+                    2. Loudspeaker converts electrical energy into sound energy.<br>
+                    3. Microphone converts sound energy into electrical energy.<br><br>
+                    Which of the above statements are <strong>correct</strong>?`
+                },
+                options: {
+                    hi: ["केवल 1 और 2", "केवल 2 और 3", "केवल 1 और 3", "1, 2 और 3 सभी"],
+                    en: ["Only 1 and 2", "Only 2 and 3", "Only 1 and 3", "All 1, 2 and 3"]
+                },
+                correct: 3,
+                explanation: {
+                    hi: "तीनों कथन उपकरणों के ऊर्जा रूपांतरण के संबंध में सत्य हैं।",
+                    en: "All three statements are completely true."
+                }
+            },
+            {
+                id: 56,
+                type: { hi: "तथ्यात्मक प्रश्न", en: "Factual" },
+                qText: {
+                    hi: `शक्ति का S.I. मात्रक 'वाट' (Watt) किस प्रसिद्ध वैज्ञानिक के सम्मान में रखा गया है?`,
+                    en: `The S.I. unit of power 'Watt' was named in honour of which famous scientist/engineer?`
+                },
+                options: {
+                    hi: ["जेम्स प्रेस्कॉट जूल", "जेम्स वाट", "माइकल फैराडे", "सर आइजैक न्यूटन"],
+                    en: ["James Prescott Joule", "James Watt", "Michael Faraday", "Sir Isaac Newton"]
+                },
+                correct: 1,
+                explanation: {
+                    hi: "शक्ति का मात्रक वाट जेम्स वाट के सम्मान में रखा गया है।",
+                    en: "The unit Watt was named in honour of James Watt."
+                }
+            },
+            {
+                id: 57,
+                type: { hi: "कथन प्रकार", en: "Statement Type" },
+                qText: {
+                    hi: `शक्ति और कार्य के गणितीय संबंधों पर विचार कीजिए:<br><br>
+                    1. 1 वाट = 1 जूल/सेकेण्ड = 10⁷ अर्ग/सेकेण्ड होता है।<br>
+                    2. 1 वाट-सेकेण्ड = 1 जूल होता है।<br>
+                    3. 1 वाट-घंटा (Wh) = 3600 जूल होता है।<br><br>
+                    उपर्युक्त में से कौन-से कथन <strong>सत्य</strong> हैं?`,
+                    en: `Consider the mathematical relations of power and work:<br><br>
+                    1. 1 Watt = 1 Joule/sec = 10⁷ Erg/sec.<br>
+                    2. 1 Watt-second = 1 Joule.<br>
+                    3. 1 Watt-hour (Wh) = 3600 Joules.<br><br>
+                    Which of the above statements are <strong>correct</strong>?`
+                },
+                options: {
+                    hi: ["केवल 1 और 2", "केवल 2 और 3", "केवल 1 और 3", "1, 2 और 3 सभी"],
+                    en: ["Only 1 and 2", "Only 2 and 3", "Only 1 and 3", "All 1, 2 and 3"]
+                },
+                correct: 3,
+                explanation: {
+                    hi: "तीनों संबंध पुस्तक के अनुसार शत-प्रतिशत सत्य हैं।",
+                    en: "All three mathematical relations are completely verified."
+                }
+            },
+            {
+                id: 58,
+                type: { hi: "असंगत युग्म", en: "Mismatch Pair" },
+                qText: {
+                    hi: `निम्नलिखित में से कौन-सा ऊर्जा रूपांतरण का युग्म <strong>सही सुमेलित नहीं है</strong>?`,
+                    en: `Which of the following pairs of energy conversions is <strong>INCORRECTLY matched</strong>?`
+                },
+                options: {
+                    hi: [
+                        "डायनेमो — यांत्रिक ऊर्जा को विद्युत ऊर्जा में",
+                        "विद्युत बल्ब — विद्युत ऊर्जा को प्रकाश एवं ऊष्मा ऊर्जा में",
+                        "विद्युत सेल — रासायनिक ऊर्जा को विद्युत ऊर्जा में",
+                        "सोलर सेल — प्रकाश ऊर्जा को ध्वनि ऊर्जा में"
+                    ],
+                    en: [
+                        "Dynamo — Mechanical energy into electrical energy",
+                        "Electric bulb — Electrical energy into light and heat energy",
+                        "Electric cell — Chemical energy into electrical energy",
+                        "Solar cell — Light energy into sound energy"
+                    ]
+                },
+                correct: 3,
+                explanation: {
+                    hi: "सोलर सेल सौर ऊर्जा को विद्युत ऊर्जा में बदलता है, ध्वनि ऊर्जा में नहीं।",
+                    en: "Solar cells convert light/solar energy into electrical energy, not sound."
+                }
+            },
+            {
+                id: 59,
+                type: { hi: "संख्यात्मक प्रश्न", en: "Numerical" },
+                qText: {
+                    hi: `यदि किसी गतिशील पिंड का रेखीय संवेग 50% बढ़ा दिया जाए, तो उसकी गतिज ऊर्जा में कितने प्रतिशत की वृद्धि होगी?`,
+                    en: `If the linear momentum of a body is increased by 50%, what will be the percentage increase in its kinetic energy?`
+                },
+                options: {
+                    hi: ["50%", "100%", "125%", "225%"],
+                    en: ["50%", "100%", "125%", "225%"]
+                },
+                correct: 2,
+                explanation: {
+                    hi: "KE ∝ p²। p 1.5 गुना होने पर KE = (1.5)² = 2.25 गुना हो जाएगी, अर्थात् 125% की वृद्धि होगी।",
+                    en: "KE ∝ p². New KE = (1.5)² = 2.25 times initial, representing a 125% increase."
+                }
+            },
+            {
+                id: 60,
+                type: { hi: "कथन-कारण", en: "Assertion-Reason" },
+                qText: {
+                    hi: `नीचे दो कथन दिए गए हैं, एक को कथन (A) तथा दूसरे को कारण (R) कहा गया है:<br><br>
+                    <strong>कथन (A):</strong> स्प्रिंग को खींचने अथवा दबाने पर उसमें स्थितिज ऊर्जा संचित हो जाती है।<br>
+                    <strong>कारण (R):</strong> स्प्रिंग के प्रत्यानयन बल (Restoring Force) के विरुद्ध बाह्य कारक द्वारा कार्य किया जाता है।<br><br>
+                    उपर्युक्त के संदर्भ में सही उत्तर का चयन कीजिए:`,
+                    en: `Given below are two statements, labeled as Assertion (A) and Reason (R):<br><br>
+                    <strong>Assertion (A):</strong> When a spring is stretched or compressed, potential energy is stored in it.<br>
+                    <strong>Reason (R):</strong> Work is done by an external agency against the restoring force of the spring.<br><br>
+                    Select the correct answer:`
+                },
+                options: {
+                    hi: [
+                        "(A) और (R) दोनों सही हैं और (R), (A) की सही व्याख्या है।",
+                        "(A) और (R) दोनों सही हैं लेकिन (R), (A) की सही व्याख्या नहीं है।",
+                        "(A) सही है लेकिन (R) गलत है।",
+                        "(A) गलत है लेकिन (R) सही है।"
+                    ],
+                    en: [
+                        "Both (A) and (R) are true and (R) is the correct explanation of (A).",
+                        "Both (A) and (R) are true but (R) is NOT the correct explanation of (A).",
+                        "(A) is true but (R) is false.",
+                        "(A) is false but (R) is true."
+                    ]
+                },
+                correct: 0,
+                explanation: {
+                    hi: "प्रत्यानयन बल के विरुद्ध किया गया कार्य ही स्प्रिंग की स्थितिज ऊर्जा (1/2 kx²) के रूप में संचित होता है। दोनों सही हैं।",
+                    en: "Work done against restoring force is stored as spring elastic potential energy (1/2 kx²). Both are true."
+                }
+            },
+            {
+                id: 61,
+                type: { hi: "तथ्यात्मक प्रश्न", en: "Factual" },
+                qText: {
+                    hi: `1 मेगावाट (1 MW) शक्ति का मान कितने वाट के तुल्य होता है?`,
+                    en: `What is the value of 1 Megawatt (1 MW) of power in Watts?`
+                },
+                options: {
+                    hi: ["10³ वाट", "10⁵ वाट", "10⁶ वाट", "10⁹ वाट"],
+                    en: ["10³ W", "10⁵ W", "10⁶ W", "10⁹ W"]
+                },
+                correct: 2,
+                explanation: {
+                    hi: "1 MW = 10⁶ वाट होता है।",
+                    en: "1 MW = 10⁶ Watts."
+                }
+            },
+            {
+                id: 62,
+                type: { hi: "कथन प्रकार", en: "Statement Type" },
+                qText: {
+                    hi: `यांत्रिक ऊर्जा (Mechanical Energy) के संदर्भ में निम्नलिखित कथनों पर विचार कीजिए:<br><br>
+                    1. कार्य द्वारा प्राप्त ऊर्जा यांत्रिक ऊर्जा कहलाती है।<br>
+                    2. यांत्रिक ऊर्जा दो प्रकार की होती है: गतिज ऊर्जा एवं स्थितिज ऊर्जा।<br>
+                    3. मुक्त रूप से गिरती वस्तु की कुल यांत्रिक ऊर्जा (K.E. + P.E.) गति के प्रत्येक बिंदु पर नियत रहती है।<br><br>
+                    उपर्युक्त में से कौन-से कथन <strong>सत्य</strong> हैं?`,
+                    en: `Consider the following statements regarding Mechanical Energy:<br><br>
+                    1. Energy obtained through work is termed mechanical energy.<br>
+                    2. Mechanical energy consists of two forms: Kinetic Energy and Potential Energy.<br>
+                    3. The total mechanical energy (KE + PE) of a freely falling body remains constant at all points.<br><br>
+                    Which of the above statements are <strong>correct</strong>?`
+                },
+                options: {
+                    hi: ["केवल 1 और 2", "केवल 2 और 3", "केवल 1 और 3", "1, 2 और 3 सभी"],
+                    en: ["Only 1 and 2", "Only 2 and 3", "Only 1 and 3", "All 1, 2 and 3"]
+                },
+                correct: 3,
+                explanation: {
+                    hi: "तीनों कथन पूर्णतः सत्य हैं।",
+                    en: "All three statements are completely true."
+                }
+            },
+
+            // CHAPTER 04: GRAVITATION (Q63 - Q80)
+            {
+                id: 63,
+                type: { hi: "कथन प्रकार", en: "Statement Type" },
+                qText: {
+                    hi: `सार्वत्रिक गुरुत्वाकर्षण नियतांक (G) के संबंध में निम्नलिखित पर विचार कीजिए:<br><br>
+                    1. न्यूटन के अनुसार आकर्षण बल F = G(m₁m₂ / R²) होता है।<br>
+                    2. G का मान 6.67 × 10⁻¹¹ N-m²/kg² होता है।<br>
+                    3. G का प्रायोगिक मान सबसे पहले हेनरी कैवेन्डिश ने दिया था।<br>
+                    4. G का मान स्थान अथवा माध्यम के अनुसार बदलता रहता है।<br><br>
+                    उपर्युक्त में से कौन-से कथन <strong>सत्य</strong> हैं?`,
+                    en: `Consider the following statements regarding Universal Gravitational Constant (G):<br><br>
+                    1. According to Newton, attractive force is F = G(m₁m₂ / R²).<br>
+                    2. The value of G is 6.67 × 10⁻¹¹ N-m²/kg².<br>
+                    3. Experimental value of G was first determined by Henry Cavendish.<br>
+                    4. The value of G changes depending on medium and location.<br><br>
+                    Which of the above statements are <strong>correct</strong>?`
+                },
+                options: {
+                    hi: ["केवल 1, 2 और 3", "केवल 2, 3 और 4", "केवल 1 और 4", "1, 2, 3 और 4 सभी"],
+                    en: ["Only 1, 2 and 3", "Only 2, 3 and 4", "Only 1 and 4", "All 1, 2, 3 and 4"]
+                },
+                correct: 0,
+                explanation: {
+                    hi: "कथन 1, 2 और 3 सत्य हैं। कथन 4 गलत है क्योंकि G एक सार्वत्रिक नियतांक है और ब्रह्मांड में कहीं नहीं बदलता।",
+                    en: "Statements 1, 2 and 3 are correct. Statement 4 is false because G is a universal constant independent of medium and position."
+                }
+            },
+            {
+                id: 64,
+                type: { hi: "कथन-कारण", en: "Assertion-Reason" },
+                qText: {
+                    hi: `नीचे दो कथन दिए गए हैं, एक को कथन (A) तथा दूसरे को कारण (R) कहा गया है:<br><br>
+                    <strong>कथन (A):</strong> पृथ्वी पर गुरुत्वीय त्वरण (g) का मान ध्रुवों पर महत्तम तथा विषुवत रेखा पर न्यूनतम होता है।<br>
+                    <strong>कारण (R):</strong> पृथ्वी ध्रुवों पर चपटी होने के कारण ध्रुवों की त्रिज्या (R) विषुवत रेखा की तुलना में कम होती है और g ∝ 1/R² होता है।<br><br>
+                    उपर्युक्त के संदर्भ में सही उत्तर का चयन कीजिए:`,
+                    en: `Given below are two statements, labeled as Assertion (A) and Reason (R):<br><br>
+                    <strong>Assertion (A):</strong> Acceleration due to gravity (g) on Earth is maximum at the poles and minimum at the equator.<br>
+                    <strong>Reason (R):</strong> Earth is flattened at the poles, making equatorial radius larger than polar radius, and g ∝ 1/R².<br><br>
+                    Select the correct answer:`
+                },
+                options: {
+                    hi: [
+                        "(A) और (R) दोनों सही हैं और (R), (A) की सही व्याख्या है।",
+                        "(A) और (R) दोनों सही हैं लेकिन (R), (A) की सही व्याख्या नहीं है।",
+                        "(A) सही है लेकिन (R) गलत है।",
+                        "(A) गलत है लेकिन (R) सही है।"
+                    ],
+                    en: [
+                        "Both (A) and (R) are true and (R) is the correct explanation of (A).",
+                        "Both (A) and (R) are true but (R) is NOT the correct explanation of (A).",
+                        "(A) is true but (R) is false.",
+                        "(A) is false but (R) is true."
+                    ]
+                },
+                correct: 0,
+                explanation: {
+                    hi: "ध्रुवों पर त्रिज्या न्यूनतम होने के कारण g का मान अधिकतम होता है। दोनों सही हैं।",
+                    en: "Both are true and Reason accurately explains why g is maximum at the poles."
+                }
+            },
+            {
+                id: 65,
+                type: { hi: "कथन प्रकार", en: "Statement Type" },
+                qText: {
+                    hi: `पृथ्वी के घूर्णन और गुरुत्वीय त्वरण (g) के आपसी संबंधों पर विचार कीजिए:<br><br>
+                    1. पृथ्वी की घूर्णन गति बढ़ाने पर विषुवत रेखा पर 'g' का मान कम हो जाता है।<br>
+                    2. पृथ्वी की घूर्णन गति घटाने पर विषुवत रेखा पर 'g' का मान बढ़ जाता है।<br>
+                    3. घूर्णन गति बदलने से ध्रुवों पर 'g' के मान में कोई परिवर्तन नहीं होता।<br>
+                    4. घूर्णन रुकने पर ध्रुव और विषुवत रेखा पर 'g' समान हो जाएगा।<br><br>
+                    उपर्युक्त में से कौन-से कथन <strong>सत्य</strong> हैं?`,
+                    en: `Consider the following statements regarding Earth's rotation and 'g':<br><br>
+                    1. Increasing rotational speed decreases 'g' at the equator.<br>
+                    2. Decreasing rotational speed increases 'g' at the equator.<br>
+                    3. Changing rotational speed has zero effect on 'g' at the poles.<br>
+                    4. If Earth stops rotating, 'g' becomes equal at both poles and equator.<br><br>
+                    Which of the above statements are <strong>correct</strong>?`
+                },
+                options: {
+                    hi: ["केवल 1, 2 और 3", "केवल 2 और 4", "केवल 1 और 3", "1, 2, 3 और 4 सभी"],
+                    en: ["Only 1, 2 and 3", "Only 2 and 4", "Only 1 and 3", "All 1, 2, 3 and 4"]
+                },
+                correct: 3,
+                explanation: {
+                    hi: "चारों कथन पुस्तक के नियमों के अनुसार पूर्णतः सत्य हैं।",
+                    en: "All four statements are completely verified."
+                }
+            },
+            {
+                id: 66,
+                type: { hi: "तथ्यात्मक प्रश्न", en: "Factual" },
+                qText: {
+                    hi: `यदि पृथ्वी अपने अक्ष पर अपनी वर्तमान कोणीय चाल से <strong>17 गुनी अधिक चाल</strong> से घूमने लगे, तो क्या होगा?`,
+                    en: `If the Earth begins to rotate about its axis at <strong>17 times its present angular speed</strong>, what will happen?`
+                },
+                options: {
+                    hi: [
+                        "ध्रुवों पर वस्तु का भार शून्य हो जाएगा।",
+                        "भूमध्य रेखा पर भार शून्य (भारहीनता) हो जाएगा तथा दिन घटकर 1.4 घंटे (84 मिनट) का हो जाएगा।",
+                        "पृथ्वी का गुरुत्वाकर्षण बल अनंत हो जाएगा।",
+                        "चंद्रमा पृथ्वी की कक्षा छोड़कर भाग जाएगा।"
+                    ],
+                    en: [
+                        "Weight of bodies at the poles will become zero.",
+                        "Weight at equator will become zero (weightlessness) and day length will reduce to 1.4 hours (84 min).",
+                        "Gravitational force of Earth will become infinite.",
+                        "Moon will escape Earth's orbit."
+                    ]
+                },
+                correct: 1,
+                explanation: {
+                    hi: "17 गुनी चाल होने पर विषुवत रेखा पर भारहीनता होगी और दिन 84 मिनट का रह जाएगा। ध्रुवों पर कोई प्रभाव नहीं पड़ेगा।",
+                    en: "At 17 times rotational speed, weightlessness occurs at equator and day reduces to 1.4 hours (84 min)."
+                }
+            },
+            {
+                id: 67,
+                type: { hi: "संख्यात्मक प्रश्न", en: "Numerical" },
+                qText: {
+                    hi: `यदि किसी ग्रह के द्रव्यमान को स्थिर रखते हुए उसकी त्रिज्या में 2% की वृद्धि कर दी जाए, तो गुरुत्वीय त्वरण (g) में क्या परिवर्तन होगा?`,
+                    en: `If the mass of a planet remains constant while its radius increases by 2%, what will be the percentage change in 'g'?`
+                },
+                options: {
+                    hi: ["2% की वृद्धि", "4% की वृद्धि", "4% की कमी", "अपरिवर्तित रहेगा"],
+                    en: ["2% increase", "4% increase", "4% decrease", "Remains unchanged"]
+                },
+                correct: 2,
+                explanation: {
+                    hi: "% बदलाव = -2 × (% त्रिज्या बदलाव) = -2 × (+2%) = -4% (अर्थात् 4% की कमी)।",
+                    en: "Percentage change = -2 × (% change in R) = -2 × 2% = -4% (4% decrease)."
+                }
+            },
+            {
+                id: 68,
+                type: { hi: "कथन-कारण", en: "Assertion-Reason" },
+                qText: {
+                    hi: `नीचे दो कथन दिए गए हैं, एक को कथन (A) तथा दूसरे को कारण (R) कहा गया है:<br><br>
+                    <strong>कथन (A):</strong> चंद्रमा पर किसी वस्तु का भार पृथ्वी पर उसके भार का केवल 1/6 भाग रह जाता है, परंतु द्रव्यमान वही रहता है।<br>
+                    <strong>कारण (R):</strong> चंद्रमा पर गुरुत्वीय त्वरण का मान पृथ्वी का 1/6 होता है, जबकि द्रव्यमान स्थान के साथ कभी नहीं बदलता।<br><br>
+                    उपर्युक्त के संदर्भ में सही उत्तर का चयन कीजिए:`,
+                    en: `Given below are two statements, labeled as Assertion (A) and Reason (R):<br><br>
+                    <strong>Assertion (A):</strong> Weight of a body on Moon is 1/6th of its weight on Earth, but its mass remains identical.<br>
+                    <strong>Reason (R):</strong> Gravitational acceleration on Moon is 1/6th that of Earth (g/6), while mass is independent of location.<br><br>
+                    Select the correct answer:`
+                },
+                options: {
+                    hi: [
+                        "(A) और (R) दोनों सही हैं और (R), (A) की सही व्याख्या है।",
+                        "(A) और (R) दोनों सही हैं लेकिन (R), (A) की सही व्याख्या नहीं है।",
+                        "(A) सही है लेकिन (R) गलत है।",
+                        "(A) गलत है लेकिन (R) सही है।"
+                    ],
+                    en: [
+                        "Both (A) and (R) are true and (R) is the correct explanation of (A).",
+                        "Both (A) and (R) are true but (R) is NOT the correct explanation of (A).",
+                        "(A) is true but (R) is false.",
+                        "(A) is false but (R) is true."
+                    ]
+                },
+                correct: 0,
+                explanation: {
+                    hi: "भार W = mg होता है। g 1/6 होने से भार 1/6 हो जाता है, जबकि द्रव्यमान नियत रहता है।",
+                    en: "Both statements are true and Reason accurately explains why apparent weight scales with g while mass is invariant."
+                }
+            },
+            {
+                id: 69,
+                type: { hi: "कथन प्रकार", en: "Statement Type" },
+                qText: {
+                    hi: `केप्लर के नियमों के अनुसार ग्रहों के परिक्रमण काल (T) के संबंध में निम्नलिखित पर विचार करें:<br><br>
+                    1. सूर्य के निकटतम ग्रह बुध (Mercury) का परिक्रमण काल केवल 88 दिन है।<br>
+                    2. दूरस्थ ग्रह वरुण (Neptune) का परिक्रमण काल 165 वर्ष है।<br>
+                    3. I.A.U. द्वारा यम (Pluto) को हटाए जाने के बाद अब सबसे दूरस्थ ग्रह वरुण है।<br><br>
+                    उपर्युक्त में से कौन-से कथन <strong>सत्य</strong> हैं?`,
+                    en: `Consider the following statements regarding orbital period (T) based on Kepler's laws:<br><br>
+                    1. Mercury, the closest planet to the Sun, has an orbital period of only 88 days.<br>
+                    2. Neptune, the farthest planet, has an orbital period of 165 years.<br>
+                    3. After Pluto was declassified by I.A.U., Neptune is now the farthest recognized planet.<br><br>
+                    Which of the above statements are <strong>correct</strong>?`
+                },
+                options: {
+                    hi: ["केवल 1 और 2", "केवल 2 और 3", "केवल 1 और 3", "1, 2 और 3 सभी"],
+                    en: ["Only 1 and 2", "Only 2 and 3", "Only 1 and 3", "All 1, 2 and 3"]
+                },
+                correct: 3,
+                explanation: {
+                    hi: "तीनों कथन T² ∝ r³ और सौरमंडल के तथ्यों के अनुसार सत्य हैं।",
+                    en: "All three statements are verified according to Kepler's 3rd law (T² ∝ r³)."
+                }
+            },
+            {
+                id: 70,
+                type: { hi: "तथ्यात्मक प्रश्न", en: "Factual" },
+                qText: {
+                    hi: `पृथ्वी तल के अति निकट परिक्रमा करने वाले उपग्रह का परिक्रमण काल कितना होता है?`,
+                    en: `What is the orbital period of revolution of a satellite orbiting very close to Earth's surface?`
+                },
+                options: {
+                    hi: ["24 घंटे", "84 मिनट (1 घंटा 24 मिनट)", "365 दिन", "12 घंटे"],
+                    en: ["24 hours", "84 minutes (1 hour 24 min)", "365 days", "12 hours"]
+                },
+                correct: 1,
+                explanation: {
+                    hi: "पृथ्वी के अति निकट उपग्रह का आवर्तकाल T = 2π√(R/g) ≈ 1 घंटा 24 मिनट (84 मिनट) होता है।",
+                    en: "The time period of a near-Earth satellite is approximately 84 minutes (1 hr 24 min)."
+                }
+            },
+            {
+                id: 71,
+                type: { hi: "कथन प्रकार", en: "Statement Type" },
+                qText: {
+                    hi: `ध्रुवीय उपग्रह (Polar Satellites) के संदर्भ में निम्नलिखित कथनों पर विचार कीजिए:<br><br>
+                    1. ये उपग्रह पृथ्वी की नजदीक की कक्षा में ध्रुवों के परितः चक्कर लगाते हैं।<br>
+                    2. इनका कक्षीय वेग लगभग 8 किमी./से. तथा आवर्तकाल 84 मिनट का होता है।<br>
+                    3. इनका उपयोग मौसम संबंधी जानकारी तथा सुदूर संवेदन के लिए किया जाता है।<br><br>
+                    उपर्युक्त में से कौन-से कथन <strong>सत्य</strong> हैं?`,
+                    en: `Consider the following statements regarding Polar Satellites:<br><br>
+                    1. They orbit Earth in low altitude polar orbits crossing north and south poles.<br>
+                    2. Their orbital speed is about 8 km/s and time period is about 84 minutes.<br>
+                    3. They are used for meteorology, weather monitoring, and remote sensing.<br><br>
+                    Which of the above statements are <strong>correct</strong>?`
+                },
+                options: {
+                    hi: ["केवल 1 और 2", "केवल 2 और 3", "केवल 1 और 3", "1, 2 और 3 सभी"],
+                    en: ["Only 1 and 2", "Only 2 and 3", "Only 1 and 3", "All 1, 2 and 3"]
+                },
+                correct: 3,
+                explanation: {
+                    hi: "तीनों कथन ध्रुवीय उपग्रहों के संबंध में पूर्णतः सत्य हैं।",
+                    en: "All three statements are completely true."
+                }
+            },
+            {
+                id: 72,
+                type: { hi: "कथन-कारण", en: "Assertion-Reason" },
+                qText: {
+                    hi: `नीचे दो कथन दिए गए हैं, एक को कथन (A) तथा दूसरे को कारण (R) कहा गया है:<br><br>
+                    <strong>कथन (A):</strong> भू-स्थायी उपग्रह (Geo-Stationary Satellite) संचार उपग्रह के रूप में उपयोग किए जाते हैं।<br>
+                    <strong>कारण (R):</strong> भू-तुल्यकालिक कक्षा में संचार उपग्रह स्थापित करने की संभावना सबसे पहले आर्थर सी. क्लार्क ने व्यक्त की थी।<br><br>
+                    उपर्युक्त के संदर्भ में सही उत्तर का चयन कीजिए:`,
+                    en: `Given below are two statements, labeled as Assertion (A) and Reason (R):<br><br>
+                    <strong>Assertion (A):</strong> Geostationary satellites are extensively used as communication satellites.<br>
+                    <strong>Reason (R):</strong> The feasibility of establishing communication satellites in geosynchronous orbit was first proposed by Arthur C. Clarke.<br><br>
+                    Select the correct answer:`
+                },
+                options: {
+                    hi: [
+                        "(A) और (R) दोनों सही हैं और (R), (A) की सही व्याख्या है।",
+                        "(A) और (R) दोनों सही हैं लेकिन (R), (A) की सही व्याख्या नहीं है।",
+                        "(A) सही है लेकिन (R) गलत है।",
+                        "(A) गलत है लेकिन (R) सही है।"
+                    ],
+                    en: [
+                        "Both (A) and (R) are true and (R) is the correct explanation of (A).",
+                        "Both (A) and (R) are true but (R) is NOT the correct explanation of (A).",
+                        "(A) is true but (R) is false.",
+                        "(A) is false but (R) is true."
+                    ]
+                },
+                correct: 1,
+                explanation: {
+                    hi: "दोनों कथन सत्य हैं, किंतु संचार में उपयोग होने का भौतिक कारण पृथ्वी के सापेक्ष स्थिर रहना (24 घंटे आवर्तकाल) है, न कि आर्थर सी. क्लार्क द्वारा प्रस्ताव देना।",
+                    en: "Both statements are true, but Reason is a historical fact and not the physical explanation for communication capability."
+                }
+            },
+            {
+                id: 73,
+                type: { hi: "तथ्यात्मक प्रश्न", en: "Factual" },
+                qText: {
+                    hi: `भू-स्थायी उपग्रह (Geo-Stationary Satellite) का कक्षीय वेग लगभग कितना होता है?`,
+                    en: `What is the approximate orbital speed of a Geostationary Satellite?`
+                },
+                options: {
+                    hi: ["11.2 किमी./सेकेण्ड", "8.0 किमी./सेकेण्ड", "3.1 किमी./सेकेण्ड", "1.68 किमी./सेकेण्ड"],
+                    en: ["11.2 km/s", "8.0 km/s", "3.1 km/s", "1.68 km/s"]
+                },
+                correct: 2,
+                explanation: {
+                    hi: "36,000 किमी की ऊँचाई पर भू-स्थायी उपग्रह का कक्षीय वेग लगभग 3.1 किमी./से. होता है।",
+                    en: "At an altitude of 36,000 km, geostationary orbital speed is approximately 3.1 km/s."
+                }
+            },
+            {
+                id: 74,
+                type: { hi: "कथन प्रकार", en: "Statement Type" },
+                qText: {
+                    hi: `पलायन वेग (v_e) और कक्षीय वेग (v_o) के संबंधों पर विचार कीजिए:<br><br>
+                    1. v_e = √(2gR) तथा v_o = √(gR) होता है।<br>
+                    2. पलायन वेग कक्षीय वेग का √2 गुना होता है (v_e = √2 × v_o)।<br>
+                    3. यदि उपग्रह के कक्षीय वेग को 41% (√2 गुना) बढ़ा दिया जाए, तो वह कक्षा छोड़कर पलायन कर जाएगा।<br><br>
+                    उपर्युक्त में से कौन-से कथन <strong>सत्य</strong> हैं?`,
+                    en: `Consider the relationships between escape velocity (v_e) and orbital velocity (v_o):<br><br>
+                    1. v_e = √(2gR) and v_o = √(gR).<br>
+                    2. Escape velocity is √2 times the orbital velocity (v_e = √2 × v_o).<br>
+                    3. Increasing the orbital speed of a satellite by 41% (√2 times) causes it to escape Earth's orbit.<br><br>
+                    Which of the above statements are <strong>correct</strong>?`
+                },
+                options: {
+                    hi: ["केवल 1 और 2", "केवल 2 और 3", "केवल 1 और 3", "1, 2 और 3 सभी"],
+                    en: ["Only 1 and 2", "Only 2 and 3", "Only 1 and 3", "All 1, 2 and 3"]
+                },
+                correct: 3,
+                explanation: {
+                    hi: "तीनों कथन भौतिक विज्ञान के नियमों के अनुसार पूर्णतः सत्य हैं।",
+                    en: "All three statements are verified."
+                }
+            },
+            {
+                id: 75,
+                type: { hi: "तथ्यात्मक प्रश्न", en: "Factual" },
+                qText: {
+                    hi: `चंद्रमा के तल पर पलायन वेग (Escape Velocity) का मान लगभग कितना होता है?`,
+                    en: `What is the approximate value of escape velocity on the surface of the Moon?`
+                },
+                options: {
+                    hi: ["11.2 किमी./सेकेण्ड", "2.38 किमी./सेकेण्ड", "5.0 किमी./सेकेण्ड", "8.0 किमी./सेकेण्ड"],
+                    en: ["11.2 km/s", "2.38 km/s", "5.0 km/s", "8.0 km/s"]
+                },
+                correct: 1,
+                explanation: {
+                    hi: "चंद्रमा पर पलायन वेग लगभग 2.38 किमी./सेकेण्ड (या 2.4 किमी./से.) होता है।",
+                    en: "Escape velocity on Moon's surface is approximately 2.38 km/s."
+                }
+            },
+            {
+                id: 76,
+                type: { hi: "कथन-कारण", en: "Assertion-Reason" },
+                qText: {
+                    hi: `नीचे दो कथन दिए गए हैं, एक को कथन (A) तथा दूसरे को कारण (R) कहा गया है:<br><br>
+                    <strong>कथन (A):</strong> निर्वात में एक भारी लोहे का गोला और हल्का पंख एक साथ गिराए जाने पर एक ही समय में जमीन पर पहुँचते हैं।<br>
+                    <strong>कारण (R):</strong> गैलीलियो के अनुसार निर्वात में सभी वस्तुएँ समान गुरुत्वीय त्वरण (g) के साथ गिरती हैं क्योंकि g द्रव्यमान पर निर्भर नहीं करता।<br><br>
+                    उपर्युक्त के संदर्भ में सही उत्तर का चयन कीजिए:`,
+                    en: `Given below are two statements, labeled as Assertion (A) and Reason (R):<br><br>
+                    <strong>Assertion (A):</strong> In a vacuum, a heavy iron sphere and a light feather dropped from the same height reach the ground simultaneously.<br>
+                    <strong>Reason (R):</strong> According to Galileo, all bodies fall with equal gravitational acceleration (g) in vacuum independent of mass.<br><br>
+                    Select the correct answer:`
+                },
+                options: {
+                    hi: [
+                        "(A) और (R) दोनों सही हैं और (R), (A) की सही व्याख्या है।",
+                        "(A) और (R) दोनों सही हैं लेकिन (R), (A) की सही व्याख्या नहीं है।",
+                        "(A) सही है लेकिन (R) गलत है।",
+                        "(A) गलत है लेकिन (R) सही है।"
+                    ],
+                    en: [
+                        "Both (A) and (R) are true and (R) is the correct explanation of (A).",
+                        "Both (A) and (R) are true but (R) is NOT the correct explanation of (A).",
+                        "(A) is true but (R) is false.",
+                        "(A) is false but (R) is true."
+                    ]
+                },
+                correct: 0,
+                explanation: {
+                    hi: "गैलीलियो के प्रयोग के अनुसार निर्वात में वायु प्रतिरोध शून्य होने पर दोनों एक साथ गिरते हैं। दोनों सही हैं।",
+                    en: "Both statements are true and Reason provides the exact scientific explanation."
+                }
+            },
+            {
+                id: 77,
+                type: { hi: "तथ्यात्मक प्रश्न", en: "Factual" },
+                qText: {
+                    hi: `अंतरिक्ष यान के भीतर अथवा कृत्रिम उपग्रह में किसी भी वस्तु का आभासी भार कितना होता है?`,
+                    en: `What is the apparent weight of any object inside an orbiting spacecraft or satellite?`
+                },
+                options: {
+                    hi: ["पृथ्वी तल से दोगुना", "शून्य (भारहीनता)", "अपरिवर्तित", "आधा"],
+                    en: ["Twice of that on Earth", "Zero (Weightlessness)", "Unchanged", "Half"]
+                },
+                correct: 1,
+                explanation: {
+                    hi: "उपग्रह में मुक्त पतन की स्थिति के कारण आभासी भार शून्य (भारहीनता) होता है।",
+                    en: "Inside an orbiting satellite, free-fall conditions create total weightlessness (zero apparent weight)."
+                }
+            },
+            {
+                id: 78,
+                type: { hi: "सुमेलन", en: "Matching" },
+                qText: {
+                    hi: `केप्लर के ग्रहीय गति के तीन नियमों का सही सुमेलन कीजिए:<br><br>
+                    1. प्रथम नियम — a. क्षेत्रीय वेग सदैव नियत रहता है<br>
+                    2. द्वितीय नियम — b. दीर्घवृत्ताकार कक्षाओं का नियम<br>
+                    3. तृतीय नियम — c. परिक्रमण काल का नियम (T² ∝ r³)<br><br>
+                    सही कूट चुनिए:`,
+                    en: `Match Kepler's three laws of planetary motion with their names:<br><br>
+                    1. First Law — a. Areal velocity remains constant<br>
+                    2. Second Law — b. Law of elliptical orbits<br>
+                    3. Third Law — c. Law of periods (T² ∝ r³)<br><br>
+                    Select the correct code:`
+                },
+                options: {
+                    hi: ["1-b, 2-a, 3-c", "1-a, 2-b, 3-c", "1-c, 2-a, 3-b", "1-b, 2-c, 3-a"],
+                    en: ["1-b, 2-a, 3-c", "1-a, 2-b, 3-c", "1-c, 2-a, 3-b", "1-b, 2-c, 3-a"]
+                },
+                correct: 0,
+                explanation: {
+                    hi: "प्रथम नियम कक्षाओं का नियम (1-b), द्वितीय नियम क्षेत्रीय वेग का नियम (2-a), तृतीय नियम आवर्तकाल का नियम (3-c)।",
+                    en: "First Law = Orbits (1-b), Second Law = Areal velocity (2-a), Third Law = Harmonic/Periods (3-c)."
+                }
+            },
+            {
+                id: 79,
+                type: { hi: "कथन प्रकार", en: "Statement Type" },
+                qText: {
+                    hi: `उपग्रह के कक्षीय वेग (v_o) के संबंध में निम्नलिखित कथनों पर विचार कीजिए:<br><br>
+                    1. उपग्रह का कक्षीय वेग उसकी कक्षा की त्रिज्या (पृथ्वी से ऊँचाई) पर निर्भर करता है।<br>
+                    2. कक्षा की त्रिज्या जितनी अधिक होगी, कक्षीय वेग उतना ही कम होगा।<br>
+                    3. कक्षीय वेग स्वयं उपग्रह के द्रव्यमान पर बिल्कुल निर्भर नहीं करता।<br><br>
+                    उपर्युक्त में से कौन-से कथन <strong>सत्य</strong> हैं?`,
+                    en: `Consider the following statements regarding satellite orbital velocity (v_o):<br><br>
+                    1. Satellite orbital speed depends on orbit radius (height from surface).<br>
+                    2. Greater the orbit radius, lesser will be the orbital speed.<br>
+                    3. Orbital speed is completely independent of the mass of the satellite.<br><br>
+                    Which of the above statements are <strong>correct</strong>?`
+                },
+                options: {
+                    hi: ["केवल 1 और 2", "केवल 2 और 3", "केवल 1 और 3", "1, 2 और 3 सभी"],
+                    en: ["Only 1 and 2", "Only 2 and 3", "Only 1 and 3", "All 1, 2 and 3"]
+                },
+                correct: 3,
+                explanation: {
+                    hi: "सूत्र v_o = √(GM/(R+h)) से स्पष्ट है कि यह केवल ऊँचाई पर निर्भर करता है, उपग्रह के द्रव्यमान पर नहीं। तीनों सत्य हैं।",
+                    en: "Formula v_o = √(GM/(R+h)) confirms all three statements."
+                }
+            },
+            {
+                id: 80,
+                type: { hi: "तथ्यात्मक प्रश्न", en: "Factual" },
+                qText: {
+                    hi: `पृथ्वी के केंद्र (Center of Earth) पर किसी वस्तु का द्रव्यमान एवं भार क्रमशः क्या होगा?`,
+                    en: `What will be the mass and weight respectively of an object at the center of the Earth?`
+                },
+                options: {
+                    hi: [
+                        "द्रव्यमान शून्य, भार अपरिवर्तित रहेगा",
+                        "द्रव्यमान अपरिवर्तित रहेगा, परंतु भार शून्य हो जाएगा",
+                        "द्रव्यमान और भार दोनों शून्य हो जाएंगे",
+                        "द्रव्यमान और भार दोनों अनंत हो जाएंगे"
+                    ],
+                    en: [
+                        "Mass zero, weight unchanged",
+                        "Mass unchanged, but weight becomes zero",
+                        "Both mass and weight become zero",
+                        "Both mass and weight become infinite"
+                    ]
+                },
+                correct: 1,
+                explanation: {
+                    hi: "द्रव्यमान सर्वत्र नियत रहता है, लेकिन केंद्र पर g = 0 होने के कारण भार W = mg = 0 (शून्य) हो जाता है।",
+                    en: "Mass is invariant everywhere, but weight W = mg becomes zero at center where g = 0."
+                }
+            }
+        ];
+
+        let userResponses = new Array(questions.length).fill(null);
+        let reviewStatus = new Array(questions.length).fill(false);
+
+        // FULLSCREEN & TEST INITIALIZER
+        function startCBT() {
+            const docEl = document.documentElement;
+            if (docEl.requestFullscreen) {
+                docEl.requestFullscreen().catch(err => console.log(err));
+            } else if (docEl.webkitRequestFullscreen) {
+                docEl.webkitRequestFullscreen();
+            } else if (docEl.msRequestFullscreen) {
+                docEl.msRequestFullscreen();
+            }
+
+            document.getElementById('startModal').classList.add('hidden');
+            document.getElementById('cbtApp').classList.remove('hidden');
+
+            renderQuestion();
+            startTimer();
+        }
+
+        // LANGUAGE TOGGLE FUNCTION
+        function toggleLanguage() {
+            currentLang = currentLang === 'hi' ? 'en' : 'hi';
+            document.getElementById('currentLangLabel').innerText = currentLang === 'hi' ? 'Eng' : 'हिंदी';
+            renderQuestion();
+        }
+
+        // TIMER SYSTEM
+        function startTimer() {
+            const timerDisplay = document.getElementById('timerDisplay');
+            timerInterval = setInterval(() => {
+                if (timerSeconds <= 0) {
+                    clearInterval(timerInterval);
+                    autoSubmitTest();
+                    return;
+                }
+                timerSeconds--;
+                const hrs = Math.floor(timerSeconds / 3600);
+                const mins = Math.floor((timerSeconds % 3600) / 60);
+                const secs = timerSeconds % 60;
+                
+                if (hrs > 0) {
+                    timerDisplay.innerText = `${hrs}:${mins < 10 ? '0' : ''}${mins}:${secs < 10 ? '0' : ''}${secs}`;
+                } else {
+                    timerDisplay.innerText = `${mins < 10 ? '0' : ''}${mins}:${secs < 10 ? '0' : ''}${secs}`;
+                }
+
+                if (timerSeconds < 300) {
+                    timerDisplay.classList.add('text-rose-500', 'animate-pulse');
+                }
+            }, 1000);
+        }
+
+        // QUESTION RENDERER
+        function renderQuestion() {
+            const q = questions[currentQIndex];
+            
+            document.getElementById('questionIndicator').innerText = `Question ${currentQIndex + 1} of ${questions.length}`;
+            
+            // Mark for review badge
+            const reviewBadge = document.getElementById('reviewBadge');
+            if (reviewStatus[currentQIndex]) {
+                reviewBadge.classList.remove('hidden');
+            } else {
+                reviewBadge.classList.add('hidden');
+            }
+
+            // Question Container
+            document.getElementById('questionContainer').innerHTML = `
+                <div class="flex items-center gap-2 mb-2.5">
+                    <span class="text-xs font-bold px-2.5 py-0.5 rounded bg-indigo-50 text-indigo-700 border border-indigo-200">${q.type[currentLang]}</span>
+                    <span class="text-xs text-slate-400 font-sans">QID: PHY-${100 + q.id}</span>
+                </div>
+                <div class="text-slate-900 font-medium text-base md:text-lg leading-relaxed ${currentLang === 'hi' ? 'devanagari' : ''}">
+                    ${q.qText[currentLang]}
+                </div>
+            `;
+
+            // Options Container
+            const optBox = document.getElementById('optionsContainer');
+            optBox.innerHTML = '';
+
+            const optLabels = ['(A)', '(B)', '(C)', '(D)'];
+            q.options[currentLang].forEach((optText, index) => {
+                const isSelected = userResponses[currentQIndex] === index;
+                const optDiv = document.createElement('label');
+                optDiv.className = `flex items-start gap-3 p-3.5 md:p-4 rounded-xl border cursor-pointer transition-all ${
+                    isSelected 
+                        ? 'border-indigo-600 bg-indigo-50 text-indigo-900 shadow-sm ring-1 ring-indigo-500' 
+                        : 'border-slate-200 bg-white hover:bg-slate-50 text-slate-700'
+                }`;
+                optDiv.innerHTML = `
+                    <input type="radio" name="optRadio" value="${index}" ${isSelected ? 'checked' : ''} onchange="selectOption(${index})" class="mt-1 h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-slate-300">
+                    <div class="flex-1 text-sm md:text-base font-normal ${currentLang === 'hi' ? 'devanagari' : ''}">
+                        <span class="font-bold mr-1.5 font-sans">${optLabels[index]}</span> ${optText}
+                    </div>
+                `;
+                optBox.appendChild(optDiv);
+            });
+
+            // Nav buttons state
+            document.getElementById('btnPrev').disabled = currentQIndex === 0;
+            const btnNext = document.getElementById('btnNext');
+            if (currentQIndex === questions.length - 1) {
+                btnNext.innerHTML = `Save & Review <i class="fa-solid fa-check text-xs"></i>`;
+            } else {
+                btnNext.innerHTML = `Save & Next <i class="fa-solid fa-arrow-right text-xs"></i>`;
+            }
+
+            // Review button text
+            const btnReview = document.getElementById('btnReview');
+            if (reviewStatus[currentQIndex]) {
+                btnReview.innerHTML = `<i class="fa-solid fa-bookmark"></i> Unmark`;
+                btnReview.className = "w-full py-2.5 px-4 bg-amber-500 text-white font-semibold rounded-xl text-sm transition border border-amber-600 flex items-center justify-center gap-1";
+            } else {
+                btnReview.innerHTML = `<i class="fa-regular fa-bookmark"></i> Review`;
+                btnReview.className = "w-full py-2.5 px-4 bg-amber-50 hover:bg-amber-100 text-amber-700 font-semibold rounded-xl text-sm transition border border-amber-200 flex items-center justify-center gap-1";
+            }
+        }
+
+        function selectOption(index) {
+            userResponses[currentQIndex] = index;
+            renderQuestion();
+        }
+
+        function clearResponse() {
+            userResponses[currentQIndex] = null;
+            renderQuestion();
+        }
+
+        function toggleMarkReview() {
+            reviewStatus[currentQIndex] = !reviewStatus[currentQIndex];
+            renderQuestion();
+        }
+
+        function prevQuestion() {
+            if (currentQIndex > 0) {
+                currentQIndex--;
+                renderQuestion();
+            }
+        }
+
+        function nextQuestion() {
+            if (currentQIndex < questions.length - 1) {
+                currentQIndex++;
+                renderQuestion();
+            } else {
+                confirmSubmitTest();
+            }
+        }
+
+        function confirmSubmitTest() {
+            const attempted = userResponses.filter(r => r !== null).length;
+            const unattempted = questions.length - attempted;
+            const msg = `Kya aap test submit karna chahte hain?\n\nAttempted: ${attempted}\nUnattempted: ${unattempted}`;
+            if (confirm(msg)) {
+                submitTest();
+            }
+        }
+
+        function autoSubmitTest() {
+            alert("Samay samapt ho gaya hai! Test auto submit ho raha hai.");
+            submitTest();
+        }
+
+        function submitTest() {
+            clearInterval(timerInterval);
+
+            let correct = 0;
+            let incorrect = 0;
+            let unattempted = 0;
+
+            userResponses.forEach((resp, idx) => {
+                if (resp === null) {
+                    unattempted++;
+                } else if (resp === questions[idx].correct) {
+                    correct++;
+                } else {
+                    incorrect++;
+                }
+            });
+
+            const totalScore = (correct * 2.0) - (incorrect * 0.20);
+            const maxMarks = questions.length * 2.0;
+            const attempted = correct + incorrect;
+            const accuracy = attempted > 0 ? ((correct / attempted) * 100).toFixed(1) : 0;
+
+            document.getElementById('resScore').innerText = totalScore.toFixed(2);
+            document.getElementById('resCorrect').innerText = correct;
+            document.getElementById('resIncorrect').innerText = incorrect;
+            document.getElementById('resAccuracy').innerText = `${accuracy}%`;
+            document.getElementById('resAttempted').innerText = `${attempted} / ${questions.length}`;
+            document.getElementById('resUnattempted').innerText = unattempted;
+
+            document.getElementById('scoreModal').classList.remove('hidden');
+        }
+
+        // DETAILED SOLUTIONS VIEWER (BILINGUAL)
+        function openSolutionReview() {
+            const solList = document.getElementById('solutionsList');
+            solList.innerHTML = '';
+
+            const optLetters = ['A', 'B', 'C', 'D'];
+
+            questions.forEach((q, idx) => {
+                const userChoice = userResponses[idx];
+                const isCorrect = userChoice === q.correct;
+                const isUnattempted = userChoice === null;
+
+                let statusBadge = '';
+                if (isUnattempted) {
+                    statusBadge = '<span class="bg-slate-100 text-slate-600 text-xs px-2.5 py-1 rounded font-bold border">Not Attempted (0 Marks)</span>';
+                } else if (isCorrect) {
+                    statusBadge = '<span class="bg-emerald-100 text-emerald-800 text-xs px-2.5 py-1 rounded font-bold border border-emerald-300">+2.00 Sahi Uttar</span>';
+                } else {
+                    statusBadge = '<span class="bg-rose-100 text-rose-800 text-xs px-2.5 py-1 rounded font-bold border border-rose-300">-0.20 Galat Uttar</span>';
+                }
+
+                const item = document.createElement('div');
+                item.className = 'bg-white p-5 rounded-xl border border-slate-200 shadow-sm space-y-4';
+                
+                let optHtmlHi = '';
+                let optHtmlEn = '';
+
+                q.options.hi.forEach((opt, oIdx) => {
+                    let optClass = 'bg-slate-50 border-slate-200 text-slate-700';
+                    if (oIdx === q.correct) {
+                        optClass = 'bg-emerald-50 border-emerald-400 text-emerald-900 font-semibold';
+                    } else if (userChoice === oIdx && !isCorrect) {
+                        optClass = 'bg-rose-50 border-rose-400 text-rose-900 line-through';
+                    }
+
+                    optHtmlHi += `
+                        <div class="p-2 rounded border text-xs md:text-sm devanagari ${optClass}">
+                            <span class="font-bold mr-1">(${optLetters[oIdx]})</span> ${opt}
+                        </div>
+                    `;
+                    optHtmlEn += `
+                        <div class="p-2 rounded border text-xs md:text-sm ${optClass}">
+                            <span class="font-bold mr-1">(${optLetters[oIdx]})</span> ${q.options.en[oIdx]}
+                        </div>
+                    `;
+                });
+
+                item.innerHTML = `
+                    <div class="flex items-center justify-between pb-2 border-b border-slate-100">
+                        <span class="font-bold text-slate-800 text-sm">Question ${idx + 1}</span>
+                        ${statusBadge}
+                    </div>
+
+                    <!-- HINDI VERSION -->
+                    <div class="space-y-2">
+                        <span class="text-[10px] bg-slate-200 text-slate-700 font-bold px-1.5 py-0.5 rounded">HINDI</span>
+                        <div class="devanagari text-slate-900 text-sm md:text-base leading-relaxed">${q.qText.hi}</div>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-2 pt-1">${optHtmlHi}</div>
+                    </div>
+
+                    <!-- ENGLISH VERSION -->
+                    <div class="space-y-2 pt-2 border-t border-slate-100">
+                        <span class="text-[10px] bg-indigo-100 text-indigo-700 font-bold px-1.5 py-0.5 rounded">ENGLISH</span>
+                        <div class="text-slate-900 text-sm md:text-base leading-relaxed">${q.qText.en}</div>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-2 pt-1">${optHtmlEn}</div>
+                    </div>
+
+                    <!-- EXPLANATION (BILINGUAL) -->
+                    <div class="bg-indigo-50 border-l-4 border-indigo-600 p-3.5 rounded text-xs md:text-sm text-slate-700 mt-3 space-y-2">
+                        <div class="font-bold text-indigo-900 flex items-center gap-1">
+                            <i class="fa-solid fa-lightbulb text-amber-500"></i> विस्तृत व्याख्या (Detailed Explanation):
+                        </div>
+                        <p class="devanagari leading-relaxed text-slate-800"><strong>हिंदी:</strong> ${q.explanation.hi}</p>
+                        <p class="leading-relaxed text-slate-800"><strong>English:</strong> ${q.explanation.en}</p>
+                    </div>
+                `;
+                solList.appendChild(item);
+            });
+
+            document.getElementById('solutionReviewModal').classList.remove('hidden');
+        }
+
+        function closeSolutionReview() {
+            document.getElementById('solutionReviewModal').classList.add('hidden');
+        }
+    </script>
+</body>
+</html>
