@@ -1,0 +1,1134 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GYANVERSE - CBT Examination Portal (70 Ultimate Questions)</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Tiro+Devanagari+Hindi:ital@0;1&family=Inter:wght@400;500;600;700&display=swap');
+        body {
+            font-family: 'Inter', 'Tiro Devanagari Hindi', sans-serif;
+            user-select: none;
+            -webkit-user-select: none;
+        }
+        .devanagari {
+            font-family: 'Tiro Devanagari Hindi', serif;
+        }
+    </style>
+</head>
+<body class="bg-slate-100 text-slate-800 min-h-screen flex flex-col">
+
+    <!-- Auto Full-Screen Entry Gate Overlay -->
+    <div id="startOverlay" class="fixed inset-0 z-50 bg-slate-900/95 flex items-center justify-center p-4">
+        <div class="bg-white rounded-2xl shadow-2xl max-w-lg w-full p-6 md:p-8 text-center border border-slate-200">
+            <div class="w-16 h-16 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center mx-auto mb-4 text-2xl font-bold shadow-inner">
+                <i class="fa-solid fa-atom"></i>
+            </div>
+            <h1 class="text-2xl font-extrabold text-slate-800 mb-1">GYANVERSE</h1>
+            <p class="text-xs font-bold text-blue-600 uppercase tracking-widest mb-4">Complete Line-by-Line Mega CBT (70 Questions)</p>
+            
+            <div class="bg-slate-50 p-4 rounded-xl text-left border border-slate-200 text-xs md:text-sm text-slate-600 mb-6 space-y-2">
+                <p class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-emerald-500"></i> <span><strong>Syllabus:</strong> Lucent GK Ch 01 (Space) & Ch 02 (Nuclear) - 100% Micro Coverage</span></p>
+                <p class="flex items-center gap-2"><i class="fa-solid fa-list-ol text-indigo-500"></i> <span><strong>Total Questions:</strong> 70 High-Standard MCQs</span></p>
+                <p class="flex items-center gap-2"><i class="fa-solid fa-stopwatch text-amber-500"></i> <span><strong>Total Time:</strong> 120 Minutes</span></p>
+                <p class="flex items-center gap-2"><i class="fa-solid fa-calculator text-blue-500"></i> <span><strong>Marking Scheme:</strong> Correct: +2.00 | Incorrect: -0.20</span></p>
+                <p class="flex items-center gap-2"><i class="fa-brands fa-telegram text-sky-500"></i> <span><strong>Telegram:</strong> <a href="https://t.me/GYANVERSET" target="_blank" class="text-blue-600 underline font-semibold">@GYANVERSET</a></span></p>
+            </div>
+
+            <p class="text-xs text-rose-500 font-medium mb-5">
+                <i class="fa-solid fa-expand mr-1"></i> Start par click karte hi screen full screen mode me lock ho jayegi.
+            </p>
+
+            <button onclick="startExamFullScreen()" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3.5 px-6 rounded-xl shadow-lg hover:shadow-blue-500/30 transition-all text-base flex items-center justify-center gap-2">
+                <i class="fa-solid fa-play"></i> Start Test (Auto Full Screen)
+            </button>
+        </div>
+    </div>
+
+    <!-- Header Navigation -->
+    <header class="bg-white border-b border-slate-200 sticky top-0 z-30 px-4 py-3 shadow-sm">
+        <div class="max-w-4xl mx-auto flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <span class="bg-blue-600 text-white px-2.5 py-1 rounded-lg text-sm font-extrabold tracking-wider">GYANVERSE</span>
+                <span class="text-xs md:text-sm font-bold text-slate-600 hidden sm:inline">Chapter 01 & 02 Micro Line-by-Line (70 Qs)</span>
+            </div>
+            
+            <div class="flex items-center gap-3">
+                <!-- Live Timer Box -->
+                <div class="flex items-center gap-2 bg-amber-50 border border-amber-200 px-3 py-1.5 rounded-lg text-amber-700 font-mono font-bold text-sm">
+                    <i class="fa-regular fa-clock"></i>
+                    <span id="timerDisplay">120:00</span>
+                </div>
+                <!-- Submit Header Button -->
+                <button onclick="confirmSubmitTest()" class="bg-rose-600 hover:bg-rose-700 text-white font-bold px-4 py-1.5 rounded-lg text-xs md:text-sm shadow-sm transition flex items-center gap-1.5">
+                    <i class="fa-solid fa-paper-plane"></i> Submit Test
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content Container (Clean Full-Width, No Palette) -->
+    <main class="flex-1 max-w-4xl w-full mx-auto p-4 md:py-6 flex flex-col justify-start">
+        
+        <!-- Question Meta Box -->
+        <div class="bg-white rounded-xl shadow-sm border border-slate-200 p-4 mb-4 flex items-center justify-between text-xs md:text-sm font-semibold text-slate-500">
+            <div class="flex items-center gap-2">
+                <span class="bg-slate-100 text-slate-700 px-3 py-1 rounded-md border border-slate-300" id="qNumberDisplay">Prashn 1 / 70</span>
+                <span id="reviewTag" class="hidden bg-purple-100 text-purple-700 border border-purple-200 px-2 py-0.5 rounded text-xs font-bold">Marked for Review</span>
+            </div>
+            <div class="text-right">
+                <span class="text-emerald-600 font-bold">+2.00</span> | <span class="text-rose-500 font-bold">-0.20</span>
+            </div>
+        </div>
+
+        <!-- Question Body Card -->
+        <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-5 md:p-7 relative mb-4">
+            <!-- Question Content -->
+            <div id="questionContainer" class="text-slate-800 text-sm md:text-base leading-relaxed devanagari">
+                <!-- Dynamic Question Content -->
+            </div>
+
+            <!-- Dynamic Options List -->
+            <div id="optionsContainer" class="mt-6 space-y-3 devanagari">
+                <!-- Dynamic Options -->
+            </div>
+
+            <!-- Single Question Brand Tag -->
+            <div class="mt-6 pt-3 border-t border-slate-100 flex items-center justify-between text-[11px] text-slate-400 font-medium">
+                <span>Pramanit Shrote: Lucent GK 18th Edition</span>
+                <a href="https://t.me/GYANVERSET" target="_blank" class="text-blue-500 font-bold hover:underline">@GYANVERSET</a>
+            </div>
+
+            <!-- Navigation Buttons Under Options -->
+            <div class="mt-6 pt-4 border-t border-slate-200 grid grid-cols-2 sm:grid-cols-4 gap-2.5">
+                <button onclick="handlePrevious()" id="prevBtn" class="w-full bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold py-2.5 px-3 rounded-xl border border-slate-300 text-xs md:text-sm transition flex items-center justify-center gap-1">
+                    <i class="fa-solid fa-chevron-left"></i> Prev
+                </button>
+                <button onclick="handleClearResponse()" class="w-full bg-slate-100 hover:bg-rose-50 hover:text-rose-600 text-slate-700 font-bold py-2.5 px-3 rounded-xl border border-slate-300 text-xs md:text-sm transition flex items-center justify-center gap-1">
+                    <i class="fa-solid fa-rotate-left"></i> Clear
+                </button>
+                <button onclick="handleMarkForReview()" id="markReviewBtn" class="w-full bg-purple-50 hover:bg-purple-100 text-purple-700 font-bold py-2.5 px-3 rounded-xl border border-purple-200 text-xs md:text-sm transition flex items-center justify-center gap-1">
+                    <i class="fa-solid fa-bookmark"></i> Review
+                </button>
+                <button onclick="handleNextAndSave()" id="nextBtn" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-2.5 px-3 rounded-xl text-xs md:text-sm shadow-md hover:shadow-blue-500/20 transition flex items-center justify-center gap-1">
+                    Next & Save <i class="fa-solid fa-chevron-right"></i>
+                </button>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Scorecard & Result Review Modal -->
+    <div id="resultModal" class="fixed inset-0 z-50 bg-slate-900/90 hidden overflow-y-auto p-4 md:p-6 flex items-center justify-center">
+        <div class="bg-white rounded-2xl shadow-2xl max-w-3xl w-full p-6 md:p-8 my-auto border border-slate-200 max-h-[90vh] flex flex-col">
+            
+            <div class="text-center pb-4 border-b border-slate-200 flex-shrink-0">
+                <h2 class="text-2xl font-black text-slate-800 tracking-wide">FINAL SCORECARD</h2>
+                <p class="text-xs text-slate-500 mt-1">Official GYANVERSE Assessment Result (70 Questions Set)</p>
+            </div>
+
+            <!-- Scorecard Stats Grid -->
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 my-4 flex-shrink-0">
+                <div class="bg-blue-50 border border-blue-200 p-3 rounded-xl text-center">
+                    <div class="text-xs font-semibold text-blue-600">Total Score</div>
+                    <div class="text-2xl font-black text-blue-800" id="resTotalMarks">0.00</div>
+                    <div class="text-[10px] text-slate-400 mt-0.5">Kul 140.00 me se</div>
+                </div>
+                <div class="bg-emerald-50 border border-emerald-200 p-3 rounded-xl text-center">
+                    <div class="text-xs font-semibold text-emerald-600">Correct (+2)</div>
+                    <div class="text-2xl font-black text-emerald-700" id="resCorrect">0</div>
+                    <div class="text-[10px] text-slate-400 mt-0.5" id="resCorrectMarks">+0.00 Marks</div>
+                </div>
+                <div class="bg-rose-50 border border-rose-200 p-3 rounded-xl text-center">
+                    <div class="text-xs font-semibold text-rose-600">Incorrect (-0.20)</div>
+                    <div class="text-2xl font-black text-rose-700" id="resIncorrect">0</div>
+                    <div class="text-[10px] text-slate-400 mt-0.5" id="resNegativeMarks">-0.00 Marks</div>
+                </div>
+                <div class="bg-amber-50 border border-amber-200 p-3 rounded-xl text-center">
+                    <div class="text-xs font-semibold text-amber-600">Accuracy %</div>
+                    <div class="text-2xl font-black text-amber-700" id="resAccuracy">0%</div>
+                    <div class="text-[10px] text-slate-400 mt-0.5">Shuddhata Anupat</div>
+                </div>
+            </div>
+
+            <!-- Action in Modal -->
+            <div class="flex items-center justify-between pb-3 flex-shrink-0">
+                <h3 class="font-bold text-slate-700 text-sm md:text-base">Exhaustive NCERT / Lucent Explanations:</h3>
+                <a href="https://t.me/GYANVERSET" target="_blank" class="bg-sky-500 hover:bg-sky-600 text-white font-bold text-xs px-3 py-1.5 rounded-lg flex items-center gap-1.5">
+                    <i class="fa-brands fa-telegram"></i> Telegram @GYANVERSET
+                </a>
+            </div>
+
+            <!-- Scrollable Solution List -->
+            <div id="solutionListContainer" class="overflow-y-auto space-y-4 pr-1 flex-1 devanagari text-xs md:text-sm">
+                <!-- Solutions rendered dynamically -->
+            </div>
+
+            <div class="pt-4 border-t border-slate-200 mt-4 flex justify-end flex-shrink-0">
+                <button onclick="location.reload()" class="bg-slate-800 hover:bg-black text-white font-bold text-sm px-5 py-2.5 rounded-xl">
+                    <i class="fa-solid fa-rotate-right mr-1"></i> Re-test
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // 70 Complete Line-by-Line Questions Curated from Uploaded Lucent GK Chapters 1 & 2
+        const quizData = [
+            // Chapter 1: Space Research (Questions 1 to 45)
+            {
+                id: 1,
+                question: "भारतीय अंतरिक्ष कार्यक्रम के आरंभिक विकास के संदर्भ में निम्नलिखित कथनों पर विचार कीजिए:\n\n1. भारतीय राष्ट्रीय अंतरिक्ष अनुसंधान समिति (INCOSPAR) का गठन 1962 में परमाणु ऊर्जा विभाग के अंतर्गत किया गया था।\n2. इस समिति के प्रथम अध्यक्ष प्रसिद्ध वैज्ञानिक डॉ. विक्रम साराभाई थे, जिन्हें भारतीय अंतरिक्ष कार्यक्रम का जनक माना जाता है।\n3. 15 अगस्त, 1969 को इसी समिति का पुनर्गठन करके भारतीय अंतरिक्ष अनुसंधान संगठन (ISRO) की स्थापना की गई।\n4. 1972 में अंतरिक्ष आयोग और अंतरिक्ष विभाग का गठन करके इसरो को सीधे परमाणु ऊर्जा आयोग के अधीन रखा गया।\n\nउपर्युक्त कथनों में से कौन-से कथन सही हैं?",
+                options: ["केवल 1, 2 और 3", "केवल 2, 3 और 4", "केवल 1, 3 और 4", "1, 2, 3 और 4"],
+                correctAnswer: 0,
+                explanation: "कथन 1, 2 और 3 पूर्णतः सत्य हैं। कथन 4 असत्य है क्योंकि 1972 में अंतरिक्ष आयोग एवं अंतरिक्ष विभाग का गठन किया गया तथा इसरो को परमाणु ऊर्जा आयोग के नहीं बल्कि 'अंतरिक्ष विभाग' (Department of Space) के नियंत्रण में रखा गया था।"
+            },
+            {
+                id: 2,
+                question: "नीचे दो कथन दिए गए हैं, जिनमें से एक को कथन (A) और दूसरे को कारण (R) कहा गया है:\n\nकथन (A): 21 नवम्बर, 1963 को थुम्बा भूमध्य रेखीय रॉकेट प्रक्षेपण केंद्र (TERLS) से देश का पहला साउंडिंग रॉकेट प्रक्षेपित किया गया।\nकारण (R): 'नाइक एपाश' (Nike-Apache) नामक यह साउंडिंग रॉकेट संयुक्त राज्य अमेरिका द्वारा निर्मित था।\n\nउपर्युक्त के संदर्भ में सही विकल्प चुनिए:",
+                options: [
+                    "(A) और (R) दोनों सही हैं और (R), (A) की सही व्याख्या है।",
+                    "(A) और (R) दोनों सही हैं लेकिन (R), (A) की सही व्याख्या नहीं है।",
+                    "(A) सही है लेकिन (R) गलत है।",
+                    "(A) गलत है लेकिन (R) सही है।"
+                ],
+                correctAnswer: 1,
+                explanation: "दोनों कथन सत्य हैं। 21 नवंबर 1963 को थुम्बा (तिरुवनंतपुरम) से अमेरिका निर्मित 'नाइक एपाश' छोड़ा गया था, जो भारत का पहला साउंडिंग रॉकेट था। दोनों तथ्य स्वतंत्र हैं, अतः R, A की व्याख्या नहीं है।"
+            },
+            {
+                id: 3,
+                question: "भारतीय अंतरिक्ष कार्यक्रम की वास्तविक शुरुआत के संदर्भ में निम्नलिखित में से कौन-सा स्थल ऐतिहासिक रूप से संबंधित है?",
+                options: [
+                    "कोलकाता स्थित भारतीय सांख्यिकी संस्थान का मुख्य सभागार",
+                    "तिरुवनंतपुरम स्थित सेंट मेरी मैकडेलेन चर्च का एक कमरा",
+                    "बेंगलुरु स्थित भारतीय विज्ञान संस्थान (IISc) की भौतिकी प्रयोगशाला",
+                    "मुंबई स्थित टाटा इंस्टीट्यूट ऑफ फंडामेंटल रिसर्च (TIFR)"
+                ],
+                correctAnswer: 1,
+                explanation: "लूसेंट के अनुसार वस्तुतः भारतीय अंतरिक्ष कार्यक्रम की शुरुआत नवम्बर, 1963 में तिरुवनंतपुरम स्थित सेंट मेरी मैकडेलेन चर्च के एक कमरे में हुई थी।"
+            },
+            {
+                id: 4,
+                question: "अंतरिक्ष विज्ञान के क्षेत्र की आरंभिक ऐतिहासिक घटनाओं के संदर्भ में निम्नलिखित में से कौन-सा युग्म सही सुमेलित नहीं है?",
+                options: [
+                    "04.10.1957 - स्पूतनिक-I (पूर्व सोवियत संघ द्वारा अंतरिक्ष में प्रमोचित पहला उपग्रह)",
+                    "03.11.1957 - स्पूतनिक-II (अंतरिक्ष में जीवित कुत्ते 'लाइका' को ले जाने वाला पहला उपग्रह)",
+                    "18.12.1958 - स्कोर (अंतरिक्ष में स्थापित किया गया पहला संचार उपग्रह)",
+                    "04.10.1959 - लूना-3 (मंगल ग्रह की कक्षा में प्रवेश करने वाला पहला यान)"
+                ],
+                correctAnswer: 3,
+                explanation: "युग्म (D) गलत है। 04.10.1959 को लूना-3 वह पहला अंतरिक्षयान बना जिसने 'चंद्रमा के उस पृष्ठ के चित्र भेजे जो पृथ्वी से दिखाई नहीं पड़ते हैं', न कि मंगल ग्रह का।"
+            },
+            {
+                id: 5,
+                question: "मानव अंतरिक्ष यात्राओं के ऐतिहासिक संदर्भ में निम्नलिखित कथनों पर विचार कीजिए:\n\n1. 12 अप्रैल, 1961 को पूर्व सोवियत संघ के यूरी गागरिन ने 'वोस्टॉक-1' द्वारा पृथ्वी का एक परिक्रमण कर मानव द्वारा पहली अंतरिक्ष यात्रा की।\n2. 04 दिसंबर, 1963 को वोस्टॉक-6 द्वारा पूर्व सोवियत संघ की वेलेनटाइना तेरेश्कोवा प्रथम महिला अंतरिक्ष यात्री बनीं।\n3. 16 जुलाई, 1969 को अपोलो-11 द्वारा नील आर्मस्ट्रांग चंद्रमा पर कदम रखने वाले पहले मानव बने, जिसके बाद एडविन एल्ड्रिन चंद्रमा पर उतरे।\n\nउपर्युक्त कथनों में से कौन-सा/से कथन सत्य है/हैं?",
+                options: ["केवल 1 और 2", "केवल 2 और 3", "केवल 1 और 3", "1, 2 और 3"],
+                correctAnswer: 3,
+                explanation: "तीनों कथन शत-प्रतिशत सत्य हैं। वोस्टॉक-1 से यूरी गागरिन, वोस्टॉक-6 से वेलेनटाइना तेरेश्कोवा और अपोलो-11 से आर्मस्ट्रांग व एल्ड्रिन गए थे।"
+            },
+            {
+                id: 6,
+                question: "अंतरिक्ष अभियानों के प्रथम वैश्विक रिकॉर्ड्स के संदर्भ में कौन-सा मिलान गलत है?",
+                options: [
+                    "06.04.1965 (इंटेलसेट) - व्यावसायिक उपयोग के लिए पहला संचार उपग्रह",
+                    "16.11.1965 (वेनेरा-3) - किसी अन्य ग्रह अर्थात शुक्र ग्रह पर उतरने वाला पहला अंतरिक्षयान",
+                    "21.10.1968 (लूना-9) - चंद्रमा तल पर सफलतापूर्वक उतरने वाला पहला अंतरिक्षयान",
+                    "19.05.1971 (मार्स-2) - सूर्य के कोरोना का अध्ययन करने वाला पहला सौर यान"
+                ],
+                correctAnswer: 3,
+                explanation: "विकल्प (D) गलत है। मार्स-2 (19.05.1971) 'मंगल ग्रह पर पहली बार अंतरिक्षयान का उतरना' दर्ज करता है, सूर्य का कोरोना अध्ययन नहीं।"
+            },
+            {
+                id: 7,
+                question: "विश्व का सबसे पहला प्रयोगात्मक अंतरिक्ष केंद्र (Experimental Space Station) निम्नलिखित में से कौन-सा था?",
+                options: ["मीर (Mir)", "सोयूज-4 (Soyuz-4, 14.11.1969)", "स्काईलैब (Skylab)", "सैल्यूट-1 (Salyut-1)"],
+                correctAnswer: 1,
+                explanation: "लूसेंट तालिका के अनुसार 14.11.1969 को प्रक्षेपित 'सोयूज-4' (Soyuz-4) सबसे पहला प्रयोगात्मक अंतरिक्ष केंद्र था।"
+            },
+            {
+                id: 8,
+                question: "स्तंभ-I (इसरो केंद्र) को स्तंभ-II (प्रमुख कार्य/दायित्व) से सुमेलित कीजिए:\n\nस्तंभ-I:\na. विक्रम साराभाई अंतरिक्ष केंद्र (VSSC, तिरुवनंतपुरम)\nb. इसरो उपग्रह केंद्र (ISAC, बेंगलुरु)\nc. अंतरिक्ष उपयोग केंद्र (SAC, अहमदाबाद)\nd. शार (SHAR) केंद्र (श्रीहरिकोटा)\n\nस्तंभ-II:\n1. उपग्रह परियोजनाओं के डिजाइन, निर्माण, परीक्षण और प्रबंध कार्य\n2. ठोस ईंधन रॉकेट के विभिन्न चरणों का पृथ्वी पर परीक्षण एवं प्रणोदक प्रसंस्करण\n3. रॉकेट अनुसंधान तथा सभी प्रक्षेपण-यान विकास परियोजनाओं (SLV, ASLV, PSLV, GSLV) का विकास\n4. प्राकृतिक संसाधनों के सर्वेक्षण हेतु दूरसंवेदन, मौसम विज्ञान, दूरसंचार व भू-मापन प्रयोग\n\nसही कूट चुनिए:",
+                options: [
+                    "a-3, b-1, c-4, d-2",
+                    "a-1, b-3, c-4, d-2",
+                    "a-3, b-4, c-1, d-2",
+                    "a-4, b-1, c-3, d-2"
+                ],
+                correctAnswer: 0,
+                explanation: "VSSC = प्रक्षेपण यान विकास; ISAC = उपग्रह निर्माण व डिजाइन; SAC = दूरसंचार, मौसम व दूरसंवेदन अनुप्रयोग; SHAR = ठोस ईंधन परीक्षण व प्रमुख प्रक्षेपण केंद्र।"
+            },
+            {
+                id: 9,
+                question: "द्रव प्रणोदक प्रणाली केंद्र (LPSC) के संबंध में निम्नलिखित में से कौन-सा कथन असत्य है?",
+                options: [
+                    "इसकी शाखाएं तिरुवनंतपुरम, बेंगलुरु और महेंद्रगिरि (तमिलनाडु) में स्थित हैं।",
+                    "यह केंद्र द्रव ईंधन से चलने वाली चालक नियंत्रण प्रणालियों और इंजनों के डिजाइन व विकास हेतु कार्यरत है।",
+                    "महेंद्रगिरि में द्रव ईंधन से चलने वाले रॉकेट इंजनों की परीक्षण सुविधा उपलब्ध है।",
+                    "यह केंद्र ठोस प्रणोदक HTPB के बड़े पैमाने पर रासायनिक उत्पादन के लिए देश का एकमात्र संयंत्र है।"
+                ],
+                correctAnswer: 3,
+                explanation: "कथन (D) असत्य है। LPSC विशेष रूप से 'द्रव प्रणोदक प्रणालियों और इंजनों' (Liquid Propellant Systems) के लिए है। ठोस प्रणोदक प्रसंस्करण SHAR (श्रीहरिकोटा) आदि में होता है।"
+            },
+            {
+                id: 10,
+                question: "इसरो टेलीमेट्री निगरानी एवं नियंत्रण नेटवर्क (ISTRAC) के संबंध में निम्नलिखित कथनों पर विचार कीजिए:\n\n1. ISTRAC का मुख्यालय तथा मुख्य उपग्रह नियंत्रण केंद्र बेंगलुरु में स्थित है।\n2. भारत में इसके भू-केंद्र श्रीहरिकोटा, तिरुवनंतपुरम, बेंगलुरु, लखनऊ और पोर्ट ब्लेयर में हैं।\n3. भारत से बाहर इसका एक अंतरराष्ट्रीय भू-केंद्र मॉरीशस में स्थित है।\n\nउपर्युक्त कथनों में से कौन-से कथन सही हैं?",
+                options: ["केवल 1 और 2", "केवल 2 और 3", "केवल 1 और 3", "1, 2 और 3"],
+                correctAnswer: 3,
+                explanation: "तीनों कथन पूर्णतः सत्य हैं। ISTRAC का मुख्यालय बेंगलुरु में है और इसके भू-केंद्र पोर्ट ब्लेयर, लखनऊ, मॉरीशस आदि में स्थापित हैं।"
+            },
+            {
+                id: 11,
+                question: "मुख्य नियंत्रण सुविधा (MCF) के संदर्भ में निम्नलिखित कथनों में से कौन-सा कथन असत्य है?",
+                options: [
+                    "इनसैट उपग्रह के प्रक्षेपण के बाद उसे कक्षा में स्थापित करने व निगरानी का दायित्व हासन (कर्नाटक) स्थित MCF के पास है।",
+                    "इसरो का दूसरा मुख्य नियंत्रण सुविधा केंद्र मध्य प्रदेश के भोपाल में 11 अप्रैल, 2005 को स्थापित किया गया।",
+                    "कक्षा में उपग्रह की सभी नियमित क्रियाओं पर निगरानी व नियंत्रण का कार्य MCF द्वारा किया जाता है।",
+                    "MCF का तीसरा केंद्र अंडमान-निकोबार के पोर्ट ब्लेयर में स्थापित किया गया है।"
+                ],
+                correctAnswer: 3,
+                explanation: "कथन (D) असत्य है। लूसेंट के अनुसार इसरो के केवल दो मुख्य नियंत्रण सुविधा केंद्र हैं—पहला हासन (कर्नाटक) और दूसरा भोपाल (मध्य प्रदेश)। पोर्ट ब्लेयर में ISTRAC का भू-केंद्र है, MCF नहीं।"
+            },
+            {
+                id: 12,
+                question: "अंतरिक्ष विभाग के अंतर्गत कार्यरत प्रमुख संस्थानों और उनकी अवस्थिति का कौन-सा युग्म सुमेलित नहीं है?",
+                options: [
+                    "इसरो जड़त्व प्रणाली इकाई (IISU) - तिरुवनंतपुरम",
+                    "भौतिक अनुसंधान प्रयोगशाला (PRL) - अहमदाबाद",
+                    "राष्ट्रीय दूरसंवेदी एजेंसी (NRSA) का प्रमुख केंद्र - बालानगर (हैदराबाद)",
+                    "भारतीय दूर संवेदी संस्थान (IIRS) - भोपाल"
+                ],
+                correctAnswer: 3,
+                explanation: "युग्म (D) गलत है। भारतीय दूर संवेदी संस्थान (IIRS) 'देहरादून' (उत्तराखंड) में स्थित है, जो राष्ट्रीय दूरसंवेदी एजेंसी का ही एक प्रमुख अंग है।"
+            },
+            {
+                id: 13,
+                question: "उपग्रहों की कक्षाओं (Orbits) के मापदंडों के आधार पर निम्नलिखित में से कौन-सा युग्म सही सुमेलित नहीं है?",
+                options: [
+                    "निम्न भू-कक्षीय उपग्रह (LEO) - सामान्यतः अंडाकार कक्षा में 200 से 600 किमी की सीमा",
+                    "सौर-तुल्यकालिक उपग्रह (SSO) - 500 से 1000 किमी निश्चित ऊँचाई पर निकट-वृत्तीय ध्रुवीय कक्षा",
+                    "भू-तुल्यकालिक उपग्रह (GEO) - 36,000 किमी की निश्चित ऊँचाई पर वृत्ताकार विषुवतीय कक्षा",
+                    "दीर्घवृत्तीय मोलनिया कक्षा (Molniya) - 100 किमी (उपभू) से 15,000 किमी (अपभू) की ऊँचाई"
+                ],
+                correctAnswer: 3,
+                explanation: "विकल्प (D) सही सुमेलित नहीं है। मोलनिया कक्षा 504 किमी (उपभू/Perigee) से लेकर 39,834 किमी (अपभू/Apogee) की ऊँचाई पर भ्रमण करने वाले उपग्रहों का वर्ग है।"
+            },
+            {
+                id: 14,
+                question: "सौर-तुल्यकालिक उपग्रह (Sun Synchronous-orbit Satellite) की कार्यप्रणाली के संदर्भ में क्या सत्य है?",
+                options: [
+                    "यह विषुवतीय तल में पश्चिम से पूर्व की ओर 24 घंटे में परिक्रमा करता है।",
+                    "यह उत्तर से दक्षिण की ओर गुजरते हुए पृथ्वी की सतह पर एक कटी हुई फसल जैसा सुस्थिर सौर दीप्त क्षेत्र दृश्यमान करता है।",
+                    "यह पृथ्वी की सतह के सापेक्ष सदैव एक ही बिंदु पर पूर्णतः स्थिर नजर आता है।",
+                    "इस कक्षा में केवल इनसैट (INSAT) श्रेणी के उपग्रह ही छोड़े जाते हैं।"
+                ],
+                correctAnswer: 1,
+                explanation: "सौर-तुल्यकालिक उपग्रह निकट-वृत्तीय ध्रुवीय कक्षा में 500-1000 किमी की ऊँचाई पर उत्तर से दक्षिण गुजरते हैं और पृथ्वी की सतह पर कटी हुई फसल जैसा सौर दीप्त क्षेत्र दृश्यमान होता है। PSLV से छोड़े जाने वाले IRS उपग्रह इसी वर्ग में आते हैं।"
+            },
+            {
+                id: 15,
+                question: "भारत के प्रथम स्वदेशी वैज्ञानिक उपग्रह 'आर्यभट्ट' के संदर्भ में निम्नलिखित कथनों पर विचार कीजिए:\n\n1. इसे 19 अप्रैल, 1975 को पूर्व सोवियत संघ के बैकानूर केंद्र से 'इंटर कॉस्मोस' प्रक्षेपण यान द्वारा 594 किमी की वृत्तीय कक्षा में स्थापित किया गया।\n2. इसका कुल वजन 360 किलोग्राम था।\n3. इसके प्रमुख लक्ष्य वायु विज्ञान प्रयोग, सौर भौतिकी प्रयोग तथा एक्स-किरण खगोलिकी प्रयोग थे।\n4. इसकी सक्रिय कार्यविधि मात्र 6 माह निर्धारित की गई थी, परन्तु इसने मार्च, 1980 तक अंतरिक्ष से आंकड़े भेजने का कार्य किया।\n\nउपर्युक्त कथनों में से कौन-से कथन सत्य हैं?",
+                options: ["केवल 1, 2 और 3", "केवल 2, 3 और 4", "केवल 1, 3 और 4", "1, 2, 3 और 4"],
+                correctAnswer: 3,
+                explanation: "सभी चारों कथन आर्यभट्ट के संबंध में शत-प्रतिशत सत्य हैं।"
+            },
+            {
+                id: 16,
+                question: "प्रायोगिक पृथ्वी पर्यवेक्षण उपग्रह 'भास्कर-1' के संदर्भ में निम्नलिखित में से कौन-सा कथन असत्य है?",
+                options: [
+                    "इसे 7 जून, 1979 को रूसी केंद्र बैकानूर से इंटर कॉस्मोस यान द्वारा 525 किमी ऊँचाई पर स्थापित किया गया।",
+                    "इसका प्राथमिक लक्ष्य जल विज्ञान, हिम गलन, समुद्र विज्ञान एवं वानिकी के क्षेत्र में भू-पर्यवेक्षण अनुसंधान करना था।",
+                    "भास्कर-1 ने 1 अगस्त, 1981 को अपना कार्य करना बंद कर दिया।",
+                    "भास्कर-1 भारत की भूमि (श्रीहरिकोटा) से स्वदेशी रॉकेट SLV-3 द्वारा प्रक्षेपित किया गया था।"
+                ],
+                correctAnswer: 3,
+                explanation: "कथन (D) असत्य है। भास्कर-1 को रूसी प्रक्षेपण केंद्र बैकानूर से 'इंटर कॉस्मोस' प्रक्षेपण यान द्वारा छोड़ा गया था, SLV-3 द्वारा नहीं।"
+            },
+            {
+                id: 17,
+                question: "भास्कर-II उपग्रह के संदर्भ में निम्नलिखित कथनों पर विचार कीजिए:\n\n1. इसे बैकानूर प्रक्षेपण केंद्र से 20 नवम्बर, 1981 को 525 किमी की ऊँचाई पर स्थापित किया गया।\n2. इसका घूर्णन कक्षा तल के लम्बवत् रखा गया था।\n3. इसमें लगे 'समीर' (SAMIR) उपकरण के कारण समुद्री सतह का ताप, सामुद्रिक स्थिति, बर्फ गिरने व पिघलने का व्यापक विश्लेषण किया गया।\n\nउपर्युक्त कथनों में से कौन-सा/से कथन सत्य है/हैं?",
+                options: ["केवल 1 और 2", "केवल 2 और 3", "केवल 1 और 3", "1, 2 और 3"],
+                correctAnswer: 3,
+                explanation: "तीनों कथन सत्य हैं। भास्कर-II में SAMIR (समीर) उपकरण पेलोड के रूप में प्रयुक्त किया गया था।"
+            },
+            {
+                id: 18,
+                question: "रोहिणी उपग्रह श्रृंखला (Rohini Series) के संदर्भ में निम्नलिखित कथनों की सत्यता की जाँच कीजिए:\n\n1. इस श्रृंखला के तहत श्रीहरिकोटा से SLV-3 यान द्वारा कुल 4 उपग्रह प्रक्षेपित किए गए, जिनका मुख्य उद्देश्य SLV-3 का परीक्षण था।\n2. इस अभियान का प्रथम एवं तृतीय प्रायोगिक परीक्षण असफल रहा था।\n3. 18 जुलाई, 1980 को 'रोहिणी RS-1' भारतीय भूमि से भारतीय प्रक्षेपण यान द्वारा छोड़ा गया प्रथम भारतीय उपग्रह बना।\n4. 17 अप्रैल, 1983 को रोहिणी RS-D2 के सफल प्रक्षेपण के साथ SLV-3 कार्यक्रम को बंद कर दिया गया।\n\nउपर्युक्त में से कौन-से कथन सही हैं?",
+                options: ["केवल 1, 2 और 3", "केवल 2, 3 और 4", "केवल 1, 3 और 4", "1, 2, 3 और 4"],
+                correctAnswer: 3,
+                explanation: "चारों कथन ऐतिहासिक रूप से बिल्कुल सही हैं।"
+            },
+            {
+                id: 19,
+                question: "भारत के प्रथम प्रायोगिक संचार उपग्रह 'एप्पल' (APPLE) के संदर्भ में कौन-सा कथन गलत है?",
+                options: [
+                    "इसे 19 जून, 1981 को फ्रेंच गुयाना के कौरू अंतरिक्ष केंद्र से एरियन रॉकेट द्वारा प्रक्षेपित किया गया।",
+                    "यह भारत का पहला संचार उपग्रह था जिसे लगभग 36,000 किमी ऊँचाई पर भू-स्थैतिक कक्षा में स्थापित किया गया।",
+                    "इस उपग्रह में संचार के लिए सी-बैंड (C-band) ट्रांसपोंडर का प्रयोग किया गया था।",
+                    "एप्पल उपग्रह का संपूर्ण ढांचा और पेलोड संयुक्त राज्य अमेरिका की बोइंग कंपनी द्वारा निर्मित था।"
+                ],
+                correctAnswer: 3,
+                explanation: "कथन (D) गलत है। एप्पल (Ariane Passenger Payload Experiment) भारत द्वारा स्वदेशी रूप से निर्मित प्रायोगिक संचार उपग्रह था, जिसे केवल प्रक्षेपण हेतु एरियन रॉकेट को सौंपा गया था।"
+            },
+            {
+                id: 20,
+                question: "विस्तारित रोहिणी उपग्रह श्रृंखला (SROSS) के संदर्भ में निम्नलिखित में से कौन-सा कथन असत्य है?",
+                options: [
+                    "इस श्रृंखला का उद्देश्य 100 से 150 किग्रा वर्ग के उपग्रहों का निर्माण करना था।",
+                    "इन्हें संवर्धित उपग्रह प्रक्षेपण यान (ASLV) द्वारा छोड़ा गया था।",
+                    "इस श्रृंखला के तहत कुल चार उपग्रह (SROSS-I, II, III, IV) प्रक्षेपित किए गए।",
+                    "इस श्रृंखला के स्रास-III एवं स्रास-IV प्रक्षेपण पूरी तरह असफल रहे थे जबकि स्रास-I सफल रहा था।"
+                ],
+                correctAnswer: 3,
+                explanation: "कथन (D) असत्य है। लूसेंट के अनुसार स्रास श्रृंखला में 'स्रास-I एवं स्रास-II असफल रहे थे' (स्रास-III व IV सफल रहे थे)।"
+            },
+            {
+                id: 21,
+                question: "भारतीय राष्ट्रीय उपग्रह (INSAT) प्रणाली की विभिन्न पीढ़ियों के संदर्भ में कौन-सा मिलान सही है?\n\n1. प्रथम पीढ़ी - चार उपग्रह (इनसैट-1A, 1B, 1C, 1D)\n2. द्वितीय पीढ़ी - पाँच उपग्रह (इनसैट-2A, 2B, 2C, 2D, 2E)\n3. तृतीय पीढ़ी - पाँच उपग्रह (इनसैट-3A, 3B, 3C, 3D, 3E)\n4. चौथी पीढ़ी - सात उपग्रहों की योजना (4A, 4B, 4C, 4CR का प्रक्षेपण)\n\nकूट चुनिए:",
+                options: ["केवल 1 और 2", "केवल 3 और 4", "केवल 1, 2 और 3", "1, 2, 3 और 4"],
+                correctAnswer: 3,
+                explanation: "इनसैट की सभी पीढ़ियों का विवरण लूसेंट के अनुसार पूर्णतः सुमेलित है।"
+            },
+            {
+                id: 22,
+                question: "भारतीय दूरसंवेदी उपग्रह प्रणाली (IRS) के संदर्भ में निम्नलिखित में से कौन-सा तथ्य सही नहीं है?",
+                options: [
+                    "यह प्रणाली प्राकृतिक संसाधनों की जानकारी पृथ्वी के गर्भ को स्पर्श किए बिना 'प्रकीर्णन विधि' द्वारा एकत्र करती है।",
+                    "वर्तमान में IRS उपग्रह किसी विशेष स्थान पर लगभग प्रत्येक तीन सप्ताह के बाद पुनः गुजरता है।",
+                    "देश का प्रथम समर्पित मैपिंग सैटेलाइट 'कार्टोसेट-1' है।",
+                    "आई.आर.एस. प्रणाली के सभी उपग्रह केवल 36,000 किमी की विषुवतीय भू-स्थिर कक्षा में स्थापित किए जाते हैं।"
+                ],
+                correctAnswer: 3,
+                explanation: "विकल्प (D) गलत है। IRS (रिमोट सेंसिंग) उपग्रह भू-स्थिर कक्षा में नहीं, बल्कि 'सौर-तुल्यकालिक ध्रुवीय कक्षा' (Sun-Synchronous Polar Orbit, 500-1000 किमी) में चक्कर लगाते हैं।"
+            },
+            {
+                id: 23,
+                question: "भारत के प्रथम समर्पित मौसम उपग्रह 'मैटसैट' (Metasat / कल्पना-1) के संबंध में निम्नलिखित कथनों पर विचार कीजिए:\n\n1. 12 सितम्बर, 2002 को श्रीहरिकोटा से PSLV-C4 द्वारा इसे GTO कक्षा में स्थापित किया गया।\n2. यह पहला अवसर था जब किसी भारतीय यान ने 1000 किग्रा से अधिक भार के उपग्रह को भू-स्थैतिक स्थानांतरण कक्षा में भेजा।\n3. मैटसैट की कक्षा दीर्घवृत्ताकार है जिसमें पृथ्वी से निकटतम बिंदु 250 किमी तथा अधिकतम बिंदु 36,000 किमी दूर है।\n4. इससे पूर्व मौसम संबंधी जानकारियां इनसैट (INSAT) श्रेणी के उपग्रहों से प्राप्त की जाती थीं।\n\nउपर्युक्त में से कौन-से कथन सत्य हैं?",
+                options: ["केवल 1, 2 और 3", "केवल 2, 3 और 4", "केवल 1, 3 और 4", "1, 2, 3 और 4"],
+                correctAnswer: 3,
+                explanation: "चारों कथन मैटसैट के संबंध में बिल्कुल सही हैं।"
+            },
+            {
+                id: 24,
+                question: "राकेश शर्मा की ऐतिहासिक अंतरिक्ष यात्रा के संदर्भ में निम्नलिखित में से कौन-सा कथन गलत है?",
+                options: [
+                    "वे 3 अप्रैल, 1984 को सोयूज टी-11 अंतरिक्ष यान से बैकानूर कोस्मोड्रोम से अंतरिक्ष में गए।",
+                    "वे 11 अप्रैल, 1984 को सुरक्षित पृथ्वी पर वापस लौट आए।",
+                    "तत्कालीन प्रधानमंत्री इंदिरा गांधी द्वारा 'अंतरिक्ष से भारत कैसा दिखता है' पूछे जाने पर उन्होंने 'सारे जहां से अच्छा' कहा था।",
+                    "राकेश शर्मा अंतरिक्ष में जाने वाले विश्व के 14वें अंतरिक्ष यात्री बने थे।"
+                ],
+                correctAnswer: 3,
+                explanation: "कथन (D) गलत है। राकेश शर्मा अंतरिक्ष में जाने वाले विश्व के '139वें अंतरिक्ष यात्री' थे, जबकि भारत मानव अंतरिक्ष में भेजने वाला '14वाँ राष्ट्र' बना था।"
+            },
+            {
+                id: 25,
+                question: "कल्पना चावला और उनके अंतिम अंतरिक्ष अभियान के संदर्भ में सही तथ्य चुनिए:",
+                options: [
+                    "वे अंतरिक्ष में जाने वाली भारतीय मूल की प्रथम महिला थीं।",
+                    "उनकी मृत्यु 1 फरवरी, 2003 को हुई।",
+                    "दुर्घटनाग्रस्त अंतरिक्ष यान का नाम कोलंबिया (STS-107 मिशन) था, जो वायुमंडल में पुनःप्रवेश के दौरान नष्ट हुआ।",
+                    "उपर्युक्त सभी कथन सत्य हैं।"
+                ],
+                correctAnswer: 3,
+                explanation: "सभी कथन सत्य हैं। कल्पना चावला STS-107 मिशन में 1 फरवरी 2003 को कोलंबिया यान के नष्ट होने से शहीद हुईं।"
+            },
+            {
+                id: 26,
+                question: "ग्रुप कैप्टन शुभांशु शुक्ला के संदर्भ में निम्नलिखित कथनों पर विचार कीजिए:\n\n1. शुभांशु शुक्ला (उ.प्र.) 2025 में एक्सिओम-4 (Axiom-4) मिशन के तहत अंतरराष्ट्रीय अंतरिक्ष स्टेशन (ISS) जाने वाले प्रथम भारतीय बने।\n2. वे 1984 में राकेश शर्मा के बाद अंतरिक्ष की कक्षा में जाने वाले दूसरे भारतीय हैं।\n3. 25 जून, 2025 को नासा के कैनेडी स्पेस सेंटर से फॉल्कन 9 रॉकेट व ड्रैगन स्पेसक्राफ्ट द्वारा उनकी यात्रा शुरू हुई।\n4. उन्हें 2019 में रूस के यूरी गागरीन ट्रेनिंग सेंटर में अंतरिक्ष यात्री प्रशिक्षण के लिए चुना गया था।\n\nउपर्युक्त कथनों में से कौन-से कथन सत्य हैं?",
+                options: ["केवल 1, 2 और 3", "केवल 2, 3 और 4", "केवल 1, 3 और 4", "1, 2, 3 और 4"],
+                correctAnswer: 3,
+                explanation: "चारों कथन लूसेंट के नवीनतम संस्करण के अनुसार शत-प्रतिशत सही हैं।"
+            },
+            {
+                id: 27,
+                question: "Axiom-4 मिशन में वैज्ञानिक प्रयोगों के संबंध में कौन-सा तथ्य सही है?",
+                options: [
+                    "इस मिशन में कुल 60 वैज्ञानिक प्रयोग किए जाएंगे, जिनमें से 7 ISRO के हैं और शुभांशु शुक्ला 5 में सक्रिय भागीदारी करेंगे।",
+                    "इस मिशन में सभी 60 प्रयोग केवल अमेरिकी अंतरिक्ष एजेंसी नासा द्वारा डिजाइन किए गए हैं।",
+                    "इस मिशन में शुभांशु शुक्ला केवल अंतरिक्ष यान के पायलट हैं और किसी प्रयोग में भाग नहीं लेंगे।",
+                    "इस मिशन में इसरो का कोई भी स्वतंत्र वैज्ञानिक प्रयोग शामिल नहीं है।"
+                ],
+                correctAnswer: 0,
+                explanation: "लूसेंट नोट के अनुसार Axiom-4 में कुल 60 वैज्ञानिक प्रयोगों में से 7 प्रयोग ISRO के हैं, जिनमें से शुभांशु शुक्ला 5 में सक्रिय भागीदारी करेंगे।"
+            },
+            {
+                id: 28,
+                question: "विश्व के ऐतिहासिक चंद्र अभियानों के संदर्भ में निम्नलिखित में से कौन-सा तथ्य सही है?",
+                options: [
+                    "प्रथम चंद्रमा अभियान सोवियत संघ ने 2 जनवरी, 1959 को भेजा था।",
+                    "द्वितीय चंद्रमा अभियान 3 मार्च, 1959 को संयुक्त राज्य अमेरिका ने भेजा था।",
+                    "अमेरिका, यूरोपीय संघ, रूस, जापान व चीन के बाद भारत चंद्रमा के लिए यान भेजने वाला छठा देश बना।",
+                    "उपर्युक्त सभी तथ्य सही हैं।"
+                ],
+                correctAnswer: 3,
+                explanation: "लूसेंट के विशेष नोट के अनुसार प्रथम चंद्रमा अभियान सोवियत संघ (2 Jan 1959), द्वितीय अमेरिका (3 March 1959) ने भेजा था, और भारत छठा देश बना।"
+            },
+            {
+                id: 29,
+                question: "चंद्रयान-1 मिशन (2008) की प्रमुख घटनाओं और तकनीकी विवरणों का कौन-सा युग्म गलत है?",
+                options: [
+                    "प्रक्षेपण तिथि एवं रॉकेट - 22 अक्टूबर, 2008 (PSLV-C11)",
+                    "सिग्नल प्राप्ति हेतु 32 मीटर विशाल एंटीना - ब्यालालु (कर्नाटक, बेंगलुरु से 40 किमी)",
+                    "मून इम्पैक्ट प्रोब (MIP) का चंद्रमा पर उतरना - 14 नवंबर, 2008 (शाकेल्टन गड्ढे के पास)",
+                    "मिशन का नियंत्रण कक्ष से संपर्क टूटना एवं औपचारिक समाप्ति - 15 अगस्त, 2011"
+                ],
+                correctAnswer: 3,
+                explanation: "विकल्प (D) गलत है। चंद्रयान-1 का नियंत्रण कक्ष से संपर्क '29 अगस्त, 2009' को टूटा था और 30 अगस्त, 2009 को इसरो ने मिशन को औपचारिक रूप से समाप्त किया।"
+            },
+            {
+                id: 30,
+                question: "चंद्रयान अभियानों के लैंडिंग व इम्पैक्ट स्थलों के नामों के संदर्भ में सुमेलित कीजिए:\n\n1. चंद्रयान-1 मून इम्पैक्ट प्रोब स्थल - जवाहर बिंदु\n2. चंद्रयान-2 लैंडर दुर्घटनाग्रस्त स्थल - तिरंगा बिंदु\n3. चंद्रयान-3 लैंडर विक्रम सॉफ्ट लैंडिंग स्थल - शिव शक्ति बिंदु\n\nकूट चुनिए:",
+                options: ["केवल 1 और 2", "केवल 2 और 3", "केवल 1 और 3", "1, 2 और 3"],
+                correctAnswer: 3,
+                explanation: "तीनों आधिकारिक नाम पूर्णतः सत्य हैं: चंद्रयान-1 = जवाहर बिंदु, चंद्रयान-2 = तिरंगा, चंद्रयान-3 = शिव शक्ति।"
+            },
+            {
+                id: 31,
+                question: "चंद्रयान-2 मिशन के संबंध में निम्नलिखित में से कौन-सा कथन असत्य है?",
+                options: [
+                    "इसे 22 जुलाई, 2019 को GSLV Mk-III द्वारा सफलतापूर्वक प्रक्षेपित किया गया था।",
+                    "इसमें एक ऑर्बिटर, लैंडर (विक्रम) और रोवर (प्रज्ञान) का इस्तेमाल किया गया था।",
+                    "लैंडर विक्रम की चंद्रमा के दक्षिणी ध्रुव पर सफल सॉफ्ट लैंडिंग कराई गई थी।",
+                    "लैंडर विक्रम की सॉफ्ट लैंडिंग न हो पाने के कारण यह अभियान पूर्ण रूप से सफल नहीं हो सका था।"
+                ],
+                correctAnswer: 2,
+                explanation: "कथन (C) असत्य है। चंद्रयान-2 के लैंडर विक्रम की सॉफ्ट लैंडिंग नहीं हो सकी थी और वह दुर्घटनाग्रस्त हो गया था, जिसे 'तिरंगा बिंदु' नाम दिया गया।"
+            },
+            {
+                id: 32,
+                question: "चंद्रयान-3 मिशन के संबंध में निम्नलिखित तथ्यों पर विचार कीजिए:\n\n1. इसका प्रक्षेपण 14 जुलाई, 2023 को 2 बजकर 35 मिनट पर सतीश धवन अंतरिक्ष केंद्र से LVM3-M4 रॉकेट द्वारा हुआ।\n2. इसमें चंद्रयान-2 के समान लैंडर (विक्रम) और रोवर (प्रज्ञान) थे, लेकिन इसमें ऑर्बिटर शामिल नहीं था।\n3. लैंडर विक्रम ने 23 अगस्त, 2023 को सायं 6 बजकर 4 मिनट पर चंद्रमा के दक्षिणी ध्रुव पर सॉफ्ट लैंडिंग की।\n4. भारत चंद्रमा के दक्षिणी ध्रुव पर यान उतारने वाला पहला और चंद्रमा पर उतरने वाला विश्व का चौथा देश बना।\n\nउपर्युक्त में से कौन-से तथ्य सही हैं?",
+                options: ["केवल 1, 2 और 3", "केवल 2, 3 और 4", "केवल 1, 3 और 4", "1, 2, 3 और 4"],
+                correctAnswer: 3,
+                explanation: "सभी चारों तथ्य चंद्रयान-3 के बारे में शत-प्रतिशत सही हैं।"
+            },
+            {
+                id: 33,
+                question: "जापान के चंद्र मिशन SLIM और निजी कंपनी इंट्यूटिव मशींस के संदर्भ में कौन-सा कथन असत्य है?",
+                options: [
+                    "जापानी अंतरिक्ष एजेंसी JAXA के मून लैंडर SLIM (मून स्नाइपर) ने 19 जनवरी, 2024 को चंद्रमा पर सफल सॉफ्ट लैंडिंग की।",
+                    "अमेरिका की निजी कंपनी 'इंट्यूटिव मशींस' के छह पैरों वाले रोबोट लैंडर 'ओडीसियस' ने 23 फरवरी, 2024 को चंद्रमा के दक्षिणी ध्रुव के निकट मालापर्ट-ए क्रेटर में सॉफ्ट लैंडिंग की।",
+                    "ओडीसियस का प्रक्षेपण स्पेस-एक्स के फॉल्कन 9 रॉकेट द्वारा 15 फरवरी, 2024 को किया गया था।",
+                    "इंट्यूटिव मशींस चंद्रमा पर अंतरिक्ष यान उतारने वाली विश्व की तीसरी निजी कंपनी बनी।"
+                ],
+                correctAnswer: 3,
+                explanation: "कथन (D) असत्य है। इंट्यूटिव मशींस चंद्रमा पर अंतरिक्ष यान उतारने वाली 'विश्व की पहली निजी कंपनी' (First Private Company) बनी।"
+            },
+            {
+                id: 34,
+                question: "भारत के प्रथम सौर मिशन 'आदित्य-एल 1' के संदर्भ में निम्नलिखित कथनों पर विचार कीजिए:\n\n1. इसका प्रक्षेपण 2 सितंबर, 2023 को PSLV-C57 रॉकेट का उपयोग करके किया गया।\n2. यह 1.5 मिलियन किमी की दूरी से सूर्य का अध्ययन करने वाला पहला अंतरिक्ष आधारित वेधशाला श्रेणी का भारतीय मिशन है।\n3. इसे सूर्य-पृथ्वी प्रणाली के लैग्रेंजियन बिंदु 1 (L1) के चारों ओर प्रभामंडल कक्षा (Halo Orbit) में स्थापित करने की योजना है।\n4. अंतरिक्ष में सूर्य और पृथ्वी प्रणाली के कुल पाँच लैग्रेंज प्वाइंट्स होते हैं जहाँ गुरुत्वाकर्षण शक्तियां संतुलित होती हैं।\n\nउपर्युक्त कथनों में से कौन-से कथन सत्य हैं?",
+                options: ["केवल 1, 2 और 3", "केवल 2, 3 और 4", "केवल 1, 3 और 4", "1, 2, 3 और 4"],
+                correctAnswer: 3,
+                explanation: "चारों कथन लूसेंट के अनुसार पूर्णतः सत्य हैं।"
+            },
+            {
+                id: 35,
+                question: "भारत के मंगल मिशन (Mangalyaan / MOM) के संदर्भ में निम्नलिखित में से कौन-सा कथन सही नहीं है?",
+                options: [
+                    "मंगलयान 5 नवम्बर, 2013 को PSLV-C25 द्वारा श्रीहरिकोटा से छोड़ा गया और 24 सितम्बर, 2014 को मंगल की कक्षा में प्रविष्ट हुआ।",
+                    "अपने पहले ही प्रयास में मंगल पर पहुँचने वाला भारत विश्व का पहला देश बना।",
+                    "भारत मंगल की कक्षा में प्रवेश करने वाला एशिया का पहला देश बना।",
+                    "नासा और ईएसए के बाद इसरो मंगल की कक्षा में पहुंचने वाली विश्व की तीसरी स्पेस एजेंसी बनी।"
+                ],
+                correctAnswer: 3,
+                explanation: "विकल्प (D) गलत है। नासा, ईएसए और 'रॉसकॉसमॉस' (रूस) के बाद इसरो मंगल की कक्षा में प्रवेश करने वाली 'चौथी' (4th) स्पेस एजेंसी बनी थी।"
+            },
+            {
+                id: 36,
+                question: "मंगलयान (MOM) की तकनीकी दूरी और लागत के संदर्भ में कौन-सा युग्म सत्य है?",
+                options: [
+                    "कुल लागत ₹450 करोड़ | निकटतम दूरी 365 किमी | अधिकतम दूरी 8000 किमी",
+                    "कुल लागत ₹1200 करोड़ | निकटतम दूरी 1000 किमी | अधिकतम दूरी 36,000 किमी",
+                    "कुल लागत ₹250 करोड़ | निकटतम दूरी 100 किमी | अधिकतम दूरी 5000 किमी",
+                    "कुल लागत ₹950 करोड़ | निकटतम दूरी 500 किमी | अधिकतम दूरी 20,000 किमी"
+                ],
+                correctAnswer: 0,
+                explanation: "लूसेंट के अनुसार मंगल मिशन की कुल लागत मात्र 450 करोड़ रुपए थी और यह मंगल से निकटतम 365 किमी तथा अधिकतम 8000 किमी दूर रहता है।"
+            },
+            {
+                id: 37,
+                question: "भारत के प्रथम उपग्रह प्रक्षेपण यान 'SLV-3' के संदर्भ में निम्नलिखित कथनों पर विचार कीजिए:\n\n1. 18 जुलाई, 1980 को SLV-3 के सफल परीक्षण से भारत अंतरिक्ष क्लब का छठा सदस्य बना।\n2. इस क्लब के पूर्व पाँच सदस्य रूस, अमेरिका, फ्रांस, जापान एवं चीन थे।\n3. SLV-3 एक चार चरणों वाला ठोस ईंधन प्रणोदक आधारित यान था जो 40 किग्रा भार वर्ग के उपग्रहों को LEO में स्थापित कर सकता था।\n4. SLV-3 के कुल 4 प्रायोगिक प्रक्षेपण किए गए जिनमें द्वितीय व चतुर्थ पूर्णतः सफल रहे।\n\nउपर्युक्त में से कौन-से कथन सही हैं?",
+                options: ["केवल 1, 2 और 3", "केवल 2, 3 और 4", "केवल 1, 3 और 4", "1, 2, 3 और 4"],
+                correctAnswer: 3,
+                explanation: "चारों कथन ऐतिहासिक व तकनीकी रूप से पूर्णतः सही हैं।"
+            },
+            {
+                id: 38,
+                question: "संवर्द्धित उपग्रह प्रक्षेपण यान (ASLV) के प्रणोदक और चरणों के संदर्भ में कौन-सा कथन असत्य है?",
+                options: [
+                    "यह SLV-3 का संवर्द्धित रूप था जिसे 100 से 150 किग्रा वर्ग के उपग्रहों को निचली कक्षा में स्थापित करने हेतु विकसित किया गया।",
+                    "यह पाँच चरणों वाला संवर्द्धित उपग्रह प्रक्षेपण यान था जो ठोस प्रणोदक से चलता था।",
+                    "इसके स्ट्रैप-ऑन, प्रथम व द्वितीय चरण में HTPB तथा तृतीय व चतुर्थ चरण में HEF-20 प्रणोदक का प्रयोग किया गया था।",
+                    "इसके कुल चार प्रक्षेपणों में से प्रथम दो (ASLV-D1 और D2) पूर्णतः सफल रहे थे।"
+                ],
+                correctAnswer: 3,
+                explanation: "कथन (D) असत्य है। लूसेंट के अनुसार ASLV के प्रथम दोनों प्रक्षेपण (ASLV-D1 24 मार्च 1987 एवं ASLV-D2 13 जुलाई 1988) 'असफल' सिद्ध हुए थे।"
+            },
+            {
+                id: 39,
+                question: "ध्रुवीय उपग्रह प्रक्षेपण यान (PSLV) के संबंध में निम्नलिखित कथनों पर विचार कीजिए:\n\n1. इसे 1200 किग्रा भार वर्ग तक के दूरसंवेदी उपग्रहों को 900 किमी ध्रुवीय सूर्य-तुल्यकालिक कक्षा में स्थापित करने हेतु विकसित किया गया।\n2. यह चार चरणों वाला यान है जिसके प्रथम व तृतीय चरण में ठोस तथा द्वितीय व चतुर्थ चरण में द्रव प्रणोदक प्रयुक्त होते हैं।\n3. द्रव प्रणोदक के रूप में UDMH एवं N2O4 का प्रयोग होता है जो कमरे के ताप पर द्रवीभूत रहता है।\n4. PSLV की कुल तीन विकासात्मक उड़ानों में प्रथम असफल तथा द्वितीय एवं तृतीय पूर्णतः सफल रहीं।\n\nउपर्युक्त में से कौन-से कथन सत्य हैं?",
+                options: ["केवल 1, 2 और 3", "केवल 2, 3 और 4", "केवल 1, 3 और 4", "1, 2, 3 और 4"],
+                correctAnswer: 3,
+                explanation: "चारों कथन PSLV के संबंध में पूर्णतः सत्य हैं।"
+            },
+            {
+                id: 40,
+                question: "PSLV-C3 द्वारा प्रक्षेपित भारत के पहले समर्पित सैनिक उपग्रह का क्या नाम था?",
+                options: ["कार्टोसेट-1", "टीईएस (TES)", "जीसैट-7", "सरल (SARAL)"],
+                correctAnswer: 1,
+                explanation: "लूसेंट के नोट के अनुसार PSLV-C3 द्वारा प्रक्षेपित भारतीय दूरसंवेदी प्रौद्योगिकी परीक्षण उपग्रह 'टीईएस' (TES) भारत का पहला सैनिक उपग्रह है।"
+            },
+            {
+                id: 41,
+                question: "भू-तुल्यकालिक उपग्रह प्रक्षेपण यान (GSLV) के चरणों और प्रणोदक के संदर्भ में कौन-सा कथन सही है?",
+                options: [
+                    "यह चार चरणों वाला यान है जिसमें चारों चरणों में द्रव ईंधन प्रयुक्त होता है।",
+                    "यह शक्तिशाली तीन चरणों वाला यान है जिसके प्रथम में ठोस, द्वितीय में द्रव तथा तृतीय में क्रायोजेनिक इंजन प्रयुक्त होता है।",
+                    "इसके प्रथम चरण में क्रायोजेनिक और अंतिम चरण में ठोस प्रणोदक प्रयुक्त होता है।",
+                    "इसके तीनों चरणों में केवल HTPB ठोस ईंधन का प्रयोग किया जाता है।"
+                ],
+                correctAnswer: 1,
+                explanation: "GSLV एक तीन चरणों वाला यान है: 1st चरण = ठोस प्रणोदक (HTPB), 2nd चरण = द्रव प्रणोदक (UDMH + N2O4), और 3rd चरण = क्रायोजेनिक अपर स्टेज।"
+            },
+            {
+                id: 42,
+                question: "GSLV की विकासात्मक उड़ानों के संदर्भ में निम्नलिखित में से कौन-सा कथन असत्य है?",
+                options: [
+                    "GSLV की पहली विकासात्मक परीक्षण उड़ान 28 मार्च, 2001 को असफल रही थी।",
+                    "GSLV-D1 प्रायोगिक संचार उपग्रह GSAT-1 को निर्धारित 36,000 किमी कक्षा में न पहुंचाकर 1000 किमी नीचे छोड़ गया था।",
+                    "GSLV-D2 ने 8 मई, 2003 को 1800 किग्रा वजनी GSAT-2 को सफलतापूर्वक 36,000 किमी कक्षा में स्थापित किया।",
+                    "GSAT-2 की कक्षा स्थापित होने के बाद इसका संपर्क केवल मॉरीशस स्थित भू-केंद्र से हुआ और भारत से संपर्क नहीं हो सका।"
+                ],
+                correctAnswer: 3,
+                explanation: "कथन (D) असत्य है। GSAT-2 का संपर्क इंडोनेशिया के 'बिआक' और कर्नाटक के 'हासन' स्थित मुख्य नियंत्रण प्रणाली से सफलतापूर्वक स्थापित हो गया था।"
+            },
+            {
+                id: 43,
+                question: "क्रायोजेनिक प्रौद्योगिकी (Cryogenic Technology) के शाब्दिक अर्थ और तापमान की वैज्ञानिक सीमा क्या है?",
+                options: [
+                    "क्रायोजेनिक का अर्थ है उच्च तापिकी (1000°C से ऊपर का ताप)",
+                    "क्रायोजेनिक ग्रीक शब्द 'क्रायोस' से बना है जिसका अर्थ बर्फ समान शीतलता है; इसमें 0°C से -150°C से नीचे के तापमान को क्रायोजेनिक ताप कहते हैं।",
+                    "क्रायोजेनिक का अर्थ है परम शून्य ताप (0 केल्विन)",
+                    "इसमें केवल कमरे के तापमान (25°C) पर गैसीय ईंधन का उपयोग होता है।"
+                ],
+                correctAnswer: 1,
+                explanation: "क्रायोजेनिक ग्रीक शब्द 'क्रायोस' (बर्फ समान शीतलता) से बना है और विज्ञान में 0°C से -150°C से नीचे के तापमान को क्रायोजेनिक ताप कहा जाता है।"
+            },
+            {
+                id: 44,
+                question: "क्रायोजेनिक इंजन की तकनीकी विशेषताओं और फायदों के संबंध में निम्नलिखित कथनों पर विचार कीजिए:\n\n1. इसमें अत्यंत निम्न ताप पर द्रव हाइड्रोजन (-250°C) को ईंधन तथा द्रव ऑक्सीजन (-183°C) को ऑक्सीकारक के रूप में प्रयोग किया जाता है।\n2. इसके दहन से पैदा होने वाली ऊर्जा ठोस ईंधन आधारित इंजन से कई गुना अधिक होती है।\n3. इसमें ईंधन के ज्वलन की दर को नियंत्रित किया जा सकता है, जबकि ठोस ईंधन में इसे नियंत्रित करना कठिन होता है।\n4. इसमें प्रणोदक के प्रति इकाई भार में अधिक बल (Thrust) पैदा होता है।\n\nउपर्युक्त में से कौन-से कथन सही हैं?",
+                options: ["केवल 1, 2 और 3", "केवल 2, 3 और 4", "केवल 1, 3 और 4", "1, 2, 3 और 4"],
+                correctAnswer: 3,
+                explanation: "सभी चारों कथन क्रायोजेनिक इंजन के प्रमुख गुण हैं।"
+            },
+            {
+                id: 45,
+                question: "भारत में क्रायोजेनिक इंजन के विकास और परीक्षण के संबंध में कौन-सा मिलान गलत है?",
+                options: [
+                    "क्रायोजेनिक इंजन का विश्व में पहली बार प्रयोग - अमेरिका (एटलास सेंटूर रॉकेट)",
+                    "भारत में पूर्ण निम्नताप अवस्था का सफल परीक्षण - 28 अक्टूबर, 2006 (महेंद्रगिरि, तमिलनाडु)",
+                    "इसरो द्वारा स्वदेशी क्रायोजेनिक इंजन युक्त GSLV-D5 का सफल प्रक्षेपण - 5 जनवरी, 2014",
+                    "क्रायोजेनिक तकनीक क्षमता प्राप्त करने वाला भारत विश्व का देश बना - चौथा (4th)"
+                ],
+                correctAnswer: 3,
+                explanation: "विकल्प (D) गलत है। क्रायोजेनिक तकनीक क्षमता प्राप्त करने वाला भारत विश्व का 'छठा' (6th) देश बना (अमेरिका, रूस, चीन, जापान व फ्रांस के बाद)।"
+            },
+
+            // Chapter 2: Nuclear Research (Questions 46 to 70)
+            {
+                id: 46,
+                question: "भारत में परमाणु ऊर्जा अनुसंधान के आरंभिक इतिहास के संदर्भ में निम्नलिखित कथनों पर विचार कीजिए:\n\n1. 10 अगस्त, 1948 को डॉ. होमी जहांगीर भाभा की अध्यक्षता में 'परमाणु ऊर्जा आयोग' की स्थापना की गई थी।\n2. अगस्त, 1954 में परमाणु ऊर्जा कार्यक्रमों के कार्यान्वयन हेतु 'परमाणु ऊर्जा विभाग' (DAE) की स्थापना की गई।\n3. भारत के परमाणु ऊर्जा के सभी कार्यक्रम प्रधानमंत्री के तत्वावधान में किए जाते हैं और यह विभाग सीधे PMO के अधीन है।\n\nउपर्युक्त कथनों में से कौन-से कथन सत्य हैं?",
+                options: ["केवल 1 और 2", "केवल 2 और 3", "केवल 1 और 3", "1, 2 और 3"],
+                correctAnswer: 3,
+                explanation: "तीनों कथन भारतीय परमाणु अनुसंधान के संस्थागत ढांचे के बारे में शत-प्रतिशत सही हैं।"
+            },
+            {
+                id: 47,
+                question: "भाभा परमाणु अनुसंधान केंद्र (BARC) ट्रॉम्बे (मुंबई) के संबंध में निम्नलिखित में से कौन-सा कथन असत्य है?",
+                options: [
+                    "यह परमाणु विज्ञान एवं सम्बद्ध क्षेत्र में कार्यरत देश का प्रमुख अनुसंधान केंद्र है।",
+                    "इसने उद्योग, औषधि तथा कृषि के क्षेत्र में रेडियो आइसोटोप के चिकित्सीय व शांतिपूर्ण उपयोगों की तकनीक विकसित की है।",
+                    "यह परमाणु विद्युत कार्यक्रम तथा खनिज क्षेत्र की इकाइयों को अनुसंधान एवं विकास में सहायता प्रदान करता है।",
+                    "इसकी स्थापना 1948 में अमेरिकी वैज्ञानिक रॉबर्ट ओपेनहाइमर के सीधे निर्देशन में की गई थी।"
+                ],
+                correctAnswer: 3,
+                explanation: "कथन (D) असत्य है। BARC की स्थापना डॉ. होमी जहांगीर भाभा के नेतृत्व में भारत के स्वदेशी परमाणु ऊर्जा कार्यक्रम के तहत ट्रॉम्बे में की गई थी।"
+            },
+            {
+                id: 48,
+                question: "BARC के प्रथम अनुसंधान रिएक्टर 'अप्सरा' (Apsara) के संदर्भ में कौन-सा तथ्य सही है?",
+                options: [
+                    "यह 1956 में निर्मित 1 मेगावाट क्षमता वाला भारत एवं एशिया का पहला अनुसंधान रिएक्टर था।",
+                    "यह 1000 मेगावाट क्षमता वाला पूर्णतः व्यावसायिक विद्युत उत्पादक रिएक्टर था।",
+                    "यह थोरियम ईंधन पर आधारित विश्व का पहला फास्ट ब्रीडर रिएक्टर था।",
+                    "इसका निर्माण 1974 में पोखरण विस्फोट के बाद किया गया था।"
+                ],
+                correctAnswer: 0,
+                explanation: "अप्सरा का निर्माण वर्ष 1956 में हुआ था और इसकी क्षमता 1 मेगावाट थी। यह भारत का पहला प्रायोगिक रिएक्टर था।"
+            },
+            {
+                id: 49,
+                question: "कनाडा के सहयोग से BARC में स्थापित 'साइरस' (Cirus) रिएक्टर के संदर्भ में निम्नलिखित कथनों पर विचार कीजिए:\n\n1. इसका निर्माण वर्ष 1960 में हुआ था और इसकी क्षमता 40 मेगावाट थी।\n2. यह एक तापीय (Thermal) रिएक्टर था जिसका मुख्य उद्देश्य रेडियो आइसोटोप का उत्पादन एवं उनके प्रयोग को प्रोत्साहित करना था।\n3. इसका इस्तेमाल ऊर्जा प्राप्ति की अपेक्षा नाभिकीय अनुसंधान के लिए खास तौर से किया जाता था।\n\nउपर्युक्त कथनों में से कौन-से कथन सही हैं?",
+                options: ["केवल 1 और 2", "केवल 2 और 3", "केवल 1 और 3", "1, 2 और 3"],
+                correctAnswer: 3,
+                explanation: "तीनों कथन साइरस रिएक्टर के बारे में पूर्णतः सत्य हैं।"
+            },
+            {
+                id: 50,
+                question: "BARC ट्रॉम्बे स्थित अनुसंधान रिएक्टर 'ध्रुव' (Dhruva) के संदर्भ में कौन-सा कथन सत्य है?",
+                options: [
+                    "इसका निर्माण वर्ष 1985 में हुआ और इसकी क्षमता 100 मेगावाट है।",
+                    "इसमें रेडियो आइसोटोप तैयार करने के साथ-साथ परमाणु प्रौद्योगिकियों एवं पदार्थों में शोध कार्य किया जाता है।",
+                    "यह BARC के प्रायोगिक रिएक्टरों में सबसे अधिक क्षमता (100 MW) वाला रिएक्टर है।",
+                    "उपर्युक्त सभी कथन सत्य हैं।"
+                ],
+                correctAnswer: 3,
+                explanation: "लूसेंट तालिका के अनुसार ध्रुव 1985 में निर्मित 100 MW क्षमता का रिएक्टर है जहां रेडियो आइसोटोप और उन्नत सामग्री शोध होता है।"
+            },
+            {
+                id: 51,
+                question: "BARC के 'जीरो पावर' (Zero Power) अनुसंधान रिएक्टरों और उनके निर्माण वर्ष का कौन-सा मिलान गलत है?",
+                options: [
+                    "जरलीना (Zerlina) - 1961",
+                    "पूर्णिमा-I (Purnima-I) - 1972",
+                    "पूर्णिमा-II (Purnima-II) - 1984",
+                    "पूर्णिमा-III (Purnima-III) - 2005"
+                ],
+                correctAnswer: 3,
+                explanation: "विकल्प (D) गलत है। पूर्णिमा-III का निर्माण वर्ष '1990' है, 2005 नहीं। जरलीना (1961), पूर्णिमा-I (1972), और पूर्णिमा-II (1984) हैं।"
+            },
+            {
+                id: 52,
+                question: "नाभिकीय शब्दावली में प्रायोगिक रिएक्टरों को 'जीरो पावर' (Zero Power) रिएक्टर क्यों कहा जाता है?",
+                options: [
+                    "क्योंकि इनमें विद्युत ग्रिड में आपूर्ति हेतु ऊर्जा प्राप्ति की अपेक्षा केवल नाभिकीय अनुसंधान किया जाता है।",
+                    "क्योंकि इनमें शून्य परमाणु ईंधन की खपत होती है।",
+                    "क्योंकि इनका तापमान परम शून्य (-273°C) पर रखा जाता है।",
+                    "क्योंकि ये शून्य विकिरण उत्पन्न करते हैं।"
+                ],
+                correctAnswer: 0,
+                explanation: "लूसेंट के अनुसार प्रायोगिक रिएक्टरों को 'जीरो पावर' रिएक्टर इसलिए कहते हैं क्योंकि इनका इस्तेमाल ऊर्जा (बिजली) प्राप्ति की अपेक्षा नाभिकीय अनुसंधान के लिए खास तौर से किया जाता है।"
+            },
+            {
+                id: 53,
+                question: "इंदिरा गाँधी परमाणु अनुसंधान केंद्र (IGCAR) कलपक्कम (तमिलनाडु) के संदर्भ में निम्नलिखित कथनों पर विचार कीजिए:\n\n1. इस केंद्र की स्थापना वर्ष 1971 में की गई थी।\n2. इसका प्रमुख कार्य फास्ट ब्रीडर रिएक्टर (Fast Breeder Reactor) के संबंध में अनुसंधान एवं विकास करना है।\n3. यहाँ स्थित फास्ट ब्रीडर टेस्ट रिएक्टर (FBTR) विश्व में अपनी तरह का पहला रिएक्टर है जो प्लूटोनियम-यूरेनियम मिश्रित कार्बाइड ईंधन को काम में लाता है।\n\nउपर्युक्त कथनों में से कौन-से कथन सही हैं?",
+                options: ["केवल 1 और 2", "केवल 2 और 3", "केवल 1 और 3", "1, 2 और 3"],
+                correctAnswer: 3,
+                explanation: "तीनों कथन शत-प्रतिशत सही हैं। IGCAR 1971 में बना और FBTR मिक्स्ड कार्बाइड ईंधन का उपयोग करने वाला विश्व का पहला रिएक्टर है।"
+            },
+            {
+                id: 54,
+                question: "फास्ट ब्रीडर टेस्ट रिएक्टर (FBTR) की कार्यप्रणाली के संदर्भ में निम्नलिखित में से कौन-सा कथन असत्य है?",
+                options: [
+                    "इसमें श्रृंखलागत अभिक्रिया को तीव्र न्यूट्रॉनों (Fast Neutrons) के माध्यम से निरंतर जारी रखा जाता है।",
+                    "ताप रिएक्टर की अपेक्षा इसमें विखंडित न्यूट्रॉनों की संख्या अत्यधिक होती है।",
+                    "फास्ट ब्रीडर टेस्ट रिएक्टर में प्राकृतिक यूरेनियम का प्रयोग ताप रिएक्टर की अपेक्षा 60 से 70 गुना ज्यादा होता है।",
+                    "इसकी रूपरेखा अमेरिका के मैरीलैंड स्थित एनरिको फर्मी रिएक्टर पर आधारित है।"
+                ],
+                correctAnswer: 3,
+                explanation: "कथन (D) असत्य है। लूसेंट के अनुसार फास्ट ब्रीडर टेस्ट रिएक्टर की रूपरेखा 'फ्रांस के रैपसोडी (Rapsodie) रिएक्टर' पर आधारित है।"
+            },
+            {
+                id: 55,
+                question: "फास्ट ब्रीडर रिएक्टर (FBTR) में शीतलक (Coolant) के संदर्भ में कौन-सा तथ्य सही है?",
+                options: [
+                    "इसमें शीतलक के रूप में साधारण जल का प्रयोग किया जाता है।",
+                    "इसमें शीतलक के रूप में भारी जल (D2O) का प्रयोग किया जाता है।",
+                    "इसमें शीतलक के रूप में द्रवित सोडियम (Liquid Sodium) का प्रयोग किया जाता है, जबकि ताप रिएक्टर में जल का।",
+                    "इसमें किसी भी प्रकार के शीतलक की आवश्यकता नहीं होती।"
+                ],
+                correctAnswer: 2,
+                explanation: "लूसेंट के अनुसार FBTR में शीतलक के रूप में 'सोडियम' (Liquid Sodium) का प्रयोग किया जाता है, जबकि सामान्य ताप रिएक्टर में जल का प्रयोग होता है।"
+            },
+            {
+                id: 56,
+                question: "कलपक्कम मिनी रिएक्टर 'कामिनी' (KAMINI) के संदर्भ में निम्नलिखित कथनों पर विचार कीजिए:\n\n1. कामिनी का पूरा नाम कलपक्कम मिनी रिएक्टर है जिसने 17 सितम्बर, 1997 से कार्य करना शुरू किया।\n2. जहाँ अन्य रिएक्टरों में यूरेनियम या प्लूटोनियम प्रयुक्त होता है, वहीं कामिनी यूरेनियम-233 (U-233) का उपयोग ईंधन के रूप में करता है।\n3. कामिनी थोरियम / यूरेनियम-233 ईंधन चक्र का उपयोग करने वाला विश्व का प्रथम रिएक्टर है।\n4. इस रिएक्टर का उपयोग अनुसंधान के अतिरिक्त अपराधियों को पकड़ने में भी किया जाएगा क्योंकि इसके द्वारा फिंगर प्रिंट का मिलान सरल हो जाता है।\n\nउपर्युक्त में से कौन-से कथन सत्य हैं?",
+                options: ["केवल 1, 2 और 3", "केवल 2, 3 और 4", "केवल 1, 3 और 4", "1, 2, 3 और 4"],
+                correctAnswer: 3,
+                explanation: "चारों कथन कामिनी रिएक्टर के संदर्भ में शत-प्रतिशत सत्य हैं।"
+            },
+            {
+                id: 57,
+                question: "उच्च प्रौद्योगिकी केंद्र (CAT / RRCAT) इंदौर के संबंध में निम्नलिखित में से कौन-सा कथन असत्य है?",
+                options: [
+                    "इसकी स्थापना वर्ष 1984 में इंदौर (मध्य प्रदेश) में की गई थी।",
+                    "इसका मुख्य कार्य लेसर (LASER) एवं त्वरकों (Accelerators) के क्षेत्र में प्रौद्योगिकी का विकास करना है।",
+                    "1964 में BARC ने गैलियम-आर्सेनिक अर्द्धचालक लेसर का निर्माण किया था।",
+                    "यह संस्थान भारत में परमाणु पनडुब्बियों के रिएक्टर निर्माण का मुख्य केंद्र है।"
+                ],
+                correctAnswer: 3,
+                explanation: "कथन (D) असत्य है। इंदौर स्थित उच्च प्रौद्योगिकी केंद्र (CAT) विशेष रूप से 'लेसर एवं त्वरकों' (Lasers and Accelerators) के क्षेत्र में प्रौद्योगिकी विकास हेतु समर्पित है।"
+            },
+            {
+                id: 58,
+                question: "लेसर (LASER) तकनीक के इतिहास और कार्यसिद्धांत के संदर्भ में कौन-सा युग्म गलत है?",
+                options: [
+                    "LASER का पूर्ण रूप - Light Amplification by Stimulated Emission of Radiation",
+                    "लेसर का शाब्दिक अर्थ - विकिरण उत्सर्जन के द्वारा प्रकाश का प्रवर्द्धन (एकवर्णी प्रकाश की प्राप्ति)",
+                    "लेसर की खोज - अमेरिका की हेजेज प्रयोगशाला में थियोडोर मेमैन द्वारा (1960)",
+                    "विश्व में लेसर का पहला सफल निर्माण - अल्बर्ट आइंस्टीन द्वारा 1921 में"
+                ],
+                correctAnswer: 3,
+                explanation: "विकल्प (D) गलत है। लेसर की खोज 1960 में थियोडोर मेमैन (Theodore Maiman) ने अमेरिका की ह्यूजेस/हेजेज लैब में की थी।"
+            },
+            {
+                id: 59,
+                question: "परिवर्तनीय ऊर्जा साइक्लोट्रॉन केंद्र (VECC) के संबंध में कौन-सा तथ्य सही है?",
+                options: [
+                    "यह परमाणु भौतिकी, परमाणु रसायन शास्त्र और रेडियो समस्थानिकों के उत्पादन का राष्ट्रीय केंद्र है।",
+                    "इसका मुख्यालय कोलकाता (पश्चिम बंगाल) में स्थित है।",
+                    "यह रिएक्टरों को विभिन्न स्तरों से होने वाली विकिरण क्षति के उच्च अध्ययन हेतु कार्यरत है।",
+                    "उपर्युक्त सभी कथन सत्य हैं।"
+                ],
+                correctAnswer: 3,
+                explanation: "सभी कथन सत्य हैं। VECC का मुख्यालय कोलकाता में है और यह साइक्लोट्रॉन व रेडियो आइसोटोप पर केंद्रित है।"
+            },
+            {
+                id: 60,
+                question: "परमाणु ऊर्जा विभाग (DAE) की प्रमुख औद्योगिक इकाइयों को उनके मुख्यालयों से सुमेलित कीजिए:\n\nस्तंभ-I (संस्थान):\na. परमाणु पदार्थ निदेशालय (AMD)\nb. गुरु जल बोर्ड (HWB)\nc. नाभिकीय ईंधन परिसर (NFC)\nd. भारत यूरेनियम निगम लिमिटेड (UCIL)\n\nस्तंभ-II (मुख्यालय / स्थिति):\n1. मुंबई\n2. हैदराबाद\n3. जादूगोड़ा (झारखंड)\n4. हैदराबाद\n\nसही कूट चुनिए:",
+                options: [
+                    "a-2, b-1, c-4, d-3",
+                    "a-1, b-2, c-4, d-3",
+                    "a-4, b-3, c-2, d-1",
+                    "a-2, b-4, c-1, d-3"
+                ],
+                correctAnswer: 0,
+                explanation: "परमाणु पदार्थ निदेशालय = हैदराबाद; गुरु जल बोर्ड = मुंबई; NFC = हैदराबाद; UCIL = जादूगोड़ा।"
+            },
+            {
+                id: 61,
+                question: "परमाणु ऊर्जा विभाग की अन्य सार्वजनिक क्षेत्र की इकाइयों में कौन-सा मिलान सही है?\n\n1. भारतीय नाभिकीय ऊर्जा कॉरपोरेशन (NPCIL) - मुंबई\n2. विकिरण और आइसोटोप प्रौद्योगिकी बोर्ड (BRIT) - मुंबई\n3. भारतीय रेयर अर्थ्स लिमिटेड (IREL) - मुंबई\n\nकूट चुनिए:",
+                options: ["केवल 1 और 2", "केवल 2 और 3", "केवल 1 और 3", "1, 2 और 3"],
+                correctAnswer: 3,
+                explanation: "NPCIL, BRIT, और IREL तीनों का मुख्यालय मुंबई में स्थित है।"
+            },
+            {
+                id: 62,
+                question: "18 मई, 1974 को किए गए भारत के प्रथम परमाणु परीक्षण के संदर्भ में निम्नलिखित कथनों पर विचार कीजिए:\n\n1. यह परीक्षण पोखरण (जैसलमेर, राजस्थान) में किया गया स्वदेशी भूमिगत परीक्षण था।\n2. इस बम की क्षमता 12 किलो टन थी।\n3. इस परीक्षण का कोड नाम 'स्माइलिंग बुद्धा' (Smiling Buddha) था।\n4. इस परीक्षण में मात्र प्लूटोनियम ईंधन का उपयोग हुआ था।\n\nउपर्युक्त में से कौन-से कथन सत्य हैं?",
+                options: ["केवल 1, 2 और 3", "केवल 2, 3 और 4", "केवल 1, 3 और 4", "1, 2, 3 और 4"],
+                correctAnswer: 3,
+                explanation: "चारों कथन 1974 के प्रथम परमाणु परीक्षण के बारे में शत-प्रतिशत सही हैं।"
+            },
+            {
+                id: 63,
+                question: "11 और 13 मई, 1998 को पोखरण में किए गए द्वितीय परमाणु परीक्षण 'शक्ति-98' के वैज्ञानिकों और परीक्षणों के संदर्भ में कौन-सा युग्म गलत है?",
+                options: [
+                    "परीक्षण का समय - प्रथम परीक्षण के 24 वर्षों के बाद",
+                    "सफलता का श्रेय - डॉ. आर. चिदंबरम, डॉ. ए.पी.जे. अब्दुल कलाम और डॉ. अनिल काकोडकर",
+                    "11 मई, 1998 के परीक्षण - थर्मोन्यूक्लियर (43 kT), विखंडन (15 kT), लो यील्ड (0.2 kT)",
+                    "13 मई, 1998 के परीक्षण - दो थर्मोन्यूक्लियर विस्फोट (प्रत्येक 50 kT)"
+                ],
+                correctAnswer: 3,
+                explanation: "विकल्प (D) गलत है। लूसेंट तालिका के अनुसार 13 मई 1998 को दो 'लो यील्ड' (Low Yield) परीक्षण किए गए थे—एक 0.3 किलो टन तथा दूसरा 0.5 किलो टन (न कि 50 kT थर्मोन्यूक्लियर)।"
+            },
+            {
+                id: 64,
+                question: "शक्ति-98 में प्रयुक्त परमाणु ईंधनों के संदर्भ में निम्नलिखित कथनों पर विचार कीजिए:\n\n1. 1974 के परीक्षण में केवल प्लूटोनियम ईंधन का प्रयोग हुआ था।\n2. 1998 के शक्ति-98 परीक्षण में परिशोधित यूरेनियम, ट्रीटियम और ड्यूटेरियम का उपयोग किया गया।\n3. ट्रीटियम ईंधन परमाणु ऊर्जा रिएक्टरों में प्रयोग में लाए जाने वाले भारी जल (D2O) से प्राप्त किया जाता है।\n\nउपर्युक्त में से कौन-से कथन सत्य हैं?",
+                options: ["केवल 1 और 2", "केवल 2 और 3", "केवल 1 और 3", "1, 2 और 3"],
+                correctAnswer: 3,
+                explanation: "तीनों कथन शक्ति-98 के ईंधन के संबंध में पूर्णतः सत्य हैं।"
+            },
+            {
+                id: 65,
+                question: "विश्व के प्रथम नाभिकीय विस्फोट और प्रथम परमाणु बिजलीघर के संदर्भ में कौन-सा मिलान सही है?\n\n1. विश्व का पहला नाभिकीय विस्फोट - संयुक्त राज्य अमेरिका (जुलाई 1945, व्हाइट सैंड्स)\n2. विश्व का पहला परमाणु बिजलीघर - रूस (पूर्व सोवियत संघ)\n3. विश्व का दूसरा परमाणु बिजलीघर - संयुक्त राज्य अमेरिका (USA)\n\nकूट चुनिए:",
+                options: ["केवल 1 और 2", "केवल 2 और 3", "केवल 1 और 3", "1, 2 और 3"],
+                correctAnswer: 3,
+                explanation: "लूसेंट के अनुसार पहला परमाणु विस्फोट अमेरिका ने 1945 में व्हाइट सैंड्स में किया; पहला परमाणु बिजलीघर रूस में और दूसरा अमेरिका में स्थापित हुआ था।"
+            },
+            {
+                id: 66,
+                question: "भारतीय परमाणु विद्युत निगम लिमिटेड (NPCIL) की स्थापना किस वर्ष की गई थी?",
+                options: ["वर्ष 1948", "वर्ष 1954", "वर्ष 1987", "वर्ष 1998"],
+                correctAnswer: 2,
+                explanation: "लूसेंट के अनुसार परमाणु विद्युत उत्पादन के सुचारू प्रबंधन के लिए 1987 में भारतीय परमाणु विद्युत निगम लिमिटेड (NPCIL) की स्थापना की गई थी।"
+            },
+            {
+                id: 67,
+                question: "भारत के प्रथम परमाणु विद्युत संयंत्र 'तारापुर परमाणु विद्युत गृह' के संदर्भ में कौन-सा कथन असत्य है?",
+                options: [
+                    "यह संयुक्त राज्य अमेरिका की सहायता से स्थापित भारत का पहला परमाणु विद्युत संयंत्र है।",
+                    "यह महाराष्ट्र राज्य में स्थित है और इसका निर्माण वर्ष 1972 (यूनिट 1 व 2, 320 MW) में हुआ।",
+                    "यहाँ अमेरिका से आयातित संवर्धित यूरेनियम का ईंधन के रूप में प्रयोग होता है।",
+                    "यह संयंत्र पूरी तरह से स्वदेशी थोरियम ईंधन चक्र पर संचालित होने वाला पहला संयंत्र है।"
+                ],
+                correctAnswer: 3,
+                explanation: "कथन (D) असत्य है। तारापुर में संवर्धित यूरेनियम (Enriched Uranium) का प्रयोग होता है जिसकी आपूर्ति समझौते के तहत अमेरिका द्वारा की जाती है, थोरियम नहीं।"
+            },
+            {
+                id: 68,
+                question: "रावतभाटा परमाणु विद्युत गृह (राजस्थान) के संबंध में निम्नलिखित कथनों पर विचार कीजिए:\n\n1. यह प्रारंभ में कनाडा के सहयोग से शुरू किया गया था।\n2. बाद में कनाडा के अलग होने पर यह परियोजना स्वदेशी तकनीक से पूर्ण की गई।\n3. वर्तमान में यह भारत का सबसे बड़ा 'न्यूक्लियर पार्क' है।\n\nउपर्युक्त कथनों में से कौन-से कथन सत्य हैं?",
+                options: ["केवल 1 और 2", "केवल 2 और 3", "केवल 1 और 3", "1, 2 और 3"],
+                correctAnswer: 3,
+                explanation: "तीनों कथन रावतभाटा (राजस्थान) के बारे में शत-प्रतिशत सही हैं।"
+            },
+            {
+                id: 69,
+                question: "भारत के कार्यरत परमाणु विद्युत संयंत्रों को उनके निर्माण वर्ष व क्षमता से सुमेलित कीजिए:\n\nस्तंभ-I (विद्युत गृह):\na. मद्रास परमाणु विद्युत गृह 1 व 2 (कलपक्कम, तमिलनाडु)\nb. नरोरा परमाणु विद्युत गृह 1 व 2 (बुलंदशहर, उत्तर प्रदेश)\nc. काकरापार परमाणु विद्युत गृह 1 व 2 (सूरत, गुजरात)\nd. कैगा परमाणु विद्युत गृह 1 व 2 (कर्नाटक)\n\nस्तंभ-II (वर्ष / क्षमता):\n1. 1983 (470 मेगावाट)\n2. 1991 (470 मेगावाट)\n3. 1993 (220 मेगावाट)\n4. 1999 (440 मेगावाट)\n\nसही कूट चुनिए:",
+                options: [
+                    "a-1, b-2, c-3, d-4",
+                    "a-2, b-1, c-3, d-4",
+                    "a-1, b-2, c-4, d-3",
+                    "a-3, b-4, c-1, d-2"
+                ],
+                correctAnswer: 0,
+                explanation: "लूसेंट तालिका के अनुसार: कलपक्कम = 1983 (470 MW), नरोरा = 1991 (470 MW), काकरापार = 1993 (220 MW), कैगा = 1999 (440 MW)।"
+            },
+            {
+                id: 70,
+                question: "कुडनकुलम परमाणु विद्युत गृह (Kudankulam) की अवस्थिति एवं प्रस्तावित क्षमता के संदर्भ में कौन-सा तथ्य सही है?",
+                options: [
+                    "स्थिति: कन्याकुमारी (तमिलनाडु) | क्षमता: 1000 मेगावाट (यूनिट 1 व 2)",
+                    "स्थिति: कोल्लम (केरल) | क्षमता: 220 मेगावाट",
+                    "स्थिति: चित्तौड़गढ़ (राजस्थान) | क्षमता: 440 मेगावाट",
+                    "स्थिति: रत्नागिरी (महाराष्ट्र) | क्षमता: 500 मेगावाट"
+                ],
+                correctAnswer: 0,
+                explanation: "लूसेंट तालिका के अनुसार कुडनकुलम परमाणु विद्युत गृह-1 व 2 कन्याकुमारी (तमिलनाडु) में स्थित है जिसकी निर्माण क्षमता 1000 मेगावाट है।"
+            }
+        ];
+
+        // State Management
+        let currentQuestionIndex = 0;
+        let userResponses = new Array(quizData.length).fill(null);
+        let reviewStatus = new Array(quizData.length).fill(false);
+        let timeRemaining = 120 * 60; // 120 minutes in seconds
+        let timerInterval = null;
+        let testSubmitted = false;
+
+        // Auto Fullscreen & Start Gate
+        function startExamFullScreen() {
+            const docElm = document.documentElement;
+            if (docElm.requestFullscreen) {
+                docElm.requestFullscreen().catch(err => {
+                    console.warn("Fullscreen request bypassed: ", err);
+                });
+            } else if (docElm.mozRequestFullScreen) {
+                docElm.mozRequestFullScreen();
+            } else if (docElm.webkitRequestFullScreen) {
+                docElm.webkitRequestFullScreen();
+            } else if (docElm.msRequestFullscreen) {
+                docElm.msRequestFullscreen();
+            }
+
+            document.getElementById('startOverlay').classList.add('hidden');
+            startTimer();
+            loadQuestion(0);
+        }
+
+        // Live 120-Minute Countdown Timer
+        function startTimer() {
+            timerInterval = setInterval(() => {
+                if (timeRemaining <= 0) {
+                    clearInterval(timerInterval);
+                    autoSubmitExam();
+                    return;
+                }
+                timeRemaining--;
+                const hours = Math.floor(timeRemaining / 3600);
+                const minutes = Math.floor((timeRemaining % 3600) / 60);
+                const seconds = timeRemaining % 60;
+                
+                let displayStr = "";
+                if (hours > 0) {
+                    displayStr += (hours < 10 ? "0" + hours : hours) + ":";
+                }
+                displayStr += (minutes < 10 ? "0" + minutes : minutes) + ":" + (seconds < 10 ? "0" + seconds : seconds);
+                
+                document.getElementById('timerDisplay').innerText = displayStr;
+            }, 1000);
+        }
+
+        // Render Current Question
+        function loadQuestion(index) {
+            currentQuestionIndex = index;
+            const q = quizData[index];
+
+            // Header Meta Update
+            document.getElementById('qNumberDisplay').innerText = `Prashn ${index + 1} / ${quizData.length}`;
+            const reviewTag = document.getElementById('reviewTag');
+            if (reviewStatus[index]) {
+                reviewTag.classList.remove('hidden');
+            } else {
+                reviewTag.classList.add('hidden');
+            }
+
+            // Question Text Formatting
+            const qContainer = document.getElementById('questionContainer');
+            qContainer.innerHTML = `<div class="whitespace-pre-line font-medium text-slate-900 leading-relaxed">${q.question}</div>`;
+
+            // Options List
+            const optContainer = document.getElementById('optionsContainer');
+            optContainer.innerHTML = '';
+
+            const optionPrefixes = ['(A)', '(B)', '(C)', '(D)'];
+            q.options.forEach((opt, optIndex) => {
+                const isChecked = userResponses[index] === optIndex;
+                const optionBox = document.createElement('div');
+                optionBox.className = `p-3.5 rounded-xl border cursor-pointer transition-all flex items-start gap-3 select-none ${
+                    isChecked ? 'border-blue-600 bg-blue-50/70 ring-1 ring-blue-500' : 'border-slate-200 hover:bg-slate-50'
+                }`;
+                optionBox.onclick = () => selectOption(optIndex);
+
+                optionBox.innerHTML = `
+                    <div class="mt-0.5 w-5 h-5 rounded-full border flex items-center justify-center flex-shrink-0 ${
+                        isChecked ? 'border-blue-600 bg-blue-600 text-white' : 'border-slate-300 bg-white'
+                    }">
+                        ${isChecked ? '<i class="fa-solid fa-check text-[10px]"></i>' : ''}
+                    </div>
+                    <div class="text-sm md:text-base flex-1">
+                        <span class="font-bold mr-1.5 text-slate-700">${optionPrefixes[optIndex]}</span>
+                        <span class="text-slate-800 leading-normal">${opt}</span>
+                    </div>
+                `;
+                optContainer.appendChild(optionBox);
+            });
+
+            // Update Navigation Button States
+            document.getElementById('prevBtn').disabled = (index === 0);
+            document.getElementById('prevBtn').classList.toggle('opacity-50', index === 0);
+            
+            const nextBtn = document.getElementById('nextBtn');
+            if (index === quizData.length - 1) {
+                nextBtn.innerHTML = `Save & Finish <i class="fa-solid fa-check-double ml-1"></i>`;
+            } else {
+                nextBtn.innerHTML = `Next & Save <i class="fa-solid fa-chevron-right ml-1"></i>`;
+            }
+
+            const reviewBtn = document.getElementById('markReviewBtn');
+            if (reviewStatus[index]) {
+                reviewBtn.classList.replace('bg-purple-50', 'bg-purple-600');
+                reviewBtn.classList.replace('text-purple-700', 'text-white');
+            } else {
+                reviewBtn.classList.replace('bg-purple-600', 'bg-purple-50');
+                reviewBtn.classList.replace('text-white', 'text-purple-700');
+            }
+        }
+
+        // Action Handlers
+        function selectOption(optionIndex) {
+            if (testSubmitted) return;
+            userResponses[currentQuestionIndex] = optionIndex;
+            loadQuestion(currentQuestionIndex);
+        }
+
+        function handleClearResponse() {
+            if (testSubmitted) return;
+            userResponses[currentQuestionIndex] = null;
+            loadQuestion(currentQuestionIndex);
+        }
+
+        function handleMarkForReview() {
+            if (testSubmitted) return;
+            reviewStatus[currentQuestionIndex] = !reviewStatus[currentQuestionIndex];
+            loadQuestion(currentQuestionIndex);
+        }
+
+        function handlePrevious() {
+            if (currentQuestionIndex > 0) {
+                loadQuestion(currentQuestionIndex - 1);
+            }
+        }
+
+        function handleNextAndSave() {
+            if (currentQuestionIndex < quizData.length - 1) {
+                loadQuestion(currentQuestionIndex + 1);
+            } else {
+                confirmSubmitTest();
+            }
+        }
+
+        // Submission & Score Calculation
+        function confirmSubmitTest() {
+            const answeredCount = userResponses.filter(ans => ans !== null).length;
+            const unansweredCount = quizData.length - answeredCount;
+            const confirmMsg = `Kya aap test submit karna chahte hain?\n\nKul Prashn: ${quizData.length}\nUttar Diye: ${answeredCount}\nBina Uttar: ${unansweredCount}`;
+            
+            if (confirm(confirmMsg)) {
+                submitExam();
+            }
+        }
+
+        function autoSubmitExam() {
+            alert("120 Minute ka nirdharit samay samapt ho gaya hai! Aapka test auto-submit ho raha hai.");
+            submitExam();
+        }
+
+        function submitExam() {
+            testSubmitted = true;
+            clearInterval(timerInterval);
+
+            // Calculation
+            let correctCount = 0;
+            let incorrectCount = 0;
+            let unattemptedCount = 0;
+
+            quizData.forEach((q, idx) => {
+                const userAns = userResponses[idx];
+                if (userAns === null) {
+                    unattemptedCount++;
+                } else if (userAns === q.correctAnswer) {
+                    correctCount++;
+                } else {
+                    incorrectCount++;
+                }
+            });
+
+            const positiveMarks = correctCount * 2.0;
+            const negativeMarks = incorrectCount * 0.20;
+            const totalMarks = positiveMarks - negativeMarks;
+            const totalAttempted = correctCount + incorrectCount;
+            const accuracy = totalAttempted > 0 ? ((correctCount / totalAttempted) * 100).toFixed(1) : 0;
+
+            // Set Scorecard Modal
+            document.getElementById('resTotalMarks').innerText = totalMarks.toFixed(2);
+            document.getElementById('resCorrect').innerText = correctCount;
+            document.getElementById('resCorrectMarks').innerText = `+${positiveMarks.toFixed(2)} Marks`;
+            document.getElementById('resIncorrect').innerText = incorrectCount;
+            document.getElementById('resNegativeMarks').innerText = `-${negativeMarks.toFixed(2)} Marks`;
+            document.getElementById('resAccuracy').innerText = `${accuracy}%`;
+
+            // Render Detailed Solutions
+            const solList = document.getElementById('solutionListContainer');
+            solList.innerHTML = '';
+
+            quizData.forEach((q, idx) => {
+                const userAns = userResponses[idx];
+                const isCorrect = userAns === q.correctAnswer;
+                const isUnattempted = userAns === null;
+
+                const card = document.createElement('div');
+                card.className = `p-4 rounded-xl border ${
+                    isUnattempted ? 'bg-slate-50 border-slate-200' : isCorrect ? 'bg-emerald-50/50 border-emerald-200' : 'bg-rose-50/50 border-rose-200'
+                }`;
+
+                let statusBadge = isUnattempted 
+                    ? `<span class="bg-slate-200 text-slate-700 font-bold px-2 py-0.5 rounded text-xs">Left (0.00)</span>`
+                    : isCorrect 
+                    ? `<span class="bg-emerald-100 text-emerald-800 font-bold px-2 py-0.5 rounded text-xs">+2.00 Correct</span>`
+                    : `<span class="bg-rose-100 text-rose-800 font-bold px-2 py-0.5 rounded text-xs">-0.20 Wrong</span>`;
+
+                card.innerHTML = `
+                    <div class="flex items-center justify-between pb-2 mb-2 border-b border-slate-200/60">
+                        <span class="font-bold text-slate-800">Prashn ${idx + 1}</span>
+                        ${statusBadge}
+                    </div>
+                    <p class="whitespace-pre-line text-slate-800 font-medium mb-3">${q.question}</p>
+                    <div class="text-xs space-y-1 mb-3">
+                        <div class="text-slate-600">Aapka Chuna Hua Uttar: <strong class="${isCorrect ? 'text-emerald-700' : isUnattempted ? 'text-slate-500' : 'text-rose-600'}">${userAns !== null ? q.options[userAns] : 'Chhoda Gaya'}</strong></div>
+                        <div class="text-emerald-700">Sahi Uttar: <strong>${q.options[q.correctAnswer]}</strong></div>
+                    </div>
+                    <div class="bg-white p-3 rounded-lg border border-slate-200 text-xs text-slate-700">
+                        <strong class="text-blue-700 flex items-center gap-1 mb-1"><i class="fa-solid fa-book-open"></i> NCERT / Lucent Detailed Line-by-Line Solution:</strong>
+                        ${q.explanation}
+                    </div>
+                    <div class="text-right mt-2 text-[10px] text-blue-500 font-bold">@GYANVERSET</div>
+                `;
+                solList.appendChild(card);
+            });
+
+            document.getElementById('resultModal').classList.remove('hidden');
+        }
+    </script>
+</body>
+</html>
