@@ -1,0 +1,848 @@
+<!DOCTYPE html>
+<html lang="hi" class="h-full">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <title>GYANVERSE CBT Exam Portal - Daily Current Affairs 2026</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Tiro+Devanagari+Hindi:ital@0;1&family=Inter:wght@400;500;600;700;800&display=swap');
+        
+        :root {
+            --app-height: 100dvh;
+        }
+
+        body {
+            font-family: 'Inter', 'Tiro Devanagari Hindi', sans-serif;
+            user-select: none;
+            -webkit-user-select: none;
+            height: 100dvh;
+            min-height: -webkit-fill-available;
+        }
+
+        .option-label:active {
+            transform: scale(0.99);
+        }
+
+        /* Smooth scrollbar styling */
+        ::-webkit-scrollbar {
+            width: 4px;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body class="bg-slate-100 text-slate-800 antialiased flex flex-col justify-between overflow-hidden">
+
+    <!-- START TEST MODAL / FULLSCREEN ENTRY GATE -->
+    <div id="entryModal" class="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/85 backdrop-blur-sm p-4 overflow-y-auto">
+        <div class="bg-white rounded-2xl shadow-2xl max-w-lg w-full p-5 md:p-8 text-center border-t-8 border-blue-600 my-auto">
+            <div class="inline-flex items-center justify-center w-14 h-14 bg-blue-100 text-blue-600 rounded-full mb-3">
+                <i class="fa-solid fa-graduation-cap text-2xl"></i>
+            </div>
+            <h1 class="text-xl md:text-2xl font-black text-slate-900 tracking-tight">GYANVERSE SMART CBT</h1>
+            <p class="text-xs font-bold text-blue-600 mt-0.5 uppercase tracking-wider">Daily Research Dossier • 23 Oct 2026</p>
+            
+            <div class="bg-slate-50 border border-slate-200 rounded-xl p-3.5 my-4 text-left text-xs md:text-sm space-y-1.5 leading-relaxed">
+                <p class="font-bold text-slate-800">नियम एवं निर्देश / Exam Instructions:</p>
+                <div class="flex items-center justify-between py-1 border-b border-slate-200">
+                    <span>कुल समय (Total Time):</span>
+                    <span class="font-bold text-slate-900">120 Minutes</span>
+                </div>
+                <div class="flex items-center justify-between py-1 border-b border-slate-200">
+                    <span>मार्किंग पैटर्न (Marking):</span>
+                    <span><b class="text-emerald-600">+2.00</b> / <b class="text-rose-600">-0.20</b></span>
+                </div>
+                <div class="flex items-center justify-between py-1">
+                    <span>टेलीग्राम चैनल:</span>
+                    <a href="https://t.me/GYANVERSET" target="_blank" class="text-blue-600 font-bold">@GYANVERSET</a>
+                </div>
+            </div>
+
+            <p class="text-[11px] text-amber-700 bg-amber-50 p-2 rounded-lg border border-amber-200 mb-4 font-medium leading-tight">
+                <i class="fa-solid fa-expand text-amber-600 mr-1"></i> Mobile Display Note: "Start Test" par click karte hi screen auto full-screen me chali jayegi.
+            </p>
+
+            <button onclick="initiateFullScreenTest()" class="w-full py-3.5 px-4 bg-gradient-to-r from-blue-600 to-indigo-700 text-white font-bold rounded-xl shadow-lg shadow-blue-500/25 active:scale-95 transition-all text-sm md:text-base flex items-center justify-center gap-2">
+                <i class="fa-solid fa-play"></i> Start Test (Auto Full Screen)
+            </button>
+        </div>
+    </div>
+
+    <!-- MAIN CBT TEST CONTAINER -->
+    <div id="testContainer" class="hidden flex-1 flex flex-col h-full overflow-hidden">
+        
+        <!-- COMPACT RESPONSIVE HEADER -->
+        <header class="bg-white border-b border-slate-200 px-3 py-2 md:px-6 md:py-3 flex items-center justify-between shadow-sm shrink-0 z-30">
+            <!-- Brand & Channel Link -->
+            <div class="flex items-center gap-2">
+                <span class="bg-blue-600 text-white font-black px-2 py-0.5 rounded text-xs md:text-sm tracking-wider">GYANVERSE</span>
+                <a href="https://t.me/GYANVERSET" target="_blank" class="hidden xs:inline-flex items-center text-[10px] md:text-xs font-bold text-blue-600 bg-blue-50 px-1.5 py-0.5 rounded border border-blue-100">
+                    <i class="fa-brands fa-telegram mr-0.5"></i> @GYANVERSET
+                </a>
+            </div>
+
+            <!-- Controls: Language Toggle, Live Timer, Top-Right Submit -->
+            <div class="flex items-center gap-1.5 md:gap-3">
+                <!-- Language Switcher -->
+                <button onclick="toggleLanguage()" class="px-2 py-1 bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-[11px] md:text-xs rounded-lg border border-slate-300 transition flex items-center gap-1">
+                    <i class="fa-solid fa-language text-blue-600 text-xs"></i>
+                    <span id="langDisplay">English</span>
+                </button>
+
+                <!-- Live Timer -->
+                <div class="flex items-center gap-1 px-2 py-1 bg-amber-50 border border-amber-300 text-amber-800 rounded-lg font-mono font-bold text-xs md:text-sm">
+                    <i class="fa-regular fa-clock text-amber-600 text-xs"></i>
+                    <span id="timerDisplay">120:00</span>
+                </div>
+
+                <!-- Top Right Submit Button -->
+                <button onclick="confirmSubmitTest()" class="px-2.5 py-1 md:px-3 md:py-1.5 bg-emerald-600 active:bg-emerald-700 text-white font-bold text-xs md:text-sm rounded-lg shadow-sm transition flex items-center gap-1">
+                    <i class="fa-solid fa-check"></i> <span class="hidden xs:inline">Submit</span>
+                </button>
+            </div>
+        </header>
+
+        <!-- QUESTION AREA (NO PALETTE, CLEAN FULL WIDTH, SCROLLABLE FOR MOBILE) -->
+        <main class="flex-1 overflow-y-auto px-3 py-3 md:p-6 w-full max-w-4xl mx-auto flex flex-col justify-between">
+            <div class="bg-white rounded-xl md:rounded-2xl shadow-sm border border-slate-200 p-4 md:p-6 flex-1 flex flex-col justify-between">
+                
+                <div>
+                    <!-- Question Header Meta -->
+                    <div class="flex items-center justify-between border-b border-slate-100 pb-2.5 mb-3">
+                        <span class="text-[11px] md:text-xs font-bold uppercase tracking-wider text-slate-500" id="questionNumberIndicator">
+                            Q. 1 / 15
+                        </span>
+                        <div class="flex items-center gap-1.5 text-[10px] md:text-xs font-bold">
+                            <span class="bg-emerald-50 text-emerald-700 px-1.5 py-0.5 rounded border border-emerald-200">+2.00</span>
+                            <span class="bg-rose-50 text-rose-700 px-1.5 py-0.5 rounded border border-rose-200">-0.20</span>
+                        </div>
+                    </div>
+
+                    <!-- Question Content -->
+                    <div id="questionTextContainer" class="text-sm md:text-base text-slate-900 leading-relaxed font-medium mb-4">
+                        <!-- Loaded dynamically -->
+                    </div>
+
+                    <!-- Watermark Tag -->
+                    <div class="text-right mb-3">
+                        <a href="https://t.me/GYANVERSET" target="_blank" class="text-[10px] md:text-xs font-semibold text-slate-400 hover:text-blue-600 transition">
+                            <i class="fa-brands fa-telegram"></i> @GYANVERSET
+                        </a>
+                    </div>
+
+                    <!-- Options Container -->
+                    <div id="optionsContainer" class="space-y-2.5 mb-5">
+                        <!-- Options generated dynamically -->
+                    </div>
+                </div>
+
+                <!-- NAVIGATION BUTTONS DIRECTLY BELOW OPTIONS (COMPACT MOBILE GRID) -->
+                <div class="pt-4 border-t border-slate-200 mt-auto">
+                    <div class="grid grid-cols-4 gap-1.5 md:flex md:items-center md:justify-between">
+                        <!-- Prev -->
+                        <button onclick="navigateQuestion(-1)" id="prevBtn" class="py-2.5 px-2 bg-slate-100 active:bg-slate-200 text-slate-700 font-bold text-xs rounded-lg transition disabled:opacity-30 disabled:pointer-events-none flex items-center justify-center gap-1">
+                            <i class="fa-solid fa-chevron-left text-[10px]"></i> Prev
+                        </button>
+                        
+                        <!-- Clear -->
+                        <button onclick="clearCurrentResponse()" class="py-2.5 px-2 bg-rose-50 active:bg-rose-100 text-rose-600 font-bold text-xs rounded-lg border border-rose-200 transition flex items-center justify-center gap-1">
+                            <i class="fa-solid fa-rotate-left text-[10px]"></i> Clear
+                        </button>
+
+                        <!-- Review -->
+                        <button onclick="toggleMarkReview()" id="reviewBtn" class="py-2.5 px-1.5 bg-purple-50 active:bg-purple-100 text-purple-700 font-bold text-[11px] md:text-xs rounded-lg border border-purple-200 transition flex items-center justify-center truncate">
+                            <i class="fa-regular fa-bookmark mr-1"></i> <span id="reviewBtnText">Review</span>
+                        </button>
+
+                        <!-- Next & Save -->
+                        <button onclick="saveAndNext()" id="nextBtn" class="py-2.5 px-2 bg-blue-600 active:bg-blue-700 text-white font-bold text-xs rounded-lg shadow-sm transition flex items-center justify-center gap-1">
+                            Next <i class="fa-solid fa-chevron-right text-[10px]"></i>
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+        </main>
+
+        <!-- FOOTER BRANDING -->
+        <footer class="bg-white border-t border-slate-200 py-1.5 px-3 text-center text-[10px] md:text-xs text-slate-500 shrink-0">
+            GYANVERSE Mobile CBT • Telegram: <a href="https://t.me/GYANVERSET" target="_blank" class="font-bold text-blue-600">@GYANVERSET</a>
+        </footer>
+    </div>
+
+    <!-- RESULT & SCORECARD MODAL -->
+    <div id="resultModal" class="hidden fixed inset-0 z-50 flex items-center justify-center bg-slate-900/85 backdrop-blur-sm p-4 overflow-y-auto">
+        <div class="bg-white rounded-2xl shadow-2xl max-w-lg w-full p-5 md:p-7 text-center my-auto border-t-8 border-emerald-500 max-h-[92vh] overflow-y-auto">
+            <div class="w-12 h-12 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center mx-auto mb-2">
+                <i class="fa-solid fa-trophy text-2xl"></i>
+            </div>
+            <h2 class="text-xl font-black text-slate-800">Your Exam Scorecard</h2>
+            <p class="text-[10px] font-bold text-slate-400 uppercase tracking-widest mt-0.5">GYANVERSE 23 October 2026</p>
+            
+            <div class="my-3 p-2.5 bg-blue-50 border border-blue-200 rounded-xl text-xs text-blue-700 font-semibold flex items-center justify-between">
+                <span><i class="fa-brands fa-telegram text-blue-500 mr-1"></i> Channel:</span>
+                <a href="https://t.me/GYANVERSET" target="_blank" class="font-bold underline">@GYANVERSET</a>
+            </div>
+
+            <div class="grid grid-cols-2 gap-2 my-4 text-left">
+                <div class="bg-slate-50 border border-slate-200 rounded-xl p-2.5">
+                    <p class="text-[10px] font-bold text-slate-500 uppercase">Total Marks</p>
+                    <p class="text-lg font-extrabold text-blue-600" id="resScore">0.00</p>
+                </div>
+                <div class="bg-slate-50 border border-slate-200 rounded-xl p-2.5">
+                    <p class="text-[10px] font-bold text-slate-500 uppercase">Accuracy</p>
+                    <p class="text-lg font-extrabold text-indigo-600" id="resAccuracy">0%</p>
+                </div>
+                <div class="bg-slate-50 border border-slate-200 rounded-xl p-2.5">
+                    <p class="text-[10px] font-bold text-emerald-600 uppercase">Correct</p>
+                    <p class="text-lg font-extrabold text-emerald-600" id="resCorrect">0</p>
+                </div>
+                <div class="bg-slate-50 border border-slate-200 rounded-xl p-2.5">
+                    <p class="text-[10px] font-bold text-rose-600 uppercase">Incorrect</p>
+                    <p class="text-lg font-extrabold text-rose-600" id="resIncorrect">0</p>
+                </div>
+            </div>
+
+            <div class="flex items-center justify-between text-xs text-slate-500 px-1 mb-5">
+                <span>Total Questions: <strong id="resTotal" class="text-slate-800">15</strong></span>
+                <span>Unattempted: <strong id="resUnattempted" class="text-slate-800">0</strong></span>
+            </div>
+
+            <div class="flex flex-col gap-2">
+                <button onclick="showSolutionsView()" class="w-full py-3 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-xl text-xs md:text-sm shadow transition">
+                    <i class="fa-solid fa-list-check mr-1.5"></i> Check Detailed Solutions
+                </button>
+                <button onclick="location.reload()" class="w-full py-2.5 bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold rounded-xl text-xs transition">
+                    Re-Attempt Test
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- SOLUTIONS CONTAINER -->
+    <div id="solutionContainer" class="hidden flex-1 overflow-y-auto px-3 py-4 md:p-6 max-w-4xl mx-auto w-full">
+        <div class="flex items-center justify-between mb-4 pb-2 border-b border-slate-200">
+            <div>
+                <h2 class="text-lg md:text-xl font-black text-slate-800">Answer Key & Explanations</h2>
+                <a href="https://t.me/GYANVERSET" target="_blank" class="text-xs text-blue-600 font-bold">@GYANVERSET</a>
+            </div>
+            <button onclick="toggleLanguage()" class="px-2.5 py-1 bg-slate-200 text-slate-800 font-bold text-xs rounded-lg">
+                Switch Language (<span id="solLangDisplay">English</span>)
+            </button>
+        </div>
+
+        <div id="solutionList" class="space-y-4 pb-12">
+            <!-- Dynamic Solution Cards -->
+        </div>
+    </div>
+
+    <!-- SCRIPT & QUESTION LOGIC -->
+    <script>
+        const questionsData = [
+            {
+                id: 1,
+                hindi: {
+                    question: "33वें द्विपक्षीय समुद्री अभ्यास 'सिम्बेक्स 2026' (SIMBEX-2026) के संदर्भ में निम्नलिखित कथनों पर विचार कीजिए:<br><br>1. यह अभ्यास भारत और सिंगापुर के बीच दो चरणों (हार्बर चरण - विशाखापट्टनम और समुद्री चरण - बंगाल की खाड़ी) में आयोजित हुआ।<br>2. इसमें भारतीय नौसेना की ओर से स्वदेशी स्टील्थ फ्रिगेट INS नीलगिरी और कोरवेट INS कामोर्ता ने भाग लिया।<br>3. 'लामितिये' भारत और सेशेल्स के बीच जबकि 'सदा तंसीक' भारत और सऊदी अरब के बीच आयोजित होने वाला अभ्यास है।<br><br>उपर्युक्त कथनों में से कौन-सा/से कथन सत्य है/हैं?",
+                    options: [
+                        "केवल 1 और 2",
+                        "केवल 2 और 3",
+                        "केवल 1 और 3",
+                        "1, 2 और 3 सभी"
+                    ],
+                    explanation: "सही उत्तर (D) है। 33वां सिम्बेक्स 2026 भारत और सिंगापुर के बीच विशाखापट्टनम और बंगाल की खाड़ी में आयोजित हुआ। इसमें INS नीलगिरी और INS कामोर्ता ने भाग लिया। सेशेल्स के साथ लामितिये व सऊदी अरब के साथ सदा तंसीक आयोजित होता है।"
+                },
+                english: {
+                    question: "With reference to the 33rd Bilateral Maritime Exercise 'SIMBEX-2026', consider the following statements:<br><br>1. It was conducted between India and Singapore in two phases: Harbour phase at Visakhapatnam and Sea phase in the Bay of Bengal.<br>2. From the Indian Navy, indigenous stealth frigate INS Nilgiri and corvette INS Kamorta participated.<br>3. 'Lamitiye' is conducted with Seychelles, whereas 'Sada Tanseeq' is conducted with Saudi Arabia.<br><br>Which of the statements given above is/are correct?",
+                    options: [
+                        "1 and 2 only",
+                        "2 and 3 only",
+                        "1 and 3 only",
+                        "1, 2 and 3 (All)"
+                    ],
+                    explanation: "Correct Answer is (D). All three statements accurately state the phases, participating ships, and respective bilateral defense drills."
+                },
+                correct: 3
+            },
+            {
+                id: 2,
+                hindi: {
+                    question: "इप्सॉस (Ipsos) द्वारा जारी 'क्वालिटी ऑफ केयर परसेप्शन इंडेक्स 2026' के संबंध में कौन-सा कथन असत्य है?",
+                    options: [
+                        "इस वैश्विक सूचकांक में भारत ने तीसरा (3rd) स्थान प्राप्त किया है।",
+                        "सूचकांक के अनुसार भारत में 68% नागरिकों ने स्वास्थ्य सेवाओं की गुणवत्ता को संतोषजनक बताया है।",
+                        "इस सूचकांक में मलेशिया को प्रथम तथा सिंगापुर को द्वितीय स्थान प्राप्त हुआ।",
+                        "इप्सॉस एक वैश्विक शोध फर्म है जिसका मुख्यालय जिनेवा (स्विट्जरलैंड) में स्थित है।"
+                    ],
+                    explanation: "सही उत्तर (D) है, क्योंकि इप्सॉस (Ipsos) का मुख्यालय पेरिस (फ्रांस) में स्थित है, जिनेवा में नहीं। भारत ने इस सूचकांक में तीसरा स्थान हासिल किया, जबकि मलेशिया पहले व सिंगापुर दूसरे स्थान पर रहा।"
+                },
+                english: {
+                    question: "Which statement is INCORRECT regarding the 'Quality of Care Perception Index 2026' released by Ipsos?",
+                    options: [
+                        "India secured the 3rd rank globally in this perception index.",
+                        "According to the index, 68% of citizens in India rated healthcare quality positively.",
+                        "Malaysia secured the 1st position followed by Singapore in 2nd place.",
+                        "Ipsos is a market research firm headquartered in Geneva, Switzerland."
+                    ],
+                    explanation: "Correct Answer is (D). Ipsos is headquartered in Paris, France (not Geneva). India ranked 3rd globally behind Malaysia and Singapore."
+                },
+                correct: 3
+            },
+            {
+                id: 3,
+                hindi: {
+                    question: "अक्टूबर 2026 में केंद्रीय मंत्री शिवराज सिंह चौहान द्वारा शुरू किए गए 'खेत बचाओ अभियान (रबी 2026)' के प्राथमिक उद्देश्य क्या हैं?<br><br>1. मिट्टी की सेहत और प्राकृतिक उर्वरता में सुधार करना।<br>2. रासायनिक उर्वरकों का अंधाधुंध उपयोग समाप्त कर संतुलित प्रयोग को बढ़ावा देना।<br>3. जलवायु-अनुकूल और जल-कुशल कृषि तकनीकों का विस्तार करना।<br><br>नीचे दिए गए कूट का प्रयोग कर सही उत्तर चुनिए:",
+                    options: [
+                        "केवल 1 और 2",
+                        "केवल 2 और 3",
+                        "केवल 1 और 3",
+                        "1, 2 और 3 सभी"
+                    ],
+                    explanation: "सही उत्तर (D) है। यह अभियान हरियाणा के करनाल से 22 अक्टूबर से 30 नवंबर 2026 तक चलाया जा रहा है, जिसका उद्देश्य मृदा उर्वरता, संतुलित उर्वरक और जलवायु-अनुकूल कृषि को बढ़ावा देना है।"
+                },
+                english: {
+                    question: "What are the primary objectives of the 'Khet Bachao Abhiyan (Rabi 2026)' launched by Union Minister Shivraj Singh Chouhan?<br><br>1. Improving soil health and fertility.<br>2. Promoting balanced utilization of chemical fertilizers.<br>3. Expanding climate-resilient and water-efficient farming practices.<br><br>Select the correct answer using the code below:",
+                    options: [
+                        "1 and 2 only",
+                        "2 and 3 only",
+                        "1 and 3 only",
+                        "1, 2 and 3 (All)"
+                    ],
+                    explanation: "Correct Answer is (D). Launched from Karnal (Haryana), the campaign runs until Nov 30, 2026, targeting all stated objectives."
+                },
+                correct: 3
+            },
+            {
+                id: 4,
+                hindi: {
+                    question: "<b>कथन (A):</b> केंद्रीय गृह मंत्री अमित शाह ने राष्ट्रीय पुलिस स्मारक पर भारत को 31 दिसंबर 2029 तक पूरी तरह 'नशा मुक्त' बनाने का संकल्प दोहराया।<br><b>कारण (R):</b> राजस्व खुफिया निदेशालय (DRI) द्वारा दिवाली पर प्रतिबंधित चीनी पटाखों के अवैध आयात को रोकने के लिए 'ऑपरेशन फायर ट्रेल' शुरू किया गया है।",
+                    options: [
+                        "(A) और (R) दोनों सही हैं, और (R), (A) की सही व्याख्या करता है।",
+                        "(A) और (R) दोनों सही हैं, लेकिन (R), (A) की सही व्याख्या नहीं करता है।",
+                        "(A) सही है, लेकिन (R) गलत है।",
+                        "(A) गलत है, लेकिन (R) सही है।"
+                    ],
+                    explanation: "सही उत्तर (B) है। दोनों तथ्य स्वतंत्र रूप से सही हैं। गृह मंत्री ने 31 दिसंबर 2029 तक नशा मुक्ति का लक्ष्य रखा, और DRI ने 'ऑपरेशन फायर ट्रेल' चीनी पटाखों के अवैध आयात पर चलाया।"
+                },
+                english: {
+                    question: "<b>Assertion (A):</b> Union Home Minister Amit Shah reiterated the goal to make India completely 'Drug-Free' by December 31, 2029.<br><b>Reason (R):</b> DRI launched 'Operation Fire Trail' to curb the illegal import of banned Chinese firecrackers during Diwali.",
+                    options: [
+                        "Both (A) and (R) are true, and (R) is the correct explanation of (A).",
+                        "Both (A) and (R) are true, but (R) is NOT the correct explanation of (A).",
+                        "(A) is true, but (R) is false.",
+                        "(A) is false, but (R) is true."
+                    ],
+                    explanation: "Correct Answer is (B). Both statements are accurate, but (R) is an independent enforcement action and not the cause of (A)."
+                },
+                correct: 1
+            },
+            {
+                id: 5,
+                hindi: {
+                    question: "शंघाई सहयोग संगठन (SCO) और सभ्यतागत संवाद मंच के संदर्भ में निम्नलिखित कथनों की सत्यता की जांच कीजिए:<br><br>I. भारत वर्ष 2026 में प्रथम SCO सभ्यतागत संवाद मंच की मेजबानी करेगा।<br>II. बेलारूस SCO का 10वां और नवीनतम पूर्ण सदस्य देश बना है।<br>III. वर्ष 2027 के लिए SCO की पर्यटन व सांस्कृतिक राजधानी लाहौर (पाकिस्तान) को नामित किया गया है।",
+                    options: [
+                        "केवल I और II",
+                        "केवल II और III",
+                        "केवल I और III",
+                        "I, II और III सभी सत्य हैं"
+                    ],
+                    explanation: "सही उत्तर (D) है। राजनाथ सिंह ने दुशांबे में प्रथम संवाद मंच की मेजबानी की घोषणा की। बेलारूस 10वां सदस्य है तथा 2027 के लिए लाहौर पर्यटन राजधानी घोषित हुआ है।"
+                },
+                english: {
+                    question: "Examine the following statements regarding the Shanghai Cooperation Organisation (SCO):<br><br>I. India will host the 1st SCO Civilizational Dialogue Forum in 2026.<br>II. Belarus is the 10th and newest permanent member state of SCO.<br>III. Lahore has been designated as the SCO Tourism & Cultural Capital for 2027.",
+                    options: [
+                        "I and II only",
+                        "II and III only",
+                        "I and III only",
+                        "I, II and III are all correct"
+                    ],
+                    explanation: "Correct Answer is (D). All three statements accurately represent current SCO developments."
+                },
+                correct: 3
+            },
+            {
+                id: 6,
+                hindi: {
+                    question: "हाल ही में CDSCO द्वारा उन्नत ग्रासनली कैंसर (Esophageal Cancer) के लिए स्वीकृत दवा 'जाइटोरवी' (Zytorvi) की प्राथमिक कार्यप्रणाली क्या है?",
+                    options: [
+                        "यह कैंसर कोशिकाओं में DNA प्रतिकृति (Replication) को प्रत्यक्ष रूप से नष्ट करती है।",
+                        "यह प्रोग्राम्ड सेल डेथ प्रोटीन-1 (PD-1) को अवरुद्ध कर प्रतिरक्षा प्रणाली को कैंसर कोशिकाओं को नष्ट करने में सक्षम बनाती है।",
+                        "यह एंजियोजेनेसिस को रोककर ट्यूमर में रक्त संचार पूर्णतः बंद करती है।",
+                        "यह केवल कीमोथेरेपी के दुष्प्रभावों को कम करने वाली दर्द निवारक दवा है।"
+                    ],
+                    explanation: "सही उत्तर (B) है। डॉ. रेड्डीज द्वारा निर्मित जाइटोरवी एक मोनोक्लोनल एंटीबॉडी (टोरीपैलिमैब) है, जो PD-1 पाथवे को ब्लॉक कर शरीर के इम्यून सिस्टम को कैंसर के विरुद्ध सक्रिय करती है।"
+                },
+                english: {
+                    question: "What is the primary mechanism of the drug 'Zytorvi' approved by CDSCO for advanced esophageal cancer?",
+                    options: [
+                        "It directly shreds cellular DNA replication in cancer cells.",
+                        "It blocks the Programmed Cell Death Protein-1 (PD-1) pathway, empowering the immune system to destroy cancer cells.",
+                        "It inhibits angiogenesis cutting off tumor blood supply.",
+                        "It is merely a supportive painkiller alleviating chemotherapy side effects."
+                    ],
+                    explanation: "Correct Answer is (B). Zytorvi (Toripalimab), manufactured by Dr. Reddy's Laboratories, works as an immune checkpoint inhibitor targeting PD-1."
+                },
+                correct: 1
+            },
+            {
+                id: 7,
+                hindi: {
+                    question: "<b>सूची-I (रक्षा समझौता/अभ्यास)</b> को <b>सूची-II (संबंधित देश)</b> से सुमेलित कीजिए:<br><br><b>सूची-I:</b><br>A. भद्र समझौता ज्ञापन (Bhadra MoU)<br>B. मक्का घोषणापत्र (Makkah Declaration)<br>C. इबसमर-9 (IBSAMAR)<br>D. धर्म गार्जियन-7 (Dharma Guardian)<br><br><b>सूची-II:</b><br>1. तुर्की, कतर, पाकिस्तान और इंडोनेशिया<br>2. सऊदी अरब, तुर्की और पाकिस्तान<br>3. भारत, ब्राजील और दक्षिण अफ्रीका<br>4. भारत और जापान",
+                    options: [
+                        "A-1, B-2, C-3, D-4",
+                        "A-2, B-1, C-4, D-3",
+                        "A-1, B-3, C-2, D-4",
+                        "A-4, B-2, C-3, D-1"
+                    ],
+                    explanation: "सही उत्तर (A) है। भद्र MoU चार देशों (तुर्की, कतर, पाकिस्तान, इंडोनेशिया) के बीच हुआ। मक्का घोषणापत्र सऊदी-तुर्की-पाकिस्तान का रक्षा समझौता है। इबसमर भारत-ब्राजील-दक्षिण अफ्रीका तथा धर्म गार्जियन भारत-जापान का अभ्यास है।"
+                },
+                english: {
+                    question: "Match <b>List-I (Defense Pact/Exercise)</b> with <b>List-II (Participating Nations)</b>:<br><br><b>List-I:</b><br>A. Bhadra MoU<br>B. Makkah Declaration<br>C. IBSAMAR-IX<br>D. Dharma Guardian-VII<br><br><b>List-II:</b><br>1. Turkey, Qatar, Pakistan, and Indonesia<br>2. Saudi Arabia, Turkey, and Pakistan<br>3. India, Brazil, and South Africa<br>4. India and Japan",
+                    options: [
+                        "A-1, B-2, C-3, D-4",
+                        "A-2, B-1, C-4, D-3",
+                        "A-1, B-3, C-2, D-4",
+                        "A-4, B-2, C-3, D-1"
+                    ],
+                    explanation: "Correct Answer is (A). Bhadra MoU connects 4 nations; Makkah Declaration represents trilateral collective security; IBSAMAR is India-Brazil-SA; Dharma Guardian is India-Japan."
+                },
+                correct: 0
+            },
+            {
+                id: 8,
+                hindi: {
+                    question: "ऐतिहासिक सेंगोल (राजदंड) के शिल्पी थिरु वुम्मिदी एथिराजु के संदर्भ में कौन-सा कथन सही है?",
+                    options: [
+                        "उन्होंने वर्ष 1947 में मात्र 22 वर्ष की आयु में 5 फीट लंबा स्वर्ण सेंगोल तैयार किया था।",
+                        "यह सेंगोल तमिलनाडु के शैव मठ 'तिरुवदुतुरै अधीनम' के मार्गदर्शन में तैयार हुआ था।",
+                        "14-15 अगस्त 1947 की मध्यरात्रि को सत्ता हस्तांतरण के प्रतीक के रूप में यह पं. नेहरू को सौंपा गया था।",
+                        "उपर्युक्त सभी कथन सत्य हैं।"
+                    ],
+                    explanation: "सही उत्तर (D) है। वुम्मिदी एथिराजु ने अपने भाई के साथ 1947 में तिरुवदुतुरै अधीनम के मार्गदर्शन में सेंगोल बनाया था, जो वर्तमान में नए संसद भवन में स्थापित है। हाल ही में इनका निधन हुआ।"
+                },
+                english: {
+                    question: "Which statement is correct regarding Thiru Vummidi Ethiraj, the artisan of the historic Sengol?",
+                    options: [
+                        "He crafted the 5-foot golden Sengol in 1947 at the young age of 22.",
+                        "The Sengol was crafted under the guidance of Thiruvaduthurai Adheenam mutt.",
+                        "It was handed over to Pt. Jawaharlal Nehru on Aug 14-15, 1947 as a symbol of power transfer.",
+                        "All of the above statements are correct."
+                    ],
+                    explanation: "Correct Answer is (D). All biographical and historical statements are accurate."
+                },
+                correct: 3
+            },
+            {
+                id: 9,
+                hindi: {
+                    question: "क्षेत्रीय हवाई संपर्क योजना 'उड़ान' (UDAN) के 10 वर्ष पूरे होने पर स्वीकृत 'उड़ान 2.0' का मुख्य लक्ष्य क्या है?",
+                    options: [
+                        "अगले 5 वर्षों में 50 नए अंतरराष्ट्रीय हवाई अड्डे स्थापित करना।",
+                        "वर्ष 2026-27 से 2035-36 के दौरान टियर-2 और टियर-3 शहरों में 100 नए हवाई अड्डे और 200 हेलीपैड विकसित करना।",
+                        "देश की सभी घरेलू उड़ानों का किराया फ्लैट ₹1000 निर्धारित करना।",
+                        "केवल पूर्वोत्तर राज्यों में 50 नए सी-प्लेन टर्मिनल बनाना।"
+                    ],
+                    explanation: "सही उत्तर (B) है। उड़ान 21 अक्टूबर 2016 को शुरू हुई थी। उड़ान 2.0 के तहत ₹28,840 करोड़ के बजट से 2026-27 से 2035-36 तक 100 नए हवाई अड्डे व 200 हेलीपैड विकसित किए जाएंगे।"
+                },
+                english: {
+                    question: "On completing 10 years of the UDAN scheme in October 2026, what key expansion target has been approved under 'UDAN 2.0'?",
+                    options: [
+                        "Building 50 international airports in 5 years.",
+                        "Developing 100 new airports and 200 helipads in Tier-2/3 cities between 2026-27 and 2035-36.",
+                        "Setting a flat ₹1000 airfare across all domestic flights.",
+                        "Building 50 seaplane bases exclusively in the North East."
+                    ],
+                    explanation: "Correct Answer is (B). UDAN 2.0 has been approved with a ₹28,840 crore outlay to build 100 airports and 200 helipads over 10 years."
+                },
+                correct: 1
+            },
+            {
+                id: 10,
+                hindi: {
+                    question: "एशियन पैरा गेम्स 2026 में पुरुषों की शॉटपुट (F46) स्पर्धा में भारत द्वारा ऐतिहासिक क्लीन स्वीप किए जाने पर पोडियम का सही क्रम क्या है?",
+                    options: [
+                        "स्वर्ण: परवीन कुमार, रजत: मोहम्मद यासिर, कांस्य: सचिन खिलारी",
+                        "स्वर्ण: सचिन सरजेराव खिलारी, रजत: मोहम्मद यासिर, कांस्य: परवीन",
+                        "स्वर्ण: सुमित अंतिल, रजत: सचिन खिलारी, कांस्य: मोहम्मद यासिर",
+                        "स्वर्ण: सचिन सरजेराव खिलारी, रजत: परवीन, कांस्य: मोहम्मद यासिर"
+                    ],
+                    explanation: "सही उत्तर (B) है। सचिन सरजेराव खिलारी ने 15.87 मीटर थ्रो के साथ स्वर्ण पदक, मोहम्मद यासिर (15.60 मी) ने रजत पदक और परवीन (14.94 मी) ने कांस्य पदक जीतकर क्लीन स्वीप किया।"
+                },
+                english: {
+                    question: "In the Men's Shotput (F46) event at the Asian Para Games 2026, what was India's exact medal sweep order?",
+                    options: [
+                        "Gold: Parveen Kumar, Silver: Mohd Yasser, Bronze: Sachin Khilari",
+                        "Gold: Sachin Sarjerao Khilari, Silver: Mohd Yasser, Bronze: Parveen",
+                        "Gold: Sumit Antil, Silver: Sachin Khilari, Bronze: Mohd Yasser",
+                        "Gold: Sachin Sarjerao Khilari, Silver: Parveen, Bronze: Mohd Yasser"
+                    ],
+                    explanation: "Correct Answer is (B). Sachin Sarjerao Khilari threw 15.87m for Gold, Mohd Yasser claimed Silver (15.60m), and Parveen won Bronze (14.94m)."
+                },
+                correct: 1
+            },
+            {
+                id: 11,
+                hindi: {
+                    question: "IIT कानपुर द्वारा शुरू किए गए 'ग्रेटर दैन अस' (Greater Than Us) अभियान का मुख्य उद्देश्य क्या है?",
+                    options: [
+                        "ग्रामीण छात्रों को निःशुल्क इंजीनियरिंग शिक्षा प्रदान करना।",
+                        "मार्च 2029 तक पूर्व छात्रों और दाताओं से AI, साइबर सुरक्षा और क्वांटम कंप्यूटिंग हेतु $1 Billion का फंड जुटाना।",
+                        "विदेशों में 10 नए अंतरराष्ट्रीय कैंपस खोलना।",
+                        "भारतीय रेलवे के सभी इंजनों का विद्युतीकरण पूरा करना।"
+                    ],
+                    explanation: "सही उत्तर (B) है। रक्षा मंत्री राजनाथ सिंह द्वारा नई दिल्ली में शुरू किए गए इस अभियान का लक्ष्य मार्च 2029 तक 1 अरब डॉलर जुटाकर AI, साइबर सुरक्षा व क्वांटम कंप्यूटिंग रिसर्च को गति देना है।"
+                },
+                english: {
+                    question: "What is the primary target of IIT Kanpur's 'Greater Than Us' campaign launched in October 2026?",
+                    options: [
+                        "To provide fully free engineering education to all rural students.",
+                        "To mobilize an endowment fund of $1 Billion by March 2029 for AI, Cybersecurity, and Quantum research.",
+                        "To open 10 new offshore campuses abroad.",
+                        "To electrify 100% of railway tracks."
+                    ],
+                    explanation: "Correct Answer is (B). IIT Kanpur launched this initiative to raise $1 Billion by March 2029 to boost advanced technologies."
+                },
+                correct: 1
+            },
+            {
+                id: 12,
+                hindi: {
+                    question: "भारत के 23वें विधि आयोग (23rd Law Commission) के संदर्भ में कौन-सा तथ्य सही नहीं है?",
+                    options: [
+                        "इसका कार्यकाल 1 सितंबर 2024 से 31 अगस्त 2027 (3 वर्ष) तक है।",
+                        "इसके अध्यक्ष सुप्रीम कोर्ट के सेवानिवृत्त न्यायाधीश न्यायमूर्ति दिनेश माहेश्वरी हैं।",
+                        "यह केंद्रीय विधि और न्याय मंत्रालय के तहत गठित एक गैर-सांविधिक सलाहकार निकाय है।",
+                        "इसका गठन संविधान के अनुच्छेद 280 के तहत एक स्थायी संवैधानिक आयोग के रूप में किया गया है।"
+                    ],
+                    explanation: "सही उत्तर (D) है। विधि आयोग कोई संवैधानिक निकाय नहीं है (अनुच्छेद 280 वित्त आयोग से संबंधित है)। यह 3 वर्ष के लिए गठित एक कार्यकारी/सलाहकार निकाय है।"
+                },
+                english: {
+                    question: "Which fact is INCORRECT regarding the 23rd Law Commission of India?",
+                    options: [
+                        "Its term is for 3 years, from September 1, 2024 to August 31, 2027.",
+                        "It is headed by retired Supreme Court Justice Dinesh Maheshwari.",
+                        "It functions under the Union Ministry of Law and Justice as an advisory body.",
+                        "It is established under Article 280 of the Constitution as a permanent constitutional body."
+                    ],
+                    explanation: "Correct Answer is (D). The Law Commission of India is a non-statutory executive body; Article 280 establishes the Finance Commission."
+                },
+                correct: 3
+            },
+            {
+                id: 13,
+                hindi: {
+                    question: "ICC महिला अंडर-19 T20 वर्ल्ड कप 2027 के संदर्भ में निम्नलिखित कथनों पर विचार कीजिए:<br><br>1. इस टूर्नामेंट की संयुक्त मेजबानी बांग्लादेश और नेपाल करेंगे।<br>2. भारतीय महिला टीम इसकी डिफेंडिंग चैंपियन है (जिसने 2023 और 2025 दोनों संस्करण जीते हैं)।<br>3. हाल ही में स्मृति मंधाना को भारतीय महिला क्रिकेट टीम का नया कप्तान नियुक्त किया गया है।<br><br>उपर्युक्त में से कौन-से कथन सत्य हैं?",
+                    options: [
+                        "केवल 1 और 2",
+                        "केवल 2 और 3",
+                        "केवल 1 और 3",
+                        "1, 2 और 3 सभी"
+                    ],
+                    explanation: "सही उत्तर (D) है। 2027 का अंडर-19 महिला T20 विश्व कप बांग्लादेश और नेपाल में होगा। भारत दोनों पूर्व संस्करणों का विजेता है तथा स्मृति मंधाना नई कप्तान बनी हैं।"
+                },
+                english: {
+                    question: "Consider the following statements regarding the ICC Women's U-19 T20 World Cup 2027:<br><br>1. The tournament will be co-hosted by Bangladesh and Nepal.<br>2. Team India is the defending champion, having won in both 2023 and 2025.<br>3. Smriti Mandhana has been named captain of the senior Indian women's cricket team.<br><br>Which of the statements given above are correct?",
+                    options: [
+                        "1 and 2 only",
+                        "2 and 3 only",
+                        "1 and 3 only",
+                        "1, 2 and 3 (All)"
+                    ],
+                    explanation: "Correct Answer is (D). All three statements accurately reflect the co-hosts, India's titles, and the captaincy update."
+                },
+                correct: 3
+            },
+            {
+                id: 14,
+                hindi: {
+                    question: "हाल ही में FMSCI RMC इंडिया नेशनल कार्टिंग चैंपियनशिप 2026 में मिनी मैक्स श्रेणी जीतकर दुनिया की सबसे कम उम्र की चैंपियन बनने वाली अर्शी गुप्ता का संबंध किस शहर से है?",
+                    options: [
+                        "फरीदाबाद (हरियाणा)",
+                        "इंदौर (मध्य प्रदेश)",
+                        "जयपुर (राजस्थान)",
+                        "सूरत (गुजरात)"
+                    ],
+                    explanation: "सही उत्तर (A) है। फरीदाबाद (हरियाणा) की युवा ड्राइवर अर्शी गुप्ता ने बेंगलुरु में आयोजित प्रतियोगिता में रोटैक्स मैक्स चैलेंज मिनी टाइटल जीतकर विश्व रिकॉर्ड बनाया।"
+                },
+                english: {
+                    question: "Arshi Gupta, who became the world's youngest champion by winning the Mini Max title at the FMSCI RMC National Karting Championship 2026, hails from which city?",
+                    options: [
+                        "Faridabad (Haryana)",
+                        "Indore (Madhya Pradesh)",
+                        "Jaipur (Rajasthan)",
+                        "Surat (Gujarat)"
+                    ],
+                    explanation: "Correct Answer is (A). Arshi Gupta belongs to Faridabad, Haryana, and set the world record in Bengaluru."
+                },
+                correct: 0
+            },
+            {
+                id: 15,
+                hindi: {
+                    question: "22-23 अक्टूबर 2026 के ज्ञानवर्स क्विक रीकैप के संदर्भ में सही युग्म का चयन कीजिए:<br><br>1. देश की सबसे ऊंची (3500 मी) हाई कोर्ट बेंच: लेह (लद्दाख)<br>2. पूर्वोत्तर भारत का पहला बहुउद्देशीय वीजा केंद्र: गुवाहाटी (असम)<br>3. 'वर्ल्ड्स बेस्ट कंज्यूमर बैंक 2026': भारतीय स्टेट बैंक (SBI)<br>4. ऑन-डिमांड सैटेलाइट सूर्य प्रकाश हेतु 'रिफ्लेक्ट ऑर्बिटल' से समझौता: स्काईरूट एयरोस्पेस",
+                    options: [
+                        "केवल 1 और 2",
+                        "केवल 2 और 4",
+                        "केवल 1, 3 और 4",
+                        "1, 2, 3 और 4 (सभी सही हैं)"
+                    ],
+                    explanation: "सही उत्तर (D) है। CJI सूर्यकांत ने लेह में बेंच का उद्घाटन किया; असम में वीजा केंद्र स्थापित हुआ; SBI को बेस्ट बैंक अवॉर्ड मिला और स्काईरूट ने रिफ्लेक्ट ऑर्बिटल के साथ समझौता किया।"
+                },
+                english: {
+                    question: "Select the correctly matched pairs from the Gyanverse Quick Recap (22-23 October 2026):<br><br>1. Highest High Court Bench (3500m): Leh (Ladakh)<br>2. North-East's 1st Multi-Purpose Visa Centre: Guwahati (Assam)<br>3. 'World's Best Consumer Bank 2026': State Bank of India (SBI)<br>4. On-demand orbital sunlight satellite pact: Skyroot Aerospace",
+                    options: [
+                        "1 and 2 only",
+                        "2 and 4 only",
+                        "1, 3 and 4 only",
+                        "1, 2, 3 and 4 (All are correct)"
+                    ],
+                    explanation: "Correct Answer is (D). All four statements correctly state facts from the dossier."
+                },
+                correct: 3
+            }
+        ];
+
+        let currentQuestionIdx = 0;
+        let userResponses = new Array(questionsData.length).fill(null);
+        let reviewStatus = new Array(questionsData.length).fill(false);
+        let currentLang = 'hindi';
+        let timeRemaining = 120 * 60;
+        let timerInterval = null;
+
+        function initiateFullScreenTest() {
+            const elem = document.documentElement;
+            if (elem.requestFullscreen) {
+                elem.requestFullscreen().catch(err => console.log(err));
+            } else if (elem.webkitRequestFullscreen) {
+                elem.webkitRequestFullscreen();
+            } else if (elem.msRequestFullscreen) {
+                elem.msRequestFullscreen();
+            }
+
+            document.getElementById('entryModal').classList.add('hidden');
+            document.getElementById('testContainer').classList.remove('hidden');
+            startTimer();
+            renderQuestion();
+        }
+
+        function startTimer() {
+            timerInterval = setInterval(() => {
+                if (timeRemaining <= 0) {
+                    clearInterval(timerInterval);
+                    autoSubmitTest();
+                    return;
+                }
+                timeRemaining--;
+                const mins = Math.floor(timeRemaining / 60);
+                const secs = timeRemaining % 60;
+                document.getElementById('timerDisplay').textContent = 
+                    `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
+            }, 1000);
+        }
+
+        function renderQuestion() {
+            const q = questionsData[currentQuestionIdx];
+            const qContent = q[currentLang];
+
+            document.getElementById('questionNumberIndicator').innerHTML = 
+                `Q. ${currentQuestionIdx + 1} / ${questionsData.length} ${reviewStatus[currentQuestionIdx] ? '<span class="ml-1 text-purple-600 font-bold bg-purple-50 px-1.5 py-0.5 rounded text-[10px] border border-purple-200">REVIEW</span>' : ''}`;
+
+            document.getElementById('questionTextContainer').innerHTML = qContent.question;
+
+            const optContainer = document.getElementById('optionsContainer');
+            optContainer.innerHTML = '';
+
+            const optionLetters = ['(A)', '(B)', '(C)', '(D)'];
+            qContent.options.forEach((opt, idx) => {
+                const isChecked = userResponses[currentQuestionIdx] === idx;
+                const label = document.createElement('label');
+                label.className = `option-label flex items-start gap-2.5 p-3 rounded-xl border transition-all cursor-pointer ${isChecked ? 'border-blue-600 bg-blue-50/70 font-semibold' : 'border-slate-200 bg-white text-slate-700'}`;
+                
+                label.innerHTML = `
+                    <input type="radio" name="cbtOption" value="${idx}" class="mt-0.5 w-4 h-4 text-blue-600 focus:ring-blue-500 cursor-pointer" ${isChecked ? 'checked' : ''} onchange="selectOption(${idx})">
+                    <div class="text-xs md:text-sm leading-normal flex-1">
+                        <span class="font-bold mr-1 text-slate-900">${optionLetters[idx]}</span> ${opt}
+                    </div>
+                `;
+                optContainer.appendChild(label);
+            });
+
+            const reviewBtn = document.getElementById('reviewBtn');
+            const reviewBtnText = document.getElementById('reviewBtnText');
+            if (reviewStatus[currentQuestionIdx]) {
+                reviewBtn.classList.replace('bg-purple-50', 'bg-purple-600');
+                reviewBtn.classList.replace('text-purple-700', 'text-white');
+                reviewBtnText.textContent = "Unmark";
+            } else {
+                reviewBtn.classList.replace('bg-purple-600', 'bg-purple-50');
+                reviewBtn.classList.replace('text-white', 'text-purple-700');
+                reviewBtnText.textContent = "Review";
+            }
+
+            document.getElementById('prevBtn').disabled = (currentQuestionIdx === 0);
+            
+            const nextBtn = document.getElementById('nextBtn');
+            if (currentQuestionIdx === questionsData.length - 1) {
+                nextBtn.innerHTML = `Finish <i class="fa-solid fa-check text-[10px]"></i>`;
+            } else {
+                nextBtn.innerHTML = `Next <i class="fa-solid fa-chevron-right text-[10px]"></i>`;
+            }
+        }
+
+        function selectOption(index) {
+            userResponses[currentQuestionIdx] = index;
+            renderQuestion();
+        }
+
+        function clearCurrentResponse() {
+            userResponses[currentQuestionIdx] = null;
+            renderQuestion();
+        }
+
+        function toggleMarkReview() {
+            reviewStatus[currentQuestionIdx] = !reviewStatus[currentQuestionIdx];
+            renderQuestion();
+        }
+
+        function navigateQuestion(direction) {
+            const newIdx = currentQuestionIdx + direction;
+            if (newIdx >= 0 && newIdx < questionsData.length) {
+                currentQuestionIdx = newIdx;
+                renderQuestion();
+            }
+        }
+
+        function saveAndNext() {
+            if (currentQuestionIdx < questionsData.length - 1) {
+                currentQuestionIdx++;
+                renderQuestion();
+            } else {
+                confirmSubmitTest();
+            }
+        }
+
+        function toggleLanguage() {
+            currentLang = currentLang === 'hindi' ? 'english' : 'hindi';
+            document.getElementById('langDisplay').textContent = currentLang === 'hindi' ? 'English' : 'हिंदी';
+            document.getElementById('solLangDisplay').textContent = currentLang === 'hindi' ? 'English' : 'हिंदी';
+            renderQuestion();
+            if (!document.getElementById('solutionContainer').classList.contains('hidden')) {
+                generateSolutionsUI();
+            }
+        }
+
+        function confirmSubmitTest() {
+            const attemptedCount = userResponses.filter(r => r !== null).length;
+            if (confirm(`Submit Test?\n\nAttempted: ${attemptedCount} / ${questionsData.length}\nUnattempted: ${questionsData.length - attemptedCount}`)) {
+                processTestEvaluation();
+            }
+        }
+
+        function autoSubmitTest() {
+            alert("Time's up! Automatically submitting the test.");
+            processTestEvaluation();
+        }
+
+        function processTestEvaluation() {
+            clearInterval(timerInterval);
+            let correct = 0;
+            let incorrect = 0;
+            let unattempted = 0;
+
+            questionsData.forEach((q, idx) => {
+                const ans = userResponses[idx];
+                if (ans === null) {
+                    unattempted++;
+                } else if (ans === q.correct) {
+                    correct++;
+                } else {
+                    incorrect++;
+                }
+            });
+
+            const totalScore = (correct * 2.00) - (incorrect * 0.20);
+            const totalAttempted = correct + incorrect;
+            const accuracy = totalAttempted > 0 ? Math.round((correct / totalAttempted) * 100) : 0;
+
+            document.getElementById('resScore').textContent = totalScore.toFixed(2);
+            document.getElementById('resAccuracy').textContent = `${accuracy}%`;
+            document.getElementById('resCorrect').textContent = correct;
+            document.getElementById('resIncorrect').textContent = incorrect;
+            document.getElementById('resTotal').textContent = questionsData.length;
+            document.getElementById('resUnattempted').textContent = unattempted;
+
+            document.getElementById('resultModal').classList.remove('hidden');
+        }
+
+        function showSolutionsView() {
+            document.getElementById('resultModal').classList.add('hidden');
+            document.getElementById('testContainer').classList.add('hidden');
+            document.getElementById('solutionContainer').classList.remove('hidden');
+            generateSolutionsUI();
+        }
+
+        function generateSolutionsUI() {
+            const solList = document.getElementById('solutionList');
+            solList.innerHTML = '';
+
+            questionsData.forEach((q, idx) => {
+                const userAns = userResponses[idx];
+                const isCorrect = userAns === q.correct;
+                const isUnattempted = userAns === null;
+                const qContent = q[currentLang];
+                const optionLetters = ['(A)', '(B)', '(C)', '(D)'];
+
+                const card = document.createElement('div');
+                card.className = "bg-white p-3.5 md:p-5 rounded-xl border border-slate-200 shadow-sm";
+
+                let statusBadge = '';
+                if (isUnattempted) {
+                    statusBadge = `<span class="bg-slate-100 text-slate-600 font-bold px-2 py-0.5 rounded text-[10px]">Unattempted</span>`;
+                } else if (isCorrect) {
+                    statusBadge = `<span class="bg-emerald-100 text-emerald-700 font-bold px-2 py-0.5 rounded text-[10px]">+2.00 Correct</span>`;
+                } else {
+                    statusBadge = `<span class="bg-rose-100 text-rose-700 font-bold px-2 py-0.5 rounded text-[10px]">-0.20 Incorrect</span>`;
+                }
+
+                card.innerHTML = `
+                    <div class="flex items-center justify-between pb-2 mb-2 border-b border-slate-100">
+                        <span class="text-xs font-bold text-slate-500">Question ${idx + 1}</span>
+                        ${statusBadge}
+                    </div>
+                    <div class="text-xs md:text-sm text-slate-800 font-medium mb-3">${qContent.question}</div>
+                    <div class="space-y-1.5 mb-3">
+                        ${qContent.options.map((opt, oIdx) => {
+                            let style = "border-slate-200 bg-slate-50 text-slate-700";
+                            if (oIdx === q.correct) {
+                                style = "border-emerald-500 bg-emerald-50 text-emerald-900 font-bold";
+                            } else if (oIdx === userAns) {
+                                style = "border-rose-400 bg-rose-50 text-rose-900 font-semibold";
+                            }
+                            return `<div class="p-2 rounded-lg border text-xs flex items-center justify-between ${style}">
+                                <span><b>${optionLetters[oIdx]}</b> ${opt}</span>
+                                ${oIdx === q.correct ? '<i class="fa-solid fa-check text-emerald-600 font-bold"></i>' : (oIdx === userAns ? '<i class="fa-solid fa-xmark text-rose-600 font-bold"></i>' : '')}
+                            </div>`;
+                        }).join('')}
+                    </div>
+                    <div class="p-3 bg-blue-50 border-l-4 border-blue-600 rounded-r-xl text-xs text-slate-800 space-y-1">
+                        <p class="font-bold text-blue-900 flex items-center gap-1">
+                            <i class="fa-solid fa-lightbulb text-blue-600"></i> Explanation:
+                        </p>
+                        <p class="leading-relaxed text-[11px] md:text-xs">${qContent.explanation}</p>
+                        <div class="pt-1.5 text-right">
+                            <a href="https://t.me/GYANVERSET" target="_blank" class="text-[10px] font-bold text-blue-600 hover:underline">
+                                @GYANVERSET
+                            </a>
+                        </div>
+                    </div>
+                `;
+                solList.appendChild(card);
+            });
+        }
+    </script>
+</body>
+</html>
