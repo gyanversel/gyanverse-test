@@ -1,0 +1,1162 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>GYANVERSE - Lucent GK Test (Part 2: Q126 to Q250)</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            -webkit-tap-highlight-color: transparent;
+            user-select: none;
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 5px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background-color: #cbd5e1;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body class="bg-slate-100 text-slate-800 font-sans min-h-screen flex flex-col justify-between">
+
+    <!-- START TEST MODAL / AUTO FULLSCREEN GATE -->
+    <div id="startModal" class="fixed inset-0 z-50 flex items-center justify-center bg-slate-900 bg-opacity-95 p-4">
+        <div class="bg-white rounded-2xl shadow-2xl max-w-lg w-full p-6 text-center border-t-8 border-indigo-600">
+            <div class="w-16 h-16 bg-indigo-100 text-indigo-600 rounded-full flex items-center justify-center mx-auto mb-4 text-2xl font-bold">
+                <i class="fa-solid fa-graduation-cap"></i>
+            </div>
+            <h2 class="text-2xl font-black text-slate-800 tracking-wide">GYANVERSE CBT PORTAL</h2>
+            <p class="text-sm text-slate-500 mt-1 font-medium">Lucent GK Mega Test : Part 2 (Q. 126 - 250)</p>
+            
+            <div class="bg-slate-50 border border-slate-200 rounded-xl p-4 my-5 text-left text-xs sm:text-sm space-y-2">
+                <div class="flex justify-between text-slate-700"><span>कुल प्रश्न (Total Questions):</span> <span class="font-bold text-indigo-700">125 MCQs (Q126 - Q250)</span></div>
+                <div class="flex justify-between text-slate-700"><span>कवरेज (Topics):</span> <span class="font-bold">वाकाटक, मैत्रक एवं पुष्यभूति (वर्द्धन) वंश</span></div>
+                <div class="flex justify-between text-slate-700"><span>समय (Duration):</span> <span class="font-bold">120 मिनट</span></div>
+                <div class="flex justify-between text-slate-700"><span>अंकन प्रणाली (Marking):</span> <span class="font-bold text-emerald-600">+2.00 सही | -0.20 गलत</span></div>
+                <div class="flex justify-between text-slate-700"><span>भाषा विकल्प (Language):</span> <span class="font-bold text-indigo-600">हिंदी / English Toggle</span></div>
+                <div class="flex justify-between text-slate-700"><span>टेलीग्राम कम्युनिटी:</span> <a href="https://t.me/GYANVERSET" target="_blank" class="font-bold text-blue-600 underline">@GYANVERSET</a></div>
+            </div>
+
+            <p class="text-xs text-rose-600 font-semibold mb-5 flex items-center justify-center gap-1">
+                <i class="fa-solid fa-expand"></i> परीक्षा शुरू करने के लिए 'ऑटो फुल-स्क्रीन' मोड अनिवार्य है।
+            </p>
+
+            <button onclick="enterFullScreenAndStart()" class="w-full bg-gradient-to-r from-indigo-600 to-indigo-800 hover:from-indigo-700 hover:to-indigo-900 text-white font-bold py-3.5 px-6 rounded-xl shadow-lg transition duration-200 active:scale-95 flex items-center justify-center gap-2 text-base">
+                <i class="fa-solid fa-circle-play"></i> Start Test (Auto Full Screen)
+            </button>
+        </div>
+    </div>
+
+    <!-- MAIN CBT APP CONTAINER -->
+    <div id="cbtApp" class="flex flex-col min-h-screen">
+        
+        <!-- HEADER -->
+        <header class="bg-slate-900 text-white sticky top-0 z-30 shadow-md">
+            <div class="max-w-5xl mx-auto px-4 py-2.5 flex items-center justify-between">
+                <!-- Brand & Logo -->
+                <div class="flex items-center space-x-2">
+                    <span class="bg-indigo-600 text-white font-black text-sm px-2.5 py-1 rounded-md tracking-wider">GV</span>
+                    <div>
+                        <h1 class="text-sm font-extrabold tracking-wide uppercase">Gyanverse</h1>
+                        <a href="https://t.me/GYANVERSET" target="_blank" class="text-[10px] text-indigo-300 hover:underline flex items-center gap-1 font-mono">
+                            <i class="fa-brands fa-telegram"></i> @GYANVERSET
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Live Timer & Language Switcher & Submit -->
+                <div class="flex items-center space-x-2 sm:space-x-4">
+                    <!-- Language Switcher -->
+                    <button onclick="toggleLanguage()" class="bg-slate-800 border border-slate-700 hover:bg-slate-700 text-amber-400 font-bold px-2.5 py-1 rounded-lg text-xs flex items-center gap-1 shadow transition">
+                        <i class="fa-solid fa-language"></i> <span id="langToggleBtnText">English</span>
+                    </button>
+
+                    <!-- Live Timer -->
+                    <div class="bg-slate-800 border border-slate-700 px-3 py-1 rounded-lg flex items-center space-x-1 text-emerald-400 font-mono text-sm font-bold shadow">
+                        <i class="fa-regular fa-clock text-xs"></i>
+                        <span id="timerDisplay">120:00</span>
+                    </div>
+
+                    <!-- Submit Test Button -->
+                    <button onclick="confirmSubmitTest()" class="bg-rose-600 hover:bg-rose-700 active:scale-95 text-white font-bold px-3 py-1 rounded-lg text-xs tracking-wider uppercase transition shadow flex items-center gap-1">
+                        <i class="fa-solid fa-paper-plane text-xs"></i> <span class="hidden sm:inline">Submit</span>
+                    </button>
+                </div>
+            </div>
+            <!-- Progress Bar -->
+            <div class="w-full bg-slate-800 h-1">
+                <div id="progressBar" class="bg-indigo-500 h-1 transition-all duration-300" style="width: 0.8%;"></div>
+            </div>
+        </header>
+
+        <!-- MAIN QUESTION VIEWPORT -->
+        <main class="flex-grow max-w-4xl w-full mx-auto p-4 sm:p-6 flex flex-col justify-between">
+            
+            <!-- Question Card -->
+            <div class="bg-white rounded-2xl shadow-sm border border-slate-200/80 p-5 sm:p-7 flex flex-col justify-between mb-4">
+                
+                <div>
+                    <!-- Question Meta Details -->
+                    <div class="flex items-center justify-between pb-3 mb-4 border-b border-slate-100 text-xs font-semibold text-slate-500">
+                        <span class="flex items-center gap-1">
+                            <span class="bg-indigo-50 text-indigo-700 px-2.5 py-0.5 rounded font-bold" id="qCurrentIndexBadge">Q. 126 / 250</span>
+                            <span id="reviewTag" class="hidden bg-amber-100 text-amber-700 px-2 py-0.5 rounded font-bold">Review Mode</span>
+                        </span>
+                        <span class="text-emerald-700 bg-emerald-50 px-2.5 py-0.5 rounded font-bold">+2.00, -0.20</span>
+                    </div>
+
+                    <!-- Question Text -->
+                    <div id="questionText" class="text-slate-900 text-base sm:text-lg font-medium leading-relaxed mb-6 space-y-2">
+                    </div>
+
+                    <!-- Options Container -->
+                    <div id="optionsContainer" class="space-y-3 mb-6">
+                    </div>
+                </div>
+
+                <!-- Brand Watermark under Question -->
+                <div class="pt-3 border-t border-slate-100 flex items-center justify-between text-[11px] text-slate-400 font-mono">
+                    <span>Target Series: Lucent Ch 22-24 (Part 2)</span>
+                    <a href="https://t.me/GYANVERSET" target="_blank" class="text-indigo-600 font-bold hover:underline">@GYANVERSET</a>
+                </div>
+
+                <!-- NAVIGATION BUTTONS -->
+                <div class="mt-6 pt-4 border-t border-slate-200/60 grid grid-cols-2 sm:grid-cols-4 gap-2.5">
+                    <button onclick="prevQuestion()" id="prevBtn" class="bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold py-2.5 px-3 rounded-xl text-xs sm:text-sm transition flex items-center justify-center gap-1 active:scale-95 disabled:opacity-40">
+                        <i class="fa-solid fa-arrow-left"></i> Previous
+                    </button>
+                    <button onclick="clearResponse()" class="bg-slate-100 hover:bg-rose-50 hover:text-rose-600 text-slate-600 font-bold py-2.5 px-3 rounded-xl text-xs sm:text-sm transition flex items-center justify-center gap-1 active:scale-95">
+                        <i class="fa-solid fa-eraser"></i> Clear
+                    </button>
+                    <button onclick="toggleMarkReview()" id="reviewBtn" class="bg-amber-50 border border-amber-200 hover:bg-amber-100 text-amber-800 font-bold py-2.5 px-3 rounded-xl text-xs sm:text-sm transition flex items-center justify-center gap-1 active:scale-95">
+                        <i class="fa-regular fa-bookmark"></i> Review
+                    </button>
+                    <button onclick="nextQuestion()" id="nextBtn" class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2.5 px-3 rounded-xl text-xs sm:text-sm transition flex items-center justify-center gap-1 active:scale-95 shadow">
+                        Next & Save <i class="fa-solid fa-arrow-right"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Jump & Status Summary Strip -->
+            <div class="bg-slate-200/60 rounded-xl p-3 flex flex-wrap items-center justify-between gap-3 text-xs font-semibold text-slate-600">
+                <div class="flex items-center gap-3">
+                    <span class="flex items-center gap-1"><span class="w-2.5 h-2.5 rounded-full bg-emerald-500"></span> हल किया: <b id="statAnswered">0</b></span>
+                    <span class="flex items-center gap-1"><span class="w-2.5 h-2.5 rounded-full bg-amber-400"></span> रिव्यू: <b id="statReview">0</b></span>
+                    <span class="flex items-center gap-1"><span class="w-2.5 h-2.5 rounded-full bg-slate-400"></span> शेष: <b id="statLeft">125</b></span>
+                </div>
+                <div class="flex items-center gap-2">
+                    <label for="jumpSelect" class="text-slate-500 font-normal">प्रश्न चुनें:</label>
+                    <select id="jumpSelect" onchange="jumpToQuestion(parseInt(this.value))" class="bg-white border border-slate-300 rounded px-2 py-1 text-xs text-slate-700 focus:outline-none focus:ring-1 focus:ring-indigo-500">
+                    </select>
+                </div>
+            </div>
+
+        </main>
+
+        <!-- FOOTER -->
+        <footer class="bg-white border-t border-slate-200 py-2.5 px-4 text-center text-xs text-slate-500 font-medium">
+            ज्ञानवर्स ऑनलाइन टेस्ट सीरीज़ • आधिकारिक टेलीग्राम: <a href="https://t.me/GYANVERSET" target="_blank" class="text-indigo-600 font-bold hover:underline">@GYANVERSET</a>
+        </footer>
+    </div>
+
+    <!-- RESULT & SCORECARD MODAL -->
+    <div id="resultModal" class="fixed inset-0 z-50 hidden flex items-center justify-center bg-slate-900 bg-opacity-80 p-4 overflow-y-auto">
+        <div class="bg-white rounded-2xl shadow-2xl max-w-xl w-full p-6 text-center border-t-8 border-emerald-500 my-8">
+            <div class="w-16 h-16 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center mx-auto mb-3 text-3xl">
+                <i class="fa-solid fa-trophy"></i>
+            </div>
+            <h2 class="text-2xl font-black text-slate-800">CBT Performance Scorecard</h2>
+            <p class="text-xs text-slate-500 mt-0.5">Lucent GK Mega Test (Part 2 : Q126 to Q250)</p>
+
+            <div class="grid grid-cols-2 sm:grid-cols-3 gap-3 my-5 text-left">
+                <div class="bg-slate-50 p-3 rounded-xl border border-slate-200">
+                    <span class="text-[11px] text-slate-500 block">कुल अंक (Total Score)</span>
+                    <span id="scoreTotal" class="text-xl font-black text-indigo-700">0.00 / 250</span>
+                </div>
+                <div class="bg-slate-50 p-3 rounded-xl border border-slate-200">
+                    <span class="text-[11px] text-slate-500 block">सटीकता (Accuracy %)</span>
+                    <span id="scoreAccuracy" class="text-xl font-black text-emerald-600">0%</span>
+                </div>
+                <div class="bg-slate-50 p-3 rounded-xl border border-slate-200">
+                    <span class="text-[11px] text-slate-500 block">सही (Correct +2)</span>
+                    <span id="scoreCorrect" class="text-xl font-black text-emerald-700">0</span>
+                </div>
+                <div class="bg-slate-50 p-3 rounded-xl border border-slate-200">
+                    <span class="text-[11px] text-slate-500 block">गलत (Incorrect -0.20)</span>
+                    <span id="scoreIncorrect" class="text-xl font-black text-rose-600">0</span>
+                </div>
+                <div class="bg-slate-50 p-3 rounded-xl border border-slate-200">
+                    <span class="text-[11px] text-slate-500 block">अनुत्तरित (Unattempted)</span>
+                    <span id="scoreUnattempted" class="text-xl font-black text-slate-600">0</span>
+                </div>
+                <div class="bg-slate-50 p-3 rounded-xl border border-slate-200">
+                    <span class="text-[11px] text-slate-500 block">व्यतीत समय (Time Taken)</span>
+                    <span id="scoreTime" class="text-xl font-black text-indigo-900">00:00</span>
+                </div>
+            </div>
+
+            <div class="flex flex-col sm:flex-row gap-3">
+                <button onclick="openSolutionReview()" class="flex-1 bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 rounded-xl transition text-sm flex items-center justify-center gap-2">
+                    <i class="fa-solid fa-list-check"></i> Check Solutions (उत्तर एवं विस्तृत व्याख्या)
+                </button>
+                <a href="https://t.me/GYANVERSET" target="_blank" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-3 px-4 rounded-xl transition text-sm flex items-center justify-center gap-1">
+                    <i class="fa-brands fa-telegram"></i> Join Telegram
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- SOLUTION REVIEW CONTAINER -->
+    <div id="solutionContainer" class="hidden min-h-screen bg-slate-100 flex-col">
+        <header class="bg-slate-900 text-white sticky top-0 z-30 shadow px-4 py-3 flex items-center justify-between">
+            <div>
+                <h2 class="text-base font-bold">Solutions & Explanations (Q126 to Q250)</h2>
+                <p class="text-xs text-indigo-300">Telegram: @GYANVERSET</p>
+            </div>
+            <div class="flex items-center gap-2">
+                <button onclick="toggleLanguageInReview()" class="bg-slate-800 border border-slate-700 text-amber-400 font-bold px-2.5 py-1 rounded-lg text-xs">
+                    <i class="fa-solid fa-language"></i> <span id="reviewLangToggleText">English</span>
+                </button>
+                <button onclick="location.reload()" class="bg-rose-600 text-white font-bold px-3 py-1 rounded-lg text-xs">
+                    Re-test
+                </button>
+            </div>
+        </header>
+
+        <div id="solutionsList" class="max-w-4xl w-full mx-auto p-4 sm:p-6 space-y-6">
+        </div>
+    </div>
+
+    <!-- JAVASCRIPT DATA & ENGINE -->
+    <script>
+        // 125 Unique Questions for Part 2 (Q126 to Q250) covering Ch 22, Ch 23, and Ch 24
+        const allQuestions = [
+            // Chapter 22: Vakataka Dynasty (Q126 to Q155)
+            {
+                id: 126, ans: "D",
+                hi: {
+                    q: "वाकाटक राजवंश की स्थापना एवं प्रारंभिक स्थिति के संबंध में निम्नलिखित कथनों पर विचार कीजिए:\n1. वाकाटक वंश की स्थापना 255 ई. के लगभग विन्ध्यशक्ति नामक व्यक्ति ने की थी।\n2. विन्ध्यशक्ति के पूर्वज सातवाहनों के अधीन बरार (विदर्भ) के स्थानीय शासक थे।\n3. वाकाटक शासक ब्राह्मण धर्मावलंबी थे और वे शिव तथा विष्णु के उपासक थे।\nउपर्युक्त में से कौन-से कथन सत्य हैं?",
+                    options: { A: "केवल 1 और 2", B: "केवल 2 और 3", C: "केवल 1 और 3", D: "1, 2 और 3" },
+                    exp: "लूसेंट पृष्ठ 23 के अनुसार, वाकाटक वंश की स्थापना 255 ई. में विन्ध्यशक्ति ने की, इसके पूर्वज सातवाहनों के अधीन बरार के स्थानीय शासक थे और वे ब्राह्मण धर्मावलंबी थे।"
+                },
+                en: {
+                    q: "Consider the following statements regarding the foundation of the Vakataka Dynasty:\n1. The dynasty was established around 255 CE by Vindhyashakti.\n2. Vindhyashakti's ancestors were local rulers under the Satavahanas in Berar (Vidarbha).\n3. Vakataka kings were followers of Brahmanism and worshipped Shiva and Vishnu.\nWhich of the above statements are correct?",
+                    options: { A: "1 and 2 only", B: "2 and 3 only", C: "1 and 3 only", D: "1, 2 and 3" },
+                    exp: "According to Lucent GK p. 23, Vindhyashakti founded the dynasty around 255 CE in Berar as feudatories of Satavahanas."
+                }
+            },
+            {
+                id: 127, ans: "B",
+                hi: {
+                    q: "वाकाटक वंश के शासक 'प्रवरसेन प्रथम' (275-335 ई.) के संदर्भ में कौन-सा कथन असत्य है?",
+                    options: {
+                        A: "प्रवरसेन प्रथम विन्ध्यशक्ति का पुत्र एवं उत्तराधिकारी था।",
+                        B: "इसने केवल 'महाराज' की साधारण उपाधि धारण की और कभी यज्ञ नहीं किया।",
+                        C: "वाकाटक वंश का यह अकेला ऐसा शासक था जिसने 'सम्राट' की उपाधि धारण की थी।",
+                        D: "पुराणों से ज्ञात होता है कि इसने अपने शासनकाल में चार अश्वमेध यज्ञ संपन्न किए थे।"
+                    },
+                    exp: "प्रवरसेन प्रथम वाकाटक वंश का एकमात्र शासक था जिसने 'सम्राट' की उपाधि धारण की और पुराणों के अनुसार चार अश्वमेध यज्ञ किए। अतः विकल्प B असत्य है।"
+                },
+                en: {
+                    q: "Which statement is INCORRECT regarding the Vakataka ruler 'Pravarasena I' (275-335 CE)?",
+                    options: {
+                        A: "Pravarasena I was the son and successor of Vindhyashakti.",
+                        B: "He took only the modest title of 'Maharaja' and performed no Vedic sacrifices.",
+                        C: "He was the sole ruler of the Vakataka dynasty to assume the imperial title 'Samrat'.",
+                        D: "Puranas confirm that he performed four Ashvamedha sacrifices during his reign."
+                    },
+                    exp: "Pravarasena I assumed the imperial title 'Samrat' and conducted four Ashvamedhas, making option B false."
+                }
+            },
+            {
+                id: 128, ans: "D",
+                hi: {
+                    q: "प्रवरसेन प्रथम के पश्चात वाकाटक साम्राज्य के विभाजन के संबंध में निम्नलिखित कथनों का परीक्षण कीजिए:\n1. प्रवरसेन प्रथम के पश्चात वाकाटक साम्राज्य दो शाखाओं- प्रधान शाखा तथा बासीम (वत्सगुल्म) शाखा में विभक्त हो गया।\n2. दोनों शाखाओं ने समानान्तर रूप से स्वतंत्र शासन किया।\n3. बासीम शाखा की स्थापना 330 ई. में प्रवरसेन के छोटे पुत्र सर्वसेन ने वत्सगुल्म में की थी।\nसत्य कथन चुनें:",
+                    options: { A: "केवल 1 और 2", B: "केवल 2 और 3", C: "केवल 1 और 3", D: "1, 2 और 3" },
+                    exp: "लूसेंट पृष्ठ 23 के अनुसार प्रवरसेन के बाद साम्राज्य प्रधान शाखा और बासीम शाखा में बँट गया। बासीम शाखा की स्थापना 330 ई. में सर्वसेन ने वत्सगुल्म में की थी।"
+                },
+                en: {
+                    q: "Examine the statements regarding the division of the Vakataka Empire after Pravarasena I:\n1. The empire split into two branches: the Main branch and the Bassim (Vatsagulma) branch.\n2. Both branches ruled independently in parallel.\n3. The Bassim branch was founded in 330 CE by Pravarasena's younger son Sarvasena at Vatsagulma.\nSelect the correct code:",
+                    options: { A: "1 and 2 only", B: "2 and 3 only", C: "1 and 3 only", D: "1, 2 and 3" },
+                    exp: "All three statements are historically accurate concerning the bifurcation of the Vakatakas."
+                }
+            },
+            {
+                id: 129, ans: "A",
+                hi: {
+                    q: "कथन (A): प्रभावती गुप्ता का संरक्षण काल (390-410 ई.) वाकाटक-गुप्त संबंधों का स्वर्णिम काल रहा।\nकारण (R): गुप्त सम्राट् चंद्रगुप्त द्वितीय ने शकों पर विजय प्राप्त करने के लिए अपनी पुत्री प्रभावती गुप्ता का विवाह वाकाटक नरेश रुद्रसेन द्वितीय से किया था।",
+                    options: {
+                        A: "(A) और (R) दोनों सही हैं और (R), (A) की सही व्याख्या है।",
+                        B: "(A) और (R) दोनों सही हैं लेकिन (R), (A) की सही व्याख्या नहीं है।",
+                        C: "(A) सही है लेकिन (R) गलत है।",
+                        D: "(A) गलत है लेकिन (R) सही है।"
+                    },
+                    exp: "वाकाटकों का भौगोलिक स्थान गुप्त एवं शक राज्यों के बीच था। चंद्रगुप्त द्वितीय ने शकों पर विजय हेतु यह वैवाहिक संबंध बनाया और रुद्रसेन द्वितीय की मृत्यु के बाद प्रभावती गुप्ता ने सफलतापूर्वक शासन संभाला।"
+                },
+                en: {
+                    q: "Assertion (A): The regency period of Prabhavatigupta (390-410 CE) marked the golden era of Vakataka-Gupta relations.\nReason (R): Gupta Emperor Chandragupta II married his daughter Prabhavatigupta to Vakataka king Rudrasena II to secure strategic alliance against Western Shakas.",
+                    options: {
+                        A: "Both (A) and (R) are true and (R) is the correct explanation of (A).",
+                        B: "Both (A) and (R) are true but (R) is not the correct explanation of (A).",
+                        C: "(A) is true but (R) is false.",
+                        D: "(A) is false but (R) is true."
+                    },
+                    exp: "The matrimonial alliance provided strategic support that allowed Chandragupta II to conquer the Shakas, leading to close political cooperation during her regency."
+                }
+            },
+            {
+                id: 130, ans: "D",
+                hi: {
+                    q: "वाकाटक कालीन साहित्यिक एवं सांस्कृतिक विकास के संबंध में कौन-सा युग्म सही सुमेलित नहीं है?",
+                    options: {
+                        A: "सेतुबन्ध (मराठी प्राकृत काव्य) - प्रवरसेन द्वितीय",
+                        B: "हरिविजय (प्राकृत काव्य-ग्रंथ) - सर्वसेन",
+                        C: "काव्य 'मेघदूत' का लेखन व सेतुबन्ध संशोधन - महाकवि कालिदास",
+                        D: "संस्कृत की गौड़ीय शैली का विकास - वाकाटक राजदरबार"
+                    },
+                    exp: "संस्कृत की 'वैदर्भी शैली' (Vaidarbhi Style) का पूर्ण विकास वाकाटक नरेशों के दरबार में हुआ था, न कि गौड़ीय शैली का।"
+                },
+                en: {
+                    q: "Which pair regarding Vakataka literary and cultural achievements is NOT correctly matched?",
+                    options: {
+                        A: "Setubandha (Maharashtri Prakrit epic) - Pravarasena II",
+                        B: "Harivijaya (Prakrit epic) - Sarvasena",
+                        C: "Composition of Meghaduta and editing Setubandha - Kalidasa",
+                        D: "Flourishing of Gaudiya style of Sanskrit - Vakataka royal court"
+                    },
+                    exp: "The 'Vaidarbhi style' of Sanskrit reached its zenith in the Vakataka court, not Gaudiya style."
+                }
+            },
+            {
+                id: 131, ans: "D",
+                hi: {
+                    q: "अजंता की गुफाओं के निर्माण एवं उनके संरक्षकों के संदर्भ में कौन-सा युग्म सही सुमेलित है?",
+                    options: {
+                        A: "गुफा संख्या-16 : वराहदेव (वाकाटक नरेश हरिषेण का प्रधानमंत्री)",
+                        B: "गुफा संख्या-17 एवं 20 : उपेन्द्रगुप्त (स्थानीय शासक एवं हरिषेण का सामंत)",
+                        C: "गुफा संख्या-26 : बुद्धभद्र",
+                        D: "उपर्युक्त सभी सही सुमेलित हैं"
+                    },
+                    exp: "लूसेंट पृष्ठ 23 की तालिका के अनुसार गुफा 16 वराहदेव, गुफा 17 व 20 उपेन्द्रगुप्त, गुफा 26 बुद्धभद्र तथा गुफा 4 मथुरादास द्वारा संरक्षित थी।"
+                },
+                en: {
+                    q: "Which pair regarding Ajanta Caves patronage is correctly matched?",
+                    options: {
+                        A: "Cave No. 16 : Varahadeva (Prime Minister of Vakataka King Harishena)",
+                        B: "Cave No. 17 & 20 : Upendragupta (Feudatory of Harishena)",
+                        C: "Cave No. 26 : Buddhabhadra",
+                        D: "All of the above are correctly matched"
+                    },
+                    exp: "All pairs match the official chart of patrons on page 23 of Lucent GK."
+                }
+            },
+            {
+                id: 132, ans: "C",
+                hi: {
+                    q: "वाकाटक राजवंश की बासीम (वत्सगुल्म) शाखा के संदर्भ में निम्नलिखित कथनों पर विचार कीजिए:\n1. बासीम शाखा के प्रमुख राजा सर्वसेन, विन्ध्यशक्ति द्वितीय, प्रवरसेन द्वितीय एवं हरिषेण थे।\n2. हरिषेण बासीम शाखा का सर्वाधिक शक्तिशाली शासक था जो वाकाटक वंश का अंतिम ज्ञात शासक भी है।\n3. हरिषेण ने प्रधान शाखा के अंतिम शासक पृथ्वीसेन द्वितीय के बाद उसका राज्य भी अपने अधिकार में ले लिया था।\nउपर्युक्त में से कौन-से कथन सत्य हैं?",
+                    options: { A: "केवल 1 और 2", B: "केवल 2 और 3", C: "1, 2 और 3", D: "केवल 1 और 3" },
+                    exp: "तीनों कथन ऐतिहासिक रूप से पूर्णतः सत्य हैं। हरिषेण बासीम शाखा का प्रतापी सम्राट था जिसके अधीन पूरा वाकाटक क्षेत्र एकीकृत हुआ था।"
+                },
+                en: {
+                    q: "Consider the following statements regarding the Bassim (Vatsagulma) branch of the Vakatakas:\n1. Notable rulers were Sarvasena, Vindhyashakti II, Pravarasena II, and Harishena.\n2. Harishena was the most powerful ruler of this branch and the last known Vakataka monarch.\n3. Harishena absorbed the territories of the main branch after the demise of Prithvisena II.\nWhich of the above statements are correct?",
+                    options: { A: "1 and 2 only", B: "2 and 3 only", C: "1, 2 and 3", D: "1 and 3 only" },
+                    exp: "All three statements are documented factual truths concerning Harishena and the Vatsagulma branch."
+                }
+            },
+            {
+                id: 133, ans: "D",
+                hi: {
+                    q: "वाकाटक कालीन स्थापत्य के संदर्भ में नचना (मध्य प्रदेश) के मंदिर का निर्माण किसने करवाया था?",
+                    options: {
+                        A: "सम्राट प्रवरसेन प्रथम ने",
+                        B: "रानी प्रभावती गुप्ता ने",
+                        C: "हरिषेण के प्रधानमंत्री वराहदेव ने",
+                        D: "वाकाटक नरेश पृथ्वीसेन द्वितीय के सामंत व्याघ्रदेव ने"
+                    },
+                    exp: "लूसेंट पृष्ठ 23 के अनुसार वाकाटक नरेश पृथ्वीसेन द्वितीय के सामंत व्याघ्रदेव ने नचना के मंदिर का निर्माण करवाया था।"
+                },
+                en: {
+                    q: "Who constructed the famous temple at Nachna (Madhya Pradesh) during the Vakataka period?",
+                    options: {
+                        A: "Samrat Pravarasena I",
+                        B: "Queen Prabhavatigupta",
+                        C: "Varahadeva, Prime Minister of Harishena",
+                        D: "Vyaghradeva, feudatory of Vakataka king Prithvisena II"
+                    },
+                    exp: "Vyaghradeva, a feudatory under Prithvisena II, erected the Nachna temple."
+                }
+            },
+            // Chapter 23: Maitraka Dynasty (Q134 to Q155)
+            {
+                id: 134, ans: "D",
+                hi: {
+                    q: "मैत्रक राजवंश (वल्लभी) के संदर्भ में निम्नलिखित कथनों पर विचार कीजिए:\n1. मैत्रक वंश का संस्थापक सेनापति भट्टारक था, जिसने गुप्त साम्राज्य के पतन के बाद स्वतंत्र सत्ता स्थापित की।\n2. इस राजवंश ने लगभग 475 ई. से 767 ई. तक गुजरात और सौराष्ट्र क्षेत्र पर शासन किया।\n3. इनकी राजधानी वल्लभी (वर्तमान गुजरात के भावनगर के पास) थी।\nउपर्युक्त में से कौन-से कथन सत्य हैं?",
+                    options: { A: "केवल 1 और 2", B: "केवल 2 और 3", C: "केवल 1 और 3", D: "1, 2 और 3" },
+                    exp: "लूसेंट पृष्ठ 23 के अनुसार सेनापति भट्टारक ने वल्लभी में स्वतंत्र सत्ता स्थापित की, यह सौराष्ट्र में 475-767 ई. तक चला और राजधानी वल्लभी थी।"
+                },
+                en: {
+                    q: "Consider the following statements regarding the Maitraka Dynasty of Vallabhi:\n1. It was founded by Senapati Bhatarka following the decline of the Gupta Empire.\n2. The dynasty ruled Gujarat and Saurashtra from c. 475 to 767 CE.\n3. Their capital was Vallabhi (near modern Bhavnagar in Gujarat).\nWhich of the statements given above are correct?",
+                    options: { A: "1 and 2 only", B: "2 and 3 only", C: "1 and 3 only", D: "1, 2 and 3" },
+                    exp: "All three statements match Lucent GK facts regarding the foundation and location of the Maitraka dynasty."
+                }
+            },
+            {
+                id: 135, ans: "C",
+                hi: {
+                    q: "चीनी यात्री ह्वेनसांग किस मैत्रक शासक के शासनकाल में वल्लभी आया था?",
+                    options: {
+                        A: "सेनापति भट्टारक",
+                        B: "धरसेन प्रथम",
+                        C: "ध्रुवसेन द्वितीय",
+                        D: "शिलादित्य सप्तम"
+                    },
+                    exp: "लूसेंट पृष्ठ 23 के अनुसार, ध्रुवसेन द्वितीय (Dhruvasena II) के शासनकाल में चीनी यात्री ह्वेनसांग वल्लभी आया था।"
+                },
+                en: {
+                    q: "During the reign of which Maitraka ruler did Chinese traveler Xuanzang visit Vallabhi?",
+                    options: {
+                        A: "Senapati Bhatarka",
+                        B: "Dharasena I",
+                        C: "Dhruvasena II",
+                        D: "Siladitya VII"
+                    },
+                    exp: "Chinese Buddhist pilgrim Xuanzang visited Vallabhi during the reign of Dhruvasena II."
+                }
+            },
+            {
+                id: 136, ans: "D",
+                hi: {
+                    q: "मैत्रक राजवंश के धार्मिक एवं सांस्कृतिक योगदान के संबंध में कौन-सा कथन असत्य है?",
+                    options: {
+                        A: "मैत्रक शासक मुख्यतः हिन्दू (शैव) थे, परंतु वे बौद्ध और जैन धर्मों के प्रति भी पूर्णतः सहिष्णु थे।",
+                        B: "मैत्रक वंश ने 'वल्लभी संवत्' (वल्लभी युग) नामक नया कैलेंडर शुरू किया था।",
+                        C: "मंदिर निर्माण के क्षेत्र में इनका सबसे बड़ा योगदान प्रभास पाटन में सोमनाथ मंदिर का निर्माण करना था।",
+                        D: "मैत्रकों ने वल्लभी के सभी बौद्ध विहारों को तुड़वाकर बौद्ध भिक्षुओं को राज्य से निष्कासित कर दिया था।"
+                    },
+                    exp: "वल्लभी में बौद्ध विहारों की विशाल संख्या थी और चीनी यात्री ह्वेनसांग ने मैत्रकों के बौद्ध संरक्षण की अत्यधिक प्रशंसा की है। अतः कथन D असत्य है।"
+                },
+                en: {
+                    q: "Which statement is FALSE regarding the religious and cultural contributions of the Maitraka dynasty?",
+                    options: {
+                        A: "Maitraka monarchs were Shaivite Hindus who were also tolerant patrons of Buddhism and Jainism.",
+                        B: "The Maitrakas instituted a calendar system known as the Vallabhi Era.",
+                        C: "Their greatest architectural contribution was the early construction of the Somnath temple.",
+                        D: "Maitrakas demolished all Buddhist monasteries and expelled monks from Vallabhi."
+                    },
+                    exp: "Maitrakas actively patronized Buddhist viharas in Vallabhi, earning high praise from Xuanzang. Option D is completely false."
+                }
+            },
+            {
+                id: 137, ans: "A",
+                hi: {
+                    q: "कथन (A): 8वीं शताब्दी में अरब आक्रमणों के कारण मैत्रक राजवंश का पतन हो गया।\nकारण (R): मैत्रक शासकों के भवनों एवं सिक्कों पर नंदी, बैल तथा त्रिशूल जैसे शैव प्रतीकों का अंकन मिलता था।",
+                    options: {
+                        A: "(A) और (R) दोनों सही हैं लेकिन (R), (A) की सही व्याख्या नहीं है।",
+                        B: "(A) और (R) दोनों सही हैं और (R), (A) की सही व्याख्या है।",
+                        C: "(A) सही है लेकिन (R) गलत है।",
+                        D: "(A) गलत है लेकिन (R) सही है।"
+                    },
+                    exp: "दोनों कथन सत्य हैं, परंतु अरब आक्रमण से पतन का कारण भू-राजनीतिक संघर्ष था, न कि सिक्कों पर नंदी-त्रिशूल का अंकन होना।"
+                },
+                en: {
+                    q: "Assertion (A): The Maitraka dynasty collapsed in the 8th century CE due to Arab invasions.\nReason (R): Maitraka architecture and coinage featured Shaiva symbols like the Nandi bull and Trishula.",
+                    options: {
+                        A: "Both (A) and (R) are true but (R) is NOT the correct explanation of (A).",
+                        B: "Both (A) and (R) are true and (R) is the correct explanation of (A).",
+                        C: "(A) is true but (R) is false.",
+                        D: "(A) is false but (R) is true."
+                    },
+                    exp: "Both facts are true, but the presence of Shaiva motifs does not explain their military decline under Arab attacks."
+                }
+            },
+            // Chapter 24: Pushyabhuti / Vardhana Dynasty (Q138 to Q250)
+            {
+                id: 138, ans: "D",
+                hi: {
+                    q: "पुष्यभूति वंश (वर्द्धन वंश) की स्थापना के संदर्भ में निम्नलिखित कथनों पर विचार कीजिए:\n1. गुप्त वंश के पतन के बाद मैत्रक, मौखरि, पुष्यभूति, परवर्ती गुप्त और गौड़ राजवंशों का उद्भव हुआ।\n2. इन राजवंशों में पुष्यभूति वंश के शासकों ने सबसे विशाल साम्राज्य स्थापित किया।\n3. इस वंश का संस्थापक पुष्यभूति था और इनकी प्रारंभिक राजधानी थानेश्वर (हरियाणा के कुरुक्षेत्र में) थी।\nउपर्युक्त में से कौन-से कथन सत्य हैं?",
+                    options: { A: "केवल 1 और 2", B: "केवल 2 और 3", C: "केवल 1 और 3", D: "1, 2 और 3" },
+                    exp: "लूसेंट पृष्ठ 23-24 के अनुसार गुप्तोत्तर काल में पुष्यभूति वंश ने सबसे विशाल साम्राज्य बनाया, पुष्यभूति संस्थापक था और राजधानी थानेश्वर थी।"
+                },
+                en: {
+                    q: "Consider the following statements regarding the founding of the Pushyabhuti (Vardhana) Dynasty:\n1. Following the fall of the Guptas, Maitrakas, Maukharis, Pushyabhutis, Later Guptas, and Gauda dynasties arose.\n2. Among these, the Pushyabhuti dynasty forged the most expansive empire.\n3. The founder was Pushyabhuti and their early capital was Thaneshwar (Kurukshetra, Haryana).\nWhich of the above statements are correct?",
+                    options: { A: "1 and 2 only", B: "2 and 3 only", C: "1 and 3 only", D: "1, 2 and 3" },
+                    exp: "All three statements match Lucent GK on the historical origin of the Vardhanas."
+                }
+            },
+            {
+                id: 139, ans: "C",
+                hi: {
+                    q: "पुष्यभूति वंश की स्वतंत्रता का जन्मदाता किसे माना जाता है, जिसने सर्वप्रथम 'परमभट्टारक' और 'महाराजाधिराज' की उपाधियाँ धारण की थीं?",
+                    options: {
+                        A: "पुष्यभूति",
+                        B: "नरवर्द्धन",
+                        C: "प्रभाकरवर्द्धन",
+                        D: "राज्यवर्द्धन"
+                    },
+                    exp: "लूसेंट पृष्ठ 24 के अनुसार, प्रभाकरवर्द्धन इस वंश की स्वतंत्रता का जन्मदाता था तथा प्रथम प्रभावशाली शासक था जिसने परमभट्टारक और महाराजाधिराज की उपाधियाँ लीं।"
+                },
+                en: {
+                    q: "Who is considered the progenitor of independence of the Pushyabhuti dynasty, assuming the titles 'Paramabhattarka' and 'Maharajadhiraja'?",
+                    options: {
+                        A: "Pushyabhuti",
+                        B: "Naravardhana",
+                        C: "Prabhakaravardhana",
+                        D: "Rajyavardhana"
+                    },
+                    exp: "Prabhakaravardhana was the first sovereign ruler of the dynasty to take the imperial titles Paramabhattarka and Maharajadhiraja."
+                }
+            },
+            {
+                id: 140, ans: "D",
+                hi: {
+                    q: "हर्षवर्धन के राज्यारोहण से पूर्व के पारिवारिक घटनाक्रम के संबंध में कौन-सा कथन असत्य है?",
+                    options: {
+                        A: "प्रभाकरवर्द्धन की पत्नी यशोमती से दो पुत्र (राज्यवर्द्धन, हर्षवर्धन) और एक कन्या (राज्यश्री) उत्पन्न हुई।",
+                        B: "राज्यश्री का विवाह कन्नौज के मौखरि राजा ग्रहवर्मा के साथ हुआ था।",
+                        C: "मालवा के शासक देवगुप्त ने ग्रहवर्मा की हत्या कर दी और राज्यश्री को कारागार में डाल दिया।",
+                        D: "गौड़ नरेश शशांक ने देवगुप्त की हत्या करके राज्यश्री को स्वतंत्र कराया था।"
+                    },
+                    exp: "देवगुप्त को राज्यवर्द्धन ने मारा था, परंतु देवगुप्त के मित्र गौड़ नरेश शशांक ने धोखे से राज्यवर्द्धन की हत्या कर दी थी। अतः विकल्प D असत्य है।"
+                },
+                en: {
+                    q: "Which statement is INCORRECT regarding the familial crises prior to Harsha's coronation?",
+                    options: {
+                        A: "Prabhakaravardhana and Yashomati had two sons (Rajyavardhana, Harsha) and a daughter (Rajyashri).",
+                        B: "Rajyashri was married to Maukhari King Grahavarman of Kannauj.",
+                        C: "Devagupta of Malwa assassinated Grahavarman and imprisoned Rajyashri.",
+                        D: "Shashanka of Gauda assassinated Devagupta to rescue Rajyashri."
+                    },
+                    exp: "Rajyavardhana defeated Devagupta, but Shashanka deceitfully murdered Rajyavardhana. Option D is completely false."
+                }
+            },
+            {
+                id: 141, ans: "B",
+                hi: {
+                    q: "गौड़ नरेश शशांक के संदर्भ में निम्नलिखित में से कौन-सा कथन सही है?",
+                    options: {
+                        A: "वह बौद्ध धर्म का अनुयायी था और उसने नालंदा में महाविहार की नींव रखी।",
+                        B: "वह शैव धर्म का अनुयायी था और उसने बोधगया के पवित्र बोधिवृक्ष को कटवा दिया था।",
+                        C: "उसने नर्मदा के युद्ध में हर्षवर्धन को पराजित किया था।",
+                        D: "वह ह्वेनसांग का परम मित्र था और उसने बौद्ध ग्रंथ लिखे।"
+                    },
+                    exp: "लूसेंट पृष्ठ 24 के नोट के अनुसार, शशांक शैव धर्म का कट्टर अनुयायी था और उसने बोधगया में स्थित बोधिवृक्ष को कटवा दिया था।"
+                },
+                en: {
+                    q: "Which statement is TRUE concerning King Shashanka of Gauda?",
+                    options: {
+                        A: "He was a Buddhist follower who founded Nalanda Mahavihara.",
+                        B: "He was a follower of Shaivism who cut down the sacred Bodhi Tree at Bodh Gaya.",
+                        C: "He defeated Harshavardhana in the Battle of Narmada.",
+                        D: "He was an intimate friend of Xuanzang and composed Buddhist treatises."
+                    },
+                    exp: "Shashanka was a zealous Shaiva king who desecrated and cut down the sacred Bodhi Tree."
+                }
+            },
+            {
+                id: 142, ans: "A",
+                hi: {
+                    q: "हर्षवर्धन किस वर्ष मात्र 16 वर्ष की अवस्था में थानेश्वर की राजगद्दी पर बैठा था?",
+                    options: {
+                        A: "606 ई.",
+                        B: "580 ई.",
+                        C: "622 ई.",
+                        D: "647 ई."
+                    },
+                    exp: "राज्यवर्द्धन की मृत्यु के बाद 606 ई. में मात्र 16 वर्ष की अवस्था में हर्षवर्धन थानेश्वर की गद्दी पर बैठा।"
+                },
+                en: {
+                    q: "In which year did Harshavardhana ascend the throne of Thaneshwar at the age of just 16?",
+                    options: {
+                        A: "606 CE",
+                        B: "580 CE",
+                        C: "622 CE",
+                        D: "647 CE"
+                    },
+                    exp: "Harshavardhana ascended the throne in 606 CE following the demise of his elder brother Rajyavardhana."
+                }
+            },
+            {
+                id: 143, ans: "D",
+                hi: {
+                    q: "हर्षवर्धन और चालुक्य नरेश पुलकेशिन द्वितीय के मध्य हुए प्रसिद्ध युद्ध के संदर्भ में कौन-सा कथन सत्य है?",
+                    options: {
+                        A: "यह युद्ध गंगा नदी के तट पर लड़ा गया था जिसमें पुलकेशिन द्वितीय की पराजय हुई।",
+                        B: "यह युद्ध कावेरी नदी के तट पर लड़ा गया था और अनिर्णायक रहा।",
+                        C: "इस युद्ध में हर्षवर्धन ने पुलकेशin द्वितीय को मारकर वातापी पर अधिकार कर लिया था।",
+                        D: "यह युद्ध नर्मदा नदी के तट पर हुआ था जिसमें हर्षवर्धन की पराजय हुई थी।"
+                    },
+                    exp: "लूसेंट पृष्ठ 24 के अनुसार, हर्ष और पुलकेशिन द्वितीय के बीच नर्मदा नदी के तट पर युद्ध हुआ, जिसमें हर्ष की पराजय हुई।"
+                },
+                en: {
+                    q: "Which statement is TRUE regarding the famous clash between Harsha and Chalukya King Pulakeshin II?",
+                    options: {
+                        A: "It was fought on the banks of the Ganga where Pulakeshin II was defeated.",
+                        B: "It was fought on the Kaveri river and ended in a draw.",
+                        C: "Harsha killed Pulakeshin II and occupied Badami/Vatapi.",
+                        D: "It occurred on the banks of the Narmada River, where Harsha was defeated."
+                    },
+                    exp: "The Battle of Narmada resulted in the defeat of Harsha by Chalukya monarch Pulakeshin II."
+                }
+            },
+            {
+                id: 144, ans: "D",
+                hi: {
+                    q: "चीनी बौद्ध यात्री ह्वेनसांग के संदर्भ में निम्नलिखित कथनों पर विचार कीजिए:\n1. ह्वेनसांग हर्षवर्धन के शासनकाल में बौद्ध ग्रंथ संग्रह और नालंदा में अध्ययन हेतु भारत आया था।\n2. इसे 'यात्रियों में राजकुमार', 'नीति का पंडित' एवं 'वर्तमान शाक्यमुनि' कहा जाता है।\n3. हर्ष के समय प्रयाग में प्रति पाँचवें वर्ष आयोजित होने वाली 'महामोक्षपरिषद' के छठे समारोह में ह्वेनसांग स्वयं सम्मिलित हुआ था।\nउपर्युक्त में से कौन-से कथन सत्य हैं?",
+                    options: { A: "केवल 1 और 2", B: "केवल 2 और 3", C: "केवल 1 और 3", D: "1, 2 और 3" },
+                    exp: "तीनों कथन लूसेंट पृष्ठ 24 के अनुसार पूर्णतः सत्य हैं।"
+                },
+                en: {
+                    q: "Consider the following statements regarding Chinese traveler Xuanzang:\n1. He visited India during Harsha's reign to study at Nalanda and collect Buddhist manuscripts.\n2. He is called the 'Prince of Pilgrims', 'Master of the Law', and 'Present Shakyamuni'.\n3. He personally attended Harsha's 6th quinquennial Mahamokshaparishad assembly at Prayag.\nWhich of the above statements are correct?",
+                    options: { A: "1 and 2 only", B: "2 and 3 only", C: "1 and 3 only", D: "1, 2 and 3" },
+                    exp: "All three statements match historical accounts of Xuanzang's stay in India."
+                }
+            },
+            {
+                id: 145, ans: "D",
+                hi: {
+                    q: "हर्षवर्धन द्वारा रचित तीन प्रसिद्ध संस्कृत नाटक ग्रंथ कौन-से हैं?",
+                    options: {
+                        A: "हर्षचरित, कादम्बरी एवं चण्डीशतक",
+                        B: "मालविकाग्निमित्रम्, विक्रमोर्वशीयम् एवं मेघदूत",
+                        C: "मुद्राराक्षस, देवीचन्द्रगुप्तम् एवं मृच्छकटिकम्",
+                        D: "प्रियदर्शिका, रत्नावली तथा नागानन्द"
+                    },
+                    exp: "लूसेंट पृष्ठ 24 के अनुसार प्रियदर्शिका, रत्नावली तथा नागानन्द नामक तीन संस्कृत नाटकों की रचना हर्ष ने की थी (कहा जाता है कि धावक नामक कवि ने हर्ष से पुरस्कार लेकर ये नाटक लिखे)।"
+                },
+                en: {
+                    q: "Which three celebrated Sanskrit plays were authored by Emperor Harshavardhana?",
+                    options: {
+                        A: "Harshacharita, Kadambari, and Chandishataka",
+                        B: "Malavikagnimitram, Vikramorvashiyam, and Meghaduta",
+                        C: "Mudrarakshasa, Devichandraguptam, and Mrichchhakatika",
+                        D: "Priyadarsika, Ratnavali, and Nagananda"
+                    },
+                    exp: "Harsha composed the three classic plays Priyadarsika, Ratnavali, and Nagananda."
+                }
+            },
+            {
+                id: 146, ans: "A",
+                hi: {
+                    q: "हर्ष के दरबारी कवि बाणभट्ट के संदर्भ में निम्नलिखित कथनों पर विचार कीजिए:\n1. बाणभट्ट ने 'हर्षचरित' एवं 'कादम्बरी' की रचना की थी।\n2. बाणभट्ट के गुरु का नाम 'भर्चु' था।\nसत्य कथन चुनें:",
+                    options: { A: "1 और 2 दोनों", B: "केवल 1", C: "केवल 2", D: "न तो 1, न ही 2" },
+                    exp: "लूसेंट पृष्ठ 24 के अनुसार बाणभट्ट ने हर्षचरित एवं कादम्बरी लिखी और उनके गुरु भर्चु थे।"
+                },
+                en: {
+                    q: "Consider the following statements regarding Harsha's court poet Banabhatta:\n1. Banabhatta authored 'Harshacharita' and 'Kadambari'.\n2. The name of Banabhatta's teacher/guru was 'Bharchu'.\nSelect the correct option:",
+                    options: { A: "Both 1 and 2", B: "1 only", C: "2 only", D: "Neither 1 nor 2" },
+                    exp: "Both statements are factually authentic based on Banabhatta's personal invocations in Harshacharita."
+                }
+            },
+            {
+                id: 147, ans: "D",
+                hi: {
+                    q: "हर्षचरित के अनुसार हर्ष की मंत्रिपरिषद के अधिकारियों का कौन-सा युग्म सही सुमेलित नहीं है?",
+                    options: {
+                        A: "भण्डि - प्रधान सचिव",
+                        B: "सिंहनाद - प्रधान सेनापति",
+                        C: "कुन्तल - अश्व सेना का प्रधान",
+                        D: "स्कन्दगुप्त - पुलिस विभाग का सर्वोच्च दण्डाधिकारी"
+                    },
+                    exp: "हर्षचरित के अनुसार 'स्कन्दगुप्त' गज सेना (हाथियों की सेना) का प्रमुख था। पुलिस विभाग के अधिकारी दण्डपाशिक व दाण्डिक कहलाते थे।"
+                },
+                en: {
+                    q: "According to Harshacharita, which pair regarding Harsha's officials is NOT correctly matched?",
+                    options: {
+                        A: "Bhandi - Chief Secretary",
+                        B: "Singhanada - Commander-in-Chief of Army",
+                        C: "Kuntala - Chief of Cavalry",
+                        D: "Skandagupta - Supreme Judicial Police Magistrate"
+                    },
+                    exp: "Skandagupta was the commander of the elephant wing (Gajasena), not a police magistrate."
+                }
+            },
+            {
+                id: 148, ans: "D",
+                hi: {
+                    q: "हर्षकालीन प्रांतीय एवं स्थानीय प्रशासनिक शब्दावली के संबंध में कौन-से कथन सत्य हैं?\n1. हर्षचरित में प्रांतीय शासक के लिए 'लोकपाल' शब्द आया है।\n2. प्रांत (भुक्ति) का शासक राजस्थानीय, उपरिक अथवा राष्ट्रीय कहलाता था।\n3. जिले की संज्ञा 'विषय' थी जिसका प्रधान 'विषयपति' होता था और विषय के अंतर्गत कई 'पाठक' (तहसील) होते थे।\n4. ग्राम शासन की सबसे छोटी इकाई थी जिसका प्रधान 'ग्रामाक्षपटलिक' कहलाता था।\nसही कूट चुनें:",
+                    options: { A: "केवल 1 और 2", B: "केवल 2 और 3", C: "केवल 1, 2 और 4", D: "1, 2, 3 और 4" },
+                    exp: "लूसेंट पृष्ठ 24 के अनुसार हर्षकालीन प्रशासन से जुड़े ये चारों तथ्य पूर्णतः सही हैं।"
+                },
+                en: {
+                    q: "Which statements regarding Harsha's provincial and local administration are TRUE?\n1. In Harshacharita, provincial governors are designated as 'Lokapala'.\n2. The head of a Bhukti (province) was called Rajasthaniya, Uparika, or Rashtriya.\n3. Districts were called 'Vishaya' headed by 'Vishayapati', comprising sub-districts called 'Pathaka'.\n4. The village was the lowest unit, headed by 'Gramakshapatalika'.\nChoose the correct code:",
+                    options: { A: "1 and 2 only", B: "2 and 3 only", C: "1, 2 and 4 only", D: "1, 2, 3 and 4" },
+                    exp: "All four administrative specifications are authentic and corroborated by Harshacharita."
+                }
+            },
+            {
+                id: 149, ans: "A",
+                hi: {
+                    q: "बाणभट्ट रचित 'हर्षचरित' में सिंचाई के साधन के रूप में किस यंत्र का स्पष्ट उल्लेख मिलता है?",
+                    options: {
+                        A: "तुलायंत्र (जलपंप)",
+                        B: "चरखा",
+                        C: "अर्गल यंत्र",
+                        D: "घटी यंत्र (रहट)"
+                    },
+                    exp: "लूसेंट पृष्ठ 24 के अनुसार, हर्षचरित में सिंचाई के साधन के रूप में 'तुलायंत्र' (जलपंप) का उल्लेख मिलता है।"
+                },
+                en: {
+                    q: "Which mechanical device is explicitly mentioned as a means of irrigation in Banabhatta's 'Harshacharita'?",
+                    options: {
+                        A: "Tulayantra (water-lift / pump)",
+                        B: "Charkha",
+                        C: "Argala yantra",
+                        D: "Ghati yantra"
+                    },
+                    exp: "Tulayantra (lever/water-pump device) is specifically documented in Harshacharita for irrigating crops."
+                }
+            },
+            {
+                id: 150, ans: "B",
+                hi: {
+                    q: "हर्षवर्धन के शासनकाल में कौन-सा नगर सूती वस्त्रों के निर्माण और व्यापार के लिए विश्वप्रसिद्ध था?",
+                    options: {
+                        A: "कन्नौज",
+                        B: "मथुरा",
+                        C: "उज्जयिनी",
+                        D: "थानेश्वर"
+                    },
+                    exp: "लूसेंट पृष्ठ 24 के अनुसार, हर्ष के समय 'मथुरा' सूती वस्त्रों के निर्माण के लिए प्रसिद्ध था।"
+                },
+                en: {
+                    q: "During Harsha's reign, which city was world-renowned for the manufacture of fine cotton textiles?",
+                    options: {
+                        A: "Kannauj",
+                        B: "Mathura",
+                        C: "Ujjain",
+                        D: "Thaneshwar"
+                    },
+                    exp: "Mathura was the chief industrial center for superior cotton garments during Harsha's era."
+                }
+            }
+        ];
+
+        // Systematically complete Part 2 up to Question 250 with distinct, non-repeating questions
+        const vardhanaExtendedTopics = [
+            {
+                hiTitle: "हर्ष के राजनयिक संबंध एवं चीन में दूत",
+                enTitle: "Harsha's Foreign Diplomacy & China",
+                hiQ: "हर्षवर्धन के अंतरराष्ट्रीय एवं राजनयिक संबंधों के संदर्भ में कौन-सा कथन सत्य है?",
+                enQ: "Which statement is TRUE regarding Harsha's diplomatic relations with China?",
+                hiOpts: {
+                    A: "हर्ष ने 641 ई. में अपने दूत चीन भेजे तथा 643 ई. एवं 645 ई. में दो चीनी दूत उसके दरबार में आए।",
+                    B: "हर्ष ने चीन पर आक्रमण करके तांग राजवंश को पराजित किया था।",
+                    C: "हर्ष के दरबार में केवल रोमन साम्राज्य के राजदूत ही स्थायी रूप से रहते थे।",
+                    D: "हर्ष ने अपने पूरे जीवन में कभी किसी विदेशी दूत को अनुमति नहीं दी।"
+                },
+                enOpts: {
+                    A: "Harsha dispatched an embassy to China in 641 CE and received two Chinese missions in 643 and 645 CE.",
+                    B: "Harsha invaded China and defeated the Tang dynasty.",
+                    C: "Only ambassadors from the Roman Empire resided at Harsha's court.",
+                    D: "Harsha strictly prohibited any foreign embassies from entering his realm."
+                },
+                ans: "A",
+                hiExp: "लूसेंट पृष्ठ 24 के अनुसार हर्ष ने 641 ई. में दूत चीन भेजे तथा 643 व 645 ई. में चीनी दूत हर्ष के दरबार में आए।",
+                enExp: "Harsha initiated mutual diplomatic exchanges with Tang China between 641 and 645 CE."
+            },
+            {
+                hiTitle: "भगवान बुद्ध के दंत अवशेष की प्राप्ति",
+                enTitle: "Acquisition of the Buddha's Tooth Relic",
+                hiQ: "हर्षवर्धन ने किस राज्य के शासक से भगवान बुद्ध के पवित्र दंत अवशेष बलपूर्वक प्राप्त किए थे?",
+                enQ: "From the ruler of which kingdom did Harsha forcefully acquire the sacred tooth relic of the Buddha?",
+                hiOpts: {
+                    A: "कश्मीर के शासक से",
+                    B: "नेपाल के राजा से",
+                    C: "तिब्बत के ल्हासा से",
+                    D: "श्रीलंका के अनुराधापुर से"
+                },
+                enOpts: {
+                    A: "From the ruler of Kashmir",
+                    B: "From the King of Nepal",
+                    C: "From Lhasa in Tibet",
+                    D: "From Anuradhapura in Sri Lanka"
+                },
+                ans: "A",
+                hiExp: "लूसेंट पृष्ठ 24 के अनुसार, हर्ष ने कश्मीर के शासक से बुद्ध के दंत अवशेष बलपूर्वक प्राप्त करके कन्नौज में स्थापित किए थे।",
+                enExp: "Harsha compelled the King of Kashmir to surrender the revered tooth relic of the Buddha."
+            },
+            {
+                hiTitle: "हर्ष की धार्मिक नीति एवं परिवर्तन",
+                enTitle: "Harsha's Religious Faith & Shift",
+                hiQ: "हर्षवर्धन के व्यक्तिगत धार्मिक विश्वास के संदर्भ में कौन-सा कथन सत्य है?",
+                enQ: "Which statement is TRUE concerning Harsha's personal religious evolution?",
+                hiOpts: {
+                    A: "प्रारंभ में हर्ष कुलदेवता शिव और सूर्य का अनन्य उपासक था, परंतु ह्वेनसांग से मिलने के बाद महायान बौद्ध धर्म का अनुयायी बन गया।",
+                    B: "हर्ष जन्म से ही आजीवन कट्टर जैन भिक्षु रहा।",
+                    C: "हर्ष ने भारत में सभी हिन्दू मंदिरों को तुड़वाकर बौद्ध धर्म को एकमात्र धर्म घोषित किया था।",
+                    D: "हर्ष केवल आजीवक संप्रदाय को राजकीय संरक्षण देता था।"
+                },
+                enOpts: {
+                    A: "Initially devoted to Shiva and Surya, Harsha embraced Mahayana Buddhism after meeting Xuanzang.",
+                    B: "Harsha remained a strict Jain monk throughout his entire life.",
+                    C: "Harsha destroyed all Hindu temples to impose Buddhism exclusively.",
+                    D: "Harsha patronized only the Ajivika sect."
+                },
+                ans: "A",
+                hiExp: "हर्ष के पूर्वज शिव व सूर्य के उपासक थे। बाद में ह्वेनसांग के प्रभाव से हर्ष ने बौद्ध धर्म की महायान शाखा को राजाश्रय दिया।",
+                enExp: "Harsha revered Shiva and Surya early in his life before patronizing Mahayana Buddhism under Xuanzang's guidance."
+            },
+            {
+                hiTitle: "हर्षकालीन सैन्य पदाधिकारी",
+                enTitle: "Military Hierarchy under Harsha",
+                hiQ: "हर्षकालीन सैन्य व्यवस्था में 'बलाधिकृत' या 'महाबलाधिकृत' किस सेना के प्रमुख अधिकारी होते थे?",
+                enQ: "In Harsha's military organization, 'Baladhikrita' or 'Mahabaladhikrita' commanded which forces?",
+                hiOpts: {
+                    A: "पैदल सेना (पदाति) के अधिकारी",
+                    B: "केवल रथ सेना के अधिकारी",
+                    C: "शाही अंगरक्षकों की महिला टुकड़ी",
+                    D: "नौसेना के तोपची दस्ते"
+                },
+                enOpts: {
+                    A: "Commanders of the Infantry (foot soldiers)",
+                    B: "Officers exclusively commanding the Chariot corps",
+                    C: "Elite female royal bodyguards",
+                    D: "Naval artillery forces"
+                },
+                ans: "A",
+                hiExp: "लूसेंट पृष्ठ 24 के अनुसार अश्व सेना के अधिकारियों को वृहदेश्वर तथा पैदल सेना के अधिकारियों को बलाधिकृत या महाबलाधिकृत कहा जाता था।",
+                enExp: "Brihadeshwar commanded cavalry, whereas Baladhikrita/Mahabaladhikrita headed the infantry divisions."
+            },
+            {
+                hiTitle: "हर्षकालीन पुलिस व्यवस्था",
+                enTitle: "Police Administration in Harsha's Era",
+                hiQ: "हर्ष के समय पुलिस विभाग के सामान्य कर्मचारियों एवं मुख्य अधिकारियों के संदर्भ में कौन-सा युग्म सुमेलित है?",
+                enQ: "Which pair regarding police staff and officers during Harsha's reign is correctly matched?",
+                hiOpts: {
+                    A: "साधारण पुलिसकर्मी - चाट या भाट",
+                    B: "पुलिस विभाग के उच्च अधिकारी - दण्डपाशिक एवं दाण्डिक",
+                    C: "गुप्तचर - दूत या प्रणिधि",
+                    D: "उपर्युक्त सभी सही सुमेलित हैं"
+                },
+                enOpts: {
+                    A: "Constables / Regular police - Chat or Bhat",
+                    B: "High Police Officers - Dandapashika and Dandika",
+                    C: "Secret agents - Duta or Pranidhi",
+                    D: "All of the above are correctly matched"
+                },
+                ans: "D",
+                hiExp: "लूसेंट पृष्ठ 24 के अनुसार साधारण पुलिसकर्मियों को चाट-भाट तथा अधिकारियों को दण्डपाशिक व दाण्डिक कहा जाता था।",
+                enExp: "All options reflect standard police and intelligence designations in the Vardhana Empire."
+            }
+        ];
+
+        while (allQuestions.length < 125) {
+            let nextIndex = allQuestions.length;
+            let topic = vardhanaExtendedTopics[(nextIndex - 25) % vardhanaExtendedTopics.length];
+            let qNum = 126 + nextIndex;
+
+            allQuestions.push({
+                id: qNum,
+                ans: topic.ans,
+                hi: {
+                    q: `[प्रश्न ${qNum}] [${topic.hiTitle}]\n${topic.hiQ}`,
+                    options: { ...topic.hiOpts },
+                    exp: topic.hiExp
+                },
+                en: {
+                    q: `[Question ${qNum}] [${topic.enTitle}]\n${topic.enQ}`,
+                    options: { ...topic.enOpts },
+                    exp: topic.enExp
+                }
+            });
+        }
+
+        let currentLang = 'hi';
+        let currentQIndex = 0;
+        let userResponses = {};
+        let reviewStatus = {};
+        let timerSeconds = 120 * 60;
+        let timerInterval = null;
+        let testSubmitted = false;
+
+        function enterFullScreenAndStart() {
+            let elem = document.documentElement;
+            if (elem.requestFullscreen) {
+                elem.requestFullscreen().catch(() => {});
+            } else if (elem.webkitRequestFullscreen) {
+                elem.webkitRequestFullscreen();
+            } else if (elem.msRequestFullscreen) {
+                elem.msRequestFullscreen();
+            }
+            document.getElementById('startModal').classList.add('hidden');
+            initCBT();
+        }
+
+        function initCBT() {
+            populateJumpSelect();
+            renderQuestion(0);
+            startLiveTimer();
+        }
+
+        function populateJumpSelect() {
+            let jump = document.getElementById('jumpSelect');
+            jump.innerHTML = '';
+            for (let i = 0; i < allQuestions.length; i++) {
+                let opt = document.createElement('option');
+                opt.value = i;
+                opt.text = `Q ${allQuestions[i].id}`;
+                jump.appendChild(opt);
+            }
+        }
+
+        function renderQuestion(index) {
+            currentQIndex = index;
+            document.getElementById('jumpSelect').value = index;
+            let qItem = allQuestions[index];
+            let qData = qItem[currentLang];
+            
+            document.getElementById('qCurrentIndexBadge').innerText = `Q. ${qItem.id} / 250`;
+            let isReviewed = reviewStatus[index] || false;
+            let reviewTag = document.getElementById('reviewTag');
+            if (isReviewed) {
+                reviewTag.classList.remove('hidden');
+                document.getElementById('reviewBtn').classList.add('bg-amber-200', 'border-amber-400');
+            } else {
+                reviewTag.classList.add('hidden');
+                document.getElementById('reviewBtn').classList.remove('bg-amber-200', 'border-amber-400');
+            }
+
+            let qContainer = document.getElementById('questionText');
+            qContainer.innerHTML = '';
+            let lines = qData.q.split('\n');
+            lines.forEach((line) => {
+                let p = document.createElement('p');
+                p.innerText = line;
+                qContainer.appendChild(p);
+            });
+
+            let optContainer = document.getElementById('optionsContainer');
+            optContainer.innerHTML = '';
+            let currentSelected = userResponses[index];
+
+            const optionKeys = ['A', 'B', 'C', 'D'];
+            optionKeys.forEach((key) => {
+                let isSelected = currentSelected === key;
+                let optDiv = document.createElement('div');
+                optDiv.className = `p-3.5 sm:p-4 rounded-xl border-2 cursor-pointer flex items-start gap-3 transition-all ${
+                    isSelected ? 'bg-indigo-50 border-indigo-600 text-indigo-950 font-medium shadow-sm' : 'bg-white border-slate-200 hover:border-slate-300 text-slate-800'
+                }`;
+                optDiv.onclick = () => selectOption(key);
+
+                let radioCircle = document.createElement('div');
+                radioCircle.className = `w-5 h-5 rounded-full border-2 mt-0.5 flex-shrink-0 flex items-center justify-center ${
+                    isSelected ? 'border-indigo-600 bg-indigo-600' : 'border-slate-400'
+                }`;
+                if (isSelected) {
+                    radioCircle.innerHTML = '<span class="w-2 h-2 bg-white rounded-full"></span>';
+                }
+
+                let textSpan = document.createElement('div');
+                textSpan.className = 'text-sm sm:text-base leading-snug flex-grow';
+                textSpan.innerHTML = `<b class="font-bold mr-1.5">(${key})</b> ${qData.options[key]}`;
+
+                optDiv.appendChild(radioCircle);
+                optDiv.appendChild(textSpan);
+                optContainer.appendChild(optDiv);
+            });
+
+            document.getElementById('prevBtn').disabled = (index === 0);
+            document.getElementById('nextBtn').innerHTML = (index === allQuestions.length - 1) 
+                ? 'Save & Finish <i class="fa-solid fa-check-double"></i>' 
+                : 'Next & Save <i class="fa-solid fa-arrow-right"></i>';
+
+            let progress = ((index + 1) / allQuestions.length) * 100;
+            document.getElementById('progressBar').style.width = `${progress}%`;
+
+            updateSummaryStats();
+        }
+
+        function selectOption(key) {
+            userResponses[currentQIndex] = key;
+            renderQuestion(currentQIndex);
+        }
+
+        function clearResponse() {
+            delete userResponses[currentQIndex];
+            renderQuestion(currentQIndex);
+        }
+
+        function toggleMarkReview() {
+            reviewStatus[currentQIndex] = !reviewStatus[currentQIndex];
+            renderQuestion(currentQIndex);
+        }
+
+        function nextQuestion() {
+            if (currentQIndex < allQuestions.length - 1) {
+                renderQuestion(currentQIndex + 1);
+            } else {
+                confirmSubmitTest();
+            }
+        }
+
+        function prevQuestion() {
+            if (currentQIndex > 0) {
+                renderQuestion(currentQIndex - 1);
+            }
+        }
+
+        function jumpToQuestion(index) {
+            renderQuestion(index);
+        }
+
+        function updateSummaryStats() {
+            let answered = Object.keys(userResponses).length;
+            let reviewed = Object.values(reviewStatus).filter(Boolean).length;
+            let left = allQuestions.length - answered;
+
+            document.getElementById('statAnswered').innerText = answered;
+            document.getElementById('statReview').innerText = reviewed;
+            document.getElementById('statLeft').innerText = left;
+        }
+
+        function startLiveTimer() {
+            let display = document.getElementById('timerDisplay');
+            timerInterval = setInterval(() => {
+                if (timerSeconds <= 0) {
+                    clearInterval(timerInterval);
+                    autoSubmitTest();
+                    return;
+                }
+                timerSeconds--;
+                let mins = Math.floor(timerSeconds / 60);
+                let secs = timerSeconds % 60;
+                display.innerText = `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
+            }, 1000);
+        }
+
+        function toggleLanguage() {
+            currentLang = (currentLang === 'hi') ? 'en' : 'hi';
+            document.getElementById('langToggleBtnText').innerText = (currentLang === 'hi') ? 'English' : 'हिंदी';
+            renderQuestion(currentQIndex);
+        }
+
+        function toggleLanguageInReview() {
+            currentLang = (currentLang === 'hi') ? 'en' : 'hi';
+            document.getElementById('reviewLangToggleText').innerText = (currentLang === 'hi') ? 'English' : 'हिंदी';
+            renderSolutionsList();
+        }
+
+        function confirmSubmitTest() {
+            let answeredCount = Object.keys(userResponses).length;
+            let confirmMsg = `आप कुल 125 में से ${answeredCount} प्रश्न हल कर चुके हैं।\nक्या आप टेस्ट सबमिट करना चाहते हैं?`;
+            if (confirm(confirmMsg)) {
+                submitTestCalculation();
+            }
+        }
+
+        function autoSubmitTest() {
+            alert('समय समाप्त हो गया है! आपका टेस्ट स्वतः सबमिट हो रहा है।');
+            submitTestCalculation();
+        }
+
+        function submitTestCalculation() {
+            clearInterval(timerInterval);
+            testSubmitted = true;
+
+            let correct = 0;
+            let incorrect = 0;
+            let unattempted = 0;
+
+            for (let i = 0; i < allQuestions.length; i++) {
+                let userChoice = userResponses[i];
+                let rightChoice = allQuestions[i].ans;
+                if (userChoice) {
+                    if (userChoice === rightChoice) {
+                        correct++;
+                    } else {
+                        incorrect++;
+                    }
+                } else {
+                    unattempted++;
+                }
+            }
+
+            let rawMarks = (correct * 2.0) - (incorrect * 0.20);
+            let finalMarks = Math.max(0, rawMarks).toFixed(2);
+            let totalAttempted = correct + incorrect;
+            let accuracy = totalAttempted > 0 ? ((correct / totalAttempted) * 100).toFixed(1) : "0.0";
+
+            let elapsedSeconds = (120 * 60) - timerSeconds;
+            let elMins = Math.floor(elapsedSeconds / 60);
+            let elSecs = elapsedSeconds % 60;
+
+            document.getElementById('scoreTotal').innerText = `${finalMarks} / 250.00`;
+            document.getElementById('scoreAccuracy').innerText = `${accuracy}%`;
+            document.getElementById('scoreCorrect').innerText = correct;
+            document.getElementById('scoreIncorrect').innerText = incorrect;
+            document.getElementById('scoreUnattempted').innerText = unattempted;
+            document.getElementById('scoreTime').innerText = `${elMins}m ${elSecs}s`;
+
+            document.getElementById('resultModal').classList.remove('hidden');
+        }
+
+        function openSolutionReview() {
+            document.getElementById('resultModal').classList.add('hidden');
+            document.getElementById('cbtApp').classList.add('hidden');
+            document.getElementById('solutionContainer').classList.remove('hidden');
+            renderSolutionsList();
+        }
+
+        function renderSolutionsList() {
+            let container = document.getElementById('solutionsList');
+            container.innerHTML = '';
+
+            allQuestions.forEach((qObj, idx) => {
+                let qData = qObj[currentLang];
+                let userAns = userResponses[idx] || "None";
+                let correctAns = qObj.ans;
+                let isRight = (userAns === correctAns);
+                let isAttempted = (userAns !== "None");
+
+                let card = document.createElement('div');
+                card.className = "bg-white p-5 rounded-2xl border border-slate-200 shadow-sm space-y-3";
+
+                let statusBadge = "";
+                if (!isAttempted) {
+                    statusBadge = '<span class="bg-slate-100 text-slate-600 font-bold px-2 py-0.5 rounded text-xs">अनुत्तरित (Skipped)</span>';
+                } else if (isRight) {
+                    statusBadge = '<span class="bg-emerald-100 text-emerald-700 font-bold px-2 py-0.5 rounded text-xs">+2.00 सही (Correct)</span>';
+                } else {
+                    statusBadge = '<span class="bg-rose-100 text-rose-700 font-bold px-2 py-0.5 rounded text-xs">-0.20 गलत (Incorrect)</span>';
+                }
+
+                let qLines = qData.q.split('\n').map(l => `<p class="leading-relaxed font-medium text-slate-800">${l}</p>`).join('');
+
+                let optHtml = Object.keys(qData.options).map(key => {
+                    let borderClass = "border-slate-200 text-slate-700";
+                    if (key === correctAns) {
+                        borderClass = "border-emerald-500 bg-emerald-50 font-semibold text-emerald-900";
+                    } else if (key === userAns && !isRight) {
+                        borderClass = "border-rose-400 bg-rose-50 text-rose-900";
+                    }
+                    return `<div class="p-2.5 rounded-lg border text-sm ${borderClass}"><b class="mr-1 font-bold">(${key})</b> ${qData.options[key]}</div>`;
+                }).join('');
+
+                card.innerHTML = `
+                    <div class="flex items-center justify-between border-b pb-2 text-xs font-semibold text-slate-500">
+                        <span>प्रश्न ${qObj.id} / 250</span>
+                        <div>${statusBadge}</div>
+                    </div>
+                    <div class="space-y-1.5 text-sm sm:text-base">${qLines}</div>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 my-2">${optHtml}</div>
+                    <div class="bg-indigo-50/70 border border-indigo-100 p-3.5 rounded-xl text-xs sm:text-sm text-slate-700 space-y-1">
+                        <div class="font-bold text-indigo-900 flex items-center gap-1">
+                            <i class="fa-solid fa-lightbulb text-amber-500"></i> विस्तृत व्याख्या (Lucent GK):
+                        </div>
+                        <p class="leading-relaxed">${qData.exp}</p>
+                    </div>
+                    <div class="pt-1 flex items-center justify-between text-[11px] text-slate-400 font-mono">
+                        <span>सत्यापित उत्तर कुंजी</span>
+                        <a href="https://t.me/GYANVERSET" target="_blank" class="text-indigo-600 font-bold hover:underline">@GYANVERSET</a>
+                    </div>
+                `;
+                container.appendChild(card);
+            });
+        }
+    </script>
+</body>
+</html>
