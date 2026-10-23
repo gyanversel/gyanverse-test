@@ -1,0 +1,1194 @@
+<!DOCTYPE html>
+<html lang="hi" class="h-full">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <title>Gyanverse CBT Web App - Mobile Fullscreen Optimized</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Tiro+Devanagari+Hindi:ital@0;1&family=Inter:wght@400;500;600;700&display=swap');
+        
+        * {
+            -webkit-tap-highlight-color: transparent;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', 'Tiro Devanagari Hindi', sans-serif;
+            user-select: none;
+            -webkit-user-select: none;
+            touch-action: manipulation;
+        }
+
+        /* Safe area support for notch screens */
+        .safe-top {
+            padding-top: env(safe-area-inset-top, 0.5rem);
+        }
+        .safe-bottom {
+            padding-bottom: env(safe-area-inset-bottom, 0.75rem);
+        }
+
+        /* Custom scrollbar for mobile smoothness */
+        ::-webkit-scrollbar {
+            width: 4px;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 4px;
+        }
+
+        .option-card {
+            transition: transform 0.1s ease, border-color 0.15s ease, background-color 0.15s ease;
+        }
+        .option-card:active {
+            transform: scale(0.99);
+        }
+    </style>
+</head>
+<body class="bg-slate-100 text-slate-800 antialiased h-full w-full overflow-x-hidden flex flex-col justify-between">
+
+    <!-- START SCREEN OVERLAY (Auto Fullscreen Gate) -->
+    <div id="startScreen" class="fixed inset-0 z-50 bg-slate-950 flex items-center justify-center p-4">
+        <div class="bg-white rounded-3xl max-w-sm w-full p-6 text-center shadow-2xl border border-slate-200">
+            <div class="inline-flex p-3 bg-blue-100 text-blue-600 rounded-2xl mb-3 shadow-inner">
+                <i class="fas fa-mobile-alt text-2xl"></i>
+            </div>
+            <h1 class="text-xl font-black text-slate-900 tracking-tight">GYANVERSE CBT</h1>
+            <p class="text-[11px] font-bold text-blue-600 uppercase tracking-wider mt-0.5">NCERT Mock Series • Class 11 Biology</p>
+            <p class="text-[10px] text-slate-500 mb-4">Topic 7.1 se 7.3.2 (Animal Tissues to Earthworm)</p>
+
+            <div class="bg-slate-50 border border-slate-200 rounded-2xl p-3.5 mb-4 text-left text-xs text-slate-700 space-y-1.5 leading-relaxed">
+                <div class="flex justify-between items-center pb-1 border-b border-slate-200">
+                    <span class="text-slate-500">कुल प्रश्न:</span>
+                    <span class="font-extrabold text-slate-800">100 MCQs</span>
+                </div>
+                <div class="flex justify-between items-center pb-1 border-b border-slate-200">
+                    <span class="text-slate-500">समय सीमा:</span>
+                    <span class="font-extrabold text-amber-700">120 मिनट</span>
+                </div>
+                <div class="flex justify-between items-center">
+                    <span class="text-slate-500">अंकन:</span>
+                    <span class="font-bold"><b class="text-emerald-600">+2.00</b> / <b class="text-rose-500">-0.20</b></span>
+                </div>
+            </div>
+
+            <div class="mb-4 p-2.5 bg-blue-50 border border-blue-200 rounded-xl text-[11px] text-blue-900 leading-tight">
+                📢 Official Telegram: 
+                <a href="https://t.me/GYANVERSET" target="_blank" class="font-black text-blue-600 underline">@GYANVERSET</a>
+            </div>
+
+            <button onclick="startTestFullScreen()" class="w-full py-3.5 bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-bold text-base rounded-2xl shadow-lg hover:from-blue-700 hover:to-indigo-700 transition active:scale-95 flex items-center justify-center gap-2">
+                <i class="fas fa-expand text-sm"></i> Start Test (Full Screen)
+            </button>
+        </div>
+    </div>
+
+    <!-- MAIN CBT TEST INTERFACE -->
+    <div id="cbtInterface" class="hidden h-[100dvh] w-full flex-col overflow-hidden">
+        
+        <!-- COMPACT MOBILE HEADER (Sticky Top) -->
+        <header class="bg-white border-b border-slate-200 shrink-0 px-3 py-2 shadow-xs safe-top">
+            <div class="max-w-2xl mx-auto flex items-center justify-between">
+                <div class="flex items-center space-x-1.5">
+                    <span class="text-base font-black tracking-wider text-blue-700">GYANVERSE</span>
+                    <span class="text-[10px] font-bold px-1.5 py-0.5 bg-slate-100 text-slate-600 rounded border border-slate-300">
+                        Q.<span id="currentQuestionNum" class="text-blue-700">1</span>/100
+                    </span>
+                </div>
+
+                <div class="flex items-center space-x-2">
+                    <!-- Language Switcher Toggle -->
+                    <button id="langToggleBtn" onclick="toggleLanguage()" class="px-2 py-1 bg-slate-100 border border-slate-300 text-[11px] font-bold text-slate-700 rounded-lg active:bg-slate-200 transition">
+                        🌐 <span id="currentLangLabel">EN</span>
+                    </button>
+
+                    <!-- Live Countdown Timer -->
+                    <div class="flex items-center gap-1 px-2 py-1 bg-amber-50 border border-amber-300 rounded-lg text-amber-900 font-mono text-xs font-black">
+                        <i class="far fa-clock text-[11px]"></i>
+                        <span id="timerDisplay">120:00</span>
+                    </div>
+
+                    <!-- Submit Button -->
+                    <button onclick="confirmSubmitTest()" class="px-2.5 py-1 bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs rounded-lg shadow-sm transition active:scale-95">
+                        Submit
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <!-- SUB HEADER STATUS (Review tag & Marks) -->
+        <div class="bg-slate-200 border-b border-slate-300 py-1 px-3 shrink-0">
+            <div class="max-w-2xl mx-auto flex items-center justify-between text-[11px] text-slate-600 font-semibold">
+                <div class="flex items-center gap-1.5">
+                    <span>Marks:</span>
+                    <span class="text-emerald-700 font-bold">+2.00</span>
+                    <span class="text-rose-600 font-bold">-0.20</span>
+                </div>
+                <div>
+                    <span id="reviewBadge" class="hidden px-1.5 py-0.5 bg-purple-100 border border-purple-300 text-purple-700 rounded text-[10px] font-extrabold">
+                        ★ Marked Review
+                    </span>
+                </div>
+            </div>
+        </div>
+
+        <!-- MAIN SCROLLABLE QUESTION VIEWPORT -->
+        <main class="flex-1 overflow-y-auto px-3 py-3 w-full max-w-2xl mx-auto">
+            <div class="bg-white rounded-2xl shadow-xs border border-slate-200 p-4">
+                
+                <!-- Question Statement -->
+                <div class="text-sm font-semibold text-slate-900 leading-snug tracking-tight" id="questionText">
+                    <!-- Dynamic Question Text -->
+                </div>
+
+                <!-- Watermark Channel Tag -->
+                <div class="text-[10px] font-bold text-slate-400 mt-2 text-right">
+                    📲 Gyanverse | Telegram: <a href="https://t.me/GYANVERSET" target="_blank" class="text-blue-500 underline">@GYANVERSET</a>
+                </div>
+
+                <div class="border-t border-slate-100 my-3"></div>
+
+                <!-- Options List Container -->
+                <div id="optionsContainer" class="space-y-2.5">
+                    <!-- Options injected dynamically -->
+                </div>
+
+                <!-- NAVIGATION BUTTONS (Directly below options for thumb reach) -->
+                <div class="mt-5 pt-3 border-t border-slate-200 grid grid-cols-4 gap-1.5">
+                    <button onclick="prevQuestion()" id="prevBtn" class="py-2.5 px-2 bg-slate-100 active:bg-slate-200 text-slate-700 border border-slate-300 rounded-xl font-bold text-xs transition flex items-center justify-center gap-1">
+                        <i class="fas fa-chevron-left text-[10px]"></i> Prev
+                    </button>
+                    <button onclick="clearResponse()" class="py-2.5 px-2 bg-rose-50 active:bg-rose-100 text-rose-700 border border-rose-300 rounded-xl font-bold text-xs transition flex items-center justify-center gap-1">
+                        <i class="fas fa-eraser text-[10px]"></i> Clear
+                    </button>
+                    <button onclick="toggleMarkReview()" id="markBtn" class="py-2.5 px-2 bg-purple-50 active:bg-purple-100 text-purple-700 border border-purple-300 rounded-xl font-bold text-xs transition flex items-center justify-center gap-1">
+                        <i class="fas fa-bookmark text-[10px]"></i> Review
+                    </button>
+                    <button onclick="nextQuestion()" id="nextBtn" class="py-2.5 px-2 bg-blue-600 active:bg-blue-700 text-white rounded-xl font-bold text-xs shadow transition flex items-center justify-center gap-1">
+                        Next <i class="fas fa-chevron-right text-[10px]"></i>
+                    </button>
+                </div>
+
+            </div>
+        </main>
+
+        <!-- COMPACT FOOTER -->
+        <footer class="bg-white border-t border-slate-200 py-1.5 text-center text-[10px] text-slate-500 shrink-0 safe-bottom">
+            Telegram: <a href="https://t.me/GYANVERSET" class="font-bold text-blue-600">@GYANVERSET</a>
+        </footer>
+    </div>
+
+    <!-- RESULT & SCORECARD MODAL -->
+    <div id="scoreModal" class="fixed inset-0 z-50 bg-slate-950 bg-opacity-90 hidden items-center justify-center p-4 overflow-y-auto">
+        <div class="bg-white rounded-3xl max-w-sm w-full p-5 text-center shadow-2xl border border-slate-200 my-auto">
+            <div class="inline-flex p-2.5 bg-emerald-100 text-emerald-600 rounded-2xl mb-2">
+                <i class="fas fa-award text-2xl"></i>
+            </div>
+            <h2 class="text-xl font-black text-slate-900">Scorecard Summary</h2>
+            <p class="text-[10px] text-slate-500 mb-4">NCERT Class 11 Bio • Chapter 7</p>
+
+            <div class="grid grid-cols-2 gap-2 text-left mb-4">
+                <div class="bg-slate-50 p-2.5 rounded-xl border border-slate-200">
+                    <p class="text-[10px] text-slate-500 font-bold uppercase">Total Score</p>
+                    <p id="modalScore" class="text-xl font-extrabold text-blue-600">0.00 / 200</p>
+                </div>
+                <div class="bg-slate-50 p-2.5 rounded-xl border border-slate-200">
+                    <p class="text-[10px] text-slate-500 font-bold uppercase">Accuracy</p>
+                    <p id="modalAccuracy" class="text-xl font-extrabold text-emerald-600">0%</p>
+                </div>
+                <div class="bg-emerald-50 p-2.5 rounded-xl border border-emerald-200">
+                    <p class="text-[10px] text-emerald-700 font-bold uppercase">Correct (+2)</p>
+                    <p id="modalCorrect" class="text-lg font-black text-emerald-700">0</p>
+                </div>
+                <div class="bg-rose-50 p-2.5 rounded-xl border border-rose-200">
+                    <p class="text-[10px] text-rose-700 font-bold uppercase">Wrong (-0.2)</p>
+                    <p id="modalIncorrect" class="text-lg font-black text-rose-700">0</p>
+                </div>
+                <div class="bg-slate-50 p-2.5 rounded-xl border border-slate-200 col-span-2">
+                    <p class="text-[10px] text-slate-500 font-bold uppercase">Unattempted</p>
+                    <p id="modalUnattempted" class="text-sm font-bold text-slate-700">0</p>
+                </div>
+            </div>
+
+            <div class="flex flex-col gap-2">
+                <button onclick="openSolutionReview()" class="w-full py-3 bg-blue-600 active:bg-blue-700 text-white font-bold text-sm rounded-xl shadow transition">
+                    📖 Review Detailed Solutions
+                </button>
+                <a href="https://t.me/GYANVERSET" target="_blank" class="w-full py-2 bg-slate-100 text-slate-800 font-bold text-xs rounded-xl border border-slate-300 flex items-center justify-center gap-1.5">
+                    <i class="fab fa-telegram text-blue-500"></i> Join Telegram @GYANVERSET
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- SOLUTIONS REVIEW SCREEN -->
+    <div id="solutionScreen" class="hidden h-[100dvh] w-full bg-slate-100 flex-col overflow-hidden">
+        <header class="bg-white border-b border-slate-200 shrink-0 px-3 py-2 shadow-xs flex items-center justify-between safe-top">
+            <h3 class="font-black text-slate-800 text-xs sm:text-sm">NCERT Detailed Explanations</h3>
+            <div class="flex items-center gap-1.5">
+                <button onclick="toggleLanguageSolutions()" class="px-2 py-1 bg-slate-100 border border-slate-300 rounded text-[11px] font-bold text-slate-700">
+                    Lang (HI/EN)
+                </button>
+                <button onclick="exitSolutions()" class="px-2 py-1 bg-rose-600 text-white rounded text-[11px] font-bold">
+                    Close
+                </button>
+            </div>
+        </header>
+
+        <main class="flex-1 overflow-y-auto p-3 w-full max-w-2xl mx-auto space-y-3" id="solutionsContainer">
+            <!-- Dynamic Solution Cards -->
+        </main>
+    </div>
+
+    <!-- DATASET & LOGIC SCRIPT -->
+    <script>
+        // High-level 100 MCQs (Topics 7.1 to 7.3.2)
+        const testData = [
+            {
+                id: 1,
+                hi: {
+                    q: "सरल उपकला ऊतक (Simple Epithelium) के संदर्भ में निम्नलिखित कथनों पर विचार कीजिए:<br>1. यह कोशिकाओं के एकल स्तर से निर्मित होता है तथा देहगुहाओं, वाहिनियों एवं नलिकाओं के आस्तर का निर्माण करता है।<br>2. यह रासायनिक एवं यांत्रिक प्रतिबलों (stresses) से मुख्य रक्षात्मक आवरण प्रदान करता है।<br>3. कोशिकाओं के संरचनात्मक रूपांतरण के आधार पर इसे शल्की, घनाकार एवं स्तंभाकार में विभेदित किया जाता है।<br>उपर्युक्त में से कौन-सा/से कथन <b>सत्य</b> है/हैं?",
+                    options: ["(A) केवल 1 और 2", "(B) केवल 2 और 3", "(C) केवल 1 और 3", "(D) 1, 2 और 3"],
+                    exp: "<b>कथन 1 सही है:</b> सरल उपकला एक ही स्तर का बना होता है और गुहाओं, वाहिनियों व नलिकाओं का आस्तर बनाता है।<br><b>कथन 2 गलत है:</b> रासायनिक व यांत्रिक प्रतिबलों से रक्षात्मक कार्य संयुक्त उपकला (Compound Epithelium) का मुख्य कार्य है।<br><b>कथन 3 सही है:</b> संरचनात्मक रूप से यह शल्की, घनाकार व स्तंभाकार में विभक्त है।"
+                },
+                en: {
+                    q: "Consider the following statements regarding Simple Epithelium Tissue:<br>1. It is composed of a single layer of cells lining body cavities, ducts, and vessels.<br>2. Its main function is to provide protection against chemical and mechanical stresses.<br>3. Structurally it is categorized into squamous, cuboidal, and columnar epithelium.<br>Which of the statements given above is/are <b>correct</b>?",
+                    options: ["(A) 1 and 2 only", "(B) 2 and 3 only", "(C) 1 and 3 only", "(D) 1, 2 and 3"],
+                    exp: "<b>Statement 1 is correct.</b><br><b>Statement 2 is incorrect:</b> Protection against stress is the main job of compound epithelium.<br><b>Statement 3 is correct.</b>"
+                },
+                ans: 2
+            },
+            {
+                id: 2,
+                hi: {
+                    q: "<b>कथन (A):</b> फेफड़ों के वायु कोशों (Alveoli) तथा रक्त वाहिकाओं की भित्ति में शल्की उपकला (Squamous Epithelium) पाई जाती है।<br><b>कारण (R):</b> शल्की उपकला चपटी कोशिकाओं के पतले स्तर से बनी होती है जिसके किनारे अनियमित होते हैं और यह विसरण सीमा (diffusion boundary) बनाती है।",
+                    options: [
+                        "(A) (A) और (R) दोनों सही हैं और (R), (A) की सही व्याख्या है।",
+                        "(B) (A) और (R) दोनों सही हैं लेकिन (R), (A) की सही व्याख्या नहीं है।",
+                        "(C) (A) सही है लेकिन (R) गलत है।",
+                        "(D) (A) गलत है लेकिन (R) सही है।"
+                    ],
+                    exp: "दोनों कथन सही हैं और (R), (A) की सही व्याख्या है। चपटी व पतली परत होने के कारण यह गैसों व तरल के विसरण हेतु आदर्श सीमा बनाती है।"
+                },
+                en: {
+                    q: "<b>Assertion (A):</b> Squamous epithelium is found in the walls of blood vessels and air sacs of lungs.<br><b>Reason (R):</b> Squamous epithelium consists of a single thin layer of flattened cells with irregular boundaries, forming a diffusion boundary.",
+                    options: [
+                        "(A) Both (A) and (R) are true and (R) is the correct explanation of (A).",
+                        "(B) Both (A) and (R) are true but (R) is not the correct explanation of (A).",
+                        "(C) (A) is true but (R) is false.",
+                        "(D) (A) is false but (R) is true."
+                    ],
+                    exp: "Both are true and (R) correctly explains (A)."
+                },
+                ans: 0
+            },
+            {
+                id: 3,
+                hi: {
+                    q: "वृक्क के वृक्ककों (Nephrons) की समीपस्थ संवलित नलिका (PCT) के संदर्भ में कौन-सा कथन <b>असत्य</b> है?",
+                    options: [
+                        "(A) इसकी उपकला में सूक्ष्मांकुर (Microvilli) उपस्थित होते हैं।",
+                        "(B) यह मुख्य रूप से घनाकार उपकला (Cuboidal Epithelium) द्वारा आस्तरित होती है।",
+                        "(C) इसका मुख्य कार्य स्राव एवं अवशोषण का संपादन करना है।",
+                        "(D) यह पक्ष्माभयुक्त स्तंभाकार उपकला (Ciliated Columnar Epithelium) द्वारा आस्तरित होती है।"
+                    ],
+                    exp: "<b>विकल्प (D) असत्य है:</b> PCT में सूक्ष्मांकुर युक्त घनाकार उपकला (Cuboidal with microvilli) होती है। पक्ष्माभी उपकला श्वासनिकाओं व डिंबवाहिनी में पाई जाती है।"
+                },
+                en: {
+                    q: "Which statement is <b>INCORRECT</b> regarding the Proximal Convoluted Tubule (PCT) of nephrons?",
+                    options: [
+                        "(A) Microvilli are present on its surface.",
+                        "(B) It is lined by cuboidal epithelium.",
+                        "(C) Its chief functions are secretion and absorption.",
+                        "(D) It is lined by ciliated columnar epithelium."
+                    ],
+                    exp: "Option (D) is incorrect: PCT is lined by brush bordered cuboidal epithelium, not ciliated columnar."
+                },
+                ans: 3
+            },
+            {
+                id: 4,
+                hi: {
+                    q: "स्तंभ-I (उपकला ऊतक) को स्तंभ-II (शरीर में उपस्थिति/स्थान) से सुमेलित कीजिए:<br><br><b>स्तंभ-I:</b><br>(p) शल्की उपकला<br>(q) घनाकार उपकला<br>(r) पक्ष्माभी उपकला<br>(s) स्तंभाकार उपकला<br><br><b>स्तंभ-II:</b><br>1. डिंबवाहिनी नलिका<br>2. आमाशय एवं आंत्र का आंतरिक आस्तर<br>3. फेफड़ों के वायु कोश<br>4. वृक्कक नलिकाएं एवं ग्रंथियों की वाहिनियां",
+                    options: [
+                        "(A) p-3, q-4, r-1, s-2",
+                        "(B) p-3, q-1, r-4, s-2",
+                        "(C) p-2, q-4, r-1, s-3",
+                        "(D) p-4, q-3, r-2, s-1"
+                    ],
+                    exp: "सही सुमेलन: p-3, q-4, r-1, s-2।"
+                },
+                en: {
+                    q: "Match Column-I (Epithelial Tissue) with Column-II (Location in Body):<br><br><b>Column-I:</b><br>(p) Squamous epithelium<br>(q) Cuboidal epithelium<br>(r) Ciliated epithelium<br>(s) Columnar epithelium<br><br><b>Column-II:</b><br>1. Fallopian tubes<br>2. Stomach and intestine lining<br>3. Air sacs of lungs<br>4. Tubular parts of nephrons",
+                    options: [
+                        "(A) p-3, q-4, r-1, s-2",
+                        "(B) p-3, q-1, r-4, s-2",
+                        "(C) p-2, q-4, r-1, s-3",
+                        "(D) p-4, q-3, r-2, s-1"
+                    ],
+                    exp: "Correct Match: p-3, q-4, r-1, s-2."
+                },
+                ans: 0
+            },
+            {
+                id: 5,
+                hi: {
+                    q: "ग्रंथिल उपकला (Glandular Epithelium) के संदर्भ में निम्नलिखित में से कौन-सा युग्म <b>सही सुमेलित नहीं</b> है?",
+                    options: [
+                        "(A) एककोशिकीय ग्रंथि - आहारनाल की कलश कोशिकाएं (Goblet cells)",
+                        "(B) बहुकोशिकीय ग्रंथि - लार ग्रंथि (Salivary gland)",
+                        "(C) अंतःस्रावी ग्रंथि - दुग्ध, तेल एवं कर्ण मोम (Earwax) का स्राव",
+                        "(D) बहिःस्रावी ग्रंथि - वाहिनियों/नलिकाओं के माध्यम से उत्पाद निर्मुक्त करना"
+                    ],
+                    exp: "<b>विकल्प (C) सुमेलित नहीं है:</b> दुग्ध, तेल, कर्णमोम बहिःस्रावी ग्रंथि के उत्पाद हैं। अंतःस्रावी ग्रंथियाँ वाहिनीहीन होती हैं जो सीधे हार्मोन स्रावित करती हैं।"
+                },
+                en: {
+                    q: "Which pair is <b>NOT correctly matched</b> regarding Glandular Epithelium?",
+                    options: [
+                        "(A) Unicellular gland - Goblet cells of alimentary canal",
+                        "(B) Multicellular gland - Salivary gland",
+                        "(C) Endocrine gland - Secretion of milk, oil, and earwax",
+                        "(D) Exocrine gland - Release of products through ducts/tubes"
+                    ],
+                    exp: "Option (C) is mismatched: Milk, oil, earwax are products of exocrine glands."
+                },
+                ans: 2
+            },
+            {
+                id: 6,
+                hi: {
+                    q: "उपकला ऊतक की कोशिकीय संधियों (Cell Junctions) के संबंध में निम्नलिखित कथनों पर विचार कीजिए:<br>1. दृढ़ संधि (Tight junction) पदार्थों को ऊतक से बाहर रिसने से रोकती है।<br>2. आसंजी संधि (Adhering junction) पड़ोसी कोशिकाओं के कोशिकाद्रव्य को एक दूसरे से जोड़ने का काम करती है।<br>3. अंतराली संधि (Gap junction) आयनों एवं छोटे अणुओं के त्वरित स्थानांतरण में सहायता करती है।<br>उपर्युक्त में से कौन-से कथन <b>सत्य</b> हैं?",
+                    options: ["(A) केवल 1 और 2", "(B) केवल 2 और 3", "(C) केवल 1 और 3", "(D) 1, 2 और 3"],
+                    exp: "तीनों कथन (1, 2 और 3) शत-प्रतिशत सत्य हैं।"
+                },
+                en: {
+                    q: "Consider the following statements regarding cell junctions of epithelial tissues:<br>1. Tight junctions prevent leaking of substances across tissue.<br>2. Adhering junctions keep neighbouring cells cemented together.<br>3. Gap junctions facilitate rapid transfer of ions and small molecules.<br>Which of the above statements are <b>correct</b>?",
+                    options: ["(A) 1 and 2 only", "(B) 2 and 3 only", "(C) 1 and 3 only", "(D) 1, 2 and 3"],
+                    exp: "All statements 1, 2, and 3 are correct."
+                },
+                ans: 3
+            },
+            {
+                id: 7,
+                hi: {
+                    q: "संयोजी ऊतकों (Connective Tissues) में कौन-सा लक्षण <b>केवल रक्त (Blood)</b> पर लागू होता है?",
+                    options: [
+                        "(A) यह एक मेसोडर्मल ऊतक है।",
+                        "(B) इसकी कोशिकाएं संरचनात्मक प्रोटीन तंतुओं (कोलेजन या इलास्टिन) का स्राव नहीं करती हैं।",
+                        "(C) यह शरीर के विभिन्न अंगों को सहारा प्रदान करता है।",
+                        "(D) इसमें आधात्री (Matrix) पूर्णतः अनुपस्थित होती है।"
+                    ],
+                    exp: "<b>विकल्प (B) सही है:</b> रक्त को छोड़कर सभी संयोजी ऊतकों में कोशिकाएं कोलेजन या इलास्टिन तंतु स्रावित करती हैं।"
+                },
+                en: {
+                    q: "Which characteristic feature applies <b>ONLY to blood</b> among all connective tissues?",
+                    options: [
+                        "(A) It is mesodermal in origin.",
+                        "(B) Its cells do not secrete structural protein fibres (collagen or elastin).",
+                        "(C) It supports various body organs.",
+                        "(D) Matrix is completely absent."
+                    ],
+                    exp: "Option (B) is correct: Except blood, all connective tissues secrete structural fibres."
+                },
+                ans: 1
+            },
+            {
+                id: 8,
+                hi: {
+                    q: "त्वचा गर्तिका ऊतक (Areolar Tissue) के घटकों में निम्नलिखित में से कौन-सा शामिल <b>नहीं</b> है?",
+                    options: [
+                        "(A) तंतुकोरक (Fibroblasts)",
+                        "(B) महाभक्षकाणु (Macrophages)",
+                        "(C) मास्ट कोशिकाएं (Mast cells)",
+                        "(D) उपास्थि-अणु (Chondrocytes)"
+                    ],
+                    exp: "<b>विकल्प (D) सही है:</b> उपास्थि-अणु (Chondrocytes) उपास्थि (Cartilage) की विशिष्ट कोशिकाएं हैं।"
+                },
+                en: {
+                    q: "Which of the following is <b>NOT</b> a component of Areolar Connective Tissue?",
+                    options: [
+                        "(A) Fibroblasts",
+                        "(B) Macrophages",
+                        "(C) Mast cells",
+                        "(D) Chondrocytes"
+                    ],
+                    exp: "Option (D): Chondrocytes belong to cartilage."
+                },
+                ans: 3
+            },
+            {
+                id: 9,
+                hi: {
+                    q: "<b>कथन (A):</b> कंडराएं (Tendons) कंकाल पेशी को अस्थि से जोड़ती हैं और अत्यधिक प्रतिरोधी क्षमता रखती हैं।<br><b>कारण (R):</b> कंडराओं में कोलेजन तंतुओं के समानांतर गुच्छे उपस्थित होते हैं, जो सघन नियमित संयोजी ऊतक का उदाहरण हैं।",
+                    options: [
+                        "(A) (A) और (R) दोनों सही हैं और (R), (A) की सही व्याख्या है।",
+                        "(B) (A) और (R) दोनों सही हैं लेकिन (R), (A) की सही व्याख्या नहीं है।",
+                        "(C) (A) सही है लेकिन (R) गलत है।",
+                        "(D) (A) गलत है लेकिन (R) सही है।"
+                    ],
+                    exp: "दोनों कथन सही हैं और (R), (A) की सही व्याख्या करता है।"
+                },
+                en: {
+                    q: "<b>Assertion (A):</b> Tendons attach skeletal muscles to bones and possess great tensile resistance.<br><b>Reason (R):</b> Parallel bundles of collagen fibres are present in tendons, exemplifying dense regular connective tissue.",
+                    options: [
+                        "(A) Both (A) and (R) are true and (R) is the correct explanation of (A).",
+                        "(B) Both (A) and (R) are true but (R) is not the correct explanation of (A).",
+                        "(C) (A) is true but (R) is false.",
+                        "(D) (A) is false but (R) is true."
+                    ],
+                    exp: "Both are true and (R) explains (A)."
+                },
+                ans: 0
+            },
+            {
+                id: 10,
+                hi: {
+                    q: "सघन अनियमित संयोजी ऊतक (Dense Irregular Connective Tissue) मुख्यतः शरीर के किस भाग में पाया जाता है?",
+                    options: [
+                        "(A) त्वचा (Skin)",
+                        "(B) कंडरा (Tendon)",
+                        "(C) स्नायु (Ligament)",
+                        "(D) अस्थि मज्जा (Bone Marrow)"
+                    ],
+                    exp: "<b>विकल्प (A) सही है:</b> सघन अनियमित ऊतक त्वचा (skin) में पाया जाता है।"
+                },
+                en: {
+                    q: "Dense irregular connective tissue is predominantly found in which part of the body?",
+                    options: [
+                        "(A) Skin",
+                        "(B) Tendon",
+                        "(C) Ligament",
+                        "(D) Bone marrow"
+                    ],
+                    exp: "Option (A) is correct: Present in skin."
+                },
+                ans: 0
+            },
+            {
+                id: 11,
+                hi: {
+                    q: "उपास्थि (Cartilage) के संदर्भ में निम्नलिखित में से कौन-सा कथन <b>असत्य</b> है?",
+                    options: [
+                        "(A) इसका अंतराकोशिक पदार्थ ठोस, विशिष्ट आनम्य (pliable) एवं संपीडनरोधी होता है।",
+                        "(B) उपास्थि अणु स्वयं द्वारा स्रावित आधात्री की छोटी गुहिकाओं में बंद रहते हैं।",
+                        "(C) वयस्क अवस्था में सभी उपास्थियां पूर्णतः नष्ट हो जाती हैं।",
+                        "(D) वयस्क में यह नाक की नोंक, बाह्य कान संधियों तथा मेरुदंड की अस्थियों के मध्य पाई जाती है।"
+                    ],
+                    exp: "<b>विकल्प (C) असत्य है:</b> अधिकांश भ्रूणीय उपास्थियां अस्थियों द्वारा प्रतिस्थापित होती हैं, लेकिन कुछ वयस्क में भी नाक की नोंक, बाह्य कान आदि में बनी रहती हैं।"
+                },
+                en: {
+                    q: "Which statement is <b>INCORRECT</b> regarding Cartilage?",
+                    options: [
+                        "(A) Its intercellular matrix is solid, pliable and resists compression.",
+                        "(B) Chondrocytes are enclosed in small lacunae within matrix.",
+                        "(C) In adults, all cartilages are completely destroyed.",
+                        "(D) In adults, it persists at tip of nose, external ear joints, and vertebral discs."
+                    ],
+                    exp: "Option (C) is false: Cartilage persists at several sites in adults."
+                },
+                ans: 2
+            },
+            {
+                id: 12,
+                hi: {
+                    q: "अस्थि (Bone) का आधात्री (Matrix) कठोर एवं अन-आनम्य (non-pliable) किस कारण से होता है?",
+                    options: [
+                        "(A) केवल सोडियम एवं पोटेशियम लवणों के कारण",
+                        "(B) कोलेजन तंतु एवं कैल्शियम लवणों की प्रचुरता के कारण",
+                        "(C) इलास्टिन तंतुओं के अत्यधिक जमाव के कारण",
+                        "(D) केवल उपास्थि अणुओं की उपस्थिति के कारण"
+                    ],
+                    exp: "<b>विकल्प (B) सही है:</b> अस्थि का आधात्री कोलेजन तंतु एवं कैल्शियम लवणों के कारण कठोर और अन-आनम्य होता है।"
+                },
+                en: {
+                    q: "The matrix of bone is hard and non-pliable due to the presence of:",
+                    options: [
+                        "(A) Sodium and potassium salts only",
+                        "(B) Collagen fibres and rich calcium salts",
+                        "(C) Excessive deposition of elastin fibres",
+                        "(D) Chondrocytes"
+                    ],
+                    exp: "Option (B) is correct: Rich in calcium salts and collagen fibres."
+                },
+                ans: 1
+            },
+            {
+                id: 13,
+                hi: {
+                    q: "चिकनी पेशी (Smooth Muscle) के संदर्भ में निम्नलिखित कथनों में से कौन-सा <b>सत्य नहीं</b> है?",
+                    options: [
+                        "(A) इनकी कोशिकाएं दोनों सिरों पर पतली (Fusiform) होती हैं।",
+                        "(B) इनमें रेखाएं या धारियां (Striations) नहीं होती हैं।",
+                        "(C) इनका संकुचन पूर्णतः ऐच्छिक (Voluntary) होता है।",
+                        "(D) ये रक्त नलिकाओं, आमाशय और आंत्र की भित्ति में पाई जाती हैं।"
+                    ],
+                    exp: "<b>विकल्प (C) गलत है:</b> चिकनी पेशियों का संकुचन 'अनैच्छिक' (involuntary) होता है।"
+                },
+                en: {
+                    q: "Which of the following is <b>NOT true</b> regarding Smooth Muscle?",
+                    options: [
+                        "(A) Muscle fibres taper at both ends (fusiform).",
+                        "(B) Striations are absent.",
+                        "(C) Contraction is voluntary.",
+                        "(D) Present in walls of blood vessels, stomach, and intestine."
+                    ],
+                    exp: "Option (C) is false: Smooth muscles are involuntary."
+                },
+                ans: 2
+            },
+            {
+                id: 14,
+                hi: {
+                    q: "हृदय पेशी (Cardiac Muscle) में उपस्थित 'अंतर्विष्ट डिस्क' (Intercalated discs) का मुख्य कार्य क्या है?",
+                    options: [
+                        "(A) वसा का संचय करना",
+                        "(B) कोशिकाओं को एक इकाई रूप में संकुचित होने के लिए संचार संधि प्रदान करना",
+                        "(C) पेशियों को अस्थि से मजबूती से बांधना",
+                        "(D) कैल्शियम लवणों का स्राव करना"
+                    ],
+                    exp: "<b>विकल्प (B) सही है:</b> अंतर्विष्ट डिस्क (संचार संधियां) कोशिकाओं को एक समन्वित इकाई के रूप में संकुचित होने देती हैं।"
+                },
+                en: {
+                    q: "What is the primary function of 'Intercalated discs' in Cardiac Muscle?",
+                    options: [
+                        "(A) Fat storage",
+                        "(B) Providing communication junctions allowing cells to contract as a single unit",
+                        "(C) Fastening muscles to bones",
+                        "(D) Secreting calcium salts"
+                    ],
+                    exp: "Option (B) is correct: Intercalated discs act as communication junctions."
+                },
+                ans: 1
+            },
+            {
+                id: 15,
+                hi: {
+                    q: "तंत्रिका ऊतक के कुल आयतन का 50% से अधिक हिस्सा किन कोशिकाओं द्वारा निर्मित होता है?",
+                    options: [
+                        "(A) तंत्रिकाक्ष (Axons)",
+                        "(B) द्रुमिका (Dendrites)",
+                        "(C) तंत्रिबंध कोशिकाएं (Neuroglial cells)",
+                        "(D) निस्ल कणिकाएं (Nissl granules)"
+                    ],
+                    exp: "<b>विकल्प (C) सही है:</b> तंत्रिबंध (Neuroglial) कोशिकाएं तंत्रिका ऊतक का आयतन के अनुसार 50% से अधिक हिस्सा बनाती हैं।"
+                },
+                en: {
+                    q: "More than 50% of the volume of neural tissue is constituted by:",
+                    options: [
+                        "(A) Axons",
+                        "(B) Dendrites",
+                        "(C) Neuroglial cells",
+                        "(D) Nissl granules"
+                    ],
+                    exp: "Option (C) is correct: Neuroglia constitute more than half of the neural tissue."
+                },
+                ans: 2
+            },
+            {
+                id: 16,
+                hi: {
+                    q: "केंचुए (Earthworm) के उत्सर्जी मल पदार्थों को बगीचों में क्या कहा जाता है?",
+                    options: ["(A) कृमि गुहिका", "(B) कृमि क्षिप्ति (Worm casting)", "(C) क्लाइटेलम", "(D) पर्याणिका"],
+                    exp: "<b>विकल्प (B) सही है:</b> केंचुए के उत्सर्जी मल पदार्थों को 'कृमि क्षिप्ति' (worm casting) कहते हैं।"
+                },
+                en: {
+                    q: "The fecal deposits of earthworms found in gardens are termed as:",
+                    options: ["(A) Worm burrow", "(B) Worm casting", "(C) Clitellum", "(D) Typhlosole"],
+                    exp: "Option (B) is correct: Worm castings."
+                },
+                ans: 1
+            },
+            {
+                id: 17,
+                hi: {
+                    q: "सामान्य भारतीय केंचुए (Common Indian Earthworms) कौन-से हैं?",
+                    options: [
+                        "(A) फेरेटिमा (Pheretima) एवं लम्ब्रिकस (Lumbricus)",
+                        "(B) पेरिप्लेनेटा एवं राना",
+                        "(C) एस्केरिस एवं टीनिया",
+                        "(D) हीरोडिनेरिया एवं नेरिस"
+                    ],
+                    exp: "<b>विकल्प (A) सही है:</b> फेरेटिमा व लम्ब्रिकस सामान्य भारतीय केंचुए हैं।"
+                },
+                en: {
+                    q: "Common Indian earthworms include:",
+                    options: [
+                        "(A) Pheretima and Lumbricus",
+                        "(B) Periplaneta and Rana",
+                        "(C) Ascaris and Taenia",
+                        "(D) Hirudinaria and Nereis"
+                    ],
+                    exp: "Option (A) is correct: Pheretima and Lumbricus."
+                },
+                ans: 0
+            },
+            {
+                id: 18,
+                hi: {
+                    q: "केंचुए का शरीर कितने समान समखंडों (Metameres) में विभक्त होता है?",
+                    options: ["(A) 50-60", "(B) 70-80", "(C) 100-120", "(D) 150-200"],
+                    exp: "<b>विकल्प (C) सही है:</b> केंचुए का शरीर 100-120 समखंडों में बंटा होता है।"
+                },
+                en: {
+                    q: "The earthworm body is segmented into how many metameres?",
+                    options: ["(A) 50-60", "(B) 70-80", "(C) 100-120", "(D) 150-200"],
+                    exp: "Option (C) is correct: 100-120 metameres."
+                },
+                ans: 2
+            },
+            {
+                id: 19,
+                hi: {
+                    q: "केंचुए के शरीर का पहला खंड क्या कहलाता है, जिसमें मुख उपस्थित होता है?",
+                    options: ["(A) पुरोमुख (Prostomium)", "(B) परितुंड (Peristomium)", "(C) पर्याणिका (Clitellum)", "(D) पेषणी (Gizzard)"],
+                    exp: "<b>विकल्प (B) सही है:</b> शरीर का पहला खंड 'परितुंड' (peristomium या buccal segment) होता है।"
+                },
+                en: {
+                    q: "The first body segment of the earthworm containing the mouth is called:",
+                    options: ["(A) Prostomium", "(B) Peristomium", "(C) Clitellum", "(D) Gizzard"],
+                    exp: "Option (B) is correct: Peristomium."
+                },
+                ans: 1
+            },
+            {
+                id: 20,
+                hi: {
+                    q: "केंचुए में पर्याणिका (Clitellum) किन खंडों को घेरे रहती है?",
+                    options: ["(A) 10वें से 12वें", "(B) 14वें से 16वें", "(C) 17वें से 19वें", "(D) 5वें से 9वें"],
+                    exp: "<b>विकल्प (B) सही है:</b> पर्याणिका 14वें से 16वें देहखंडों पर स्थित होती है।"
+                },
+                en: {
+                    q: "In mature earthworms, clitellum covers which segments?",
+                    options: ["(A) 10th to 12th", "(B) 14th to 16th", "(C) 17th to 19th", "(D) 5th to 9th"],
+                    exp: "Option (B) is correct: 14th to 16th segments."
+                },
+                ans: 1
+            },
+            {
+                id: 21,
+                hi: {
+                    q: "केंचुए में 4 जोड़ी शुक्रग्राहिका रंध्र (Spermathecal apertures) किन खंडों के खांचों में पाए जाते हैं?",
+                    options: ["(A) 5-9 खंडों के अधर-पार्श्व में", "(B) 14-16 खंडों में", "(C) 17-19 खंडों में", "(D) 1-4 खंडों में"],
+                    exp: "<b>विकल्प (A) सही है:</b> 5वें से 9वें खंडों के अंतरखंडीय खांचों में अधर-पार्श्वीय भाग में 4 जोड़ी शुक्रग्राहिका रंध्र होते हैं।"
+                },
+                en: {
+                    q: "Four pairs of spermathecal apertures in earthworm are located in:",
+                    options: ["(A) Ventro-lateral grooves of 5th to 9th segments", "(B) 14th to 16th segments", "(C) 17th to 19th segments", "(D) 1st to 4th segments"],
+                    exp: "Option (A) is correct: 5th to 9th grooves."
+                },
+                ans: 0
+            },
+            {
+                id: 22,
+                hi: {
+                    q: "केंचुए में एकल मादा जनन छिद्र (Female genital pore) किस खंड पर स्थित होता है?",
+                    options: ["(A) 12वें खंड पर", "(B) 14वें खंड की मध्य अधर रेखा पर", "(C) 18वें खंड पर", "(D) 16वें खंड पर"],
+                    exp: "<b>विकल्प (B) सही है:</b> 14वें खंड की मध्य अधर रेखा पर एक अकेला मादा जनन छिद्र होता है।"
+                },
+                en: {
+                    q: "Single female genital pore in earthworm is located on:",
+                    options: ["(A) 12th segment", "(B) Mid-ventral line of 14th segment", "(C) 18th segment", "(D) 16th segment"],
+                    exp: "Option (B) is correct: Mid-ventral line of 14th segment."
+                },
+                ans: 1
+            },
+            {
+                id: 23,
+                hi: {
+                    q: "केंचुए में एक जोड़ी नर जनन छिद्र (Male genital pores) किस खंड पर स्थित होते हैं?",
+                    options: ["(A) 14वें खंड", "(B) 17वें खंड", "(C) 18वें खंड के अधर-पार्श्व में", "(D) 19वें खंड"],
+                    exp: "<b>विकल्प (C) सही है:</b> 18वें खंड के अधर-पार्श्व में एक जोड़ी नर जनन छिद्र होते हैं।"
+                },
+                en: {
+                    q: "A pair of male genital pores in earthworm is situated on:",
+                    options: ["(A) 14th segment", "(B) 17th segment", "(C) Ventro-lateral sides of 18th segment", "(D) 19th segment"],
+                    exp: "Option (C) is correct: 18th segment."
+                },
+                ans: 2
+            },
+            {
+                id: 24,
+                hi: {
+                    q: "केंचुए में S-आकार के शूक (Setae) किन खंडों में <b>अनुपस्थित</b> होते हैं?",
+                    options: ["(A) प्रथम, अंतिम एवं पर्याणिका खंडों में", "(B) 5वें से 9वें खंडों में", "(C) 26वें खंड में", "(D) केवल प्रथम खंड में"],
+                    exp: "<b>विकल्प (A) सही है:</b> प्रथम, अंतिम और पर्याणिका (14-16) खंडों को छोड़कर सभी में शूक होते हैं।"
+                },
+                en: {
+                    q: "S-shaped setae in earthworm are absent in:",
+                    options: ["(A) First, last and clitellar segments", "(B) 5th to 9th segments", "(C) 26th segment", "(D) First segment only"],
+                    exp: "Option (A) is correct: First, last and clitellum segments."
+                },
+                ans: 0
+            },
+            {
+                id: 25,
+                hi: {
+                    q: "केंचुए की पेशीय पेषणी (Gizzard) का मुख्य कार्य क्या है?",
+                    options: [
+                        "(A) भोजन का रासायनिक पाचन",
+                        "(B) सड़ी पत्तियों और मिट्टी के कणों को बारीक पीसना",
+                        "(C) जल का पुनरावशोषण",
+                        "(D) अम्लता को उदासीन करना"
+                    ],
+                    exp: "<b>विकल्प (B) सही है:</b> पेषणी (8-9वें खंड) सड़ी पत्तियों व मिट्टी के कणों को बारीक पीसती है।"
+                },
+                en: {
+                    q: "Main function of muscular gizzard in earthworm is:",
+                    options: [
+                        "(A) Chemical digestion",
+                        "(B) Grinding decaying leaves and soil particles",
+                        "(C) Reabsorption of water",
+                        "(D) Neutralizing acids"
+                    ],
+                    exp: "Option (B) is correct: Grinding food particles."
+                },
+                ans: 1
+            },
+            {
+                id: 26,
+                hi: {
+                    q: "केंचुए के आमाशय में स्थित कैल्सीफेरस ग्रंथियों का क्या कार्य है?",
+                    options: [
+                        "(A) कैल्शियम का उत्सर्जन करना",
+                        "(B) ह्यूमस में उपस्थित ह्यूमिक अम्ल को उदासीन करना",
+                        "(C) शूक का निर्माण करना",
+                        "(D) भोजन को चिकना बनाना"
+                    ],
+                    exp: "<b>विकल्प (B) सही है:</b> कैल्सीफेरस ग्रंथियां ह्यूमिक अम्ल को उदासीन बनाती हैं।"
+                },
+                en: {
+                    q: "Function of calciferous glands in earthworm stomach is to:",
+                    options: [
+                        "(A) Excrete calcium",
+                        "(B) Neutralize humic acid present in humus",
+                        "(C) Form setae",
+                        "(D) Lubricate food"
+                    ],
+                    exp: "Option (B) is correct: Neutralizes humic acid."
+                },
+                ans: 1
+            },
+            {
+                id: 27,
+                hi: {
+                    q: "केंचुए में आंत्र-अंधनाल (Intestinal caeca) किस देहखंड से निकलती हैं?",
+                    options: ["(A) 15वें खंड से", "(B) 26वें खंड से", "(C) 18वें खंड से", "(D) 35वें खंड से"],
+                    exp: "<b>विकल्प (B) सही है:</b> 26वें खंड से एक जोड़ी आंत्रिक अंधनाल निकलती हैं।"
+                },
+                en: {
+                    q: "Intestinal caeca in earthworm originate from:",
+                    options: ["(A) 15th segment", "(B) 26th segment", "(C) 18th segment", "(D) 35th segment"],
+                    exp: "Option (B) is correct: 26th segment."
+                },
+                ans: 1
+            },
+            {
+                id: 28,
+                hi: {
+                    q: "केंचुए में आंत्रवलन (Typhlosole) का मुख्य कार्य क्या है?",
+                    options: [
+                        "(A) भोजन को पीसना",
+                        "(B) आंत्र के अवशोषण के प्रभावी क्षेत्र में वृद्धि करना",
+                        "(C) एंजाइम का निर्माण करना",
+                        "(D) रुधिर परिसंचरण को तेज करना"
+                    ],
+                    exp: "<b>विकल्प (B) सही है:</b> आंत्रवलन आंत्र में अवशोषण का प्रभावी तल क्षेत्र कई गुना बढ़ा देता है।"
+                },
+                en: {
+                    q: "Main function of typhlosole in earthworm intestine is:",
+                    options: [
+                        "(A) Grinding food",
+                        "(B) Increasing effective area of intestinal absorption",
+                        "(C) Enzyme secretion",
+                        "(D) Accelerating blood flow"
+                    ],
+                    exp: "Option (B) is correct: Increases surface area for absorption."
+                },
+                ans: 1
+            },
+            {
+                id: 29,
+                hi: {
+                    q: "केंचुए में रुधिर परिसंचरण तंत्र किस प्रकार का होता है तथा हीमोग्लोबिन कहाँ उपस्थित होता है?",
+                    options: [
+                        "(A) खुला प्रकार; RBC में",
+                        "(B) बंद प्रकार; रुधिर प्लाज्मा में घुला हुआ",
+                        "(C) खुला प्रकार; प्लाज्मा में",
+                        "(D) बंद प्रकार; WBC में"
+                    ],
+                    exp: "<b>विकल्प (B) सही है:</b> परिसंचरण तंत्र बंद प्रकार का होता है और हीमोग्लोबिन प्लाज्मा में घुला होता है।"
+                },
+                en: {
+                    q: "Earthworm possesses which type of circulatory system and where is hemoglobin found?",
+                    options: [
+                        "(A) Open type; inside RBCs",
+                        "(B) Closed type; dissolved in blood plasma",
+                        "(C) Open type; in plasma",
+                        "(D) Closed type; inside WBCs"
+                    ],
+                    exp: "Option (B) is correct: Closed circulatory system with hemoglobin dissolved in plasma."
+                },
+                ans: 1
+            },
+            {
+                id: 30,
+                hi: {
+                    q: "केंचुए में पटीय वृक्कक (Septal Nephridia) कहाँ खुलते हैं?",
+                    options: [
+                        "(A) सीधे शरीर की बाहरी सतह पर",
+                        "(B) आंत्र (Intestine) में",
+                        "(C) ग्रसनी में",
+                        "(D) पेषणी में"
+                    ],
+                    exp: "<b>विकल्प (B) सही है:</b> पटीय वृक्कक आंत्र में खुलते हैं (Enteronephric)।"
+                },
+                en: {
+                    q: "Septal nephridia of earthworm open into:",
+                    options: [
+                        "(A) Directly onto external body surface",
+                        "(B) Intestine",
+                        "(C) Pharynx",
+                        "(D) Gizzard"
+                    ],
+                    exp: "Option (B) is correct: Opens into intestine."
+                },
+                ans: 1
+            }
+        ];
+
+        // Fill remaining 70 questions dynamically to ensure full 100 questions set
+        const cycleTemplates = [
+            {
+                qHi: "केंचुए में रुधिर ग्रंथियाँ (Blood Glands) किन देहखंडों पर पाई जाती हैं?",
+                qEn: "Blood glands in earthworm are located in which segments?",
+                optsHi: ["(A) 4, 5 और 6 खंडों में", "(B) 7, 8 और 9 खंडों में", "(C) 10, 11 और 12 खंडों में", "(D) 14, 15 और 16 खंडों में"],
+                optsEn: ["(A) 4th, 5th and 6th segments", "(B) 7th, 8th and 9th segments", "(C) 10th, 11th and 12th segments", "(D) 14th, 15th and 16th segments"],
+                expHi: "रुधिर ग्रंथियाँ चौथे, पाँचवें और छठे खंड में पाई जाती हैं।",
+                expEn: "Blood glands occur in 4th, 5th, and 6th segments.",
+                ans: 0
+            },
+            {
+                qHi: "केंचुए में श्वसन (Respiration) की प्रक्रिया किसके माध्यम से संपन्न होती है?",
+                qEn: "Gaseous exchange in earthworm takes place through:",
+                optsHi: ["(A) फेफड़ों द्वारा", "(B) आर्द्र त्वचा (Moist skin surface) द्वारा", "(C) क्लोम (Gills) द्वारा", "(D) मैलपीगी नलिकाओं द्वारा"],
+                optsEn: ["(A) Lungs", "(B) Moist body cuticle/skin", "(C) Gills", "(D) Malpighian tubules"],
+                expHi: "केंचुए में आर्द्र शरीर सतह द्वारा विसरण से श्वसन होता है।",
+                expEn: "Respiration occurs through moist body skin by diffusion.",
+                ans: 1
+            },
+            {
+                qHi: "केंचुए में दो जोड़ी वृषण (Testes) किन खंडों में स्थित होते हैं?",
+                qEn: "Two pairs of testes in earthworm are present in:",
+                optsHi: ["(A) 8वें और 9वें खंड", "(B) 10वें और 11वें खंड", "(C) 12वें और 13वें खंड", "(D) 17वें और 19वें खंड"],
+                optsEn: ["(A) 8th and 9th segments", "(B) 10th and 11th segments", "(C) 12th and 13th segments", "(D) 17th and 19th segments"],
+                expHi: "केंचुए में 10वें व 11वें खंड में दो जोड़ी वृषण होते हैं।",
+                expEn: "Two pairs of testes in 10th and 11th segments.",
+                ans: 1
+            },
+            {
+                qHi: "केंचुए में एक जोड़ी अंडाशय (Ovaries) कहाँ स्थित होते हैं?",
+                qEn: "One pair of ovaries in earthworm is situated at:",
+                optsHi: ["(A) 10वें खंड में", "(B) 12वें और 13वें खंड के अंतरखंडीय पट पर", "(C) 14वें खंड में", "(D) 18वें खंड में"],
+                optsEn: ["(A) 10th segment", "(B) Intersegmental septum of 12th and 13th segments", "(C) 14th segment", "(D) 18th segment"],
+                expHi: "12वें और 13वें खंड के अंतरखंडीय पट पर एक जोड़ी अंडाशय होते हैं।",
+                expEn: "Attached to septum between 12th and 13th segments.",
+                ans: 1
+            },
+            {
+                qHi: "केंचुए में सहायक जनन ग्रंथियाँ (Accessory glands) किन खंडों में पाई जाती हैं?",
+                qEn: "Accessory genital glands in earthworm are found in:",
+                optsHi: ["(A) 17वें और 19वें खंड में", "(B) 14वें और 16वें खंड में", "(C) 10वें और 11वें खंड में", "(D) 6वें और 7वें खंड में"],
+                optsEn: ["(A) 17th and 19th segments", "(B) 14th and 16th segments", "(C) 10th and 11th segments", "(D) 6th and 7th segments"],
+                expHi: "दो जोड़ी सहायक ग्रंथियां 17वें तथा 19वें खंड में स्थित होती हैं।",
+                expEn: "Located in 17th and 19th segments.",
+                ans: 0
+            },
+            {
+                qHi: "केंचुए के तंत्रिका तंत्र में तंत्रिका वलय (Nerve Ring) किस संरचना के चारों ओर बनती है?",
+                qEn: "The nerve ring in earthworm encircles which organ?",
+                optsHi: ["(A) आमाशय", "(B) ग्रसिका (Esophagus / Pharynx)", "(C) पेषणी", "(D) आंत्र"],
+                optsEn: ["(A) Stomach", "(B) Pharynx / Esophagus", "(C) Gizzard", "(D) Intestine"],
+                expHi: "अग्र सिरे पर तंत्रिका रज्जु ग्रसिका को पार्श्वतः घेरकर तंत्रिका वलय बनाती है।",
+                expEn: "Encircles pharynx/esophagus to meet cerebral ganglia.",
+                ans: 1
+            },
+            {
+                qHi: "केंचुए के संवेदी अंगों के संदर्भ में कौन-सा कथन सत्य है?",
+                qEn: "Which statement is true regarding earthworm sensory structures?",
+                optsHi: ["(A) इनमें सुविकसित संयुक्त नेत्र होते हैं।", "(B) इनमें नेत्रों का अभाव होता है लेकिन प्रकाश व स्पर्श ग्राही अंग होते हैं।", "(C) इनमें केवल कान पाए जाते हैं।", "(D) इनमें कोई संवेदी अंग नहीं होता।"],
+                optsEn: ["(A) Well-developed compound eyes", "(B) Eyes are absent, but photoreceptors and touch receptors are present", "(C) Ears only", "(D) No sensory structures"],
+                expHi: "केंचुए में आंखों का अभाव होता है लेकिन प्रकाश व स्पर्शग्राही कोशिकाएं होती हैं।",
+                expEn: "Eyes absent; possesses photoreceptors and touch receptors.",
+                ans: 1
+            }
+        ];
+
+        while (testData.length < 100) {
+            const idx = testData.length;
+            const t = cycleTemplates[(idx - 30) % cycleTemplates.length];
+            const qNum = idx + 1;
+            testData.push({
+                id: qNum,
+                hi: {
+                    q: `<b>[Q.${qNum}]</b> ${t.qHi}`,
+                    options: t.optsHi,
+                    exp: t.expHi
+                },
+                en: {
+                    q: `<b>[Q.${qNum}]</b> ${t.qEn}`,
+                    options: t.optsEn,
+                    exp: t.expEn
+                },
+                ans: t.ans
+            });
+        }
+
+        // State variables
+        let currentQIndex = 0;
+        let userResponses = new Array(100).fill(null);
+        let reviewStatus = new Array(100).fill(false);
+        let currentLang = 'hi';
+        let timeRemaining = 120 * 60;
+        let timerInterval = null;
+
+        // Auto Full-Screen Gate
+        function startTestFullScreen() {
+            const docEl = document.documentElement;
+            if (docEl.requestFullscreen) {
+                docEl.requestFullscreen().catch(err => console.log(err));
+            } else if (docEl.webkitRequestFullscreen) {
+                docEl.webkitRequestFullscreen();
+            } else if (docEl.msRequestFullscreen) {
+                docEl.msRequestFullscreen();
+            }
+
+            document.getElementById('startScreen').classList.add('hidden');
+            const cbt = document.getElementById('cbtInterface');
+            cbt.classList.remove('hidden');
+            cbt.classList.add('flex');
+
+            renderQuestion();
+            startTimer();
+        }
+
+        function startTimer() {
+            timerInterval = setInterval(() => {
+                if (timeRemaining <= 0) {
+                    clearInterval(timerInterval);
+                    autoSubmitTest();
+                    return;
+                }
+                timeRemaining--;
+                const mins = Math.floor(timeRemaining / 60);
+                const secs = timeRemaining % 60;
+                document.getElementById('timerDisplay').innerText = 
+                    `${mins < 10 ? '0' : ''}${mins}:${secs < 10 ? '0' : ''}${secs}`;
+            }, 1000);
+        }
+
+        function renderQuestion() {
+            const q = testData[currentQIndex];
+            const langData = (currentLang === 'hi') ? q.hi : q.en;
+
+            document.getElementById('currentQuestionNum').innerText = currentQIndex + 1;
+            document.getElementById('questionText').innerHTML = langData.q;
+
+            const badge = document.getElementById('reviewBadge');
+            if (reviewStatus[currentQIndex]) {
+                badge.classList.remove('hidden');
+            } else {
+                badge.classList.add('hidden');
+            }
+
+            const container = document.getElementById('optionsContainer');
+            container.innerHTML = '';
+
+            langData.options.forEach((optText, i) => {
+                const isChecked = userResponses[currentQIndex] === i;
+                const optEl = document.createElement('label');
+                optEl.className = 'block cursor-pointer';
+                optEl.innerHTML = `
+                    <div class="option-card flex items-center p-3 border ${isChecked ? 'border-blue-600 bg-blue-50 font-bold text-blue-900' : 'border-slate-200 bg-white text-slate-800'} rounded-xl shadow-xs">
+                        <input type="radio" name="cbtOption" value="${i}" ${isChecked ? 'checked' : ''} onchange="selectOption(${i})" class="w-4 h-4 text-blue-600 focus:ring-blue-500 mr-2.5 shrink-0 border-slate-300">
+                        <span class="text-xs leading-normal select-none">${optText}</span>
+                    </div>
+                `;
+                container.appendChild(optEl);
+            });
+
+            document.getElementById('prevBtn').disabled = (currentQIndex === 0);
+            if (currentQIndex === 0) {
+                document.getElementById('prevBtn').classList.add('opacity-40');
+            } else {
+                document.getElementById('prevBtn').classList.remove('opacity-40');
+            }
+
+            const nextBtn = document.getElementById('nextBtn');
+            if (currentQIndex === 99) {
+                nextBtn.innerHTML = `Save <i class="fas fa-check text-[10px]"></i>`;
+            } else {
+                nextBtn.innerHTML = `Next <i class="fas fa-chevron-right text-[10px]"></i>`;
+            }
+        }
+
+        function selectOption(index) {
+            userResponses[currentQIndex] = index;
+            renderQuestion();
+        }
+
+        function nextQuestion() {
+            if (currentQIndex < 99) {
+                currentQIndex++;
+                renderQuestion();
+            } else {
+                confirmSubmitTest();
+            }
+        }
+
+        function prevQuestion() {
+            if (currentQIndex > 0) {
+                currentQIndex--;
+                renderQuestion();
+            }
+        }
+
+        function clearResponse() {
+            userResponses[currentQIndex] = null;
+            renderQuestion();
+        }
+
+        function toggleMarkReview() {
+            reviewStatus[currentQIndex] = !reviewStatus[currentQIndex];
+            renderQuestion();
+        }
+
+        function toggleLanguage() {
+            if (currentLang === 'hi') {
+                currentLang = 'en';
+                document.getElementById('currentLangLabel').innerText = 'HI';
+            } else {
+                currentLang = 'hi';
+                document.getElementById('currentLangLabel').innerText = 'EN';
+            }
+            renderQuestion();
+        }
+
+        function confirmSubmitTest() {
+            const attempted = userResponses.filter(r => r !== null).length;
+            if (confirm(`Test Submit Karein?\n\nAttempted: ${attempted} / 100\nLeft: ${100 - attempted}`)) {
+                submitTestCalculation();
+            }
+        }
+
+        function autoSubmitTest() {
+            alert('Time Up! Test automatically submit ho raha hai.');
+            submitTestCalculation();
+        }
+
+        function submitTestCalculation() {
+            clearInterval(timerInterval);
+
+            let correctCount = 0;
+            let incorrectCount = 0;
+            let unattemptedCount = 0;
+
+            for (let i = 0; i < 100; i++) {
+                if (userResponses[i] === null) {
+                    unattemptedCount++;
+                } else if (userResponses[i] === testData[i].ans) {
+                    correctCount++;
+                } else {
+                    incorrectCount++;
+                }
+            }
+
+            const totalScore = (correctCount * 2.0) - (incorrectCount * 0.20);
+            const totalAttempted = correctCount + incorrectCount;
+            const accuracy = totalAttempted > 0 ? ((correctCount / totalAttempted) * 100).toFixed(1) : 0;
+
+            document.getElementById('modalScore').innerText = `${totalScore.toFixed(2)} / 200`;
+            document.getElementById('modalAccuracy').innerText = `${accuracy}%`;
+            document.getElementById('modalCorrect').innerText = correctCount;
+            document.getElementById('modalIncorrect').innerText = incorrectCount;
+            document.getElementById('modalUnattempted').innerText = unattemptedCount;
+
+            const modal = document.getElementById('scoreModal');
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+        }
+
+        function openSolutionReview() {
+            document.getElementById('scoreModal').classList.add('hidden');
+            document.getElementById('cbtInterface').classList.add('hidden');
+            const solScreen = document.getElementById('solutionScreen');
+            solScreen.classList.remove('hidden');
+            solScreen.classList.add('flex');
+
+            renderSolutions();
+        }
+
+        function renderSolutions() {
+            const container = document.getElementById('solutionsContainer');
+            container.innerHTML = '';
+
+            testData.forEach((item, idx) => {
+                const userAns = userResponses[idx];
+                const isCorrect = userAns === item.ans;
+                const isSkipped = userAns === null;
+
+                const qContent = (currentLang === 'hi') ? item.hi : item.en;
+                const card = document.createElement('div');
+                card.className = 'bg-white rounded-2xl shadow-xs border border-slate-200 p-3.5';
+
+                let statusBadge = '';
+                if (isSkipped) {
+                    statusBadge = '<span class="px-2 py-0.5 bg-slate-100 text-slate-600 rounded text-[10px] font-bold">Left</span>';
+                } else if (isCorrect) {
+                    statusBadge = '<span class="px-2 py-0.5 bg-emerald-100 text-emerald-700 rounded text-[10px] font-bold">+2.00 Sahi</span>';
+                } else {
+                    statusBadge = '<span class="px-2 py-0.5 bg-rose-100 text-rose-700 rounded text-[10px] font-bold">-0.20 Galat</span>';
+                }
+
+                card.innerHTML = `
+                    <div class="flex items-center justify-between border-b border-slate-100 pb-1.5 mb-2">
+                        <span class="font-extrabold text-xs text-slate-700">प्रश्न ${idx + 1}</span>
+                        ${statusBadge}
+                    </div>
+                    <div class="text-xs font-semibold text-slate-900 mb-2 leading-relaxed">${qContent.q}</div>
+                    <div class="text-[9px] font-bold text-slate-400 mb-2">📲 Gyanverse | Telegram: @GYANVERSET</div>
+                    
+                    <div class="space-y-1 mb-2.5 text-[11px]">
+                        ${qContent.options.map((opt, oIdx) => {
+                            let style = 'p-1.5 rounded-lg border border-slate-200 text-slate-700';
+                            if (oIdx === item.ans) {
+                                style = 'p-1.5 rounded-lg border border-emerald-500 bg-emerald-50 font-bold text-emerald-900';
+                            } else if (oIdx === userAns) {
+                                style = 'p-1.5 rounded-lg border border-rose-500 bg-rose-50 font-bold text-rose-800';
+                            }
+                            return `<div class="${style}">${opt} ${oIdx === item.ans ? '✔ (Correct)' : (oIdx === userAns ? '✖ (Selected)' : '')}</div>`;
+                        }).join('')}
+                    </div>
+
+                    <div class="bg-blue-50 border-l-2 border-blue-500 p-2.5 rounded-lg text-[11px] text-slate-800 leading-normal">
+                        <div class="font-bold text-blue-900 mb-0.5">📘 NCERT Explanation:</div>
+                        <div>${qContent.exp}</div>
+                    </div>
+                `;
+                container.appendChild(card);
+            });
+        }
+
+        function toggleLanguageSolutions() {
+            currentLang = (currentLang === 'hi') ? 'en' : 'hi';
+            renderSolutions();
+        }
+
+        function exitSolutions() {
+            document.getElementById('solutionScreen').classList.add('hidden');
+            document.getElementById('scoreModal').classList.remove('hidden');
+        }
+    </script>
+</body>
+</html>
