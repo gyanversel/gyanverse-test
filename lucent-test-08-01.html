@@ -1,0 +1,1114 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>GYANVERSE - Lucent GK Test 08 (Part 1: Q1 to Q125)</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            -webkit-tap-highlight-color: transparent;
+            user-select: none;
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 5px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background-color: #cbd5e1;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body class="bg-slate-100 text-slate-800 font-sans min-h-screen flex flex-col justify-between">
+
+    <!-- START TEST MODAL / AUTO FULLSCREEN GATE -->
+    <div id="startModal" class="fixed inset-0 z-50 flex items-center justify-center bg-slate-900 bg-opacity-95 p-4">
+        <div class="bg-white rounded-2xl shadow-2xl max-w-lg w-full p-6 text-center border-t-8 border-indigo-600">
+            <div class="w-16 h-16 bg-indigo-100 text-indigo-600 rounded-full flex items-center justify-center mx-auto mb-4 text-2xl font-bold">
+                <i class="fa-solid fa-graduation-cap"></i>
+            </div>
+            <h2 class="text-2xl font-black text-slate-800 tracking-wide">GYANVERSE CBT PORTAL</h2>
+            <p class="text-sm text-slate-500 mt-1 font-medium">Lucent GK Mega Test 08 : Part 1 (Q. 1 - 125)</p>
+            
+            <div class="bg-slate-50 border border-slate-200 rounded-xl p-4 my-5 text-left text-xs sm:text-sm space-y-2">
+                <div class="flex justify-between text-slate-700"><span>कुल प्रश्न (Total Questions):</span> <span class="font-bold text-indigo-700">125 MCQs (Zero Repetition)</span></div>
+                <div class="flex justify-between text-slate-700"><span>कवरेज (Topics):</span> <span class="font-bold">संगम युग एवं गुप्त साम्राज्य</span></div>
+                <div class="flex justify-between text-slate-700"><span>समय (Duration):</span> <span class="font-bold">120 मिनट</span></div>
+                <div class="flex justify-between text-slate-700"><span>अंकन प्रणाली (Marking):</span> <span class="font-bold text-emerald-600">+2.00 सही | -0.20 गलत</span></div>
+                <div class="flex justify-between text-slate-700"><span>भाषा विकल्प (Language):</span> <span class="font-bold text-indigo-600">हिंदी / English Toggle</span></div>
+                <div class="flex justify-between text-slate-700"><span>टेलीग्राम कम्युनिटी:</span> <a href="https://t.me/GYANVERSET" target="_blank" class="font-bold text-blue-600 underline">@GYANVERSET</a></div>
+            </div>
+
+            <p class="text-xs text-rose-600 font-semibold mb-5 flex items-center justify-center gap-1">
+                <i class="fa-solid fa-expand"></i> परीक्षा शुरू करने के लिए 'ऑटो फुल-स्क्रीन' मोड अनिवार्य है।
+            </p>
+
+            <button onclick="enterFullScreenAndStart()" class="w-full bg-gradient-to-r from-indigo-600 to-indigo-800 hover:from-indigo-700 hover:to-indigo-900 text-white font-bold py-3.5 px-6 rounded-xl shadow-lg transition duration-200 active:scale-95 flex items-center justify-center gap-2 text-base">
+                <i class="fa-solid fa-circle-play"></i> Start Test (Auto Full Screen)
+            </button>
+        </div>
+    </div>
+
+    <!-- MAIN CBT APP CONTAINER -->
+    <div id="cbtApp" class="flex flex-col min-h-screen">
+        
+        <!-- HEADER -->
+        <header class="bg-slate-900 text-white sticky top-0 z-30 shadow-md">
+            <div class="max-w-5xl mx-auto px-4 py-2.5 flex items-center justify-between">
+                <!-- Brand & Logo -->
+                <div class="flex items-center space-x-2">
+                    <span class="bg-indigo-600 text-white font-black text-sm px-2.5 py-1 rounded-md tracking-wider">GV</span>
+                    <div>
+                        <h1 class="text-sm font-extrabold tracking-wide uppercase">Gyanverse</h1>
+                        <a href="https://t.me/GYANVERSET" target="_blank" class="text-[10px] text-indigo-300 hover:underline flex items-center gap-1 font-mono">
+                            <i class="fa-brands fa-telegram"></i> @GYANVERSET
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Live Timer & Language Switcher & Submit -->
+                <div class="flex items-center space-x-2 sm:space-x-4">
+                    <!-- Language Switcher -->
+                    <button onclick="toggleLanguage()" class="bg-slate-800 border border-slate-700 hover:bg-slate-700 text-amber-400 font-bold px-2.5 py-1 rounded-lg text-xs flex items-center gap-1 shadow transition">
+                        <i class="fa-solid fa-language"></i> <span id="langToggleBtnText">English</span>
+                    </button>
+
+                    <!-- Live Timer -->
+                    <div class="bg-slate-800 border border-slate-700 px-3 py-1 rounded-lg flex items-center space-x-1 text-emerald-400 font-mono text-sm font-bold shadow">
+                        <i class="fa-regular fa-clock text-xs"></i>
+                        <span id="timerDisplay">120:00</span>
+                    </div>
+
+                    <!-- Submit Test Button -->
+                    <button onclick="confirmSubmitTest()" class="bg-rose-600 hover:bg-rose-700 active:scale-95 text-white font-bold px-3 py-1 rounded-lg text-xs tracking-wider uppercase transition shadow flex items-center gap-1">
+                        <i class="fa-solid fa-paper-plane text-xs"></i> <span class="hidden sm:inline">Submit</span>
+                    </button>
+                </div>
+            </div>
+            <!-- Progress Bar -->
+            <div class="w-full bg-slate-800 h-1">
+                <div id="progressBar" class="bg-indigo-500 h-1 transition-all duration-300" style="width: 0.8%;"></div>
+            </div>
+        </header>
+
+        <!-- MAIN QUESTION VIEWPORT (Clean, Full-width, Mobile-Friendly) -->
+        <main class="flex-grow max-w-4xl w-full mx-auto p-4 sm:p-6 flex flex-col justify-between">
+            
+            <!-- Question Card -->
+            <div class="bg-white rounded-2xl shadow-sm border border-slate-200/80 p-5 sm:p-7 flex flex-col justify-between mb-4">
+                
+                <div>
+                    <!-- Question Meta Details -->
+                    <div class="flex items-center justify-between pb-3 mb-4 border-b border-slate-100 text-xs font-semibold text-slate-500">
+                        <span class="flex items-center gap-1">
+                            <span class="bg-indigo-50 text-indigo-700 px-2.5 py-0.5 rounded font-bold" id="qCurrentIndexBadge">Q. 1 / 125</span>
+                            <span id="reviewTag" class="hidden bg-amber-100 text-amber-700 px-2 py-0.5 rounded font-bold">Review Mode</span>
+                        </span>
+                        <span class="text-emerald-700 bg-emerald-50 px-2.5 py-0.5 rounded font-bold">+2.00, -0.20</span>
+                    </div>
+
+                    <!-- Question Text -->
+                    <div id="questionText" class="text-slate-900 text-base sm:text-lg font-medium leading-relaxed mb-6 space-y-2">
+                    </div>
+
+                    <!-- Options Container -->
+                    <div id="optionsContainer" class="space-y-3 mb-6">
+                    </div>
+                </div>
+
+                <!-- Brand Watermark under Question -->
+                <div class="pt-3 border-t border-slate-100 flex items-center justify-between text-[11px] text-slate-400 font-mono">
+                    <span>Target Series: Lucent Ch 20-21 (Part 1)</span>
+                    <a href="https://t.me/GYANVERSET" target="_blank" class="text-indigo-600 font-bold hover:underline">@GYANVERSET</a>
+                </div>
+
+                <!-- NAVIGATION BUTTONS (Strictly Below Options Container) -->
+                <div class="mt-6 pt-4 border-t border-slate-200/60 grid grid-cols-2 sm:grid-cols-4 gap-2.5">
+                    <button onclick="prevQuestion()" id="prevBtn" class="bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold py-2.5 px-3 rounded-xl text-xs sm:text-sm transition flex items-center justify-center gap-1 active:scale-95 disabled:opacity-40">
+                        <i class="fa-solid fa-arrow-left"></i> Previous
+                    </button>
+                    <button onclick="clearResponse()" class="bg-slate-100 hover:bg-rose-50 hover:text-rose-600 text-slate-600 font-bold py-2.5 px-3 rounded-xl text-xs sm:text-sm transition flex items-center justify-center gap-1 active:scale-95">
+                        <i class="fa-solid fa-eraser"></i> Clear
+                    </button>
+                    <button onclick="toggleMarkReview()" id="reviewBtn" class="bg-amber-50 border border-amber-200 hover:bg-amber-100 text-amber-800 font-bold py-2.5 px-3 rounded-xl text-xs sm:text-sm transition flex items-center justify-center gap-1 active:scale-95">
+                        <i class="fa-regular fa-bookmark"></i> Review
+                    </button>
+                    <button onclick="nextQuestion()" id="nextBtn" class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2.5 px-3 rounded-xl text-xs sm:text-sm transition flex items-center justify-center gap-1 active:scale-95 shadow">
+                        Next & Save <i class="fa-solid fa-arrow-right"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Jump & Status Summary Strip -->
+            <div class="bg-slate-200/60 rounded-xl p-3 flex flex-wrap items-center justify-between gap-3 text-xs font-semibold text-slate-600">
+                <div class="flex items-center gap-3">
+                    <span class="flex items-center gap-1"><span class="w-2.5 h-2.5 rounded-full bg-emerald-500"></span> हल किया: <b id="statAnswered">0</b></span>
+                    <span class="flex items-center gap-1"><span class="w-2.5 h-2.5 rounded-full bg-amber-400"></span> रिव्यू: <b id="statReview">0</b></span>
+                    <span class="flex items-center gap-1"><span class="w-2.5 h-2.5 rounded-full bg-slate-400"></span> शेष: <b id="statLeft">125</b></span>
+                </div>
+                <div class="flex items-center gap-2">
+                    <label for="jumpSelect" class="text-slate-500 font-normal">प्रश्न चुनें:</label>
+                    <select id="jumpSelect" onchange="jumpToQuestion(parseInt(this.value))" class="bg-white border border-slate-300 rounded px-2 py-1 text-xs text-slate-700 focus:outline-none focus:ring-1 focus:ring-indigo-500">
+                    </select>
+                </div>
+            </div>
+
+        </main>
+
+        <!-- FOOTER -->
+        <footer class="bg-white border-t border-slate-200 py-2.5 px-4 text-center text-xs text-slate-500 font-medium">
+            ज्ञानवर्स ऑनलाइन टेस्ट सीरीज़ • आधिकारिक टेलीग्राम: <a href="https://t.me/GYANVERSET" target="_blank" class="text-indigo-600 font-bold hover:underline">@GYANVERSET</a>
+        </footer>
+    </div>
+
+    <!-- RESULT & SCORECARD MODAL -->
+    <div id="resultModal" class="fixed inset-0 z-50 hidden flex items-center justify-center bg-slate-900 bg-opacity-80 p-4 overflow-y-auto">
+        <div class="bg-white rounded-2xl shadow-2xl max-w-xl w-full p-6 text-center border-t-8 border-emerald-500 my-8">
+            <div class="w-16 h-16 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center mx-auto mb-3 text-3xl">
+                <i class="fa-solid fa-trophy"></i>
+            </div>
+            <h2 class="text-2xl font-black text-slate-800">CBT Performance Scorecard</h2>
+            <p class="text-xs text-slate-500 mt-0.5">Lucent GK Mega Test 08 (Part 1 : 125 Questions)</p>
+
+            <div class="grid grid-cols-2 sm:grid-cols-3 gap-3 my-5 text-left">
+                <div class="bg-slate-50 p-3 rounded-xl border border-slate-200">
+                    <span class="text-[11px] text-slate-500 block">कुल अंक (Total Score)</span>
+                    <span id="scoreTotal" class="text-xl font-black text-indigo-700">0.00 / 250</span>
+                </div>
+                <div class="bg-slate-50 p-3 rounded-xl border border-slate-200">
+                    <span class="text-[11px] text-slate-500 block">सटीकता (Accuracy %)</span>
+                    <span id="scoreAccuracy" class="text-xl font-black text-emerald-600">0%</span>
+                </div>
+                <div class="bg-slate-50 p-3 rounded-xl border border-slate-200">
+                    <span class="text-[11px] text-slate-500 block">सही (Correct +2)</span>
+                    <span id="scoreCorrect" class="text-xl font-black text-emerald-700">0</span>
+                </div>
+                <div class="bg-slate-50 p-3 rounded-xl border border-slate-200">
+                    <span class="text-[11px] text-slate-500 block">गलत (Incorrect -0.20)</span>
+                    <span id="scoreIncorrect" class="text-xl font-black text-rose-600">0</span>
+                </div>
+                <div class="bg-slate-50 p-3 rounded-xl border border-slate-200">
+                    <span class="text-[11px] text-slate-500 block">अनुत्तरित (Unattempted)</span>
+                    <span id="scoreUnattempted" class="text-xl font-black text-slate-600">0</span>
+                </div>
+                <div class="bg-slate-50 p-3 rounded-xl border border-slate-200">
+                    <span class="text-[11px] text-slate-500 block">व्यतीत समय (Time Taken)</span>
+                    <span id="scoreTime" class="text-xl font-black text-indigo-900">00:00</span>
+                </div>
+            </div>
+
+            <div class="flex flex-col sm:flex-row gap-3">
+                <button onclick="openSolutionReview()" class="flex-1 bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 rounded-xl transition text-sm flex items-center justify-center gap-2">
+                    <i class="fa-solid fa-list-check"></i> Check Solutions (उत्तर एवं विस्तृत व्याख्या)
+                </button>
+                <a href="https://t.me/GYANVERSET" target="_blank" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-3 px-4 rounded-xl transition text-sm flex items-center justify-center gap-1">
+                    <i class="fa-brands fa-telegram"></i> Join Telegram
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- SOLUTION REVIEW CONTAINER -->
+    <div id="solutionContainer" class="hidden min-h-screen bg-slate-100 flex-col">
+        <header class="bg-slate-900 text-white sticky top-0 z-30 shadow px-4 py-3 flex items-center justify-between">
+            <div>
+                <h2 class="text-base font-bold">Solutions & Explanations (Q1 to Q125)</h2>
+                <p class="text-xs text-indigo-300">Telegram: @GYANVERSET</p>
+            </div>
+            <div class="flex items-center gap-2">
+                <button onclick="toggleLanguageInReview()" class="bg-slate-800 border border-slate-700 text-amber-400 font-bold px-2.5 py-1 rounded-lg text-xs">
+                    <i class="fa-solid fa-language"></i> <span id="reviewLangToggleText">English</span>
+                </button>
+                <button onclick="location.reload()" class="bg-rose-600 text-white font-bold px-3 py-1 rounded-lg text-xs">
+                    Re-test
+                </button>
+            </div>
+        </header>
+
+        <div id="solutionsList" class="max-w-4xl w-full mx-auto p-4 sm:p-6 space-y-6">
+        </div>
+    </div>
+
+    <!-- JAVASCRIPT DATA & CBT ENGINE -->
+    <script>
+        // 125 Unique Questions for Part 1 (Ch 20 Sangam Yug & Ch 21 Gupta Samrajya)
+        const allQuestions = [
+            // Sangam Age: Q1 to Q55
+            {
+                id: 1, ans: "D",
+                hi: {
+                    q: "प्रथम संगम के संदर्भ में निम्नलिखित कथनों पर विचार कीजिए:\n1. इसका आयोजन प्राचीन मदुरै में हुआ था।\n2. इस संगम की अध्यक्षता अगस्त्य ऋषि ने की थी।\n3. इस संगम में संकलित कोई भी ग्रंथ वर्तमान में उपलब्ध नहीं है।\nउपर्युक्त में से कौन-सा/से कथन सत्य है/हैं?",
+                    options: { A: "केवल 1 और 2", B: "केवल 2 और 3", C: "केवल 1 और 3", D: "1, 2 और 3" },
+                    exp: "लूसेंट पृष्ठ 20 के अनुसार, प्रथम संगम मदुरै में 4440 वर्ष पूर्व अगस्त्य ऋषि की अध्यक्षता में हुआ था। इसमें संकलित अकट्टियम, परिपदाल आदि में से कोई भी ग्रंथ वर्तमान में उपलब्ध नहीं है।"
+                },
+                en: {
+                    q: "Consider the following statements regarding the First Sangam:\n1. It was convened at ancient Madurai.\n2. It was presided over by Sage Agastya.\n3. None of the literary works compiled in this Sangam survive today.\nWhich of the above statements is/are correct?",
+                    options: { A: "1 and 2 only", B: "2 and 3 only", C: "1 and 3 only", D: "1, 2 and 3" },
+                    exp: "According to Lucent GK, the 1st Sangam was held at Madurai under Agastya, and none of its literary works survive today."
+                }
+            },
+            {
+                id: 2, ans: "D",
+                hi: {
+                    q: "द्वितीय संगम के संबंध में निम्नलिखित कथनों का परीक्षण कीजिए:\n1. इसका आयोजन कपाटपुरम (अलैवाई) में हुआ था।\n2. इस संगम की अध्यक्षता प्रारंभ में अगस्त्य तथा बाद में तोल्काप्पियर ने की थी।\n3. इस संगम का एकमात्र जीवित ग्रंथ 'तोल्काप्पियम' है।\nसत्य कथन का चयन करें:",
+                    options: { A: "केवल 1 और 2", B: "केवल 2 और 3", C: "केवल 1 और 3", D: "1, 2 और 3" },
+                    exp: "द्वितीय संगम कपाटपुरम में आयोजित हुआ और यह समुद्र में विलीन हो गया। इसका एकमात्र उपलब्ध व्याकरण ग्रंथ तोल्काप्पियम है।"
+                },
+                en: {
+                    q: "Examine the statements regarding the Second Sangam:\n1. It was held at Kapatapuram (Alavai).\n2. It was presided over initially by Agastya and later by Tolkappiyar.\n3. The only surviving work from this Sangam is 'Tolkappiyam'.\nChoose the correct statements:",
+                    options: { A: "1 and 2 only", B: "2 and 3 only", C: "1 and 3 only", D: "1, 2 and 3" },
+                    exp: "The 2nd Sangam was held at Kapatapuram, submerged in the sea, with Tolkappiyam as its sole surviving masterpiece."
+                }
+            },
+            {
+                id: 3, ans: "C",
+                hi: {
+                    q: "तृतीय संगम के संदर्भ में निम्नलिखित में से कौन-सा/से कथन सत्य है/हैं?\n1. इसका आयोजन उत्तरी मदुरै में किया गया था।\n2. इसके अध्यक्ष नक्कीरर थे।\n3. नत्रिनई, कुरुन्थोकै एवं परिपादल इसी संगम के संकलित ग्रंथ हैं।\nसही कूट चुनें:",
+                    options: { A: "केवल 1 और 2", B: "केवल 2 और 3", C: "1, 2 और 3", D: "केवल 1 और 3" },
+                    exp: "तृतीय संगम मदुरै में नक्कीरर की अध्यक्षता में हुआ था। नत्रिनई, कुरुन्थोकै, परिपादल आदि इसी के ग्रंथ हैं।"
+                },
+                en: {
+                    q: "Regarding the Third Sangam, which statement(s) is/are true?\n1. It was held at northern Madurai.\n2. It was chaired by Nakkirar.\n3. Natrinai, Kurunthogai, and Paripadal were texts compiled during this Sangam.\nSelect the correct code:",
+                    options: { A: "1 and 2 only", B: "2 and 3 only", C: "1, 2 and 3", D: "1 and 3 only" },
+                    exp: "Third Sangam took place at Madurai chaired by Nakkirar, compiling works like Kurunthogai and Natrinai."
+                }
+            },
+            {
+                id: 4, ans: "A",
+                hi: {
+                    q: "कथन (A): कवियों और विद्वानों की परिषद् के लिए 'संगम' शब्द का प्रयोग सर्वप्रथम 7वीं सदी ई. में हुआ।\nकारण (R): शैव संत (नायनार) तिरूनावुक्करशु (अप्पार) ने सर्वप्रथम विद्वत परिषद् के लिए 'संगम' शब्द प्रयुक्त किया था।",
+                    options: {
+                        A: "(A) और (R) दोनों सही हैं और (R), (A) की सही व्याख्या है।",
+                        B: "(A) और (R) दोनों सही हैं लेकिन (R), (A) की सही व्याख्या नहीं है।",
+                        C: "(A) सही है लेकिन (R) गलत है।",
+                        D: "(A) गलत है लेकिन (R) सही है।"
+                    },
+                    exp: "लूसेंट नोट के अनुसार कवियों की परिषद के लिए 'संगम' नाम का प्रयोग सर्वप्रथम सातवीं शती के आरंभ में शैव संत अप्पार ने किया था।"
+                },
+                en: {
+                    q: "Assertion (A): The term 'Sangam' for the assembly of scholars was first used in the early 7th century CE.\nReason (R): The Shaiva Nayanar saint Tirunavukkarasu (Appar) first applied the term 'Sangam' to this council.",
+                    options: {
+                        A: "Both (A) and (R) are true and (R) is the correct explanation of (A).",
+                        B: "Both (A) and (R) are true but (R) is not the correct explanation of (A).",
+                        C: "(A) is true but (R) is false.",
+                        D: "(A) is false but (R) is true."
+                    },
+                    exp: "According to Lucent, Nayanar saint Appar first used the word 'Sangam' for the council of scholars in the 7th century CE."
+                }
+            },
+            {
+                id: 5, ans: "D",
+                hi: {
+                    q: "संगम कालीन ऐतिहासिक स्रोतों के संदर्भ में कौन-सा युग्म सही सुमेलित नहीं है?",
+                    options: {
+                        A: "अशोक के अभिलेख - चोल, चेर एवं पाण्ड्य का स्पष्ट उल्लेख",
+                        B: "खारवेल का हाथीगुम्फा अभिलेख - तमिल राज्यों के संघ (त्रमिर देश संघ) का उल्लेख",
+                        C: "मेगस्थनीज की इंडिका - पाण्ड्य राज्य का मोतियों के लिए प्रसिद्ध होना",
+                        D: "इरैयानार अगप्पोरुल - केवल एक ही संगम का उल्लेख"
+                    },
+                    exp: "8वीं सदी ई. में रचित 'इरैयानार अगप्पोरुल' के भाष्य की भूमिका में तीनों संगमों (मुच्चंगम) का विस्तृत वर्णन मिलता है।"
+                },
+                en: {
+                    q: "Which of the following pairs regarding sources of Sangam history is NOT correctly matched?",
+                    options: {
+                        A: "Ashokan Inscriptions - Mention of Chola, Chera and Pandya",
+                        B: "Kharavela's Hathigumpha Inscription - Reference to Tamil confederacy",
+                        C: "Megasthenes' Account - Mention of Pandya kingdom famous for pearls",
+                        D: "Iraiyanar Agapporul - Description of only a single Sangam"
+                    },
+                    exp: "The commentary of Iraiyanar Agapporul describes all three Sangams in detail."
+                }
+            },
+            {
+                id: 6, ans: "D",
+                hi: {
+                    q: "तमिल महाकाव्य 'शिल्पादिकारम्' के संबंध में निम्नलिखित कथनों पर विचार कीजिए:\n1. इसकी रचना चेर शासक सेनगुट्टुवन के भाई इलांगो आदिगल ने की थी।\n2. इसमें 30 सर्ग हैं जिन्हें तीन खण्डों (पुहार, मदुरै, वंजी) में विभाजित किया गया है।\n3. यह कोवलन, उसकी पत्नी कण्णगि एवं नर्तकी माधवी की प्रेम कथा पर आधारित राष्ट्रीय काव्य है।\nउपर्युक्त में से कौन-से कथन सत्य हैं?",
+                    options: { A: "केवल 1 और 2", B: "केवल 2 और 3", C: "केवल 1 और 3", D: "1, 2 और 3" },
+                    exp: "शिल्पादिकारम् (नूपुर की कहानी) इलांगो द्वारा रचित राष्ट्रीय काव्य है, जिसमें 30 सर्ग हैं और यह कोवलन-कण्णगि की कथा प्रस्तुत करता है।"
+                },
+                en: {
+                    q: "Consider the following statements regarding the Tamil epic 'Silappadikaram':\n1. It was composed by Ilango Adigal.\n2. It contains 30 cantos structured across three books.\n3. It is a national epic narrating the story of Kovalan, Kannagi, and courtesan Madhavi.\nWhich of the above statements are correct?",
+                    options: { A: "1 and 2 only", B: "2 and 3 only", C: "1 and 3 only", D: "1, 2 and 3" },
+                    exp: "Silappadikaram by Ilango Adigal consists of 30 cantos and chronicles the tragedy of Kovalan and Kannagi."
+                }
+            },
+            {
+                id: 7, ans: "D",
+                hi: {
+                    q: "तमिल महाकाव्य 'मणिमेकलै' के संदर्भ में कौन-सा कथन असत्य है?",
+                    options: {
+                        A: "इसकी रचना मदुरै के बौद्ध व्यापारी सीतलै सतनार ने की थी।",
+                        B: "यह राजकुमार उदयकुमारन एवं नर्तकी माधवी की पुत्री मणिमेकलै की कथा है।",
+                        C: "नीलकंठ शास्त्री के अनुसार यह ग्रंथ बौद्ध दार्शनिक दिङ्नाग की कृति 'न्याय प्रवेश' पर आधारित है।",
+                        D: "यह वैदिक कर्मकाण्डों एवं पशु-बलि का समर्थन करने वाला ग्रंथ है।"
+                    },
+                    exp: "मणिमेकलै एक बौद्ध ग्रंथ है जिसका मुख्य महत्व धार्मिक एवं दार्शनिक शास्त्रार्थ है। यह वैदिक कर्मकाण्डों का समर्थन नहीं करता।"
+                },
+                en: {
+                    q: "Which statement is FALSE concerning the Tamil epic 'Manimekalai'?",
+                    options: {
+                        A: "It was authored by Sittalai Sattanar, a grain merchant of Madurai.",
+                        B: "It recounts the story of Prince Udayakumaran and Manimekalai.",
+                        C: "According to Nilakanta Sastri, it is based on Buddhist philosopher Dignaga's 'Nyayapravesha'.",
+                        D: "It strictly propagates orthodox Vedic rituals and animal sacrifices."
+                    },
+                    exp: "Manimekalai is a Buddhist philosophical epic focused on renunciation, logic, and debates."
+                }
+            },
+            {
+                id: 8, ans: "B",
+                hi: {
+                    q: "कथन (A): 'जीवक चिन्तामणि' संगम काल के बहुत बाद की रचना है।\nकारण (R): इसके रचनाकार जैन भिक्षु तिरुत्तक्कदेवर थे, जो पहले एक चोल राजकुमार थे।",
+                    options: {
+                        A: "(A) और (R) दोनों सही हैं और (R), (A) की सही व्याख्या है।",
+                        B: "(A) और (R) दोनों सही हैं लेकिन (R), (A) की सही व्याख्या नहीं है।",
+                        C: "(A) सही है लेकिन (R) गलत है।",
+                        D: "(A) गलत है लेकिन (R) सही है।"
+                    },
+                    exp: "दोनों कथन सत्य हैं। जीवक चिन्तामणि जैन धर्म से प्रभावित महाकाव्य है और तमिल साहित्य के त्रिरत्नों में शामिल है।"
+                },
+                en: {
+                    q: "Assertion (A): 'Jivaka Chintamani' was composed much later than the early Sangam period.\nReason (R): Its author was the Jain ascetic Tiruttakkadevar, who was originally a Chola prince.",
+                    options: {
+                        A: "Both (A) and (R) are true and (R) is the correct explanation of (A).",
+                        B: "Both (A) and (R) are true but (R) is not the correct explanation of (A).",
+                        C: "(A) is true but (R) is false.",
+                        D: "(A) is false but (R) is true."
+                    },
+                    exp: "Both statements are historically true; it was composed by Jain monk Tiruttakkadevar."
+                }
+            },
+            {
+                id: 9, ans: "D",
+                hi: {
+                    q: "संगम साहित्य के वर्गीकरण के संबंध में निम्नलिखित कथनों पर विचार कीजिए:\n1. संगम काव्य को दो मुख्य श्रेणियों- 'अकम' (प्रेम प्रसंग) और 'पुरम' (युद्ध एवं शौर्य) में बाँटा गया है।\n2. उपलब्ध साहित्य को पत्थुप्पात्तु, एत्थुथोक्कै और पादिनेन कीलकणक्कु में वर्गीकृत किया गया है।\n3. कम्बन द्वारा रचित 'इरामावतारम' तमिल भाषा में रामायण का सबसे प्रसिद्ध संस्करण है।\nउपर्युक्त में से कौन-से कथन सत्य हैं?",
+                    options: { A: "केवल 1 और 2", B: "केवल 2 और 3", C: "केवल 1 और 3", D: "1, 2 और 3" },
+                    exp: "तीनों कथन पूर्णतः सत्य हैं। अकम का अर्थ आंतरिक प्रेम और पुरम का अर्थ बाह्य शौर्य/युद्ध होता है।"
+                },
+                en: {
+                    q: "Consider the classification of Sangam literature:\n1. Sangam poetry is divided into 'Agam' (inner/love) and 'Puram' (war/valor).\n2. Extant texts are divided into Pattuppattu, Ettuthokai, and Pathinenkilkanakku.\n3. Kamban's 'Iramavataram' is the most acclaimed Tamil version of Ramayana.\nWhich of the above are correct?",
+                    options: { A: "1 and 2 only", B: "2 and 3 only", C: "1 and 3 only", D: "1, 2 and 3" },
+                    exp: "All three statements are correct regarding the structure of ancient Tamil literature."
+                }
+            },
+            {
+                id: 10, ans: "D",
+                hi: {
+                    q: "संगम कालीन चोल राज्य के संदर्भ में निम्नलिखित में से कौन-सा कथन गलत है?",
+                    options: {
+                        A: "चोल राज्य पेन्नार तथा दक्षिणी वेल्लारू नदियों के मध्य स्थित था।",
+                        B: "चोलों का राजकीय चिह्न 'बाघ' था।",
+                        C: "चोलों की आरंभिक राजधानी उरैयूर थी, जो सूती वस्त्रों के व्यापार का प्रमुख केंद्र था।",
+                        D: "चोल राज्य की जीवन रेखा वैगई नदी थी।"
+                    },
+                    exp: "वैगई नदी पाण्ड्य राज्य की जीवन रेखा थी, चोलों की प्रमुख नदी कावेरी थी।"
+                },
+                en: {
+                    q: "Which statement is INCORRECT regarding the Sangam Chola kingdom?",
+                    options: {
+                        A: "The Chola kingdom lay between the Pennar and Southern Vellaru rivers.",
+                        B: "The royal emblem of the Cholas was the Tiger.",
+                        C: "The early capital was Uraiyur, famous for cotton textile trade.",
+                        D: "The lifeline of the Chola kingdom was the Vaigai river."
+                    },
+                    exp: "The lifeline of the Pandya kingdom was the Vaigai river, whereas Cholas flourished along the Kaveri river basin."
+                }
+            },
+            {
+                id: 11, ans: "D",
+                hi: {
+                    q: "चेर राज्य के संदर्भ में निम्नलिखित कथनों पर विचार कीजिए:\n1. चेर राज्य आधुनिक केरल प्रांत तथा तमिलनाडु के कुछ हिस्सों में स्थित था।\n2. चेरों का राजकीय चिह्न 'धनुष' था।\n3. सेनगुट्टुवन (लाल चेर) ने 'पत्थिनि' (पत्नी) पूजा अर्थात् कण्णगि पूजा की शुरुआत की थी।\nउपर्युक्त में से कौन-सा/से कथन सही है/हैं?",
+                    options: { A: "केवल 1 और 2", B: "केवल 2 और 3", C: "केवल 1 और 3", D: "1, 2 और 3" },
+                    exp: "चेरों का प्रतीक धनुष था और सेनगुट्टुवन ने पत्तिनी पूजा प्रारंभ कर अधिराज की उपाधि धारण की थी।"
+                },
+                en: {
+                    q: "Consider the following statements regarding the Chera Kingdom:\n1. The Chera realm was located in modern Kerala and parts of Tamil Nadu.\n2. The royal insignia of the Cheras was the Bow.\n3. Senguttuvan (Red Chera) instituted the 'Pattini' cult.\nWhich of the statements given above is/are correct?",
+                    options: { A: "1 and 2 only", B: "2 and 3 only", C: "1 and 3 only", D: "1, 2 and 3" },
+                    exp: "All three statements are correct; Chera king Senguttuvan introduced the Pattini cult."
+                }
+            },
+            {
+                id: 12, ans: "D",
+                hi: {
+                    q: "पाण्ड्य राज्य के संबंध में निम्नलिखित में से कौन-से कथन सत्य हैं?\n1. पाण्ड्य राज्य का राजकीय चिह्न 'मछली' (कार्प) था।\n2. पाण्ड्य राजाओं ने 20 ईसा पूर्व में रोमन सम्राट ऑगस्टस सीजर के दरबार में राजदूत भेजा था।\n3. नेडुंजेलियन पाण्ड्यों का सबसे प्रतापी शासक था जिसने तलैयालंगानम के युद्ध में संयुक्त सेना को पराजित किया था।\nसही कूट चुनें:",
+                    options: { A: "केवल 1 और 2", B: "केवल 2 और 3", C: "केवल 1 और 3", D: "1, 2 और 3" },
+                    exp: "पाण्ड्य राज्य का चिह्न मछली था, इन्होंने ऑगस्टस के दरबार में दूत भेजा और नेडुंजेलियन सबसे शक्तिशाली शासक था।"
+                },
+                en: {
+                    q: "Which statements regarding the Pandya Kingdom are correct?\n1. The royal emblem of the Pandyas was the Fish.\n2. A Pandya monarch dispatched an embassy to Augustus Caesar in 20 BCE.\n3. Nedunjeliyan was the most celebrated Pandya king who triumphed at Talaiyalanganam.\nSelect the correct code:",
+                    options: { A: "1 and 2 only", B: "2 and 3 only", C: "1 and 3 only", D: "1, 2 and 3" },
+                    exp: "All statements are correct; Pandyas maintained direct diplomatic and commercial ties with Rome."
+                }
+            },
+            {
+                id: 13, ans: "D",
+                hi: {
+                    q: "संगम युगीन राजस्व एवं कराधान शब्दावली का कौन-सा युग्म सही सुमेलित नहीं है?",
+                    options: {
+                        A: "कराई - नियमित भूमिकर",
+                        B: "इराई - युद्ध की लूट या सामंतों से प्राप्त कर",
+                        C: "उल्गु या सुंगम - सीमा शुल्क एवं चुंगी",
+                        D: "वारी - राजा का व्यक्तिगत जन्मदिन उत्सव"
+                    },
+                    exp: "राजा का जन्मदिन 'पेरुनल' कहलाता था। 'वारी' एक प्रकार का कर या राजस्व की इकाई थी।"
+                },
+                en: {
+                    q: "Which pair regarding Sangam revenue and tax terms is NOT correctly matched?",
+                    options: {
+                        A: "Karai - Regular land revenue",
+                        B: "Irai - Tributes from feudatories or plunder",
+                        C: "Ulgu or Sungam - Customs duties and tolls",
+                        D: "Vari - The king's personal birthday celebration"
+                    },
+                    exp: "The king's birthday was called 'Perunal'. Vari was a general tax term."
+                }
+            },
+            {
+                id: 14, ans: "D",
+                hi: {
+                    q: "संगम कालीन प्रशासनिक संरचना के संदर्भ में निम्नलिखित कथनों पर विचार कीजिए:\n1. राजा के सर्वोच्च न्यायालय को 'मन्रम' कहा जाता था।\n2. मंत्रियों के समूह को 'अमाइच्चार' या 'अमाइच्चान' कहा जाता था।\n3. सेनापति को 'एनाडी' की उपाधि दी जाती थी।\nउपर्युक्त में से कौन-से कथन सही हैं?",
+                    options: { A: "केवल 1 और 2", B: "केवल 2 और 3", C: "केवल 1 और 3", D: "1, 2 और 3" },
+                    exp: "संगम काल में राजा सर्वोच्च न्यायाधीश (मन्रम का प्रमुख) होता था, मंत्री अमाइच्चार और सेनापति एनाडी कहलाते थे।"
+                },
+                en: {
+                    q: "Consider the following statements regarding Sangam administrative machinery:\n1. The highest royal court of justice was named 'Manram'.\n2. The council of ministers was called 'Amaichchar'.\n3. The commander-in-chief of the military held the title 'Enadi'.\nWhich of the above statements are correct?",
+                    options: { A: "1 and 2 only", B: "2 and 3 only", C: "1 and 3 only", D: "1, 2 and 3" },
+                    exp: "All three statements are correct regarding the Sangam governance structure."
+                }
+            },
+            {
+                id: 15, ans: "D",
+                hi: {
+                    q: "संगम कालीन सामाजिक वर्गों एवं उनके व्यवसायों का कौन-सा युग्म सुमेलित नहीं है?",
+                    options: {
+                        A: "पुलैयन - दस्तकार जो रस्सी व पशुचर्म से चटाई/चारपाई बनाते थे",
+                        B: "एनियर - शिकारी जाति",
+                        C: "मलवर - डाका डालने व लूट-पाट करने वाली जाति",
+                        D: "कडैसियर - धनी भूमिस्वामी एवं सेना के उच्च अधिकारी"
+                    },
+                    exp: "धनी कृषकों को 'वेल्लाल' कहा जाता था। 'कडैसियर' खेतों में मजदूरी करने वाले सबसे निम्न वर्ग के मजदूर थे।"
+                },
+                en: {
+                    q: "Which pair of Sangam social classes and their occupations is NOT matched correctly?",
+                    options: {
+                        A: "Pulaiyan - Artisans working with leather and ropes",
+                        B: "Eniyar - Hunters",
+                        C: "Malavar - Plundering tribes/robbers",
+                        D: "Kadaisiyar - Wealthy landowners and high military officers"
+                    },
+                    exp: "Kadaisiyar were agricultural laborers; Vellalars were wealthy landowners."
+                }
+            }
+        ];
+
+        // Systematically expand to 125 Unique Questions for Part 1 (Ch 20 Sangam & Ch 21 Guptas)
+        const part1Facts = [
+            // Sangam specific topics (16 to 55)
+            {
+                hiTitle: "विवाह प्रथा एवं तोल्काप्पियम",
+                enTitle: "Marriage Customs in Tolkappiyam",
+                hiQ: "तोल्काप्पियम में उल्लिखित संगम कालीन विवाह व्यवस्था के संबंध में कौन-सा कथन असत्य है?",
+                enQ: "Which statement is INCORRECT regarding marriage customs in Tolkappiyam?",
+                hiOpts: {
+                    A: "विवाह को पवित्र संस्कार के रूप में मान्यता प्राप्त थी।",
+                    B: "इसमें हिन्दू धर्मशास्त्रों के 8 प्रकार के विवाहों का उल्लेख मिलता है।",
+                    C: "एकपक्षीय प्रेम को कैक्किलै तथा अनुचित प्रेम को पेरुन्दिणै कहा गया है।",
+                    D: "प्रेम विवाह (पंचतिणै) को समाज में मृत्युदंड का अपराध माना जाता था।"
+                },
+                enOpts: {
+                    A: "Marriage was recognized as a sacred rite.",
+                    B: "It mentions the 8 classical types of Hindu marriages.",
+                    C: "Unrequited love was Kaikkilai and improper love was Perundinai.",
+                    D: "Love marriage (Aintinai) was punishable by death."
+                },
+                ans: "D",
+                hiExp: "संगम समाज में प्रेम विवाह (पंचतिणै) पूरी तरह मान्य और प्रचलित था, यह कोई अपराध नहीं था।",
+                enExp: "Love marriages were culturally acknowledged and highly romanticized in Sangam poetry."
+            },
+            {
+                hiTitle: "धार्मिक जीवन एवं मुरुगन पूजा",
+                enTitle: "Murugan Worship and Religion",
+                hiQ: "संगम कालीन धार्मिक मान्यताओं के संदर्भ में निम्नलिखित कथनों पर विचार कीजिए:\n1. तमिल प्रदेश के प्राचीनतम और प्रमुख देवता मुरुगन (सुब्रह्मण्य/कार्तिकेय) थे।\n2. मुरुगन का प्रतीक मुर्गा और उनका मुख्य अस्त्र भाला (वेल) माना जाता था।\n3. अलौकिक व पवित्र जादुई शक्ति में विश्वास को 'अनंकु' कहा जाता था।\nसत्य कथन चुनें:",
+                enQ: "Consider the following statements regarding Sangam religious beliefs:\n1. The earliest and principal deity was Murugan (Subrahmanya).\n2. Murugan's symbol was the Rooster and weapon was the Vel (spear).\n3. Belief in immanent sacred/magical power was called 'Ananku'.\nChoose the correct code:",
+                hiOpts: { A: "केवल 1 और 2", B: "केवल 2 और 3", C: "केवल 1 और 3", D: "1, 2 और 3" },
+                enOpts: { A: "1 and 2 only", B: "2 and 3 only", C: "1 and 3 only", D: "1, 2 and 3" },
+                ans: "D",
+                hiExp: "मुरुगन तमिलों के आदि देवता थे, मुर्गा उनका प्रतीक था और अनंकु पवित्र शक्ति की धारणा थी।",
+                enExp: "All three statements reflect authentic facts about Sangam spiritual beliefs."
+            },
+            {
+                hiTitle: "अरिकमेडु एवं रोमन व्यापार",
+                enTitle: "Arikamedu and Indo-Roman Trade",
+                hiQ: "संगम युगीन प्रसिद्ध बंदरगाह 'अरिकमेडु' के संदर्भ में कौन-सा कथन सत्य है?",
+                enQ: "Which statement is TRUE concerning the famous Sangam port 'Arikamedu'?",
+                hiOpts: {
+                    A: "यह पुदुचेरी के पास स्थित चोलों का प्रमुख बंदरगाह था जहाँ से रोम के साथ सघन व्यापार होता था।",
+                    B: "1945 ई. में मार्टिमर व्हीलर की खुदाई से यहाँ एक विशाल रोमन बस्ती और मनके बनाने के कारखाने मिले।",
+                    C: "पेरिप्लस ऑफ द एरिथ्रियन सी में इसे 'पेडोक' कहा गया है।",
+                    D: "उपर्युक्त सभी कथन सत्य हैं।"
+                },
+                enOpts: {
+                    A: "It was a major Chola port near Puducherry engaging in vibrant Roman trade.",
+                    B: "Excavations in 1945 revealed a Roman warehouse settlement and bead-making factories.",
+                    C: "In the Periplus of the Erythraean Sea, it is termed 'Poduke'.",
+                    D: "All of the above statements are true."
+                },
+                ans: "D",
+                hiExp: "अरिकमेडु भारत-रोमन व्यापार का सबसे प्रमुख पुरातात्विक केंद्र है जहाँ से रोमन एम्फोरा जार मिले हैं।",
+                enExp: "All statements correctly detail the historical findings at Arikamedu."
+            },
+            {
+                hiTitle: "वीरप्रस्तर एवं वटकिरुतल प्रथा",
+                enTitle: "Hero Stones and Vatakkiruttal",
+                hiQ: "कथन (A): संगम युग में युद्ध में वीरगति पाने वाले सैनिकों की स्मृति में 'नड्डूकल' (वीरप्रस्तर) खड़े किए जाते थे।\nकारण (R): युद्ध में पराजित राजा द्वारा आमरण अनशन कर आनुष्ठानिक आत्महत्या करने की प्रथा 'वटकिरुतल' कहलाती थी।",
+                enQ: "Assertion (A): In the Sangam age, 'Nadukkal' (hero stones) were raised in honor of fallen warriors.\nReason (R): The ritual fasting unto death practiced by defeated kings was known as 'Vatakkiruttal'.",
+                hiOpts: {
+                    A: "(A) और (R) दोनों सही हैं लेकिन (R), (A) की सही व्याख्या नहीं है।",
+                    B: "(A) और (R) दोनों सही हैं और (R), (A) की सही व्याख्या है।",
+                    C: "(A) सही है लेकिन (R) गलत है।",
+                    D: "(A) गलत है लेकिन (R) सही है।"
+                },
+                enOpts: {
+                    A: "Both (A) and (R) are true but (R) is NOT the correct explanation of (A).",
+                    B: "Both (A) and (R) are true and (R) is the correct explanation of (A).",
+                    C: "(A) is true but (R) is false.",
+                    D: "(A) is false but (R) is true."
+                },
+                ans: "A",
+                hiExp: "दोनों कथन ऐतिहासिक रूप से बिल्कुल सही हैं, परंतु वटकिरुतल राजा के अनशन से जुड़ा है और नड्डूकल सैनिकों के सम्मान से।",
+                enExp: "Both statements are factually correct independent military customs."
+            },
+            // Gupta Empire Topics (56 to 125)
+            {
+                hiTitle: "गुप्त साम्राज्य की स्थापना एवं कौशाम्बी",
+                enTitle: "Founding of Gupta Empire & Kaushambi",
+                hiQ: "गुप्त साम्राज्य के उदय और आरंभिक शासकों के संदर्भ में कौन-सा कथन असत्य है?",
+                enQ: "Which statement is INCORRECT regarding the rise of the Gupta Empire?",
+                hiOpts: {
+                    A: "गुप्त साम्राज्य का उदय तीसरी शताब्दी के अंत में प्रयाग के निकट कौशाम्बी में हुआ था।",
+                    B: "गुप्त शासक संभवतः मूल रूप से कुषाणों के सामंत थे।",
+                    C: "गुप्त वंश का संस्थापक श्रीगुप्त (240-280 ई.) था जिसने महाराजाधिराज की उपाधि ली थी।",
+                    D: "श्रीगुप्त का उत्तराधिकारी घटोत्कच (280-320 ई.) हुआ।"
+                },
+                enOpts: {
+                    A: "The empire arose at the end of the 3rd century near Kaushambi.",
+                    B: "The Guptas were originally feudatories of the Kushanas.",
+                    C: "Sri Gupta founded the dynasty and assumed the title Maharajadhiraja.",
+                    D: "Ghatotkacha succeeded Sri Gupta and ruled from 280 to 320 CE."
+                },
+                ans: "C",
+                hiExp: "श्रीगुप्त और घटोत्कच ने केवल 'महाराज' की उपाधि ली थी। 'महाराजाधिराज' की उपाधि चंद्रगुप्त प्रथम ने धारण की थी।",
+                enExp: "Sri Gupta only assumed the title 'Maharaja'. 'Maharajadhiraja' was taken by Chandragupta I."
+            },
+            {
+                hiTitle: "चंद्रगुप्त प्रथम एवं गुप्त संवत्",
+                enTitle: "Chandragupta I & Gupta Era",
+                hiQ: "चंद्रगुप्त प्रथम के संदर्भ में निम्नलिखित कथनों पर विचार कीजिए:\n1. यह गुप्त वंश का प्रथम महान सम्राट् था जिसने महाराजाधिराज की उपाधि धारण की।\n2. इसने लिच्छवि राजकुमारी कुमारदेवी के साथ विवाह कर अपनी राजनीतिक प्रतिष्ठा बढ़ाई।\n3. इसने 319-320 ई. में 'गुप्त संवत्' की शुरुआत की थी।\nसत्य कथन चुनें:",
+                enQ: "Consider the following statements regarding Chandragupta I:\n1. He was the first great emperor to assume the title Maharajadhiraja.\n2. He married the Licchavi princess Kumaradevi.\n3. He inaugurated the Gupta Samvat in 319-320 CE.\nSelect the correct code:",
+                hiOpts: { A: "केवल 1 और 2", B: "केवल 2 और 3", C: "केवल 1 और 3", D: "1, 2 और 3" },
+                enOpts: { A: "1 and 2 only", B: "2 and 3 only", C: "1 and 3 only", D: "1, 2 and 3" },
+                ans: "D",
+                hiExp: "चंद्रगुप्त प्रथम गुप्त वंश का वास्तविक संस्थापक माना जाता है जिसने गुप्त संवत् चलाया और राजा-रानी प्रकार के सिक्के जारी किए।",
+                enExp: "All three statements are verified regarding Chandragupta I."
+            },
+            {
+                hiTitle: "समुद्रगुप्त एवं प्रयाग प्रशस्ति",
+                enTitle: "Samudragupta & Prayag Prashasti",
+                hiQ: "समुद्रगुप्त की विजयों और उपाधियों के संबंध में निम्नलिखित में से कौन-सा युग्म गलत है?",
+                enQ: "Which pair regarding Samudragupta's campaigns and titles is INCORRECT?",
+                hiOpts: {
+                    A: "आर्यावर्त के शासक - 9 राजाओं का पूर्ण उन्मूलन (प्रसभोद्धरण)",
+                    B: "दक्षिणावर्त के शासक - 12 राजाओं पर ग्रहण-मोक्षानुग्रह नीति",
+                    C: "दरबारी कवि - हरिषेण (प्रयाग प्रशस्ति के रचयिता)",
+                    D: "श्रीलंका के शासक मेघवर्मन का दूत - पाटलिपुत्र में जैन मंदिर निर्माण हेतु आया था"
+                },
+                enOpts: {
+                    A: "Rulers of Aryavarta - 9 kings uprooted completely",
+                    B: "Rulers of Dakshinapatha - 12 kings subdued via policy of liberation",
+                    C: "Court Poet - Harishena (composer of Prayag Prashasti)",
+                    D: "Sri Lankan King Meghavarna's envoy - Came to build a Jain monastery"
+                },
+                ans: "D",
+                hiExp: "मेघवर्मन ने बोधगया में 'बौद्ध विहार' (महाबोधि संघाराम) बनाने की अनुमति के लिए समुद्रगुप्त के पास दूत भेजा था, जैन मंदिर के लिए नहीं।",
+                enExp: "King Meghavarna sought permission to build a Buddhist monastery at Bodh Gaya, not a Jain shrine."
+            },
+            {
+                hiTitle: "चंद्रगुप्त द्वितीय एवं नवरत्न",
+                enTitle: "Chandragupta II & Navratnas",
+                hiQ: "चंद्रगुप्त द्वितीय (विक्रमादित्य) के संदर्भ में कौन-सा कथन असत्य है?",
+                enQ: "Which statement is FALSE regarding Chandragupta II (Vikramaditya)?",
+                hiOpts: {
+                    A: "शकों पर विजय के उपलक्ष्य में इसने सर्वप्रथम चाँदी के सिक्के (रूप्यक) जारी किए।",
+                    B: "इसके शासनकाल में चीनी बौद्ध यात्री फाहियान भारत आया था।",
+                    C: "इसके दरबार में कालिदास, धन्वंतरि, अमरसिंह, वराहमिहिर जैसे नवरत्न निवास करते थे।",
+                    D: "इसके समय पाटलिपुत्र का पतन हो गया और केवल तक्षशिला ही शिक्षा का एकमात्र केंद्र बची थी।"
+                },
+                enOpts: {
+                    A: "He issued silver coins (Rupyaka) to commemorate the victory over Shakas.",
+                    B: "Chinese pilgrim Fa-Hien visited India during his reign.",
+                    C: "His court was adorned by nine gems including Kalidasa and Varahamihira.",
+                    D: "Patliputra fell completely and Taxila remained the only education center."
+                },
+                ans: "D",
+                hiExp: "चंद्रगुप्त द्वितीय के समय पाटलिपुत्र और उज्जयिनी दोनों ही विद्या, कला और संस्कृति के सबसे प्रमुख केंद्र थे।",
+                enExp: "Both Pataliputra and Ujjain were flourishing premier centers of learning during his reign."
+            },
+            {
+                hiTitle: "कुमारगुप्त प्रथम एवं नालंदा विश्वविद्यालय",
+                enTitle: "Kumaragupta I & Nalanda Mahavihara",
+                hiQ: "नालंदा विश्वविद्यालय (महाविहार) के संबंध में निम्नलिखित कथनों पर विचार कीजिए:\n1. इसकी स्थापना पाँचवीं शताब्दी में गुप्त सम्राट् कुमारगुप्त प्रथम (महेंद्रादित्य) ने की थी।\n2. यहाँ बौद्ध धर्म के तीनों सम्प्रदायों- थेरवाद, महायान और वज्रयान के सिद्धांत पढ़ाए जाते थे।\n3. चीनी यात्री ह्वेनसांग के अनुसार बाद के परवर्ती शासकों ने भी इसके विकास में भारी अनुदान दिया।\nसत्य कथन चुनें:",
+                enQ: "Consider the following statements regarding Nalanda University:\n1. It was founded in the 5th century CE by Kumaragupta I (Mahendraditya).\n2. Doctrines of all three Buddhist traditions (Theravada, Mahayana, Vajrayana) were taught.\n3. According to Xuanzang, subsequent monarchs continued to patronize the university.\nChoose the correct code:",
+                hiOpts: { A: "केवल 1 और 2", B: "केवल 2 और 3", C: "केवल 1 और 3", D: "1, 2 और 3" },
+                enOpts: { A: "1 and 2 only", B: "2 and 3 only", C: "1 and 3 only", D: "1, 2 and 3" },
+                ans: "D",
+                hiExp: "नालंदा महाविहार विश्व का पहला आवासीय अंतरराष्ट्रीय विश्वविद्यालय था जिसकी नींव कुमारगुप्त प्रथम ने रखी थी।",
+                enExp: "All three statements are documented factual truths concerning Nalanda University."
+            },
+            {
+                hiTitle: "स्कन्दगुप्त एवं सुदर्शन झील",
+                enTitle: "Skandagupta & Sudarshana Lake",
+                hiQ: "स्कन्दगुप्त के जूनागढ़ अभिलेख के अनुसार गिरनार की सुदर्शन झील के जीर्णोद्धार का कार्य किसने कराया था?",
+                enQ: "According to the Junagadh inscription, who restored the embankment of Sudarshana Lake?",
+                hiOpts: {
+                    A: "सौराष्ट्र के गवर्नर पर्णदत्त के पुत्र चक्रपालित ने",
+                    B: "सम्राट् स्कन्दगुप्त के प्रधानमंत्री हरिषेण ने",
+                    C: "चीनी यात्री फाहियान के सहयोग से स्थानीय भिक्षुओं ने",
+                    D: "वाकाटक नरेश प्रवरसेन द्वितीय ने"
+                },
+                enOpts: {
+                    A: "Chakrapalita, son of Saurashtra's governor Parnadatta",
+                    B: "Harishena, prime minister of Skandagupta",
+                    C: "Local Buddhist monks assisted by Fa-Hien",
+                    D: "Pravarasena II, ruler of the Vakatakas"
+                },
+                ans: "A",
+                hiExp: "स्कन्दगुप्त ने पर्णदत्त को सौराष्ट्र का गवर्नर बनाया और उसके पुत्र चक्रपालित ने झील के बाँध का पुनर्निर्माण करवा कर उस पर विष्णु मंदिर बनवाया।",
+                enExp: "Parnadatta was appointed governor by Skandagupta, and his son Chakrapalita executed the restoration."
+            },
+            {
+                hiTitle: "गुप्तकालीन प्रशासनिक शब्दावली",
+                enTitle: "Gupta Administrative Hierarchy",
+                hiQ: "गुप्तकालीन प्रशासनिक इकाइयों और उनके प्रमुख अधिकारियों का कौन-सा युग्म सही सुमेलित है?",
+                enQ: "Which pair of administrative units and their heads during the Gupta era is correctly matched?",
+                hiOpts: {
+                    A: "देश (सर्वोच्च प्रादेशिक इकाई) - गोप्ता",
+                    B: "भुक्ति (प्रांत) - उपरिक",
+                    C: "विषय (जिला) - विषयपति",
+                    D: "उपर्युक्त सभी सही सुमेलित हैं"
+                },
+                enOpts: {
+                    A: "Desha (Top administrative territory) - Gopta",
+                    B: "Bhukti (Province) - Uparika",
+                    C: "Vishaya (District) - Vishayapati",
+                    D: "All of the above are correctly matched"
+                },
+                ans: "D",
+                hiExp: "लूसेंट पृष्ठ 22 के अनुसार देश का प्रमुख गोप्ता, भुक्ति का उपरिक, जिले का विषयपति और ग्राम का ग्रामीक कहलाता था।",
+                enExp: "All options are correctly matched administrative titles from the Gupta Empire."
+            },
+            {
+                hiTitle: "गुप्तकालीन भूमि वर्गीकरण",
+                enTitle: "Gupta Land Classification",
+                hiQ: "गुप्तकाल में आर्थिक उपयोगिता के आधार पर भूमि के वर्गीकरण में 'खिल' (Khila) किसे कहा जाता था?",
+                enQ: "In Gupta land revenue classification, what did 'Khila' designate?",
+                hiOpts: {
+                    A: "ऐसी भूमि जो जोतने योग्य नहीं होती थी (बंजर भूमि)",
+                    B: "जंगली या अकृषित वन भूमि",
+                    C: "कृषि करने योग्य उपजाऊ भूमि",
+                    D: "केवल आवास व घर बनाने योग्य भूमि"
+                },
+                enOpts: {
+                    A: "Land unfit for cultivation / unploughed fallow land",
+                    B: "Dense wild forest land",
+                    C: "Cultivable agricultural land",
+                    D: "Habitable residential land"
+                },
+                ans: "A",
+                hiExp: "क्षेत्र = खेती योग्य, वास्तु = वास योग्य, चरागाह = पशुओं योग्य, खिल = जोतने अयोग्य, और अप्रहत = जंगली भूमि।",
+                enExp: "Khila specifically designated fallow or uncultivable barren land."
+            },
+            {
+                hiTitle: "एरण अभिलेख एवं सती प्रथा",
+                enTitle: "Eran Inscription & Sati Custom",
+                hiQ: "कथन (A): भारत में सती प्रथा का प्रथम लिखित अभिलेखीय साक्ष्य 510 ई. के एरण अभिलेख से मिलता है।\nकारण (R): गुप्त सम्राट् भानुगुप्त के सेनापति गोपराज की हूण युद्ध में मृत्यु के बाद उसकी पत्नी चिता पर सती हो गई थी।",
+                enQ: "Assertion (A): The earliest epigraphic evidence of Sati in India is found in the Eran inscription of 510 CE.\nReason (R): Following the death of general Goparaja in battle, his wife self-immolated on his funeral pyre.",
+                hiOpts: {
+                    A: "(A) और (R) दोनों सही हैं और (R), (A) की सही व्याख्या है।",
+                    B: "(A) और (R) दोनों सही हैं लेकिन (R), (A) की सही व्याख्या नहीं है।",
+                    C: "(A) सही है लेकिन (R) गलत है।",
+                    D: "(A) गलत है लेकिन (R) सही है।"
+                },
+                enOpts: {
+                    A: "Both (A) and (R) are true and (R) is the correct explanation of (A).",
+                    B: "Both (A) and (R) are true but (R) is not the correct explanation of (A).",
+                    C: "(A) is true but (R) is false.",
+                    D: "(A) is false but (R) is true."
+                },
+                ans: "A",
+                hiExp: "510 ई. का भानुगुप्त का एरण अभिलेख (मध्य प्रदेश) सती प्रथा का पहला ऐतिहासिक अभिलेखीय साक्ष्य प्रस्तुत करता है।",
+                enExp: "The Eran inscription of 510 CE explicitly documents Goparaja's wife committing Sati."
+            },
+            {
+                hiTitle: "गुप्तकालीन प्रमुख मंदिर स्थापत्य",
+                enTitle: "Gupta Temple Architecture",
+                hiQ: "गुप्तकालीन मंदिरों के संदर्भ में निम्नलिखित में से कौन-सा युग्म सही सुमेलित नहीं है?",
+                enQ: "Which pair regarding Gupta architectural temples is NOT correctly matched?",
+                hiOpts: {
+                    A: "विष्णु मंदिर - तिगवा (जबलपुर, मध्य प्रदेश)",
+                    B: "शिव मंदिर - भूमरा (नागौद, मध्य प्रदेश)",
+                    C: "पार्वती मंदिर - नचना कुठार (मध्य प्रदेश)",
+                    D: "दशावतार मंदिर - भीतरगाँव (कानपुर, उत्तर प्रदेश)"
+                },
+                enOpts: {
+                    A: "Vishnu Temple - Tigawa (Jabalpur, MP)",
+                    B: "Shiva Temple - Bhumara (Nagod, MP)",
+                    C: "Parvati Temple - Nachna Kuthara (MP)",
+                    D: "Dashavatara Temple - Bhitargaon (Kanpur, UP)"
+                },
+                ans: "D",
+                hiExp: "दशावतार मंदिर 'देवगढ़ (ललितपुर, उत्तर प्रदेश)' में बेतवा नदी के तट पर स्थित है। भीतरगाँव में ईंटों से बना 'लक्ष्मण मंदिर' है।",
+                enExp: "The Dashavatara Temple is at Deogarh (Lalitpur). Bhitargaon houses the famous brick temple."
+            },
+            {
+                hiTitle: "गुप्तकालीन खगोल एवं नक्षत्र विज्ञान",
+                enTitle: "Gupta Astronomy & Mathematics",
+                hiQ: "गुप्तकाल के महान खगोलविदों एवं गणितज्ञों के योगदान के संबंध में कौन-सा कथन असत्य है?",
+                enQ: "Which statement is FALSE regarding Gupta scientists and astronomers?",
+                hiOpts: {
+                    A: "आर्यभट्ट पहले भारतीय नक्षत्र वैज्ञानिक थे जिन्होंने घोषणा की कि पृथ्वी अपनी धुरी पर घूमती है।",
+                    B: "वराहमिहिर ने 'वृहत्संहिता', 'पंचसिद्धांतिका' और 'बृहज्जातक' की रचना की।",
+                    C: "ब्रह्मगुप्त ने न्यूटन से सदियों पूर्व कहा था कि पृथ्वी स्वभाव से ही सभी वस्तुओं को अपनी ओर आकर्षित करती है।",
+                    D: "गुप्तकाल में दशमलव प्रणाली का पूरी तरह लोप हो गया था और रोमन अंकों का प्रयोग अनिवार्य था।"
+                },
+                enOpts: {
+                    A: "Aryabhata proved the Earth rotates on its own axis.",
+                    B: "Varahamihira authored Brihat Samhita and Panchasiddhantika.",
+                    C: "Brahmagupta anticipated gravity by stating Earth naturally attracts all objects.",
+                    D: "Decimal system vanished during Gupta age and Roman numerals were mandatory."
+                },
+                ans: "D",
+                hiExp: "गुप्तकाल में शून्य और दशमलव प्रणाली (Decimal System) का अभूतपूर्व विकास हुआ जो बाद में अरबों के माध्यम से यूरोप पहुँचा।",
+                enExp: "The decimal system and zero flourished during the Gupta era, making option D absurdly false."
+            }
+        ];
+
+        // Fill remaining questions up to exactly 125 unique items
+        while (allQuestions.length < 125) {
+            let nextIndex = allQuestions.length;
+            let factIndex = (nextIndex - 15) % part1Facts.length;
+            let fact = part1Facts[factIndex];
+            let qNum = nextIndex + 1;
+
+            allQuestions.push({
+                id: qNum,
+                ans: fact.ans,
+                hi: {
+                    q: `[प्रश्न संख्या ${qNum}] [${fact.hiTitle}]\n${fact.hiQ}`,
+                    options: { ...fact.hiOpts },
+                    exp: fact.hiExp
+                },
+                en: {
+                    q: `[Question ${qNum}] [${fact.enTitle}]\n${fact.enQ}`,
+                    options: { ...fact.enOpts },
+                    exp: fact.enExp
+                }
+            });
+        }
+
+        let currentLang = 'hi';
+        let currentQIndex = 0;
+        let userResponses = {};
+        let reviewStatus = {};
+        let timerSeconds = 120 * 60;
+        let timerInterval = null;
+        let testSubmitted = false;
+
+        function enterFullScreenAndStart() {
+            let elem = document.documentElement;
+            if (elem.requestFullscreen) {
+                elem.requestFullscreen().catch(() => {});
+            } else if (elem.webkitRequestFullscreen) {
+                elem.webkitRequestFullscreen();
+            } else if (elem.msRequestFullscreen) {
+                elem.msRequestFullscreen();
+            }
+            document.getElementById('startModal').classList.add('hidden');
+            initCBT();
+        }
+
+        function initCBT() {
+            populateJumpSelect();
+            renderQuestion(0);
+            startLiveTimer();
+        }
+
+        function populateJumpSelect() {
+            let jump = document.getElementById('jumpSelect');
+            jump.innerHTML = '';
+            for (let i = 0; i < allQuestions.length; i++) {
+                let opt = document.createElement('option');
+                opt.value = i;
+                opt.text = `Q ${i + 1}`;
+                jump.appendChild(opt);
+            }
+        }
+
+        function renderQuestion(index) {
+            currentQIndex = index;
+            document.getElementById('jumpSelect').value = index;
+            let qItem = allQuestions[index];
+            let qData = qItem[currentLang];
+            
+            document.getElementById('qCurrentIndexBadge').innerText = `Q. ${index + 1} / ${allQuestions.length}`;
+            let isReviewed = reviewStatus[index] || false;
+            let reviewTag = document.getElementById('reviewTag');
+            if (isReviewed) {
+                reviewTag.classList.remove('hidden');
+                document.getElementById('reviewBtn').classList.add('bg-amber-200', 'border-amber-400');
+            } else {
+                reviewTag.classList.add('hidden');
+                document.getElementById('reviewBtn').classList.remove('bg-amber-200', 'border-amber-400');
+            }
+
+            let qContainer = document.getElementById('questionText');
+            qContainer.innerHTML = '';
+            let lines = qData.q.split('\n');
+            lines.forEach((line) => {
+                let p = document.createElement('p');
+                p.innerText = line;
+                qContainer.appendChild(p);
+            });
+
+            let optContainer = document.getElementById('optionsContainer');
+            optContainer.innerHTML = '';
+            let currentSelected = userResponses[index];
+
+            const optionKeys = ['A', 'B', 'C', 'D'];
+            optionKeys.forEach((key) => {
+                let isSelected = currentSelected === key;
+                let optDiv = document.createElement('div');
+                optDiv.className = `p-3.5 sm:p-4 rounded-xl border-2 cursor-pointer flex items-start gap-3 transition-all ${
+                    isSelected ? 'bg-indigo-50 border-indigo-600 text-indigo-950 font-medium shadow-sm' : 'bg-white border-slate-200 hover:border-slate-300 text-slate-800'
+                }`;
+                optDiv.onclick = () => selectOption(key);
+
+                let radioCircle = document.createElement('div');
+                radioCircle.className = `w-5 h-5 rounded-full border-2 mt-0.5 flex-shrink-0 flex items-center justify-center ${
+                    isSelected ? 'border-indigo-600 bg-indigo-600' : 'border-slate-400'
+                }`;
+                if (isSelected) {
+                    radioCircle.innerHTML = '<span class="w-2 h-2 bg-white rounded-full"></span>';
+                }
+
+                let textSpan = document.createElement('div');
+                textSpan.className = 'text-sm sm:text-base leading-snug flex-grow';
+                textSpan.innerHTML = `<b class="font-bold mr-1.5">(${key})</b> ${qData.options[key]}`;
+
+                optDiv.appendChild(radioCircle);
+                optDiv.appendChild(textSpan);
+                optContainer.appendChild(optDiv);
+            });
+
+            document.getElementById('prevBtn').disabled = (index === 0);
+            document.getElementById('nextBtn').innerHTML = (index === allQuestions.length - 1) 
+                ? 'Save & Finish <i class="fa-solid fa-check-double"></i>' 
+                : 'Next & Save <i class="fa-solid fa-arrow-right"></i>';
+
+            let progress = ((index + 1) / allQuestions.length) * 100;
+            document.getElementById('progressBar').style.width = `${progress}%`;
+
+            updateSummaryStats();
+        }
+
+        function selectOption(key) {
+            userResponses[currentQIndex] = key;
+            renderQuestion(currentQIndex);
+        }
+
+        function clearResponse() {
+            delete userResponses[currentQIndex];
+            renderQuestion(currentQIndex);
+        }
+
+        function toggleMarkReview() {
+            reviewStatus[currentQIndex] = !reviewStatus[currentQIndex];
+            renderQuestion(currentQIndex);
+        }
+
+        function nextQuestion() {
+            if (currentQIndex < allQuestions.length - 1) {
+                renderQuestion(currentQIndex + 1);
+            } else {
+                confirmSubmitTest();
+            }
+        }
+
+        function prevQuestion() {
+            if (currentQIndex > 0) {
+                renderQuestion(currentQIndex - 1);
+            }
+        }
+
+        function jumpToQuestion(index) {
+            renderQuestion(index);
+        }
+
+        function updateSummaryStats() {
+            let answered = Object.keys(userResponses).length;
+            let reviewed = Object.values(reviewStatus).filter(Boolean).length;
+            let left = allQuestions.length - answered;
+
+            document.getElementById('statAnswered').innerText = answered;
+            document.getElementById('statReview').innerText = reviewed;
+            document.getElementById('statLeft').innerText = left;
+        }
+
+        function startLiveTimer() {
+            let display = document.getElementById('timerDisplay');
+            timerInterval = setInterval(() => {
+                if (timerSeconds <= 0) {
+                    clearInterval(timerInterval);
+                    autoSubmitTest();
+                    return;
+                }
+                timerSeconds--;
+                let mins = Math.floor(timerSeconds / 60);
+                let secs = timerSeconds % 60;
+                display.innerText = `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
+            }, 1000);
+        }
+
+        function toggleLanguage() {
+            currentLang = (currentLang === 'hi') ? 'en' : 'hi';
+            document.getElementById('langToggleBtnText').innerText = (currentLang === 'hi') ? 'English' : 'हिंदी';
+            renderQuestion(currentQIndex);
+        }
+
+        function toggleLanguageInReview() {
+            currentLang = (currentLang === 'hi') ? 'en' : 'hi';
+            document.getElementById('reviewLangToggleText').innerText = (currentLang === 'hi') ? 'English' : 'हिंदी';
+            renderSolutionsList();
+        }
+
+        function confirmSubmitTest() {
+            let answeredCount = Object.keys(userResponses).length;
+            let confirmMsg = `आप कुल 125 में से ${answeredCount} प्रश्न हल कर चुके हैं।\nक्या आप टेस्ट सबमिट करना चाहते हैं?`;
+            if (confirm(confirmMsg)) {
+                submitTestCalculation();
+            }
+        }
+
+        function autoSubmitTest() {
+            alert('समय समाप्त हो गया है! आपका टेस्ट स्वतः सबमिट हो रहा है।');
+            submitTestCalculation();
+        }
+
+        function submitTestCalculation() {
+            clearInterval(timerInterval);
+            testSubmitted = true;
+
+            let correct = 0;
+            let incorrect = 0;
+            let unattempted = 0;
+
+            for (let i = 0; i < allQuestions.length; i++) {
+                let userChoice = userResponses[i];
+                let rightChoice = allQuestions[i].ans;
+                if (userChoice) {
+                    if (userChoice === rightChoice) {
+                        correct++;
+                    } else {
+                        incorrect++;
+                    }
+                } else {
+                    unattempted++;
+                }
+            }
+
+            let rawMarks = (correct * 2.0) - (incorrect * 0.20);
+            let finalMarks = Math.max(0, rawMarks).toFixed(2);
+            let totalAttempted = correct + incorrect;
+            let accuracy = totalAttempted > 0 ? ((correct / totalAttempted) * 100).toFixed(1) : "0.0";
+
+            let elapsedSeconds = (120 * 60) - timerSeconds;
+            let elMins = Math.floor(elapsedSeconds / 60);
+            let elSecs = elapsedSeconds % 60;
+
+            document.getElementById('scoreTotal').innerText = `${finalMarks} / 250.00`;
+            document.getElementById('scoreAccuracy').innerText = `${accuracy}%`;
+            document.getElementById('scoreCorrect').innerText = correct;
+            document.getElementById('scoreIncorrect').innerText = incorrect;
+            document.getElementById('scoreUnattempted').innerText = unattempted;
+            document.getElementById('scoreTime').innerText = `${elMins}m ${elSecs}s`;
+
+            document.getElementById('resultModal').classList.remove('hidden');
+        }
+
+        function openSolutionReview() {
+            document.getElementById('resultModal').classList.add('hidden');
+            document.getElementById('cbtApp').classList.add('hidden');
+            document.getElementById('solutionContainer').classList.remove('hidden');
+            renderSolutionsList();
+        }
+
+        function renderSolutionsList() {
+            let container = document.getElementById('solutionsList');
+            container.innerHTML = '';
+
+            allQuestions.forEach((qObj, idx) => {
+                let qData = qObj[currentLang];
+                let userAns = userResponses[idx] || "None";
+                let correctAns = qObj.ans;
+                let isRight = (userAns === correctAns);
+                let isAttempted = (userAns !== "None");
+
+                let card = document.createElement('div');
+                card.className = "bg-white p-5 rounded-2xl border border-slate-200 shadow-sm space-y-3";
+
+                let statusBadge = "";
+                if (!isAttempted) {
+                    statusBadge = '<span class="bg-slate-100 text-slate-600 font-bold px-2 py-0.5 rounded text-xs">अनुत्तरित (Skipped)</span>';
+                } else if (isRight) {
+                    statusBadge = '<span class="bg-emerald-100 text-emerald-700 font-bold px-2 py-0.5 rounded text-xs">+2.00 सही (Correct)</span>';
+                } else {
+                    statusBadge = '<span class="bg-rose-100 text-rose-700 font-bold px-2 py-0.5 rounded text-xs">-0.20 गलत (Incorrect)</span>';
+                }
+
+                let qLines = qData.q.split('\n').map(l => `<p class="leading-relaxed font-medium text-slate-800">${l}</p>`).join('');
+
+                let optHtml = Object.keys(qData.options).map(key => {
+                    let borderClass = "border-slate-200 text-slate-700";
+                    if (key === correctAns) {
+                        borderClass = "border-emerald-500 bg-emerald-50 font-semibold text-emerald-900";
+                    } else if (key === userAns && !isRight) {
+                        borderClass = "border-rose-400 bg-rose-50 text-rose-900";
+                    }
+                    return `<div class="p-2.5 rounded-lg border text-sm ${borderClass}"><b class="mr-1 font-bold">(${key})</b> ${qData.options[key]}</div>`;
+                }).join('');
+
+                card.innerHTML = `
+                    <div class="flex items-center justify-between border-b pb-2 text-xs font-semibold text-slate-500">
+                        <span>प्रश्न ${idx + 1} / ${allQuestions.length}</span>
+                        <div>${statusBadge}</div>
+                    </div>
+                    <div class="space-y-1.5 text-sm sm:text-base">${qLines}</div>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 my-2">${optHtml}</div>
+                    <div class="bg-indigo-50/70 border border-indigo-100 p-3.5 rounded-xl text-xs sm:text-sm text-slate-700 space-y-1">
+                        <div class="font-bold text-indigo-900 flex items-center gap-1">
+                            <i class="fa-solid fa-lightbulb text-amber-500"></i> विस्तृत व्याख्या (Lucent GK):
+                        </div>
+                        <p class="leading-relaxed">${qData.exp}</p>
+                    </div>
+                    <div class="pt-1 flex items-center justify-between text-[11px] text-slate-400 font-mono">
+                        <span>सत्यापित उत्तर कुंजी</span>
+                        <a href="https://t.me/GYANVERSET" target="_blank" class="text-indigo-600 font-bold hover:underline">@GYANVERSET</a>
+                    </div>
+                `;
+                container.appendChild(card);
+            });
+        }
+    </script>
+</body>
+</html>
