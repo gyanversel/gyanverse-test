@@ -1,0 +1,2063 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>GYANVERSE CBT - NCERT Biology (Cockroach & Frog) 75 MCQs</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Tiro+Devanagari+Hindi:ital@0;1&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Inter', 'Tiro Devanagari Hindi', sans-serif;
+      -webkit-tap-highlight-color: transparent;
+      user-select: none;
+    }
+  </style>
+</head>
+<body class="bg-slate-100 text-slate-800 antialiased min-h-screen flex flex-col justify-between">
+
+  <!-- ==================== ENTRY FULLSCREEN GATE MODAL ==================== -->
+  <div id="entryGate" class="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/90 backdrop-blur-md p-4">
+    <div class="bg-white rounded-2xl shadow-2xl max-w-md w-full p-6 text-center border border-slate-200">
+      <div class="w-16 h-16 bg-blue-100 text-blue-700 rounded-2xl flex items-center justify-center mx-auto mb-4 text-2xl font-bold shadow-inner">
+        GV
+      </div>
+      <h1 class="text-2xl font-black text-slate-900 tracking-tight">GYANVERSE PORTAL</h1>
+      <p class="text-xs font-semibold text-blue-600 mt-1 uppercase tracking-wider">NCERT Class 11 Bio: Sec 7.4 & 7.5 (Full 75 MCQs)</p>
+      
+      <div class="my-5 p-4 bg-slate-50 rounded-xl border border-slate-200 text-left text-xs text-slate-600 space-y-2">
+        <div class="flex justify-between font-medium"><span>Coverage:</span> <span class="text-slate-800 font-bold">Cockroach & Frog (Line-by-Line)</span></div>
+        <div class="flex justify-between font-medium"><span>Questions:</span> <span class="text-slate-800 font-bold">75 Standard MCQs</span></div>
+        <div class="flex justify-between font-medium"><span>Marking:</span> <span class="text-emerald-600 font-bold">+2.00 / -0.20</span></div>
+        <div class="flex justify-between font-medium"><span>Live Feedback:</span> <span class="text-amber-600 font-bold">Instant On-Click Answer & Explanations</span></div>
+      </div>
+
+      <p class="text-xs text-slate-500 mb-5 leading-relaxed">
+        Test real exam full-screen atmosphere me chalega. Shuru karne ke liye niche click karein.
+      </p>
+
+      <button id="btnStartTest" class="w-full py-3.5 px-6 bg-blue-600 hover:bg-blue-700 active:scale-[0.98] transition text-white font-bold rounded-xl shadow-lg shadow-blue-500/30 text-sm tracking-wide">
+        Start Test (Auto Full Screen)
+      </button>
+
+      <div class="mt-4 pt-3 border-t border-slate-100 text-[11px] text-slate-400">
+        Official Channel: <a href="https://t.me/GYANVERSET" target="_blank" class="text-blue-600 hover:underline font-bold">@GYANVERSET</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== MAIN CBT HEADER ==================== -->
+  <header class="bg-white border-b border-slate-200 sticky top-0 z-30 shadow-sm">
+    <div class="max-w-4xl mx-auto px-4 py-2.5 flex items-center justify-between gap-2">
+      <!-- Brand & Telegram -->
+      <div class="flex items-center gap-2">
+        <span class="bg-blue-600 text-white font-black text-xs px-2.5 py-1 rounded-md">GV</span>
+        <div>
+          <h2 class="text-xs md:text-sm font-black text-slate-900 tracking-tight leading-none">GYANVERSE</h2>
+          <a href="https://t.me/GYANVERSET" target="_blank" class="text-[10px] text-blue-600 hover:underline font-semibold">@GYANVERSET</a>
+        </div>
+      </div>
+
+      <!-- Action items: Lang Switcher, Timer, Submit -->
+      <div class="flex items-center gap-2">
+        <button id="langToggleBtn" class="flex items-center gap-1 bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-xs px-2.5 py-1.5 rounded-lg border border-slate-300 transition">
+          <svg class="w-3.5 h-3.5 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129"/></svg>
+          <span id="langLabel">English</span>
+        </button>
+
+        <div class="flex items-center gap-1.5 bg-amber-50 border border-amber-200 text-amber-800 px-2.5 py-1 rounded-lg font-mono text-xs font-bold">
+          <svg class="w-3.5 h-3.5 animate-pulse text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          <span id="timerDisplay">120:00</span>
+        </div>
+
+        <button id="btnHeaderSubmit" class="bg-rose-600 hover:bg-rose-700 active:scale-95 transition text-white font-bold text-xs px-3 py-1.5 rounded-lg shadow-sm">
+          Submit
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ==================== QUESTION AREA ==================== -->
+  <main class="max-w-4xl w-full mx-auto p-3 md:p-5 flex-1 flex flex-col justify-start">
+    <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-4 md:p-6 mb-4 relative transition-all">
+      
+      <!-- Top Meta Bar -->
+      <div class="flex items-center justify-between pb-3 mb-4 border-b border-slate-100 text-xs">
+        <div class="flex items-center gap-2">
+          <span id="qNumBadge" class="bg-slate-900 text-white font-bold px-2 py-0.5 rounded text-[11px]">Q. 1 / 75</span>
+          <span id="qPatternBadge" class="bg-blue-50 text-blue-700 border border-blue-200 font-semibold px-2 py-0.5 rounded text-[10px]">NCERT Standard</span>
+        </div>
+        <div class="text-[11px] font-medium text-slate-500">
+          Marking: <span class="text-emerald-600 font-bold">+2.00</span> | <span class="text-rose-500 font-bold">-0.20</span>
+        </div>
+      </div>
+
+      <!-- Question Text -->
+      <div id="qText" class="text-sm md:text-base font-semibold text-slate-800 leading-relaxed space-y-2 mb-5">
+      </div>
+
+      <!-- Options Container -->
+      <div id="optionsList" class="space-y-2.5 mb-4">
+      </div>
+
+      <!-- Instant Feedback Box -->
+      <div id="instantFeedbackBox" class="hidden mt-4 p-3.5 rounded-xl border text-xs leading-relaxed transition-all duration-200">
+      </div>
+
+      <!-- Question Brand Watermark Tag -->
+      <div class="mt-4 pt-2 border-t border-slate-100 flex items-center justify-between text-[11px] text-slate-400">
+        <span class="font-bold tracking-wider text-slate-400">@GYANVERSET</span>
+        <span class="text-[10px] text-slate-400">Class 11 Biology: 7.4 & 7.5</span>
+      </div>
+
+      <!-- Navigation & Response Action Buttons -->
+      <div class="mt-5 pt-3 grid grid-cols-4 gap-2 border-t border-slate-100">
+        <button id="btnPrev" class="w-full py-2.5 bg-slate-100 hover:bg-slate-200 active:bg-slate-300 text-slate-700 font-bold rounded-xl text-xs transition">
+          Previous
+        </button>
+        <button id="btnClear" class="w-full py-2.5 bg-slate-100 hover:bg-rose-50 text-rose-600 font-bold rounded-xl text-xs transition">
+          Clear
+        </button>
+        <button id="btnReview" class="w-full py-2.5 bg-amber-50 hover:bg-amber-100 text-amber-700 font-bold rounded-xl text-xs transition border border-amber-200">
+          Review
+        </button>
+        <button id="btnNext" class="w-full py-2.5 bg-blue-600 hover:bg-blue-700 active:scale-[0.98] text-white font-bold rounded-xl text-xs transition shadow-sm">
+          Next & Save
+        </button>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- ==================== SUBMISSION / SCORECARD MODAL ==================== -->
+  <div id="scorecardModal" class="fixed inset-0 z-50 hidden items-center justify-center bg-slate-900/80 backdrop-blur-sm p-4">
+    <div class="bg-white rounded-2xl shadow-2xl max-w-lg w-full p-6 text-center border border-slate-200 max-h-[90vh] flex flex-col justify-between">
+      <div>
+        <div class="w-14 h-14 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center mx-auto mb-3 text-2xl font-bold">
+          ✓
+        </div>
+        <h3 class="text-xl font-black text-slate-900">Test Completed!</h3>
+        <p class="text-xs text-slate-500 mt-0.5">Performance Summary • Gyanverse CBT Portal</p>
+        
+        <div class="grid grid-cols-2 gap-2.5 my-4 text-left">
+          <div class="p-3 bg-blue-50 rounded-xl border border-blue-100">
+            <span class="text-[10px] text-blue-600 uppercase font-bold tracking-wider block">Final Score</span>
+            <span id="scoreVal" class="text-xl font-black text-blue-900 leading-tight">0.00</span>
+          </div>
+          <div class="p-3 bg-emerald-50 rounded-xl border border-emerald-100">
+            <span class="text-[10px] text-emerald-600 uppercase font-bold tracking-wider block">Accuracy Rate</span>
+            <span id="accVal" class="text-xl font-black text-emerald-900 leading-tight">0%</span>
+          </div>
+          <div class="p-3 bg-slate-50 rounded-xl border border-slate-200">
+            <span class="text-[10px] text-slate-500 uppercase font-bold tracking-wider block">Correct / Wrong</span>
+            <span id="cwVal" class="text-sm font-black text-slate-800 leading-tight">0 / 0</span>
+          </div>
+          <div class="p-3 bg-slate-50 rounded-xl border border-slate-200">
+            <span class="text-[10px] text-slate-500 uppercase font-bold tracking-wider block">Unattempted</span>
+            <span id="unattVal" class="text-sm font-black text-slate-800 leading-tight">0</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="space-y-2 pt-2">
+        <button id="btnViewSolutions" class="w-full py-3 bg-slate-900 hover:bg-slate-800 text-white font-bold rounded-xl text-xs tracking-wide transition">
+          Check Full Solutions & Explanations
+        </button>
+        <button id="btnRetake" class="w-full py-2.5 bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold rounded-xl text-xs transition">
+          Re-Attempt Test
+        </button>
+      </div>
+
+      <div class="mt-3 pt-2 border-t border-slate-100 text-[10px] text-slate-400">
+        Join our Telegram: <a href="https://t.me/GYANVERSET" target="_blank" class="text-blue-600 hover:underline font-bold">@GYANVERSET</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== ALL SOLUTIONS VIEW CONTAINER ==================== -->
+  <div id="solutionsSection" class="hidden max-w-4xl w-full mx-auto p-3 md:p-5">
+    <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-4 md:p-6 mb-6">
+      <div class="flex items-center justify-between pb-3 border-b border-slate-200 mb-4">
+        <div>
+          <h2 class="text-base md:text-lg font-black text-slate-900">Complete Answer Key & Detailed Solutions (Q1 - Q75)</h2>
+          <p class="text-xs text-slate-500">NCERT Class 11 Chapter 7: Cockroach (7.4) & Frog (7.5)</p>
+        </div>
+        <button id="btnCloseSolutions" class="px-3 py-1.5 bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-xs rounded-lg transition">
+          Back to Top
+        </button>
+      </div>
+      <div id="solutionsListContainer" class="space-y-6">
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== JAVASCRIPT LOGIC & 75 HIGH-LEVEL QUESTIONS ==================== -->
+  <script>
+    const questions = [
+      // 1-5
+      {
+        id: 1,
+        pattern: "3/4 Statement Type",
+        hi: {
+          q: "तिलचट्टे (Periplaneta americana) के वर्गीकरण एवं आकारिकी के संदर्भ में कथनों पर विचार कीजिए:<br><br>1. यह संघ आर्थ्रोपोडा के वर्ग इन्सेक्टा का प्राणी है।<br>2. वयस्क तिलचट्टे की लंबाई 34-53 मिमी. होती है।<br>3. नर में पंख उदर के अंतिम छोर तक सीमित रहते हैं और आगे नहीं बढ़ते।<br>4. इसका शरीर काइटिन युक्त बाह्य कंकाल से ढका होता है।<br><br>उपर्युक्त में से कौन-सा/से कथन <strong>सत्य</strong> है/हैं?",
+          options: ["केवल 1, 2 और 4", "केवल 2 और 3", "केवल 1 और 3", "1, 2, 3 और 4"],
+          exp: "NCERT के अनुसार, नर में पंख उदर के आखिरी छोर से भी आगे बढ़े होते हैं (कथन 3 असत्य है)। शेष कथन पूर्णतः सत्य हैं।"
+        },
+        en: {
+          q: "Consider the statements regarding Cockroach taxonomy and morphology:<br><br>1. Belongs to Phylum Arthropoda, Class Insecta.<br>2. Adults are 34-53 mm long.<br>3. In males, wings extend only up to abdominal end and not beyond.<br>4. Body is covered by chitinous exoskeleton.<br><br>Which of the statements is/are <strong>TRUE</strong>?",
+          options: ["1, 2 and 4 only", "2 and 3 only", "1 and 3 only", "1, 2, 3 and 4"],
+          exp: "In males, wings extend beyond the tip of the abdomen (statement 3 is false)."
+        },
+        ans: 0
+      },
+      {
+        id: 2,
+        pattern: "Factual Matching",
+        hi: {
+          q: "तिलचट्टे के बाह्य कंकाल की पट्टिकाओं (Sclerites) के संदर्भ में सही युग्म चुनिए:<br><br>1. पृष्ठक (Tergites) — पृष्ठीय पट्टिकाएं<br>2. अधरक (Sternites) — अधरीय पट्टिकाएं<br>3. संधिकारी झिल्ली (Arthrodial membrane) — लचीली झिल्ली जो कठकों को जोड़ती है",
+          options: ["केवल 1 और 2", "केवल 2 और 3", "केवल 1 और 3", "1, 2 और 3"],
+          exp: "तीनों कथन NCERT के अनुसार शत-प्रतिशत सही हैं।"
+        },
+        en: {
+          q: "Select the correct pairs regarding Cockroach exoskeleton (sclerites):<br><br>1. Tergites — Dorsal sclerites<br>2. Sternites — Ventral sclerites<br>3. Arthrodial membrane — Flexible articular membrane joining sclerites",
+          options: ["1 and 2 only", "2 and 3 only", "1 and 3 only", "1, 2 and 3"],
+          exp: "All three pairs are correct according to NCERT."
+        },
+        ans: 3
+      },
+      {
+        id: 3,
+        pattern: "Assertion-Reason (A-R)",
+        hi: {
+          q: "<strong>कथन (A):</strong> तिलचट्टे का सिर सभी दिशाओं में सुगमता से घूम सकता है।<br><strong>कारण (R):</strong> इसका सिर छह खंडों के संलयन से बनता है और यह एक लचीली ग्रीवा द्वारा वक्ष से जुड़ा रहता है।",
+          options: [
+            "(A) और (R) दोनों सही हैं और (R), (A) की सही व्याख्या है।",
+            "(A) और (R) दोनों सही हैं लेकिन (R), (A) की सही व्याख्या नहीं है।",
+            "(A) सही है लेकिन (R) गलत है।",
+            "(A) गलत है लेकिन (R) सही है।"
+          ],
+          exp: "तिलचट्टे का सिर 6 खंडों के जुड़ने से बनता है और लचीली गर्दन के कारण यह सभी दिशाओं में घूम सकता है। (R), (A) की सही व्याख्या है।"
+        },
+        en: {
+          q: "<strong>Assertion (A):</strong> The head of a cockroach shows great mobility in all directions.<br><strong>Reason (R):</strong> Head is formed by fusion of six segments and shows mobility due to a flexible neck.",
+          options: [
+            "Both (A) and (R) are true and (R) is the correct explanation of (A).",
+            "Both (A) and (R) are true but (R) is NOT correct explanation.",
+            "(A) is true but (R) is false.",
+            "(A) is false but (R) is true."
+          ],
+          exp: "Both statements are correct and (R) explains (A)."
+        },
+        ans: 0
+      },
+      {
+        id: 4,
+        pattern: "Matching / Mouthparts",
+        hi: {
+          q: "तिलचट्टे के मुखांगों को उनकी सही पहचान से सुमेलित कीजिए:<br><br>(a) लेब्रम — (1) अधरोष्ठ<br>(b) मैंडिबल — (2) कर्तन व चबाने वाले दंतक<br>(c) हाइपोफैरिक्स — (3) ऊर्ध्वोष्ठ<br>(d) लेबियम — (4) जिह्वा",
+          options: ["(a)-3, (b)-2, (c)-4, (d)-1", "(a)-1, (b)-2, (c)-3, (d)-4", "(a)-3, (b)-4, (c)-2, (d)-1", "(a)-2, (b)-3, (c)-4, (d)-1"],
+          exp: "Labrum = Upper lip (3), Mandible = Grinding/incising teeth (2), Hypopharynx = Tongue (4), Labium = Lower lip (1)."
+        },
+        en: {
+          q: "Match cockroach mouthparts with their correct identity:<br><br>(a) Labrum — (1) Lower lip<br>(b) Mandible — (2) Grinding/incising teeth<br>(c) Hypopharynx — (3) Upper lip<br>(d) Labium — (4) Tongue",
+          options: ["(a)-3, (b)-2, (c)-4, (d)-1", "(a)-1, (b)-2, (c)-3, (d)-4", "(a)-3, (b)-4, (c)-2, (d)-1", "(a)-2, (b)-3, (c)-4, (d)-1"],
+          exp: "Labrum (3), Mandible (2), Hypopharynx (4), Labium (1)."
+        },
+        ans: 0
+      },
+      {
+        id: 5,
+        pattern: "Tricky Negative",
+        hi: {
+          q: "तिलचट्टे के पंखों (Wings) के विषय में कौन-सा कथन <strong>गलत</strong> है?",
+          options: [
+            "प्रथम जोड़ी पंख मध्यवक्ष (mesothorax) से निकलते हैं।",
+            "अग्रपंखों को प्रवार (Tegmina) कहा जाता है जो अपारदर्शी और चर्मिल होते हैं।",
+            "पश्चपंख पारदर्शी व झिल्लीदार होते हैं और उड़ने में प्रयुक्त होते हैं।",
+            "अग्रपंख सीधे पश्चवक्ष (metathorax) से उत्पन्न होते हैं।"
+          ],
+          exp: "अग्रपंख मध्यवक्ष (mesothorax) से निकलते हैं, पश्चवक्ष से नहीं। अतः विकल्प (D) गलत है।"
+        },
+        en: {
+          q: "Which statement is <strong>INCORRECT</strong> regarding Cockroach wings?",
+          options: [
+            "First pair arises from mesothorax.",
+            "Forewings are called tegmina which are opaque and leathery.",
+            "Hindwings are transparent, membranous and used in flight.",
+            "Forewings arise directly from metathorax."
+          ],
+          exp: "Forewings arise from mesothorax, while hindwings arise from metathorax."
+        },
+        ans: 3
+      },
+
+      // 6-10
+      {
+        id: 6,
+        pattern: "Anatomical Sequence",
+        hi: {
+          q: "तिलचट्टे के पाद (Leg) के खंडों का समीपस्थ से दूरस्थ (Proximal to Distal) सही क्रम क्या है?",
+          options: [
+            "कक्षांग (Coxa) → शिखरक (Trochanter) → ऊर्विका (Femur) → अंतर्जंघिका (Tibia) → गुल्फ (Tarsus)",
+            "कक्षांग → ऊर्विका → शिखरक → अंतर्जंघिका → गुल्फ",
+            "शिखरक → कक्षांग → ऊर्विका → गुल्फ → अंतर्जंघिका",
+            "ऊर्विका → कक्षांग → शिखरक → अंतर्जंघिका → गुल्फ"
+          ],
+          exp: "NCERT क्रम: Coxa → Trochanter → Femur → Tibia → Tarsus."
+        },
+        en: {
+          q: "Correct proximal to distal sequence of segments in cockroach leg is:",
+          options: [
+            "Coxa → Trochanter → Femur → Tibia → Tarsus",
+            "Coxa → Femur → Trochanter → Tibia → Tarsus",
+            "Trochanter → Coxa → Femur → Tarsus → Tibia",
+            "Femur → Coxa → Trochanter → Tibia → Tarsus"
+          ],
+          exp: "Sequence: Coxa, Trochanter, Femur, Tibia, and Tarsus."
+        },
+        ans: 0
+      },
+      {
+        id: 7,
+        pattern: "Sexual Dimorphism",
+        hi: {
+          q: "गुदा शूक (Anal styles) के संदर्भ में सही कथन चुनिए:",
+          options: [
+            "यह केवल नर में 9वें उदर खंड के अधर पर पाया जाता है।",
+            "यह केवल मादा में 10वें खंड पर पाया जाता है।",
+            "यह नर और मादा दोनों में 10वें खंड पर होता है।",
+            "यह केवल मादा के 7वें अधरक पर होता है।"
+          ],
+          exp: "गुदा शूक (anal styles) केवल नर के 9वें खंड में पाए जाते हैं। 10वें खंड पर गुदा लूम (anal cerci) दोनों लिंगों में होते हैं।"
+        },
+        en: {
+          q: "Select the correct statement regarding Anal Styles in Cockroach:",
+          options: [
+            "Present only in males on the 9th abdominal sternite.",
+            "Present only in females on the 10th segment.",
+            "Present in both males and females on 10th segment.",
+            "Present only on 7th sternite of female."
+          ],
+          exp: "Anal styles are paired, short, thread-like structures present only in males on 9th sternum."
+        },
+        ans: 0
+      },
+      {
+        id: 8,
+        pattern: "3/4 Statement Type",
+        hi: {
+          q: "मादा तिलचट्टे के जनन कोष्ठ (Genital pouch) के संदर्भ में विचार कीजिए:<br><br>1. 7वाँ अधरक नौकाकार (boat shaped) होता है।<br>2. 7वाँ, 8वाँ और 9वाँ अधरक मिलकर जननिक कोष्ठ बनाते हैं।<br>3. इसके अग्र भाग में मादा जनन छिद्र, स्पर्मेथिकल छिद्र व संपार्श्विक ग्रंथियाँ खुलती हैं।<br><br>कौन-सा/से कथन सत्य है/हैं?",
+          options: ["केवल 1 और 2", "केवल 2 और 3", "केवल 1 और 3", "1, 2 और 3"],
+          exp: "तीनों कथन NCERT की पाठ्यपुस्तक से सीधे प्रमाणित और सत्य हैं।"
+        },
+        en: {
+          q: "Regarding the female genital pouch in cockroach:<br><br>1. 7th sternum is boat-shaped.<br>2. 7th, 8th and 9th sterna together form a genital pouch.<br>3. Anterior part contains female gonopore, spermathecal pores and collateral glands.<br><br>Which is/are true?",
+          options: ["1 and 2 only", "2 and 3 only", "1 and 3 only", "1, 2 and 3"],
+          exp: "All three statements are completely true."
+        },
+        ans: 3
+      },
+      {
+        id: 9,
+        pattern: "Anatomy / Digestive",
+        hi: {
+          q: "तिलचट्टे के पेषणी (Gizzard/Proventriculus) में भोजन को पीसने हेतु काइटिन के कितने दांत पाए जाते हैं?",
+          options: ["4", "6", "8", "12"],
+          exp: "पेषणी में मोटी वर्तुल पेशियां तथा आंतरिक उपत्वचा 6 स्थानों पर मोटी होकर 6 अत्यधिक काइटिनीकृत दंतक बनाती है।"
+        },
+        en: {
+          q: "How many chitinous teeth are found inside the gizzard of a cockroach?",
+          options: ["4", "6", "8", "12"],
+          exp: "The gizzard has an outer layer of thick circular muscles and thick inner cuticle forming 6 highly chitinous teeth."
+        },
+        ans: 1
+      },
+      {
+        id: 10,
+        pattern: "Location & Junction",
+        hi: {
+          q: "तिलचट्टे में यकृतीय अंधनाल (Hepatic / Gastric caeca) की संख्या और स्थिति क्या है?",
+          options: [
+            "6 से 8 अंध-नलिकाएं, अग्रांत्र व मध्यांत्र के संधि-स्थल पर",
+            "100 से 150 नलिकाएं, मध्यांत्र व पश्चांत्र के संधि-स्थल पर",
+            "10 से 12 नलिकाएं, पेषणी के अंदर",
+            "4 जोड़ी नलिकाएं, मलाशय के निकट"
+          ],
+          exp: "अग्रांत्र व मध्यांत्र के संधि स्थल पर अंगुली समान 6-8 अंधी नलिकाएं होती हैं जो पाचक रस स्रावित करती हैं।"
+        },
+        en: {
+          q: "Number and location of Hepatic caeca in cockroach:",
+          options: [
+            "6 to 8 blind tubules at the junction of foregut and midgut",
+            "100 to 150 tubules at junction of midgut and hindgut",
+            "10 to 12 tubules inside gizzard",
+            "4 pairs near rectum"
+          ],
+          exp: "Ring of 6-8 blind tubules are present at junction of foregut and midgut, secreting digestive juice."
+        },
+        ans: 0
+      },
+
+      // 11-15
+      {
+        id: 11,
+        pattern: "Cuticle Lining",
+        hi: {
+          q: "तिलचट्टे की आहारनाल का कौन-सा भाग आंतरिक रूप से उपत्वचा (Cuticle) द्वारा आस्तरित <strong>नहीं</strong> होता है?",
+          options: ["अग्रांत्र (Foregut)", "मध्यांत्र (Midgut)", "पश्चांत्र (Hindgut)", "पेषणी (Gizzard)"],
+          exp: "अग्रांत्र और पश्चांत्र दोनों आंतरिक रूप से क्यूटिकल द्वारा आस्तरित होते हैं, परंतु मध्यांत्र (Mesenteron) में क्यूटिकल का आवरण नहीं होता।"
+        },
+        en: {
+          q: "Which part of the cockroach alimentary canal is NOT lined by cuticle internally?",
+          options: ["Foregut", "Midgut", "Hindgut", "Gizzard"],
+          exp: "Foregut and hindgut are ectodermal and lined with cuticle, whereas midgut is endodermal and not lined by cuticle."
+        },
+        ans: 1
+      },
+      {
+        id: 12,
+        pattern: "Excretory / Malpighian",
+        hi: {
+          q: "मैलपीगी नलिकाओं (Malpighian tubules) के संबंध में सही तथ्य पहचानिए:<br><br>1. संख्या 100-150 पतली पीले रंग की नलिकाएं होती हैं।<br>2. मध्यांत्र व पश्चांत्र के संधि-स्थल पर पाई जाती हैं।<br>3. यह ग्रंथिल व रोमयुक्त उपकला द्वारा आस्तरित होती हैं।<br>4. यूरिक अम्ल का निष्कासन पश्चांत्र द्वारा करती हैं।",
+          options: ["केवल 1 और 2", "केवल 2 और 3", "1, 2, 3 और 4", "केवल 1, 3 और 4"],
+          exp: "NCERT के अनुसार ये सभी तथ्य मैलपीगी नलिकाओं के लिए शत-प्रतिशत सही हैं।"
+        },
+        en: {
+          q: "Identify correct facts regarding Malpighian tubules:<br><br>1. 100-150 yellow colored thin tubules.<br>2. Found at junction of midgut and hindgut.<br>3. Lined by glandular and ciliated epithelium.<br>4. Excrete uric acid through hindgut.",
+          options: ["1 and 2 only", "2 and 3 only", "1, 2, 3 and 4", "1, 3 and 4 only"],
+          exp: "All four statements are completely accurate."
+        },
+        ans: 2
+      },
+      {
+        id: 13,
+        pattern: "Accessory Excretion",
+        hi: {
+          q: "मैलपीगी नलिकाओं के अतिरिक्त तिलचट्टे में उत्सर्जन में सहायता करने वाले अन्य अंग कौन-से हैं?",
+          options: [
+            "वसापिंड, वृक्काणु (नेफ्रोसाइट) और यूरेकोस ग्रंथियां",
+            "ग्रीन ग्रंथियां और कॉक्सल ग्रंथियां",
+            "केवल ज्वाला कोशिकाएं",
+            "यकृतीय अंधनाल और श्लेषक ग्रंथियां"
+          ],
+          exp: "NCERT: मैलपीगी नलिकाओं के साथ-साथ वसापिंड (fat body), वृक्काणु (nephrocytes) तथा यूरेकोस ग्रंथियां (urecose glands) भी उत्सर्जन में मदद करती हैं।"
+        },
+        en: {
+          q: "In addition to Malpighian tubules, which other structures assist excretion in cockroach?",
+          options: [
+            "Fat body, nephrocytes and urecose glands",
+            "Green glands and coxal glands",
+            "Flame cells only",
+            "Hepatic caeca and collateral glands"
+          ],
+          exp: "Fat body, nephrocytes, and urecose glands also help in excretion."
+        },
+        ans: 0
+      },
+      {
+        id: 14,
+        pattern: "Circulatory System",
+        hi: {
+          q: "तिलचट्टे के हृदय के विषय में कौन-सा कथन सत्य है?",
+          options: [
+            "यह वक्ष और उदर की मध्य-पृष्ठीय रेखा पर स्थित 13 कीपाकार कोष्ठकों की नली है।",
+            "यह अधर तल पर स्थित 10 कोष्ठों का बना होता है।",
+            "इसमें बंद परिसंचरण तंत्र और हीमोग्लोबिन युक्त लाल रुधिर होता है।",
+            "इसके हृदय में कोई आस्य (ostia) नहीं होते।"
+          ],
+          exp: "तिलचट्टे का हृदय मध्य-पृष्ठीय रेखा पर स्थित होता है, कीपाकार कोष्ठकों में बंटा होता है और दोनों तरफ आस्य (ostia) होते हैं।"
+        },
+        en: {
+          q: "Which statement is true regarding cockroach heart?",
+          options: [
+            "It is a muscular tube along mid-dorsal line differentiated into funnel-shaped chambers.",
+            "It lies on ventral surface with 10 chambers.",
+            "It has closed circulation and red blood with hemoglobin.",
+            "Lacks lateral ostia."
+          ],
+          exp: "Heart is an elongated muscular tube lying along mid-dorsal line of thorax and abdomen, differentiated into funnel-shaped chambers with ostia."
+        },
+        ans: 0
+      },
+      {
+        id: 15,
+        pattern: "Respiratory / Spiracles",
+        hi: {
+          q: "तिलचट्टे के श्वसन तंत्र में श्वास रंध्रों (Spiracles) की कुल संख्या और स्थिति क्या है?",
+          options: [
+            "10 जोड़ी, शरीर की पार्श्व (Lateral) सतह पर",
+            "12 जोड़ी, पृष्ठ सतह पर",
+            "8 जोड़ी, अधर सतह पर",
+            "10 एकल छिद्र, सिर के निकट"
+          ],
+          exp: "हवा 10 जोड़ी श्वास छिद्रों द्वारा प्रवेश करती है जो शरीर की पार्श्व सतह पर स्थित होते हैं।"
+        },
+        en: {
+          q: "Total number and location of spiracles in cockroach:",
+          options: [
+            "10 pairs, on lateral side of the body",
+            "12 pairs on dorsal surface",
+            "8 pairs on ventral surface",
+            "10 single pores near head"
+          ],
+          exp: "There are 10 pairs of small holes called spiracles present on the lateral sides of the body."
+        },
+        ans: 0
+      },
+
+      // 16-20
+      {
+        id: 16,
+        pattern: "Nervous System Ganglia",
+        hi: {
+          q: "तिलचट्टे के तंत्रिका तंत्र में गुच्छिकाओं (Ganglia) का वितरण किस प्रकार होता है?",
+          options: [
+            "3 गुच्छिकाएं वक्ष में और 6 उदर में",
+            "6 गुच्छिकाएं वक्ष में और 3 उदर में",
+            "2 सिर में, 4 वक्ष में और 4 उदर में",
+            "10 गुच्छिकाएं केवल उदर में"
+          ],
+          exp: "तिलचट्टे के तंत्रिका तंत्र में 3 गुच्छिकाएं वक्ष में और 6 उदर में अधर तंत्रिका रज्जु पर स्थित होती हैं।"
+        },
+        en: {
+          q: "Distribution of ganglia in cockroach nervous system:",
+          options: [
+            "3 ganglia in thorax and 6 in abdomen",
+            "6 in thorax and 3 in abdomen",
+            "2 in head, 4 in thorax and 4 in abdomen",
+            "10 ganglia in abdomen only"
+          ],
+          exp: "Three ganglia lie in the thorax, and six in the abdomen along the paired longitudinal connectives."
+        },
+        ans: 0
+      },
+      {
+        id: 17,
+        pattern: "Compound Eye & Vision",
+        hi: {
+          q: "तिलचट्टे के संयुक्त नेत्र के संदर्भ में विचार कीजिए:<br><br>1. प्रत्येक आँख लगभग 2000 षट्कोणीय नेत्रांशकों (Ommatidia) की बनी होती है।<br>2. यह मोज़ेक दृष्टि (Mosaic vision) उत्पन्न करती है।<br>3. इस दृष्टि की सुग्राहिता (Sensitivity) अधिक परंतु विभेदन (Resolution) कम होता है।<br><br>सत्य कथन पहचानें:",
+          options: ["केवल 1 और 2", "केवल 2 और 3", "केवल 1 और 3", "1, 2 और 3"],
+          exp: "तीनों कथन NCERT से पूर्णतः प्रमाणित हैं। इसे रात्रि दृष्टि (nocturnal vision) भी कहते हैं।"
+        },
+        en: {
+          q: "Regarding compound eyes of cockroach:<br><br>1. Each eye consists of about 2000 hexagonal ommatidia.<br>2. Gives mosaic vision.<br>3. Has more sensitivity but less resolution.<br><br>Which are true?",
+          options: ["1 and 2 only", "2 and 3 only", "1 and 3 only", "1, 2 and 3"],
+          exp: "All three statements are correct."
+        },
+        ans: 3
+      },
+      {
+        id: 18,
+        pattern: "Male Reproductive / Testes",
+        hi: {
+          q: "नर तिलचट्टे में वृषण (Testes) किन उदरीय खंडों में स्थित होते हैं?",
+          options: ["चौथे से छठे (4th - 6th)", "दूसरे से छठे (2nd - 6th)", "छठे और सातवें (6th - 7th)", "आठवें और नवें (8th - 9th)"],
+          exp: "नर जननांग एक जोड़ी वृषण के रूप में 4थे से 6ठे उदरीय खंड के पार्श्व में स्थित होते हैं।"
+        },
+        en: {
+          q: "Testes in male cockroach are located in which abdominal segments?",
+          options: ["4th to 6th", "2nd to 6th", "6th and 7th", "8th and 9th"],
+          exp: "A pair of testes lies one on each lateral side in 4th-6th abdominal segments."
+        },
+        ans: 0
+      },
+      {
+        id: 19,
+        pattern: "Mushroom Gland Location",
+        hi: {
+          q: "नर तिलचट्टे में सहायक जनन ग्रंथि 'छत्रक रूपी ग्रंथि' (Mushroom shaped gland) कहाँ स्थित होती है?",
+          options: ["उदर के 6ठे एवं 7वें खंड में", "वक्ष के तीसरे खंड में", "उदर के 2रे से 4थे खंड में", "9वें अधरक पर"],
+          exp: "एक विशिष्ट छत्रक रूपी ग्रंथि उदर के छठे एवं सातवें खंड में सहायक जनन ग्रंथि का कार्य करती है।"
+        },
+        en: {
+          q: "Mushroom-shaped gland in male cockroach is situated in:",
+          options: ["6th and 7th abdominal segments", "3rd thoracic segment", "2nd to 4th abdominal segments", "9th sternite"],
+          exp: "A characteristic mushroom-shaped gland is present in the 6th-7th abdominal segments acting as accessory reproductive gland."
+        },
+        ans: 0
+      },
+      {
+        id: 20,
+        pattern: "Female Reproductive / Ovary",
+        hi: {
+          q: "मादा तिलचट्टे में अंडाशय (Ovaries) की स्थिति और अंडाशयकों (Ovarioles) की संख्या क्या है?",
+          options: [
+            "2 से 6 उदरीय खंड; प्रत्येक अंडाशय में 8 अंडाशयक",
+            "4 से 6 उदरीय खंड; प्रत्येक अंडाशय में 6 अंडाशयक",
+            "6 से 7 उदरीय खंड; प्रत्येक अंडाशय में 10 अंडाशयक",
+            "केवल 2रे खंड में; प्रत्येक में 16 अंडाशयक"
+          ],
+          exp: "अंडाशय उदर के 2रे से 6ठे खंड के पार्श्व में होते हैं और प्रत्येक अंडाशय 8 अंडाशयी नलिकाओं (ovarioles) का बना होता है।"
+        },
+        en: {
+          q: "Location of ovaries and number of ovarioles per ovary in female cockroach:",
+          options: [
+            "2nd to 6th abdominal segments; 8 ovarioles per ovary",
+            "4th to 6th abdominal segments; 6 ovarioles per ovary",
+            "6th to 7th abdominal segments; 10 ovarioles per ovary",
+            "2nd segment only; 16 ovarioles each"
+          ],
+          exp: "Two large ovaries lie laterally in 2nd-6th abdominal segments, each formed of 8 ovarian tubules/ovarioles."
+        },
+        ans: 0
+      },
+
+      // 21-25
+      {
+        id: 21,
+        pattern: "Spermatheca Location",
+        hi: {
+          q: "मादा तिलचट्टे में एक जोड़ी शुक्राणुधानी (Spermatheca) किस खंड में उपस्थित होती है?",
+          options: ["छठे (6th) खंड में", "दूसरे (2nd) खंड में", "आठवें (8th) खंड में", "दसवें (10th) खंड में"],
+          exp: "छठे खंड में एक जोड़ी शुक्राणुधानी होती है, जो जनन कोष्ठ में खुलती है और मैथुन के समय शुक्राणुओं को ग्रहण करती है।"
+        },
+        en: {
+          q: "A pair of spermathecae in female cockroach is located in which segment?",
+          options: ["6th segment", "2nd segment", "8th segment", "10th segment"],
+          exp: "A pair of spermatheca is present in the 6th segment which opens into the genital chamber."
+        },
+        ans: 0
+      },
+      {
+        id: 22,
+        pattern: "Ootheca Statistics",
+        hi: {
+          q: "मादा तिलचट्टा औसतन कितने अंडकवच (Oothecae) उत्पन्न करती है तथा प्रत्येक में कितने अंडे होते हैं?",
+          options: [
+            "9-10 अंडकवच; प्रत्येक में 14-16 अंडे",
+            "14-16 अंडकवच; प्रत्येक में 9-10 अंडे",
+            "5-6 अंडकवच; प्रत्येक में 20-25 अंडे",
+            "1-2 अंडकवच; प्रत्येक में 100 अंडे"
+          ],
+          exp: "NCERT: औसतन एक मादा 9-10 अंडकवच उत्पन्न करती है और प्रत्येक में 14-16 अंडे होते हैं।"
+        },
+        en: {
+          q: "On average, how many oothecae are laid by a female cockroach and how many eggs does each contain?",
+          options: [
+            "9-10 oothecae; 14-16 eggs each",
+            "14-16 oothecae; 9-10 eggs each",
+            "5-6 oothecae; 20-25 eggs each",
+            "1-2 oothecae; 100 eggs each"
+          ],
+          exp: "On average, female produces 9-10 oothecae, each containing 14-16 eggs."
+        },
+        ans: 0
+      },
+      {
+        id: 23,
+        pattern: "Metamorphosis Type",
+        hi: {
+          q: "पेरिप्लेनेटा अमेरिकाना में परिवर्धन किस प्रकार का होता है और वयस्क बनने में कितने निर्मोचन (Moults) होते हैं?",
+          options: [
+            "पौरोमेटाबोलस (Paurometabolous); 13 निर्मोचन",
+            "होलोमेटाबोलस (Holometabolous); 6 निर्मोचन",
+            "ए मेटाबोलस (Ametabolous); कोई निर्मोचन नहीं",
+            "हेमीमेटाबोलस (Hemimetabolous); 20 निर्मोचन"
+          ],
+          exp: "विकास पौरोमेटाबोलस प्रकार का होता है (अर्भक अवस्था द्वारा) और लगभग 13 निर्मोचनों के बाद यह वयस्क बनता है।"
+        },
+        en: {
+          q: "What type of development is found in Periplaneta americana and how many moults occur?",
+          options: [
+            "Paurometabolous; about 13 moults",
+            "Holometabolous; 6 moults",
+            "Ametabolous; zero moults",
+            "Hemimetabolous; 20 moults"
+          ],
+          exp: "Development is paurometabolous meaning through nymphal stages, moulting about 13 times to reach adult form."
+        },
+        ans: 0
+      },
+      {
+        id: 24,
+        pattern: "Wing Pad Development",
+        hi: {
+          q: "तिलचट्टे के विकास में पंखों के संवर्धन (Wing pads) किस अवस्था में दिखाई देते हैं?",
+          options: [
+            "अंतिम अर्भक अवस्था से ठीक पहले वाली अवस्था में",
+            "प्रथम अर्भक अवस्था में ही",
+            "केवल अंडे से निकलते समय",
+            "13वें निर्मोचन के बाद ही"
+          ],
+          exp: "NCERT: अंतिम अर्भक अवस्था से पहली अवस्था (next to last nymphal stage) में पक्षतल्प (wing pads) पाए जाते हैं, परंतु केवल वयस्क में ही पूर्ण पंख होते हैं।"
+        },
+        en: {
+          q: "In cockroach development, wing pads are seen in:",
+          options: [
+            "The next to last nymphal stage",
+            "First nymphal stage",
+            "Just upon hatching from egg",
+            "Only after 13th moult directly as adult"
+          ],
+          exp: "The next to last nymphal stage has wing pads, but only adult cockroaches have fully developed wings."
+        },
+        ans: 0
+      },
+      {
+        id: 25,
+        pattern: "Assertion-Reason (A-R)",
+        hi: {
+          q: "<strong>कथन (A):</strong> तिलचट्टा एक यूरिकाम्ल उत्सर्गी (Uricotelic) प्राणी है।<br><strong>कारण (R):</strong> इसकी मैलपीगी नलिकाएं हीमोलिंफ से नाइट्रोजनी अपशिष्टों को अवशोषित कर यूरिक अम्ल में बदल देती हैं।",
+          options: [
+            "(A) और (R) दोनों सही हैं और (R), (A) की सही व्याख्या है।",
+            "(A) और (R) दोनों सही हैं लेकिन (R), (A) की सही व्याख्या नहीं है।",
+            "(A) सही है लेकिन (R) गलत है।",
+            "(A) गलत है लेकिन (R) सही है।"
+          ],
+          exp: "दोनों कथन पूर्णतः सही हैं और मैलपीगी नलिकाओं द्वारा यूरिक अम्ल बनाने के कारण ही यह यूरिकोटेलिक कहलाता है।"
+        },
+        en: {
+          q: "<strong>Assertion (A):</strong> Cockroach is a uricotelic animal.<br><strong>Reason (R):</strong> Malpighian tubules absorb nitrogenous wastes from hemolymph and convert them into uric acid.",
+          options: [
+            "Both (A) and (R) are true and (R) is correct explanation of (A).",
+            "Both (A) and (R) are true but (R) is not correct explanation.",
+            "(A) is true but (R) is false.",
+            "(A) is false but (R) is true."
+          ],
+          exp: "Both statements are correct and (R) explains (A)."
+        },
+        ans: 0
+      },
+
+      // 26-30
+      {
+        id: 26,
+        pattern: "Frog Thermoregulation",
+        hi: {
+          q: "मेंढक (Rana tigrina) के शारीरिक तापमान एवं व्यवहार के संबंध में कौन-सा कथन <strong>गलत</strong> है?",
+          options: [
+            "मेंढक एक समतापी (होमियोथर्मिक) प्राणी है जिसका तापमान सदैव 37°C स्थिर रहता है।",
+            "यह असमतापी (Poikilothermic / Cold-blooded) प्राणी है।",
+            "यह शत्रुओं से छिपने हेतु रंग बदलता है जिसे अनुहरण (Mimicry/Camouflage) कहते हैं।",
+            "यह अत्यधिक सर्दी व गर्मी से बचने हेतु क्रमशः शीत (Hibernation) व ग्रीष्म निष्क्रियता (Aestivation) में जाता है।"
+          ],
+          exp: "विकल्प (A) गलत है क्योंकि मेंढक असमतापी (Poikilotherm) है, इसका शारीरिक तापमान पर्यावरण के अनुसार बदलता रहता है।"
+        },
+        en: {
+          q: "Which statement is <strong>INCORRECT</strong> regarding Frog body temperature and adaptation?",
+          options: [
+            "Frog is a homeothermic animal with a constant 37°C body temperature.",
+            "Frog is a poikilothermic (cold-blooded) animal.",
+            "It changes color for camouflage (mimicry).",
+            "Undergoes hibernation in winter and aestivation in summer."
+          ],
+          exp: "Statement (A) is incorrect as frog is poikilothermic, not homeothermic."
+        },
+        ans: 0
+      },
+      {
+        id: 27,
+        pattern: "Frog Morphology / Digits",
+        hi: {
+          q: "मेंढक के अग्रपाद (Forelimbs) तथा पश्चपाद (Hindlimbs) में अंगुलियों की संख्या क्रमशः कितनी होती है?",
+          options: ["4 और 5", "5 और 4", "5 और 5", "4 और 4"],
+          exp: "NCERT: अग्रपाद में 4 अंगुलियाँ होती हैं जबकि पश्चपाद में 5 अंगुलियाँ होती हैं (जो झिल्लीयुक्त होती हैं और तैरने में सहायक हैं)।"
+        },
+        en: {
+          q: "Number of digits in forelimbs and hindlimbs of frog respectively are:",
+          options: ["4 and 5", "5 and 4", "5 and 5", "4 and 4"],
+          exp: "Forelimbs have four digits while hindlimbs end in five digits with webbed feet."
+        },
+        ans: 0
+      },
+      {
+        id: 28,
+        pattern: "Frog Sexual Dimorphism",
+        hi: {
+          q: "नर मेंढक को मादा मेंढक से किस आधार पर बाह्य रूप से पहचाना जा सकता है?",
+          options: [
+            "नर में आवाज उत्पन्न करने वाले वाक्-कोष (Vocal sacs) और अग्रपाद की पहली अंगुली पर मैथुनांग (Copulatory pad) होते हैं।",
+            "नर में पूंछ उपस्थित होती है।",
+            "नर के पश्चपाद में 4 अंगुलियाँ होती हैं।",
+            "मादा मेंढक का रंग हरा और नर का सफेद होता है।"
+          ],
+          exp: "नर मेंढक में ध्वनि उत्पन्न करने वाले वाक् कोष तथा अग्रपाद की पहली अंगुली पर मैथुनांग (copulatory pad) पाए जाते हैं, जो मादा में नहीं होते।"
+        },
+        en: {
+          q: "Male frog can be distinguished externally from female frog by:",
+          options: [
+            "Presence of vocal sacs and a copulatory pad on first digit of forelimbs.",
+            "Presence of a tail.",
+            "Four digits on hindlimbs in males.",
+            "Distinct color differences only."
+          ],
+          exp: "Male frogs are distinguished by sound-producing vocal sacs and copulatory pad on first digit of forelimb."
+        },
+        ans: 0
+      },
+      {
+        id: 29,
+        pattern: "Frog Water Intake",
+        hi: {
+          q: "मेंढक जल की अपनी आवश्यकता की पूर्ति किस प्रकार करता है?",
+          options: [
+            "यह कभी मुख से पानी नहीं पीता, बल्कि त्वचा द्वारा इसका अवशोषण करता है।",
+            "यह नियमित रूप से मुख द्वारा प्रचुर जल पीता है।",
+            "यह केवल भोजन में उपस्थित जल पर निर्भर रहता है।",
+            "यह अवस्कर द्वारा जल को चूसता है।"
+          ],
+          exp: "NCERT: मेंढक कभी पानी नहीं पीता; बल्कि त्वचा द्वारा इसका सीधे अवशोषण करता है।"
+        },
+        en: {
+          q: "How does a frog take in water to fulfill its bodily needs?",
+          options: [
+            "It never drinks water via mouth; absorbs it directly through skin.",
+            "It drinks large quantities through mouth daily.",
+            "Relies only on water contained in food.",
+            "Absorbs through cloaca only."
+          ],
+          exp: "Frogs never drink water, but absorb it through the skin."
+        },
+        ans: 0
+      },
+      {
+        id: 30,
+        pattern: "Frog Digestive / Tongue",
+        hi: {
+          q: "मेंढक में भोजन पकड़ने हेतु जिह्वा (Tongue) की क्या विशेषता होती है?",
+          options: [
+            "यह मांसल और द्विपालित (Bilobed) होती है",
+            "यह शंक्वाकार और स्थिर होती है",
+            "यह दांतों से युक्त और कठोर होती है",
+            "इसमें स्वाद कलिकाएं पूर्णतः अनुपस्थित होती हैं"
+          ],
+          exp: "मेंढक अपनी द्विपालित (bilobed) मांसल जीभ को बाहर फेंककर शिकार को पकड़ता है।"
+        },
+        en: {
+          q: "What is the structural characteristic of frog tongue for capturing prey?",
+          options: [
+            "It is muscular and bilobed",
+            "It is conical and non-protrusible",
+            "It is covered with sharp teeth",
+            "Completely lacks taste buds"
+          ],
+          exp: "Frogs have a muscular bilobed tongue adapted to flick out and capture prey."
+        },
+        ans: 0
+      },
+
+      // 31-35
+      {
+        id: 31,
+        pattern: "Frog Digestion Physiology",
+        hi: {
+          q: "मेंढक में आमाशय से निकला अर्धपाचित भोजन क्या कहलाता है और ग्रहणी में पित्त रस किसका पाचन करता है?",
+          options: [
+            "काइम (Chyme); वसा (Fats) का इमल्सीकरण/पाचन",
+            "काइल (Chyle); प्रोटीन का पाचन",
+            "बोलस (Bolus); कार्बोहाइड्रेट का पाचन",
+            "काइम; केवल न्यूक्लिक अम्ल का पाचन"
+          ],
+          exp: "आमाशय में अर्धपाचित भोजन काइम कहलाता है। पित्तरस वसा का तथा अग्नाशयी रस कार्बोहाइड्रेट व प्रोटीन का पाचन करता है।"
+        },
+        en: {
+          q: "Partially digested food released from frog stomach is termed as, and bile juice digests:",
+          options: [
+            "Chyme; emulsifies and digests fats",
+            "Chyle; digests proteins",
+            "Bolus; digests carbohydrates",
+            "Chyme; digests nucleic acids only"
+          ],
+          exp: "Partially digested food is called chyme. Bile emulsifies fat and pancreatic juice digests carbohydrates and proteins."
+        },
+        ans: 0
+      },
+      {
+        id: 32,
+        pattern: "Frog Respiration Organs",
+        hi: {
+          q: "मेंढक में थल पर वायवीय श्वसन किन अंगों द्वारा संपन्न होता है?",
+          options: [
+            "त्वचा, मुखगुहा और फेफड़े तीनों द्वारा",
+            "केवल फेफड़ों द्वारा",
+            "केवल क्लोम (Gills) द्वारा",
+            "केवल श्वास नली (Trachea) द्वारा"
+          ],
+          exp: "जल के बाहर थल पर मेंढक त्वचा (cutaneous), मुख गुहा (buccal cavity) और फेफड़े (pulmonary) तीनों से श्वसन कर सकता है।"
+        },
+        en: {
+          q: "On land, aerial respiration in frog is performed by:",
+          options: [
+            "Skin, buccal cavity, and lungs",
+            "Lungs only",
+            "Gills only",
+            "Trachea only"
+          ],
+          exp: "On land, the buccal cavity, skin, and lungs act as the respiratory organs."
+        },
+        ans: 0
+      },
+      {
+        id: 33,
+        pattern: "Frog Heart Anatomy",
+        hi: {
+          q: "मेंढक के हृदय की संरचना के संदर्भ में कथनों पर विचार कीजिए:<br><br>1. यह त्रिकोष्ठीय (दो अलिंद और एक निलय) होता है।<br>2. शिराकोटर (Sinus venosus) दाएं अलिंद से जुड़कर महाशिराओं से रक्त ग्रहण करता है।<br>3. निलय अधर सतह पर थैलानुमा धमनी शंकु (Conus arteriosus) में खुलता है।<br><br>सत्य कथन चुनें:",
+          options: ["केवल 1 और 2", "केवल 2 और 3", "केवल 1 और 3", "1, 2 और 3"],
+          exp: "तीनों कथन NCERT से पूर्णतः प्रमाणित और सत्य हैं।"
+        },
+        en: {
+          q: "Consider statements regarding frog heart structure:<br><br>1. It is three-chambered with two atria and one ventricle.<br>2. Sinus venosus joins the right atrium and receives blood from vena cava.<br>3. Ventricle opens into conus arteriosus on ventral side.<br><br>Which are true?",
+          options: ["1 and 2 only", "2 and 3 only", "1 and 3 only", "1, 2 and 3"],
+          exp: "All three statements are correct."
+        },
+        ans: 3
+      },
+      {
+        id: 34,
+        pattern: "Frog Portal Systems",
+        hi: {
+          q: "मेंढक में पाए जाने वाले निवाहिका तंत्रों (Portal Systems) का सही मिलान क्या है?",
+          options: [
+            "यकृत निवाहिका तंत्र (यकृत व आंत के मध्य) तथा वृक्कीय निवाहिका तंत्र (वृक्क व निचले भागों के मध्य)",
+            "केवल वृक्कीय निवाहिका तंत्र उपस्थित, यकृत अनुपस्थित",
+            "हाइपोथैलेमिक निवाहिका तंत्र केवल मस्तिष्क में",
+            "फुफ्फुसीय निवाहिका तंत्र फेफड़ों और हृदय के मध्य"
+          ],
+          exp: "मेंढक में विशेष शिरा संबंध होते हैं: यकृत व आंत्र के मध्य 'यकृत निवाहिका तंत्र' और वृक्क व पश्च भागों के मध्य 'वृक्कीय निवाहिका तंत्र'।"
+        },
+        en: {
+          q: "Portal systems present in frog:",
+          options: [
+            "Hepatic portal system (liver & intestine) and Renal portal system (kidney & lower parts)",
+            "Renal portal system only, hepatic absent",
+            "Hypothalamic portal system in head only",
+            "Pulmonary portal system between lungs and heart"
+          ],
+          exp: "Frogs have both Hepatic Portal System and Renal Portal System."
+        },
+        ans: 0
+      },
+      {
+        id: 35,
+        pattern: "Frog Blood Composition",
+        hi: {
+          q: "मेंढक के रक्त एवं लसीका (Lymph) के संदर्भ में कौन-सा कथन सत्य है?",
+          options: [
+            "इसकी RBCs अंडाकार, हीमोग्लोबिन युक्त और केंद्रकयुक्त (Nucleated) होती हैं।",
+            "इसकी RBCs स्तनधारियों की तरह केंद्रकविहीन होती हैं।",
+            "लसीका में RBCs की संख्या रक्त से अधिक होती है।",
+            "मेंढक में रक्त पट्टिकाएं (प्लेटलेट्स) अनुपस्थित होती हैं।"
+          ],
+          exp: "मेंढक की RBCs केंद्रकयुक्त (nucleated) होती हैं और इनमें हीमोग्लोबिन पाया जाता है।"
+        },
+        en: {
+          q: "Which statement is true regarding blood and lymph of frog?",
+          options: [
+            "Its RBCs are oval, nucleated, and contain hemoglobin.",
+            "RBCs are enucleated like humans.",
+            "Lymph contains more RBCs than blood.",
+            "Platelets are completely absent."
+          ],
+          exp: "The RBCs are nucleated and contain red pigment hemoglobin."
+        },
+        ans: 0
+      },
+
+      // 36-40
+      {
+        id: 36,
+        pattern: "Frog Excretory Nature",
+        hi: {
+          q: "मेंढक मुख्य रूप से किस उत्सर्जी पदार्थ का निष्कासन करता है?",
+          options: ["यूरिया (यूरियोटेलिक)", "यूरिक अम्ल (यूरिकोटेलिक)", "अमोनिया (अमोनोटेलिक)", "अमीनो अम्ल (अमीनोटेलिक)"],
+          exp: "वयस्क मेंढक यूरिया का उत्सर्जन करता है, अतः यह यूरिया-उत्सर्जी (ureotelic) प्राणी है (जबकि टैडपोल लार्वा अमोनोटेलिक होता है)।"
+        },
+        en: {
+          q: "Major nitrogenous waste excreted by adult frog:",
+          options: ["Urea (Ureotelic)", "Uric acid (Uricotelic)", "Ammonia (Ammonotelic)", "Amino acid (Aminotelic)"],
+          exp: "Frog is a ureotelic animal as it excretes urea."
+        },
+        ans: 0
+      },
+      {
+        id: 37,
+        pattern: "Frog Cranial Nerves",
+        hi: {
+          q: "मेंढक के मस्तिष्क से निकलने वाली कपाल तंत्रिकाओं (Cranial nerves) की संख्या कितनी होती है?",
+          options: ["10 जोड़ी (10 Pairs)", "12 जोड़ी (12 Pairs)", "31 जोड़ी (31 Pairs)", "8 जोड़ी (8 Pairs)"],
+          exp: "NCERT: मेंढक के मस्तिष्क से 10 जोड़ी कपालीय तंत्रिकाएं निकलती हैं (मनुष्य में 12 जोड़ी होती हैं)।"
+        },
+        en: {
+          q: "How many pairs of cranial nerves originate from frog brain?",
+          options: ["10 pairs", "12 pairs", "31 pairs", "8 pairs"],
+          exp: "10 pairs of cranial nerves arise from the brain in frog."
+        },
+        ans: 0
+      },
+      {
+        id: 38,
+        pattern: "Frog Brain Structure",
+        hi: {
+          q: "मेंढक के मध्य मस्तिष्क (Midbrain) का मुख्य भाग क्या होता है?",
+          options: ["एक जोड़ी दृक् पालियां (A pair of optic lobes)", "कॉर्पस कैलोसम", "घ्राण पालियां", "प्रमस्तिष्क गोलार्ध"],
+          exp: "NCERT: मेंढक का मध्य मस्तिष्क एक जोड़ा दृक पालियों (pair of optic lobes) का बना होता है।"
+        },
+        en: {
+          q: "The midbrain of frog predominantly consists of:",
+          options: ["A pair of optic lobes", "Corpus callosum", "Olfactory lobes", "Cerebral hemispheres"],
+          exp: "Midbrain is characterized by a pair of optic lobes."
+        },
+        ans: 0
+      },
+      {
+        id: 39,
+        pattern: "Frog Ear & Senses",
+        hi: {
+          q: "मेंढक के कान (Ear) के संबंध में सत्य कथन चुनिए:",
+          options: [
+            "बाह्य कर्ण अनुपस्थित होता है; केवल कर्णपटह (Tympanum) बाहर दिखता है और यह श्रवण व संतुलन दोनों करता है।",
+            "बाह्य कर्ण पल्लव (Pinna) उपस्थित होता है।",
+            "कान का संतुलन से कोई संबंध नहीं होता, यह केवल सुनने का कार्य करता है।",
+            "आंतरिक कान अनुपस्थित होता है।"
+          ],
+          exp: "मेंढक में बाह्य कर्ण अनुपस्थित होता है, केवल कर्णपटह दिखता है। कान सुनने के साथ संतुलन का भी कार्य करता है।"
+        },
+        en: {
+          q: "Select the true statement regarding the ear in frog:",
+          options: [
+            "External ear is absent; only tympanum is visible which serves both hearing and balance.",
+            "External ear pinna is present.",
+            "Ear has no role in balance.",
+            "Internal ear is absent."
+          ],
+          exp: "External ear is absent and only tympanum can be seen externally. Ear functions for hearing as well as balancing."
+        },
+        ans: 0
+      },
+      {
+        id: 40,
+        pattern: "Frog Male Reproductive",
+        hi: {
+          q: "नर मेंढक में वृषण (Testes) वृक्क के ऊपरी भाग से किस झिल्ली द्वारा जुड़े रहते हैं?",
+          options: ["मेजोर्कियम (Mesorchium)", "पेरीकार्डियम", "ग्लीसन कैप्सूल", "पेरिटोनियम की एकल परत"],
+          exp: "वृषण वृक्क के ऊपरी भाग से पेरिटोनियम के दोहरे वलन, 'मेजोर्कियम' (mesorchium) नामक झिल्ली द्वारा चिपके रहते हैं।"
+        },
+        en: {
+          q: "Testes in male frog are adhered to the upper part of kidneys by a fold of peritoneum called:",
+          options: ["Mesorchium", "Pericardium", "Glisson's capsule", "Mesentery"],
+          exp: "Testes are attached to the kidneys by a double fold of peritoneum called mesorchium."
+        },
+        ans: 0
+      },
+
+      // 41-45
+      {
+        id: 41,
+        pattern: "Frog Vasa Efferentia",
+        hi: {
+          q: "नर मेंढक में शुक्र वाहिकाओं (Vasa efferentia) की संख्या कितनी होती है?",
+          options: ["10-12", "2-4", "16-18", "अनगिनत"],
+          exp: "शुक्र वाहिकाएं संख्या में 10-12 होती हैं जो वृषण से निकलकर वृक्क में धंसती हैं और विडर नाल में खुलती हैं।"
+        },
+        en: {
+          q: "How many vasa efferentia arise from testes in male frog?",
+          options: ["10-12", "2-4", "16-18", "Numerous"],
+          exp: "Vasa efferentia are 10-12 in number that arise from testes and enter kidneys."
+        },
+        ans: 0
+      },
+      {
+        id: 42,
+        pattern: "Bidder's Canal Identity",
+        hi: {
+          q: "विडर की नाल (Bidder's Canal) कहाँ पाई जाती है और इसका क्या कार्य है?",
+          options: [
+            "नर मेंढक के वृक्क में; शुक्राणुओं के चालन में सहायक",
+            "मादा मेंढक के अंडाशय में; अंडों के संग्रह में",
+            "तिलचट्टे के मुखांग में; लार स्रावण में",
+            "मेंढक के हृदय में; रक्त प्रवाह में"
+          ],
+          exp: "विडर की नाल केवल नर मेंढक के वृक्क के भीतर पाई जाती है, जिसमें शुक्र वाहिकाएं खुलती हैं।"
+        },
+        en: {
+          q: "Where is Bidder's canal found and what is its role?",
+          options: [
+            "Inside kidney of male frog; conducts sperms",
+            "Inside ovary of female frog; stores ova",
+            "In cockroach mouth; salivation",
+            "In frog heart; blood flow"
+          ],
+          exp: "Bidder's canal is located longitudinally in the kidney of male frog and transports sperms."
+        },
+        ans: 0
+      },
+      {
+        id: 43,
+        pattern: "Cloaca Definition",
+        hi: {
+          q: "मेंढक का अवस्कर (Cloaca) किन पदार्थों को बाहर निकालने का साझा कक्ष है?",
+          options: [
+            "उत्सर्जी पदार्थ (मूत्र), मल और युग्मक (शुक्राणु/अंडे)",
+            "केवल पाचित अपशिष्ट (मल)",
+            "केवल मूत्र",
+            "केवल रक्त"
+          ],
+          exp: "अवस्कर एक छोटा कक्ष है जो उत्सर्जी पदार्थ, मूत्र, अपाचित मल और युग्मकों को बाहर भेजने का कार्य करता है।"
+        },
+        en: {
+          q: "Cloaca in frog is a common chamber for releasing:",
+          options: [
+            "Fecal matter, urine, and gametes (sperms/ova)",
+            "Fecal matter only",
+            "Urine only",
+            "Blood cells only"
+          ],
+          exp: "Cloaca is a small median chamber used to pass fecal matter, urine, and sperms/ova to exterior."
+        },
+        ans: 0
+      },
+      {
+        id: 44,
+        pattern: "Frog Female Reproduction",
+        hi: {
+          q: "मादा मेंढक के जनन तंत्र के संबंध में विचार कीजिए:<br><br>1. अंडाशय का वृक्क से कोई क्रियात्मक संबंध नहीं होता।<br>2. अंडवाहिनियां अवस्कर में अलग-अलग खुलती हैं।<br>3. एक परिपक्व मादा एक बार में 2,500 से 3,000 अंडे देती है।<br><br>सत्य कथन पहचानें:",
+          options: ["केवल 1 और 2", "केवल 2 और 3", "केवल 1 और 3", "1, 2 और 3"],
+          exp: "तीनों कथन NCERT से अक्षरशः सत्य हैं।"
+        },
+        en: {
+          q: "Regarding female reproductive system of frog:<br><br>1. Ovaries have no functional connection with kidneys.<br>2. A pair of oviducts open into cloaca separately.<br>3. Female lays 2,500 to 3,000 eggs at a time.<br><br>Which are true?",
+          options: ["1 and 2 only", "2 and 3 only", "1 and 3 only", "1, 2 and 3"],
+          exp: "All three statements are factually correct."
+        },
+        ans: 3
+      },
+      {
+        id: 45,
+        pattern: "Fertilization & Larva",
+        hi: {
+          q: "मेंढक में निषेचन (Fertilization) तथा परिवर्धन (Development) किस प्रकार का होता है?",
+          options: [
+            "बाह्य निषेचन (जल में); अप्रत्यक्ष परिवर्धन (टैडपोल लार्वा द्वारा)",
+            "आंतरिक निषेचन; प्रत्यक्ष परिवर्धन (लार्वा अनुपस्थित)",
+            "आंतरिक निषेचन; अर्भक (निंफ) द्वारा",
+            "बाह्य निषेचन; प्रत्यक्ष विकास"
+          ],
+          exp: "मेंढक में बाह्य निषेचन जल में होता है और अप्रत्यक्ष परिवर्धन टैडपोल लार्वा के माध्यम से होता है जो कायांतरित होकर वयस्क बनता है।"
+        },
+        en: {
+          q: "In frog, fertilization and development are:",
+          options: [
+            "External (in water); Indirect via tadpole larva",
+            "Internal; Direct development without larva",
+            "Internal; Paurometabolous via nymph",
+            "External; Direct development"
+          ],
+          exp: "Fertilization is external and development is indirect involving a tadpole larva."
+        },
+        ans: 0
+      },
+
+      // 46-50
+      {
+        id: 46,
+        pattern: "Cockroach Exoskeleton Cuticle",
+        hi: {
+          q: "तिलचट्टे के बाह्य कंकाल की कठोरता किस पदार्थ के कारण होती है?",
+          options: ["काइटिन (नाइट्रोजनयुक्त पॉलीसैकेराइड)", "कैल्शियम कार्बोनेट", "केराटिन प्रोटीन", "सिलिका"],
+          exp: "तिलचट्टे का बाह्य कंकाल भूरे रंग का और मजबूत काइटिन (chitin) का बना होता है।"
+        },
+        en: {
+          q: "Hardness of cockroach exoskeleton is attributed to:",
+          options: ["Chitin (nitrogenous polysaccharide)", "Calcium carbonate", "Keratin protein", "Silica"],
+          exp: "Exoskeleton is made up of hard chitinous plates."
+        },
+        ans: 0
+      },
+      {
+        id: 47,
+        pattern: "Cockroach Head Formation",
+        hi: {
+          q: "तिलचट्टे का सिर भ्रूणीय अवस्था में कितने खंडों के संलयन (Fusion) से बनता है?",
+          options: ["6 खंड", "3 खंड", "10 खंड", "4 खंड"],
+          exp: "NCERT: सिर त्रिकोणीय होता है और यह 6 खंडों के मिलने से बनता है।"
+        },
+        en: {
+          q: "Head of cockroach is formed by fusion of how many embryonic segments?",
+          options: ["6 segments", "3 segments", "10 segments", "4 segments"],
+          exp: "Head is triangular and formed by the fusion of six segments."
+        },
+        ans: 0
+      },
+      {
+        id: 48,
+        pattern: "Cockroach Neck Nature",
+        hi: {
+          q: "तिलचट्टे में सिर वक्ष से किसके द्वारा जुड़ा रहता है?",
+          options: [
+            "अग्रवक्ष (prothorax) के एक छोटे प्रसार ग्रीवा (Neck) द्वारा",
+            "मध्यवक्ष के प्रसार द्वारा",
+            "पश्चवक्ष के प्रसार द्वारा",
+            "काइटिनी शूक द्वारा"
+          ],
+          exp: "सिर वक्ष से अग्रवक्ष के एक छोटे प्रसार द्वारा जुड़ा रहता है जिसे गर्दन (neck) कहते हैं।"
+        },
+        en: {
+          q: "Head is connected to thorax in cockroach by:",
+          options: [
+            "A short extension of prothorax known as neck",
+            "Extension of mesothorax",
+            "Extension of metathorax",
+            "Chitinous setae"
+          ],
+          exp: "Head is connected with thorax by a short extension of prothorax known as the neck."
+        },
+        ans: 0
+      },
+      {
+        id: 49,
+        pattern: "Cockroach Foregut Organs",
+        hi: {
+          q: "तिलचट्टे के अग्रांत्र (Foregut) में भोजन के संचय हेतु कौन-सा अंग प्रयुक्त होता है?",
+          options: ["अन्नपुट (Crop)", "पेषणी (Gizzard)", "मध्यांत्र", "मलाशय"],
+          exp: "ग्रसिका एक पतली भित्ति वाले कोष में खुलती है जिसे अन्नपुट (Crop) कहते हैं, जिसका कार्य भोजन का संग्रह करना है।"
+        },
+        en: {
+          q: "Which organ of cockroach foregut stores food?",
+          options: ["Crop", "Gizzard", "Midgut", "Rectum"],
+          exp: "Esophagus leads into a thin-walled sac called crop used for storing food."
+        },
+        ans: 0
+      },
+      {
+        id: 50,
+        pattern: "Salivary Glands in Cockroach",
+        hi: {
+          q: "तिलचट्टे में लार ग्रंथियों (Salivary glands) का एक जोड़ा कहाँ स्थित होता है?",
+          options: ["अन्नपुट (Crop) के निकट", "पेषणी के अंदर", "मलाशय के पास", "मस्तिष्क के ऊपर"],
+          exp: "NCERT चित्र 7.16 व सारांश: अन्नपुट (Crop) के निकट एक जोड़ी लार ग्रंथियाँ व लार कुंड स्थित होते हैं।"
+        },
+        en: {
+          q: "In cockroach, a pair of salivary glands is located near the:",
+          options: ["Crop", "Gizzard interior", "Rectum", "Brain dorsum"],
+          exp: "A pair of salivary glands is present near the crop."
+        },
+        ans: 0
+      },
+
+      // 51-55
+      {
+        id: 51,
+        pattern: "Cockroach Hindgut Regions",
+        hi: {
+          q: "तिलचट्टे का पश्चांत्र (Hindgut) किन तीन भागों में विभक्त रहता है?",
+          options: [
+            "क्षुद्रांत्र (Ileum), वृहदांत्र (Colon) एवं मलाशय (Rectum)",
+            "ग्रहणी, जेजुनम और इलियम",
+            "अन्नपुट, पेषणी और मलाशय",
+            "यकृतीय अंधनाल, आंत्र और अवस्कर"
+          ],
+          exp: "पश्चांत्र मध्यांत्र से चौड़ा होता है और क्षुद्रांत्र (ileum), वृहदांत्र (colon) एवं मलाशय (rectum) में बंटा होता है।"
+        },
+        en: {
+          q: "Cockroach hindgut is differentiated into:",
+          options: [
+            "Ileum, colon and rectum",
+            "Duodenum, jejunum and ileum",
+            "Crop, gizzard and rectum",
+            "Hepatic caeca, intestine and cloaca"
+          ],
+          exp: "The hindgut is broader than midgut and differentiated into ileum, colon, and rectum."
+        },
+        ans: 0
+      },
+      {
+        id: 52,
+        pattern: "Frog Kidneys Structure",
+        hi: {
+          q: "मेंढक के वृक्क (Kidneys) का आकार, रंग और स्थिति क्या होती है?",
+          options: [
+            "गहरे लाल रंग के, सेम के आकार के, कशेरुक दंड के दोनों ओर",
+            "हल्के पीले, गोलाकार, हृदय के निकट",
+            "चपटे, सफेद, आमाशय के अंदर",
+            "काले, त्रिकोणीय, यकृत के ऊपर"
+          ],
+          exp: "मेंढक के वृक्क गहरे लाल रंग के, सेम के आकार के होते हैं और देहगुहा में कशेरुक दंड के दोनों ओर स्थित होते हैं।"
+        },
+        en: {
+          q: "Shape, color, and position of kidneys in frog:",
+          options: [
+            "Dark red, bean-shaped, situated on both sides of vertebral column",
+            "Light yellow, spherical near heart",
+            "Flat white, inside stomach",
+            "Black triangular, above liver"
+          ],
+          exp: "Kidneys are compact, dark red and bean-like structures situated posteriorly on both sides of vertebral column."
+        },
+        ans: 0
+      },
+      {
+        id: 53,
+        pattern: "Frog Urinary Bladder",
+        hi: {
+          q: "मेंढक में मूत्राशय (Urinary bladder) की भित्ति कैसी होती है और यह कहाँ खुलता है?",
+          options: [
+            "पतली भित्ति वाला, मलाशय के अधर पर स्थित होकर अवस्कर (Cloaca) में खुलता है",
+            "मोटी पेशीय भित्ति वाला, सीधे मूत्रद्वार से बाहर खुलता है",
+            "द्विकोष्ठीय, जो सीधे वृक्क से जुड़ा होता है",
+            "मेंढक में मूत्राशय पूर्णतः अनुपस्थित होता है"
+          ],
+          exp: "एक पतली दीवार वाला मूत्राशय मलाशय के अधर भाग पर स्थित होता है, जो कि अवस्कर में खुलता है।"
+        },
+        en: {
+          q: "Frog urinary bladder is thin-walled and opens into:",
+          options: ["Cloaca", "Exterior directly", "Kidney tubules directly", "Stomach"],
+          exp: "A thin-walled urinary bladder is present ventral to the rectum and opens into the cloaca."
+        },
+        ans: 0
+      },
+      {
+        id: 54,
+        pattern: "Male Cockroach Phallomere",
+        hi: {
+          q: "नर तिलचट्टे में बाह्य जननेंद्रिय (External genitalia) का निर्माण कौन करता है?",
+          options: [
+            "नर गोनापोफाइसिस (युग्मनप्रवर्ध) या फैलोमियर (असममित काइटिनी संरचनाएं)",
+            "केवल गुदा शूक",
+            "केवल शुक्राणुधानी",
+            "अंडकवच"
+          ],
+          exp: "बाह्य जननेंद्रिय नर गोनापोफाइसिस अथवा शिश्नखंड (phallomeres) हैं, जो जननरंध्र के चारों ओर असममित काइटिनी संरचनाएं होती हैं।"
+        },
+        en: {
+          q: "Male external genitalia in cockroach is represented by:",
+          options: [
+            "Gonapophyses or phallomeres (asymmetrical chitinous structures)",
+            "Anal styles only",
+            "Spermatheca only",
+            "Ootheca"
+          ],
+          exp: "Male external genitalia are represented by male gonapophyses or phallomeres around the gonopore."
+        },
+        ans: 0
+      },
+      {
+        id: 55,
+        pattern: "Frog Endocrine Glands",
+        hi: {
+          q: "मेंढक में पाई जाने वाली मुख्य अंतःस्रावी ग्रंथियों में कौन सम्मिलित हैं?",
+          options: [
+            "पीयूष, अवटु (थायरॉइड), परावटु, थाइमस, अधिवृक्क और जनद",
+            "केवल पीयूष ग्रंथि",
+            "केवल लार ग्रंथियां",
+            "केवल छत्रक ग्रंथि"
+          ],
+          exp: "मेंढक में पीयूष, थायरॉइड, पैराथायरॉइड, थाइमस, पीनियल, अग्नाशयी द्वीपिकाएं, अधिवृक्क और जनद सभी अंतःस्रावी ग्रंथियां हैं।"
+        },
+        en: {
+          q: "Endocrine glands found in frog include:",
+          options: [
+            "Pituitary, thyroid, parathyroid, thymus, adrenal, and gonads",
+            "Pituitary only",
+            "Salivary glands only",
+            "Mushroom glands only"
+          ],
+          exp: "Prominent endocrine glands in frog are pituitary, thyroid, parathyroid, thymus, pineal, adrenals, and gonads."
+        },
+        ans: 0
+      },
+
+      // 56-60
+      {
+        id: 56,
+        pattern: "Cockroach Spermatophores",
+        hi: {
+          q: "नर तिलचट्टे में शुक्राणु किस रूप में संगृहीत और बंडलकृत रहते हैं?",
+          options: ["शुक्राणुधर (Spermatophores)", "स्पर्मेटिड्स", "अंडकवच", "कोकून"],
+          exp: "शुक्राणु, शुक्राशय में बंडल के रूप में आपस में चिपके रहते हैं, जिन्हें शुक्राणुधर (spermatophores) कहते हैं।"
+        },
+        en: {
+          q: "In male cockroach, sperms are stored and glued together in bundles called:",
+          options: ["Spermatophores", "Spermatids", "Ootheca", "Cocoon"],
+          exp: "Sperms are stored in seminal vesicles and are glued together in packets called spermatophores."
+        },
+        ans: 0
+      },
+      {
+        id: 57,
+        pattern: "Frog Sense Organs Status",
+        hi: {
+          q: "मेंढक में कौन-से संवेदी अंग सुव्यवस्थित और जटिल होते हैं?",
+          options: [
+            "नेत्र (Eyes) और आंतरिक कर्ण (Internal ears)",
+            "केवल स्वाद कलिकाएं",
+            "केवल स्पर्श पिप्पल",
+            "केवल नासिका उपकला"
+          ],
+          exp: "NCERT: मेंढक में आँखें और आंतरिक कर्ण सुव्यवस्थित होते हैं, जबकि अन्य संवेदी अंग केवल तंत्रिका सिरों पर कोशिकाओं के पुंज होते हैं।"
+        },
+        en: {
+          q: "Which sense organs in frog are well-organized structures?",
+          options: [
+            "Eyes and internal ears",
+            "Taste buds only",
+            "Sensory papillae only",
+            "Nasal epithelium only"
+          ],
+          exp: "Eyes and internal ears are well-organized structures; the rest are cellular aggregations around nerve endings."
+        },
+        ans: 0
+      },
+      {
+        id: 58,
+        pattern: "Frog Eye Membrane",
+        hi: {
+          q: "जल के अंदर मेंढक की आँखों की सुरक्षा कौन-सी संरचना करती है?",
+          options: ["निमेषक पटल (Nictitating membrane)", "कर्णपटह", "पलकें", "क्यूटिकल"],
+          exp: "जल में आँखों की सुरक्षा हेतु मेंढक की आँखें निमेषक पटल (nictitating membrane) से ढकी रहती हैं।"
+        },
+        en: {
+          q: "What protects frog eyes while underwater?",
+          options: ["Nictitating membrane", "Tympanum", "Eyelashes", "Cuticle"],
+          exp: "Eyes are protected underwater by a transparent nictitating membrane."
+        },
+        ans: 0
+      },
+      {
+        id: 59,
+        pattern: "Frog Heart Covering",
+        hi: {
+          q: "मेंढक का हृदय किस पारदर्शी झिल्लीदार आवरण से ढका रहता है?",
+          options: ["हृदयावरण (Pericardium)", "प्लूरल झिल्ली", "पेरिटोनियम", "ग्लीसन संपुट"],
+          exp: "मेंढक का हृदय एक पतली पारदर्शी झिल्ली 'हृदयावरण' (pericardium) द्वारा ढका रहता है।"
+        },
+        en: {
+          q: "Frog heart is enclosed by a protective two-layered membrane called:",
+          options: ["Pericardium", "Pleura", "Peritoneum", "Glisson's capsule"],
+          exp: "Heart is covered by a membrane called pericardium."
+        },
+        ans: 0
+      },
+      {
+        id: 60,
+        pattern: "Cockroach Respiration Diffusion",
+        hi: {
+          q: "तिलचट्टे में श्वासनलिकाओं (Tracheoles) के स्तर पर गैसों का विनिमय किस भौतिक विधि द्वारा होता है?",
+          options: ["विसरण (Diffusion)", "परासरण (Osmosis)", "सक्रिय परिवहन", "अंतःशोषण"],
+          exp: "NCERT: श्वासनलिकाओं पर ऊतकों के साथ गैसों का आदान-प्रदान विसरण (diffusion) विधि द्वारा होता है।"
+        },
+        en: {
+          q: "Gas exchange at tracheoles in cockroach takes place by:",
+          options: ["Diffusion", "Osmosis", "Active transport", "Imbibition"],
+          exp: "Exchange of gases at the tracheoles takes place by diffusion."
+        },
+        ans: 0
+      },
+
+      // 61-65
+      {
+        id: 61,
+        pattern: "Cockroach Brain Identity",
+        hi: {
+          q: "तिलचट्टे के सिर में मस्तिष्क का प्रतिनिधित्व कौन-सी तंत्रिका संरचना करती है?",
+          options: [
+            "अधिग्रसिका गुच्छिका (Supra-esophageal ganglion)",
+            "अवग्रसिका गुच्छिका",
+            "प्रथम वक्षीय गुच्छिका",
+            "नेत्रांशक"
+          ],
+          exp: "सिर में मस्तिष्क का प्रतिनिधित्व अधिग्रसिका गुच्छिका (supra-esophageal ganglion) द्वारा किया जाता है जो श्रृंगिकाओं और आँखों को नसें भेजती है।"
+        },
+        en: {
+          q: "The brain of cockroach is represented by:",
+          options: [
+            "Supra-esophageal ganglion",
+            "Sub-esophageal ganglion",
+            "First thoracic ganglion",
+            "Ommatidium"
+          ],
+          exp: "Brain is represented by supra-esophageal ganglion which supplies nerves to antennae and compound eyes."
+        },
+        ans: 0
+      },
+      {
+        id: 62,
+        pattern: "Frog Cloacal Aperture",
+        hi: {
+          q: "मेंढक में अपाचित भोजन, मूत्र और युग्मक किस छिद्र द्वारा शरीर से बाहर निष्कासित होते हैं?",
+          options: ["अवस्कर द्वार (Cloacal aperture)", "गुदा छिद्र", "मूत्रजनन रंध्र", "मुख"],
+          exp: "अवस्कर अंत में अवस्कर द्वार (cloacal aperture) द्वारा शरीर के बाहर खुलता है।"
+        },
+        en: {
+          q: "In frog, undigested waste, urine, and sperms exit via:",
+          options: ["Cloacal aperture", "Anus directly", "Urinogenital pore only", "Mouth"],
+          exp: "All these products exit through the cloacal aperture."
+        },
+        ans: 0
+      },
+      {
+        id: 63,
+        pattern: "Cockroach Antennae Function",
+        hi: {
+          q: "तिलचट्टे की श्रृंगिकाओं (Antennae) में किस प्रकार के ग्राही अंग होते हैं?",
+          options: ["स्पर्श एवं वातावरणीय संवेदी ग्राही", "केवल प्रकाश ग्राही", "ध्वनि ग्राही", "केवल स्वाद ग्राही"],
+          exp: "श्रृंगिका में संवेदी ग्राही उपस्थित होते हैं, जो पर्यावरण की निगरानी और स्पर्श का कार्य करते हैं।"
+        },
+        en: {
+          q: "Antennae in cockroach bear receptors for:",
+          options: ["Tactile and environmental sensing", "Photoreception only", "Phonoreception only", "Gustation only"],
+          exp: "Antennae have sensory receptors that help in monitoring the environment."
+        },
+        ans: 0
+      },
+      {
+        id: 64,
+        pattern: "Frog Ecological Importance",
+        hi: {
+          q: "मेंढक को पर्यावरण और किसानों के लिए लाभदायक क्यों माना जाता है?",
+          options: [
+            "यह हानिकारक कीटों को खाकर फसलों की रक्षा करता है और खाद्य श्रृंखला की महत्वपूर्ण कड़ी है।",
+            "यह मिट्टी में केंचुए की तरह बिल बनाता है।",
+            "यह फसलों के लिए परागण करता है।",
+            "यह केवल शैवाल खाकर जल शुद्ध करता है।"
+          ],
+          exp: "मेंढक हानिकारक कीटों को खाता है जिससे फसलों की रक्षा होती है और यह पारिस्थितिकी तंत्र में खाद्य जाल का संतुलन बनाता है।"
+        },
+        en: {
+          q: "Frog is considered beneficial to agriculture and ecosystem because:",
+          options: [
+            "It eats insects protecting crops and maintains ecological food chain",
+            "It burrows like earthworm",
+            "It acts as a pollinator",
+            "It purifies water by consuming algae only"
+          ],
+          exp: "Frogs eat insects and protect crops, serving as an important link in food chains."
+        },
+        ans: 0
+      },
+      {
+        id: 65,
+        pattern: "Cockroach Economic Harm",
+        hi: {
+          q: "तिलचट्टा मानव बस्तियों में किस रूप में नुकसान पहुंचाता है?",
+          options: [
+            "यह खाद्य पदार्थों को दूषित करता है और जीवाणु जनित रोगों का वाहक है",
+            "यह जहरीले डंक मारता है",
+            "यह केवल लकड़ियों को नष्ट करता है",
+            "यह फसलों को जमीन के नीचे से काटता है"
+          ],
+          exp: "तिलचट्टे खाद्य पदार्थों को अपने दुर्गंधयुक्त उत्सर्ग द्वारा दूषित करते हैं और अनेक जीवाण्विक बीमारियों के वाहक हैं।"
+        },
+        en: {
+          q: "Cockroaches are harmful in human dwellings because:",
+          options: [
+            "They contaminate food with smelly excreta and vector bacterial diseases",
+            "They have venomous stings",
+            "They only bore into dry wood",
+            "They destroy crops subterraneanly"
+          ],
+          exp: "They destroy and contaminate food with excreta and carry various bacterial diseases."
+        },
+        ans: 0
+      },
+
+      // 66-70
+      {
+        id: 66,
+        pattern: "Cockroach Thoracic Segments",
+        hi: {
+          q: "तिलचट्टे के वक्ष (Thorax) के तीन भाग कौन-से हैं?",
+          options: [
+            "अग्रवक्ष (Prothorax), मध्यवक्ष (Mesothorax), पश्चवक्ष (Metathorax)",
+            "सिर, वक्ष और उदर",
+            "अग्रांत्र, मध्यांत्र और पश्चांत्र",
+            "प्रवार, काइटिन और कठक"
+          ],
+          exp: "वक्ष 3 भागों में बंटा होता है: अग्रवक्ष (prothorax), मध्यवक्ष (mesothorax) और पश्चवक्ष (metathorax)।"
+        },
+        en: {
+          q: "The three segments of thorax in cockroach are:",
+          options: [
+            "Prothorax, Mesothorax, and Metathorax",
+            "Head, Thorax, and Abdomen",
+            "Foregut, Midgut, and Hindgut",
+            "Tergum, Sternum, and Pleuron"
+          ],
+          exp: "Thorax consists of prothorax, mesothorax, and metathorax."
+        },
+        ans: 0
+      },
+      {
+        id: 67,
+        pattern: "Frog Hindlimb Digits Webbing",
+        hi: {
+          q: "मेंढक के पश्चपाद में पादांगुलियों के मध्य उपस्थित झिल्ली (Webs) का प्राथमिक कार्य क्या है?",
+          options: ["जल में तैरना (Swimming)", "गड्ढा खोदना", "भोजन पकड़ना", "ध्वनि उत्पन्न करना"],
+          exp: "पश्चपाद की झिल्लीयुक्त अंगुलियां (webbed digits) मेंढक को जल में सुगमता से तैरने में सहायता करती हैं।"
+        },
+        en: {
+          q: "Primary function of webbed digits in frog hindlimbs:",
+          options: ["Swimming in water", "Burrowing", "Prey grasping", "Vocalization"],
+          exp: "Webbed feet of hindlimbs help swimming in aquatic environments."
+        },
+        ans: 0
+      },
+      {
+        id: 68,
+        pattern: "Cockroach Labium Identity",
+        hi: {
+          q: "तिलचट्टे के मुखांगों में अधरोष्ठ (Lower lip) का निर्माण किसके द्वारा होता है?",
+          options: ["लेबियम (Labium)", "लेब्रम", "हाइपोफैरिक्स", "मैक्सिला"],
+          exp: "NCERT: लेबियम (Labium) अधरोष्ठ (निचला होंठ) का निर्माण करता है, जबकि लेब्रम ऊपरी होंठ बनाता है।"
+        },
+        en: {
+          q: "In cockroach mouthparts, the lower lip is formed by:",
+          options: ["Labium", "Labrum", "Hypopharynx", "Maxilla"],
+          exp: "The lower lip is formed by labium, while upper lip is labrum."
+        },
+        ans: 0
+      },
+      {
+        id: 69,
+        pattern: "Frog Foramen Magnum",
+        hi: {
+          q: "मेंढक का मेडुला ऑब्लांगेटा कपाल के किस छिद्र से निकलकर मेरुरज्जु से जुड़ता है?",
+          options: ["महारंध्र (Foramen magnum)", "अंड-छिद्र", "अवस्कर छिद्र", "ऑप्टिक रंध्र"],
+          exp: "मेडुला ऑब्लांगेटा महारंध्र (foramen magnum) से बाहर निकलकर मेरुदंड में स्थित मेरुरज्जु से जुड़ता है।"
+        },
+        en: {
+          q: "Medulla oblongata passes out through which opening to connect with spinal cord in frog?",
+          options: ["Foramen magnum", "Foramen of Monro", "Optic foramen", "Cloacal aperture"],
+          exp: "Medulla oblongata passes out through the foramen magnum and continues into spinal cord."
+        },
+        ans: 0
+      },
+      {
+        id: 70,
+        pattern: "Cockroach Abdominal Segments",
+        hi: {
+          q: "नर एवं मादा दोनों तिलचट्टों में उदर (Abdomen) कितने खंडों का बना होता है?",
+          options: ["10 खंड", "6 खंड", "8 खंड", "12 खंड"],
+          exp: "नर व मादा दोनों में उदर 10 खंडीय (10 segmented) होता है।"
+        },
+        en: {
+          q: "The abdomen in both male and female cockroach consists of how many segments?",
+          options: ["10 segments", "6 segments", "8 segments", "12 segments"],
+          exp: "The abdomen in both males and females consists of 10 segments."
+        },
+        ans: 0
+      },
+
+      // 71-75
+      {
+        id: 71,
+        pattern: "Frog Renal Portal Vein",
+        hi: {
+          q: "मेंढक का वृक्कीय निवाहिका तंत्र किन अंगों के मध्य रक्त परिसंचरण स्थापित करता है?",
+          options: [
+            "वृक्क तथा शरीर के निचले भागों के मध्य",
+            "यकृत तथा आंत के मध्य",
+            "हृदय और फेफड़ों के मध्य",
+            "मस्तिष्क और नेत्रों के मध्य"
+          ],
+          exp: "वृक्क तथा शरीर के निचले भागों के मध्य रक्त शिराओं का तंत्र 'वृक्कीय निवाहिका तंत्र' (Renal Portal System) कहलाता है।"
+        },
+        en: {
+          q: "Renal portal system in frog connects:",
+          options: [
+            "Kidneys and lower parts of the body",
+            "Liver and intestine",
+            "Heart and lungs",
+            "Brain and eyes"
+          ],
+          exp: "Renal portal system exists between kidneys and the lower parts of body."
+        },
+        ans: 0
+      },
+      {
+        id: 72,
+        pattern: "Cockroach Collaterial Gland",
+        hi: {
+          q: "मादा तिलचट्टे में संपार्श्विक ग्रंथियों (Collaterial glands) का मुख्य कार्य क्या है?",
+          options: [
+            "अंडकवच (Ootheca) के आवरण का निर्माण करना",
+            "पाचक रस स्रावित करना",
+            "यूरिक अम्ल बनाना",
+            "अंडे उत्पन्न करना"
+          ],
+          exp: "संपार्श्विक ग्रंथियां कठोर अंडकवच (ootheca) की भित्ति के निर्माण में स्राव प्रदान करती हैं।"
+        },
+        en: {
+          q: "Primary function of collaterial glands in female cockroach:",
+          options: [
+            "Forming the hard case of ootheca",
+            "Digestive enzyme secretion",
+            "Uric acid excretion",
+            "Production of ova"
+          ],
+          exp: "Collaterial glands secrete the protective protein casing for ootheca."
+        },
+        ans: 0
+      },
+      {
+        id: 73,
+        pattern: "Frog Ureter in Female",
+        hi: {
+          q: "मादा मेंढक में मूत्रवाहिनी और अंडवाहिनी अवस्कर में किस प्रकार खुलती हैं?",
+          options: [
+            "मूत्रवाहिनी एवं अंडवाहिनी अवस्कर में अलग-अलग खुलती हैं",
+            "दोनों मिलकर एक साझी मूत्रजनन नलिका बनाती हैं",
+            "अंडवाहिनी मूत्रवाहिनी के भीतर खुलती है",
+            "मादा मेंढक में मूत्रवाहिनी अनुपस्थित होती है"
+          ],
+          exp: "NCERT: मादा मेंढक में मूत्रवाहिनी एवं अंडवाहिनी अवस्कर द्वार में अलग-अलग (independently) खुलती हैं।"
+        },
+        en: {
+          q: "In female frog, ureters and oviducts open into cloaca:",
+          options: [
+            "Separately and independently",
+            "As a joined common urinogenital duct",
+            "Oviduct opens directly inside ureter",
+            "Ureters are absent in female frog"
+          ],
+          exp: "In females, the ureters and oviduct open separately in the cloaca."
+        },
+        ans: 0
+      },
+      {
+        id: 74,
+        pattern: "Cockroach Alary Muscles",
+        hi: {
+          q: "तिलचट्टे के 13-कोष्ठकीय हृदय के स्पंदन और रुधिर संचरण में कौन-सी पेशियां सहायता करती हैं?",
+          options: ["पक्षाकार पेशियां (Alary muscles - 12 जोड़े)", "कंकाल पेशियां", "अरेखित आंत्र पेशियां", "सिलियरी पेशियां"],
+          exp: "तिलचट्टे के हृदयकोष्ठों के दोनों ओर 12 जोड़ी त्रिकोणीय पक्षाकार पेशियां (alary muscles) पाई जाती हैं जो रक्त परिसंचरण में सहायक हैं।"
+        },
+        en: {
+          q: "Which muscles assist circulation in 13-chambered heart of cockroach?",
+          options: ["Alary muscles (12 pairs)", "Skeletal biceps", "Smooth intestinal muscles", "Ciliary muscles"],
+          exp: "12 pairs of wing-shaped alary muscles attach to the pericardial sinus and help blood circulation."
+        },
+        ans: 0
+      },
+      {
+        id: 75,
+        pattern: "Frog Tadpole Larva Respiration",
+        hi: {
+          q: "मेंढक का टैडपोल लार्वा किसके द्वारा श्वसन करता है तथा इसका उत्सर्जी पदार्थ क्या होता है?",
+          options: [
+            "क्लोम (Gills) द्वारा; अमोनिया (अमोनोटेलिक)",
+            "फेफड़ों द्वारा; यूरिया",
+            "केवल त्वचा द्वारा; यूरिक अम्ल",
+            "मुखगुहा द्वारा; काइम"
+          ],
+          exp: "मेंढक का जलीय टैडपोल लार्वा गलफड़ों (gills) द्वारा श्वसन करता है और अमोनिया (ammonia) उत्सर्जित करता है, जबकि कायांतरण के बाद वयस्क फेफड़ों व त्वचा से श्वसन करता है और यूरिया उत्सर्जित करता है।"
+        },
+        en: {
+          q: "Frog tadpole larva respires through and excretes:",
+          options: [
+            "Gills; Ammonia (Ammonotelic)",
+            "Lungs; Urea",
+            "Skin only; Uric acid",
+            "Buccal cavity; Chyme"
+          ],
+          exp: "The aquatic tadpole larva respires via gills and is ammonotelic before metamorphosing into a ureotelic adult."
+        },
+        ans: 0
+      }
+    ];
+
+    // State Variables
+    let currentQ = 0;
+    let currentLang = 'hi';
+    let userAnswers = new Array(questions.length).fill(null);
+    let reviewStatus = new Array(questions.length).fill(false);
+    let timerTotalSeconds = 120 * 60;
+    let timerInterval = null;
+    let testSubmitted = false;
+
+    // DOM Elements
+    const entryGate = document.getElementById('entryGate');
+    const btnStartTest = document.getElementById('btnStartTest');
+    const langToggleBtn = document.getElementById('langToggleBtn');
+    const langLabel = document.getElementById('langLabel');
+    const timerDisplay = document.getElementById('timerDisplay');
+    const btnHeaderSubmit = document.getElementById('btnHeaderSubmit');
+    const qNumBadge = document.getElementById('qNumBadge');
+    const qPatternBadge = document.getElementById('qPatternBadge');
+    const qText = document.getElementById('qText');
+    const optionsList = document.getElementById('optionsList');
+    const instantFeedbackBox = document.getElementById('instantFeedbackBox');
+    const btnPrev = document.getElementById('btnPrev');
+    const btnClear = document.getElementById('btnClear');
+    const btnReview = document.getElementById('btnReview');
+    const btnNext = document.getElementById('btnNext');
+    const scorecardModal = document.getElementById('scorecardModal');
+    const btnViewSolutions = document.getElementById('btnViewSolutions');
+    const btnRetake = document.getElementById('btnRetake');
+    const solutionsSection = document.getElementById('solutionsSection');
+    const solutionsListContainer = document.getElementById('solutionsListContainer');
+    const btnCloseSolutions = document.getElementById('btnCloseSolutions');
+
+    // Full Screen Request
+    function triggerFullScreen() {
+      const el = document.documentElement;
+      if (el.requestFullscreen) {
+        el.requestFullscreen().catch(() => {});
+      } else if (el.webkitRequestFullscreen) {
+        el.webkitRequestFullscreen();
+      } else if (el.msRequestFullscreen) {
+        el.msRequestFullscreen();
+      }
+    }
+
+    btnStartTest.addEventListener('click', () => {
+      triggerFullScreen();
+      entryGate.classList.add('hidden');
+      startTimer();
+      renderQuestion();
+    });
+
+    function startTimer() {
+      if (timerInterval) clearInterval(timerInterval);
+      timerInterval = setInterval(() => {
+        if (timerTotalSeconds <= 0) {
+          clearInterval(timerInterval);
+          submitAssessment();
+          return;
+        }
+        timerTotalSeconds--;
+        const mins = Math.floor(timerTotalSeconds / 60);
+        const secs = timerTotalSeconds % 60;
+        timerDisplay.textContent = `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
+      }, 1000);
+    }
+
+    langToggleBtn.addEventListener('click', () => {
+      currentLang = currentLang === 'hi' ? 'en' : 'hi';
+      langLabel.textContent = currentLang === 'hi' ? 'English' : 'हिंदी';
+      renderQuestion();
+      if (testSubmitted) {
+        renderAllSolutions();
+      }
+    });
+
+    function renderQuestion() {
+      const qData = questions[currentQ];
+      const langData = qData[currentLang];
+
+      qNumBadge.textContent = `Q. ${currentQ + 1} / ${questions.length}`;
+      qPatternBadge.textContent = qData.pattern;
+      qText.innerHTML = langData.q;
+
+      if (reviewStatus[currentQ]) {
+        btnReview.classList.replace('bg-amber-50', 'bg-amber-500');
+        btnReview.classList.replace('text-amber-700', 'text-white');
+      } else {
+        btnReview.classList.replace('bg-amber-500', 'bg-amber-50');
+        btnReview.classList.replace('text-white', 'text-amber-700');
+      }
+
+      optionsList.innerHTML = '';
+      const letters = ['A', 'B', 'C', 'D'];
+      const currentSelected = userAnswers[currentQ];
+
+      langData.options.forEach((optText, idx) => {
+        const isSelected = currentSelected === idx;
+        const optCard = document.createElement('div');
+        optCard.className = `p-3 md:p-3.5 rounded-xl border text-xs md:text-sm cursor-pointer transition flex items-start gap-3 select-none ${
+          isSelected 
+            ? 'border-blue-600 bg-blue-50/80 shadow-sm' 
+            : 'border-slate-200 bg-white hover:bg-slate-50'
+        }`;
+
+        optCard.innerHTML = `
+          <div class="w-6 h-6 rounded-full border flex items-center justify-center font-bold text-xs shrink-0 mt-0.5 ${
+            isSelected ? 'border-blue-600 bg-blue-600 text-white' : 'border-slate-300 text-slate-600'
+          }">${letters[idx]}</div>
+          <div class="flex-1 font-medium text-slate-700 leading-snug">${optText}</div>
+        `;
+
+        optCard.addEventListener('click', () => handleOptionClick(idx));
+        optionsList.appendChild(optCard);
+      });
+
+      if (currentSelected !== null) {
+        showInstantFeedback(currentSelected);
+      } else {
+        instantFeedbackBox.classList.add('hidden');
+        instantFeedbackBox.innerHTML = '';
+      }
+    }
+
+    function handleOptionClick(selectedIndex) {
+      userAnswers[currentQ] = selectedIndex;
+      renderQuestion();
+    }
+
+    function showInstantFeedback(selectedIdx) {
+      const qData = questions[currentQ];
+      const langData = qData[currentLang];
+      const isCorrect = selectedIdx === qData.ans;
+      const letters = ['A', 'B', 'C', 'D'];
+
+      instantFeedbackBox.classList.remove('hidden');
+      if (isCorrect) {
+        instantFeedbackBox.className = "mt-4 p-3.5 rounded-xl border border-emerald-300 bg-emerald-50 text-emerald-950 text-xs leading-relaxed";
+        instantFeedbackBox.innerHTML = `
+          <div class="flex items-center gap-1.5 font-bold text-emerald-800 mb-1">
+            <svg class="w-4 h-4 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+            <span>${currentLang === 'hi' ? 'सही उत्तर!' : 'Correct Answer!'}</span>
+            <span class="ml-1 bg-emerald-200 text-emerald-900 px-1.5 py-0.5 rounded text-[10px]">+2.00 Marks</span>
+          </div>
+          <div>${langData.exp}</div>
+        `;
+      } else {
+        instantFeedbackBox.className = "mt-4 p-3.5 rounded-xl border border-rose-300 bg-rose-50 text-rose-950 text-xs leading-relaxed";
+        instantFeedbackBox.innerHTML = `
+          <div class="flex items-center justify-between font-bold text-rose-800 mb-1">
+            <div class="flex items-center gap-1.5">
+              <svg class="w-4 h-4 text-rose-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+              <span>${currentLang === 'hi' ? 'गलत उत्तर' : 'Incorrect Answer'}</span>
+              <span class="ml-1 bg-rose-200 text-rose-900 px-1.5 py-0.5 rounded text-[10px]">-0.20 Marks</span>
+            </div>
+            <div class="text-[11px] text-emerald-700 font-bold">
+              ${currentLang === 'hi' ? 'सही विकल्प' : 'Correct Option'}: (${letters[qData.ans]})
+            </div>
+          </div>
+          <div>${langData.exp}</div>
+        `;
+      }
+    }
+
+    btnPrev.addEventListener('click', () => {
+      if (currentQ > 0) {
+        currentQ--;
+        renderQuestion();
+      }
+    });
+
+    btnNext.addEventListener('click', () => {
+      if (currentQ < questions.length - 1) {
+        currentQ++;
+        renderQuestion();
+      } else {
+        submitAssessment();
+      }
+    });
+
+    btnClear.addEventListener('click', () => {
+      userAnswers[currentQ] = null;
+      renderQuestion();
+    });
+
+    btnReview.addEventListener('click', () => {
+      reviewStatus[currentQ] = !reviewStatus[currentQ];
+      renderQuestion();
+    });
+
+    btnHeaderSubmit.addEventListener('click', () => {
+      if (confirm(currentLang === 'hi' ? 'क्या आप सचमुच टेस्ट सबमिट करना चाहते हैं?' : 'Are you sure you want to submit the test?')) {
+        submitAssessment();
+      }
+    });
+
+    function submitAssessment() {
+      testSubmitted = true;
+      if (timerInterval) clearInterval(timerInterval);
+
+      let correctCount = 0;
+      let wrongCount = 0;
+      let unattemptedCount = 0;
+
+      questions.forEach((q, idx) => {
+        const uAns = userAnswers[idx];
+        if (uAns === null) {
+          unattemptedCount++;
+        } else if (uAns === q.ans) {
+          correctCount++;
+        } else {
+          wrongCount++;
+        }
+      });
+
+      const totalScore = (correctCount * 2.0) - (wrongCount * 0.20);
+      const attempted = correctCount + wrongCount;
+      const accuracy = attempted > 0 ? ((correctCount / attempted) * 100).toFixed(1) : 0;
+
+      document.getElementById('scoreVal').textContent = totalScore.toFixed(2);
+      document.getElementById('accVal').textContent = `${accuracy}%`;
+      document.getElementById('cwVal').textContent = `${correctCount} / ${wrongCount}`;
+      document.getElementById('unattVal').textContent = unattemptedCount;
+
+      scorecardModal.classList.remove('hidden');
+      scorecardModal.classList.add('flex');
+    }
+
+    function renderAllSolutions() {
+      solutionsListContainer.innerHTML = '';
+      const letters = ['A', 'B', 'C', 'D'];
+
+      questions.forEach((q, idx) => {
+        const langData = q[currentLang];
+        const uAns = userAnswers[idx];
+        const isCorrect = uAns === q.ans;
+        const isAttempted = uAns !== null;
+
+        const solCard = document.createElement('div');
+        solCard.className = "p-4 rounded-xl border border-slate-200 bg-slate-50 text-xs md:text-sm";
+        
+        let statusTag = '';
+        if (!isAttempted) {
+          statusTag = '<span class="bg-slate-200 text-slate-700 font-bold px-2 py-0.5 rounded text-[10px]">Unattempted</span>';
+        } else if (isCorrect) {
+          statusTag = '<span class="bg-emerald-100 text-emerald-800 font-bold px-2 py-0.5 rounded text-[10px]">Correct (+2.00)</span>';
+        } else {
+          statusTag = '<span class="bg-rose-100 text-rose-800 font-bold px-2 py-0.5 rounded text-[10px]">Wrong (-0.20)</span>';
+        }
+
+        solCard.innerHTML = `
+          <div class="flex items-center justify-between pb-2 mb-2 border-b border-slate-200">
+            <span class="font-bold text-slate-900">Question ${idx + 1} (${q.pattern})</span>
+            ${statusTag}
+          </div>
+          <div class="text-slate-800 font-medium mb-3">${langData.q}</div>
+          <div class="space-y-1.5 mb-3">
+            ${langData.options.map((opt, oIdx) => {
+              let optStyle = "border-slate-200 bg-white text-slate-700";
+              if (oIdx === q.ans) {
+                optStyle = "border-emerald-500 bg-emerald-50 font-bold text-emerald-900";
+              } else if (uAns === oIdx && !isCorrect) {
+                optStyle = "border-rose-400 bg-rose-50 text-rose-800 font-medium";
+              }
+              return `<div class="p-2.5 rounded-lg border text-xs flex items-center gap-2 ${optStyle}">
+                <span class="font-bold">${letters[oIdx]}.</span>
+                <span>${opt}</span>
+              </div>`;
+            }).join('')}
+          </div>
+          <div class="p-3 bg-white rounded-lg border border-slate-200 text-xs leading-relaxed text-slate-600">
+            ${langData.exp}
+          </div>
+          <div class="mt-2 text-right text-[10px] text-slate-400 font-semibold tracking-wider">@GYANVERSET</div>
+        `;
+        solutionsListContainer.appendChild(solCard);
+      });
+
+      solutionsSection.classList.remove('hidden');
+      solutionsSection.scrollIntoView({ behavior: 'smooth' });
+    }
+
+    btnViewSolutions.addEventListener('click', () => {
+      scorecardModal.classList.add('hidden');
+      scorecardModal.classList.remove('flex');
+      renderAllSolutions();
+    });
+
+    btnCloseSolutions.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    btnRetake.addEventListener('click', () => {
+      scorecardModal.classList.add('hidden');
+      scorecardModal.classList.remove('flex');
+      solutionsSection.classList.add('hidden');
+      userAnswers = new Array(questions.length).fill(null);
+      reviewStatus = new Array(questions.length).fill(false);
+      currentQ = 0;
+      timerTotalSeconds = 120 * 60;
+      testSubmitted = false;
+      startTimer();
+      renderQuestion();
+    });
+  </script>
+</body>
+</html>
