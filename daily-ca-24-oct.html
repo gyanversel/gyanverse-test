@@ -1,0 +1,876 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>GYANVERSE CBT Web App - 24 October 2026 Special Mock Test</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    body {
+      -webkit-tap-highlight-color: transparent;
+      user-select: none;
+    }
+    .custom-scrollbar::-webkit-scrollbar {
+      width: 4px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb {
+      background: #cbd5e1;
+      border-radius: 4px;
+    }
+  </style>
+</head>
+<body class="bg-slate-100 text-slate-800 flex flex-col h-screen overflow-hidden font-sans">
+
+  <!-- ================= ENTRY OVERLAY (AUTO FULL-SCREEN GATE) ================= -->
+  <div id="entryGate" class="fixed inset-0 z-50 bg-slate-900/95 flex items-center justify-center p-4">
+    <div class="bg-white max-w-lg w-full rounded-2xl shadow-2xl p-6 sm:p-8 text-center border border-slate-200">
+      <div class="inline-flex items-center justify-center w-16 h-16 bg-blue-100 text-blue-600 rounded-full mb-4 shadow-inner">
+        <i class="fa-solid fa-graduation-cap text-3xl"></i>
+      </div>
+      <h1 class="text-2xl font-black text-slate-900 tracking-tight">GYANVERSE ONLINE CBT</h1>
+      <p class="text-xs font-semibold text-blue-600 uppercase tracking-widest mt-1">24 October 2026 Current Affairs Mock</p>
+      
+      <div class="bg-slate-50 border border-slate-200 rounded-xl p-4 my-5 text-left text-xs sm:text-sm text-slate-700 space-y-2">
+        <div class="flex justify-between items-center py-1 border-b border-slate-200">
+          <span><i class="fa-regular fa-clock text-blue-600 mr-2"></i>कुल समय (Duration):</span>
+          <span class="font-bold text-slate-900">120 Minutes</span>
+        </div>
+        <div class="flex justify-between items-center py-1 border-b border-slate-200">
+          <span><i class="fa-solid fa-calculator text-blue-600 mr-2"></i>अंक योजना (Marking):</span>
+          <span class="font-bold text-slate-900">+2.00 / -0.20 Negative</span>
+        </div>
+        <div class="flex justify-between items-center py-1 border-b border-slate-200">
+          <span><i class="fa-solid fa-language text-blue-600 mr-2"></i>भाषा (Language):</span>
+          <span class="font-bold text-slate-900">Bilingual (हिंदी / English)</span>
+        </div>
+        <div class="flex justify-between items-center py-1">
+          <span><i class="fa-solid fa-paper-plane text-blue-600 mr-2"></i>Official Telegram:</span>
+          <a href="https://t.me/GYANVERSET" target="_blank" class="font-bold text-blue-600 underline">@GYANVERSET</a>
+        </div>
+      </div>
+
+      <p class="text-xs text-slate-500 mb-6">
+        Test start karne par screen auto Full-Screen mode me enter karegi. Best mobile experience ke liye portrait mode me rahein.
+      </p>
+
+      <button id="startTestBtn" onclick="initiateFullscreenTest()" class="w-full bg-gradient-to-r from-blue-600 to-indigo-700 hover:from-blue-700 hover:to-indigo-800 text-white font-bold py-3.5 px-6 rounded-xl shadow-lg shadow-blue-500/30 transition transform active:scale-98 flex items-center justify-center space-x-2 text-base">
+        <i class="fa-solid fa-expand text-lg"></i>
+        <span>Start Test (Auto Full Screen)</span>
+      </button>
+
+      <div class="mt-4">
+        <a href="https://t.me/GYANVERSET" target="_blank" class="text-xs text-slate-500 hover:text-blue-600 font-medium inline-flex items-center">
+          <i class="fa-brands fa-telegram text-blue-500 mr-1 text-sm"></i> Aise Online Test dene ke liye Telegram Join karein
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= CBT HEADER ================= -->
+  <header class="bg-white border-b border-slate-200 px-3 py-2.5 flex items-center justify-between shadow-sm flex-shrink-0 z-20">
+    <div class="flex items-center space-x-2">
+      <div class="bg-blue-600 text-white font-black text-sm px-2.5 py-1 rounded-md tracking-wider">
+        GYANVERSE
+      </div>
+      <a href="https://t.me/GYANVERSET" target="_blank" class="hidden sm:inline-block text-xs font-semibold text-blue-600 bg-blue-50 px-2 py-0.5 rounded border border-blue-200">
+        @GYANVERSET
+      </a>
+    </div>
+
+    <!-- Center/Right controls: Language Switcher, Timer, Submit -->
+    <div class="flex items-center space-x-2 sm:space-x-3">
+      <!-- Language Switcher Toggle -->
+      <button onclick="toggleLanguage()" class="bg-slate-100 hover:bg-slate-200 text-slate-700 border border-slate-300 text-xs font-bold px-2.5 py-1.5 rounded-lg flex items-center space-x-1 transition active:scale-95">
+        <i class="fa-solid fa-globe text-blue-600"></i>
+        <span id="langLabel">English</span>
+      </button>
+
+      <!-- Live 120-min Countdown Timer -->
+      <div class="flex items-center bg-amber-50 border border-amber-300 text-amber-900 font-mono font-bold text-xs sm:text-sm px-2.5 py-1 rounded-lg">
+        <i class="fa-regular fa-clock mr-1.5 text-amber-600"></i>
+        <span id="timeDisplay">120:00</span>
+      </div>
+
+      <!-- Submit Test Button in Header -->
+      <button onclick="openSubmitModal()" class="bg-rose-600 hover:bg-rose-700 text-white font-bold text-xs sm:text-sm px-3 py-1.5 rounded-lg shadow-sm active:scale-95 transition flex items-center space-x-1">
+        <i class="fa-solid fa-check-double"></i>
+        <span>Submit</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- ================= TEST VIEWPORT (FULL-WIDTH NO SIDEBAR) ================= -->
+  <main class="flex-1 overflow-y-auto custom-scrollbar p-3 sm:p-5 flex flex-col max-w-3xl w-full mx-auto">
+    
+    <!-- Question Progress Bar / Meta -->
+    <div class="flex items-center justify-between mb-3 text-xs font-semibold text-slate-600 bg-white p-2.5 rounded-xl border border-slate-200 shadow-sm flex-shrink-0">
+      <div class="flex items-center space-x-2">
+        <span class="bg-slate-900 text-white px-2 py-0.5 rounded-md text-xs font-mono" id="qCurrentBadge">Q. 01 / 15</span>
+        <span id="qTypeBadge" class="bg-indigo-50 text-indigo-700 border border-indigo-200 px-2 py-0.5 rounded text-[11px]">Pattern Mixed</span>
+      </div>
+      <div class="flex items-center space-x-2">
+        <span class="text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200 font-mono">+2.00</span>
+        <span class="text-rose-700 bg-rose-50 px-2 py-0.5 rounded border border-rose-200 font-mono">-0.20</span>
+      </div>
+    </div>
+
+    <!-- Question Card -->
+    <div class="bg-white rounded-2xl border border-slate-200 shadow-sm p-4 sm:p-6 mb-4 flex-1 flex flex-col justify-between">
+      <div>
+        <div id="questionContainer" class="text-slate-900 font-medium text-sm sm:text-base leading-relaxed tracking-normal">
+          <!-- Injected via JS -->
+        </div>
+
+        <!-- Options Container -->
+        <div id="optionsContainer" class="mt-4 space-y-2.5">
+          <!-- Injected via JS -->
+        </div>
+      </div>
+
+      <!-- Channel Watermark Tag under Question -->
+      <div class="mt-6 pt-3 border-t border-slate-100 flex items-center justify-between text-xs text-slate-600">
+        <div class="flex items-center space-x-1 font-semibold text-blue-700">
+          <i class="fa-brands fa-telegram"></i>
+          <span>@GYANVERSET</span>
+        </div>
+        <span class="text-[11px] text-slate-600 font-mono">Exam-Standard Quality Verified</span>
+      </div>
+    </div>
+
+    <!-- Navigation Buttons Placed Directly Below Options -->
+    <div class="grid grid-cols-4 gap-2 mb-4 flex-shrink-0">
+      <button onclick="navigateQuestion(-1)" id="prevBtn" class="bg-slate-200 hover:bg-slate-300 text-slate-800 font-bold py-2.5 px-2 rounded-xl text-xs sm:text-sm flex items-center justify-center space-x-1 active:scale-95 transition">
+        <i class="fa-solid fa-chevron-left"></i>
+        <span>Prev</span>
+      </button>
+
+      <button onclick="clearCurrentResponse()" class="bg-amber-100 hover:bg-amber-200 text-amber-900 border border-amber-300 font-bold py-2.5 px-2 rounded-xl text-xs sm:text-sm flex items-center justify-center space-x-1 active:scale-95 transition">
+        <i class="fa-solid fa-rotate-left"></i>
+        <span>Clear</span>
+      </button>
+
+      <button onclick="toggleMarkReview()" id="reviewBtn" class="bg-purple-100 hover:bg-purple-200 text-purple-900 border border-purple-300 font-bold py-2.5 px-2 rounded-xl text-xs sm:text-sm flex items-center justify-center space-x-1 active:scale-95 transition">
+        <i class="fa-regular fa-bookmark"></i>
+        <span>Review</span>
+      </button>
+
+      <button onclick="navigateQuestion(1)" id="nextBtn" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2.5 px-2 rounded-xl text-xs sm:text-sm flex items-center justify-center space-x-1 active:scale-95 transition shadow-sm">
+        <span>Next</span>
+        <i class="fa-solid fa-chevron-right"></i>
+      </button>
+    </div>
+
+  </main>
+
+  <!-- ================= MODAL: SUBMISSION CONFIRMATION ================= -->
+  <div id="submitModal" class="fixed inset-0 z-50 bg-black/60 hidden items-center justify-center p-4">
+    <div class="bg-white rounded-2xl max-w-sm w-full p-5 text-center shadow-2xl border border-slate-200 animate-in fade-in zoom-in duration-150">
+      <div class="w-12 h-12 bg-amber-100 text-amber-600 rounded-full flex items-center justify-center mx-auto mb-3">
+        <i class="fa-solid fa-triangle-exclamation text-xl"></i>
+      </div>
+      <h3 class="text-base font-bold text-slate-900">Kya aap test submit karna chahte hain?</h3>
+      <div class="my-4 text-xs text-left bg-slate-50 p-3 rounded-xl border border-slate-200 space-y-1.5 font-medium">
+        <p class="flex justify-between"><span>Attempted:</span> <span id="modalAttempted" class="font-bold text-emerald-600">0</span></p>
+        <p class="flex justify-between"><span>Marked for Review:</span> <span id="modalReview" class="font-bold text-purple-600">0</span></p>
+        <p class="flex justify-between"><span>Unanswered:</span> <span id="modalUnanswered" class="font-bold text-rose-600">0</span></p>
+      </div>
+      <div class="flex space-x-2">
+        <button onclick="closeSubmitModal()" class="flex-1 bg-slate-200 hover:bg-slate-300 text-slate-800 font-bold py-2.5 rounded-xl text-xs">
+          Cancel
+        </button>
+        <button onclick="finalizeTestSubmission()" class="flex-1 bg-rose-600 hover:bg-rose-700 text-white font-bold py-2.5 rounded-xl text-xs shadow-md">
+          Yes, Submit Test
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= MODAL: DETAILED SCORECARD ================= -->
+  <div id="scorecardModal" class="fixed inset-0 z-50 bg-slate-900/90 hidden items-center justify-center p-4 overflow-y-auto">
+    <div class="bg-white rounded-2xl max-w-md w-full p-6 text-center shadow-2xl border border-slate-200 my-8">
+      <div class="w-16 h-16 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center mx-auto mb-3 shadow-inner">
+        <i class="fa-solid fa-trophy text-2xl"></i>
+      </div>
+      <h2 class="text-xl font-black text-slate-900">GYANVERSE PERFORMANCE SCORECARD</h2>
+      <p class="text-xs text-blue-600 font-semibold tracking-wider mt-0.5">24 OCT 2026 SPECIAL CBT RESULTS</p>
+
+      <!-- Score Metric Card -->
+      <div class="bg-gradient-to-br from-blue-50 to-indigo-50 border border-blue-200 rounded-2xl p-4 my-4">
+        <div class="text-xs text-slate-500 font-bold uppercase tracking-wider">Total Marks Obtained</div>
+        <div class="text-3xl font-black text-blue-700 font-mono mt-1" id="totalScoreDisplay">0.00 / 30.00</div>
+        <div class="text-xs text-slate-600 mt-1 font-semibold" id="percentDisplay">Accuracy: 0%</div>
+      </div>
+
+      <!-- Quick Metrics Grid -->
+      <div class="grid grid-cols-3 gap-2 text-center text-xs mb-5">
+        <div class="bg-emerald-50 border border-emerald-200 p-2.5 rounded-xl">
+          <div class="text-emerald-700 font-black text-base font-mono" id="scoreCorrect">0</div>
+          <div class="text-slate-600 font-semibold mt-0.5">Correct (+2)</div>
+        </div>
+        <div class="bg-rose-50 border border-rose-200 p-2.5 rounded-xl">
+          <div class="text-rose-700 font-black text-base font-mono" id="scoreIncorrect">0</div>
+          <div class="text-slate-600 font-semibold mt-0.5">Incorrect (-0.2)</div>
+        </div>
+        <div class="bg-slate-100 border border-slate-200 p-2.5 rounded-xl">
+          <div class="text-slate-700 font-black text-base font-mono" id="scoreUnattempted">0</div>
+          <div class="text-slate-600 font-semibold mt-0.5">Unattempted</div>
+        </div>
+      </div>
+
+      <div class="space-y-2">
+        <button onclick="openSolutionReviewMode()" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-4 rounded-xl text-xs sm:text-sm shadow-md transition flex items-center justify-center space-x-2">
+          <i class="fa-solid fa-book-open"></i>
+          <span>Check Detailed Solutions</span>
+        </button>
+
+        <a href="https://t.me/GYANVERSET" target="_blank" class="w-full bg-slate-900 hover:bg-black text-white font-bold py-3 px-4 rounded-xl text-xs sm:text-sm shadow-md transition flex items-center justify-center space-x-2">
+          <i class="fa-brands fa-telegram text-sky-400"></i>
+          <span>Join Official Telegram (@GYANVERSET)</span>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= SOLUTION REVIEW CONTAINER (FULL-WIDTH SCROLL) ================= -->
+  <div id="solutionReviewScreen" class="fixed inset-0 z-40 bg-slate-100 hidden flex-col">
+    <!-- Review Header -->
+    <div class="bg-white border-b border-slate-200 px-4 py-3 flex items-center justify-between shadow-sm">
+      <div class="flex items-center space-x-2">
+        <span class="bg-blue-600 text-white text-xs font-black px-2 py-1 rounded">GYANVERSE</span>
+        <h2 class="text-xs sm:text-sm font-bold text-slate-800">Detailed Solution & Analysis Review</h2>
+      </div>
+      <div class="flex items-center space-x-2">
+        <button onclick="toggleLanguage()" class="bg-slate-100 hover:bg-slate-200 text-slate-700 border border-slate-300 text-xs font-bold px-2.5 py-1 rounded-lg">
+          <i class="fa-solid fa-globe text-blue-600 mr-1"></i><span id="solutionLangLabel">English</span>
+        </button>
+        <button onclick="exitSolutionReview()" class="bg-slate-200 hover:bg-slate-300 text-slate-800 text-xs font-bold px-3 py-1.5 rounded-lg">
+          Back
+        </button>
+      </div>
+    </div>
+
+    <!-- Review Content -->
+    <div class="flex-1 overflow-y-auto p-3 sm:p-6 max-w-3xl w-full mx-auto space-y-4 custom-scrollbar" id="solutionList">
+      <!-- Injected via JS -->
+    </div>
+  </div>
+
+  <!-- ================= JAVASCRIPT LOGIC & QUESTIONS DATASET ================= -->
+  <script>
+    /* Questions Dataset strictly derived from PDF content across the 5 blueprints */
+    const testData = [
+      {
+        id: 1,
+        type: "3/4 Statement Type",
+        hi: {
+          q: "भारतीय सेना के पहले समर्पित सैन्य संचार उपग्रह <strong>'GSAT-7B'</strong> के संदर्भ में निम्नलिखित कथनों पर विचार कीजिए:<br><br>1. इसे वर्ष 2028 में भारी रॉकेट LVM-3 (GSLV-MK3) के माध्यम से लॉन्च किया जाएगा।<br>2. इसका कुल वजन लगभग 5,000 किलोग्राम (5 टन) होगा और यह भारत का अब तक का सबसे भारी स्वदेशी संचार उपग्रह होगा।<br>3. इसका निर्माण न्यूस्पेस इंडिया लिमिटेड (NSIL) द्वारा ₹963 करोड़ के कुल वित्तीय परिव्यय से किया जा रहा है।<br><br>उपर्युक्त में से कौन-सा/से कथन <strong>सत्य</strong> है/हैं?",
+          opts: [
+            "(A) केवल 1 और 2",
+            "(B) केवल 2 और 3",
+            "(C) केवल 1 और 3",
+            "(D) 1, 2 और 3"
+          ],
+          sol: "<strong>सही उत्तर: (D) 1, 2 और 3</strong><br><br><strong>विस्तृत व्याख्या:</strong> इसरो वर्ष 2028 के मध्य में भारी रॉकेट LVM-3 (GSLV-MK3) के जरिए भारतीय सेना के पहले समर्पित संचार उपग्रह GSAT-7B को लॉन्च करेगा। इसका वजन लगभग 5,000 किग्रा है तथा इसे न्यूस्पेस इंडिया लिमिटेड (NSIL) द्वारा स्वदेशी तकनीक से ₹963 करोड़ में निर्मित किया जा रहा है।"
+        },
+        en: {
+          q: "With reference to the Indian Army's dedicated military communication satellite <strong>'GSAT-7B'</strong>, consider the following statements:<br><br>1. It will be launched in the year 2028 using the heavy rocket LVM-3 (GSLV-MK3).<br>2. Weighing approximately 5,000 kg (5 tons), it will be India's heaviest indigenous communication satellite to date.<br>3. It is being developed by NewSpace India Limited (NSIL) with a total outlay of ₹963 crore.<br><br>Which of the statements given above is/are <strong>correct</strong>?",
+          opts: [
+            "(A) 1 and 2 only",
+            "(B) 2 and 3 only",
+            "(C) 1 and 3 only",
+            "(D) 1, 2 and 3"
+          ],
+          sol: "<strong>Correct Answer: (D) 1, 2 and 3</strong><br><br><strong>Detailed Explanation:</strong> ISRO will launch GSAT-7B aboard the LVM-3 (GSLV-MK3) rocket in mid-2028. It weighs nearly 5,000 kg and provides an unbreachable indigenous network-centric communication backbone, developed by NSIL for ₹963 crore."
+        },
+        correctIndex: 3
+      },
+      {
+        id: 2,
+        type: "Assertion-Reason (कथन-कारण)",
+        hi: {
+          q: "नीचे दो कथन दिए गए हैं, एक को कथन (A) और दूसरे को कारण (R) कहा गया है:<br><br><strong>कथन (A):</strong> इसरो द्वारा 30 अक्टूबर 2026 को लॉन्च किए जा रहे नेविगेशन उपग्रह 'NVS-03' में स्पेस एप्लीकेशन्स सेंटर (SAC) द्वारा विकसित स्वदेशी रूबिडियम एटॉमिक क्लॉक लगाई गई है।<br><strong>कारण (R):</strong> स्वदेशी एटॉमिक क्लॉक नेविगेशन प्रणाली 'नाविक' (NavIC) को विदेशी सिग्नलों पर निर्भर किए बिना अत्यधिक सटीक समय और पोजिशनिंग डेटा प्रदान करने में सक्षम बनाती है।<br><br>नीचे दिए गए कूट का प्रयोग कर सही उत्तर चुनिए:",
+          opts: [
+            "(A) (A) और (R) दोनों सही हैं और (R), (A) की सही व्याख्या है।",
+            "(B) (A) और (R) दोनों सही हैं लेकिन (R), (A) की सही व्याख्या नहीं है।",
+            "(C) (A) सही है लेकिन (R) गलत है।",
+            "(D) (A) गलत है लेकिन (R) सही है।"
+          ],
+          sol: "<strong>सही उत्तर: (A) (A) और (R) दोनों सही हैं और (R), (A) की सही व्याख्या है।</strong><br><br><strong>विस्तृत व्याख्या:</strong> NVS-03 को GSLV-F18 द्वारा लॉन्च किया जाएगा। इसमें SAC अहमदाबाद द्वारा निर्मित स्वदेशी रूबिडियम एटॉमिक क्लॉक लगी है, जिसका मुख्य कार्य NavIC प्रणाली को अत्यंत सटीक और स्वतंत्र पोजिशनिंग टाइमिंग प्रदान करना है।"
+        },
+        en: {
+          q: "Given below are two statements, one labeled as Assertion (A) and the other as Reason (R):<br><br><strong>Assertion (A):</strong> The navigation satellite 'NVS-03' to be launched by ISRO on 30 October 2026 is equipped with an indigenous Rubidium Atomic Clock developed by Space Applications Centre (SAC).<br><strong>Reason (R):</strong> Indigenous atomic clocks enable the NavIC system to achieve ultra-precise positioning and timing accuracy without relying on foreign atomic frequency standards.<br><br>Choose the correct option:",
+          opts: [
+            "(A) Both (A) and (R) are true and (R) is the correct explanation of (A).",
+            "(B) Both (A) and (R) are true but (R) is NOT the correct explanation of (A).",
+            "(C) (A) is true but (R) is false.",
+            "(D) (A) is false but (R) is true."
+          ],
+          sol: "<strong>Correct Answer: (A) Both (A) and (R) are true and (R) is the correct explanation of (A).</strong><br><br><strong>Detailed Explanation:</strong> Indigenous rubidium atomic clocks built by SAC Ahmedabad deliver atomic-level precision, which is the foundational core for NavIC's independent navigation capabilities."
+        },
+        correctIndex: 0
+      },
+      {
+        id: 3,
+        type: "Matching / Pairs (स्तंभ सुमेलन)",
+        hi: {
+          q: "अक्टूबर 2026 में चर्चित अंतर्राष्ट्रीय नियुक्तियों के संबंध में <strong>स्तंभ-I (देश)</strong> को <strong>स्तंभ-II (नियुक्त राजनेता/प्रमुख)</strong> से सही सुमेलित कीजिए:<br><br><table class='w-full border text-xs sm:text-sm my-2'><tr class='bg-slate-100'><th class='border p-1.5'>स्तंभ-I (देश)</th><th class='border p-1.5'>स्तंभ-II (प्रमुख)</th></tr><tr><td class='border p-1.5'>a. रोमानिया</td><td class='border p-1.5'>1. सनाए ताकाइची</td></tr><tr><td class='border p-1.5'>b. जापान</td><td class='border p-1.5'>2. लूका निकुलेस्कु</td></tr><tr><td class='border p-1.5'>c. मोरक्को</td><td class='border p-1.5'>3. पीटर मैगयार</td></tr><tr><td class='border p-1.5'>d. हंगरी</td><td class='border p-1.5'>4. फातिमा ज़हरा अल मंसूरी</td></tr></table>",
+          opts: [
+            "(A) a-2, b-1, c-4, d-3",
+            "(B) a-1, b-2, c-3, d-4",
+            "(C) a-2, b-3, c-1, d-4",
+            "(D) a-4, b-1, c-2, d-3"
+          ],
+          sol: "<strong>सही उत्तर: (A) a-2, b-1, c-4, d-3</strong><br><br><strong>विस्तृत व्याख्या:</strong><br>• रोमानिया - लूका निकुलेस्कु (Luca Niculescu)<br>• जापान - सनाए ताकाइची (पहली महिला PM)<br>• मोरक्को - फातिमा ज़हरा अल मंसूरी (पहली महिला PM)<br>• हंगरी - पीटर मैगयार (नए PM)"
+        },
+        en: {
+          q: "Match <strong>Column-I (Country)</strong> with <strong>Column-II (Newly Appointed Leader)</strong> based on October 2026 global appointments:<br><br><table class='w-full border text-xs sm:text-sm my-2'><tr class='bg-slate-100'><th class='border p-1.5'>Column-I (Country)</th><th class='border p-1.5'>Column-II (Leader)</th></tr><tr><td class='border p-1.5'>a. Romania</td><td class='border p-1.5'>1. Sanae Takaichi</td></tr><tr><td class='border p-1.5'>b. Japan</td><td class='border p-1.5'>2. Luca Niculescu</td></tr><tr><td class='border p-1.5'>c. Morocco</td><td class='border p-1.5'>4. Fatima Zahra Mansouri</td></tr><tr><td class='border p-1.5'>d. Hungary</td><td class='border p-1.5'>3. Peter Magyar</td></tr></table>",
+          opts: [
+            "(A) a-2, b-1, c-4, d-3",
+            "(B) a-1, b-2, c-3, d-4",
+            "(C) a-2, b-3, c-1, d-4",
+            "(D) a-4, b-1, c-2, d-3"
+          ],
+          sol: "<strong>Correct Answer: (A) a-2, b-1, c-4, d-3</strong><br><br><strong>Detailed Explanation:</strong> Luca Niculescu was appointed PM of Romania; Sanae Takaichi as Japan's first female PM; Fatima Zahra Mansouri in Morocco; and Peter Magyar in Hungary."
+        },
+        correctIndex: 0
+      },
+      {
+        id: 4,
+        type: "Mis-matching (असत्य युग्म की पहचान)",
+        hi: {
+          q: "अक्टूबर 2026 के महत्वपूर्ण घटनाक्रमों व पहलों के संबंध में निम्न में से कौन-सा युग्म <strong>सही सुमेलित नहीं है</strong>?",
+          opts: [
+            "(A) 14वां इंडिया केम 2026 - पार्टनर कंट्री: जर्मनी",
+            "(B) SUTRA परियोजना - विश्व बैंक द्वारा राजस्थान शहरी विकास हेतु",
+            "(C) देश का हरित टर्मिनल (Green Terminal) - वी.ओ. चिदंबरनार बंदरगाह, तूतीकोरिन",
+            "(D) विंग्स ओवर गंगा एयर शो - नमो घाट, वाराणसी"
+          ],
+          sol: "<strong>सही उत्तर: (A) 14वां इंडिया केम 2026 - पार्टनर कंट्री: जर्मनी</strong><br><br><strong>विस्तृत व्याख्या:</strong> 14वें 'इंडिया केम 2026' में <strong>जापान</strong> को आधिकारिक पार्टनर कंट्री (Partner Country) बनाया गया था, जर्मनी को नहीं।"
+        },
+        en: {
+          q: "Which of the following pairs regarding the developments in October 2026 is <strong>NOT correctly matched</strong>?",
+          opts: [
+            "(A) 14th India Chem 2026 - Partner Country: Germany",
+            "(B) SUTRA Project - Rajasthan Urban Transformation by World Bank",
+            "(C) First Green Terminal Port - VOC Port, Tuticorin",
+            "(D) Wings Over Ganga Air Show - Namo Ghat, Varanasi"
+          ],
+          sol: "<strong>Correct Answer: (A) 14th India Chem 2026 - Partner Country: Germany</strong><br><br><strong>Detailed Explanation:</strong> In the 14th India Chem held in Mumbai, <strong>Japan</strong> was designated as the official partner country, not Germany."
+        },
+        correctIndex: 0
+      },
+      {
+        id: 5,
+        type: "Tricky & Negative-Word Based",
+        hi: {
+          q: "भारत सरकार द्वारा हाल ही में घोषित <strong>'मेगा पोर्ट्स' (Mega Ports Category)</strong> के संदर्भ में कौन-सा बंदरगाह इस सूची में <strong>शामिल नहीं है</strong>?",
+          opts: [
+            "(A) दीनदयाल पोर्ट (कांडला, गुजरात)",
+            "(B) जवाहरलाल नेहरू पोर्ट (JNPA, मुंबई)",
+            "(C) विशाखापट्टनम पोर्ट (आंध्र प्रदेश)",
+            "(D) पारादीप पोर्ट (ओडिशा)"
+          ],
+          sol: "<strong>सही उत्तर: (C) विशाखापट्टनम पोर्ट (आंध्र प्रदेश)</strong><br><br><strong>विस्तृत व्याख्या:</strong> भारत सरकार ने 4 बंदरगाहों को 'मेगा पोर्ट' का दर्जा दिया है: (1) दीनदयाल पोर्ट (कांडला), (2) जवाहरलाल नेहरू पोर्ट (JNPA), (3) पारादीप पोर्ट (ओडिशा), और (4) मुंद्रा पोर्ट (गुजरात)। इसमें विशाखापट्टनम शामिल नहीं है।"
+        },
+        en: {
+          q: "Which of the following ports is <strong>NOT</strong> among the 4 designated <strong>'Mega Ports'</strong> of India?",
+          opts: [
+            "(A) Deendayal Port (Kandla, Gujarat)",
+            "(B) Jawaharlal Nehru Port (JNPA, Mumbai)",
+            "(C) Visakhapatnam Port (Andhra Pradesh)",
+            "(D) Paradip Port (Odisha)"
+          ],
+          sol: "<strong>Correct Answer: (C) Visakhapatnam Port (Andhra Pradesh)</strong><br><br><strong>Detailed Explanation:</strong> The 4 recognized Mega Ports are Deendayal Port (Kandla), JNPA (Mumbai), Paradip Port (Odisha), and Mundra Port (Gujarat)."
+        },
+        correctIndex: 2
+      },
+      {
+        id: 6,
+        type: "3/4 Statement Type",
+        hi: {
+          q: "हाल ही में चर्चित <strong>'शामोंडा वायरस' (Shamonda Virus)</strong> के संदर्भ में निम्नलिखित कथनों पर विचार कीजिए:<br><br>1. फ्रांस में इस वायरस से मनुष्य के संक्रमित होने का विश्व का पहला मामला दर्ज किया गया।<br>2. यह मूलतः जुगाली करने वाले मवेशियों (गायों, भेड़ों व बकरियों) को प्रभावित करने वाला वायरस है।<br>3. यह वायरस छोटी काटने वाली मक्खियों (मिज / कुलिसोइड्स) के जरिए फैलता है।<br><br>उपर्युक्त में से कौन-सा/से कथन <strong>सत्य</strong> है/हैं?",
+          opts: [
+            "(A) केवल 1 और 2",
+            "(B) केवल 2 और 3",
+            "(C) केवल 1 और 3",
+            "(D) 1, 2 और 3"
+          ],
+          sol: "<strong>सही उत्तर: (D) 1, 2 और 3</strong><br><br><strong>विस्तृत व्याख्या:</strong> फ्रांस में शामोंडा वायरस से मानव संक्रमण का पहला पुष्ट मामला सामने आया। यह वायरस मूल रूप से जुगाली करने वाले मवेशियों में काटने वाली मक्खियों (Culicoides biting midges) द्वारा संचारित होता है।"
+        },
+        en: {
+          q: "With reference to the recently reported <strong>'Shamonda Virus'</strong>, consider the following statements:<br><br>1. France reported the world's first human case of infection caused by this virus.<br>2. It primarily infects ruminants such as cattle, sheep, and goats.<br>3. The virus is transmitted vectorially via biting midges (Culicoides).<br><br>Which of the statements given above is/are <strong>correct</strong>?",
+          opts: [
+            "(A) 1 and 2 only",
+            "(B) 2 and 3 only",
+            "(C) 1 and 3 only",
+            "(D) 1, 2 and 3"
+          ],
+          sol: "<strong>Correct Answer: (D) 1, 2 and 3</strong><br><br><strong>Detailed Explanation:</strong> All statements are correct. France recorded the first-ever human infection of the Shamonda virus, which normally circulates among ruminants through midge vectors."
+        },
+        correctIndex: 3
+      },
+      {
+        id: 7,
+        type: "Assertion-Reason (कथन-कारण)",
+        hi: {
+          q: "नीचे दो कथन दिए गए हैं:<br><br><strong>कथन (A):</strong> डीआरडीओ की डिफेंस इलेक्ट्रॉनिक्स रिसर्च लेबोरेटरी (DLRL) ने सैनिकों द्वारा आसानी से ले जाने योग्य 'मैन-पोर्टेबल एलेंट' (ELINT) सिस्टम विकसित करने की घोषणा की है।<br><strong>कारण (R):</strong> यह प्रणाली सीमा पर दुश्मन के रडार सिग्नलों, संचार नोड्स और ड्रोन कंट्रोल फ्रीक्वेंसी को इंटरसेप्ट करने और सटीक विश्लेषण करने में सक्षम है।<br><br>सही विकल्प चुनिए:",
+          opts: [
+            "(A) (A) और (R) दोनों सही हैं और (R), (A) की सही व्याख्या है।",
+            "(B) (A) और (R) दोनों सही हैं लेकिन (R), (A) की सही व्याख्या नहीं है।",
+            "(C) (A) सही है लेकिन (R) गलत है।",
+            "(D) (A) गलत है लेकिन (R) सही है।"
+          ],
+          sol: "<strong>सही उत्तर: (A) (A) और (R) दोनों सही हैं और (R), (A) की सही व्याख्या है।</strong><br><br><strong>विस्तृत व्याख्या:</strong> DLRL (हैदराबाद) द्वारा विकसित मैन-पोर्टेबल ELINT सिस्टम सैनिकों को सामरिक अग्रिम मोर्चों पर दुश्मन के रडार और ड्रोन आवृत्तियों को तुरंत इंटरसेप्ट करने की क्षमता प्रदान करता है।"
+        },
+        en: {
+          q: "Given below are two statements:<br><br><strong>Assertion (A):</strong> DRDO's DLRL has announced the development of an indigenous 'Man-Portable ELINT' system.<br><strong>Reason (R):</strong> It enables frontline troops to intercept and analyze adversary radar signals, communication nodes, and drone control frequencies in real time.<br><br>Select the correct answer:",
+          opts: [
+            "(A) Both (A) and (R) are true and (R) is the correct explanation of (A).",
+            "(B) Both (A) and (R) are true but (R) is NOT the correct explanation of (A).",
+            "(C) (A) is true but (R) is false.",
+            "(D) (A) is false but (R) is true."
+          ],
+          sol: "<strong>Correct Answer: (A) Both (A) and (R) are true and (R) is the correct explanation of (A).</strong><br><br><strong>Detailed Explanation:</strong> The Electronic Intelligence (ELINT) system is tailor-made for frontline interception of enemy radar and drone communication streams."
+        },
+        correctIndex: 0
+      },
+      {
+        id: 8,
+        type: "Tricky & Negative-Word Based",
+        hi: {
+          q: "26 और 27 अक्टूबर 2026 को नई दिल्ली में आयोजित होने वाले <strong>12वें ब्रिक्स संसदीय मंच (BRICS Parliamentary Forum)</strong> के संदर्भ में कौन-सा कथन <strong>गलत (असत्य)</strong> है?",
+          opts: [
+            "(A) इसका आयोजन संसद भवन के संविधान सदन में किया जा रहा है।",
+            "(B) इसकी अध्यक्षता राज्य सभा के उपसभापति द्वारा की जा रही है।",
+            "(C) इसका उद्घाटन प्रधानमंत्री नरेंद्र मोदी द्वारा किया जाएगा।",
+            "(D) इसका विषय 'संसदों का जन केंद्रित विकास के लिए सुदृढ़ीकरण' है।"
+          ],
+          sol: "<strong>सही उत्तर: (B) इसकी अध्यक्षता राज्य सभा के उपसभापति द्वारा की जा रही है।</strong><br><br><strong>विस्तृत व्याख्या:</strong> कथन (B) गलत है क्योंकि इस 12वें ब्रिक्स संसदीय मंच की अध्यक्षता <strong>लोकसभा अध्यक्ष ओम बिरला</strong> कर रहे हैं।"
+        },
+        en: {
+          q: "With reference to the <strong>12th BRICS Parliamentary Forum</strong> hosted in New Delhi, which statement is <strong>INCORRECT</strong>?",
+          opts: [
+            "(A) It is hosted in Samvidhan Sadan (Central Hall) of Parliament House.",
+            "(B) It is presided over by the Deputy Chairman of Rajya Sabha.",
+            "(C) It is inaugurated by Prime Minister Narendra Modi.",
+            "(D) Its theme is 'Strengthening Parliaments for People-Centric Development'."
+          ],
+          sol: "<strong>Correct Answer: (B) It is presided over by the Deputy Chairman of Rajya Sabha.</strong><br><br><strong>Detailed Explanation:</strong> Statement (B) is incorrect because it is chaired and presided over by Lok Sabha Speaker Om Birla."
+        },
+        correctIndex: 1
+      },
+      {
+        id: 9,
+        type: "Mis-matching (शुभंकर व खेल सुमेलन)",
+        hi: {
+          q: "जापान के आइची-नागोया में आयोजित होने वाले <strong>एशियाई खेल एवं एशियाई पैरा खेल 2026</strong> के संदर्भ में निम्नलिखित युग्मों पर विचार कीजिए:<br><br>1. एशियाई खेल 2026 का शुभंकर (Mascot) : होनोहोन (Honohon)<br>2. एशियाई पैरा खेल 2026 का शुभंकर (Mascot) : उजुमिन (Uzumin)<br>3. 5वें एशियन पैरा गेम्स में शीतल देवी : कंपाउंड तीरंदाजी में स्वर्ण पदक<br><br>उपर्युक्त में से कौन-से युग्म <strong>सही सुमेलित</strong> हैं?",
+          opts: [
+            "(A) केवल 1 और 2",
+            "(B) केवल 2 और 3",
+            "(C) केवल 1 और 3",
+            "(D) 1, 2 और 3"
+          ],
+          sol: "<strong>सही उत्तर: (D) 1, 2 और 3</strong><br><br><strong>विस्तृत व्याख्या:</strong> तीनों युग्म सही हैं। एशियन गेम्स 2026 का शुभंकर 'Honohon' (लौ) है, जबकि पैरा गेम्स का 'Uzumin' है। शीतल देवी ने तोमन कुमार के साथ मिक्स्ड टीम तथा एकल दोनों में स्वर्ण पदक जीता।"
+        },
+        en: {
+          q: "Consider the pairs regarding the <strong>Aichi-Nagoya 2026 Asian & Asian Para Games</strong>:<br><br>1. Asian Games 2026 Mascot: Honohon<br>2. Asian Para Games 2026 Mascot: Uzumin<br>3. Sheetal Devi in 5th Asian Para Games: Gold Medal in Compound Archery<br><br>Which of the pairs given above are <strong>correctly matched</strong>?",
+          opts: [
+            "(A) 1 and 2 only",
+            "(B) 2 and 3 only",
+            "(C) 1 and 3 only",
+            "(D) 1, 2 and 3"
+          ],
+          sol: "<strong>Correct Answer: (D) 1, 2 and 3</strong><br><br><strong>Detailed Explanation:</strong> All pairs are accurate. The mascot of the Asian Games is Honohon, for Para Games it is Uzumin, and Sheetal Devi bagged gold medals in compound archery."
+        },
+        correctIndex: 3
+      },
+      {
+        id: 10,
+        type: "Tricky / Record Specific",
+        hi: {
+          q: "अक्टूबर 2026 में एकदिवसीय अंतर्राष्ट्रीय (ODI) क्रिकेट में <strong>मात्र 114 गेंदों में सबसे तेज दोहरा शतक</strong> बनाने का विश्व कीर्तिमान किस बल्लेबाज ने स्थापित किया?",
+          opts: [
+            "(A) ईशान किशन (भारत)",
+            "(B) ग्लेन मैक्सवेल (ऑस्ट्रेलिया)",
+            "(C) हैरी ब्रूक (इंग्लैंड)",
+            "(D) ट्रैविस हेड (ऑस्ट्रेलिया)"
+          ],
+          sol: "<strong>सही उत्तर: (C) हैरी ब्रूक (इंग्लैंड)</strong><br><br><strong>विस्तृत व्याख्या:</strong> इंग्लैंड के हैरी ब्रूक ने रावलपिंडी में श्रीलंका के खिलाफ 114 गेंदों में सबसे तेज दोहरा शतक बनाकर ईशान किशन (126 गेंद) और ग्लेन मैक्सवेल (128 गेंद) का रिकॉर्ड तोड़ा।"
+        },
+        en: {
+          q: "Who established the world record for the <strong>fastest double century in ODI history in just 114 balls</strong> in October 2026?",
+          opts: [
+            "(A) Ishan Kishan (India)",
+            "(B) Glenn Maxwell (Australia)",
+            "(C) Harry Brook (England)",
+            "(D) Travis Head (Australia)"
+          ],
+          sol: "<strong>Correct Answer: (C) Harry Brook (England)</strong><br><br><strong>Detailed Explanation:</strong> Harry Brook scored a double ton off just 114 balls against Sri Lanka in Rawalpindi, shattering Ishan Kishan's 126-ball record."
+        },
+        correctIndex: 2
+      },
+      {
+        id: 11,
+        type: "3/4 Statement Type",
+        hi: {
+          q: "राजस्थान के संदर्भ में <strong>'ज्ञानवर्स राज्य दर्शन'</strong> और हालिया समसामयिक घटनाओं के आधार पर कथनों पर विचार कीजिए:<br><br>1. विश्व बैंक ने राजस्थान में $385.7 मिलियन की लागत वाली 'SUTRA' परियोजना को स्वीकृति दी है।<br>2. सितंबर 2026 में शेखावाटी की प्रसिद्ध भित्तिचित्र हवेलियों को यूनेस्को की विश्व धरोहर संभावित सूची में शामिल किया गया।<br>3. राजस्थान में विधानसभा सीटों की संख्या 200, लोकसभा की 25 तथा राज्यसभा की 10 सीटें हैं।<br><br>उपर्युक्त में से कौन-सा/से कथन <strong>सत्य</strong> है/हैं?",
+          opts: [
+            "(A) केवल 1 और 2",
+            "(B) केवल 2 और 3",
+            "(C) केवल 1 और 3",
+            "(D) 1, 2 और 3"
+          ],
+          sol: "<strong>सही उत्तर: (D) 1, 2 और 3</strong><br><br><strong>विस्तृत व्याख्या:</strong> सभी कथन पूरी तरह सही हैं। SUTRA प्रोजेक्ट विश्व बैंक पोषित है ($385.7M)। शेखावाटी की हवेलियां यूनेस्को टेंटेटिव लिस्ट में जुड़ी हैं। राजस्थान में 200 विस, 25 लोस, 10 रास सीटें हैं।"
+        },
+        en: {
+          q: "Consider the following statements regarding the state of <strong>Rajasthan</strong>:<br><br>1. The World Bank approved the $385.7 million SUTRA project for accelerated urban transformation in Rajasthan.<br>2. Shekhawati Painted Havelis were included in the UNESCO Tentative World Heritage List in Sept 2026.<br>3. Rajasthan has 200 Assembly seats, 25 Lok Sabha seats, and 10 Rajya Sabha seats.<br><br>Which of the statements given above is/are <strong>correct</strong>?",
+          opts: [
+            "(A) 1 and 2 only",
+            "(B) 2 and 3 only",
+            "(C) 1 and 3 only",
+            "(D) 1, 2 and 3"
+          ],
+          sol: "<strong>Correct Answer: (D) 1, 2 and 3</strong><br><br><strong>Detailed Explanation:</strong> All statements are correct based on the official Rajasthan Current Affairs profile."
+        },
+        correctIndex: 3
+      },
+      {
+        id: 12,
+        type: "Matching / Pairs (पुस्तक व लेखक)",
+        hi: {
+          q: "चर्चित पुस्तक <strong>'The Evolution of TV News in India: From Doordarshan to Digital Disruption'</strong> की लेखिका कौन हैं?",
+          opts: [
+            "(A) बरखा दत्त",
+            "(B) हरशरण वीर कौर पांडे",
+            "(C) निधि राजदान",
+            "(D) चित्रा त्रिपाठी"
+          ],
+          sol: "<strong>सही उत्तर: (B) हरशरण वीर कौर पांडे</strong><br><br><strong>विस्तृत व्याख्या:</strong> इस पुस्तक की लेखिका हरशरण वीर कौर पांडे हैं। इसका विमोचन नई दिल्ली में प्रसार भारती के पूर्व अध्यक्ष ए. सूर्य प्रकाश द्वारा किया गया।"
+        },
+        en: {
+          q: "Who is the author of the book <strong>'The Evolution of TV News in India: From Doordarshan to Digital Disruption'</strong>?",
+          opts: [
+            "(A) Barkha Dutt",
+            "(B) Harsharan Bir Kaur Pandey",
+            "(C) Nidhi Razdan",
+            "(D) Chitra Tripathi"
+          ],
+          sol: "<strong>Correct Answer: (B) Harsharan Bir Kaur Pandey</strong><br><br><strong>Detailed Explanation:</strong> Authored by Harsharan Bir Kaur Pandey, chronicling 40 years of Indian television news from Doordarshan to digital disruption."
+        },
+        correctIndex: 1
+      },
+      {
+        id: 13,
+        type: "Tricky & Negative-Word Based",
+        hi: {
+          q: "अक्टूबर 2026 में संपन्न हुए द्विपक्षीय एवं बहुपक्षीय अभ्यासों के संदर्भ में कौन-सा कथन <strong>सत्य नहीं है</strong>?",
+          opts: [
+            "(A) सिंबक्स (SIMBEX) 2026 का 33वां संस्करण भारत और सिंगापुर के बीच आयोजित हुआ।",
+            "(B) सिंबक्स 2026 में भारतीय नौसेना के INS नीलगिरी और INS कामोर्ता ने भाग लिया।",
+            "(C) 'भद्र समझौता ज्ञापन' (MOU) भारत, जापान और ऑस्ट्रेलिया के बीच एक त्रिपक्षीय समझौता है।",
+            "(D) भारत और फ्रांस की नौसेनाओं के बीच द्विपक्षीय युद्धाभ्यास 'वरुण 2026' आयोजित हुआ।"
+          ],
+          sol: "<strong>सही उत्तर: (C) 'भद्र समझौता ज्ञापन' (MOU) भारत, जापान और ऑस्ट्रेलिया के बीच एक त्रिपक्षीय समझौता है।</strong><br><br><strong>विस्तृत व्याख्या:</strong> कथन (C) गलत है क्योंकि 'भद्र समझौता ज्ञापन' (Bhadra MOU) तुर्की, कतर, पाकिस्तान और इंडोनेशिया के बीच हस्ताक्षरित बहुपक्षीय रक्षा समझौता है।"
+        },
+        en: {
+          q: "Which of the following statements regarding bilateral/multilateral defence accords in October 2026 is <strong>NOT true</strong>?",
+          opts: [
+            "(A) SIMBEX 2026 (33rd edition) was conducted between India and Singapore.",
+            "(B) INS Nilgiri and INS Kamorta participated in SIMBEX 2026.",
+            "(C) 'Bhadra MoU' is a trilateral pact signed between India, Japan, and Australia.",
+            "(D) Bilateral naval exercise 'Varuna 2026' was held between India and France."
+          ],
+          sol: "<strong>Correct Answer: (C) 'Bhadra MoU' is a trilateral pact signed between India, Japan, and Australia.</strong><br><br><strong>Detailed Explanation:</strong> Bhadra MoU was signed between Turkey, Qatar, Pakistan, and Indonesia, not India-Japan-Australia."
+        },
+        correctIndex: 2
+      },
+      {
+        id: 14,
+        type: "Assertion-Reason (कथन-कारण)",
+        hi: {
+          q: "नीचे दो कथन दिए गए हैं:<br><br><strong>कथन (A):</strong> महारत्न कंपनी ऑयल एंड नेचुरल गैस कॉर्पोरेशन (ONGC) के नए अध्यक्ष एवं प्रबंध निदेशक (CMD) के रूप में सुनील कुमार को नियुक्त किया गया है।<br><strong>कारण (R):</strong> केंद्रीय सार्वजनिक क्षेत्र उद्यमों (CPSEs) में शीर्ष अध्यक्षीय नियुक्तियों को प्रधानमंत्री की अध्यक्षता वाली मंत्रिमंडल की नियुक्ति समिति (ACC) द्वारा मंजूरी दी जाती है।<br><br>सही विकल्प चुनिए:",
+          opts: [
+            "(A) (A) और (R) दोनों सही हैं और (R), (A) की सही व्याख्या है।",
+            "(B) (A) और (R) दोनों सही हैं लेकिन (R), (A) की सही व्याख्या नहीं है।",
+            "(C) (A) सही है लेकिन (R) गलत है।",
+            "(D) (A) गलत है लेकिन (R) सही है।"
+          ],
+          sol: "<strong>सही उत्तर: (A) (A) और (R) दोनों सही हैं और (R), (A) की सही व्याख्या है।</strong><br><br><strong>विस्तृत व्याख्या:</strong> सुनील कुमार को ONGC का नया CMD नियुक्त किया गया है। भारत में शीर्ष महारत्न कंपनियों के प्रमुखों की नियुक्ति को PM की अध्यक्षता वाली ACC ही अनुमोदित करती है।"
+        },
+        en: {
+          q: "Given below are two statements:<br><br><strong>Assertion (A):</strong> Sunil Kumar has been appointed as the new CMD of Maharatna CPSE Oil and Natural Gas Corporation (ONGC).<br><strong>Reason (R):</strong> Top board and CMD appointments in central CPSEs require formal approval from the Appointments Committee of the Cabinet (ACC) chaired by the Prime Minister.<br><br>Select the correct answer:",
+          opts: [
+            "(A) Both (A) and (R) are true and (R) is the correct explanation of (A).",
+            "(B) Both (A) and (R) are true but (R) is NOT the correct explanation of (A).",
+            "(C) (A) is true but (R) is false.",
+            "(D) (A) is false but (R) is true."
+          ],
+          sol: "<strong>Correct Answer: (A) Both (A) and (R) are true and (R) is the correct explanation of (A).</strong><br><br><strong>Detailed Explanation:</strong> Sunil Kumar's appointment as ONGC CMD was sanctioned by the ACC headed by the Prime Minister."
+        },
+        correctIndex: 0
+      },
+      {
+        id: 15,
+        type: "3/4 Statement Type",
+        hi: {
+          q: "अक्टूबर 2026 में मनाए गए महत्वपूर्ण अंतर्राष्ट्रीय एवं राष्ट्रीय दिवसों के संदर्भ में निम्नलिखित युग्मों पर विचार कीजिए:<br><br>1. 24 अक्टूबर : संयुक्त राष्ट्र दिवस (United Nations Day)<br>2. 23 अक्टूबर : अंतर्राष्ट्रीय हिम तेंदुआ दिवस (International Snow Leopard Day)<br>3. 21 अक्टूबर : विश्व आयोडीन अल्पता विकार निवारण दिवस और पुलिस स्मृति दिवस<br><br>उपर्युक्त में से कौन-सा/से युग्म <strong>सत्य</strong> है/हैं?",
+          opts: [
+            "(A) केवल 1 और 2",
+            "(B) केवल 2 और 3",
+            "(C) केवल 1 और 3",
+            "(D) 1, 2 और 3"
+          ],
+          sol: "<strong>सही उत्तर: (D) 1, 2 और 3</strong><br><br><strong>विस्तृत व्याख्या:</strong> तीनों युग्म सही हैं। 24 अक्टूबर को UN Day (स्थापना 24 अक्टूबर 1945), 23 अक्टूबर को International Snow Leopard Day, और 21 अक्टूबर को विश्व आयोडीन अल्पता दिवस व पुलिस स्मृति दिवस मनाया जाता है।"
+        },
+        en: {
+          q: "Consider the following pairs of important observances commemorated in October 2026:<br><br>1. 24 October: United Nations Day<br>2. 23 October: International Snow Leopard Day<br>3. 21 October: World Iodine Deficiency Day & Police Commemoration Day<br><br>Which of the pairs given above is/are <strong>correct</strong>?",
+          opts: [
+            "(A) 1 and 2 only",
+            "(B) 2 and 3 only",
+            "(C) 1 and 3 only",
+            "(D) 1, 2 and 3"
+          ],
+          sol: "<strong>Correct Answer: (D) 1, 2 and 3</strong><br><br><strong>Detailed Explanation:</strong> All pairs are factually correct as documented in the official 24 October 2026 gazette bulletin."
+        },
+        correctIndex: 3
+      }
+    ];
+
+    /* Test State Variables */
+    let currentQuestion = 0;
+    let selectedLanguage = 'hi'; // 'hi' or 'en'
+    let userAnswers = new Array(testData.length).fill(null);
+    let reviewStatus = new Array(testData.length).fill(false);
+    let timerSeconds = 120 * 60;
+    let timerInterval = null;
+
+    /* Auto Full-Screen Entry Gate Trigger */
+    function initiateFullscreenTest() {
+      const elem = document.documentElement;
+      if (elem.requestFullscreen) {
+        elem.requestFullscreen().catch(() => {});
+      } else if (elem.webkitRequestFullscreen) {
+        elem.webkitRequestFullscreen();
+      } else if (elem.msRequestFullscreen) {
+        elem.msRequestFullscreen();
+      }
+      
+      document.getElementById('entryGate').classList.add('hidden');
+      startCountdownTimer();
+      renderCurrentQuestion();
+    }
+
+    /* 120-Minute Live Countdown Timer */
+    function startCountdownTimer() {
+      timerInterval = setInterval(() => {
+        if (timerSeconds <= 0) {
+          clearInterval(timerInterval);
+          finalizeTestSubmission();
+          return;
+        }
+        timerSeconds--;
+        const mins = Math.floor(timerSeconds / 60);
+        const secs = timerSeconds % 60;
+        document.getElementById('timeDisplay').innerText = 
+          `${String(mins).padStart(2, '0')}:${String(secs).padStart(2, '0')}`;
+      }, 1000);
+    }
+
+    /* Bilingual Switcher Logic */
+    function toggleLanguage() {
+      selectedLanguage = selectedLanguage === 'hi' ? 'en' : 'hi';
+      const label = selectedLanguage === 'hi' ? 'English' : 'हिंदी';
+      document.getElementById('langLabel').innerText = label;
+      document.getElementById('solutionLangLabel').innerText = label;
+      
+      if (!document.getElementById('solutionReviewScreen').classList.contains('hidden')) {
+        renderSolutionsList();
+      } else {
+        renderCurrentQuestion();
+      }
+    }
+
+    /* Render Active Question and Options */
+    function renderCurrentQuestion() {
+      const qData = testData[currentQuestion];
+      const langData = qData[selectedLanguage];
+
+      document.getElementById('qCurrentBadge').innerText = 
+        `Q. ${String(currentQuestion + 1).padStart(2, '0')} / ${String(testData.length).padStart(2, '0')}`;
+      document.getElementById('qTypeBadge').innerText = qData.type;
+
+      document.getElementById('questionContainer').innerHTML = langData.q;
+
+      // Render Options
+      const optionsHtml = langData.opts.map((optText, idx) => {
+        const isChecked = userAnswers[currentQuestion] === idx;
+        const activeClass = isChecked 
+          ? "border-blue-600 bg-blue-50 text-blue-900 font-semibold ring-2 ring-blue-500/30" 
+          : "border-slate-200 bg-white hover:bg-slate-50 text-slate-800";
+        return `
+          <label onclick="selectOption(${idx})" class="flex items-start p-3 sm:p-3.5 border rounded-xl cursor-pointer transition select-none ${activeClass}">
+            <input type="radio" name="opt" class="mt-0.5 h-4 w-4 text-blue-600 border-slate-300 focus:ring-blue-500" ${isChecked ? 'checked' : ''}>
+            <span class="ml-3 text-xs sm:text-sm leading-normal">${optText}</span>
+          </label>
+        `;
+      }).join('');
+
+      document.getElementById('optionsContainer').innerHTML = optionsHtml;
+
+      // Update Navigation & Review Buttons
+      document.getElementById('prevBtn').disabled = (currentQuestion === 0);
+      document.getElementById('prevBtn').classList.toggle('opacity-50', currentQuestion === 0);
+
+      const reviewBtn = document.getElementById('reviewBtn');
+      if (reviewStatus[currentQuestion]) {
+        reviewBtn.classList.remove('bg-purple-100', 'text-purple-900');
+        reviewBtn.classList.add('bg-purple-600', 'text-white');
+      } else {
+        reviewBtn.classList.remove('bg-purple-600', 'text-white');
+        reviewBtn.classList.add('bg-purple-100', 'text-purple-900');
+      }
+    }
+
+    function selectOption(index) {
+      userAnswers[currentQuestion] = index;
+      renderCurrentQuestion();
+    }
+
+    function clearCurrentResponse() {
+      userAnswers[currentQuestion] = null;
+      renderCurrentQuestion();
+    }
+
+    function toggleMarkReview() {
+      reviewStatus[currentQuestion] = !reviewStatus[currentQuestion];
+      renderCurrentQuestion();
+    }
+
+    function navigateQuestion(step) {
+      const nextQ = currentQuestion + step;
+      if (nextQ >= 0 && nextQ < testData.length) {
+        currentQuestion = nextQ;
+        renderCurrentQuestion();
+      }
+    }
+
+    /* Submission Modal Handling */
+    function openSubmitModal() {
+      const attempted = userAnswers.filter(a => a !== null).length;
+      const reviews = reviewStatus.filter(r => r === true).length;
+      const unans = testData.length - attempted;
+
+      document.getElementById('modalAttempted').innerText = attempted;
+      document.getElementById('modalReview').innerText = reviews;
+      document.getElementById('modalUnanswered').innerText = unans;
+
+      document.getElementById('submitModal').classList.remove('hidden');
+      document.getElementById('submitModal').classList.add('flex');
+    }
+
+    function closeSubmitModal() {
+      document.getElementById('submitModal').classList.add('hidden');
+      document.getElementById('submitModal').classList.remove('flex');
+    }
+
+    /* Final Scoring & Scorecard Modal */
+    function finalizeTestSubmission() {
+      clearInterval(timerInterval);
+      closeSubmitModal();
+
+      let correct = 0;
+      let incorrect = 0;
+      let unattempted = 0;
+
+      testData.forEach((q, idx) => {
+        if (userAnswers[idx] === null) {
+          unattempted++;
+        } else if (userAnswers[idx] === q.correctIndex) {
+          correct++;
+        } else {
+          incorrect++;
+        }
+      });
+
+      // Marks calculation: +2 for correct, -0.20 for wrong
+      const score = (correct * 2.0) - (incorrect * 0.20);
+      const accuracy = (correct + incorrect) > 0 ? Math.round((correct / (correct + incorrect)) * 100) : 0;
+
+      document.getElementById('totalScoreDisplay').innerText = `${score.toFixed(2)} / ${(testData.length * 2).toFixed(2)}`;
+      document.getElementById('percentDisplay').innerText = `Accuracy: ${accuracy}% | Attempted: ${correct + incorrect}/${testData.length}`;
+      document.getElementById('scoreCorrect').innerText = correct;
+      document.getElementById('scoreIncorrect').innerText = incorrect;
+      document.getElementById('scoreUnattempted').innerText = unattempted;
+
+      document.getElementById('scorecardModal').classList.remove('hidden');
+      document.getElementById('scorecardModal').classList.add('flex');
+    }
+
+    /* Solution Review Mode */
+    function openSolutionReviewMode() {
+      document.getElementById('scorecardModal').classList.add('hidden');
+      document.getElementById('solutionReviewScreen').classList.remove('hidden');
+      document.getElementById('solutionReviewScreen').classList.add('flex');
+      renderSolutionsList();
+    }
+
+    function exitSolutionReview() {
+      document.getElementById('solutionReviewScreen').classList.add('hidden');
+      document.getElementById('scorecardModal').classList.remove('hidden');
+    }
+
+    function renderSolutionsList() {
+      const container = document.getElementById('solutionList');
+      container.innerHTML = testData.map((q, idx) => {
+        const langData = q[selectedLanguage];
+        const userAns = userAnswers[idx];
+        const isCorrect = userAns === q.correctIndex;
+        const isLeft = userAns === null;
+
+        let statusBadge = '';
+        if (isLeft) {
+          statusBadge = '<span class="bg-slate-100 text-slate-700 text-xs px-2 py-0.5 rounded font-bold">Unattempted (0)</span>';
+        } else if (isCorrect) {
+          statusBadge = '<span class="bg-emerald-100 text-emerald-800 text-xs px-2 py-0.5 rounded font-bold">Correct (+2.00)</span>';
+        } else {
+          statusBadge = '<span class="bg-rose-100 text-rose-800 text-xs px-2 py-0.5 rounded font-bold">Incorrect (-0.20)</span>';
+        }
+
+        return `
+          <div class="bg-white rounded-2xl border border-slate-200 shadow-sm p-4 sm:p-5">
+            <div class="flex items-center justify-between pb-2 mb-3 border-b border-slate-100">
+              <span class="font-bold text-slate-900 text-xs sm:text-sm font-mono">Question ${idx + 1}</span>
+              ${statusBadge}
+            </div>
+            
+            <div class="text-xs sm:text-sm text-slate-800 font-medium mb-3">
+              ${langData.q}
+            </div>
+
+            <div class="space-y-1.5 mb-4 text-xs">
+              ${langData.opts.map((opt, oIdx) => {
+                let borderStyle = 'border-slate-200 bg-slate-50 text-slate-700';
+                if (oIdx === q.correctIndex) {
+                  borderStyle = 'border-emerald-500 bg-emerald-50 text-emerald-900 font-bold ring-1 ring-emerald-500';
+                } else if (oIdx === userAns) {
+                  borderStyle = 'border-rose-500 bg-rose-50 text-rose-900 line-through';
+                }
+                return `<div class="p-2 border rounded-lg ${borderStyle}">${opt}</div>`;
+              }).join('')}
+            </div>
+
+            <div class="bg-blue-50/70 border border-blue-200 rounded-xl p-3 text-xs text-slate-800 leading-relaxed">
+              ${langData.sol}
+            </div>
+
+            <div class="mt-2 text-right text-[11px] font-bold text-blue-600">
+              Official Telegram: @GYANVERSET
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+  </script>
+</body>
+</html>
