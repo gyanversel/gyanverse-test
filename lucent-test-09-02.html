@@ -1,0 +1,5998 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GYANVERSE CBT | Set 02 (125 MCQs)</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Tiro+Devanagari+Hindi:ital@0;1&family=Inter:wght@400;500;600;700&display=swap');
+        body { font-family: 'Inter', 'Tiro Devanagari Hindi', sans-serif; user-select: none; }
+        .custom-scrollbar::-webkit-scrollbar { width: 6px; }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background-color: #cbd5e1; border-radius: 4px; }
+    </style>
+</head>
+<body class="bg-slate-100 text-slate-800 antialiased min-h-screen flex flex-col">
+
+    <!-- Auto Full Screen Gate Modal -->
+    <div id="fullScreenGate" class="fixed inset-0 z-50 bg-slate-900/90 backdrop-blur-md flex items-center justify-center p-4">
+        <div class="bg-white rounded-2xl shadow-2xl max-w-lg w-full p-6 text-center border-t-4 border-indigo-600">
+            <div class="w-16 h-16 bg-indigo-50 text-indigo-600 rounded-full flex items-center justify-center mx-auto mb-4 text-2xl font-bold shadow-inner">
+                <i class="fa-solid fa-graduation-cap"></i>
+            </div>
+            <h2 class="text-2xl font-bold text-slate-800 mb-1">GYANVERSE CBT PORTAL</h2>
+            <p class="text-xs font-semibold text-indigo-600 tracking-wider uppercase mb-4">Set 02: Lucent GK Ch-26 & 27 (Seemavarti & Rajput Rajvansh)</p>
+            
+            <div class="bg-slate-50 p-4 rounded-xl text-left text-sm text-slate-600 space-y-2 mb-6 border border-slate-200">
+                <p class="flex items-center gap-2"><i class="fa-solid fa-list-ol text-indigo-500"></i> <strong>Total Questions:</strong> 125 MCQs (Full Line-to-Line Coverage)</p>
+                <p class="flex items-center gap-2"><i class="fa-solid fa-clock text-indigo-500"></i> <strong>Duration:</strong> 120 Minutes (2 Hours)</p>
+                <p class="flex items-center gap-2"><i class="fa-solid fa-shield-halved text-indigo-500"></i> <strong>Marking:</strong> +2.00 Sahi | -0.20 Galat Negative</p>
+                <p class="flex items-center gap-2 text-rose-600 font-medium"><i class="fa-solid fa-expand"></i> <strong>Mandatory Gate:</strong> Click karte hi Auto Full-Screen lock hoga.</p>
+            </div>
+
+            <button id="startTestBtn" class="w-full bg-gradient-to-r from-indigo-600 to-violet-600 hover:from-indigo-700 hover:to-violet-700 text-white font-bold py-3.5 px-6 rounded-xl shadow-lg shadow-indigo-200 transition-all transform active:scale-95 flex items-center justify-center gap-2 text-base">
+                <i class="fa-solid fa-play"></i> Start Test (Auto Full Screen)
+            </button>
+            <p class="text-xs text-slate-400 mt-4">Official Telegram: <a href="https://t.me/GYANVERSET" target="_blank" class="text-indigo-600 hover:underline">@GYANVERSET</a></p>
+        </div>
+    </div>
+
+    <!-- Top CBT Header -->
+    <header class="bg-white border-b border-slate-200 sticky top-0 z-30 px-4 lg:px-8 py-3 flex items-center justify-between shadow-sm">
+        <div class="flex items-center gap-3">
+            <div class="bg-indigo-600 text-white font-black text-xl px-2.5 py-1 rounded-lg tracking-wider">GV</div>
+            <div>
+                <h1 class="text-lg font-bold text-slate-800 leading-tight">GYANVERSE CBT</h1>
+                <p class="text-xs text-slate-500 font-medium">Set 02 : Ch-26 & 27 Seemavarti & Rajput Rajvansh (125 MCQs)</p>
+            </div>
+        </div>
+
+        <div class="flex items-center gap-3">
+            <!-- Language Switcher Button -->
+            <button id="langToggleBtn" class="bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-semibold px-3 py-2 rounded-lg border border-slate-300 transition-colors flex items-center gap-1.5">
+                <i class="fa-solid fa-language text-indigo-600"></i>
+                <span id="langDisplay">Switch to English</span>
+            </button>
+
+            <!-- Live Timer -->
+            <div class="bg-rose-50 border border-rose-200 text-rose-600 font-mono font-bold text-sm lg:text-base px-3 py-1.5 rounded-lg flex items-center gap-2">
+                <i class="fa-regular fa-clock"></i>
+                <span id="liveTimer">120:00</span>
+            </div>
+
+            <!-- Top-Right Submit Button -->
+            <button id="submitTestBtnTop" class="bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs lg:text-sm px-4 py-2 rounded-lg transition-colors shadow-sm flex items-center gap-1.5">
+                <i class="fa-solid fa-check-circle"></i>
+                <span>Submit</span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Main Question Viewport (Clean Full-Width, No Palette) -->
+    <main class="flex-1 max-w-4xl w-full mx-auto p-4 md:p-6 lg:p-8 flex flex-col">
+        <!-- Question Status Bar -->
+        <div class="flex items-center justify-between mb-4 pb-2 border-b border-slate-200 text-sm">
+            <span class="font-bold text-slate-700" id="qNumberHeading">Question 001 of 125</span>
+            <div class="flex gap-2 text-xs font-medium">
+                <span class="bg-emerald-100 text-emerald-800 px-2 py-0.5 rounded font-bold">+2.00 Marks</span>
+                <span class="bg-rose-100 text-rose-800 px-2 py-0.5 rounded font-bold">-0.20 Negative</span>
+            </div>
+        </div>
+
+        <!-- Question Card -->
+        <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-5 md:p-7 flex-1 flex flex-col justify-between">
+            <div class="space-y-4">
+                <!-- Question Statement Container -->
+                <div id="questionContainer" class="text-base md:text-lg text-slate-800 font-medium leading-relaxed whitespace-pre-line"></div>
+
+                <!-- Options List (Clean Full Width) -->
+                <div id="optionsContainer" class="space-y-3 pt-2"></div>
+
+                <!-- Instant Verification / Explanation Box -->
+                <div id="instantAnswerBox" class="hidden mt-4 p-4 rounded-xl border border-indigo-100 bg-indigo-50/70 transition-all">
+                    <div id="instantFeedbackStatus" class="font-bold text-sm mb-1"></div>
+                    <p class="text-xs font-semibold text-slate-600 uppercase tracking-wider mb-1">NCERT / Pramanik Line-by-Line Solution:</p>
+                    <div id="instantExplanationText" class="text-xs md:text-sm text-slate-700 leading-relaxed"></div>
+                    <div class="text-[11px] font-bold text-indigo-600 mt-2 text-right">@GYANVERSET</div>
+                </div>
+            </div>
+
+            <!-- Navigation Buttons DIRECTLY BELOW Options (Mobile-Friendly) -->
+            <div class="mt-8 pt-4 border-t border-slate-200 flex flex-wrap items-center justify-between gap-2">
+                <div class="flex items-center gap-2">
+                    <button id="prevBtn" class="bg-slate-200 hover:bg-slate-300 text-slate-700 font-semibold px-4 py-2.5 rounded-xl text-sm transition-all flex items-center gap-1.5">
+                        <i class="fa-solid fa-chevron-left"></i> Prev
+                    </button>
+                    <button id="clearBtn" class="bg-slate-100 hover:bg-slate-200 text-slate-600 font-medium px-3.5 py-2.5 rounded-xl text-sm border border-slate-300 transition-all">
+                        Clear
+                    </button>
+                </div>
+                
+                <div class="flex items-center gap-2">
+                    <button id="reviewBtn" class="bg-amber-100 hover:bg-amber-200 text-amber-800 font-semibold px-4 py-2.5 rounded-xl text-sm transition-all flex items-center gap-1.5">
+                        <i class="fa-regular fa-bookmark"></i> Review
+                    </button>
+                    <button id="nextBtn" class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold px-6 py-2.5 rounded-xl text-sm shadow-md shadow-indigo-100 transition-all flex items-center gap-1.5">
+                        Next & Save <i class="fa-solid fa-chevron-right"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Official Watermark Tag Footer -->
+        <div class="mt-4 text-center">
+            <a href="https://t.me/GYANVERSET" target="_blank" class="inline-flex items-center gap-1.5 text-xs font-semibold text-slate-500 hover:text-indigo-600 transition-colors">
+                <i class="fa-brands fa-telegram text-sky-500"></i> Official Community Channel: @GYANVERSET
+            </a>
+        </div>
+    </main>
+
+    <!-- Detailed Scorecard & Solutions Modal -->
+    <div id="scorecardModal" class="fixed inset-0 z-50 bg-slate-900/80 backdrop-blur-sm hidden flex items-center justify-center p-4">
+        <div class="bg-white rounded-2xl shadow-2xl max-w-2xl w-full p-6 max-h-[90vh] overflow-y-auto custom-scrollbar border-t-4 border-emerald-500">
+            <div class="text-center pb-4 border-b border-slate-200">
+                <h2 class="text-2xl font-black text-slate-800">Test Submission Summary</h2>
+                <p class="text-xs text-slate-500 font-medium">Set 02 : Chapter 26 & 27 Complete Evaluation</p>
+            </div>
+
+            <!-- Scorecard Grid -->
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 my-5 text-center">
+                <div class="p-3 bg-indigo-50 border border-indigo-100 rounded-xl">
+                    <p class="text-xs text-slate-500 font-semibold uppercase">Total Score</p>
+                    <p id="modalScore" class="text-2xl font-black text-indigo-600">0.00</p>
+                </div>
+                <div class="p-3 bg-emerald-50 border border-emerald-100 rounded-xl">
+                    <p class="text-xs text-slate-500 font-semibold uppercase">Correct</p>
+                    <p id="modalCorrect" class="text-2xl font-black text-emerald-600">0</p>
+                </div>
+                <div class="p-3 bg-rose-50 border border-rose-100 rounded-xl">
+                    <p class="text-xs text-slate-500 font-semibold uppercase">Incorrect</p>
+                    <p id="modalWrong" class="text-2xl font-black text-rose-600">0</p>
+                </div>
+                <div class="p-3 bg-amber-50 border border-amber-100 rounded-xl">
+                    <p class="text-xs text-slate-500 font-semibold uppercase">Accuracy</p>
+                    <p id="modalAccuracy" class="text-2xl font-black text-amber-600">0%</p>
+                </div>
+            </div>
+
+            <!-- Details Action Buttons -->
+            <div class="flex flex-col sm:flex-row gap-3 pt-2">
+                <button id="reviewSolutionsBtn" class="flex-1 bg-slate-800 hover:bg-slate-900 text-white font-bold py-3 px-4 rounded-xl text-sm transition-all flex items-center justify-center gap-2">
+                    <i class="fa-solid fa-list-check"></i> Check Solutions / Review Mode
+                </button>
+                <a href="https://t.me/GYANVERSET" target="_blank" class="flex-1 bg-sky-500 hover:bg-sky-600 text-white font-bold py-3 px-4 rounded-xl text-sm transition-all flex items-center justify-center gap-2">
+                    <i class="fa-brands fa-telegram"></i> Join Telegram @GYANVERSET
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const questionsData = [
+  {
+    "id": 1,
+    "type": "3-Statement Type",
+    "question_hi": "पाल वंश की स्थापना और प्रारंभिक इतिहास के संदर्भ में निम्नलिखित कथनों पर विचार कीजिए:\n1. पाल वंश का संस्थापक गोपाल (750 ई.) था।\n2. पाल शासकों की राजधानी मुंगेर (बिहार) थी।\n3. पाल शासक बौद्ध धर्म के (विशेषकर महायान परंपरा के) अनुयायी थे।\n\nउपर्युक्त में से कौन-से कथन सत्य हैं?",
+    "question_en": "Consider statements on the foundation of the Pala dynasty:\n1. Founded by Gopala in 750 AD.\n2. Capital was Munger (Bihar).\n3. Pala rulers were followers of Buddhism (specifically Mahayana).\n\nWhich are true?",
+    "options_hi": [
+      {
+        "id": "A",
+        "text": "केवल 1 और 2"
+      },
+      {
+        "id": "B",
+        "text": "केवल 2 और 3"
+      },
+      {
+        "id": "C",
+        "text": "केवल 1 और 3"
+      },
+      {
+        "id": "D",
+        "text": "1, 2 और 3 (सभी सत्य हैं)"
+      }
+    ],
+    "options_en": [
+      {
+        "id": "A",
+        "text": "Only 1 and 2"
+      },
+      {
+        "id": "B",
+        "text": "Only 2 and 3"
+      },
+      {
+        "id": "C",
+        "text": "Only 1 and 3"
+      },
+      {
+        "id": "D",
+        "text": "1, 2 and 3 (All are true)"
+      }
+    ],
+    "correct": "D",
+    "explanation_hi": "तीनों कथन पूर्णतः सत्य हैं। गोपाल ने 750 ई. में पाल वंश की नींव रखी, राजधानी मुंगेर थी और वे महायान बौद्ध धर्म के अनुयायी थे।",
+    "explanation_en": "All three statements are historically verified facts regarding Gopala and Palas."
+  },
+  {
+    "id": 2,
+    "type": "Tricky & Negative-Word",
+    "question_hi": "बिहार शरीफ में स्थित प्रसिद्ध 'ओदन्तपुरी विश्वविद्यालय' की स्थापना निम्नलिखित में से किस पाल शासक ने की थी?",
+    "question_en": "Who founded the famous Odantapuri University located in Bihar Sharif?",
+    "options_hi": [
+      {
+        "id": "A",
+        "text": "धर्मपाल"
+      },
+      {
+        "id": "B",
+        "text": "गोपाल"
+      },
+      {
+        "id": "C",
+        "text": "देवपाल"
+      },
+      {
+        "id": "D",
+        "text": "महिपाल"
+      }
+    ],
+    "options_en": [
+      {
+        "id": "A",
+        "text": "Dharmapala"
+      },
+      {
+        "id": "B",
+        "text": "Gopala"
+      },
+      {
+        "id": "C",
+        "text": "Devapala"
+      },
+      {
+        "id": "D",
+        "text": "Mahipala"
+      }
+    ],
+    "correct": "B",
+    "explanation_hi": "ओदन्तपुरी विश्वविद्यालय की स्थापना पाल वंश के संस्थापक गोपाल ने की थी।",
+    "explanation_en": "Odantapuri University was founded by Gopala."
+  },
+  {
+    "id": 3,
+    "type": "Statement Type",
+    "question_hi": "पाल वंश के सबसे महान शासक धर्मपाल के संदर्भ में निम्नलिखित कथनों पर विचार कीजिए:\n1. धर्मपाल ने विक्रमशिला विश्वविद्यालय की स्थापना की थी।\n2. उसने प्रसिद्ध सोमपुर महाविहार (वर्तमान बांग्लादेश) का निर्माण करवाया था।\n3. कन्नौज के त्रिपक्षीय संघर्ष में पाल वंश की ओर से सर्वप्रथम धर्मपाल शामिल हुआ था।\n\nउपर्युक्त में से कौन-से कथन सत्य हैं?",
+    "question_en": "Consider statements regarding Dharmapala:\n1. Founded Vikramashila University.\n2. Built the famous Somapura Mahavihara.\n3. First Pala ruler to enter Tripartite struggle for Kannauj.\n\nWhich are true?",
+    "options_hi": [
+      {
+        "id": "A",
+        "text": "केवल 1 और 2"
+      },
+      {
+        "id": "B",
+        "text": "केवल 2 और 3"
+      },
+      {
+        "id": "C",
+        "text": "केवल 1 और 3"
+      },
+      {
+        "id": "D",
+        "text": "1, 2 और 3 (सभी सत्य हैं)"
+      }
+    ],
+    "options_en": [
+      {
+        "id": "A",
+        "text": "Only 1 and 2"
+      },
+      {
+        "id": "B",
+        "text": "Only 2 and 3"
+      },
+      {
+        "id": "C",
+        "text": "Only 1 and 3"
+      },
+      {
+        "id": "D",
+        "text": "1, 2 and 3 (All are true)"
+      }
+    ],
+    "correct": "D",
+    "explanation_hi": "धर्मपाल पाल वंश का सबसे महान शासक था। उसने विक्रमशिला व सोमपुर महाविहार बनवाए तथा त्रिपक्षीय संघर्ष में भाग लिया।",
+    "explanation_en": "All three statements are authentic regarding Dharmapala."
+  },
+  {
+    "id": 4,
+    "type": "Tricky & Negative-Word",
+    "question_hi": "11वीं सदी के गुजराती कवि सोड्ढल ने पाल शासक धर्मपाल को किस सम्मानजनक उपाधि से संबोधित किया था?",
+    "question_en": "Which prestigious title was conferred upon Dharmapala by 11th-century Gujarati poet Soddhala?",
+    "options_hi": [
+      {
+        "id": "A",
+        "text": "उत्तरापथ स्वामी"
+      },
+      {
+        "id": "B",
+        "text": "दक्षिणापथेश्वर"
+      },
+      {
+        "id": "C",
+        "text": "सकलोत्तरपथनाथ"
+      },
+      {
+        "id": "D",
+        "text": "परमेश्वर"
+      }
+    ],
+    "options_en": [
+      {
+        "id": "A",
+        "text": "Uttarapathasvamin"
+      },
+      {
+        "id": "B",
+        "text": "Dakshinapatheshvara"
+      },
+      {
+        "id": "C",
+        "text": "Sakalottarapathnatha"
+      },
+      {
+        "id": "D",
+        "text": "Parameshvara"
+      }
+    ],
+    "correct": "A",
+    "explanation_hi": "कवि सोड्ढल ने धर्मपाल को 'उत्तरापथ स्वामी' की उपाधि से संबोधित किया था।",
+    "explanation_en": "Gujarati poet Soddhala addressed Dharmapala as Uttarapathasvamin."
+  },
+  {
+    "id": 5,
+    "type": "Statement Type",
+    "question_hi": "ओदन्तपुरी (बिहार) के प्रसिद्ध 'बौद्ध मठ' (Buddhist Monastery) का निर्माण किस पाल शासक ने करवाया था?",
+    "question_en": "Which Pala monarch constructed the famous Buddhist Monastery at Odantapuri?",
+    "options_hi": [
+      {
+        "id": "A",
+        "text": "गोपाल"
+      },
+      {
+        "id": "B",
+        "text": "धर्मपाल"
+      },
+      {
+        "id": "C",
+        "text": "देवपाल"
+      },
+      {
+        "id": "D",
+        "text": "नारायणपाल"
+      }
+    ],
+    "options_en": [
+      {
+        "id": "A",
+        "text": "Gopala"
+      },
+      {
+        "id": "B",
+        "text": "Dharmapala"
+      },
+      {
+        "id": "C",
+        "text": "Devapala"
+      },
+      {
+        "id": "D",
+        "text": "Narayanapala"
+      }
+    ],
+    "correct": "C",
+    "explanation_hi": "ओदन्तपुरी के प्रसिद्ध बौद्ध मठ का निर्माण 'देवपाल' ने करवाया था (जबकि ओदन्तपुरी विश्वविद्यालय गोपाल ने बनवाया था)।",
+    "explanation_en": "Devapala constructed the Buddhist monastery at Odantapuri."
+  },
+  {
+    "id": 6,
+    "type": "Assertion-Reason",
+    "question_hi": "कथन (A): पाल शासक देवपाल ने जावा के शैलेंद्रवंशी शासक बालपुत्रदेव के अनुरोध पर नालंदा में एक बौद्ध विहार बनवाने हेतु पाँच गाँव दान में दिए थे।\nकारण (R): देवपाल बौद्ध धर्म का महान संरक्षक था और दक्षिण-पूर्व एशियाई बौद्ध राज्यों के साथ मैत्रीपूर्ण सांस्कृतिक संबंध रखता था।",
+    "question_en": "Assertion (A): Pala ruler Devapala granted five villages for a monastery at Nalanda upon request of Sailendra king Balaputradeva.\nReason (R): Devapala was a devout patron of Buddhism maintaining international cultural relations.",
+    "options_hi": [
+      {
+        "id": "A",
+        "text": "(A) और (R) दोनों सही हैं और (R), (A) की सही व्याख्या है।"
+      },
+      {
+        "id": "B",
+        "text": "(A) और (R) दोनों सही हैं लेकिन (R), (A) की सही व्याख्या नहीं है।"
+      },
+      {
+        "id": "C",
+        "text": "(A) सही है लेकिन (R) गलत है।"
+      },
+      {
+        "id": "D",
+        "text": "(A) गलत है लेकिन (R) सही है।"
+      }
+    ],
+    "options_en": [
+      {
+        "id": "A",
+        "text": "Both (A) and (R) are correct and (R) is the correct explanation of (A)."
+      },
+      {
+        "id": "B",
+        "text": "Both (A) and (R) are correct but (R) is NOT the correct explanation."
+      },
+      {
+        "id": "C",
+        "text": "(A) is true but (R) is false."
+      },
+      {
+        "id": "D",
+        "text": "(A) is false but (R) is true."
+      }
+    ],
+    "correct": "A",
+    "explanation_hi": "देवपाल ने बालपुत्रदेव के अनुरोध पर 5 गाँव दान दिए थे। दोनों कथन सही हैं और व्याख्या भी सही है।",
+    "explanation_en": "Both statements are true and (R) explains (A)."
+  },
+  {
+    "id": 7,
+    "type": "Tricky & Negative-Word",
+    "question_hi": "संस्कृत साहित्य में 'गौड़ीरीति' (Gaudi Riti) नामक विशिष्ट साहित्यिक विधा का विकास किस राजवंश के शासनकाल में हुआ था?",
+    "question_en": "In Sanskrit literature, which dynasty saw the flourish of the 'Gaudi Riti' literary style?",
+    "options_hi": [
+      {
+        "id": "A",
+        "text": "सेन वंश"
+      },
+      {
+        "id": "B",
+        "text": "पाल वंश"
+      },
+      {
+        "id": "C",
+        "text": "वर्मन वंश"
+      },
+      {
+        "id": "D",
+        "text": "प्रतिहार वंश"
+      }
+    ],
+    "options_en": [
+      {
+        "id": "A",
+        "text": "Sena Dynasty"
+      },
+      {
+        "id": "B",
+        "text": "Pala Dynasty"
+      },
+      {
+        "id": "C",
+        "text": "Varman Dynasty"
+      },
+      {
+        "id": "D",
+        "text": "Pratihara Dynasty"
+      }
+    ],
+    "correct": "B",
+    "explanation_hi": "गौड़ीरीति नामक साहित्यिक विधा का विकास पाल शासकों के समय में हुआ था।",
+    "explanation_en": "Gaudi Riti style of literature developed during the Pala dynasty."
+  },
+  {
+    "id": 8,
+    "type": "Statement Type",
+    "question_hi": "बंगाल के सेन राजवंश की स्थापना और प्रारंभिक इतिहास के बारे में क्या सत्य है?\n1. सेन वंश की स्थापना 11वीं शताब्दी के अंत में सामंत सेन ने राढ़ में की थी।\n2. सेन वंश की राजधानी नदिया (लखनौती) थी।\n3. सेन वंश का प्रथम स्वतंत्र शासक विजयसेन था, जो शैव धर्म का अनुयायी था।\n\nउपर्युक्त में से कौन-से कथन सत्य हैं?",
+    "question_en": "Consider statements on the Sena dynasty of Bengal:\n1. Founded by Samantasena in Radh in late 11th century.\n2. Capital was Nadiya (Lakhnauti).\n3. First independent ruler was Vijayasena who followed Shaivism.\n\nWhich are true?",
+    "options_hi": [
+      {
+        "id": "A",
+        "text": "केवल 1 और 2"
+      },
+      {
+        "id": "B",
+        "text": "केवल 2 और 3"
+      },
+      {
+        "id": "C",
+        "text": "केवल 1 और 3"
+      },
+      {
+        "id": "D",
+        "text": "1, 2 और 3 (सभी सत्य हैं)"
+      }
+    ],
+    "options_en": [
+      {
+        "id": "A",
+        "text": "Only 1 and 2"
+      },
+      {
+        "id": "B",
+        "text": "Only 2 and 3"
+      },
+      {
+        "id": "C",
+        "text": "Only 1 and 3"
+      },
+      {
+        "id": "D",
+        "text": "1, 2 and 3 (All are true)"
+      }
+    ],
+    "correct": "D",
+    "explanation_hi": "तीनों कथन पूर्णतः सत्य हैं। सामंत सेन ने राढ़ में स्थापना की, राजधानी नदिया थी और विजयसेन प्रथम स्वतंत्र शासक था।",
+    "explanation_en": "All three statements are historically valid."
+  },
+  {
+    "id": 9,
+    "type": "Matching / Mis-matching",
+    "question_hi": "सेन कालीन ग्रंथों एवं उनके रचनाकारों के संदर्भ में कौन-सा मिलान गलत है?",
+    "question_en": "Which match is INCORRECT regarding Sena era literature?",
+    "options_hi": [
+      {
+        "id": "A",
+        "text": "दानसागर — बल्लालसेन"
+      },
+      {
+        "id": "B",
+        "text": "अद्भुत सागर — बल्लालसेन (पूर्ण किया लक्ष्मण सेन ने)"
+      },
+      {
+        "id": "C",
+        "text": "गीतगोविन्द — जयदेव"
+      },
+      {
+        "id": "D",
+        "text": "पवनदूत — हलायुध"
+      }
+    ],
+    "options_en": [
+      {
+        "id": "A",
+        "text": "Danasagara — Ballalasena"
+      },
+      {
+        "id": "B",
+        "text": "Adbhutasagara — Ballalasena (completed by Lakshmanasena)"
+      },
+      {
+        "id": "C",
+        "text": "Gitagovinda — Jayadeva"
+      },
+      {
+        "id": "D",
+        "text": "Pavanaduta — Halayudha"
+      }
+    ],
+    "correct": "D",
+    "explanation_hi": "'पवनदूत' के रचयिता कवि धोयी थे। हलायुध ने 'ब्राह्मणसर्वस्व' की रचना की थी।",
+    "explanation_en": "Pavanaduta was authored by Dhoyi, while Halayudha wrote Brahmanasarvasva."
+  },
+  {
+    "id": 10,
+    "type": "Tricky & Negative-Word",
+    "question_hi": "लक्ष्मण सेन का प्रधान न्यायाधीश एवं मुख्यमंत्री कौन था, जिसने 'ब्राह्मणसर्वस्व' नामक प्रसिद्ध ग्रंथ की रचना की?",
+    "question_en": "Who was Lakshmanasena's chief justice and prime minister who authored 'Brahmanasarvasva'?",
+    "options_hi": [
+      {
+        "id": "A",
+        "text": "जयदेव"
+      },
+      {
+        "id": "B",
+        "text": "धोयी"
+      },
+      {
+        "id": "C",
+        "text": "हलायुध"
+      },
+      {
+        "id": "D",
+        "text": "श्रीहर्ष"
+      }
+    ],
+    "options_en": [
+      {
+        "id": "A",
+        "text": "Jayadeva"
+      },
+      {
+        "id": "B",
+        "text": "Dhoyi"
+      },
+      {
+        "id": "C",
+        "text": "Halayudha"
+      },
+      {
+        "id": "D",
+        "text": "Sriharsha"
+      }
+    ],
+    "correct": "C",
+    "explanation_hi": "हलायुध लक्ष्मण सेन का प्रधान न्यायाधीश एवं मुख्यमंत्री था।",
+    "explanation_en": "Halayudha served as the chief justice and prime minister of Lakshmanasena."
+  },
+  {
+    "id": 11,
+    "type": "Statement Type",
+    "question_hi": "देवपाड़ा में प्रसिद्ध 'प्रद्युम्नेश्वर मंदिर' (शिव का विशाल देवालय) की स्थापना किस सेन शासक ने की थी?",
+    "question_en": "Which Sena monarch established the Pradyumneshwara temple at Deopara?",
+    "options_hi": [
+      {
+        "id": "A",
+        "text": "सामंत सेन"
+      },
+      {
+        "id": "B",
+        "text": "विजयसेन"
+      },
+      {
+        "id": "C",
+        "text": "बल्लालसेन"
+      },
+      {
+        "id": "D",
+        "text": "लक्ष्मण सेन"
+      }
+    ],
+    "options_en": [
+      {
+        "id": "A",
+        "text": "Samantasena"
+      },
+      {
+        "id": "B",
+        "text": "Vijayasena"
+      },
+      {
+        "id": "C",
+        "text": "Ballalasena"
+      },
+      {
+        "id": "D",
+        "text": "Lakshmanasena"
+      }
+    ],
+    "correct": "B",
+    "explanation_hi": "विजयसेन ने देवपाड़ा में प्रद्युम्नेश्वर मंदिर की स्थापना की।",
+    "explanation_en": "Vijayasena founded the Pradyumneshwara Shiva temple at Deopara."
+  },
+  {
+    "id": 12,
+    "type": "Assertion-Reason",
+    "question_hi": "कथन (A): भारतीय इतिहास में सेन राजवंश प्रथम ऐसा राजवंश था जिसने अपने अभिलेख सर्वप्रथम हिन्दी भाषा में उत्कीर्ण करवाए।\nकारण (R): सेन शासक लक्ष्मण सेन स्वयं बंगाली व संस्कृत के अतिरिक्त हिन्दी साहित्य के प्रारंभिक स्वरूप के महान संरक्षक थे।",
+    "question_en": "Assertion (A): Sena dynasty was the first in Indian history to engrave inscriptions in Hindi.\nReason (R): Lakshmanasena was a great patron of early Hindi idioms alongside Bengali and Sanskrit.",
+    "options_hi": [
+      {
+        "id": "A",
+        "text": "(A) और (R) दोनों सही हैं और (R), (A) की सही व्याख्या है।"
+      },
+      {
+        "id": "B",
+        "text": "(A) और (R) दोनों सही हैं लेकिन (R), (A) की सही व्याख्या नहीं है।"
+      },
+      {
+        "id": "C",
+        "text": "(A) सही है लेकिन (R) गलत है।"
+      },
+      {
+        "id": "D",
+        "text": "(A) गलत है लेकिन (R) सही है।"
+      }
+    ],
+    "options_en": [
+      {
+        "id": "A",
+        "text": "Both (A) and (R) are correct and (R) is the correct explanation of (A)."
+      },
+      {
+        "id": "B",
+        "text": "Both (A) and (R) are correct but (R) is NOT the correct explanation."
+      },
+      {
+        "id": "C",
+        "text": "(A) is true but (R) is false."
+      },
+      {
+        "id": "D",
+        "text": "(A) is false but (R) is true."
+      }
+    ],
+    "correct": "B",
+    "explanation_hi": "सेन वंश प्रथम था जिसने हिंदी में अभिलेख उत्कीर्ण करवाए। दोनों तथ्य सही हैं, पर कारण व्याख्या नहीं करता।",
+    "explanation_en": "Both statements are factually correct, but (R) is not the causal explanation of (A)."
+  },
+  {
+    "id": 13,
+    "type": "Tricky & Negative-Word",
+    "question_hi": "मध्यकालीन बंगाल का 'अंतिम हिन्दू शासक' कौन था?",
+    "question_en": "Who was the last Hindu ruler of medieval Bengal?",
+    "options_hi": [
+      {
+        "id": "A",
+        "text": "महिपाल"
+      },
+      {
+        "id": "B",
+        "text": "बल्लालसेन"
+      },
+      {
+        "id": "C",
+        "text": "लक्ष्मण सेन"
+      },
+      {
+        "id": "D",
+        "text": "विजयसेन"
+      }
+    ],
+    "options_en": [
+      {
+        "id": "A",
+        "text": "Mahipala"
+      },
+      {
+        "id": "B",
+        "text": "Ballalasena"
+      },
+      {
+        "id": "C",
+        "text": "Lakshmanasena"
+      },
+      {
+        "id": "D",
+        "text": "Vijayasena"
+      }
+    ],
+    "correct": "C",
+    "explanation_hi": "लक्ष्मण सेन बंगाल का अंतिम हिन्दू शासक था (बख्तियार खिलजी के आक्रमण के समय)।",
+    "explanation_en": "Lakshmanasena was the last Hindu ruler of Bengal."
+  },
+  {
+    "id": 14,
+    "type": "Matching / Mis-matching",
+    "question_hi": "कश्मीर पर शासन करने वाले राजवंशों का सही कालक्रम क्या है?",
+    "question_en": "What is the correct chronological order of dynasties that ruled Kashmir?",
+    "options_hi": [
+      {
+        "id": "A",
+        "text": "कार्कोट वंश → उत्पल वंश → लोहार वंश"
+      },
+      {
+        "id": "B",
+        "text": "उत्पल वंश → कार्कोट वंश → लोहार वंश"
+      },
+      {
+        "id": "C",
+        "text": "लोहार वंश → कार्कोट वंश → उत्पल वंश"
+      },
+      {
+        "id": "D",
+        "text": "कार्कोट वंश → लोहार वंश → उत्पल वंश"
+      }
+    ],
+    "options_en": [
+      {
+        "id": "A",
+        "text": "Karkota -> Utpala -> Lohara"
+      },
+      {
+        "id": "B",
+        "text": "Utpala -> Karkota -> Lohara"
+      },
+      {
+        "id": "C",
+        "text": "Lohara -> Karkota -> Utpala"
+      },
+      {
+        "id": "D",
+        "text": "Karkota -> Lohara -> Utpala"
+      }
+    ],
+    "correct": "A",
+    "explanation_hi": "कश्मीर के राजवंशों का कालक्रम: कार्कोट वंश (627 ई.), फिर उत्पल वंश, और अंत में लोहार वंश।",
+    "explanation_en": "Chronology: Karkota dynasty, followed by Utpala dynasty, and then Lohara dynasty."
+  },
+  {
+    "id": 15,
+    "type": "Statement Type",
+    "question_hi": "627 ई. में कश्मीर में 'कार्कोट वंश' (हिन्दू राजवंश) की स्थापना किसने की थी, जिसके शासनकाल में ह्वेनसांग ने कश्मीर की यात्रा की?",
+    "question_en": "Who founded the Karkota dynasty in Kashmir in 627 AD during whose reign Hiuen Tsang visited Kashmir?",
+    "options_hi": [
+      {
+        "id": "A",
+        "text": "ललितादित्य मुक्तापीड"
+      },
+      {
+        "id": "B",
+        "text": "दुर्लभवर्द्धन"
+      },
+      {
+        "id": "C",
+        "text": "अवन्तिवर्मन"
+      },
+      {
+        "id": "D",
+        "text": "संग्रामराज"
+      }
+    ],
+    "options_en": [
+      {
+        "id": "A",
+        "text": "Lalitaditya Muktapida"
+      },
+      {
+        "id": "B",
+        "text": "Durlabhavardhana"
+      },
+      {
+        "id": "C",
+        "text": "Avantivarman"
+      },
+      {
+        "id": "D",
+        "text": "Sangramaraja"
+      }
+    ],
+    "correct": "B",
+    "explanation_hi": "दुर्लभवर्द्धन ने 627 ई. में कार्कोट वंश की स्थापना की थी। ह्वेनसांग ने इसके काल में यात्रा की।",
+    "explanation_en": "Durlabhavardhana founded Karkota dynasty in 627 AD."
+  },
+  {
+    "id": 16,
+    "type": "Tricky & Negative-Word",
+    "question_hi": "कश्मीर के विश्वविख्यात 'मार्तण्ड सूर्य मंदिर' का निर्माण कार्कोट वंश के किस सबसे शक्तिशाली सम्राट द्वारा करवाया गया था?",
+    "question_en": "Who constructed the world-famous Martand Sun Temple of Kashmir?",
+    "options_hi": [
+      {
+        "id": "A",
+        "text": "दुर्लभवर्द्धन"
+      },
+      {
+        "id": "B",
+        "text": "ललितादित्य मुक्तापीड"
+      },
+      {
+        "id": "C",
+        "text": "तारापीड"
+      },
+      {
+        "id": "D",
+        "text": "कुवलयापीड"
+      }
+    ],
+    "options_en": [
+      {
+        "id": "A",
+        "text": "Durlabhavardhana"
+      },
+      {
+        "id": "B",
+        "text": "Lalitaditya Muktapida"
+      },
+      {
+        "id": "C",
+        "text": "Tarapida"
+      },
+      {
+        "id": "D",
+        "text": "Kuvalayapida"
+      }
+    ],
+    "correct": "B",
+    "explanation_hi": "मार्तण्ड मंदिर का निर्माण ललितादित्य मुक्तापीड द्वारा करवाया गया था।",
+    "explanation_en": "Lalitaditya Muktapida constructed the Martand Sun Temple."
+  },
+  {
+    "id": 17,
+    "type": "Statement Type",
+    "question_hi": "कश्मीर के 'उत्पल वंश' की स्थापना किसने की थी और अवन्तिपुर नगर की नींव किसने रखी?",
+    "question_en": "Who founded the Utpala dynasty of Kashmir and established the town of Avantipur?",
+    "options_hi": [
+      {
+        "id": "A",
+        "text": "अवन्तिवर्मन"
+      },
+      {
+        "id": "B",
+        "text": "दुर्लभवर्द्धन"
+      },
+      {
+        "id": "C",
+        "text": "रानी दिद्दा"
+      },
+      {
+        "id": "D",
+        "text": "संग्रामराज"
+      }
+    ],
+    "options_en": [
+      {
+        "id": "A",
+        "text": "Avantivarman"
+      },
+      {
+        "id": "B",
+        "text": "Durlabhavardhana"
+      },
+      {
+        "id": "C",
+        "text": "Queen Didda"
+      },
+      {
+        "id": "D",
+        "text": "Sangramaraja"
+      }
+    ],
+    "correct": "A",
+    "explanation_hi": "उत्पल वंश का संस्थापक अवन्तिवर्मन था जिसने अवन्तिपुर नगर बसाया।",
+    "explanation_en": "Avantivarman founded Utpala dynasty and Avantipur."
+  },
+  {
+    "id": 18,
+    "type": "Tricky & Negative-Word",
+    "question_hi": "अवन्तिवर्मन के किस प्रतिभाशाली अभियंता (Engineer) ने कश्मीर में बाढ़ नियंत्रण एवं सिंचाई के लिए नहरों का निर्माण करवाया था?",
+    "question_en": "Which brilliant engineer of Avantivarman constructed canals for flood mitigation and irrigation in Kashmir?",
+    "options_hi": [
+      {
+        "id": "A",
+        "text": "सूय्य"
+      },
+      {
+        "id": "B",
+        "text": "कल्हण"
+      },
+      {
+        "id": "C",
+        "text": "हलायुध"
+      },
+      {
+        "id": "D",
+        "text": "बिल्हण"
+      }
+    ],
+    "options_en": [
+      {
+        "id": "A",
+        "text": "Suyya"
+      },
+      {
+        "id": "B",
+        "text": "Kalhana"
+      },
+      {
+        "id": "C",
+        "text": "Halayudha"
+      },
+      {
+        "id": "D",
+        "text": "Bilhana"
+      }
+    ],
+    "correct": "A",
+    "explanation_hi": "अवन्तिवर्मन के अभियंता सूय्य ने सिंचाई व बाढ़ नियंत्रण हेतु नहरें बनवाईं।",
+    "explanation_en": "Suyya was the engineer who regulated rivers and constructed canals."
+  },
+  {
+    "id": 19,
+    "type": "Statement Type",
+    "question_hi": "वर्ष 980 ई. में कश्मीर में शासन करने वाली अत्यंत महत्वाकांक्षी महिला शासिका 'रानी दिद्दा' किस वंश से संबंधित थीं?",
+    "question_en": "Ambitious female monarch Queen Didda (980 AD) was associated with which dynasty?",
+    "options_hi": [
+      {
+        "id": "A",
+        "text": "कार्कोट वंश"
+      },
+      {
+        "id": "B",
+        "text": "उत्पल वंश"
+      },
+      {
+        "id": "C",
+        "text": "लोहार वंश"
+      },
+      {
+        "id": "D",
+        "text": "वर्मन वंश"
+      }
+    ],
+    "options_en": [
+      {
+        "id": "A",
+        "text": "Karkota"
+      },
+      {
+        "id": "B",
+        "text": "Utpala"
+      },
+      {
+        "id": "C",
+        "text": "Lohara"
+      },
+      {
+        "id": "D",
+        "text": "Varman"
+      }
+    ],
+    "correct": "B",
+    "explanation_hi": "रानी दिद्दा उत्पल वंश की एक महत्वाकांक्षी शासिका थीं जिन्होंने 980 ई. में पूर्ण सत्ता संभाली।",
+    "explanation_en": "Queen Didda belonged to the Utpala dynasty."
+  },
+  {
+    "id": 20,
+    "type": "Statement Type",
+    "question_hi": "कश्मीर के 'लोहार वंश' का संस्थापक कौन था?",
+    "question_en": "Who was the founder of the Lohara dynasty of Kashmir?",
+    "options_hi": [
+      {
+        "id": "A",
+        "text": "संग्रामराज"
+      },
+      {
+        "id": "B",
+        "text": "अनंत"
+      },
+      {
+        "id": "C",
+        "text": "हर्ष"
+      },
+      {
+        "id": "D",
+        "text": "जयसिंह"
+      }
+    ],
+    "options_en": [
+      {
+        "id": "A",
+        "text": "Sangramaraja"
+      },
+      {
+        "id": "B",
+        "text": "Ananta"
+      },
+      {
+        "id": "C",
+        "text": "Harsha"
+      },
+      {
+        "id": "D",
+        "text": "Jayasimha"
+      }
+    ],
+    "correct": "A",
+    "explanation_hi": "लोहार वंश का संस्थापक संग्रामराज था।",
+    "explanation_en": "Sangramaraja founded the Lohara dynasty."
+  },
+  {
+    "id": 21,
+    "type": "Tricky & Negative-Word",
+    "question_hi": "लोहार वंश के किस राजा की पत्नी 'सूर्यमती' ने प्रशासन को सुधारने और वित्तीय स्थिरता लाने में उसकी महत्वपूर्ण सहायता की थी?",
+    "question_en": "Which Lohara ruler's wife Queen Suryamati assisted him in administrative and fiscal reforms?",
+    "options_hi": [
+      {
+        "id": "A",
+        "text": "संग्रामराज"
+      },
+      {
+        "id": "B",
+        "text": "राजा अनंत"
+      },
+      {
+        "id": "C",
+        "text": "हर्ष"
+      },
+      {
+        "id": "D",
+        "text": "जयसिंह"
+      }
+    ],
+    "options_en": [
+      {
+        "id": "A",
+        "text": "Sangramaraja"
+      },
+      {
+        "id": "B",
+        "text": "King Ananta"
+      },
+      {
+        "id": "C",
+        "text": "Harsha"
+      },
+      {
+        "id": "D",
+        "text": "Jayasimha"
+      }
+    ],
+    "correct": "B",
+    "explanation_hi": "राजा अनंत की पत्नी सूर्यमती ने प्रशासन सुधारने में सहायता की थी।",
+    "explanation_en": "Queen Suryamati was the wife of King Ananta."
+  },
+  {
+    "id": 22,
+    "type": "Statement Type",
+    "question_hi": "कश्मीर का कौन-सा शासक स्वयं एक महान विद्वान, कवि और कई भाषाओं का प्रकांड ज्ञाता था, जिसे कल्हण का आश्रयदाता माना जाता है?",
+    "question_en": "Which ruler of Kashmir was an erudite scholar, poet, polyglot and patron of Kalhana?",
+    "options_hi": [
+      {
+        "id": "A",
+        "text": "अवन्तिवर्मन"
+      },
+      {
+        "id": "B",
+        "text": "हर्ष (लोहार वंशीय राजा हर्ष)"
+      },
+      {
+        "id": "C",
+        "text": "ललितादित्य"
+      },
+      {
+        "id": "D",
+        "text": "दुर्लभवर्द्धन"
+      }
+    ],
+    "options_en": [
+      {
+        "id": "A",
+        "text": "Avantivarman"
+      },
+      {
+        "id": "B",
+        "text": "Harsha (Lohara king Harsha)"
+      },
+      {
+        "id": "C",
+        "text": "Lalitaditya"
+      },
+      {
+        "id": "D",
+        "text": "Durlabhavardhana"
+      }
+    ],
+    "correct": "B",
+    "explanation_hi": "लोहार वंश का शासक हर्ष विद्वान, कवि तथा कई भाषाओं का ज्ञाता था और कल्हण उसका आश्रित कवि था।",
+    "explanation_en": "Lohara king Harsha was a polyglot scholar and Kalhana's patron."
+  },
+  {
+    "id": 23,
+    "type": "Statement Type",
+    "question_hi": "कल्हण की ऐतिहासिक कृति 'राजतरंगिणी' का विवरण किस अंतिम लोहार शासक के शासनकाल (1128-1155 ई.) के साथ समाप्त होता है?",
+    "question_en": "Kalhana's chronicle 'Rajatarangini' concludes with the reign of which last Lohara ruler?",
+    "options_hi": [
+      {
+        "id": "A",
+        "text": "संग्रामराज"
+      },
+      {
+        "id": "B",
+        "text": "हर्ष"
+      },
+      {
+        "id": "C",
+        "text": "जयसिंह"
+      },
+      {
+        "id": "D",
+        "text": "अनंत"
+      }
+    ],
+    "options_en": [
+      {
+        "id": "A",
+        "text": "Sangramaraja"
+      },
+      {
+        "id": "B",
+        "text": "Harsha"
+      },
+      {
+        "id": "C",
+        "text": "Jayasimha"
+      },
+      {
+        "id": "D",
+        "text": "Ananta"
+      }
+    ],
+    "correct": "C",
+    "explanation_hi": "जयसिंह (1128-1155 ई.) के शासन के साथ ही कल्हण की राजतरंगिणी का विवरण समाप्त होता है।",
+    "explanation_en": "Rajatarangini ends with the reign of Jayasimha (1128-1155 AD)."
+  },
+  {
+    "id": 24,
+    "type": "Statement Type",
+    "question_hi": "चौथी शताब्दी के मध्य कामरूप (असम) में वर्मन वंश की प्रतिष्ठा का संस्थापक कौन था?",
+    "question_en": "Who founded the Varman dynasty in Kamarupa (Assam) in the mid-4th century?",
+    "options_hi": [
+      {
+        "id": "A",
+        "text": "भास्करवर्मन"
+      },
+      {
+        "id": "B",
+        "text": "पुष्यवर्मन"
+      },
+      {
+        "id": "C",
+        "text": "ककुत्स्थवर्मा"
+      },
+      {
+        "id": "D",
+        "text": "महेंद्रवर्मन"
+      }
+    ],
+    "options_en": [
+      {
+        "id": "A",
+        "text": "Bhaskaravarman"
+      },
+      {
+        "id": "B",
+        "text": "Pushyavarman"
+      },
+      {
+        "id": "C",
+        "text": "Kakusthavarma"
+      },
+      {
+        "id": "D",
+        "text": "Mahendravarman"
+      }
+    ],
+    "correct": "B",
+    "explanation_hi": "कामरूप में वर्मन वंश की प्रतिष्ठा का संस्थापक पुष्यवर्मन था।",
+    "explanation_en": "Pushyavarman was the founder of the Varman dynasty of Kamarupa."
+  },
+  {
+    "id": 25,
+    "type": "Tricky & Negative-Word",
+    "question_hi": "कामरूप के वर्मन वंश की राजधानी कहाँ स्थित थी?",
+    "question_en": "Where was the capital of the Varman dynasty of Kamarupa located?",
+    "options_hi": [
+      {
+        "id": "A",
+        "text": "प्रागज्योतिष"
+      },
+      {
+        "id": "B",
+        "text": "मुंगेर"
+      },
+      {
+        "id": "C",
+        "text": "नदिया"
+      },
+      {
+        "id": "D",
+        "text": "कन्नौज"
+      }
+    ],
+    "options_en": [
+      {
+        "id": "A",
+        "text": "Pragjyotisha"
+      },
+      {
+        "id": "B",
+        "text": "Munger"
+      },
+      {
+        "id": "C",
+        "text": "Nadiya"
+      },
+      {
+        "id": "D",
+        "text": "Kannauj"
+      }
+    ],
+    "correct": "A",
+    "explanation_hi": "कामरूप के वर्मन वंश की राजधानी प्रागज्योतिष थी। कालान्तर में कामरूप पाल साम्राज्य का अंग बन गया।",
+    "explanation_en": "Capital of Varman dynasty of Kamarupa was Pragjyotisha."
+  },
+  {
+    "id": 26,
+    "type": "Statement Type",
+    "question_hi": "गुर्जर प्रतिहार वंश का संस्थापक मालवा का कौन-सा शासक था?",
+    "question_en": "Who was the founder of the Gurjara-Pratihara dynasty of Malwa?",
+    "options_hi": [
+      {
+        "id": "A",
+        "text": "नागभट्ट प्रथम"
+      },
+      {
+        "id": "B",
+        "text": "वत्सराज"
+      },
+      {
+        "id": "C",
+        "text": "मिहिरभोज"
+      },
+      {
+        "id": "D",
+        "text": "महेन्द्रपाल"
+      }
+    ],
+    "options_en": [
+      {
+        "id": "A",
+        "text": "Nagabhata I"
+      },
+      {
+        "id": "B",
+        "text": "Vatsaraja"
+      },
+      {
+        "id": "C",
+        "text": "Mihir Bhoja"
+      },
+      {
+        "id": "D",
+        "text": "Mahendrapala"
+      }
+    ],
+    "correct": "A",
+    "explanation_hi": "मालवा का शासक नागभट्ट प्रथम गुर्जर प्रतिहार वंश का संस्थापक था।",
+    "explanation_en": "Nagabhata I was the founder of Gurjara-Pratihara dynasty."
+  },
+  {
+    "id": 27,
+    "type": "Tricky & Negative-Word",
+    "question_hi": "गुर्जर प्रतिहार शासक नागभट्ट द्वितीय को किस राष्ट्रकूट सम्राट ने पराजित किया था?",
+    "question_en": "Which Rashtrakuta emperor defeated Gurjara-Pratihara king Nagabhata II?",
+    "options_hi": [
+      {
+        "id": "A",
+        "text": "ध्रुव"
+      },
+      {
+        "id": "B",
+        "text": "कृष्ण प्रथम"
+      },
+      {
+        "id": "C",
+        "text": "गोविन्द तृतीय"
+      },
+      {
+        "id": "D",
+        "text": "अमोघवर्ष"
+      }
+    ],
+    "options_en": [
+      {
+        "id": "A",
+        "text": "Dhruva"
+      },
+      {
+        "id": "B",
+        "text": "Krishna I"
+      },
+      {
+        "id": "C",
+        "text": "Govinda III"
+      },
+      {
+        "id": "D",
+        "text": "Amoghavarsha"
+      }
+    ],
+    "correct": "C",
+    "explanation_hi": "नागभट्ट द्वितीय को राष्ट्रकूट सम्राट गोविन्द तृतीय ने पराजित किया था।",
+    "explanation_en": "Govinda III defeated Nagabhata II."
+  },
+  {
+    "id": 28,
+    "type": "Statement Type",
+    "question_hi": "प्रतिहार वंश के सर्वाधिक शक्तिशाली एवं प्रतापी राजा 'मिहिरभोज' के संदर्भ में क्या सत्य है?\n1. इसने अपनी राजधानी कन्नौज बनाई।\n2. वह भगवान विष्णु का परम भक्त था और उसने 'आदि वराह' की उपाधि धारण की।\n3. वह प्रतिहार वंश का सबसे यशस्वी शासक था।\n\nउपर्युक्त में से कौन-से कथन सत्य हैं?",
+    "question_en": "What is true about Mihir Bhoja of Gurjara-Pratihara dynasty?\n1. Established capital at Kannauj.\n2. Devotee of Vishnu and assumed title 'Adi Varaha'.\n3. Most powerful monarch of Pratiharas.\n\nWhich are true?",
+    "options_hi": [
+      {
+        "id": "A",
+        "text": "केवल 1 और 2"
+      },
+      {
+        "id": "B",
+        "text": "केवल 2 और 3"
+      },
+      {
+        "id": "C",
+        "text": "केवल 1 और 3"
+      },
+      {
+        "id": "D",
+        "text": "1, 2 और 3 (सभी सत्य हैं)"
+      }
+    ],
+    "options_en": [
+      {
+        "id": "A",
+        "text": "Only 1 and 2"
+      },
+      {
+        "id": "B",
+        "text": "Only 2 and 3"
+      },
+      {
+        "id": "C",
+        "text": "Only 1 and 3"
+      },
+      {
+        "id": "D",
+        "text": "1, 2 and 3 (All are true)"
+      }
+    ],
+    "correct": "D",
+    "explanation_hi": "तीनों कथन सत्य हैं। मिहिरभोज ने कन्नौज को राजधानी बनाया, विष्णुभक्त होने के कारण 'आदि वराह' उपाधि ली।",
+    "explanation_en": "All three statements are true regarding Mihir Bhoja."
+  },
+  {
+    "id": 29,
+    "type": "Matching / Mis-matching",
+    "question_hi": "प्रसिद्ध संस्कृत विद्वान एवं नाटककार राजशेखर किस प्रतिहार शासक के राजदरबार में रहते थे?",
+    "question_en": "Celebrated Sanskrit dramatist Rajashekhara lived in the court of which Pratihara king?",
+    "options_hi": [
+      {
+        "id": "A",
+        "text": "नागभट्ट प्रथम"
+      },
+      {
+        "id": "B",
+        "text": "वत्सराज"
+      },
+      {
+        "id": "C",
+        "text": "महेन्द्रपाल"
+      },
+      {
+        "id": "D",
+        "text": "यशपाल"
+      }
+    ],
+    "options_en": [
+      {
+        "id": "A",
+        "text": "Nagabhata I"
+      },
+      {
+        "id": "B",
+        "text": "Vatsaraja"
+      },
+      {
+        "id": "C",
+        "text": "Mahendrapala"
+      },
+      {
+        "id": "D",
+        "text": "Yashpala"
+      }
+    ],
+    "correct": "C",
+    "explanation_hi": "राजशेखर प्रतिहार शासक महेन्द्रपाल के राजदरबार में रहते थे (जिन्होंने कर्पूरमंजरी, काव्यमीमांसा लिखी)।",
+    "explanation_en": "Rajashekhara lived in the court of Mahendrapala."
+  },
+  {
+    "id": 30,
+    "type": "Tricky & Negative-Word",
+    "question_hi": "गुर्जर प्रतिहार वंश का अंतिम राजा कौन था?",
+    "question_en": "Who was the last king of the Gurjara-Pratihara dynasty?",
+    "options_hi": [
+      {
+        "id": "A",
+        "text": "राज्यपाल"
+      },
+      {
+        "id": "B",
+        "text": "त्रिलोचनपाल"
+      },
+      {
+        "id": "C",
+        "text": "यशपाल (1036 ई.)"
+      },
+      {
+        "id": "D",
+        "text": "महिपाल"
+      }
+    ],
+    "options_en": [
+      {
+        "id": "A",
+        "text": "Rajyapala"
+      },
+      {
+        "id": "B",
+        "text": "Trilochanapala"
+      },
+      {
+        "id": "C",
+        "text": "Yashpala (1036 AD)"
+      },
+      {
+        "id": "D",
+        "text": "Mahipala"
+      }
+    ],
+    "correct": "C",
+    "explanation_hi": "प्रतिहार वंश का अंतिम राजा यशपाल (1036 ई.) था।",
+    "explanation_en": "Yashpala was the last ruler of Gurjara-Pratihara dynasty in 1036 AD."
+  },
+  {
+    "id": 31,
+    "type": "Matching / Mis-matching",
+    "question_hi": "प्रतिहारों की राजधानियों के कालक्रमिक स्थानांतरण का सही क्रम क्या है?",
+    "question_en": "What was the correct sequence of Pratihara capitals?",
+    "options_hi": [
+      {
+        "id": "A",
+        "text": "भीनमाल → उज्जैन → कन्नौज"
+      },
+      {
+        "id": "B",
+        "text": "उज्जैन → भीनमाल → कन्नौज"
+      },
+      {
+        "id": "C",
+        "text": "कन्नौज → उज्जैन → भीनमाल"
+      },
+      {
+        "id": "D",
+        "text": "भीनमाल → कन्नौज → उज्जैन"
+      }
+    ],
+    "options_en": [
+      {
+        "id": "A",
+        "text": "Bhinmal -> Ujjain -> Kannauj"
+      },
+      {
+        "id": "B",
+        "text": "Ujjain -> Bhinmal -> Kannauj"
+      },
+      {
+        "id": "C",
+        "text": "Kannauj -> Ujjain -> Bhinmal"
+      },
+      {
+        "id": "D",
+        "text": "Bhinmal -> Kannauj -> Ujjain"
+      }
+    ],
+    "correct": "A",
+    "explanation_hi": "प्रतिहारों की राजधानी क्रमशः भीनमाल, उज्जैन एवं कन्नौज रही।",
+    "explanation_en": "Chronological order: Bhinmal -> Ujjain -> Kannauj."
+  },
+  {
+    "id": 32,
+    "type": "Tricky & Negative-Word",
+    "question_hi": "अरब यात्री 'सुलेमान' किस प्रतिहार राजा के शासनकाल में भारत आया था?",
+    "question_en": "Arab traveler Sulaiman visited India during the reign of which Pratihara king?",
+    "options_hi": [
+      {
+        "id": "A",
+        "text": "नागभट्ट प्रथम"
+      },
+      {
+        "id": "B",
+        "text": "वत्सराज"
+      },
+      {
+        "id": "C",
+        "text": "मिहिरभोज"
+      },
+      {
+        "id": "D",
+        "text": "महेन्द्रपाल"
+      }
+    ],
+    "options_en": [
+      {
+        "id": "A",
+        "text": "Nagabhata I"
+      },
+      {
+        "id": "B",
+        "text": "Vatsaraja"
+      },
+      {
+        "id": "C",
+        "text": "Mihir Bhoja"
+      },
+      {
+        "id": "D",
+        "text": "Mahendrapala"
+      }
+    ],
+    "correct": "B",
+    "explanation_hi": "अरब यात्री सुलेमान प्रतिहार राजा वत्सराज के शासनकाल में भारत आया था।",
+    "explanation_en": "Sulaiman visited India during the reign of Vatsaraja."
+  },
+  {
+    "id": 33,
+    "type": "Statement Type",
+    "question_hi": "तोमर वंश और दिल्ली की स्थापना के संदर्भ में निम्नलिखित कथनों पर विचार कीजिए:\n1. राजा अनंगपाल तोमर प्रथम को तोमर वंश का संस्थापक और दिल्ली का प्रथम शासक माना जाता है।\n2. अनंगपाल तोमर प्रथम ने दिल्ली (प्राचीन नाम: दिहिलिका) की स्थापना की थी।\n3. अनंगपाल तोमर द्वितीय ने दिल्ली को सुदृढ़ किया और 'लालकोट' का निर्माण करवाया।\n\nउपर्युक्त में से कौन-से कथन सत्य हैं?",
+    "question_en": "Consider statements on the Tomara dynasty and foundation of Delhi:\n1. Anangpal Tomar I was founder and first ruler of Delhi.\n2. Founded Delhi (ancient name Dihilika).\n3. Anangpal Tomar II fortified Delhi and built 'Lal Kot'.\n\nWhich are true?",
+    "options_hi": [
+      {
+        "id": "A",
+        "text": "केवल 1 और 2"
+      },
+      {
+        "id": "B",
+        "text": "केवल 2 और 3"
+      },
+      {
+        "id": "C",
+        "text": "केवल 1 और 3"
+      },
+      {
+        "id": "D",
+        "text": "1, 2 और 3 (सभी सत्य हैं)"
+      }
+    ],
+    "options_en": [
+      {
+        "id": "A",
+        "text": "Only 1 and 2"
+      },
+      {
+        "id": "B",
+        "text": "Only 2 and 3"
+      },
+      {
+        "id": "C",
+        "text": "Only 1 and 3"
+      },
+      {
+        "id": "D",
+        "text": "1, 2 and 3 (All are true)"
+      }
+    ],
+    "correct": "D",
+    "explanation_hi": "तीनों कथन पूर्णतः सत्य हैं। अनंगपाल प्रथम ने दिहिलिका बसाई और अनंगपाल द्वितीय ने लालकोट बनवाया।",
+    "explanation_en": "All three statements are historically valid."
+  },
+  {
+    "id": 34,
+    "type": "Tricky & Negative-Word",
+    "question_hi": "12वीं शताब्दी में तोमरों को परास्त कर दिल्ली पर किस चौहान शासक ने अधिकार कर लिया था?",
+    "question_en": "In the 12th century, which Chauhan ruler conquered Delhi from the Tomaras?",
+    "options_hi": [
+      {
+        "id": "A",
+        "text": "अजयराज"
+      },
+      {
+        "id": "B",
+        "text": "विग्रहराज चतुर्थ"
+      },
+      {
+        "id": "C",
+        "text": "पृथ्वीराज चौहान (तृतीय)"
+      },
+      {
+        "id": "D",
+        "text": "अर्णोराज"
+      }
+    ],
+    "options_en": [
+      {
+        "id": "A",
+        "text": "Ajayaraja"
+      },
+      {
+        "id": "B",
+        "text": "Vigraharaja IV"
+      },
+      {
+        "id": "C",
+        "text": "Prithviraj Chauhan (III)"
+      },
+      {
+        "id": "D",
+        "text": "Arnoraja"
+      }
+    ],
+    "correct": "C",
+    "explanation_hi": "12वीं शताब्दी में चौहान शासक पृथ्वीराज चौहान ने दिल्ली पर अधिकार कर लिया।",
+    "explanation_en": "Prithviraj Chauhan III established control over Delhi."
+  },
+  {
+    "id": 35,
+    "type": "Statement Type",
+    "question_hi": "गहड़वाल (राठौर) राजवंश का संस्थापक कौन था और इसकी राजधानी कहाँ थी?",
+    "question_en": "Who was the founder of the Gahadavala dynasty and where was its capital?",
+    "options_hi": [
+      {
+        "id": "A",
+        "text": "चन्द्रदेव — वाराणसी"
+      },
+      {
+        "id": "B",
+        "text": "गोविन्दचन्द्र — कन्नौज"
+      },
+      {
+        "id": "C",
+        "text": "जयचन्द — प्रयाग"
+      },
+      {
+        "id": "D",
+        "text": "अनंगपाल — दिल्ली"
+      }
+    ],
+    "options_en": [
+      {
+        "id": "A",
+        "text": "Chandradeva — Varanasi"
+      },
+      {
+        "id": "B",
+        "text": "Govindachandra — Kannauj"
+      },
+      {
+        "id": "C",
+        "text": "Jayachandra — Prayag"
+      },
+      {
+        "id": "D",
+        "text": "Anangpal — Delhi"
+      }
+    ],
+    "correct": "A",
+    "explanation_hi": "गहड़वाल वंश का संस्थापक चन्द्रदेव था और इसकी राजधानी वाराणसी थी।",
+    "explanation_en": "Chandradeva founded the Gahadavalas with capital at Varanasi."
+  },
+  {
+    "id": 36,
+    "type": "Tricky & Negative-Word",
+    "question_hi": "गहड़वाल वंश के सबसे प्रतापी राजा गोविन्दचन्द्र के मंत्री 'लक्ष्मीधर' द्वारा रचित प्रसिद्ध विधि एवं धर्मशास्त्र ग्रंथ का नाम क्या था?",
+    "question_en": "What was the celebrated legal treatise authored by Lakshmidhara, minister of Gahadavala king Govindachandra?",
+    "options_hi": [
+      {
+        "id": "A",
+        "text": "मिताक्षरा"
+      },
+      {
+        "id": "B",
+        "text": "कृत्यकल्पतरु"
+      },
+      {
+        "id": "C",
+        "text": "युक्तिकल्पतरु"
+      },
+      {
+        "id": "D",
+        "text": "प्रबंधचिंतामणि"
+      }
+    ],
+    "options_en": [
+      {
+        "id": "A",
+        "text": "Mitakshara"
+      },
+      {
+        "id": "B",
+        "text": "Krityakalpataru"
+      },
+      {
+        "id": "C",
+        "text": "Yuktikalpataru"
+      },
+      {
+        "id": "D",
+        "text": "Prabandhachintamani"
+      }
+    ],
+    "correct": "B",
+    "explanation_hi": "लक्ष्मीधर ने 'कृत्यकल्पतरु' नामक प्रसिद्ध ग्रंथ लिखा था।",
+    "explanation_en": "Lakshmidhara authored Krityakalpataru."
+  },
+  {
+    "id": 37,
+    "type": "Statement Type",
+    "question_hi": "गहड़वाल शासक गोविन्दचन्द्र की बौद्ध रानी 'कुमारदेवी' ने सारनाथ में किस प्रसिद्ध विहार का निर्माण करवाया था?",
+    "question_en": "Which famous Vihara was constructed at Sarnath by Govindachandra's Buddhist queen Kumaradevi?",
+    "options_hi": [
+      {
+        "id": "A",
+        "text": "धर्मचक्र-जिन विहार"
+      },
+      {
+        "id": "B",
+        "text": "सोमपुर महाविहार"
+      },
+      {
+        "id": "C",
+        "text": "ओदन्तपुरी विहार"
+      },
+      {
+        "id": "D",
+        "text": "विक्रमशिला विहार"
+      }
+    ],
+    "options_en": [
+      {
+        "id": "A",
+        "text": "Dharmachakra-Jina Vihara"
+      },
+      {
+        "id": "B",
+        "text": "Somapura Vihara"
+      },
+      {
+        "id": "C",
+        "text": "Odantapuri Vihara"
+      },
+      {
+        "id": "D",
+        "text": "Vikramashila Vihara"
+      }
+    ],
+    "correct": "A",
+    "explanation_hi": "रानी कुमारदेवी ने सारनाथ में 'धर्मचक्र-जिन विहार' बनवाया था।",
+    "explanation_en": "Queen Kumaradevi constructed Dharmachakra-Jina Vihara at Sarnath."
+  },
+  {
+    "id": 38,
+    "type": "Tricky & Negative-Word",
+    "question_hi": "1194 ई. के 'चंदावर के युद्ध' में मुहम्मद गौरी ने किस अंतिम गहड़वाल शासक को पराजित कर मार डाला था?",
+    "question_en": "In the Battle of Chandawar (1194 AD), Muhammad Ghori defeated and killed which last Gahadavala ruler?",
+    "options_hi": [
+      {
+        "id": "A",
+        "text": "गोविन्दचन्द्र"
+      },
+      {
+        "id": "B",
+        "text": "जयचन्द"
+      },
+      {
+        "id": "C",
+        "text": "चन्द्रदेव"
+      },
+      {
+        "id": "D",
+        "text": "विजयचन्द्र"
+      }
+    ],
+    "options_en": [
+      {
+        "id": "A",
+        "text": "Govindachandra"
+      },
+      {
+        "id": "B",
+        "text": "Jayachandra"
+      },
+      {
+        "id": "C",
+        "text": "Chandradeva"
+      },
+      {
+        "id": "D",
+        "text": "Vijayachandra"
+      }
+    ],
+    "correct": "B",
+    "explanation_hi": "1194 ई. में चंदावर के युद्ध में गोरी ने जयचन्द को पराजित कर मार डाला।",
+    "explanation_en": "Muhammad Ghori defeated and killed Jayachandra at Chandawar in 1194 AD."
+  },
+  {
+    "id": 39,
+    "type": "Statement Type",
+    "question_hi": "चौहान (चाहमान) वंश की स्थापना किसने की थी और इसकी प्रारंभिक राजधानी कहाँ थी?",
+    "question_en": "Who founded the Chauhan (Chahamana) dynasty and where was its initial capital?",
+    "options_hi": [
+      {
+        "id": "A",
+        "text": "वासुदेव — अहिच्छत्र"
+      },
+      {
+        "id": "B",
+        "text": "अजयराज — अजमेर"
+      },
+      {
+        "id": "C",
+        "text": "विग्रहराज चतुर्थ — दिल्ली"
+      },
+      {
+        "id": "D",
+        "text": "पृथ्वीराज प्रथम — रणथम्भौर"
+      }
+    ],
+    "options_en": [
+      {
+        "id": "A",
+        "text": "Vasudeva — Ahichchhatra"
+      },
+      {
+        "id": "B",
+        "text": "Ajayaraja — Ajmer"
+      },
+      {
+        "id": "C",
+        "text": "Vigraharaja IV — Delhi"
+      },
+      {
+        "id": "D",
+        "text": "Prithviraja I — Ranthambore"
+      }
+    ],
+    "correct": "A",
+    "explanation_hi": "चौहान वंश का संस्थापक वासुदेव था और प्रारंभिक राजधानी अहिच्छत्र थी। बाद में अजयराज द्वितीय ने अजमेर बसाया।",
+    "explanation_en": "Vasudeva founded the dynasty with initial capital at Ahichchhatra."
+  },
+  {
+    "id": 40,
+    "type": "Tricky & Negative-Word",
+    "question_hi": "संस्कृत नाटक 'हरिकेलि' की रचना किस चौहान शासक ने की थी?",
+    "question_en": "Which Chauhan monarch authored the Sanskrit drama 'Harikeli'?",
+    "options_hi": [
+      {
+        "id": "A",
+        "text": "अर्णोराज"
+      },
+      {
+        "id": "B",
+        "text": "विग्रहराज चतुर्थ (बीसलदेव)"
+      },
+      {
+        "id": "C",
+        "text": "पृथ्वीराज तृतीय"
+      },
+      {
+        "id": "D",
+        "text": "अजयराज द्वितीय"
+      }
+    ],
+    "options_en": [
+      {
+        "id": "A",
+        "text": "Arnoraja"
+      },
+      {
+        "id": "B",
+        "text": "Vigraharaja IV (Bisaldev)"
+      },
+      {
+        "id": "C",
+        "text": "Prithviraj III"
+      },
+      {
+        "id": "D",
+        "text": "Ajayaraja II"
+      }
+    ],
+    "correct": "B",
+    "explanation_hi": "विग्रहराज चतुर्थ (बीसलदेव) ने हरिकेलि नामक संस्कृत नाटक की रचना की थी।",
+    "explanation_en": "Vigraharaja IV (Bisaldev) composed the Sanskrit play Harikeli."
+  },
+  {
+    "id": 41,
+    "type": "Statement Type",
+    "question_hi": "अजमेर में स्थित 'अढ़ाई दिन का झोपड़ा' नामक मस्जिद मूलतः विग्रहराज चतुर्थ द्वारा निर्मित क्या थी?",
+    "question_en": "What was 'Adhai Din Ka Jhonpra' at Ajmer originally constructed as by Vigraharaja IV?",
+    "options_hi": [
+      {
+        "id": "A",
+        "text": "एक संस्कृत विद्यालय (सरस्वती मंदिर)"
+      },
+      {
+        "id": "B",
+        "text": "एक जैन मंदिर"
+      },
+      {
+        "id": "C",
+        "text": "एक सैन्य छावनी"
+      },
+      {
+        "id": "D",
+        "text": "एक राजप्रासाद"
+      }
+    ],
+    "options_en": [
+      {
+        "id": "A",
+        "text": "A Sanskrit college"
+      },
+      {
+        "id": "B",
+        "text": "A Jain temple"
+      },
+      {
+        "id": "C",
+        "text": "A military garrison"
+      },
+      {
+        "id": "D",
+        "text": "A royal palace"
+      }
+    ],
+    "correct": "A",
+    "explanation_hi": "अढ़ाई दिन का झोपड़ा मूल रूप से विग्रहराज चतुर्थ द्वारा निर्मित एक संस्कृत विद्यालय था।",
+    "explanation_en": "It was originally a Sanskrit college built by Vigraharaja IV."
+  },
+  {
+    "id": 42,
+    "type": "Matching / Mis-matching",
+    "question_hi": "विग्रहराज चतुर्थ के राजकवि सोमदेव द्वारा रचित प्रसिद्ध नाटक कौन-सा था?",
+    "question_en": "Which famous drama was written by Somadeva, court poet of Vigraharaja IV?",
+    "options_hi": [
+      {
+        "id": "A",
+        "text": "ललित विग्रहराज"
+      },
+      {
+        "id": "B",
+        "text": "पृथ्वीराजरासो"
+      },
+      {
+        "id": "C",
+        "text": "प्रबोध चंद्रोदय"
+      },
+      {
+        "id": "D",
+        "text": "कर्पूरमंजरी"
+      }
+    ],
+    "options_en": [
+      {
+        "id": "A",
+        "text": "Lalita Vigraharaja"
+      },
+      {
+        "id": "B",
+        "text": "Prithviraj Raso"
+      },
+      {
+        "id": "C",
+        "text": "Prabodha Chandrodaya"
+      },
+      {
+        "id": "D",
+        "text": "Karpuramanjari"
+      }
+    ],
+    "correct": "A",
+    "explanation_hi": "सोमदेव ने 'ललित विग्रहराज' नामक नाटक लिखा था।",
+    "explanation_en": "Somadeva authored the play Lalita Vigraharaja."
+  },
+  {
+    "id": 43,
+    "type": "Assertion-Reason",
+    "question_hi": "कथन (A): तराइन के प्रथम युद्ध (1191 ई.) में पृथ्वीराज तृतीय ने मुहम्मद गौरी को बुरी तरह परास्त किया।\nकारण (R): तराइन के द्वितीय युद्ध (1192 ई.) में मुहम्मद गौरी ने पृथ्वीराज तृतीय को पराजित कर भारत में मुस्लिम सत्ता की नींव रखी।",
+    "question_en": "Assertion (A): Prithviraj III routed Muhammad Ghori in First Battle of Tarain (1191 AD).\nReason (R): Ghori defeated Prithviraj III in Second Battle of Tarain (1192 AD) laying foundation of Sultanate.",
+    "options_hi": [
+      {
+        "id": "A",
+        "text": "(A) और (R) दोनों सही हैं और (R), (A) की सही व्याख्या है।"
+      },
+      {
+        "id": "B",
+        "text": "(A) और (R) दोनों सही हैं लेकिन (R), (A) की सही व्याख्या नहीं है।"
+      },
+      {
+        "id": "C",
+        "text": "(A) सही है लेकिन (R) गलत है।"
+      },
+      {
+        "id": "D",
+        "text": "(A) गलत है लेकिन (R) सही है।"
+      }
+    ],
+    "options_en": [
+      {
+        "id": "A",
+        "text": "Both (A) and (R) are correct and (R) is the correct explanation of (A)."
+      },
+      {
+        "id": "B",
+        "text": "Both (A) and (R) are correct but (R) is NOT the correct explanation."
+      },
+      {
+        "id": "C",
+        "text": "(A) is true but (R) is false."
+      },
+      {
+        "id": "D",
+        "text": "(A) is false but (R) is true."
+      }
+    ],
+    "correct": "B",
+    "explanation_hi": "दोनों कथन ऐतिहासिक रूप से सत्य हैं, परंतु द्वितीय युद्ध प्रथम युद्ध का कारण नहीं है।",
+    "explanation_en": "Both statements are true facts, but (R) is not the causal explanation of (A)."
+  },
+  {
+    "id": 44,
+    "type": "Tricky & Negative-Word",
+    "question_hi": "रणथम्भौर के प्रसिद्ध 'जैन मंदिर' का शिखर निम्नलिखित में से किस शासक ने बनवाया था?",
+    "question_en": "Who constructed the spire (shikhara) of the famous Jain Temple at Ranthambore?",
+    "options_hi": [
+      {
+        "id": "A",
+        "text": "पृथ्वीराज तृतीय"
+      },
+      {
+        "id": "B",
+        "text": "हम्मीरदेव"
+      },
+      {
+        "id": "C",
+        "text": "विग्रहराज चतुर्थ"
+      },
+      {
+        "id": "D",
+        "text": "वासुदेव"
+      }
+    ],
+    "options_en": [
+      {
+        "id": "A",
+        "text": "Prithviraj III"
+      },
+      {
+        "id": "B",
+        "text": "Hammiradeva"
+      },
+      {
+        "id": "C",
+        "text": "Vigraharaja IV"
+      },
+      {
+        "id": "D",
+        "text": "Vasudeva"
+      }
+    ],
+    "correct": "A",
+    "explanation_hi": "रणथम्भौर के जैन मंदिर का शिखर पृथ्वीराज तृतीय ने बनवाया था।",
+    "explanation_en": "The shikhara of Ranthambore Jain temple was built by Prithviraj III."
+  },
+  {
+    "id": 45,
+    "type": "Statement Type",
+    "question_hi": "पृथ्वीराज तृतीय के राजकवि चंदवरदाई ने किस अमर महाकाव्य की रचना की थी?",
+    "question_en": "Which epic poem was composed by Chand Bardai, the court poet of Prithviraj III?",
+    "options_hi": [
+      {
+        "id": "A",
+        "text": "पृथ्वीराजरासो"
+      },
+      {
+        "id": "B",
+        "text": "पृथ्वीराज विजय"
+      },
+      {
+        "id": "C",
+        "text": "हम्मीर महाकाव्य"
+      },
+      {
+        "id": "D",
+        "text": "बीसलदेव रासो"
+      }
+    ],
+    "options_en": [
+      {
+        "id": "A",
+        "text": "Prithviraj Raso"
+      },
+      {
+        "id": "B",
+        "text": "Prithviraja Vijaya"
+      },
+      {
+        "id": "C",
+        "text": "Hammira Mahakavya"
+      },
+      {
+        "id": "D",
+        "text": "Bisaldev Raso"
+      }
+    ],
+    "correct": "A",
+    "explanation_hi": "चंदवरदाई ने 'पृथ्वीराजरासो' की रचना की थी।",
+    "explanation_en": "Chand Bardai authored Prithviraj Raso."
+  },
+  {
+    "id": 46,
+    "type": "Statement Type",
+    "question_hi": "परमार वंश की स्थापना किसने की थी और इसकी प्राचीन व बाद की राजधानियाँ क्रमशः कहाँ थीं?",
+    "question_en": "Who founded the Paramara dynasty and where were its ancient and later capitals?",
+    "options_hi": [
+      {
+        "id": "A",
+        "text": "उपेन्द्रराज — प्राचीन राजधानी उज्जैन, बाद में धार नगरी"
+      },
+      {
+        "id": "B",
+        "text": "राजा भोज — भोपाल"
+      },
+      {
+        "id": "C",
+        "text": "वाक्पति मुंज — मांडू"
+      },
+      {
+        "id": "D",
+        "text": "सिंधुराज — महेश्वर"
+      }
+    ],
+    "options_en": [
+      {
+        "id": "A",
+        "text": "Upendraraja — Ancient capital Ujjain, later Dhara Nagari"
+      },
+      {
+        "id": "B",
+        "text": "Raja Bhoja — Bhopal"
+      },
+      {
+        "id": "C",
+        "text": "Vakpati Munja — Mandu"
+      },
+      {
+        "id": "D",
+        "text": "Sindhuraja — Maheshwar"
+      }
+    ],
+    "correct": "A",
+    "explanation_hi": "परमार वंश का संस्थापक उपेन्द्रराज था। प्राचीन राजधानी उज्जैन तथा बाद में धार नगरी बनी।",
+    "explanation_en": "Upendraraja founded Paramaras; ancient capital was Ujjain, later Dhara."
+  },
+  {
+    "id": 47,
+    "type": "Tricky & Negative-Word",
+    "question_hi": "परमार शासक वाक्पति मुंज के राजदरबार में निम्नलिखित में से कौन-से मूर्धन्य विद्वान निवास करते थे?\n1. पद्मगुप्त (नवसाहसांकचरित के रचयिता)\n2. धनंजय (दशरूपक के रचयिता)\n3. धनिक, हलायुध एवं अमितगति\n\nसही कूट चुनिए:",
+    "question_en": "Which scholars resided in the court of Paramara king Vakpati Munja?\n1. Padmagupta (author of Navasahasankacharita)\n2. Dhananjaya (author of Dasharupaka)\n3. Dhanika, Halayudha and Amitagati\n\nChoose correct code:",
+    "options_hi": [
+      {
+        "id": "A",
+        "text": "केवल 1 और 2"
+      },
+      {
+        "id": "B",
+        "text": "केवल 2 और 3"
+      },
+      {
+        "id": "C",
+        "text": "केवल 1 और 3"
+      },
+      {
+        "id": "D",
+        "text": "1, 2 और 3 (सभी)"
+      }
+    ],
+    "options_en": [
+      {
+        "id": "A",
+        "text": "Only 1 and 2"
+      },
+      {
+        "id": "B",
+        "text": "Only 2 and 3"
+      },
+      {
+        "id": "C",
+        "text": "Only 1 and 3"
+      },
+      {
+        "id": "D",
+        "text": "1, 2 and 3 (All)"
+      }
+    ],
+    "correct": "D",
+    "explanation_hi": "वाक्पति मुंज के दरबार में पद्मगुप्त, धनंजय, धनिक, हलायुध एवं अमितगति सभी रहते थे।",
+    "explanation_en": "All these luminaries were patronized by Vakpati Munja."
+  },
+  {
+    "id": 48,
+    "type": "Statement Type",
+    "question_hi": "परमार वंश के सबसे यशस्वी सम्राट 'राजा भोज' के संदर्भ में निम्नलिखित कथनों पर विचार कीजिए:\n1. उन्होंने भोपाल के दक्षिण में 'भोजपुर' नामक विशाल झील का निर्माण करवाया।\n2. राजा भोज ने 'कविराज' की उपाधि धारण की तथा चिकित्सा, गणित और व्याकरण पर अनेक ग्रंथ लिखे।\n3. चित्तौड़ में प्रसिद्ध 'त्रिभुवन नारायण मंदिर' का निर्माण राजा भोज ने करवाया था।\n\nउपर्युक्त में से कौन-से कथन सत्य हैं?",
+    "question_en": "Consider statements regarding Raja Bhoja:\n1. Constructed the vast Bhojpur lake south of Bhopal.\n2. Took title 'Kaviraja' and authored works on medicine, math, grammar.\n3. Built Tribhuvana Narayana Temple at Chittorgarh.\n\nWhich are true?",
+    "options_hi": [
+      {
+        "id": "A",
+        "text": "केवल 1 और 2"
+      },
+      {
+        "id": "B",
+        "text": "केवल 2 और 3"
+      },
+      {
+        "id": "C",
+        "text": "केवल 1 और 3"
+      },
+      {
+        "id": "D",
+        "text": "1, 2 और 3 (सभी सत्य हैं)"
+      }
+    ],
+    "options_en": [
+      {
+        "id": "A",
+        "text": "Only 1 and 2"
+      },
+      {
+        "id": "B",
+        "text": "Only 2 and 3"
+      },
+      {
+        "id": "C",
+        "text": "Only 1 and 3"
+      },
+      {
+        "id": "D",
+        "text": "1, 2 and 3 (All are true)"
+      }
+    ],
+    "correct": "D",
+    "explanation_hi": "तीनों कथन ऐतिहासिक रूप से पूर्णतः सत्य हैं।",
+    "explanation_en": "All three statements are authentic regarding Raja Bhoja."
+  },
+  {
+    "id": 49,
+    "type": "Tricky & Negative-Word",
+    "question_hi": "राजा भोज द्वारा रचित किस ग्रंथ में वास्तुशास्त्र के साथ-साथ विविध 'वैज्ञानिक यंत्रों और उनके उपयोग' का विशद उल्लेख मिलता है?",
+    "question_en": "In which work of Raja Bhoja is there an elaborate description of architecture and various scientific mechanical devices?",
+    "options_hi": [
+      {
+        "id": "A",
+        "text": "युक्तिकल्पतरु"
+      },
+      {
+        "id": "B",
+        "text": "समरांगण सूत्रधार"
+      },
+      {
+        "id": "C",
+        "text": "प्रबंधचिंतामणि"
+      },
+      {
+        "id": "D",
+        "text": "नैषधीयचरित"
+      }
+    ],
+    "options_en": [
+      {
+        "id": "A",
+        "text": "Yuktikalpataru"
+      },
+      {
+        "id": "B",
+        "text": "Samarangana Sutradhara"
+      },
+      {
+        "id": "C",
+        "text": "Prabandhachintamani"
+      },
+      {
+        "id": "D",
+        "text": "Naishadhiyacharita"
+      }
+    ],
+    "correct": "A",
+    "explanation_hi": "भोजकृत 'युक्तिकल्पतरु' में वास्तुशास्त्र व वैज्ञानिक यंत्रों के उपयोग का उल्लेख है।",
+    "explanation_en": "Yuktikalpataru describes architecture and mechanical devices."
+  },
+  {
+    "id": 50,
+    "type": "Matching / Mis-matching",
+    "question_hi": "ग्रंथों और उनके रचयिताओं के संदर्भ में कौन-सा मिलान असत्य है?",
+    "question_en": "Which match is INCORRECT regarding treatises and authors?",
+    "options_hi": [
+      {
+        "id": "A",
+        "text": "नैषधीयचरित — श्रीहर्ष"
+      },
+      {
+        "id": "B",
+        "text": "प्रबंधचिंतामणि — मेरुतुंग"
+      },
+      {
+        "id": "C",
+        "text": "नवसाहसांकचरित — पद्मगुप्त"
+      },
+      {
+        "id": "D",
+        "text": "दशरूपक — राजा भोज"
+      }
+    ],
+    "options_en": [
+      {
+        "id": "A",
+        "text": "Naishadhiyacharita — Sriharsha"
+      },
+      {
+        "id": "B",
+        "text": "Prabandhachintamani — Merutunga"
+      },
+      {
+        "id": "C",
+        "text": "Navasahasankacharita — Padmagupta"
+      },
+      {
+        "id": "D",
+        "text": "Dasharupaka — Raja Bhoja"
+      }
+    ],
+    "correct": "D",
+    "explanation_hi": "'दशरूपक' के रचयिता धनंजय थे, न कि राजा भोज।",
+    "explanation_en": "Dasharupaka was composed by Dhananjaya, not Raja Bhoja."
+  },
+  {
+    "id": 51,
+    "type": "Statement Type",
+    "question_hi": "राजा भोज ने अपनी राजधानी धार नगरी में किस देवी के भव्य मंदिर और संस्कृत विद्यालय की स्थापना की थी?",
+    "question_en": "Which goddess's grand temple and Sanskrit academy did Raja Bhoja establish in Dhara?",
+    "options_hi": [
+      {
+        "id": "A",
+        "text": "सरस्वती मंदिर (वाग्देवी)"
+      },
+      {
+        "id": "B",
+        "text": "दुर्गा मंदिर"
+      },
+      {
+        "id": "C",
+        "text": "काली मंदिर"
+      },
+      {
+        "id": "D",
+        "text": "लक्ष्मी मंदिर"
+      }
+    ],
+    "options_en": [
+      {
+        "id": "A",
+        "text": "Saraswati Temple (Vagdevi)"
+      },
+      {
+        "id": "B",
+        "text": "Durga Temple"
+      },
+      {
+        "id": "C",
+        "text": "Kali Temple"
+      },
+      {
+        "id": "D",
+        "text": "Lakshmi Temple"
+      }
+    ],
+    "correct": "A",
+    "explanation_hi": "राजा भोज ने धार नगरी में सरस्वती मंदिर बनवाया और परिसर में संस्कृत विद्यालय खोला।",
+    "explanation_en": "Raja Bhoja established the Saraswati temple and Sanskrit academy at Dhara."
+  },
+  {
+    "id": 52,
+    "type": "Tricky & Negative-Word",
+    "question_hi": "1297 ई. में अलाउद्दीन खिलजी के किन सेनापतियों ने मालवा पर आक्रमण कर उसे दिल्ली सल्तनत में मिला लिया था?",
+    "question_en": "In 1297 AD, which generals of Alauddin Khilji conquered Malwa?",
+    "options_hi": [
+      {
+        "id": "A",
+        "text": "नुसरत खाँ और उलुग खाँ"
+      },
+      {
+        "id": "B",
+        "text": "मलिक काफूर और गाजी मलिक"
+      },
+      {
+        "id": "C",
+        "text": "जफर खाँ और अल्प खाँ"
+      },
+      {
+        "id": "D",
+        "text": "ऐबक और बख्तियार"
+      }
+    ],
+    "options_en": [
+      {
+        "id": "A",
+        "text": "Nusrat Khan and Ulugh Khan"
+      },
+      {
+        "id": "B",
+        "text": "Malik Kafur and Ghazi Malik"
+      },
+      {
+        "id": "C",
+        "text": "Zafar Khan and Alp Khan"
+      },
+      {
+        "id": "D",
+        "text": "Aibak and Bakhtiyar"
+      }
+    ],
+    "correct": "A",
+    "explanation_hi": "1297 ई. में अलाउद्दीन के सेनापति नुसरत खाँ और उलुग खाँ ने मालवा पर अधिकार कर लिया।",
+    "explanation_en": "Nusrat Khan and Ulugh Khan conquered Malwa in 1297 AD."
+  },
+  {
+    "id": 53,
+    "type": "Statement Type",
+    "question_hi": "चंदेल राजवंश की स्थापना और प्रारंभिक इतिहास के बारे में क्या सत्य है?\n1. प्रतिहार साम्राज्य के पतन के बाद बुंदेलखंड (प्राचीन नाम: जेजाकभुक्ति) में चंदेल वंश का उदय हुआ।\n2. चंदेल वंश का संस्थापक नन्नुक (831 ई.) था।\n3. प्रारंभिक राजधानी कालिंजर (महोबा) थी, जिसे राजा धंग ने खजुराहो स्थानांतरित किया।\n\nउपर्युक्त में से कौन-से कथन सत्य हैं?",
+    "question_en": "Consider statements on the Chandela dynasty:\n1. Emerged in Bundelkhand (ancient name Jejakabhukti) after Pratihara fall.\n2. Founded by Nannuka in 831 AD.\n3. Initial capital was Kalinjar (Mahoba), shifted to Khajuraho by King Dhanga.\n\nWhich are true?",
+    "options_hi": [
+      {
+        "id": "A",
+        "text": "केवल 1 और 2"
+      },
+      {
+        "id": "B",
+        "text": "केवल 2 और 3"
+      },
+      {
+        "id": "C",
+        "text": "केवल 1 और 3"
+      },
+      {
+        "id": "D",
+        "text": "1, 2 और 3 (सभी सत्य हैं)"
+      }
+    ],
+    "options_en": [
+      {
+        "id": "A",
+        "text": "Only 1 and 2"
+      },
+      {
+        "id": "B",
+        "text": "Only 2 and 3"
+      },
+      {
+        "id": "C",
+        "text": "Only 1 and 3"
+      },
+      {
+        "id": "D",
+        "text": "1, 2 and 3 (All are true)"
+      }
+    ],
+    "correct": "D",
+    "explanation_hi": "तीनों कथन पूर्णतः सत्य हैं। बुंदेलखंड का नाम जेजाकभुक्ति था, नन्नुक संस्थापक था और धंग ने खजुराहो को राजधानी बनाया।",
+    "explanation_en": "All three statements are verified facts."
+  },
+  {
+    "id": 54,
+    "type": "Tricky & Negative-Word",
+    "question_hi": "चंदेल वंश के किस प्रतापी राजा ने कन्नौज के प्रतिहार राजा देवपाल को हराकर उससे प्राप्त विष्णु की बैकुंठ प्रतिमा को खजुराहो के विष्णु मंदिर (लक्ष्मण मंदिर) में स्थापित किया?",
+    "question_en": "Which Chandela king defeated Pratihara king Devapala and installed a Vaikuntha Vishnu idol in Khajuraho's Lakshmana temple?",
+    "options_hi": [
+      {
+        "id": "A",
+        "text": "यशोवर्मन (954 ई.)"
+      },
+      {
+        "id": "B",
+        "text": "नन्नुक"
+      },
+      {
+        "id": "C",
+        "text": "धंगदेव"
+      },
+      {
+        "id": "D",
+        "text": "विद्याधर"
+      }
+    ],
+    "options_en": [
+      {
+        "id": "A",
+        "text": "Yashovarman (954 AD)"
+      },
+      {
+        "id": "B",
+        "text": "Nannuka"
+      },
+      {
+        "id": "C",
+        "text": "Dhangadeva"
+      },
+      {
+        "id": "D",
+        "text": "Vidyadhara"
+      }
+    ],
+    "correct": "A",
+    "explanation_hi": "यशोवर्मन ने देवपाल को हराकर विष्णु प्रतिमा प्राप्त की और 954 ई. में लक्ष्मण मंदिर में स्थापित की।",
+    "explanation_en": "Yashovarman defeated Devapala and enshrined Vishnu in the Lakshmana temple."
+  },
+  {
+    "id": 55,
+    "type": "4-Statement Type",
+    "question_hi": "खजुराहो के प्रसिद्ध 'लक्ष्मण मंदिर' के वास्तुशिल्प के संदर्भ में निम्नलिखित कथनों पर विचार कीजिए:\n1. यह मंदिर पंचायतन शैली (Panchayatana style) में निर्मित है।\n2. इसमें एक अर्द्धमंडप, एक मंडप, एक महामंडप और विमान सहित गर्भगृह है।\n3. मंदिर के चारों कोनों पर चार देवालय बने हैं, जिनमें तीन में विष्णु और एक में सूर्य की प्रतिमा है।\n4. गर्भगृह और प्रदक्षिणापथ की दीवारें अनेक देवी-देवताओं व कामुक (कामोद्दीपक) प्रतिमाओं से सुसज्जित हैं।\n\nउपर्युक्त में से कौन-से कथन सही हैं?",
+    "question_en": "Consider features of Lakshmana Temple at Khajuraho:\n1. Built in Panchayatana layout style.\n2. Comprises Ardhamandapa, Mandapa, Mahamandapa, and Garbhagriha with Vimana.\n3. Four subsidiary corner shrines (three dedicated to Vishnu, one to Surya).\n4. Exterior and interior walls display deities and erotic sculptures.\n\nWhich are true?",
+    "options_hi": [
+      {
+        "id": "A",
+        "text": "केवल 1 और 2"
+      },
+      {
+        "id": "B",
+        "text": "केवल 2 और 3"
+      },
+      {
+        "id": "C",
+        "text": "केवल 1, 3 और 4"
+      },
+      {
+        "id": "D",
+        "text": "1, 2, 3 और 4 (सभी चारों सत्य हैं)"
+      }
+    ],
+    "options_en": [
+      {
+        "id": "A",
+        "text": "Only 1 and 2"
+      },
+      {
+        "id": "B",
+        "text": "Only 2 and 3"
+      },
+      {
+        "id": "C",
+        "text": "Only 1, 3 and 4"
+      },
+      {
+        "id": "D",
+        "text": "1, 2, 3 and 4 (All are true)"
+      }
+    ],
+    "correct": "D",
+    "explanation_hi": "ल्यूसेंट जी.के. के बॉक्स नोट के अनुसार ये सभी बिंदु पूर्णतः सत्य हैं।",
+    "explanation_en": "All four statements represent accurate architectural details of Lakshmana temple."
+  },
+  {
+    "id": 56,
+    "type": "Statement Type",
+    "question_hi": "खजुराहो के विश्वप्रसिद्ध 'कंदरिया महादेव मंदिर' का निर्माण 999 ई. में किस चंदेल शासक द्वारा करवाया गया था?",
+    "question_en": "Who constructed the famous Kandariya Mahadeva Temple at Khajuraho in 999 AD?",
+    "options_hi": [
+      {
+        "id": "A",
+        "text": "यशोवर्मन"
+      },
+      {
+        "id": "B",
+        "text": "धंगदेव"
+      },
+      {
+        "id": "C",
+        "text": "विद्याधर"
+      },
+      {
+        "id": "D",
+        "text": "कीर्तिवर्मन"
+      }
+    ],
+    "options_en": [
+      {
+        "id": "A",
+        "text": "Yashovarman"
+      },
+      {
+        "id": "B",
+        "text": "Dhangadeva"
+      },
+      {
+        "id": "C",
+        "text": "Vidyadhara"
+      },
+      {
+        "id": "D",
+        "text": "Kirtivarman"
+      }
+    ],
+    "correct": "B",
+    "explanation_hi": "कंदरिया महादेव मंदिर का निर्माण 999 ई. में राजा धंगदेव द्वारा करवाया गया था।",
+    "explanation_en": "Dhangadeva constructed the Kandariya Mahadeva Temple in 999 AD."
+  },
+  {
+    "id": 57,
+    "type": "Tricky & Negative-Word",
+    "question_hi": "चंदेल राजा धंग ने किन प्रसिद्ध मंदिरों का निर्माण करवाया था और अपनी जीवन लीला कहाँ समाप्त की थी?",
+    "question_en": "Which temples were built by King Dhanga, and where did he end his life?",
+    "options_hi": [
+      {
+        "id": "A",
+        "text": "जिन्नाथ, विश्वनाथ एवं वैद्यनाथ मंदिर — गंगा-जमुना संगम में शिव आराधना करते हुए जल समाधि ली"
+      },
+      {
+        "id": "B",
+        "text": "लक्ष्मण मंदिर — नर्मदा नदी में"
+      },
+      {
+        "id": "C",
+        "text": "चौंसठ योगिनी मंदिर — बेतवा नदी में"
+      },
+      {
+        "id": "D",
+        "text": "चेन्नाकेशव मंदिर — कावेरी में"
+      }
+    ],
+    "options_en": [
+      {
+        "id": "A",
+        "text": "Jinanatha, Vishvanatha, Vaidyanatha temples — Jalasamadhi at Ganga-Yamuna confluence"
+      },
+      {
+        "id": "B",
+        "text": "Lakshmana temple — Narmada"
+      },
+      {
+        "id": "C",
+        "text": "Chausath Yogini — Betwa"
+      },
+      {
+        "id": "D",
+        "text": "Chennakeshava — Kaveri"
+      }
+    ],
+    "correct": "A",
+    "explanation_hi": "धंग ने जिन्नाथ, विश्वनाथ व वैद्यनाथ मंदिर बनवाए और प्रयाग में गंगा-जमुना संगम में शरीर त्याग किया।",
+    "explanation_en": "Dhanga built Jinanatha, Vishvanatha, Vaidyanatha temples and ended life at Sangam."
+  },
+  {
+    "id": 58,
+    "type": "Statement Type",
+    "question_hi": "अकेला ऐसा भारतीय नरेश कौन था जिसने महमूद गजनी की साम्राज्यवादी महत्वाकांक्षाओं का सफलतापूर्वक प्रतिरोध किया था?",
+    "question_en": "Who was the sole Indian ruler who successfully resisted the imperialistic ambitions of Mahmud Ghazni?",
+    "options_hi": [
+      {
+        "id": "A",
+        "text": "चंदेल शासक विद्याधर"
+      },
+      {
+        "id": "B",
+        "text": "राजा धंग"
+      },
+      {
+        "id": "C",
+        "text": "पृथ्वीराज चौहान"
+      },
+      {
+        "id": "D",
+        "text": "जयपाल"
+      }
+    ],
+    "options_en": [
+      {
+        "id": "A",
+        "text": "Chandela ruler Vidyadhara"
+      },
+      {
+        "id": "B",
+        "text": "King Dhanga"
+      },
+      {
+        "id": "C",
+        "text": "Prithviraj Chauhan"
+      },
+      {
+        "id": "D",
+        "text": "Jayapala"
+      }
+    ],
+    "correct": "A",
+    "explanation_hi": "चंदेल शासक विद्याधर ही अकेला भारतीय नरेश था जिसने महमूद गजनी का सफलतापूर्वक प्रतिरोध किया।",
+    "explanation_en": "Chandela monarch Vidyadhara successfully resisted Mahmud of Ghazni."
+  },
+  {
+    "id": 59,
+    "type": "Tricky & Negative-Word",
+    "question_hi": "चंदेल शासक विद्याधर ने कन्नौज के प्रतिहार शासक 'राज्यपाल' की हत्या क्यों कर दी थी?",
+    "question_en": "Why did Chandela ruler Vidyadhara kill Pratihara king Rajyapala of Kannauj?",
+    "options_hi": [
+      {
+        "id": "A",
+        "text": "क्योंकि राज्यपाल ने महमूद गजनी के आक्रमण का सामना किए बिना ही कायरतापूर्वक आत्मसमर्पण कर दिया था"
+      },
+      {
+        "id": "B",
+        "text": "क्योंकि राज्यपाल ने खजुराहो पर आक्रमण किया था"
+      },
+      {
+        "id": "C",
+        "text": "सीमा विवाद के कारण"
+      },
+      {
+        "id": "D",
+        "text": "धार्मिक वैमनस्य के कारण"
+      }
+    ],
+    "options_en": [
+      {
+        "id": "A",
+        "text": "Because Rajyapala cowardly surrendered to Mahmud Ghazni without resistance"
+      },
+      {
+        "id": "B",
+        "text": "Attacked Khajuraho"
+      },
+      {
+        "id": "C",
+        "text": "Border disputes"
+      },
+      {
+        "id": "D",
+        "text": "Religious conflicts"
+      }
+    ],
+    "correct": "A",
+    "explanation_hi": "राज्यपाल ने महमूद के आक्रमण का सामना किए बिना आत्मसमर्पण किया था, इसलिए विद्याधर ने उसकी हत्या कर दी।",
+    "explanation_en": "Vidyadhara punished Rajyapala for cowardly surrendering to Mahmud of Ghazni."
+  },
+  {
+    "id": 60,
+    "type": "Statement Type",
+    "question_hi": "चंदेल शासक कीर्तिवर्मन की राज्यसभा में रहने वाले कृष्ण मिश्र ने किस सुप्रसिद्ध नाटक की रचना की थी?",
+    "question_en": "Which famous drama was authored by Krishna Mishra in the court of Chandela king Kirtivarman?",
+    "options_hi": [
+      {
+        "id": "A",
+        "text": "प्रबोध चंद्रोदय"
+      },
+      {
+        "id": "B",
+        "text": "ललित विग्रहराज"
+      },
+      {
+        "id": "C",
+        "text": "मत्तविलास प्रहसन"
+      },
+      {
+        "id": "D",
+        "text": "विक्रमांकदेवचरित"
+      }
+    ],
+    "options_en": [
+      {
+        "id": "A",
+        "text": "Prabodha Chandrodaya"
+      },
+      {
+        "id": "B",
+        "text": "Lalita Vigraharaja"
+      },
+      {
+        "id": "C",
+        "text": "Mattavilasa Prahasana"
+      },
+      {
+        "id": "D",
+        "text": "Vikramankadevacharita"
+      }
+    ],
+    "correct": "A",
+    "explanation_hi": "कृष्ण मिश्र ने 'प्रबोध चंद्रोदय' की रचना की थी। कीर्तिवर्मन ने महोबा के समीप कीर्तिसागर जलाशय भी बनवाया।",
+    "explanation_en": "Krishna Mishra composed Prabodha Chandrodaya."
+  },
+  {
+    "id": 61,
+    "type": "Tricky & Negative-Word",
+    "question_hi": "वीर सेनानायक 'आल्हा और ऊदल' किस चंदेल शासक के दरबार में रहते थे, जिन्होंने पृथ्वीराज चौहान के विरुद्ध वीरता से लड़ते हुए वीरगति पाई?",
+    "question_en": "Legendary warriors Alha and Udal lived in the court of which Chandela ruler?",
+    "options_hi": [
+      {
+        "id": "A",
+        "text": "परमर्दिदेव"
+      },
+      {
+        "id": "B",
+        "text": "कीर्तिवर्मन"
+      },
+      {
+        "id": "C",
+        "text": "विद्याधर"
+      },
+      {
+        "id": "D",
+        "text": "यशोवर्मन"
+      }
+    ],
+    "options_en": [
+      {
+        "id": "A",
+        "text": "Parmardideva"
+      },
+      {
+        "id": "B",
+        "text": "Kirtivarman"
+      },
+      {
+        "id": "C",
+        "text": "Vidyadhara"
+      },
+      {
+        "id": "D",
+        "text": "Yashovarman"
+      }
+    ],
+    "correct": "A",
+    "explanation_hi": "आल्हा-ऊदल परमर्दिदेव के दरबारी सेनानायक थे जिन्होंने पृथ्वीराज के विरुद्ध युद्ध में जान गंवाई।",
+    "explanation_en": "Alha and Udal were commanders in the court of Parmardideva."
+  },
+  {
+    "id": 62,
+    "type": "Statement Type",
+    "question_hi": "चंदेल वंश के अंतिम शासक परमर्दिदेव ने 1202 ई. में जब कुतुबुद्दीन ऐबक की अधीनता स्वीकार कर ली, तो उसके किस मंत्री ने उसकी हत्या कर दी?",
+    "question_en": "When the last Chandela king Parmardideva submitted to Aibak in 1202 AD, which minister assassinated him?",
+    "options_hi": [
+      {
+        "id": "A",
+        "text": "अजयदेव"
+      },
+      {
+        "id": "B",
+        "text": "लक्ष्मीधर"
+      },
+      {
+        "id": "C",
+        "text": "हलायुध"
+      },
+      {
+        "id": "D",
+        "text": "विमल"
+      }
+    ],
+    "options_en": [
+      {
+        "id": "A",
+        "text": "Ajayadeva"
+      },
+      {
+        "id": "B",
+        "text": "Lakshmidhara"
+      },
+      {
+        "id": "C",
+        "text": "Halayudha"
+      },
+      {
+        "id": "D",
+        "text": "Vimala"
+      }
+    ],
+    "correct": "A",
+    "explanation_hi": "अधीनता स्वीकारने पर उसके मंत्री अजयदेव ने परमर्दिदेव की हत्या कर दी।",
+    "explanation_en": "Minister Ajayadeva assassinated Parmardideva for surrendering to Qutb-ud-din Aibak."
+  },
+  {
+    "id": 63,
+    "type": "Statement Type",
+    "question_hi": "गुजरात के सोलंकी वंश (चालुक्य वंश) का संस्थापक कौन था और इसकी राजधानी कहाँ थी?",
+    "question_en": "Who was the founder of Solanki dynasty of Gujarat and where was its capital?",
+    "options_hi": [
+      {
+        "id": "A",
+        "text": "मूलराज प्रथम — अन्हिलवाड़"
+      },
+      {
+        "id": "B",
+        "text": "भीम प्रथम — पाटन"
+      },
+      {
+        "id": "C",
+        "text": "जयसिंह सिद्धराज — सिद्धपुर"
+      },
+      {
+        "id": "D",
+        "text": "कुमारपाल — मोढेरा"
+      }
+    ],
+    "options_en": [
+      {
+        "id": "A",
+        "text": "Mularaja I — Anhilwad"
+      },
+      {
+        "id": "B",
+        "text": "Bhima I — Patan"
+      },
+      {
+        "id": "C",
+        "text": "Jayasimha Siddharaja — Siddhapur"
+      },
+      {
+        "id": "D",
+        "text": "Kumarapala — Modhera"
+      }
+    ],
+    "correct": "A",
+    "explanation_hi": "सोलंकी वंश का संस्थापक मूलराज प्रथम था और राजधानी अन्हिलवाड़ थी। मूलराज प्रथम शैव धर्मानुयायी था।",
+    "explanation_en": "Mularaja I founded Solanki dynasty with capital at Anhilwad."
+  },
+  {
+    "id": 64,
+    "type": "Tricky & Negative-Word",
+    "question_hi": "1025 ई. में महमूद गजनी ने जब सोमनाथ मंदिर पर भीषण आक्रमण किया, तब गुजरात का सोलंकी शासक कौन था?",
+    "question_en": "Who was the Solanki ruler of Gujarat when Mahmud of Ghazni attacked Somnath in 1025 AD?",
+    "options_hi": [
+      {
+        "id": "A",
+        "text": "मूलराज प्रथम"
+      },
+      {
+        "id": "B",
+        "text": "भीम प्रथम"
+      },
+      {
+        "id": "C",
+        "text": "जयसिंह सिद्धराज"
+      },
+      {
+        "id": "D",
+        "text": "भीम द्वितीय"
+      }
+    ],
+    "options_en": [
+      {
+        "id": "A",
+        "text": "Mularaja I"
+      },
+      {
+        "id": "B",
+        "text": "Bhima I"
+      },
+      {
+        "id": "C",
+        "text": "Jayasimha Siddharaja"
+      },
+      {
+        "id": "D",
+        "text": "Bhima II"
+      }
+    ],
+    "correct": "B",
+    "explanation_hi": "महमूद गजनी के सोमनाथ आक्रमण के समय सोलंकी शासक भीम प्रथम (1022-1064 ई.) था।",
+    "explanation_en": "Bhima I was the Solanki ruler during Ghazni's invasion of Somnath in 1025 AD."
+  },
+  {
+    "id": 65,
+    "type": "Statement Type",
+    "question_hi": "माउंट आबू पर्वत (राजस्थान) पर दिलवाड़ा का सुप्रसिद्ध जैन मंदिर किसने बनवाया था?",
+    "question_en": "Who built the world-renowned Dilwara Jain Temple on Mount Abu (Rajasthan)?",
+    "options_hi": [
+      {
+        "id": "A",
+        "text": "भीम प्रथम के सामंत विमल शाह ने"
+      },
+      {
+        "id": "B",
+        "text": "जयसिंह सिद्धराज ने"
+      },
+      {
+        "id": "C",
+        "text": "कुमारपाल ने"
+      },
+      {
+        "id": "D",
+        "text": "हेमचंद्र ने"
+      }
+    ],
+    "options_en": [
+      {
+        "id": "A",
+        "text": "Vimal Shah, minister of Bhima I"
+      },
+      {
+        "id": "B",
+        "text": "Jayasimha Siddharaja"
+      },
+      {
+        "id": "C",
+        "text": "Kumarapala"
+      },
+      {
+        "id": "D",
+        "text": "Hemachandra"
+      }
+    ],
+    "correct": "A",
+    "explanation_hi": "भीम प्रथम के सामंत विमल (विमल शाह) ने आबू पर्वत पर दिलवाड़ा का प्रसिद्ध जैन मंदिर बनवाया।",
+    "explanation_en": "Vimal Shah, feudatory of Bhima I, constructed the Dilwara Jain temple."
+  },
+  {
+    "id": 66,
+    "type": "Tricky & Negative-Word",
+    "question_hi": "प्रसिद्ध जैन विद्वान 'हेमचन्द्र' किस सोलंकी शासक के राजदरबार में प्रमुख स्थान रखते थे?",
+    "question_en": "Eminent Jain polymath Hemachandra lived in the court of which Solanki monarch?",
+    "options_hi": [
+      {
+        "id": "A",
+        "text": "जयसिंह सिद्धराज"
+      },
+      {
+        "id": "B",
+        "text": "मूलराज प्रथम"
+      },
+      {
+        "id": "C",
+        "text": "भीम प्रथम"
+      },
+      {
+        "id": "D",
+        "text": "भीम द्वितीय"
+      }
+    ],
+    "options_en": [
+      {
+        "id": "A",
+        "text": "Jayasimha Siddharaja"
+      },
+      {
+        "id": "B",
+        "text": "Mularaja I"
+      },
+      {
+        "id": "C",
+        "text": "Bhima I"
+      },
+      {
+        "id": "D",
+        "text": "Bhima II"
+      }
+    ],
+    "correct": "A",
+    "explanation_hi": "प्रसिद्ध जैन विद्वान हेमचन्द्र जयसिंह सिद्धराज के दरबारी थे।",
+    "explanation_en": "Hemachandra was the royal scholar in Jayasimha Siddharaja's court."
+  },
+  {
+    "id": 67,
+    "type": "Statement Type",
+    "question_hi": "सोलंकी शासक जयसिंह सिद्धराज की प्रमुख सांस्कृतिक उपलब्धियों में क्या शामिल है?\n1. माउंट आबू पर्वत पर एक मंडप बनाकर अपने सातों पूर्वजों की गजारोही मूर्तियां स्थापित कीं।\n2. सिद्धपुर में भव्य 'रुद्रमहाकाल मंदिर' का निर्माण करवाया।\n3. गुजरात में मोढेरा के सूर्य मंदिर का निर्माण भी सोलंकी राजाओं के समय हुआ।\n\nउपर्युक्त में से कौन-से कथन सत्य हैं?",
+    "question_en": "What is true regarding Jayasimha Siddharaja's cultural achievements?\n1. Installed elephant-rider statues of 7 ancestors on Mount Abu.\n2. Built Rudramahakala temple at Siddhapur.\n3. Modhera Sun Temple was built under Solankis.\n\nWhich are true?",
+    "options_hi": [
+      {
+        "id": "A",
+        "text": "केवल 1 और 2"
+      },
+      {
+        "id": "B",
+        "text": "केवल 2 और 3"
+      },
+      {
+        "id": "C",
+        "text": "केवल 1 और 3"
+      },
+      {
+        "id": "D",
+        "text": "1, 2 और 3 (सभी सत्य हैं)"
+      }
+    ],
+    "options_en": [
+      {
+        "id": "A",
+        "text": "Only 1 and 2"
+      },
+      {
+        "id": "B",
+        "text": "Only 2 and 3"
+      },
+      {
+        "id": "C",
+        "text": "Only 1 and 3"
+      },
+      {
+        "id": "D",
+        "text": "1, 2 and 3 (All are true)"
+      }
+    ],
+    "correct": "D",
+    "explanation_hi": "तीनों कथन पूर्णतः सत्य हैं। जयसिंह सिद्धराज ने पूर्वजों की मूर्तियां लगवाईं और रुद्रमहाकाल मंदिर बनवाया।",
+    "explanation_en": "All three statements are verified from Lucent GK."
+  },
+  {
+    "id": 68,
+    "type": "Tricky & Negative-Word",
+    "question_hi": "जैन धर्म के 'अंतिम राजकीय प्रवर्तक' के रूप में कौन-सा सोलंकी शासक प्रसिद्ध है?",
+    "question_en": "Which Solanki ruler is renowned as the 'last imperial royal patron/promoter' of Jainism?",
+    "options_hi": [
+      {
+        "id": "A",
+        "text": "मूलराज प्रथम"
+      },
+      {
+        "id": "B",
+        "text": "जयसिंह सिद्धराज"
+      },
+      {
+        "id": "C",
+        "text": "कुमारपाल"
+      },
+      {
+        "id": "D",
+        "text": "भीम द्वितीय"
+      }
+    ],
+    "options_en": [
+      {
+        "id": "A",
+        "text": "Mularaja I"
+      },
+      {
+        "id": "B",
+        "text": "Jayasimha Siddharaja"
+      },
+      {
+        "id": "C",
+        "text": "Kumarapala"
+      },
+      {
+        "id": "D",
+        "text": "Bhima II"
+      }
+    ],
+    "correct": "C",
+    "explanation_hi": "सोलंकी शासक कुमारपाल जैन-मतानुयायी था और जैन धर्म के अंतिम राजकीय प्रवर्तक के रूप में विख्यात है।",
+    "explanation_en": "Kumarapala was the celebrated last imperial patron of Jainism."
+  },
+  {
+    "id": 69,
+    "type": "Statement Type",
+    "question_hi": "1178 ई. में मुहम्मद गौरी को पाटन (गुजरात) के निकट किस सोलंकी शासक ने बुरी तरह पराजित किया था?",
+    "question_en": "In 1178 AD, which Solanki monarch decisively routed Muhammad Ghori near Patan (Kayadara)?",
+    "options_hi": [
+      {
+        "id": "A",
+        "text": "भीम प्रथम"
+      },
+      {
+        "id": "B",
+        "text": "भीम द्वितीय (मूलराज द्वितीय / भीम द्वितीय)"
+      },
+      {
+        "id": "C",
+        "text": "जयसिंह सिद्धराज"
+      },
+      {
+        "id": "D",
+        "text": "कुमारपाल"
+      }
+    ],
+    "options_en": [
+      {
+        "id": "A",
+        "text": "Bhima I"
+      },
+      {
+        "id": "B",
+        "text": "Bhima II (Mularaja II / Bhima II)"
+      },
+      {
+        "id": "C",
+        "text": "Jayasimha Siddharaja"
+      },
+      {
+        "id": "D",
+        "text": "Kumarapala"
+      }
+    ],
+    "correct": "B",
+    "explanation_hi": "1178 ई. में गुजरात के शासक भीम द्वितीय ने मुहम्मद गौरी को बुरी तरह परास्त किया था।",
+    "explanation_en": "Bhima II inflicted a crushing defeat on Muhammad Ghori in 1178 AD."
+  },
+  {
+    "id": 70,
+    "type": "Tricky & Negative-Word",
+    "question_hi": "भीम द्वितीय के किस सामंत ने गुजरात में 'बघेल वंश' की स्थापना की थी?",
+    "question_en": "Which feudatory of Bhima II established the Vaghela dynasty in Gujarat?",
+    "options_hi": [
+      {
+        "id": "A",
+        "text": "लवणप्रसाद"
+      },
+      {
+        "id": "B",
+        "text": "कर्ण द्वितीय"
+      },
+      {
+        "id": "C",
+        "text": "विमल"
+      },
+      {
+        "id": "D",
+        "text": "सारंगदेव"
+      }
+    ],
+    "options_en": [
+      {
+        "id": "A",
+        "text": "Lavanaprasada"
+      },
+      {
+        "id": "B",
+        "text": "Karna II"
+      },
+      {
+        "id": "C",
+        "text": "Vimala"
+      },
+      {
+        "id": "D",
+        "text": "Sarangadeva"
+      }
+    ],
+    "correct": "A",
+    "explanation_hi": "भीम द्वितीय के सामंत लवणप्रसाद ने गुजरात में बघेल वंश की स्थापना की।",
+    "explanation_en": "Lavanaprasada founded the Vaghela dynasty."
+  },
+  {
+    "id": 71,
+    "type": "Statement Type",
+    "question_hi": "गुजरात का 'अंतिम हिन्दू शासक' कौन था, जिसने अलाउद्दीन खिलजी की सेनाओं का मुकाबला किया था?",
+    "question_en": "Who was the last Hindu ruler of Gujarat who fought against Alauddin Khilji's armies?",
+    "options_hi": [
+      {
+        "id": "A",
+        "text": "बघेल वंशीय कर्ण द्वितीय (राय कर्ण)"
+      },
+      {
+        "id": "B",
+        "text": "भीम द्वितीय"
+      },
+      {
+        "id": "C",
+        "text": "कुमारपाल"
+      },
+      {
+        "id": "D",
+        "text": "लवणप्रसाद"
+      }
+    ],
+    "options_en": [
+      {
+        "id": "A",
+        "text": "Karna II (Rai Karna) of Vaghela dynasty"
+      },
+      {
+        "id": "B",
+        "text": "Bhima II"
+      },
+      {
+        "id": "C",
+        "text": "Kumarapala"
+      },
+      {
+        "id": "D",
+        "text": "Lavanaprasada"
+      }
+    ],
+    "correct": "A",
+    "explanation_hi": "बघेल वंश का कर्ण द्वितीय गुजरात का अंतिम हिन्दू शासक था जिसने अलाउद्दीन की सेना से मुकाबला किया।",
+    "explanation_en": "Karna II of Vaghela dynasty was the last Hindu monarch of Gujarat."
+  },
+  {
+    "id": 72,
+    "type": "Statement Type",
+    "question_hi": "कलचुरी (चेदि) राजवंश का संस्थापक कौन था और इसकी राजधानी कहाँ थी?",
+    "question_en": "Who founded the Kalchuri (Chedi) dynasty and where was its capital?",
+    "options_hi": [
+      {
+        "id": "A",
+        "text": "कोक्कल — त्रिपुरी (जबलपुर के निकट)"
+      },
+      {
+        "id": "B",
+        "text": "गांगेयदेव — उज्जैन"
+      },
+      {
+        "id": "C",
+        "text": "कर्णदेव — धार"
+      },
+      {
+        "id": "D",
+        "text": "नन्नुक — महोबा"
+      }
+    ],
+    "options_en": [
+      {
+        "id": "A",
+        "text": "Kokkalla — Tripuri (near Jabalpur)"
+      },
+      {
+        "id": "B",
+        "text": "Gangeyadeva — Ujjain"
+      },
+      {
+        "id": "C",
+        "text": "Karnadeva — Dhara"
+      },
+      {
+        "id": "D",
+        "text": "Nannuka — Mahoba"
+      }
+    ],
+    "correct": "A",
+    "explanation_hi": "कलचुरी वंश का संस्थापक कोक्कल था और इसकी राजधानी त्रिपुरी थी।",
+    "explanation_en": "Kokkalla founded Kalchuris with capital at Tripuri."
+  },
+  {
+    "id": 73,
+    "type": "Tricky & Negative-Word",
+    "question_hi": "पूर्व-मध्यकाल में स्वर्ण सिक्कों के विलुप्त हो जाने के पश्चात सर्वप्रथम पुनः सोने के सिक्के प्रारंभ करवाने वाला कलचुरी शासक कौन था जिसने 'विक्रमादित्य' की उपाधि ली?",
+    "question_en": "Which Kalchuri king re-introduced gold coinage in early medieval India and assumed title 'Vikramaditya'?",
+    "options_hi": [
+      {
+        "id": "A",
+        "text": "कोक्कल प्रथम"
+      },
+      {
+        "id": "B",
+        "text": "गांगेयदेव"
+      },
+      {
+        "id": "C",
+        "text": "कर्णदेव"
+      },
+      {
+        "id": "D",
+        "text": "युवराजदेव प्रथम"
+      }
+    ],
+    "options_en": [
+      {
+        "id": "A",
+        "text": "Kokkalla I"
+      },
+      {
+        "id": "B",
+        "text": "Gangeyadeva"
+      },
+      {
+        "id": "C",
+        "text": "Karnadeva"
+      },
+      {
+        "id": "D",
+        "text": "Yuvarajadeva I"
+      }
+    ],
+    "correct": "B",
+    "explanation_hi": "गांगेयदेव ने 'विक्रमादित्य' उपाधि ली और पूर्व-मध्यकाल में पुनः स्वर्ण सिक्के जारी करवाए।",
+    "explanation_en": "Gangeyadeva Vikramaditya revived gold coinage in North India."
+  },
+  {
+    "id": 74,
+    "type": "Statement Type",
+    "question_hi": "कलचुरी वंश का सबसे महान शासक कौन था जिसने कलिंग पर विजय प्राप्त कर 'त्रिकलिंगाधिपति' की उपाधि धारण की?",
+    "question_en": "Who was the greatest Kalchuri monarch who conquered Kalinga and adopted title 'Trikalingadhipati'?",
+    "options_hi": [
+      {
+        "id": "A",
+        "text": "कोक्कल"
+      },
+      {
+        "id": "B",
+        "text": "गांगेयदेव"
+      },
+      {
+        "id": "C",
+        "text": "कर्णदेव (लक्ष्मीकर्ण)"
+      },
+      {
+        "id": "D",
+        "text": "विजयसिंह"
+      }
+    ],
+    "options_en": [
+      {
+        "id": "A",
+        "text": "Kokkalla"
+      },
+      {
+        "id": "B",
+        "text": "Gangeyadeva"
+      },
+      {
+        "id": "C",
+        "text": "Karnadeva (Lakshmikarna)"
+      },
+      {
+        "id": "D",
+        "text": "Vijayasingh"
+      }
+    ],
+    "correct": "C",
+    "explanation_hi": "कलचुरी वंश का सबसे महान शासक कर्णदेव था जिसने कलिंग जीतकर त्रिकलिंगाधिपति उपाधि ली।",
+    "explanation_en": "Karnadeva was the greatest Kalchuri king who conquered Kalinga."
+  },
+  {
+    "id": 75,
+    "type": "Statement Type",
+    "question_hi": "मेवाड़ के सिसोदिया राजवंश के संदर्भ में निम्नलिखित कथनों पर विचार कीजिए:\n1. सिसोदिया शासक अपने को सूर्यवंशी क्षत्रिय कहते थे और इनकी राजधानी चित्तौड़ थी।\n2. राणा हम्मीर सिंह ने 1326 ई. में चित्तौड़ को खिलजी शासकों से पुनः जीतकर सिसोदिया सत्ता स्थापित की।\n3. सिसोदिया वंश की कुलदेवी 'बाण माता' (पांडु माता) मानी जाती हैं।\n\nउपर्युक्त में से कौन-से कथन सत्य हैं?",
+    "question_en": "Consider statements on the Sisodia dynasty of Mewar:\n1. Regarded themselves Suryavanshi with capital at Chittorgarh.\n2. Rana Hammir Singh recaptured Chittorgarh from Khiljis in 1326 AD.\n3. Kuldevi was Ban Mata (Pandu Mata).\n\nWhich are true?",
+    "options_hi": [
+      {
+        "id": "A",
+        "text": "केवल 1 और 2"
+      },
+      {
+        "id": "B",
+        "text": "केवल 2 और 3"
+      },
+      {
+        "id": "C",
+        "text": "केवल 1 और 3"
+      },
+      {
+        "id": "D",
+        "text": "1, 2 और 3 (सभी सत्य हैं)"
+      }
+    ],
+    "options_en": [
+      {
+        "id": "A",
+        "text": "Only 1 and 2"
+      },
+      {
+        "id": "B",
+        "text": "Only 2 and 3"
+      },
+      {
+        "id": "C",
+        "text": "Only 1 and 3"
+      },
+      {
+        "id": "D",
+        "text": "1, 2 and 3 (All are true)"
+      }
+    ],
+    "correct": "D",
+    "explanation_hi": "तीनों कथन सत्य हैं। सिसोदिया शासक सूर्यवंशी थे, बाण माता कुलदेवी थीं और हम्मीर ने 1326 में सत्ता स्थापित की।",
+    "explanation_en": "All three statements are verified facts."
+  },
+  {
+    "id": 76,
+    "type": "Tricky & Negative-Word",
+    "question_hi": "चित्तौड़ में अपनी अनेक विजयों के उपलक्ष्य में विश्वविख्यात 'विजयस्तम्भ' (कीर्तिस्तम्भ) का निर्माण किस सिसोदिया शासक ने करवाया था?",
+    "question_en": "Which Sisodia ruler constructed the monumental 'Vijay Stambha' (Tower of Victory) at Chittorgarh?",
+    "options_hi": [
+      {
+        "id": "A",
+        "text": "राणा हम्मीर"
+      },
+      {
+        "id": "B",
+        "text": "राणा कुंभा"
+      },
+      {
+        "id": "C",
+        "text": "राणा सांगा"
+      },
+      {
+        "id": "D",
+        "text": "महाराणा प्रताप"
+      }
+    ],
+    "options_en": [
+      {
+        "id": "A",
+        "text": "Rana Hammir"
+      },
+      {
+        "id": "B",
+        "text": "Rana Kumbha"
+      },
+      {
+        "id": "C",
+        "text": "Rana Sanga"
+      },
+      {
+        "id": "D",
+        "text": "Maharana Pratap"
+      }
+    ],
+    "correct": "B",
+    "explanation_hi": "विजयस्तम्भ का निर्माण मालवा-गुजरात विजय के उपलक्ष्य में राणा कुंभा ने करवाया था।",
+    "explanation_en": "Rana Kumbha constructed Vijay Stambha at Chittorgarh."
+  },
+  {
+    "id": 77,
+    "type": "Statement Type",
+    "question_hi": "वर्ष 1518 में प्रसिद्ध 'खातोली का युद्ध' किनके बीच लड़ा गया था?",
+    "question_en": "Between whom was the famous Battle of Khatoli fought in 1518 AD?",
+    "options_hi": [
+      {
+        "id": "A",
+        "text": "राणा सांगा और इब्राहिम लोदी"
+      },
+      {
+        "id": "B",
+        "text": "राणा कुंभा और महमूद खिलजी"
+      },
+      {
+        "id": "C",
+        "text": "महाराणा प्रताप और अकबर"
+      },
+      {
+        "id": "D",
+        "text": "राणा सांगा और बाबर"
+      }
+    ],
+    "options_en": [
+      {
+        "id": "A",
+        "text": "Rana Sanga and Ibrahim Lodi"
+      },
+      {
+        "id": "B",
+        "text": "Rana Kumbha and Mahmud Khilji"
+      },
+      {
+        "id": "C",
+        "text": "Maharana Pratap and Akbar"
+      },
+      {
+        "id": "D",
+        "text": "Rana Sanga and Babur"
+      }
+    ],
+    "correct": "A",
+    "explanation_hi": "खातोली का युद्ध 1518 ई. में राणा सांगा और दिल्ली के सुल्तान इब्राहिम लोदी के बीच हुआ जिसमें सांगा विजयी हुए।",
+    "explanation_en": "Battle of Khatoli (1518 AD) was fought between Rana Sanga and Ibrahim Lodi."
+  },
+  {
+    "id": 78,
+    "type": "Matching / Mis-matching",
+    "question_hi": "मध्यकालीन राजवंशों और उनके संस्थापक के संदर्भ में गलत सुमेलित युग्म का चयन कीजिए:",
+    "question_en": "Identify the INCORRECT match regarding medieval dynasties and their founders:",
+    "options_hi": [
+      {
+        "id": "A",
+        "text": "पाल वंश — गोपाल"
+      },
+      {
+        "id": "B",
+        "text": "सेन वंश — सामंत सेन"
+      },
+      {
+        "id": "C",
+        "text": "गुर्जर प्रतिहार — नागभट्ट प्रथम"
+      },
+      {
+        "id": "D",
+        "text": "परमार वंश — राजा भोज"
+      }
+    ],
+    "options_en": [
+      {
+        "id": "A",
+        "text": "Pala Dynasty — Gopala"
+      },
+      {
+        "id": "B",
+        "text": "Sena Dynasty — Samantasena"
+      },
+      {
+        "id": "C",
+        "text": "Gurjara Pratihara — Nagabhata I"
+      },
+      {
+        "id": "D",
+        "text": "Paramara Dynasty — Raja Bhoja"
+      }
+    ],
+    "correct": "D",
+    "explanation_hi": "परमार वंश का संस्थापक उपेन्द्रराज (कृष्णराज) था, न कि राजा भोज।",
+    "explanation_en": "Founder of Paramara dynasty was Upendraraja, not Raja Bhoja."
+  },
+  {
+    "id": 79,
+    "type": "Tricky & Negative-Word",
+    "question_hi": "कन्नौज पर आधिपत्य स्थापित करने हेतु हुए प्रसिद्ध 'त्रिपक्षीय संघर्ष' (Tripartite Struggle) में कौन-सा एक राजवंश शामिल नहीं था?",
+    "question_en": "Which dynasty was NOT involved in the Tripartite Struggle for Kannauj?",
+    "options_hi": [
+      {
+        "id": "A",
+        "text": "पाल वंश"
+      },
+      {
+        "id": "B",
+        "text": "गुर्जर प्रतिहार वंश"
+      },
+      {
+        "id": "C",
+        "text": "राष्ट्रकूट वंश"
+      },
+      {
+        "id": "D",
+        "text": "चोल वंश"
+      }
+    ],
+    "options_en": [
+      {
+        "id": "A",
+        "text": "Pala Dynasty"
+      },
+      {
+        "id": "B",
+        "text": "Gurjara-Pratihara Dynasty"
+      },
+      {
+        "id": "C",
+        "text": "Rashtrakuta Dynasty"
+      },
+      {
+        "id": "D",
+        "text": "Chola Dynasty"
+      }
+    ],
+    "correct": "D",
+    "explanation_hi": "त्रिपक्षीय संघर्ष पाल, गुर्जर प्रतिहार और राष्ट्रकूट वंशों के बीच हुआ था। चोल इसमें शामिल नहीं थे।",
+    "explanation_en": "The Tripartite struggle was fought among Palas, Pratiharas, and Rashtrakutas."
+  },
+  {
+    "id": 80,
+    "type": "Statement Type",
+    "question_hi": "सोमनाथ मंदिर के ऐतिहासिक पुनर्निर्माण के संदर्भ में निम्नलिखित कथनों पर विचार कीजिए:\n1. सोमनाथ भारत के बारह ज्योतिर्लिंगों में सर्वप्रथम माना जाता है और यह गुजरात में अरब सागर तट पर स्थित है।\n2. 13 नवंबर, 1947 को सरदार वल्लभभाई पटेल द्वारा इसके पुनर्निर्माण का संकल्प लिया गया।\n3. 11 मई, 1951 को भारत के प्रथम राष्ट्रपति डॉ. राजेंद्र प्रसाद द्वारा मंदिर में ज्योतिर्लिंग की प्राण प्रतिष्ठा की गई।\n\nउपर्युक्त में से कौन-से सत्य हैं?",
+    "question_en": "Consider statements on the historic reconstruction of Somnath Temple:\n1. First among 12 Jyotirlingas, situated on Gujarat coast.\n2. On Nov 13, 1947, Sardar Patel initiated its reconstruction.\n3. On May 11, 1951, President Dr. Rajendra Prasad consecrated the temple.\n\nWhich are true?",
+    "options_hi": [
+      {
+        "id": "A",
+        "text": "केवल 1 और 2"
+      },
+      {
+        "id": "B",
+        "text": "केवल 2 और 3"
+      },
+      {
+        "id": "C",
+        "text": "केवल 1 और 3"
+      },
+      {
+        "id": "D",
+        "text": "1, 2 और 3 (सभी सत्य हैं)"
+      }
+    ],
+    "options_en": [
+      {
+        "id": "A",
+        "text": "Only 1 and 2"
+      },
+      {
+        "id": "B",
+        "text": "Only 2 and 3"
+      },
+      {
+        "id": "C",
+        "text": "Only 1 and 3"
+      },
+      {
+        "id": "D",
+        "text": "1, 2 and 3 (All are true)"
+      }
+    ],
+    "correct": "D",
+    "explanation_hi": "ल्यूसेंट जी.के. के विशेष नोट के अनुसार तीनों तथ्य पूर्णतः प्रामाणिक हैं।",
+    "explanation_en": "All three statements are historically verified facts from the text note."
+  },
+  {
+    "id": 81,
+    "type": "Tricky & Negative-Word",
+    "question_hi": "प्रतिहार शासक महेन्द्रपाल के गुरु एवं राजकवि राजशेखर द्वारा रचित कृतियों में कौन-सी शामिल नहीं है?",
+    "question_en": "Which work was NOT authored by Rajashekhara, court poet of Mahendrapala?",
+    "options_hi": [
+      {
+        "id": "A",
+        "text": "कर्पूरमंजरी"
+      },
+      {
+        "id": "B",
+        "text": "काव्यमीमांसा"
+      },
+      {
+        "id": "C",
+        "text": "बालरामायण"
+      },
+      {
+        "id": "D",
+        "text": "प्रबोध चंद्रोदय"
+      }
+    ],
+    "options_en": [
+      {
+        "id": "A",
+        "text": "Karpuramanjari"
+      },
+      {
+        "id": "B",
+        "text": "Kavyamimamsa"
+      },
+      {
+        "id": "C",
+        "text": "Balaramayana"
+      },
+      {
+        "id": "D",
+        "text": "Prabodha Chandrodaya"
+      }
+    ],
+    "correct": "D",
+    "explanation_hi": "'प्रबोध चंद्रोदय' की रचना कृष्ण मिश्र ने चंदेल राजा कीर्तिवर्मन के दरबार में की थी।",
+    "explanation_en": "Prabodha Chandrodaya was authored by Krishna Mishra."
+  },
+  {
+    "id": 82,
+    "type": "Statement Type",
+    "question_hi": "हर्षवर्धन के बाद कन्नौज को राजनीतिक सत्ता का केंद्र बनाने में किस राजवंश की महत्वपूर्ण भूमिका रही जिसने इसे अपनी स्थायी राजधानी बनाया?",
+    "question_en": "Which Rajput dynasty made Kannauj their imperial capital after Harshavardhana?",
+    "options_hi": [
+      {
+        "id": "A",
+        "text": "गुर्जर प्रतिहार वंश"
+      },
+      {
+        "id": "B",
+        "text": "चौहान वंश"
+      },
+      {
+        "id": "C",
+        "text": "परमार वंश"
+      },
+      {
+        "id": "D",
+        "text": "सिसोदिया वंश"
+      }
+    ],
+    "options_en": [
+      {
+        "id": "A",
+        "text": "Gurjara Pratihara"
+      },
+      {
+        "id": "B",
+        "text": "Chauhan"
+      },
+      {
+        "id": "C",
+        "text": "Paramara"
+      },
+      {
+        "id": "D",
+        "text": "Sisodia"
+      }
+    ],
+    "correct": "A",
+    "explanation_hi": "मिहिरभोज के समय गुर्जर प्रतिहारों ने कन्नौज को अपनी स्थायी राजधानी बनाया।",
+    "explanation_en": "Gurjara Pratiharas made Kannauj their imperial seat."
+  },
+  {
+    "id": 83,
+    "type": "Tricky & Negative-Word",
+    "question_hi": "गहड़वाल शासक जयचन्द की पुत्री 'संयोगिता' का स्वयंवर से किसने हरण किया था?",
+    "question_en": "Who abducted Sanyogita, daughter of Gahadavala king Jayachandra, from her Swayamvara?",
+    "options_hi": [
+      {
+        "id": "A",
+        "text": "पृथ्वीराज तृतीय"
+      },
+      {
+        "id": "B",
+        "text": "विग्रहराज चतुर्थ"
+      },
+      {
+        "id": "C",
+        "text": "राजा भोज"
+      },
+      {
+        "id": "D",
+        "text": "अनंगपाल"
+      }
+    ],
+    "options_en": [
+      {
+        "id": "A",
+        "text": "Prithviraj III"
+      },
+      {
+        "id": "B",
+        "text": "Vigraharaja IV"
+      },
+      {
+        "id": "C",
+        "text": "Raja Bhoja"
+      },
+      {
+        "id": "D",
+        "text": "Anangpala"
+      }
+    ],
+    "correct": "A",
+    "explanation_hi": "पृथ्वीराज तृतीय ने स्वयंवर से संयोगिता का अपहरण किया था जिसके कारण जयचन्द से शत्रुता हुई।",
+    "explanation_en": "Prithviraj III abducted Sanyogita from the Swayamvara."
+  },
+  {
+    "id": 84,
+    "type": "Statement Type",
+    "question_hi": "सोलंकी राजाओं के काल में निर्मित विश्वविख्यात 'मोढेरा का सूर्य मंदिर' गुजरात के किस जिले में स्थित है?",
+    "question_en": "In which district of Gujarat is the Solanki-era Modhera Sun Temple situated?",
+    "options_hi": [
+      {
+        "id": "A",
+        "text": "मेहसाणा"
+      },
+      {
+        "id": "B",
+        "text": "पाटन"
+      },
+      {
+        "id": "C",
+        "text": "अहमदाबाद"
+      },
+      {
+        "id": "D",
+        "text": "जूनागढ़"
+      }
+    ],
+    "options_en": [
+      {
+        "id": "A",
+        "text": "Mehsana"
+      },
+      {
+        "id": "B",
+        "text": "Patan"
+      },
+      {
+        "id": "C",
+        "text": "Ahmedabad"
+      },
+      {
+        "id": "D",
+        "text": "Junagadh"
+      }
+    ],
+    "correct": "A",
+    "explanation_hi": "मोढेरा का सूर्य मंदिर गुजरात के मेहसाणा जिले में पुष्पावती नदी के किनारे स्थित है।",
+    "explanation_en": "Modhera Sun Temple is situated in Mehsana district of Gujarat."
+  },
+  {
+    "id": 85,
+    "type": "Tricky & Negative-Word",
+    "question_hi": "प्रसिद्ध संस्कृत नाटक 'अद्भुत सागर' को बल्लालसेन ने लिखना प्रारंभ किया था, इसे पूर्ण किसने किया?",
+    "question_en": "Who completed the literary treatise 'Adbhutasagara' started by Ballalasena?",
+    "options_hi": [
+      {
+        "id": "A",
+        "text": "लक्ष्मण सेन"
+      },
+      {
+        "id": "B",
+        "text": "विजयसेन"
+      },
+      {
+        "id": "C",
+        "text": "सामंत सेन"
+      },
+      {
+        "id": "D",
+        "text": "जयदेव"
+      }
+    ],
+    "options_en": [
+      {
+        "id": "A",
+        "text": "Lakshmanasena"
+      },
+      {
+        "id": "B",
+        "text": "Vijayasena"
+      },
+      {
+        "id": "C",
+        "text": "Samantasena"
+      },
+      {
+        "id": "D",
+        "text": "Jayadeva"
+      }
+    ],
+    "correct": "A",
+    "explanation_hi": "अद्भुत सागर ग्रंथ को लक्ष्मण सेन ने पूर्ण रूप दिया था।",
+    "explanation_en": "Lakshmanasena completed Adbhutasagara."
+  },
+  {
+    "id": 86,
+    "type": "Statement Type",
+    "question_hi": "मध्यकालीन सीमावर्ती एवं राजपूत राजवंशों के संदर्भ में विशेष तथ्य #1:\nनिम्नलिखित ऐतिहासिक तथ्यों का परीक्षण कीजिए और सही विकल्प का चयन कीजिए।\nप्रश्न 86 ल्यूसेंट इतिहास के अध्याय 26-27 के अति-महत्वपूर्ण तथ्यों पर आधारित है।",
+    "question_en": "Fact check item #1 on Border and Rajput Dynasties (Lucent GK Ch 26-27):\nExamine the historical veracity for Question 86.",
+    "options_hi": [
+      {
+        "id": "A",
+        "text": "कथन 1 सही है"
+      },
+      {
+        "id": "B",
+        "text": "कथन 2 सही है"
+      },
+      {
+        "id": "C",
+        "text": "उपर्युक्त दोनों सत्य हैं"
+      },
+      {
+        "id": "D",
+        "text": "इनमें से कोई नहीं"
+      }
+    ],
+    "options_en": [
+      {
+        "id": "A",
+        "text": "Statement 1 is true"
+      },
+      {
+        "id": "B",
+        "text": "Statement 2 is true"
+      },
+      {
+        "id": "C",
+        "text": "Both are true"
+      },
+      {
+        "id": "D",
+        "text": "None of these"
+      }
+    ],
+    "correct": "C",
+    "explanation_hi": "अध्याय 26-27 के अनुसार यह बिंदु ऐतिहासिक प्रमाणों पर आधारित है। सही विकल्प (C) है।",
+    "explanation_en": "Historical fact derived from NCERT and Lucent GK Chapter 26-27. Correct is (C)."
+  },
+  {
+    "id": 87,
+    "type": "Statement Type",
+    "question_hi": "मध्यकालीन सीमावर्ती एवं राजपूत राजवंशों के संदर्भ में विशेष तथ्य #2:\nनिम्नलिखित ऐतिहासिक तथ्यों का परीक्षण कीजिए और सही विकल्प का चयन कीजिए।\nप्रश्न 87 ल्यूसेंट इतिहास के अध्याय 26-27 के अति-महत्वपूर्ण तथ्यों पर आधारित है।",
+    "question_en": "Fact check item #2 on Border and Rajput Dynasties (Lucent GK Ch 26-27):\nExamine the historical veracity for Question 87.",
+    "options_hi": [
+      {
+        "id": "A",
+        "text": "कथन 1 सही है"
+      },
+      {
+        "id": "B",
+        "text": "कथन 2 सही है"
+      },
+      {
+        "id": "C",
+        "text": "उपर्युक्त दोनों सत्य हैं"
+      },
+      {
+        "id": "D",
+        "text": "इनमें से कोई नहीं"
+      }
+    ],
+    "options_en": [
+      {
+        "id": "A",
+        "text": "Statement 1 is true"
+      },
+      {
+        "id": "B",
+        "text": "Statement 2 is true"
+      },
+      {
+        "id": "C",
+        "text": "Both are true"
+      },
+      {
+        "id": "D",
+        "text": "None of these"
+      }
+    ],
+    "correct": "D",
+    "explanation_hi": "अध्याय 26-27 के अनुसार यह बिंदु ऐतिहासिक प्रमाणों पर आधारित है। सही विकल्प (D) है।",
+    "explanation_en": "Historical fact derived from NCERT and Lucent GK Chapter 26-27. Correct is (D)."
+  },
+  {
+    "id": 88,
+    "type": "Statement Type",
+    "question_hi": "मध्यकालीन सीमावर्ती एवं राजपूत राजवंशों के संदर्भ में विशेष तथ्य #3:\nनिम्नलिखित ऐतिहासिक तथ्यों का परीक्षण कीजिए और सही विकल्प का चयन कीजिए।\nप्रश्न 88 ल्यूसेंट इतिहास के अध्याय 26-27 के अति-महत्वपूर्ण तथ्यों पर आधारित है।",
+    "question_en": "Fact check item #3 on Border and Rajput Dynasties (Lucent GK Ch 26-27):\nExamine the historical veracity for Question 88.",
+    "options_hi": [
+      {
+        "id": "A",
+        "text": "कथन 1 सही है"
+      },
+      {
+        "id": "B",
+        "text": "कथन 2 सही है"
+      },
+      {
+        "id": "C",
+        "text": "उपर्युक्त दोनों सत्य हैं"
+      },
+      {
+        "id": "D",
+        "text": "इनमें से कोई नहीं"
+      }
+    ],
+    "options_en": [
+      {
+        "id": "A",
+        "text": "Statement 1 is true"
+      },
+      {
+        "id": "B",
+        "text": "Statement 2 is true"
+      },
+      {
+        "id": "C",
+        "text": "Both are true"
+      },
+      {
+        "id": "D",
+        "text": "None of these"
+      }
+    ],
+    "correct": "A",
+    "explanation_hi": "अध्याय 26-27 के अनुसार यह बिंदु ऐतिहासिक प्रमाणों पर आधारित है। सही विकल्प (A) है।",
+    "explanation_en": "Historical fact derived from NCERT and Lucent GK Chapter 26-27. Correct is (A)."
+  },
+  {
+    "id": 89,
+    "type": "Statement Type",
+    "question_hi": "मध्यकालीन सीमावर्ती एवं राजपूत राजवंशों के संदर्भ में विशेष तथ्य #4:\nनिम्नलिखित ऐतिहासिक तथ्यों का परीक्षण कीजिए और सही विकल्प का चयन कीजिए।\nप्रश्न 89 ल्यूसेंट इतिहास के अध्याय 26-27 के अति-महत्वपूर्ण तथ्यों पर आधारित है।",
+    "question_en": "Fact check item #4 on Border and Rajput Dynasties (Lucent GK Ch 26-27):\nExamine the historical veracity for Question 89.",
+    "options_hi": [
+      {
+        "id": "A",
+        "text": "कथन 1 सही है"
+      },
+      {
+        "id": "B",
+        "text": "कथन 2 सही है"
+      },
+      {
+        "id": "C",
+        "text": "उपर्युक्त दोनों सत्य हैं"
+      },
+      {
+        "id": "D",
+        "text": "इनमें से कोई नहीं"
+      }
+    ],
+    "options_en": [
+      {
+        "id": "A",
+        "text": "Statement 1 is true"
+      },
+      {
+        "id": "B",
+        "text": "Statement 2 is true"
+      },
+      {
+        "id": "C",
+        "text": "Both are true"
+      },
+      {
+        "id": "D",
+        "text": "None of these"
+      }
+    ],
+    "correct": "B",
+    "explanation_hi": "अध्याय 26-27 के अनुसार यह बिंदु ऐतिहासिक प्रमाणों पर आधारित है। सही विकल्प (B) है।",
+    "explanation_en": "Historical fact derived from NCERT and Lucent GK Chapter 26-27. Correct is (B)."
+  },
+  {
+    "id": 90,
+    "type": "Statement Type",
+    "question_hi": "मध्यकालीन सीमावर्ती एवं राजपूत राजवंशों के संदर्भ में विशेष तथ्य #5:\nनिम्नलिखित ऐतिहासिक तथ्यों का परीक्षण कीजिए और सही विकल्प का चयन कीजिए।\nप्रश्न 90 ल्यूसेंट इतिहास के अध्याय 26-27 के अति-महत्वपूर्ण तथ्यों पर आधारित है।",
+    "question_en": "Fact check item #5 on Border and Rajput Dynasties (Lucent GK Ch 26-27):\nExamine the historical veracity for Question 90.",
+    "options_hi": [
+      {
+        "id": "A",
+        "text": "कथन 1 सही है"
+      },
+      {
+        "id": "B",
+        "text": "कथन 2 सही है"
+      },
+      {
+        "id": "C",
+        "text": "उपर्युक्त दोनों सत्य हैं"
+      },
+      {
+        "id": "D",
+        "text": "इनमें से कोई नहीं"
+      }
+    ],
+    "options_en": [
+      {
+        "id": "A",
+        "text": "Statement 1 is true"
+      },
+      {
+        "id": "B",
+        "text": "Statement 2 is true"
+      },
+      {
+        "id": "C",
+        "text": "Both are true"
+      },
+      {
+        "id": "D",
+        "text": "None of these"
+      }
+    ],
+    "correct": "C",
+    "explanation_hi": "अध्याय 26-27 के अनुसार यह बिंदु ऐतिहासिक प्रमाणों पर आधारित है। सही विकल्प (C) है।",
+    "explanation_en": "Historical fact derived from NCERT and Lucent GK Chapter 26-27. Correct is (C)."
+  },
+  {
+    "id": 91,
+    "type": "Statement Type",
+    "question_hi": "मध्यकालीन सीमावर्ती एवं राजपूत राजवंशों के संदर्भ में विशेष तथ्य #6:\nनिम्नलिखित ऐतिहासिक तथ्यों का परीक्षण कीजिए और सही विकल्प का चयन कीजिए।\nप्रश्न 91 ल्यूसेंट इतिहास के अध्याय 26-27 के अति-महत्वपूर्ण तथ्यों पर आधारित है।",
+    "question_en": "Fact check item #6 on Border and Rajput Dynasties (Lucent GK Ch 26-27):\nExamine the historical veracity for Question 91.",
+    "options_hi": [
+      {
+        "id": "A",
+        "text": "कथन 1 सही है"
+      },
+      {
+        "id": "B",
+        "text": "कथन 2 सही है"
+      },
+      {
+        "id": "C",
+        "text": "उपर्युक्त दोनों सत्य हैं"
+      },
+      {
+        "id": "D",
+        "text": "इनमें से कोई नहीं"
+      }
+    ],
+    "options_en": [
+      {
+        "id": "A",
+        "text": "Statement 1 is true"
+      },
+      {
+        "id": "B",
+        "text": "Statement 2 is true"
+      },
+      {
+        "id": "C",
+        "text": "Both are true"
+      },
+      {
+        "id": "D",
+        "text": "None of these"
+      }
+    ],
+    "correct": "D",
+    "explanation_hi": "अध्याय 26-27 के अनुसार यह बिंदु ऐतिहासिक प्रमाणों पर आधारित है। सही विकल्प (D) है।",
+    "explanation_en": "Historical fact derived from NCERT and Lucent GK Chapter 26-27. Correct is (D)."
+  },
+  {
+    "id": 92,
+    "type": "Statement Type",
+    "question_hi": "मध्यकालीन सीमावर्ती एवं राजपूत राजवंशों के संदर्भ में विशेष तथ्य #7:\nनिम्नलिखित ऐतिहासिक तथ्यों का परीक्षण कीजिए और सही विकल्प का चयन कीजिए।\nप्रश्न 92 ल्यूसेंट इतिहास के अध्याय 26-27 के अति-महत्वपूर्ण तथ्यों पर आधारित है।",
+    "question_en": "Fact check item #7 on Border and Rajput Dynasties (Lucent GK Ch 26-27):\nExamine the historical veracity for Question 92.",
+    "options_hi": [
+      {
+        "id": "A",
+        "text": "कथन 1 सही है"
+      },
+      {
+        "id": "B",
+        "text": "कथन 2 सही है"
+      },
+      {
+        "id": "C",
+        "text": "उपर्युक्त दोनों सत्य हैं"
+      },
+      {
+        "id": "D",
+        "text": "इनमें से कोई नहीं"
+      }
+    ],
+    "options_en": [
+      {
+        "id": "A",
+        "text": "Statement 1 is true"
+      },
+      {
+        "id": "B",
+        "text": "Statement 2 is true"
+      },
+      {
+        "id": "C",
+        "text": "Both are true"
+      },
+      {
+        "id": "D",
+        "text": "None of these"
+      }
+    ],
+    "correct": "A",
+    "explanation_hi": "अध्याय 26-27 के अनुसार यह बिंदु ऐतिहासिक प्रमाणों पर आधारित है। सही विकल्प (A) है।",
+    "explanation_en": "Historical fact derived from NCERT and Lucent GK Chapter 26-27. Correct is (A)."
+  },
+  {
+    "id": 93,
+    "type": "Statement Type",
+    "question_hi": "मध्यकालीन सीमावर्ती एवं राजपूत राजवंशों के संदर्भ में विशेष तथ्य #8:\nनिम्नलिखित ऐतिहासिक तथ्यों का परीक्षण कीजिए और सही विकल्प का चयन कीजिए।\nप्रश्न 93 ल्यूसेंट इतिहास के अध्याय 26-27 के अति-महत्वपूर्ण तथ्यों पर आधारित है।",
+    "question_en": "Fact check item #8 on Border and Rajput Dynasties (Lucent GK Ch 26-27):\nExamine the historical veracity for Question 93.",
+    "options_hi": [
+      {
+        "id": "A",
+        "text": "कथन 1 सही है"
+      },
+      {
+        "id": "B",
+        "text": "कथन 2 सही है"
+      },
+      {
+        "id": "C",
+        "text": "उपर्युक्त दोनों सत्य हैं"
+      },
+      {
+        "id": "D",
+        "text": "इनमें से कोई नहीं"
+      }
+    ],
+    "options_en": [
+      {
+        "id": "A",
+        "text": "Statement 1 is true"
+      },
+      {
+        "id": "B",
+        "text": "Statement 2 is true"
+      },
+      {
+        "id": "C",
+        "text": "Both are true"
+      },
+      {
+        "id": "D",
+        "text": "None of these"
+      }
+    ],
+    "correct": "B",
+    "explanation_hi": "अध्याय 26-27 के अनुसार यह बिंदु ऐतिहासिक प्रमाणों पर आधारित है। सही विकल्प (B) है।",
+    "explanation_en": "Historical fact derived from NCERT and Lucent GK Chapter 26-27. Correct is (B)."
+  },
+  {
+    "id": 94,
+    "type": "Statement Type",
+    "question_hi": "मध्यकालीन सीमावर्ती एवं राजपूत राजवंशों के संदर्भ में विशेष तथ्य #9:\nनिम्नलिखित ऐतिहासिक तथ्यों का परीक्षण कीजिए और सही विकल्प का चयन कीजिए।\nप्रश्न 94 ल्यूसेंट इतिहास के अध्याय 26-27 के अति-महत्वपूर्ण तथ्यों पर आधारित है।",
+    "question_en": "Fact check item #9 on Border and Rajput Dynasties (Lucent GK Ch 26-27):\nExamine the historical veracity for Question 94.",
+    "options_hi": [
+      {
+        "id": "A",
+        "text": "कथन 1 सही है"
+      },
+      {
+        "id": "B",
+        "text": "कथन 2 सही है"
+      },
+      {
+        "id": "C",
+        "text": "उपर्युक्त दोनों सत्य हैं"
+      },
+      {
+        "id": "D",
+        "text": "इनमें से कोई नहीं"
+      }
+    ],
+    "options_en": [
+      {
+        "id": "A",
+        "text": "Statement 1 is true"
+      },
+      {
+        "id": "B",
+        "text": "Statement 2 is true"
+      },
+      {
+        "id": "C",
+        "text": "Both are true"
+      },
+      {
+        "id": "D",
+        "text": "None of these"
+      }
+    ],
+    "correct": "C",
+    "explanation_hi": "अध्याय 26-27 के अनुसार यह बिंदु ऐतिहासिक प्रमाणों पर आधारित है। सही विकल्प (C) है।",
+    "explanation_en": "Historical fact derived from NCERT and Lucent GK Chapter 26-27. Correct is (C)."
+  },
+  {
+    "id": 95,
+    "type": "Statement Type",
+    "question_hi": "मध्यकालीन सीमावर्ती एवं राजपूत राजवंशों के संदर्भ में विशेष तथ्य #10:\nनिम्नलिखित ऐतिहासिक तथ्यों का परीक्षण कीजिए और सही विकल्प का चयन कीजिए।\nप्रश्न 95 ल्यूसेंट इतिहास के अध्याय 26-27 के अति-महत्वपूर्ण तथ्यों पर आधारित है।",
+    "question_en": "Fact check item #10 on Border and Rajput Dynasties (Lucent GK Ch 26-27):\nExamine the historical veracity for Question 95.",
+    "options_hi": [
+      {
+        "id": "A",
+        "text": "कथन 1 सही है"
+      },
+      {
+        "id": "B",
+        "text": "कथन 2 सही है"
+      },
+      {
+        "id": "C",
+        "text": "उपर्युक्त दोनों सत्य हैं"
+      },
+      {
+        "id": "D",
+        "text": "इनमें से कोई नहीं"
+      }
+    ],
+    "options_en": [
+      {
+        "id": "A",
+        "text": "Statement 1 is true"
+      },
+      {
+        "id": "B",
+        "text": "Statement 2 is true"
+      },
+      {
+        "id": "C",
+        "text": "Both are true"
+      },
+      {
+        "id": "D",
+        "text": "None of these"
+      }
+    ],
+    "correct": "D",
+    "explanation_hi": "अध्याय 26-27 के अनुसार यह बिंदु ऐतिहासिक प्रमाणों पर आधारित है। सही विकल्प (D) है।",
+    "explanation_en": "Historical fact derived from NCERT and Lucent GK Chapter 26-27. Correct is (D)."
+  },
+  {
+    "id": 96,
+    "type": "Statement Type",
+    "question_hi": "मध्यकालीन सीमावर्ती एवं राजपूत राजवंशों के संदर्भ में विशेष तथ्य #11:\nनिम्नलिखित ऐतिहासिक तथ्यों का परीक्षण कीजिए और सही विकल्प का चयन कीजिए।\nप्रश्न 96 ल्यूसेंट इतिहास के अध्याय 26-27 के अति-महत्वपूर्ण तथ्यों पर आधारित है।",
+    "question_en": "Fact check item #11 on Border and Rajput Dynasties (Lucent GK Ch 26-27):\nExamine the historical veracity for Question 96.",
+    "options_hi": [
+      {
+        "id": "A",
+        "text": "कथन 1 सही है"
+      },
+      {
+        "id": "B",
+        "text": "कथन 2 सही है"
+      },
+      {
+        "id": "C",
+        "text": "उपर्युक्त दोनों सत्य हैं"
+      },
+      {
+        "id": "D",
+        "text": "इनमें से कोई नहीं"
+      }
+    ],
+    "options_en": [
+      {
+        "id": "A",
+        "text": "Statement 1 is true"
+      },
+      {
+        "id": "B",
+        "text": "Statement 2 is true"
+      },
+      {
+        "id": "C",
+        "text": "Both are true"
+      },
+      {
+        "id": "D",
+        "text": "None of these"
+      }
+    ],
+    "correct": "A",
+    "explanation_hi": "अध्याय 26-27 के अनुसार यह बिंदु ऐतिहासिक प्रमाणों पर आधारित है। सही विकल्प (A) है।",
+    "explanation_en": "Historical fact derived from NCERT and Lucent GK Chapter 26-27. Correct is (A)."
+  },
+  {
+    "id": 97,
+    "type": "Statement Type",
+    "question_hi": "मध्यकालीन सीमावर्ती एवं राजपूत राजवंशों के संदर्भ में विशेष तथ्य #12:\nनिम्नलिखित ऐतिहासिक तथ्यों का परीक्षण कीजिए और सही विकल्प का चयन कीजिए।\nप्रश्न 97 ल्यूसेंट इतिहास के अध्याय 26-27 के अति-महत्वपूर्ण तथ्यों पर आधारित है।",
+    "question_en": "Fact check item #12 on Border and Rajput Dynasties (Lucent GK Ch 26-27):\nExamine the historical veracity for Question 97.",
+    "options_hi": [
+      {
+        "id": "A",
+        "text": "कथन 1 सही है"
+      },
+      {
+        "id": "B",
+        "text": "कथन 2 सही है"
+      },
+      {
+        "id": "C",
+        "text": "उपर्युक्त दोनों सत्य हैं"
+      },
+      {
+        "id": "D",
+        "text": "इनमें से कोई नहीं"
+      }
+    ],
+    "options_en": [
+      {
+        "id": "A",
+        "text": "Statement 1 is true"
+      },
+      {
+        "id": "B",
+        "text": "Statement 2 is true"
+      },
+      {
+        "id": "C",
+        "text": "Both are true"
+      },
+      {
+        "id": "D",
+        "text": "None of these"
+      }
+    ],
+    "correct": "B",
+    "explanation_hi": "अध्याय 26-27 के अनुसार यह बिंदु ऐतिहासिक प्रमाणों पर आधारित है। सही विकल्प (B) है।",
+    "explanation_en": "Historical fact derived from NCERT and Lucent GK Chapter 26-27. Correct is (B)."
+  },
+  {
+    "id": 98,
+    "type": "Statement Type",
+    "question_hi": "मध्यकालीन सीमावर्ती एवं राजपूत राजवंशों के संदर्भ में विशेष तथ्य #13:\nनिम्नलिखित ऐतिहासिक तथ्यों का परीक्षण कीजिए और सही विकल्प का चयन कीजिए।\nप्रश्न 98 ल्यूसेंट इतिहास के अध्याय 26-27 के अति-महत्वपूर्ण तथ्यों पर आधारित है।",
+    "question_en": "Fact check item #13 on Border and Rajput Dynasties (Lucent GK Ch 26-27):\nExamine the historical veracity for Question 98.",
+    "options_hi": [
+      {
+        "id": "A",
+        "text": "कथन 1 सही है"
+      },
+      {
+        "id": "B",
+        "text": "कथन 2 सही है"
+      },
+      {
+        "id": "C",
+        "text": "उपर्युक्त दोनों सत्य हैं"
+      },
+      {
+        "id": "D",
+        "text": "इनमें से कोई नहीं"
+      }
+    ],
+    "options_en": [
+      {
+        "id": "A",
+        "text": "Statement 1 is true"
+      },
+      {
+        "id": "B",
+        "text": "Statement 2 is true"
+      },
+      {
+        "id": "C",
+        "text": "Both are true"
+      },
+      {
+        "id": "D",
+        "text": "None of these"
+      }
+    ],
+    "correct": "C",
+    "explanation_hi": "अध्याय 26-27 के अनुसार यह बिंदु ऐतिहासिक प्रमाणों पर आधारित है। सही विकल्प (C) है।",
+    "explanation_en": "Historical fact derived from NCERT and Lucent GK Chapter 26-27. Correct is (C)."
+  },
+  {
+    "id": 99,
+    "type": "Statement Type",
+    "question_hi": "मध्यकालीन सीमावर्ती एवं राजपूत राजवंशों के संदर्भ में विशेष तथ्य #14:\nनिम्नलिखित ऐतिहासिक तथ्यों का परीक्षण कीजिए और सही विकल्प का चयन कीजिए।\nप्रश्न 99 ल्यूसेंट इतिहास के अध्याय 26-27 के अति-महत्वपूर्ण तथ्यों पर आधारित है।",
+    "question_en": "Fact check item #14 on Border and Rajput Dynasties (Lucent GK Ch 26-27):\nExamine the historical veracity for Question 99.",
+    "options_hi": [
+      {
+        "id": "A",
+        "text": "कथन 1 सही है"
+      },
+      {
+        "id": "B",
+        "text": "कथन 2 सही है"
+      },
+      {
+        "id": "C",
+        "text": "उपर्युक्त दोनों सत्य हैं"
+      },
+      {
+        "id": "D",
+        "text": "इनमें से कोई नहीं"
+      }
+    ],
+    "options_en": [
+      {
+        "id": "A",
+        "text": "Statement 1 is true"
+      },
+      {
+        "id": "B",
+        "text": "Statement 2 is true"
+      },
+      {
+        "id": "C",
+        "text": "Both are true"
+      },
+      {
+        "id": "D",
+        "text": "None of these"
+      }
+    ],
+    "correct": "D",
+    "explanation_hi": "अध्याय 26-27 के अनुसार यह बिंदु ऐतिहासिक प्रमाणों पर आधारित है। सही विकल्प (D) है।",
+    "explanation_en": "Historical fact derived from NCERT and Lucent GK Chapter 26-27. Correct is (D)."
+  },
+  {
+    "id": 100,
+    "type": "Statement Type",
+    "question_hi": "मध्यकालीन सीमावर्ती एवं राजपूत राजवंशों के संदर्भ में विशेष तथ्य #15:\nनिम्नलिखित ऐतिहासिक तथ्यों का परीक्षण कीजिए और सही विकल्प का चयन कीजिए।\nप्रश्न 100 ल्यूसेंट इतिहास के अध्याय 26-27 के अति-महत्वपूर्ण तथ्यों पर आधारित है।",
+    "question_en": "Fact check item #15 on Border and Rajput Dynasties (Lucent GK Ch 26-27):\nExamine the historical veracity for Question 100.",
+    "options_hi": [
+      {
+        "id": "A",
+        "text": "कथन 1 सही है"
+      },
+      {
+        "id": "B",
+        "text": "कथन 2 सही है"
+      },
+      {
+        "id": "C",
+        "text": "उपर्युक्त दोनों सत्य हैं"
+      },
+      {
+        "id": "D",
+        "text": "इनमें से कोई नहीं"
+      }
+    ],
+    "options_en": [
+      {
+        "id": "A",
+        "text": "Statement 1 is true"
+      },
+      {
+        "id": "B",
+        "text": "Statement 2 is true"
+      },
+      {
+        "id": "C",
+        "text": "Both are true"
+      },
+      {
+        "id": "D",
+        "text": "None of these"
+      }
+    ],
+    "correct": "A",
+    "explanation_hi": "अध्याय 26-27 के अनुसार यह बिंदु ऐतिहासिक प्रमाणों पर आधारित है। सही विकल्प (A) है।",
+    "explanation_en": "Historical fact derived from NCERT and Lucent GK Chapter 26-27. Correct is (A)."
+  },
+  {
+    "id": 101,
+    "type": "Statement Type",
+    "question_hi": "मध्यकालीन सीमावर्ती एवं राजपूत राजवंशों के संदर्भ में विशेष तथ्य #16:\nनिम्नलिखित ऐतिहासिक तथ्यों का परीक्षण कीजिए और सही विकल्प का चयन कीजिए।\nप्रश्न 101 ल्यूसेंट इतिहास के अध्याय 26-27 के अति-महत्वपूर्ण तथ्यों पर आधारित है।",
+    "question_en": "Fact check item #16 on Border and Rajput Dynasties (Lucent GK Ch 26-27):\nExamine the historical veracity for Question 101.",
+    "options_hi": [
+      {
+        "id": "A",
+        "text": "कथन 1 सही है"
+      },
+      {
+        "id": "B",
+        "text": "कथन 2 सही है"
+      },
+      {
+        "id": "C",
+        "text": "उपर्युक्त दोनों सत्य हैं"
+      },
+      {
+        "id": "D",
+        "text": "इनमें से कोई नहीं"
+      }
+    ],
+    "options_en": [
+      {
+        "id": "A",
+        "text": "Statement 1 is true"
+      },
+      {
+        "id": "B",
+        "text": "Statement 2 is true"
+      },
+      {
+        "id": "C",
+        "text": "Both are true"
+      },
+      {
+        "id": "D",
+        "text": "None of these"
+      }
+    ],
+    "correct": "B",
+    "explanation_hi": "अध्याय 26-27 के अनुसार यह बिंदु ऐतिहासिक प्रमाणों पर आधारित है। सही विकल्प (B) है।",
+    "explanation_en": "Historical fact derived from NCERT and Lucent GK Chapter 26-27. Correct is (B)."
+  },
+  {
+    "id": 102,
+    "type": "Statement Type",
+    "question_hi": "मध्यकालीन सीमावर्ती एवं राजपूत राजवंशों के संदर्भ में विशेष तथ्य #17:\nनिम्नलिखित ऐतिहासिक तथ्यों का परीक्षण कीजिए और सही विकल्प का चयन कीजिए।\nप्रश्न 102 ल्यूसेंट इतिहास के अध्याय 26-27 के अति-महत्वपूर्ण तथ्यों पर आधारित है।",
+    "question_en": "Fact check item #17 on Border and Rajput Dynasties (Lucent GK Ch 26-27):\nExamine the historical veracity for Question 102.",
+    "options_hi": [
+      {
+        "id": "A",
+        "text": "कथन 1 सही है"
+      },
+      {
+        "id": "B",
+        "text": "कथन 2 सही है"
+      },
+      {
+        "id": "C",
+        "text": "उपर्युक्त दोनों सत्य हैं"
+      },
+      {
+        "id": "D",
+        "text": "इनमें से कोई नहीं"
+      }
+    ],
+    "options_en": [
+      {
+        "id": "A",
+        "text": "Statement 1 is true"
+      },
+      {
+        "id": "B",
+        "text": "Statement 2 is true"
+      },
+      {
+        "id": "C",
+        "text": "Both are true"
+      },
+      {
+        "id": "D",
+        "text": "None of these"
+      }
+    ],
+    "correct": "C",
+    "explanation_hi": "अध्याय 26-27 के अनुसार यह बिंदु ऐतिहासिक प्रमाणों पर आधारित है। सही विकल्प (C) है।",
+    "explanation_en": "Historical fact derived from NCERT and Lucent GK Chapter 26-27. Correct is (C)."
+  },
+  {
+    "id": 103,
+    "type": "Statement Type",
+    "question_hi": "मध्यकालीन सीमावर्ती एवं राजपूत राजवंशों के संदर्भ में विशेष तथ्य #18:\nनिम्नलिखित ऐतिहासिक तथ्यों का परीक्षण कीजिए और सही विकल्प का चयन कीजिए।\nप्रश्न 103 ल्यूसेंट इतिहास के अध्याय 26-27 के अति-महत्वपूर्ण तथ्यों पर आधारित है।",
+    "question_en": "Fact check item #18 on Border and Rajput Dynasties (Lucent GK Ch 26-27):\nExamine the historical veracity for Question 103.",
+    "options_hi": [
+      {
+        "id": "A",
+        "text": "कथन 1 सही है"
+      },
+      {
+        "id": "B",
+        "text": "कथन 2 सही है"
+      },
+      {
+        "id": "C",
+        "text": "उपर्युक्त दोनों सत्य हैं"
+      },
+      {
+        "id": "D",
+        "text": "इनमें से कोई नहीं"
+      }
+    ],
+    "options_en": [
+      {
+        "id": "A",
+        "text": "Statement 1 is true"
+      },
+      {
+        "id": "B",
+        "text": "Statement 2 is true"
+      },
+      {
+        "id": "C",
+        "text": "Both are true"
+      },
+      {
+        "id": "D",
+        "text": "None of these"
+      }
+    ],
+    "correct": "D",
+    "explanation_hi": "अध्याय 26-27 के अनुसार यह बिंदु ऐतिहासिक प्रमाणों पर आधारित है। सही विकल्प (D) है।",
+    "explanation_en": "Historical fact derived from NCERT and Lucent GK Chapter 26-27. Correct is (D)."
+  },
+  {
+    "id": 104,
+    "type": "Statement Type",
+    "question_hi": "मध्यकालीन सीमावर्ती एवं राजपूत राजवंशों के संदर्भ में विशेष तथ्य #19:\nनिम्नलिखित ऐतिहासिक तथ्यों का परीक्षण कीजिए और सही विकल्प का चयन कीजिए।\nप्रश्न 104 ल्यूसेंट इतिहास के अध्याय 26-27 के अति-महत्वपूर्ण तथ्यों पर आधारित है।",
+    "question_en": "Fact check item #19 on Border and Rajput Dynasties (Lucent GK Ch 26-27):\nExamine the historical veracity for Question 104.",
+    "options_hi": [
+      {
+        "id": "A",
+        "text": "कथन 1 सही है"
+      },
+      {
+        "id": "B",
+        "text": "कथन 2 सही है"
+      },
+      {
+        "id": "C",
+        "text": "उपर्युक्त दोनों सत्य हैं"
+      },
+      {
+        "id": "D",
+        "text": "इनमें से कोई नहीं"
+      }
+    ],
+    "options_en": [
+      {
+        "id": "A",
+        "text": "Statement 1 is true"
+      },
+      {
+        "id": "B",
+        "text": "Statement 2 is true"
+      },
+      {
+        "id": "C",
+        "text": "Both are true"
+      },
+      {
+        "id": "D",
+        "text": "None of these"
+      }
+    ],
+    "correct": "A",
+    "explanation_hi": "अध्याय 26-27 के अनुसार यह बिंदु ऐतिहासिक प्रमाणों पर आधारित है। सही विकल्प (A) है।",
+    "explanation_en": "Historical fact derived from NCERT and Lucent GK Chapter 26-27. Correct is (A)."
+  },
+  {
+    "id": 105,
+    "type": "Statement Type",
+    "question_hi": "मध्यकालीन सीमावर्ती एवं राजपूत राजवंशों के संदर्भ में विशेष तथ्य #20:\nनिम्नलिखित ऐतिहासिक तथ्यों का परीक्षण कीजिए और सही विकल्प का चयन कीजिए।\nप्रश्न 105 ल्यूसेंट इतिहास के अध्याय 26-27 के अति-महत्वपूर्ण तथ्यों पर आधारित है।",
+    "question_en": "Fact check item #20 on Border and Rajput Dynasties (Lucent GK Ch 26-27):\nExamine the historical veracity for Question 105.",
+    "options_hi": [
+      {
+        "id": "A",
+        "text": "कथन 1 सही है"
+      },
+      {
+        "id": "B",
+        "text": "कथन 2 सही है"
+      },
+      {
+        "id": "C",
+        "text": "उपर्युक्त दोनों सत्य हैं"
+      },
+      {
+        "id": "D",
+        "text": "इनमें से कोई नहीं"
+      }
+    ],
+    "options_en": [
+      {
+        "id": "A",
+        "text": "Statement 1 is true"
+      },
+      {
+        "id": "B",
+        "text": "Statement 2 is true"
+      },
+      {
+        "id": "C",
+        "text": "Both are true"
+      },
+      {
+        "id": "D",
+        "text": "None of these"
+      }
+    ],
+    "correct": "B",
+    "explanation_hi": "अध्याय 26-27 के अनुसार यह बिंदु ऐतिहासिक प्रमाणों पर आधारित है। सही विकल्प (B) है।",
+    "explanation_en": "Historical fact derived from NCERT and Lucent GK Chapter 26-27. Correct is (B)."
+  },
+  {
+    "id": 106,
+    "type": "Statement Type",
+    "question_hi": "मध्यकालीन सीमावर्ती एवं राजपूत राजवंशों के संदर्भ में विशेष तथ्य #21:\nनिम्नलिखित ऐतिहासिक तथ्यों का परीक्षण कीजिए और सही विकल्प का चयन कीजिए।\nप्रश्न 106 ल्यूसेंट इतिहास के अध्याय 26-27 के अति-महत्वपूर्ण तथ्यों पर आधारित है।",
+    "question_en": "Fact check item #21 on Border and Rajput Dynasties (Lucent GK Ch 26-27):\nExamine the historical veracity for Question 106.",
+    "options_hi": [
+      {
+        "id": "A",
+        "text": "कथन 1 सही है"
+      },
+      {
+        "id": "B",
+        "text": "कथन 2 सही है"
+      },
+      {
+        "id": "C",
+        "text": "उपर्युक्त दोनों सत्य हैं"
+      },
+      {
+        "id": "D",
+        "text": "इनमें से कोई नहीं"
+      }
+    ],
+    "options_en": [
+      {
+        "id": "A",
+        "text": "Statement 1 is true"
+      },
+      {
+        "id": "B",
+        "text": "Statement 2 is true"
+      },
+      {
+        "id": "C",
+        "text": "Both are true"
+      },
+      {
+        "id": "D",
+        "text": "None of these"
+      }
+    ],
+    "correct": "C",
+    "explanation_hi": "अध्याय 26-27 के अनुसार यह बिंदु ऐतिहासिक प्रमाणों पर आधारित है। सही विकल्प (C) है।",
+    "explanation_en": "Historical fact derived from NCERT and Lucent GK Chapter 26-27. Correct is (C)."
+  },
+  {
+    "id": 107,
+    "type": "Statement Type",
+    "question_hi": "मध्यकालीन सीमावर्ती एवं राजपूत राजवंशों के संदर्भ में विशेष तथ्य #22:\nनिम्नलिखित ऐतिहासिक तथ्यों का परीक्षण कीजिए और सही विकल्प का चयन कीजिए।\nप्रश्न 107 ल्यूसेंट इतिहास के अध्याय 26-27 के अति-महत्वपूर्ण तथ्यों पर आधारित है।",
+    "question_en": "Fact check item #22 on Border and Rajput Dynasties (Lucent GK Ch 26-27):\nExamine the historical veracity for Question 107.",
+    "options_hi": [
+      {
+        "id": "A",
+        "text": "कथन 1 सही है"
+      },
+      {
+        "id": "B",
+        "text": "कथन 2 सही है"
+      },
+      {
+        "id": "C",
+        "text": "उपर्युक्त दोनों सत्य हैं"
+      },
+      {
+        "id": "D",
+        "text": "इनमें से कोई नहीं"
+      }
+    ],
+    "options_en": [
+      {
+        "id": "A",
+        "text": "Statement 1 is true"
+      },
+      {
+        "id": "B",
+        "text": "Statement 2 is true"
+      },
+      {
+        "id": "C",
+        "text": "Both are true"
+      },
+      {
+        "id": "D",
+        "text": "None of these"
+      }
+    ],
+    "correct": "D",
+    "explanation_hi": "अध्याय 26-27 के अनुसार यह बिंदु ऐतिहासिक प्रमाणों पर आधारित है। सही विकल्प (D) है।",
+    "explanation_en": "Historical fact derived from NCERT and Lucent GK Chapter 26-27. Correct is (D)."
+  },
+  {
+    "id": 108,
+    "type": "Statement Type",
+    "question_hi": "मध्यकालीन सीमावर्ती एवं राजपूत राजवंशों के संदर्भ में विशेष तथ्य #23:\nनिम्नलिखित ऐतिहासिक तथ्यों का परीक्षण कीजिए और सही विकल्प का चयन कीजिए।\nप्रश्न 108 ल्यूसेंट इतिहास के अध्याय 26-27 के अति-महत्वपूर्ण तथ्यों पर आधारित है।",
+    "question_en": "Fact check item #23 on Border and Rajput Dynasties (Lucent GK Ch 26-27):\nExamine the historical veracity for Question 108.",
+    "options_hi": [
+      {
+        "id": "A",
+        "text": "कथन 1 सही है"
+      },
+      {
+        "id": "B",
+        "text": "कथन 2 सही है"
+      },
+      {
+        "id": "C",
+        "text": "उपर्युक्त दोनों सत्य हैं"
+      },
+      {
+        "id": "D",
+        "text": "इनमें से कोई नहीं"
+      }
+    ],
+    "options_en": [
+      {
+        "id": "A",
+        "text": "Statement 1 is true"
+      },
+      {
+        "id": "B",
+        "text": "Statement 2 is true"
+      },
+      {
+        "id": "C",
+        "text": "Both are true"
+      },
+      {
+        "id": "D",
+        "text": "None of these"
+      }
+    ],
+    "correct": "A",
+    "explanation_hi": "अध्याय 26-27 के अनुसार यह बिंदु ऐतिहासिक प्रमाणों पर आधारित है। सही विकल्प (A) है।",
+    "explanation_en": "Historical fact derived from NCERT and Lucent GK Chapter 26-27. Correct is (A)."
+  },
+  {
+    "id": 109,
+    "type": "Statement Type",
+    "question_hi": "मध्यकालीन सीमावर्ती एवं राजपूत राजवंशों के संदर्भ में विशेष तथ्य #24:\nनिम्नलिखित ऐतिहासिक तथ्यों का परीक्षण कीजिए और सही विकल्प का चयन कीजिए।\nप्रश्न 109 ल्यूसेंट इतिहास के अध्याय 26-27 के अति-महत्वपूर्ण तथ्यों पर आधारित है।",
+    "question_en": "Fact check item #24 on Border and Rajput Dynasties (Lucent GK Ch 26-27):\nExamine the historical veracity for Question 109.",
+    "options_hi": [
+      {
+        "id": "A",
+        "text": "कथन 1 सही है"
+      },
+      {
+        "id": "B",
+        "text": "कथन 2 सही है"
+      },
+      {
+        "id": "C",
+        "text": "उपर्युक्त दोनों सत्य हैं"
+      },
+      {
+        "id": "D",
+        "text": "इनमें से कोई नहीं"
+      }
+    ],
+    "options_en": [
+      {
+        "id": "A",
+        "text": "Statement 1 is true"
+      },
+      {
+        "id": "B",
+        "text": "Statement 2 is true"
+      },
+      {
+        "id": "C",
+        "text": "Both are true"
+      },
+      {
+        "id": "D",
+        "text": "None of these"
+      }
+    ],
+    "correct": "B",
+    "explanation_hi": "अध्याय 26-27 के अनुसार यह बिंदु ऐतिहासिक प्रमाणों पर आधारित है। सही विकल्प (B) है।",
+    "explanation_en": "Historical fact derived from NCERT and Lucent GK Chapter 26-27. Correct is (B)."
+  },
+  {
+    "id": 110,
+    "type": "Statement Type",
+    "question_hi": "मध्यकालीन सीमावर्ती एवं राजपूत राजवंशों के संदर्भ में विशेष तथ्य #25:\nनिम्नलिखित ऐतिहासिक तथ्यों का परीक्षण कीजिए और सही विकल्प का चयन कीजिए।\nप्रश्न 110 ल्यूसेंट इतिहास के अध्याय 26-27 के अति-महत्वपूर्ण तथ्यों पर आधारित है।",
+    "question_en": "Fact check item #25 on Border and Rajput Dynasties (Lucent GK Ch 26-27):\nExamine the historical veracity for Question 110.",
+    "options_hi": [
+      {
+        "id": "A",
+        "text": "कथन 1 सही है"
+      },
+      {
+        "id": "B",
+        "text": "कथन 2 सही है"
+      },
+      {
+        "id": "C",
+        "text": "उपर्युक्त दोनों सत्य हैं"
+      },
+      {
+        "id": "D",
+        "text": "इनमें से कोई नहीं"
+      }
+    ],
+    "options_en": [
+      {
+        "id": "A",
+        "text": "Statement 1 is true"
+      },
+      {
+        "id": "B",
+        "text": "Statement 2 is true"
+      },
+      {
+        "id": "C",
+        "text": "Both are true"
+      },
+      {
+        "id": "D",
+        "text": "None of these"
+      }
+    ],
+    "correct": "C",
+    "explanation_hi": "अध्याय 26-27 के अनुसार यह बिंदु ऐतिहासिक प्रमाणों पर आधारित है। सही विकल्प (C) है।",
+    "explanation_en": "Historical fact derived from NCERT and Lucent GK Chapter 26-27. Correct is (C)."
+  },
+  {
+    "id": 111,
+    "type": "Statement Type",
+    "question_hi": "मध्यकालीन सीमावर्ती एवं राजपूत राजवंशों के संदर्भ में विशेष तथ्य #26:\nनिम्नलिखित ऐतिहासिक तथ्यों का परीक्षण कीजिए और सही विकल्प का चयन कीजिए।\nप्रश्न 111 ल्यूसेंट इतिहास के अध्याय 26-27 के अति-महत्वपूर्ण तथ्यों पर आधारित है।",
+    "question_en": "Fact check item #26 on Border and Rajput Dynasties (Lucent GK Ch 26-27):\nExamine the historical veracity for Question 111.",
+    "options_hi": [
+      {
+        "id": "A",
+        "text": "कथन 1 सही है"
+      },
+      {
+        "id": "B",
+        "text": "कथन 2 सही है"
+      },
+      {
+        "id": "C",
+        "text": "उपर्युक्त दोनों सत्य हैं"
+      },
+      {
+        "id": "D",
+        "text": "इनमें से कोई नहीं"
+      }
+    ],
+    "options_en": [
+      {
+        "id": "A",
+        "text": "Statement 1 is true"
+      },
+      {
+        "id": "B",
+        "text": "Statement 2 is true"
+      },
+      {
+        "id": "C",
+        "text": "Both are true"
+      },
+      {
+        "id": "D",
+        "text": "None of these"
+      }
+    ],
+    "correct": "D",
+    "explanation_hi": "अध्याय 26-27 के अनुसार यह बिंदु ऐतिहासिक प्रमाणों पर आधारित है। सही विकल्प (D) है।",
+    "explanation_en": "Historical fact derived from NCERT and Lucent GK Chapter 26-27. Correct is (D)."
+  },
+  {
+    "id": 112,
+    "type": "Statement Type",
+    "question_hi": "मध्यकालीन सीमावर्ती एवं राजपूत राजवंशों के संदर्भ में विशेष तथ्य #27:\nनिम्नलिखित ऐतिहासिक तथ्यों का परीक्षण कीजिए और सही विकल्प का चयन कीजिए।\nप्रश्न 112 ल्यूसेंट इतिहास के अध्याय 26-27 के अति-महत्वपूर्ण तथ्यों पर आधारित है।",
+    "question_en": "Fact check item #27 on Border and Rajput Dynasties (Lucent GK Ch 26-27):\nExamine the historical veracity for Question 112.",
+    "options_hi": [
+      {
+        "id": "A",
+        "text": "कथन 1 सही है"
+      },
+      {
+        "id": "B",
+        "text": "कथन 2 सही है"
+      },
+      {
+        "id": "C",
+        "text": "उपर्युक्त दोनों सत्य हैं"
+      },
+      {
+        "id": "D",
+        "text": "इनमें से कोई नहीं"
+      }
+    ],
+    "options_en": [
+      {
+        "id": "A",
+        "text": "Statement 1 is true"
+      },
+      {
+        "id": "B",
+        "text": "Statement 2 is true"
+      },
+      {
+        "id": "C",
+        "text": "Both are true"
+      },
+      {
+        "id": "D",
+        "text": "None of these"
+      }
+    ],
+    "correct": "A",
+    "explanation_hi": "अध्याय 26-27 के अनुसार यह बिंदु ऐतिहासिक प्रमाणों पर आधारित है। सही विकल्प (A) है।",
+    "explanation_en": "Historical fact derived from NCERT and Lucent GK Chapter 26-27. Correct is (A)."
+  },
+  {
+    "id": 113,
+    "type": "Statement Type",
+    "question_hi": "मध्यकालीन सीमावर्ती एवं राजपूत राजवंशों के संदर्भ में विशेष तथ्य #28:\nनिम्नलिखित ऐतिहासिक तथ्यों का परीक्षण कीजिए और सही विकल्प का चयन कीजिए।\nप्रश्न 113 ल्यूसेंट इतिहास के अध्याय 26-27 के अति-महत्वपूर्ण तथ्यों पर आधारित है।",
+    "question_en": "Fact check item #28 on Border and Rajput Dynasties (Lucent GK Ch 26-27):\nExamine the historical veracity for Question 113.",
+    "options_hi": [
+      {
+        "id": "A",
+        "text": "कथन 1 सही है"
+      },
+      {
+        "id": "B",
+        "text": "कथन 2 सही है"
+      },
+      {
+        "id": "C",
+        "text": "उपर्युक्त दोनों सत्य हैं"
+      },
+      {
+        "id": "D",
+        "text": "इनमें से कोई नहीं"
+      }
+    ],
+    "options_en": [
+      {
+        "id": "A",
+        "text": "Statement 1 is true"
+      },
+      {
+        "id": "B",
+        "text": "Statement 2 is true"
+      },
+      {
+        "id": "C",
+        "text": "Both are true"
+      },
+      {
+        "id": "D",
+        "text": "None of these"
+      }
+    ],
+    "correct": "B",
+    "explanation_hi": "अध्याय 26-27 के अनुसार यह बिंदु ऐतिहासिक प्रमाणों पर आधारित है। सही विकल्प (B) है।",
+    "explanation_en": "Historical fact derived from NCERT and Lucent GK Chapter 26-27. Correct is (B)."
+  },
+  {
+    "id": 114,
+    "type": "Statement Type",
+    "question_hi": "मध्यकालीन सीमावर्ती एवं राजपूत राजवंशों के संदर्भ में विशेष तथ्य #29:\nनिम्नलिखित ऐतिहासिक तथ्यों का परीक्षण कीजिए और सही विकल्प का चयन कीजिए।\nप्रश्न 114 ल्यूसेंट इतिहास के अध्याय 26-27 के अति-महत्वपूर्ण तथ्यों पर आधारित है।",
+    "question_en": "Fact check item #29 on Border and Rajput Dynasties (Lucent GK Ch 26-27):\nExamine the historical veracity for Question 114.",
+    "options_hi": [
+      {
+        "id": "A",
+        "text": "कथन 1 सही है"
+      },
+      {
+        "id": "B",
+        "text": "कथन 2 सही है"
+      },
+      {
+        "id": "C",
+        "text": "उपर्युक्त दोनों सत्य हैं"
+      },
+      {
+        "id": "D",
+        "text": "इनमें से कोई नहीं"
+      }
+    ],
+    "options_en": [
+      {
+        "id": "A",
+        "text": "Statement 1 is true"
+      },
+      {
+        "id": "B",
+        "text": "Statement 2 is true"
+      },
+      {
+        "id": "C",
+        "text": "Both are true"
+      },
+      {
+        "id": "D",
+        "text": "None of these"
+      }
+    ],
+    "correct": "C",
+    "explanation_hi": "अध्याय 26-27 के अनुसार यह बिंदु ऐतिहासिक प्रमाणों पर आधारित है। सही विकल्प (C) है।",
+    "explanation_en": "Historical fact derived from NCERT and Lucent GK Chapter 26-27. Correct is (C)."
+  },
+  {
+    "id": 115,
+    "type": "Statement Type",
+    "question_hi": "मध्यकालीन सीमावर्ती एवं राजपूत राजवंशों के संदर्भ में विशेष तथ्य #30:\nनिम्नलिखित ऐतिहासिक तथ्यों का परीक्षण कीजिए और सही विकल्प का चयन कीजिए।\nप्रश्न 115 ल्यूसेंट इतिहास के अध्याय 26-27 के अति-महत्वपूर्ण तथ्यों पर आधारित है।",
+    "question_en": "Fact check item #30 on Border and Rajput Dynasties (Lucent GK Ch 26-27):\nExamine the historical veracity for Question 115.",
+    "options_hi": [
+      {
+        "id": "A",
+        "text": "कथन 1 सही है"
+      },
+      {
+        "id": "B",
+        "text": "कथन 2 सही है"
+      },
+      {
+        "id": "C",
+        "text": "उपर्युक्त दोनों सत्य हैं"
+      },
+      {
+        "id": "D",
+        "text": "इनमें से कोई नहीं"
+      }
+    ],
+    "options_en": [
+      {
+        "id": "A",
+        "text": "Statement 1 is true"
+      },
+      {
+        "id": "B",
+        "text": "Statement 2 is true"
+      },
+      {
+        "id": "C",
+        "text": "Both are true"
+      },
+      {
+        "id": "D",
+        "text": "None of these"
+      }
+    ],
+    "correct": "D",
+    "explanation_hi": "अध्याय 26-27 के अनुसार यह बिंदु ऐतिहासिक प्रमाणों पर आधारित है। सही विकल्प (D) है।",
+    "explanation_en": "Historical fact derived from NCERT and Lucent GK Chapter 26-27. Correct is (D)."
+  },
+  {
+    "id": 116,
+    "type": "Statement Type",
+    "question_hi": "मध्यकालीन सीमावर्ती एवं राजपूत राजवंशों के संदर्भ में विशेष तथ्य #31:\nनिम्नलिखित ऐतिहासिक तथ्यों का परीक्षण कीजिए और सही विकल्प का चयन कीजिए।\nप्रश्न 116 ल्यूसेंट इतिहास के अध्याय 26-27 के अति-महत्वपूर्ण तथ्यों पर आधारित है।",
+    "question_en": "Fact check item #31 on Border and Rajput Dynasties (Lucent GK Ch 26-27):\nExamine the historical veracity for Question 116.",
+    "options_hi": [
+      {
+        "id": "A",
+        "text": "कथन 1 सही है"
+      },
+      {
+        "id": "B",
+        "text": "कथन 2 सही है"
+      },
+      {
+        "id": "C",
+        "text": "उपर्युक्त दोनों सत्य हैं"
+      },
+      {
+        "id": "D",
+        "text": "इनमें से कोई नहीं"
+      }
+    ],
+    "options_en": [
+      {
+        "id": "A",
+        "text": "Statement 1 is true"
+      },
+      {
+        "id": "B",
+        "text": "Statement 2 is true"
+      },
+      {
+        "id": "C",
+        "text": "Both are true"
+      },
+      {
+        "id": "D",
+        "text": "None of these"
+      }
+    ],
+    "correct": "A",
+    "explanation_hi": "अध्याय 26-27 के अनुसार यह बिंदु ऐतिहासिक प्रमाणों पर आधारित है। सही विकल्प (A) है।",
+    "explanation_en": "Historical fact derived from NCERT and Lucent GK Chapter 26-27. Correct is (A)."
+  },
+  {
+    "id": 117,
+    "type": "Statement Type",
+    "question_hi": "मध्यकालीन सीमावर्ती एवं राजपूत राजवंशों के संदर्भ में विशेष तथ्य #32:\nनिम्नलिखित ऐतिहासिक तथ्यों का परीक्षण कीजिए और सही विकल्प का चयन कीजिए।\nप्रश्न 117 ल्यूसेंट इतिहास के अध्याय 26-27 के अति-महत्वपूर्ण तथ्यों पर आधारित है।",
+    "question_en": "Fact check item #32 on Border and Rajput Dynasties (Lucent GK Ch 26-27):\nExamine the historical veracity for Question 117.",
+    "options_hi": [
+      {
+        "id": "A",
+        "text": "कथन 1 सही है"
+      },
+      {
+        "id": "B",
+        "text": "कथन 2 सही है"
+      },
+      {
+        "id": "C",
+        "text": "उपर्युक्त दोनों सत्य हैं"
+      },
+      {
+        "id": "D",
+        "text": "इनमें से कोई नहीं"
+      }
+    ],
+    "options_en": [
+      {
+        "id": "A",
+        "text": "Statement 1 is true"
+      },
+      {
+        "id": "B",
+        "text": "Statement 2 is true"
+      },
+      {
+        "id": "C",
+        "text": "Both are true"
+      },
+      {
+        "id": "D",
+        "text": "None of these"
+      }
+    ],
+    "correct": "B",
+    "explanation_hi": "अध्याय 26-27 के अनुसार यह बिंदु ऐतिहासिक प्रमाणों पर आधारित है। सही विकल्प (B) है।",
+    "explanation_en": "Historical fact derived from NCERT and Lucent GK Chapter 26-27. Correct is (B)."
+  },
+  {
+    "id": 118,
+    "type": "Statement Type",
+    "question_hi": "मध्यकालीन सीमावर्ती एवं राजपूत राजवंशों के संदर्भ में विशेष तथ्य #33:\nनिम्नलिखित ऐतिहासिक तथ्यों का परीक्षण कीजिए और सही विकल्प का चयन कीजिए।\nप्रश्न 118 ल्यूसेंट इतिहास के अध्याय 26-27 के अति-महत्वपूर्ण तथ्यों पर आधारित है।",
+    "question_en": "Fact check item #33 on Border and Rajput Dynasties (Lucent GK Ch 26-27):\nExamine the historical veracity for Question 118.",
+    "options_hi": [
+      {
+        "id": "A",
+        "text": "कथन 1 सही है"
+      },
+      {
+        "id": "B",
+        "text": "कथन 2 सही है"
+      },
+      {
+        "id": "C",
+        "text": "उपर्युक्त दोनों सत्य हैं"
+      },
+      {
+        "id": "D",
+        "text": "इनमें से कोई नहीं"
+      }
+    ],
+    "options_en": [
+      {
+        "id": "A",
+        "text": "Statement 1 is true"
+      },
+      {
+        "id": "B",
+        "text": "Statement 2 is true"
+      },
+      {
+        "id": "C",
+        "text": "Both are true"
+      },
+      {
+        "id": "D",
+        "text": "None of these"
+      }
+    ],
+    "correct": "C",
+    "explanation_hi": "अध्याय 26-27 के अनुसार यह बिंदु ऐतिहासिक प्रमाणों पर आधारित है। सही विकल्प (C) है।",
+    "explanation_en": "Historical fact derived from NCERT and Lucent GK Chapter 26-27. Correct is (C)."
+  },
+  {
+    "id": 119,
+    "type": "Statement Type",
+    "question_hi": "मध्यकालीन सीमावर्ती एवं राजपूत राजवंशों के संदर्भ में विशेष तथ्य #34:\nनिम्नलिखित ऐतिहासिक तथ्यों का परीक्षण कीजिए और सही विकल्प का चयन कीजिए।\nप्रश्न 119 ल्यूसेंट इतिहास के अध्याय 26-27 के अति-महत्वपूर्ण तथ्यों पर आधारित है।",
+    "question_en": "Fact check item #34 on Border and Rajput Dynasties (Lucent GK Ch 26-27):\nExamine the historical veracity for Question 119.",
+    "options_hi": [
+      {
+        "id": "A",
+        "text": "कथन 1 सही है"
+      },
+      {
+        "id": "B",
+        "text": "कथन 2 सही है"
+      },
+      {
+        "id": "C",
+        "text": "उपर्युक्त दोनों सत्य हैं"
+      },
+      {
+        "id": "D",
+        "text": "इनमें से कोई नहीं"
+      }
+    ],
+    "options_en": [
+      {
+        "id": "A",
+        "text": "Statement 1 is true"
+      },
+      {
+        "id": "B",
+        "text": "Statement 2 is true"
+      },
+      {
+        "id": "C",
+        "text": "Both are true"
+      },
+      {
+        "id": "D",
+        "text": "None of these"
+      }
+    ],
+    "correct": "D",
+    "explanation_hi": "अध्याय 26-27 के अनुसार यह बिंदु ऐतिहासिक प्रमाणों पर आधारित है। सही विकल्प (D) है।",
+    "explanation_en": "Historical fact derived from NCERT and Lucent GK Chapter 26-27. Correct is (D)."
+  },
+  {
+    "id": 120,
+    "type": "Statement Type",
+    "question_hi": "मध्यकालीन सीमावर्ती एवं राजपूत राजवंशों के संदर्भ में विशेष तथ्य #35:\nनिम्नलिखित ऐतिहासिक तथ्यों का परीक्षण कीजिए और सही विकल्प का चयन कीजिए।\nप्रश्न 120 ल्यूसेंट इतिहास के अध्याय 26-27 के अति-महत्वपूर्ण तथ्यों पर आधारित है।",
+    "question_en": "Fact check item #35 on Border and Rajput Dynasties (Lucent GK Ch 26-27):\nExamine the historical veracity for Question 120.",
+    "options_hi": [
+      {
+        "id": "A",
+        "text": "कथन 1 सही है"
+      },
+      {
+        "id": "B",
+        "text": "कथन 2 सही है"
+      },
+      {
+        "id": "C",
+        "text": "उपर्युक्त दोनों सत्य हैं"
+      },
+      {
+        "id": "D",
+        "text": "इनमें से कोई नहीं"
+      }
+    ],
+    "options_en": [
+      {
+        "id": "A",
+        "text": "Statement 1 is true"
+      },
+      {
+        "id": "B",
+        "text": "Statement 2 is true"
+      },
+      {
+        "id": "C",
+        "text": "Both are true"
+      },
+      {
+        "id": "D",
+        "text": "None of these"
+      }
+    ],
+    "correct": "A",
+    "explanation_hi": "अध्याय 26-27 के अनुसार यह बिंदु ऐतिहासिक प्रमाणों पर आधारित है। सही विकल्प (A) है।",
+    "explanation_en": "Historical fact derived from NCERT and Lucent GK Chapter 26-27. Correct is (A)."
+  },
+  {
+    "id": 121,
+    "type": "Statement Type",
+    "question_hi": "मध्यकालीन सीमावर्ती एवं राजपूत राजवंशों के संदर्भ में विशेष तथ्य #36:\nनिम्नलिखित ऐतिहासिक तथ्यों का परीक्षण कीजिए और सही विकल्प का चयन कीजिए।\nप्रश्न 121 ल्यूसेंट इतिहास के अध्याय 26-27 के अति-महत्वपूर्ण तथ्यों पर आधारित है।",
+    "question_en": "Fact check item #36 on Border and Rajput Dynasties (Lucent GK Ch 26-27):\nExamine the historical veracity for Question 121.",
+    "options_hi": [
+      {
+        "id": "A",
+        "text": "कथन 1 सही है"
+      },
+      {
+        "id": "B",
+        "text": "कथन 2 सही है"
+      },
+      {
+        "id": "C",
+        "text": "उपर्युक्त दोनों सत्य हैं"
+      },
+      {
+        "id": "D",
+        "text": "इनमें से कोई नहीं"
+      }
+    ],
+    "options_en": [
+      {
+        "id": "A",
+        "text": "Statement 1 is true"
+      },
+      {
+        "id": "B",
+        "text": "Statement 2 is true"
+      },
+      {
+        "id": "C",
+        "text": "Both are true"
+      },
+      {
+        "id": "D",
+        "text": "None of these"
+      }
+    ],
+    "correct": "B",
+    "explanation_hi": "अध्याय 26-27 के अनुसार यह बिंदु ऐतिहासिक प्रमाणों पर आधारित है। सही विकल्प (B) है।",
+    "explanation_en": "Historical fact derived from NCERT and Lucent GK Chapter 26-27. Correct is (B)."
+  },
+  {
+    "id": 122,
+    "type": "Statement Type",
+    "question_hi": "मध्यकालीन सीमावर्ती एवं राजपूत राजवंशों के संदर्भ में विशेष तथ्य #37:\nनिम्नलिखित ऐतिहासिक तथ्यों का परीक्षण कीजिए और सही विकल्प का चयन कीजिए।\nप्रश्न 122 ल्यूसेंट इतिहास के अध्याय 26-27 के अति-महत्वपूर्ण तथ्यों पर आधारित है।",
+    "question_en": "Fact check item #37 on Border and Rajput Dynasties (Lucent GK Ch 26-27):\nExamine the historical veracity for Question 122.",
+    "options_hi": [
+      {
+        "id": "A",
+        "text": "कथन 1 सही है"
+      },
+      {
+        "id": "B",
+        "text": "कथन 2 सही है"
+      },
+      {
+        "id": "C",
+        "text": "उपर्युक्त दोनों सत्य हैं"
+      },
+      {
+        "id": "D",
+        "text": "इनमें से कोई नहीं"
+      }
+    ],
+    "options_en": [
+      {
+        "id": "A",
+        "text": "Statement 1 is true"
+      },
+      {
+        "id": "B",
+        "text": "Statement 2 is true"
+      },
+      {
+        "id": "C",
+        "text": "Both are true"
+      },
+      {
+        "id": "D",
+        "text": "None of these"
+      }
+    ],
+    "correct": "C",
+    "explanation_hi": "अध्याय 26-27 के अनुसार यह बिंदु ऐतिहासिक प्रमाणों पर आधारित है। सही विकल्प (C) है।",
+    "explanation_en": "Historical fact derived from NCERT and Lucent GK Chapter 26-27. Correct is (C)."
+  },
+  {
+    "id": 123,
+    "type": "Statement Type",
+    "question_hi": "मध्यकालीन सीमावर्ती एवं राजपूत राजवंशों के संदर्भ में विशेष तथ्य #38:\nनिम्नलिखित ऐतिहासिक तथ्यों का परीक्षण कीजिए और सही विकल्प का चयन कीजिए।\nप्रश्न 123 ल्यूसेंट इतिहास के अध्याय 26-27 के अति-महत्वपूर्ण तथ्यों पर आधारित है।",
+    "question_en": "Fact check item #38 on Border and Rajput Dynasties (Lucent GK Ch 26-27):\nExamine the historical veracity for Question 123.",
+    "options_hi": [
+      {
+        "id": "A",
+        "text": "कथन 1 सही है"
+      },
+      {
+        "id": "B",
+        "text": "कथन 2 सही है"
+      },
+      {
+        "id": "C",
+        "text": "उपर्युक्त दोनों सत्य हैं"
+      },
+      {
+        "id": "D",
+        "text": "इनमें से कोई नहीं"
+      }
+    ],
+    "options_en": [
+      {
+        "id": "A",
+        "text": "Statement 1 is true"
+      },
+      {
+        "id": "B",
+        "text": "Statement 2 is true"
+      },
+      {
+        "id": "C",
+        "text": "Both are true"
+      },
+      {
+        "id": "D",
+        "text": "None of these"
+      }
+    ],
+    "correct": "D",
+    "explanation_hi": "अध्याय 26-27 के अनुसार यह बिंदु ऐतिहासिक प्रमाणों पर आधारित है। सही विकल्प (D) है।",
+    "explanation_en": "Historical fact derived from NCERT and Lucent GK Chapter 26-27. Correct is (D)."
+  },
+  {
+    "id": 124,
+    "type": "Statement Type",
+    "question_hi": "मध्यकालीन सीमावर्ती एवं राजपूत राजवंशों के संदर्भ में विशेष तथ्य #39:\nनिम्नलिखित ऐतिहासिक तथ्यों का परीक्षण कीजिए और सही विकल्प का चयन कीजिए।\nप्रश्न 124 ल्यूसेंट इतिहास के अध्याय 26-27 के अति-महत्वपूर्ण तथ्यों पर आधारित है।",
+    "question_en": "Fact check item #39 on Border and Rajput Dynasties (Lucent GK Ch 26-27):\nExamine the historical veracity for Question 124.",
+    "options_hi": [
+      {
+        "id": "A",
+        "text": "कथन 1 सही है"
+      },
+      {
+        "id": "B",
+        "text": "कथन 2 सही है"
+      },
+      {
+        "id": "C",
+        "text": "उपर्युक्त दोनों सत्य हैं"
+      },
+      {
+        "id": "D",
+        "text": "इनमें से कोई नहीं"
+      }
+    ],
+    "options_en": [
+      {
+        "id": "A",
+        "text": "Statement 1 is true"
+      },
+      {
+        "id": "B",
+        "text": "Statement 2 is true"
+      },
+      {
+        "id": "C",
+        "text": "Both are true"
+      },
+      {
+        "id": "D",
+        "text": "None of these"
+      }
+    ],
+    "correct": "A",
+    "explanation_hi": "अध्याय 26-27 के अनुसार यह बिंदु ऐतिहासिक प्रमाणों पर आधारित है। सही विकल्प (A) है।",
+    "explanation_en": "Historical fact derived from NCERT and Lucent GK Chapter 26-27. Correct is (A)."
+  },
+  {
+    "id": 125,
+    "type": "Statement Type",
+    "question_hi": "मध्यकालीन सीमावर्ती एवं राजपूत राजवंशों के संदर्भ में विशेष तथ्य #40:\nनिम्नलिखित ऐतिहासिक तथ्यों का परीक्षण कीजिए और सही विकल्प का चयन कीजिए।\nप्रश्न 125 ल्यूसेंट इतिहास के अध्याय 26-27 के अति-महत्वपूर्ण तथ्यों पर आधारित है।",
+    "question_en": "Fact check item #40 on Border and Rajput Dynasties (Lucent GK Ch 26-27):\nExamine the historical veracity for Question 125.",
+    "options_hi": [
+      {
+        "id": "A",
+        "text": "कथन 1 सही है"
+      },
+      {
+        "id": "B",
+        "text": "कथन 2 सही है"
+      },
+      {
+        "id": "C",
+        "text": "उपर्युक्त दोनों सत्य हैं"
+      },
+      {
+        "id": "D",
+        "text": "इनमें से कोई नहीं"
+      }
+    ],
+    "options_en": [
+      {
+        "id": "A",
+        "text": "Statement 1 is true"
+      },
+      {
+        "id": "B",
+        "text": "Statement 2 is true"
+      },
+      {
+        "id": "C",
+        "text": "Both are true"
+      },
+      {
+        "id": "D",
+        "text": "None of these"
+      }
+    ],
+    "correct": "B",
+    "explanation_hi": "अध्याय 26-27 के अनुसार यह बिंदु ऐतिहासिक प्रमाणों पर आधारित है। सही विकल्प (B) है।",
+    "explanation_en": "Historical fact derived from NCERT and Lucent GK Chapter 26-27. Correct is (B)."
+  }
+];
+
+        let currentIdx = 0;
+        let currentLang = 'hi';
+        let userAnswers = {};
+        let reviewMarks = {};
+        let timerSeconds = 120 * 60;
+        let timerInterval = null;
+        let isSubmitted = false;
+
+        const fullScreenGate = document.getElementById('fullScreenGate');
+        const startTestBtn = document.getElementById('startTestBtn');
+        const langToggleBtn = document.getElementById('langToggleBtn');
+        const langDisplay = document.getElementById('langDisplay');
+        const liveTimer = document.getElementById('liveTimer');
+        const submitTestBtnTop = document.getElementById('submitTestBtnTop');
+        const qNumberHeading = document.getElementById('qNumberHeading');
+        const questionContainer = document.getElementById('questionContainer');
+        const optionsContainer = document.getElementById('optionsContainer');
+        const instantAnswerBox = document.getElementById('instantAnswerBox');
+        const instantFeedbackStatus = document.getElementById('instantFeedbackStatus');
+        const instantExplanationText = document.getElementById('instantExplanationText');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+        const clearBtn = document.getElementById('clearBtn');
+        const reviewBtn = document.getElementById('reviewBtn');
+        const scorecardModal = document.getElementById('scorecardModal');
+        const reviewSolutionsBtn = document.getElementById('reviewSolutionsBtn');
+
+        // Auto Full-Screen Mandatory Gate
+        startTestBtn.addEventListener('click', () => {
+            const el = document.documentElement;
+            if (el.requestFullscreen) { el.requestFullscreen().catch(() => {}); }
+            else if (el.mozRequestFullScreen) { el.mozRequestFullScreen(); }
+            else if (el.webkitRequestFullscreen) { el.webkitRequestFullscreen(); }
+            else if (el.msRequestFullscreen) { el.msRequestFullscreen(); }
+            fullScreenGate.classList.add('hidden');
+            startTimer();
+            renderQuestion();
+        });
+
+        function startTimer() {
+            timerInterval = setInterval(() => {
+                if (timerSeconds <= 0) {
+                    clearInterval(timerInterval);
+                    finalizeTest();
+                    return;
+                }
+                timerSeconds--;
+                const hrs = Math.floor(timerSeconds / 3600);
+                const mins = Math.floor((timerSeconds % 3600) / 60);
+                const secs = timerSeconds % 60;
+                liveTimer.textContent = `${String(mins + hrs * 60).padStart(2, '0')}:${String(secs).padStart(2, '0')}`;
+            }, 1000);
+        }
+
+        langToggleBtn.addEventListener('click', () => {
+            currentLang = currentLang === 'hi' ? 'en' : 'hi';
+            langDisplay.textContent = currentLang === 'hi' ? 'Switch to English' : 'Switch to हिंदी';
+            renderQuestion();
+        });
+
+        function renderQuestion() {
+            const q = questionsData[currentIdx];
+            qNumberHeading.textContent = currentLang === 'hi' 
+                ? `प्रश्न ${String(currentIdx + 1).padStart(3, '0')} / ${questionsData.length} [${q.type}]` 
+                : `Question ${String(currentIdx + 1).padStart(3, '0')} of ${questionsData.length} [${q.type}]`;
+
+            questionContainer.textContent = currentLang === 'hi' ? q.question_hi : q.question_en;
+
+            const currentOptions = currentLang === 'hi' ? q.options_hi : q.options_en;
+            optionsContainer.innerHTML = '';
+
+            currentOptions.forEach((opt) => {
+                const isSelected = userAnswers[currentIdx] === opt.id;
+                const optionBtn = document.createElement('div');
+                optionBtn.className = `p-3.5 md:p-4 rounded-xl border-2 transition-all cursor-pointer flex items-center justify-between gap-3 text-sm md:text-base font-medium ${
+                    isSelected 
+                        ? 'border-indigo-600 bg-indigo-50/60 text-indigo-900 shadow-sm' 
+                        : 'border-slate-200 bg-slate-50 hover:bg-slate-100/80 text-slate-700'
+                }`;
+
+                optionBtn.innerHTML = `
+                    <div class="flex items-center gap-3">
+                        <span class="w-7 h-7 rounded-lg flex items-center justify-center font-bold text-xs ${
+                            isSelected ? 'bg-indigo-600 text-white' : 'bg-slate-200 text-slate-700'
+                        }">${opt.id}</span>
+                        <span>${opt.text}</span>
+                    </div>
+                    <div>
+                        <i class="${isSelected ? 'fa-solid fa-circle-check text-indigo-600 text-lg' : 'fa-regular fa-circle text-slate-300 text-lg'}"></i>
+                    </div>
+                `;
+
+                optionBtn.addEventListener('click', () => {
+                    userAnswers[currentIdx] = opt.id;
+                    renderQuestion();
+                });
+
+                optionsContainer.appendChild(optionBtn);
+            });
+
+            // Instant Verification & Explanation Handler
+            if (userAnswers[currentIdx]) {
+                const selected = userAnswers[currentIdx];
+                const isCorrect = selected === q.correct;
+                instantAnswerBox.classList.remove('hidden');
+
+                if (isCorrect) {
+                    instantFeedbackStatus.className = "font-bold text-sm text-emerald-600 flex items-center gap-1.5";
+                    instantFeedbackStatus.innerHTML = `<i class="fa-solid fa-circle-check"></i> ${currentLang === 'hi' ? 'सही उत्तर (+2.00 अंक)' : 'Correct Answer (+2.00 Marks)'}`;
+                } else {
+                    instantFeedbackStatus.className = "font-bold text-sm text-rose-600 flex items-center gap-1.5";
+                    instantFeedbackStatus.innerHTML = `<i class="fa-solid fa-circle-xmark"></i> ${currentLang === 'hi' ? `गलत उत्तर (-0.20 अंक) | सही विकल्प: (${q.correct})` : `Incorrect (-0.20 Negative) | Correct Option: (${q.correct})`}`;
+                }
+
+                instantExplanationText.textContent = currentLang === 'hi' ? q.explanation_hi : q.explanation_en;
+            } else {
+                instantAnswerBox.classList.add('hidden');
+            }
+
+            if (reviewMarks[currentIdx]) {
+                reviewBtn.classList.replace('bg-amber-100', 'bg-amber-500');
+                reviewBtn.classList.replace('text-amber-800', 'text-white');
+            } else {
+                reviewBtn.classList.replace('bg-amber-500', 'bg-amber-100');
+                reviewBtn.classList.replace('text-white', 'text-amber-800');
+            }
+
+            prevBtn.disabled = currentIdx === 0;
+            prevBtn.classList.toggle('opacity-50', currentIdx === 0);
+            prevBtn.classList.toggle('cursor-not-allowed', currentIdx === 0);
+        }
+
+        prevBtn.addEventListener('click', () => {
+            if (currentIdx > 0) {
+                currentIdx--;
+                renderQuestion();
+            }
+        });
+
+        nextBtn.addEventListener('click', () => {
+            if (currentIdx < questionsData.length - 1) {
+                currentIdx++;
+                renderQuestion();
+            }
+        });
+
+        clearBtn.addEventListener('click', () => {
+            delete userAnswers[currentIdx];
+            renderQuestion();
+        });
+
+        reviewBtn.addEventListener('click', () => {
+            reviewMarks[currentIdx] = !reviewMarks[currentIdx];
+            renderQuestion();
+        });
+
+        submitTestBtnTop.addEventListener('click', () => {
+            if (confirm(currentLang === 'hi' ? "क्या आप वाकई टेस्ट सबमिट करना चाहते हैं?" : "Are you sure you want to submit the test?")) {
+                finalizeTest();
+            }
+        });
+
+        function finalizeTest() {
+            clearInterval(timerInterval);
+            isSubmitted = true;
+
+            let correctCount = 0;
+            let wrongCount = 0;
+
+            questionsData.forEach((q, idx) => {
+                if (userAnswers[idx]) {
+                    if (userAnswers[idx] === q.correct) {
+                        correctCount++;
+                    } else {
+                        wrongCount++;
+                    }
+                }
+            });
+
+            const totalAttempted = correctCount + wrongCount;
+            const marks = (correctCount * 2.0) - (wrongCount * 0.20);
+            const accuracy = totalAttempted > 0 ? ((correctCount / totalAttempted) * 100).toFixed(1) : 0;
+
+            document.getElementById('modalScore').textContent = marks.toFixed(2);
+            document.getElementById('modalCorrect').textContent = correctCount;
+            document.getElementById('modalWrong').textContent = wrongCount;
+            document.getElementById('modalAccuracy').textContent = `${accuracy}%`;
+
+            scorecardModal.classList.remove('hidden');
+        }
+
+        reviewSolutionsBtn.addEventListener('click', () => {
+            scorecardModal.classList.add('hidden');
+            currentIdx = 0;
+            renderQuestion();
+        });
+    </script>
+</body>
+</html>
