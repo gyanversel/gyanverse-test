@@ -1,0 +1,5998 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GYANVERSE CBT | Set 01 (125 MCQs)</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Tiro+Devanagari+Hindi:ital@0;1&family=Inter:wght@400;500;600;700&display=swap');
+        body { font-family: 'Inter', 'Tiro Devanagari Hindi', sans-serif; user-select: none; }
+        .custom-scrollbar::-webkit-scrollbar { width: 6px; }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background-color: #cbd5e1; border-radius: 4px; }
+    </style>
+</head>
+<body class="bg-slate-100 text-slate-800 antialiased min-h-screen flex flex-col">
+
+    <!-- Auto Full Screen Gate Modal -->
+    <div id="fullScreenGate" class="fixed inset-0 z-50 bg-slate-900/90 backdrop-blur-md flex items-center justify-center p-4">
+        <div class="bg-white rounded-2xl shadow-2xl max-w-lg w-full p-6 text-center border-t-4 border-indigo-600">
+            <div class="w-16 h-16 bg-indigo-50 text-indigo-600 rounded-full flex items-center justify-center mx-auto mb-4 text-2xl font-bold shadow-inner">
+                <i class="fa-solid fa-graduation-cap"></i>
+            </div>
+            <h2 class="text-2xl font-bold text-slate-800 mb-1">GYANVERSE CBT PORTAL</h2>
+            <p class="text-xs font-semibold text-indigo-600 tracking-wider uppercase mb-4">Set 01: Lucent GK Ch-25 (Dakshin Bharat ke Pramukh Rajvansh)</p>
+            
+            <div class="bg-slate-50 p-4 rounded-xl text-left text-sm text-slate-600 space-y-2 mb-6 border border-slate-200">
+                <p class="flex items-center gap-2"><i class="fa-solid fa-list-ol text-indigo-500"></i> <strong>Total Questions:</strong> 125 MCQs (Full Line-to-Line Coverage)</p>
+                <p class="flex items-center gap-2"><i class="fa-solid fa-clock text-indigo-500"></i> <strong>Duration:</strong> 120 Minutes (2 Hours)</p>
+                <p class="flex items-center gap-2"><i class="fa-solid fa-shield-halved text-indigo-500"></i> <strong>Marking:</strong> +2.00 Sahi | -0.20 Galat Negative</p>
+                <p class="flex items-center gap-2 text-rose-600 font-medium"><i class="fa-solid fa-expand"></i> <strong>Mandatory Gate:</strong> Click karte hi Auto Full-Screen lock hoga.</p>
+            </div>
+
+            <button id="startTestBtn" class="w-full bg-gradient-to-r from-indigo-600 to-violet-600 hover:from-indigo-700 hover:to-violet-700 text-white font-bold py-3.5 px-6 rounded-xl shadow-lg shadow-indigo-200 transition-all transform active:scale-95 flex items-center justify-center gap-2 text-base">
+                <i class="fa-solid fa-play"></i> Start Test (Auto Full Screen)
+            </button>
+            <p class="text-xs text-slate-400 mt-4">Official Telegram: <a href="https://t.me/GYANVERSET" target="_blank" class="text-indigo-600 hover:underline">@GYANVERSET</a></p>
+        </div>
+    </div>
+
+    <!-- Top CBT Header -->
+    <header class="bg-white border-b border-slate-200 sticky top-0 z-30 px-4 lg:px-8 py-3 flex items-center justify-between shadow-sm">
+        <div class="flex items-center gap-3">
+            <div class="bg-indigo-600 text-white font-black text-xl px-2.5 py-1 rounded-lg tracking-wider">GV</div>
+            <div>
+                <h1 class="text-lg font-bold text-slate-800 leading-tight">GYANVERSE CBT</h1>
+                <p class="text-xs text-slate-500 font-medium">Set 01 : Ch-25 Dakshin Bharat ke Pramukh Rajvansh (125 MCQs)</p>
+            </div>
+        </div>
+
+        <div class="flex items-center gap-3">
+            <!-- Language Switcher Button -->
+            <button id="langToggleBtn" class="bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-semibold px-3 py-2 rounded-lg border border-slate-300 transition-colors flex items-center gap-1.5">
+                <i class="fa-solid fa-language text-indigo-600"></i>
+                <span id="langDisplay">Switch to English</span>
+            </button>
+
+            <!-- Live Timer -->
+            <div class="bg-rose-50 border border-rose-200 text-rose-600 font-mono font-bold text-sm lg:text-base px-3 py-1.5 rounded-lg flex items-center gap-2">
+                <i class="fa-regular fa-clock"></i>
+                <span id="liveTimer">120:00</span>
+            </div>
+
+            <!-- Top-Right Submit Button -->
+            <button id="submitTestBtnTop" class="bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs lg:text-sm px-4 py-2 rounded-lg transition-colors shadow-sm flex items-center gap-1.5">
+                <i class="fa-solid fa-check-circle"></i>
+                <span>Submit</span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Main Question Viewport (Clean Full-Width, No Palette) -->
+    <main class="flex-1 max-w-4xl w-full mx-auto p-4 md:p-6 lg:p-8 flex flex-col">
+        <!-- Question Status Bar -->
+        <div class="flex items-center justify-between mb-4 pb-2 border-b border-slate-200 text-sm">
+            <span class="font-bold text-slate-700" id="qNumberHeading">Question 001 of 125</span>
+            <div class="flex gap-2 text-xs font-medium">
+                <span class="bg-emerald-100 text-emerald-800 px-2 py-0.5 rounded font-bold">+2.00 Marks</span>
+                <span class="bg-rose-100 text-rose-800 px-2 py-0.5 rounded font-bold">-0.20 Negative</span>
+            </div>
+        </div>
+
+        <!-- Question Card -->
+        <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-5 md:p-7 flex-1 flex flex-col justify-between">
+            <div class="space-y-4">
+                <!-- Question Statement Container -->
+                <div id="questionContainer" class="text-base md:text-lg text-slate-800 font-medium leading-relaxed whitespace-pre-line"></div>
+
+                <!-- Options List (Clean Full Width) -->
+                <div id="optionsContainer" class="space-y-3 pt-2"></div>
+
+                <!-- Instant Verification / Explanation Box -->
+                <div id="instantAnswerBox" class="hidden mt-4 p-4 rounded-xl border border-indigo-100 bg-indigo-50/70 transition-all">
+                    <div id="instantFeedbackStatus" class="font-bold text-sm mb-1"></div>
+                    <p class="text-xs font-semibold text-slate-600 uppercase tracking-wider mb-1">NCERT / Pramanik Line-by-Line Solution:</p>
+                    <div id="instantExplanationText" class="text-xs md:text-sm text-slate-700 leading-relaxed"></div>
+                    <div class="text-[11px] font-bold text-indigo-600 mt-2 text-right">@GYANVERSET</div>
+                </div>
+            </div>
+
+            <!-- Navigation Buttons DIRECTLY BELOW Options (Mobile-Friendly) -->
+            <div class="mt-8 pt-4 border-t border-slate-200 flex flex-wrap items-center justify-between gap-2">
+                <div class="flex items-center gap-2">
+                    <button id="prevBtn" class="bg-slate-200 hover:bg-slate-300 text-slate-700 font-semibold px-4 py-2.5 rounded-xl text-sm transition-all flex items-center gap-1.5">
+                        <i class="fa-solid fa-chevron-left"></i> Prev
+                    </button>
+                    <button id="clearBtn" class="bg-slate-100 hover:bg-slate-200 text-slate-600 font-medium px-3.5 py-2.5 rounded-xl text-sm border border-slate-300 transition-all">
+                        Clear
+                    </button>
+                </div>
+                
+                <div class="flex items-center gap-2">
+                    <button id="reviewBtn" class="bg-amber-100 hover:bg-amber-200 text-amber-800 font-semibold px-4 py-2.5 rounded-xl text-sm transition-all flex items-center gap-1.5">
+                        <i class="fa-regular fa-bookmark"></i> Review
+                    </button>
+                    <button id="nextBtn" class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold px-6 py-2.5 rounded-xl text-sm shadow-md shadow-indigo-100 transition-all flex items-center gap-1.5">
+                        Next & Save <i class="fa-solid fa-chevron-right"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Official Watermark Tag Footer -->
+        <div class="mt-4 text-center">
+            <a href="https://t.me/GYANVERSET" target="_blank" class="inline-flex items-center gap-1.5 text-xs font-semibold text-slate-500 hover:text-indigo-600 transition-colors">
+                <i class="fa-brands fa-telegram text-sky-500"></i> Official Community Channel: @GYANVERSET
+            </a>
+        </div>
+    </main>
+
+    <!-- Detailed Scorecard & Solutions Modal -->
+    <div id="scorecardModal" class="fixed inset-0 z-50 bg-slate-900/80 backdrop-blur-sm hidden flex items-center justify-center p-4">
+        <div class="bg-white rounded-2xl shadow-2xl max-w-2xl w-full p-6 max-h-[90vh] overflow-y-auto custom-scrollbar border-t-4 border-emerald-500">
+            <div class="text-center pb-4 border-b border-slate-200">
+                <h2 class="text-2xl font-black text-slate-800">Test Submission Summary</h2>
+                <p class="text-xs text-slate-500 font-medium">Set 01 : Chapter 25 Complete Evaluation</p>
+            </div>
+
+            <!-- Scorecard Grid -->
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 my-5 text-center">
+                <div class="p-3 bg-indigo-50 border border-indigo-100 rounded-xl">
+                    <p class="text-xs text-slate-500 font-semibold uppercase">Total Score</p>
+                    <p id="modalScore" class="text-2xl font-black text-indigo-600">0.00</p>
+                </div>
+                <div class="p-3 bg-emerald-50 border border-emerald-100 rounded-xl">
+                    <p class="text-xs text-slate-500 font-semibold uppercase">Correct</p>
+                    <p id="modalCorrect" class="text-2xl font-black text-emerald-600">0</p>
+                </div>
+                <div class="p-3 bg-rose-50 border border-rose-100 rounded-xl">
+                    <p class="text-xs text-slate-500 font-semibold uppercase">Incorrect</p>
+                    <p id="modalWrong" class="text-2xl font-black text-rose-600">0</p>
+                </div>
+                <div class="p-3 bg-amber-50 border border-amber-100 rounded-xl">
+                    <p class="text-xs text-slate-500 font-semibold uppercase">Accuracy</p>
+                    <p id="modalAccuracy" class="text-2xl font-black text-amber-600">0%</p>
+                </div>
+            </div>
+
+            <!-- Details Action Buttons -->
+            <div class="flex flex-col sm:flex-row gap-3 pt-2">
+                <button id="reviewSolutionsBtn" class="flex-1 bg-slate-800 hover:bg-slate-900 text-white font-bold py-3 px-4 rounded-xl text-sm transition-all flex items-center justify-center gap-2">
+                    <i class="fa-solid fa-list-check"></i> Check Solutions / Review Mode
+                </button>
+                <a href="https://t.me/GYANVERSET" target="_blank" class="flex-1 bg-sky-500 hover:bg-sky-600 text-white font-bold py-3 px-4 rounded-xl text-sm transition-all flex items-center justify-center gap-2">
+                    <i class="fa-brands fa-telegram"></i> Join Telegram @GYANVERSET
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const questionsData = [
+  {
+    "id": 1,
+    "type": "3-Statement Type",
+    "question_hi": "पल्लव वंश की स्थापना और प्रारंभिक इतिहास के संदर्भ में निम्नलिखित कथनों पर विचार कीजिए:\n1. पल्लव वंश का संस्थापक सिंहविष्णु (575-600 ई.) था और इसकी राजधानी काँची थी।\n2. सिंहविष्णु ने 'अवनि सिंह' की उपाधि धारण की थी तथा वह वैष्णव धर्म का अनुयायी था।\n3. सिंहविष्णु ने मामल्लपुरम में प्रसिद्ध 'आदि वराह मंदिर' का निर्माण करवाया था।\n\nउपर्युक्त में से कौन-सा/से कथन सत्य है/हैं?",
+    "question_en": "Consider the following statements regarding the Pallava dynasty:\n1. Founded by Simhavishnu (575-600 AD) with capital at Kanchi.\n2. Simhavishnu assumed title 'Avani Simha' and followed Vaishnavism.\n3. He built the famous 'Adi Varaha temple' at Mamallapuram.\n\nWhich of the statements given above is/are true?",
+    "options_hi": [
+      {
+        "id": "A",
+        "text": "केवल 1 और 2"
+      },
+      {
+        "id": "B",
+        "text": "केवल 2 और 3"
+      },
+      {
+        "id": "C",
+        "text": "1, 2 और 3 (सभी सत्य हैं)"
+      },
+      {
+        "id": "D",
+        "text": "केवल 1 और 3"
+      }
+    ],
+    "options_en": [
+      {
+        "id": "A",
+        "text": "Only 1 and 2"
+      },
+      {
+        "id": "B",
+        "text": "Only 2 and 3"
+      },
+      {
+        "id": "C",
+        "text": "1, 2 and 3 (All are true)"
+      },
+      {
+        "id": "D",
+        "text": "Only 1 and 3"
+      }
+    ],
+    "correct": "C",
+    "explanation_hi": "तीनों कथन सत्य हैं। सिंहविष्णु ने काँची को राजधानी बनाया, वैष्णव धर्म माना, अवनि सिंह उपाधि ली और आदि वराह मंदिर बनवाया।",
+    "explanation_en": "All three statements are true regarding Simhavishnu."
+  },
+  {
+    "id": 2,
+    "type": "Matching / Mis-matching",
+    "question_hi": "पल्लव कालीन साहित्यिक कृतियों एवं उनके रचनाकारों के संदर्भ में कौन-सा युग्म सही सुमेलित नहीं है?",
+    "question_en": "Which pair is NOT correctly matched regarding Pallava literature?",
+    "options_hi": [
+      {
+        "id": "A",
+        "text": "किरातार्जुनीयम् — भारवि"
+      },
+      {
+        "id": "B",
+        "text": "मत्तविलास प्रहसन — महेन्द्रवर्मन प्रथम"
+      },
+      {
+        "id": "C",
+        "text": "दशकुमारचरित — दण्डी"
+      },
+      {
+        "id": "D",
+        "text": "भारतवेणवा — विज्ञानेश्वर"
+      }
+    ],
+    "options_en": [
+      {
+        "id": "A",
+        "text": "Kiratarjuniyam — Bharavi"
+      },
+      {
+        "id": "B",
+        "text": "Mattavilasa Prahasana — Mahendravarman I"
+      },
+      {
+        "id": "C",
+        "text": "Dashakumaracharita — Dandin"
+      },
+      {
+        "id": "D",
+        "text": "Bharatavenva — Vijnaneshwara"
+      }
+    ],
+    "correct": "D",
+    "explanation_hi": "'भारतवेणवा' के रचयिता कवि पेरुन्देवनार थे जो नन्दिवर्मन तृतीय के दरबारी थे।",
+    "explanation_en": "'Bharatavenva' was composed by Perundevanar, court poet of Nandivarman III."
+  },
+  {
+    "id": 3,
+    "type": "Assertion-Reason",
+    "question_hi": "कथन (A): पल्लव नरेश महेन्द्रवर्मन प्रथम ने अपने जीवन काल में शैव धर्म अंगीकार कर लिया था।\nकारण (R): महेन्द्रवर्मन शुरू में जैन-मतावलंबी था, परंतु तमिल संत अप्पर के प्रभाव में आकर वह शैव बन गया।",
+    "question_en": "Assertion (A): Pallava King Mahendravarman I embraced Shaivism.\nReason (R): Mahendravarman was initially a Jain, but became Shaivite under the influence of Tamil saint Appar.",
+    "options_hi": [
+      {
+        "id": "A",
+        "text": "(A) और (R) दोनों सही हैं और (R), (A) की सही व्याख्या है।"
+      },
+      {
+        "id": "B",
+        "text": "(A) और (R) दोनों सही हैं लेकिन (R), (A) की सही व्याख्या नहीं है।"
+      },
+      {
+        "id": "C",
+        "text": "(A) सही है लेकिन (R) गलत है।"
+      },
+      {
+        "id": "D",
+        "text": "(A) गलत है लेकिन (R) सही है।"
+      }
+    ],
+    "options_en": [
+      {
+        "id": "A",
+        "text": "Both (A) and (R) are correct and (R) is the correct explanation of (A)."
+      },
+      {
+        "id": "B",
+        "text": "Both (A) and (R) are correct but (R) is NOT the correct explanation."
+      },
+      {
+        "id": "C",
+        "text": "(A) is true but (R) is false."
+      },
+      {
+        "id": "D",
+        "text": "(A) is false but (R) is true."
+      }
+    ],
+    "correct": "A",
+    "explanation_hi": "महेन्द्रवर्मन प्रथम संत अप्पर के प्रभाव में शैव बने। दोनों कथन सही हैं और व्याख्या भी सही है।",
+    "explanation_en": "Both statements are true and (R) correctly explains (A)."
+  },
+  {
+    "id": 4,
+    "type": "Tricky & Negative-Word",
+    "question_hi": "पल्लव शासक महेन्द्रवर्मन प्रथम द्वारा धारण की गई उपाधियों में निम्नलिखित में से कौन-सी शामिल नहीं थी?",
+    "question_en": "Which title was NOT assumed by Mahendravarman I?",
+    "options_hi": [
+      {
+        "id": "A",
+        "text": "मत्तविलास"
+      },
+      {
+        "id": "B",
+        "text": "विचित्रचित्त एवं गुणभार"
+      },
+      {
+        "id": "C",
+        "text": "चित्रकारपुल्ली"
+      },
+      {
+        "id": "D",
+        "text": "वातापिकोण्ड"
+      }
+    ],
+    "options_en": [
+      {
+        "id": "A",
+        "text": "Mattavilasa"
+      },
+      {
+        "id": "B",
+        "text": "Vichitrachitta & Gunabhara"
+      },
+      {
+        "id": "C",
+        "text": "Chitrakarapulli"
+      },
+      {
+        "id": "D",
+        "text": "Vatapikonda"
+      }
+    ],
+    "correct": "D",
+    "explanation_hi": "वातापिकोण्ड की उपाधि नरसिंहवर्मन प्रथम ने वातापी जीतकर ली थी।",
+    "explanation_en": "Vatapikonda was assumed by Narasimhavarman I."
+  },
+  {
+    "id": 5,
+    "type": "4-Statement Type",
+    "question_hi": "महाबलीपुरम के एकाश्म रथ मंदिरों के संदर्भ में निम्नलिखित कथनों पर विचार कीजिए:\n1. इनका निर्माण पल्लव राजा नरसिंहवर्मन प्रथम द्वारा करवाया गया था।\n2. रथ मंदिरों की कुल संख्या पाँच है।\n3. रथ मंदिरों में सबसे छोटा द्रौपदी रथ है, जिसमें किसी प्रकार का अलंकरण नहीं मिलता।\n4. वर्ष 1984 में महाबलीपुरम के ये रथ मंदिर यूनेस्को विश्व धरोहर स्थल में शामिल हुए।\n\nउपर्युक्त में से कौन-से कथन सही हैं?",
+    "question_en": "Consider the following statements regarding the monolithic Rath temples of Mahabalipuram:\n1. Built by Narasimhavarman I.\n2. Total count is five.\n3. Draupadi Ratha is the smallest and unornamented.\n4. Inscribed as UNESCO World Heritage Site in 1984.\n\nWhich of the above statements are correct?",
+    "options_hi": [
+      {
+        "id": "A",
+        "text": "केवल 1, 2 और 3"
+      },
+      {
+        "id": "B",
+        "text": "केवल 2, 3 और 4"
+      },
+      {
+        "id": "C",
+        "text": "केवल 1 और 4"
+      },
+      {
+        "id": "D",
+        "text": "1, 2, 3 और 4 (सभी चारों सत्य हैं)"
+      }
+    ],
+    "options_en": [
+      {
+        "id": "A",
+        "text": "Only 1, 2 and 3"
+      },
+      {
+        "id": "B",
+        "text": "Only 2, 3 and 4"
+      },
+      {
+        "id": "C",
+        "text": "Only 1 and 4"
+      },
+      {
+        "id": "D",
+        "text": "1, 2, 3 and 4 (All are true)"
+      }
+    ],
+    "correct": "D",
+    "explanation_hi": "सभी 4 कथन ऐतिहासिक रूप से सत्य हैं।",
+    "explanation_en": "All four statements are true."
+  },
+  {
+    "id": 6,
+    "type": "Tricky & Negative-Word",
+    "question_hi": "चीनी यात्री ह्वेनसांग ने किस पल्लव शासक के शासनकाल में काँची की यात्रा की थी?",
+    "question_en": "During whose reign did Hiuen Tsang visit Kanchi?",
+    "options_hi": [
+      {
+        "id": "A",
+        "text": "सिंहविष्णु"
+      },
+      {
+        "id": "B",
+        "text": "नरसिंहवर्मन प्रथम"
+      },
+      {
+        "id": "C",
+        "text": "महेन्द्रवर्मन प्रथम"
+      },
+      {
+        "id": "D",
+        "text": "नरसिंहवर्मन द्वितीय"
+      }
+    ],
+    "options_en": [
+      {
+        "id": "A",
+        "text": "Simhavishnu"
+      },
+      {
+        "id": "B",
+        "text": "Narasimhavarman I"
+      },
+      {
+        "id": "C",
+        "text": "Mahendravarman I"
+      },
+      {
+        "id": "D",
+        "text": "Narasimhavarman II"
+      }
+    ],
+    "correct": "B",
+    "explanation_hi": "ह्वेनसांग ने नरसिंहवर्मन प्रथम (महामल्ल) के शासनकाल में काँची की यात्रा की थी।",
+    "explanation_en": "Hiuen Tsang visited Kanchi under Narasimhavarman I."
+  },
+  {
+    "id": 7,
+    "type": "Statement Type",
+    "question_hi": "पल्लव राजा परमेश्वरवर्मन प्रथम के संदर्भ में निम्नलिखित में से कौन-सी उपाधियां उसने धारण की थीं?\n1. लोकादित्य एवं एकमल्ल\n2. रणंजय एवं अत्यन्तकाम\n3. उग्रदण्ड, गुणभाजन एवं विद्याविनीत\n\nउपर्युक्त में से कौन-से सही हैं?",
+    "question_en": "Which titles were assumed by Parameshvaravarman I?\n1. Lokaditya and Ekamalla\n2. Rananjaya and Atyantakama\n3. Ugradanda, Gunabhajana and Vidyavinita\n\nWhich are correct?",
+    "options_hi": [
+      {
+        "id": "A",
+        "text": "केवल 1 और 2"
+      },
+      {
+        "id": "B",
+        "text": "केवल 2 और 3"
+      },
+      {
+        "id": "C",
+        "text": "1, 2 और 3 (सभी सत्य हैं)"
+      },
+      {
+        "id": "D",
+        "text": "केवल 1 और 3"
+      }
+    ],
+    "options_en": [
+      {
+        "id": "A",
+        "text": "Only 1 and 2"
+      },
+      {
+        "id": "B",
+        "text": "Only 2 and 3"
+      },
+      {
+        "id": "C",
+        "text": "1, 2 and 3 (All are true)"
+      },
+      {
+        "id": "D",
+        "text": "Only 1 and 3"
+      }
+    ],
+    "correct": "C",
+    "explanation_hi": "परमेश्वरवर्मन प्रथम ने ये सभी उपाधियां धारण की थीं तथा मामल्लपुरम में गणेश मंदिर बनवाया।",
+    "explanation_en": "Parameshvaravarman I took all these titles and built Ganesh temple at Mamallapuram."
+  },
+  {
+    "id": 8,
+    "type": "Tricky & Negative-Word",
+    "question_hi": "अरबों के आक्रमण के समय पल्लवों का शासक कौन था, जिसने काँची के प्रसिद्ध 'कैलाशनाथ मंदिर' (राजसिद्धेश्वर मंदिर) का निर्माण करवाया था?",
+    "question_en": "Who was the Pallava ruler during Arab invasions who built Kailasanathar temple at Kanchi?",
+    "options_hi": [
+      {
+        "id": "A",
+        "text": "नरसिंहवर्मन द्वितीय (राजसिंह)"
+      },
+      {
+        "id": "B",
+        "text": "परमेश्वरवर्मन प्रथम"
+      },
+      {
+        "id": "C",
+        "text": "नन्दिवर्मन द्वितीय"
+      },
+      {
+        "id": "D",
+        "text": "सिंहविष्णु"
+      }
+    ],
+    "options_en": [
+      {
+        "id": "A",
+        "text": "Narasimhavarman II (Rajasimha)"
+      },
+      {
+        "id": "B",
+        "text": "Parameshvaravarman I"
+      },
+      {
+        "id": "C",
+        "text": "Nandivarman II"
+      },
+      {
+        "id": "D",
+        "text": "Simhavishnu"
+      }
+    ],
+    "correct": "A",
+    "explanation_hi": "नरसिंहवर्मन द्वितीय ने राजासिंह, आगमप्रिय, शंकरभक्त उपाधियां लीं और काँची का कैलाशनाथ मंदिर बनवाया।",
+    "explanation_en": "Narasimhavarman II built the Kailasanathar temple at Kanchipuram."
+  },
+  {
+    "id": 9,
+    "type": "Matching / Mis-matching",
+    "question_hi": "पल्लव शासक नरसिंहवर्मन द्वितीय की उपाधियों और उनके अर्थ के संदर्भ में गलत मिलान चुनिए:",
+    "question_en": "Identify incorrect match regarding titles of Narasimhavarman II:",
+    "options_hi": [
+      {
+        "id": "A",
+        "text": "राजासिंह — राजाओं में सिंह"
+      },
+      {
+        "id": "B",
+        "text": "आगमप्रिय — शास्त्रों का प्रेमी"
+      },
+      {
+        "id": "C",
+        "text": "शंकरभक्त — भगवान शिव का उपासक"
+      },
+      {
+        "id": "D",
+        "text": "वातापिकोण्ड — शास्त्रों का ज्ञाता"
+      }
+    ],
+    "options_en": [
+      {
+        "id": "A",
+        "text": "Rajasimha — Lion among kings"
+      },
+      {
+        "id": "B",
+        "text": "Agamapriya — Lover of scriptures"
+      },
+      {
+        "id": "C",
+        "text": "Shankarabhakta — Devotee of Shiva"
+      },
+      {
+        "id": "D",
+        "text": "Vatapikonda — Knower of scriptures"
+      }
+    ],
+    "correct": "D",
+    "explanation_hi": "वातापिकोण्ड नरसिंहवर्मन प्रथम की उपाधि थी, जिसका अर्थ वातापी का विजेता है।",
+    "explanation_en": "Vatapikonda was the title of Narasimhavarman I."
+  },
+  {
+    "id": 10,
+    "type": "Statement Type",
+    "question_hi": "काँची के मुक्तेश्वर मंदिर तथा वैकुण्ठ पेरूमाल मंदिर का निर्माण किस पल्लव शासक ने करवाया था?",
+    "question_en": "Which Pallava ruler built Mukteshwara Temple and Vaikuntha Perumal Temple at Kanchi?",
+    "options_hi": [
+      {
+        "id": "A",
+        "text": "महेन्द्रवर्मन द्वितीय"
+      },
+      {
+        "id": "B",
+        "text": "नन्दिवर्मन द्वितीय"
+      },
+      {
+        "id": "C",
+        "text": "परमेश्वरवर्मन प्रथम"
+      },
+      {
+        "id": "D",
+        "text": "कम्पवर्मा"
+      }
+    ],
+    "options_en": [
+      {
+        "id": "A",
+        "text": "Mahendravarman II"
+      },
+      {
+        "id": "B",
+        "text": "Nandivarman II"
+      },
+      {
+        "id": "C",
+        "text": "Parameshvaravarman I"
+      },
+      {
+        "id": "D",
+        "text": "Kampavarma"
+      }
+    ],
+    "correct": "B",
+    "explanation_hi": "नन्दिवर्मन द्वितीय ने मुक्तेश्वर मंदिर व वैकुण्ठ पेरूमाल मंदिर का निर्माण कराया।",
+    "explanation_en": "Nandivarman II built Mukteshwara and Vaikuntha Perumal temples at Kanchi."
+  },
+  {
+    "id": 11,
+    "type": "Tricky & Negative-Word",
+    "question_hi": "पल्लव वंश का अंतिम शासक कौन था?",
+    "question_en": "Who was the last ruler of the Pallava dynasty?",
+    "options_hi": [
+      {
+        "id": "A",
+        "text": "नन्दिवर्मन तृतीय"
+      },
+      {
+        "id": "B",
+        "text": "अपराजित वर्मन"
+      },
+      {
+        "id": "C",
+        "text": "कम्पवर्मा (948-980 ई.)"
+      },
+      {
+        "id": "D",
+        "text": "महेन्द्रवर्मन तृतीय"
+      }
+    ],
+    "options_en": [
+      {
+        "id": "A",
+        "text": "Nandivarman III"
+      },
+      {
+        "id": "B",
+        "text": "Aparajita Varman"
+      },
+      {
+        "id": "C",
+        "text": "Kampavarma (948-980 AD)"
+      },
+      {
+        "id": "D",
+        "text": "Mahendravarman III"
+      }
+    ],
+    "correct": "C",
+    "explanation_hi": "पल्लव वंश का अंतिम शासक कम्पवर्मा (948-980 ई.) था।",
+    "explanation_en": "The last Pallava ruler was Kampavarma (948-980 AD)."
+  },
+  {
+    "id": 12,
+    "type": "Statement Type",
+    "question_hi": "काँची के कैलाशनाथ मंदिर के संदर्भ में कौन-सा कथन सत्य है?",
+    "question_en": "Which statement is TRUE regarding Kailasanathar Temple of Kanchi?",
+    "options_hi": [
+      {
+        "id": "A",
+        "text": "इसी मंदिर के निर्माण से द्रविड़ स्थापत्य कला की वास्तविक शुरुआत हुई।"
+      },
+      {
+        "id": "B",
+        "text": "इसमें पल्लव राजाओं और रानियों की आदमकद तस्वीरें/मूर्तियां लगी हैं।"
+      },
+      {
+        "id": "C",
+        "text": "इसे राजसिद्धेश्वर मंदिर भी कहा जाता है।"
+      },
+      {
+        "id": "D",
+        "text": "उपर्युक्त सभी कथन सत्य हैं।"
+      }
+    ],
+    "options_en": [
+      {
+        "id": "A",
+        "text": "Marked beginning of Dravidian style architecture."
+      },
+      {
+        "id": "B",
+        "text": "Contains life-sized images of Pallava kings and queens."
+      },
+      {
+        "id": "C",
+        "text": "Also known as Rajasiddheshwara temple."
+      },
+      {
+        "id": "D",
+        "text": "All of the above statements are true."
+      }
+    ],
+    "correct": "D",
+    "explanation_hi": "कैलाशनाथ मंदिर के विषय में ये सभी कथन सत्य हैं।",
+    "explanation_en": "All statements are correct regarding Kailasanathar temple."
+  },
+  {
+    "id": 13,
+    "type": "Assertion-Reason",
+    "question_hi": "कथन (A): भारवि की रचना 'किरातार्जुनीयम्' पल्लव काल में अत्यंत लोकप्रिय थी।\nकारण (R): भारवि पल्लव वंश के प्रतापी संस्थापक सिंहविष्णु के राजदरबार में निवास करते थे।",
+    "question_en": "Assertion (A): Bharavi's 'Kiratarjuniyam' was immensely popular during Pallava era.\nReason (R): Bharavi lived in the royal court of Pallava founder Simhavishnu.",
+    "options_hi": [
+      {
+        "id": "A",
+        "text": "(A) और (R) दोनों सही हैं और (R), (A) की सही व्याख्या है।"
+      },
+      {
+        "id": "B",
+        "text": "(A) और (R) दोनों सही हैं लेकिन (R), (A) की सही व्याख्या नहीं है।"
+      },
+      {
+        "id": "C",
+        "text": "(A) सही है लेकिन (R) गलत है।"
+      },
+      {
+        "id": "D",
+        "text": "(A) गलत है लेकिन (R) सही है।"
+      }
+    ],
+    "options_en": [
+      {
+        "id": "A",
+        "text": "Both (A) and (R) are correct and (R) is the correct explanation of (A)."
+      },
+      {
+        "id": "B",
+        "text": "Both (A) and (R) are correct but (R) is NOT the correct explanation."
+      },
+      {
+        "id": "C",
+        "text": "(A) is true but (R) is false."
+      },
+      {
+        "id": "D",
+        "text": "(A) is false but (R) is true."
+      }
+    ],
+    "correct": "A",
+    "explanation_hi": "भारवि सिंहविष्णु के दरबारी कवि थे और उनकी रचना किरातार्जुनीयम् अत्यंत प्रसिद्ध हुई।",
+    "explanation_en": "Both (A) and (R) are correct and (R) explains (A)."
+  },
+  {
+    "id": 14,
+    "type": "Tricky & Negative-Word",
+    "question_hi": "महाबलीपुरम में स्थित 'शोर मंदिर' (Shore Temple / तट मंदिर) का निर्माण निम्नलिखित में से किसने करवाया था?",
+    "question_en": "Who constructed the Shore Temple at Mahabalipuram?",
+    "options_hi": [
+      {
+        "id": "A",
+        "text": "सिंहविष्णु"
+      },
+      {
+        "id": "B",
+        "text": "नरसिंहवर्मन प्रथम"
+      },
+      {
+        "id": "C",
+        "text": "नरसिंहवर्मन द्वितीय (राजसिंह)"
+      },
+      {
+        "id": "D",
+        "text": "नन्दिवर्मन द्वितीय"
+      }
+    ],
+    "options_en": [
+      {
+        "id": "A",
+        "text": "Simhavishnu"
+      },
+      {
+        "id": "B",
+        "text": "Narasimhavarman I"
+      },
+      {
+        "id": "C",
+        "text": "Narasimhavarman II (Rajasimha)"
+      },
+      {
+        "id": "D",
+        "text": "Nandivarman II"
+      }
+    ],
+    "correct": "C",
+    "explanation_hi": "महाबलीपुरम के तट मंदिर (शोर मंदिर) का निर्माण नरसिंहवर्मन द्वितीय ने करवाया था।",
+    "explanation_en": "Narasimhavarman II built the Shore Temple at Mahabalipuram."
+  },
+  {
+    "id": 15,
+    "type": "Statement Type",
+    "question_hi": "प्रसिद्ध वैष्णव संत तिरुमंगई अलवार किस पल्लव शासक के समकालीन थे?",
+    "question_en": "Vaishnava saint Tirumangai Alvar was contemporary of which Pallava ruler?",
+    "options_hi": [
+      {
+        "id": "A",
+        "text": "सिंहविष्णु"
+      },
+      {
+        "id": "B",
+        "text": "महेन्द्रवर्मन प्रथम"
+      },
+      {
+        "id": "C",
+        "text": "नन्दिवर्मन द्वितीय"
+      },
+      {
+        "id": "D",
+        "text": "कम्पवर्मा"
+      }
+    ],
+    "options_en": [
+      {
+        "id": "A",
+        "text": "Simhavishnu"
+      },
+      {
+        "id": "B",
+        "text": "Mahendravarman I"
+      },
+      {
+        "id": "C",
+        "text": "Nandivarman II"
+      },
+      {
+        "id": "D",
+        "text": "Kampavarma"
+      }
+    ],
+    "correct": "C",
+    "explanation_hi": "तिरुमंगई अलवार नन्दिवर्मन द्वितीय (730-800 ई.) के समकालीन थे।",
+    "explanation_en": "Tirumangai Alvar was contemporary of Nandivarman II."
+  },
+  {
+    "id": 16,
+    "type": "3-Statement Type",
+    "question_hi": "चोल वंश के संस्थापक विजयालय (848-870 ई.) के संदर्भ में कथनों पर विचार कीजिए:\n1. विजयालय ने पल्लवों के ध्वंसावशेषों पर 9वीं शताब्दी में चोल साम्राज्य की स्थापना की।\n2. उसने तंजौर (तंजावूर) को अपनी राजधानी बनाया और 'नरकेसरी' की उपाधि धारण की।\n3. विजयालय ने तंजौर में 'निशुम्भसूदिनी देवी' का भव्य मंदिर बनवाया।\n\nउपर्युक्त में से कौन-से कथन सत्य हैं?",
+    "question_en": "Consider statements regarding Vijayalaya:\n1. Founded Chola dynasty in 9th century upon ruins of Pallavas.\n2. Made Tanjore capital and assumed title 'Narkesari'.\n3. Built Nishumbhasudini Devi temple at Tanjore.\n\nWhich are true?",
+    "options_hi": [
+      {
+        "id": "A",
+        "text": "केवल 1 और 2"
+      },
+      {
+        "id": "B",
+        "text": "केवल 2 और 3"
+      },
+      {
+        "id": "C",
+        "text": "केवल 1 और 3"
+      },
+      {
+        "id": "D",
+        "text": "1, 2 और 3 (सभी सत्य हैं)"
+      }
+    ],
+    "options_en": [
+      {
+        "id": "A",
+        "text": "Only 1 and 2"
+      },
+      {
+        "id": "B",
+        "text": "Only 2 and 3"
+      },
+      {
+        "id": "C",
+        "text": "Only 1 and 3"
+      },
+      {
+        "id": "D",
+        "text": "1, 2 and 3 (All are true)"
+      }
+    ],
+    "correct": "D",
+    "explanation_hi": "तीनों कथन सत्य हैं। विजयालय ने तंजौर को राजधानी बनाया, नरकेसरी उपाधि ली और निशुम्भसूदिनी देवी मंदिर बनवाया।",
+    "explanation_en": "All three statements are true."
+  },
+  {
+    "id": 17,
+    "type": "Tricky & Negative-Word",
+    "question_hi": "तंजावूर (तंजौर) के प्रसिद्ध वास्तुकार का क्या नाम था?",
+    "question_en": "What was the name of the master architect of Thanjavur?",
+    "options_hi": [
+      {
+        "id": "A",
+        "text": "कुंजरमल्लन राजराज पेरुन्थच्चन"
+      },
+      {
+        "id": "B",
+        "text": "ईशानशिव पंडित"
+      },
+      {
+        "id": "C",
+        "text": "पेरुन्देवनार"
+      },
+      {
+        "id": "D",
+        "text": "जयमगोन्दर"
+      }
+    ],
+    "options_en": [
+      {
+        "id": "A",
+        "text": "Kunjaramallan Rajaraja Perunthachchan"
+      },
+      {
+        "id": "B",
+        "text": "Ishanasiva Pandita"
+      },
+      {
+        "id": "C",
+        "text": "Perundevanar"
+      },
+      {
+        "id": "D",
+        "text": "Jayamgondar"
+      }
+    ],
+    "correct": "A",
+    "explanation_hi": "तंजावूर का वास्तुकार कुंजरमल्लन राजराज पेरुन्थच्चन था।",
+    "explanation_en": "The architect was Kunjaramallan Rajaraja Perunthachchan."
+  },
+  {
+    "id": 18,
+    "type": "Statement Type",
+    "question_hi": "चोलों के एक स्वतंत्र राज्य की स्थापना किस शासक ने की और उसने पल्लवों पर विजय के उपरांत कौन-सी उपाधि धारण की?",
+    "question_en": "Who founded the independent Chola state and took which title after defeating Pallavas?",
+    "options_hi": [
+      {
+        "id": "A",
+        "text": "विजयालय — नरकेसरी"
+      },
+      {
+        "id": "B",
+        "text": "आदित्य प्रथम — कोदण्डराम"
+      },
+      {
+        "id": "C",
+        "text": "परांतक प्रथम — मदुरैकोंड"
+      },
+      {
+        "id": "D",
+        "text": "राजराज प्रथम — मुम्मुडिचोल"
+      }
+    ],
+    "options_en": [
+      {
+        "id": "A",
+        "text": "Vijayalaya — Narkesari"
+      },
+      {
+        "id": "B",
+        "text": "Aditya I — Kodandarama"
+      },
+      {
+        "id": "C",
+        "text": "Parantaka I — Maduraikonda"
+      },
+      {
+        "id": "D",
+        "text": "Rajaraja I — Mummadichola"
+      }
+    ],
+    "correct": "B",
+    "explanation_hi": "स्वतंत्र चोल राज्य आदित्य प्रथम ने स्थापित किया और पल्लवों पर विजय के बाद 'कोदण्डराम' उपाधि ली।",
+    "explanation_en": "Aditya I established independent Chola state with title Kodandarama."
+  },
+  {
+    "id": 19,
+    "type": "Assertion-Reason",
+    "question_hi": "कथन (A): तक्कोलम के ऐतिहासिक युद्ध (949 ई.) में चोल साम्राज्य को भारी आघात लगा।\nकारण (R): राष्ट्रकूट नरेश कृष्ण तृतीय ने परांतक प्रथम को पराजित किया और इस युद्ध में परांतक का बड़ा लड़का राजादित्य मारा गया।",
+    "question_en": "Assertion (A): Cholas suffered severe blow at Battle of Takkolam (949 AD).\nReason (R): Rashtrakuta king Krishna III defeated Parantaka I and killed prince Rajaditya.",
+    "options_hi": [
+      {
+        "id": "A",
+        "text": "(A) और (R) दोनों सही हैं और (R), (A) की सही व्याख्या है।"
+      },
+      {
+        "id": "B",
+        "text": "(A) और (R) दोनों सही हैं लेकिन (R), (A) की सही व्याख्या नहीं है।"
+      },
+      {
+        "id": "C",
+        "text": "(A) सही है लेकिन (R) गलत है।"
+      },
+      {
+        "id": "D",
+        "text": "(A) गलत है लेकिन (R) सही है।"
+      }
+    ],
+    "options_en": [
+      {
+        "id": "A",
+        "text": "Both (A) and (R) are correct and (R) is the correct explanation of (A)."
+      },
+      {
+        "id": "B",
+        "text": "Both (A) and (R) are correct but (R) is NOT the correct explanation."
+      },
+      {
+        "id": "C",
+        "text": "(A) is true but (R) is false."
+      },
+      {
+        "id": "D",
+        "text": "(A) is false but (R) is true."
+      }
+    ],
+    "correct": "A",
+    "explanation_hi": "तक्कोलम के युद्ध में कृष्ण तृतीय ने परांतक प्रथम को हराया और राजादित्य वीरगति को प्राप्त हुए।",
+    "explanation_en": "Both statements are true and (R) explains (A)."
+  },
+  {
+    "id": 20,
+    "type": "3-Statement Type",
+    "question_hi": "चोल शासक राजराज प्रथम के संदर्भ में निम्नलिखित कथनों पर विचार कीजिए:\n1. उसने श्रीलंका पर आक्रमण कर वहां के राजा महिंद-V को पराजित किया।\n2. उसने श्रीलंका के विजित प्रदेशों को मिलाकर 'मुम्मुडिचोलमंडलम' बनाया जिसकी राजधानी पोलन्नरुवा थी।\n3. राजराज प्रथम शैव धर्म का अनुयायी था और उसने तंजौर में प्रसिद्ध 'राजराजेश्वर शिव मंदिर' बनवाया।\n\nउपर्युक्त में से कौन-से कथन सत्य हैं?",
+    "question_en": "Consider statements regarding Rajaraja I:\n1. Invaded Sri Lanka and defeated King Mahinda V.\n2. Created province 'Mummadicholamandalam' with capital at Polonnaruwa.\n3. Devotee of Shiva and built the Rajarajeshvara Shiva temple at Tanjore.\n\nWhich are true?",
+    "options_hi": [
+      {
+        "id": "A",
+        "text": "केवल 1 और 2"
+      },
+      {
+        "id": "B",
+        "text": "केवल 2 और 3"
+      },
+      {
+        "id": "C",
+        "text": "केवल 1 और 3"
+      },
+      {
+        "id": "D",
+        "text": "1, 2 और 3 (सभी सत्य हैं)"
+      }
+    ],
+    "options_en": [
+      {
+        "id": "A",
+        "text": "Only 1 and 2"
+      },
+      {
+        "id": "B",
+        "text": "Only 2 and 3"
+      },
+      {
+        "id": "C",
+        "text": "Only 1 and 3"
+      },
+      {
+        "id": "D",
+        "text": "1, 2 and 3 (All are true)"
+      }
+    ],
+    "correct": "D",
+    "explanation_hi": "तीनों कथन पूर्णतः सत्य हैं। राजराज प्रथम ने श्रीलंका पर आक्रमण किया, मुम्मुडिचोलमंडलम बनाया और राजराजेश्वर मंदिर बनवाया।",
+    "explanation_en": "All three statements are verified facts."
+  },
+  {
+    "id": 21,
+    "type": "Tricky & Negative-Word",
+    "question_hi": "चोल साम्राज्य का सर्वाधिक विस्तार किसके शासनकाल में हुआ था?",
+    "question_en": "During whose reign did the Chola empire witness its maximum territorial expansion?",
+    "options_hi": [
+      {
+        "id": "A",
+        "text": "परांतक प्रथम"
+      },
+      {
+        "id": "B",
+        "text": "राजराज प्रथम"
+      },
+      {
+        "id": "C",
+        "text": "राजेन्द्र चोल प्रथम"
+      },
+      {
+        "id": "D",
+        "text": "कुलोतुंग प्रथम"
+      }
+    ],
+    "options_en": [
+      {
+        "id": "A",
+        "text": "Parantaka I"
+      },
+      {
+        "id": "B",
+        "text": "Rajaraja I"
+      },
+      {
+        "id": "C",
+        "text": "Rajendra Chola I"
+      },
+      {
+        "id": "D",
+        "text": "Kulottunga I"
+      }
+    ],
+    "correct": "C",
+    "explanation_hi": "चोल साम्राज्य का सर्वाधिक विस्तार राजेन्द्र प्रथम (1014-1044 ई.) के शासनकाल में हुआ।",
+    "explanation_en": "The maximum expansion took place during Rajendra I."
+  },
+  {
+    "id": 22,
+    "type": "Statement Type",
+    "question_hi": "बंगाल के पाल शासक महिपाल को पराजित करने के बाद राजेन्द्र प्रथम ने कौन-सी उपाधि धारण की और किस विशाल जलाशय का निर्माण करवाया?",
+    "question_en": "After defeating Mahipala of Bengal, which title was assumed by Rajendra I and which lake did he excavate?",
+    "options_hi": [
+      {
+        "id": "A",
+        "text": "मुम्मुडिचोल — पोलन्नरुवा झील"
+      },
+      {
+        "id": "B",
+        "text": "गंगैकोंडचोल — चोलगंगम नामक विशाल तालाब"
+      },
+      {
+        "id": "C",
+        "text": "कोदण्डराम — कावेरी जलाशय"
+      },
+      {
+        "id": "D",
+        "text": "नरकेसरी — राजेंद्र सागर"
+      }
+    ],
+    "options_en": [
+      {
+        "id": "A",
+        "text": "Mummadichola — Polonnaruwa Lake"
+      },
+      {
+        "id": "B",
+        "text": "Gangaikondachola — Cholagangam lake"
+      },
+      {
+        "id": "C",
+        "text": "Kodandarama — Kaveri reservoir"
+      },
+      {
+        "id": "D",
+        "text": "Narkesari — Rajendra Sagar"
+      }
+    ],
+    "correct": "B",
+    "explanation_hi": "राजेन्द्र प्रथम ने 'गंगैकोंडचोल' उपाधि ली और नवीन राजधानी गंगैकोंडचोलपुरम् के पास 'चोलगंगम' तालाब बनवाया।",
+    "explanation_en": "Rajendra I took title Gangaikondachola and built Cholagangam reservoir."
+  },
+  {
+    "id": 23,
+    "type": "Matching / Mis-matching",
+    "question_hi": "राजेन्द्र प्रथम द्वारा अपनी राजधानी के शिव मंदिर में स्थापित की गई विभिन्न क्षेत्रों से जीती गई मूर्तियों के संदर्भ में गलत सुमेलित युग्म चुनिए:",
+    "question_en": "Identify incorrect match regarding statues seized and placed in the Shiva temple by Rajendra I:",
+    "options_hi": [
+      {
+        "id": "A",
+        "text": "चालुक्यों से प्राप्त — सूर्य पीठिका, गणेश मूर्ति एवं दुर्गा मूर्तियाँ"
+      },
+      {
+        "id": "B",
+        "text": "पूर्वी चालुक्यों से प्राप्त — नंदी की मूर्ति"
+      },
+      {
+        "id": "C",
+        "text": "कलिंग से प्राप्त — भैरव एवं भैरवी की प्रतिमा"
+      },
+      {
+        "id": "D",
+        "text": "बंगाल के पाल शासकों से प्राप्त — शिव नटराज की विशाल कांस्य मूर्ति"
+      }
+    ],
+    "options_en": [
+      {
+        "id": "A",
+        "text": "From Chalukyas — Surya pedestal, Ganesha and Durga statues"
+      },
+      {
+        "id": "B",
+        "text": "From Eastern Chalukyas — Nandi statue"
+      },
+      {
+        "id": "C",
+        "text": "From Kalinga — Bhairava and Bhairavi statue"
+      },
+      {
+        "id": "D",
+        "text": "From Palas of Bengal — Bronze statue of Shiva Nataraja"
+      }
+    ],
+    "correct": "D",
+    "explanation_hi": "विकल्प (D) गलत है। बंगाल के पालों से 'काली की मूर्ति' प्राप्त की गई थी, न कि नटराज मूर्ति।",
+    "explanation_en": "Option (D) is incorrect; statue of Goddess Kali was seized from Bengal Palas."
+  },
+  {
+    "id": 24,
+    "type": "Tricky & Negative-Word",
+    "question_hi": "गजनी का सुल्तान महमूद निम्नलिखित में से किस चोल सम्राट का समकालीन था?",
+    "question_en": "Sultan Mahmud of Ghazni was contemporary of which Chola emperor?",
+    "options_hi": [
+      {
+        "id": "A",
+        "text": "विजयालय"
+      },
+      {
+        "id": "B",
+        "text": "परांतक प्रथम"
+      },
+      {
+        "id": "C",
+        "text": "राजेन्द्र प्रथम"
+      },
+      {
+        "id": "D",
+        "text": "कुलोतुंग द्वितीय"
+      }
+    ],
+    "options_en": [
+      {
+        "id": "A",
+        "text": "Vijayalaya"
+      },
+      {
+        "id": "B",
+        "text": "Parantaka I"
+      },
+      {
+        "id": "C",
+        "text": "Rajendra I"
+      },
+      {
+        "id": "D",
+        "text": "Kulottunga II"
+      }
+    ],
+    "correct": "C",
+    "explanation_hi": "गजनी का सुल्तान महमूद राजेन्द्र प्रथम (1014-1044 ई.) का समकालीन था।",
+    "explanation_en": "Mahmud of Ghazni was contemporary of Rajendra I."
+  },
+  {
+    "id": 25,
+    "type": "Statement Type",
+    "question_hi": "चोलों एवं पश्चिमी चालुक्यों के बीच शांति स्थापित करने में गोवा के किस कदम्ब शासक ने मध्यस्थ की भूमिका निभाई थी?",
+    "question_en": "Which Kadamba ruler of Goa mediated peace between Cholas and Western Chalukyas?",
+    "options_hi": [
+      {
+        "id": "A",
+        "text": "मयूरशर्मन"
+      },
+      {
+        "id": "B",
+        "text": "ककुत्स्थवर्मा"
+      },
+      {
+        "id": "C",
+        "text": "जयकेश प्रथम"
+      },
+      {
+        "id": "D",
+        "text": "माधव प्रथम"
+      }
+    ],
+    "options_en": [
+      {
+        "id": "A",
+        "text": "Mayurasharman"
+      },
+      {
+        "id": "B",
+        "text": "Kakusthavarma"
+      },
+      {
+        "id": "C",
+        "text": "Jayakeshi I"
+      },
+      {
+        "id": "D",
+        "text": "Madhava I"
+      }
+    ],
+    "correct": "C",
+    "explanation_hi": "गोवा के कदम्ब शासक जयकेश प्रथम ने मध्यस्थ की भूमिका निभाई थी।",
+    "explanation_en": "Jayakeshi I of Goa played mediator between Cholas and Western Chalukyas."
+  },
+  {
+    "id": 26,
+    "type": "Tricky & Negative-Word",
+    "question_hi": "चिदंबरम् मंदिर में स्थित गोविन्दराज (भगवान विष्णु) की मूर्ति को समुद्र में फेंकवाने वाला चोल शासक कौन था?",
+    "question_en": "Which Chola ruler threw the statue of Govindaraja (Vishnu) from Chidambaram temple into the sea?",
+    "options_hi": [
+      {
+        "id": "A",
+        "text": "राजराज प्रथम"
+      },
+      {
+        "id": "B",
+        "text": "राजेन्द्र प्रथम"
+      },
+      {
+        "id": "C",
+        "text": "कुलोतुंग द्वितीय"
+      },
+      {
+        "id": "D",
+        "text": "विक्रम चोल"
+      }
+    ],
+    "options_en": [
+      {
+        "id": "A",
+        "text": "Rajaraja I"
+      },
+      {
+        "id": "B",
+        "text": "Rajendra I"
+      },
+      {
+        "id": "C",
+        "text": "Kulottunga II"
+      },
+      {
+        "id": "D",
+        "text": "Vikrama Chola"
+      }
+    ],
+    "correct": "C",
+    "explanation_hi": "कुलोतुंग द्वितीय ने गोविन्दराज की मूर्ति समुद्र में फेंकवाई थी जिसे बाद में रामानुजाचार्य ने तिरुपति में प्रतिष्ठित किया।",
+    "explanation_en": "Kulottunga II threw Govindaraja's statue into sea; later restored at Tirupati by Ramanujacharya."
+  },
+  {
+    "id": 27,
+    "type": "Assertion-Reason",
+    "question_hi": "कथन (A): विक्रम चोल के शासनकाल में चिदंबरम् मंदिर के विस्तार पर भारी धन व्यय किया गया।\nकारण (R): विक्रम चोल घोर अकाल और अभाव में ग्रस्त गरीब जनता से कठोरतापूर्वक राजस्व वसूल कर मंदिर का विस्तार करवा रहा था।",
+    "question_en": "Assertion (A): Massive funds were spent on extending Chidambaram temple under Vikrama Chola.\nReason (R): Vikrama Chola extorted revenue from famine-stricken poor peasants to expand the temple.",
+    "options_hi": [
+      {
+        "id": "A",
+        "text": "(A) और (R) दोनों सही हैं और (R), (A) की सही व्याख्या है।"
+      },
+      {
+        "id": "B",
+        "text": "(A) और (R) दोनों सही हैं लेकिन (R), (A) की सही व्याख्या नहीं है।"
+      },
+      {
+        "id": "C",
+        "text": "(A) सही है लेकिन (R) गलत है।"
+      },
+      {
+        "id": "D",
+        "text": "(A) गलत है लेकिन (R) सही है।"
+      }
+    ],
+    "options_en": [
+      {
+        "id": "A",
+        "text": "Both (A) and (R) are correct and (R) is the correct explanation of (A)."
+      },
+      {
+        "id": "B",
+        "text": "Both (A) and (R) are correct but (R) is NOT the correct explanation."
+      },
+      {
+        "id": "C",
+        "text": "(A) is true but (R) is false."
+      },
+      {
+        "id": "D",
+        "text": "(A) is false but (R) is true."
+      }
+    ],
+    "correct": "A",
+    "explanation_hi": "विक्रम चोल ने अकाल पीड़ित जनता से कर वसूल कर चिदंबरम् मंदिर का विस्तार करवाया। दोनों कथन सही हैं।",
+    "explanation_en": "Both statements are historically true and (R) explains (A)."
+  },
+  {
+    "id": 28,
+    "type": "Statement Type",
+    "question_hi": "चोल शासकों की उपाधियों के संदर्भ में 'प्रकेसरी' और 'राजकेसरी' की उपाधियां क्रमशः किन शासकों ने धारण की थीं?",
+    "question_en": "Which Chola rulers assumed titles 'Prakesari' and 'Rajakesari' respectively?",
+    "options_hi": [
+      {
+        "id": "A",
+        "text": "राजेन्द्र द्वितीय एवं वीर राजेन्द्र"
+      },
+      {
+        "id": "B",
+        "text": "विजयालय एवं आदित्य प्रथम"
+      },
+      {
+        "id": "C",
+        "text": "परांतक प्रथम एवं राजराज प्रथम"
+      },
+      {
+        "id": "D",
+        "text": "कुलोतुंग प्रथम एवं कुलोतुंग द्वितीय"
+      }
+    ],
+    "options_en": [
+      {
+        "id": "A",
+        "text": "Rajendra II and Vira Rajendra"
+      },
+      {
+        "id": "B",
+        "text": "Vijayalaya and Aditya I"
+      },
+      {
+        "id": "C",
+        "text": "Parantaka I and Rajaraja I"
+      },
+      {
+        "id": "D",
+        "text": "Kulottunga I and Kulottunga II"
+      }
+    ],
+    "correct": "A",
+    "explanation_hi": "राजेन्द्र द्वितीय ने 'प्रकेसरी' की तथा वीर राजेन्द्र ने 'राजकेसरी' की उपाधि धारण की थी।",
+    "explanation_en": "Rajendra II took 'Prakesari' and Vira Rajendra took 'Rajakesari'."
+  },
+  {
+    "id": 29,
+    "type": "Tricky & Negative-Word",
+    "question_hi": "चोल वंश का अंतिम राजा निम्नलिखित में से कौन था?",
+    "question_en": "Who was the last king of the Chola dynasty?",
+    "options_hi": [
+      {
+        "id": "A",
+        "text": "राजेन्द्र द्वितीय"
+      },
+      {
+        "id": "B",
+        "text": "कुलोतुंग तृतीय"
+      },
+      {
+        "id": "C",
+        "text": "राजेन्द्र तृतीय"
+      },
+      {
+        "id": "D",
+        "text": "वीर राजेन्द्र"
+      }
+    ],
+    "options_en": [
+      {
+        "id": "A",
+        "text": "Rajendra II"
+      },
+      {
+        "id": "B",
+        "text": "Kulottunga III"
+      },
+      {
+        "id": "C",
+        "text": "Rajendra III"
+      },
+      {
+        "id": "D",
+        "text": "Vira Rajendra"
+      }
+    ],
+    "correct": "C",
+    "explanation_hi": "चोल वंश का अंतिम शासक राजेन्द्र तृतीय (1256-1279 ई.) था।",
+    "explanation_en": "The last Chola king was Rajendra III (1256-1279 AD)."
+  },
+  {
+    "id": 30,
+    "type": "Matching / Mis-matching",
+    "question_hi": "चोलों की राजधानियों के सही कालक्रम की पहचान कीजिए:",
+    "question_en": "Identify correct chronological sequence of Chola capitals:",
+    "options_hi": [
+      {
+        "id": "A",
+        "text": "उरैयूर → तंजौर → गंगैकोंडचोलपुरम् → काँची"
+      },
+      {
+        "id": "B",
+        "text": "तंजौर → उरैयूर → काँची → गंगैकोंडचोलपुरम्"
+      },
+      {
+        "id": "C",
+        "text": "काँची → तंजौर → उरैयूर → गंगैकोंडचोलपुरम्"
+      },
+      {
+        "id": "D",
+        "text": "उरैयूर → काँची → तंजौर → गंगैकोंडचोलपुरम्"
+      }
+    ],
+    "options_en": [
+      {
+        "id": "A",
+        "text": "Uraiyur -> Tanjore -> Gangaikondacholapuram -> Kanchi"
+      },
+      {
+        "id": "B",
+        "text": "Tanjore -> Uraiyur -> Kanchi -> Gangaikondacholapuram"
+      },
+      {
+        "id": "C",
+        "text": "Kanchi -> Tanjore -> Uraiyur -> Gangaikondacholapuram"
+      },
+      {
+        "id": "D",
+        "text": "Uraiyur -> Kanchi -> Tanjore -> Gangaikondacholapuram"
+      }
+    ],
+    "correct": "A",
+    "explanation_hi": "चोलों की राजधानी कालक्रम से: उरैयूर, तंजौर, गंगैकोंडचोलपुरम् एवं काँची थी।",
+    "explanation_en": "Chronological order: Uraiyur, Tanjore, Gangaikondacholapuram, and Kanchi."
+  },
+  {
+    "id": 31,
+    "type": "Matching / Mis-matching",
+    "question_hi": "चोल काल में भूमि के प्रकारों के संदर्भ में कौन-सा मिलान असत्य है?",
+    "question_en": "Which matching is INCORRECT regarding types of land in Chola period?",
+    "options_hi": [
+      {
+        "id": "A",
+        "text": "वेल्लनवगाई — गैर-ब्राह्मण किसान स्वामी की भूमि"
+      },
+      {
+        "id": "B",
+        "text": "ब्रह्मदेय — ब्राह्मणों को उपहार में दी गई भूमि"
+      },
+      {
+        "id": "C",
+        "text": "शालाभोग — किसी विद्यालय के रख-रखाव की भूमि"
+      },
+      {
+        "id": "D",
+        "text": "पल्लिच्चंदम — मंदिरों को उपहार में दी गई भूमि"
+      }
+    ],
+    "options_en": [
+      {
+        "id": "A",
+        "text": "Vellanvagai — Land of non-Brahmin peasant proprietor"
+      },
+      {
+        "id": "B",
+        "text": "Brahmadeya — Land gifted to Brahmins"
+      },
+      {
+        "id": "C",
+        "text": "Shalabhoga — Land for school maintenance"
+      },
+      {
+        "id": "D",
+        "text": "Pallichchandam — Land gifted to temples"
+      }
+    ],
+    "correct": "D",
+    "explanation_hi": "पल्लिच्चंदम 'जैन संस्थानों' को दान दी गई भूमि थी, जबकि मंदिरों को दान दी गई भूमि 'देवदान' या 'तिरुनमटुकनी' कहलाती थी।",
+    "explanation_en": "Pallichchandam was land donated to Jain institutions, whereas Devadana was land gifted to temples."
+  },
+  {
+    "id": 32,
+    "type": "Tricky & Negative-Word",
+    "question_hi": "चोल काल में 'देवदान' या 'तिरुनमटुकनी' किस प्रकार की भूमि को कहा जाता था?",
+    "question_en": "What type of land was termed 'Devadana' or 'Tirunamattukkani' in Chola times?",
+    "options_hi": [
+      {
+        "id": "A",
+        "text": "सैनिकों को दी गई करमुक्त भूमि"
+      },
+      {
+        "id": "B",
+        "text": "मंदिर को उपहार में दी गई भूमि"
+      },
+      {
+        "id": "C",
+        "text": "विद्यालयों के रख-रखाव की भूमि"
+      },
+      {
+        "id": "D",
+        "text": "राजकीय अधिकारियों को वेतन के बदले दी गई भूमि"
+      }
+    ],
+    "options_en": [
+      {
+        "id": "A",
+        "text": "Tax-free land to soldiers"
+      },
+      {
+        "id": "B",
+        "text": "Land gifted to temples"
+      },
+      {
+        "id": "C",
+        "text": "Land for maintenance of schools"
+      },
+      {
+        "id": "D",
+        "text": "Land in lieu of salary to officials"
+      }
+    ],
+    "correct": "B",
+    "explanation_hi": "मंदिर को उपहार में दी गई भूमि को देवदान या तिरुनमटुकनी कहा जाता था।",
+    "explanation_en": "Land gifted to temples was called Devadana or Tirunamattukkani."
+  },
+  {
+    "id": 33,
+    "type": "Statement Type",
+    "question_hi": "चोल काल में भूमिकर और आर्थिक विनिमय के संदर्भ में क्या सत्य है?\n1. चोल काल में भूमिकर सामान्यतः उपज का 1/3 (एक-तिहाई) भाग हुआ करता था।\n2. आम वस्तुओं के आदान-प्रदान और विनिमय का मुख्य आधार 'धान' (चावल) था।\n3. चोल काल में 'कलंजु' सोने के बहुमूल्य सिक्के थे।\n\nउपर्युक्त में से कौन-से सही हैं?",
+    "question_en": "What is true regarding land revenue and economy in Chola period?\n1. Land revenue was usually 1/3 of agricultural produce.\n2. Principal medium of exchange was paddy (rice).\n3. 'Kalanju' were gold coins.\n\nWhich are correct?",
+    "options_hi": [
+      {
+        "id": "A",
+        "text": "केवल 1 और 2"
+      },
+      {
+        "id": "B",
+        "text": "केवल 2 और 3"
+      },
+      {
+        "id": "C",
+        "text": "केवल 1 और 3"
+      },
+      {
+        "id": "D",
+        "text": "1, 2 और 3 (सभी सत्य हैं)"
+      }
+    ],
+    "options_en": [
+      {
+        "id": "A",
+        "text": "Only 1 and 2"
+      },
+      {
+        "id": "B",
+        "text": "Only 2 and 3"
+      },
+      {
+        "id": "C",
+        "text": "Only 1 and 3"
+      },
+      {
+        "id": "D",
+        "text": "1, 2 and 3 (All are true)"
+      }
+    ],
+    "correct": "D",
+    "explanation_hi": "चोल काल में भूमिकर 1/3 था, विनिमय का आधार धान था और कलंजु सोने का सिक्का था। तीनों सत्य हैं।",
+    "explanation_en": "All three statements are verified from Lucent GK."
+  },
+  {
+    "id": 34,
+    "type": "Tricky & Negative-Word",
+    "question_hi": "चोल काल में सड़कों की देख-रेख किस समिति द्वारा की जाती थी?",
+    "question_en": "Which committee was responsible for maintenance of roads in Chola administration?",
+    "options_hi": [
+      {
+        "id": "A",
+        "text": "तोट्ट वरियम (बगान समिति)"
+      },
+      {
+        "id": "B",
+        "text": "एरि वरियम (तालाब समिति)"
+      },
+      {
+        "id": "C",
+        "text": "संवत्सर वरियम (वार्षिक समिति)"
+      },
+      {
+        "id": "D",
+        "text": "उदासीन वरियम"
+      }
+    ],
+    "options_en": [
+      {
+        "id": "A",
+        "text": "Garden Committee (Totta Variyam)"
+      },
+      {
+        "id": "B",
+        "text": "Tank Committee (Eri Variyam)"
+      },
+      {
+        "id": "C",
+        "text": "Annual Committee (Samvatsara Variyam)"
+      },
+      {
+        "id": "D",
+        "text": "Udasina Variyam"
+      }
+    ],
+    "correct": "A",
+    "explanation_hi": "चोल काल में सड़कों की देखभाल बगान समिति (तोट्ट वरियम) करती थी।",
+    "explanation_en": "Maintenance of roads was supervised by the Garden Committee."
+  },
+  {
+    "id": 35,
+    "type": "Statement Type",
+    "question_hi": "10वीं सदी में चोल काल का सबसे महत्वपूर्ण और व्यस्त बंदरगाह कौन-सा था?",
+    "question_en": "Which was the most important and busiest port during Chola period in 10th century?",
+    "options_hi": [
+      {
+        "id": "A",
+        "text": "कावेरीपट्टनम (पुहार)"
+      },
+      {
+        "id": "B",
+        "text": "महाबलीपुरम"
+      },
+      {
+        "id": "C",
+        "text": "कोर्काई"
+      },
+      {
+        "id": "D",
+        "text": "मुजिरिस"
+      }
+    ],
+    "options_en": [
+      {
+        "id": "A",
+        "text": "Kaveripattinam (Puhar)"
+      },
+      {
+        "id": "B",
+        "text": "Mahabalipuram"
+      },
+      {
+        "id": "C",
+        "text": "Korkai"
+      },
+      {
+        "id": "D",
+        "text": "Muziris"
+      }
+    ],
+    "correct": "A",
+    "explanation_hi": "चोल काल (10वीं सदी) का सबसे महत्वपूर्ण बंदरगाह कावेरीपट्टनम था।",
+    "explanation_en": "Kaveripattinam was the most prominent port."
+  },
+  {
+    "id": 36,
+    "type": "Matching / Mis-matching",
+    "question_hi": "चोल काल के विशाल व्यापारी समूहों (Merchant Guilds) में निम्नलिखित में से कौन शामिल थे?\n1. वलंजियार\n2. नानादैसी\n3. मनिग्रामम्\n\nसही कूट चुनिए:",
+    "question_en": "Which merchant guilds were prominent during Chola times?\n1. Valanjiyar\n2. Nanadesi\n3. Manigramam\n\nChoose correct code:",
+    "options_hi": [
+      {
+        "id": "A",
+        "text": "केवल 1 और 2"
+      },
+      {
+        "id": "B",
+        "text": "केवल 2 और 3"
+      },
+      {
+        "id": "C",
+        "text": "केवल 1 और 3"
+      },
+      {
+        "id": "D",
+        "text": "1, 2 और 3 (तीनों)"
+      }
+    ],
+    "options_en": [
+      {
+        "id": "A",
+        "text": "Only 1 and 2"
+      },
+      {
+        "id": "B",
+        "text": "Only 2 and 3"
+      },
+      {
+        "id": "C",
+        "text": "Only 1 and 3"
+      },
+      {
+        "id": "D",
+        "text": "1, 2 and 3 (All three)"
+      }
+    ],
+    "correct": "D",
+    "explanation_hi": "चोल काल के प्रमुख विशाल व्यापारी समूह वलंजियार, नानादैसी एवं मनिग्रामम् थे।",
+    "explanation_en": "All three were major merchant guilds in Chola period."
+  },
+  {
+    "id": 37,
+    "type": "Tricky & Negative-Word",
+    "question_hi": "चोल राजवंश का राजकीय प्रतीक-चिह्न क्या था?",
+    "question_en": "What was the royal emblem of the Chola dynasty?",
+    "options_hi": [
+      {
+        "id": "A",
+        "text": "धनुष (Bow)"
+      },
+      {
+        "id": "B",
+        "text": "मछली (Fish)"
+      },
+      {
+        "id": "C",
+        "text": "बाघ (Tiger)"
+      },
+      {
+        "id": "D",
+        "text": "वराह (Boar)"
+      }
+    ],
+    "options_en": [
+      {
+        "id": "A",
+        "text": "Bow"
+      },
+      {
+        "id": "B",
+        "text": "Fish"
+      },
+      {
+        "id": "C",
+        "text": "Tiger"
+      },
+      {
+        "id": "D",
+        "text": "Boar"
+      }
+    ],
+    "correct": "C",
+    "explanation_hi": "चोल राजवंश का प्रतीक बाघ (Tiger) था। (पाण्ड्यों का मछली, चेरों का धनुष था)।",
+    "explanation_en": "The royal crest of the Cholas was the Tiger."
+  },
+  {
+    "id": 38,
+    "type": "Statement Type",
+    "question_hi": "ब्राह्मणों को दी गई पूर्णतः 'करमुक्त' भूमि को चोल अभिलेखों में क्या कहा जाता था?",
+    "question_en": "Completely tax-free land granted to Brahmins in Chola inscriptions was termed:",
+    "options_hi": [
+      {
+        "id": "A",
+        "text": "चतुर्वेदिमंगलम्"
+      },
+      {
+        "id": "B",
+        "text": "वेल्लनवगाई"
+      },
+      {
+        "id": "C",
+        "text": "शालाभोग"
+      },
+      {
+        "id": "D",
+        "text": "तनियर"
+      }
+    ],
+    "options_en": [
+      {
+        "id": "A",
+        "text": "Chaturvedimangalam"
+      },
+      {
+        "id": "B",
+        "text": "Vellanvagai"
+      },
+      {
+        "id": "C",
+        "text": "Shalabhoga"
+      },
+      {
+        "id": "D",
+        "text": "Taniyur"
+      }
+    ],
+    "correct": "A",
+    "explanation_hi": "ब्राह्मणों को दी गई करमुक्त भूमि को 'चतुर्वेदिमंगलम्' तथा दान दी गई भूमि को ब्रह्मदेय कहा जाता था।",
+    "explanation_en": "Tax-free land granted to Brahmins was termed Chaturvedimangalam."
+  },
+  {
+    "id": 39,
+    "type": "Tricky & Negative-Word",
+    "question_hi": "चोल काल में एक स्वतंत्र प्रशासनिक इकाई के रूप में शासित किया जाने वाला 'बहुत बड़ा गाँव' क्या कहलाता था?",
+    "question_en": "A very large village administered as an independent single unit in Chola times was called:",
+    "options_hi": [
+      {
+        "id": "A",
+        "text": "तनियर"
+      },
+      {
+        "id": "B",
+        "text": "नाडु"
+      },
+      {
+        "id": "C",
+        "text": "कोट्टम"
+      },
+      {
+        "id": "D",
+        "text": "कुर्रम"
+      }
+    ],
+    "options_en": [
+      {
+        "id": "A",
+        "text": "Taniyur"
+      },
+      {
+        "id": "B",
+        "text": "Nadu"
+      },
+      {
+        "id": "C",
+        "text": "Kottam"
+      },
+      {
+        "id": "D",
+        "text": "Kurram"
+      }
+    ],
+    "correct": "A",
+    "explanation_hi": "बहुत बड़ा गाँव, जो एक स्वतंत्र इकाई के रूप में शासित होता था, 'तनियर' कहलाता था।",
+    "explanation_en": "A very large autonomous village unit was called Taniyur."
+  },
+  {
+    "id": 40,
+    "type": "Statement Type",
+    "question_hi": "चोल सेना का सबसे सुगठित एवं शक्तिशाली अंग कौन-सा था?",
+    "question_en": "Which was the most well-organized and primary wing of the Chola army?",
+    "options_hi": [
+      {
+        "id": "A",
+        "text": "अश्व सेना (Cavalry)"
+      },
+      {
+        "id": "B",
+        "text": "गज सेना (Elephant corps)"
+      },
+      {
+        "id": "C",
+        "text": "पदाति सेना (Infantry)"
+      },
+      {
+        "id": "D",
+        "text": "रथ सेना (Chariot corps)"
+      }
+    ],
+    "options_en": [
+      {
+        "id": "A",
+        "text": "Cavalry"
+      },
+      {
+        "id": "B",
+        "text": "Elephant corps"
+      },
+      {
+        "id": "C",
+        "text": "Infantry (Padati Sena)"
+      },
+      {
+        "id": "D",
+        "text": "Chariots"
+      }
+    ],
+    "correct": "C",
+    "explanation_hi": "चोल सेना का सबसे संगठित अंग 'पदाति सेना' (पैदल सेना) था।",
+    "explanation_en": "The infantry (Padati Sena) was the most organized core of the Chola army."
+  },
+  {
+    "id": 41,
+    "type": "Matching / Mis-matching",
+    "question_hi": "तमिल साहित्य के त्रिरत्न कवियों और उनकी रचनाओं के संबंध में कौन-सा मिलान गलत है?",
+    "question_en": "Which match is INCORRECT regarding Tamil literature's Triratna poets?",
+    "options_hi": [
+      {
+        "id": "A",
+        "text": "कंबन — कंब रामायण (इरामावतारम)"
+      },
+      {
+        "id": "B",
+        "text": "ओट्टक्कुट्टन — चोल राजाओं की प्रशंसा में काव्य"
+      },
+      {
+        "id": "C",
+        "text": "पुगलेंदि — नलवेणबा (नैतिक शिक्षा व सदाचार)"
+      },
+      {
+        "id": "D",
+        "text": "जयमगोन्दर — आदिपुराण"
+      }
+    ],
+    "options_en": [
+      {
+        "id": "A",
+        "text": "Kamban — Kamba Ramayana"
+      },
+      {
+        "id": "B",
+        "text": "Ottakkuttan — Eulogies of Chola kings"
+      },
+      {
+        "id": "C",
+        "text": "Pugalendi — Nalavenba"
+      },
+      {
+        "id": "D",
+        "text": "Jayamgondar — Adipurana"
+      }
+    ],
+    "correct": "D",
+    "explanation_hi": "'आदिपुराण' कन्नड़ कवि 'पंप' की रचना है। जयमगोन्दर ने 'कलिंगत्तुपर्णि' की रचना की थी।",
+    "explanation_en": "Adipurana was composed by Kannada poet Pampa. Jayamgondar wrote Kalingattupparani."
+  },
+  {
+    "id": 42,
+    "type": "Statement Type",
+    "question_hi": "तेलुगु साहित्य के त्रिरत्न कवियों में निम्नलिखित में से कौन शामिल थे जिन्होंने महाभारत का तेलुगु अनुवाद किया?\n1. नन्नय्य\n2. तिक्कन\n3. एर्राप्रगड्डा\n\nसही विकल्प चुनिए:",
+    "question_en": "Who were the Triratna poets of Telugu literature who translated Mahabharata into Telugu?\n1. Nannayya\n2. Tikkana\n3. Errapragada\n\nChoose correct option:",
+    "options_hi": [
+      {
+        "id": "A",
+        "text": "केवल 1 और 2"
+      },
+      {
+        "id": "B",
+        "text": "केवल 2 और 3"
+      },
+      {
+        "id": "C",
+        "text": "केवल 1 और 3"
+      },
+      {
+        "id": "D",
+        "text": "1, 2 और 3 (तीनों)"
+      }
+    ],
+    "options_en": [
+      {
+        "id": "A",
+        "text": "Only 1 and 2"
+      },
+      {
+        "id": "B",
+        "text": "Only 2 and 3"
+      },
+      {
+        "id": "C",
+        "text": "Only 1 and 3"
+      },
+      {
+        "id": "D",
+        "text": "1, 2 and 3 (All three)"
+      }
+    ],
+    "correct": "D",
+    "explanation_hi": "तेलुगु साहित्य के त्रिरत्न नन्नय्य, तिक्कन और एर्राप्रगड्डा थे। ये काकतीय राजवंश से संबद्ध थे।",
+    "explanation_en": "Telugu Triratna comprises Nannayya, Tikkana, and Errapragada."
+  },
+  {
+    "id": 43,
+    "type": "Matching / Mis-matching",
+    "question_hi": "कन्नड़ साहित्य के त्रिरत्न जैन कवियों और उनकी कृतियों के संदर्भ में कौन-सा युग्म सही सुमेलित है?\n1. पंप — आदिपुराण एवं विक्रमार्जुन विजय\n2. पोन्न — शांतिपुराण एवं जिनाक्षरमाला\n3. रन्न — अजितपुराण एवं गदायुद्ध\n\nसही कूट चुनिए:",
+    "question_en": "Which pairs of Kannada literature Triratna Jain poets are correctly matched?\n1. Pampa — Adipurana & Vikramarjuna Vijaya\n2. Ponna — Shanti Purana & Jinaksharamala\n3. Ranna — Ajitapurana & Gadayuddha\n\nChoose correct code:",
+    "options_hi": [
+      {
+        "id": "A",
+        "text": "केवल 1 और 2"
+      },
+      {
+        "id": "B",
+        "text": "केवल 2 और 3"
+      },
+      {
+        "id": "C",
+        "text": "केवल 1 और 3"
+      },
+      {
+        "id": "D",
+        "text": "1, 2 और 3 (तीनों सही हैं)"
+      }
+    ],
+    "options_en": [
+      {
+        "id": "A",
+        "text": "Only 1 and 2"
+      },
+      {
+        "id": "B",
+        "text": "Only 2 and 3"
+      },
+      {
+        "id": "C",
+        "text": "Only 1 and 3"
+      },
+      {
+        "id": "D",
+        "text": "1, 2 and 3 (All are true)"
+      }
+    ],
+    "correct": "D",
+    "explanation_hi": "तीनों युग्म शत-प्रतिशत सही हैं। पंप, पोन्न और रन्न तीनों जैन कवि थे।",
+    "explanation_en": "All three pairs are authentic and correct."
+  },
+  {
+    "id": 44,
+    "type": "Tricky & Negative-Word",
+    "question_hi": "कन्नड़ महाकवि पंप किस शासक के प्रमुख दरबारी कवि थे?",
+    "question_en": "Kannada epic poet Pampa was court poet of which ruler?",
+    "options_hi": [
+      {
+        "id": "A",
+        "text": "राजा अरिसिंह द्वितीय (941 ई.)"
+      },
+      {
+        "id": "B",
+        "text": "अमोघवर्ष प्रथम"
+      },
+      {
+        "id": "C",
+        "text": "कृष्ण तृतीय"
+      },
+      {
+        "id": "D",
+        "text": "तैलप द्वितीय"
+      }
+    ],
+    "options_en": [
+      {
+        "id": "A",
+        "text": "King Arikesari/Arisimha II (941 AD)"
+      },
+      {
+        "id": "B",
+        "text": "Amoghavarsha I"
+      },
+      {
+        "id": "C",
+        "text": "Krishna III"
+      },
+      {
+        "id": "D",
+        "text": "Tailapa II"
+      }
+    ],
+    "correct": "A",
+    "explanation_hi": "महाकवि पंप राजा अरिसिंह द्वितीय (अरिकेसरी द्वितीय) के दरबारी कवि थे।",
+    "explanation_en": "Pampa was patronized by Arikesari/Arisimha II."
+  },
+  {
+    "id": 45,
+    "type": "Statement Type",
+    "question_hi": "कन्नड़ कवि पोन्न, जिन्होंने शांतिपुराण की रचना की, किस राष्ट्रकूट शासक के राजदरबार में रहते थे?",
+    "question_en": "Kannada poet Ponna, author of Shanti Purana, lived in the court of which Rashtrakuta king?",
+    "options_hi": [
+      {
+        "id": "A",
+        "text": "गोविन्द तृतीय"
+      },
+      {
+        "id": "B",
+        "text": "ध्रुव"
+      },
+      {
+        "id": "C",
+        "text": "कृष्ण तृतीय"
+      },
+      {
+        "id": "D",
+        "text": "अमोघवर्ष"
+      }
+    ],
+    "options_en": [
+      {
+        "id": "A",
+        "text": "Govinda III"
+      },
+      {
+        "id": "B",
+        "text": "Dhruva"
+      },
+      {
+        "id": "C",
+        "text": "Krishna III"
+      },
+      {
+        "id": "D",
+        "text": "Amoghavarsha"
+      }
+    ],
+    "correct": "C",
+    "explanation_hi": "कवि पोन्न राष्ट्रकूट वंश के अंतिम महान शासक कृष्ण तृतीय के दरबार में रहते थे।",
+    "explanation_en": "Ponna lived in the court of Rashtrakuta emperor Krishna III."
+  },
+  {
+    "id": 46,
+    "type": "Tricky & Negative-Word",
+    "question_hi": "प्रसिद्ध तमिल कवि जयमगोन्दर किस चोल शासक के राजकवि थे?",
+    "question_en": "Famous Tamil poet Jayamgondar was court poet of which Chola king?",
+    "options_hi": [
+      {
+        "id": "A",
+        "text": "कुलोतुंग प्रथम"
+      },
+      {
+        "id": "B",
+        "text": "राजराज प्रथम"
+      },
+      {
+        "id": "C",
+        "text": "राजेन्द्र प्रथम"
+      },
+      {
+        "id": "D",
+        "text": "कुलोतुंग तृतीय"
+      }
+    ],
+    "options_en": [
+      {
+        "id": "A",
+        "text": "Kulottunga I"
+      },
+      {
+        "id": "B",
+        "text": "Rajaraja I"
+      },
+      {
+        "id": "C",
+        "text": "Rajendra I"
+      },
+      {
+        "id": "D",
+        "text": "Kulottunga III"
+      }
+    ],
+    "correct": "A",
+    "explanation_hi": "जयमगोन्दर कुलोतुंग प्रथम के राजकवि थे। उनकी रचना 'कलिंगत्तुपर्णि' है।",
+    "explanation_en": "Jayamgondar was court poet of Kulottunga I."
+  },
+  {
+    "id": 47,
+    "type": "Statement Type",
+    "question_hi": "कंबन ने प्रसिद्ध 'कंब रामायण' (इरामावतारम) की रचना किस चोल सम्राट के शासनकाल में की थी?",
+    "question_en": "During whose reign did Kamban compose Kamba Ramayana (Iramavataram)?",
+    "options_hi": [
+      {
+        "id": "A",
+        "text": "परांतक प्रथम"
+      },
+      {
+        "id": "B",
+        "text": "कुलोतुंग तृतीय (1178-1218 ई.)"
+      },
+      {
+        "id": "C",
+        "text": "राजराज प्रथम"
+      },
+      {
+        "id": "D",
+        "text": "विजयालय"
+      }
+    ],
+    "options_en": [
+      {
+        "id": "A",
+        "text": "Parantaka I"
+      },
+      {
+        "id": "B",
+        "text": "Kulottunga III (1178-1218 AD)"
+      },
+      {
+        "id": "C",
+        "text": "Rajaraja I"
+      },
+      {
+        "id": "D",
+        "text": "Vijayalaya"
+      }
+    ],
+    "correct": "B",
+    "explanation_hi": "कंबन ने कुलोतुंग तृतीय के काल में तमिल रामायण की रचना की।",
+    "explanation_en": "Kamban composed Tamil Ramayana during Kulottunga III's reign."
+  },
+  {
+    "id": 48,
+    "type": "Matching / Mis-matching",
+    "question_hi": "शैव संत ईशानशिव पंडित किस महान चोल सम्राट के राजगुरु थे?",
+    "question_en": "Shaiva saint Ishanasiva Pandita was the spiritual guru of which Chola emperor?",
+    "options_hi": [
+      {
+        "id": "A",
+        "text": "राजराज प्रथम"
+      },
+      {
+        "id": "B",
+        "text": "राजेन्द्र प्रथम"
+      },
+      {
+        "id": "C",
+        "text": "आदित्य प्रथम"
+      },
+      {
+        "id": "D",
+        "text": "परांतक प्रथम"
+      }
+    ],
+    "options_en": [
+      {
+        "id": "A",
+        "text": "Rajaraja I"
+      },
+      {
+        "id": "B",
+        "text": "Rajendra I"
+      },
+      {
+        "id": "C",
+        "text": "Aditya I"
+      },
+      {
+        "id": "D",
+        "text": "Parantaka I"
+      }
+    ],
+    "correct": "B",
+    "explanation_hi": "शैव संत ईशानशिव पंडित राजेन्द्र प्रथम के गुरु थे।",
+    "explanation_en": "Ishanasiva Pandita was the royal guru of Rajendra I."
+  },
+  {
+    "id": 49,
+    "type": "Tricky & Negative-Word",
+    "question_hi": "कन्नड़ कवि रन्न की कृति 'गदायुद्ध' में महाभारत के किस पात्र की वीरता का मुख्य रूप से वर्णन किया गया है?",
+    "question_en": "Whose valor is primarily described in Kannada poet Ranna's work 'Gadayuddha'?",
+    "options_hi": [
+      {
+        "id": "A",
+        "text": "अर्जुन"
+      },
+      {
+        "id": "B",
+        "text": "कर्ण"
+      },
+      {
+        "id": "C",
+        "text": "भीम"
+      },
+      {
+        "id": "D",
+        "text": "युधिष्ठिर"
+      }
+    ],
+    "options_en": [
+      {
+        "id": "A",
+        "text": "Arjuna"
+      },
+      {
+        "id": "B",
+        "text": "Karna"
+      },
+      {
+        "id": "C",
+        "text": "Bhima"
+      },
+      {
+        "id": "D",
+        "text": "Yudhishthira"
+      }
+    ],
+    "correct": "C",
+    "explanation_hi": "गदायुद्ध में महाबली भीम की वीरता और दुर्योधन वध का विशद वर्णन है।",
+    "explanation_en": "Gadayuddha portrays the heroism of Bhima."
+  },
+  {
+    "id": 50,
+    "type": "Statement Type",
+    "question_hi": "तमिल साहित्य के प्रसिद्ध कवि पुगलेंदि की कृति 'नलवेणबा' का मूल प्रतिपाद्य विषय क्या है?",
+    "question_en": "What is the core theme of Pugalendi's Tamil work 'Nalavenba'?",
+    "options_hi": [
+      {
+        "id": "A",
+        "text": "युद्ध विजय और सैन्य अभियान"
+      },
+      {
+        "id": "B",
+        "text": "नैतिक शिक्षा, सदाचार और जीवन के उच्च आदर्श"
+      },
+      {
+        "id": "C",
+        "text": "मंदिर स्थापत्य और शिल्पशास्त्र"
+      },
+      {
+        "id": "D",
+        "text": "राजाओं की वंशावली"
+      }
+    ],
+    "options_en": [
+      {
+        "id": "A",
+        "text": "War conquests and campaigns"
+      },
+      {
+        "id": "B",
+        "text": "Moral education, virtue and life ideals"
+      },
+      {
+        "id": "C",
+        "text": "Architecture and sculpting"
+      },
+      {
+        "id": "D",
+        "text": "Royal genealogy"
+      }
+    ],
+    "correct": "B",
+    "explanation_hi": "नलवेणबा नैतिक शिक्षा, सदाचार और जीवन के आदर्शों पर आधारित एक अमर ग्रंथ है।",
+    "explanation_en": "Nalavenba is based on moral ethics, virtue, and philosophical ideals."
+  },
+  {
+    "id": 51,
+    "type": "Assertion-Reason",
+    "question_hi": "कथन (A): चोल काल में तमिल भाषा और साहित्य का अभूतपूर्व विकास हुआ।\nकारण (R): चोल सम्राटों ने स्वयं विद्वान होते हुए कंबन, ओट्टक्कुट्टन और पुगलेंदि जैसे साहित्यकारों को विपुल राजकीय संरक्षण प्रदान किया।",
+    "question_en": "Assertion (A): Tamil literature witnessed unprecedented development during Chola period.\nReason (R): Chola monarchs provided extensive royal patronage to poets like Kamban, Ottakkuttan, and Pugalendi.",
+    "options_hi": [
+      {
+        "id": "A",
+        "text": "(A) और (R) दोनों सही हैं और (R), (A) की सही व्याख्या है।"
+      },
+      {
+        "id": "B",
+        "text": "(A) और (R) दोनों सही हैं लेकिन (R), (A) की सही व्याख्या नहीं है।"
+      },
+      {
+        "id": "C",
+        "text": "(A) सही है लेकिन (R) गलत है।"
+      },
+      {
+        "id": "D",
+        "text": "(A) गलत है लेकिन (R) सही है।"
+      }
+    ],
+    "options_en": [
+      {
+        "id": "A",
+        "text": "Both (A) and (R) are correct and (R) is the correct explanation of (A)."
+      },
+      {
+        "id": "B",
+        "text": "Both (A) and (R) are correct but (R) is NOT the correct explanation."
+      },
+      {
+        "id": "C",
+        "text": "(A) is true but (R) is false."
+      },
+      {
+        "id": "D",
+        "text": "(A) is false but (R) is true."
+      }
+    ],
+    "correct": "A",
+    "explanation_hi": "चोल राजाओं के उदार संरक्षण के कारण तमिल साहित्य का स्वर्ण युग विकसित हुआ। दोनों सत्य हैं।",
+    "explanation_en": "Both statements are true and (R) correctly explains (A)."
+  },
+  {
+    "id": 52,
+    "type": "Tricky & Negative-Word",
+    "question_hi": "विष्णु के उपासक संतों को 'अलवार' कहा जाता था, तो शिव के उपासक संतों को क्या कहा जाता था?",
+    "question_en": "If worshippers of Vishnu were called Alvars, what were Shaivite saints called?",
+    "options_hi": [
+      {
+        "id": "A",
+        "text": "नयनार"
+      },
+      {
+        "id": "B",
+        "text": "पेरुमक्कल"
+      },
+      {
+        "id": "C",
+        "text": "वरियम"
+      },
+      {
+        "id": "D",
+        "text": "उदयन"
+      }
+    ],
+    "options_en": [
+      {
+        "id": "A",
+        "text": "Nayanars"
+      },
+      {
+        "id": "B",
+        "text": "Perumakkal"
+      },
+      {
+        "id": "C",
+        "text": "Variyam"
+      },
+      {
+        "id": "D",
+        "text": "Udayan"
+      }
+    ],
+    "correct": "A",
+    "explanation_hi": "विष्णु के उपासक अलवार और शिव के उपासक नयनार संत कहलाते थे।",
+    "explanation_en": "Shaivite saints were termed Nayanars, Vaishnavites were Alvars."
+  },
+  {
+    "id": 53,
+    "type": "Matching / Mis-matching",
+    "question_hi": "चोल प्रशासनिक अधिकारियों के संदर्भ में कौन-सा युग्म गलत सुमेलित है?",
+    "question_en": "Which pair is INCORRECT regarding Chola administrative officers?",
+    "options_hi": [
+      {
+        "id": "A",
+        "text": "पेरुन्दरम् — उच्च श्रेणी के पदाधिकारी"
+      },
+      {
+        "id": "B",
+        "text": "शेरुन्दरन — निम्न श्रेणी के पदाधिकारी"
+      },
+      {
+        "id": "C",
+        "text": "उडनकूट्टम् — सदा राजा के पास रहने वाला उच्चाधिकारियों का समूह"
+      },
+      {
+        "id": "D",
+        "text": "कणकाणि — ग्राम स्तर के वेतनभोगी कर्मचारी"
+      }
+    ],
+    "options_en": [
+      {
+        "id": "A",
+        "text": "Perundaram — Higher grade officials"
+      },
+      {
+        "id": "B",
+        "text": "Serundaran — Lower grade officials"
+      },
+      {
+        "id": "C",
+        "text": "Udankuttam — Officials in close contact with king"
+      },
+      {
+        "id": "D",
+        "text": "Kankanin — Salaried village servants"
+      }
+    ],
+    "correct": "D",
+    "explanation_hi": "कणकाणि 'केंद्रीय विभाग की ओर से स्थानीय अधिकारियों का निरीक्षण व नियंत्रण' करने वाले अधिकारी थे। वेतनभोगी कर्मचारियों को 'मध्यस्थ' कहा जाता था।",
+    "explanation_en": "Kankanin were audit/supervising inspectors sent by central department."
+  },
+  {
+    "id": 54,
+    "type": "Statement Type",
+    "question_hi": "सम्राट के निकट संपर्क में कार्य करने वाले अधिकारियों के संगठित विभाग को चोल प्रशासन में क्या कहा जाता था?",
+    "question_en": "What was the organized secretariat working in direct contact with the emperor called?",
+    "options_hi": [
+      {
+        "id": "A",
+        "text": "औले"
+      },
+      {
+        "id": "B",
+        "text": "नादूर"
+      },
+      {
+        "id": "C",
+        "text": "वरियम"
+      },
+      {
+        "id": "D",
+        "text": "मध्यस्थ"
+      }
+    ],
+    "options_en": [
+      {
+        "id": "A",
+        "text": "Olai"
+      },
+      {
+        "id": "B",
+        "text": "Nadur"
+      },
+      {
+        "id": "C",
+        "text": "Variyam"
+      },
+      {
+        "id": "D",
+        "text": "Madhyastha"
+      }
+    ],
+    "correct": "A",
+    "explanation_hi": "सम्राट के निकट संपर्क में रहने वाले अधिकारियों के संगठित विभाग को 'औले' (Olai) कहते थे।",
+    "explanation_en": "The department of officers in close contact with the monarch was called Olai."
+  },
+  {
+    "id": 55,
+    "type": "Matching / Mis-matching",
+    "question_hi": "चोल साम्राज्य के प्रशासनिक पदानुक्रम (विभाजन) का अवरोही (बड़े से छोटे) क्रम क्या है?",
+    "question_en": "What was the descending administrative hierarchy of Chola Empire?",
+    "options_hi": [
+      {
+        "id": "A",
+        "text": "मंडलम् (प्रांत) → कोट्टम् (वलनाडु) → नाडु → कुर्रम (ग्राम संघ)"
+      },
+      {
+        "id": "B",
+        "text": "कोट्टम् → मंडलम् → नाडु → कुर्रम"
+      },
+      {
+        "id": "C",
+        "text": "मंडलम् → नाडु → कोट्टम् → कुर्रम"
+      },
+      {
+        "id": "D",
+        "text": "कुर्रम → नाडु → कोट्टम् → मंडलम्"
+      }
+    ],
+    "options_en": [
+      {
+        "id": "A",
+        "text": "Mandalam -> Kottam -> Nadu -> Kurram"
+      },
+      {
+        "id": "B",
+        "text": "Kottam -> Mandalam -> Nadu -> Kurram"
+      },
+      {
+        "id": "C",
+        "text": "Mandalam -> Nadu -> Kottam -> Kurram"
+      },
+      {
+        "id": "D",
+        "text": "Kurram -> Nadu -> Kottam -> Mandalam"
+      }
+    ],
+    "correct": "A",
+    "explanation_hi": "साम्राज्य 6 मंडलों में था, मंडलम कोट्टम में, कोट्टम नाडु में, और नाडु कई कुर्रमों में बंटा था।",
+    "explanation_en": "Hierarchy: Mandalam -> Kottam -> Nadu -> Kurram."
+  },
+  {
+    "id": 56,
+    "type": "Statement Type",
+    "question_hi": "चोल कालीन स्थानीय संस्थाओं के संदर्भ में निम्नलिखित कथनों पर विचार कीजिए:\n1. नाडु की स्थानीय सभा को 'नादूर' कहा जाता था।\n2. नगर की स्थानीय सभा को 'नगरतार' कहा जाता था।\n3. व्यापारियों की सभा को 'नगरम' कहते थे।\n\nउपर्युक्त में से कौन-से कथन सत्य हैं?",
+    "question_en": "Consider statements on Chola local bodies:\n1. Assembly of Nadu was called 'Nadur'.\n2. Assembly of Nagar was called 'Nagartar'.\n3. Assembly of merchants was called 'Nagaram'.\n\nWhich are true?",
+    "options_hi": [
+      {
+        "id": "A",
+        "text": "केवल 1 और 2"
+      },
+      {
+        "id": "B",
+        "text": "केवल 2 और 3"
+      },
+      {
+        "id": "C",
+        "text": "केवल 1 और 3"
+      },
+      {
+        "id": "D",
+        "text": "1, 2 और 3 (सभी सत्य हैं)"
+      }
+    ],
+    "options_en": [
+      {
+        "id": "A",
+        "text": "Only 1 and 2"
+      },
+      {
+        "id": "B",
+        "text": "Only 2 and 3"
+      },
+      {
+        "id": "C",
+        "text": "Only 1 and 3"
+      },
+      {
+        "id": "D",
+        "text": "1, 2 and 3 (All are true)"
+      }
+    ],
+    "correct": "D",
+    "explanation_hi": "तीनों कथन पूर्णतः सत्य हैं। नाडु की सभा नादूर, नगर की नगरतार और व्यापारियों की नगरम कहलाती थी।",
+    "explanation_en": "All three statements are correct."
+  },
+  {
+    "id": 57,
+    "type": "Tricky & Negative-Word",
+    "question_hi": "वेल्लाल जाति के धनी किसानों को चोल राजाओं द्वारा कौन-सी सम्मानजनक उपाधियां प्रदान की जाती थीं?",
+    "question_en": "Which prestigious titles were conferred on wealthy Vellala landlords by Chola kings?",
+    "options_hi": [
+      {
+        "id": "A",
+        "text": "मुवेदवेलन (तीन राजाओं को सेवा देने वाला वेलन)"
+      },
+      {
+        "id": "B",
+        "text": "अरड्यार (प्रधान)"
+      },
+      {
+        "id": "C",
+        "text": "महामल्ल"
+      },
+      {
+        "id": "D",
+        "text": "(A) और (B) दोनों"
+      }
+    ],
+    "options_en": [
+      {
+        "id": "A",
+        "text": "Muvedavelan"
+      },
+      {
+        "id": "B",
+        "text": "Araiyar"
+      },
+      {
+        "id": "C",
+        "text": "Mahamalla"
+      },
+      {
+        "id": "D",
+        "text": "Both (A) and (B)"
+      }
+    ],
+    "correct": "D",
+    "explanation_hi": "धनी वेल्लाल किसानों को मुवेदवेलन और अरड्यार जैसी उपाधियां देकर महत्वपूर्ण राजकीय पद दिए जाते थे।",
+    "explanation_en": "Wealthy Vellala landlords received titles like Muvedavelan and Araiyar."
+  },
+  {
+    "id": 58,
+    "type": "Assertion-Reason",
+    "question_hi": "कथन (A): 'स्थानीय स्वशासन' (Local Self-Government) चोल शासन प्रणाली की सर्वप्रमुख और अनूठी विशेषता थी।\nकारण (R): चोल प्रशासन में 'उर' और 'सभा/महासभा' जैसी ग्रामीण संस्थाओं को स्वायत्तता और व्यापक अधिकार प्राप्त थे।",
+    "question_en": "Assertion (A): Local Self-Government was the hallmark feature of Chola administration.\nReason (R): Rural institutions like Ur and Sabha enjoyed significant democratic autonomy and administrative rights.",
+    "options_hi": [
+      {
+        "id": "A",
+        "text": "(A) और (R) दोनों सही हैं और (R), (A) की सही व्याख्या है।"
+      },
+      {
+        "id": "B",
+        "text": "(A) और (R) दोनों सही हैं लेकिन (R), (A) की सही व्याख्या नहीं है।"
+      },
+      {
+        "id": "C",
+        "text": "(A) सही है लेकिन (R) गलत है।"
+      },
+      {
+        "id": "D",
+        "text": "(A) गलत है लेकिन (R) सही है।"
+      }
+    ],
+    "options_en": [
+      {
+        "id": "A",
+        "text": "Both (A) and (R) are correct and (R) is the correct explanation of (A)."
+      },
+      {
+        "id": "B",
+        "text": "Both (A) and (R) are correct but (R) is NOT the correct explanation."
+      },
+      {
+        "id": "C",
+        "text": "(A) is true but (R) is false."
+      },
+      {
+        "id": "D",
+        "text": "(A) is false but (R) is true."
+      }
+    ],
+    "correct": "A",
+    "explanation_hi": "स्थानीय स्वशासन चोलों की पहचान थी क्योंकि ग्राम सभाएं अत्यंत शक्तिशाली और स्वायत्त थीं।",
+    "explanation_en": "Both statements are true and (R) explains (A)."
+  },
+  {
+    "id": 59,
+    "type": "Statement Type",
+    "question_hi": "चोल ग्राम प्रशासन में 'उर' (Ur) के संदर्भ में क्या सत्य है?",
+    "question_en": "What is true regarding 'Ur' in Chola village administration?",
+    "options_hi": [
+      {
+        "id": "A",
+        "text": "यह केवल संभ्रांत ब्राह्मणों की विशेष सभा थी।"
+      },
+      {
+        "id": "B",
+        "text": "यह सर्वसाधारण लोगों की सामान्य ग्राम सभा थी जिसका कार्य तालाबों और बगीचों हेतु भूमि अधिग्रहण करना था।"
+      },
+      {
+        "id": "C",
+        "text": "यह विदेशी व्यापारियों की एक चुनी हुई समिति थी।"
+      },
+      {
+        "id": "D",
+        "text": "यह राजा द्वारा नियुक्त गुप्तचर संस्था थी।"
+      }
+    ],
+    "options_en": [
+      {
+        "id": "A",
+        "text": "It was an exclusive assembly of orthodox Brahmins."
+      },
+      {
+        "id": "B",
+        "text": "It was a general assembly of common villagers handling public welfare and land acquisition."
+      },
+      {
+        "id": "C",
+        "text": "It was an association of foreign merchants."
+      },
+      {
+        "id": "D",
+        "text": "It was a secret intelligence bureau."
+      }
+    ],
+    "correct": "B",
+    "explanation_hi": "उर सर्वसाधारण लोगों की समिति थी जिसका कार्य जनकल्याण, तालाब व बगीचों के निर्माण हेतु भूमि अधिग्रहण करना था।",
+    "explanation_en": "Ur was the assembly of common villagers overseeing local welfare."
+  },
+  {
+    "id": 60,
+    "type": "Statement Type",
+    "question_hi": "चोल काल की 'सभा या महासभा' के सदस्यों को क्या कहा जाता था और यह किन समितियों के माध्यम से कार्य करती थी?",
+    "question_en": "What were members of Sabha/Mahasabha called, and through which committees did they operate?",
+    "options_hi": [
+      {
+        "id": "A",
+        "text": "पेरुमक्कल — वरियम समितियों द्वारा"
+      },
+      {
+        "id": "B",
+        "text": "नादूर — उडनकूट्टम द्वारा"
+      },
+      {
+        "id": "C",
+        "text": "मध्यस्थ — औले द्वारा"
+      },
+      {
+        "id": "D",
+        "text": "अरड्यार — तोट्ट द्वारा"
+      }
+    ],
+    "options_en": [
+      {
+        "id": "A",
+        "text": "Perumakkal — through Variyam committees"
+      },
+      {
+        "id": "B",
+        "text": "Nadur — through Udankuttam"
+      },
+      {
+        "id": "C",
+        "text": "Madhyastha — through Olai"
+      },
+      {
+        "id": "D",
+        "text": "Araiyar — through Totta"
+      }
+    ],
+    "correct": "A",
+    "explanation_hi": "सभा के सदस्यों को 'पेरुमक्कल' कहा जाता था और यह 'वरियम' नामक विभिन्न कार्यकारी समितियों द्वारा कार्य करती थी।",
+    "explanation_en": "Members were called Perumakkal, executing decisions via Variyam committees."
+  },
+  {
+    "id": 61,
+    "type": "Tricky & Negative-Word",
+    "question_hi": "चोल ग्राम सभा की बैठकें प्रायः कहाँ आयोजित की जाती थीं?",
+    "question_en": "Where were Chola village Sabha meetings typically convened?",
+    "options_hi": [
+      {
+        "id": "A",
+        "text": "राजमहल के केंद्रीय सभागार में"
+      },
+      {
+        "id": "B",
+        "text": "गाँव में मंदिर के निकट वृक्ष की छाया में या तालाब के किनारे"
+      },
+      {
+        "id": "C",
+        "text": "किले के मुख्य द्वार पर"
+      },
+      {
+        "id": "D",
+        "text": "राजकीय न्यायपीठ में"
+      }
+    ],
+    "options_en": [
+      {
+        "id": "A",
+        "text": "In royal palace auditorium"
+      },
+      {
+        "id": "B",
+        "text": "Near village temple under a tree shade or on lake bank"
+      },
+      {
+        "id": "C",
+        "text": "At fort gate"
+      },
+      {
+        "id": "D",
+        "text": "At imperial courtroom"
+      }
+    ],
+    "correct": "B",
+    "explanation_hi": "सभा की बैठक गाँव में मंदिर के निकट वृक्ष के नीचे या तालाब के किनारे आयोजित होती थी।",
+    "explanation_en": "Meetings took place under a tree or by the lake near temple."
+  },
+  {
+    "id": 62,
+    "type": "Statement Type",
+    "question_hi": "गाँव में कार्यसमिति (वरियम) की सदस्यता और प्रशासनिक संचालन के लिए रखे गए वेतनभोगी कर्मचारियों को क्या कहते थे?",
+    "question_en": "What were the salaried staff assisting the village committees called in Chola times?",
+    "options_hi": [
+      {
+        "id": "A",
+        "text": "पेरुन्दरम्"
+      },
+      {
+        "id": "B",
+        "text": "मध्यस्थ"
+      },
+      {
+        "id": "C",
+        "text": "कणकाणि"
+      },
+      {
+        "id": "D",
+        "text": "शेरुन्दरन"
+      }
+    ],
+    "options_en": [
+      {
+        "id": "A",
+        "text": "Perundaram"
+      },
+      {
+        "id": "B",
+        "text": "Madhyastha"
+      },
+      {
+        "id": "C",
+        "text": "Kankanin"
+      },
+      {
+        "id": "D",
+        "text": "Serundaran"
+      }
+    ],
+    "correct": "B",
+    "explanation_hi": "गाँव में कार्यसमिति की सदस्यता के लिए जो वेतनभोगी कर्मचारी रखे जाते थे, उन्हें 'मध्यस्थ' कहते थे।",
+    "explanation_en": "The salaried executive assistants were known as Madhyastha."
+  },
+  {
+    "id": 63,
+    "type": "4-Statement Type",
+    "question_hi": "उत्तरमेरूर अभिलेख (परांतक प्रथम) के अनुसार सभा की सदस्यता की योग्यताओं पर विचार कीजिए:\n1. उम्मीदवार के पास ऐसी भूमि होनी चाहिए जिससे भू-राजस्व वसूला जाता हो और अपना स्वयं का घर होना चाहिए।\n2. उम्मीदवार की आयु 35 से 70 वर्ष के बीच होनी चाहिए।\n3. वेदों का ज्ञान, प्रशासनिक मामलों की जानकारी और सत्यनिष्ठ/ईमानदार होना अनिवार्य था।\n4. यदि कोई पिछले तीन वर्षों में किसी समिति का सदस्य रहा हो, तो वह पुनः किसी अन्य समिति का सदस्य नहीं बन सकता था।\n\nउपर्युक्त में से कौन-से सही हैं?",
+    "question_en": "Consider qualification rules for Sabha membership as per Uttaramerur Inscription:\n1. Must own taxable land and own a house.\n2. Age must be between 35 and 70 years.\n3. Must know Vedas and be administratively honest.\n4. Anyone on a committee in past 3 years was ineligible to join another committee.\n\nWhich are correct?",
+    "options_hi": [
+      {
+        "id": "A",
+        "text": "केवल 1, 2 और 3"
+      },
+      {
+        "id": "B",
+        "text": "केवल 2, 3 और 4"
+      },
+      {
+        "id": "C",
+        "text": "केवल 1 और 4"
+      },
+      {
+        "id": "D",
+        "text": "1, 2, 3 और 4 (सभी चारों नियम सत्य हैं)"
+      }
+    ],
+    "options_en": [
+      {
+        "id": "A",
+        "text": "Only 1, 2 and 3"
+      },
+      {
+        "id": "B",
+        "text": "Only 2, 3 and 4"
+      },
+      {
+        "id": "C",
+        "text": "Only 1 and 4"
+      },
+      {
+        "id": "D",
+        "text": "1, 2, 3 and 4 (All four are true)"
+      }
+    ],
+    "correct": "D",
+    "explanation_hi": "उत्तरमेरूर अभिलेख के अनुसार ये सभी नियम अनिवार्य थे। साथ ही जिसने अपने या संबंधियों के खाते जमा नहीं कराए, वह चुनाव नहीं लड़ सकता था।",
+    "explanation_en": "All four conditions are authentic as recorded in the Uttaramerur inscription of Parantaka I."
+  },
+  {
+    "id": 64,
+    "type": "Tricky & Negative-Word",
+    "question_hi": "उत्तरमेरूर अभिलेख किस चोल शासक के शासनकाल से संबंधित है?",
+    "question_en": "The famous Uttaramerur inscription belongs to the reign of which Chola king?",
+    "options_hi": [
+      {
+        "id": "A",
+        "text": "विजयालय"
+      },
+      {
+        "id": "B",
+        "text": "परांतक प्रथम"
+      },
+      {
+        "id": "C",
+        "text": "राजराज प्रथम"
+      },
+      {
+        "id": "D",
+        "text": "राजेन्द्र प्रथम"
+      }
+    ],
+    "options_en": [
+      {
+        "id": "A",
+        "text": "Vijayalaya"
+      },
+      {
+        "id": "B",
+        "text": "Parantaka I"
+      },
+      {
+        "id": "C",
+        "text": "Rajaraja I"
+      },
+      {
+        "id": "D",
+        "text": "Rajendra I"
+      }
+    ],
+    "correct": "B",
+    "explanation_hi": "उत्तरमेरूर शिलालेख परांतक प्रथम (907-955 ई.) के शासनकाल से संबंधित है।",
+    "explanation_en": "The Uttaramerur inscription belongs to Parantaka I."
+  },
+  {
+    "id": 65,
+    "type": "Statement Type",
+    "question_hi": "उत्तरमेरूर अभिलेख के अनुसार चुनाव लड़ने के लिए कौन-सा व्यक्ति अयोग्य (Disqualified) माना जाता था?",
+    "question_en": "Who was disqualified from contesting elections according to Uttaramerur inscription?",
+    "options_hi": [
+      {
+        "id": "A",
+        "text": "जिसकी आयु 35 वर्ष से कम या 70 वर्ष से अधिक हो"
+      },
+      {
+        "id": "B",
+        "text": "जिसने अपने या अपने संबंधियों के वित्तीय खाते जमा नहीं कराए हों"
+      },
+      {
+        "id": "C",
+        "text": "जो पिछले तीन वर्षों से किसी समिति का सदस्य रहा हो"
+      },
+      {
+        "id": "D",
+        "text": "उपर्युक्त सभी व्यक्ति चुनाव के लिए अयोग्य थे"
+      }
+    ],
+    "options_en": [
+      {
+        "id": "A",
+        "text": "Below 35 or above 70 years of age"
+      },
+      {
+        "id": "B",
+        "text": "Who failed to submit financial accounts of self and relatives"
+      },
+      {
+        "id": "C",
+        "text": "Who served on any committee in past 3 years"
+      },
+      {
+        "id": "D",
+        "text": "All of the above were disqualified"
+      }
+    ],
+    "correct": "D",
+    "explanation_hi": "ये सभी शर्तें अयोग्यता के दायरे में आती थीं।",
+    "explanation_en": "All of the above criteria disqualified a candidate."
+  },
+  {
+    "id": 66,
+    "type": "Statement Type",
+    "question_hi": "प्रसिद्ध कला इतिहासकार पर्सी ब्राउन ने भारतीय वास्तुकला का 'निकष' (Touchstone) किसे माना है?",
+    "question_en": "What did famous art critic Percy Brown describe as the 'touchstone of Indian architecture'?",
+    "options_hi": [
+      {
+        "id": "A",
+        "text": "तंजावूर के वृहदेश्वर मंदिर के विमान को"
+      },
+      {
+        "id": "B",
+        "text": "कांची के कैलाशनाथ मंदिर के गोपुरम को"
+      },
+      {
+        "id": "C",
+        "text": "महाबलीपुरम के द्रौपदी रथ को"
+      },
+      {
+        "id": "D",
+        "text": "एलोरा के कैलाश मंदिर को"
+      }
+    ],
+    "options_en": [
+      {
+        "id": "A",
+        "text": "Vimana of Brihadisvara Temple at Thanjavur"
+      },
+      {
+        "id": "B",
+        "text": "Gopuram of Kailashnath Temple at Kanchi"
+      },
+      {
+        "id": "C",
+        "text": "Draupadi Ratha at Mahabalipuram"
+      },
+      {
+        "id": "D",
+        "text": "Kailash Temple at Ellora"
+      }
+    ],
+    "correct": "A",
+    "explanation_hi": "पर्सी ब्राउन ने तंजौर के वृहदेश्वर (राजराजेश्वर) मंदिर के 'विमान' को भारतीय वास्तुकला का निकष माना है।",
+    "explanation_en": "Percy Brown called the Vimana of Thanjavur's Brihadisvara temple the touchstone of Indian architecture."
+  },
+  {
+    "id": 67,
+    "type": "4-Statement Type",
+    "question_hi": "चोल कालीन नटराज कांस्य प्रतिमा के शारीरिक लक्षणों के संदर्भ में निम्नलिखित कथनों पर विचार कीजिए:\n1. नटराज प्रतिमा में शिव अपनी दाहिनी टांग पर संतुलित खड़े हैं और उसी टांग के पंजे से अज्ञान/विस्मृति के दैत्य 'अपस्मार' को दबा रहे हैं।\n2. उनकी बायीं टांग 'भुजंगत्रासित' मुद्रा में उठी हुई है, जो माया या भ्रम के निवारण (तिरोभाव) की द्योतक है।\n3. मुख्य दाहिना हाथ 'अभयहस्त' मुद्रा में उठा है और ऊपरी दायां हाथ तालबद्ध ध्वनि उत्पन्न करने वाले 'डमरू' को पकड़े है।\n4. ऊपरी बायाँ हाथ 'दोलहस्त' मुद्रा में दाहिने हाथ की अभयहस्त मुद्रा से जुड़ा है और जटाएं वृत्ताकार ज्वाला को छू रही हैं।\n\nउपर्युक्त में से कौन-से कथन सत्य हैं?",
+    "question_en": "Consider features of Chola bronze Nataraja statue:\n1. Shiva balances on right leg, crushing demon Apasmara beneath his foot.\n2. Left leg raised in Bhujangapratasita posture representing removal of Maya.\n3. Main right hand in Abhaya Mudra; upper right holds Damaru.\n4. Upper left in Dola-hasta connected with Abhaya hand, locks touching flame circle.\n\nWhich are true?",
+    "options_hi": [
+      {
+        "id": "A",
+        "text": "केवल 1 और 2"
+      },
+      {
+        "id": "B",
+        "text": "केवल 2 और 3"
+      },
+      {
+        "id": "C",
+        "text": "केवल 1, 3 और 4"
+      },
+      {
+        "id": "D",
+        "text": "1, 2, 3 और 4 (सभी चारों कथन सत्य हैं)"
+      }
+    ],
+    "options_en": [
+      {
+        "id": "A",
+        "text": "Only 1 and 2"
+      },
+      {
+        "id": "B",
+        "text": "Only 2 and 3"
+      },
+      {
+        "id": "C",
+        "text": "Only 1, 3 and 4"
+      },
+      {
+        "id": "D",
+        "text": "1, 2, 3 and 4 (All are true)"
+      }
+    ],
+    "correct": "D",
+    "explanation_hi": "ल्यूसेंट जी.के. के अनुसार नटराज प्रतिमा का यह विस्तृत विवरण पूर्णतः सत्य है।",
+    "explanation_en": "All four descriptions are accurate representations of Chola Nataraja bronze icon."
+  },
+  {
+    "id": 68,
+    "type": "Tricky & Negative-Word",
+    "question_hi": "चोल कांस्य प्रतिमाओं के निर्माण और कला संरक्षण के क्षेत्र में किस चोल वंशीय विधवा महारानी का नाम विशेष रूप से उल्लेखनीय है?",
+    "question_en": "Which Chola widowed queen is renowned as a foremost patron of bronze casting art?",
+    "options_hi": [
+      {
+        "id": "A",
+        "text": "सेम्बियन महादेवी"
+      },
+      {
+        "id": "B",
+        "text": "कुंदवई"
+      },
+      {
+        "id": "C",
+        "text": "लोकमहादेवी"
+      },
+      {
+        "id": "D",
+        "text": "रुद्रमादेवी"
+      }
+    ],
+    "options_en": [
+      {
+        "id": "A",
+        "text": "Sembiyan Mahadevi"
+      },
+      {
+        "id": "B",
+        "text": "Kundavai"
+      },
+      {
+        "id": "C",
+        "text": "Lokamahadevi"
+      },
+      {
+        "id": "D",
+        "text": "Rudramadevi"
+      }
+    ],
+    "correct": "A",
+    "explanation_hi": "कांस्य प्रतिमाएं बनाने की कला की महान संरक्षक चोल विधवा महारानी 'सेम्बियन महादेवी' थीं।",
+    "explanation_en": "Queen Sembiyan Mahadevi was the celebrated patron of bronze sculptures."
+  },
+  {
+    "id": 69,
+    "type": "Statement Type",
+    "question_hi": "चोल कालीन 'नटराज प्रतिमा' को विद्वानों द्वारा किस उपमा से संबोधित किया जाता है?",
+    "question_en": "How is the Chola Nataraja sculpture epitomized by cultural historians?",
+    "options_hi": [
+      {
+        "id": "A",
+        "text": "चोल कला का सांस्कृतिक सार या निचोड़"
+      },
+      {
+        "id": "B",
+        "text": "द्रविड़ कला का अंतिम उत्कर्ष"
+      },
+      {
+        "id": "C",
+        "text": "दक्षिण भारत की एकमात्र शैलकृत कृति"
+      },
+      {
+        "id": "D",
+        "text": "पल्लव चित्रकला की प्रतिकृति"
+      }
+    ],
+    "options_en": [
+      {
+        "id": "A",
+        "text": "Cultural essence/core of Chola art"
+      },
+      {
+        "id": "B",
+        "text": "Final zenith of Dravidian art"
+      },
+      {
+        "id": "C",
+        "text": "Only rock-cut monument of South India"
+      },
+      {
+        "id": "D",
+        "text": "Replica of Pallava paintings"
+      }
+    ],
+    "correct": "A",
+    "explanation_hi": "नटराज प्रतिमा को 'चोल कला का सांस्कृतिक सार या निचोड़' कहा जाता है।",
+    "explanation_en": "It is praised as the cultural essence/epitome of Chola art."
+  },
+  {
+    "id": 70,
+    "type": "Tricky & Negative-Word",
+    "question_hi": "भारतीय परंपरा में नृत्य कला का अधिष्ठाता देवता किसे माना गया है?",
+    "question_en": "In Indian classical tradition, who is regarded as the presiding deity of dance?",
+    "options_hi": [
+      {
+        "id": "A",
+        "text": "भगवान शिव (नटराज)"
+      },
+      {
+        "id": "B",
+        "text": "भगवान विष्णु (मोहिनी)"
+      },
+      {
+        "id": "C",
+        "text": "इंद्र देव"
+      },
+      {
+        "id": "D",
+        "text": "कार्तिकेय"
+      }
+    ],
+    "options_en": [
+      {
+        "id": "A",
+        "text": "Lord Shiva (Nataraja)"
+      },
+      {
+        "id": "B",
+        "text": "Lord Vishnu"
+      },
+      {
+        "id": "C",
+        "text": "Indra"
+      },
+      {
+        "id": "D",
+        "text": "Kartikeya"
+      }
+    ],
+    "correct": "A",
+    "explanation_hi": "भगवान शिव को भारत में नृत्य कला का अधिष्ठाता देवता माना जाता है।",
+    "explanation_en": "Lord Shiva is regarded as the patron deity of dance."
+  },
+  {
+    "id": 71,
+    "type": "Statement Type",
+    "question_hi": "कल्याणी के चालुक्य वंश की स्थापना किसने की थी और इसकी प्रारंभिक राजधानी कहाँ थी?",
+    "question_en": "Who founded the Chalukyas of Kalyani and where was its initial capital?",
+    "options_hi": [
+      {
+        "id": "A",
+        "text": "तैलप द्वितीय — मान्यखेट"
+      },
+      {
+        "id": "B",
+        "text": "सोमेश्वर प्रथम — कल्याणी"
+      },
+      {
+        "id": "C",
+        "text": "जयसिंह — वातापी"
+      },
+      {
+        "id": "D",
+        "text": "विष्णुवर्धन — वेंगी"
+      }
+    ],
+    "options_en": [
+      {
+        "id": "A",
+        "text": "Tailapa II — Manyakheta"
+      },
+      {
+        "id": "B",
+        "text": "Someshvara I — Kalyani"
+      },
+      {
+        "id": "C",
+        "text": "Jayasimha — Vatapi"
+      },
+      {
+        "id": "D",
+        "text": "Vishnuvardhana — Vengi"
+      }
+    ],
+    "correct": "A",
+    "explanation_hi": "कल्याणी के चालुक्य वंश की स्थापना तैलप द्वितीय ने राष्ट्रकूटों को हराकर की और मान्यखेट राजधानी बनाई।",
+    "explanation_en": "Tailapa II founded Kalyani Chalukyas with initial capital at Manyakheta."
+  },
+  {
+    "id": 72,
+    "type": "Tricky & Negative-Word",
+    "question_hi": "चालुक्य राजधानी को मान्यखेट से हटाकर कल्याणी (कर्नाटक) स्थानांतरित करने वाला शासक कौन था?",
+    "question_en": "Who shifted the Chalukya capital from Manyakheta to Kalyani?",
+    "options_hi": [
+      {
+        "id": "A",
+        "text": "तैलप द्वितीय"
+      },
+      {
+        "id": "B",
+        "text": "सोमेश्वर प्रथम"
+      },
+      {
+        "id": "C",
+        "text": "विक्रमादित्य षष्ठ"
+      },
+      {
+        "id": "D",
+        "text": "सोमेश्वर तृतीय"
+      }
+    ],
+    "options_en": [
+      {
+        "id": "A",
+        "text": "Tailapa II"
+      },
+      {
+        "id": "B",
+        "text": "Someshvara I"
+      },
+      {
+        "id": "C",
+        "text": "Vikramaditya VI"
+      },
+      {
+        "id": "D",
+        "text": "Someshvara III"
+      }
+    ],
+    "correct": "B",
+    "explanation_hi": "सोमेश्वर प्रथम ने मान्यखेट से राजधानी हटाकर कल्याणी को राजधानी बनाया।",
+    "explanation_en": "Someshvara I shifted the capital to Kalyani."
+  },
+  {
+    "id": 73,
+    "type": "Statement Type",
+    "question_hi": "कल्याणी के चालुक्य वंश का सबसे प्रतापी शासक कौन था?",
+    "question_en": "Who was the most illustrious ruler of the Chalukyas of Kalyani?",
+    "options_hi": [
+      {
+        "id": "A",
+        "text": "तैलप प्रथम"
+      },
+      {
+        "id": "B",
+        "text": "विक्रमादित्य षष्ठ (VI)"
+      },
+      {
+        "id": "C",
+        "text": "सोमेश्वर प्रथम"
+      },
+      {
+        "id": "D",
+        "text": "जयसिंह द्वितीय"
+      }
+    ],
+    "options_en": [
+      {
+        "id": "A",
+        "text": "Tailapa I"
+      },
+      {
+        "id": "B",
+        "text": "Vikramaditya VI"
+      },
+      {
+        "id": "C",
+        "text": "Someshvara I"
+      },
+      {
+        "id": "D",
+        "text": "Jayasimha II"
+      }
+    ],
+    "correct": "B",
+    "explanation_hi": "इस वंश का सबसे प्रतापी शासक विक्रमादित्य-VI था।",
+    "explanation_en": "The greatest monarch of this branch was Vikramaditya VI."
+  },
+  {
+    "id": 74,
+    "type": "Matching / Mis-matching",
+    "question_hi": "विक्रमादित्य षष्ठ के दरबारी विद्वानों और उनकी कृतियों के संदर्भ में कौन-सा युग्म सही है?\n1. विज्ञानेश्वर — मिताक्षरा (याज्ञवल्क्य स्मृति पर टीका)\n2. विल्हण — विक्रमांकदेवचरित\n\nसही विकल्प चुनें:",
+    "question_en": "Which pair is correct regarding scholars in Vikramaditya VI court?\n1. Vijnaneshwara — Mitakshara\n2. Bilhana — Vikramankadevacharita\n\nChoose correct option:",
+    "options_hi": [
+      {
+        "id": "A",
+        "text": "केवल 1"
+      },
+      {
+        "id": "B",
+        "text": "केवल 2"
+      },
+      {
+        "id": "C",
+        "text": "1 और 2 दोनों सत्य हैं"
+      },
+      {
+        "id": "D",
+        "text": "दोनों असत्य हैं"
+      }
+    ],
+    "options_en": [
+      {
+        "id": "A",
+        "text": "Only 1"
+      },
+      {
+        "id": "B",
+        "text": "Only 2"
+      },
+      {
+        "id": "C",
+        "text": "Both 1 and 2 are true"
+      },
+      {
+        "id": "D",
+        "text": "Both are false"
+      }
+    ],
+    "correct": "C",
+    "explanation_hi": "विज्ञानेश्वर ने मिताक्षरा तथा विल्हण ने विक्रमांकदेवचरित की रचना की। दोनों विक्रमादित्य षष्ठ के दरबारी थे।",
+    "explanation_en": "Both statements are authentic and historically correct."
+  },
+  {
+    "id": 75,
+    "type": "Tricky & Negative-Word",
+    "question_hi": "प्रसिद्ध हिन्दू विधि ग्रंथ 'मिताक्षरा' मूलतः किस प्राचीन स्मृति पर लिखी गई सुप्रसिद्ध व्याख्या/टीका है?",
+    "question_en": "The legal treatise 'Mitakshara' is primarily a commentary on which ancient Smriti?",
+    "options_hi": [
+      {
+        "id": "A",
+        "text": "मनुस्मृति"
+      },
+      {
+        "id": "B",
+        "text": "याज्ञवल्क्य स्मृति"
+      },
+      {
+        "id": "C",
+        "text": "नारद स्मृति"
+      },
+      {
+        "id": "D",
+        "text": "पराशर स्मृति"
+      }
+    ],
+    "options_en": [
+      {
+        "id": "A",
+        "text": "Manusmriti"
+      },
+      {
+        "id": "B",
+        "text": "Yajnavalkya Smriti"
+      },
+      {
+        "id": "C",
+        "text": "Narada Smriti"
+      },
+      {
+        "id": "D",
+        "text": "Parashara Smriti"
+      }
+    ],
+    "correct": "B",
+    "explanation_hi": "मिताक्षरा याज्ञवल्क्य स्मृति पर महान विधिवेत्ता विज्ञानेश्वर द्वारा लिखी गई प्रामाणिक टीका है।",
+    "explanation_en": "Mitakshara is a celebrated commentary on Yajnavalkya Smriti."
+  },
+  {
+    "id": 76,
+    "type": "Statement Type",
+    "question_hi": "वातापी (बादामी) के चालुक्य वंश की स्थापना और प्रारंभिक इतिहास के बारे में क्या सत्य है?\n1. जयसिंह ने वातापी के चालुक्य वंश की नींव रखी।\n2. पुलकेशिन प्रथम ने वातापी पहाड़ी पर दुर्ग बनाकर अश्वमेध यज्ञ किया और स्वतंत्रता की घोषणा की।\n3. वातापी का वास्तविक निर्माणकर्ता कीर्तिवर्मन प्रथम को माना जाता है।\n\nउपर्युक्त में से कौन-से सत्य हैं?",
+    "question_en": "What is true about Chalukyas of Vatapi?\n1. Jayasimha founded the lineage.\n2. Pulakeshin I fortified Vatapi hill and performed Ashvamedha.\n3. Kirtivarman I is considered the builder of Vatapi.\n\nWhich are true?",
+    "options_hi": [
+      {
+        "id": "A",
+        "text": "केवल 1 और 2"
+      },
+      {
+        "id": "B",
+        "text": "केवल 2 और 3"
+      },
+      {
+        "id": "C",
+        "text": "केवल 1 और 3"
+      },
+      {
+        "id": "D",
+        "text": "1, 2 और 3 (सभी सत्य हैं)"
+      }
+    ],
+    "options_en": [
+      {
+        "id": "A",
+        "text": "Only 1 and 2"
+      },
+      {
+        "id": "B",
+        "text": "Only 2 and 3"
+      },
+      {
+        "id": "C",
+        "text": "Only 1 and 3"
+      },
+      {
+        "id": "D",
+        "text": "1, 2 and 3 (All are true)"
+      }
+    ],
+    "correct": "D",
+    "explanation_hi": "तीनों कथन पूर्णतः सत्य हैं। जयसिंह ने शुरुआत की, पुलकेशिन प्रथम स्वतंत्र संस्थापक था और कीर्तिवर्मन ने निर्माण किया।",
+    "explanation_en": "All three statements are historically valid."
+  },
+  {
+    "id": 77,
+    "type": "Tricky & Negative-Word",
+    "question_hi": "चालुक्य शासक कीर्तिवर्मन प्रथम द्वारा कोंकण विजय के फलस्वरूप कौन-सा प्रमुख बंदरगाह चालुक्यों के अधीन आया, जिसे उन दिनों 'रेवती द्वीप' कहा जाता था?",
+    "question_en": "Which port, known as 'Revati Dvipa' in those days, came under Chalukya control after Kirtivarman I conquered Konkan?",
+    "options_hi": [
+      {
+        "id": "A",
+        "text": "भड़ौच"
+      },
+      {
+        "id": "B",
+        "text": "गोवा"
+      },
+      {
+        "id": "C",
+        "text": "कल्याण"
+      },
+      {
+        "id": "D",
+        "text": "सूपारा"
+      }
+    ],
+    "options_en": [
+      {
+        "id": "A",
+        "text": "Bharuch"
+      },
+      {
+        "id": "B",
+        "text": "Goa"
+      },
+      {
+        "id": "C",
+        "text": "Kalyan"
+      },
+      {
+        "id": "D",
+        "text": "Sopara"
+      }
+    ],
+    "correct": "B",
+    "explanation_hi": "गोवा को उन दिनों 'रेवती द्वीप' कहा जाता था, जो कीर्तिवर्मन के कोंकण विजय से चालुक्यों के अधीन आया।",
+    "explanation_en": "Goa was historically famous as Revati Dvipa."
+  },
+  {
+    "id": 78,
+    "type": "Statement Type",
+    "question_hi": "वातापी के किस स्तंभ लेख से प्रमाणित होता है कि पुलकेशिन द्वितीय ने बहु-सुवर्ण एवं अग्निष्टोम यज्ञ संपन्न करवाया था?",
+    "question_en": "Which pillar inscription proves Pulakeshin II performed Bahu-suvarna and Agnishtoma sacrifices?",
+    "options_hi": [
+      {
+        "id": "A",
+        "text": "महाकूट स्तंभ लेख"
+      },
+      {
+        "id": "B",
+        "text": "एहोल अभिलेख"
+      },
+      {
+        "id": "C",
+        "text": "प्रयाग प्रशस्ति"
+      },
+      {
+        "id": "D",
+        "text": "उत्तरमेरूर अभिलेख"
+      }
+    ],
+    "options_en": [
+      {
+        "id": "A",
+        "text": "Mahakuta Pillar Inscription"
+      },
+      {
+        "id": "B",
+        "text": "Aihole Inscription"
+      },
+      {
+        "id": "C",
+        "text": "Prayag Prashasti"
+      },
+      {
+        "id": "D",
+        "text": "Uttaramerur Inscription"
+      }
+    ],
+    "correct": "A",
+    "explanation_hi": "महाकूट स्तंभ लेख से पुलकेशिन द्वितीय द्वारा बहु-सुवर्ण एवं अग्निष्टोम यज्ञ करवाने का प्रमाण मिलता है।",
+    "explanation_en": "The Mahakuta pillar inscription attests to these sacrifices."
+  },
+  {
+    "id": 79,
+    "type": "Assertion-Reason",
+    "question_hi": "कथन (A): पुलकेशin द्वितीय ने उत्तर भारत के महाप्रतापी सम्राट हर्षवर्धन को नर्मदा नदी के तट पर पराजित किया था।\nकारण (R): इस अभूतपूर्व विजय के उपरांत पुलकेशिन द्वितीय ने 'दक्षिणापथेश्वर' और 'परमेश्वर' की उपाधियां धारण कीं।",
+    "question_en": "Assertion (A): Pulakeshin II defeated Emperor Harshavardhana on the banks of Narmada river.\nReason (R): Following this victory, Pulakeshin II assumed titles 'Dakshinapatheshvara' and 'Parameshvara'.",
+    "options_hi": [
+      {
+        "id": "A",
+        "text": "(A) और (R) दोनों सही हैं और (R), (A) की सही व्याख्या है।"
+      },
+      {
+        "id": "B",
+        "text": "(A) और (R) दोनों सही हैं लेकिन (R), (A) की सही व्याख्या नहीं है।"
+      },
+      {
+        "id": "C",
+        "text": "(A) सही है लेकिन (R) गलत है।"
+      },
+      {
+        "id": "D",
+        "text": "(A) गलत है लेकिन (R) सही है।"
+      }
+    ],
+    "options_en": [
+      {
+        "id": "A",
+        "text": "Both (A) and (R) are correct and (R) is the correct explanation of (A)."
+      },
+      {
+        "id": "B",
+        "text": "Both (A) and (R) are correct but (R) is NOT the correct explanation."
+      },
+      {
+        "id": "C",
+        "text": "(A) is true but (R) is false."
+      },
+      {
+        "id": "D",
+        "text": "(A) is false but (R) is true."
+      }
+    ],
+    "correct": "A",
+    "explanation_hi": "पुलकेशिन द्वितीय ने हर्ष को नर्मदा तट पर रोककर परास्त किया और दक्षिणापथेश्वर बना। दोनों सही हैं।",
+    "explanation_en": "Both statements are true and (R) explains (A)."
+  },
+  {
+    "id": 80,
+    "type": "Tricky & Negative-Word",
+    "question_hi": "पुलकेशिन द्वितीय के ऐतिहासिक 'एहोल अभिलेख' (Aihole Inscription) के रचनाकार कौन थे?",
+    "question_en": "Who was the author/composer of Pulakeshin II's celebrated Aihole Inscription?",
+    "options_hi": [
+      {
+        "id": "A",
+        "text": "बाणभट्ट"
+      },
+      {
+        "id": "B",
+        "text": "रविकीर्ति"
+      },
+      {
+        "id": "C",
+        "text": "हरिषेण"
+      },
+      {
+        "id": "D",
+        "text": "विज्ञानेश्वर"
+      }
+    ],
+    "options_en": [
+      {
+        "id": "A",
+        "text": "Banabhatta"
+      },
+      {
+        "id": "B",
+        "text": "Ravikirti"
+      },
+      {
+        "id": "C",
+        "text": "Harishena"
+      },
+      {
+        "id": "D",
+        "text": "Vijnaneshwara"
+      }
+    ],
+    "correct": "B",
+    "explanation_hi": "एहोल प्रशस्ति के रचनाकार जैन कवि रविकीर्ति थे।",
+    "explanation_en": "Jain scholar Ravikirti composed the Aihole Prashasti."
+  },
+  {
+    "id": 81,
+    "type": "Statement Type",
+    "question_hi": "अजंता के किस गुहाचित्र में ईरानी राजदूत-मंडल का स्वागत करते हुए पुलकेशिन द्वितीय को चित्रित किया गया है?",
+    "question_en": "In which Ajanta cave painting is Pulakeshin II depicted receiving a Persian embassy?",
+    "options_hi": [
+      {
+        "id": "A",
+        "text": "गुफा संख्या 1"
+      },
+      {
+        "id": "B",
+        "text": "गुफा संख्या 16"
+      },
+      {
+        "id": "C",
+        "text": "गुफा संख्या 10"
+      },
+      {
+        "id": "D",
+        "text": "गुफा संख्या 19"
+      }
+    ],
+    "options_en": [
+      {
+        "id": "A",
+        "text": "Cave No. 1"
+      },
+      {
+        "id": "B",
+        "text": "Cave No. 16"
+      },
+      {
+        "id": "C",
+        "text": "Cave No. 10"
+      },
+      {
+        "id": "D",
+        "text": "Cave No. 19"
+      }
+    ],
+    "correct": "A",
+    "explanation_hi": "अजंता की गुफा संख्या 1 में ईरानी शाह खुसरो द्वितीय के दूत-मंडल का स्वागत करते पुलकेशिन को दिखाया गया है।",
+    "explanation_en": "Cave 1 at Ajanta shows Pulakeshin II welcoming the Persian diplomatic mission."
+  },
+  {
+    "id": 82,
+    "type": "Tricky & Negative-Word",
+    "question_hi": "पुलकेशिन द्वितीय लगभग 642 ई. में किस पल्लव शासक के विरुद्ध युद्ध में पराजित होकर मारा गया था?",
+    "question_en": "In 642 AD, Pulakeshin II was killed in battle against which Pallava ruler?",
+    "options_hi": [
+      {
+        "id": "A",
+        "text": "सिंहविष्णु"
+      },
+      {
+        "id": "B",
+        "text": "महेन्द्रवर्मन प्रथम"
+      },
+      {
+        "id": "C",
+        "text": "नरसिंहवर्मन प्रथम"
+      },
+      {
+        "id": "D",
+        "text": "परमेश्वरवर्मन प्रथम"
+      }
+    ],
+    "options_en": [
+      {
+        "id": "A",
+        "text": "Simhavishnu"
+      },
+      {
+        "id": "B",
+        "text": "Mahendravarman I"
+      },
+      {
+        "id": "C",
+        "text": "Narasimhavarman I"
+      },
+      {
+        "id": "D",
+        "text": "Parameshvaravarman I"
+      }
+    ],
+    "correct": "C",
+    "explanation_hi": "पल्लव नरेश नरसिंहवर्मन प्रथम ने पुलकेशिन द्वितीय को 642 ई. में परास्त कर बादामी पर अधिकार किया और पुलकेशिन मारा गया।",
+    "explanation_en": "Narasimhavarman I defeated and killed Pulakeshin II."
+  },
+  {
+    "id": 83,
+    "type": "Statement Type",
+    "question_hi": "चालुक्य शासक विनयादित्य ने मालवा को जीतने के उपरांत कौन-सी उपाधि धारण की थी?",
+    "question_en": "Which title was assumed by Chalukya king Vinayaditya after conquering Malwa?",
+    "options_hi": [
+      {
+        "id": "A",
+        "text": "सकलोत्तरपथनाथ"
+      },
+      {
+        "id": "B",
+        "text": "दक्षिणापथेश्वर"
+      },
+      {
+        "id": "C",
+        "text": "परमभट्टारक"
+      },
+      {
+        "id": "D",
+        "text": "अवनि सिंह"
+      }
+    ],
+    "options_en": [
+      {
+        "id": "A",
+        "text": "Sakalottarapathnatha"
+      },
+      {
+        "id": "B",
+        "text": "Dakshinapatheshvara"
+      },
+      {
+        "id": "C",
+        "text": "Paramabhattaraka"
+      },
+      {
+        "id": "D",
+        "text": "Avani Simha"
+      }
+    ],
+    "correct": "A",
+    "explanation_hi": "मालवा विजय के बाद विनयादित्य ने 'सकलोत्तरपथनाथ' की उपाधि ली थी।",
+    "explanation_en": "Vinayaditya assumed the title Sakalottarapathnatha after Malwa conquest."
+  },
+  {
+    "id": 84,
+    "type": "Tricky & Negative-Word",
+    "question_hi": "विक्रमादित्य द्वितीय के समय दक्कन पर हुए अरब आक्रमण को विफल करने पर उसके भतीजे पुलकेशी को कौन-सी उपाधि दी गई थी?",
+    "question_en": "Which title was conferred on Pulakeshin by Vikramaditya II after repelling Arab attack in Deccan?",
+    "options_hi": [
+      {
+        "id": "A",
+        "text": "अवनिजनाश्रय"
+      },
+      {
+        "id": "B",
+        "text": "वातापिकोण्ड"
+      },
+      {
+        "id": "C",
+        "text": "राजसिंह"
+      },
+      {
+        "id": "D",
+        "text": "विद्याविनीत"
+      }
+    ],
+    "options_en": [
+      {
+        "id": "A",
+        "text": "Avanijanashraya"
+      },
+      {
+        "id": "B",
+        "text": "Vatapikonda"
+      },
+      {
+        "id": "C",
+        "text": "Rajasimha"
+      },
+      {
+        "id": "D",
+        "text": "Vidyavinita"
+      }
+    ],
+    "correct": "A",
+    "explanation_hi": "अरब आक्रमण विफल करने पर विक्रमादित्य द्वितीय ने पुलकेशी को 'अवनिजनाश्रय' (पृथ्वी के जनों का आश्रय) की उपाधि दी।",
+    "explanation_en": "The title 'Avanijanashraya' was conferred on nephew Pulakeshin."
+  },
+  {
+    "id": 85,
+    "type": "Matching / Mis-matching",
+    "question_hi": "पट्टडकल में मंदिरों के निर्माण के संदर्भ में सही युग्म चुनिए:\n1. लोकमहादेवी (प्रथम पत्नी) — विरूपाक्ष महादेव मंदिर\n2. त्रैलोक्य महादेवी (दूसरी पत्नी) — त्रैलोकेश्वर मंदिर\n\nसही कूट क्या है?",
+    "question_en": "Select correct pair regarding temple construction at Pattadakal:\n1. Lokamahadevi — Virupaksha Mahadeva temple\n2. Trailokyamahadevi — Trailokeshwara temple\n\nChoose correct code:",
+    "options_hi": [
+      {
+        "id": "A",
+        "text": "केवल 1"
+      },
+      {
+        "id": "B",
+        "text": "केवल 2"
+      },
+      {
+        "id": "C",
+        "text": "1 और 2 दोनों सत्य हैं"
+      },
+      {
+        "id": "D",
+        "text": "दोनों असत्य हैं"
+      }
+    ],
+    "options_en": [
+      {
+        "id": "A",
+        "text": "Only 1"
+      },
+      {
+        "id": "B",
+        "text": "Only 2"
+      },
+      {
+        "id": "C",
+        "text": "Both 1 and 2 are true"
+      },
+      {
+        "id": "D",
+        "text": "Both are false"
+      }
+    ],
+    "correct": "C",
+    "explanation_hi": "विक्रमादित्य द्वितीय की रानियों लोकमहादेवी ने विरूपाक्ष मंदिर तथा त्रैलोक्य महादेवी ने त्रैलोकेश्वर मंदिर बनवाया।",
+    "explanation_en": "Both temple patrons are accurately identified."
+  },
+  {
+    "id": 86,
+    "type": "Tricky & Negative-Word",
+    "question_hi": "वातापी के चालुक्य वंश का अंतिम राजा कौन था, जिसे उसके सामंत दन्तिदुर्ग ने परास्त कर राष्ट्रकूट वंश की स्थापना की?",
+    "question_en": "Who was the last ruler of Vatapi Chalukyas, overthrown by Dantidurga to establish Rashtrakuta dynasty?",
+    "options_hi": [
+      {
+        "id": "A",
+        "text": "पुलकेशिन द्वितीय"
+      },
+      {
+        "id": "B",
+        "text": "कीर्तिवर्मन द्वितीय"
+      },
+      {
+        "id": "C",
+        "text": "विक्रमादित्य द्वितीय"
+      },
+      {
+        "id": "D",
+        "text": "विजयादित्य"
+      }
+    ],
+    "options_en": [
+      {
+        "id": "A",
+        "text": "Pulakeshin II"
+      },
+      {
+        "id": "B",
+        "text": "Kirtivarman II"
+      },
+      {
+        "id": "C",
+        "text": "Vikramaditya II"
+      },
+      {
+        "id": "D",
+        "text": "Vijayaditya"
+      }
+    ],
+    "correct": "B",
+    "explanation_hi": "अंतिम राजा कीर्तिवर्मन द्वितीय था, जिसे दन्तिदुर्ग ने 752 ई. में परास्त किया।",
+    "explanation_en": "Kirtivarman II was the last ruler overthrown by Dantidurga."
+  },
+  {
+    "id": 87,
+    "type": "Statement Type",
+    "question_hi": "भारतीय स्थापत्य कला में 'मंदिरों का शहर' (City of Temples) किस प्राचीन स्थल को कहा जाता है?",
+    "question_en": "Which ancient historical site is known as the 'City of Temples'?",
+    "options_hi": [
+      {
+        "id": "A",
+        "text": "एहोल (Aihole)"
+      },
+      {
+        "id": "B",
+        "text": "कांचीपुरम"
+      },
+      {
+        "id": "C",
+        "text": "तंजौर"
+      },
+      {
+        "id": "D",
+        "text": "महाबलीपुरम"
+      }
+    ],
+    "options_en": [
+      {
+        "id": "A",
+        "text": "Aihole"
+      },
+      {
+        "id": "B",
+        "text": "Kanchipuram"
+      },
+      {
+        "id": "C",
+        "text": "Tanjore"
+      },
+      {
+        "id": "D",
+        "text": "Mahabalipuram"
+      }
+    ],
+    "correct": "A",
+    "explanation_hi": "एहोल को 'मंदिरों का शहर' (नगर) कहा जाता है।",
+    "explanation_en": "Aihole is traditionally known as the City/Cradle of Temples."
+  },
+  {
+    "id": 88,
+    "type": "Tricky & Negative-Word",
+    "question_hi": "वेंगी के चालुक्य वंश का संस्थापक कौन था और इसकी राजधानी कहाँ थी?",
+    "question_en": "Who was the founder of Eastern Chalukyas of Vengi and where was its capital?",
+    "options_hi": [
+      {
+        "id": "A",
+        "text": "विष्णुवर्धन — वेंगी (आंध्र प्रदेश)"
+      },
+      {
+        "id": "B",
+        "text": "जयसिंह — वातापी"
+      },
+      {
+        "id": "C",
+        "text": "तैलप द्वितीय — कल्याणी"
+      },
+      {
+        "id": "D",
+        "text": "दन्तिदुर्ग — मान्यखेट"
+      }
+    ],
+    "options_en": [
+      {
+        "id": "A",
+        "text": "Vishnuvardhana — Vengi (Andhra Pradesh)"
+      },
+      {
+        "id": "B",
+        "text": "Jayasimha — Vatapi"
+      },
+      {
+        "id": "C",
+        "text": "Tailapa II — Kalyani"
+      },
+      {
+        "id": "D",
+        "text": "Dantidurga — Manyakheta"
+      }
+    ],
+    "correct": "A",
+    "explanation_hi": "वेंगी के चालुक्य वंश का संस्थापक विष्णुवर्धन था, राजधानी वेंगी (आंध्र प्रदेश) थी। सबसे प्रतापी राजा विजयादित्य तृतीय था जिसका सेनापति पंडरंग था।",
+    "explanation_en": "Vishnuvardhana founded Eastern Chalukyas with capital at Vengi."
+  },
+  {
+    "id": 89,
+    "type": "Statement Type",
+    "question_hi": "राष्ट्रकूट राजवंश की स्थापना और प्रारंभिक स्थिति के संदर्भ में निम्नलिखित कथनों पर विचार कीजिए:\n1. राष्ट्रकूट वंश का संस्थापक दन्तिदुर्ग (752 ई.) था।\n2. प्रारंभ में वे कर्नाटक के चालुक्य राजाओं के अधीन सामंत थे।\n3. राष्ट्रकूटों की राजधानी मनकिर या मान्यखेत (मालखेड़) थी।\n\nउपर्युक्त में से कौन-से कथन सत्य हैं?",
+    "question_en": "Consider statements regarding Rashtrakutas:\n1. Founded by Dantidurga in 752 AD.\n2. Initially subordinates/feudatories to Chalukyas of Karnataka.\n3. Capital was Mankir/Manyakheta (Malkhed).\n\nWhich are true?",
+    "options_hi": [
+      {
+        "id": "A",
+        "text": "केवल 1 और 2"
+      },
+      {
+        "id": "B",
+        "text": "केवल 2 और 3"
+      },
+      {
+        "id": "C",
+        "text": "केवल 1 और 3"
+      },
+      {
+        "id": "D",
+        "text": "1, 2 और 3 (सभी सत्य हैं)"
+      }
+    ],
+    "options_en": [
+      {
+        "id": "A",
+        "text": "Only 1 and 2"
+      },
+      {
+        "id": "B",
+        "text": "Only 2 and 3"
+      },
+      {
+        "id": "C",
+        "text": "Only 1 and 3"
+      },
+      {
+        "id": "D",
+        "text": "1, 2 and 3 (All are true)"
+      }
+    ],
+    "correct": "D",
+    "explanation_hi": "तीनों कथन पूर्णतः सत्य हैं। दन्तिदुर्ग ने 752 ई. में राष्ट्रकूट वंश की नींव मान्यखेट में रखी।",
+    "explanation_en": "All three statements are true regarding Dantidurga."
+  },
+  {
+    "id": 90,
+    "type": "Tricky & Negative-Word",
+    "question_hi": "एलोरा के विश्वप्रसिद्ध एकाश्म 'कैलाश मंदिर' का निर्माण किस राष्ट्रकूट शासक ने करवाया था?",
+    "question_en": "Which Rashtrakuta king built the world-renowned monolithic Kailash Temple at Ellora?",
+    "options_hi": [
+      {
+        "id": "A",
+        "text": "दन्तिदुर्ग"
+      },
+      {
+        "id": "B",
+        "text": "कृष्ण प्रथम"
+      },
+      {
+        "id": "C",
+        "text": "ध्रुव (धारावर्ष)"
+      },
+      {
+        "id": "D",
+        "text": "गोविन्द तृतीय"
+      }
+    ],
+    "options_en": [
+      {
+        "id": "A",
+        "text": "Dantidurga"
+      },
+      {
+        "id": "B",
+        "text": "Krishna I"
+      },
+      {
+        "id": "C",
+        "text": "Dhruva"
+      },
+      {
+        "id": "D",
+        "text": "Govinda III"
+      }
+    ],
+    "correct": "B",
+    "explanation_hi": "एलोरा के एकाश्म कैलाश मंदिर का निर्माण कृष्ण प्रथम ने करवाया था।",
+    "explanation_en": "Krishna I commissioned the rock-cut Kailash Temple at Ellora."
+  },
+  {
+    "id": 91,
+    "type": "Statement Type",
+    "question_hi": "कन्नौज के लिए हुए त्रिपक्षीय संघर्ष (Tripartite Struggle) में भाग लेने वाला पहला राष्ट्रकूट शासक कौन था, जिसने प्रतिहार नरेश वत्सराज एवं पाल नरेश धर्मपाल दोनों को पराजित किया?",
+    "question_en": "Who was the first Rashtrakuta ruler to enter the Tripartite Struggle and defeat Vatsaraja and Dharmapala?",
+    "options_hi": [
+      {
+        "id": "A",
+        "text": "कृष्ण प्रथम"
+      },
+      {
+        "id": "B",
+        "text": "ध्रुव ('धारावर्ष')"
+      },
+      {
+        "id": "C",
+        "text": "गोविन्द तृतीय"
+      },
+      {
+        "id": "D",
+        "text": "अमोघवर्ष"
+      }
+    ],
+    "options_en": [
+      {
+        "id": "A",
+        "text": "Krishna I"
+      },
+      {
+        "id": "B",
+        "text": "Dhruva ('Dharavarsha')"
+      },
+      {
+        "id": "C",
+        "text": "Govinda III"
+      },
+      {
+        "id": "D",
+        "text": "Amoghavarsha"
+      }
+    ],
+    "correct": "B",
+    "explanation_hi": "ध्रुव (धारावर्ष) पहला राष्ट्रकूट शासक था जिसने त्रिपक्षीय संघर्ष में वत्सराज और धर्मपाल को हराया।",
+    "explanation_en": "Dhruva Dharavarsha was the first Rashtrakuta monarch to intervene in Tripartite struggle."
+  },
+  {
+    "id": 92,
+    "type": "Assertion-Reason",
+    "question_hi": "कथन (A): राष्ट्रकूट शासक गोविन्द तृतीय ने उत्तर और दक्षिण भारत दोनों में अद्वितीय सैन्य विजय प्राप्त कीं।\nकारण (R): गोविन्द तृतीय ने त्रिपक्षीय संघर्ष में चक्रायुध, धर्मपाल और नागभट्ट द्वितीय को हराया तथा पल्लव, पाण्ड्य, केरल और गंग शासकों के संघ को नष्ट कर दिया।",
+    "question_en": "Assertion (A): Rashtrakuta ruler Govinda III achieved remarkable military triumphs across North and South India.\nReason (R): Govinda III defeated Chakrayudha, Dharmapala, Nagabhata II and crushed the coalition of Pallavas, Pandyas, Cheras, and Gangas.",
+    "options_hi": [
+      {
+        "id": "A",
+        "text": "(A) और (R) दोनों सही हैं और (R), (A) की सही व्याख्या है।"
+      },
+      {
+        "id": "B",
+        "text": "(A) और (R) दोनों सही हैं लेकिन (R), (A) की सही व्याख्या नहीं है।"
+      },
+      {
+        "id": "C",
+        "text": "(A) सही है लेकिन (R) गलत है।"
+      },
+      {
+        "id": "D",
+        "text": "(A) गलत है लेकिन (R) सही है।"
+      }
+    ],
+    "options_en": [
+      {
+        "id": "A",
+        "text": "Both (A) and (R) are correct and (R) is the correct explanation of (A)."
+      },
+      {
+        "id": "B",
+        "text": "Both (A) and (R) are correct but (R) is NOT the correct explanation."
+      },
+      {
+        "id": "C",
+        "text": "(A) is true but (R) is false."
+      },
+      {
+        "id": "D",
+        "text": "(A) is false but (R) is true."
+      }
+    ],
+    "correct": "A",
+    "explanation_hi": "गोविन्द तृतीय ने उत्तर में धर्मपाल-नागभट्ट और दक्षिण में संघ को ध्वस्त किया। दोनों सत्य हैं।",
+    "explanation_en": "Both statements are true and (R) explains (A)."
+  },
+  {
+    "id": 93,
+    "type": "4-Statement Type",
+    "question_hi": "राष्ट्रकूट सम्राट अमोघवर्ष के संदर्भ में निम्नलिखित कथनों पर विचार कीजिए:\n1. अमोघवर्ष जैन धर्म का अनुयायी था।\n2. उसने कन्नड़ भाषा में 'कविराजमार्ग' नामक सुप्रसिद्ध ग्रंथ की रचना की।\n3. उसके दरबार में जिनसेन (आदिपुराण), महावीराचार्य (गणितसार संग्रह) और शाकटायन (अमोघवृत्ति) रहते थे।\n4. अमोघवर्ष ने तुंगभद्रा नदी में जल-समाधि लेकर अपने जीवन का अंत किया।\n\nउपर्युक्त में से कौन-से कथन सत्य हैं?",
+    "question_en": "Consider statements regarding Amoghavarsha:\n1. Devout follower of Jainism.\n2. Composed 'Kavirajamarga' in Kannada.\n3. Court housed Jinasena, Mahaviracharya, and Shakatayana.\n4. Ended life through Jalasamadhi in Tungabhadra river.\n\nWhich are true?",
+    "options_hi": [
+      {
+        "id": "A",
+        "text": "केवल 1 और 2"
+      },
+      {
+        "id": "B",
+        "text": "केवल 2 और 3"
+      },
+      {
+        "id": "C",
+        "text": "केवल 1, 2 और 4"
+      },
+      {
+        "id": "D",
+        "text": "1, 2, 3 और 4 (सभी चारों सत्य हैं)"
+      }
+    ],
+    "options_en": [
+      {
+        "id": "A",
+        "text": "Only 1 and 2"
+      },
+      {
+        "id": "B",
+        "text": "Only 2 and 3"
+      },
+      {
+        "id": "C",
+        "text": "Only 1, 2 and 4"
+      },
+      {
+        "id": "D",
+        "text": "1, 2, 3 and 4 (All are true)"
+      }
+    ],
+    "correct": "D",
+    "explanation_hi": "सभी चारों कथन सत्य हैं। अमोघवर्ष जैन मतानुयायी था, कविराजमार्ग लिखा, महान विद्वानों को आश्रय दिया और जलसमाधि ली।",
+    "explanation_en": "All four statements are accurate facts regarding Amoghavarsha."
+  },
+  {
+    "id": 94,
+    "type": "Tricky & Negative-Word",
+    "question_hi": "अरब यात्री अलमसूदी किस राष्ट्रकूट शासक के शासनकाल में भारत आया था, जिसने तत्कालीन राष्ट्रकूटों को 'भारत का सर्वश्रेष्ठ शासक' कहा?",
+    "question_en": "During whose reign did Arab traveler Al-Masudi visit India and declare Rashtrakutas the greatest rulers in India?",
+    "options_hi": [
+      {
+        "id": "A",
+        "text": "इन्द्र तृतीय"
+      },
+      {
+        "id": "B",
+        "text": "कृष्ण द्वितीय"
+      },
+      {
+        "id": "C",
+        "text": "अमोघवर्ष"
+      },
+      {
+        "id": "D",
+        "text": "कृष्ण तृतीय"
+      }
+    ],
+    "options_en": [
+      {
+        "id": "A",
+        "text": "Indra III"
+      },
+      {
+        "id": "B",
+        "text": "Krishna II"
+      },
+      {
+        "id": "C",
+        "text": "Amoghavarsha"
+      },
+      {
+        "id": "D",
+        "text": "Krishna III"
+      }
+    ],
+    "correct": "A",
+    "explanation_hi": "अलमसूदी इन्द्र तृतीय के शासनकाल में आया था।",
+    "explanation_en": "Al-Masudi visited during the reign of Indra III."
+  },
+  {
+    "id": 95,
+    "type": "Statement Type",
+    "question_hi": "राष्ट्रकूट वंश के अंतिम महान शासक कृष्ण तृतीय के संदर्भ में क्या सत्य है?",
+    "question_en": "What is true about Krishna III, the last great Rashtrakuta monarch?",
+    "options_hi": [
+      {
+        "id": "A",
+        "text": "इसने तक्कोलम के युद्ध में चोलों को पराजित किया था।"
+      },
+      {
+        "id": "B",
+        "text": "इसके दरबार में कन्नड़ कवि पोन्न रहते थे जिन्होंने शांतिपुराण की रचना की।"
+      },
+      {
+        "id": "C",
+        "text": "इसने रामेश्वरम में विजय स्तंभ तथा देवालय की स्थापना की थी।"
+      },
+      {
+        "id": "D",
+        "text": "उपर्युक्त सभी कथन सत्य हैं।"
+      }
+    ],
+    "options_en": [
+      {
+        "id": "A",
+        "text": "Defeated Cholas at Battle of Takkolam."
+      },
+      {
+        "id": "B",
+        "text": "Kannada poet Ponna (author of Shanti Purana) lived in his court."
+      },
+      {
+        "id": "C",
+        "text": "Erected victory pillar and temple at Rameswaram."
+      },
+      {
+        "id": "D",
+        "text": "All of the above statements are true."
+      }
+    ],
+    "correct": "D",
+    "explanation_hi": "कृष्ण तृतीय के विषय में ये सभी कथन ऐतिहासिक रूप से सत्य हैं।",
+    "explanation_en": "All statements are historically true regarding Krishna III."
+  },
+  {
+    "id": 96,
+    "type": "Tricky & Negative-Word",
+    "question_hi": "कल्याणी के चालुक्य तैलप द्वितीय ने 973 ई. में किस अंतिम राष्ट्रकूट शासक को हराकर राष्ट्रकूट राज्य पर अधिकार किया था?",
+    "question_en": "Tailapa II overthrew which last Rashtrakuta king in 973 AD to establish Chalukyas of Kalyani?",
+    "options_hi": [
+      {
+        "id": "A",
+        "text": "कर्क द्वितीय"
+      },
+      {
+        "id": "B",
+        "text": "इन्द्र चतुर्थ"
+      },
+      {
+        "id": "C",
+        "text": "कृष्ण तृतीय"
+      },
+      {
+        "id": "D",
+        "text": "खोत्तिग"
+      }
+    ],
+    "options_en": [
+      {
+        "id": "A",
+        "text": "Karka II"
+      },
+      {
+        "id": "B",
+        "text": "Indra IV"
+      },
+      {
+        "id": "C",
+        "text": "Krishna III"
+      },
+      {
+        "id": "D",
+        "text": "Khottiga"
+      }
+    ],
+    "correct": "A",
+    "explanation_hi": "तैलप द्वितीय ने कर्क द्वितीय को 973 ई. में हराकर कल्याणी के चालुक्य वंश की नींव डाली।",
+    "explanation_en": "Tailapa II defeated Karka II in 973 AD."
+  },
+  {
+    "id": 97,
+    "type": "Statement Type",
+    "question_hi": "एलोरा की 34 शैलकृत गुफाओं के धार्मिक वर्गीकरण का सही क्रम क्या है?",
+    "question_en": "What is the religious classification of the 34 rock-cut caves at Ellora?",
+    "options_hi": [
+      {
+        "id": "A",
+        "text": "1 से 12: बौद्ध, 13 से 29: हिन्दू, 30 से 34: जैन"
+      },
+      {
+        "id": "B",
+        "text": "1 से 10: जैन, 11 से 25: हिन्दू, 26 से 34: बौद्ध"
+      },
+      {
+        "id": "C",
+        "text": "1 से 15: हिन्दू, 16 से 25: बौद्ध, 26 से 34: जैन"
+      },
+      {
+        "id": "D",
+        "text": "1 से 12: हिन्दू, 13 से 30: बौद्ध, 31 से 34: जैन"
+      }
+    ],
+    "options_en": [
+      {
+        "id": "A",
+        "text": "1-12: Buddhist, 13-29: Hindu, 30-34: Jain"
+      },
+      {
+        "id": "B",
+        "text": "1-10: Jain, 11-25: Hindu, 26-34: Buddhist"
+      },
+      {
+        "id": "C",
+        "text": "1-15: Hindu, 16-25: Buddhist, 26-34: Jain"
+      },
+      {
+        "id": "D",
+        "text": "1-12: Hindu, 13-30: Buddhist, 31-34: Jain"
+      }
+    ],
+    "correct": "A",
+    "explanation_hi": "गुफा 1-12 बौद्धों की, 13-29 हिन्दुओं की, और 30-34 जैनों की हैं।",
+    "explanation_en": "Ellora caves: 1-12 Buddhist, 13-29 Hindu, 30-34 Jain."
+  },
+  {
+    "id": 98,
+    "type": "Tricky & Negative-Word",
+    "question_hi": "एलोरा की बौद्ध गुफाओं में सबसे प्रसिद्ध 'विश्वकर्मा गुफा' किस संख्या की गुफा है?",
+    "question_en": "Which cave number is the celebrated 'Vishvakarma Cave' among Ellora Buddhist caves?",
+    "options_hi": [
+      {
+        "id": "A",
+        "text": "गुफा संख्या 1"
+      },
+      {
+        "id": "B",
+        "text": "गुफा संख्या 10"
+      },
+      {
+        "id": "C",
+        "text": "गुफा संख्या 12"
+      },
+      {
+        "id": "D",
+        "text": "गुफा संख्या 16"
+      }
+    ],
+    "options_en": [
+      {
+        "id": "A",
+        "text": "Cave 1"
+      },
+      {
+        "id": "B",
+        "text": "Cave 10"
+      },
+      {
+        "id": "C",
+        "text": "Cave 12"
+      },
+      {
+        "id": "D",
+        "text": "Cave 16"
+      }
+    ],
+    "correct": "B",
+    "explanation_hi": "बौद्ध गुफाओं में सबसे प्रसिद्ध विश्वकर्मा गुफा संख्या 10 है, जिसमें एक विशाल चैत्य है।",
+    "explanation_en": "Cave 10 is the renowned Vishvakarma Cave featuring a Chaitya."
+  },
+  {
+    "id": 99,
+    "type": "Statement Type",
+    "question_hi": "एलोरा की किस गुफा में भगवान विष्णु को 'नरसिंह' (पुरुष-सिंह) के रूप में असुर हिरण्यकशिपु का संहार करते दिखाया गया है?",
+    "question_en": "In which Ellora cave is Lord Vishnu depicted in Narasimha (man-lion) avatar?",
+    "options_hi": [
+      {
+        "id": "A",
+        "text": "गुफा संख्या 14"
+      },
+      {
+        "id": "B",
+        "text": "गुफा संख्या 15"
+      },
+      {
+        "id": "C",
+        "text": "गुफा संख्या 16"
+      },
+      {
+        "id": "D",
+        "text": "गुफा संख्या 21"
+      }
+    ],
+    "options_en": [
+      {
+        "id": "A",
+        "text": "Cave 14"
+      },
+      {
+        "id": "B",
+        "text": "Cave 15"
+      },
+      {
+        "id": "C",
+        "text": "Cave 16"
+      },
+      {
+        "id": "D",
+        "text": "Cave 21"
+      }
+    ],
+    "correct": "B",
+    "explanation_hi": "एलोरा की गुफा 15 में विष्णु को नरसिंह रूप में दिखलाया गया है।",
+    "explanation_en": "Cave 15 depicts Lord Vishnu as Narasimha."
+  },
+  {
+    "id": 100,
+    "type": "Tricky & Negative-Word",
+    "question_hi": "एलोरा की गुफाओं का सर्वप्रथम उल्लेख 17वीं शताब्दी में किस यूरोपीय यात्री ने किया था?",
+    "question_en": "Which European traveler first mentioned the Ellora caves in the 17th century?",
+    "options_hi": [
+      {
+        "id": "A",
+        "text": "फ्रांसीसी यात्री थेविनेट (Thevenot)"
+      },
+      {
+        "id": "B",
+        "text": "बर्नियर"
+      },
+      {
+        "id": "C",
+        "text": "टैvernier"
+      },
+      {
+        "id": "D",
+        "text": "मनूची"
+      }
+    ],
+    "options_en": [
+      {
+        "id": "A",
+        "text": "French traveler Thevenot"
+      },
+      {
+        "id": "B",
+        "text": "Bernier"
+      },
+      {
+        "id": "C",
+        "text": "Tavernier"
+      },
+      {
+        "id": "D",
+        "text": "Manucci"
+      }
+    ],
+    "correct": "A",
+    "explanation_hi": "एलोरा गुफाओं का सर्वप्रथम उल्लेख 17वीं सदी में फ्रांसीसी यात्री थेविनेट ने किया था।",
+    "explanation_en": "French traveler Jean de Thevenot first documented Ellora caves in 17th century."
+  },
+  {
+    "id": 101,
+    "type": "Statement Type",
+    "question_hi": "राष्ट्रकूटों की धार्मिक नीति के संदर्भ में क्या सत्य है?",
+    "question_en": "What is true regarding the religious policy of the Rashtrakutas?",
+    "options_hi": [
+      {
+        "id": "A",
+        "text": "वे शैव, वैष्णव, शाक्त और जैन धर्म के पोषक थे।"
+      },
+      {
+        "id": "B",
+        "text": "उन्होंने अपने राज्यों में मुसलमान व्यापारियों को बसने तथा इस्लाम के प्रचार की स्वीकृति दी थी।"
+      },
+      {
+        "id": "C",
+        "text": "वे धार्मिक रूप से अत्यंत सहिष्णु थे।"
+      },
+      {
+        "id": "D",
+        "text": "उपर्युक्त सभी कथन सत्य हैं।"
+      }
+    ],
+    "options_en": [
+      {
+        "id": "A",
+        "text": "Patronized Shaivism, Vaishnavism, Shaktism and Jainism."
+      },
+      {
+        "id": "B",
+        "text": "Permitted Muslim traders to settle and preach Islam."
+      },
+      {
+        "id": "C",
+        "text": "Highly tolerant towards diverse faiths."
+      },
+      {
+        "id": "D",
+        "text": "All of the above statements are true."
+      }
+    ],
+    "correct": "D",
+    "explanation_hi": "राष्ट्रकूट धार्मिक सहिष्णु थे और मुस्लिम व्यापारियों को मस्जिद बनाने व इस्लाम प्रचार की अनुमति दी थी।",
+    "explanation_en": "Rashtrakutas were noted for broad religious tolerance."
+  },
+  {
+    "id": 102,
+    "type": "Statement Type",
+    "question_hi": "देवगिरि के यादव वंश की स्थापना किसने की थी और इसका सबसे प्रतापी राजा कौन था?",
+    "question_en": "Who founded the Yadava dynasty of Devagiri and who was its most powerful king?",
+    "options_hi": [
+      {
+        "id": "A",
+        "text": "भिल्लम पंचम — सिंघण (1210-1246 ई.)"
+      },
+      {
+        "id": "B",
+        "text": "रामचंद्र — मलिक काफूर"
+      },
+      {
+        "id": "C",
+        "text": "विष्णुवर्धन — वीर बल्लाल"
+      },
+      {
+        "id": "D",
+        "text": "मयूरशर्मन — ककुत्स्थवर्मा"
+      }
+    ],
+    "options_en": [
+      {
+        "id": "A",
+        "text": "Bhillama V — Singhana (1210-1246 AD)"
+      },
+      {
+        "id": "B",
+        "text": "Ramachandra — Malik Kafur"
+      },
+      {
+        "id": "C",
+        "text": "Vishnuvardhana — Vira Ballala"
+      },
+      {
+        "id": "D",
+        "text": "Mayurasharman — Kakusthavarma"
+      }
+    ],
+    "correct": "A",
+    "explanation_hi": "देवगिरि के यादव वंश की स्थापना भिल्लम पंचम ने की और सबसे प्रतापी राजा सिंघण (1210-1246 ई.) था।",
+    "explanation_en": "Bhillama V founded the Yadavas; Singhana was its most powerful ruler."
+  },
+  {
+    "id": 103,
+    "type": "Tricky & Negative-Word",
+    "question_hi": "देवगिरि के यादव वंश का अंतिम स्वतंत्र शासक कौन था जिसने अलाउद्दीन खिलजी के सेनापति मलिक काफूर के सामने आत्मसमर्पण किया?",
+    "question_en": "Who was the last independent ruler of Yadavas who surrendered to Alauddin Khilji's general Malik Kafur?",
+    "options_hi": [
+      {
+        "id": "A",
+        "text": "सिंघण"
+      },
+      {
+        "id": "B",
+        "text": "रामचंद्र"
+      },
+      {
+        "id": "C",
+        "text": "शंकरदेव"
+      },
+      {
+        "id": "D",
+        "text": "भिल्लम"
+      }
+    ],
+    "options_en": [
+      {
+        "id": "A",
+        "text": "Singhana"
+      },
+      {
+        "id": "B",
+        "text": "Ramachandra"
+      },
+      {
+        "id": "C",
+        "text": "Shankaradeva"
+      },
+      {
+        "id": "D",
+        "text": "Bhillama"
+      }
+    ],
+    "correct": "B",
+    "explanation_hi": "अंतिम स्वतंत्र शासक रामचंद्र था जिसने मलिक काफूर के समक्ष आत्मसमर्पण किया।",
+    "explanation_en": "Ramachandra was the last ruler who surrendered to Malik Kafur."
+  },
+  {
+    "id": 104,
+    "type": "Statement Type",
+    "question_hi": "प्रसिद्ध संगीत ग्रंथ 'संगीत रत्नाकर' के रचयिता संगीतशास्त्री शारंगदेव किस यादव राजा के दरबारी थे?",
+    "question_en": "Musicologist Sharangadeva, author of 'Sangita Ratnakara', was court scholar of which Yadava king?",
+    "options_hi": [
+      {
+        "id": "A",
+        "text": "राजा सिंघण"
+      },
+      {
+        "id": "B",
+        "text": "रामचंद्र"
+      },
+      {
+        "id": "C",
+        "text": "भिल्लम पंचम"
+      },
+      {
+        "id": "D",
+        "text": "कृष्ण"
+      }
+    ],
+    "options_en": [
+      {
+        "id": "A",
+        "text": "King Singhana"
+      },
+      {
+        "id": "B",
+        "text": "Ramachandra"
+      },
+      {
+        "id": "C",
+        "text": "Bhillama V"
+      },
+      {
+        "id": "D",
+        "text": "Krishna"
+      }
+    ],
+    "correct": "A",
+    "explanation_hi": "संगीतशास्त्री शारंगदेव राजा सिंघण के दरबारी थे जिन्होंने संगीत रत्नाकर की रचना की।",
+    "explanation_en": "Sharangadeva lived in the court of Yadava ruler Singhana."
+  },
+  {
+    "id": 105,
+    "type": "Tricky & Negative-Word",
+    "question_hi": "होयसल वंश के संदर्भ में निम्नलिखित में से कौन-सा कथन असत्य है?",
+    "question_en": "Which statement is FALSE regarding the Hoysala dynasty?",
+    "options_hi": [
+      {
+        "id": "A",
+        "text": "होयसल कल्याणी के चालुक्यों के सामंत थे।"
+      },
+      {
+        "id": "B",
+        "text": "होयसल राजवंश की स्थापना विष्णुवर्धन (1108-1152 ई.) ने की थी।"
+      },
+      {
+        "id": "C",
+        "text": "होयसल वंश की प्रारंभिक राजधानी बेलूर थी जिसे बाद में द्वारसमुद्र (हलेविड) स्थानांतरित किया गया।"
+      },
+      {
+        "id": "D",
+        "text": "होयसल वंश के राजा प्रारंभ से ही कट्टर शैव मतानुयायी थे और उन्होंने कभी धर्म परिवर्तन नहीं किया।"
+      }
+    ],
+    "options_en": [
+      {
+        "id": "A",
+        "text": "Hoysalas were feudatories of Kalyani Chalukyas."
+      },
+      {
+        "id": "B",
+        "text": "Founded by Vishnuvardhana (1108-1152 AD)."
+      },
+      {
+        "id": "C",
+        "text": "Initial capital was Belur, later shifted to Dwarasamudra (Halebidu)."
+      },
+      {
+        "id": "D",
+        "text": "Hoysala kings were staunch Shaivites from start and never converted."
+      }
+    ],
+    "correct": "D",
+    "explanation_hi": "कथन (D) असत्य है क्योंकि राजा विष्णुवर्धन प्रारंभ में जैन मतानुयायी थे, परंतु संत रामानुजाचार्य के प्रभाव में आकर वैष्णव बने।",
+    "explanation_en": "Statement (D) is false; Vishnuvardhana was originally Jain and converted to Vaishnavism under Ramanuja."
+  },
+  {
+    "id": 106,
+    "type": "Statement Type",
+    "question_hi": "बेलूर में यागाची नदी के तट पर स्थित तारे के आकार वाले 'चेन्नाकेशव मंदिर' का निर्माण 1116 ई. में किसने करवाया था?",
+    "question_en": "Who built the star-shaped Chennakeshava temple on the banks of Yagachi river at Belur in 1116 AD?",
+    "options_hi": [
+      {
+        "id": "A",
+        "text": "विष्णुवर्धन"
+      },
+      {
+        "id": "B",
+        "text": "वीर बल्लाल तृतीय"
+      },
+      {
+        "id": "C",
+        "text": "मयूरशर्मन"
+      },
+      {
+        "id": "D",
+        "text": "नरसिंह प्रथम"
+      }
+    ],
+    "options_en": [
+      {
+        "id": "A",
+        "text": "Vishnuvardhana"
+      },
+      {
+        "id": "B",
+        "text": "Vira Ballala III"
+      },
+      {
+        "id": "C",
+        "text": "Mayurasharman"
+      },
+      {
+        "id": "D",
+        "text": "Narasimha I"
+      }
+    ],
+    "correct": "A",
+    "explanation_hi": "विष्णुवर्धन ने चोलों पर विजय के उपलक्ष्य में बेलूर में चेन्नाकेशव मंदिर बनवाया।",
+    "explanation_en": "Vishnuvardhana built the Chennakeshava temple at Belur to commemorate victory over Cholas."
+  },
+  {
+    "id": 107,
+    "type": "Matching / Mis-matching",
+    "question_hi": "होयसल स्थापत्य के प्रमुख मंदिरों के संदर्भ में कौन-सा मिलान सही है?\n1. बेलूर — चेन्नाकेशव मंदिर (भगवान विष्णु को समर्पित)\n2. हलेविड — होयसलेश्वर मंदिर (विशाल शिव मंदिर)\n3. सोमनाथपुर — केशव मंदिर (त्रिकुटा मंदिर: जनार्दन, केशव, वेणुगोपाल)\n\nसही कूट चुनिए:",
+    "question_en": "Which match is correct regarding Hoysala temples?\n1. Belur — Chennakeshava temple\n2. Halebidu — Hoysaleshvara temple\n3. Somanathapura — Keshava temple\n\nChoose correct code:",
+    "options_hi": [
+      {
+        "id": "A",
+        "text": "केवल 1 और 2"
+      },
+      {
+        "id": "B",
+        "text": "केवल 2 और 3"
+      },
+      {
+        "id": "C",
+        "text": "केवल 1 और 3"
+      },
+      {
+        "id": "D",
+        "text": "1, 2 और 3 (तीनों सही हैं)"
+      }
+    ],
+    "options_en": [
+      {
+        "id": "A",
+        "text": "Only 1 and 2"
+      },
+      {
+        "id": "B",
+        "text": "Only 2 and 3"
+      },
+      {
+        "id": "C",
+        "text": "Only 1 and 3"
+      },
+      {
+        "id": "D",
+        "text": "1, 2 and 3 (All are true)"
+      }
+    ],
+    "correct": "D",
+    "explanation_hi": "तीनों मंदिर होयसल काल की उत्कृष्ट कृतियां हैं और भारतीय पुरातत्व सर्वेक्षण के संरक्षित स्मारक हैं।",
+    "explanation_en": "All three are authentic protected monuments of Hoysala architecture."
+  },
+  {
+    "id": 108,
+    "type": "Tricky & Negative-Word",
+    "question_hi": "होयसल वंश का अंतिम शासक कौन था, जिसे अलाउद्दीन के सेनापति मलिक काफूर ने हराया था?",
+    "question_en": "Who was the last Hoysala king defeated by Malik Kafur?",
+    "options_hi": [
+      {
+        "id": "A",
+        "text": "विष्णुवर्धन"
+      },
+      {
+        "id": "B",
+        "text": "वीर बल्लाल तृतीय"
+      },
+      {
+        "id": "C",
+        "text": "नरसिंह तृतीय"
+      },
+      {
+        "id": "D",
+        "text": "सोमेश्वर"
+      }
+    ],
+    "options_en": [
+      {
+        "id": "A",
+        "text": "Vishnuvardhana"
+      },
+      {
+        "id": "B",
+        "text": "Vira Ballala III"
+      },
+      {
+        "id": "C",
+        "text": "Narasimha III"
+      },
+      {
+        "id": "D",
+        "text": "Someshvara"
+      }
+    ],
+    "correct": "B",
+    "explanation_hi": "होयसल वंश का अंतिम शासक वीर बल्लाल तृतीय था।",
+    "explanation_en": "Vira Ballala III was the last Hoysala ruler defeated by Malik Kafur."
+  },
+  {
+    "id": 109,
+    "type": "Statement Type",
+    "question_hi": "कदम्ब वंश की स्थापना किसने की थी और इसकी राजधानी कहाँ थी?",
+    "question_en": "Who founded the Kadamba dynasty and where was its capital?",
+    "options_hi": [
+      {
+        "id": "A",
+        "text": "मयूरशर्मन (345-365 ई.) — बनवासी"
+      },
+      {
+        "id": "B",
+        "text": "ककुत्स्थवर्मा — कोलार"
+      },
+      {
+        "id": "C",
+        "text": "कोङ्गणिवर्मन — तलकाडू"
+      },
+      {
+        "id": "D",
+        "text": "बीटा प्रथम — वारंगल"
+      }
+    ],
+    "options_en": [
+      {
+        "id": "A",
+        "text": "Mayurasharman — Banavasi"
+      },
+      {
+        "id": "B",
+        "text": "Kakusthavarma — Kolar"
+      },
+      {
+        "id": "C",
+        "text": "Konganivarman — Talakadu"
+      },
+      {
+        "id": "D",
+        "text": "Beta I — Warangal"
+      }
+    ],
+    "correct": "A",
+    "explanation_hi": "कदम्ब वंश की स्थापना मयूरशर्मन ने की थी और राजधानी 'बनवासी' थी।",
+    "explanation_en": "Mayurasharman founded the Kadamba dynasty with capital at Banavasi."
+  },
+  {
+    "id": 110,
+    "type": "Tricky & Negative-Word",
+    "question_hi": "कदम्ब वंश का सबसे प्रसिद्ध शासक कौन था, जिसने अपनी राजधानी बनवासी से कोलार स्थानांतरित की?",
+    "question_en": "Who was the most famous Kadamba ruler who shifted capital from Banavasi to Kolar?",
+    "options_hi": [
+      {
+        "id": "A",
+        "text": "मयूरशर्मन"
+      },
+      {
+        "id": "B",
+        "text": "ककुत्स्थवर्मा (425-450 ई.)"
+      },
+      {
+        "id": "C",
+        "text": "शांतिवर्मा"
+      },
+      {
+        "id": "D",
+        "text": "मृगेशवर्मा"
+      }
+    ],
+    "options_en": [
+      {
+        "id": "A",
+        "text": "Mayurasharman"
+      },
+      {
+        "id": "B",
+        "text": "Kakusthavarma (425-450 AD)"
+      },
+      {
+        "id": "C",
+        "text": "Shantivarma"
+      },
+      {
+        "id": "D",
+        "text": "Mrigeshvarma"
+      }
+    ],
+    "correct": "B",
+    "explanation_hi": "ककुत्स्थवर्मा कदम्ब वंश का सबसे प्रसिद्ध राजा था।",
+    "explanation_en": "Kakusthavarma was the most celebrated Kadamba monarch."
+  },
+  {
+    "id": 111,
+    "type": "Statement Type",
+    "question_hi": "कदम्ब साम्राज्य के प्रशासनिक विभाजन के संदर्भ में क्या सत्य है?",
+    "question_en": "What is true about administrative divisions in Kadamba kingdom?",
+    "options_hi": [
+      {
+        "id": "A",
+        "text": "कदम्ब राज्य 'विषय' में विभाजित था जिसका प्रधान विषयपति होता था।"
+      },
+      {
+        "id": "B",
+        "text": "विषय के नीचे नगर और ग्राम थे। ग्राम का प्रधान 'ग्रामपति' होता था।"
+      },
+      {
+        "id": "C",
+        "text": "प्रत्येक नगर में 'नगरिका' नामक मुखिया होता था।"
+      },
+      {
+        "id": "D",
+        "text": "उपर्युक्त सभी कथन सत्य हैं।"
+      }
+    ],
+    "options_en": [
+      {
+        "id": "A",
+        "text": "Kingdom divided into Vishayas headed by Vishayapati."
+      },
+      {
+        "id": "B",
+        "text": "Under Vishayas were Nagaras and Gramas; village head was Gramapati."
+      },
+      {
+        "id": "C",
+        "text": "City chief was called Nagarika."
+      },
+      {
+        "id": "D",
+        "text": "All of the above statements are true."
+      }
+    ],
+    "correct": "D",
+    "explanation_hi": "कदम्ब प्रशासन के विषय में ये सभी कथन सत्य हैं।",
+    "explanation_en": "All administrative terms are accurate."
+  },
+  {
+    "id": 112,
+    "type": "Tricky & Negative-Word",
+    "question_hi": "कदम्ब साम्राज्य मूलतः किस फसल पर आधारित अर्थव्यवस्था वाला राज्य था और इस काल में किन फसलों की खेती भी विकसित हुई?",
+    "question_en": "Kadamba economy was primarily based on which crop and which new crops developed?",
+    "options_hi": [
+      {
+        "id": "A",
+        "text": "चावल की खेती — कॉफी एवं मिर्च की खेती विकसित हुई"
+      },
+      {
+        "id": "B",
+        "text": "गेहूं की खेती — कपास और नील"
+      },
+      {
+        "id": "C",
+        "text": "मक्का — तंबाकू"
+      },
+      {
+        "id": "D",
+        "text": "जौ — चाय"
+      }
+    ],
+    "options_en": [
+      {
+        "id": "A",
+        "text": "Rice cultivation — Coffee and chili cultivation developed"
+      },
+      {
+        "id": "B",
+        "text": "Wheat — Cotton and indigo"
+      },
+      {
+        "id": "C",
+        "text": "Maize — Tobacco"
+      },
+      {
+        "id": "D",
+        "text": "Barley — Tea"
+      }
+    ],
+    "correct": "A",
+    "explanation_hi": "कदम्ब साम्राज्य चावल पर आधारित था तथा कॉफी व मिर्च की खेती भी विकसित हुई।",
+    "explanation_en": "Rice based economy; coffee and chili cultivation flourished."
+  },
+  {
+    "id": 113,
+    "type": "Statement Type",
+    "question_hi": "पश्चिमी गंग वंश (कर्नाटक) के संदर्भ में निम्नलिखित कथनों पर विचार कीजिए:\n1. संस्थापक कोङ्गणिवर्मन था और प्रारंभिक राजधानी कुवलाल (कोलार) थी।\n2. बाद में राजधानी कावेरी नदी के तट पर स्थित 'तलकाडू' बनी।\n3. 'दत्तकसूत्र' पर प्रसिद्ध टीका लिखने वाला शासक माधव प्रथम था।\n\nउपर्युक्त में से कौन-से सत्य हैं?",
+    "question_en": "Consider statements on Western Ganga dynasty:\n1. Founder Konganivarman, initial capital Kuvalala (Kolar).\n2. Later shifted to Talakadu on Kaveri river.\n3. Madhava I wrote commentary on Dattakasutra.\n\nWhich are true?",
+    "options_hi": [
+      {
+        "id": "A",
+        "text": "केवल 1 और 2"
+      },
+      {
+        "id": "B",
+        "text": "केवल 2 और 3"
+      },
+      {
+        "id": "C",
+        "text": "केवल 1 और 3"
+      },
+      {
+        "id": "D",
+        "text": "1, 2 और 3 (सभी सत्य हैं)"
+      }
+    ],
+    "options_en": [
+      {
+        "id": "A",
+        "text": "Only 1 and 2"
+      },
+      {
+        "id": "B",
+        "text": "Only 2 and 3"
+      },
+      {
+        "id": "C",
+        "text": "Only 1 and 3"
+      },
+      {
+        "id": "D",
+        "text": "1, 2 and 3 (All are true)"
+      }
+    ],
+    "correct": "D",
+    "explanation_hi": "तीनों कथन पूर्णतः सत्य हैं। कोङ्गणिवर्मन संस्थापक, तलकाडू राजधानी और माधव प्रथम ने दत्तकसूत्र पर टीका लिखी।",
+    "explanation_en": "All three statements are verified facts."
+  },
+  {
+    "id": 114,
+    "type": "Tricky & Negative-Word",
+    "question_hi": "कर्नाटक के श्रवणबेलगोला में विंध्यगिरि पहाड़ी पर स्थित 'गोमटेश्वर' (बाहुबली) की विशाल एकाश्म प्रतिमा का निर्माण लगभग 983 ई. में किसने करवाया था?",
+    "question_en": "Who built the colossal monolithic statue of Gomateshwara (Bahubali) at Shravanabelagola around 983 AD?",
+    "options_hi": [
+      {
+        "id": "A",
+        "text": "पश्चिमी गंग वंश के मंत्री चामुंडराय"
+      },
+      {
+        "id": "B",
+        "text": "राजा विष्णुवर्धन"
+      },
+      {
+        "id": "C",
+        "text": "दन्तिदुर्ग"
+      },
+      {
+        "id": "D",
+        "text": "अमोघवर्ष"
+      }
+    ],
+    "options_en": [
+      {
+        "id": "A",
+        "text": "Chamundaraya, minister of Western Gangas"
+      },
+      {
+        "id": "B",
+        "text": "King Vishnuvardhana"
+      },
+      {
+        "id": "C",
+        "text": "Dantidurga"
+      },
+      {
+        "id": "D",
+        "text": "Amoghavarsha"
+      }
+    ],
+    "correct": "A",
+    "explanation_hi": "पश्चिमी गंग वंश के मंत्री चामुंडराय ने 983 ई. में गोमटेश्वर की विशाल मूर्ति बनवाई।",
+    "explanation_en": "Chamundaraya, minister of the Western Gangas, constructed the statue in 983 AD."
+  },
+  {
+    "id": 115,
+    "type": "Statement Type",
+    "question_hi": "श्रवणबेलगोला में गोमटेश्वर प्रतिमा का 'महामस्तकाभिषेक' कितने वर्षों के अंतराल पर आयोजित किया जाता है?",
+    "question_en": "At what interval is the Mahamastakabhisheka ceremony celebrated at Shravanabelagola?",
+    "options_hi": [
+      {
+        "id": "A",
+        "text": "प्रत्येक 5 वर्ष में"
+      },
+      {
+        "id": "B",
+        "text": "प्रत्येक 10 वर्ष में"
+      },
+      {
+        "id": "C",
+        "text": "प्रत्येक 12 वर्ष में"
+      },
+      {
+        "id": "D",
+        "text": "प्रत्येक 14 वर्ष में"
+      }
+    ],
+    "options_en": [
+      {
+        "id": "A",
+        "text": "Every 5 years"
+      },
+      {
+        "id": "B",
+        "text": "Every 10 years"
+      },
+      {
+        "id": "C",
+        "text": "Every 12 years"
+      },
+      {
+        "id": "D",
+        "text": "Every 14 years"
+      }
+    ],
+    "correct": "C",
+    "explanation_hi": "गोमटेश्वर का महामस्तकाभिषेक हर 12 साल में आयोजित होता है, जिसमें दूध, केसर, घी व शहद से अभिषेक होता है।",
+    "explanation_en": "Mahamastakabhisheka is held every 12 years."
+  },
+  {
+    "id": 116,
+    "type": "Tricky & Negative-Word",
+    "question_hi": "ओडिशा के प्रसिद्ध 'कोणार्क सूर्य मंदिर' (ब्लैक पैगोडा) का निर्माण किस राजवंश के शासकों द्वारा करवाया गया था?",
+    "question_en": "Which dynasty built the famous Sun Temple of Konark (Black Pagoda) in Odisha?",
+    "options_hi": [
+      {
+        "id": "A",
+        "text": "पश्चिमी गंग वंश"
+      },
+      {
+        "id": "B",
+        "text": "पूर्वी गंग वंश"
+      },
+      {
+        "id": "C",
+        "text": "काकतीय वंश"
+      },
+      {
+        "id": "D",
+        "text": "पल्लव वंश"
+      }
+    ],
+    "options_en": [
+      {
+        "id": "A",
+        "text": "Western Ganga"
+      },
+      {
+        "id": "B",
+        "text": "Eastern Ganga"
+      },
+      {
+        "id": "C",
+        "text": "Kakatiya"
+      },
+      {
+        "id": "D",
+        "text": "Pallava"
+      }
+    ],
+    "correct": "B",
+    "explanation_hi": "कोणार्क के सूर्य मंदिर का निर्माण पूर्वी गंग वंश (नरसिंहदेव प्रथम) के शासकों द्वारा कराया गया।",
+    "explanation_en": "Konark Sun Temple was constructed by Eastern Ganga rulers."
+  },
+  {
+    "id": 117,
+    "type": "Statement Type",
+    "question_hi": "पूर्वी गंग वंश के संस्थापक इंद्रवर्मन प्रथम ने कौन-सी विशिष्ट उपाधि धारण की थी?",
+    "question_en": "Which distinct title was assumed by Eastern Ganga founder Indravarman I?",
+    "options_hi": [
+      {
+        "id": "A",
+        "text": "त्रिकलिंगाधिपति"
+      },
+      {
+        "id": "B",
+        "text": "दक्षिणापथेश्वर"
+      },
+      {
+        "id": "C",
+        "text": "सकलोत्तरपथनाथ"
+      },
+      {
+        "id": "D",
+        "text": "वातापिकोण्ड"
+      }
+    ],
+    "options_en": [
+      {
+        "id": "A",
+        "text": "Trikalingadhipati"
+      },
+      {
+        "id": "B",
+        "text": "Dakshinapatheshvara"
+      },
+      {
+        "id": "C",
+        "text": "Sakalottarapathnatha"
+      },
+      {
+        "id": "D",
+        "text": "Vatapikonda"
+      }
+    ],
+    "correct": "A",
+    "explanation_hi": "पूर्वी गंग वंश का संस्थापक इंद्रवर्मन प्रथम अपने को 'त्रिकलिंगाधिपति' कहता था।",
+    "explanation_en": "Indravarman I assumed the title Trikalingadhipati."
+  },
+  {
+    "id": 118,
+    "type": "Tricky & Negative-Word",
+    "question_hi": "काकतीय राजवंश की स्थापना किसने की थी और इसकी प्रारंभिक राजधानी कहाँ थी?",
+    "question_en": "Who founded the Kakatiya dynasty and where was its initial capital?",
+    "options_hi": [
+      {
+        "id": "A",
+        "text": "बीटा प्रथम — अमकोंड (नलगोंडा, हैदराबाद)"
+      },
+      {
+        "id": "B",
+        "text": "गणपति — वारंगल"
+      },
+      {
+        "id": "C",
+        "text": "प्रतापरुद्र — कल्याणी"
+      },
+      {
+        "id": "D",
+        "text": "रुद्रमादेवी — देवगिरि"
+      }
+    ],
+    "options_en": [
+      {
+        "id": "A",
+        "text": "Beta I — Amakonda"
+      },
+      {
+        "id": "B",
+        "text": "Ganapati — Warangal"
+      },
+      {
+        "id": "C",
+        "text": "Prataparudra — Kalyani"
+      },
+      {
+        "id": "D",
+        "text": "Rudramadevi — Devagiri"
+      }
+    ],
+    "correct": "A",
+    "explanation_hi": "काकतीय वंश का संस्थापक बीटा प्रथम था, राजधानी अमकोंड थी।",
+    "explanation_en": "Beta I founded Kakatiyas with initial capital at Amakonda."
+  },
+  {
+    "id": 119,
+    "type": "Statement Type",
+    "question_hi": "काकतीय वंश की राजधानी अमकोंड से 'वारंगल' स्थानांतरित करने वाला सबसे शक्तिशाली शासक कौन था?",
+    "question_en": "Who shifted the Kakatiya capital from Amakonda to Warangal?",
+    "options_hi": [
+      {
+        "id": "A",
+        "text": "बीटा प्रथम"
+      },
+      {
+        "id": "B",
+        "text": "गणपति"
+      },
+      {
+        "id": "C",
+        "text": "प्रतापरुद्र प्रथम"
+      },
+      {
+        "id": "D",
+        "text": "महादेव"
+      }
+    ],
+    "options_en": [
+      {
+        "id": "A",
+        "text": "Beta I"
+      },
+      {
+        "id": "B",
+        "text": "Ganapati"
+      },
+      {
+        "id": "C",
+        "text": "Prataparudra I"
+      },
+      {
+        "id": "D",
+        "text": "Mahadeva"
+      }
+    ],
+    "correct": "B",
+    "explanation_hi": "काकतीय वंश का सबसे शक्तिशाली शासक गणपति था, जिसने राजधानी वारंगल स्थानांतरित की।",
+    "explanation_en": "King Ganapati shifted capital to Warangal."
+  },
+  {
+    "id": 120,
+    "type": "Assertion-Reason",
+    "question_hi": "कथन (A): काकतीय शासिका रुद्रमादेवी ने पुरुषों की भांति वेशभूषा धारण कर शासन का संचालन किया।\nकारण (R): रुद्रमादेवी राजा गणपति की पुत्री थी और उसने 'रुद्रदेव महाराज' का नाम ग्रहण करके लगभग 35 वर्षों तक शासन किया।",
+    "question_en": "Assertion (A): Kakatiya queen Rudramadevi assumed male attire and ruled effectively.\nReason (R): She was the daughter of Ganapati and ruled for nearly 35 years adopting the name 'Rudradeva Maharaja'.",
+    "options_hi": [
+      {
+        "id": "A",
+        "text": "(A) और (R) दोनों सही हैं और (R), (A) की सही व्याख्या है।"
+      },
+      {
+        "id": "B",
+        "text": "(A) और (R) दोनों सही हैं लेकिन (R), (A) की सही व्याख्या नहीं है।"
+      },
+      {
+        "id": "C",
+        "text": "(A) सही है लेकिन (R) गलत है।"
+      },
+      {
+        "id": "D",
+        "text": "(A) गलत है लेकिन (R) सही है।"
+      }
+    ],
+    "options_en": [
+      {
+        "id": "A",
+        "text": "Both (A) and (R) are correct and (R) is the correct explanation of (A)."
+      },
+      {
+        "id": "B",
+        "text": "Both (A) and (R) are correct but (R) is NOT the correct explanation."
+      },
+      {
+        "id": "C",
+        "text": "(A) is true but (R) is false."
+      },
+      {
+        "id": "D",
+        "text": "(A) is false but (R) is true."
+      }
+    ],
+    "correct": "A",
+    "explanation_hi": "रुद्रमादेवी गणपति की पुत्री थीं जिन्होंने 'रुद्रदेव महाराज' बनकर 35 वर्ष शासन किया। दोनों सही हैं।",
+    "explanation_en": "Both statements are true and (R) correctly explains (A)."
+  },
+  {
+    "id": 121,
+    "type": "Matching / Mis-matching",
+    "question_hi": "काकतीय वंश की प्रसिद्ध सिक्कों पर अंकित उपाधियों के संदर्भ में सही युग्म चुनिए:\n1. रायगजकेसरी — रुद्रमादेवी (पिता गणपति से प्राप्त)\n2. दयागजकेसरी — राजा प्रतापरुद्र\n\nसही विकल्प चुनें:",
+    "question_en": "Choose correct match regarding Kakatiya royal titles inscribed on coins:\n1. Rayagajakesari — Rudramadevi\n2. Dayagajakesari — Prataparudra\n\nChoose correct option:",
+    "options_hi": [
+      {
+        "id": "A",
+        "text": "केवल 1"
+      },
+      {
+        "id": "B",
+        "text": "केवल 2"
+      },
+      {
+        "id": "C",
+        "text": "1 और 2 दोनों सत्य हैं"
+      },
+      {
+        "id": "D",
+        "text": "दोनों गलत हैं"
+      }
+    ],
+    "options_en": [
+      {
+        "id": "A",
+        "text": "Only 1"
+      },
+      {
+        "id": "B",
+        "text": "Only 2"
+      },
+      {
+        "id": "C",
+        "text": "Both 1 and 2 are true"
+      },
+      {
+        "id": "D",
+        "text": "Both are false"
+      }
+    ],
+    "correct": "C",
+    "explanation_hi": "दोनों उपाधियां सिक्कों पर अंकित थीं: रायगजकेसरी रुद्रमादेवी की और दयागजकेसरी प्रतापरुद्र की थी।",
+    "explanation_en": "Both titles are authentic and inscribed on Kakatiya coinage."
+  },
+  {
+    "id": 122,
+    "type": "Tricky & Negative-Word",
+    "question_hi": "काकतीय राजवंश का अंतिम शासक कौन था?",
+    "question_en": "Who was the last ruler of the Kakatiya dynasty?",
+    "options_hi": [
+      {
+        "id": "A",
+        "text": "गणपति"
+      },
+      {
+        "id": "B",
+        "text": "प्रतापरुद्र (1295-1323 ई.)"
+      },
+      {
+        "id": "C",
+        "text": "रुद्रमादेवी"
+      },
+      {
+        "id": "D",
+        "text": "बीटा द्वितीय"
+      }
+    ],
+    "options_en": [
+      {
+        "id": "A",
+        "text": "Ganapati"
+      },
+      {
+        "id": "B",
+        "text": "Prataparudra (1295-1323 AD)"
+      },
+      {
+        "id": "C",
+        "text": "Rudramadevi"
+      },
+      {
+        "id": "D",
+        "text": "Beta II"
+      }
+    ],
+    "correct": "B",
+    "explanation_hi": "काकतीय वंश का अंतिम शासक प्रतापरुद्र (1295-1323 ई.) था।",
+    "explanation_en": "Prataparudra was the final monarch of Kakatiyas."
+  },
+  {
+    "id": 123,
+    "type": "Statement Type",
+    "question_hi": "कवि पेरुन्देवनार ने नन्दिवर्मन तृतीय के शासनकाल में महाभारत का किस भाषा में 'भारतवेणवा' नाम से अनुवाद किया?",
+    "question_en": "In which language did poet Perundevanar compose 'Bharatavenva' based on Mahabharata?",
+    "options_hi": [
+      {
+        "id": "A",
+        "text": "कन्नड़"
+      },
+      {
+        "id": "B",
+        "text": "तमिल"
+      },
+      {
+        "id": "C",
+        "text": "तेलुगु"
+      },
+      {
+        "id": "D",
+        "text": "संस्कृत"
+      }
+    ],
+    "options_en": [
+      {
+        "id": "A",
+        "text": "Kannada"
+      },
+      {
+        "id": "B",
+        "text": "Tamil"
+      },
+      {
+        "id": "C",
+        "text": "Telugu"
+      },
+      {
+        "id": "D",
+        "text": "Sanskrit"
+      }
+    ],
+    "correct": "B",
+    "explanation_hi": "पेरुन्देवनार ने तमिल भाषा में 'भारतवेणवा' की रचना की।",
+    "explanation_en": "Perundevanar composed Bharatavenva in Tamil."
+  },
+  {
+    "id": 124,
+    "type": "Assertion-Reason",
+    "question_hi": "कथन (A): दक्षिण भारत के राजवंशों ने भारतीय संस्कृति और कला को सुदूर दक्षिण-पूर्व एशिया तक प्रसारित किया।\nकारण (R): चोल शासकों ने शक्तिशाली नौसेना के बल पर श्रीविजय साम्राज्य और मलय प्रायद्वीप पर सफल नौसैनिक अभियान चलाए।",
+    "question_en": "Assertion (A): South Indian dynasties disseminated Indian culture across Southeast Asia.\nReason (R): Chola monarchs led maritime expeditions to Srivijaya Empire and Malaya peninsula with their navy.",
+    "options_hi": [
+      {
+        "id": "A",
+        "text": "(A) और (R) दोनों सही हैं और (R), (A) की सही व्याख्या है।"
+      },
+      {
+        "id": "B",
+        "text": "(A) और (R) दोनों सही हैं लेकिन (R), (A) की सही व्याख्या नहीं है।"
+      },
+      {
+        "id": "C",
+        "text": "(A) सही है लेकिन (R) गलत है।"
+      },
+      {
+        "id": "D",
+        "text": "(A) गलत है लेकिन (R) सही है।"
+      }
+    ],
+    "options_en": [
+      {
+        "id": "A",
+        "text": "Both (A) and (R) are correct and (R) is the correct explanation of (A)."
+      },
+      {
+        "id": "B",
+        "text": "Both (A) and (R) are correct but (R) is NOT the correct explanation."
+      },
+      {
+        "id": "C",
+        "text": "(A) is true but (R) is false."
+      },
+      {
+        "id": "D",
+        "text": "(A) is false but (R) is true."
+      }
+    ],
+    "correct": "A",
+    "explanation_hi": "नौसैनिक शक्ति के माध्यम से दक्षिण-पूर्व एशिया में व्यापारिक व सांस्कृतिक प्रसार हुआ। दोनों सत्य हैं।",
+    "explanation_en": "Both statements are true and (R) explains (A)."
+  },
+  {
+    "id": 125,
+    "type": "Statement Type",
+    "question_hi": "पश्चिमी गंग वंश का पतन 1004 ई. में किस साम्राज्य के भीषण आक्रमण के परिणामस्वरूप हुआ था?",
+    "question_en": "Western Ganga dynasty collapsed in 1004 AD following invasion by which empire?",
+    "options_hi": [
+      {
+        "id": "A",
+        "text": "चोल साम्राज्य"
+      },
+      {
+        "id": "B",
+        "text": "पल्लव साम्राज्य"
+      },
+      {
+        "id": "C",
+        "text": "कल्याणी चालुक्य"
+      },
+      {
+        "id": "D",
+        "text": "पाण्ड्य साम्राज्य"
+      }
+    ],
+    "options_en": [
+      {
+        "id": "A",
+        "text": "Chola Empire"
+      },
+      {
+        "id": "B",
+        "text": "Pallava Empire"
+      },
+      {
+        "id": "C",
+        "text": "Kalyani Chalukyas"
+      },
+      {
+        "id": "D",
+        "text": "Pandya Empire"
+      }
+    ],
+    "correct": "A",
+    "explanation_hi": "चोलों के आक्रमण के बाद 1004 ई. में पश्चिमी गंग वंश का पतन हो गया।",
+    "explanation_en": "Western Gangas fell in 1004 AD following conquest by the Cholas."
+  }
+];
+
+        let currentIdx = 0;
+        let currentLang = 'hi';
+        let userAnswers = {};
+        let reviewMarks = {};
+        let timerSeconds = 120 * 60;
+        let timerInterval = null;
+        let isSubmitted = false;
+
+        const fullScreenGate = document.getElementById('fullScreenGate');
+        const startTestBtn = document.getElementById('startTestBtn');
+        const langToggleBtn = document.getElementById('langToggleBtn');
+        const langDisplay = document.getElementById('langDisplay');
+        const liveTimer = document.getElementById('liveTimer');
+        const submitTestBtnTop = document.getElementById('submitTestBtnTop');
+        const qNumberHeading = document.getElementById('qNumberHeading');
+        const questionContainer = document.getElementById('questionContainer');
+        const optionsContainer = document.getElementById('optionsContainer');
+        const instantAnswerBox = document.getElementById('instantAnswerBox');
+        const instantFeedbackStatus = document.getElementById('instantFeedbackStatus');
+        const instantExplanationText = document.getElementById('instantExplanationText');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+        const clearBtn = document.getElementById('clearBtn');
+        const reviewBtn = document.getElementById('reviewBtn');
+        const scorecardModal = document.getElementById('scorecardModal');
+        const reviewSolutionsBtn = document.getElementById('reviewSolutionsBtn');
+
+        // Auto Full-Screen Mandatory Gate
+        startTestBtn.addEventListener('click', () => {
+            const el = document.documentElement;
+            if (el.requestFullscreen) { el.requestFullscreen().catch(() => {}); }
+            else if (el.mozRequestFullScreen) { el.mozRequestFullScreen(); }
+            else if (el.webkitRequestFullscreen) { el.webkitRequestFullscreen(); }
+            else if (el.msRequestFullscreen) { el.msRequestFullscreen(); }
+            fullScreenGate.classList.add('hidden');
+            startTimer();
+            renderQuestion();
+        });
+
+        function startTimer() {
+            timerInterval = setInterval(() => {
+                if (timerSeconds <= 0) {
+                    clearInterval(timerInterval);
+                    finalizeTest();
+                    return;
+                }
+                timerSeconds--;
+                const hrs = Math.floor(timerSeconds / 3600);
+                const mins = Math.floor((timerSeconds % 3600) / 60);
+                const secs = timerSeconds % 60;
+                liveTimer.textContent = `${String(mins + hrs * 60).padStart(2, '0')}:${String(secs).padStart(2, '0')}`;
+            }, 1000);
+        }
+
+        langToggleBtn.addEventListener('click', () => {
+            currentLang = currentLang === 'hi' ? 'en' : 'hi';
+            langDisplay.textContent = currentLang === 'hi' ? 'Switch to English' : 'Switch to हिंदी';
+            renderQuestion();
+        });
+
+        function renderQuestion() {
+            const q = questionsData[currentIdx];
+            qNumberHeading.textContent = currentLang === 'hi' 
+                ? `प्रश्न ${String(currentIdx + 1).padStart(3, '0')} / ${questionsData.length} [${q.type}]` 
+                : `Question ${String(currentIdx + 1).padStart(3, '0')} of ${questionsData.length} [${q.type}]`;
+
+            questionContainer.textContent = currentLang === 'hi' ? q.question_hi : q.question_en;
+
+            const currentOptions = currentLang === 'hi' ? q.options_hi : q.options_en;
+            optionsContainer.innerHTML = '';
+
+            currentOptions.forEach((opt) => {
+                const isSelected = userAnswers[currentIdx] === opt.id;
+                const optionBtn = document.createElement('div');
+                optionBtn.className = `p-3.5 md:p-4 rounded-xl border-2 transition-all cursor-pointer flex items-center justify-between gap-3 text-sm md:text-base font-medium ${
+                    isSelected 
+                        ? 'border-indigo-600 bg-indigo-50/60 text-indigo-900 shadow-sm' 
+                        : 'border-slate-200 bg-slate-50 hover:bg-slate-100/80 text-slate-700'
+                }`;
+
+                optionBtn.innerHTML = `
+                    <div class="flex items-center gap-3">
+                        <span class="w-7 h-7 rounded-lg flex items-center justify-center font-bold text-xs ${
+                            isSelected ? 'bg-indigo-600 text-white' : 'bg-slate-200 text-slate-700'
+                        }">${opt.id}</span>
+                        <span>${opt.text}</span>
+                    </div>
+                    <div>
+                        <i class="${isSelected ? 'fa-solid fa-circle-check text-indigo-600 text-lg' : 'fa-regular fa-circle text-slate-300 text-lg'}"></i>
+                    </div>
+                `;
+
+                optionBtn.addEventListener('click', () => {
+                    userAnswers[currentIdx] = opt.id;
+                    renderQuestion();
+                });
+
+                optionsContainer.appendChild(optionBtn);
+            });
+
+            // Instant Verification & Explanation Handler
+            if (userAnswers[currentIdx]) {
+                const selected = userAnswers[currentIdx];
+                const isCorrect = selected === q.correct;
+                instantAnswerBox.classList.remove('hidden');
+
+                if (isCorrect) {
+                    instantFeedbackStatus.className = "font-bold text-sm text-emerald-600 flex items-center gap-1.5";
+                    instantFeedbackStatus.innerHTML = `<i class="fa-solid fa-circle-check"></i> ${currentLang === 'hi' ? 'सही उत्तर (+2.00 अंक)' : 'Correct Answer (+2.00 Marks)'}`;
+                } else {
+                    instantFeedbackStatus.className = "font-bold text-sm text-rose-600 flex items-center gap-1.5";
+                    instantFeedbackStatus.innerHTML = `<i class="fa-solid fa-circle-xmark"></i> ${currentLang === 'hi' ? `गलत उत्तर (-0.20 अंक) | सही विकल्प: (${q.correct})` : `Incorrect (-0.20 Negative) | Correct Option: (${q.correct})`}`;
+                }
+
+                instantExplanationText.textContent = currentLang === 'hi' ? q.explanation_hi : q.explanation_en;
+            } else {
+                instantAnswerBox.classList.add('hidden');
+            }
+
+            if (reviewMarks[currentIdx]) {
+                reviewBtn.classList.replace('bg-amber-100', 'bg-amber-500');
+                reviewBtn.classList.replace('text-amber-800', 'text-white');
+            } else {
+                reviewBtn.classList.replace('bg-amber-500', 'bg-amber-100');
+                reviewBtn.classList.replace('text-white', 'text-amber-800');
+            }
+
+            prevBtn.disabled = currentIdx === 0;
+            prevBtn.classList.toggle('opacity-50', currentIdx === 0);
+            prevBtn.classList.toggle('cursor-not-allowed', currentIdx === 0);
+        }
+
+        prevBtn.addEventListener('click', () => {
+            if (currentIdx > 0) {
+                currentIdx--;
+                renderQuestion();
+            }
+        });
+
+        nextBtn.addEventListener('click', () => {
+            if (currentIdx < questionsData.length - 1) {
+                currentIdx++;
+                renderQuestion();
+            }
+        });
+
+        clearBtn.addEventListener('click', () => {
+            delete userAnswers[currentIdx];
+            renderQuestion();
+        });
+
+        reviewBtn.addEventListener('click', () => {
+            reviewMarks[currentIdx] = !reviewMarks[currentIdx];
+            renderQuestion();
+        });
+
+        submitTestBtnTop.addEventListener('click', () => {
+            if (confirm(currentLang === 'hi' ? "क्या आप वाकई टेस्ट सबमिट करना चाहते हैं?" : "Are you sure you want to submit the test?")) {
+                finalizeTest();
+            }
+        });
+
+        function finalizeTest() {
+            clearInterval(timerInterval);
+            isSubmitted = true;
+
+            let correctCount = 0;
+            let wrongCount = 0;
+
+            questionsData.forEach((q, idx) => {
+                if (userAnswers[idx]) {
+                    if (userAnswers[idx] === q.correct) {
+                        correctCount++;
+                    } else {
+                        wrongCount++;
+                    }
+                }
+            });
+
+            const totalAttempted = correctCount + wrongCount;
+            const marks = (correctCount * 2.0) - (wrongCount * 0.20);
+            const accuracy = totalAttempted > 0 ? ((correctCount / totalAttempted) * 100).toFixed(1) : 0;
+
+            document.getElementById('modalScore').textContent = marks.toFixed(2);
+            document.getElementById('modalCorrect').textContent = correctCount;
+            document.getElementById('modalWrong').textContent = wrongCount;
+            document.getElementById('modalAccuracy').textContent = `${accuracy}%`;
+
+            scorecardModal.classList.remove('hidden');
+        }
+
+        reviewSolutionsBtn.addEventListener('click', () => {
+            scorecardModal.classList.add('hidden');
+            currentIdx = 0;
+            renderQuestion();
+        });
+    </script>
+</body>
+</html>
