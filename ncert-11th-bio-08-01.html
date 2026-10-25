@@ -1,0 +1,2491 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Gyanverse CBT - NCERT Biology Complete Mega Test (8.1 to 8.5.2)</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body { -webkit-tap-highlight-color: transparent; }
+        .touch-action-manipulation { touch-action: manipulation; }
+    </style>
+</head>
+<body class="bg-slate-100 text-slate-800 font-sans antialiased select-none min-h-screen flex flex-col justify-between">
+
+    <!-- FULLSCREEN GATE SCREEN (Mandatory Gate) -->
+    <div id="start-screen" class="fixed inset-0 z-50 bg-slate-900 flex items-center justify-center p-4">
+        <div class="max-w-md w-full bg-white rounded-2xl shadow-2xl p-6 text-center border-t-4 border-indigo-600">
+            <div class="w-16 h-16 bg-indigo-100 text-indigo-600 rounded-full flex items-center justify-center mx-auto mb-4 text-2xl font-bold">
+                <i class="fa-solid fa-dna"></i>
+            </div>
+            <h1 class="text-2xl font-black text-slate-900 tracking-tight mb-1">GYANVERSE</h1>
+            <p class="text-xs font-semibold uppercase tracking-wider text-indigo-600 mb-4">NCERT Mega Mock Test (Class 11 - Chapter 8)</p>
+            
+            <div class="bg-slate-50 border border-slate-200 rounded-xl p-4 text-left text-xs text-slate-600 space-y-2 mb-6">
+                <p><strong>Topic Covered:</strong> Unit 3 Intro to Section 8.5.2 (Cell Theory, Prokaryotes, Plasma Membrane & Cell Wall)</p>
+                <p><strong>Total Questions:</strong> 85 Master MCQs (Statement, A-R, Matching, Tricky)</p>
+                <p><strong>Marking Pattern:</strong> Correct (+2.00) | Incorrect (-0.20)</p>
+                <p><strong>Time Limit:</strong> 120 Minutes (Live Countdown)</p>
+                <p><strong>Telegram Channel:</strong> <a href="https://t.me/GYANVERSET" target="_blank" class="text-indigo-600 font-bold underline">@GYANVERSET</a></p>
+            </div>
+
+            <button onclick="startExamFullScreen()" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3.5 px-4 rounded-xl shadow-lg shadow-indigo-200 transition-all active:scale-95 text-sm uppercase tracking-wider flex items-center justify-center gap-2">
+                <i class="fa-solid fa-expand"></i>
+                Start Test (Auto Full Screen)
+            </button>
+        </div>
+    </div>
+
+    <!-- MAIN CBT TEST INTERFACE -->
+    <div id="exam-screen" class="hidden flex-1 flex flex-col">
+        <!-- TOP APP BAR -->
+        <header class="bg-white border-b border-slate-200 px-4 py-3 sticky top-0 z-30 shadow-sm flex items-center justify-between">
+            <div class="flex items-center gap-2">
+                <span class="font-extrabold text-indigo-600 text-lg tracking-wide">GYANVERSE</span>
+                <button id="lang-btn" onclick="toggleLanguage()" class="bg-slate-100 text-slate-700 border border-slate-300 text-xs px-2.5 py-1 rounded font-bold hover:bg-slate-200">
+                    HI / EN
+                </button>
+            </div>
+
+            <div class="flex items-center gap-3">
+                <!-- LIVE TIMER -->
+                <div class="flex items-center gap-1.5 bg-red-50 text-red-600 px-3 py-1.5 rounded-lg border border-red-200 font-mono font-bold text-sm">
+                    <i class="fa-regular fa-clock"></i>
+                    <span id="timer-display">120:00</span>
+                </div>
+                <!-- SUBMIT TEST BUTTON -->
+                <button onclick="confirmSubmitTest()" class="bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold px-3 py-2 rounded-lg shadow uppercase transition-all">
+                    Submit
+                </button>
+            </div>
+        </header>
+
+        <!-- QUESTION CONTAINER (Full-width clean mobile layout, no side palette) -->
+        <main class="w-full max-w-3xl mx-auto p-4 flex-1 flex flex-col justify-between">
+            <div>
+                <!-- Question Status Bar -->
+                <div class="flex items-center justify-between text-xs text-slate-500 font-semibold mb-3">
+                    <span class="bg-indigo-50 text-indigo-700 border border-indigo-200 px-2.5 py-1 rounded-md font-bold">
+                        Question <span id="q-current-num">1</span> of <span id="q-total-num">85</span>
+                    </span>
+                    <span id="q-review-badge" class="hidden bg-amber-100 text-amber-700 border border-amber-300 px-2 py-0.5 rounded text-[11px] font-bold">
+                        Marked For Review
+                    </span>
+                </div>
+
+                <!-- Question Text Box -->
+                <div class="bg-white border border-slate-200 rounded-2xl p-4 sm:p-6 shadow-sm mb-4">
+                    <div id="question-text" class="text-slate-900 text-sm sm:text-base font-medium leading-relaxed mb-4">
+                        <!-- Dynamic Question Text -->
+                    </div>
+
+                    <!-- Options Container -->
+                    <div id="options-container" class="space-y-2.5">
+                        <!-- Dynamic Options will render here -->
+                    </div>
+
+                    <!-- Watermark Tag -->
+                    <div class="mt-4 pt-2 border-t border-dashed border-slate-200 text-right text-[11px] font-bold text-slate-400">
+                        @GYANVERSET
+                    </div>
+                </div>
+
+                <!-- INSTANT ANSWER & DETAILED EXPLANATION CARD (Visible on option select) -->
+                <div id="instant-solution-box" class="hidden bg-emerald-50 border border-emerald-300 rounded-2xl p-4 mb-4 text-xs sm:text-sm text-emerald-950">
+                    <div class="font-bold flex items-center gap-1.5 mb-1.5 text-emerald-800">
+                        <i class="fa-solid fa-circle-check"></i>
+                        <span>NCERT Line-by-Line Explanation:</span>
+                    </div>
+                    <div id="instant-solution-text" class="leading-relaxed text-slate-700"></div>
+                </div>
+            </div>
+
+            <!-- ACTION CONTROLS (Positioned directly below the question/options area for easy mobile reach) -->
+            <div class="grid grid-cols-4 gap-2 pt-2 pb-6">
+                <button onclick="prevQuestion()" id="prev-btn" class="bg-slate-200 text-slate-700 font-bold py-3 px-2 rounded-xl text-xs active:bg-slate-300 disabled:opacity-40">
+                    <i class="fa-solid fa-angle-left mr-1"></i> Prev
+                </button>
+                <button onclick="clearCurrentResponse()" class="bg-rose-50 text-rose-600 border border-rose-200 font-bold py-3 px-2 rounded-xl text-xs active:bg-rose-100">
+                    Clear
+                </button>
+                <button onclick="toggleMarkForReview()" id="review-btn" class="bg-amber-50 text-amber-700 border border-amber-300 font-bold py-3 px-2 rounded-xl text-xs active:bg-amber-100">
+                    Review
+                </button>
+                <button onclick="nextQuestion()" id="next-btn" class="bg-indigo-600 text-white font-bold py-3 px-2 rounded-xl text-xs active:bg-indigo-700 shadow-md">
+                    Next <i class="fa-solid fa-angle-right ml-1"></i>
+                </button>
+            </div>
+        </main>
+    </div>
+
+    <!-- SCORECARD MODAL -->
+    <div id="scorecard-modal" class="fixed inset-0 z-50 bg-slate-900/80 backdrop-blur-sm hidden flex items-center justify-center p-4">
+        <div class="max-w-md w-full bg-white rounded-2xl p-6 text-center shadow-2xl border border-slate-200">
+            <h2 class="text-xl font-black text-slate-900 mb-1">CBT Scorecard</h2>
+            <p class="text-xs text-slate-500 mb-4">NCERT Chapter 8 Mega Test (85 Questions)</p>
+
+            <div class="grid grid-cols-2 gap-3 mb-6">
+                <div class="bg-slate-50 p-3 rounded-xl border border-slate-200">
+                    <span class="block text-xs font-semibold text-slate-500">Total Score</span>
+                    <span id="score-marks" class="text-xl font-black text-indigo-600">0.00</span>
+                </div>
+                <div class="bg-slate-50 p-3 rounded-xl border border-slate-200">
+                    <span class="block text-xs font-semibold text-slate-500">Accuracy</span>
+                    <span id="score-accuracy" class="text-xl font-black text-slate-800">0%</span>
+                </div>
+                <div class="bg-emerald-50 p-3 rounded-xl border border-emerald-200">
+                    <span class="block text-xs font-semibold text-emerald-600">Correct (+2)</span>
+                    <span id="score-correct" class="text-xl font-bold text-emerald-700">0</span>
+                </div>
+                <div class="bg-rose-50 p-3 rounded-xl border border-rose-200">
+                    <span class="block text-xs font-semibold text-rose-600">Incorrect (-0.20)</span>
+                    <span id="score-incorrect" class="text-xl font-bold text-rose-700">0</span>
+                </div>
+            </div>
+
+            <div class="space-y-2">
+                <button onclick="closeModalAndReview()" class="w-full bg-indigo-600 text-white font-bold py-3 rounded-xl text-xs uppercase tracking-wide">
+                    Review All Questions
+                </button>
+                <a href="https://t.me/GYANVERSET" target="_blank" class="block w-full bg-slate-100 text-slate-700 font-bold py-2.5 rounded-xl text-xs border border-slate-300">
+                    Telegram: @GYANVERSET Join Karein
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- SCRIPT WITH COMPLETE 85 NCERT QUESTIONS -->
+    <script id="exam-data-script">
+
+        const questionsData = [
+  {
+    "id": 1,
+    "type": "statement",
+    "hi": {
+      "q": "जीव विज्ञान में 'न्यूनीकरण जीव विज्ञान' (Reductionist Biology) उपागम के संदर्भ में निम्नलिखित कथनों पर विचार कीजिए:<br>1. यह उपागम शरीर क्रियात्मक व व्यावहारिक प्रक्रमों को समझने के लिए भौतिक-रासायनिक विधियों का उपयोग करता है।<br>2. इस उपागम के तहत जीवित ऊतकों में तत्वों एवं यौगिकों का रासायनिक विश्लेषण किया जाता है।<br>3. इसके अंतर्गत परीक्षण हेतु जीवित जीवों के स्थान पर प्रायः कोशिकामुक्त (cell-free) प्रणाली का इस्तेमाल किया जाता है।<br><br>उपरोक्त में से कौन-सा/से कथन <strong>सत्य</strong> है/हैं?",
+      "opts": [
+        "केवल 1 और 2",
+        "केवल 2 और 3",
+        "केवल 1 और 3",
+        "1, 2 और 3 सभी"
+      ],
+      "exp": "एनसीईआरटी यूनिट 3 की प्रस्तावना के अनुसार तीनों कथन सत्य हैं। न्यूनीकरण जीव विज्ञान भौतिक-रसायन उपागम व कोशिकामुक्त प्रणाली का उपयोग कर जीवन के आण्विक आधार को स्पष्ट करता है।"
+    },
+    "en": {
+      "q": "Consider the following statements regarding 'Reductionist Biology':<br>1. It uses physico-chemical approaches to explain physiology and behavioural processes.<br>2. It involves analysis of living tissues for elemental and compound composition.<br>3. It utilizes cell-free systems for in vitro investigations.<br><br>Which of the statements given above is/are <strong>correct</strong>?",
+      "opts": [
+        "1 and 2 only",
+        "2 and 3 only",
+        "1 and 3 only",
+        "All 1, 2 and 3"
+      ],
+      "exp": "All three statements are correct as per NCERT Unit 3 introduction. Reductionist biology explains molecular bases using cell-free physicochemical systems."
+    },
+    "ans": 3
+  },
+  {
+    "id": 2,
+    "type": "ar",
+    "hi": {
+      "q": "<strong>कथन (A):</strong> जी.एन. रामचंद्रन को संरचनात्मक जीव विज्ञान (Structural Biology) के क्षेत्र में सर्वोत्कृष्ट व्यक्तित्व माना जाता है।<br><strong>कारण (R):</strong> उन्होंने वर्ष 1954 में 'नेचर' पत्रिका में कोलेजन की तिहरी कुंडलित संरचना (Triple helical structure) प्रकाशित की थी।",
+      "opts": [
+        "(A) और (R) दोनों सही हैं और (R), (A) की सही व्याख्या है।",
+        "(A) और (R) दोनों सही हैं लेकिन (R), (A) की सही व्याख्या नहीं है।",
+        "(A) सही है लेकिन (R) गलत है।",
+        "(A) गलत है लेकिन (R) सही है।"
+      ],
+      "exp": "(A) और (R) दोनों सही हैं और कारण (R) कथन (A) की सटीक व्याख्या करता है। जी.एन. रामचंद्रन ने कोलेजन की तिहरी कुंडलित संरचना व 'रामचंद्रन प्लॉट' की खोज की।"
+    },
+    "en": {
+      "q": "<strong>Assertion (A):</strong> G.N. Ramachandran was an outstanding figure in the field of structural biology.<br><strong>Reason (R):</strong> He published the triple helical structure of collagen in 'Nature' in 1954.",
+      "opts": [
+        "Both (A) and (R) are true and (R) is the correct explanation of (A).",
+        "Both (A) and (R) are true but (R) is not the correct explanation of (A).",
+        "(A) is true but (R) is false.",
+        "(A) is false but (R) is true."
+      ],
+      "exp": "Both (A) and (R) are true, and (R) is the correct scientific explanation."
+    },
+    "ans": 0
+  },
+  {
+    "id": 3,
+    "type": "matching",
+    "hi": {
+      "q": "जी.एन. रामचंद्रन के जीवन एवं कार्यों के संदर्भ में कौन-सा युग्म <strong>सही सुमेलित नहीं</strong> है?<br><br>1. रामचंद्रन प्लॉट — प्रोटीन की संरचना व बहुलकों का विश्लेषण<br>2. डॉक्टरेट (Ph.D.) — कैम्ब्रिज विश्वविद्यालय (1949)<br>3. प्रभावक वैज्ञानिक — लाइनस पॉलिंग (अल्फा हेलिक्स व बीटा शीट मॉडल)<br>4. मद्रास स्कूल — आण्विक आनुवंशिकी का मद्रास स्कूल",
+      "opts": [
+        "केवल 1",
+        "केवल 2",
+        "केवल 3",
+        "केवल 4"
+      ],
+      "exp": "युग्म 4 गलत है। जी.एन. रामचंद्रन ने 'मद्रास स्कूल ऑफ कन्फॉर्मेशनल एनालिसिस ऑफ बायो-पॉलिमर' (Madras school of conformational analysis of biopolymers) की स्थापना की थी, न कि आण्विक आनुवंशिकी की।"
+    },
+    "en": {
+      "q": "Which of the following pairs is <strong>incorrectly matched</strong> regarding G.N. Ramachandran?<br><br>1. Ramachandran Plot — Analysis of protein conformation<br>2. Doctoral degree — Cambridge University (1949)<br>3. Influential Scientist — Linus Pauling (alpha helix & beta sheet)<br>4. Madras School — Madras School of Molecular Genetics",
+      "opts": [
+        "Only 1",
+        "Only 2",
+        "Only 3",
+        "Only 4"
+      ],
+      "exp": "Pair 4 is incorrect. Ramachandran was the founder of the 'Madras school of conformational analysis of biopolymers'."
+    },
+    "ans": 3
+  },
+  {
+    "id": 4,
+    "type": "tricky",
+    "hi": {
+      "q": "जीवों में रासायनिक प्रक्रियाओं के आण्विक आधार के संबंध में निम्नलिखित में से कौन-सा कथन <strong>गलत</strong> है?<br>(A) सभी जीवित जीवों के शारीरिक व व्यावहारिक प्रक्रमों के लिए कोशिकीय संगठन की अखंडता आवश्यक है।<br>(B) भौतिक-रसायन उपागम से हम यह जान सकते हैं कि जीवित ऊतकों में किस प्रकार के कार्बनिक यौगिक उपस्थित हैं।<br>(C) निर्जीव पदार्थों में भी बिना किसी कोशिका के स्वतंत्र जीवन-यापन की पूर्ण क्षमता पाई जाती है।<br>(D) आण्विक उपागम किसी बीमारी के दौरान प्रकट होने वाले असामान्य प्रक्रमों को स्पष्ट कर सकता है।",
+      "opts": [
+        "(A)",
+        "(B)",
+        "(C)",
+        "(D)"
+      ],
+      "exp": "कथन (C) सर्वथा गलत है। कोशिका के बिना किसी का भी स्वतंत्र जैविक अस्तित्व संभव नहीं है।"
+    },
+    "en": {
+      "q": "Which statement is <strong>incorrect</strong> regarding molecular basis of living processes?<br>(A) Integrity of cellular organization is essential for physiological living phenomena.<br>(B) Physico-chemical approach reveals types of organic compounds in living tissues.<br>(C) Non-living entities can have complete independent living existence without cells.<br>(D) Molecular approach can elucidate abnormal processes occurring during diseases.",
+      "opts": [
+        "(A)",
+        "(B)",
+        "(C)",
+        "(D)"
+      ],
+      "exp": "Statement (C) is false. Anything less than a complete structure of a cell does not ensure independent living."
+    },
+    "ans": 2
+  },
+  {
+    "id": 5,
+    "type": "statement",
+    "hi": {
+      "q": "जी.एन. रामचंद्रन के संदर्भ में विचार करें:<br>1. उनका जन्म 1922 में कोचीन के निकट हुआ था।<br>2. उनके पिता स्थानीय कॉलेज में गणित के प्रोफेसर थे।<br>3. उन्होंने मद्रास विश्वविद्यालय से भौतिकशास्त्र में बीएससी ऑनर्स में सर्वोच्च स्थान प्राप्त किया था।<br><br>सत्य कथन चुनें:",
+      "opts": [
+        "केवल 1 और 2",
+        "केवल 2 और 3",
+        "केवल 1 और 3",
+        "1, 2 और 3 सभी"
+      ],
+      "exp": "एनसीईआरटी जीवन परिचय के अनुसार तीनों कथन पूर्णतः सत्य हैं।"
+    },
+    "en": {
+      "q": "Consider the following regarding G.N. Ramachandran:<br>1. He was born in 1922 near Cochin.<br>2. His father was a professor of mathematics.<br>3. He graduated with top standing in B.Sc. (Hons) Physics from Madras University.<br><br>Choose the correct option:",
+      "opts": [
+        "1 and 2 only",
+        "2 and 3 only",
+        "1 and 3 only",
+        "All 1, 2 and 3"
+      ],
+      "exp": "All statements 1, 2, and 3 are correct as per NCERT Unit 3 introductory biography."
+    },
+    "ans": 3
+  },
+  {
+    "id": 6,
+    "type": "statement",
+    "hi": {
+      "q": "कोशिकीय जीवधारियों के 'स्वतंत्र अस्तित्व' के संबंध में कौन-से लक्षण अनिवार्य हैं?<br>1. स्वतंत्र अस्तित्व यापन करने की क्षमता।<br>2. जीवन के सभी आवश्यक कार्य करने में सक्षमता।<br>3. केवल बहुकोशिकीय स्तर पर ही जीवन संभव होना।<br><br>सही विकल्प का चुनाव कीजिए:",
+      "opts": [
+        "केवल 1 और 2",
+        "केवल 2 और 3",
+        "केवल 1 और 3",
+        "1, 2 और 3"
+      ],
+      "exp": "कथन 3 गलत है क्योंकि एककोशिकीय जीव भी स्वतंत्र अस्तित्व यापन और सभी आवश्यक कार्य करने में सक्षम होते हैं। अतः केवल 1 और 2 सही हैं।"
+    },
+    "en": {
+      "q": "Which features are fundamental to cellular organisms ensuring independent life?<br>1. Independent existence.<br>2. Capacity to perform essential functions of life.<br>3. Life is possible only at multicellular level.<br><br>Select the correct answer:",
+      "opts": [
+        "1 and 2 only",
+        "2 and 3 only",
+        "1 and 3 only",
+        "All 1, 2 and 3"
+      ],
+      "exp": "Statement 3 is incorrect because unicellular organisms are capable of independent existence and performing all essential functions of life."
+    },
+    "ans": 0
+  },
+  {
+    "id": 7,
+    "type": "ar",
+    "hi": {
+      "q": "<strong>कथन (A):</strong> कोशिका ही सभी जीवों की मूलभूत संरचनात्मक एवं क्रियात्मक इकाई है।<br><strong>कारण (R):</strong> कोशिका के संगठन से कम किसी भी रचना का कोई स्वतंत्र जैविक अस्तित्व संभव नहीं हो सकता।",
+      "opts": [
+        "(A) और (R) दोनों सही हैं और (R), (A) की सही व्याख्या है।",
+        "(A) और (R) दोनों सही हैं लेकिन (R), (A) की सही व्याख्या नहीं है।",
+        "(A) सही है लेकिन (R) गलत है।",
+        "(A) गलत है लेकिन (R) सही है।"
+      ],
+      "exp": "(A) और (R) दोनों सही हैं और (R) बिल्कुल सही व्याख्या करता है (NCERT Section 8.1)."
+    },
+    "en": {
+      "q": "<strong>Assertion (A):</strong> Cell is the fundamental structural and functional unit of all living organisms.<br><strong>Reason (R):</strong> Anything less than a complete structure of a cell does not ensure independent living.",
+      "opts": [
+        "Both (A) and (R) are true and (R) is the correct explanation of (A).",
+        "Both (A) and (R) are true but (R) is not the correct explanation of (A).",
+        "(A) is true but (R) is false.",
+        "(A) is false but (R) is true."
+      ],
+      "exp": "Both assertion and reason are true, and reason correctly justifies the assertion."
+    },
+    "ans": 0
+  },
+  {
+    "id": 8,
+    "type": "matching",
+    "hi": {
+      "q": "निम्नलिखित वैज्ञानिकों और उनके द्वारा की गई खोजों का सही मिलान करें:<br><br><strong>स्तंभ-I:</strong><br>P. एन्टोन वॉन लीवेनहॉक<br>Q. रॉबर्ट ब्राउन<br>R. इलेक्ट्रॉन सूक्ष्मदर्शी का विकास<br><br><strong>स्तंभ-II:</strong><br>1. केंद्रक की खोज<br>2. कोशिका की विस्तृत आंतरिक संरचना का अध्ययन<br>3. पहली बार जीवित कोशिका को देखा व वर्णन किया<br><br>सही कूट है:",
+      "opts": [
+        "P-3, Q-1, R-2",
+        "P-1, Q-3, R-2",
+        "P-2, Q-1, R-3",
+        "P-3, Q-2, R-1"
+      ],
+      "exp": "लीवेनहॉक ने पहली बार जीवित कोशिका देखी (P-3), रॉबर्ट ब्राउन ने केंद्रक खोजा (Q-1), इलेक्ट्रॉन सूक्ष्मदर्शी से कोशिका की विस्तृत संरचना संभव हुई (R-2)।"
+    },
+    "en": {
+      "q": "Match scientists/developments with their contributions:<br><br><strong>Column-I:</strong><br>P. Anton Von Leeuwenhoek<br>Q. Robert Brown<br>R. Electron microscope<br><br><strong>Column-II:</strong><br>1. Discovery of nucleus<br>2. Detailed structural analysis of cells<br>3. First saw and described a live cell<br><br>Correct code:",
+      "opts": [
+        "P-3, Q-1, R-2",
+        "P-1, Q-3, R-2",
+        "P-2, Q-1, R-3",
+        "P-3, Q-2, R-1"
+      ],
+      "exp": "P-3, Q-1, R-2 is the exact match according to NCERT 8.1."
+    },
+    "ans": 0
+  },
+  {
+    "id": 9,
+    "type": "tricky",
+    "hi": {
+      "q": "निम्नलिखित में से कौन-सा जीव स्वतंत्र रूप से जीवन के सभी आवश्यक कार्य करने में सक्षम है?<br>(A) एक अकेला अमीबा<br>(B) एक विलगित माइटोकॉन्ड्रिया<br>(C) एक पृथक किया गया राइबोसोम<br>(D) एक पृथक अंतर्द्रव्यी जालिका",
+      "opts": [
+        "(A)",
+        "(B)",
+        "(C)",
+        "(D)"
+      ],
+      "exp": "अमीबा एककोशिकीय पूर्ण जीव है जो स्वतंत्र अस्तित्व यापन और सभी जैविक क्रियाएं कर सकता है। कोई भी कोशिकांग स्वतंत्र जीवन नहीं जी सकता।"
+    },
+    "en": {
+      "q": "Which of the following has an independent existence capable of performing all life functions?<br>(A) A single Amoeba<br>(B) An isolated mitochondrion<br>(C) An isolated ribosome<br>(D) An isolated endoplasmic reticulum",
+      "opts": [
+        "(A)",
+        "(B)",
+        "(C)",
+        "(D)"
+      ],
+      "exp": "Amoeba is a complete unicellular organism. Organelles cannot have independent living existence outside a complete cell."
+    },
+    "ans": 0
+  },
+  {
+    "id": 10,
+    "type": "statement",
+    "hi": {
+      "q": "कोशिका की खोज के ऐतिहासिक क्रम में निम्नलिखित घटनाओं पर विचार कीजिए:<br>1. रॉबर्ट ब्राउन ने केंद्रक की खोज लीवेनहॉक द्वारा जीवित कोशिका देखने के बाद की।<br>2. इलेक्ट्रॉन सूक्ष्मदर्शी के आविष्कार के बाद ही कोशिका की विस्तृत परासंरचना (ultrastructure) का ज्ञान संभव हुआ।<br><br>उपरोक्त में से कौन-सा/से कथन सही है/हैं?",
+      "opts": [
+        "केवल 1",
+        "केवल 2",
+        "1 और 2 दोनों",
+        "न तो 1 न ही 2"
+      ],
+      "exp": "दोनों कथन (1 और 2) एनसीईआरटी सेक्शन 8.1 के अनुसार पूरी तरह सही हैं।"
+    },
+    "en": {
+      "q": "Consider the chronological facts regarding cell biology:<br>1. Robert Brown discovered the nucleus after Anton Von Leeuwenhoek observed live cells.<br>2. Detailed ultrastructure of the cell was revealed only after invention of electron microscope.<br><br>Which statement(s) is/are correct?",
+      "opts": [
+        "1 only",
+        "2 only",
+        "Both 1 and 2",
+        "Neither 1 nor 2"
+      ],
+      "exp": "Both 1 and 2 are strictly correct per NCERT Section 8.1."
+    },
+    "ans": 2
+  },
+  {
+    "id": 11,
+    "type": "statement",
+    "hi": {
+      "q": "मैथीयस स्लाइडेन (Matthias Schleiden) के संदर्भ में निम्नलिखित में से कौन-से कथन <strong>सत्य</strong> हैं?<br>1. वे 1838 में अध्ययन करने वाले एक जर्मन वनस्पति वैज्ञानिक थे।<br>2. उन्होंने पाया कि सभी पौधे विभिन्न प्रकार की कोशिकाओं से मिलकर बने होते हैं।<br>3. उन्होंने बताया कि ये कोशिकाएं पौधों में ऊतकों (tissues) का निर्माण करती हैं।<br>4. उन्होंने पहली बार जीवद्रव्यझिल्ली (Plasma membrane) शब्द का प्रतिपादन किया।<br><br>सही विकल्प चुनें:",
+      "opts": [
+        "केवल 1, 2 और 3",
+        "केवल 2, 3 और 4",
+        "केवल 1 और 4",
+        "1, 2, 3 और 4 सभी"
+      ],
+      "exp": "कथन 4 गलत है क्योंकि जीवद्रव्यझिल्ली का अध्ययन थियोडोर श्वान (1839) ने जंतु कोशिकाओं पर किया था।"
+    },
+    "en": {
+      "q": "Which statements are <strong>true</strong> regarding Matthias Schleiden?<br>1. He was a German botanist who conducted studies in 1838.<br>2. He observed that all plants are composed of different kinds of cells.<br>3. He observed that cells form the tissues of the plant.<br>4. He discovered and coined the term plasma membrane.<br><br>Choose the correct option:",
+      "opts": [
+        "1, 2 and 3 only",
+        "2, 3 and 4 only",
+        "1 and 4 only",
+        "All 1, 2, 3 and 4"
+      ],
+      "exp": "Statement 4 is incorrect; plasma membrane observation was by Schwann in 1839."
+    },
+    "ans": 0
+  },
+  {
+    "id": 12,
+    "type": "statement",
+    "hi": {
+      "q": "थियोडोर श्वान (Theodore Schwann, 1839) के शोध निष्कर्षों के संदर्भ में विचार करें:<br>1. वे एक ब्रिटिश प्राणि वैज्ञानिक (Zoologist) थे।<br>2. उन्होंने पाया कि जंतु कोशिकाओं के बाहर एक पतली परत होती है जिसे आज 'जीवद्रव्यझिल्ली' कहते हैं।<br>3. उन्होंने पादप ऊतकों का भी अध्ययन किया और निष्कर्ष दिया कि कोशिका भित्ति की उपस्थिति पादपों का एक अद्वितीय लक्षण है।<br>4. उन्होंने परिकल्पना दी कि प्राणियों और पादपों का शरीर कोशिकाओं और उनके उत्पादों से बना है।<br><br>सत्य कथन कौन-से हैं?",
+      "opts": [
+        "केवल 1 और 2",
+        "केवल 1, 2 और 3",
+        "केवल 2, 3 और 4",
+        "1, 2, 3 और 4 सभी"
+      ],
+      "exp": "चारों कथन सत्य हैं। श्वान ने जंतु व पादप दोनों का अध्ययन कर यह परिकल्पना प्रस्तुत की थी।"
+    },
+    "en": {
+      "q": "Regarding Theodore Schwann (1839):<br>1. He was a British Zoologist.<br>2. He reported that cells had a thin outer layer today called plasma membrane.<br>3. Based on plant tissue studies, he concluded cell wall is a unique character of plants.<br>4. He proposed bodies of animals and plants are composed of cells and products of cells.<br><br>Which are correct?",
+      "opts": [
+        "1 and 2 only",
+        "1, 2 and 3 only",
+        "2, 3 and 4 only",
+        "All 1, 2, 3 and 4"
+      ],
+      "exp": "All four statements are explicitly verified from NCERT page 126."
+    },
+    "ans": 3
+  },
+  {
+    "id": 13,
+    "type": "ar",
+    "hi": {
+      "q": "<strong>कथन (A):</strong> स्लाइडेन और श्वान द्वारा संयुक्त रूप से दिया गया प्रारंभिक कोशिका सिद्धांत अधूरा था।<br><strong>कारण (R):</strong> उनका सिद्धांत यह स्पष्ट करने में असफल रहा कि नई कोशिकाओं का निर्माण किस प्रकार होता है।",
+      "opts": [
+        "(A) और (R) दोनों सही हैं और (R), (A) की सही व्याख्या है।",
+        "(A) और (R) दोनों सही हैं लेकिन (R), (A) की सही व्याख्या नहीं है।",
+        "(A) सही है लेकिन (R) गलत है।",
+        "(A) गलत है लेकिन (R) सही है।"
+      ],
+      "exp": "(A) और (R) दोनों सही हैं और (R), (A) की सही व्याख्या है। इसी कमी को रुडोल्फ विरचो ने 1855 में पूरा किया।"
+    },
+    "en": {
+      "q": "<strong>Assertion (A):</strong> The cell theory originally formulated by Schleiden and Schwann was incomplete.<br><strong>Reason (R):</strong> Their theory did not explain how new cells were formed.",
+      "opts": [
+        "Both (A) and (R) are true and (R) is the correct explanation of (A).",
+        "Both (A) and (R) are true but (R) is not the correct explanation of (A).",
+        "(A) is true but (R) is false.",
+        "(A) is false but (R) is true."
+      ],
+      "exp": "Both are true and reason directly explains the assertion."
+    },
+    "ans": 0
+  },
+  {
+    "id": 14,
+    "type": "tricky",
+    "hi": {
+      "q": "रुडोल्फ विरचो (Rudolf Virchow, 1855) ने कोशिका सिद्धांत में क्या महत्वपूर्ण संशोधन किया?<br>(A) उन्होंने बताया कि कोशिका के केंद्र में केंद्रक होता है।<br>(B) उन्होंने बताया कि कोशिकाएं विभाजित होती हैं और नई कोशिकाओं का निर्माण पूर्व-स्थित कोशिकाओं के विभाजन से होता है ('ओमनिस सेलुला-इ-सेलुला')।<br>(C) उन्होंने सिद्ध किया कि पादप कोशिकाओं में कोशिका भित्ति अनुपस्थित होती है।<br>(D) उन्होंने सर्वप्रथम इलेक्ट्रॉन सूक्ष्मदर्शी का प्रोटोटाइप तैयार किया।",
+      "opts": [
+        "(A)",
+        "(B)",
+        "(C)",
+        "(D)"
+      ],
+      "exp": "सही उत्तर (B) है। विरचो ने 'Omnis cellula-e cellula' देकर कोशिका सिद्धांत को पूर्ण रूप दिया।"
+    },
+    "en": {
+      "q": "What crucial modification did Rudolf Virchow (1855) make to the cell theory?<br>(A) He proposed that nucleus exists at the center of a cell.<br>(B) He explained that cells divide and new cells are formed from pre-existing cells ('Omnis cellula-e cellula').<br>(C) He demonstrated that plant cells lack a cell wall.<br>(D) He designed the first prototype electron microscope.",
+      "opts": [
+        "(A)",
+        "(B)",
+        "(C)",
+        "(D)"
+      ],
+      "exp": "Correct option is (B). Virchow formulated 'Omnis cellula-e cellula'."
+    },
+    "ans": 1
+  },
+  {
+    "id": 15,
+    "type": "statement",
+    "hi": {
+      "q": "आधुनिक कोशिका सिद्धांत (Modern Cell Theory) के दो प्रमुख स्तंभ कौन-से हैं?<br>1. सभी जीव कोशिका व कोशिका उत्पाद से बने होते हैं।<br>2. सभी कोशिकाएं पूर्व-स्थित कोशिकाओं से निर्मित होती हैं।<br>3. सभी कोशिकाओं में अनिवार्य रूप से एक सत्य केंद्रक व माइटोकॉन्ड्रिया होता है।<br><br>सही कूट चुनें:",
+      "opts": [
+        "केवल 1 और 2",
+        "केवल 2 और 3",
+        "केवल 1 और 3",
+        "1, 2 और 3"
+      ],
+      "exp": "आधुनिक कोशिका सिद्धांत के दो ही औपचारिक बिंदु हैं (1 और 2)। प्रोकैरियोटिक कोशिकाओं में सत्य केंद्रक और माइटोकॉन्ड्रिया नहीं होता, इसलिए बिंदु 3 अमान्य है।"
+    },
+    "en": {
+      "q": "What are the two core tenets of Modern Cell Theory?<br>1. All living organisms are composed of cells and products of cells.<br>2. All cells arise from pre-existing cells.<br>3. All cells must possess a true nucleus and mitochondria.<br><br>Choose the correct code:",
+      "opts": [
+        "1 and 2 only",
+        "2 and 3 only",
+        "1 and 3 only",
+        "All 1, 2 and 3"
+      ],
+      "exp": "Tenets 1 and 2 are the official modern cell theory statements. Point 3 is incorrect as prokaryotes lack membrane-bound organelles."
+    },
+    "ans": 0
+  },
+  {
+    "id": 16,
+    "type": "matching",
+    "hi": {
+      "q": "कोशिका सिद्धांत से जुड़े वैज्ञानिकों और उनके वर्षों का कौन-सा मिलान <strong>गलत</strong> है?<br><br>1. मैथीयस स्लाइडेन — 1838<br>2. थियोडोर श्वान — 1839<br>3. रुडोल्फ विरचो — 1855<br>4. रॉबर्ट ब्राउन — 1898",
+      "opts": [
+        "केवल 1",
+        "केवल 2",
+        "केवल 3",
+        "केवल 4"
+      ],
+      "exp": "युग्म 4 गलत है। रॉबर्ट ब्राउन ने केंद्रक की खोज 1831 में की थी, 1898 में कैमिलो गॉल्जी ने गॉल्जी उपकरण खोजा था।"
+    },
+    "en": {
+      "q": "Which scientist-year pair is <strong>incorrectly matched</strong>?<br><br>1. Matthias Schleiden — 1838<br>2. Theodore Schwann — 1839<br>3. Rudolf Virchow — 1855<br>4. Robert Brown — 1898",
+      "opts": [
+        "Only 1",
+        "Only 2",
+        "Only 3",
+        "Only 4"
+      ],
+      "exp": "Pair 4 is incorrect. Robert Brown discovered the nucleus in 1831 (Camillo Golgi described Golgi apparatus in 1898)."
+    },
+    "ans": 3
+  },
+  {
+    "id": 17,
+    "type": "tricky",
+    "hi": {
+      "q": "पादप कोशिकाओं में कोशिका भित्ति की उपस्थिति को 'एक अद्वितीय विशेषता' (Unique character) के रूप में सर्वप्रथम किसने पहचाना और प्रस्तुत किया था?<br>(A) मैथीयस स्लाइडेन<br>(B) थियोडोर श्वान<br>(C) रुडोल्फ विरचो<br>(D) एंटोन वॉन लीवेनहॉक",
+      "opts": [
+        "(A)",
+        "(B)",
+        "(C)",
+        "(D)"
+      ],
+      "exp": "थियोडोर श्वान (Theodore Schwann) ने प्राणि ऊतकों के साथ-साथ पादप ऊतकों का भी अध्ययन किया और कोशिका भित्ति को पादपों का अद्वितीय लक्षण घोषित किया।"
+    },
+    "en": {
+      "q": "Who first concluded, based on studies on plant tissues, that the presence of cell wall is a unique character of plant cells?<br>(A) Matthias Schleiden<br>(B) Theodore Schwann<br>(C) Rudolf Virchow<br>(D) Anton Von Leeuwenhoek",
+      "opts": [
+        "(A)",
+        "(B)",
+        "(C)",
+        "(D)"
+      ],
+      "exp": "Theodore Schwann (Zoologist) studied plant tissues and concluded this unique feature."
+    },
+    "ans": 1
+  },
+  {
+    "id": 18,
+    "type": "ar",
+    "hi": {
+      "q": "<strong>कथन (A):</strong> श्वान ने यह परिकल्पना रखी कि प्राणियों और वनस्पतियों दोनों का शरीर कोशिकाओं तथा उनके उत्पादों से मिलकर बना है।<br><strong>कारण (R):</strong> स्लाइडेन और श्वान दोनों ने मिलकर यह स्पष्ट कर दिया था कि नई कोशिकाओं की उत्पत्ति स्वतः स्फूर्त अजैविक पदार्थों से होती है।",
+      "opts": [
+        "(A) और (R) दोनों सही हैं और (R), (A) की सही व्याख्या है।",
+        "(A) और (R) दोनों सही हैं लेकिन (R), (A) की सही व्याख्या नहीं है।",
+        "(A) सही है लेकिन (R) गलत है।",
+        "(A) गलत है लेकिन (R) सही है।"
+      ],
+      "exp": "कथन (A) सही है। कारण (R) गलत है क्योंकि वे दोनों नई कोशिकाओं के निर्माण की व्याख्या करने में पूरी तरह असमर्थ रहे थे।"
+    },
+    "en": {
+      "q": "<strong>Assertion (A):</strong> Schwann proposed the hypothesis that animal and plant bodies are composed of cells and cell products.<br><strong>Reason (R):</strong> Both Schleiden and Schwann had demonstrated that new cells originate spontaneously from non-living matter.",
+      "opts": [
+        "Both (A) and (R) are true and (R) is the correct explanation of (A).",
+        "Both (A) and (R) are true but (R) is not the correct explanation of (A).",
+        "(A) is true but (R) is false.",
+        "(A) is false but (R) is true."
+      ],
+      "exp": "Assertion is true. Reason is false because their theory failed to explain origin of new cells."
+    },
+    "ans": 2
+  },
+  {
+    "id": 19,
+    "type": "statement",
+    "hi": {
+      "q": "प्याज के छिलके की कोशिका (Onion peel cell) तथा मनुष्य की गाल की कोशिका (Human cheek cell) के संदर्भ में विचार करें:<br>1. प्याज की कोशिका में बाहरी सतह पर एक स्पष्ट कोशिका भित्ति व उसके ठीक नीचे कोशिका झिल्ली होती है।<br>2. मनुष्य की गाल की कोशिका में बाहर की तरफ केवल एक परिसीमन झिल्ली संरचना (cell membrane) होती है।<br>3. दोनों ही कोशिकाओं में झिल्लीयुक्त केंद्रक पाया जाता है।<br><br>सत्य कथन कौन-से हैं?",
+      "opts": [
+        "केवल 1 और 2",
+        "केवल 2 और 3",
+        "केवल 1 और 3",
+        "1, 2 और 3 सभी"
+      ],
+      "exp": "तीनों कथन सत्य हैं। प्याज प्रारूपी पादप कोशिका है (भित्ति सहित) और गाल कोशिका प्रारूपी जंतु कोशिका है।"
+    },
+    "en": {
+      "q": "Regarding onion peel and human cheek cell:<br>1. Onion cell has a distinct cell wall as its outer boundary and cell membrane just within it.<br>2. Human cheek cell has an outer delimiting membrane structure only.<br>3. Both are eukaryotic cells possessing a membrane-bound nucleus.<br><br>Which are true?",
+      "opts": [
+        "1 and 2 only",
+        "2 and 3 only",
+        "1 and 3 only",
+        "All 1, 2 and 3"
+      ],
+      "exp": "All three statements are factually correct per NCERT Section 8.3."
+    },
+    "ans": 3
+  },
+  {
+    "id": 20,
+    "type": "tricky",
+    "hi": {
+      "q": "पादप और जंतु दोनों प्रकार की कोशिकाओं में विभिन्न कोशिकीय एवं रासायनिक क्रियाओं का 'प्रमुख स्थल' (Main arena) कौन-सा होता है?<br>(A) केंद्रक द्रव्य (Nucleoplasm)<br>(B) कोशिका द्रव्य (Cytoplasm)<br>(C) अंतर्द्रव्यी जालिका की अवकाशिका<br>(D) सूत्रकणिका की आधात्री",
+      "opts": [
+        "(A)",
+        "(B)",
+        "(C)",
+        "(D)"
+      ],
+      "exp": "एनसीईआरटी सेक्शन 8.3 के अनुसार कोशिकाद्रव्य (Cytoplasm) कोशिका की 'जीव अवस्था' को बनाए रखने वाली विभिन्न रासायनिक क्रियाओं का मुख्य स्थल है।"
+    },
+    "en": {
+      "q": "What is the 'main arena' of cellular activities in both plant and animal cells keeping them in living state?<br>(A) Nucleoplasm<br>(B) Cytoplasm<br>(C) Lumen of ER<br>(D) Matrix of mitochondria",
+      "opts": [
+        "(A)",
+        "(B)",
+        "(C)",
+        "(D)"
+      ],
+      "exp": "Cytoplasm is the main arena of cellular activities in both plant and animal cells."
+    },
+    "ans": 1
+  },
+  {
+    "id": 21,
+    "type": "statement",
+    "hi": {
+      "q": "यूकैरियोटिक कोशिकाओं में राइबोसोम (Ribosome) निम्नलिखित में से किन-किन स्थानों पर पाए जाते हैं?<br>1. कोशिकाद्रव्य में स्वतंत्र रूप से<br>2. हरित लवक (क्लोरोप्लास्ट) के भीतर<br>3. सूत्रकणिका (माइटोकॉन्ड्रिया) के भीतर<br>4. खुरदरी अंतर्द्रव्यी जालिका (RER) की सतह पर<br><br>सही विकल्प का चयन कीजिए:",
+      "opts": [
+        "केवल 1 और 4",
+        "केवल 1, 2 और 3",
+        "केवल 1, 3 और 4",
+        "1, 2, 3 और 4 सभी"
+      ],
+      "exp": "एनसीईआरटी पृष्ठ 127 के अनुसार यूकैरियोट्स में राइबोसोम कोशिकाद्रव्य के अलावा क्लोरोप्लास्ट, माइटोकॉन्ड्रिया और RER तीनों में/पर मिलते हैं।"
+    },
+    "en": {
+      "q": "In eukaryotic cells, ribosomes are located in which of the following sites?<br>1. Free in cytoplasm<br>2. Within chloroplasts (in plants)<br>3. Within mitochondria<br>4. On rough endoplasmic reticulum surface<br><br>Choose the correct option:",
+      "opts": [
+        "1 and 4 only",
+        "1, 2 and 3 only",
+        "1, 3 and 4 only",
+        "All 1, 2, 3 and 4"
+      ],
+      "exp": "All four locations are explicitly stated in NCERT page 127."
+    },
+    "ans": 3
+  },
+  {
+    "id": 22,
+    "type": "ar",
+    "hi": {
+      "q": "<strong>कथन (A):</strong> राइबोसोम को 'झिल्लिरहित अंगक' (Non-membrane bound organelle) माना जाता है।<br><strong>कारण (R):</strong> राइबोसोम केवल यूकैरियोटिक कोशिकाओं में पाए जाते हैं और प्रोकैरियोटिक कोशिकाओं में इनका पूर्ण अभाव होता है।",
+      "opts": [
+        "(A) और (R) दोनों सही हैं और (R), (A) की सही व्याख्या है।",
+        "(A) और (R) दोनों सही हैं लेकिन (R), (A) की सही व्याख्या नहीं है।",
+        "(A) सही है लेकिन (R) गलत है।",
+        "(A) गलत है लेकिन (R) सही है।"
+      ],
+      "exp": "कथन (A) सही है। कारण (R) गलत है क्योंकि राइबोसोम प्रोकैरियोटिक और यूकैरियोटिक दोनों प्रकार की कोशिकाओं में पाए जाते हैं।"
+    },
+    "en": {
+      "q": "<strong>Assertion (A):</strong> Ribosomes are non-membrane bound organelles.<br><strong>Reason (R):</strong> Ribosomes are found only in eukaryotic cells and are completely absent in prokaryotes.",
+      "opts": [
+        "Both (A) and (R) are true and (R) is the correct explanation of (A).",
+        "Both (A) and (R) are true but (R) is not the correct explanation of (A).",
+        "(A) is true but (R) is false.",
+        "(A) is false but (R) is true."
+      ],
+      "exp": "Assertion is true. Reason is false because ribosomes are found in both prokaryotes (70S) and eukaryotes (80S)."
+    },
+    "ans": 2
+  },
+  {
+    "id": 23,
+    "type": "matching",
+    "hi": {
+      "q": "एनसीईआरटी चित्र 8.1 के अनुसार विभिन्न कोशिकाओं और उनकी आकृतियों का सही मिलान करें:<br><br><strong>स्तंभ-I (कोशिका):</strong><br>P. लाल रुधिर कोशिकाएं (RBC)<br>Q. श्वेत रुधिर कोशिकाएं (WBC)<br>R. स्तंभाकार उपकला कोशिकाएं<br>S. वाहिनिका (Tracheid)<br><br><strong>स्तंभ-II (आकृति):</strong><br>1. अमीबाकृती (Amoeboid)<br>2. गोल व द्वयवतली (Round and biconcave)<br>3. दीर्घाकृत (Elongated)<br>4. लंबी व संकरी (Long and narrow)<br><br>सही कूट है:",
+      "opts": [
+        "P-2, Q-1, R-4, S-3",
+        "P-1, Q-2, R-4, S-3",
+        "P-2, Q-1, R-3, S-4",
+        "P-4, Q-1, R-2, S-3"
+      ],
+      "exp": "RBC: गोल व द्वयवतली (P-2); WBC: अमीबाकृती (Q-1); स्तंभाकार: लंबी व संकरी (R-4); वाहिनिका: दीर्घाकृत (S-3)।"
+    },
+    "en": {
+      "q": "Match cells with shapes per NCERT Figure 8.1:<br><br><strong>Column-I:</strong><br>P. Red blood cells<br>Q. White blood cells<br>R. Columnar epithelial cells<br>S. Tracheid<br><br><strong>Column-II:</strong><br>1. Amoeboid<br>2. Round and biconcave<br>3. Elongated<br>4. Long and narrow<br><br>Correct code:",
+      "opts": [
+        "P-2, Q-1, R-4, S-3",
+        "P-1, Q-2, R-4, S-3",
+        "P-2, Q-1, R-3, S-4",
+        "P-4, Q-1, R-2, S-3"
+      ],
+      "exp": "P-2, Q-1, R-4, S-3 is the exact NCERT match."
+    },
+    "ans": 0
+  },
+  {
+    "id": 24,
+    "type": "tricky",
+    "hi": {
+      "q": "जीवधारियों में कोशिकाओं के माप (Dimensions) के संदर्भ में निम्नलिखित में से <strong>गलत</strong> कथन की पहचान कीजिए:<br>(A) माइकोप्लाज्मा सबसे छोटी कोशिका है जिसकी लंबाई लगभग 0.3 µm होती है।<br>(B) जीवाणु का आकार सामान्यतः 3 से 5 µm होता है।<br>(C) पृथक की गई सबसे बड़ी एकल कोशिका शुतुरमुर्ग के अंडे के समान है।<br>(D) मनुष्य की लाल रक्त कणिका का व्यास लगभग 70 µm होता है।",
+      "opts": [
+        "(A)",
+        "(B)",
+        "(C)",
+        "(D)"
+      ],
+      "exp": "कथन (D) गलत है क्योंकि मानव RBC का व्यास लगभग 7.0 µm होता है, न कि 70 µm।"
+    },
+    "en": {
+      "q": "Identify the <strong>incorrect</strong> statement regarding cellular dimensions:<br>(A) Mycoplasmas are the smallest cells with length of about 0.3 µm.<br>(B) Bacteria could be 3 to 5 µm in size.<br>(C) The largest isolated single cell is the egg of an ostrich.<br>(D) Human RBC diameter is approximately 70 µm.",
+      "opts": [
+        "(A)",
+        "(B)",
+        "(C)",
+        "(D)"
+      ],
+      "exp": "Option (D) is incorrect; human RBCs are about 7.0 µm in diameter."
+    },
+    "ans": 3
+  },
+  {
+    "id": 25,
+    "type": "statement",
+    "hi": {
+      "q": "तंत्रिका कोशिका (Nerve cell) तथा मध्योत्तकी कोशिका (Mesophyll cell) के संदर्भ में विचार करें:<br>1. तंत्रिका कोशिकाएं शरीर की सबसे लंबी कोशिकाओं में से एक होती हैं जो शाखित व लंबी होती हैं।<br>2. पर्णमध्योत्तक (मीसोफिल) कोशिकाएं प्रायः गोल व अंडाकार होती हैं।<br>3. कोशिकाओं का आकार और रूप उनके विशिष्ट कार्यों के अनुसार भिन्न हो सकता है।<br><br>सत्य कथन चुनें:",
+      "opts": [
+        "केवल 1 और 2",
+        "केवल 2 और 3",
+        "केवल 1 और 3",
+        "1, 2 और 3 सभी"
+      ],
+      "exp": "तीनों कथन (1, 2 और 3) एनसीईआरटी पाठ्यपुस्तक और चित्र 8.1 के अनुसार बिल्कुल सत्य हैं।"
+    },
+    "en": {
+      "q": "Regarding nerve cells and mesophyll cells:<br>1. Nerve cells are among the longest cells and are branched and long.<br>2. Mesophyll cells in leaves are round and oval.<br>3. The shape of cells may vary with the function they perform.<br><br>Choose the correct option:",
+      "opts": [
+        "1 and 2 only",
+        "2 and 3 only",
+        "1 and 3 only",
+        "All 1, 2 and 3"
+      ],
+      "exp": "All statements 1, 2, and 3 are correct per NCERT."
+    },
+    "ans": 3
+  },
+  {
+    "id": 26,
+    "type": "tricky",
+    "hi": {
+      "q": "जंतु कोशिकाओं में पाया जाने वाला वह कौन-सा झिल्लिरहित अंगक है, जो कोशिका विभाजन में सहायता करता है और पादप कोशिकाओं में सामान्यतः अनुपस्थित होता है?<br>(A) परऑक्सीसोम<br>(B) तारककेंद्र / तारककाय (Centrosome / Centriole)<br>(C) लयनकाय (Lysosome)<br>(D) गॉल्जी उपकरण",
+      "opts": [
+        "(A)",
+        "(B)",
+        "(C)",
+        "(D)"
+      ],
+      "exp": "एनसीईआरटी पृष्ठ 127 के अनुसार जंतु कोशिकाओं में झिल्लिरहित 'तारककेंद्र' (Centrosome/Centriole) मिलता है जो कोशिका विभाजन में तर्कु उपकरण बनाता है।"
+    },
+    "en": {
+      "q": "Which non-membrane bound organelle found in animal cells aids in cell division and is almost absent in plant cells?<br>(A) Peroxisome<br>(B) Centrosome / Centriole<br>(C) Lysosome<br>(D) Golgi apparatus",
+      "opts": [
+        "(A)",
+        "(B)",
+        "(C)",
+        "(D)"
+      ],
+      "exp": "Centrosome containing centrioles is a non-membrane bound organelle in animal cells aiding cell division."
+    },
+    "ans": 1
+  },
+  {
+    "id": 27,
+    "type": "matching",
+    "hi": {
+      "q": "चित्र 8.2 के आधार पर जीवों/कणों और उनके दिए गए आकारों का कौन-सा मिलान <strong>गलत</strong> है?<br><br>1. प्रारूपिक जीवाणु — 1 से 2 µm<br>2. PPLO — लगभग 0.1 µm<br>3. विषाणु (Viruses) — 0.02 से 0.2 µm<br>4. यूकैरियोटिक कोशिका — 0.1 से 0.5 µm",
+      "opts": [
+        "केवल 1",
+        "केवल 2",
+        "केवल 3",
+        "केवल 4"
+      ],
+      "exp": "युग्म 4 गलत है। यूकैरियोटिक कोशिकाएं सामान्यतः 10 से 20 µm आकार की होती हैं, 0.1 से 0.5 µm नहीं।"
+    },
+    "en": {
+      "q": "Which dimension pair is <strong>incorrectly matched</strong> based on NCERT Figure 8.2?<br><br>1. Typical bacteria — 1 to 2 µm<br>2. PPLO — ~0.1 µm<br>3. Viruses — 0.02 to 0.2 µm<br>4. Eukaryotic cell — 0.1 to 0.5 µm",
+      "opts": [
+        "Only 1",
+        "Only 2",
+        "Only 3",
+        "Only 4"
+      ],
+      "exp": "Pair 4 is incorrect; typical eukaryotic cells are 10-20 µm."
+    },
+    "ans": 3
+  },
+  {
+    "id": 28,
+    "type": "ar",
+    "hi": {
+      "q": "<strong>कथन (A):</strong> प्रोकैरियोटिक कोशिकाओं में झिल्लीयुक्त अंगकों जैसे माइटोकॉन्ड्रिया, गॉल्जीकाय व अंतर्द्रव्यी जालिका का पूर्ण अभाव होता है।<br><strong>कारण (R):</strong> प्रोकैरियोटिक कोशिकाओं का आयतन यूकैरियोटिक कोशिकाओं की तुलना में बहुत बड़ा होता है।",
+      "opts": [
+        "(A) और (R) दोनों सही हैं और (R), (A) की सही व्याख्या है।",
+        "(A) और (R) दोनों सही हैं लेकिन (R), (A) की सही व्याख्या नहीं है।",
+        "(A) सही है लेकिन (R) गलत है।",
+        "(A) गलत है लेकिन (R) सही है।"
+      ],
+      "exp": "कथन (A) सही है। कारण (R) गलत है क्योंकि प्रोकैरियोटिक कोशिकाएं यूकैरियोटिक कोशिकाओं से काफी छोटी होती हैं।"
+    },
+    "en": {
+      "q": "<strong>Assertion (A):</strong> Membrane-bound organelles such as mitochondria, Golgi and ER are absent in prokaryotes.<br><strong>Reason (R):</strong> Prokaryotic cells are generally much larger in volume than eukaryotic cells.",
+      "opts": [
+        "Both (A) and (R) are true and (R) is the correct explanation of (A).",
+        "Both (A) and (R) are true but (R) is not the correct explanation of (A).",
+        "(A) is true but (R) is false.",
+        "(A) is false but (R) is true."
+      ],
+      "exp": "Assertion is true. Reason is false because prokaryotes are much smaller than eukaryotes."
+    },
+    "ans": 2
+  },
+  {
+    "id": 29,
+    "type": "statement",
+    "hi": {
+      "q": "प्रोकैरियोटिक जीवों के अंतर्गत निम्नलिखित में से किन्हें सम्मिलित किया जाता है?<br>1. जीवाणु (Bacteria)<br>2. नील-हरित शैवाल (Blue green algae / Cyanobacteria)<br>3. माइकोप्लाज्मा (Mycoplasma)<br>4. प्ल्यूरो निमोनिया सम जीव (PPLO)<br><br>सही विकल्प का चुनाव कीजिए:",
+      "opts": [
+        "केवल 1 और 2",
+        "केवल 1, 2 और 3",
+        "केवल 1, 3 और 4",
+        "1, 2, 3 और 4 सभी"
+      ],
+      "exp": "एनसीईआरटी सेक्शन 8.4 की पहली पंक्ति के अनुसार चारों प्रोकैरियोटिक जीवों के उदाहरण हैं।"
+    },
+    "en": {
+      "q": "Which of the following are represented as prokaryotic organisms?<br>1. Bacteria<br>2. Blue-green algae<br>3. Mycoplasma<br>4. PPLO<br><br>Select the correct answer:",
+      "opts": [
+        "1 and 2 only",
+        "1, 2 and 3 only",
+        "1, 3 and 4 only",
+        "All 1, 2, 3 and 4"
+      ],
+      "exp": "All four are explicitly stated in NCERT Section 8.4."
+    },
+    "ans": 3
+  },
+  {
+    "id": 30,
+    "type": "matching",
+    "hi": {
+      "q": "जीवाणुओं के चार मूलभूत आकारों (Basic shapes) का सही मिलान करें:<br><br><strong>स्तंभ-I:</strong><br>P. बेसिलस (Bacillus)<br>Q. कोकस (Coccus)<br>R. विब्रियो (Vibrio)<br>S. स्पाइरिलम (Spirillum)<br><br><strong>स्तंभ-II:</strong><br>1. कोमा के आकार का (Comma-shaped)<br>2. सर्पिलाकार (Spiral)<br>3. दंडाकार (Rod-like)<br>4. गोलाकार (Spherical)<br><br>सही कूट है:",
+      "opts": [
+        "P-3, Q-4, R-1, S-2",
+        "P-4, Q-3, R-1, S-2",
+        "P-3, Q-4, R-2, S-1",
+        "P-1, Q-2, R-3, S-4"
+      ],
+      "exp": "बेसिलस: दंडाकार (P-3); कोकस: गोलाकार (Q-4); विब्रियो: कोमाकार (R-1); स्पाइरिलम: सर्पिलाकार (S-2)।"
+    },
+    "en": {
+      "q": "Match bacterial shapes with shapes description:<br><br><strong>Column-I:</strong><br>P. Bacillus<br>Q. Coccus<br>R. Vibrio<br>S. Spirillum<br><br><strong>Column-II:</strong><br>1. Comma-shaped<br>2. Spiral<br>3. Rod-like<br>4. Spherical<br><br>Correct code:",
+      "opts": [
+        "P-3, Q-4, R-1, S-2",
+        "P-4, Q-3, R-1, S-2",
+        "P-3, Q-4, R-2, S-1",
+        "P-1, Q-2, R-3, S-4"
+      ],
+      "exp": "P-3, Q-4, R-1, S-2 is the correct combination."
+    },
+    "ans": 0
+  },
+  {
+    "id": 31,
+    "type": "tricky",
+    "hi": {
+      "q": "निम्नलिखित में से किस प्रोकैरियोटिक जीव में कोशिका भित्ति (Cell Wall) <strong>पूरी तरह अनुपस्थित</strong> होती है?<br>(A) नील-हरित शैवाल (सायनोबैक्टीरिया)<br>(B) बेसिलस एंथ्रेसीस<br>(C) माइकोप्लाज्मा (Mycoplasma)<br>(D) विब्रियो कोलेरी",
+      "opts": [
+        "(A)",
+        "(B)",
+        "(C)",
+        "(D)"
+      ],
+      "exp": "एनसीईआरटी पृष्ठ 128: 'सभी प्रोकैरियोटिक में कोशिका भित्ति होती है जो कोशिका झिल्ली से घिरी होती है केवल माइकोप्लाज्मा को छोड़कर'।"
+    },
+    "en": {
+      "q": "In which of the following prokaryotic organisms is the cell wall <strong>completely absent</strong>?<br>(A) Blue-green algae<br>(B) Bacillus anthracis<br>(C) Mycoplasma<br>(D) Vibrio cholerae",
+      "opts": [
+        "(A)",
+        "(B)",
+        "(C)",
+        "(D)"
+      ],
+      "exp": "NCERT 8.4: All prokaryotes have a cell wall surrounding the cell membrane except in mycoplasma."
+    },
+    "ans": 2
+  },
+  {
+    "id": 32,
+    "type": "statement",
+    "hi": {
+      "q": "प्रोकैरियोट्स के आनुवंशिक पदार्थ (Genetic material) के संदर्भ में कौन-से कथन सत्य हैं?<br>1. इनमें कोई सुस्पष्ट विभेदित केंद्रक नहीं होता।<br>2. आनुवंशिक पदार्थ मुख्य रूप से नग्न होता है और केंद्रक झिल्ली द्वारा परिबद्ध नहीं होता।<br>3. इनमें एकल गुणसूत्र या वृत्ताकार जीनोमिक डीएनए पाया जाता है।<br><br>कूट चुनें:",
+      "opts": [
+        "केवल 1 और 2",
+        "केवल 2 और 3",
+        "केवल 1 और 3",
+        "1, 2 और 3 सभी"
+      ],
+      "exp": "तीनों कथन एनसीईआरटी पृष्ठ 128 के अनुसार सत्य हैं। प्रोकैरियोट्स में केंद्रक झिल्ली विहीन आनुवंशिक क्षेत्र (न्यूक्लियॉइड) होता है।"
+    },
+    "en": {
+      "q": "Regarding the genetic material of prokaryotes:<br>1. There is no well-defined nucleus.<br>2. Genetic material is basically naked, not enveloped by a nuclear membrane.<br>3. It consists of single circular chromosome / genomic DNA.<br><br>Choose the correct code:",
+      "opts": [
+        "1 and 2 only",
+        "2 and 3 only",
+        "1 and 3 only",
+        "All 1, 2 and 3"
+      ],
+      "exp": "All three statements are factually correct per NCERT page 128."
+    },
+    "ans": 3
+  },
+  {
+    "id": 33,
+    "type": "ar",
+    "hi": {
+      "q": "<strong>कथन (A):</strong> जीवाणुओं में प्लाज्मिड डीएनए का उपयोग बाह्य डीएनए के साथ जीवाणु रूपांतरण (transformation) के प्रबोधन (monitoring) हेतु किया जाता है।<br><strong>कारण (R):</strong> प्लाज्मिड डीएनए जीनोमिक डीएनए के बाहर पाए जाने वाले छोटे वृत्ताकार डीएनए अणु होते हैं।",
+      "opts": [
+        "(A) और (R) दोनों सही हैं और (R), (A) की सही व्याख्या है।",
+        "(A) और (R) दोनों सही हैं लेकिन (R), (A) की सही व्याख्या नहीं है।",
+        "(A) सही है लेकिन (R) गलत है।",
+        "(A) गलत है लेकिन (R) सही है।"
+      ],
+      "exp": "(A) और (R) दोनों सही हैं लेकिन (R) यह नहीं बताता कि इसका उपयोग रूपांतरण मॉनिटरिंग में क्यों किया जाता है (क्योंकि यह मार्कर/प्रतिरोधकता जीन प्रदान करता है)। अतः (B) सही है।"
+    },
+    "en": {
+      "q": "<strong>Assertion (A):</strong> Plasmid DNA is used to monitor bacterial transformation with foreign DNA.<br><strong>Reason (R):</strong> Plasmids are small circular DNA molecules found outside the genomic DNA.",
+      "opts": [
+        "Both (A) and (R) are true and (R) is the correct explanation of (A).",
+        "Both (A) and (R) are true but (R) is not the correct explanation of (A).",
+        "(A) is true but (R) is false.",
+        "(A) is false but (R) is true."
+      ],
+      "exp": "Both are true, but reason is just a structural definition, not the causal explanation of monitoring utility. Hence (B)."
+    },
+    "ans": 1
+  },
+  {
+    "id": 34,
+    "type": "tricky",
+    "hi": {
+      "q": "जीवाणुओं में प्लाज्मिड (Plasmid) निम्नलिखित में से कौन-सा विशिष्ट लक्षण प्रदान करता है?<br>(A) कोशिका भित्ति के प्राथमिक विघटन की क्षमता<br>(B) प्रतिजैविक (Antibiotics) के प्रति प्रतिरोधकता<br>(C) 80S राइबोसोम का प्रत्यक्ष निर्माण<br>(D) सूत्रकणिका के समान एटीपी उत्पादन",
+      "opts": [
+        "(A)",
+        "(B)",
+        "(C)",
+        "(D)"
+      ],
+      "exp": "एनसीईआरटी पृष्ठ 128: 'ये प्लाज्मिड डीएनए जीवाणुओं में विशिष्ट समलक्षणों को बताते हैं। उनमें से एक प्रतिजीवी (प्रतिरोधक) होते हैं'।"
+    },
+    "en": {
+      "q": "Plasmid in bacteria confers which of the following unique phenotypic characters?<br>(A) Primary degradation of cell wall<br>(B) Resistance to antibiotics<br>(C) Direct synthesis of 80S ribosomes<br>(D) Mitochondrial-like ATP synthesis",
+      "opts": [
+        "(A)",
+        "(B)",
+        "(C)",
+        "(D)"
+      ],
+      "exp": "Plasmid DNA confers unique phenotypic characters like antibiotic resistance (NCERT page 128)."
+    },
+    "ans": 1
+  },
+  {
+    "id": 35,
+    "type": "statement",
+    "hi": {
+      "q": "प्रोकैरियोट्स की कोशिका विभाजन दर एवं आकार के संदर्भ में विचार कीजिए:<br>1. सामान्यतया प्रोकैरियोटिक कोशिकाएं यूकैरियोटिक कोशिकाओं से बहुत छोटी होती हैं।<br>2. प्रोकैरियोट्स यूकैरियोटिक कोशिकाओं की तुलना में काफी तेजी से विभाजित होते हैं।<br>3. सभी प्रोकैरियोट्स में एक जैसा आकार व एक जैसी आकृति होती है।<br><br>सत्य कथन कौन-सा/से है/हैं?",
+      "opts": [
+        "केवल 1 और 2",
+        "केवल 2 और 3",
+        "केवल 1 और 3",
+        "1, 2 और 3"
+      ],
+      "exp": "कथन 3 गलत है क्योंकि प्रोकैरियोट्स के आकार व आकृति में अत्यधिक विविधता पाई जाती है (बेसिलस, कोकस, विब्रियो, स्पाइरिलम)। अतः केवल 1 और 2 सही हैं।"
+    },
+    "en": {
+      "q": "Regarding prokaryotic cell division and dimensions:<br>1. Prokaryotes are generally much smaller than eukaryotic cells.<br>2. Prokaryotes multiply much more rapidly than eukaryotes.<br>3. All prokaryotes exhibit identical size and shape.<br><br>Which statement(s) is/are true?",
+      "opts": [
+        "1 and 2 only",
+        "2 and 3 only",
+        "1 and 3 only",
+        "All 1, 2 and 3"
+      ],
+      "exp": "Statement 3 is false as prokaryotes exhibit great diversity in size and shape."
+    },
+    "ans": 0
+  },
+  {
+    "id": 36,
+    "type": "tricky",
+    "hi": {
+      "q": "प्रोकैरियोटिक कोशिकाद्रव्य (Cytoplasm) की प्रमुख भौतिक प्रकृति क्या होती है?<br>(A) ठोस क्रिस्टलीय जाल<br>(B) तरल आधात्री (Fluid matrix)<br>(C) अत्यधिक गाढ़ा लिपिड तेल<br>(D) पूर्णतः निर्जलित प्रोटीन चूर्ण",
+      "opts": [
+        "(A)",
+        "(B)",
+        "(C)",
+        "(D)"
+      ],
+      "exp": "एनसीईआरटी पृष्ठ 128: 'कोशिका में साइटोप्लाज्म एक तरल मैट्रिक्स (तरल आव्यूह) के रूप में भरा रहता है'।"
+    },
+    "en": {
+      "q": "What is the physical nature of cytoplasm in prokaryotic cells?<br>(A) Solid crystalline mesh<br>(B) Fluid matrix<br>(C) Concentrated lipid oil<br>(D) Completely dehydrated protein powder",
+      "opts": [
+        "(A)",
+        "(B)",
+        "(C)",
+        "(D)"
+      ],
+      "exp": "The cytoplasm in prokaryotes exists as a fluid matrix filling the cell (NCERT 8.4)."
+    },
+    "ans": 1
+  },
+  {
+    "id": 37,
+    "type": "ar",
+    "hi": {
+      "q": "<strong>कथन (A):</strong> प्रोकैरियोटिक कोशिकाओं में यूकैरियोटिक कोशिकाओं जैसे झिल्लीदार अंगक नहीं पाए जाते हैं।<br><strong>कारण (R):</strong> प्रोकैरियोट्स में राइबोसोम का भी पूर्णतः अभाव होता है।",
+      "opts": [
+        "(A) और (R) दोनों सही हैं और (R), (A) की सही व्याख्या है।",
+        "(A) और (R) दोनों सही हैं लेकिन (R), (A) की सही व्याख्या नहीं है।",
+        "(A) सही है लेकिन (R) गलत है।",
+        "(A) गलत है लेकिन (R) सही है।"
+      ],
+      "exp": "कथन (A) सही है। कारण (R) गलत है क्योंकि प्रोकैरियोट्स में 70S प्रकार के राइबोसोम बहुतायत में पाए जाते हैं।"
+    },
+    "en": {
+      "q": "<strong>Assertion (A):</strong> Prokaryotic cells lack membrane-bound organelles typical of eukaryotes.<br><strong>Reason (R):</strong> Ribosomes are also completely absent in prokaryotes.",
+      "opts": [
+        "Both (A) and (R) are true and (R) is the correct explanation of (A).",
+        "Both (A) and (R) are true but (R) is not the correct explanation of (A).",
+        "(A) is true but (R) is false.",
+        "(A) is false but (R) is true."
+      ],
+      "exp": "Assertion is true. Reason is false as 70S ribosomes are present in prokaryotes."
+    },
+    "ans": 2
+  },
+  {
+    "id": 38,
+    "type": "statement",
+    "hi": {
+      "q": "अधिकांश प्रोकैरियोटिक (जीवाणु) कोशिकाओं के कोशिका आवरण (Cell Envelope) के तीन स्तरों का बाहर से भीतर की ओर सही क्रम क्या है?<br>1. ग्लाइकोकेलिक्स (बाह्यतम परत)<br>2. कोशिका भित्ति (मध्य परत)<br>3. जीवद्रव्य झिल्ली (आंतरिक परत)<br><br>सही विकल्प चुनें:",
+      "opts": [
+        "1 $\\rightarrow$ 2 $\\rightarrow$ 3",
+        "2 $\\rightarrow$ 1 $\\rightarrow$ 3",
+        "3 $\\rightarrow$ 2 $\\rightarrow$ 1",
+        "1 $\\rightarrow$ 3 $\\rightarrow$ 2"
+      ],
+      "exp": "एनसीईआरटी पृष्ठ 128: बाह्य परत ग्लाइकोकेलिक्स, जिसके पश्चात क्रमशः कोशिका भित्ति एवं जीवद्रव्य झिल्ली होती है।"
+    },
+    "en": {
+      "q": "What is the correct sequence of the three-layered cell envelope of bacteria from outermost to innermost?<br>1. Glycocalyx<br>2. Cell wall<br>3. Plasma membrane<br><br>Choose the correct sequence:",
+      "opts": [
+        "1 -> 2 -> 3",
+        "2 -> 1 -> 3",
+        "3 -> 2 -> 1",
+        "1 -> 3 -> 2"
+      ],
+      "exp": "From outside to inside: Glycocalyx -> Cell Wall -> Plasma membrane."
+    },
+    "ans": 0
+  },
+  {
+    "id": 39,
+    "type": "ar",
+    "hi": {
+      "q": "<strong>कथन (A):</strong> जीवाणु कोशिका आवरण की तीनों परतें अलग-अलग कार्य करती हैं, लेकिन मिलकर एक एकल सुरक्षा इकाई (Single protective unit) के रूप में कार्य करती हैं।<br><strong>कारण (R):</strong> कोशिका आवरण की तीनों परतें रासायनिक रूप से एक जैसी ही संरचना की बनी होती हैं।",
+      "opts": [
+        "(A) और (R) दोनों सही हैं और (R), (A) की सही व्याख्या है।",
+        "(A) और (R) दोनों सही हैं लेकिन (R), (A) की सही व्याख्या नहीं है।",
+        "(A) सही है लेकिन (R) गलत है।",
+        "(A) गलत है लेकिन (R) सही है।"
+      ],
+      "exp": "कथन (A) सही है। कारण (R) गलत है क्योंकि तीनों परतें रासायनिक रूप से भिन्न-भिन्न घटकों की बनी होती हैं और उनके कार्य भी अलग हैं।"
+    },
+    "en": {
+      "q": "<strong>Assertion (A):</strong> Although each layer of bacterial cell envelope performs distinct function, they act together as a single protective unit.<br><strong>Reason (R):</strong> All three layers of the envelope are chemically identical in composition.",
+      "opts": [
+        "Both (A) and (R) are true and (R) is the correct explanation of (A).",
+        "Both (A) and (R) are true but (R) is not the correct explanation of (A).",
+        "(A) is true but (R) is false.",
+        "(A) is false but (R) is true."
+      ],
+      "exp": "Assertion is true. Reason is false as layers are chemically complex and distinct."
+    },
+    "ans": 2
+  },
+  {
+    "id": 40,
+    "type": "matching",
+    "hi": {
+      "q": "ग्लाइकोकेलिक्स के रूपों और उनके लक्षणों का सही मिलान करें:<br><br><strong>स्तंभ-I:</strong><br>P. अवपंक पर्त (Slime layer)<br>Q. संपुटिका (Capsule)<br><br><strong>स्तंभ-II:</strong><br>1. मोटी व कठोर रक्षात्मक परत<br>2. ढीली-ढाली आच्छद परत<br><br>सही कूट है:",
+      "opts": [
+        "P-2, Q-1",
+        "P-1, Q-2",
+        "P-1, Q-1",
+        "P-2, Q-2"
+      ],
+      "exp": "अवपंक पर्त ढीली आच्छद होती है (P-2) तथा संपुटिका मोटी व कठोर होती है (Q-1)।"
+    },
+    "en": {
+      "q": "Match types of glycocalyx with characteristics:<br><br><strong>Column-I:</strong><br>P. Slime layer<br>Q. Capsule<br><br><strong>Column-II:</strong><br>1. Thick and tough sheath<br>2. Loose sheath<br><br>Correct code:",
+      "opts": [
+        "P-2, Q-1",
+        "P-1, Q-2",
+        "P-1, Q-1",
+        "P-2, Q-2"
+      ],
+      "exp": "P-2 and Q-1 per NCERT Section 8.4.1."
+    },
+    "ans": 0
+  },
+  {
+    "id": 41,
+    "type": "tricky",
+    "hi": {
+      "q": "जीवाणु में कोशिका भित्ति (Cell Wall) का मुख्य कार्य क्या है?<br>(A) केवल एटीपी का उत्पादन करना<br>(B) कोशिका के आकार को निर्धारित करना और जीवाणु को फटने (bursting) तथा निपातित (collapsing) होने से बचाना<br>(C) आनुवंशिक पुनर्संयोजन में सीधे भाग लेना<br>(D) प्रकाश-संश्लेषण के वर्णकों को धारण करना",
+      "opts": [
+        "(A)",
+        "(B)",
+        "(C)",
+        "(D)"
+      ],
+      "exp": "एनसीईआरटी पृष्ठ 129: कोशिकाभित्ति आकार निर्धारित करती है और जीवाणु को फटने तथा निपातित होने से बचाती है।"
+    },
+    "en": {
+      "q": "What is the primary structural role of the bacterial cell wall?<br>(A) Exclusively generate ATP<br>(B) Determines cell shape and prevents bacterium from bursting or collapsing<br>(C) Directly perform genetic recombination<br>(D) Anchor photosynthetic pigments",
+      "opts": [
+        "(A)",
+        "(B)",
+        "(C)",
+        "(D)"
+      ],
+      "exp": "Cell wall determines shape and provides strong structural support to prevent collapsing/bursting."
+    },
+    "ans": 1
+  },
+  {
+    "id": 42,
+    "type": "statement",
+    "hi": {
+      "q": "जीवाणुओं की जीवद्रव्य झिल्ली (Plasma membrane) के संदर्भ में कौन-से कथन सत्य हैं?<br>1. यह प्रकृति में अर्ध-पारगम्य (semi-permeable) होती है।<br>2. इसके द्वारा कोशिका बाह्य वातावरण से संपर्क बनाए रखने में सक्षम होती है।<br>3. संरचना के अनुसार यह झिल्ली यूकैरियोटिक झिल्ली जैसी ही होती है।<br><br>सही विकल्प का चुनाव कीजिए:",
+      "opts": [
+        "केवल 1 और 2",
+        "केवल 2 और 3",
+        "केवल 1 और 3",
+        "1, 2 और 3 सभी"
+      ],
+      "exp": "तीनों कथन एनसीईआरटी पृष्ठ 129 के अनुसार अक्षरशः सत्य हैं।"
+    },
+    "en": {
+      "q": "Regarding bacterial plasma membrane:<br>1. It is semi-permeable in nature.<br>2. It interacts with the outside world.<br>3. Structurally, it is similar to that of eukaryotes.<br><br>Choose the correct option:",
+      "opts": [
+        "1 and 2 only",
+        "2 and 3 only",
+        "1 and 3 only",
+        "All 1, 2 and 3"
+      ],
+      "exp": "All three statements are directly from NCERT Section 8.4.1."
+    },
+    "ans": 3
+  },
+  {
+    "id": 43,
+    "type": "statement",
+    "hi": {
+      "q": "मीसोसोम (Mesosome) जीवद्रव्य झिल्ली के फैलाव से बनता है। यह फैलाव निम्नलिखित में से किन रूपों में होता है?<br>1. पुटिका (Vesicles)<br>2. नलिका (Tubules)<br>3. पटलिका (Lamellae)<br><br>सही कूट चुनें:",
+      "opts": [
+        "केवल 1 और 2",
+        "केवल 2 और 3",
+        "केवल 1 और 3",
+        "1, 2 और 3 सभी"
+      ],
+      "exp": "एनसीईआरटी पृष्ठ 129: यह फैलाव पुटिका, नलिका एवं पटलिका के रूप में होता है।"
+    },
+    "en": {
+      "q": "Mesosome is formed by plasma membrane extensions. In which forms do these extensions occur?<br>1. Vesicles<br>2. Tubules<br>3. Lamellae<br><br>Select the correct code:",
+      "opts": [
+        "1 and 2 only",
+        "2 and 3 only",
+        "1 and 3 only",
+        "All 1, 2 and 3"
+      ],
+      "exp": "NCERT 8.4.1: These extensions are in the form of vesicles, tubules and lamellae."
+    },
+    "ans": 3
+  },
+  {
+    "id": 44,
+    "type": "statement",
+    "hi": {
+      "q": "मीसोसोम के कार्यों के संदर्भ में निम्नलिखित पर विचार करें:<br>1. कोशिका भित्ति का निर्माण<br>2. डीएनए प्रतिकृति (DNA replication) एवं संतति कोशिकाओं में इसका वितरण<br>3. श्वसन एवं स्रावी प्रक्रियाएं<br>4. जीवद्रव्य झिल्ली के पृष्ठ क्षेत्रफल व एंजाइम मात्रा में वृद्धि<br><br>उपरोक्त में से कौन-से मीसोसोम के कार्य हैं?",
+      "opts": [
+        "केवल 1 और 2",
+        "केवल 1, 2 और 3",
+        "केवल 2, 3 और 4",
+        "1, 2, 3 और 4 सभी"
+      ],
+      "exp": "एनसीईआरटी पृष्ठ 129 के अनुसार ये चारों मीसोसोम के आधिकारिक कार्य हैं।"
+    },
+    "en": {
+      "q": "Which of the following are functions of mesosomes?<br>1. Cell wall formation<br>2. DNA replication and distribution to daughter cells<br>3. Respiration and secretion processes<br>4. Increase surface area of plasma membrane and enzymatic content<br><br>Choose the correct option:",
+      "opts": [
+        "1 and 2 only",
+        "1, 2 and 3 only",
+        "2, 3 and 4 only",
+        "All 1, 2, 3 and 4"
+      ],
+      "exp": "All four functions are explicitly described in NCERT."
+    },
+    "ans": 3
+  },
+  {
+    "id": 45,
+    "type": "tricky",
+    "hi": {
+      "q": "कुछ प्रोकैरियोट्स जैसे सायनोबैक्टीरिया (नील-हरित जीवाणु) के कोशिकाद्रव्य में झिल्लीदार विस्तार होता है जिसमें वर्णक पाए जाते हैं, उसे क्या कहते हैं?<br>(A) लवक (Plastid)<br>(B) वर्णकी लवक / क्रोमैटोफोर (Chromatophore)<br>(C) लयनकाय (Lysosome)<br>(D) ल्यूकोप्लास्ट (Leucoplast)",
+      "opts": [
+        "(A)",
+        "(B)",
+        "(C)",
+        "(D)"
+      ],
+      "exp": "एनसीईआरटी पृष्ठ 129: सायनोबैक्टीरिया के कोशिकाद्रव्य में झिल्लीमय विस्तार को 'वर्णकी लवक' (Chromatophores) कहते हैं, जिनमें प्रकाश-संश्लेषी वर्णक होते हैं।"
+    },
+    "en": {
+      "q": "Membranous extensions in cytoplasm of some prokaryotes like cyanobacteria containing pigments are called:<br>(A) Plastids<br>(B) Chromatophores<br>(C) Lysosomes<br>(D) Leucoplasts",
+      "opts": [
+        "(A)",
+        "(B)",
+        "(C)",
+        "(D)"
+      ],
+      "exp": "Chromatophores are membranous extensions containing pigments in cyanobacteria."
+    },
+    "ans": 1
+  },
+  {
+    "id": 46,
+    "type": "matching",
+    "hi": {
+      "q": "जीवाणु कशाभिका (Bacterial Flagellum) के तीन भागों में से 'सबसे बड़ा भाग' कौन-सा होता है जो कोशिका सतह से बाहर की ओर फैला रहता है?<br>(A) अंकुश (Hook)<br>(B) आधारीय शरीर (Basal body)<br>(C) तंतु (Filament)<br>(D) अक्षसूत्र (Axoneme)",
+      "opts": [
+        "(A)",
+        "(B)",
+        "(C)",
+        "(D)"
+      ],
+      "exp": "एनसीईआरटी पृष्ठ 129: कशाभिका तीन भागों (तंतु, अंकुश, आधारीय शरीर) में बँटी होती है, जिनमें 'तंतु' सबसे बड़ा भाग होता है।"
+    },
+    "en": {
+      "q": "Among the three parts of bacterial flagellum, which is the longest portion extending from cell surface to outside?<br>(A) Hook<br>(B) Basal body<br>(C) Filament<br>(D) Axoneme",
+      "opts": [
+        "(A)",
+        "(B)",
+        "(C)",
+        "(D)"
+      ],
+      "exp": "The filament is the longest portion of bacterial flagellum extending outwards."
+    },
+    "ans": 2
+  },
+  {
+    "id": 47,
+    "type": "statement",
+    "hi": {
+      "q": "जीवाणु के सतह पर मिलने वाली संरचनाओं — रोम (Pili) तथा झालर (Fimbriae) के संदर्भ में कौन-से कथन सत्य हैं?<br>1. ये दोनों संरचनाएं जीवाणु की गति में कोई सहायता नहीं करती हैं।<br>2. रोम विशेष प्रोटीन की बनी लंबी नलिकाकार संरचना होती है।<br>3. झालर लघुशूक जैसे तंतु होते हैं जो जीवाणु को जलधारा में चट्टानों व पोषक ऊतकों से चिपकने में सहायता करते हैं।<br><br>सही कूट चुनें:",
+      "opts": [
+        "केवल 1 और 2",
+        "केवल 2 और 3",
+        "केवल 1 और 3",
+        "1, 2 और 3 सभी"
+      ],
+      "exp": "तीनों कथन एनसीईआरटी पृष्ठ 129 के अनुसार पूर्णतः सत्य हैं।"
+    },
+    "en": {
+      "q": "Regarding bacterial surface structures Pili and Fimbriae:<br>1. Neither plays a role in motility.<br>2. Pili are elongated tubular structures made of a special protein.<br>3. Fimbriae are bristle-like fibres helping bacteria attach to rocks in streams and host tissues.<br><br>Choose the correct option:",
+      "opts": [
+        "1 and 2 only",
+        "2 and 3 only",
+        "1 and 3 only",
+        "All 1, 2 and 3"
+      ],
+      "exp": "All three statements are completely true per NCERT Section 8.4.1."
+    },
+    "ans": 3
+  },
+  {
+    "id": 48,
+    "type": "ar",
+    "hi": {
+      "q": "<strong>कथन (A):</strong> रोम (Pili) और झालर (Fimbriae) जीवाणुओं के चलन (locomotion) में भाग नहीं लेते हैं।<br><strong>कारण (R):</strong> जीवाणुओं में केवल कशाभिका (Flagella) ही चलायमान कोशिकाओं में गति के लिए उत्तरदायी संरचना है।",
+      "opts": [
+        "(A) और (R) दोनों सही हैं और (R), (A) की सही व्याख्या है।",
+        "(A) और (R) दोनों सही हैं लेकिन (R), (A) की सही व्याख्या नहीं है।",
+        "(A) सही है लेकिन (R) गलत है।",
+        "(A) गलत है लेकिन (R) सही है।"
+      ],
+      "exp": "(A) और (R) दोनों सही हैं और (R) कथन (A) का सही कारण प्रस्तुत करता है।"
+    },
+    "en": {
+      "q": "<strong>Assertion (A):</strong> Pili and Fimbriae do not play a role in bacterial motility.<br><strong>Reason (R):</strong> Flagella are the only surface appendages responsible for motility in motile bacteria.",
+      "opts": [
+        "Both (A) and (R) are true and (R) is the correct explanation of (A).",
+        "Both (A) and (R) are true but (R) is not the correct explanation of (A).",
+        "(A) is true but (R) is false.",
+        "(A) is false but (R) is true."
+      ],
+      "exp": "Both are true and reason provides the direct conceptual justification."
+    },
+    "ans": 0
+  },
+  {
+    "id": 49,
+    "type": "tricky",
+    "hi": {
+      "q": "क्रिश्चियन ग्राम द्वारा विकसित ग्राम अभिरंजन विधि (Gram Staining) के प्रति व्यवहार के आधार पर जीवाणुओं को किन दो श्रेणियों में बांटा गया है?<br>(A) स्वपोषी एवं विषमपोषी<br>(B) ग्राम धनात्मक (Gram positive) एवं ग्राम ऋणात्मक (Gram negative)<br>(C) चलायमान एवं अचलायमान<br>(D) संपुटिका युक्त एवं संपुटिका रहित",
+      "opts": [
+        "(A)",
+        "(B)",
+        "(C)",
+        "(D)"
+      ],
+      "exp": "एनसीईआरटी पृष्ठ 128: जो ग्राम अभिरंजित होते हैं उन्हें ग्राम धनात्मक तथा जो अभिरंजित नहीं होते उन्हें ग्राम ऋणात्मक कहते हैं।"
+    },
+    "en": {
+      "q": "Bacteria are classified into which two categories based on response to Gram staining?<br>(A) Autotrophic and Heterotrophic<br>(B) Gram positive and Gram negative<br>(C) Motile and Non-motile<br>(D) Capsulated and Non-capsulated",
+      "opts": [
+        "(A)",
+        "(B)",
+        "(C)",
+        "(D)"
+      ],
+      "exp": "Gram positive and Gram negative based on cell envelope differences and stain retention."
+    },
+    "ans": 1
+  },
+  {
+    "id": 50,
+    "type": "statement",
+    "hi": {
+      "q": "जीवाणु कशाभिका (Flagellum) के संगठन के संदर्भ में विचार कीजिए:<br>1. जीवाणुओं में कशाभिका की संख्या व विन्यास का क्रम भिन्न-भिन्न हो सकता है।<br>2. जीवाणु कशाभिका की संरचना यूकैरियोटिक कशाभिका (9+2 प्रणाली) से संरचनात्मक रूप से भिन्न होती है।<br>3. कशाभिका कोशिका भित्ति से बाहर निकलने वाली पतली तंतुरूपी अपवृद्धि है।<br><br>सही विकल्प चुनें:",
+      "opts": [
+        "केवल 1 और 2",
+        "केवल 2 और 3",
+        "केवल 1 और 3",
+        "1, 2 और 3 सभी"
+      ],
+      "exp": "तीनों कथन एनसीईआरटी पृष्ठ 129 एवं 137 के अनुसार पूरी तरह सही हैं।"
+    },
+    "en": {
+      "q": "Regarding bacterial flagellum organization:<br>1. Bacteria show variation in number and arrangement of flagella.<br>2. Bacterial flagellum is structurally different from eukaryotic flagellum.<br>3. Flagella are thin filamentous extensions from the cell wall.<br><br>Choose the correct option:",
+      "opts": [
+        "1 and 2 only",
+        "2 and 3 only",
+        "1 and 3 only",
+        "All 1, 2 and 3"
+      ],
+      "exp": "All three statements are correct per NCERT."
+    },
+    "ans": 3
+  },
+  {
+    "id": 51,
+    "type": "tricky",
+    "hi": {
+      "q": "यदि किसी जीवाणु की कोशिका भित्ति को एंजाइम द्वारा पूरी तरह नष्ट कर दिया जाए, तो वह अल्पपरासारी (hypotonic) घोल में रखने पर क्या होगा?<br>(A) कोशिका संकुचित हो जाएगी<br>(B) कोशिका जल अवशोषित कर फट (burst) जाएगी<br>(C) कोशिका में तुरंत 80S राइबोसोम बन जाएंगे<br>(D) कोशिका अपरिवर्तित रहेगी",
+      "opts": [
+        "(A)",
+        "(B)",
+        "(C)",
+        "(D)"
+      ],
+      "exp": "कोशिका भित्ति ही जीवाणु को फटने (bursting) से रोकती है। भित्ति न होने पर अंतःपरासरण से जल प्रवेश करेगा और कोशिका फट जाएगी।"
+    },
+    "en": {
+      "q": "If the cell wall of a bacterium is completely removed, what happens when placed in a hypotonic medium?<br>(A) It shrinks<br>(B) It absorbs water and bursts<br>(C) It forms 80S ribosomes instantly<br>(D) It remains unchanged",
+      "opts": [
+        "(A)",
+        "(B)",
+        "(C)",
+        "(D)"
+      ],
+      "exp": "The cell wall prevents bursting. Without it, osmotic entry of water will burst the bacterial cell."
+    },
+    "ans": 1
+  },
+  {
+    "id": 52,
+    "type": "ar",
+    "hi": {
+      "q": "<strong>कथन (A):</strong> अवपंक पर्त (Slime layer) और संपुटिका (Capsule) दोनों ग्लाइकोकेलिक्स के ही रूपांतरित रूप हैं।<br><strong>कारण (R):</strong> सभी जीवाणुओं में ग्लाइकोकेलिक्स की मोटाई और रासायनिक रचना बिल्कुल एक समान होती है।",
+      "opts": [
+        "(A) और (R) दोनों सही हैं और (R), (A) की सही व्याख्या है।",
+        "(A) और (R) दोनों सही हैं लेकिन (R), (A) की सही व्याख्या नहीं है।",
+        "(A) सही है लेकिन (R) गलत है।",
+        "(A) गलत है लेकिन (R) सही है।"
+      ],
+      "exp": "कथन (A) सही है। कारण (R) गलत है क्योंकि ग्लाइकोकेलिक्स विभिन्न जीवाणुओं में रचना एवं मोटाई में अत्यधिक भिन्न होती है।"
+    },
+    "en": {
+      "q": "<strong>Assertion (A):</strong> Slime layer and capsule are both modifications of glycocalyx.<br><strong>Reason (R):</strong> Glycocalyx has identical composition and thickness in all bacteria without exception.",
+      "opts": [
+        "Both (A) and (R) are true and (R) is the correct explanation of (A).",
+        "Both (A) and (R) are true but (R) is not the correct explanation of (A).",
+        "(A) is true but (R) is false.",
+        "(A) is false but (R) is true."
+      ],
+      "exp": "Assertion is true. Reason is false because glycocalyx differs in composition and thickness among bacteria."
+    },
+    "ans": 2
+  },
+  {
+    "id": 53,
+    "type": "statement",
+    "hi": {
+      "q": "प्रोकैरियोटिक राइबोसोम के संदर्भ में कौन-से कथन सत्य हैं?<br>1. ये कोशिका की जीवद्रव्य झिल्ली (plasma membrane) से जुड़े होते हैं।<br>2. इनका आकार लगभग 15 से 20 nm (नैनोमीटर) होता है।<br>3. ये 50S व 30S दो उप-इकाइयों से मिलकर 70S राइबोसोम बनाते हैं।<br>4. ये प्रोटीन संश्लेषण के प्रमुख स्थल होते हैं।<br><br>सही विकल्प चुनें:",
+      "opts": [
+        "केवल 1, 2 और 3",
+        "केवल 2, 3 और 4",
+        "केवल 1, 3 और 4",
+        "1, 2, 3 और 4 सभी"
+      ],
+      "exp": "चारों कथन एनसीईआरटी पृष्ठ 129 के अनुसार पूर्णतः सत्य हैं।"
+    },
+    "en": {
+      "q": "Regarding prokaryotic ribosomes:<br>1. They are associated with the plasma membrane of the cell.<br>2. They are about 15 to 20 nm in size.<br>3. They are made of two subunits (50S and 30S) forming 70S.<br>4. They are the site of protein synthesis.<br><br>Choose the correct option:",
+      "opts": [
+        "1, 2 and 3 only",
+        "2, 3 and 4 only",
+        "1, 3 and 4 only",
+        "All 1, 2, 3 and 4"
+      ],
+      "exp": "All four statements are explicitly true per NCERT Section 8.4.2."
+    },
+    "ans": 3
+  },
+  {
+    "id": 54,
+    "type": "tricky",
+    "hi": {
+      "q": "जब अनेक राइबोसोम एक अकेले संवाहक आरएनए (mRNA) से जुड़कर एक लंबी श्रृंखला बना लेते हैं, तो इस संरचना को क्या कहते हैं?<br>(A) पॉलीसोम या बहुराइबोसोम (Polysome / Polyribosome)<br>(B) मीसोसोम (Mesosome)<br>(C) डिक्टियोसोम (Dictyosome)<br>(D) सेंट्रोसोम (Centrosome)",
+      "opts": [
+        "(A)",
+        "(B)",
+        "(C)",
+        "(D)"
+      ],
+      "exp": "एनसीईआरटी पृष्ठ 129: बहुत से राइबोसोम एक संदेशवाहक RNA से संबद्ध होकर एक श्रृंखला बनाते हैं जिसे बहुराइबोसोम या बहुसूत्र (Polysome) कहते हैं।"
+    },
+    "en": {
+      "q": "Several ribosomes attached to a single mRNA chain form a structure known as:<br>(A) Polysome or Polyribosome<br>(B) Mesosome<br>(C) Dictyosome<br>(D) Centrosome",
+      "opts": [
+        "(A)",
+        "(B)",
+        "(C)",
+        "(D)"
+      ],
+      "exp": "A chain of ribosomes on a single mRNA is called a polyribosome or polysome."
+    },
+    "ans": 0
+  },
+  {
+    "id": 55,
+    "type": "statement",
+    "hi": {
+      "q": "बहुसूत्र (Polysome) का प्रमुख कार्य क्या है?<br>(A) लिपिड का संचय करना<br>(B) mRNA से संबद्ध होकर प्रोटीन का निर्माण करना<br>(C) कोशिका भित्ति का विघटन करना<br>(D) प्लाज्मिड डीएनए की प्रतिकृति बनाना",
+      "opts": [
+        "(A)",
+        "(B)",
+        "(C)",
+        "(D)"
+      ],
+      "exp": "एनसीईआरटी पृष्ठ 129: बहुसूत्र के राइबोसोम mRNA से संबद्ध होकर प्रोटीन निर्माण (अनुवाद/translation) में भाग लेते हैं।"
+    },
+    "en": {
+      "q": "What is the primary function of a polyribosome (polysome)?<br>(A) Lipid accumulation<br>(B) Translation of mRNA into proteins<br>(C) Cell wall digestion<br>(D) Plasmid DNA replication",
+      "opts": [
+        "(A)",
+        "(B)",
+        "(C)",
+        "(D)"
+      ],
+      "exp": "Ribosomes of a polysome translate mRNA into proteins."
+    },
+    "ans": 1
+  },
+  {
+    "id": 56,
+    "type": "ar",
+    "hi": {
+      "q": "<strong>कथन (A):</strong> प्रोकैरियोटिक कोशिकाओं में पाए जाने वाले अंतर्विष्ट पिंड (Inclusion bodies) किसी भी झिल्ली द्वारा घिरे नहीं होते हैं।<br><strong>कारण (R):</strong> ये कोशिकाद्रव्य में संचित अप्रयुक्त अपशिष्ट या आरक्षित पदार्थ होते हैं जो स्वतंत्र रूप से पड़े रहते हैं।",
+      "opts": [
+        "(A) और (R) दोनों सही हैं और (R), (A) की सही व्याख्या है।",
+        "(A) और (R) दोनों सही हैं लेकिन (R), (A) की सही व्याख्या नहीं है।",
+        "(A) सही है लेकिन (R) गलत है।",
+        "(A) गलत है लेकिन (R) सही है।"
+      ],
+      "exp": "(A) और (R) दोनों सही हैं और (R) सही व्याख्या प्रस्तुत करता है (NCERT Section 8.4.2)."
+    },
+    "en": {
+      "q": "<strong>Assertion (A):</strong> Inclusion bodies in prokaryotic cells are not bound by any membrane.<br><strong>Reason (R):</strong> They represent reserve material stored in cytoplasm and lie free in it.",
+      "opts": [
+        "Both (A) and (R) are true and (R) is the correct explanation of (A).",
+        "Both (A) and (R) are true but (R) is not the correct explanation of (A).",
+        "(A) is true but (R) is false.",
+        "(A) is false but (R) is true."
+      ],
+      "exp": "Both assertion and reason are true and reason explains assertion."
+    },
+    "ans": 0
+  },
+  {
+    "id": 57,
+    "type": "matching",
+    "hi": {
+      "q": "निम्नलिखित में से कौन-सा अंतर्विष्ट पिंड (Inclusion body) का उदाहरण <strong>नहीं</strong> है?<br>(A) फॉस्फेट कणिकाएं (Phosphate granules)<br>(B) सायनोफाइसिन कणिकाएं (Cyanophycean granules)<br>(C) ग्लाइकोजन कणिकाएं (Glycogen granules)<br>(D) गॉल्जी पुटिकाएं (Golgi vesicles)",
+      "opts": [
+        "(A)",
+        "(B)",
+        "(C)",
+        "(D)"
+      ],
+      "exp": "गॉल्जी पुटिकाएं यूकैरियोट्स का झिल्लीयुक्त अंगक हैं, जबकि फॉस्फेट, सायनोफाइसिन व ग्लाइकोजन कणिकाएं प्रोकैरियोट्स के अंतर्विष्ट पिंड हैं।"
+    },
+    "en": {
+      "q": "Which of the following is <strong>NOT</strong> an example of prokaryotic inclusion body?<br>(A) Phosphate granules<br>(B) Cyanophycean granules<br>(C) Glycogen granules<br>(D) Golgi vesicles",
+      "opts": [
+        "(A)",
+        "(B)",
+        "(C)",
+        "(D)"
+      ],
+      "exp": "Golgi vesicles are eukaryotic membrane-bound structures, not prokaryotic inclusion bodies."
+    },
+    "ans": 3
+  },
+  {
+    "id": 58,
+    "type": "statement",
+    "hi": {
+      "q": "गैस रसधानी (Gas Vacuole) निम्नलिखित में से किन जीवों में पाई जाती है?<br>1. नील-हरित प्रकाश-संश्लेषी जीवाणु<br>2. बैंगनी प्रकाश-संश्लेषी जीवाणु<br>3. हरी प्रकाश-संश्लेषी जीवाणु<br>4. सभी उच्च पादपों की पर्णमध्योतक कोशिकाएं<br><br>सही विकल्प चुनें:",
+      "opts": [
+        "केवल 1 और 2",
+        "केवल 1, 2 और 3",
+        "केवल 2, 3 और 4",
+        "1, 2, 3 और 4 सभी"
+      ],
+      "exp": "एनसीईआरटी पृष्ठ 129: गैस रसधानियां नील हरित, बैंगनी और हरी प्रकाश-संश्लेषी जीवाणुओं में मिलती हैं। उच्च पादपों में यह नहीं पाई जाती।"
+    },
+    "en": {
+      "q": "Gas vacuoles are found in which of the following?<br>1. Blue-green photosynthetic bacteria<br>2. Purple photosynthetic bacteria<br>3. Green photosynthetic bacteria<br>4. Mesophyll cells of all higher plants<br><br>Choose the correct option:",
+      "opts": [
+        "1 and 2 only",
+        "1, 2 and 3 only",
+        "2, 3 and 4 only",
+        "All 1, 2, 3 and 4"
+      ],
+      "exp": "Gas vacuoles are found in blue-green, purple and green photosynthetic bacteria (NCERT 8.4.2)."
+    },
+    "ans": 1
+  },
+  {
+    "id": 59,
+    "type": "tricky",
+    "hi": {
+      "q": "राइबोसोम की उप-इकाई में आने वाला अक्षर 'S' (स्वेडबर्ग इकाई) अपरोक्ष रूप से (indirectly) किसको व्यक्त करता है?<br>(A) केवल आण्विक भार को<br>(B) अवसादन गुणांक (Sedimentation coefficient), जो घनत्व व आकार का माप है<br>(C) केवल सतही क्षेत्रफल को<br>(D) प्रोटीन संश्लेषण की दर को",
+      "opts": [
+        "(A)",
+        "(B)",
+        "(C)",
+        "(D)"
+      ],
+      "exp": "एनसीईआरटी पृष्ठ 137: 'S' स्वेडबर्ग इकाई अवसादन गुणांक को प्रदर्शित करता है, जो अपरोक्ष रूप से आकार व घनत्व को व्यक्त करता है।"
+    },
+    "en": {
+      "q": "The unit 'S' (Svedberg's unit) in ribosomes indirectly represents a measure of:<br>(A) Molecular weight only<br>(B) Sedimentation coefficient, measuring density and size<br>(C) Surface area only<br>(D) Rate of protein synthesis",
+      "opts": [
+        "(A)",
+        "(B)",
+        "(C)",
+        "(D)"
+      ],
+      "exp": "'S' stands for sedimentation coefficient; it indirectly measures density and size."
+    },
+    "ans": 1
+  },
+  {
+    "id": 60,
+    "type": "statement",
+    "hi": {
+      "q": "प्रोकैरियोटिक 70S राइबोसोम की दो उप-इकाइयां (Subunits) क्रमशः कौन-सी होती हैं?<br>(A) 60S और 40S<br>(B) 50S और 30S<br>(C) 50S और 20S<br>(D) 40S और 30S",
+      "opts": [
+        "(A)",
+        "(B)",
+        "(C)",
+        "(D)"
+      ],
+      "exp": "70S राइबोसोम 50S (बड़ी उप-इकाई) और 30S (छोटी उप-इकाई) से मिलकर बना होता है।"
+    },
+    "en": {
+      "q": "What are the two sub-units of prokaryotic 70S ribosome?<br>(A) 60S and 40S<br>(B) 50S and 30S<br>(C) 50S and 20S<br>(D) 40S and 30S",
+      "opts": [
+        "(A)",
+        "(B)",
+        "(C)",
+        "(D)"
+      ],
+      "exp": "Prokaryotic 70S ribosome consists of 50S and 30S subunits."
+    },
+    "ans": 1
+  },
+  {
+    "id": 61,
+    "type": "ar",
+    "hi": {
+      "q": "<strong>कथन (A):</strong> प्रोकैरियोटिक राइबोसोम कोशिकाद्रव्यी झिल्ली के साथ भी जुड़े पाए जा सकते हैं।<br><strong>कारण (R):</strong> प्रोकैरियोटिक कोशिकाओं में अंतर्द्रव्यी जालिका (ER) की अनुपस्थिति होती है।",
+      "opts": [
+        "(A) और (R) दोनों सही हैं और (R), (A) की सही व्याख्या है।",
+        "(A) और (R) दोनों सही हैं लेकिन (R), (A) की सही व्याख्या नहीं है।",
+        "(A) सही है लेकिन (R) गलत है।",
+        "(A) गलत है लेकिन (R) सही है।"
+      ],
+      "exp": "(A) और (R) दोनों सही हैं और (R), (A) की सही व्याख्या है क्योंकि प्रोकैरियोट्स में RER नहीं होती, इसलिए झिल्ली से जुड़े राइबोसोम सीधे जीवद्रव्य झिल्ली पर लगे होते हैं।"
+    },
+    "en": {
+      "q": "<strong>Assertion (A):</strong> In prokaryotes, ribosomes are found associated with the plasma membrane.<br><strong>Reason (R):</strong> Endoplasmic reticulum is absent in prokaryotic cells.",
+      "opts": [
+        "Both (A) and (R) are true and (R) is the correct explanation of (A).",
+        "Both (A) and (R) are true but (R) is not the correct explanation of (A).",
+        "(A) is true but (R) is false.",
+        "(A) is false but (R) is true."
+      ],
+      "exp": "Both are true and reason provides the direct structural cause."
+    },
+    "ans": 0
+  },
+  {
+    "id": 62,
+    "type": "tricky",
+    "hi": {
+      "q": "निम्नलिखित में से कौन-सा लक्षण प्रोकैरियोटिक एवं यूकैरियोटिक दोनों कोशिकाओं में <strong>समान रूप से</strong> पाया जाता है?<br>(A) केंद्रक आवरण से घिरा सुस्पष्ट केंद्रक<br>(B) झिल्लिरहित राइबोसोम की उपस्थिति<br>(C) 9+2 व्यवस्था वाला अक्षसूत्र<br>(D) सूत्रकणिका एवं गॉल्जी उपकरण",
+      "opts": [
+        "(A)",
+        "(B)",
+        "(C)",
+        "(D)"
+      ],
+      "exp": "राइबोसोम झिल्लिरहित अंगक हैं जो प्रोकैरियोट (70S) और यूकैरियोट (80S) दोनों में पाए जाते हैं।"
+    },
+    "en": {
+      "q": "Which of the following is present <strong>in both</strong> prokaryotic and eukaryotic cells?<br>(A) Membrane-bound distinct nucleus<br>(B) Non-membrane bound ribosomes<br>(C) 9+2 axoneme arrangement<br>(D) Mitochondria and Golgi apparatus",
+      "opts": [
+        "(A)",
+        "(B)",
+        "(C)",
+        "(D)"
+      ],
+      "exp": "Non-membrane bound ribosomes are present in both prokaryotic and eukaryotic cells."
+    },
+    "ans": 1
+  },
+  {
+    "id": 63,
+    "type": "statement",
+    "hi": {
+      "q": "यूकैरियोटिक कोशिकाओं के प्रमुख लक्षणों के संदर्भ में विचार करें:<br>1. इनमें झिल्लीदार अंगकों की उपस्थिति के कारण कोशिकाद्रव्य विस्तृत कक्षयुक्त (compartmentalised) प्रतीत होता है।<br>2. इनमें केंद्रक आवरण युक्त सुव्यवस्थित केंद्रक मिलता है।<br>3. इनमें जटिल कोशिकीय कंकाल (cytoskeleton) संरचना पाई जाती है।<br>4. इनका आनुवंशिक पदार्थ गुणसूत्रों (chromosomes) के रूप में व्यवस्थित रहता है।<br><br>सत्य विकल्प चुनें:",
+      "opts": [
+        "केवल 1 और 2",
+        "केवल 2, 3 और 4",
+        "केवल 1, 3 और 4",
+        "1, 2, 3 और 4 सभी"
+      ],
+      "exp": "एनसीईआरटी पृष्ठ 131 के अनुसार यूकैरियोटिक कोशिकाओं के ये चारों लक्षण पूर्णतः सत्य हैं।"
+    },
+    "en": {
+      "q": "Regarding eukaryotic cells:<br>1. There is an extensive compartmentalisation of cytoplasm through membrane-bound organelles.<br>2. They possess an organized nucleus with a nuclear envelope.<br>3. They possess complex locomotory and cytoskeletal structures.<br>4. Their genetic material is organized into chromosomes.<br><br>Choose the correct option:",
+      "opts": [
+        "1 and 2 only",
+        "2, 3 and 4 only",
+        "1, 3 and 4 only",
+        "All 1, 2, 3 and 4"
+      ],
+      "exp": "All four features are hallmark characteristics of eukaryotic cells (NCERT 8.5)."
+    },
+    "ans": 3
+  },
+  {
+    "id": 64,
+    "type": "matching",
+    "hi": {
+      "q": "पादप कोशिका (Plant cell) और प्राणि कोशिका (Animal cell) के बीच अंतर के संबंध में कौन-सा मिलान <strong>सही</strong> है?<br><br><strong>लक्षण:</strong><br>P. कोशिका भित्ति (Cell wall)<br>Q. लवक (Plastids)<br>R. बड़ी केंद्रीय रसधानी<br>S. तारककाय (Centrosome)<br><br>पादप कोशिका में उपस्थिति का सही कूट पहचानें:",
+      "opts": [
+        "P-उपस्थित, Q-उपस्थित, R-उपस्थित, S-अनुपस्थित",
+        "P-अनुपस्थित, Q-उपस्थित, R-उपस्थित, S-उपस्थित",
+        "P-उपस्थित, Q-अनुपस्थित, R-अनुपस्थित, S-उपस्थित",
+        "P-अनुपस्थित, Q-अनुपस्थित, R-उपस्थित, S-उपस्थित"
+      ],
+      "exp": "पादप कोशिकाओं में कोशिका भित्ति, लवक और बड़ी केंद्रीय रसधानी उपस्थित होती है, जबकि तारककाय (Centrosome) लगभग सभी पादप कोशिकाओं में अनुपस्थित होता है।"
+    },
+    "en": {
+      "q": "Regarding plant vs animal cells, which presence pattern is <strong>correct for plant cells</strong>?<br><br>P. Cell wall<br>Q. Plastids<br>R. Large central vacuole<br>S. Centrosome<br><br>Correct code:",
+      "opts": [
+        "P-Present, Q-Present, R-Present, S-Absent",
+        "P-Absent, Q-Present, R-Present, S-Present",
+        "P-Present, Q-Absent, R-Absent, S-Present",
+        "P-Absent, Q-Absent, R-Present, S-Present"
+      ],
+      "exp": "Plant cells possess cell wall, plastids, and large central vacuole, but lack centrosomes."
+    },
+    "ans": 0
+  },
+  {
+    "id": 65,
+    "type": "tricky",
+    "hi": {
+      "q": "निम्नलिखित में से किस जीव समूह में यूकैरियोटिक कोशिका संगठन <strong>नहीं</strong> पाया जाता है?<br>(A) सभी आद्यजीव (Protists)<br>(B) कवक (Fungi)<br>(C) सायनोबैक्टीरिया (Cyanobacteria)<br>(D) पादप एवं प्राणी",
+      "opts": [
+        "(A)",
+        "(B)",
+        "(C)",
+        "(D)"
+      ],
+      "exp": "सायनोबैक्टीरिया (नील-हरित शैवाल) प्रोकैरियोटिक जीव हैं। प्रोटिस्ट, कवक, पादप और जंतु सभी यूकैरियोट्स हैं।"
+    },
+    "en": {
+      "q": "In which of the following groups is eukaryotic cell organization <strong>absent</strong>?<br>(A) Protists<br>(B) Fungi<br>(C) Cyanobacteria<br>(D) Plants and Animals",
+      "opts": [
+        "(A)",
+        "(B)",
+        "(C)",
+        "(D)"
+      ],
+      "exp": "Cyanobacteria are prokaryotes (Monera), whereas Protists, Fungi, Plants, and Animals are eukaryotes."
+    },
+    "ans": 2
+  },
+  {
+    "id": 66,
+    "type": "ar",
+    "hi": {
+      "q": "<strong>कथन (A):</strong> सभी यूकैरियोटिक कोशिकाएं संरचना एवं अंगकों की दृष्टि से एक समान नहीं होती हैं।<br><strong>कारण (R):</strong> पादप और जंतु कोशिकाओं में कोशिका भित्ति, लवक, रसधानी और तारककाय की उपस्थिति में स्पष्ट अंतर होता है।",
+      "opts": [
+        "(A) और (R) दोनों सही हैं और (R), (A) की सही व्याख्या है।",
+        "(A) और (R) दोनों सही हैं लेकिन (R), (A) की सही व्याख्या नहीं है।",
+        "(A) सही है लेकिन (R) गलत है।",
+        "(A) गलत है लेकिन (R) सही है।"
+      ],
+      "exp": "(A) और (R) दोनों सही हैं और (R), (A) की सटीक व्याख्या करता है (NCERT Section 8.5)."
+    },
+    "en": {
+      "q": "<strong>Assertion (A):</strong> All eukaryotic cells are not identical.<br><strong>Reason (R):</strong> Plant and animal cells exhibit marked differences regarding cell wall, plastids, vacuole, and centrosome.",
+      "opts": [
+        "Both (A) and (R) are true and (R) is the correct explanation of (A).",
+        "Both (A) and (R) are true but (R) is not the correct explanation of (A).",
+        "(A) is true but (R) is false.",
+        "(A) is false but (R) is true."
+      ],
+      "exp": "Both assertion and reason are true and reason directly explains the assertion."
+    },
+    "ans": 0
+  },
+  {
+    "id": 67,
+    "type": "statement",
+    "hi": {
+      "q": "यूकैरियोटिक कोशिकाओं के कोशिकाद्रव्यी कक्षीय विभाजन (Compartmentalisation) के क्या लाभ हैं?<br>1. विभिन्न परस्पर विरोधी उपापचयी क्रियाएं एक साथ सुचारू रूप से चल सकती हैं।<br>2. एंजाइम अपने विशिष्ट अंगकों के भीतर उच्च सांद्रता में केंद्रित रह सकते हैं।<br>3. आनुवंशिक पदार्थ को बाह्य रासायनिक आघातों से केंद्रक झिल्ली द्वारा सुरक्षित रखा जा सकता है।<br><br>सत्य विकल्प चुनें:",
+      "opts": [
+        "केवल 1 और 2",
+        "केवल 2 और 3",
+        "केवल 1 और 3",
+        "1, 2 और 3 सभी"
+      ],
+      "exp": "कक्षीय विभाजन (Compartmentalisation) के ये तीनों प्रमुख लाभ हैं।"
+    },
+    "en": {
+      "q": "What are the advantages of extensive compartmentalisation in eukaryotic cells?<br>1. Conflicting metabolic pathways can proceed simultaneously without interference.<br>2. Enzymes can remain localized in high concentrations within specific organelles.<br>3. Genetic material is protected within a distinct membrane from cytoplasmic enzymes.<br><br>Choose the correct option:",
+      "opts": [
+        "1 and 2 only",
+        "2 and 3 only",
+        "1 and 3 only",
+        "All 1, 2 and 3"
+      ],
+      "exp": "All three are functional advantages of compartmentalisation."
+    },
+    "ans": 3
+  },
+  {
+    "id": 68,
+    "type": "tricky",
+    "hi": {
+      "q": "जंतु कोशिकाओं के संदर्भ में कौन-सा अंगक कोशिका के आकार को बनाए रखने तथा तर्कुतंतु निर्माण में प्रमुख भूमिका निभाता है?<br>(A) लवक<br>(B) तारककाय (Centrosome)<br>(C) रसधानी<br>(D) कोशिका भित्ति",
+      "opts": [
+        "(A)",
+        "(B)",
+        "(C)",
+        "(D)"
+      ],
+      "exp": "तारककाय (Centrosome) तर्कुतंतु का निर्माण करता है और विभाजन में सहायता करता है।"
+    },
+    "en": {
+      "q": "Which organelle in animal cells plays a major role in spindle apparatus formation during cell division?<br>(A) Plastid<br>(B) Centrosome<br>(C) Vacuole<br>(D) Cell wall",
+      "opts": [
+        "(A)",
+        "(B)",
+        "(C)",
+        "(D)"
+      ],
+      "exp": "Centrosome forms the spindle apparatus during animal cell division."
+    },
+    "ans": 1
+  },
+  {
+    "id": 69,
+    "type": "statement",
+    "hi": {
+      "q": "कोशिका झिल्ली की विस्तृत संरचना का ज्ञान किस खोज के बाद संभव हो सका?<br>1. वर्ष 1950 में इलेक्ट्रॉन सूक्ष्मदर्शी के आविष्कार के बाद।<br>2. मानव की लाल रक्त कणिका (RBC) की झिल्ली के जैव रासायनिक अध्ययन के बाद।<br><br>सत्य कथन चुनें:",
+      "opts": [
+        "केवल 1",
+        "केवल 2",
+        "1 और 2 दोनों",
+        "न तो 1 न ही 2"
+      ],
+      "exp": "एनसीईआरटी पृष्ठ 131: वर्ष 1950 के इलेक्ट्रॉन सूक्ष्मदर्शी की खोज तथा RBC के रासायनिक अध्ययन के बाद विस्तृत संरचना ज्ञात हुई।"
+    },
+    "en": {
+      "q": "Detailed structure of the cell membrane was deciphered after which event(s)?<br>1. Discovery of electron microscope in 1950s.<br>2. Biochemical investigation on human red blood cell (RBC) membrane.<br><br>Choose the correct option:",
+      "opts": [
+        "1 only",
+        "2 only",
+        "Both 1 and 2",
+        "Neither 1 nor 2"
+      ],
+      "exp": "Both 1 and 2 are stated in NCERT Section 8.5.1."
+    },
+    "ans": 2
+  },
+  {
+    "id": 70,
+    "type": "tricky",
+    "hi": {
+      "q": "मनुष्य की रुधिराणु (एरिथ्रोसाइट/RBC) की झिल्ली में प्रोटीन और लिपिड का लगभग कितना प्रतिशत अनुपात पाया जाता है?<br>(A) 40% प्रोटीन व 52% लिपिड<br>(B) 52% प्रोटीन व 40% लिपिड<br>(C) 50% प्रोटीन व 50% लिपिड<br>(D) 60% प्रोटीन व 30% लिपिड",
+      "opts": [
+        "(A)",
+        "(B)",
+        "(C)",
+        "(D)"
+      ],
+      "exp": "एनसीईआरटी पृष्ठ 131: मनुष्य की RBC झिल्ली में लगभग 52 प्रतिशत प्रोटीन व 40 प्रतिशत लिपिड मिलता है।"
+    },
+    "en": {
+      "q": "What is the approximate percentage ratio of protein and lipid in human erythrocyte (RBC) membrane?<br>(A) 40% protein and 52% lipid<br>(B) 52% protein and 40% lipid<br>(C) 50% protein and 50% lipid<br>(D) 60% protein and 30% lipid",
+      "opts": [
+        "(A)",
+        "(B)",
+        "(C)",
+        "(D)"
+      ],
+      "exp": "Human erythrocyte membrane has approximately 52% protein and 40% lipids (NCERT 8.5.1)."
+    },
+    "ans": 1
+  },
+  {
+    "id": 71,
+    "type": "statement",
+    "hi": {
+      "q": "कोशिका झिल्ली में लिपिड के संगठन के संबंध में कौन-से कथन <strong>सत्य</strong> हैं?<br>1. लिपिड मुख्य रूप से फॉस्फोग्लिसराइड्स (phosphoglycerides) के बने होते हैं।<br>2. लिपिड दो सतहों (bilayer) में व्यवस्थित होते हैं।<br>3. ध्रुवीय सिरा (polar head) बाहर की ओर तथा अध्रुवीय जलभीरू पुच्छ (hydrophobic tail) अंदर की ओर होती है।<br>4. संतृप्त हाइड्रोकार्बन की बनी अध्रुवीय पुच्छ जलीय वातावरण से सुरक्षित रहती है।<br><br>सही कूट का चयन कीजिए:",
+      "opts": [
+        "केवल 1 और 2",
+        "केवल 2, 3 और 4",
+        "केवल 1, 3 और 4",
+        "1, 2, 3 और 4 सभी"
+      ],
+      "exp": "चारों कथन एनसीईआरटी पृष्ठ 131 के अनुसार पूर्णतः सत्य हैं।"
+    },
+    "en": {
+      "q": "Regarding lipid organization in cell membrane:<br>1. Major lipids are phosphoglycerides.<br>2. Lipids are arranged within a bilayer.<br>3. Polar heads face outwards while hydrophobic tails face the inner part.<br>4. Non-polar saturated hydrocarbon tail is protected from aqueous environment.<br><br>Select the correct code:",
+      "opts": [
+        "1 and 2 only",
+        "2, 3 and 4 only",
+        "1, 3 and 4 only",
+        "All 1, 2, 3 and 4"
+      ],
+      "exp": "All four statements are explicitly from NCERT Section 8.5.1."
+    },
+    "ans": 3
+  },
+  {
+    "id": 72,
+    "type": "tricky",
+    "hi": {
+      "q": "झिल्ली में उपस्थित प्रोटीनों को 'पृथक्करण की सुगमता' (Ease of extraction) के आधार पर किन दो श्रेणियों में बांटा गया है?<br>(A) अम्लीय प्रोटीन व क्षारीय प्रोटीन<br>(B) अंगभूत प्रोटीन (Integral) व परिधीय प्रोटीन (Peripheral)<br>(C) संरचनात्मक प्रोटीन व एंजाइम प्रोटीन<br>(D) प्राथमिक प्रोटीन व द्वितीयक प्रोटीन",
+      "opts": [
+        "(A)",
+        "(B)",
+        "(C)",
+        "(D)"
+      ],
+      "exp": "एनसीईआरटी पृष्ठ 131: झिल्ली प्रोटीनों को अलग करने की सुविधा के आधार पर दो भागों — अंगभूत (Integral) व परिधीय (Peripheral) प्रोटीन में विभक्त करते हैं।"
+    },
+    "en": {
+      "q": "Depending on the ease of extraction, membrane proteins are classified into:<br>(A) Acidic and Basic proteins<br>(B) Integral and Peripheral proteins<br>(C) Structural and Enzymatic proteins<br>(D) Primary and Secondary proteins",
+      "opts": [
+        "(A)",
+        "(B)",
+        "(C)",
+        "(D)"
+      ],
+      "exp": "Membrane proteins are categorized as Integral or Peripheral based on ease of extraction."
+    },
+    "ans": 1
+  },
+  {
+    "id": 73,
+    "type": "statement",
+    "hi": {
+      "q": "तरल किर्मीर नमूने (Fluid Mosaic Model, 1972) के संदर्भ में विचार करें:<br>1. इसे सिंगर और निकोल्सन द्वारा प्रतिपादित किया गया था।<br>2. इसके अनुसार लिपिड की अर्ध-तरलीय (quasi-fluid) प्रकृति के कारण प्रोटीन द्विसतह के भीतर पाश्विक गति (lateral movement) करते हैं।<br>3. झिल्ली के भीतर प्रोटीन की गति करने की क्षमता उसकी तरलता (fluidity) पर निर्भर करती है।<br><br>सत्य कथन चुनें:",
+      "opts": [
+        "केवल 1 और 2",
+        "केवल 2 और 3",
+        "केवल 1 और 3",
+        "1, 2 और 3 सभी"
+      ],
+      "exp": "एनसीईआरटी पृष्ठ 131-132 के अनुसार तीनों कथन सत्य हैं।"
+    },
+    "en": {
+      "q": "Regarding Fluid Mosaic Model (1972):<br>1. Proposed by Singer and Nicolson.<br>2. Quasi-fluid nature of lipid enables lateral movement of proteins within the bilayer.<br>3. The ability of proteins to move within membrane is measured as its fluidity.<br><br>Choose the correct option:",
+      "opts": [
+        "1 and 2 only",
+        "2 and 3 only",
+        "1 and 3 only",
+        "All 1, 2 and 3"
+      ],
+      "exp": "All three statements are directly from NCERT page 131."
+    },
+    "ans": 3
+  },
+  {
+    "id": 74,
+    "type": "ar",
+    "hi": {
+      "q": "<strong>कथन (A):</strong> जीवद्रव्य झिल्ली को एक 'चयनात्मक पारगम्य' (Selectively permeable) झिल्ली कहा जाता है।<br><strong>कारण (R):</strong> यह झिल्ली इसके दोनों तरफ मिलने वाले सभी प्रकार के अणुओं को बिना किसी रुकावट के समान रूप से आर-पार जाने देती है।",
+      "opts": [
+        "(A) और (R) दोनों सही हैं और (R), (A) की सही व्याख्या है।",
+        "(A) और (R) दोनों सही हैं लेकिन (R), (A) की सही व्याख्या नहीं है।",
+        "(A) सही है लेकिन (R) गलत है।",
+        "(A) गलत है लेकिन (R) सही है।"
+      ],
+      "exp": "कथन (A) सही है। कारण (R) गलत है क्योंकि यह चुनिंदा अणुओं को ही जाने देती है, सभी अणुओं को समान रूप से नहीं।"
+    },
+    "en": {
+      "q": "<strong>Assertion (A):</strong> Plasma membrane is described as selectively permeable.<br><strong>Reason (R):</strong> It allows all kinds of molecules across both sides without any barrier or resistance.",
+      "opts": [
+        "Both (A) and (R) are true and (R) is the correct explanation of (A).",
+        "Both (A) and (R) are true but (R) is not the correct explanation of (A).",
+        "(A) is true but (R) is false.",
+        "(A) is false but (R) is true."
+      ],
+      "exp": "Assertion is true. Reason is false because selectively permeable means only specific molecules can permeate."
+    },
+    "ans": 2
+  },
+  {
+    "id": 75,
+    "type": "matching",
+    "hi": {
+      "q": "झिल्ली परिवहन विधियों और उनकी विशेषताओं का सही मिलान करें:<br><br><strong>स्तंभ-I:</strong><br>P. साधारण विसरण (Simple diffusion)<br>Q. परासरण (Osmosis)<br>R. सक्रिय परिवहन (Active transport)<br><br><strong>स्तंभ-II:</strong><br>1. सांद्रता प्रवणता के विपरीत ऊर्जा (ATP) आधारित परिवहन<br>2. विसरण द्वारा जल का अर्ध-पारगम्य झिल्ली से प्रवाह<br>3. उदासीन विलेय का उच्च सांद्रता से निम्न सांद्रता की ओर बिना ऊर्जा प्रवाह<br><br>सही कूट है:",
+      "opts": [
+        "P-3, Q-2, R-1",
+        "P-2, Q-3, R-1",
+        "P-1, Q-2, R-3",
+        "P-3, Q-1, R-2"
+      ],
+      "exp": "साधारण विसरण: P-3; परासरण: Q-2; सक्रिय परिवहन: R-1।"
+    },
+    "en": {
+      "q": "Match transport mechanisms with their definitions:<br><br><strong>Column-I:</strong><br>P. Simple diffusion<br>Q. Osmosis<br>R. Active transport<br><br><strong>Column-II:</strong><br>1. Energy (ATP) dependent uphill transport<br>2. Movement of water by diffusion across membrane<br>3. Downhill movement of neutral solutes along concentration gradient<br><br>Correct code:",
+      "opts": [
+        "P-3, Q-2, R-1",
+        "P-2, Q-3, R-1",
+        "P-1, Q-2, R-3",
+        "P-3, Q-1, R-2"
+      ],
+      "exp": "P-3, Q-2, R-1 is the precise NCERT correspondence."
+    },
+    "ans": 0
+  },
+  {
+    "id": 76,
+    "type": "tricky",
+    "hi": {
+      "q": "कोशिका झिल्ली में लिपिड के अतिरिक्त अन्य कौन-सा रासायनिक अवयव पाया जाता है जो झिल्ली के लचीलेपन और स्थिरता में सहायक है?<br>(A) कोलेस्ट्रॉल (Cholesterol)<br>(B) पेक्टिन<br>(C) काइटिन<br>(D) स्टार्च",
+      "opts": [
+        "(A)",
+        "(B)",
+        "(C)",
+        "(D)"
+      ],
+      "exp": "एनसीईआरटी चित्र 8.4 व पाठ के अनुसार लिपिड द्विसतह में 'कोलेस्ट्रॉल' धंसा रहता है।"
+    },
+    "en": {
+      "q": "Besides phosphoglycerides and proteins, which lipid component is embedded in the plasma membrane providing stability?<br>(A) Cholesterol<br>(B) Pectin<br>(C) Chitin<br>(D) Starch",
+      "opts": [
+        "(A)",
+        "(B)",
+        "(C)",
+        "(D)"
+      ],
+      "exp": "Cholesterol is embedded in the lipid bilayer as shown in NCERT Figure 8.4."
+    },
+    "ans": 0
+  },
+  {
+    "id": 77,
+    "type": "statement",
+    "hi": {
+      "q": "सुसाध्य विसरण (Facilitated diffusion) तथा सक्रिय परिवहन (Active transport) में क्या मुख्य समानता है?<br>(A) दोनों में ATP का प्रत्यक्ष उपयोग होता है।<br>(B) दोनों में झिल्ली में उपस्थित विशिष्ट वाहक प्रोटीनों (Carrier/Pump proteins) की आवश्यकता होती है।<br>(C) दोनों केवल सांद्रता प्रवणता के विपरीत होते हैं।<br>(D) दोनों में किसी झिल्ली की आवश्यकता नहीं होती।",
+      "opts": [
+        "(A)",
+        "(B)",
+        "(C)",
+        "(D)"
+      ],
+      "exp": "सुसाध्य विसरण और सक्रिय परिवहन दोनों में विशिष्ट वाहक झिल्ली प्रोटीन भाग लेते हैं।"
+    },
+    "en": {
+      "q": "What is the common feature between facilitated transport and active transport across the cell membrane?<br>(A) Both utilize ATP directly<br>(B) Both require specific carrier/membrane proteins<br>(C) Both proceed uphill against gradient<br>(D) Neither requires a membrane",
+      "opts": [
+        "(A)",
+        "(B)",
+        "(C)",
+        "(D)"
+      ],
+      "exp": "Both require specific carrier or pump membrane proteins."
+    },
+    "ans": 1
+  },
+  {
+    "id": 78,
+    "type": "ar",
+    "hi": {
+      "q": "<strong>कथन (A):</strong> सोडियम-पोटेशियम पंप ($Na^+/K^+$ pump) सक्रिय परिवहन का एक सर्वप्रमुख उदाहरण है।<br><strong>कारण (R):</strong> यह आयनों को उनकी सांद्रता प्रवणता के अनुकूल (उच्च से निम्न सांद्रता की ओर) बिना ऊर्जा खर्च किए ले जाता है।",
+      "opts": [
+        "(A) और (R) दोनों सही हैं और (R), (A) की सही व्याख्या है।",
+        "(A) और (R) दोनों सही हैं लेकिन (R), (A) की सही व्याख्या नहीं है।",
+        "(A) सही है लेकिन (R) गलत है।",
+        "(A) गलत है लेकिन (R) सही है।"
+      ],
+      "exp": "कथन (A) सही है। कारण (R) गलत है क्योंकि Na+/K+ पंप आयनों को सांद्रता प्रवणता के विपरीत (निम्न से उच्च) ले जाता है जिसमें ATP खर्च होता है।"
+    },
+    "en": {
+      "q": "<strong>Assertion (A):</strong> The $Na^+/K^+$ pump is an example of active transport.<br><strong>Reason (R):</strong> It moves ions along their concentration gradient without utilizing ATP.",
+      "opts": [
+        "Both (A) and (R) are true and (R) is the correct explanation of (A).",
+        "Both (A) and (R) are true but (R) is not the correct explanation of (A).",
+        "(A) is true but (R) is false.",
+        "(A) is false but (R) is true."
+      ],
+      "exp": "Assertion is true. Reason is false because active pumps move ions against the gradient using ATP."
+    },
+    "ans": 2
+  },
+  {
+    "id": 79,
+    "type": "tricky",
+    "hi": {
+      "q": "कोशिका झिल्ली की 'तरलता' (Fluidity) निम्नलिखित में से किस जैविक प्रक्रम के लिए सबसे कम महत्वपूर्ण है?<br>(A) कोशिका वृद्धि एवं विभाजन<br>(B) अंतरकोशिकीय संधियों का निर्माण<br>(C) स्रावण एवं अंतःकोशिकता<br>(D) द्वितीयक भित्ति में लिग्निन का रासायनिक संश्लेषण",
+      "opts": [
+        "(A)",
+        "(B)",
+        "(C)",
+        "(D)"
+      ],
+      "exp": "विकल्प A, B, C सीधे NCERT पृष्ठ 132 में झिल्ली तरलता के कार्यों के रूप में उल्लिखित हैं। लिग्निन का संश्लेषण झिल्ली तरलता का कार्य नहीं है।"
+    },
+    "en": {
+      "q": "Membrane fluidity is directly essential for all except:<br>(A) Cell growth and division<br>(B) Intercellular junction formation<br>(C) Secretion and endocytosis<br>(D) Synthesis of lignin inside secondary wall matrix",
+      "opts": [
+        "(A)",
+        "(B)",
+        "(C)",
+        "(D)"
+      ],
+      "exp": "Lignin synthesis is a cell wall maturation event, not a process driven by membrane fluidity."
+    },
+    "ans": 3
+  },
+  {
+    "id": 80,
+    "type": "statement",
+    "hi": {
+      "q": "कोशिका भित्ति (Cell Wall) के कार्यों के संदर्भ में निम्नलिखित कथनों पर विचार कीजिए:<br>1. यह कोशिका को केवल यांत्रिक हानियों और संक्रमण से रक्षा प्रदान करती है।<br>2. यह कोशिकाओं के बीच आपसी संपर्क (intercellular interaction) बनाए रखती है।<br>3. यह अवांछनीय वृहद-अणुओं (macromolecules) के लिए एक अवरोध प्रदान करती है।<br><br>सत्य कथन कौन-से हैं?",
+      "opts": [
+        "केवल 1 और 2",
+        "केवल 2 और 3",
+        "केवल 1 और 3",
+        "1, 2 और 3 सभी"
+      ],
+      "exp": "एनसीईआरटी पृष्ठ 133: कोशिका भित्ति यांत्रिक हानि/संक्रमण से रक्षा करने के साथ-साथ आपसी संपर्क व अवांछनीय वृहद अणुओं के लिए अवरोध भी प्रदान करती है।"
+    },
+    "en": {
+      "q": "Regarding functions of cell wall:<br>1. It protects cell from mechanical damage and infection.<br>2. It provides barrier to undesirable macromolecules.<br>3. It helps in cell-to-cell interaction.<br><br>Which are true?",
+      "opts": [
+        "1 and 2 only",
+        "2 and 3 only",
+        "1 and 3 only",
+        "All 1, 2 and 3"
+      ],
+      "exp": "All three statements are directly stated in NCERT Section 8.5.2."
+    },
+    "ans": 3
+  },
+  {
+    "id": 81,
+    "type": "matching",
+    "hi": {
+      "q": "शैवाल (Algae) तथा अन्य पादपों की कोशिका भित्ति के रासायनिक घटकों का सही मिलान करें:<br><br><strong>स्तंभ-I:</strong><br>P. शैवाल की कोशिका भित्ति<br>Q. अन्य पादपों की कोशिका भित्ति<br>R. मध्य पटलिका (Middle lamella)<br><br><strong>स्तंभ-II:</strong><br>1. सेलूलोज, हेमीसेलूलोज, पेक्टीन व प्रोटीन<br>2. मुख्य रूप से कैल्शियम पेक्टेट<br>3. सेलूलोज, गैलेक्टेन्स, मैनान्स व कैल्शियम कार्बोनेट<br><br>सही कूट है:",
+      "opts": [
+        "P-3, Q-1, R-2",
+        "P-1, Q-3, R-2",
+        "P-2, Q-1, R-3",
+        "P-3, Q-2, R-1"
+      ],
+      "exp": "शैवाल: P-3; पादप: Q-1; मध्य पटलिका: R-2।"
+    },
+    "en": {
+      "q": "Match cell wall compositions:<br><br><strong>Column-I:</strong><br>P. Algal cell wall<br>Q. Plant cell wall<br>R. Middle lamella<br><br><strong>Column-II:</strong><br>1. Cellulose, hemicellulose, pectins, proteins<br>2. Chiefly calcium pectate<br>3. Cellulose, galactans, mannans, minerals like CaCO3<br><br>Correct code:",
+      "opts": [
+        "P-3, Q-1, R-2",
+        "P-1, Q-3, R-2",
+        "P-2, Q-1, R-3",
+        "P-3, Q-2, R-1"
+      ],
+      "exp": "P-3, Q-1, R-2 is the exact match from NCERT Section 8.5.2."
+    },
+    "ans": 0
+  },
+  {
+    "id": 82,
+    "type": "tricky",
+    "hi": {
+      "q": "नव पादप कोशिका की 'प्राथमिक भित्ति' (Primary Wall) के संदर्भ में कौन-सा कथन <strong>सत्य</strong> है?<br>(A) इसमें वृद्धि की क्षमता बिल्कुल नहीं होती।<br>(B) इसमें वृद्धि की क्षमता होती है, जो कोशिका की परिपक्वता के साथ घटती जाती है।<br>(C) यह कोशिका के भीतर की तरफ द्वितीयक भित्ति बनने के बाद निर्मित होती है।<br>(D) यह मुख्य रूप से केवल कैल्शियम कार्बोनेट की बनी होती है।",
+      "opts": [
+        "(A)",
+        "(B)",
+        "(C)",
+        "(D)"
+      ],
+      "exp": "एनसीईआरटी पृष्ठ 133: नव पादप कोशिका की प्राथमिक भित्ति में वृद्धि की क्षमता होती है, जो परिपक्वता के साथ घटती है और भीतर द्वितीयक भित्ति बनती है।"
+    },
+    "en": {
+      "q": "Which statement is <strong>true</strong> regarding the Primary Wall of young plant cells?<br>(A) It is completely incapable of growth.<br>(B) It is capable of growth, which gradually diminishes as the cell matures.<br>(C) It is formed inside towards the membrane after secondary wall.<br>(D) It is composed exclusively of calcium carbonate.",
+      "opts": [
+        "(A)",
+        "(B)",
+        "(C)",
+        "(D)"
+      ],
+      "exp": "The primary wall is capable of growth, which diminishes as the cell matures."
+    },
+    "ans": 1
+  },
+  {
+    "id": 83,
+    "type": "statement",
+    "hi": {
+      "q": "द्वितीयक कोशिका भित्ति (Secondary Wall) का निर्माण कोशिका में किस स्थान पर होता है?<br>(A) प्राथमिक भित्ति के बाहर मध्य पटलिका की ओर<br>(B) प्राथमिक भित्ति के भीतर (झिल्ली की तरफ)<br>(C) दो कोशिकाओं के केंद्रक के बीच<br>(D) केवल कोशिकाद्रव्य के रिक्त स्थानों में",
+      "opts": [
+        "(A)",
+        "(B)",
+        "(C)",
+        "(D)"
+      ],
+      "exp": "एनसीईआरटी पृष्ठ 133: परिपक्वता के साथ प्राथमिक भित्ति घटती है और कोशिका के भीतर की तरफ (towards membrane) द्वितीयक भित्ति का निर्माण होता है।"
+    },
+    "en": {
+      "q": "Where is the secondary cell wall laid down in a maturing plant cell?<br>(A) Outside the primary wall towards middle lamella<br>(B) On the inner side of the cell (towards the membrane)<br>(C) Between nuclei of adjacent cells<br>(D) Only in vacuolar spaces",
+      "opts": [
+        "(A)",
+        "(B)",
+        "(C)",
+        "(D)"
+      ],
+      "exp": "Secondary wall is formed on the inner (towards membrane) side of the cell."
+    },
+    "ans": 1
+  },
+  {
+    "id": 84,
+    "type": "ar",
+    "hi": {
+      "q": "<strong>कथन (A):</strong> मध्य पटलिका (Middle lamella) आस-पास की विभिन्न पादप कोशिकाओं को आपस में चिपकाए व पकड़े रखती है।<br><strong>कारण (R):</strong> मध्य पटलिका मुख्य रूप से कैल्शियम पेक्टेट (Calcium pectate) की बनी एक सीमेंटिंग परत होती है।",
+      "opts": [
+        "(A) और (R) दोनों सही हैं और (R), (A) की सही व्याख्या है।",
+        "(A) और (R) दोनों सही हैं लेकिन (R), (A) की सही व्याख्या नहीं है।",
+        "(A) सही है लेकिन (R) गलत है।",
+        "(A) गलत है लेकिन (R) सही है।"
+      ],
+      "exp": "(A) और (R) दोनों सही हैं और (R), (A) की सटीक वैज्ञानिक व्याख्या करता है।"
+    },
+    "en": {
+      "q": "<strong>Assertion (A):</strong> The middle lamella holds or glues the different neighbouring plant cells together.<br><strong>Reason (R):</strong> Middle lamella is a layer chiefly made of calcium pectate.",
+      "opts": [
+        "Both (A) and (R) are true and (R) is the correct explanation of (A).",
+        "Both (A) and (R) are true but (R) is not the correct explanation of (A).",
+        "(A) is true but (R) is false.",
+        "(A) is false but (R) is true."
+      ],
+      "exp": "Both are true and reason correctly explains the gluing function."
+    },
+    "ans": 0
+  },
+  {
+    "id": 85,
+    "type": "statement",
+    "hi": {
+      "q": "जीवद्रव्य तंतु (Plasmodesmata) के संदर्भ में निम्नलिखित कथनों की सत्यता की जांच कीजिए:<br>1. यह कोशिका भित्ति एवं मध्य पटलिका में आड़े-तिरछे (traversing) रूप में स्थित रहते हैं।<br>2. यह आस-पास की कोशिकाओं के कोशिकाद्रव्य (cytoplasm) को आपस में जोड़ते हैं।<br>3. यह कोशिकाओं के बीच जल, आयनों एवं छोटे अणुओं के परिवहन में महत्वपूर्ण भूमिका निभाते हैं।<br><br>उपरोक्त में से कौन-से कथन <strong>सत्य</strong> हैं?",
+      "opts": [
+        "केवल 1 और 2",
+        "केवल 2 और 3",
+        "केवल 1 और 3",
+        "1, 2 और 3 सभी"
+      ],
+      "exp": "एनसीईआरटी पृष्ठ 133 के अनुसार तीनों कथन सत्य हैं। प्लाज्मोडेस्मेटा कोशिका भित्ति व मध्य पटलिका को भेदते हुए समीपवर्ती कोशिकाओं के कोशिकाद्रव्य को जोड़ते हैं।"
+    },
+    "en": {
+      "q": "Evaluate the statements regarding Plasmodesmata:<br>1. They traverse the cell wall and middle lamella.<br>2. They connect the cytoplasm of neighbouring cells.<br>3. They facilitate transport of substances between plant cells.<br><br>Which of the above statements are <strong>correct</strong>?",
+      "opts": [
+        "1 and 2 only",
+        "2 and 3 only",
+        "1 and 3 only",
+        "All 1, 2 and 3"
+      ],
+      "exp": "All three statements are factually correct as described in NCERT Section 8.5.2."
+    },
+    "ans": 3
+  }
+];
+
+        let currentLang = 'hi';
+        let currentIndex = 0;
+        let userResponses = new Array(questionsData.length).fill(null);
+        let reviewStatus = new Array(questionsData.length).fill(false);
+        let timerSeconds = 120 * 60; // 120 minutes
+        let timerInterval = null;
+        let isSubmitted = false;
+
+        function startExamFullScreen() {
+            const docElm = document.documentElement;
+            if (docElm.requestFullscreen) {
+                docElm.requestFullscreen().catch(err => console.log(err));
+            } else if (docElm.webkitRequestFullscreen) {
+                docElm.webkitRequestFullscreen();
+            } else if (docElm.msRequestFullscreen) {
+                docElm.msRequestFullscreen();
+            }
+
+            document.getElementById('start-screen').classList.add('hidden');
+            document.getElementById('exam-screen').classList.remove('hidden');
+            document.getElementById('q-total-num').innerText = questionsData.length;
+
+            startTimer();
+            renderQuestion();
+        }
+
+        function startTimer() {
+            const timerEl = document.getElementById('timer-display');
+            timerInterval = setInterval(() => {
+                if (timerSeconds <= 0) {
+                    clearInterval(timerInterval);
+                    timerEl.innerText = "00:00";
+                    autoSubmitTest();
+                    return;
+                }
+                timerSeconds--;
+                const mins = Math.floor(timerSeconds / 60);
+                const secs = timerSeconds % 60;
+                timerEl.innerText = `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
+            }, 1000);
+        }
+
+        function toggleLanguage() {
+            currentLang = (currentLang === 'hi') ? 'en' : 'hi';
+            document.getElementById('lang-btn').innerText = (currentLang === 'hi') ? 'HI / EN' : 'EN / HI';
+            renderQuestion();
+        }
+
+        function renderQuestion() {
+            const q = questionsData[currentIndex];
+            const qData = q[currentLang];
+
+            document.getElementById('q-current-num').innerText = currentIndex + 1;
+            const reviewBadge = document.getElementById('q-review-badge');
+            const reviewBtn = document.getElementById('review-btn');
+            
+            if (reviewStatus[currentIndex]) {
+                reviewBadge.classList.remove('hidden');
+                reviewBtn.classList.add('bg-amber-500', 'text-white');
+                reviewBtn.classList.remove('bg-amber-50', 'text-amber-700');
+            } else {
+                reviewBadge.classList.add('hidden');
+                reviewBtn.classList.remove('bg-amber-500', 'text-white');
+                reviewBtn.classList.add('bg-amber-50', 'text-amber-700');
+            }
+
+            document.getElementById('question-text').innerHTML = qData.q;
+
+            const optsContainer = document.getElementById('options-container');
+            optsContainer.innerHTML = '';
+
+            const optionLetters = ['A', 'B', 'C', 'D'];
+            const userAns = userResponses[currentIndex];
+
+            qData.opts.forEach((optText, idx) => {
+                const optBtn = document.createElement('div');
+                optBtn.className = `p-3 rounded-xl border text-xs sm:text-sm font-medium cursor-pointer transition-all flex items-start gap-3 touch-action-manipulation ${
+                    userAns === idx 
+                        ? 'bg-indigo-50 border-indigo-600 text-indigo-950 font-semibold ring-1 ring-indigo-600' 
+                        : 'bg-white border-slate-200 text-slate-700 hover:bg-slate-50'
+                }`;
+
+                optBtn.onclick = () => selectOption(idx);
+
+                optBtn.innerHTML = `
+                    <span class="w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold shrink-0 ${
+                        userAns === idx ? 'bg-indigo-600 text-white' : 'bg-slate-100 text-slate-600 border border-slate-300'
+                    }">${optionLetters[idx]}</span>
+                    <span class="flex-1 mt-0.5 leading-snug">${optText}</span>
+                `;
+                optsContainer.appendChild(optBtn);
+            });
+
+            const instantBox = document.getElementById('instant-solution-box');
+            const instantText = document.getElementById('instant-solution-text');
+
+            if (userAns !== null) {
+                instantBox.classList.remove('hidden');
+                const isCorrect = (userAns === q.ans);
+                instantText.innerHTML = `
+                    <div class="mb-1 font-bold ${isCorrect ? 'text-emerald-700' : 'text-rose-600'}">
+                        ${isCorrect ? '✓ Sahi Uttar (Correct Answer)' : '✗ Galat Uttar (Incorrect Answer)'}
+                        <span class="text-slate-600 ml-1">[Correct Option: ${optionLetters[q.ans]}]</span>
+                    </div>
+                    <div>${qData.exp}</div>
+                `;
+            } else {
+                instantBox.classList.add('hidden');
+                instantText.innerHTML = '';
+            }
+
+            document.getElementById('prev-btn').disabled = (currentIndex === 0);
+            if (currentIndex === questionsData.length - 1) {
+                document.getElementById('next-btn').innerHTML = 'Submit <i class="fa-solid fa-check ml-1"></i>';
+            } else {
+                document.getElementById('next-btn').innerHTML = 'Next <i class="fa-solid fa-angle-right ml-1"></i>';
+            }
+        }
+
+        function selectOption(index) {
+            userResponses[currentIndex] = index;
+            renderQuestion();
+        }
+
+        function clearCurrentResponse() {
+            userResponses[currentIndex] = null;
+            renderQuestion();
+        }
+
+        function toggleMarkForReview() {
+            reviewStatus[currentIndex] = !reviewStatus[currentIndex];
+            renderQuestion();
+        }
+
+        function nextQuestion() {
+            if (currentIndex < questionsData.length - 1) {
+                currentIndex++;
+                renderQuestion();
+            } else {
+                confirmSubmitTest();
+            }
+        }
+
+        function prevQuestion() {
+            if (currentIndex > 0) {
+                currentIndex--;
+                renderQuestion();
+            }
+        }
+
+        function confirmSubmitTest() {
+            const answeredCount = userResponses.filter(a => a !== null).length;
+            const confirmMsg = `Total Questions: ${questionsData.length}\nAnswered: ${answeredCount}\n\nKya aap test submit karna chahte hain?`;
+            if (confirm(confirmMsg)) {
+                submitExam();
+            }
+        }
+
+        function autoSubmitTest() {
+            alert("Samay samapt ho chuka hai! Aapka test auto-submit ho raha hai.");
+            submitExam();
+        }
+
+        function submitExam() {
+            clearInterval(timerInterval);
+            isSubmitted = true;
+
+            let correct = 0;
+            let incorrect = 0;
+            let unattempted = 0;
+
+            questionsData.forEach((q, idx) => {
+                const uAns = userResponses[idx];
+                if (uAns === null) {
+                    unattempted++;
+                } else if (uAns === q.ans) {
+                    correct++;
+                } else {
+                    incorrect++;
+                }
+            });
+
+            const totalScore = (correct * 2.0) - (incorrect * 0.20);
+            const totalAttempted = correct + incorrect;
+            const accuracy = totalAttempted > 0 ? ((correct / totalAttempted) * 100).toFixed(1) : 0;
+
+            document.getElementById('score-marks').innerText = totalScore.toFixed(2);
+            document.getElementById('score-accuracy').innerText = `${accuracy}%`;
+            document.getElementById('score-correct').innerText = correct;
+            document.getElementById('score-incorrect').innerText = incorrect;
+
+            document.getElementById('scorecard-modal').classList.remove('hidden');
+        }
+
+        function closeModalAndReview() {
+            document.getElementById('scorecard-modal').classList.add('hidden');
+            currentIndex = 0;
+            renderQuestion();
+        }
+    </script>
+</body>
+</html>
