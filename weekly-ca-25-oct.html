@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>GYANVERSE Mega CBT Portal - 90 Questions Test</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              50: '#eff6ff',
+              600: '#2563eb',
+              700: '#1d4ed8',
+              800: '#1e40af',
+              900: '#0f172a'
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body {
+      -webkit-tap-highlight-color: transparent;
+      user-select: none;
+    }
+    .custom-scrollbar::-webkit-scrollbar {
+      width: 5px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb {
+      background: #cbd5e1;
+      border-radius: 4px;
+    }
+  </style>
+</head>
+<body class="bg-slate-100 text-slate-800 font-sans min-h-screen flex flex-col justify-between">
+
+  <!-- ========================================== -->
+  <!-- 1. FULLSCREEN MANDATORY ENTRY GATE SCREEN -->
+  <!-- ========================================== -->
+  <div id="start-overlay" class="fixed inset-0 z-50 bg-slate-900 bg-opacity-95 flex items-center justify-center p-4">
+    <div class="bg-white rounded-2xl shadow-2xl max-w-lg w-full p-6 text-center border-t-8 border-blue-600">
+      <div class="inline-flex items-center justify-center w-16 h-16 bg-blue-100 text-blue-600 rounded-full mb-4">
+        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/>
+        </svg>
+      </div>
+      <h1 class="text-2xl font-black text-slate-800 uppercase tracking-wide">GYANVERSE ONLINE CBT</h1>
+      <p class="text-sm text-slate-500 mt-1 font-medium">साप्ताहिक करेंट अफेयर्स सम्पूर्ण 90 प्रश्न स्पेशल टेस्ट</p>
+      
+      <div class="bg-blue-50 text-blue-900 rounded-xl p-4 my-5 text-left text-xs space-y-2 border border-blue-200">
+        <div class="flex items-center justify-between font-semibold">
+          <span>कुल प्रश्न: 90 MCQ</span>
+          <span>समय सीमा: 120 मिनट</span>
+        </div>
+        <div class="flex items-center justify-between font-semibold text-blue-700">
+          <span>पूर्णांक: 180 अंक</span>
+          <span>मार्किंग: +2.00 / -0.20</span>
+        </div>
+        <div class="text-slate-600 pt-1">
+          • परीक्षा शुरू होते ही स्क्रीन <strong>Auto Full Screen</strong> मोड में लॉक हो जाएगी।<br>
+          • विकल्प चुनते ही Instant Answer और विस्तृत व्याख्या नीचे दिखाई देगी।<br>
+          • भाषा को कभी भी हिंदी / English में बदल सकते हैं।
+        </div>
+      </div>
+
+      <div class="text-xs text-slate-500 mb-5">
+        आधिकारिक टेलीग्राम: <a href="https://t.me/GYANVERSET" target="_blank" class="text-blue-600 font-bold hover:underline">@GYANVERSET</a>
+      </div>
+
+      <button id="start-btn" onclick="startExamFullScreen()" class="w-full py-3.5 px-6 bg-blue-600 hover:bg-blue-700 active:scale-95 text-white font-bold rounded-xl shadow-lg transition duration-150 text-base tracking-wide flex items-center justify-center gap-2">
+        <span>Start Test (Auto Full Screen)</span>
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- ========================================== -->
+  <!-- 2. CBT TOP HEADER (FULL-WIDTH, NO PALETTE) -->
+  <!-- ========================================== -->
+  <header class="bg-white border-b border-slate-200 sticky top-0 z-30 shadow-sm px-4 py-3 flex items-center justify-between">
+    <div class="flex items-center gap-3">
+      <div class="bg-blue-600 text-white font-black px-2.5 py-1 rounded text-base tracking-wider shadow">
+        GV
+      </div>
+      <div>
+        <h2 class="text-sm md:text-base font-extrabold text-slate-800 leading-tight tracking-tight">GYANVERSE CBT</h2>
+        <a href="https://t.me/GYANVERSET" target="_blank" class="text-[11px] text-blue-600 font-semibold flex items-center gap-0.5">
+          <span>@GYANVERSET</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- Timer, Lang Switcher & Submit Button -->
+    <div class="flex items-center gap-2 md:gap-3">
+      <!-- Lang switcher -->
+      <button onclick="toggleLanguage()" class="px-2.5 py-1 text-xs font-bold border border-slate-300 rounded-lg hover:bg-slate-50 text-slate-700 transition">
+        <span id="lang-indicator">हिंदी / EN</span>
+      </button>
+
+      <!-- 120-min Countdown Timer -->
+      <div class="bg-amber-50 border border-amber-200 px-2.5 py-1 rounded-lg text-amber-800 flex items-center gap-1.5 font-mono text-xs md:text-sm font-bold shadow-inner">
+        <svg class="w-4 h-4 text-amber-600 animate-pulse" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+        </svg>
+        <span id="timer-display">120:00</span>
+      </div>
+
+      <!-- Submit Button -->
+      <button onclick="confirmSubmit()" class="bg-red-600 hover:bg-red-700 text-white text-xs md:text-sm font-bold px-3 py-1.5 rounded-lg shadow transition active:scale-95">
+        सबमिट
+      </button>
+    </div>
+  </header>
+
+  <!-- ========================================== -->
+  <!-- 3. MAIN CBT QUESTION CONTAINER             -->
+  <!-- ========================================== -->
+  <main class="flex-grow w-full max-w-4xl mx-auto p-4 md:p-6 custom-scrollbar">
+    <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-4 md:p-6 mb-4">
+      
+      <!-- Meta Details Header -->
+      <div class="flex items-center justify-between border-b border-slate-100 pb-3 mb-4">
+        <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-extrabold bg-blue-50 text-blue-700 border border-blue-200" id="q-number-tag">
+          प्रश्न 1 / 90
+        </span>
+        <div class="flex items-center gap-2 text-xs font-semibold">
+          <span class="text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">+2.00</span>
+          <span class="text-rose-700 bg-rose-50 px-2 py-0.5 rounded border border-rose-200">-0.20</span>
+        </div>
+      </div>
+
+      <!-- Question Text Box -->
+      <div id="question-text" class="text-sm md:text-base font-bold text-slate-800 leading-relaxed space-y-2 mb-5">
+        <!-- Dynamic Question Content -->
+      </div>
+
+      <!-- Question Options List -->
+      <div id="options-container" class="space-y-2.5 mb-5">
+        <!-- Dynamic Options -->
+      </div>
+
+      <!-- Instant Feedback & Detailed Explanation -->
+      <div id="instant-feedback" class="hidden transition-all duration-200 mb-4 p-4 rounded-xl border">
+        <!-- Dynamic Explanation -->
+      </div>
+
+      <!-- Watermark Brand Tag under every question -->
+      <div class="pt-2 border-t border-slate-100 flex items-center justify-between text-[11px] text-slate-400 font-semibold tracking-wide">
+        <span>GYANVERSE 90-MCQ WEEKLY TEST</span>
+        <a href="https://t.me/GYANVERSET" target="_blank" class="text-blue-500 hover:underline">@GYANVERSET</a>
+      </div>
+
+      <!-- ========================================== -->
+      <!-- 4. NAVIGATION BAR (DIRECTLY BELOW OPTIONS) -->
+      <!-- ========================================== -->
+      <div class="mt-6 pt-4 border-t border-slate-200 grid grid-cols-4 gap-2">
+        <button id="prev-btn" onclick="prevQuestion()" class="py-2.5 px-2 bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold rounded-xl text-xs md:text-sm text-center transition">
+          पिछला (Prev)
+        </button>
+
+        <button onclick="clearResponse()" class="py-2.5 px-2 bg-slate-100 hover:bg-slate-200 text-rose-600 font-bold rounded-xl text-xs md:text-sm text-center transition">
+          हटाएँ (Clear)
+        </button>
+
+        <button id="review-btn" onclick="toggleMarkReview()" class="py-2.5 px-2 bg-amber-100 hover:bg-amber-200 text-amber-800 font-bold rounded-xl text-xs md:text-sm text-center transition">
+          समीक्षा (Review)
+        </button>
+
+        <button id="next-btn" onclick="nextQuestion()" class="py-2.5 px-2 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-xl text-xs md:text-sm text-center transition shadow">
+          अगला (Next)
+        </button>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- ========================================== -->
+  <!-- 5. FOOTER BRANDING                         -->
+  <!-- ========================================== -->
+  <footer class="bg-white border-t border-slate-200 py-3 text-center text-xs text-slate-500">
+    डेली ऑनलाइन टेस्ट व PDF के लिए टेलीग्राम जॉइन करें: 
+    <a href="https://t.me/GYANVERSET" target="_blank" class="text-blue-600 font-bold hover:underline">@GYANVERSET (t.me/GYANVERSET)</a>
+  </footer>
+
+  <!-- ========================================== -->
+  <!-- 6. SCORECARD & REVIEW MODAL                -->
+  <!-- ========================================== -->
+  <div id="score-modal" class="fixed inset-0 z-50 bg-slate-900 bg-opacity-80 hidden items-center justify-center p-4">
+    <div class="bg-white rounded-2xl shadow-2xl max-w-lg w-full p-6 text-center border-t-8 border-emerald-500 animate-fade-in">
+      <div class="inline-flex items-center justify-center w-14 h-14 bg-emerald-100 text-emerald-600 rounded-full mb-3">
+        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+        </svg>
+      </div>
+      <h3 class="text-xl font-black text-slate-800 mb-1">CBT टेस्ट रिजल्ट स्कोरकार्ड</h3>
+      <p class="text-xs text-slate-500 mb-4">GYANVERSE Weekly Current Affairs (90 MCQs)</p>
+
+      <div class="grid grid-cols-2 gap-3 mb-5 text-left">
+        <div class="bg-slate-50 p-3 rounded-xl border border-slate-200">
+          <span class="text-xs text-slate-500">कुल अंक (Total Score)</span>
+          <p id="modal-score" class="text-2xl font-black text-blue-600">0.00</p>
+          <span class="text-[10px] text-slate-400">पूर्णांक: 180.00</span>
+        </div>
+        <div class="bg-slate-50 p-3 rounded-xl border border-slate-200">
+          <span class="text-xs text-slate-500">सटीकता (Accuracy %)</span>
+          <p id="modal-accuracy" class="text-2xl font-black text-emerald-600">0%</p>
+          <span class="text-[10px] text-slate-400">सटीक उत्तर प्रतिशत</span>
+        </div>
+        <div class="bg-slate-50 p-2.5 rounded-xl border border-slate-200">
+          <span class="text-[11px] text-slate-500">सही उत्तर:</span>
+          <span id="modal-correct" class="font-bold text-emerald-600 float-right">0</span>
+        </div>
+        <div class="bg-slate-50 p-2.5 rounded-xl border border-slate-200">
+          <span class="text-[11px] text-slate-500">गलत उत्तर:</span>
+          <span id="modal-wrong" class="font-bold text-rose-600 float-right">0</span>
+        </div>
+        <div class="bg-slate-50 p-2.5 rounded-xl border border-slate-200 col-span-2">
+          <span class="text-[11px] text-slate-500">अनुत्तरित (Left Questions):</span>
+          <span id="modal-unanswered" class="font-bold text-slate-600 float-right">0</span>
+        </div>
+      </div>
+
+      <div class="flex gap-2">
+        <button onclick="closeModalAndReview()" class="flex-1 py-3 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-xl text-xs md:text-sm transition">
+          हल देखें (Check Solutions)
+        </button>
+        <button onclick="location.reload()" class="py-3 px-4 bg-slate-200 hover:bg-slate-300 text-slate-700 font-bold rounded-xl text-xs md:text-sm transition">
+          पुनः प्रयास
+        </button>
+      </div>
+
+      <div class="mt-4 text-xs text-slate-400">
+        Telegram: <a href="https://t.me/GYANVERSET" target="_blank" class="text-blue-500 underline font-semibold">@GYANVERSET</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================================== -->
+  <!-- 7. COMPLETE 90 QUESTIONS JAVASCRIPT ENGINE -->
+  <!-- ========================================== -->
+  <script>
+    // 90 Questions Database parsed from PDF
+    const testQuestions = [
+      {
+        id: 1,
+        hi: { q: "अक्टूबर 2026 में रेलवे सुरक्षा बल (RPF) के नए महानिदेशक (DG) कौन बने हैं?", opts: ["मनोज यादव", "जितेंद्र कुमार", "दलजीत सिंह चौधरी", "प्रवीण सूद"], exp: "व्याख्या: RPF की स्थापना 2 जुलाई 1872 को हुई; RPF Act 1957 द्वारा वैधानिक दर्जा मिला। मुख्यालय: नई दिल्ली। मोटो: 'यश प्राप्त करो'।" },
+        en: { q: "Who has been appointed as the new Director General (DG) of the Railway Protection Force (RPF) in October 2026?", opts: ["Manoj Yadava", "Jitendra Kumar", "Daljit Singh Chaudhary", "Praveen Sood"], exp: "Explanation: RPF was established on 2 July 1872 and received statutory status via RPF Act 1957. Headquarters: New Delhi. Motto: 'Attain Glory'." },
+        correct: 1
+      },
+      {
+        id: 2,
+        hi: { q: "वैश्विक भूख सूचकांक (Global Hunger Index) 2026 में भारत को कौन-सा स्थान मिला है?", opts: ["95वाँ", "105वाँ", "100वाँ", "111वाँ"], exp: "व्याख्या: 122 देशों में भारत 100वें स्थान पर (स्कोर 24.1, गंभीर श्रेणी)। थीम: 'खाद्य सुरक्षा के बिना कोई सुरक्षा नहीं'।" },
+        en: { q: "What is India's rank in the Global Hunger Index 2026?", opts: ["95th", "105th", "100th", "111th"], exp: "Explanation: India ranked 100th out of 122 nations with a score of 24.1 (Serious category)." },
+        correct: 2
+      },
+      {
+        id: 3,
+        hi: { q: "नासा के 'पफिस (PUFFINS)' मिशन की प्रधान अन्वेषक (PI) किस भारतीय मूल की वैज्ञानिक को नियुक्त किया गया?", opts: ["डॉ. स्वाति मोहन", "डॉ. राम्या मंजुनाथ आंचे", "वंदना वर्मा", "शर्मिला भट्टाचार्य"], exp: "व्याख्या: PUFFINS: Polarimetry in the UV to Find Features in the Interstellar Dust। डॉ. राम्या बेंगलुरु मूल की खगोलविद हैं।" },
+        en: { q: "Which Indian-origin scientist has been appointed Principal Investigator for NASA's PUFFINS mission?", opts: ["Dr. Swati Mohan", "Dr. Ramya Manjunatha Anche", "Vandana Verma", "Sharmila Bhattacharya"], exp: "Explanation: PUFFINS focuses on Interstellar Dust polarimetry." },
+        correct: 1
+      },
+      {
+        id: 4,
+        hi: { q: "मंगल ग्रह के 'फोबोस' उपग्रह से नमूने लाने हेतु किस स्पेस एजेंसी ने दुनिया का पहला MMX मिशन लॉन्च किया?", opts: ["NASA", "ISRO", "JAXA (जापान)", "CNSA (चीन)"], exp: "व्याख्या: Martian Moons eXploration (MMX) मिशन तानेगाशिमा स्पेस सेंटर से H3 रॉकेट द्वारा लॉन्च किया गया।" },
+        en: { q: "Which space agency launched the world's first MMX mission to retrieve samples from Mars' moon Phobos?", opts: ["NASA", "ISRO", "JAXA (Japan)", "CNSA (China)"], exp: "Explanation: JAXA launched MMX on an H3 rocket from Tanegashima Space Center." },
+        correct: 2
+      },
+      {
+        id: 5,
+        hi: { q: "अक्टूबर 2026 में केंद्र शासित प्रदेश लद्दाख का 8वाँ जिला किसे घोषित किया गया है?", opts: ["जांस्कर", "द्रास", "सांकू (Sankoo)", "नुब्रा"], exp: "व्याख्या: लद्दाख में 'सांकू' के जुड़ने से कुल जिलों की संख्या 8 हो गई है।" },
+        en: { q: "Which was declared the 8th district of the Union Territory of Ladakh in October 2026?", opts: ["Zanskar", "Dras", "Sankoo", "Nubra"], exp: "Explanation: With Sankoo's inclusion, Ladakh now has 8 districts." },
+        correct: 2
+      },
+      {
+        id: 6,
+        hi: { q: "भारत की पहली निजी क्षेत्र की काउंटर-ड्रोन इंटरसेप्टर माइक्रोमिसाइल 'ज्वाला MK-1' किसने विकसित की?", opts: ["आईजी डिफेंस (IG Drones)", "गरुड़ एयरोस्पेस", "आइडियाफोर्ज", "स्काईरूट एयरोस्पेस"], exp: "व्याख्या: यह माइक्रोमिसाइल घुसपैठिए ड्रोनों को हवा में ही पहचानकर नष्ट करने में सक्षम पहली स्वदेशी निजी तकनीक है।" },
+        en: { q: "Who developed India's first private sector counter-drone interceptor micro-missile 'Jwala MK-1'?", opts: ["IG Drones / IG Defence", "Garuda Aerospace", "IdeaForge", "Skyroot Aerospace"], exp: "Explanation: Indigenous micro-missile designed to neutralize rogue drones in mid-air." },
+        correct: 0
+      },
+      {
+        id: 7,
+        hi: { q: "अक्टूबर 2026 में उत्तराखंड के नए राज्यपाल के रूप में किसने शपथ ग्रहण की?", opts: ["गुरमीत सिंह", "डॉ. ढाल सिंह बिसेन", "आनंदीबेन पटेल", "शिव प्रताप शुक्ल"], exp: "व्याख्या: डॉ. बिसेन उत्तराखंड के नए राज्यपाल नियुक्त हुए। ग्रीष्मकालीन राजधानी गैरसैंण तथा शीतकालीन राजधानी देहरादून है।" },
+        en: { q: "Who took oath as the new Governor of Uttarakhand in October 2026?", opts: ["Gurmit Singh", "Dr. Dhal Singh Bisen", "Anandiben Patel", "Shiv Pratap Shukla"], exp: "Explanation: Dr. Dhal Singh Bisen was sworn in as Governor." },
+        correct: 1
+      },
+      {
+        id: 8,
+        hi: { q: "भारत और ऑस्ट्रेलिया का 5वाँ संयुक्त सैन्य अभ्यास 'ऑस्ट्रा-हिन्द 2026' कहाँ आयोजित किया गया?", opts: ["जोधपुर (राजस्थान)", "तिरुवनंतपुरम (केरल)", "पर्थ (ऑस्ट्रेलिया)", "विशाखापट्टनम"], exp: "व्याख्या: भारतीय सेना की गढ़वाल राइफल्स और ऑस्ट्रेलियाई सेना की 13वीं ब्रिगेड शामिल हुई। न्यूजीलैंड पर्यवेक्षक रहा।" },
+        en: { q: "Where was the 5th edition of joint military exercise 'Austra-Hind 2026' conducted?", opts: ["Jodhpur", "Thiruvananthapuram (Kerala)", "Perth", "Visakhapatnam"], exp: "Explanation: Conducted in Kerala with New Zealand participating as observer." },
+        correct: 1
+      },
+      {
+        id: 9,
+        hi: { q: "पारंपरिक लाठियों की लड़ाई वाला ऐतिहासिक 'बन्नी महोत्सव' किस राज्य में मनाया गया?", opts: ["कर्नाटक", "तमिलनाडु", "आंध्र प्रदेश", "तेलंगाना"], exp: "व्याख्या: आंध्र प्रदेश के कुरनूल जिले के देवरगडू मंदिर में दशहरा पर्व की मध्यरात्रि यह उत्सव आयोजित होता है।" },
+        en: { q: "In which state was the traditional stick-fight festival 'Banni Utsav' celebrated?", opts: ["Karnataka", "Tamil Nadu", "Andhra Pradesh", "Telangana"], exp: "Explanation: Held at Devaragattu Temple in Kurnool district, Andhra Pradesh." },
+        correct: 2
+      },
+      {
+        id: 10,
+        hi: { q: "एशियाई पैरा खेल 2026 के उद्घाटन समारोह में भारत के ध्वजवाहक कौन बने?", opts: ["प्रमोद भगत", "सिमरन शर्मा", "दोनों (A) और (B)", "सुमित अंतिल"], exp: "व्याख्या: 5वां संस्करण आइची-नागोया में; शुभंकर: 'उजुमिन'; थीम: 'वादी'।" },
+        en: { q: "Who were the flag bearers for India at the opening ceremony of the Asian Para Games 2026?", opts: ["Pramod Bhagat", "Simran Sharma", "Both (A) and (B)", "Sumit Antil"], exp: "Explanation: Pramod Bhagat and Simran Sharma served as joint flag bearers." },
+        correct: 2
+      },
+      {
+        id: 11,
+        hi: { q: "देश की सबसे ऊँची (समुद्र तल से लगभग 3,500 मीटर) हाईकोर्ट बेंच का उद्घाटन कहाँ किया गया?", opts: ["शिमला", "श्रीनगर", "लेह (लद्दाख)", "तवांग"], exp: "व्याख्या: CJI जस्टिस सूर्यकांत द्वारा लेह में इस बेंच का उद्घाटन किया गया।" },
+        en: { q: "Where was the country's highest High Court bench (~3,500m above sea level) inaugurated?", opts: ["Shimla", "Srinagar", "Leh (Ladakh)", "Tawang"], exp: "Explanation: Inaugurated in Leh by Chief Justice of India." },
+        correct: 2
+      },
+      {
+        id: 12,
+        hi: { q: "33वाँ द्विपक्षीय समुद्री अभ्यास 'SIMBEX 2026' भारत और किस देश के बीच आयोजित हुआ?", opts: ["श्रीलंका", "सिंगापुर", "सेशेल्स", "सऊदी अरब"], exp: "व्याख्या: हार्बर चरण विशाखापट्टनम में और समुद्री चरण बंगाल की खाड़ी में हुआ।" },
+        en: { q: "Between India and which nation was the 33rd naval exercise 'SIMBEX 2026' held?", opts: ["Sri Lanka", "Singapore", "Seychelles", "Saudi Arabia"], exp: "Explanation: Bilateral maritime exercise between Indian Navy and Singapore Navy." },
+        correct: 1
+      },
+      {
+        id: 13,
+        hi: { q: "Ipsos द्वारा जारी 'क्वालिटी ऑफ केयर परसेप्शन इंडेक्स 2026' में भारत ने कौन-सा स्थान प्राप्त किया?", opts: ["पहला", "दूसरा", "तीसरा", "पाँचवाँ"], exp: "व्याख्या: शीर्ष 3 देश क्रमशः मलेशिया, सिंगापुर और भारत रहे।" },
+        en: { q: "What rank did India achieve in Ipsos Quality of Care Perception Index 2026?", opts: ["1st", "2nd", "3rd", "5th"], exp: "Explanation: India ranked 3rd globally behind Malaysia and Singapore." },
+        correct: 2
+      },
+      {
+        id: 14,
+        hi: { q: "अक्टूबर 2026 में रोमानिया देश के नए प्रधानमंत्री के रूप में किसे चुना गया है?", opts: ["क्लाउस इओहानिस", "मार्सेल सिओलाकु", "निकोलाए सिउका", "लुका निकुलेस्कु"], exp: "व्याख्या: रोमानिया की राजधानी बुखारेस्ट तथा मुद्रा ल्यू (Leu) है।" },
+        en: { q: "Who was elected as the Prime Minister of Romania in October 2026?", opts: ["Klaus Iohannis", "Marcel Ciolacu", "Nicolae Ciuca", "Luca Niculescu"], exp: "Explanation: Luca Niculescu was elected Prime Minister of Romania." },
+        correct: 3
+      },
+      {
+        id: 15,
+        hi: { q: "भारतीय सेना के पहले समर्पित संचार उपग्रह 'GSAT-7B' को किस प्रक्षेपण यान से लॉन्च किया जाएगा?", opts: ["PSLV-C58", "LVM3 (GSLV Mk-III)", "SSLV-D2", "GSLV-F12"], exp: "व्याख्या: वजन 5000 किग्रा (5 टन)। यह देश का सबसे भारी सैन्य संचार उपग्रह होगा।" },
+        en: { q: "Which launch vehicle will deploy the Indian Army's dedicated GSAT-7B satellite?", opts: ["PSLV-C58", "LVM3 (GSLV Mk-III)", "SSLV-D2", "GSLV-F12"], exp: "Explanation: LVM3 will launch this ~5-ton dedicated communication satellite." },
+        correct: 1
+      },
+      {
+        id: 16,
+        hi: { q: "प्रत्येक वर्ष 'संयुक्त राष्ट्र दिवस (United Nations Day)' किस तिथि को मनाया जाता है?", opts: ["21 अक्टूबर", "22 अक्टूबर", "24 अक्टूबर", "25 अक्टूबर"], exp: "व्याख्या: 24 अक्टूबर 1945 को संयुक्त राष्ट्र चार्टर प्रभावी हुआ था। मुख्यालय न्यूयॉर्क है।" },
+        en: { q: "On which date is United Nations Day celebrated globally each year?", opts: ["21 October", "22 October", "24 October", "25 October"], exp: "Explanation: Celebrated on 24 October commemorating UN Charter enforcement in 1945." },
+        correct: 2
+      },
+      {
+        id: 17,
+        hi: { q: "इसरो द्वारा दूसरी पीढ़ी के नेविगेशन उपग्रह 'NVS-03' को किस रॉकेट से लॉन्च किया जाएगा?", opts: ["GSLV Mk-II (GSLV-F18)", "PSLV-C59", "LVM3-M5", "SSLV-D3"], exp: "व्याख्या: यह नाविक (NavIC) प्रणाली का स्वदेशी परमाणु घड़ी युक्त उपग्रह है।" },
+        en: { q: "Which rocket will launch ISRO's second-generation navigation satellite NVS-03?", opts: ["GSLV Mk-II (GSLV-F18)", "PSLV-C59", "LVM3-M5", "SSLV-D3"], exp: "Explanation: GSLV Mk-II (F18) will launch NVS-03 equipped with atomic clocks." },
+        correct: 0
+      },
+      {
+        id: 18,
+        hi: { q: "अक्टूबर 2026 में किस भारतीय सामाजिक कार्यकर्ता को 'हिलेरी रोडम क्लिंटन पुरस्कार 2026' मिला?", opts: ["मेधा पाटकर", "सुनीता नारायण", "रीमा नानावती", "इला भट्ट"], exp: "व्याख्या: सेवा (SEWA) संस्था की निदेशक रीमा नानावती को महिला सशक्तिकरण हेतु मिला।" },
+        en: { q: "Which Indian activist was honored with the Hillary Rodham Clinton Award 2026?", opts: ["Medha Patkar", "Sunita Narain", "Reema Nanavaty", "Ela Bhatt"], exp: "Explanation: SEWA Director Reema Nanavaty received the honor." },
+        correct: 2
+      },
+      {
+        id: 19,
+        hi: { q: "हेनले पासपोर्ट इंडेक्स (Q4 2026) में भारतीय पासपोर्ट की वैश्विक रैंकिंग क्या है?", opts: ["80वीं", "82वीं", "84वीं", "87वीं"], exp: "व्याख्या: सिंगापुर प्रथम स्थान पर है; भारत 84वें पायदान पर रहा।" },
+        en: { q: "What is India's rank in Henley Passport Index (Q4 2026)?", opts: ["80th", "82nd", "84th", "87th"], exp: "Explanation: India ranked 84th globally while Singapore retained the top rank." },
+        correct: 2
+      },
+      {
+        id: 20,
+        hi: { q: "कारवार नौसैनिक अड्डे में शामिल किए गए भारतीय नौसेना के स्वदेशी बहुउद्देशीय पोत का क्या नाम है?", opts: ["INS समर्थ", "INS सार्थक", "INS समर्थक (Samarthak)", "INS संकल्प"], exp: "व्याख्या: तटीय निगरानी और बहुउद्देशीय सैन्य अभियानों को मजबूती देने हेतु कमीशन किया गया।" },
+        en: { q: "What is the name of the multi-purpose vessel commissioned at Karwar Naval Base?", opts: ["INS Samarth", "INS Sarthak", "INS Samarthak", "INS Sankalp"], exp: "Explanation: INS Samarthak was commissioned to bolster coastal surveillance." },
+        correct: 2
+      }
+    ];
+
+    // Auto generate the remaining 70 questions dynamically from extracted list
+    const remainingQuestions = [
+      { id: 21, q: "शंघाई सहयोग संगठन (SCO) के शासनाध्यक्ष परिषद की 25वीं बैठक कहाँ आयोजित हुई?", opts: ["ताशकंद", "अस्ताना", "दुशांबे (ताजिकिस्तान)", "बिश्केक"], a: 2, exp: "ताजिकिस्तान के दुशांबे में आयोजित; भारत का प्रतिनिधित्व रक्षा मंत्री राजनाथ सिंह ने किया।" },
+      { id: 22, q: "वरिष्ठ नागरिकों हेतु 'देखभाल एवं अधिकार संरक्षण विधेयक 2026' पेश करने वाला देश का पहला राज्य कौन बना?", opts: ["तमिलनाडु", "केरल", "कर्नाटक", "महाराष्ट्र"], a: 1, exp: "केरल विधानसभा में वरिष्ठ नागरिकों के अधिकारों की कानूनी गारंटी हेतु पारित।" },
+      { id: 23, q: "अक्टूबर 2026 में नेपाल में भारत का अगला राजदूत किसे नियुक्त किया गया?", opts: ["विनय मोहन क्वात्रा", "नवीन श्रीवास्तव", "सुधाकर दलेला", "अभय कुमार"], a: 2, exp: "वरिष्ठ राजनयिक सुधाकर दलेला को नेपाल में राजदूत नियुक्त किया गया।" },
+      { id: 24, q: "विश्व स्वास्थ्य शिखर सम्मेलन (World Health Summit) 2026 का आयोजन कहाँ किया गया?", opts: ["जिनेवा", "बर्लिन (जर्मनी)", "पेरिस", "लंदन"], a: 1, exp: "बर्लिन में संपन्न; थीम: 'From Crisis to Resilience: Innovating for Health'।" },
+      { id: 25, q: "एशियाई पैरा खेल 2026 में भारत के लिए पहला स्वर्ण पदक किसने जीता?", opts: ["अवनी लेखरा", "मोना अग्रवाल", "दीप्ति जीवनजी", "शीतल देवी"], a: 1, exp: "मोना अग्रवाल ने पैरा-शूटिंग स्पर्धा में पहला गोल्ड मेडल दिलाया।" },
+      { id: 26, q: "गगनयान मिशन के क्रू मॉड्यूल व सर्विस मॉड्यूल पृथक्करण परीक्षण कहाँ पूरे किए गए?", opts: ["सतीश धवन केंद्र", "VSSC तिरुवनंतपुरम", "UR राव उपग्रह केंद्र", "ISRO महेंद्रगिरि"], a: 1, exp: "विक्रम साराभाई स्पेस सेंटर (VSSC) में सफल परीक्षण हुआ।" },
+      { id: 27, q: "7वाँ 'एग्रीवोल्टाइक्स विश्व सम्मेलन 2026' कहाँ आयोजित हुआ?", opts: ["नई दिल्ली", "बेंगलुरु", "पुणे", "जयपुर"], a: 0, exp: "नई दिल्ली में आयोजित; थीम: 'Powering the Global South'।" },
+      { id: 28, q: "यूनेस्को ने भारत के किन स्थलों को विश्व धरोहर की संभावित सूची में शामिल किया?", opts: ["सिरपुर सांस्कृतिक परिदृश्य", "बाराटांग मड ज्वालामुखी", "अंडमान सबडक्शन वोल्केनो", "उपरोक्त सभी"], a: 3, exp: "तीनों भारतीय स्थलों को UNESCO की टेंटेटिव लिस्ट में स्थान मिला।" },
+      { id: 29, q: "महाराष्ट्र का पहला 'अन्नपूर्ति अनाज (Grain) ATM' किस शहर में लॉन्च हुआ?", opts: ["पुणे", "नासिक", "नागपुर", "मुंबई"], a: 1, exp: "नासिक में 24x7 बायोमेट्रिक सत्यापित अनाज एटीएम शुरू हुआ।" },
+      { id: 30, q: "जैविक विविधता पर संयुक्त राष्ट्र सम्मेलन (CBD COP-17) की बैठक कहाँ हुई?", opts: ["येरेवन (आर्मेनिया)", "मॉन्ट्रियल", "बाकू", "नैरोबी"], a: 0, exp: "आर्मेनिया की राजधानी येरेवन में; थीम: 'Taking Action for Nature'।" },
+      { id: 31, q: "भारतीय थलसेना का संयुक्त युद्धाभ्यास 'अखंड प्रहार-II' कहाँ संपन्न हुआ?", opts: ["जैसलमेर (राजस्थान)", "पोखरण", "बाड़मेर", "लेह"], a: 0, exp: "जैसलमेर में ब्लैक मेस ब्रिगेड द्वारा रेगिस्तानी रणकौशल अभ्यास हुआ।" },
+      { id: 32, q: "ग्लोबल फाइनेंस द्वारा 'वर्ल्ड्स बेस्ट कंज्यूमर बैंक 2026' का खिताब किसे मिला?", opts: ["HDFC बैंक", "भारतीय स्टेट बैंक (SBI)", "ICICI बैंक", "PNB"], a: 1, exp: "SBI को लगातार दूसरे वर्ष यह सम्मान दिया गया।" },
+      { id: 33, q: "सुप्रीम कोर्ट ने किस अनुच्छेद के तहत बच्चों के इंटरनेट पहुँच को मौलिक अधिकार माना?", opts: ["अनुच्छेद 14", "अनुच्छेद 21 और 19(1)(a)", "अनुच्छेद 21A", "अनुच्छेद 32"], a: 1, exp: "न्यायालय ने डिजिटल शिक्षा व अभिव्यक्ति को अनुच्छेद 21 व 19(1)(a) से जोड़ा।" },
+      { id: 34, q: "देशव्यापी 'खेत बचाओ अभियान (रबी 2026)' की शुरुआत कहाँ से की गई?", opts: ["करनाल (हरियाणा)", "लुधियाना", "वाराणसी", "इंदौर"], a: 0, exp: "करनाल से कृषि मंत्री शिवराज सिंह चौहान द्वारा अभियान का आगाज हुआ।" },
+      { id: 35, q: "केंद्र सरकार ने भारत को नशा मुक्त (Drug-Free) बनाने का लक्ष्य कब तक रखा है?", opts: ["15 अगस्त 2027", "31 दिसंबर 2029", "26 जनवरी 2030", "31 मार्च 2028"], a: 1, exp: "नारकोटिक्स कंट्रोल ब्यूरो को 31 दिसंबर 2029 तक का सख्त लक्ष्य दिया गया।" },
+      { id: 36, q: "ग्रासनली (Esophagus) कैंसर के उपचार हेतु दवा 'जाइटोरवी' किसने बनाई?", opts: ["सन फार्मा", "सिप्ला", "डॉ. रेड्डीज लैबोरेटरीज", "बायोकॉन"], a: 2, exp: "हैदराबाद स्थित डॉ. रेड्डीज द्वारा CDSCO से अनुमोदित कैंसर रोधी दवा।" },
+      { id: 37, q: "तुर्की, कतर, पाकिस्तान और इंडोनेशिया ने किस बहुपक्षीय रक्षा समझौते पर हस्ताक्षर किए?", opts: ["अमान समझौता", "भद्र समझौता (Bhadra MoU)", "निगाह समझौता", "सदा समझौता"], a: 1, exp: "चारों देशों के बीच रक्षा उद्योग व संयुक्त सैन्य प्रशिक्षण हेतु भद्र समझौता हुआ।" },
+      { id: 38, q: "सेंगोल राजदंड के निर्माता वुम्मिदी एथिराजुलु का निधन हुआ, उनका संबंध कहाँ से था?", opts: ["वुम्मिदी बंगारू ज्वेलर्स (चेन्नई)", "तंजावुर", "मैसूर", "मदुरै"], a: 0, exp: "चेन्नई के प्रसिद्ध जौहरी जिन्होंने 1947 में सत्ता हस्तांतरण सेंगोल गढ़ा था।" },
+      { id: 39, q: "ICC महिला अंडर-19 T20 विश्व कप 2027 की मेजबानी कौन-से देश करेंगे?", opts: ["भारत-श्रीलंका", "बांग्लादेश और नेपाल", "ऑस्ट्रेलिया-न्यूजीलैंड", "इंग्लैंड-वेल्स"], a: 1, exp: "आईसीसी ने बांग्लादेश और नेपाल को संयुक्त मेजबानी सौंपी है।" },
+      { id: 40, q: "ONGC के नए अध्यक्ष एवं प्रबंध निदेशक (CMD) कौन बने हैं?", opts: ["अरुण कुमार सिंह", "सुनील कुमार", "संदीप गुप्ता", "गुरदीप सिंह"], a: 1, exp: "सुनील कुमार को महारत्न तेल व गैस कंपनी ONGC का प्रमुख बनाया गया।" },
+      { id: 41, q: "भारतीय वायुसेना की 94वीं वर्षगांठ पर एयर शो 'विंग्स ओवर गंगा' कहाँ हुआ?", opts: ["प्रयागराज", "हरिद्वार", "वाराणसी (नमो घाट)", "ऋषिकेश"], a: 2, exp: "वाराणसी के नमो घाट पर 100 सैन्य विमानों का भव्य प्रदर्शन हुआ।" },
+      { id: 42, q: "मुंबई में आयोजित 14वें 'इंडिया केम 2026' में भागीदार देश कौन था?", opts: ["जर्मनी", "जापान", "रूस", "दक्षिण कोरिया"], a: 1, exp: "जापान भागीदार देश रहा; उद्घाटन रसायन मंत्री जे. पी. नड्डा ने किया।" },
+      { id: 43, q: "विश्व बैंक ने राजस्थान के शहरी इंफ्रास्ट्रक्चर हेतु किस परियोजना का प्रस्ताव दिया?", opts: ["उदय", "सूत्र (SUTRA)", "कायाकल्प", "अमृत"], a: 1, exp: "Sustainable Urban Transformation in Rajasthan Accelerated (लागत ₹3500 करोड़)।" },
+      { id: 44, q: "100% उपकरणों के विद्युतीकरण के बाद देश का पहला हरित टर्मिनल कौन बना?", opts: ["JNPT मुंबई", "वी.ओ. चिदंबरनार (तूतीकोरिन)", "कांडला", "कोचीन"], a: 1, exp: "तूतीकोरिन पोर्ट शून्य कार्बन उत्सर्जन हासिल कर पहला हरित टर्मिनल बना।" },
+      { id: 45, q: "CICA का 7वाँ शिखर सम्मेलन कहाँ आयोजित हुआ?", opts: ["अस्ताना", "बाकू (अज़रबैजान)", "दुशांबे", "ताशकंद"], a: 1, exp: "बाकू में आयोजित हुआ तथा लाओस CICA का 29वाँ सदस्य बना।" },
+      { id: 46, q: "57वीं GST परिषद बैठक में किन राज्यों को स्थायी समिति में शामिल किया गया?", opts: ["कर्नाटक व गुजरात", "महाराष्ट्र व तमिलनाडु", "उत्तर प्रदेश", "उपरोक्त सभी"], a: 3, exp: "जीएसटी विवादों के त्वरित निपटान हेतु इन 5 राज्यों की स्थायी समिति बनी।" },
+      { id: 47, q: "भारत के सबसे बड़े फिनोल और एसीटोन संयंत्र का उद्घाटन कहाँ किया गया?", opts: ["जामनगर", "हल्दिया (पश्चिम बंगाल)", "पारादीप", "दहेज"], a: 1, exp: "हल्दिया पेट्रोकेमिकल्स परिसर में औद्योगिक रसायनों के आयात पर निर्भरता घटाने हेतु शुरू।" },
+      { id: 48, q: "5G कैप्टिव नॉन-पब्लिक नेटवर्क की अनुमति पाने वाला पहला प्रमुख बंदरगाह कौन है?", opts: ["विशाखापट्टनम", "मोरमुगाओ (गोवा)", "पारादीप", "चेन्नई"], a: 1, exp: "मोरमुगाओ पोर्ट लॉजिस्टिक्स को स्वचालित करने हेतु 5G स्पेक्ट्रम पाने वाला पहला पोर्ट बना।" },
+      { id: 49, q: "आत्मकथा 'डांसिंग विद जॉय' की लेखिका कौन हैं?", opts: ["सोनल मानसिंह", "डॉ. आनंदा शंकर जयंत", "मल्लिका साराभाई", "यामिनी कृष्णमूर्ति"], a: 1, exp: "भरतनाट्यम नृत्यांगना व कैंसर विजेता डॉ. आनंदा शंकर जयंत की प्रेरक आत्मकथा।" },
+      { id: 50, q: "CBC द्वारा तीसरी 'साधना श्रृंखला 2026' कार्यशाला कहाँ आयोजित हुई?", opts: ["लखनऊ (यूपी)", "नई दिल्ली", "भोपाल", "जयपुर"], a: 0, exp: "मिशन कर्मयोगी के तहत सिविल सेवा क्षमता संवर्धन हेतु लखनऊ में आयोजित।" },
+      { id: 51, q: "हिमाचल प्रदेश ने पहली बैटरी सौर ऊर्जा परियोजना कहाँ शुरू की?", opts: ["काज़ा, रोंगटोंग (स्पीति)", "किन्नौर", "मनाली", "धर्मशाला"], a: 0, exp: "स्पीति घाटी में अत्यधिक ठंड के बावजूद निर्बाध सौर ऊर्जा आपूर्ति होगी।" },
+      { id: 52, q: "दुर्लभ प्रजाति 'सेरोपेगिया तमिलनाडुएंसिस' की खोज कहाँ की गई?", opts: ["मन्नार की खाड़ी", "नेल्लई वन्यजीव अभयारण्य", "सत्यमंगलम", "अन्नामलाई"], a: 1, exp: "BSI वैज्ञानिकों ने पश्चिमी घाट के नेल्लई अभयारण्य से खोजी।" },
+      { id: 53, q: "गन्ना किसानों की समस्याओं हेतु उच्चस्तरीय समिति किसकी अध्यक्षता में बनी?", opts: ["प्रो. रमेश चंद", "अशोक दलवई", "विजय पॉल शर्मा", "संजय अग्रवाल"], a: 0, exp: "नीति आयोग सदस्य प्रो. रमेश चंद समिति के अध्यक्ष हैं।" },
+      { id: 54, q: "BS-VII उत्सर्जन मानक देश में कब से लागू करने का प्रस्ताव है?", opts: ["अप्रैल 2027", "जनवरी 2028", "अप्रैल 2029", "अप्रैल 2030"], a: 2, exp: "सड़क परिवहन मंत्रालय ने अप्रैल 2029 से कड़े उत्सर्जन मानक प्रस्तावित किए।" },
+      { id: 55, q: "U-23 विश्व कुश्ती चैंपियनशिप 2026 में भारत ने कुल कितने पदक जीते?", opts: ["4", "5", "6 पदक (2 रजत, 4 कांस्य)", "8"], a: 2, exp: "लास वेगास (USA) में भारतीय पहलवानों ने 2 सिल्वर व 4 ब्रॉन्ज जीते।" },
+      { id: 56, q: "भारत-मंगोलिया संयुक्त कार्य समूह (JWG) की 14वीं बैठक कहाँ हुई?", opts: ["उलानबटार (मंगोलिया)", "नई दिल्ली", "जोधपुर", "अस्ताना"], a: 0, exp: "उलानबटार में रक्षा सहयोग को मजबूत करने हेतु संपन्न हुई।" },
+      { id: 57, q: "MEVAS, ई-बजट और 100% DBT पोर्टल की शुरुआत किस पूर्वोत्तर राज्य ने की?", opts: ["असम", "मिजोरम", "त्रिपुरा", "मणिपुर"], a: 1, exp: "मिजोरम सरकार ने वित्तीय पारदर्शिता और बिचौलियों के खात्मे हेतु शुरुआत की।" },
+      { id: 58, q: "तमिल सिनेमा के संगीतकार देवेनेसन चोक्कलिंगम का निधन हुआ, वे किस नाम से जाने जाते थे?", opts: ["देवा (Deva)", "इलैयाराजा", "विद्यासागर", "मणिरत्नम"], a: 0, exp: "दक्षिण भारत में लोकप्रिय 'गाना' संगीत शैली के प्रणेता थे।" },
+      { id: 59, q: "IMF व विश्व बैंक द्वारा जारी 'बैंकॉक ब्लूप्रिंट' का संबंध किससे है?", opts: ["जलवायु वित्त", "साइबर धोखाधड़ी नियंत्रण", "मुद्रास्फीति", "क्रिप्टो नियमन"], a: 1, exp: "सीमा पार डिजिटल लेन-देन व बैंकिंग धोखाधड़ी नियंत्रण से संबंधित ब्लूप्रिंट।" },
+      { id: 60, q: "चर्चा में रहा 'किलाउआ ज्वालामुखी' किस अमेरिकी राज्य में स्थित है?", opts: ["अलास्का", "कैलिफोर्निया", "हवाई द्वीप समूह", "वाशिंगटन"], a: 2, exp: "प्रशांत महासागर स्थित हवाई द्वीप का अति सक्रिय ज्वालामुखी।" },
+      { id: 61, q: "21वीं वेदांता दिल्ली हाफ मैराथन 2026 की पुरुष एलीट रेस किसने जीती?", opts: ["चार्ल्स मटाटा (केन्या)", "एलिउड किपचोगे", "तमिरात तोला", "जोशुआ चेप्टेगेई"], a: 0, exp: "मटाटा ने 58 मिनट 52 सेकंड के नए कोर्स रिकॉर्ड से जीती।" },
+      { id: 62, q: "'पुलिस स्मृति दिवस' प्रतिवर्ष कब मनाया जाता है?", opts: ["18 अक्टूबर", "20 अक्टूबर", "21 अक्टूबर", "24 अक्टूबर"], a: 2, exp: "1959 में हॉट स्प्रिंग्स (लद्दाख) में शहीद 10 CRPF जवानों की याद में।" },
+      { id: 63, q: "अंतरराष्ट्रीय विधि मापन समिति (CIML) की 61वीं बैठक की मेजबानी कौन करेगा?", opts: ["मुंबई", "नई दिल्ली", "हैदराबाद", "कोलकाता"], a: 1, exp: "भारत पहली बार विधिक मापविज्ञान के वैश्विक सम्मेलन की मेजबानी करेगा।" },
+      { id: 64, q: "BCCI पुरुष वरिष्ठ चयन समिति के नए अध्यक्ष कौन बने हैं?", opts: ["अजीत अगरकर", "प्रज्ञान ओझा", "चेतन शर्मा", "जहीर खान"], a: 1, exp: "पूर्व स्पिनर प्रज्ञान ओझा को चयन समिति की कमान सौंपी गई।" },
+      { id: 65, q: "उस्ताद बिस्मिल्लाह खान युवा पुरस्कार से कितने कलाकार सम्मानित हुए?", opts: ["82", "94", "106 कलाकार", "120"], a: 2, exp: "40 वर्ष से कम आयु के 106 युवा कलाकारों को संगीत नाटक अकादमी ने दिया।" },
+      { id: 66, q: "वित्तीय सेवा संस्थान ब्यूरो (FSIB) के नए अध्यक्ष कौन नियुक्त हुए?", opts: ["भानु प्रताप शर्मा", "सुभाष चंद्र लाल दास", "दिनेश खारा", "माधबी पुरी बुच"], a: 1, exp: "सरकारी बैंकों व वित्तीय संस्थानों के प्रमुख चयन बोर्ड के नए अध्यक्ष।" },
+      { id: 67, q: "अज़रबैजान गणराज्य में भारत का अगला राजदूत किसे नियुक्त किया गया?", opts: ["अभय कुमार", "संजय कुमार वर्मा", "पवन कपूर", "विक्रम मिस्री"], a: 0, exp: "वरिष्ठ राजनयिक एवं प्रसिद्ध कवि अभय कुमार को बाकू में राजदूत बनाया गया।" },
+      { id: 68, q: "देसी धान किस्मों के संरक्षक पद्मश्री चेरुवायल रमन को किस वर्ष पद्मश्री मिला था?", opts: ["2021", "2022", "2023", "2024"], a: 2, exp: "वायनाड (केरल) के कुरुचिया जनजाति के किसान रमन ने 50+ बीजों का जीन बैंक बनाया था।" },
+      { id: 69, q: "144 वर्षों बाद एशियाई शेरों की प्राकृतिक वापसी किस अभयारण्य में दर्ज हुई?", opts: ["कूनो", "बर्दा वन्यजीव अभयारण्य (गुजरात)", "रणथंभौर", "माधव"], a: 1, exp: "पोरबंदर स्थित बर्दा में गिर के शेरों की प्राकृतिक वापसी हुई।" },
+      { id: 70, q: "भारत और किस देश का मुक्त व्यापार समझौता 20 अक्टूबर 2026 से लागू हुआ?", opts: ["ऑस्ट्रेलिया", "ब्रिटेन", "न्यूजीलैंड", "कनाडा"], a: 2, exp: "भारतीय वस्त्र, फार्मा व ऑटो पार्ट्स को 100% शुल्क-मुक्त बाजार मिलेगा।" },
+      { id: 71, q: "पूर्वोत्तर भारत का पहला बहुदेशीय वीजा आवेदन केंद्र कहाँ खुला?", opts: ["शिलांग", "गुवाहाटी (असम)", "ईटानगर", "अगरतला"], a: 1, exp: "गुवाहाटी में अब पूर्वोत्तर के नागरिक सीधे अंतरराष्ट्रीय वीजा आवेदन कर सकेंगे।" },
+      { id: 72, q: "रात में सूर्य का प्रकाश भेजने हेतु स्काईरूट ने किस स्टार्टअप से समझौता किया?", opts: ["स्पेसएक्स", "रिफ्लेक्ट ऑर्बिटल (USA)", "ब्लू ओरिजिन", "प्लैनेट"], a: 1, exp: "परावर्तक उपग्रह भेजकर रात में 5 वर्ग किमी क्षेत्र में सौर प्रकाश केंद्रित किया जाएगा।" },
+      { id: 73, q: "सर्वाधिक 47 BWF एकल खिताब जीतने का विश्व रिकॉर्ड किसने बनाया?", opts: ["अकाने यामागुची", "आन से-यंग (दक्षिण कोरिया)", "ताई त्जु यिंग", "पी.वी. सिंधु"], a: 1, exp: "दक्षिण कोरिया की आन से-यंग ने डेनमार्क ओपन जीतकर इतिहास रचा।" },
+      { id: 74, q: "एशियाई पैरा खेल में महिलाओं की 400 मी T-20 दौड़ में स्वर्ण पदक किसने जीता?", opts: ["दीप्ति जीवनजी", "सिमरन शर्मा", "प्रीति पाल", "भाग्यश्री जाधव"], a: 0, exp: "दीप्ति जीवनजी ने 400 मीटर स्प्रिंट में स्वर्ण पदक हासिल किया।" },
+      { id: 75, q: "कुफरी नीलकंठ व कुफरी जामुनिया बायोफोर्टिफाइड आलू किसने विकसित किए?", opts: ["IARI नई दिल्ली", "केंद्रीय आलू अनुसंधान संस्थान (CPRI शिमला)", "NDRI", "BARC"], a: 1, exp: "CPRI शिमला द्वारा विकसित रंगीन एंटी-ऑक्सीडेंट आलू किस्में।" },
+      { id: 76, q: "रणजी ट्रॉफी में 400 रन बनाने वाले दूसरे भारतीय बल्लेबाज कौन बने?", opts: ["पृथ्वी शॉ", "चिन्मय सुतार", "सरफराज खान", "यशस्वी जायसवाल"], a: 1, exp: "चिन्मय सुतार ने नाबाद 400 रन बनाकर 78 साल बाद निंबालकर का रिकॉर्ड दोहराया।" },
+      { id: 77, q: "राष्ट्रीय रणनीतिक व्यापार कमान केंद्र का उद्घाटन कहाँ किया गया?", opts: ["मुंबई", "नई दिल्ली", "गांधीनगर", "कोलकाता"], a: 1, exp: "वैश्विक निर्यात-आयात और आपूर्ति श्रृंखला निगरानी हेतु वाणिज्य मंत्री द्वारा शुरू।" },
+      { id: 78, q: "विश्व आयोडीन अल्पता विकार निवारण दिवस कब मनाया जाता है?", opts: ["16 अक्टूबर", "20 अक्टूबर", "21 अक्टूबर", "24 अक्टूबर"], a: 2, exp: "शारीरिक व मानसिक विकास में आयोडीन युक्त नमक के प्रति जागरूकता हेतु।" },
+      { id: 79, q: "पहले 'SCO सभ्यतागत संवाद मंच' की मेजबानी कौन-सा देश करेगा?", opts: ["रूस", "चीन", "भारत", "उज्बेकिस्तान"], a: 2, exp: "सांस्कृतिक व दार्शनिक विरासत को साझा करने हेतु भारत मेजबानी करेगा।" },
+      { id: 80, q: "हवाई संपर्क योजना 'उड़ान' (UDAN) कब शुरू की गई थी?", opts: ["21 अक्टूबर 2014", "21 अक्टूबर 2016", "21 अक्टूबर 2017", "21 अक्टूबर 2018"], a: 1, exp: "नागरिक उड्डयन मंत्रालय द्वारा 21 अक्टूबर 2016 को प्रारंभ, जिसने 10 वर्ष पूरे किए।" },
+      { id: 81, q: "FMSCI मिनी मैक्स जीतकर दुनिया की सबसे कम उम्र की कार्टिंग चैंपियन कौन बनी?", opts: ["अर्शी गुप्ता", "तन्वी शर्मा", "रिया सचदेवा", "अनाहिता राव"], a: 0, exp: "भारतीय युवा रेसर अर्शी गुप्ता ने मिनी मैक्स खिताब जीता।" },
+      { id: 82, q: "शॉटपुट F-46 में 15.87 मी थ्रो के साथ एशियाई पैरा खेलों में स्वर्ण किसने जीता?", opts: ["सचिन सर्जेराव खिलारी", "ऋषिपाल", "देवेंद्र झाझरिया", "अजीत सिंह"], a: 0, exp: "महाराष्ट्र के सचिन खिलारी ने रिकॉर्ड थ्रो के साथ स्वर्ण जीता।" },
+      { id: 83, q: "मार्च 2029 तक $1B फंड हेतु 'ग्रेटर दैन अस' अभियान किसने शुरू किया?", opts: ["IIT बॉम्बे", "IIT दिल्ली", "IIT कानपुर", "IIT मद्रास"], a: 2, exp: "IIT कानपुर द्वारा अत्याधुनिक शोध व स्टार्टअप हेतु अभियान शुरू।" },
+      { id: 84, q: "23वें विधि आयोग द्वारा 'सहकारी संघवाद' राष्ट्रीय सम्मेलन का उद्घाटन किसने किया?", opts: ["नरेंद्र मोदी", "उपराष्ट्रपति सी.पी. राधाकृष्णन", "अमित शाह", "CJI सूर्यकांत"], a: 1, exp: "उपराष्ट्रपति सी.पी. राधाकृष्णन ने नई दिल्ली में उद्घाटन किया।" },
+      { id: 85, q: "स्वदेशी 'मैन-पोर्टेबल ELINT सिस्टम' किसने विकसित किया?", opts: ["DRDO (डीआरडीओ)", "HAL", "BEL", "टाटा सिस्टम्स"], a: 0, exp: "हैदराबाद स्थित DRDO प्रयोगशाला द्वारा विकसित युद्धक्षेत्र इलेक्ट्रॉनिक प्रणाली।" },
+      { id: 86, q: "12वें 'ब्रिक्स (BRICS) संसदीय मंच' का आयोजन कहाँ किया गया?", opts: ["मास्को", "जोहान्सबर्ग", "नई दिल्ली (भारत)", "रियो डी जनेरियो"], a: 2, exp: "नई दिल्ली में लोकसभा अध्यक्ष ओम बिरला की अध्यक्षता में आयोजित हुआ।" },
+      { id: 87, q: "मवेशियों के 'शर्मेडा वायरस' से मनुष्य के संक्रमित होने का पहला केस कहाँ मिला?", opts: ["जर्मनी", "फ्रांस", "इटली", "स्पेन"], a: 1, exp: "फ्रांस में वैज्ञानिकों ने इसके जीनोम म्यूटेशन पर अलर्ट जारी किया।" },
+      { id: 88, q: "'The Evolution of TV News in India' पुस्तक की लेखिका कौन हैं?", opts: ["बरखा दत्त", "हरशरण वीर कौर पाण्डेय", "सागरिका घोष", "निधि राजदान"], a: 1, exp: "दूरदर्शन से लेकर आज के डिजिटल युग के मीडिया इतिहास पर आधारित।" },
+      { id: 89, q: "शीतल देवी और तोमन कुमार की तीरंदाजी जोड़ी ने एशियाई पैरा खेल में क्या जीता?", opts: ["स्वर्ण पदक (Gold)", "रजत पदक", "कांस्य पदक", "चौथा स्थान"], a: 0, exp: "कंपाउंड मिक्स्ड टीम तीरंदाजी स्पर्धा में स्वर्णिम इतिहास रचा।" },
+      { id: 90, q: "मात्र 114 गेंदों में ODI का सबसे तेज दोहरा शतक लगाने वाले बल्लेबाज कौन बने?", opts: ["ग्लेन मैक्सवेल", "ईशान किशन", "हैरी ब्रूक (Harry Brook)", "ट्रेविस हेड"], a: 2, exp: "इंग्लैंड के हैरी ब्रूक ने 114 गेंदों में दोहरा शतक जड़कर ईशान किशन का रिकॉर्ड तोड़ा।" }
+    ];
+
+    // Combine all into testQuestions array
+    remainingQuestions.forEach(item => {
+      testQuestions.push({
+        id: item.id,
+        hi: {
+          q: item.q,
+          opts: item.opts,
+          exp: "<strong>सही उत्तर: (" + String.fromCharCode(65 + item.a) + ")</strong><br>" + item.exp
+        },
+        en: {
+          q: item.q,
+          opts: item.opts,
+          exp: "<strong>Correct Answer: (" + String.fromCharCode(65 + item.a) + ")</strong><br>" + item.exp
+        },
+        correct: item.a
+      });
+    });
+
+    // CBT State
+    let currentIndex = 0;
+    let userAnswers = new Array(testQuestions.length).fill(null);
+    let markedReview = new Array(testQuestions.length).fill(false);
+    let currentLang = 'hi';
+    let totalSeconds = 120 * 60;
+    let timerInterval = null;
+    let isSubmitted = false;
+
+    function startExamFullScreen() {
+      const doc = document.documentElement;
+      if (doc.requestFullscreen) {
+        doc.requestFullscreen().catch(() => {});
+      } else if (doc.webkitRequestFullscreen) {
+        doc.webkitRequestFullscreen();
+      }
+      document.getElementById('start-overlay').classList.add('hidden');
+      startTimer();
+      renderQuestion();
+    }
+
+    function startTimer() {
+      timerInterval = setInterval(() => {
+        if (totalSeconds <= 0) {
+          clearInterval(timerInterval);
+          submitExam();
+          return;
+        }
+        totalSeconds--;
+        const m = Math.floor(totalSeconds / 60);
+        const s = totalSeconds % 60;
+        document.getElementById('timer-display').innerText = 
+          `${String(m).padStart(2, '0')}:${String(s).padStart(2, '0')}`;
+      }, 1000);
+    }
+
+    function toggleLanguage() {
+      currentLang = (currentLang === 'hi') ? 'en' : 'hi';
+      document.getElementById('lang-indicator').innerText = (currentLang === 'hi') ? 'हिंदी / EN' : 'EN / हिंदी';
+      renderQuestion();
+    }
+
+    function renderQuestion() {
+      const qData = testQuestions[currentIndex];
+      const content = qData[currentLang];
+
+      document.getElementById('q-number-tag').innerText = 
+        (currentLang === 'hi') ? `प्रश्न ${currentIndex + 1} / ${testQuestions.length}` : `Question ${currentIndex + 1} / ${testQuestions.length}`;
+
+      document.getElementById('question-text').innerHTML = content.q;
+
+      const optsBox = document.getElementById('options-container');
+      optsBox.innerHTML = '';
+
+      content.opts.forEach((opt, idx) => {
+        const isSelected = userAnswers[currentIndex] === idx;
+        const letter = String.fromCharCode(65 + idx);
+
+        const row = document.createElement('div');
+        row.className = `p-3.5 rounded-xl border cursor-pointer transition flex items-center justify-between text-xs md:text-sm font-medium ${
+          isSelected 
+            ? 'border-blue-600 bg-blue-50 text-blue-900 shadow-sm font-semibold' 
+            : 'border-slate-200 hover:border-slate-300 hover:bg-slate-50 text-slate-700'
+        }`;
+        row.onclick = () => selectOption(idx);
+        row.innerHTML = `
+          <div class="flex items-center gap-3">
+            <span class="w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold ${
+              isSelected ? 'bg-blue-600 text-white' : 'bg-slate-200 text-slate-700'
+            }">${letter}</span>
+            <span>${opt}</span>
+          </div>
+          <div class="w-4 h-4 rounded-full border flex items-center justify-center ${
+            isSelected ? 'border-blue-600 bg-blue-600' : 'border-slate-300'
+          }">
+            ${isSelected ? '<span class="w-1.5 h-1.5 rounded-full bg-white"></span>' : ''}
+          </div>
+        `;
+        optsBox.appendChild(row);
+      });
+
+      // Instant Feedback & NCERT Explanation
+      const feedbackBox = document.getElementById('instant-feedback');
+      if (userAnswers[currentIndex] !== null || isSubmitted) {
+        feedbackBox.classList.remove('hidden');
+        const isCorrect = userAnswers[currentIndex] === qData.correct;
+        if (isCorrect) {
+          feedbackBox.className = "mb-4 p-4 rounded-xl border border-emerald-300 bg-emerald-50 text-emerald-900 text-xs md:text-sm";
+          feedbackBox.innerHTML = `
+            <div class="flex items-center gap-1.5 font-bold mb-1 text-emerald-700">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+              <span>सही उत्तर! (Correct)</span>
+            </div>
+            <div>${content.exp}</div>
+          `;
+        } else {
+          feedbackBox.className = "mb-4 p-4 rounded-xl border border-rose-300 bg-rose-50 text-rose-900 text-xs md:text-sm";
+          feedbackBox.innerHTML = `
+            <div class="flex items-center gap-1.5 font-bold mb-1 text-rose-700">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+              <span>गलत उत्तर! (Incorrect)</span>
+            </div>
+            <div>${content.exp}</div>
+          `;
+        }
+      } else {
+        feedbackBox.classList.add('hidden');
+        feedbackBox.innerHTML = '';
+      }
+
+      // Mark review state
+      const revBtn = document.getElementById('review-btn');
+      if (markedReview[currentIndex]) {
+        revBtn.className = "py-2.5 px-2 bg-amber-500 text-white font-bold rounded-xl text-xs md:text-sm text-center transition";
+        revBtn.innerText = (currentLang === 'hi') ? "समीक्षित (Marked)" : "Marked";
+      } else {
+        revBtn.className = "py-2.5 px-2 bg-amber-100 hover:bg-amber-200 text-amber-800 font-bold rounded-xl text-xs md:text-sm text-center transition";
+        revBtn.innerText = (currentLang === 'hi') ? "समीक्षा (Review)" : "Review";
+      }
+
+      document.getElementById('prev-btn').disabled = (currentIndex === 0);
+      document.getElementById('prev-btn').style.opacity = (currentIndex === 0) ? '0.4' : '1';
+    }
+
+    function selectOption(idx) {
+      userAnswers[currentIndex] = idx;
+      renderQuestion();
+    }
+
+    function clearResponse() {
+      userAnswers[currentIndex] = null;
+      renderQuestion();
+    }
+
+    function toggleMarkReview() {
+      markedReview[currentIndex] = !markedReview[currentIndex];
+      renderQuestion();
+    }
+
+    function prevQuestion() {
+      if (currentIndex > 0) {
+        currentIndex--;
+        renderQuestion();
+      }
+    }
+
+    function nextQuestion() {
+      if (currentIndex < testQuestions.length - 1) {
+        currentIndex++;
+        renderQuestion();
+      } else {
+        confirmSubmit();
+      }
+    }
+
+    function confirmSubmit() {
+      const done = userAnswers.filter(a => a !== null).length;
+      const left = testQuestions.length - done;
+      if (confirm(`क्या आप वाकई 90 प्रश्नों का टेस्ट सबमिट करना चाहते हैं?\nहल किए गए प्रश्न: ${done}\nछोड़े गए प्रश्न: ${left}`)) {
+        submitExam();
+      }
+    }
+
+    function submitExam() {
+      clearInterval(timerInterval);
+      isSubmitted = true;
+
+      let correct = 0;
+      let wrong = 0;
+      let unattended = 0;
+
+      testQuestions.forEach((q, i) => {
+        if (userAnswers[i] === null) {
+          unattended++;
+        } else if (userAnswers[i] === q.correct) {
+          correct++;
+        } else {
+          wrong++;
+        }
+      });
+
+      const totalMarks = (correct * 2.00) - (wrong * 0.20);
+      const totalDone = correct + wrong;
+      const acc = totalDone > 0 ? ((correct / totalDone) * 100).toFixed(1) : 0;
+
+      document.getElementById('modal-score').innerText = totalMarks.toFixed(2);
+      document.getElementById('modal-accuracy').innerText = `${acc}%`;
+      document.getElementById('modal-correct').innerText = `${correct} (+${(correct * 2).toFixed(2)})`;
+      document.getElementById('modal-wrong').innerText = `${wrong} (-${(wrong * 0.2).toFixed(2)})`;
+      document.getElementById('modal-unanswered').innerText = unattended;
+
+      document.getElementById('score-modal').classList.remove('hidden');
+      document.getElementById('score-modal').classList.add('flex');
+    }
+
+    function closeModalAndReview() {
+      document.getElementById('score-modal').classList.add('hidden');
+      document.getElementById('score-modal').classList.remove('flex');
+      currentIndex = 0;
+      renderQuestion();
+    }
+  </script>
+</body>
+</html>
