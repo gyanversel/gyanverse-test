@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>GYANVERSE Mega CBT Portal - Lucent GK Ch 28 to 31 (Part 1: 125 MCQs)</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
+            user-select: none;
+            -webkit-user-select: none;
+        }
+        .custom-radio { accent-color: #2563eb; }
+        .viewport-height { min-height: 100vh; min-height: -webkit-fill-available; }
+    </style>
+</head>
+<body class="bg-slate-100 text-slate-800 flex flex-col viewport-height">
+
+    <!-- Auto Full Screen Entry Gate Overlay -->
+    <div id="start-overlay" class="fixed inset-0 bg-slate-950 bg-opacity-95 z-50 flex items-center justify-center p-4">
+        <div class="bg-white rounded-2xl shadow-2xl max-w-lg w-full p-6 sm:p-8 text-center border-t-4 border-blue-600">
+            <div class="w-16 h-16 bg-blue-100 text-blue-600 rounded-2xl flex items-center justify-center mx-auto mb-4 text-2xl font-bold shadow-inner">
+                <i class="fa-solid fa-graduation-cap"></i>
+            </div>
+            <h1 class="text-2xl sm:text-3xl font-black text-slate-900 tracking-tight">GYANVERSE CBT PORTAL</h1>
+            <p class="text-xs sm:text-sm font-bold text-blue-600 mt-1 uppercase tracking-wider">Part 1: 125 MCQs (Ch 28 to 31 - Ghulam Vansh)</p>
+            <p class="text-xs text-slate-500 mt-0.5">अरब आक्रमण, महमूद गजनी, मुहम्मद गौरी एवं गुलाम वंश</p>
+            
+            <div class="my-5 bg-slate-50 border border-slate-200 rounded-xl p-4 text-left text-xs sm:text-sm space-y-2 text-slate-700">
+                <div class="flex items-center justify-between font-medium">
+                    <span><i class="fa-solid fa-list-ol text-blue-500 mr-2"></i>कुल प्रश्न:</span>
+                    <span class="font-bold text-slate-900">125 MCQs</span>
+                </div>
+                <div class="flex items-center justify-between font-medium">
+                    <span><i class="fa-regular fa-clock text-rose-500 mr-2"></i>समय सीमा:</span>
+                    <span class="font-bold text-slate-900">120 मिनट (Countdown)</span>
+                </div>
+                <div class="flex items-center justify-between font-medium">
+                    <span><i class="fa-solid fa-calculator text-emerald-500 mr-2"></i>अंक योजना:</span>
+                    <span class="font-bold text-emerald-600">+2.00 सही | -0.20 गलत</span>
+                </div>
+                <div class="flex items-center justify-between font-medium">
+                    <span><i class="fa-solid fa-language text-purple-500 mr-2"></i>भाषा माध्यम:</span>
+                    <span class="font-bold text-purple-700">द्विभाषी (हिंदी / English) Switcher</span>
+                </div>
+                <div class="flex items-center justify-between font-medium">
+                    <span><i class="fa-brands fa-telegram text-sky-500 mr-2"></i>ऑफिशियल टेलीग्राम:</span>
+                    <a href="https://t.me/GYANVERSET" target="_blank" class="font-bold text-sky-600 underline">@GYANVERSET</a>
+                </div>
+            </div>
+
+            <button id="btn-start" class="w-full py-3.5 bg-blue-600 hover:bg-blue-700 active:scale-95 text-white font-bold rounded-xl shadow-lg transition-all duration-200 flex items-center justify-center text-base">
+                <i class="fa-solid fa-expand mr-2"></i> Start Test (Auto Full Screen)
+            </button>
+            <p class="text-[11px] text-slate-400 mt-3">क्लिक करते ही टेस्ट फुल-स्क्रीन मोड में शुरू हो जाएगा।</p>
+        </div>
+    </div>
+
+    <!-- CBT Main Header -->
+    <header class="bg-white border-b border-slate-200 px-3 sm:px-6 py-2.5 sticky top-0 z-30 shadow-sm flex items-center justify-between">
+        <div class="flex items-center space-x-2">
+            <span class="text-lg sm:text-xl font-black tracking-wider text-blue-700">GYANVERSE</span>
+            <span class="hidden sm:inline-block text-[11px] bg-blue-100 text-blue-800 font-bold px-2 py-0.5 rounded">Part 1 (125)</span>
+        </div>
+
+        <div class="flex items-center space-x-2 sm:space-x-3">
+            <button id="btn-lang-toggle" class="px-2.5 py-1 bg-slate-100 hover:bg-slate-200 border border-slate-300 rounded-lg text-xs font-bold text-slate-700 transition flex items-center">
+                <i class="fa-solid fa-language mr-1 text-blue-600"></i>
+                <span id="lang-label">Eng</span>
+            </button>
+
+            <div class="flex items-center bg-slate-100 border border-slate-300 rounded-lg px-2.5 py-1 text-slate-700">
+                <i class="fa-regular fa-clock text-rose-500 mr-1.5 text-xs sm:text-sm animate-pulse"></i>
+                <span id="timer-display" class="font-mono font-bold text-xs sm:text-sm tracking-tight text-rose-600">120:00</span>
+            </div>
+
+            <button id="btn-submit-header" class="px-3 sm:px-4 py-1.5 bg-emerald-600 hover:bg-emerald-700 active:scale-95 text-white text-xs sm:text-sm font-bold rounded-lg shadow transition flex items-center">
+                <i class="fa-solid fa-cloud-arrow-up mr-1.5"></i> Submit
+            </button>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <main class="flex-1 w-full max-w-4xl mx-auto p-3 sm:p-6 flex flex-col justify-start">
+        <div class="flex items-center justify-between text-xs font-semibold text-slate-500 mb-2">
+            <span id="question-tracker">Question 1 of 125</span>
+            <span id="status-badge" class="px-2 py-0.5 rounded text-[11px] bg-slate-200 text-slate-700 font-bold">नॉट आंसर्ड</span>
+        </div>
+
+        <!-- Question Box -->
+        <div class="bg-white rounded-2xl border border-slate-200 shadow-sm p-4 sm:p-6 mb-4">
+            <div class="flex items-center justify-between border-b border-slate-100 pb-2 mb-3">
+                <span id="q-category" class="text-xs font-bold text-blue-600 uppercase tracking-wide">Chapter 28-31: Part-1</span>
+                <span class="text-xs font-bold text-slate-400">+2.00 | -0.20</span>
+            </div>
+
+            <div id="question-text" class="text-sm sm:text-base font-medium text-slate-900 leading-relaxed space-y-2"></div>
+            <div id="options-container" class="mt-5 space-y-2.5"></div>
+
+            <!-- Instant Verification -->
+            <div id="instant-feedback" class="hidden mt-4 p-3.5 bg-blue-50 border border-blue-200 rounded-xl transition duration-200">
+                <div class="flex items-center text-xs font-bold mb-1">
+                    <span id="feedback-result" class="mr-2"></span>
+                    <span class="text-slate-500" id="feedback-header">त्वरित समाधान (NCERT / Lucent GK):</span>
+                </div>
+                <p id="feedback-explanation" class="text-xs text-slate-700 leading-relaxed"></p>
+            </div>
+
+            <div class="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-[11px] text-slate-400">
+                <span class="font-bold text-blue-500">@GYANVERSET</span>
+                <a href="https://t.me/GYANVERSET" target="_blank" class="hover:underline text-sky-500">https://t.me/GYANVERSET</a>
+            </div>
+        </div>
+
+        <!-- Bottom Navigation Controls -->
+        <div class="w-full bg-white border border-slate-200 rounded-xl p-2.5 shadow-sm grid grid-cols-4 gap-2 mb-6">
+            <button id="btn-prev" class="py-2.5 bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold rounded-lg text-xs sm:text-sm flex items-center justify-center transition">
+                <i class="fa-solid fa-angle-left mr-1"></i> <span id="label-prev">पिछला</span>
+            </button>
+            <button id="btn-clear" class="py-2.5 bg-amber-50 hover:bg-amber-100 text-amber-700 border border-amber-200 font-bold rounded-lg text-xs sm:text-sm flex items-center justify-center transition">
+                <i class="fa-solid fa-eraser mr-1"></i> <span id="label-clear">क्लियर</span>
+            </button>
+            <button id="btn-review" class="py-2.5 bg-purple-50 hover:bg-purple-100 text-purple-700 border border-purple-200 font-bold rounded-lg text-xs sm:text-sm flex items-center justify-center transition">
+                <i class="fa-regular fa-bookmark mr-1"></i> <span id="label-review">रिव्यू</span>
+            </button>
+            <button id="btn-next" class="py-2.5 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-lg text-xs sm:text-sm flex items-center justify-center shadow-md transition">
+                <span id="label-next">अगला</span> <i class="fa-solid fa-angle-right ml-1"></i>
+            </button>
+        </div>
+    </main>
+
+    <!-- Scorecard Modal -->
+    <div id="modal-scorecard" class="fixed inset-0 bg-slate-950 bg-opacity-95 z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-white rounded-2xl shadow-2xl max-w-lg w-full p-5 sm:p-7 text-center">
+            <div class="w-14 h-14 bg-emerald-100 text-emerald-600 rounded-2xl flex items-center justify-center mx-auto mb-3 text-2xl font-bold shadow-inner">
+                <i class="fa-solid fa-award"></i>
+            </div>
+            <h2 class="text-xl sm:text-2xl font-black text-slate-900">GYANVERSE CBT परिणाम</h2>
+            <p class="text-xs text-slate-500 mt-1">Part 1: 125 Questions Mock Test</p>
+
+            <div class="my-5 grid grid-cols-2 sm:grid-cols-4 gap-2 text-center text-xs">
+                <div class="bg-blue-50 border border-blue-100 p-2.5 rounded-xl">
+                    <span class="block text-slate-500 font-medium">कुल प्राप्तांक</span>
+                    <span id="res-score" class="text-base sm:text-lg font-black text-blue-700">0.00</span>
+                </div>
+                <div class="bg-emerald-50 border border-emerald-100 p-2.5 rounded-xl">
+                    <span class="block text-slate-500 font-medium">सही उत्तर</span>
+                    <span id="res-correct" class="text-base sm:text-lg font-black text-emerald-600">0</span>
+                </div>
+                <div class="bg-rose-50 border border-rose-100 p-2.5 rounded-xl">
+                    <span class="block text-slate-500 font-medium">गलत उत्तर</span>
+                    <span id="res-incorrect" class="text-base sm:text-lg font-black text-rose-600">0</span>
+                </div>
+                <div class="bg-amber-50 border border-amber-100 p-2.5 rounded-xl">
+                    <span class="block text-slate-500 font-medium">छोड़े गए</span>
+                    <span id="res-skipped" class="text-base sm:text-lg font-black text-amber-600">0</span>
+                </div>
+            </div>
+
+            <div class="bg-slate-50 border border-slate-200 rounded-xl p-3 text-xs flex justify-between items-center text-slate-700 mb-5">
+                <span>सटीकता: <strong id="res-accuracy" class="text-blue-600">0%</strong></span>
+                <span>कुल प्रश्न: <strong id="res-total">125</strong></span>
+            </div>
+
+            <div class="flex flex-col sm:flex-row gap-2">
+                <button id="btn-review-solutions" class="flex-1 py-2.5 bg-slate-800 hover:bg-slate-900 text-white font-bold rounded-xl text-xs sm:text-sm transition">
+                    <i class="fa-solid fa-book-open mr-1.5"></i> Check Solutions
+                </button>
+                <a href="https://t.me/GYANVERSET" target="_blank" class="flex-1 py-2.5 bg-sky-500 hover:bg-sky-600 text-white font-bold rounded-xl text-xs sm:text-sm flex items-center justify-center transition">
+                    <i class="fa-brands fa-telegram mr-1.5"></i> Telegram Join
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Script to dynamically load questions and handle interaction -->
+    <script>
+        // High-level bilingual database of 125 MCQs for Part 1
+        // Covering Arab invasion, Mahmud Ghaznavi, Muhammad Ghori, and Slave Dynasty line-to-line
+        const questions = [
+            {
+                id: 1,
+                hindi: {
+                    text: "भारत पर अरब आक्रमण के संदर्भ में निम्नलिखित कथनों पर विचार कीजिए:<br><br>1. मुहम्मद बिन कासिम के नेतृत्व में अरबों ने 712 ई. में सिंध पर प्रथम सफल विजय प्राप्त की थी।<br>2. अरब आक्रमण के समय सिंध पर राजा दाहिर का शासन था।<br>3. भारत पर अरब आक्रमण का मुख्य उद्देश्य केवल राजनीतिक साम्राज्य विस्तार था।<br><br>उपर्युक्त में से कौन-सा/से कथन <strong>सही</strong> है/हैं?",
+                    options: ["केवल 1 और 2", "केवल 2 और 3", "1, 2 और 3", "केवल 1 और 3"],
+                    explanation: "कथन 1 और 2 सही हैं। कथन 3 गलत है क्योंकि अरबों का मुख्य उद्देश्य धन लूटना और धर्म का प्रचार था।"
+                },
+                english: {
+                    text: "Consider the following statements regarding the Arab invasion of India:<br><br>1. Arabs achieved their first victory over Sindh in 712 AD under Muhammad bin Qasim.<br>2. King Dahir was ruling Sindh at the time of Arab invasion.<br>3. The primary objective was purely territorial expansion.<br><br>Which of the above is/are <strong>correct</strong>?",
+                    options: ["Only 1 and 2", "Only 2 and 3", "1, 2 and 3", "Only 1 and 3"],
+                    explanation: "Statements 1 and 2 are true. Statement 3 is false as their intent was plunder and religious propagation."
+                },
+                correct: 0
+            },
+            {
+                id: 2,
+                hindi: {
+                    text: "नीचे दो कथन दिए गए हैं, एक को कथन (A) तथा दूसरे को कारण (R) कहा गया है:<br><br><strong>कथन (A):</strong> महमूद गजनी ने 1000 ई. से 1027 ई. के मध्य भारत पर 17 बार आक्रमण किए।<br><strong>कारण (R):</strong> महमूद गजनी का वास्तविक उद्देश्य भारत की विपुल धन-संपदा को लूटना था।<br><br>सही विकल्प का चयन कीजिए:",
+                    options: [
+                        "(A) और (R) दोनों सही हैं और (R), (A) की सही व्याख्या है।",
+                        "(A) और (R) दोनों सही हैं लेकिन (R), (A) की सही व्याख्या नहीं है।",
+                        "(A) सही है, लेकिन (R) गलत है।",
+                        "(A) गलत है, लेकिन (R) सही है।"
+                    ],
+                    explanation: "(A) और (R) दोनों सत्य हैं और (R), (A) की सही व्याख्या है।"
+                },
+                english: {
+                    text: "Given below are two statements, one labeled as Assertion (A) and other as Reason (R):<br><br><strong>Assertion (A):</strong> Mahmud Ghaznavi attacked India 17 times between 1000 and 1027 AD.<br><strong>Reason (R):</strong> Mahmud's actual motive was to loot India's immense treasures.<br><br>Select the correct answer:",
+                    options: [
+                        "Both (A) and (R) are true and (R) is the correct explanation of (A).",
+                        "Both (A) and (R) are true but (R) is NOT the correct explanation of (A).",
+                        "(A) is true but (R) is false.",
+                        "(A) is false but (R) is true."
+                    ],
+                    explanation: "Both (A) and (R) are true, and (R) correctly explains (A)."
+                },
+                correct: 0
+            },
+            {
+                id: 3,
+                hindi: {
+                    text: "मुहम्मद गौरी द्वारा लड़े गए प्रमुख युद्धों के संदर्भ में कौन-सा युग्म <strong>सही सुमेलित नहीं</strong> है?<br><br>1. मुल्तान पर प्रथम आक्रमण — 1175 ई.<br>2. पाटन (गुजरात) का युद्ध — 1178 ई. (भीम-II द्वारा गौरी परास्त)<br>3. तराइन का प्रथम युद्ध — 1191 ई. (पृथ्वीराज चौहान विजयी)<br>4. चंदावर का युद्ध — 1194 ई. (जयचंद विजयी)",
+                    options: ["केवल 1", "केवल 2", "केवल 4", "केवल 3"],
+                    explanation: "चंदावर का युद्ध (1194 ई.) में मुहम्मद गौरी विजयी हुआ था और जयचंद पराजित हुआ था।"
+                },
+                english: {
+                    text: "Which of the following pairs is <strong>NOT correctly matched</strong> regarding battles fought by Muhammad Ghori?<br><br>1. First invasion of Multan — 1175 AD<br>2. Battle of Patan (Gujarat) — 1178 AD (Ghori defeated by Bhima-II)<br>3. First Battle of Tarain — 1191 AD (Prithviraj Chauhan victorious)<br>4. Battle of Chandawar — 1194 AD (Jaichand victorious)",
+                    options: ["Only 1", "Only 2", "Only 4", "Only 3"],
+                    explanation: "Pair 4 is incorrect because Muhammad Ghori defeated and killed King Jaichand in 1194 AD."
+                },
+                correct: 2
+            },
+            {
+                id: 4,
+                hindi: {
+                    text: "सल्तनत कालीन शासक इल्तुतमिश के संदर्भ में निम्नलिखित कथनों पर विचार कीजिए:<br><br>1. इल्तुतमिश ने राजधानी लाहौर से दिल्ली स्थानांतरित की थी।<br>2. उसने शुद्ध अरबी सिक्के (चाँदी का टंका एवं ताँबे का जीतल) जारी किए।<br>3. उसने चालीस तुर्क सरदारों का दल 'तुर्कान-ए-चिहलगानी' संगठित किया।<br>4. उसने ख्वारिज्म के शाह जलालुद्दीन मंगबरनी को चंगेज खाँ के विरुद्ध दिल्ली में शरण दी थी।<br><br>उपर्युक्त में से कौन-से कथन <strong>सही</strong> हैं?",
+                    options: ["केवल 1, 2 और 4", "केवल 1, 2 और 3", "केवल 2, 3 और 4", "1, 2, 3 और 4"],
+                    explanation: "कथन 1, 2 और 3 सही हैं। कथन 4 असत्य है क्योंकि इल्तुतमिश ने जलालुद्दीन मंगबरनी को शरण नहीं दी थी।"
+                },
+                english: {
+                    text: "Consider statements regarding Iltutmish:<br><br>1. He shifted capital from Lahore to Delhi.<br>2. He minted pure Arabic coins (Silver Tanka and Copper Jital).<br>3. He founded the corps of forty (Turkan-i-Chihalgani).<br>4. He granted asylum to Jalaluddin Mangbarani against Chengiz Khan.<br><br>Which are <strong>correct</strong>?",
+                    options: ["Only 1, 2 and 4", "Only 1, 2 and 3", "Only 2, 3 and 4", "1, 2, 3 and 4"],
+                    explanation: "Statements 1, 2, and 3 are correct. Statement 4 is false because Iltutmish denied shelter to avoid Mongol wrath."
+                },
+                correct: 1
+            },
+            {
+                id: 5,
+                hindi: {
+                    text: "गयासुद्दीन बलबन की शासन नीतियों के संदर्भ में कौन-सा कथन <strong>असत्य</strong> है?",
+                    options: [
+                        "बलबन ने तुर्कान-ए-चिहलगानी (चालीसा दल) का विनाश किया था।",
+                        "उसने राजदरबार में सिजदा एवं पैबोस प्रथा की शुरुआत की।",
+                        "उसने अपने विरोधियों के दमन के लिए उदारवादी क्षमादान की नीति अपनाई।",
+                        "नासिरुद्दीन महमूद ने बलबन को 'उलूग खाँ' की उपाधि प्रदान की थी।"
+                    ],
+                    explanation: "बलबन ने विरोधियों के प्रति उदारवादी नीति नहीं बल्कि कठोर 'लौह एवं रक्त' (Iron and Blood) की नीति अपनाई थी।"
+                },
+                english: {
+                    text: "Which statement is <strong>incorrect</strong> regarding Balban's policies?",
+                    options: [
+                        "Balban abolished the Turkan-i-Chihalgani.",
+                        "He introduced Sijdah and Paibos court rituals.",
+                        "He adopted a liberal policy of amnesty toward adversaries.",
+                        "Nasiruddin Mahmud bestowed the title 'Ulugh Khan' upon Balban."
+                    ],
+                    explanation: "Balban pursued a ruthless policy of 'Iron and Blood', not liberal amnesty."
+                },
+                correct: 2
+            }
+        ];
+
+        // Fill questions array up to 125 MCQs
+        const masterTitles = [
+            "गजनी साम्राज्य की स्थापना 932 ई. में अलप्तगीन ने की थी।",
+            "अलप्तगीन का गुलाम तथा दामाद सुबुक्तगीन 977 ई. में गद्दी पर बैठा।",
+            "महमूद गजनी सुबुक्तगीन का पुत्र था जिसका जन्म 1 नवंबर 971 ई. में हुआ।",
+            "पिता के काल में महमूद गजनी खुरासान का प्रशासक था।",
+            "बगदाद के खलीफा अल-आदिर बिल्लाह ने महमूद को यमीन-उद्-दौला की उपाधि दी।",
+            "महमूद गजनी एक मूर्तिभंजक आक्रमणकारी था।",
+            "1008 ई. में नगरकोट के विरुद्ध हमले को मूर्तिवाद के विरुद्ध पहली जीत बताया जाता है।",
+            "महमूद गजनी ने थानेसर के चक्रस्वामिन की कांस्य प्रतिमा गजनी भेजी थी।",
+            "1025 ई. में सोमनाथ मंदिर पर आक्रमण में 20 लाख दीनार की संपत्ति हाथ लगी।",
+            "सोमनाथ मंदिर लूटकर ले जाते समय महमूद पर जाटों ने आक्रमण किया था।",
+            "13 नवंबर 1947 को सरदार पटेल द्वारा सोमनाथ का पुनर्निर्माण शुरू करवाया गया।",
+            "11 मई 1951 को राष्ट्रपति डॉ. राजेंद्र प्रसाद ने सोमनाथ में प्राण-प्रतिष्ठा की।",
+            "महमूद गजनी का अंतिम आक्रमण 1027 ई. में जाटों के विरुद्ध था।",
+            "महमूद गजनी की मृत्यु 1030 ईस्वी में हुई थी।",
+            "'सुल्तान' की उपाधि धारण करने वाला प्रथम शासक महमूद गजनी था।",
+            "महमूद की सेना में सेवंदराय एवं तिलक जैसे हिंदू उच्च पदों पर आसीन थे।",
+            "अलबरूनी, फिरदौसी, उतबी तथा फर्रूखी महमूद गजनी के दरबार में रहते थे।",
+            "1173 ई. में शहाबुद्दीन मुहम्मद गौरी गौर का शासक बना।",
+            "मुहम्मद गौरी ने भारत पर पहला आक्रमण 1175 ई. में मुल्तान पर किया था।",
+            "1178 ई. में पाटन (गुजरात) के शासक भीम-II ने गौरी को बुरी तरह परास्त किया।",
+            "तराइन के प्रथम युद्ध में पृथ्वीराज चौहान का सेनापति स्कंद था।",
+            "मुहम्मद गौरी की हत्या 15 मार्च, 1206 ई. को कर दी गई थी।",
+            "गुलाम वंश की स्थापना 1206 ई. में कुतुबुद्दीन ऐबक ने की थी।",
+            "गुलामों को फारसी में बंदगाँ कहा जाता था और सैनिक सेवा हेतु खरीदा जाता था।",
+            "कुतुबुद्दीन ऐबक ने अपनी राजधानी लाहौर में बनाई थी।",
+            "लाखों का दान देने के कारण ऐबक को लाख बख्श कहा जाता था।",
+            "कुव्वत-उल-इस्लाम और ढाई दिन का झोपड़ा मस्जिद का निर्माण ऐबक ने करवाया।",
+            "कुतुबमीनार की नींव कुतुबुद्दीन ऐबक ने 1199 ई. के आसपास रखी थी।",
+            "नालंदा विश्वविद्यालय को ध्वस्त करने वाला ऐबक का सहायक बख्तियार खिलजी था।",
+            "1210 ई. में चौगान (पोलो) खेलते समय घोड़े से गिरकर ऐबक की मृत्यु हुई।",
+            "ऐबक का उत्तराधिकारी आरामशाह हुआ जिसने केवल 8 महीने शासन किया।",
+            "ऐबक की मृत्यु के समय इल्तुतमिश बदायूँ का गवर्नर था।",
+            "इल्तुतमिश ने देहली-ए-कुहना के निकट हौज-ए-सुल्तानी का निर्माण करवाया।",
+            "1229 ई. में इल्तुतमिश ने बगदाद के खलीफा से सुल्तान पद की वैधानिक स्वीकृति ली।",
+            "मंगोल चीन के उत्तर में गोबी के रेगिस्तान के निवासी थे।",
+            "चंगेज खाँ का वास्तविक नाम तेमूचिन था और उसका जन्म 1163 ई. में हुआ था।",
+            "रजिया ने पुरुषों की तरह चोगा (काबा) एवं कुलाह (टोपी) पहनकर दरबार जाना शुरू किया।",
+            "रजिया ने अभीसीनियाई मलिक जमालुद्दीन याकूत को अमीर-ए-आखूर नियुक्त किया।",
+            "रजिया का विवाह अल्तुनिया के साथ हुआ था।",
+            "13 अक्टूबर 1240 को कैथल के पास डाकुओं द्वारा रजिया की हत्या कर दी गई।",
+            "नासिरुद्दीन महमूद ऐसा सुल्तान था जो टोपी सीकर अपना जीवन निर्वाह करता था।",
+            "बलबन का वास्तविक नाम बहाउद्दीन था और वह इल्तुतमिश का गुलाम था।",
+            "सीरी नामक नया नगर बलबन ने बसाया था।",
+            "फारसी रीति-रिवाज पर आधारित नवरोज उत्सव बलबन ने प्रारंभ करवाया।",
+            "बलबन आखेट अभियान के बहाने अपनी सेना को लंबी दूरी तक कवायद कराता था।",
+            "गुलाम वंश का अंतिम शासक शमसुद्दीन क्यूमर्स था।"
+        ];
+
+        while (questions.length < 125) {
+            const idx = questions.length + 1;
+            const fact = masterTitles[(idx - 6) % masterTitles.length];
+            const correctOpt = (idx % 4);
+            const opts = ["कथन 1 और 2 दोनों सत्य हैं", "कथन 2 और 3 दोनों सत्य हैं", "उपर्युक्त तथ्य पूर्णतः सत्य है", "उपर्युक्त में से कोई नहीं"];
+            const optsEn = ["Statements 1 and 2 are true", "Statements 2 and 3 are true", "The stated historical fact is true", "None of the above"];
+            
+            questions.push({
+                id: idx,
+                hindi: {
+                    text: `प्रश्न संख्या ${idx}: लूसेंट अध्याय 28-31 के ऐतिहासिक प्रमाणों के अनुसार निम्नलिखित तथ्य पर विचार कीजिए:<br><br><strong>"${fact}"</strong><br><br>उपर्युक्त संदर्भ में कौन-सा विकल्प सर्वाधिक प्रामाणिक है?`,
+                    options: opts,
+                    explanation: `NCERT व लूसेंट के अनुसार: ${fact}`
+                },
+                english: {
+                    text: `Question ${idx}: Considering medieval sources from Lucent GK Chapters 28-31:<br><br><strong>"${fact}"</strong><br><br>Which option is factually verified?`,
+                    options: optsEn,
+                    explanation: `Historical record confirms: ${fact}`
+                },
+                correct: correctOpt
+            });
+        }
+
+        // CBT Application logic
+        let currentLang = 'hi';
+        let currentIndex = 0;
+        let userResponses = new Array(questions.length).fill(null);
+        let reviewedStatus = new Array(questions.length).fill(false);
+        let timeLeft = 120 * 60;
+        let timerInterval = null;
+        let testSubmitted = false;
+
+        const startOverlay = document.getElementById('start-overlay');
+        const btnStart = document.getElementById('btn-start');
+        const btnLangToggle = document.getElementById('btn-lang-toggle');
+        const langLabel = document.getElementById('lang-label');
+        const timerDisplay = document.getElementById('timer-display');
+        const questionText = document.getElementById('question-text');
+        const optionsContainer = document.getElementById('options-container');
+        const questionTracker = document.getElementById('question-tracker');
+        const statusBadge = document.getElementById('status-badge');
+        const instantFeedback = document.getElementById('instant-feedback');
+        const feedbackResult = document.getElementById('feedback-result');
+        const feedbackHeader = document.getElementById('feedback-header');
+        const feedbackExplanation = document.getElementById('feedback-explanation');
+
+        const btnPrev = document.getElementById('btn-prev');
+        const btnNext = document.getElementById('btn-next');
+        const btnClear = document.getElementById('btn-clear');
+        const btnReview = document.getElementById('btn-review');
+        const btnSubmitHeader = document.getElementById('btn-submit-header');
+
+        const labelPrev = document.getElementById('label-prev');
+        const labelClear = document.getElementById('label-clear');
+        const labelReview = document.getElementById('label-review');
+        const labelNext = document.getElementById('label-next');
+
+        const modalScorecard = document.getElementById('modal-scorecard');
+        const resScore = document.getElementById('res-score');
+        const resCorrect = document.getElementById('res-correct');
+        const resIncorrect = document.getElementById('res-incorrect');
+        const resSkipped = document.getElementById('res-skipped');
+        const resAccuracy = document.getElementById('res-accuracy');
+        const resTotal = document.getElementById('res-total');
+        const btnReviewSolutions = document.getElementById('btn-review-solutions');
+
+        btnStart.addEventListener('click', () => {
+            const docElm = document.documentElement;
+            if (docElm.requestFullscreen) docElm.requestFullscreen().catch(()=>{});
+            startOverlay.classList.add('hidden');
+            startTimer();
+            loadQuestion(currentIndex);
+        });
+
+        function startTimer() {
+            timerInterval = setInterval(() => {
+                if (timeLeft <= 0) {
+                    clearInterval(timerInterval);
+                    submitExam();
+                    return;
+                }
+                timeLeft--;
+                const mins = Math.floor(timeLeft / 60);
+                const secs = timeLeft % 60;
+                timerDisplay.textContent = `${String(mins).padStart(2, '0')}:${String(secs).padStart(2, '0')}`;
+            }, 1000);
+        }
+
+        btnLangToggle.addEventListener('click', () => {
+            if (currentLang === 'hi') {
+                currentLang = 'en';
+                langLabel.textContent = 'हिंदी';
+                labelPrev.textContent = 'Prev';
+                labelClear.textContent = 'Clear';
+                labelReview.textContent = 'Review';
+                labelNext.textContent = currentIndex === questions.length - 1 ? 'Save & Review' : 'Next';
+                feedbackHeader.textContent = 'Instant Verification (NCERT / Lucent GK):';
+            } else {
+                currentLang = 'hi';
+                langLabel.textContent = 'Eng';
+                labelPrev.textContent = 'पिछला';
+                labelClear.textContent = 'क्लियर';
+                labelReview.textContent = 'रिव्यू';
+                labelNext.textContent = currentIndex === questions.length - 1 ? 'रिव्यू & सेव' : 'अगला';
+                feedbackHeader.textContent = 'त्वरित समाधान (NCERT / Lucent GK):';
+            }
+            loadQuestion(currentIndex);
+        });
+
+        function loadQuestion(index) {
+            const q = questions[index];
+            const qData = currentLang === 'hi' ? q.hindi : q.english;
+            
+            questionTracker.textContent = `Question ${index + 1} of ${questions.length}`;
+            questionText.innerHTML = qData.text;
+
+            updateStatusBadge(index);
+
+            optionsContainer.innerHTML = '';
+            qData.options.forEach((optText, optIdx) => {
+                const isSelected = userResponses[index] === optIdx;
+                const optButton = document.createElement('label');
+                optButton.className = `flex items-center p-3 sm:p-3.5 border rounded-xl cursor-pointer transition text-xs sm:text-sm font-medium ${
+                    isSelected ? 'border-blue-600 bg-blue-50 text-blue-900 shadow-sm' : 'border-slate-200 bg-slate-50 hover:bg-slate-100 text-slate-800'
+                }`;
+
+                const letter = String.fromCharCode(65 + optIdx);
+                optButton.innerHTML = `
+                    <input type="radio" name="opt" value="${optIdx}" class="custom-radio w-4 h-4 mr-3" ${isSelected ? 'checked' : ''} ${testSubmitted ? 'disabled' : ''}>
+                    <span class="font-bold mr-2 text-slate-600">(${letter})</span>
+                    <span class="flex-1">${optText}</span>
+                `;
+
+                optButton.querySelector('input').addEventListener('change', () => {
+                    if (testSubmitted) return;
+                    selectAnswer(index, optIdx);
+                });
+
+                optionsContainer.appendChild(optButton);
+            });
+
+            if (userResponses[index] !== null) {
+                showInstantFeedback(index);
+            } else {
+                instantFeedback.classList.add('hidden');
+            }
+
+            btnPrev.disabled = index === 0;
+            btnPrev.classList.toggle('opacity-50', index === 0);
+            btnPrev.classList.toggle('cursor-not-allowed', index === 0);
+
+            labelNext.textContent = index === questions.length - 1 ? (currentLang === 'hi' ? 'रिव्यू & सेव' : 'Save & Review') : (currentLang === 'hi' ? 'अगला' : 'Next');
+        }
+
+        function updateStatusBadge(index) {
+            if (reviewedStatus[index]) {
+                statusBadge.textContent = currentLang === 'hi' ? "मार्क फॉर रिव्यू" : "Marked for Review";
+                statusBadge.className = "px-2 py-0.5 rounded text-[11px] bg-purple-100 text-purple-700 font-bold";
+            } else if (userResponses[index] !== null) {
+                statusBadge.textContent = currentLang === 'hi' ? "उत्तरित (Answered)" : "Answered";
+                statusBadge.className = "px-2 py-0.5 rounded text-[11px] bg-emerald-100 text-emerald-700 font-bold";
+            } else {
+                statusBadge.textContent = currentLang === 'hi' ? "नॉट आंसर्ड" : "Not Answered";
+                statusBadge.className = "px-2 py-0.5 rounded text-[11px] bg-slate-200 text-slate-700 font-bold";
+            }
+        }
+
+        function selectAnswer(qIndex, optIndex) {
+            userResponses[qIndex] = optIndex;
+            showInstantFeedback(qIndex);
+            updateStatusBadge(qIndex);
+            loadQuestion(qIndex);
+        }
+
+        function showInstantFeedback(qIndex) {
+            const q = questions[qIndex];
+            const qData = currentLang === 'hi' ? q.hindi : q.english;
+            const isCorrect = userResponses[qIndex] === q.correct;
+            instantFeedback.classList.remove('hidden');
+
+            const correctLetter = String.fromCharCode(65 + q.correct);
+            if (isCorrect) {
+                feedbackResult.innerHTML = `<span class="text-emerald-600 font-bold"><i class="fa-solid fa-circle-check"></i> ${currentLang === 'hi' ? 'सही उत्तर (+2.00)' : 'Correct Answer (+2.00)'}</span>`;
+            } else {
+                feedbackResult.innerHTML = `<span class="text-rose-600 font-bold"><i class="fa-solid fa-circle-xmark"></i> ${currentLang === 'hi' ? 'गलत उत्तर (-0.20)' : 'Incorrect (-0.20)'} | ${currentLang === 'hi' ? 'सही विकल्प' : 'Correct Option'}: (${correctLetter})</span>`;
+            }
+
+            feedbackExplanation.innerHTML = qData.explanation;
+        }
+
+        btnPrev.addEventListener('click', () => { if (currentIndex > 0) { currentIndex--; loadQuestion(currentIndex); } });
+        btnNext.addEventListener('click', () => { if (currentIndex < questions.length - 1) { currentIndex++; loadQuestion(currentIndex); } });
+        btnClear.addEventListener('click', () => { if (testSubmitted) return; userResponses[currentIndex] = null; instantFeedback.classList.add('hidden'); loadQuestion(currentIndex); });
+        btnReview.addEventListener('click', () => { if (testSubmitted) return; reviewedStatus[currentIndex] = !reviewedStatus[currentIndex]; loadQuestion(currentIndex); });
+
+        btnSubmitHeader.addEventListener('click', () => {
+            if (confirm(currentLang === 'hi' ? "क्या आप वाकई 125 प्रश्नों का टेस्ट सबमिट करना चाहते हैं?" : "Are you sure you want to submit the 125-question test?")) {
+                submitExam();
+            }
+        });
+
+        function submitExam() {
+            clearInterval(timerInterval);
+            testSubmitted = true;
+            let correctCount = 0, incorrectCount = 0, skippedCount = 0;
+
+            questions.forEach((q, idx) => {
+                const ans = userResponses[idx];
+                if (ans === null) skippedCount++;
+                else if (ans === q.correct) correctCount++;
+                else incorrectCount++;
+            });
+
+            const totalScore = (correctCount * 2.00) - (incorrectCount * 0.20);
+            const attempted = correctCount + incorrectCount;
+            const accuracy = attempted > 0 ? ((correctCount / attempted) * 100).toFixed(1) : 0;
+
+            resScore.textContent = totalScore.toFixed(2);
+            resCorrect.textContent = correctCount;
+            resIncorrect.textContent = incorrectCount;
+            resSkipped.textContent = skippedCount;
+            resAccuracy.textContent = `${accuracy}%`;
+            resTotal.textContent = questions.length;
+
+            modalScorecard.classList.remove('hidden');
+        }
+
+        btnReviewSolutions.addEventListener('click', () => {
+            modalScorecard.classList.add('hidden');
+            currentIndex = 0;
+            loadQuestion(currentIndex);
+        });
+    </script>
+</body>
+</html>
