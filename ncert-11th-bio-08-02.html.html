@@ -1,0 +1,1673 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>GYANVERSE - CBT Test Portal (50 MCQs)</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    body {
+      -webkit-tap-highlight-color: transparent;
+      user-select: none;
+    }
+    .custom-scroll::-webkit-scrollbar {
+      width: 4px;
+    }
+    .custom-scroll::-webkit-scrollbar-thumb {
+      background: #cbd5e1;
+      border-radius: 4px;
+    }
+  </style>
+</head>
+<body class="bg-slate-100 text-slate-800 font-sans min-h-screen flex flex-col justify-between">
+
+  <!-- ==================== GATE OVERLAY (AUTO FULL SCREEN) ==================== -->
+  <div id="fullScreenGate" class="fixed inset-0 z-50 bg-slate-900/95 backdrop-blur-md flex items-center justify-center p-4">
+    <div class="bg-white max-w-md w-full rounded-2xl shadow-2xl p-6 text-center border border-slate-200">
+      <div class="w-16 h-16 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center mx-auto mb-4 text-2xl">
+        <i class="fa-solid fa-expand"></i>
+      </div>
+      <h2 class="text-2xl font-black text-slate-800 mb-1">GYANVERSE CBT TEST</h2>
+      <p class="text-xs font-semibold text-blue-600 mb-3 tracking-wide uppercase">NCERT Ch-8: कोशिका (Topic 8.5.2 to End - 50 MCQs)</p>
+      
+      <div class="bg-slate-50 rounded-xl p-3 text-left text-xs text-slate-600 mb-5 space-y-2 border border-slate-200">
+        <div class="flex justify-between"><span>कुल प्रश्न:</span> <span class="font-bold text-slate-800">50 Ultra-Standard MCQs</span></div>
+        <div class="flex justify-between"><span>समय सीमा:</span> <span class="font-bold text-slate-800">120 मिनट</span></div>
+        <div class="flex justify-between"><span>मार्किंग पैटर्न:</span> <span class="font-bold text-emerald-600">+2.00 सही | -0.20 गलत</span></div>
+        <div class="flex justify-between"><span>भाषा विकल्प:</span> <span class="font-bold text-indigo-600">हिंदी / English Live Switcher</span></div>
+        <div class="flex justify-between"><span>उत्तर प्रणाली:</span> <span class="font-bold text-amber-600">तत्काल व्याख्या (Instant Verification)</span></div>
+      </div>
+
+      <div class="mb-5">
+        <a href="https://t.me/GYANVERSET" target="_blank" class="inline-flex items-center gap-2 text-xs font-bold text-blue-600 hover:text-blue-800">
+          <i class="fa-brands fa-telegram text-base"></i> ऐसे ऑनलाइन टेस्ट देने के लिए टेलीग्राम जॉइन करें (@GYANVERSET)
+        </a>
+      </div>
+
+      <button id="startTestBtn" class="w-full py-3.5 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-bold rounded-xl shadow-lg shadow-blue-500/30 text-sm tracking-wide transition-all transform active:scale-95">
+        <i class="fa-solid fa-play mr-2"></i> Start Test (Auto Full Screen)
+      </button>
+    </div>
+  </div>
+
+  <!-- ==================== MAIN CBT APP INTERFACE ==================== -->
+  <div id="cbtApp" class="flex flex-col min-h-screen">
+    
+    <!-- Top Sticky Header -->
+    <header class="bg-white border-b border-slate-200 sticky top-0 z-30 px-3 py-2.5 shadow-sm">
+      <div class="max-w-4xl mx-auto flex items-center justify-between">
+        <div class="flex items-center gap-2">
+          <span class="bg-blue-600 text-white font-black text-xs px-2.5 py-1 rounded-lg tracking-wider">GYANVERSE</span>
+          <a href="https://t.me/GYANVERSET" target="_blank" class="hidden sm:inline-flex text-[11px] font-bold text-blue-600 items-center gap-1">
+            <i class="fa-brands fa-telegram"></i> @GYANVERSET
+          </a>
+        </div>
+
+        <div class="flex items-center gap-2 sm:gap-3">
+          <!-- Language Switcher -->
+          <button id="langToggleBtn" class="px-2.5 py-1 text-xs font-bold bg-slate-100 hover:bg-slate-200 border border-slate-300 rounded-lg text-slate-700 flex items-center gap-1 transition-colors">
+            <i class="fa-solid fa-language text-blue-600"></i> <span id="langLabel">English</span>
+          </button>
+
+          <!-- Live Countdown Timer -->
+          <div class="flex items-center gap-1.5 bg-amber-50 border border-amber-200 px-2.5 py-1 rounded-lg text-amber-700 font-mono text-xs font-bold">
+            <i class="fa-regular fa-clock"></i>
+            <span id="timerDisplay">120:00</span>
+          </div>
+
+          <!-- Submit Button -->
+          <button id="submitTestBtn" class="bg-rose-600 hover:bg-rose-700 text-white text-xs font-bold px-3 py-1.5 rounded-lg shadow transition-colors flex items-center gap-1">
+            <i class="fa-solid fa-circle-check"></i> <span>Submit</span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Question Viewport (Clean & Full Width, 100% Responsive) -->
+    <main class="flex-1 max-w-4xl w-full mx-auto p-3 sm:p-5 flex flex-col justify-start">
+      
+      <!-- Question Card -->
+      <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-4 sm:p-6 mb-4">
+        
+        <!-- Question Meta -->
+        <div class="flex items-center justify-between border-b border-slate-100 pb-2.5 mb-3">
+          <div class="flex items-center gap-2">
+            <span class="text-xs font-bold uppercase tracking-wider text-slate-500" id="qNumBadge">Question 1 / 50</span>
+            <span id="reviewTag" class="hidden text-[10px] font-bold bg-purple-100 text-purple-700 px-2 py-0.5 rounded-full">Marked for Review</span>
+          </div>
+          <div class="text-[11px] font-bold text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded-md">
+            +2.00 / -0.20
+          </div>
+        </div>
+
+        <!-- Question Prompt -->
+        <div id="qPrompt" class="text-sm sm:text-base font-semibold text-slate-800 leading-relaxed mb-4">
+          <!-- Dynamic Question text -->
+        </div>
+
+        <!-- Options Container -->
+        <div id="optionsContainer" class="space-y-2.5 mb-4">
+          <!-- Dynamic Options -->
+        </div>
+
+        <!-- Watermark Tag Under Every Question -->
+        <div class="text-right border-t border-slate-100 pt-2 mb-4">
+          <a href="https://t.me/GYANVERSET" target="_blank" class="text-[11px] font-bold text-slate-400 hover:text-blue-500 tracking-wider">
+            @GYANVERSET
+          </a>
+        </div>
+
+        <!-- Touch-Friendly Navigation Controls (Directly Below Options) -->
+        <div class="grid grid-cols-4 gap-2 pt-1 border-t border-slate-100">
+          <button id="prevBtn" class="py-2.5 text-xs font-bold rounded-xl border border-slate-300 text-slate-600 hover:bg-slate-100 active:bg-slate-200 transition-all flex items-center justify-center gap-1">
+            <i class="fa-solid fa-arrow-left"></i> Prev
+          </button>
+          
+          <button id="clearBtn" class="py-2.5 text-xs font-bold rounded-xl border border-slate-300 text-slate-600 hover:bg-slate-100 active:bg-slate-200 transition-all">
+            Clear
+          </button>
+
+          <button id="markReviewBtn" class="py-2.5 text-xs font-bold rounded-xl border border-purple-300 text-purple-700 bg-purple-50 hover:bg-purple-100 active:bg-purple-200 transition-all">
+            Review
+          </button>
+
+          <button id="nextBtn" class="py-2.5 text-xs font-bold rounded-xl bg-blue-600 hover:bg-blue-700 active:bg-blue-800 text-white transition-all flex items-center justify-center gap-1">
+            Next <i class="fa-solid fa-arrow-right"></i>
+          </button>
+        </div>
+
+        <!-- Instant Feedback & Detailed Solution Card -->
+        <div id="instantFeedbackBox" class="hidden mt-4 pt-4 border-t-2 border-dashed border-slate-200 transition-all">
+          <div id="feedbackAlert" class="p-3 rounded-xl mb-3 text-xs sm:text-sm font-bold flex items-center justify-between">
+            <span id="feedbackStatus"></span>
+            <span id="correctKeyBadge" class="text-xs bg-white/40 px-2 py-0.5 rounded"></span>
+          </div>
+          <div class="bg-slate-50 p-3.5 rounded-xl border border-slate-200">
+            <div class="flex items-center gap-1 text-xs font-black text-slate-700 mb-1.5 uppercase tracking-wide">
+              <i class="fa-solid fa-book-open text-blue-600"></i> NCERT Line-by-Line Solution:
+            </div>
+            <div id="solutionText" class="text-xs sm:text-sm text-slate-600 leading-relaxed"></div>
+          </div>
+        </div>
+
+      </div>
+
+    </main>
+
+    <!-- Mobile Footer Promotion -->
+    <footer class="bg-white border-t border-slate-200 py-2 px-3 text-center text-xs text-slate-500">
+      <span>NCERT Class 11 Biology (Ch-8 Full Topic 8.5.2 to End)</span> • 
+      <a href="https://t.me/GYANVERSET" target="_blank" class="text-blue-600 font-bold hover:underline">Join @GYANVERSET Telegram</a>
+    </footer>
+
+  </div>
+
+  <!-- ==================== FINAL SCORECARD MODAL ==================== -->
+  <div id="scoreModal" class="fixed inset-0 z-50 bg-slate-900/80 backdrop-blur-sm hidden items-center justify-center p-4">
+    <div class="bg-white max-w-md w-full rounded-2xl shadow-2xl p-6 border border-slate-200 text-center">
+      <div class="w-14 h-14 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center mx-auto mb-3 text-2xl">
+        <i class="fa-solid fa-trophy"></i>
+      </div>
+      <h3 class="text-xl font-black text-slate-800 mb-1">Test Completed!</h3>
+      <p class="text-xs text-slate-500 mb-4">GYANVERSE Assessment Report (50 Questions)</p>
+
+      <!-- Scorecard Matrix -->
+      <div class="grid grid-cols-2 gap-2 text-left text-xs mb-5">
+        <div class="bg-slate-50 p-2.5 rounded-xl border border-slate-200">
+          <span class="text-slate-500 block">Total Questions</span>
+          <span class="text-base font-black text-slate-800" id="mTotal">50</span>
+        </div>
+        <div class="bg-blue-50 p-2.5 rounded-xl border border-blue-200">
+          <span class="text-blue-600 block">Net Score (100 Max)</span>
+          <span class="text-base font-black text-blue-700" id="mScore">0.00</span>
+        </div>
+        <div class="bg-emerald-50 p-2.5 rounded-xl border border-emerald-200">
+          <span class="text-emerald-600 block">Correct (+2.00)</span>
+          <span class="text-base font-black text-emerald-700" id="mCorrect">0</span>
+        </div>
+        <div class="bg-rose-50 p-2.5 rounded-xl border border-rose-200">
+          <span class="text-rose-600 block">Incorrect (-0.20)</span>
+          <span class="text-base font-black text-rose-700" id="mIncorrect">0</span>
+        </div>
+        <div class="bg-amber-50 p-2.5 rounded-xl border border-amber-200">
+          <span class="text-amber-600 block">Unattempted</span>
+          <span class="text-base font-black text-amber-700" id="mLeft">0</span>
+        </div>
+        <div class="bg-indigo-50 p-2.5 rounded-xl border border-indigo-200">
+          <span class="text-indigo-600 block">Accuracy %</span>
+          <span class="text-base font-black text-indigo-700" id="mAccuracy">0%</span>
+        </div>
+      </div>
+
+      <div class="space-y-2">
+        <button id="reviewModeBtn" class="w-full py-2.5 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-xl text-xs transition-colors">
+          <i class="fa-solid fa-list-check mr-1"></i> Review Questions & Solutions
+        </button>
+        <a href="https://t.me/GYANVERSET" target="_blank" class="block w-full py-2.5 bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold rounded-xl text-xs transition-colors">
+          <i class="fa-brands fa-telegram text-blue-600 mr-1"></i> Join Telegram @GYANVERSET
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== JAVASCRIPT CBT ENGINE (50 MCQS) ==================== -->
+  <script>
+    // 50 High-Standard NCERT MCQs covering Topic 8.5.2 to End
+    // Balanced Keys: Exactly 13 A, 13 B, 12 C, 12 D (~25% each)
+    const questionsData = [
+      // --- 8.5.2 Cell Wall & Middle Lamella (Q1 - Q4) ---
+      {
+        id: 1,
+        type: "3-Statement Type",
+        key: "C",
+        hi: {
+          q: "कोशिका भित्ति (Cell Wall) के रासायनिक संघटन के संबंध में निम्नलिखित कथनों पर विचार कीजिए:<br><br>" +
+             "1. शैवाल की कोशिका भित्ति सेलुलोज, गैलेक्टेन्स, मैनान्स व कैल्सियम कार्बोनेट जैसे खनिजों से बनी होती है।<br>" +
+             "2. अन्य पादपों की भित्ति सेलुलोज, हेमीसेलुलोज, पेक्टीन व प्रोटीन की बनी होती है।<br>" +
+             "3. कवक (Fungi) की कोशिका भित्ति मुख्य रूप से लिग्निन और सिलिका से निर्मित होती है।<br><br>" +
+             "उपर्युक्त में से कौन-सा/से कथन <b>सत्य</b> है/हैं?",
+          options: ["केवल 1 और 3", "केवल 2 और 3", "केवल 1 और 2", "1, 2 और 3 सभी"],
+          sol: "NCERT टॉपिक 8.5.2: शैवाल की भित्ति सेलुलोज, गैलेक्टेन्स, मैनान्स व खनिज (कैल्सियम कार्बोनेट) की बनी होती है (कथन 1 सही)। दूसरे पौधों में यह सेलुलोज, हेमीसेलुलोज, पेक्टीन व प्रोटीन की होती है (कथन 2 सही)। कवक की भित्ति काइटिन की बनी होती है (कथन 3 असत्य)। अतः केवल 1 और 2 सही हैं।"
+        },
+        en: {
+          q: "Consider the following statements regarding the chemical composition of the Cell Wall:<br><br>" +
+             "1. Algal cell wall is made of cellulose, galactans, mannans and minerals like calcium carbonate.<br>" +
+             "2. Other plants have cell walls composed of cellulose, hemicellulose, pectins and proteins.<br>" +
+             "3. The fungal cell wall is primarily composed of lignin and silica.<br><br>" +
+             "Which of the statement(s) given above is/are <b>CORRECT</b>?",
+          options: ["1 and 3 only", "2 and 3 only", "1 and 2 only", "All 1, 2 and 3"],
+          sol: "NCERT 8.5.2: Algae have cellulose, galactans, mannans, and CaCO3. Other plants have cellulose, hemicellulose, pectins, and proteins. Fungal cell wall is made of chitin. Thus, statements 1 and 2 are correct."
+        }
+      },
+      {
+        id: 2,
+        type: "Assertion-Reason",
+        key: "A",
+        hi: {
+          q: "नीचे दो कथन दिए गए हैं, एक को कथन (A) तथा दूसरे को कारण (R) कहा गया है:<br><br>" +
+             "<b>कथन (A):</b> नव पादप कोशिका में स्थित प्राथमिक भित्ति (Primary Wall) की वृद्धि क्षमता कोशिका परिपक्वता के साथ क्षीण होती जाती है।<br>" +
+             "<b>कारण (R):</b> परिपक्वता के दौरान कोशिका के भीतर की तरफ (जीवद्रव्य झिल्ली की ओर) द्वितीयक भित्ति का निर्माण होने लगता है।",
+          options: [
+            "(A) और (R) दोनों सही हैं और (R), (A) की सही व्याख्या है।",
+            "(A) और (R) दोनों सही हैं लेकिन (R), (A) की सही व्याख्या नहीं है।",
+            "(A) सही है लेकिन (R) गलत है।",
+            "(A) गलत है लेकिन (R) सही है।"
+          ],
+          sol: "NCERT टॉपिक 8.5.2: प्राथमिक भित्ति में वृद्धि की क्षमता होती है जो कोशिका की परिपक्वता के साथ घटती जाती है तथा कोशिका के भीतर की तरफ द्वितीय भित्ति का निर्माण होने लगता है। कथन और कारण दोनों सत्य हैं और कारण (R), (A) की सही व्याख्या करता है।"
+        },
+        en: {
+          q: "Given below are two statements labeled as Assertion (A) and Reason (R):<br><br>" +
+             "<b>Assertion (A):</b> The primary wall of a young plant cell capable of growth gradually diminishes as the cell matures.<br>" +
+             "<b>Reason (R):</b> During maturation, the secondary wall is formed on the inner side (towards the plasma membrane) of the cell.",
+          options: [
+            "Both (A) and (R) are true and (R) is the correct explanation of (A).",
+            "Both (A) and (R) are true but (R) is NOT the correct explanation of (A).",
+            "(A) is true but (R) is false.",
+            "(A) is false but (R) is true."
+          ],
+          sol: "NCERT 8.5.2: The primary wall diminishes as the cell matures and the secondary wall is formed on the inner side. Both statements are correct and (R) explains (A)."
+        }
+      },
+      {
+        id: 3,
+        type: "Tricky / Direct Fact",
+        key: "B",
+        hi: {
+          q: "मध्यपटलिका (Middle Lamella) और जीवद्रव्य तंतु (Plasmodesmata) के संदर्भ में कौन-सा कथन <b>असत्य</b> है?",
+          options: [
+            "मध्यपटलिका मुख्यतः कैल्सियम पेक्टेट की बनी परत होती है जो पास-पास की कोशिकाओं को आपस में चिपकाए रखती है।",
+            "जीवद्रव्य तंतु (Plasmodesmata) केवल मृत वाहिनिकाओं (Tracheids) के मध्य बनते हैं और सजीव कोशिकाओं में नहीं पाए जाते।",
+            "कोशिका भित्ति एवं मध्यपटलिका में आड़े-तिरछे जीवद्रव्य तंतु स्थित होते हैं जो पास की कोशिकाओं के कोशिकाद्रव्य को जोड़ते हैं।",
+            "कोशिका भित्ति अवांछनीय वृहद अणुओं के लिए अवरोध का कार्य भी करती है।"
+          ],
+          sol: "NCERT टॉपिक 8.5.2: जीवद्रव्य तंतु (प्लाज्मोडेस्मेटा) कोशिका भित्ति व मध्यपटलिका में स्थित होते हैं जो आस-पास की कोशिकाओं के सजीव कोशिकाद्रव्य को परस्पर जोड़ते हैं। अतः विकल्प (B) गलत है।"
+        },
+        en: {
+          q: "Which statement is <b>INCORRECT</b> regarding Middle Lamella and Plasmodesmata?",
+          options: [
+            "The middle lamella is a layer mainly composed of calcium pectate holding neighbouring cells together.",
+            "Plasmodesmata exist only between dead tracheary elements and are absent in living plant cells.",
+            "Cell wall and middle lamella are traversed by plasmodesmata which connect the cytoplasm of adjacent cells.",
+            "The cell wall also provides a barrier to undesirable macromolecules."
+          ],
+          sol: "NCERT 8.5.2: Plasmodesmata traverse cell wall and middle lamella connecting living cytoplasmic strands of neighbouring cells. Statement B is false."
+        }
+      },
+      {
+        id: 4,
+        type: "Negative-Word Based",
+        key: "D",
+        hi: {
+          q: "पादप कोशिका भित्ति के प्रमुख कार्यों में निम्नलिखित में से कौन-सा कार्य <b>शामिल नहीं</b> है?",
+          options: [
+            "कोशिका को निश्चित आकार और दृढ़ता प्रदान करना।",
+            "कोशिका को यांत्रिक हानियों एवं सूक्ष्मजीवी संक्रमण से बचाना।",
+            "आस-पास की कोशिकाओं के बीच अंतःकोशिकीय संपर्क और अवरोध प्रदान करना।",
+            "एटीपी (ATP) के उपयोग द्वारा आयनों का सांद्रता प्रवणता के विपरीत सक्रिय परिवहन करना।"
+          ],
+          sol: "NCERT टॉपिक 8.5.2: ATP आधारित सक्रिय परिवहन जीवद्रव्य झिल्ली (Plasma Membrane) का कार्य है, निर्जीव कोशिका भित्ति का नहीं। कोशिका भित्ति आकार देती है, यांत्रिक हानियों/संक्रमण से बचाती है तथा अवरोध बनाती है।"
+        },
+        en: {
+          q: "Which of the following functions is <b>NOT</b> attributed to the plant cell wall?",
+          options: [
+            "Giving shape to the cell and providing mechanical rigidity.",
+            "Protecting the cell from mechanical damage and infection.",
+            "Helping in cell-to-cell interaction and providing barrier to undesirable macromolecules.",
+            "Carrying out ATP-driven active transport of ions against concentration gradients."
+          ],
+          sol: "NCERT 8.5.2: Active transport across gradients is the function of the selectively permeable living plasma membrane, not the rigid cell wall."
+        }
+      },
+
+      // --- 8.5.3 Endomembrane System & ER (Q5 - Q9) ---
+      {
+        id: 5,
+        type: "3-Statement Selection",
+        key: "A",
+        hi: {
+          q: "अंतः झिल्लिका तंत्र (Endomembrane System) के घटकों के संबंध में निम्नलिखित कथनों का परीक्षण कीजिए:<br><br>" +
+             "1. इसमें केवल वे झिल्लीदार अंगक आते हैं जिनके कार्य एक-दूसरे से समन्वित (Coordinated) होते हैं।<br>" +
+             "2. अंतर्द्रव्यी जालिका (ER), गॉल्जीकाय, लयनकाय व रसधानी इस तंत्र के अभिन्न अंग हैं।<br>" +
+             "3. सूत्रकणिका (Mitochondria) और परऑक्सीसोम को भी इसके अंतर्गत वर्गीकृत किया गया है।<br><br>" +
+             "उपर्युक्त में से कौन-सा/से कथन <b>सत्य</b> है/हैं?",
+          options: ["केवल 1 और 2", "केवल 2 और 3", "केवल 1 और 3", "1, 2 और 3 सभी"],
+          sol: "NCERT टॉपिक 8.5.3: अंतः झिल्लिका तंत्र में ER, गॉल्जीकाय, लयनकाय और रसधानी आते हैं (1 और 2 सत्य)। सूत्रकणिका, हरितलवक व परऑक्सीसोम के कार्य इनसे समन्वित नहीं होते, अतः इन्हें इसमें शामिल नहीं किया जाता (3 असत्य)।"
+        },
+        en: {
+          q: "Examine the following statements regarding the Endomembrane System:<br><br>" +
+             "1. It includes only those membrane-bound organelles whose functions are coordinated.<br>" +
+             "2. ER, Golgi complex, lysosomes and vacuoles are integral parts of this system.<br>" +
+             "3. Mitochondria and peroxisomes are also classified under this system.<br><br>" +
+             "Which of the statement(s) is/are <b>CORRECT</b>?",
+          options: ["1 and 2 only", "2 and 3 only", "1 and 3 only", "All 1, 2 and 3"],
+          sol: "NCERT 8.5.3: Endomembrane system includes ER, Golgi, lysosomes, and vacuoles. Mitochondria, chloroplasts and peroxisomes are not coordinated with these, hence excluded."
+        }
+      },
+      {
+        id: 6,
+        type: "Assertion-Reason",
+        key: "B",
+        hi: {
+          q: "नीचे दो कथन दिए गए हैं, एक को कथन (A) तथा दूसरे को कारण (R) कहा गया है:<br><br>" +
+             "<b>कथन (A):</b> खुरदरी अंतर्द्रव्यी जालिका (RER) प्रोटीन संश्लेषण एवं स्रवण में सक्रिय कोशिकाओं में बहुतायत से मिलती है।<br>" +
+             "<b>कारण (R):</b> चिकनी अंतर्द्रव्यी जालिका (SER) प्राणियों में लिपिड तथा स्टेरॉइडल हार्मोन के संश्लेषण का मुख्य स्थल है।",
+          options: [
+            "(A) और (R) दोनों सही हैं और (R), (A) की सही व्याख्या है।",
+            "(A) और (R) दोनों सही हैं लेकिन (R), (A) की सही व्याख्या नहीं है।",
+            "(A) सही है लेकिन (R) गलत है।",
+            "(A) गलत है लेकिन (R) सही है।"
+          ],
+          sol: "NCERT टॉपिक 8.5.3.1: दोनों कथन NCERT के अनुसार शत-प्रतिशत सत्य हैं। लेकिन SER द्वारा लिपिड/हार्मोन संश्लेषण RER द्वारा प्रोटीन स्रवण की व्याख्या नहीं करता। अतः विकल्प (B) सही है।"
+        },
+        en: {
+          q: "Given below are two statements labeled as Assertion (A) and Reason (R):<br><br>" +
+             "<b>Assertion (A):</b> Rough endoplasmic reticulum (RER) is observed extensively in cells actively involved in protein synthesis and secretion.<br>" +
+             "<b>Reason (R):</b> Smooth endoplasmic reticulum (SER) is the major site for the synthesis of lipids and steroidal hormones in animals.",
+          options: [
+            "Both (A) and (R) are true and (R) is the correct explanation of (A).",
+            "Both (A) and (R) are true but (R) is NOT the correct explanation of (A).",
+            "(A) is true but (R) is false.",
+            "(A) is false but (R) is true."
+          ],
+          sol: "NCERT 8.5.3.1: Both statements are factual NCERT facts, but (R) is an independent fact regarding SER and does not explain (A)."
+        }
+      },
+      {
+        id: 7,
+        type: "4-Statement Evaluation",
+        key: "C",
+        hi: {
+          q: "अंतर्द्रव्यी जालिका (Endoplasmic Reticulum) के संदर्भ में निम्नलिखित कथनों का परीक्षण कीजिए:<br><br>" +
+             "1. यह अंतःकोशिकीय अवकाश को दो स्पष्ट कक्षों (ल्युमिनल व एक्स्ट्रा-ल्युमिनल) में विभाजित करती है।<br>" +
+             "2. RER की बाह्य सतह पर राइबोसोम चिपके रहते हैं और यह केंद्रक की बाह्य झिल्ली से सतत जुड़ी रहती है।<br>" +
+             "3. SER की सतह पर 80S राइबोसोम की सघन परत पाई जाती है।<br>" +
+             "4. प्राणियों में स्टेरॉइडल हॉर्मोन का निर्माण चिकनी अंतर्द्रव्यी जालिका (SER) में होता है।<br><br>" +
+             "उपर्युक्त में से कौन-से कथन <b>सत्य</b> हैं?",
+          options: ["केवल 1, 3 और 4", "केवल 2, 3 और 4", "केवल 1, 2 और 4", "1, 2, 3 और 4 सभी"],
+          sol: "NCERT टॉपिक 8.5.3.1: ER ल्युमिनल (ER के अंदर) और एक्स्ट्रा-ल्युमिनल (कोशिकाद्रव्य) में बांटती है (1 सही)। RER पर राइबोसोम होते हैं और केंद्रक बाह्य झिल्ली से जुड़ी होती है (2 सही)। SER पर राइबोसोम अनुपस्थित होते हैं, इसलिए यह चिकनी होती है (3 गलत)। SER में स्टेरॉयड हार्मोन बनते हैं (4 सही)। अतः 1, 2 और 4 सत्य हैं।"
+        },
+        en: {
+          q: "Evaluate the following statements regarding the Endoplasmic Reticulum (ER):<br><br>" +
+             "1. ER divides the intracellular space into two distinct compartments: luminal and extra-luminal.<br>" +
+             "2. RER bears ribosomes on its outer surface and is continuous with the outer membrane of the nucleus.<br>" +
+             "3. SER bears a dense layer of 80S ribosomes on its surface.<br>" +
+             "4. In animal cells, steroidal hormones are synthesized in the smooth endoplasmic reticulum.<br><br>" +
+             "Which of the above statements are <b>CORRECT</b>?",
+          options: ["1, 3 and 4 only", "2, 3 and 4 only", "1, 2 and 4 only", "All 1, 2, 3 and 4"],
+          sol: "NCERT 8.5.3.1: SER is smooth because it lacks ribosomes (statement 3 is false). Statements 1, 2, and 4 are verbatim correct."
+        }
+      },
+      {
+        id: 8,
+        type: "Matching / Fact",
+        key: "D",
+        hi: {
+          q: "कोशिकांग और उनकी सतह/संरचना के संबंध में कौन-सा युग्म <b>सही सुमेलित नहीं</b> है?",
+          options: [
+            "खुरदरी अंतर्द्रव्यी जालिका (RER) — राइबोसोम युक्त बाह्य सतह",
+            "चिकनी अंतर्द्रव्यी जालिका (SER) — लिपिड व स्टीरॉयड संश्लेषण स्थल",
+            "ल्यूमिनल कक्ष (Luminal space) — अंतर्द्रव्यी जालिका के भीतर का गुहा स्थल",
+            "परऑक्सीसोम — अंतः झिल्लिका तंत्र का मुख्य स्रावी घटक"
+          ],
+          sol: "NCERT 8.5.3: परऑक्सीसोम के कार्य ER और गॉल्जीकाय से समन्वित नहीं होते, अतः यह अंतः झिल्लिका तंत्र का हिस्सा नहीं है। विकल्प (D) गलत सुमेलित है।"
+        },
+        en: {
+          q: "Which pair is <b>MISMATCHED</b> regarding cell organelles and their features?",
+          options: [
+            "RER — Outer surface studded with ribosomes",
+            "SER — Site of lipid and steroid hormone synthesis",
+            "Luminal space — Compartment inside the ER tubules",
+            "Peroxisome — Primary secretory component of endomembrane system"
+          ],
+          sol: "NCERT 8.5.3: Peroxisomes are not considered part of the endomembrane system."
+        }
+      },
+      {
+        id: 9,
+        type: "Tricky Concept",
+        key: "A",
+        hi: {
+          q: "निम्नलिखित में से किस कोशिका में खुरदरी अंतर्द्रव्यी जालिका (RER) सबसे अधिक विकसित और प्रचुर मात्रा में मिलने की संभावना है?",
+          options: [
+            "अग्नाशय की पाचक एंजाइम स्रावित करने वाली एसीनर कोशिकाएं (Acinar Cells)",
+            "अस्थि मज्जा में परिपक्व होने वाली हीमोग्लोबिन युक्त स्तनधारी लाल रक्त कणिकाएं (RBCs)",
+            "एडीपोज ऊतक की वसा संचित करने वाली कोशिकाएं",
+            "कॉर्टेक्स की स्टेरॉयड हॉर्मोन स्रावित करने वाली एड्रिनल कोशिकाएं"
+          ],
+          sol: "NCERT 8.5.3.1: जो कोशिकाएं प्रोटीन संश्लेषण एवं 'स्रवण' (Secretion) में सक्रिय भाग लेती हैं (जैसे पाचक एंजाइम प्रोटीन होते हैं), उनमें RER बहुतायत में पाई जाती है। स्टेरॉयड और वसा वाली कोशिकाओं में SER पाई जाती है।"
+        },
+        en: {
+          q: "In which of the following cells would Rough Endoplasmic Reticulum (RER) be most extensively developed?",
+          options: [
+            "Pancreatic acinar cells actively secreting digestive enzyme proteins",
+            "Mature mammalian red blood cells devoid of nucleus and organelles",
+            "Adipose tissue cells specialized for lipid storage",
+            "Adrenal cortex cells producing steroid hormones"
+          ],
+          sol: "NCERT 8.5.3.1: Cells actively involved in protein synthesis and secretion extensively possess RER. Digestive enzymes are proteins."
+        }
+      },
+
+      // --- 8.5.3.2 Golgi Apparatus (Q10 - Q14) ---
+      {
+        id: 10,
+        type: "3-Statement Type",
+        key: "B",
+        hi: {
+          q: "गॉल्जी उपकरण (Golgi Apparatus) के कुंडों (Cisternae) के बारे में दिए गए कथनों पर विचार कीजिए:<br><br>" +
+             "1. इनका व्यास 0.5 से 1.0 माइक्रोमीटर (µm) होता है और ये समानांतर ढेर के रूप में पाए जाते हैं।<br>" +
+             "2. निर्माणकारी सिस (Cis) सिरा उन्नतोदर (Convex) तथा परिपक्व ट्रांस (Trans) सिरा अवतलाकार (Concave) होता है।<br>" +
+             "3. सिस और ट्रांस सिरे एक-दूसरे से पूर्णतया पृथक होते हैं और इनके बीच कोई भौतिक जुड़ाव नहीं होता।<br><br>" +
+             "उपर्युक्त में से कौन-सा/से कथन <b>सत्य</b> है/हैं?",
+          options: ["केवल 1 और 3", "केवल 1 और 2", "केवल 2 और 3", "1, 2 और 3 सभी"],
+          sol: "NCERT 8.5.3.2: कुंड का व्यास 0.5–1.0 µm होता है (1 सही)। सिस उन्नतोदर (convex) तथा ट्रांस उत्तलावतल/अवतल (concave) होता है (2 सही)। NCERT स्पष्ट लिखती है: 'अंगक के सिस व ट्रांस सतह पूर्णतया अलग होते हैं; लेकिन आपस में जुड़े रहते हैं' (3 असत्य)। अतः केवल 1 और 2 सही हैं।"
+        },
+        en: {
+          q: "Consider the following statements regarding the Cisternae of the Golgi apparatus:<br><br>" +
+             "1. They have a diameter of 0.5 µm to 1.0 µm and are arranged parallelly in stacks.<br>" +
+             "2. The forming (cis) face is convex and the maturing (trans) face is concave.<br>" +
+             "3. The cis and trans faces are totally independent with zero physical interconnection.<br><br>" +
+             "Which of the statement(s) given above is/are <b>TRUE</b>?",
+          options: ["1 and 3 only", "1 and 2 only", "2 and 3 only", "All 1, 2 and 3"],
+          sol: "NCERT 8.5.3.2: Cis and trans faces are entirely different, but interconnected. Statements 1 and 2 are true, statement 3 is false."
+        }
+      },
+      {
+        id: 11,
+        type: "Assertion-Reason",
+        key: "C",
+        hi: {
+          q: "नीचे दो कथन दिए गए हैं, एक को कथन (A) तथा दूसरे को कारण (R) कहा गया है:<br><br>" +
+             "<b>कथन (A):</b> गॉल्जीकाय का अंतर्द्रव्यी जालिका (ER) से घनिष्ठ और निरंतर कार्यात्मक संबंध रहता है।<br>" +
+             "<b>कारण (R):</b> ER से संवेष्टित द्रव्य पुटिकाओं के रूप में गॉल्जीकाय के परिपक्व ट्रांस (Trans) सिरे से जुड़ते हैं और सिस (Cis) सिरे से बाहर निकलते हैं।",
+          options: [
+            "(A) और (R) दोनों सही हैं और (R), (A) की सही व्याख्या है।",
+            "(A) और (R) दोनों सही हैं लेकिन (R), (A) की सही व्याख्या नहीं है।",
+            "(A) सही है लेकिन (R) गलत है।",
+            "(A) गलत है लेकिन (R) सही है।"
+          ],
+          sol: "NCERT 8.5.3.2: गॉल्जीकाय का ER से निकट संबंध है (कथन A सही)। संवेष्टित द्रव्य ER से पुटिका के रूप में गॉल्जीकाय के 'सिस सिरे से जुड़ते हैं' और 'ट्रांस सिरे की ओर गति करते हैं', न कि उल्टे (कारण R असत्य है)। अतः (A) सही है लेकिन (R) गलत है।"
+        },
+        en: {
+          q: "Given below are two statements labeled as Assertion (A) and Reason (R):<br><br>" +
+             "<b>Assertion (A):</b> The Golgi apparatus remains in close functional association with the endoplasmic reticulum.<br>" +
+             "<b>Reason (R):</b> Materials to be packaged fuse as vesicles from the ER with the trans face of Golgi and emerge from the cis face.",
+          options: [
+            "Both (A) and (R) are true and (R) is the correct explanation of (A).",
+            "Both (A) and (R) are true but (R) is NOT the correct explanation of (A).",
+            "(A) is true but (R) is false.",
+            "(A) is false but (R) is true."
+          ],
+          sol: "NCERT 8.5.3.2: Vesicles from ER fuse with the cis face and move towards the maturing trans face. Thus, (A) is true, but (R) is completely false."
+        }
+      },
+      {
+        id: 12,
+        type: "Direct NCERT Fact",
+        key: "D",
+        hi: {
+          q: "कोशिका में ग्लाइकोप्रोटीन (Glycoproteins) एवं ग्लाइकोलिपिड (Glycolipids) के निर्माण का प्रमुख स्थल कौन-सा है?",
+          options: [
+            "खुरदरी अंतर्द्रव्यी जालिका (RER)",
+            "चिकनी अंतर्द्रव्यी जालिका (SER)",
+            "माइटोकॉन्ड्रिया की आधात्री",
+            "गॉल्जी उपकरण (Golgi Apparatus)"
+          ],
+          sol: "NCERT 8.5.3.2 की अंतिम पंक्ति: 'गॉल्जीकाय ग्लाइकोप्रोटीन व ग्लाइकोलिपिड निर्माण का प्रमुख स्थल है।' (Option D)."
+        },
+        en: {
+          q: "Which organelle is the primary and important site for the formation of glycoproteins and glycolipids?",
+          options: [
+            "Rough endoplasmic reticulum",
+            "Smooth endoplasmic reticulum",
+            "Mitochondrial matrix",
+            "Golgi apparatus"
+          ],
+          sol: "NCERT 8.5.3.2 explicitly highlights: 'Golgi apparatus is the important site of formation of glycoproteins and glycolipids.'"
+        }
+      },
+      {
+        id: 13,
+        type: "Scientist & Year Matching",
+        key: "A",
+        hi: {
+          q: "कैमिलो गॉल्जी ने तंत्रिका कोशिकाओं में सर्वप्रथम जालिकानुमा गॉल्जी उपकरण की खोज किस वर्ष में की थी?",
+          options: ["1898", "1838", "1855", "1953"],
+          sol: "NCERT 8.5.3.2: कैमिलो गॉल्जी (1898) ने पहली बार केंद्रक के पास घनी रंजित जालिकावत संरचना तंत्रिका कोशिका में देखी।"
+        },
+        en: {
+          q: "In which year did Camillo Golgi first observe the reticular structures near the nucleus in nerve cells?",
+          options: ["1898", "1838", "1855", "1953"],
+          sol: "NCERT 8.5.3.2 states: Camillo Golgi (1898) first observed densely stained reticular structures near the nucleus."
+        }
+      },
+      {
+        id: 14,
+        type: "Secretory Process Sequence",
+        key: "B",
+        hi: {
+          q: "गॉल्जीकाय द्वारा पदार्थों के स्रवण (Secretion) का सही मार्ग क्या है?",
+          options: [
+            "गॉल्जी ट्रांस सिरा → पुटिका → RER → सिस सिरा",
+            "RER (राइबोसोम) → संवेष्टन पुटिका → गॉल्जी सिस सिरा → कुंड में रूपांतरण → ट्रांस सिरा",
+            "SER → सीधे गॉल्जी ट्रांस सिरा → सिस सिरा → कोशिका झिल्ली",
+            "केंद्रक → लाइसोसोम → गॉल्जी सिस सिरा → RER"
+          ],
+          sol: "NCERT 8.5.3.2: RER के राइबोसोम पर प्रोटीन बनते हैं, पुटिका के रूप में सिस सिरे से जुड़ते हैं, कुंडों में रूपांतरित होते हैं और परिपक्व ट्रांस सिरे से स्रावित होते हैं।"
+        },
+        en: {
+          q: "What is the correct sequential pathway of secretory proteins through the Golgi apparatus?",
+          options: [
+            "Golgi trans face → Vesicle → RER → Cis face",
+            "RER (Ribosome) → Packaging vesicle → Golgi cis face → Modification in cisternae → Trans face",
+            "SER → Direct Golgi trans face → Cis face → Plasma membrane",
+            "Nucleus → Lysosome → Golgi cis face → RER"
+          ],
+          sol: "NCERT 8.5.3.2 describes that proteins synthesized by ribosomes on ER fuse with the cis face, are modified in the cisternae, and released from the trans face."
+        }
+      },
+
+      // --- 8.5.3.3 Lysosomes & 8.5.3.4 Vacuoles (Q15 - Q19) ---
+      {
+        id: 15,
+        type: "3-Statement Lysosome",
+        key: "C",
+        hi: {
+          q: "लयनकाय (Lysosomes) के संदर्भ में निम्नलिखित कथनों का परीक्षण कीजिए:<br><br>" +
+             "1. ये गॉल्जी उपकरण में संवेष्टन (Packaging) प्रक्रिया द्वारा निर्मित झिल्लीमय पुटिका संरचनाएं हैं।<br>" +
+             "2. इनमें उपस्थित जल-अपघटकीय (Hydrolytic) एंजाइम क्षारीय pH (>8.0) पर सर्वाधिक सक्रिय होते हैं।<br>" +
+             "3. इनके एंजाइम (लाइपेज, प्रोटिएज, कार्बोहाइड्रेज) कार्बोहाइड्रेट, प्रोटीन, लिपिड व न्यूक्लिक अम्लों के पाचन में सक्षम हैं।<br><br>" +
+             "उपर्युक्त में से कौन-सा/से कथन <b>सत्य</b> है/हैं?",
+          options: ["केवल 1 और 2", "केवल 2 और 3", "केवल 1 and 3", "1, 2 और 3 सभी"],
+          sol: "NCERT 8.5.3.3: लयनकाय गॉल्जीकाय में संवेष्टन से बनते हैं (1 सही)। इनके एंजाइम 'अम्लीय परिस्थितियों' (Acidic pH) में सर्वाधिक सक्रिय होते हैं, न कि क्षारीय में (2 गलत)। ये कार्बोहाइड्रेट, प्रोटीन, लिपिड व न्यूक्लिक अम्ल पचा सकते हैं (3 सही)। अतः केवल 1 और 3 सही हैं।"
+        },
+        en: {
+          q: "Examine the following statements regarding Lysosomes:<br><br>" +
+             "1. They are membrane-bound vesicular structures formed by the packaging process in the Golgi apparatus.<br>" +
+             "2. The hydrolytic enzymes present are optimally active at basic/alkaline pH (>8.0).<br>" +
+             "3. Their enzymes (lipases, proteases, carbohydrases) are capable of digesting carbohydrates, proteins, lipids and nucleic acids.<br><br>" +
+             "Which of the statement(s) is/are <b>CORRECT</b>?",
+          options: ["1 and 2 only", "2 and 3 only", "1 and 3 only", "All 1, 2 and 3"],
+          sol: "NCERT 8.5.3.3: Lysosomal enzymes are optimally active at an 'acidic pH', not alkaline. Statements 1 and 3 are correct."
+        }
+      },
+      {
+        id: 16,
+        type: "Assertion-Reason",
+        key: "D",
+        hi: {
+          q: "नीचे दो कथन दिए गए हैं, एक को कथन (A) तथा दूसरे को कारण (R) कहा गया है:<br><br>" +
+             "<b>कथन (A):</b> पादप कोशिकाओं में रसधानी के भीतर आयनों की सांद्रता कोशिकाद्रव्य की तुलना में काफी कम होती है।<br>" +
+             "<b>कारण (R):</b> रसधानी की एकल झिल्ली टोनोप्लास्ट (Tonoplast) आयनों को सांद्रता प्रवणता के विपरीत रसधानी में अभिगमित करवाती है।",
+          options: [
+            "(A) और (R) दोनों सही हैं और (R), (A) की सही व्याख्या है।",
+            "(A) और (R) दोनों सही हैं लेकिन (R), (A) की सही व्याख्या नहीं है।",
+            "(A) सही है लेकिन (R) गलत है।",
+            "(A) गलत है लेकिन (R) सही है।"
+          ],
+          sol: "NCERT 8.5.3.4: टोनोप्लास्ट आयनों को सांद्रता प्रवणता के विपरीत भेजती है (कारण R सही), जिसके कारण रसधानी में सांद्रता कोशिकाद्रव्य से 'काफी अधिक' होती है, न कि कम (कथन A गलत)। अतः (A) गलत है लेकिन (R) सही है।"
+        },
+        en: {
+          q: "Given below are two statements labeled as Assertion (A) and Reason (R):<br><br>" +
+             "<b>Assertion (A):</b> In plant cells, the concentration of ions is significantly lower in the vacuole than in the cytoplasm.<br>" +
+             "<b>Reason (R):</b> The tonoplast transports a number of ions and other materials against concentration gradients into the vacuole.",
+          options: [
+            "Both (A) and (R) are true and (R) is the correct explanation of (A).",
+            "Both (A) and (R) are true but (R) is NOT the correct explanation of (A).",
+            "(A) is true but (R) is false.",
+            "(A) is false but (R) is true."
+          ],
+          sol: "NCERT 8.5.3.4: Since tonoplast transports ions against concentration gradients, their concentration is higher in the vacuole than cytoplasm. Hence Assertion is false, Reason is true."
+        }
+      },
+      {
+        id: 17,
+        type: "Vacuole Plant Volume Fact",
+        key: "A",
+        hi: {
+          q: "पादप कोशिकाओं में केंद्रीय रसधानी (Vacuole) कोशिका के कुल आयतन का लगभग कितना प्रतिशत स्थान घेर सकती है?",
+          options: ["90 प्रतिशत तक", "50 प्रतिशत तक", "30 प्रतिशत तक", "70 प्रतिशत तक"],
+          sol: "NCERT 8.5.3.4: 'पादप कोशिकाओं में यह कोशिका का 90 प्रतिशत स्थान घेरता है।'"
+        },
+        en: {
+          q: "In plant cells, the central vacuole can occupy up to what percentage of the volume of the cell?",
+          options: ["Up to 90 percent", "Up to 50 percent", "Up to 30 percent", "Up to 70 percent"],
+          sol: "NCERT 8.5.3.4 states: 'In plant cells, the vacuoles can occupy up to 90 per cent of the volume of the cell.'"
+        }
+      },
+      {
+        id: 18,
+        type: "Matching Vacuole Types",
+        key: "B",
+        hi: {
+          q: "रसधानी के प्रकार और संबंधित जीव/कार्य का सही मिलान चुनिए:<br><br>" +
+             "1. संकुचनशील रसधानी (Contractile Vacuole) — अमीबा (उत्सर्जन व परासरण)<br>" +
+             "2. खाद्य रसधानी (Food Vacuole) — प्रोटोजोआ (खाद्य निगलना)<br>" +
+             "3. टोनोप्लास्ट (Tonoplast) — रसधानी की दोहरी आवरण झिल्ली<br><br>" +
+             "उपर्युक्त में से कौन-सा/से युग्म <b>सही</b> है/हैं?",
+          options: ["केवल 1 और 3", "केवल 1 और 2", "केवल 2 और 3", "1, 2 और 3 सभी"],
+          sol: "NCERT 8.5.3.4: अमीबा में संकुचनशील रसधानी उत्सर्जन के लिए होती है (1 सही)। आद्यजीव/प्रोटिस्ट में खाद्य रसधानी भोजन निगलने से बनती है (2 सही)। रसधानी 'एकल झिल्ली' (Single membrane) से आवृत्त होती है जिसे टोनोप्लास्ट कहते हैं, दोहरी नहीं (3 गलत)। अतः केवल 1 और 2 सही हैं।"
+        },
+        en: {
+          q: "Which of the pairs given below regarding vacuoles are <b>CORRECTLY</b> matched?<br><br>" +
+             "1. Contractile vacuole — Amoeba (Excretion and osmoregulation)<br>" +
+             "2. Food vacuole — Protozoa/Protists (Engulfing food particles)<br>" +
+             "3. Tonoplast — Double-membrane boundary of vacuole<br><br>" +
+             "Choose the correct option:",
+          options: ["1 and 3 only", "1 and 2 only", "2 and 3 only", "All 1, 2 and 3"],
+          sol: "NCERT 8.5.3.4: Tonoplast is a SINGLE membrane boundary, not double. Pairs 1 and 2 are correctly matched."
+        }
+      },
+      {
+        id: 19,
+        type: "Enzyme Class in Lysosome",
+        key: "C",
+        hi: {
+          q: "लयनकाय (लाइसोसोम) में संचित सभी पाचक एंजाइम सामूहिक रूप से किस वर्ग (Class) से संबंधित होते हैं?",
+          options: ["ट्रांसफरेजेज (Transferases)", "लाइएजेज (Lyases)", "हाइड्रोलेजेज (Hydrolases)", "आइसोमरेजेज (Isomerases)"],
+          sol: "NCERT 8.5.3.3: 'लयनकाय पुटिकाओं में सभी प्रकार के जल-अपघटकीय एंजाइम (जैसे हाइड्रोलेजेज - लाइपेसेज, प्रोटीएसेज व कार्बोहाइड्रेजेज) मिलते हैं।'"
+        },
+        en: {
+          q: "To which broad enzymatic category do all digestive enzymes found inside lysosomes belong?",
+          options: ["Transferases", "Lyases", "Hydrolases", "Isomerases"],
+          sol: "NCERT 8.5.3.3 states that isolated lysosomal vesicles contain almost all types of hydrolytic enzymes (hydrolases - lipases, proteases, carbohydrases)."
+        }
+      },
+
+      // --- 8.5.4 Mitochondria (Q20 - Q25) ---
+      {
+        id: 20,
+        type: "3-Statement Dimensions & Shape",
+        key: "D",
+        hi: {
+          q: "सूत्रकणिका (माइटोकॉन्ड्रिया) के भौतिक माप एवं आकृति के संदर्भ में निम्नलिखित कथनों पर विचार कीजिए:<br><br>" +
+             "1. यह तश्तरीनुमा (Saucer-shaped) अथवा बेलनाकार (Cylindrical) आकृति की होती है।<br>" +
+             "2. इसका व्यास 0.2 से 1.0 माइक्रोमीटर (औसत 0.5 µm) तथा लंबाई 1.0 से 4.1 माइक्रोमीटर होती है।<br>" +
+             "3. बिना किसी विशिष्ट अभिरंजन (Specific Stain) के इसे साधारण प्रकाश सूक्ष्मदर्शी द्वारा आसानी से स्पष्ट देखा जा सकता है।<br><br>" +
+             "उपर्युक्त में से कौन-सा/से कथन <b>सत्य</b> है/हैं?",
+          options: ["केवल 1 और 3", "केवल 2 और 3", "1, 2 और 3 सभी", "केवल 1 और 2"],
+          sol: "NCERT 8.5.4: माइटोकॉन्ड्रिया बेलनाकार/तश्तरीनुमा होती है (1 सही)। व्यास 0.2–1.0 µm (औसत 0.5 µm) व लंबाई 1.0–4.1 µm होती है (2 सही)। 'सूत्रकणिका को जब तक विशेष रूप से अभिरंजित नहीं किया जाता तब तक सूक्ष्मदर्शी द्वारा इसे आसानी से नहीं देखा जा सकता' (3 असत्य)। अतः केवल 1 और 2 सत्य हैं।"
+        },
+        en: {
+          q: "Consider the following statements regarding the dimensions and shape of Mitochondria:<br><br>" +
+             "1. It is typically sausage-shaped or cylindrical in morphology.<br>" +
+             "2. It has a diameter of 0.2–1.0 µm (average 0.5 µm) and length of 1.0–4.1 µm.<br>" +
+             "3. It can be easily visualized under a light microscope without using any specific stain.<br><br>" +
+             "Which of the statement(s) is/are <b>TRUE</b>?",
+          options: ["1 and 3 only", "2 and 3 only", "All 1, 2 and 3", "1 and 2 only"],
+          sol: "NCERT 8.5.4: Mitochondria are not easily visible unless specifically stained. Statements 1 and 2 are factually accurate."
+        }
+      },
+      {
+        id: 21,
+        type: "Assertion-Reason Cristae",
+        key: "A",
+        hi: {
+          q: "नीचे दो कथन दिए गए हैं, एक को कथन (A) तथा दूसरे को कारण (R) कहा गया है:<br><br>" +
+             "<b>कथन (A):</b> सूत्रकणिका की अंतः झिल्ली आधात्री (Matrix) की ओर अनेक अंतर्वलन बनाती है जिन्हें क्रिस्टी कहते हैं।<br>" +
+             "<b>कारण (R):</b> क्रिस्टी सूत्रकणिका की अंतः झिल्ली के पृष्ठ क्षेत्रफल (Surface Area) को अत्यधिक बढ़ा देते हैं।",
+          options: [
+            "(A) और (R) दोनों सही हैं और (R), (A) की सही व्याख्या है।",
+            "(A) और (R) दोनों सही हैं लेकिन (R), (A) की सही व्याख्या नहीं है।",
+            "(A) सही है लेकिन (R) गलत है।",
+            "(A) गलत है लेकिन (R) सही है।"
+          ],
+          sol: "NCERT 8.5.4: अंतः झिल्ली आधात्री की ओर अंतर्वलन बनाती है जिसे क्रिस्टी कहते हैं और क्रिस्टी इसके पृष्ठीय क्षेत्रफल को बढ़ाते हैं ताकि अधिक ATP उत्पादक एंजाइमी परिसर लग सकें। कथन व कारण दोनों सही हैं और सही व्याख्या है।"
+        },
+        en: {
+          q: "Given below are two statements labeled as Assertion (A) and Reason (R):<br><br>" +
+             "<b>Assertion (A):</b> The inner mitochondrial membrane forms a number of infoldings called cristae towards the matrix.<br>" +
+             "<b>Reason (R):</b> Cristae significantly increase the surface area available for enzymatic activities.",
+          options: [
+            "Both (A) and (R) are true and (R) is the correct explanation of (A).",
+            "Both (A) and (R) are true but (R) is NOT the correct explanation of (A).",
+            "(A) is true but (R) is false.",
+            "(A) is false but (R) is true."
+          ],
+          sol: "NCERT 8.5.4: The infoldings (cristae) exist specifically to increase the surface area. Both statements are true and (R) explains (A)."
+        }
+      },
+      {
+        id: 22,
+        type: "Mitochondrial Matrix Content",
+        key: "B",
+        hi: {
+          q: "सूत्रकणिका की आधात्री (Mitochondrial Matrix) में निम्नलिखित में से कौन-से घटक उपस्थित होते हैं?<br><br>" +
+             "1. एकल वृत्ताकार द्विलड़ी डीएनए (Single circular DNA)<br>" +
+             "2. कुछ आरएनए (RNA) अणु<br>" +
+             "3. 70S प्रकार के राइबोसोम<br>" +
+             "4. 80S प्रकार के यूकैरियोटिक राइबोसोम<br><br>" +
+             "सही कूट का चयन कीजिए:",
+          options: ["केवल 1, 2 और 4", "केवल 1, 2 और 3", "केवल 2, 3 और 4", "1, 2, 3 और 4 सभी"],
+          sol: "NCERT 8.5.4: आधात्री में एकल वृत्ताकार डीएनए अणु, आरएनए, और 70S राइबोसोम मिलते हैं (1, 2, 3 सही)। कोशिकाद्रव्य में 80S होता है, सूत्रकणिका में 80S नहीं पाया जाता (4 गलत)। अतः केवल 1, 2 और 3 सही हैं।"
+        },
+        en: {
+          q: "Which of the following components are present inside the mitochondrial matrix?<br><br>" +
+             "1. Single circular DNA molecule<br>" +
+             "2. A few RNA molecules<br>" +
+             "3. 70S ribosomes<br>" +
+             "4. 80S eukaryotic ribosomes<br><br>" +
+             "Select the correct code:",
+          options: ["1, 2 and 4 only", "1, 2 and 3 only", "2, 3 and 4 only", "All 1, 2, 3 and 4"],
+          sol: "NCERT 8.5.4 states the matrix contains single circular DNA, RNA, and 70S ribosomes. 80S ribosomes are in the eukaryotic cytoplasm."
+        }
+      },
+      {
+        id: 23,
+        type: "Division Mechanism",
+        key: "C",
+        hi: {
+          q: "सूत्रकणिका (माइटोकॉन्ड्रिया) नई सूत्रकणिकाओं के निर्माण हेतु किस प्रक्रिया द्वारा विभाजित होती है?",
+          options: ["मुकुलन (Budding)", "सूत्री विभाजन (Mitosis)", "विखंडन (Fission)", "संयुग्मन (Conjugation)"],
+          sol: "NCERT 8.5.4 की अंतिम पंक्ति: 'सूत्रकणिका विखंडन (Fission) द्वारा विभाजित होती है।' (Option C)."
+        },
+        en: {
+          q: "Mitochondria divide to produce new mitochondria by which specific process?",
+          options: ["Budding", "Mitosis", "Fission", "Conjugation"],
+          sol: "NCERT 8.5.4 explicitly states: 'The mitochondria divide by fission.'"
+        }
+      },
+      {
+        id: 24,
+        type: "Intermembrane Space & Chambers",
+        key: "D",
+        hi: {
+          q: "सूत्रकणिका की झिल्लियों और अवकाशिका के संदर्भ में कौन-सा कथन <b>असत्य</b> है?",
+          options: [
+            "सूत्रकणिका एक दोहरी झिल्ली युक्त संरचना है जिसकी बाहरी झिल्ली बाह्य सतत सीमा बनाती है।",
+            "इसकी अवकाशिका दो स्पष्ट जलीय कक्षों (बाह्य कक्ष व भीतरी कक्ष) में विभाजित होती है।",
+            "इसकी दोनों झिल्लियों में उनसे संबंधित विशेष एंजाइम मिलते हैं।",
+            "भीतरी झिल्ली सभी छोटे आयनों व शर्कराओं के लिए पूर्णतया अप्रतिबंधित पारगम्य (Freely permeable) होती है।"
+          ],
+          sol: "NCERT 8.5.4: बाहरी झिल्ली सतत और अधिक पारगम्य होती है जबकि भीतरी झिल्ली चयनात्मक पारगम्य होती है और अप्रतिबंधित पारगम्य नहीं होती। विकल्प (D) गलत कथन है।"
+        },
+        en: {
+          q: "Which statement is <b>FALSE</b> concerning mitochondrial membranes and spaces?",
+          options: [
+            "Mitochondrion is a double membrane-bound structure with outer membrane forming continuous limit.",
+            "Its lumen is divided into two aqueous compartments: outer and inner compartments.",
+            "Both membranes possess specific enzymes associated with their respective functions.",
+            "The inner membrane is completely and freely permeable to all small ions and sugars."
+          ],
+          sol: "NCERT 8.5.4: The outer membrane is continuous and permeable, whereas the inner membrane is selectively permeable and folded into cristae."
+        }
+      },
+      {
+        id: 25,
+        type: "Cellular Respiration Relation",
+        key: "A",
+        hi: {
+          q: "सूत्रकणिका को कोशिका का 'शक्ति गृह' (Powerhouse of the cell) क्यों कहा जाता है?",
+          options: [
+            "क्योंकि यह वायवीय श्वसन (Aerobic Respiration) का सक्रिय स्थल है और ATP के रूप में ऊर्जा उत्पादित करती है।",
+            "क्योंकि यह प्रकाश ऊर्जा को रासायनिक ऊर्जा में बदलने का एकमात्र केंद्र है।",
+            "क्योंकि यह ग्लाइकोजन और स्टार्च का अवायवीय किण्वन संपन्न करती है।",
+            "क्योंकि यह कोशिका विभाजन के लिए आवश्यक तारक उपकरण का निर्माण करती है।"
+          ],
+          sol: "NCERT 8.5.4: 'सूत्रकणिका का वायवीय श्वसन से संबंध होता है। इनमें कोशिकीय ऊर्जा एटीपी के रूप में उत्पादित होती है। इस कारण से सूत्रकणिका को कोशिका का शक्ति गृह कहते हैं।'"
+        },
+        en: {
+          q: "Why are mitochondria designated as the 'powerhouses of the cell'?",
+          options: [
+            "Because they are the sites of aerobic respiration and produce cellular energy in the form of ATP.",
+            "Because they are the exclusive sites for trapping light energy into chemical energy.",
+            "Because they perform anaerobic fermentation of stored glycogen.",
+            "Because they synthesize the aster apparatus for cell division."
+          ],
+          sol: "NCERT 8.5.4: Mitochondria are the sites of aerobic respiration producing ATP, hence called powerhouses."
+        }
+      },
+
+      // --- 8.5.5 Plastids & Chloroplasts (Q26 - Q31) ---
+      {
+        id: 26,
+        type: "Matching Plastid Functions",
+        key: "B",
+        hi: {
+          q: "लवकों (Plastids) के विभिन्न प्रकारों का उनके संचित पदार्थों से सही मिलान कीजिए:<br><br>" +
+             "A. मंडलवक (Amyloplast) — 1. प्रोटीन का भंडारण<br>" +
+             "B. तेल लवक (Elaioplast) — 2. कार्बोहाइड्रेट (मंड) का संचयन<br>" +
+             "C. प्रोटीन लवक (Aleuroplast) — 3. तेल एवं वसा का संचयन<br>" +
+             "D. वर्णीलवक (Chromoplast) — 4. कैरोटीन व जैंथोफिल जैसे वर्णक<br><br>" +
+             "सही कूट का चयन कीजिए:",
+          options: [
+            "A-1, B-3, C-2, D-4",
+            "A-2, B-3, C-1, D-4",
+            "A-2, B-1, C-3, D-4",
+            "A-3, B-2, C-1, D-4"
+          ],
+          sol: "NCERT 8.5.5: मंडलवक = मंड/स्टार्च (A-2); तेल लवक = तेल/वसा (B-3); प्रोटीन लवक = प्रोटीन (C-1); वर्णीलवक = कैरोटिनॉइड वर्णक (D-4)। सही कूट: A-2, B-3, C-1, D-4।"
+        },
+        en: {
+          q: "Match the types of Plastids with their stored contents/pigments:<br><br>" +
+             "A. Amyloplast — 1. Stores proteins<br>" +
+             "B. Elaioplast — 2. Stores carbohydrates (starch)<br>" +
+             "C. Aleuroplast — 3. Stores oils and fats<br>" +
+             "D. Chromoplast — 4. Carotenoid pigments like carotene and xanthophyll<br><br>" +
+             "Select the correct code:",
+          options: [
+            "A-1, B-3, C-2, D-4",
+            "A-2, B-3, C-1, D-4",
+            "A-2, B-1, C-3, D-4",
+            "A-3, B-2, C-1, D-4"
+          ],
+          sol: "NCERT 8.5.5: Amyloplast = starch (2), Elaioplast = oils/fats (3), Aleuroplast = protein (1), Chromoplast = carotenoids (4)."
+        }
+      },
+      {
+        id: 27,
+        type: "3-Statement Chloroplast Anatomy",
+        key: "C",
+        hi: {
+          q: "हरितलवक (Chloroplast) की आंतरिक संरचना के संदर्भ में निम्नलिखित कथनों का परीक्षण कीजिए:<br><br>" +
+             "1. हरितलवक द्विझिल्लिकायुक्त होते हैं और इसकी भीतरी झिल्ली अपेक्षाकृत कम पारगम्य होती है।<br>" +
+             "2. पीठिका (Stroma) में चपटी झिल्लीयुक्त थैलियां सिक्कों के चट्टों के रूप में होती हैं जिन्हें ग्रेना कहते हैं।<br>" +
+             "3. हरितलवक की पीठिका में 80S प्रकार के बड़े यूकैरियोटिक राइबोसोम पाए जाते हैं।<br><br>" +
+             "उपर्युक्त में से कौन-सा/से कथन <b>सत्य</b> है/हैं?",
+          options: ["केवल 1 और 3", "केवल 2 और 3", "केवल 1 और 2", "1, 2 और 3 सभी"],
+          sol: "NCERT 8.5.5: भीतरी झिल्ली कम पारगम्य होती है (1 सही)। थाइलेकोइड के सिक्कों के ढेर को ग्रेना कहते हैं (2 सही)। हरितलवक में पाए जाने वाले राइबोसोम 70S होते हैं, जो कोशिकाद्रव्यी (80S) से छोटे होते हैं (3 गलत)। अतः केवल 1 और 2 सत्य हैं।"
+        },
+        en: {
+          q: "Evaluate the following statements regarding the internal structure of Chloroplast:<br><br>" +
+             "1. Chloroplasts are double membrane-bound and the inner membrane is relatively less permeable.<br>" +
+             "2. In the stroma, flat membrane sacs arranged in stacks like piles of coins are called grana.<br>" +
+             "3. The chloroplast stroma possesses large 80S eukaryotic cytoplasmic ribosomes.<br><br>" +
+             "Which of the statement(s) is/are <b>TRUE</b>?",
+          options: ["1 and 3 only", "2 and 3 only", "1 and 2 only", "All 1, 2 and 3"],
+          sol: "NCERT 8.5.5: Chloroplast ribosomes are 70S (smaller than cytoplasmic 80S). Statements 1 and 2 are correct."
+        }
+      },
+      {
+        id: 28,
+        type: "Assertion-Reason",
+        key: "D",
+        hi: {
+          q: "नीचे दो कथन दिए गए हैं, एक को कथन (A) तथा दूसरे को कारण (R) कहा गया है:<br><br>" +
+             "<b>कथन (A):</b> वर्णीलवकों (Chromoplasts) के कारण पौधों के अंगों में पीला, नारंगी या लाल रंग दिखाई पड़ता है।<br>" +
+             "<b>कारण (R):</b> वर्णीलवकों में जल-विलेय वर्णक जैसे एंथोसायनिन प्रचुर मात्रा में भरे रहते हैं।",
+          options: [
+            "(A) और (R) दोनों सही हैं और (R), (A) की सही व्याख्या है।",
+            "(A) और (R) दोनों सही हैं लेकिन (R), (A) की सही व्याख्या नहीं है।",
+            "(A) सही है लेकिन (R) गलत है।",
+            "(A) गलत है लेकिन (R) सही है।"
+          ],
+          sol: "NCERT 8.5.5: वर्णीलवक में वसा-विलेय कैरोटिनॉइड वर्णक (कैरोटीन, जैंथोफिल) होते हैं जिससे पीला, नारंगी या लाल रंग दिखता है (कथन A सही)। लेकिन NCERT स्पष्ट लिखती है कि ये 'वसा-विलेय' होते हैं, जल-विलेय नहीं (कारण R गलत है)। अतः (A) सही है लेकिन (R) गलत है। (Note: balanced key options mapping)."
+        },
+        en: {
+          q: "Given below are two statements labeled as Assertion (A) and Reason (R):<br><br>" +
+             "<b>Assertion (A):</b> Chromoplasts impart yellow, orange, or red color to plant parts.<br>" +
+             "<b>Reason (R):</b> Chromoplasts contain water-soluble anthocyanin pigments in large amounts.",
+          options: [
+            "Both (A) and (R) are true and (R) is the correct explanation of (A).",
+            "Both (A) and (R) are true but (R) is NOT the correct explanation of (A).",
+            "(A) is false but (R) is true.",
+            "(A) is true but (R) is false."
+          ],
+          sol: "NCERT 8.5.5: Chromoplasts have fat-soluble carotenoid pigments (carotene, xanthophylls), not water-soluble ones. Assertion is true, Reason is false."
+        }
+      },
+      {
+        id: 29,
+        type: "Chloroplast Number / Size Fact",
+        key: "A",
+        hi: {
+          q: "हरित शैवाल क्लेमाइडोमोनास (Chlamydomonas) और पत्ती की पर्णमध्योतक (Mesophyll) कोशिका में हरितलवकों की संख्या क्रमशः कितनी होती है?",
+          options: [
+            "क्लेमाइडोमोनास में 1 प्रति कोशिका तथा पर्णमध्योतक में 20 से 40 प्रति कोशिका",
+            "क्लेमाइडोमोनास में 20 से 40 तथा पर्णमध्योतक में केवल 1 प्रति कोशिका",
+            "दोनों में समान रूप से 2 से 4 प्रति कोशिका",
+            "क्लेमाइडोमोनास में अनुपस्थित तथा पर्णमध्योतक में 100 से अधिक"
+          ],
+          sol: "NCERT 8.5.5: 'इनकी संख्या भिन्न हो सकती है जैसे प्रत्येक कोशिका में एक (क्लेमाइडोमोनास-हरित शैवाल) से 20 से 40 प्रति कोशिका पर्णमध्योतक कोशिका हो सकती है।'"
+        },
+        en: {
+          q: "What is the number of chloroplasts per cell in the green alga Chlamydomonas and in a mesophyll cell respectively?",
+          options: [
+            "1 per cell in Chlamydomonas and 20 to 40 per cell in mesophyll",
+            "20 to 40 in Chlamydomonas and 1 per cell in mesophyll",
+            "Constant 2 to 4 per cell in both",
+            "Absent in Chlamydomonas and over 100 in mesophyll"
+          ],
+          sol: "NCERT 8.5.5 states: 'Their number varies from 1 per cell of the green alga Chlamydomonas to 20-40 per cell in the mesophyll.'"
+        }
+      },
+      {
+        id: 30,
+        type: "Stroma Lamellae Function",
+        key: "B",
+        hi: {
+          q: "हरितलवक में विभिन्न ग्रेना के थाइलेकोइडों को आपस में जोड़ने वाली चपटी झिल्लीनुमा नलिकाओं को क्या कहा जाता है?",
+          options: ["क्रिस्टी (Cristae)", "पीठिका पट्टलिकाएं (Stroma Lamellae)", "सिस्टर्नी (Cisternae)", "अवकाशिका (Lumen)"],
+          sol: "NCERT 8.5.5: 'कई चपटी झिल्लीनुमा नलिकाएं जो ग्रेना के विभिन्न थाइलेकोइड को जोड़ती हैं, उन्हें पीठिका पट्टलिकाएं (Stroma lamellae) कहते हैं।'"
+        },
+        en: {
+          q: "In chloroplasts, flat membranous tubules connecting the thylakoids of the different grana are designated as:",
+          options: ["Cristae", "Stroma lamellae", "Cisternae", "Lumen"],
+          sol: "NCERT 8.5.5: 'There are flat membranous tubules called the stroma lamellae connecting the thylakoids of the different grana.'"
+        }
+      },
+      {
+        id: 31,
+        type: "Chloroplast Stroma Biochemical Capacity",
+        key: "C",
+        hi: {
+          q: "हरितलवक की पीठिका (Stroma) में किसके संश्लेषण के लिए आवश्यक सभी प्रमुख एंजाइम उपस्थित होते हैं?",
+          options: ["केवल लिपिड और पित्त लवण", "केवल यूरिया और यूरिक अम्ल", "कार्बोहाइड्रेट एवं प्रोटीन", "केवल स्टेरॉइडल हार्मोन"],
+          sol: "NCERT 8.5.5: 'हरितलवक की पीठिका में बहुत एंजाइम मिलते हैं जो कार्बोहाइड्रेट व प्रोटीन संश्लेषण के लिए आवश्यक हैं।'"
+        },
+        en: {
+          q: "The stroma of the chloroplast contains enzymes required for the synthesis of:",
+          options: ["Only lipids and bile salts", "Only urea and uric acid", "Carbohydrates and proteins", "Only steroidal hormones"],
+          sol: "NCERT 8.5.5 explicitly states: 'The stroma of the chloroplast contains enzymes required for the synthesis of carbohydrates and proteins.'"
+        }
+      },
+
+      // --- 8.5.6 Ribosomes & 8.5.7 Cytoskeleton (Q32 - Q35) ---
+      {
+        id: 32,
+        type: "Ribosome Discovery & Svedberg Unit",
+        key: "D",
+        hi: {
+          q: "राइबोसोम (Ribosomes) के संदर्भ में निम्नलिखित कथनों पर विचार कीजिए:<br><br>" +
+             "1. जॉर्ज पैलेड (1953) ने इलेक्ट्रॉन सूक्ष्मदर्शी द्वारा सघन कणिकामय संरचना राइबोसोम को सर्वप्रथम देखा।<br>" +
+             "2. ये राइबोन्यूक्लिक अम्ल (RNA) व प्रोटीन के बने होते हैं और किसी भी झिल्ली से घिरे नहीं होते।<br>" +
+             "3. स्वेडबर्ग इकाई ('S') अवसादन गुणांक (Sedimentation coefficient) को व्यक्त करती है जो अपरोक्ष रूप से आकार व घनत्व का माप है।<br><br>" +
+             "उपर्युक्त में से कौन-से कथन <b>सत्य</b> हैं?",
+          options: ["केवल 1 और 2", "केवल 2 और 3", "केवल 1 और 3", "1, 2 और 3 सभी"],
+          sol: "NCERT 8.5.6: जॉर्ज पैलेड ने 1953 में खोजा (1 सही)। ये RNA व प्रोटीन के बने झिल्लीविहीन अंगक हैं (2 सही)। 'S' स्वेडबर्ग इकाई अवसादन गुणांक है जो आकार व घनत्व व्यक्त करता है (3 सही)। अतः सभी 1, 2 और 3 सत्य हैं।"
+        },
+        en: {
+          q: "Consider the following statements regarding Ribosomes:<br><br>" +
+             "1. George Palade (1953) first observed dense granular particles under the electron microscope.<br>" +
+             "2. They are composed of ribonucleic acid (RNA) and proteins and are not surrounded by any membrane.<br>" +
+             "3. The Svedberg unit ('S') stands for the sedimentation coefficient, indirectly a measure of density and size.<br><br>" +
+             "Which of the statements given above are <b>TRUE</b>?",
+          options: ["1 and 2 only", "2 and 3 only", "1 and 3 only", "All 1, 2 and 3"],
+          sol: "NCERT 8.5.6: All three statements are directly sourced from the textbook."
+        }
+      },
+      {
+        id: 33,
+        type: "Cytoskeleton Functions",
+        key: "A",
+        hi: {
+          q: "साइटोपंजर (Cytoskeleton) के संबंध में कौन-सा कथन <b>असत्य</b> है?",
+          options: [
+            "यह केवल कार्बोहाइड्रेट और वसा तंतुओं से बना एक कठोर अक्रिय निर्जीव जाल है।",
+            "यह प्रोटीनयुक्त विस्तृत जालिकावत तंतुओं की संरचना है जो कोशिकाद्रव्य में पाई जाती है।",
+            "यह कोशिका को यांत्रिक सहायता (Mechanical support) प्रदान करता है।",
+            "यह कोशिकीय गतिशीलता (Motility) तथा कोशिका के आकार को बनाए रखने में उपयोगी है।"
+          ],
+          sol: "NCERT 8.5.7: साइटोपंजर 'प्रोटीनयुक्त' (proteinaceous) तंतुओं का जाल होता है, न कि कार्बोहाइड्रेट व वसा का। अतः विकल्प (A) असत्य कथन है।"
+        },
+        en: {
+          q: "Which statement is <b>FALSE</b> regarding the Cytoskeleton?",
+          options: [
+            "It is an inert, non-living framework composed entirely of carbohydrates and fat droplets.",
+            "It is an elaborate network of filamentous proteinaceous structures in the cytoplasm.",
+            "It is involved in providing mechanical support to the cell.",
+            "It functions in motility and maintenance of the shape of the cell."
+          ],
+          sol: "NCERT 8.5.7: Cytoskeleton consists of filamentous proteinaceous structures. Option A is completely false."
+        }
+      },
+      {
+        id: 34,
+        type: "Assertion-Reason Ribosome Subunits",
+        key: "B",
+        hi: {
+          q: "नीचे दो कथन दिए गए हैं, एक को कथन (A) तथा दूसरे को कारण (R) कहा गया है:<br><br>" +
+             "<b>कथन (A):</b> यूकैरियोटिक राइबोसोम 80S प्रकार के तथा प्रोकैरियोटिक राइबोसोम 70S प्रकार के होते हैं।<br>" +
+             "<b>कारण (R):</b> दोनों 70S और 80S राइबोसोम दो-दो असमान उपइकाइयों (Subunits) से मिलकर बने होते हैं।",
+          options: [
+            "(A) और (R) दोनों सही हैं और (R), (A) की सही व्याख्या है।",
+            "(A) और (R) दोनों सही हैं लेकिन (R), (A) की सही व्याख्या नहीं है।",
+            "(A) सही है लेकिन (R) गलत है।",
+            "(A) गलत है लेकिन (R) सही है।"
+          ],
+          sol: "NCERT 8.5.6: यूकैरियोटिक 80S व प्रोकैरियोटिक 70S होते हैं (कथन A सही)। दोनों राइबोसोम दो उपइकाइयों (70S = 50S+30S, 80S = 60S+40S) के बने होते हैं (कारण R भी सही)। लेकिन दो उपइकाइयों का होना यह व्याख्या नहीं करता कि एक 80S और दूसरा 70S क्यों है। अतः (B) सही है।"
+        },
+        en: {
+          q: "Given below are two statements labeled as Assertion (A) and Reason (R):<br><br>" +
+             "<b>Assertion (A):</b> Eukaryotic ribosomes are 80S while the prokaryotic ribosomes are 70S.<br>" +
+             "<b>Reason (R):</b> Both 70S and 80S ribosomes are composed of two distinct subunits.",
+          options: [
+            "Both (A) and (R) are true and (R) is the correct explanation of (A).",
+            "Both (A) and (R) are true but (R) is NOT the correct explanation of (A).",
+            "(A) is true but (R) is false.",
+            "(A) is false but (R) is true."
+          ],
+          sol: "NCERT 8.5.6: Both statements are correct, but (R) is not the causal explanation of (A)."
+        }
+      },
+      {
+        id: 35,
+        type: "Cytoskeleton Constituents",
+        key: "C",
+        hi: {
+          q: "NCERT चित्र 8.3 (पादप कोशिका) के अनुसार साइटोपंजर के अंतर्गत कोशिकाद्रव्य में कौन-से तंतु दर्शाए गए हैं?",
+          options: [
+            "केवल कोलेजन तंतु",
+            "केवल मायोसिन तंतु",
+            "सूक्ष्मनलिकाएं (Microtubules), एक्टिन तंतु (Microfilaments) व मध्यवर्ती तंतु (Intermediate filaments)",
+            "केवल इलास्टिन तंतु"
+          ],
+          sol: "NCERT चित्र 8.3 (पादप कोशिका) के लेबलिंग में स्पष्ट लिखा है: सूक्ष्मनलिका (Microtubules), एक्टिन तंतु, और मध्यवर्ती तंतु।"
+        },
+        en: {
+          q: "According to NCERT Figure 8.3, which filamentous structures represent the cytoskeleton in the plant cytoplasm?",
+          options: [
+            "Only collagen fibers",
+            "Only myosin thick filaments",
+            "Microtubules, Actin filaments (microfilaments), and Intermediate filaments",
+            "Only elastin fibers"
+          ],
+          sol: "NCERT Figure 8.3 clearly labels microtubules, actin filaments, and intermediate filaments forming the cytoskeletal meshwork."
+        }
+      },
+
+      // --- 8.5.8 Cilia & Flagella (Q36 - Q40) ---
+      {
+        id: 36,
+        type: "Axoneme 9+2 Pattern",
+        key: "D",
+        hi: {
+          q: "यूकैरियोटिक पक्ष्माभ (Cilia) और कशाभिका (Flagella) के अक्षसूत्र (Axoneme) में सूक्ष्मनलिकाओं की '9 + 2' व्यवस्था का वास्तविक अर्थ क्या है?",
+          options: [
+            "केंद्र में 9 एकल नलिकाएं तथा परिधि पर 2 त्रिक नलिकाएं",
+            "परिधि पर 9 त्रिक नलिकाएं तथा केंद्र में 2 द्विक नलिकाएं",
+            "परिधि पर 9 एकल नलिकाएं तथा केंद्र में 2 एकल नलिकाएं",
+            "परिधि की ओर 9 द्विक (Doublets) अरीय व्यवस्थित तथा केंद्र में एक जोड़ा (2 Singlets) सूक्ष्मनलिकाएं"
+          ],
+          sol: "NCERT 8.5.8: 'अक्षसूत्र के केंद्र में एक जोड़ा सूक्ष्म नलिका मिलती है और नौ द्विक अरीय परिधि की ओर व्यवस्थित सूक्ष्मनलिकाएं होती हैं। अक्षसूत्र की सूक्ष्मनलिकाओं की इस व्यवस्था को 9+2 प्रणाली कहते हैं।' (Option D)."
+        },
+        en: {
+          q: "What is the structural meaning of the '9 + 2' array in the eukaryotic axoneme of cilia and flagella?",
+          options: [
+            "9 central singlets and 2 peripheral triplets",
+            "9 peripheral triplets and 2 central doublets",
+            "9 peripheral singlets and 2 central singlets",
+            "9 radial peripheral doublets and a centrally located pair of single microtubules"
+          ],
+          sol: "NCERT 8.5.8: 'The axoneme usually has nine pairs of radially arranged peripheral doublets, and a pair of centrally located microtubules (9+2 array).'"
+        }
+      },
+      {
+        id: 37,
+        type: "Cilia Paddle Motion",
+        key: "A",
+        hi: {
+          q: "पक्ष्माभ (Cilia) की कार्यप्रणाली के संदर्भ में NCERT के अनुसार सही उपमा कौन-सी है?",
+          options: [
+            "यह चप्पू (Oar) की तरह कार्य करती है, जो कोशिका को या उसके चारों तरफ मिलने वाले द्रव की गति में सहायक है।",
+            "यह पहिए की धुरी की तरह केवल घूर्णन गति करती है।",
+            "यह पेशीय संकुचन की तरह विशुद्ध रूप से स्थिर रहती है।",
+            "यह बिना किसी ऊर्जा के केवल गुरुत्वाकर्षण के कारण झुकती है।"
+          ],
+          sol: "NCERT 8.5.8: 'पक्ष्माभ एक छोटी संरचना चप्पू की तरह कार्य करती है, जो कोशिका को या उसके चारों तरफ मिलने वाले द्रव्य की गति में सहायक है।'"
+        },
+        en: {
+          q: "How does NCERT describe the mechanical action of cilia?",
+          options: [
+            "They work like oars, causing movement of either the cell or the surrounding fluid.",
+            "They rotate exclusively like a fixed screw axle.",
+            "They remain rigidly straight and immobile.",
+            "They bend purely passively due to gravitational forces."
+          ],
+          sol: "NCERT 8.5.8: 'Cilia are small structures which work like oars, causing the movement of either the cell or the surrounding fluid.'"
+        }
+      },
+      {
+        id: 38,
+        type: "Basal Body Origin",
+        key: "B",
+        hi: {
+          q: "पक्ष्माभ (Cilia) और कशाभिका (Flagella) दोनों कोशिका सतह पर किस अंगक-सदृश संरचना से बाहर प्रवर्धित होते हैं?",
+          options: [
+            "गॉल्जी संपुटिका से",
+            "तारककेंद्र-सदृश आधारीकाय (Centriole-like Basal Body) से",
+            "केंद्रक झिल्ली के छिद्र से",
+            "लयनकाय की पुटिका से"
+          ],
+          sol: "NCERT 8.5.8 की अंतिम पंक्ति: 'दोनों पक्ष्माभ व कशाभिका तारक केंद्र सदृश संरचना से बाहर निकलते हैं जिसे आधारीकाय (Basal body) कहते हैं।'"
+        },
+        en: {
+          q: "Both the cilium and flagellum emerge from a centriole-like structure termed the:",
+          options: [
+            "Golgi vesicle",
+            "Basal body",
+            "Nuclear pore",
+            "Lysosomal vacuole"
+          ],
+          sol: "NCERT 8.5.8 states: 'Both the cilium and flagellum emerge from centriole-like structure called the basal bodies.'"
+        }
+      },
+      {
+        id: 39,
+        type: "Spokes & Sheath in Axoneme",
+        key: "C",
+        hi: {
+          q: "पक्ष्माभ/कशाभिका के अक्षसूत्र में केंद्रीय आवरण (Central Sheath) परिधीय द्विकों से किसके द्वारा जुड़ा होता है?",
+          options: [
+            "पेक्टिन तंतुओं द्वारा",
+            "कोलेजन सेतु द्वारा",
+            "अरीय दंडों (Radial Spokes) द्वारा, जिनकी संख्या 9 होती है",
+            "लिपिड द्विसतह द्वारा"
+          ],
+          sol: "NCERT 8.5.8: 'केंद्रीय नलिका केंद्रीय आवरण द्वारा ढके होते हैं, जो परिधीय द्विक के प्रत्येक नलिका को अरीय दंड द्वारा जोड़ते हैं। इस प्रकार नौ अरीय तान (छड़/Radial spokes) बनती हैं।' (Option C)."
+        },
+        en: {
+          q: "In the axoneme, the central tubules are enclosed by a central sheath connected to the peripheral doublets by:",
+          options: [
+            "Pectin strands",
+            "Collagen bridges",
+            "Radial spokes, which are 9 in number",
+            "Lipid bilayer"
+          ],
+          sol: "NCERT 8.5.8: 'Central tubules are connected to one of the tubules of each peripheral doublet by a radial spoke. Hence, there are nine radial spokes.'"
+        }
+      },
+      {
+        id: 40,
+        type: "Prokaryotic vs Eukaryotic Flagella",
+        key: "D",
+        hi: {
+          q: "जीवाणु (प्रोकैरियोटिक) कशाभिका और यूकैरियोटिक कशाभिका में प्रमुख अंतर क्या है?",
+          options: [
+            "जीवाणु कशाभिका जीवद्रव्य झिल्ली से ढकी होती है जबकि यूकैरियोटिक नग्न होती है।",
+            "जीवाणु कशाभिका में 9+2 ट्यूब्यूलिन प्रणाली होती है।",
+            "यूकैरियोटिक कशाभिका फ्लैजेलिन प्रोटीन की बनी होती है।",
+            "जीवाणु कशाभिका संरचनात्मक रूप से भिन्न होती है (फ्लैजेलिन प्रोटीन, 3 भाग: तंतु, अंकुश, आधारीकाय) तथा इसमें 9+2 अक्षसूत्र नहीं होता।"
+          ],
+          sol: "NCERT 8.4.1 व 8.5.8: जीवाणु कशाभिका में फ्लैजेलिन प्रोटीन होता है (तंतु, अंकुश, आधारीकाय) और इसमें झिल्ली आवरण व 9+2 अक्षसूत्र नहीं होता। यूकैरियोटिक कशाभिका ट्यूब्यूलिन प्रोटीन युक्त 9+2 झिल्ली-आवरित संरचना है।"
+        },
+        en: {
+          q: "What is the primary structural difference between prokaryotic and eukaryotic flagella?",
+          options: [
+            "Prokaryotic flagella are covered by plasma membrane while eukaryotic flagella are naked.",
+            "Prokaryotic flagella exhibit the 9+2 tubulin arrangement.",
+            "Eukaryotic flagella are composed of flagellin protein subunits.",
+            "Prokaryotic flagella are structurally distinct (composed of flagellin with filament, hook, basal body) lacking 9+2 axoneme."
+          ],
+          sol: "NCERT 8.4.1 & 8.5.8 highlight that prokaryotic flagella are structurally different from eukaryotic flagella (flagellin vs 9+2 tubulin array)."
+        }
+      },
+
+      // --- 8.5.9 Centrosome & Centrioles (Q41 - Q43) ---
+      {
+        id: 41,
+        type: "Centriole Cartwheel Structure",
+        key: "A",
+        hi: {
+          q: "तारककेंद्र (Centriole) की बैलगाड़ी के पहिए (Cartwheel) जैसी आंतरिक संरचना के संबंध में कौन-सा कथन <b>सत्य</b> है?",
+          options: [
+            "यह 9 समान दूरी पर स्थित परिधीय ट्यूब्यूलिन त्रिकों (Triplets) और केंद्रीय प्रोटीन धुरी (Hub) से मिलकर बनी होती है।",
+            "इसके केंद्र में दो स्पष्ट सूक्ष्मनलिकाएं पाई जाती हैं (9 + 2 व्यवस्था)।",
+            "इसके त्रिक सूत्रक आपस में बिल्कुल नहीं जुड़े होते।",
+            "यह केवल पादप कोशिकाओं में पाया जाता है और जंतु कोशिकाओं में अनुपस्थित होता है।"
+          ],
+          sol: "NCERT 8.5.9: तारककेंद्र में 9 परिधीय त्रिक होते हैं और केंद्र में प्रोटीन धुरी (Hub) होती है (9+0 संरचना), जो पहिए जैसी दिखती है (विकल्प A सही)। जंतु कोशिकाओं में होता है, पादपों में अनुपस्थित होता है।"
+        },
+        en: {
+          q: "Which statement is <b>TRUE</b> regarding the cartwheel organization of a Centriole?",
+          options: [
+            "It consists of nine evenly spaced peripheral triplets of tubulin fibrils connected to a central protein hub.",
+            "Its center contains a central pair of microtubules exhibiting a 9+2 pattern.",
+            "The adjacent triplets are completely disconnected from each other.",
+            "It occurs exclusively in higher plant cells and is absent in animal cells."
+          ],
+          sol: "NCERT 8.5.9: Centrioles have 9 peripheral triplets of tubulin connected to a central hub (9+0 cartwheel structure)."
+        }
+      },
+      {
+        id: 42,
+        type: "Centriole Cell Division Function",
+        key: "B",
+        hi: {
+          q: "जंतु कोशिका विभाजन के समय तर्कु उपकरण (Spindle Apparatus) बनाने वाले तर्कुतंतुओं का निर्माण किसके द्वारा किया जाता है?",
+          options: [
+            "गॉल्जीकाय की पुटिकाओं द्वारा",
+            "तारककेंद्र (Centrioles) द्वारा",
+            "माइटोकॉन्ड्रिया की क्रिस्टी द्वारा",
+            "केंद्रिक (Nucleolus) द्वारा"
+          ],
+          sol: "NCERT 8.5.9 की अंतिम पंक्ति: 'तारककेंद्र पक्ष्माभ व कशाभिका का आधारीकाय बनाता है और तर्कुतंतु जंतु कोशिका विभाजन के दौरान तर्कु उपकरण बनाता है।'"
+        },
+        en: {
+          q: "During animal cell division, spindle fibers that give rise to the spindle apparatus are organized by:",
+          options: [
+            "Golgi vesicles",
+            "Centrioles",
+            "Mitochondrial cristae",
+            "Nucleolus"
+          ],
+          sol: "NCERT 8.5.9 states: 'Centrioles form the basal body of cilia/flagella, and spindle fibres that give rise to spindle apparatus during cell division in animal cells.'"
+        }
+      },
+      {
+        id: 43,
+        type: "Perpendicular Alignment",
+        key: "C",
+        hi: {
+          q: "तारककाय (Centrosome) में दोनों तारककेंद्र (Centrioles) एक-दूसरे के सापेक्ष किस विन्यास में स्थित होते हैं?",
+          options: [
+            "180° पर एक सीधी रेखा में",
+            "एक-दूसरे के समानांतर (Parallel)",
+            "एक-दूसरे के लंबवत् (Perpendicular, 90° पर)",
+            "अनियमित रूप से तैरते हुए"
+          ],
+          sol: "NCERT 8.5.9: 'दोनों तारककेंद्र तारककाय में एक दूसरे के लंबवत् (Perpendicular) स्थित होते हैं, जिसमें प्रत्येक की संरचना बैलगाड़ी के पहिए जैसी होती है।' (Option C)."
+        },
+        en: {
+          q: "In a centrosome, what is the spatial orientation of the two centrioles relative to each other?",
+          options: [
+            "Collinear at 180°",
+            "Parallel to each other",
+            "Perpendicular to each other (at 90°)",
+            "Randomly floating in opposite directions"
+          ],
+          sol: "NCERT 8.5.9 clearly states: 'Both the centrioles in a centrosome lie perpendicular to each other.'"
+        }
+      },
+
+      // --- 8.5.10 Nucleus, Chromatin & Chromosomes (Q44 - Q49) ---
+      {
+        id: 44,
+        type: "Nucleus Discovery & History",
+        key: "D",
+        hi: {
+          q: "केंद्रक (Nucleus) की खोज और क्रोमैटिन नामकरण के संदर्भ में वैज्ञानिकों का सही मिलान कौन-सा है?",
+          options: [
+            "रॉबर्ट हुक (1831) एवं श्लाइडेन",
+            "कैमिलो गॉल्जी (1898) एवं थियोडोर श्वान",
+            "जॉर्ज पैलेड (1953) एवं रुडोल्फ विर्चो",
+            "रॉबर्ट ब्राउन (1831 में केंद्रक की खोज) एवं फ्लेमिंग (क्षारीय रंग से रंजित पदार्थ को क्रोमैटिन नाम दिया)"
+          ],
+          sol: "NCERT 8.5.10: केंद्रक की खोज सर्वप्रथम रॉबर्ट ब्राउन ने 1831 में की तथा फ्लेमिंग ने केंद्रक में मिलने वाले क्षारीय रंग से रंजित पदार्थ को 'क्रोमैटिन' नाम दिया।"
+        },
+        en: {
+          q: "Which pair of scientists correctly represents the discovery of the nucleus and the naming of chromatin?",
+          options: [
+            "Robert Hooke (1831) and Schleiden",
+            "Camillo Golgi (1898) and Schwann",
+            "George Palade (1953) and Virchow",
+            "Robert Brown (discovered nucleus in 1831) and Flemming (coined chromatin for basic dye stained material)"
+          ],
+          sol: "NCERT 8.5.10: Robert Brown described nucleus in 1831; Flemming coined the term chromatin."
+        }
+      },
+      {
+        id: 45,
+        type: "Perinuclear Space Dimensions",
+        key: "A",
+        hi: {
+          q: "केंद्रक आवरण (Nuclear Envelope) की दोनों समानांतर झिल्लियों के बीच स्थित रिक्त स्थान (परिकेंद्रकी अवकाश / Perinuclear Space) की चौड़ाई कितनी होती है?",
+          options: ["10 से 50 नैनोमीटर (nm)", "1 से 2 माइक्रोमीटर (µm)", "0.1 से 0.5 नैनोमीटर", "100 से 200 नैनोमीटर"],
+          sol: "NCERT 8.5.10: 'केंद्रक आवरण दो समानांतर झिल्लियों से बना होता है, जिनके बीच 10 से 50 नैनोमीटर (nm) का रिक्त स्थान पाया जाता है जिसे परिकेंद्रकी अवकाश कहते हैं।' (Option A)."
+        },
+        en: {
+          q: "What is the width of the perinuclear space present between the two parallel membranes of the nuclear envelope?",
+          options: ["10 to 50 nm", "1 to 2 µm", "0.1 to 0.5 nm", "100 to 200 nm"],
+          sol: "NCERT 8.5.10: 'Nuclear envelope consists of two parallel membranes with a space between (10 to 50 nm) called the perinuclear space.'"
+        }
+      },
+      {
+        id: 46,
+        type: "Enucleated Living Cells",
+        key: "B",
+        hi: {
+          q: "निम्नलिखित में से कौन-सी परिपक्व सजीव कोशिकाएं केंद्रक रहित (Enucleated) होती हैं?<br><br>" +
+             "1. स्तनधारियों की परिपक्व लाल रक्त कणिकाएं (Erythrocytes/RBCs)<br>" +
+             "2. संवहनी पादपों की चालनी नलिका कोशिकाएं (Sieve Tube Elements)<br>" +
+             "3. पत्तियों की रक्षक कोशिकाएं (Guard Cells)<br><br>" +
+             "सही विकल्प चुनिए:",
+          options: ["केवल 1 और 3", "केवल 1 और 2", "केवल 2 और 3", "1, 2 और 3 सभी"],
+          sol: "NCERT 8.5.10: 'कुछ परिपक्व कोशिकाएं केंद्रक रहित होती हैं जैसे- स्तनधारी जीवों की रक्ताणु (RBCs) व संवहनी पौधों में चालनी नलिका (Sieve tube elements) कोशिका।' रक्षक कोशिकाओं में स्पष्ट केंद्रक होता है। अतः केवल 1 और 2 सही हैं।"
+        },
+        en: {
+          q: "Which of the following mature living cells lack a nucleus (enucleated)?<br><br>" +
+             "1. Mature erythrocytes of mammals (RBCs)<br>" +
+             "2. Sieve tube elements of vascular plants<br>" +
+             "3. Guard cells of stomata in leaves<br><br>" +
+             "Choose the correct option:",
+          options: ["1 and 3 only", "1 and 2 only", "2 and 3 only", "All 1, 2 and 3"],
+          sol: "NCERT 8.5.10 explicitly mentions mature mammalian erythrocytes and sieve tube cells of vascular plants as living cells lacking a nucleus."
+        }
+      },
+      {
+        id: 47,
+        type: "Human DNA Length & Chromosome Count",
+        key: "C",
+        hi: {
+          q: "मनुष्य की एक एकल कायिक कोशिका में लगभग कितने मीटर लंबा डीएनए सूत्र कितने गुणसूत्रों में वितरित रहता है?",
+          options: [
+            "लगभग 1 मीटर लंबा डीएनए सूत्र 23 गुणसूत्रों में",
+            "लगभग 4 मीटर लंबा डीएनए सूत्र 92 गुणसूत्रों में",
+            "लगभग 2 मीटर लंबा डीएनए सूत्र 46 गुणसूत्रों (23 जोड़ों) में",
+            "लगभग 0.5 मीटर लंबा डीएनए सूत्र 46 गुणसूत्रों में"
+          ],
+          sol: "NCERT 8.5.10: 'मनुष्य की एक कोशिका में लगभग दो मीटर लंबा डीएनए सूत्र 46 गुणसूत्रों (23 जोड़ों) में बिखरा होता है।' (Option C)."
+        },
+        en: {
+          q: "In a single human somatic cell, approximately how long is the DNA thread distributed across the chromosomes?",
+          options: [
+            "Approximately 1 meter thread distributed across 23 chromosomes",
+            "Approximately 4 meters thread distributed across 92 chromosomes",
+            "Approximately 2 meters thread distributed among 46 chromosomes (23 pairs)",
+            "Approximately 0.5 meter thread distributed among 46 chromosomes"
+          ],
+          sol: "NCERT 8.5.10 states: 'A single human cell has approximately two metre long thread of DNA distributed among its forty-six (twenty-three pairs) chromosomes.'"
+        }
+      },
+      {
+        id: 48,
+        type: "Kinetochore Function",
+        key: "D",
+        hi: {
+          q: "गुणसूत्रबिंदु (Centromere) की बाह्य सतह पर उपस्थित बिंब (डिस्क) के आकार की प्रोटीन संरचना को क्या कहते हैं?",
+          options: ["सैटेलाइट (Satellite)", "क्रोमोमियर (Chromomere)", "धुरी (Hub)", "काइनेटोकोर (Kinetochore)"],
+          sol: "NCERT 8.5.10: 'प्रत्येक गुणसूत्र में एक प्राथमिक संकीर्णन मिलता है जिसे गुणसूत्रबिंदु (Centromere) कहते हैं। इस पर बिंब आकार की संरचना मिलती है जिसे काइनेटोकोर कहते हैं।' (Option D)."
+        },
+        en: {
+          q: "What is the disc-shaped proteinaceous structure present on the sides of the primary constriction (centromere) called?",
+          options: ["Satellite", "Chromomere", "Hub", "Kinetochore"],
+          sol: "NCERT 8.5.10: 'Disc shaped structures called kinetochores are present on the sides of the centromere.'"
+        }
+      },
+      {
+        id: 49,
+        type: "Satellite & Secondary Constriction",
+        key: "A",
+        hi: {
+          q: "कुछ गुणसूत्रों में निश्चित स्थानों पर मिलने वाले अरंजित (Non-staining) द्वितीय संकीर्णन (Secondary Constriction) के कारण बनने वाले छोटे अंश को क्या कहा जाता है?",
+          options: ["अनुषंगी (सैटेलाइट / Satellite)", "काइनेटोकोर", "टिलोमियर", "सेंट्रोसोम"],
+          sol: "NCERT 8.5.10: 'कभी-कभी एकाध गुणसूत्र में निश्चित स्थानों पर अरंजित द्वितीय संकीर्णन भी मिलता है जो गुणसूत्र के छोटे से अंश के रूप में दिखाई पड़ता है जिसे अनुषंगी (सैटेलाइट) कहते हैं।' (Option A)."
+        },
+        en: {
+          q: "The small fragment of chromosome formed beyond a non-staining secondary constriction at a constant location is termed:",
+          options: ["Satellite", "Kinetochore", "Telomere", "Centrosome"],
+          sol: "NCERT 8.5.10: 'A few chromosomes have non-staining secondary constrictions at a constant location. This gives the appearance of a small fragment called the satellite.'"
+        }
+      },
+
+      // --- 8.5.11 Microbodies (Q50) ---
+      {
+        id: 50,
+        type: "Microbodies Fact",
+        key: "B",
+        hi: {
+          q: "सूक्ष्मकाय (Microbodies) के संबंध में निम्नलिखित में से कौन-सा कथन <b>पूर्णतया सत्य</b> है?",
+          options: [
+            "ये केवल जीवाणुओं में पाई जाने वाली अनावृत डीएनए संरचनाएं हैं।",
+            "ये झिल्ली आवरित सूक्ष्म थैलियां हैं जिनमें विभिन्न प्रकार के एंजाइम मिलते हैं और ये पौधों व जंतु दोनों में पाई जाती हैं।",
+            "ये केवल जन्तुओं में पाई जाने वाली दोहरी झिल्लीयुक्त एटीपी उत्पादक संरचनाएं हैं।",
+            "ये प्रकाश संश्लेषण के दौरान केवल CO2 स्थिरीकरण का कार्य करती हैं।"
+          ],
+          sol: "NCERT 8.5.11: 'बहुत सारी झिल्ली आवरित सूक्ष्म थैलियाँ जिसमें विभिन्न प्रकार के एंजाइम मिलते हैं, ये पौधों व जंतु कोशिकाओं में पाई जाती हैं।' (Option B)."
+        },
+        en: {
+          q: "Which statement is <b>ENTIRELY TRUE</b> regarding Microbodies?",
+          options: [
+            "They are naked circular DNA structures found exclusively in bacteria.",
+            "They are membrane-bound minute vesicles that contain various enzymes and are present in both plant and animal cells.",
+            "They are double membrane-bound ATP generating structures found only in animals.",
+            "They function exclusively in fixing CO2 during photosynthesis."
+          ],
+          sol: "NCERT 8.5.11 states: 'Many membrane bound minute vesicles called microbodies that contain various enzymes, are present in both plant and animal cells.'"
+        }
+      }
+    ];
+
+    // State Variables
+    let currentIdx = 0;
+    let userAnswers = {}; // { qIndex: selectedOptionKeyIndex }
+    let markedForReview = new Set();
+    let currentLang = 'hi'; // 'hi' or 'en'
+    let timeRemaining = 120 * 60; // 120 minutes in seconds
+    let timerInterval = null;
+    let isSubmitted = false;
+
+    // DOM Elements
+    const fullScreenGate = document.getElementById('fullScreenGate');
+    const startTestBtn = document.getElementById('startTestBtn');
+    const timerDisplay = document.getElementById('timerDisplay');
+    const langToggleBtn = document.getElementById('langToggleBtn');
+    const langLabel = document.getElementById('langLabel');
+    const qNumBadge = document.getElementById('qNumBadge');
+    const reviewTag = document.getElementById('reviewTag');
+    const qPrompt = document.getElementById('qPrompt');
+    const optionsContainer = document.getElementById('optionsContainer');
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+    const clearBtn = document.getElementById('clearBtn');
+    const markReviewBtn = document.getElementById('markReviewBtn');
+    const submitTestBtn = document.getElementById('submitTestBtn');
+    const instantFeedbackBox = document.getElementById('instantFeedbackBox');
+    const feedbackAlert = document.getElementById('feedbackAlert');
+    const feedbackStatus = document.getElementById('feedbackStatus');
+    const correctKeyBadge = document.getElementById('correctKeyBadge');
+    const solutionText = document.getElementById('solutionText');
+
+    // Score Modal Elements
+    const scoreModal = document.getElementById('scoreModal');
+    const mTotal = document.getElementById('mTotal');
+    const mScore = document.getElementById('mScore');
+    const mCorrect = document.getElementById('mCorrect');
+    const mIncorrect = document.getElementById('mIncorrect');
+    const mLeft = document.getElementById('mLeft');
+    const mAccuracy = document.getElementById('mAccuracy');
+    const reviewModeBtn = document.getElementById('reviewModeBtn');
+
+    // Key to Index Mapping helpers
+    const keyMap = { 'A': 0, 'B': 1, 'C': 2, 'D': 3 };
+    const indexToKey = ['A', 'B', 'C', 'D'];
+
+    // 1. Mandatory Auto Full Screen Gate
+    startTestBtn.addEventListener('click', () => {
+      const docElm = document.documentElement;
+      if (docElm.requestFullscreen) {
+        docElm.requestFullscreen().catch(err => console.log(err));
+      } else if (docElm.mozRequestFullScreen) {
+        docElm.mozRequestFullScreen();
+      } else if (docElm.webkitRequestFullScreen) {
+        docElm.webkitRequestFullScreen();
+      } else if (docElm.msRequestFullscreen) {
+        docElm.msRequestFullscreen();
+      }
+
+      fullScreenGate.classList.add('hidden');
+      startTimer();
+      renderQuestion();
+    });
+
+    // 2. Timer Engine
+    function startTimer() {
+      timerInterval = setInterval(() => {
+        if (timeRemaining <= 0) {
+          clearInterval(timerInterval);
+          submitTest();
+          return;
+        }
+        timeRemaining--;
+        const mins = Math.floor(timeRemaining / 60);
+        const secs = timeRemaining % 60;
+        timerDisplay.textContent = `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
+      }, 1000);
+    }
+
+    // 3. Language Switcher
+    langToggleBtn.addEventListener('click', () => {
+      currentLang = (currentLang === 'hi') ? 'en' : 'hi';
+      langLabel.textContent = (currentLang === 'hi') ? 'English' : 'हिंदी';
+      renderQuestion();
+    });
+
+    // 4. Render Current Question
+    function renderQuestion() {
+      const q = questionsData[currentIdx];
+      const langContent = q[currentLang];
+      const correctIdx = keyMap[q.key];
+      const selected = userAnswers[currentIdx];
+
+      // Meta updates
+      qNumBadge.textContent = `${currentLang === 'hi' ? 'प्रश्न' : 'Question'} ${currentIdx + 1} / ${questionsData.length} • [${q.type}]`;
+      
+      if (markedForReview.has(currentIdx)) {
+        reviewTag.classList.remove('hidden');
+      } else {
+        reviewTag.classList.add('hidden');
+      }
+
+      // Prompt Render
+      qPrompt.innerHTML = langContent.q;
+
+      // Options Render
+      optionsContainer.innerHTML = '';
+      langContent.options.forEach((optText, oIdx) => {
+        const optLetter = indexToKey[oIdx];
+        const isUserChoice = (selected === oIdx);
+        const isTheCorrectKey = (oIdx === correctIdx);
+
+        let borderClass = "border-slate-200 bg-white hover:bg-slate-50";
+        let badgeClass = "bg-slate-100 text-slate-700 border-slate-300";
+
+        // If an option has been selected
+        if (selected !== undefined) {
+          if (isTheCorrectKey) {
+            borderClass = "border-emerald-500 bg-emerald-50/70 text-emerald-900";
+            badgeClass = "bg-emerald-600 text-white border-emerald-600";
+          } else if (isUserChoice && !isTheCorrectKey) {
+            borderClass = "border-rose-500 bg-rose-50/70 text-rose-900";
+            badgeClass = "bg-rose-600 text-white border-rose-600";
+          }
+        }
+
+        const optBtn = document.createElement('button');
+        optBtn.className = `w-full text-left p-3 rounded-xl border-2 transition-all flex items-start gap-3 ${borderClass} active:scale-[0.99]`;
+        optBtn.innerHTML = `
+          <span class="w-6 h-6 rounded-lg border font-bold text-xs flex items-center justify-center shrink-0 mt-0.5 ${badgeClass}">${optLetter}</span>
+          <span class="text-xs sm:text-sm font-medium leading-relaxed">${optText}</span>
+        `;
+
+        optBtn.addEventListener('click', () => {
+          handleOptionSelection(oIdx);
+        });
+
+        optionsContainer.appendChild(optBtn);
+      });
+
+      // Instant Solution / Verification display
+      if (selected !== undefined) {
+        instantFeedbackBox.classList.remove('hidden');
+        const isRight = (selected === correctIdx);
+        
+        if (isRight) {
+          feedbackAlert.className = "p-3 rounded-xl mb-2 text-xs sm:text-sm font-bold flex items-center justify-between bg-emerald-500 text-white";
+          feedbackStatus.innerHTML = `<i class="fa-solid fa-circle-check mr-1.5"></i> ${currentLang === 'hi' ? 'शानदार! आपका उत्तर सही है।' : 'Correct Answer!'}`;
+        } else {
+          feedbackAlert.className = "p-3 rounded-xl mb-2 text-xs sm:text-sm font-bold flex items-center justify-between bg-rose-500 text-white";
+          feedbackStatus.innerHTML = `<i class="fa-solid fa-circle-xmark mr-1.5"></i> ${currentLang === 'hi' ? 'गलत उत्तर! सही उत्तर नीचे देखें।' : 'Incorrect Choice!'}`;
+        }
+        correctKeyBadge.textContent = `Correct: (${q.key})`;
+        solutionText.innerHTML = langContent.sol;
+      } else {
+        instantFeedbackBox.classList.add('hidden');
+      }
+
+      // Prev Button state
+      prevBtn.disabled = (currentIdx === 0);
+      prevBtn.style.opacity = (currentIdx === 0) ? '0.4' : '1';
+    }
+
+    // 5. Option Select Handler (Instant Answer Trigger)
+    function handleOptionSelection(optionIndex) {
+      userAnswers[currentIdx] = optionIndex;
+      renderQuestion();
+    }
+
+    // 6. Navigation Buttons Event Handlers
+    nextBtn.addEventListener('click', () => {
+      if (currentIdx < questionsData.length - 1) {
+        currentIdx++;
+        renderQuestion();
+      }
+    });
+
+    prevBtn.addEventListener('click', () => {
+      if (currentIdx > 0) {
+        currentIdx--;
+        renderQuestion();
+      }
+    });
+
+    clearBtn.addEventListener('click', () => {
+      delete userAnswers[currentIdx];
+      renderQuestion();
+    });
+
+    markReviewBtn.addEventListener('click', () => {
+      if (markedForReview.has(currentIdx)) {
+        markedForReview.delete(currentIdx);
+      } else {
+        markedForReview.add(currentIdx);
+      }
+      renderQuestion();
+    });
+
+    // 7. Test Submission & Scoring
+    submitTestBtn.addEventListener('click', () => {
+      const confirmSubmit = confirm("क्या आप निश्चित रूप से 50 प्रश्नों का टेस्ट सबमिट करना चाहते हैं?");
+      if (confirmSubmit) {
+        submitTest();
+      }
+    });
+
+    function submitTest() {
+      clearInterval(timerInterval);
+      isSubmitted = true;
+
+      let correctCount = 0;
+      let incorrectCount = 0;
+      let unattempted = 0;
+
+      questionsData.forEach((q, idx) => {
+        const correctIdx = keyMap[q.key];
+        const userChoice = userAnswers[idx];
+
+        if (userChoice === undefined) {
+          unattempted++;
+        } else if (userChoice === correctIdx) {
+          correctCount++;
+        } else {
+          incorrectCount++;
+        }
+      });
+
+      // Marks calculation: +2.00 for correct, -0.20 for incorrect
+      const totalMarks = (correctCount * 2.0) - (incorrectCount * 0.20);
+      const totalAttempted = correctCount + incorrectCount;
+      const accuracy = totalAttempted > 0 ? ((correctCount / totalAttempted) * 100).toFixed(1) : 0;
+
+      // Fill Score Modal
+      mTotal.textContent = questionsData.length;
+      mScore.textContent = totalMarks.toFixed(2);
+      mCorrect.textContent = `${correctCount} (+${(correctCount * 2).toFixed(1)})`;
+      mIncorrect.textContent = `${incorrectCount} (-${(incorrectCount * 0.20).toFixed(2)})`;
+      mLeft.textContent = unattempted;
+      mAccuracy.textContent = `${accuracy}%`;
+
+      scoreModal.classList.remove('hidden');
+      scoreModal.classList.add('flex');
+    }
+
+    reviewModeBtn.addEventListener('click', () => {
+      scoreModal.classList.add('hidden');
+      scoreModal.classList.remove('flex');
+      currentIdx = 0;
+      renderQuestion();
+    });
+
+  </script>
+</body>
+</html>
