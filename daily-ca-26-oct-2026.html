@@ -1,0 +1,997 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>GYANVERSE Daily CBT Mock Test - 26 Oct 2026</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Hind:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Hind', 'Inter', sans-serif;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .custom-scrollbar::-webkit-scrollbar {
+      width: 5px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-track {
+      background: #f1f5f9;
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb {
+      background: #cbd5e1;
+      border-radius: 4px;
+    }
+  </style>
+</head>
+<body class="bg-slate-100 text-slate-800 antialiased min-h-screen flex flex-col justify-between selection:bg-indigo-500 selection:text-white">
+
+  <!-- ==================== 1. START SCREEN / FULLSCREEN GATE OVERLAY ==================== -->
+  <div id="gateOverlay" class="fixed inset-0 z-50 bg-slate-900/95 backdrop-blur-md flex items-center justify-center p-4">
+    <div class="bg-white max-w-md w-full rounded-2xl shadow-2xl p-6 text-center border border-indigo-100 transform transition-all">
+      <div class="w-16 h-16 bg-indigo-100 text-indigo-700 rounded-2xl flex items-center justify-center mx-auto mb-4 text-2xl font-bold shadow-inner">
+        GV
+      </div>
+      <h1 class="text-2xl font-extrabold text-slate-800 tracking-tight">GYANVERSE (ज्ञानवर्स)</h1>
+      <p class="text-xs font-semibold text-indigo-600 uppercase tracking-widest mt-1">Daily CBT Assessment Series</p>
+      
+      <div class="my-5 p-4 bg-slate-50 rounded-xl text-left border border-slate-200 text-sm space-y-2">
+        <div class="flex justify-between items-center text-slate-600">
+          <span>Date / Source:</span>
+          <span class="font-bold text-slate-900">26 Oct 2026 Bulletin</span>
+        </div>
+        <div class="flex justify-between items-center text-slate-600">
+          <span>Total Questions:</span>
+          <span class="font-bold text-slate-900" id="gateTotalQ">15 MCQs</span>
+        </div>
+        <div class="flex justify-between items-center text-slate-600">
+          <span>Total Time:</span>
+          <span class="font-bold text-slate-900">120 Minutes</span>
+        </div>
+        <div class="flex justify-between items-center text-slate-600">
+          <span>Marking Scheme:</span>
+          <span class="font-bold text-emerald-600">+2.00</span> / <span class="font-bold text-rose-600">-0.20</span>
+        </div>
+      </div>
+
+      <div class="mb-5 text-xs text-slate-500 bg-amber-50 p-2.5 rounded-lg border border-amber-200">
+        ⚠️ <strong>Note:</strong> Test starts strictly in Full-Screen mode. Instant answer verification & bilingual toggle enabled.
+      </div>
+
+      <button id="startTestBtn" class="w-full py-3.5 px-6 bg-gradient-to-r from-indigo-600 to-indigo-700 hover:from-indigo-700 hover:to-indigo-800 text-white font-bold rounded-xl shadow-lg shadow-indigo-500/30 transition duration-200 flex items-center justify-center space-x-2 text-base">
+        <span>Start Test (Auto Full Screen)</span>
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+        </svg>
+      </button>
+
+      <div class="mt-4 text-xs text-slate-500">
+        Join Official Telegram: <a href="https://t.me/GYANVERSET" target="_blank" class="text-indigo-600 font-bold hover:underline">@GYANVERSET</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== 2. MAIN APP CONTAINER ==================== -->
+  <div id="testApp" class="flex flex-col min-h-screen">
+    
+    <!-- Top Header Bar -->
+    <header class="sticky top-0 z-40 bg-white border-b border-slate-200 shadow-sm px-4 py-3 sm:px-6 flex items-center justify-between">
+      <div class="flex items-center space-x-3">
+        <div class="bg-indigo-600 text-white font-black text-lg px-2.5 py-1 rounded-lg">GV</div>
+        <div>
+          <h2 class="text-base font-bold text-slate-800 leading-tight">GYANVERSE CBT</h2>
+          <p class="text-[11px] text-slate-500">26 Oct 2026 Special Mock</p>
+        </div>
+      </div>
+
+      <!-- Live Timer & Language & Submit -->
+      <div class="flex items-center space-x-2 sm:space-x-3">
+        <!-- Language Switcher -->
+        <button id="langToggleBtn" class="px-2.5 py-1.5 text-xs font-semibold bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-lg border border-slate-300 transition">
+          <span id="langDisplay">ENG</span>
+        </button>
+
+        <!-- Timer -->
+        <div class="flex items-center bg-rose-50 border border-rose-200 text-rose-700 px-3 py-1.5 rounded-lg text-xs sm:text-sm font-mono font-bold">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1 text-rose-500 animate-pulse" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+          </svg>
+          <span id="timerCountdown">120:00</span>
+        </div>
+
+        <!-- Submit Button in Header -->
+        <button id="headerSubmitBtn" class="bg-emerald-600 hover:bg-emerald-700 text-white text-xs sm:text-sm font-bold px-3.5 py-1.5 rounded-lg shadow-sm transition">
+          Submit
+        </button>
+      </div>
+    </header>
+
+    <!-- Question Viewport (Full Width, No Palette Grid) -->
+    <main class="flex-1 w-full max-w-4xl mx-auto p-4 sm:p-6 flex flex-col justify-start">
+      
+      <!-- Progress & Status Info -->
+      <div class="flex items-center justify-between mb-3 text-xs sm:text-sm font-semibold text-slate-500 border-b border-slate-200 pb-2">
+        <span class="text-indigo-600 font-bold" id="qCurrentProgress">Question 01 / 15</span>
+        <div class="flex items-center space-x-3">
+          <span class="inline-flex items-center text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded text-xs font-bold">+2.00</span>
+          <span class="inline-flex items-center text-rose-600 bg-rose-50 px-2 py-0.5 rounded text-xs font-bold">-0.20</span>
+          <span id="reviewStatusBadge" class="hidden text-amber-700 bg-amber-100 px-2 py-0.5 rounded text-xs font-bold">Marked For Review</span>
+        </div>
+      </div>
+
+      <!-- Active Question Box -->
+      <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-4 sm:p-6 mb-4 transition-all">
+        
+        <!-- Question Content -->
+        <div id="questionContainer" class="text-slate-800 text-sm sm:text-base leading-relaxed font-medium mb-5">
+          <!-- Injected via JavaScript -->
+        </div>
+
+        <!-- Options Container -->
+        <div id="optionsContainer" class="space-y-2.5 mb-5">
+          <!-- Injected via JavaScript -->
+        </div>
+
+        <!-- Instant Answer / Explanation Container (Appears immediately on click) -->
+        <div id="instantFeedbackBox" class="hidden rounded-xl p-4 text-xs sm:text-sm transition-all border mb-4">
+          <!-- Injected via JavaScript -->
+        </div>
+
+        <!-- Navigation Buttons: Exactly below options for effortless mobile touch access -->
+        <div class="grid grid-cols-4 gap-2 pt-3 border-t border-slate-100">
+          <button id="prevBtn" class="py-2.5 px-3 bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs sm:text-sm font-bold rounded-xl transition flex items-center justify-center">
+            ← Prev
+          </button>
+          
+          <button id="clearBtn" class="py-2.5 px-3 bg-rose-50 hover:bg-rose-100 text-rose-700 border border-rose-200 text-xs sm:text-sm font-bold rounded-xl transition">
+            Clear
+          </button>
+          
+          <button id="reviewBtn" class="py-2.5 px-3 bg-amber-50 hover:bg-amber-100 text-amber-700 border border-amber-200 text-xs sm:text-sm font-bold rounded-xl transition">
+            Review
+          </button>
+          
+          <button id="nextBtn" class="py-2.5 px-3 bg-indigo-600 hover:bg-indigo-700 text-white text-xs sm:text-sm font-bold rounded-xl shadow transition flex items-center justify-center">
+            Next →
+          </button>
+        </div>
+
+        <!-- Watermark / Official Branding Tag -->
+        <div class="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-[11px] font-semibold text-slate-400">
+          <span>Source: GYANVERSE 26-Oct-2026 Bulletin</span>
+          <a href="https://t.me/GYANVERSET" target="_blank" class="text-indigo-600 hover:underline">@GYANVERSET</a>
+        </div>
+      </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-white border-t border-slate-200 py-3 text-center text-xs text-slate-500">
+      ज्ञानवर्स शिक्षा | ऐसे सभी ऑनलाइन टेस्ट और मुफ्त PDF के लिए टेलीग्राम जॉइन करें: <a href="https://t.me/GYANVERSET" target="_blank" class="text-indigo-600 font-bold hover:underline">@GYANVERSET</a>
+    </footer>
+  </div>
+
+  <!-- ==================== 3. DETAILED SCORECARD MODAL ==================== -->
+  <div id="scoreModal" class="fixed inset-0 z-50 bg-slate-900/90 backdrop-blur-sm hidden items-center justify-center p-4">
+    <div class="bg-white max-w-lg w-full rounded-2xl shadow-2xl p-6 border border-slate-200 max-h-[92vh] overflow-y-auto custom-scrollbar">
+      
+      <div class="text-center mb-5">
+        <span class="inline-block p-3 bg-emerald-100 text-emerald-700 rounded-full text-2xl font-black mb-2">✓</span>
+        <h3 class="text-xl font-black text-slate-800">Test Completed!</h3>
+        <p class="text-xs text-slate-500">GYANVERSE Real Exam Performance Report</p>
+      </div>
+
+      <!-- Score Summary Cards -->
+      <div class="grid grid-cols-2 gap-3 mb-5">
+        <div class="bg-indigo-50 border border-indigo-100 p-3 rounded-xl text-center">
+          <div class="text-xs text-indigo-600 font-bold">Total Score</div>
+          <div id="finalScore" class="text-2xl font-black text-indigo-700 mt-1">0.00</div>
+          <div class="text-[10px] text-slate-400">Max Marks: 30.00</div>
+        </div>
+        <div class="bg-emerald-50 border border-emerald-100 p-3 rounded-xl text-center">
+          <div class="text-xs text-emerald-600 font-bold">Accuracy</div>
+          <div id="finalAccuracy" class="text-2xl font-black text-emerald-700 mt-1">0%</div>
+          <div class="text-[10px] text-slate-400">Accuracy Rate</div>
+        </div>
+      </div>
+
+      <!-- Breakdown Table -->
+      <div class="bg-slate-50 rounded-xl p-3 border border-slate-200 text-xs space-y-2 mb-5">
+        <div class="flex justify-between font-semibold">
+          <span class="text-slate-600">Total Questions:</span>
+          <span class="text-slate-900 font-bold" id="statTotal">15</span>
+        </div>
+        <div class="flex justify-between font-semibold">
+          <span class="text-emerald-600">Correct Answers (+2.00 each):</span>
+          <span class="text-emerald-700 font-bold" id="statCorrect">0</span>
+        </div>
+        <div class="flex justify-between font-semibold">
+          <span class="text-rose-600">Incorrect Answers (-0.20 each):</span>
+          <span class="text-rose-700 font-bold" id="statWrong">0</span>
+        </div>
+        <div class="flex justify-between font-semibold">
+          <span class="text-slate-500">Unattempted / Left:</span>
+          <span class="text-slate-700 font-bold" id="statLeft">0</span>
+        </div>
+      </div>
+
+      <!-- Action Buttons -->
+      <div class="space-y-2.5">
+        <button id="reviewSolutionBtn" class="w-full py-3 bg-indigo-600 hover:bg-indigo-700 text-white font-bold rounded-xl transition text-sm">
+          Review All Solutions (हल देखें)
+        </button>
+        <a href="https://t.me/GYANVERSET" target="_blank" class="w-full py-3 bg-sky-500 hover:bg-sky-600 text-white font-bold rounded-xl transition text-sm flex items-center justify-center space-x-1.5">
+          <span>Join Official Telegram @GYANVERSET</span>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== 4. CBT JAVASCRIPT ENGINE ==================== -->
+  <script>
+    // Blueprint-based 15 standard high-level questions from uploaded 26 Oct 2026 Current Affairs PDF
+    const questionBank = [
+      {
+        id: 1,
+        type: "multi_statement",
+        hindi: {
+          question: `5वें एशियन पैरा गेम्स 2026 के संदर्भ में निम्नलिखित कथनों पर विचार कीजिए:
+1. भारत ने कुल 114 पदक (30 स्वर्ण, 35 रजत और 49 कांस्य) जीतकर पदक तालिका में चौथा स्थान प्राप्त किया।
+2. पदक तालिका में शीर्ष तीन देश क्रमशः चीन, जापान और उज़्बेकिस्तान रहे।
+3. भारत के लिए सर्वाधिक पदक पैरा बैडमिंटन में प्राप्त हुए।
+उपर्युक्त कथनों में से कौन-सा/से सही है/हैं?`,
+          options: [
+            "केवल 1 और 2",
+            "केवल 2 और 3",
+            "1, 2 और 3",
+            "केवल 1 और 3"
+          ],
+          explanation: `<strong>विस्तृत व्याख्या:</strong><br>
+• कथन 1 सही है: भारत ने 5वें एशियन पैरा गेम्स (आइची-नागोया, जापान) में कुल 114 पदक (30 स्वर्ण, 35 रजत, 49 कांस्य) जीतकर चौथा स्थान प्राप्त किया।<br>
+• कथन 2 सही है: शीर्ष 3 टीमें क्रमशः 1. चीन, 2. जापान, 3. उज़्बेकिस्तान रहीं।<br>
+• कथन 3 गलत है: भारत के सबसे सफल खेल पैरा एथलेटिक्स (65 पदक) थे, जबकि पैरा बैडमिंटन में 16 पदक मिले थे। अतः केवल कथन 1 और 2 सही हैं।`
+        },
+        english: {
+          question: `Consider the following statements regarding the 5th Asian Para Games 2026:
+1. India secured the 4th position in the medal tally by winning a total of 114 medals (30 Gold, 35 Silver, 49 Bronze).
+2. The top three nations in the medal tally were China, Japan, and Uzbekistan respectively.
+3. The highest number of medals for India came from Para Badminton.
+Which of the statements given above is/are correct?`,
+          options: [
+            "1 and 2 only",
+            "2 and 3 only",
+            "1, 2 and 3",
+            "1 and 3 only"
+          ],
+          explanation: `<strong>Detailed Explanation:</strong><br>
+• Statement 1 is correct: India finished 4th with 114 medals (30 Gold, 35 Silver, 49 Bronze).<br>
+• Statement 2 is correct: Top three nations were China (1st), Japan (2nd), and Uzbekistan (3rd).<br>
+• Statement 3 is incorrect: India's most successful discipline was Para Athletics (65 medals), not Para Badminton (16 medals). Hence, only 1 and 2 are correct.`
+        },
+        answer: 0 // (A)
+      },
+      {
+        id: 2,
+        type: "assertion_reason",
+        hindi: {
+          question: `कथन (A): प्रोफेसर अशोक सेन को प्रतिष्ठित 'ऑस्कर क्लाइन मेडल 2026' प्रदान किया गया तथा वे यह पदक प्राप्त करने वाले पहले भारतीय भौतिक विज्ञानी हैं।
+कारण (R): उन्हें यह अंतरराष्ट्रीय सम्मान स्ट्रिंग थ्योरी (S-Duality, Black Hole Entropy Counting एवं String Field Theory) में उनके युगांतरकारी शोध हेतु दिया गया है।
+नीचे दिए गए कूट का प्रयोग कर सही उत्तर चुनिए:`,
+          options: [
+            "(A) और (R) दोनों सही हैं तथा (R), (A) की सही व्याख्या है।",
+            "(A) और (R) दोनों सही हैं लेकिन (R), (A) की सही व्याख्या नहीं है।",
+            "(A) सही है लेकिन (R) गलत है।",
+            "(A) गलत है लेकिन (R) सही है।"
+          ],
+          explanation: `<strong>विस्तृत व्याख्या:</strong><br>
+कथन (A) और कारण (R) दोनों पूर्णतः सही हैं और कारण (R) सीधे तौर पर स्पष्ट करता है कि प्रो. अशोक सेन को स्ट्रिंग थ्योरी में उनके ऐतिहासिक योगदान के कारण ही यह अंतरराष्ट्रीय मेडल मिला। वे यह उपलब्धि हासिल करने वाले पहले भारतीय भौतिक विज्ञानी बने हैं।`
+        },
+        english: {
+          question: `Assertion (A): Professor Ashoke Sen has been awarded the prestigious 'Oskar Klein Medal 2026', becoming the first Indian physicist to receive this honour.
+Reason (R): He has been conferred this international medal for his ground-breaking contributions to String Theory (S-Duality, Black Hole Entropy Counting, and String Field Theory).
+Select the correct answer using the codes below:`,
+          options: [
+            "Both (A) and (R) are true and (R) is the correct explanation of (A).",
+            "Both (A) and (R) are true but (R) is NOT the correct explanation of (A).",
+            "(A) is true but (R) is false.",
+            "(A) is false but (R) is true."
+          ],
+          explanation: `<strong>Detailed Explanation:</strong><br>
+Both (A) and (R) are factually true, and (R) correctly explains why Prof. Ashoke Sen received the prestigious Oskar Klein Medal 2026 as the first Indian theoretical physicist.`
+        },
+        answer: 0 // (A)
+      },
+      {
+        id: 3,
+        type: "matching",
+        hindi: {
+          question: `पर्यावरण एवं वन्यजीव संरक्षण स्थलों के संबंध में निम्नलिखित में से कौन-सा युग्म सही सुमेलित नहीं है?`,
+          options: [
+            "भारत का 9वां गिद्ध संरक्षण केंद्र — गोनौली वन क्षेत्र (वाल्मीकि टाइगर रिजर्व, बिहार)",
+            "भारत का 101वां रामसर स्थल — ग्लो लेक (अरुणाचल प्रदेश)",
+            "नवीनतम 103वां रामसर स्थल — सुखना वेटलैंड (चंडीगढ़)",
+            "बिहार का दूसरा कार्यरत टाइगर रिजर्व — कैमूर टाइगर रिजर्व (अक्टूबर 2026 तक)"
+          ],
+          explanation: `<strong>विस्तृत व्याख्या:</strong><br>
+• विकल्प (D) सही सुमेलित नहीं है क्योंकि कैमूर टाइगर रिजर्व बिहार का दूसरा 'प्रस्तावित' टाइगर रिजर्व है; वर्तमान में वाल्मीकि टाइगर रिजर्व ही बिहार का एकमात्र कार्यरत टाइगर रिजर्व है।<br>
+• गोनौली वन क्षेत्र (VTR) में देश का 9वां गिद्ध केंद्र स्थापित हो रहा है (सही है)।<br>
+• ग्लो लेक अरुणाचल प्रदेश की 101वीं रामसर साइट बनी (सही है)।<br>
+• सुखना वेटलैंड 103वां रामसर स्थल बना (सही है)।`
+        },
+        english: {
+          question: `Regarding environmental and wildlife conservation sites, which of the following pairs is NOT correctly matched?`,
+          options: [
+            "India's 9th Vulture Conservation Centre — Gonauli Forest (Valmiki Tiger Reserve, Bihar)",
+            "India's 101st Ramsar Site — Glow Lake (Arunachal Pradesh)",
+            "Latest 103rd Ramsar Site — Sukhna Wetland (Chandigarh)",
+            "Bihar's 2nd Operational Tiger Reserve — Kaimur Tiger Reserve (as of Oct 2026)"
+          ],
+          explanation: `<strong>Detailed Explanation:</strong><br>
+• Option (D) is incorrectly matched because Kaimur is Bihar's 'proposed' 2nd tiger reserve, whereas Valmiki Tiger Reserve remains the only currently functional tiger reserve in Bihar.<br>
+• All other options (A, B, and C) are perfectly matched.`
+        },
+        answer: 3 // (D)
+      },
+      {
+        id: 4,
+        type: "negative_tricky",
+        hindi: {
+          question: `विश्व पोलियो दिवस (World Polio Day) 2026 के संदर्भ में निम्नलिखित कथनों में से कौन-सा गलत कथन है?`,
+          options: [
+            "यह दिवस प्रतिवर्ष 24 अक्टूबर को मनाया जाता है।",
+            "यह दिवस ओरल पोलियो वैक्सीन (OPV) के जनक अल्बर्ट सेबिन के जन्मदिवस पर मनाया जाता है।",
+            "वर्ष 2026 की आधिकारिक थीम 'Together, We End Polio' रखी गई है।",
+            "इसी तिथि (24 अक्टूबर) को आधिकारिक रूप से संयुक्त राष्ट्र दिवस (UN Day) भी मनाया जाता है।"
+          ],
+          explanation: `<strong>विस्तृत व्याख्या:</strong><br>
+विकल्प (B) गलत है क्योंकि विश्व पोलियो दिवस पहली सफल पोलियो वैक्सीन विकसित करने वाले अमेरिकी वैज्ञानिक डॉ. जोनास साल्क (Jonas Salk) के जन्मदिवस के उपलक्ष्य में मनाया जाता है, न कि अल्बर्ट सेबिन के जन्मदिवस पर।`
+        },
+        english: {
+          question: `Regarding 'World Polio Day 2026', which of the following statements is INCORRECT?`,
+          options: [
+            "It is observed annually on 24th October.",
+            "It commemorates the birthday of Albert Sabin, developer of oral polio vaccine.",
+            "The official theme for 2026 is 'Together, We End Polio'.",
+            "On the exact same date (24 Oct), United Nations Day (UN Day) is also observed."
+          ],
+          explanation: `<strong>Detailed Explanation:</strong><br>
+Option (B) is incorrect because World Polio Day marks the birth anniversary of Dr. Jonas Salk, who developed the first successful inactivated polio vaccine.`
+        },
+        answer: 1 // (B)
+      },
+      {
+        id: 5,
+        type: "multi_statement",
+        hindi: {
+          question: `अक्टूबर 2026 में जारी अंतरराष्ट्रीय करेंट अफेयर्स के संदर्भ में निम्नलिखित कथनों पर विचार कीजिए:
+1. संयुक्त राज्य अमेरिका ने सरकारी फंडों के भ्रष्टाचार को रोकने हेतु 'व्हिसलब्लोअर इंसेंटिव प्रोग्राम' और america.gov/fraud पोर्टल शुरू किया।
+2. नेशनल ज्योग्राफिक की प्रतिष्ठित 'Best of the World 2027' सूची में भारत के उदयपुर शहर को शामिल किया गया है।
+3. वर्ष 2027 में जयपुर की स्थापना के 300 वर्ष पूरे हो रहे हैं।
+उपर्युक्त कथनों में से कौन-सा/से कथन सही है/हैं?`,
+          options: [
+            "केवल 1 और 2",
+            "केवल 2 और 3",
+            "केवल 1 और 3",
+            "1, 2 और 3"
+          ],
+          explanation: `<strong>विस्तृत व्याख्या:</strong><br>
+• कथन 1 सही है: USA के न्याय विभाग ने यह इंसेंटिव प्रोग्राम शुरू किया है।<br>
+• कथन 2 गलत है: नेशनल ज्योग्राफिक ने 'Best of the World 2027' सूची में 'जयपुर' (गुलाबी नगरी) को चुना है, उदयपुर को नहीं।<br>
+• कथन 3 सही है: जयपुर की स्थापना 1727 ई. में सवाई जय सिंह द्वितीय ने की थी, जिसके 2027 में 300 वर्ष पूरे होंगे। अतः केवल 1 और 3 सही हैं।`
+        },
+        english: {
+          question: `Consider the following statements regarding international current events of October 2026:
+1. The United States launched the 'Whistleblower Incentive Program' and america.gov/fraud portal to curb federal fund fraud.
+2. The city of Udaipur from India was included in National Geographic's 'Best of the World 2027' list.
+3. The year 2027 marks 300 years of the founding of Jaipur.
+Which of the statements given above is/are correct?`,
+          options: [
+            "1 and 2 only",
+            "2 and 3 only",
+            "1 and 3 only",
+            "1, 2 and 3"
+          ],
+          explanation: `<strong>Detailed Explanation:</strong><br>
+• Statement 1 is correct (US Whistleblower Incentive Program).<br>
+• Statement 2 is incorrect (Jaipur was selected, not Udaipur).<br>
+• Statement 3 is correct (Founded in 1727 by Maharaja Sawai Jai Singh II, completing 300 years in 2027). Hence, 1 and 3 only.`
+        },
+        answer: 2 // (C)
+      },
+      {
+        id: 6,
+        type: "assertion_reason",
+        hindi: {
+          question: `कथन (A): नासा के परसेवरेंस रोवर (Perseverance Rover) ने मंगल ग्रह की सतह पर 45.22 किमी की दूरी तय कर विश्व रिकॉर्ड कायम किया।
+कारण (R): इसने नासा के ही पूर्ववर्ती अपॉर्चुनिटी रोवर (45.16 किमी) द्वारा बनाए गए सर्वाधिक दूरी के रिकॉर्ड को पार किया।
+उपर्युक्त के संबंध में सही कूट का चयन कीजिए:`,
+          options: [
+            "(A) सही है लेकिन (R) गलत है।",
+            "(A) और (R) दोनों सही हैं तथा (R), (A) की सही व्याख्या है।",
+            "(A) और (R) दोनों सही हैं लेकिन (R), (A) की सही व्याख्या नहीं है।",
+            "(A) गलत है लेकिन (R) सही है।"
+          ],
+          explanation: `<strong>विस्तृत व्याख्या:</strong><br>
+दोनों कथन सही हैं और कारण (R) स्पष्ट करता है कि उसने अपॉर्चुनिटी रोवर के 45.16 किमी के रिकॉर्ड को 45.22 किमी तय करके पीछे छोड़ा। परसेवरेंस रोवर 18 फरवरी 2021 को मंगल के जेज़ेरो क्रेटर पर उतरा था।`
+        },
+        english: {
+          question: `Assertion (A): NASA's Perseverance Rover established a new world record by covering a total distance of 45.22 km on the Martian surface.
+Reason (R): It surpassed the previous record of 45.16 km set by NASA's Opportunity Rover.
+Choose the correct option:`,
+          options: [
+            "(A) is true but (R) is false.",
+            "Both (A) and (R) are true and (R) is the correct explanation of (A).",
+            "Both (A) and (R) are true but (R) is NOT the correct explanation of (A).",
+            "(A) is false but (R) is true."
+          ],
+          explanation: `<strong>Detailed Explanation:</strong><br>
+Both (A) and (R) are accurate. Perseverance Rover reached 45.22 km on its 2,006th sol, breaking Opportunity Rover's 45.16 km record.`
+        },
+        answer: 1 // (B)
+      },
+      {
+        id: 7,
+        type: "matching",
+        hindi: {
+          question: `अक्टूबर 2026 में चर्चित प्रमुख पहलों एवं उनसे संबंधित संस्थानों का कौन-सा मिलान सही है?`,
+          options: [
+            "'UDYOG' बायोटेक फिनिशिंग स्कूल — IIT बॉम्बे",
+            "'थूली' (Thooli) वर्षा जल संचयन अभियान — केरल सरकार",
+            "स्वदेशी मैन-पोर्टेबल ELINT सिस्टम — डीआरडीओ (DRDO)",
+            "12वां ब्रिक्स संसदीय मंच 2026 — बीजिंग (चीन)"
+          ],
+          explanation: `<strong>विस्तृत व्याख्या:</strong><br>
+• विकल्प (C) सही है: दुश्मन के रडार व ड्रोन खतरों से निपटने हेतु मैन-पोर्टेबल ELINT सिस्टम डीआरडीओ (DRDO) ने विकसित किया।<br>
+• 'UDYOG' बायोटेक स्कूल IIT मद्रास द्वारा शुरू किया गया।<br>
+• 'थूली' अभियान तमिलनाडु सरकार (मुख्यमंत्री सी. जोसेफ विजय) द्वारा लॉन्च किया गया।<br>
+• 12वां ब्रिक्स संसदीय मंच नई दिल्ली (भारत) में आयोजित हुआ।`
+        },
+        english: {
+          question: `Which of the following pairs of initiatives and associated organisations/locations of October 2026 is CORRECTLY matched?`,
+          options: [
+            "'UDYOG' Biotech Finishing School — IIT Bombay",
+            "'Thooli' Rainwater Harvesting Campaign — Kerala Govt",
+            "Indigenous Man-Portable ELINT System — DRDO",
+            "12th BRICS Parliamentary Forum 2026 — Beijing (China)"
+          ],
+          explanation: `<strong>Detailed Explanation:</strong><br>
+• Option (C) is correct: DRDO developed the indigenous man-portable ELINT system.<br>
+• UDYOG was launched by IIT Madras.<br>
+• Thooli was launched by Tamil Nadu.<br>
+• The 12th BRICS Parliamentary Forum was hosted in New Delhi, India.`
+        },
+        answer: 2 // (C)
+      },
+      {
+        id: 8,
+        type: "multi_statement",
+        hindi: {
+          question: `16वीं हॉकी इंडिया सीनियर पुरुष राष्ट्रीय चैंपियनशिप 2026 के संबंध में निम्नलिखित कथनों पर विचार कीजिए:
+1. इस चैंपियनशिप का फाइनल मुकाबला मेजर ध्यानचंद स्पोर्ट्स स्टेडियम, झांसी (उत्तर प्रदेश) में खेला गया।
+2. हॉकी हरियाणा ने हॉकी मध्य प्रदेश को पराजित कर यह खिताब जीता।
+3. उत्तर प्रदेश हॉकी टीम ने पंजाब को हराकर कांस्य पदक प्राप्त किया।
+उपर्युक्त कथनों में से कौन-से सही हैं?`,
+          options: [
+            "केवल 1 और 2",
+            "केवल 2 और 3",
+            "केवल 1 और 3",
+            "1, 2 और 3 (सभी)"
+          ],
+          explanation: `<strong>विस्तृत व्याख्या:</strong><br>
+तीनों कथन शत-प्रतिशत सही हैं: फाइनल झांसी में हुआ जहां हरियाणा ने मध्य प्रदेश को 2-1 से हराकर स्वर्ण जीता। तीसरे स्थान के मैच में उत्तर प्रदेश हॉकी ने पंजाब को 3-1 से हराकर कांस्य पदक जीता।`
+        },
+        english: {
+          question: `Consider the following statements regarding the 16th Hockey India Senior Men's National Championship 2026:
+1. The final match was played at Major Dhyan Chand Sports Stadium, Jhansi (UP).
+2. Hockey Haryana clinched the title by defeating Hockey Madhya Pradesh.
+3. Uttar Pradesh Hockey bagged the bronze medal by defeating Punjab.
+Which of the statements given above are correct?`,
+          options: [
+            "1 and 2 only",
+            "2 and 3 only",
+            "1 and 3 only",
+            "1, 2 and 3 (All)"
+          ],
+          explanation: `<strong>Detailed Explanation:</strong><br>
+All three statements are correct: Haryana defeated MP 2-1 for the title in Jhansi, and UP defeated Punjab 3-1 to win bronze.`
+        },
+        answer: 3 // (D)
+      },
+      {
+        id: 9,
+        type: "negative_tricky",
+        hindi: {
+          question: `रक्षा एवं सुरक्षा संबंधी हालिया घटनाक्रमों के संदर्भ में कौन-सा कथन असत्य है?`,
+          options: [
+            "केंद्रीय रक्षा मंत्री राजनाथ सिंह ने 'आर्मी लैंड वॉरफेयर डॉक्ट्रिन 2026' जारी किया।",
+            "थलसेना के नए डॉक्ट्रिन में मानवरहित ड्रोन, साइबर युद्ध और एआई पर विशेष बल दिया गया है।",
+            "वर्तमान में भारत के चीफ ऑफ डिफेंस स्टाफ (CDS) पद पर जनरल एन.एस. राजा सुब्रमण्यम कार्यरत हैं।",
+            "इसरो द्वारा भारतीय सेना के पहले समर्पित संचार उपग्रह GSAT-7B को PSLV-C58 रॉकेट से प्रक्षेपित किया जाएगा।"
+          ],
+          explanation: `<strong>विस्तृत व्याख्या:</strong><br>
+विकल्प (D) असत्य है क्योंकि सेना के समर्पित संचार उपग्रह GSAT-7B को वर्ष 2028 में इसरो के भारी रॉकेट LVM3 (GSLV Mk3) से प्रक्षेपित किया जाना तय है, न कि PSLV से।`
+        },
+        english: {
+          question: `Regarding recent defence and security developments, which of the following statements is FALSE?`,
+          options: [
+            "Union Defence Minister Rajnath Singh unveiled the 'Army Land Warfare Doctrine 2026'.",
+            "The new army doctrine lays strategic focus on unmanned drones, cyber warfare, and AI.",
+            "General N.S. Raja Subramaniam currently serves as Chief of Defence Staff (CDS).",
+            "Indian Army's dedicated communication satellite GSAT-7B will be launched via PSLV-C58."
+          ],
+          explanation: `<strong>Detailed Explanation:</strong><br>
+Statement (D) is false because GSAT-7B is scheduled to be launched in 2028 aboard ISRO's heavy-lift LVM3 (GSLV Mk3) launcher, not PSLV.`
+        },
+        answer: 3 // (D)
+      },
+      {
+        id: 10,
+        type: "multi_statement",
+        hindi: {
+          question: `तमिलनाडु राज्य से संबंधित निम्नलिखित कथनों पर विचार कीजिए:
+1. तमिलनाडु के मुख्यमंत्री सी. जोसेफ विजय ने चेन्नई में 'थूली' (Thooli) वर्षा जल संचयन अभियान शुरू किया।
+2. तमिल भाषा में 'थूली' शब्द का अर्थ 'समुद्र की लहर' होता है।
+3. तमिलनाडु का राज्य पक्षी एमराल्ड डव (Emerald Dove) और राज्य पशु नीलगिरि तहर है।
+उपर्युक्त कथनों में से कौन-सा/से कथन सत्य है/हैं?`,
+          options: [
+            "केवल 1 और 2",
+            "केवल 1 और 3",
+            "केवल 2 और 3",
+            "1, 2 और 3"
+          ],
+          explanation: `<strong>विस्तृत व्याख्या:</strong><br>
+• कथन 1 सत्य है (सीएम सी. जोसेफ विजय द्वारा अभियान शुरू किया गया)।<br>
+• कथन 2 असत्य है क्योंकि तमिल भाषा में 'थूली' का अर्थ 'पानी की बूंद' (water droplet) होता है, न कि 'समुद्र की लहर'।<br>
+• कथन 3 सत्य है (राज्य पशु नीलगिरि तहर, राज्य पक्षी एमराल्ड डव)। अतः केवल 1 और 3 सत्य हैं।`
+        },
+        english: {
+          question: `Consider the following statements regarding the state of Tamil Nadu:
+1. Tamil Nadu Chief Minister C. Joseph Vijay launched the 'Thooli' rainwater harvesting campaign in Chennai.
+2. In the Tamil language, the word 'Thooli' translates to 'ocean wave'.
+3. The state bird of Tamil Nadu is Emerald Dove and state animal is Nilgiri Tahr.
+Which of the statements given above is/are true?`,
+          options: [
+            "1 and 2 only",
+            "1 and 3 only",
+            "2 and 3 only",
+            "1, 2 and 3"
+          ],
+          explanation: `<strong>Detailed Explanation:</strong><br>
+• Statement 1 is true.<br>
+• Statement 2 is false because 'Thooli' means 'drop of water', not 'ocean wave'.<br>
+• Statement 3 is true. Hence, 1 and 3 only.`
+        },
+        answer: 1 // (B)
+      },
+      {
+        id: 11,
+        type: "assertion_reason",
+        hindi: {
+          question: `कथन (A): अमेरिकी फ़िल्म इंस्टीट्यूट (AFI) ने अपने 52वें 'लाइफ अचीवमेंट अवार्ड' हेतु अभिनेता टॉम क्रूज़ (Tom Cruise) को चुना है।
+कारण (R): उन्हें यह सम्मान सिनेमा जगत में उनके उत्कृष्ट चार दशकों के अभिनय व निर्माण योगदान के उपलक्ष्य में प्रदान किया जा रहा है।
+सही विकल्प का चुनाव कीजिए:`,
+          options: [
+            "(A) और (R) दोनों सही हैं तथा (R), (A) की सही व्याख्या है।",
+            "(A) और (R) दोनों सही हैं लेकिन (R), (A) की सही व्याख्या नहीं है।",
+            "(A) सही है परंतु (R) गलत है।",
+            "(A) गलत है परंतु (R) सही है।"
+          ],
+          explanation: `<strong>विस्तृत व्याख्या:</strong><br>
+कथन (A) और कारण (R) दोनों सत्य हैं और (R), (A) की पूर्ण व्याख्या करता है। यह समारोह 24 अप्रैल 2027 को लॉस एंजेलिस के डॉल्बी थिएटर में आयोजित किया जाएगा।`
+        },
+        english: {
+          question: `Assertion (A): The American Film Institute (AFI) has selected actor Tom Cruise for its 52nd Life Achievement Award.
+Reason (R): This honor recognizes his outstanding contributions to cinema across four decades as an actor and producer.
+Choose the correct option:`,
+          options: [
+            "Both (A) and (R) are true and (R) is the correct explanation of (A).",
+            "Both (A) and (R) are true but (R) is NOT the correct explanation of (A).",
+            "(A) is true but (R) is false.",
+            "(A) is false but (R) is true."
+          ],
+          explanation: `<strong>Detailed Explanation:</strong><br>
+Both (A) and (R) are correct, and (R) accurately explains the reason for awarding Tom Cruise the AFI 52nd Life Achievement Award.`
+        },
+        answer: 0 // (A)
+      },
+      {
+        id: 12,
+        type: "matching",
+        hindi: {
+          question: `हालिया चर्चित अंतरराष्ट्रीय व राष्ट्रीय पुरस्कारों एवं व्यक्तियों के संदर्भ में गलत युग्म का चयन कीजिए:`,
+          options: [
+            "ग्लोबल यूथ इंस्टीट्यूट खाद्य सुरक्षा पुरस्कार — अमीना नज़रीन ए.एस. (केरल)",
+            "भौतिकी नोबेल पुरस्कार 2026 — फ्रांसिस हालज़ेन",
+            "60वां ज्ञानपीठ पुरस्कार — आर. वैरामुथु",
+            "35वां सरस्वती सम्मान — महेश काकड़े ('हर पार्वती' कृति हेतु)"
+          ],
+          explanation: `<strong>विस्तृत व्याख्या:</strong><br>
+विकल्प (D) गलत युग्म है क्योंकि 35वां सरस्वती सम्मान रामकुमार मुखोपाध्याय को उनकी कृति 'हर पार्वती' के लिए दिया गया है, जबकि महेश काकड़े को रामानुजन पुरस्कार प्रदान किया गया है।`
+        },
+        english: {
+          question: `Select the INCORRECTLY matched pair regarding recent prominent national/international awards:`,
+          options: [
+            "Global Youth Institute Food Security Award — Amina Nazreen A.S. (Kerala)",
+            "Nobel Prize in Physics 2026 — Francis Halzen",
+            "60th Jnanpith Award — R. Vairamuthu",
+            "35th Saraswati Samman — Mahesh Kakde (for 'Har Parvati')"
+          ],
+          explanation: `<strong>Detailed Explanation:</strong><br>
+Pair (D) is incorrect because the 35th Saraswati Samman was conferred upon Ramkumar Mukhopadhyay for his literary work 'Har Parvati', while Mahesh Kakde won the Ramanujan Prize.`
+        },
+        answer: 3 // (D)
+      },
+      {
+        id: 13,
+        type: "multi_statement",
+        hindi: {
+          question: `दुर्लभ तितली प्रजाति 'युथालिया मलकाना' (Euthalia malkana) के संदर्भ में निम्नलिखित कथनों पर विचार कीजिए:
+1. भारत में पहली बार इस प्रजाति को अरुणाचल प्रदेश के लेपा रादा जिले के बासर क्षेत्र में दर्ज किया गया।
+2. यह मुख्य रूप से एक इंडो-ऑस्ट्रेलियन प्रजाति है जो थाईलैंड, मलय प्रायद्वीप और सुंडा द्वीपों पर पाई जाती है।
+3. इस प्रजाति की नर तितली के पंखों पर विशिष्ट चमकीला हरा धब्बा होता है।
+उपर्युक्त में से कौन-सा/से कथन सत्य है/हैं?`,
+          options: [
+            "केवल 1 और 2",
+            "केवल 2 और 3",
+            "केवल 1 और 3",
+            "1, 2 और 3"
+          ],
+          explanation: `<strong>विस्तृत व्याख्या:</strong><br>
+• कथन 1 और 2 सत्य हैं।<br>
+• कथन 3 गलत है क्योंकि नर तितली के पंखों पर चमकीला 'नीला' धब्बा (bright blue patch) होता है, न कि हरा। अतः केवल 1 और 2 सत्य हैं।`
+        },
+        english: {
+          question: `Consider the following statements regarding the rare butterfly species 'Euthalia malkana':
+1. It was recorded in India for the first time in the Basar region of Lepa Rada district, Arunachal Pradesh.
+2. It is predominantly an Indo-Australian species found across Thailand, Malayan Peninsula, and Sunda Islands.
+3. The male butterfly of this species features a characteristic luminous green patch on its wings.
+Which of the statements given above is/are true?`,
+          options: [
+            "1 and 2 only",
+            "2 and 3 only",
+            "1 and 3 only",
+            "1, 2 and 3"
+          ],
+          explanation: `<strong>Detailed Explanation:</strong><br>
+• Statements 1 and 2 are true.<br>
+• Statement 3 is false because the male exhibits a bright blue patch on its wings, not green. Hence, 1 and 2 only.`
+        },
+        answer: 0 // (A)
+      },
+      {
+        id: 14,
+        type: "negative_tricky",
+        hindi: {
+          question: `एशियन पैरा गेम्स 2026 में भारतीय एथलीटों की उपलब्धियों के संबंध में कौन-सा तथ्य सही नहीं है?`,
+          options: [
+            "मोना अग्रवाल ने महिलाओं की 50 मीटर राइफल 3-पोजीशन SH1 स्पर्धा में 357.5 अंकों का नया विश्व रिकॉर्ड बनाया।",
+            "मोना अग्रवाल ने इसी प्रतियोगिता में 10 मीटर एयर राइफल स्टैंडिंग SH1 में भी स्वर्ण पदक जीता था।",
+            "शीतल देवी और तोमन कुमार की जोड़ी ने कंपाउंड मिक्स्ड टीम तीरंदाजी में कांस्य पदक जीता।",
+            "समापन समारोह में भारत के ध्वजवाहक निषाद कुमार और मोना अग्रवाल थे।"
+          ],
+          explanation: `<strong>विस्तृत व्याख्या:</strong><br>
+विकल्प (C) सही नहीं है क्योंकि शीतल देवी और तोमन कुमार की जोड़ी ने कंपाउंड मिक्स्ड टीम तीरंदाजी में 'स्वर्ण पदक' (Gold Medal) जीता था, न कि कांस्य पदक।`
+        },
+        english: {
+          question: `Which fact is NOT correct regarding the achievements of Indian athletes at the Asian Para Games 2026?`,
+          options: [
+            "Mona Agarwal set a new world record of 357.5 points in Women's 50m Rifle 3-Positions SH1.",
+            "Mona Agarwal also won gold in the 10m Air Rifle Standing SH1 event in the same games.",
+            "Sheetal Devi and Toman Kumar won bronze in the Compound Mixed Team archery event.",
+            "Nishad Kumar and Mona Agarwal served as India's flag-bearers at the closing ceremony."
+          ],
+          explanation: `<strong>Detailed Explanation:</strong><br>
+Option (C) is incorrect because Sheetal Devi and Toman Kumar clinched the Gold Medal (not bronze) in the compound mixed team archery event.`
+        },
+        answer: 2 // (C)
+      },
+      {
+        id: 15,
+        type: "matching",
+        hindi: {
+          question: `हालिया चर्चित वैश्विक एवं राष्ट्रीय नियुक्तियों/तथ्यों का मिलान कीजिए तथा सही विकल्प चुनिए:
+1. रोमानिया के नए प्रधानमंत्री — लूका निकोलस्को
+2. ओएनजीसी (ONGC) के नए अध्यक्ष — मिस्टर सुनील कुमार
+3. एकदिवसीय क्रिकेट में सबसे तेज दोहरा शतक (114 गेंद) — हैरी ब्रुक (इंग्लैंड)
+4. 100% परिचालन विद्युतीकरण से 'हरित टर्मिनल' — वी.ओ. चिदंबरनार बंदरगाह (तूतीकोरिन)`,
+          options: [
+            "केवल 1 और 2 सही हैं",
+            "केवल 3 और 4 सही हैं",
+            "1, 2, 3 और 4 (सभी चारों युग्म सही हैं)",
+            "केवल 1, 2 और 4 सही हैं"
+          ],
+          explanation: `<strong>विस्तृत व्याख्या:</strong><br>
+सभी चारों युग्म शत-प्रतिशत सही हैं: रोमानिया के पीएम लूका निकोलस्को बने, ओएनजीसी प्रमुख सुनील कुमार बने, हैरी ब्रुक ने 114 गेंदों में सबसे तेज दोहरा शतक लगाया और तूतीकोरिन बंदरगाह पहला हरित टर्मिनल बना।`
+        },
+        english: {
+          question: `Match the recent prominent national/international appointments and facts:
+1. New Prime Minister of Romania — Luca Niculescu
+2. New Chairman of ONGC — Mr. Sunil Kumar
+3. Fastest ODI Double Century (114 balls) — Harry Brook (England)
+4. 'Green Terminal' via 100% equipment electrification — V.O. Chidambaranar Port (Tuticorin)`,
+          options: [
+            "1 and 2 only are correct",
+            "3 and 4 only are correct",
+            "1, 2, 3 and 4 (All four pairs are correct)",
+            "1, 2 and 4 only are correct"
+          ],
+          explanation: `<strong>Detailed Explanation:</strong><br>
+All 4 pairs are completely accurate as per the 26 October 2026 GYANVERSE official bulletin.`
+        },
+        answer: 2 // (C)
+      }
+    ];
+
+    // State Variables
+    let currentIdx = 0;
+    let userAnswers = new Array(questionBank.length).fill(null);
+    let reviewList = new Array(questionBank.length).fill(false);
+    let currentLang = 'hindi'; // 'hindi' or 'english'
+    let timerSeconds = 120 * 60; // 120 minutes
+    let timerInterval = null;
+    let isSubmitted = false;
+
+    // DOM Elements
+    const gateOverlay = document.getElementById('gateOverlay');
+    const startTestBtn = document.getElementById('startTestBtn');
+    const timerCountdown = document.getElementById('timerCountdown');
+    const headerSubmitBtn = document.getElementById('headerSubmitBtn');
+    const langToggleBtn = document.getElementById('langToggleBtn');
+    const langDisplay = document.getElementById('langDisplay');
+    const qCurrentProgress = document.getElementById('qCurrentProgress');
+    const reviewStatusBadge = document.getElementById('reviewStatusBadge');
+    const questionContainer = document.getElementById('questionContainer');
+    const optionsContainer = document.getElementById('optionsContainer');
+    const instantFeedbackBox = document.getElementById('instantFeedbackBox');
+    
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+    const clearBtn = document.getElementById('clearBtn');
+    const reviewBtn = document.getElementById('reviewBtn');
+    
+    const scoreModal = document.getElementById('scoreModal');
+    const finalScore = document.getElementById('finalScore');
+    const finalAccuracy = document.getElementById('finalAccuracy');
+    const statTotal = document.getElementById('statTotal');
+    const statCorrect = document.getElementById('statCorrect');
+    const statWrong = document.getElementById('statWrong');
+    const statLeft = document.getElementById('statLeft');
+    const reviewSolutionBtn = document.getElementById('reviewSolutionBtn');
+
+    // ==================== FULLSCREEN & INITIALIZATION ====================
+    startTestBtn.addEventListener('click', () => {
+      // Trigger browser full screen
+      const el = document.documentElement;
+      if (el.requestFullscreen) {
+        el.requestFullscreen().catch(err => console.log(err));
+      } else if (el.webkitRequestFullscreen) {
+        el.webkitRequestFullscreen();
+      } else if (el.msRequestFullscreen) {
+        el.msRequestFullscreen();
+      }
+
+      // Hide gate overlay
+      gateOverlay.classList.add('hidden');
+      
+      // Start countdown timer
+      startTimer();
+
+      // Render Question
+      renderQuestion();
+    });
+
+    // Countdown Timer Function
+    function startTimer() {
+      timerInterval = setInterval(() => {
+        if (timerSeconds <= 0) {
+          clearInterval(timerInterval);
+          submitExam();
+          return;
+        }
+        timerSeconds--;
+        const mins = Math.floor(timerSeconds / 60);
+        const secs = timerSeconds % 60;
+        timerCountdown.innerText = `${String(mins).padStart(2, '0')}:${String(secs).padStart(2, '0')}`;
+      }, 1000);
+    }
+
+    // Language Toggle
+    langToggleBtn.addEventListener('click', () => {
+      if (currentLang === 'hindi') {
+        currentLang = 'english';
+        langDisplay.innerText = 'हिंदी';
+      } else {
+        currentLang = 'hindi';
+        langDisplay.innerText = 'ENG';
+      }
+      renderQuestion();
+    });
+
+    // ==================== RENDER ACTIVE QUESTION ====================
+    function renderQuestion() {
+      const q = questionBank[currentIdx];
+      const data = q[currentLang];
+
+      // Update progress label
+      qCurrentProgress.innerText = `Question ${String(currentIdx + 1).padStart(2, '0')} / ${String(questionBank.length).padStart(2, '0')}`;
+      
+      // Review badge status
+      if (reviewList[currentIdx]) {
+        reviewStatusBadge.classList.remove('hidden');
+      } else {
+        reviewStatusBadge.classList.add('hidden');
+      }
+
+      // Render Question Text (newlines converted to br)
+      questionContainer.innerHTML = `
+        <div class="whitespace-pre-line leading-relaxed font-semibold">
+          <span class="inline-block bg-indigo-50 text-indigo-700 px-2 py-0.5 rounded text-xs font-bold mr-1">Q.${currentIdx + 1}</span>
+          ${data.question}
+        </div>
+      `;
+
+      // Render Options
+      optionsContainer.innerHTML = '';
+      const letters = ['A', 'B', 'C', 'D'];
+
+      data.options.forEach((optText, optIdx) => {
+        const isSelected = userAnswers[currentIdx] === optIdx;
+        const isCorrect = q.answer === optIdx;
+        
+        let borderClass = "border-slate-200 hover:border-indigo-400 bg-white";
+        let badgeClass = "bg-slate-100 text-slate-700";
+
+        // If candidate already made a choice or exam is submitted -> Show instant answer styling
+        if (userAnswers[currentIdx] !== null || isSubmitted) {
+          if (optIdx === q.answer) {
+            borderClass = "border-emerald-500 bg-emerald-50/70 text-emerald-950 font-medium";
+            badgeClass = "bg-emerald-600 text-white font-bold";
+          } else if (isSelected && optIdx !== q.answer) {
+            borderClass = "border-rose-500 bg-rose-50/70 text-rose-950 font-medium";
+            badgeClass = "bg-rose-600 text-white font-bold";
+          }
+        } else if (isSelected) {
+          borderClass = "border-indigo-600 bg-indigo-50/60 text-indigo-900";
+          badgeClass = "bg-indigo-600 text-white font-bold";
+        }
+
+        const btn = document.createElement('button');
+        btn.className = `w-full text-left p-3.5 rounded-xl border-2 transition-all flex items-start space-x-3 text-xs sm:text-sm shadow-sm ${borderClass}`;
+        btn.innerHTML = `
+          <span class="w-6 h-6 rounded-lg flex items-center justify-center text-xs font-bold shrink-0 mt-0.5 ${badgeClass}">${letters[optIdx]}</span>
+          <span class="flex-1 leading-normal">${optText}</span>
+        `;
+
+        btn.addEventListener('click', () => {
+          if (!isSubmitted) {
+            userAnswers[currentIdx] = optIdx;
+            renderQuestion();
+          }
+        });
+
+        optionsContainer.appendChild(btn);
+      });
+
+      // Handle Instant Feedback Box
+      if (userAnswers[currentIdx] !== null || isSubmitted) {
+        instantFeedbackBox.classList.remove('hidden');
+        const userChoice = userAnswers[currentIdx];
+        const isCorrect = userChoice === q.answer;
+
+        let statusHeader = '';
+        if (userChoice !== null) {
+          if (isCorrect) {
+            instantFeedbackBox.className = "rounded-xl p-4 text-xs sm:text-sm border border-emerald-200 bg-emerald-50 text-emerald-900 mb-4 block";
+            statusHeader = `<div class="font-bold text-emerald-700 text-sm mb-1.5 flex items-center">✓ Correct Answer (+2.00 Marks)</div>`;
+          } else {
+            instantFeedbackBox.className = "rounded-xl p-4 text-xs sm:text-sm border border-rose-200 bg-rose-50 text-rose-900 mb-4 block";
+            statusHeader = `<div class="font-bold text-rose-700 text-sm mb-1.5 flex items-center">✗ Incorrect Answer (-0.20 Negative) | Correct Option: (${letters[q.answer]})</div>`;
+          }
+        } else {
+          instantFeedbackBox.className = "rounded-xl p-4 text-xs sm:text-sm border border-amber-200 bg-amber-50 text-amber-900 mb-4 block";
+          statusHeader = `<div class="font-bold text-amber-800 text-sm mb-1.5">Unattempted Question | Correct Option: (${letters[q.answer]})</div>`;
+        }
+
+        instantFeedbackBox.innerHTML = `
+          ${statusHeader}
+          <div class="text-slate-700 mt-2 text-xs sm:text-[13px] leading-relaxed">
+            ${data.explanation}
+          </div>
+        `;
+      } else {
+        instantFeedbackBox.classList.add('hidden');
+      }
+
+      // Prev Button State
+      prevBtn.disabled = currentIdx === 0;
+      prevBtn.className = currentIdx === 0
+        ? "py-2.5 px-3 bg-slate-100 text-slate-300 text-xs sm:text-sm font-bold rounded-xl cursor-not-allowed"
+        : "py-2.5 px-3 bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs sm:text-sm font-bold rounded-xl transition";
+    }
+
+    // ==================== NAVIGATION HANDLERS ====================
+    prevBtn.addEventListener('click', () => {
+      if (currentIdx > 0) {
+        currentIdx--;
+        renderQuestion();
+      }
+    });
+
+    nextBtn.addEventListener('click', () => {
+      if (currentIdx < questionBank.length - 1) {
+        currentIdx++;
+        renderQuestion();
+      } else {
+        if (!isSubmitted) {
+          if (confirm("You are at the final question. Do you want to submit the test now?")) {
+            submitExam();
+          }
+        }
+      }
+    });
+
+    clearBtn.addEventListener('click', () => {
+      if (!isSubmitted) {
+        userAnswers[currentIdx] = null;
+        renderQuestion();
+      }
+    });
+
+    reviewBtn.addEventListener('click', () => {
+      reviewList[currentIdx] = !reviewList[currentIdx];
+      renderQuestion();
+    });
+
+    headerSubmitBtn.addEventListener('click', () => {
+      if (confirm("Are you sure you want to finalize and submit your test?")) {
+        submitExam();
+      }
+    });
+
+    // ==================== TEST SUBMISSION & SCORECARD ====================
+    function submitExam() {
+      if (isSubmitted) return;
+      isSubmitted = true;
+      clearInterval(timerInterval);
+
+      let correctCount = 0;
+      let wrongCount = 0;
+      let unattempted = 0;
+
+      questionBank.forEach((q, idx) => {
+        if (userAnswers[idx] === null) {
+          unattempted++;
+        } else if (userAnswers[idx] === q.answer) {
+          correctCount++;
+        } else {
+          wrongCount++;
+        }
+      });
+
+      const totalScore = (correctCount * 2.00) - (wrongCount * 0.20);
+      const totalAttempted = correctCount + wrongCount;
+      const accuracy = totalAttempted > 0 ? Math.round((correctCount / totalAttempted) * 100) : 0;
+
+      // Populate Scorecard
+      finalScore.innerText = totalScore.toFixed(2);
+      finalAccuracy.innerText = `${accuracy}%`;
+      statTotal.innerText = questionBank.length;
+      statCorrect.innerText = `${correctCount} (+${(correctCount * 2).toFixed(2)})`;
+      statWrong.innerText = `${wrongCount} (-${(wrongCount * 0.20).toFixed(2)})`;
+      statLeft.innerText = unattempted;
+
+      // Show Scorecard Modal
+      scoreModal.classList.remove('hidden');
+      scoreModal.classList.add('flex');
+    }
+
+    reviewSolutionBtn.addEventListener('click', () => {
+      scoreModal.classList.add('hidden');
+      scoreModal.classList.remove('flex');
+      currentIdx = 0;
+      renderQuestion();
+    });
+  </script>
+</body>
+</html>
