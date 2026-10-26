@@ -1,0 +1,2237 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GYANVERSE - Speedy Current Affairs 50 Mega CBT Test</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Tiro+Devanagari+Hindi:ital@0;1&family=Inter:wght@400;500;600;700&display=swap');
+        body {
+            font-family: 'Inter', 'Tiro Devanagari Hindi', sans-serif;
+            user-select: none;
+            -webkit-user-select: none;
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background-color: #cbd5e1;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body class="bg-slate-100 text-slate-800 antialiased min-h-screen flex flex-col justify-between">
+
+    <!-- FULL SCREEN ENTRY GATE OVERLAY -->
+    <div id="fullScreenGate" class="fixed inset-0 z-50 bg-slate-900/95 backdrop-blur-md flex items-center justify-center p-4">
+        <div class="bg-white rounded-2xl shadow-2xl max-w-lg w-full p-6 text-center border-t-8 border-indigo-600 animate-fade-in">
+            <div class="w-20 h-20 bg-indigo-50 text-indigo-600 rounded-full flex items-center justify-center mx-auto mb-4 text-3xl shadow-inner">
+                <i class="fa-solid fa-graduation-cap"></i>
+            </div>
+            <h1 class="text-2xl font-black text-slate-900 mb-1 tracking-tight">GYANVERSE PORTAL</h1>
+            <p class="text-sm font-semibold text-indigo-600 mb-4">Speedy 2026: Kaun, Kya, Kahan? (Full 50 Mega MCQs)</p>
+            
+            <div class="bg-slate-50 rounded-xl p-4 mb-6 text-left border border-slate-200 text-xs space-y-2 text-slate-700">
+                <div class="flex items-center justify-between font-bold text-slate-900 pb-2 border-b border-slate-200">
+                    <span><i class="fa-regular fa-clock text-indigo-500 mr-1"></i> Time: 120 Minutes</span>
+                    <span><i class="fa-solid fa-list-check text-indigo-500 mr-1"></i> Total: 50 High-Level MCQs</span>
+                </div>
+                <p>• <b>Marking Scheme:</b> +2.00 for Correct | -0.20 for Incorrect</p>
+                <p>• <b>Format:</b> Statement Based, Matching Type, Assertion-Reason (A-R)</p>
+                <p>• <b>Instant Verification:</b> Option par click karte hi instant solution display hoga.</p>
+                <p>• <b>Strict Mandate:</b> Test start hote hi browser full screen me lock ho jayega.</p>
+            </div>
+
+            <button id="btnStartTest" class="w-full py-3.5 px-6 bg-gradient-to-r from-indigo-600 to-indigo-700 hover:from-indigo-700 hover:to-indigo-800 text-white font-bold rounded-xl shadow-lg shadow-indigo-200 active:scale-95 transition-all flex items-center justify-center gap-2 text-base">
+                <i class="fa-solid fa-expand"></i> Start Test (Auto Full Screen)
+            </button>
+            <p class="text-xs text-slate-400 mt-3 font-medium">Join us on Telegram: <a href="https://t.me/GYANVERSET" target="_blank" class="text-indigo-600 hover:underline">@GYANVERSET</a></p>
+        </div>
+    </div>
+
+    <!-- MAIN CBT TEST CONTAINER -->
+    <div id="testContainer" class="flex flex-col min-h-screen">
+        
+        <!-- HEADER -->
+        <header class="bg-white border-b border-slate-200 sticky top-0 z-30 shadow-sm px-4 lg:px-8 py-2.5 flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <span class="bg-indigo-600 text-white font-black text-base px-2.5 py-1 rounded shadow">G</span>
+                <div>
+                    <h2 class="text-sm sm:text-base font-extrabold text-slate-900 tracking-tight leading-tight">GYANVERSE</h2>
+                    <a href="https://t.me/GYANVERSET" target="_blank" class="text-[11px] font-bold text-indigo-600 hover:underline flex items-center gap-1">
+                        <i class="fa-brands fa-telegram"></i> @GYANVERSET
+                    </a>
+                </div>
+            </div>
+
+            <!-- Header Controls: Timer, Language Switcher, Submit -->
+            <div class="flex items-center gap-2 sm:gap-4">
+                <!-- Language Switcher -->
+                <button id="btnLangToggle" class="px-2.5 py-1 text-xs font-bold bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-lg border border-slate-300 transition-colors flex items-center gap-1">
+                    <i class="fa-solid fa-language text-indigo-600"></i>
+                    <span id="langText">English</span>
+                </button>
+
+                <!-- Timer -->
+                <div class="flex items-center gap-1.5 bg-amber-50 border border-amber-200 px-3 py-1 rounded-lg text-amber-800 font-mono font-bold text-xs sm:text-sm shadow-inner">
+                    <i class="fa-regular fa-clock animate-pulse text-amber-600"></i>
+                    <span id="timerDisplay">120:00</span>
+                </div>
+
+                <!-- Submit Button -->
+                <button id="btnSubmitTestTop" class="px-3.5 py-1.5 bg-red-600 hover:bg-red-700 active:scale-95 text-white font-bold text-xs sm:text-sm rounded-lg shadow transition-all flex items-center gap-1.5">
+                    <i class="fa-solid fa-paper-plane"></i>
+                    <span>Submit</span>
+                </button>
+            </div>
+        </header>
+
+        <!-- SUB HEADER METADATA -->
+        <div class="bg-slate-50 border-b border-slate-200 px-4 lg:px-8 py-2 flex items-center justify-between text-xs font-medium text-slate-600">
+            <div>
+                <span class="text-slate-500">Question:</span> 
+                <span id="currentQNum" class="font-extrabold text-indigo-600 text-sm">1</span> / <span id="totalQNum">50</span>
+            </div>
+            <div class="flex items-center gap-3">
+                <span class="text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200 font-semibold">+2.00</span>
+                <span class="text-rose-700 bg-rose-50 px-2 py-0.5 rounded border border-rose-200 font-semibold">-0.20</span>
+                <span id="reviewBadge" class="hidden bg-purple-100 text-purple-700 px-2 py-0.5 rounded font-bold border border-purple-200"><i class="fa-solid fa-bookmark"></i> Review</span>
+            </div>
+        </div>
+
+        <!-- MAIN QUESTION & OPTIONS AREA (FULL WIDTH, NO PALETTE) -->
+        <main class="flex-1 w-full max-w-4xl mx-auto px-4 py-6">
+            
+            <!-- Question Card -->
+            <div class="bg-white rounded-2xl border border-slate-200 shadow-sm p-5 sm:p-7">
+                
+                <!-- Question Tag & Watermark -->
+                <div class="flex items-center justify-between pb-3 mb-4 border-b border-slate-100">
+                    <span id="qTypeBadge" class="text-[11px] font-bold uppercase tracking-wider text-indigo-700 bg-indigo-50 border border-indigo-100 px-2.5 py-0.5 rounded-full">Statement Based</span>
+                    <a href="https://t.me/GYANVERSET" target="_blank" class="text-[11px] text-slate-400 font-semibold hover:text-indigo-600 transition-colors">
+                        <i class="fa-brands fa-telegram"></i> @GYANVERSET
+                    </a>
+                </div>
+
+                <!-- Question Text -->
+                <div id="qText" class="text-base sm:text-lg font-bold text-slate-900 leading-relaxed mb-6 whitespace-pre-line">
+                    <!-- Injected dynamically -->
+                </div>
+
+                <!-- Options List -->
+                <div id="optionsContainer" class="space-y-3 mb-6">
+                    <!-- Injected dynamically -->
+                </div>
+
+                <!-- NAVIGATION BUTTONS (STRICTLY BELOW OPTIONS) -->
+                <div class="pt-4 border-t border-slate-100 flex flex-wrap items-center justify-between gap-2.5">
+                    <div class="flex items-center gap-2">
+                        <button id="btnPrev" class="px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs sm:text-sm font-bold rounded-xl border border-slate-300 transition-all flex items-center gap-1.5 active:scale-95">
+                            <i class="fa-solid fa-arrow-left"></i> Prev
+                        </button>
+                        <button id="btnClear" class="px-3 py-2 bg-slate-100 hover:bg-rose-50 hover:text-rose-600 text-slate-600 text-xs sm:text-sm font-bold rounded-xl border border-slate-300 transition-all active:scale-95">
+                            Clear
+                        </button>
+                    </div>
+
+                    <div class="flex items-center gap-2">
+                        <button id="btnReview" class="px-3.5 py-2 bg-purple-50 hover:bg-purple-100 text-purple-700 text-xs sm:text-sm font-bold rounded-xl border border-purple-200 transition-all flex items-center gap-1 active:scale-95">
+                            <i class="fa-regular fa-bookmark"></i> Review
+                        </button>
+                        <button id="btnNext" class="px-5 py-2 bg-indigo-600 hover:bg-indigo-700 text-white text-xs sm:text-sm font-bold rounded-xl shadow-md shadow-indigo-100 transition-all flex items-center gap-1.5 active:scale-95">
+                            Next & Save <i class="fa-solid fa-arrow-right"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- INSTANT ANSWER & DETAILED EXPLANATION PANEL -->
+                <div id="instantExplanation" class="hidden mt-6 p-4 rounded-xl border transition-all text-xs sm:text-sm leading-relaxed">
+                    <!-- Injected dynamically -->
+                </div>
+
+            </div>
+
+        </main>
+
+        <!-- FOOTER BRANDING -->
+        <footer class="bg-white border-t border-slate-200 py-3 text-center text-xs text-slate-500 font-medium">
+            Designed & Curated by <span class="font-extrabold text-indigo-700">GYANVERSE</span> • Official Telegram: 
+            <a href="https://t.me/GYANVERSET" target="_blank" class="text-indigo-600 font-bold hover:underline">@GYANVERSET</a>
+        </footer>
+
+    </div>
+
+    <!-- SUBMIT CONFIRMATION & SCORECARD MODAL -->
+    <div id="scorecardModal" class="fixed inset-0 z-50 bg-slate-900/90 backdrop-blur-sm hidden items-center justify-center p-4">
+        <div class="bg-white rounded-2xl shadow-2xl max-w-xl w-full p-6 text-center border-t-8 border-indigo-600 animate-fade-in max-h-[90vh] overflow-y-auto custom-scrollbar">
+            
+            <div class="w-16 h-16 bg-emerald-50 text-emerald-600 rounded-full flex items-center justify-center mx-auto mb-3 text-2xl shadow-inner">
+                <i class="fa-solid fa-trophy"></i>
+            </div>
+            <h2 class="text-2xl font-black text-slate-900">Test Completed!</h2>
+            <p class="text-xs text-slate-500 mb-5">GYANVERSE Performance Scorecard (@GYANVERSET)</p>
+
+            <!-- Metrics Grid -->
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-5 text-left">
+                <div class="bg-indigo-50 border border-indigo-100 p-3 rounded-xl">
+                    <p class="text-[10px] uppercase font-bold text-indigo-600">Total Score</p>
+                    <p id="scTotalScore" class="text-xl font-black text-indigo-900">0.00</p>
+                </div>
+                <div class="bg-emerald-50 border border-emerald-100 p-3 rounded-xl">
+                    <p class="text-[10px] uppercase font-bold text-emerald-600">Correct</p>
+                    <p id="scCorrect" class="text-xl font-black text-emerald-900">0</p>
+                </div>
+                <div class="bg-rose-50 border border-rose-100 p-3 rounded-xl">
+                    <p class="text-[10px] uppercase font-bold text-rose-600">Incorrect</p>
+                    <p id="scIncorrect" class="text-xl font-black text-rose-900">0</p>
+                </div>
+                <div class="bg-amber-50 border border-amber-100 p-3 rounded-xl">
+                    <p class="text-[10px] uppercase font-bold text-amber-600">Accuracy</p>
+                    <p id="scAccuracy" class="text-xl font-black text-amber-900">0%</p>
+                </div>
+            </div>
+
+            <div class="bg-slate-50 rounded-xl p-3 border border-slate-200 mb-6 flex justify-between text-xs text-slate-700 font-semibold">
+                <span>Total Questions: <b id="scTotalQ">50</b></span>
+                <span>Attempted: <b id="scAttempted">0</b></span>
+                <span>Unattempted: <b id="scUnattempted">0</b></span>
+            </div>
+
+            <!-- Actions -->
+            <div class="flex flex-col sm:flex-row gap-2">
+                <button id="btnReviewSolutions" class="flex-1 py-3 bg-indigo-600 hover:bg-indigo-700 text-white font-bold rounded-xl shadow-md transition-all text-xs sm:text-sm">
+                    <i class="fa-solid fa-book-open mr-1"></i> Review Solutions
+                </button>
+                <a href="https://t.me/GYANVERSET" target="_blank" class="flex-1 py-3 bg-sky-500 hover:bg-sky-600 text-white font-bold rounded-xl shadow-md transition-all text-xs sm:text-sm flex items-center justify-center gap-1.5">
+                    <i class="fa-brands fa-telegram"></i> Telegram (@GYANVERSET)
+                </a>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- JAVASCRIPT LOGIC & 50 COMPLETE MCQS DATABASE -->
+    <script>
+        // FULL 50 HIGH-LEVEL QUESTIONS COVERING BOTH SPEEDY PAGES (100% COVERAGE)
+        const questionBank = [
+            // Q1
+            {
+                id: 1,
+                type: "4-Statement Type",
+                q_hi: `भारत के प्रमुख संवैधानिक एवं न्यायिक पदाधिकारियों के संदर्भ में निम्नलिखित कथनों पर विचार कीजिए:
+1. भारत की राष्ट्रपति द्रौपदी मुर्मू 15वीं व्यक्तिगत राष्ट्रपति हैं।
+2. सर्वोच्च न्यायालय के मुख्य न्यायाधीश जस्टिस सूर्यकांत 53वें मुख्य न्यायाधीश हैं।
+3. भारत के महान्यायवादी (Attorney General) आर. वेंकटरमणि देश के 16वें अटॉर्नी जनरल हैं।
+4. 16वें वित्त आयोग के अध्यक्ष एन.के. सिंह हैं।
+
+उपर्युक्त कथनों में से कौन-सा/से कथन सही है/हैं?`,
+                q_en: `Consider the following statements regarding Constitutional & Judicial dignitaries of India:
+1. President Droupadi Murmu is the 15th President of India.
+2. Chief Justice of India, Justice Surya Kant, is the 53rd CJI.
+3. Attorney General of India R. Venkataramani is the 16th Attorney General.
+4. Chairman of the 16th Finance Commission is N.K. Singh.
+
+Which of the statements given above is/are correct?`,
+                options_hi: [
+                    "A) केवल 1 और 4",
+                    "B) केवल 1, 2 और 3",
+                    "C) केवल 2 और 4",
+                    "D) उपर्युक्त सभी 1, 2, 3 और 4"
+                ],
+                options_en: [
+                    "A) Only 1 and 4",
+                    "B) Only 1, 2 and 3",
+                    "C) Only 2 and 4",
+                    "D) All 1, 2, 3 and 4"
+                ],
+                correct: 1, // B
+                exp_hi: `<b>विस्तृत व्याख्या (@GYANVERSET):</b><br>• कथन 1, 2 और 3 सही हैं।<br>• कथन 4 गलत है: 16वें वित्त आयोग के अध्यक्ष <b>अरविंद पनगड़िया</b> हैं (15वें वित्त आयोग के अध्यक्ष एन.के. सिंह थे)।`,
+                exp_en: `<b>Detailed Explanation (@GYANVERSET):</b><br>• Statements 1, 2 and 3 are correct.<br>• Statement 4 is incorrect: Chairman of the 16th Finance Commission is <b>Arvind Panagariya</b>.`
+            },
+            // Q2
+            {
+                id: 2,
+                type: "Assertion-Reason (A-R)",
+                q_hi: `नीचे दो कथन दिए गए हैं, जिनमें एक को कथन (A) तथा दूसरे को कारण (R) कहा गया है:
+<b>कथन (A):</b> भारत के नियंत्रक एवं महालेखा परीक्षक (CAG) संजय मूर्ति देश के 15वें कैग हैं।
+<b>कारण (R):</b> संविधान के अनुच्छेद 148 के तहत CAG की नियुक्ति राष्ट्रपति द्वारा की जाती है और वर्तमान में टी.सी.ए. कल्याणी 29वीं महालेखा नियंत्रक (CGA) हैं।
+
+सही विकल्प का चयन कीजिए:`,
+                q_en: `Given below are two statements, one labelled as Assertion (A) and Reason (R):
+<b>Assertion (A):</b> Comptroller and Auditor General (CAG) Sanjay Murthy is the 15th CAG of India.
+<b>Reason (R):</b> Under Article 148, CAG is appointed by the President, and currently T.C.A. Kalyani is the 29th Controller General of Accounts (CGA).
+
+Select the correct option:`,
+                options_hi: [
+                    "A) (A) और (R) दोनों सही हैं, और (R), (A) की सही व्याख्या है।",
+                    "B) (A) और (R) दोनों सही हैं, परन्तु (R), (A) की सही व्याख्या नहीं है।",
+                    "C) (A) सही है, परन्तु (R) गलत है।",
+                    "D) (A) गलत है, परन्तु (R) सही है।"
+                ],
+                options_en: [
+                    "A) Both (A) and (R) are true, and (R) is the correct explanation of (A).",
+                    "B) Both (A) and (R) are true, but (R) is NOT the correct explanation of (A).",
+                    "C) (A) is true, but (R) is false.",
+                    "D) (A) is false, but (R) is true."
+                ],
+                correct: 1, // B
+                exp_hi: `<b>विस्तृत व्याख्या (@GYANVERSET):</b><br>• दोनों कथन स्वतंत्र रूप से पूर्णतः सत्य हैं, लेकिन (R) सीधे तौर पर 15वें क्रम का कारण नहीं बताता।`,
+                exp_en: `<b>Detailed Explanation (@GYANVERSET):</b><br>• Both statements are independently true as per official records.`
+            },
+            // Q3
+            {
+                id: 3,
+                type: "List Matching Type",
+                q_hi: `स्तंभ-I में दिए गए प्रमुख सशस्त्र सेना प्रमुखों को स्तंभ-II में उनके पदधारकों के साथ सुमेलित कीजिए:
+<b>स्तंभ-I (पद)</b>
+a. वायु सेनाध्यक्ष (28वें)
+b. नौ सेनाध्यक्ष (27वें)
+c. थल सेनाध्यक्ष (31वें)
+d. चीफ ऑफ डिफेंस स्टाफ (CDS)
+
+<b>स्तंभ-II (प्रमुख)</b>
+1. धीरज सेठ
+2. अमरप्रीत सिंह
+3. कृष्णा स्वामीनाथन
+4. ले. ज. एन एस राजा सुब्रमणि
+
+सही कूट का चयन कीजिए:`,
+                q_en: `Match the Armed Forces Chiefs in Column-I with their respective heads in Column-II:
+<b>Column-I (Position)</b>
+a. Chief of Air Staff (28th)
+b. Chief of Naval Staff (27th)
+c. Chief of Army Staff (31st)
+d. CDS
+
+<b>Column-II (Head)</b>
+1. Dheeraj Seth
+2. Amar Preet Singh
+3. Krishna Swaminathan
+4. Lt. Gen. N. S. Raja Subramani`,
+                options_hi: [
+                    "A) a-2, b-3, c-1, d-4",
+                    "B) a-3, b-2, c-4, d-1",
+                    "C) a-2, b-1, c-3, d-4",
+                    "D) a-4, b-3, c-1, d-2"
+                ],
+                options_en: [
+                    "A) a-2, b-3, c-1, d-4",
+                    "B) a-3, b-2, c-4, d-1",
+                    "C) a-2, b-1, c-3, d-4",
+                    "D) a-4, b-3, c-1, d-2"
+                ],
+                correct: 0, // A
+                exp_hi: `<b>विस्तृत व्याख्या (@GYANVERSET):</b><br>• वायु सेनाध्यक्ष = अमरप्रीत सिंह (28वें)<br>• नौ सेनाध्यक्ष = कृष्णा स्वामीनाथन (27वें)<br>• थल सेनाध्यक्ष = धीरज सेठ (31वें)<br>• CDS = ले. ज. एन एस राजा सुब्रमणि`,
+                exp_en: `<b>Detailed Explanation (@GYANVERSET):</b><br>• Air Staff = Amar Preet Singh (28th)<br>• Naval Staff = Krishna Swaminathan (27th)<br>• Army Staff = Dheeraj Seth (31st)<br>• CDS = Lt. Gen. N.S. Raja Subramani`
+            },
+            // Q4
+            {
+                id: 4,
+                type: "3-Statement Type",
+                q_hi: `भारत के प्रमुख आयोगों के अध्यक्षों के संबंध में निम्नलिखित कथनों पर विचार कीजिए:
+1. राष्ट्रीय मानवाधिकार आयोग के 9वें अध्यक्ष वी. रामासुब्रमण्यन हैं।
+2. राष्ट्रीय महिला आयोग की वर्तमान अध्यक्ष विजया किशोर रहाटकर हैं।
+3. राष्ट्रीय अल्पसंख्यक आयोग के अध्यक्ष हरजीत सिंह प्रवाल हैं।
+
+उपर्युक्त में से कौन-सा/से कथन सत्य है/हैं?`,
+                q_en: `Consider the following statements regarding Heads of Commissions in India:
+1. 9th Chairperson of NHRC is V. Ramasubramanian.
+2. Current Chairperson of NCW is Vijaya Kishore Rahatkar.
+3. Chairperson of National Commission for Minorities is Harjit Singh Prawal.
+
+Which of the above statement(s) is/are correct?`,
+                options_hi: [
+                    "A) केवल 1 और 2",
+                    "B) केवल 2 और 3",
+                    "C) केवल 1 और 3",
+                    "D) 1, 2 और 3 सभी"
+                ],
+                options_en: [
+                    "A) Only 1 and 2",
+                    "B) Only 2 and 3",
+                    "C) Only 1 and 3",
+                    "D) All 1, 2 and 3"
+                ],
+                correct: 3, // D
+                exp_hi: `<b>विस्तृत व्याख्या (@GYANVERSET):</b><br>• तीनों कथन (1, 2 और 3) बिल्कुल सही हैं। NHRC = वी. रामासुब्रमण्यन, महिला आयोग = विजया किशोर रहाटकर, अल्पसंख्यक आयोग = हरजीत सिंह प्रवाल।`,
+                exp_en: `<b>Detailed Explanation (@GYANVERSET):</b><br>• All statements 1, 2 and 3 are completely true.`
+            },
+            // Q5
+            {
+                id: 5,
+                type: "Assertion-Reason (A-R)",
+                q_hi: `नीचे दो कथन दिए गए हैं:
+<b>कथन (A):</b> भारतीय रेलवे बोर्ड के वर्तमान अध्यक्ष एवं CEO सतीश कुमार हैं।
+<b>कारण (R):</b> रेलवे सुरक्षा बल (RPF) की पहली महिला महानिदेशक के रूप में सोनाली मिश्रा को नियुक्त किया गया है।
+
+उपर्युक्त के संदर्भ में सही विकल्प चुनें:`,
+                q_en: `Given below are two statements:
+<b>Assertion (A):</b> Current Chairman & CEO of Railway Board is Satish Kumar.
+<b>Reason (R):</b> Sonali Mishra has been appointed as the first woman DG of RPF.
+
+Choose the correct option:`,
+                options_hi: [
+                    "A) (A) और (R) दोनों सही हैं, परन्तु (R), (A) का सही स्पष्टीकरण नहीं है।",
+                    "B) (A) सही है परन्तु (R) गलत है।",
+                    "C) (A) और (R) दोनों सही हैं, और (R), (A) का सही स्पष्टीकरण है।",
+                    "D) (A) गलत है परन्तु (R) सही है।"
+                ],
+                options_en: [
+                    "A) Both (A) and (R) are true, but (R) is NOT the correct explanation of (A).",
+                    "B) (A) is true but (R) is false.",
+                    "C) Both (A) and (R) are true, and (R) is the correct explanation of (A).",
+                    "D) (A) is false but (R) is true."
+                ],
+                correct: 0, // A
+                exp_hi: `<b>विस्तृत व्याख्या (@GYANVERSET):</b><br>• दोनों तथ्य व्यक्तिगत रूप से सही हैं। रेलवे बोर्ड CEO = सतीश कुमार और RPF पहली महिला DG = सोनाली मिश्रा।`,
+                exp_en: `<b>Detailed Explanation (@GYANVERSET):</b><br>• Both facts are individually accurate.`
+            },
+            // Q6
+            {
+                id: 6,
+                type: "List Matching Type",
+                q_hi: `महारत्न कंपनियों (कुल-14) के प्रमुखों को उनकी कंपनियों के साथ सुमेलित कीजिए:
+<b>स्तंभ-I (कंपनी)</b>
+a. कोल इंडिया लि. (CIL)
+b. गैस अथॉरिटी ऑफ इंडिया लि. (GAIL)
+c. पावर फाइनेंस कॉर्पोरेशन (PFC)
+d. हिंदुस्तान पेट्रोलियम कॉर्पोरेशन लि. (HPCL)
+
+<b>स्तंभ-II (निदेशक / प्रमुख)</b>
+1. परमिंदर चोपड़ा
+2. बी. साईराम
+3. विकास कौशल
+4. दीपक गुप्ता`,
+                q_en: `Match the Maharatna Companies with their respective Heads:
+<b>Column-I</b>
+a. CIL
+b. GAIL
+c. PFC
+d. HPCL
+
+<b>Column-II</b>
+1. Parminder Chopra
+2. B. Sairam
+3. Vikas Kaushal
+4. Deepak Gupta`,
+                options_hi: [
+                    "A) a-1, b-4, c-2, d-3",
+                    "B) a-2, b-4, c-1, d-3",
+                    "C) a-3, b-1, c-4, d-2",
+                    "D) a-2, b-3, c-1, d-4"
+                ],
+                options_en: [
+                    "A) a-1, b-4, c-2, d-3",
+                    "B) a-2, b-4, c-1, d-3",
+                    "C) a-3, b-1, c-4, d-2",
+                    "D) a-2, b-3, c-1, d-4"
+                ],
+                correct: 1, // B
+                exp_hi: `<b>विस्तृत व्याख्या (@GYANVERSET):</b><br>• CIL = बी. साईराम (a-2)<br>• GAIL = दीपक गुप्ता (b-4)<br>• PFC = परमिंदर चोपड़ा (c-1)<br>• HPCL = विकास कौशल (d-3)`,
+                exp_en: `<b>Detailed Explanation (@GYANVERSET):</b><br>• CIL: B. Sairam | GAIL: Deepak Gupta | PFC: Parminder Chopra | HPCL: Vikas Kaushal`
+            },
+            // Q7
+            {
+                id: 7,
+                type: "4-Statement Type",
+                q_hi: `वैज्ञानिक एवं अनुसंधान संगठनों के प्रमुखों के संदर्भ में निम्नलिखित पर विचार करें:
+1. इसरो (ISRO) के 11वें अध्यक्ष वी. नारायणन हैं।
+2. परमाणु ऊर्जा आयोग (AEC) के अध्यक्ष अजीत कुमार मोहंती हैं।
+3. भाभा परमाणु अनुसंधान केन्द्र (BARC) के निदेशक विवेक भसीन हैं।
+4. CSIR की पहली महिला महानिदेशक नल्लाथम्बी कलाईसेल्वी हैं।
+
+उपर्युक्त में से कौन-से कथन सत्य हैं?`,
+                q_en: `Consider the following statements regarding Scientific & Research Organizations:
+1. 11th Chairman of ISRO is V. Narayanan.
+2. Chairman of Atomic Energy Commission is Ajit Kumar Mohanty.
+3. Director of BARC is Vivek Bhasin.
+4. Director General of CSIR is Nallathamby Kalaiselvi.
+
+Which of these statements are correct?`,
+                options_hi: [
+                    "A) केवल 1, 2 और 4",
+                    "B) केवल 2 और 3",
+                    "C) केवल 1 और 3",
+                    "D) सभी 1, 2, 3 और 4"
+                ],
+                options_en: [
+                    "A) Only 1, 2 and 4",
+                    "B) Only 2 and 3",
+                    "C) Only 1 and 3",
+                    "D) All 1, 2, 3 and 4"
+                ],
+                correct: 3, // D
+                exp_hi: `<b>विस्तृत व्याख्या (@GYANVERSET):</b><br>• सभी चारों कथन सत्य हैं। ISRO = वी. नारायणन (11वें), AEC = अजीत कुमार मोहंती, BARC = विवेक भसीन, CSIR = नल्लाथम्बी कलाईसेल्वी।`,
+                exp_en: `<b>Detailed Explanation (@GYANVERSET):</b><br>• All statements 1, 2, 3 and 4 are completely correct.`
+            },
+            // Q8
+            {
+                id: 8,
+                type: "Elimination Type",
+                q_hi: `निम्नलिखित युग्मों में से कौन-सा एक सही सुमेलित नहीं है?
+(A) अध्यक्ष, भारतीय प्रतिस्पर्धा आयोग — रवणीत कौर
+(B) मुख्य चुनाव आयुक्त (26वें) — ज्ञानेश कुमार
+(C) राष्ट्रीय पिछड़ा वर्ग आयोग (NCBC) अध्यक्ष — साध्वी निरंजन ज्योति
+(D) अध्यक्ष, 8वें वेतन आयोग — जस्टिस डी.वाई. चंद्रचूड़`,
+                q_en: `Which one of the following pairs is NOT correctly matched?
+(A) CCI Chairperson — Ravneet Kaur
+(B) Chief Election Commissioner (26th) — Gyanesh Kumar
+(C) NCBC Chairperson — Sadhvi Niranjan Jyoti
+(D) 8th Pay Commission Chairman — Justice D.Y. Chandrachud`,
+                options_hi: [
+                    "A) अध्यक्ष, भारतीय प्रतिस्पर्धा आयोग — रवणीत कौर",
+                    "B) मुख्य चुनाव आयुक्त (26वें) — ज्ञानेश कुमार",
+                    "C) राष्ट्रीय पिछड़ा वर्ग आयोग — साध्वी निरंजन ज्योति",
+                    "D) अध्यक्ष, 8वें वेतन आयोग — जस्टिस डी.वाई. चंद्रचूड़"
+                ],
+                options_en: [
+                    "A) CCI Chairperson — Ravneet Kaur",
+                    "B) CEC (26th) — Gyanesh Kumar",
+                    "C) NCBC Chairperson — Sadhvi Niranjan Jyoti",
+                    "D) 8th Pay Commission — Justice D.Y. Chandrachud"
+                ],
+                correct: 3, // D
+                exp_hi: `<b>विस्तृत व्याख्या (@GYANVERSET):</b><br>• युग्म (D) गलत है। 8वें वेतन आयोग की अध्यक्ष <b>रंजना प्रकाश देसाई</b> हैं।`,
+                exp_en: `<b>Detailed Explanation (@GYANVERSET):</b><br>• Pair (D) is incorrect: Chairperson of 8th Pay Commission is <b>Ranjana Prakash Desai</b>.`
+            },
+            // Q9
+            {
+                id: 9,
+                type: "Assertion-Reason (A-R)",
+                q_hi: `नीचे दो कथन दिए गए हैं:
+<b>कथन (A):</b> नालंदा विश्वविद्यालय के कुलाधिपति (Chancellor) अरविंद पनगड़िया हैं तथा गतिशक्ति विश्वविद्यालय के कुलाधिपति अश्विनी वैष्णव हैं।
+<b>कारण (R):</b> इंदिरा गांधी राष्ट्रीय मुक्त विश्वविद्यालय (IGNOU) की पहली महिला कुलपति प्रो. उमा कांजीलाल बनी हैं।
+
+कूट के आधार पर सही उत्तर चुनिए:`,
+                q_en: `Given below are two statements:
+<b>Assertion (A):</b> Chancellor of Nalanda University is Arvind Panagariya and Chancellor of Gati Shakti University is Ashwini Vaishnaw.
+<b>Reason (R):</b> Prof. Uma Kanjilal is the first woman VC of IGNOU.
+
+Choose the correct option:`,
+                options_hi: [
+                    "A) (A) और (R) दोनों सही हैं।",
+                    "B) (A) सही है परन्तु (R) असत्य है।",
+                    "C) (A) गलत है परन्तु (R) सही है।",
+                    "D) (A) और (R) दोनों असत्य हैं।"
+                ],
+                options_en: [
+                    "A) Both (A) and (R) are correct.",
+                    "B) (A) is correct but (R) is false.",
+                    "C) (A) is false but (R) is correct.",
+                    "D) Both (A) and (R) are false."
+                ],
+                correct: 0, // A
+                exp_hi: `<b>विस्तृत व्याख्या (@GYANVERSET):</b><br>• दोनों कथन पूर्णतः सत्य हैं। नालंदा वि.वि. के कुलाधिपति अरविंद पनगड़िया (कुलपति सचिन चतुर्वेदी) हैं और IGNOU कुलपति प्रो. उमा कांजीलाल हैं।`,
+                exp_en: `<b>Detailed Explanation (@GYANVERSET):</b><br>• Both statements are factually correct.`
+            },
+            // Q10
+            {
+                id: 10,
+                type: "3-Statement Type",
+                q_hi: `गुप्तचर एवं जांच संगठनों तथा अर्द्ध-सैनिक बलों के प्रमुखों के संदर्भ में विचार करें:
+1. केंद्रीय जांच ब्यूरो (CBI) के प्रमुख प्रवीण सूद हैं।
+2. रिसर्च एंड एनालिसिस विंग (RAW) के प्रमुख पराग जैन हैं।
+3. केंद्रीय रिजर्व पुलिस बल (CRPF) के महानिदेशक ज्ञानेन्द्र प्रताप सिंह हैं।
+
+उपर्युक्त में से कौन-सा/से कथन सत्य है/हैं?`,
+                q_en: `Consider the following statements regarding Intelligence & Paramilitary Heads:
+1. Head of CBI is Praveen Sood.
+2. Chief of RAW is Parag Jain.
+3. Director General of CRPF is Gyanendra Pratap Singh.
+
+Which of the above statement(s) is/are correct?`,
+                options_hi: [
+                    "A) केवल 1 और 2",
+                    "B) केवल 2 और 3",
+                    "C) केवल 1 और 3",
+                    "D) 1, 2 और 3 सभी"
+                ],
+                options_en: [
+                    "A) Only 1 and 2",
+                    "B) Only 2 and 3",
+                    "C) Only 1 and 3",
+                    "D) All 1, 2 and 3"
+                ],
+                correct: 3, // D
+                exp_hi: `<b>विस्तृत व्याख्या (@GYANVERSET):</b><br>• तीनों कथन सत्य हैं। CBI = प्रवीण सूद, RAW = पराग जैन, CRPF = ज्ञानेन्द्र प्रताप सिंह।`,
+                exp_en: `<b>Detailed Explanation (@GYANVERSET):</b><br>• All statements 1, 2 and 3 are correct.`
+            },
+            // Q11
+            {
+                id: 11,
+                type: "List Matching Type",
+                q_hi: `संसदीय प्रमुखों (Parliamentary Heads) को उनके पदों के साथ सुमेलित कीजिए:
+<b>स्तंभ-I (पद)</b>
+a. सभापति, राज्यसभा
+b. उपसभापति, राज्यसभा
+c. नेता विपक्ष, राज्यसभा
+d. नेता विपक्ष, लोकसभा
+
+<b>स्तंभ-II (पदाधिकारी)</b>
+1. मल्लिकार्जुन खड़गे
+2. राहुल गांधी
+3. सी. पी. राधाकृष्णन
+4. श्री हरिवंश`,
+                q_en: `Match Parliamentary Heads with their respective offices:
+<b>Column-I</b>
+a. Chairman, Rajya Sabha
+b. Deputy Chairman, Rajya Sabha
+c. Leader of Opposition, Rajya Sabha
+d. Leader of Opposition, Lok Sabha
+
+<b>Column-II</b>
+1. Mallikarjun Kharge
+2. Rahul Gandhi
+3. C.P. Radhakrishnan
+4. Harivansh`,
+                options_hi: [
+                    "A) a-3, b-4, c-1, d-2",
+                    "B) a-3, b-1, c-4, d-2",
+                    "C) a-4, b-3, c-2, d-1",
+                    "D) a-2, b-4, c-1, d-3"
+                ],
+                options_en: [
+                    "A) a-3, b-4, c-1, d-2",
+                    "B) a-3, b-1, c-4, d-2",
+                    "C) a-4, b-3, c-2, d-1",
+                    "D) a-2, b-4, c-1, d-3"
+                ],
+                correct: 0, // A
+                exp_hi: `<b>विस्तृत व्याख्या (@GYANVERSET):</b><br>• सभापति राज्यसभा = सी. पी. राधाकृष्णन (a-3)<br>• उपसभापति राज्यसभा = श्री हरिवंश (b-4)<br>• नेता विपक्ष राज्यसभा = मल्लिकार्जुन खड़गे (c-1)<br>• नेता विपक्ष लोकसभा = राहुल गांधी (d-2)`,
+                exp_en: `<b>Detailed Explanation (@GYANVERSET):</b><br>• Match: a-3, b-4, c-1, d-2.`
+            },
+            // Q12
+            {
+                id: 12,
+                type: "4-Statement Type",
+                q_hi: `प्रमुख सचिव एवं सलाहकारों के संबंध में निम्नलिखित कथनों पर विचार कीजिए:
+1. भारत के वर्तमान कैबिनेट सचिव टी.वी. सोमनाथन हैं।
+2. प्रधानमंत्री के प्रधान सचिव प्रमोद कुमार मिश्रा हैं।
+3. भारत के वर्तमान विदेश सचिव गोविंद मोहन हैं।
+4. मुख्य आर्थिक सलाहकार वी. अनंत नागेश्वरन हैं।
+
+उपर्युक्त में से कौन-से कथन सही हैं?`,
+                q_en: `Consider the following statements regarding Secretaries and Advisors:
+1. Cabinet Secretary is T.V. Somanathan.
+2. Principal Secretary to PM is Pramod Kumar Mishra.
+3. Foreign Secretary is Govind Mohan.
+4. Chief Economic Advisor is V. Anantha Nageswaran.
+
+Which of the statements given above are correct?`,
+                options_hi: [
+                    "A) केवल 1, 2 और 4",
+                    "B) केवल 2, 3 और 4",
+                    "C) केवल 1 और 3",
+                    "D) 1, 2, 3 और 4 सभी"
+                ],
+                options_en: [
+                    "A) Only 1, 2 and 4",
+                    "B) Only 2, 3 and 4",
+                    "C) Only 1 and 3",
+                    "D) All 1, 2, 3 and 4"
+                ],
+                correct: 0, // A
+                exp_hi: `<b>विस्तृत व्याख्या (@GYANVERSET):</b><br>• कथन 3 गलत है: विदेश सचिव <b>विक्रम मिश्री</b> हैं (गोविंद मोहन गृह सचिव हैं)। बाकी 1, 2 और 4 सही हैं।`,
+                exp_en: `<b>Detailed Explanation (@GYANVERSET):</b><br>• Statement 3 is incorrect: Foreign Secretary is <b>Vikram Misri</b> (Govind Mohan is Home Secretary).`
+            },
+            // Q13
+            {
+                id: 13,
+                type: "Assertion-Reason (A-R)",
+                q_hi: `नीचे दो कथन दिए गए हैं:
+<b>कथन (A):</b> भारत के राष्ट्रीय सुरक्षा सलाहकार (NSA) अजीत डोभाल हैं तथा उप राष्ट्रीय सुरक्षा सलाहकार अनीश दयाल सिंह हैं।
+<b>कारण (R):</b> भारत सरकार के मुख्य वैज्ञानिक सलाहकार अजय कुमार सूद हैं।
+
+सही विकल्प चुनिए:`,
+                q_en: `Given below are two statements:
+<b>Assertion (A):</b> NSA is Ajit Doval and Deputy NSA is Anish Dayal Singh.
+<b>Reason (R):</b> Principal Scientific Advisor to the Govt of India is Ajay Kumar Sood.
+
+Choose the correct option:`,
+                options_hi: [
+                    "A) (A) और (R) दोनों सही हैं।",
+                    "B) (A) सही है परन्तु (R) गलत है।",
+                    "C) (A) गलत है परन्तु (R) सही है।",
+                    "D) दोनों गलत हैं।"
+                ],
+                options_en: [
+                    "A) Both (A) and (R) are correct.",
+                    "B) (A) is correct but (R) is false.",
+                    "C) (A) is false but (R) is correct.",
+                    "D) Both are false."
+                ],
+                correct: 0, // A
+                exp_hi: `<b>विस्तृत व्याख्या (@GYANVERSET):</b><br>• दोनों कथन पूर्णतः सत्य हैं। NSA = अजीत डोभाल, उप NSA = अनीश दयाल सिंह, मुख्य वैज्ञानिक सलाहकार = अजय कुमार सूद।`,
+                exp_en: `<b>Detailed Explanation (@GYANVERSET):</b><br>• Both statements (A) and (R) are correct.`
+            },
+            // Q14
+            {
+                id: 14,
+                type: "List Matching Type",
+                q_hi: `जांच एवं सुरक्षा एजेंसियों के प्रमुखों को उनकी संस्थाओं से सुमेलित कीजिए:
+<b>स्तंभ-I (संस्था)</b>
+a. मुख्य सूचना आयुक्त (CIC)
+b. राष्ट्रीय जांच एजेंसी (NIA)
+c. प्रवर्तन निदेशालय (ED)
+d. नारकोटिक्स कंट्रोल ब्यूरो (NCB)
+
+<b>स्तंभ-II (प्रमुख)</b>
+1. राहुल नवीन
+2. अनुराग गर्ग
+3. राज कुमार गोयल
+4. राकेश अग्रवाल`,
+                q_en: `Match Intelligence & Investigation heads with their agencies:
+<b>Column-I</b>
+a. Chief Information Commissioner (CIC)
+b. NIA
+c. Enforcement Directorate (ED)
+d. Narcotics Control Bureau (NCB)
+
+<b>Column-II</b>
+1. Rahul Navin
+2. Anurag Garg
+3. Raj Kumar Goyal
+4. Rakesh Agrawal`,
+                options_hi: [
+                    "A) a-3, b-4, c-1, d-2",
+                    "B) a-3, b-1, c-4, d-2",
+                    "C) a-4, b-3, c-1, d-2",
+                    "D) a-2, b-4, c-3, d-1"
+                ],
+                options_en: [
+                    "A) a-3, b-4, c-1, d-2",
+                    "B) a-3, b-1, c-4, d-2",
+                    "C) a-4, b-3, c-1, d-2",
+                    "D) a-2, b-4, c-3, d-1"
+                ],
+                correct: 0, // A
+                exp_hi: `<b>विस्तृत व्याख्या (@GYANVERSET):</b><br>• CIC = राज कुमार गोयल (a-3)<br>• NIA = राकेश अग्रवाल (b-4)<br>• ED = राहुल नवीन (c-1)<br>• NCB = अनुराग गर्ग (d-2)`,
+                exp_en: `<b>Detailed Explanation (@GYANVERSET):</b><br>• CIC: Raj Kumar Goyal | NIA: Rakesh Agrawal | ED: Rahul Navin | NCB: Anurag Garg`
+            },
+            // Q15
+            {
+                id: 15,
+                type: "3-Statement Type",
+                q_hi: `अर्द्ध-सैनिक बलों के प्रमुखों के संदर्भ में निम्नलिखित कथनों पर विचार कीजिए:
+1. सशस्त्र सीमा बल (SSB) के महानिदेशक संजय सिंघल हैं।
+2. सीमा सुरक्षा बल (BSF) के महानिदेशक प्रवीण कुमार हैं।
+3. राष्ट्रीय सुरक्षा गार्ड (NSG) के महानिदेशक आलोक शर्मा हैं।
+
+उपर्युक्त में से कौन-सा/से कथन सत्य है/हैं?`,
+                q_en: `Consider the following statements regarding Paramilitary heads:
+1. Director General of SSB is Sanjay Singhal.
+2. Director General of BSF is Praveen Kumar.
+3. Director General of NSG is Alok Sharma.
+
+Which of the statements given above is/are correct?`,
+                options_hi: [
+                    "A) केवल 1 और 2",
+                    "B) केवल 2 और 3",
+                    "C) केवल 1 और 3",
+                    "D) 1, 2 और 3 सभी"
+                ],
+                options_en: [
+                    "A) Only 1 and 2",
+                    "B) Only 2 and 3",
+                    "C) Only 1 and 3",
+                    "D) All 1, 2 and 3"
+                ],
+                correct: 0, // A
+                exp_hi: `<b>विस्तृत व्याख्या (@GYANVERSET):</b><br>• कथन 1 और 2 सही हैं।<br>• कथन 3 गलत है: NSG के महानिदेशक <b>बी श्रीनिवासन</b> हैं (आलोक शर्मा विशेष सुरक्षा समूह - SPG के निदेशक हैं)।`,
+                exp_en: `<b>Detailed Explanation (@GYANVERSET):</b><br>• Statements 1 and 2 are correct. NSG DG is <b>B. Srinivasan</b> (Alok Sharma is Director of SPG).`
+            },
+            // Q16
+            {
+                id: 16,
+                type: "List Matching Type",
+                q_hi: `विशेष सुरक्षा बलों एवं उनके महानिदेशकों को सुमेलित कीजिए:
+<b>स्तंभ-I (बल)</b>
+a. भारत-तिब्बत सीमा पुलिस (ITBP)
+b. राष्ट्रीय कैडेट कोर (NCC)
+c. भारतीय तटरक्षक बल (ICG)
+d. राष्ट्रीय आपदा प्रतिक्रिया बल (NDRF)
+
+<b>स्तंभ-II (महानिदेशक)</b>
+1. वीरेंद्र वत्स
+2. शत्रुजीत सिंह कपूर
+3. पीयूष आनंद
+4. एस. परमेश`,
+                q_en: `Match Special Security Forces with their Directors General:
+<b>Column-I</b>
+a. ITBP
+b. NCC
+c. ICG
+d. NDRF
+
+<b>Column-II</b>
+1. Virendra Vats
+2. Shatrujeet Singh Kapoor
+3. Piyush Anand
+4. S. Paramesh`,
+                options_hi: [
+                    "A) a-2, b-1, c-4, d-3",
+                    "B) a-1, b-2, c-3, d-4",
+                    "C) a-2, b-4, c-1, d-3",
+                    "D) a-3, b-1, c-4, d-2"
+                ],
+                options_en: [
+                    "A) a-2, b-1, c-4, d-3",
+                    "B) a-1, b-2, c-3, d-4",
+                    "C) a-2, b-4, c-1, d-3",
+                    "D) a-3, b-1, c-4, d-2"
+                ],
+                correct: 0, // A
+                exp_hi: `<b>विस्तृत व्याख्या (@GYANVERSET):</b><br>• ITBP = शत्रुजीत सिंह कपूर (a-2)<br>• NCC = वीरेंद्र वत्स (b-1)<br>• ICG = एस. परमेश (c-4)<br>• NDRF = पीयूष आनंद (d-3)`,
+                exp_en: `<b>Detailed Explanation (@GYANVERSET):</b><br>• ITBP: Shatrujeet Singh Kapoor | NCC: Virendra Vats | ICG: S. Paramesh | NDRF: Piyush Anand`
+            },
+            // Q17
+            {
+                id: 17,
+                type: "Assertion-Reason (A-R)",
+                q_hi: `नीचे दो कथन दिए गए हैं:
+<b>कथन (A):</b> नीति आयोग के उपाध्यक्ष अशोक कुमार लाहिड़ी हैं तथा CEO अनुराग जैन हैं।
+<b>कारण (R):</b> नीति आयोग के पदेन अध्यक्ष भारत के प्रधानमंत्री (नरेंद्र मोदी) होते हैं।
+
+सही विकल्प चुनें:`,
+                q_en: `Given below are two statements:
+<b>Assertion (A):</b> Vice-Chairperson of NITI Aayog is Ashok Kumar Lahiri and CEO is Anurag Jain.
+<b>Reason (R):</b> Prime Minister Narendra Modi is the ex-officio Chairman of NITI Aayog.
+
+Choose the correct option:`,
+                options_hi: [
+                    "A) (A) और (R) दोनों सही हैं, और (R), (A) की सही व्याख्या करता है।",
+                    "B) (A) और (R) दोनों सही हैं, परन्तु (R), (A) की सही व्याख्या नहीं करता।",
+                    "C) (A) सही है परन्तु (R) गलत है।",
+                    "D) (A) गलत है परन्तु (R) सही है।"
+                ],
+                options_en: [
+                    "A) Both (A) and (R) are true, and (R) explains (A).",
+                    "B) Both (A) and (R) are true, but (R) does NOT explain (A).",
+                    "C) (A) is true but (R) is false.",
+                    "D) (A) is false but (R) is true."
+                ],
+                correct: 1, // B
+                exp_hi: `<b>विस्तृत व्याख्या (@GYANVERSET):</b><br>• दोनों तथ्य सही हैं। नीति आयोग अध्यक्ष = PM नरेंद्र मोदी, उपाध्यक्ष = अशोक कुमार लाहिड़ी, CEO = अनुराग जैन।`,
+                exp_en: `<b>Detailed Explanation (@GYANVERSET):</b><br>• Both facts are independently true.`
+            },
+            // Q18
+            {
+                id: 18,
+                type: "3-Statement Type",
+                q_hi: `प्रमुख आयोगों के अध्यक्षों के संबंध में निम्नलिखित कथनों पर विचार कीजिए:
+1. संघ लोक सेवा आयोग (UPSC) के अध्यक्ष अजय कुमार हैं।
+2. 23वें विधि आयोग के अध्यक्ष दिनेश माहेश्वरी हैं।
+3. कर्मचारी चयन आयोग (SSC) के अध्यक्ष एस. गोपालकृष्णन हैं।
+
+उपर्युक्त में से कौन-सा/से कथन सत्य है/हैं?`,
+                q_en: `Consider the following statements regarding Commissions:
+1. Chairman of UPSC is Ajay Kumar.
+2. Chairman of 23rd Law Commission is Dinesh Maheshwari.
+3. Chairman of SSC is S. Gopalakrishnan.
+
+Which of the above statement(s) is/are true?`,
+                options_hi: [
+                    "A) केवल 1 और 2",
+                    "B) केवल 2 और 3",
+                    "C) केवल 1 और 3",
+                    "D) 1, 2 और 3 सभी"
+                ],
+                options_en: [
+                    "A) Only 1 and 2",
+                    "B) Only 2 and 3",
+                    "C) Only 1 and 3",
+                    "D) All 1, 2 and 3"
+                ],
+                correct: 3, // D
+                exp_hi: `<b>विस्तृत व्याख्या (@GYANVERSET):</b><br>• तीनों कथन सत्य हैं। UPSC = अजय कुमार, 23वां विधि आयोग = दिनेश माहेश्वरी, SSC = एस. गोपालकृष्णन।`,
+                exp_en: `<b>Detailed Explanation (@GYANVERSET):</b><br>• All statements 1, 2 and 3 are correct.`
+            },
+            // Q19
+            {
+                id: 19,
+                type: "List Matching Type",
+                q_hi: `संसदीय एवं संवैधानिक पदों को उनके पदधारकों के साथ सुमेलित कीजिए:
+<b>स्तंभ-I (पद)</b>
+a. भारत के लोकपाल
+b. अध्यक्ष, राष्ट्रीय अनुसूचित जनजाति आयोग (ST)
+c. अध्यक्ष, राष्ट्रीय अनुसूचित जाति आयोग (SC)
+d. अध्यक्ष, राष्ट्रीय बाल अधिकार संरक्षण आयोग
+
+<b>स्तंभ-II (पदाधिकारी)</b>
+1. अंतर सिंह आर्य
+2. अजय मानिकराव खानविलकर
+3. प्रियांक कानूनगो
+4. किशोर मकवाना`,
+                q_en: `Match Parliamentary & Constitutional Posts with Heads:
+<b>Column-I</b>
+a. Lokpal of India
+b. National Commission for ST
+c. National Commission for SC
+d. NCPCR
+
+<b>Column-II</b>
+1. Antar Singh Arya
+2. Ajay Manikrao Khanwilkar
+3. Priyank Kanoongo
+4. Kishor Makwana`,
+                options_hi: [
+                    "A) a-2, b-1, c-4, d-3",
+                    "B) a-1, b-2, c-3, d-4",
+                    "C) a-2, b-4, c-1, d-3",
+                    "D) a-3, b-1, c-4, d-2"
+                ],
+                options_en: [
+                    "A) a-2, b-1, c-4, d-3",
+                    "B) a-1, b-2, c-3, d-4",
+                    "C) a-2, b-4, c-1, d-3",
+                    "D) a-3, b-1, c-4, d-2"
+                ],
+                correct: 0, // A
+                exp_hi: `<b>विस्तृत व्याख्या (@GYANVERSET):</b><br>• लोकपाल = अजय मानिकराव खानविलकर (a-2)<br>• ST आयोग = अंतर सिंह आर्य (b-1)<br>• SC आयोग = किशोर मकवाना (c-4)<br>• बाल अधिकार आयोग (NCPCR) = प्रियांक कानूनगो (d-3)`,
+                exp_en: `<b>Detailed Explanation (@GYANVERSET):</b><br>• Lokpal: Ajay Manikrao Khanwilkar | NCST: Antar Singh Arya | NCSC: Kishor Makwana | NCPCR: Priyank Kanoongo`
+            },
+            // Q20
+            {
+                id: 20,
+                type: "4-Statement Type",
+                q_hi: `प्रमुख वित्तीय एवं नियामक बोर्डों के अध्यक्षों के संबंध में कथनों पर विचार करें:
+1. सेबी (SEBI) के अध्यक्ष तुहिन कांत पांडे हैं।
+2. केंद्रीय प्रत्यक्ष कर बोर्ड (CBDT) के अध्यक्ष रवि अग्रवाल हैं।
+3. केंद्रीय अप्रत्यक्ष कर एवं सीमा शुल्क बोर्ड (CBIC) के अध्यक्ष विवेक चतुर्वेदी हैं।
+4. केंद्रीय फिल्म प्रमाणन बोर्ड (CBFC) के अध्यक्ष प्रसून जोशी हैं।
+
+इनमें से कौन-से कथन सत्य हैं?`,
+                q_en: `Consider the following statements regarding Financial & Regulatory Boards:
+1. Chairman of SEBI is Tuhin Kanta Pandey.
+2. Chairman of CBDT is Ravi Agrawal.
+3. Chairman of CBIC is Vivek Chaturvedi.
+4. Chairman of CBFC is Prasoon Joshi.
+
+Which of these statements are true?`,
+                options_hi: [
+                    "A) केवल 1, 2 और 3",
+                    "B) केवल 2 और 4",
+                    "C) केवल 1 और 4",
+                    "D) 1, 2, 3 और 4 सभी"
+                ],
+                options_en: [
+                    "A) Only 1, 2 and 3",
+                    "B) Only 2 and 4",
+                    "C) Only 1 and 4",
+                    "D) All 1, 2, 3 and 4"
+                ],
+                correct: 0, // A
+                exp_hi: `<b>विस्तृत व्याख्या (@GYANVERSET):</b><br>• कथन 4 गलत है: CBFC के अध्यक्ष <b>शशि शेखर वेम्पति</b> हैं (प्रसून जोशी प्रसार भारती के अध्यक्ष हैं)। कथन 1, 2 और 3 सही हैं।`,
+                exp_en: `<b>Detailed Explanation (@GYANVERSET):</b><br>• Statement 4 is incorrect: Chairman of CBFC is <b>Shashi Shekhar Vempati</b>.`
+            },
+            // Q21
+            {
+                id: 21,
+                type: "List Matching Type",
+                q_hi: `नियामक प्राधिकरणों एवं बोर्डों को उनके प्रमुखों के साथ सुमेलित कीजिए:
+<b>स्तंभ-I (संस्था)</b>
+a. भारतीय दूरसंचार नियामक प्राधिकरण (TRAI)
+b. भारतीय विशिष्ट पहचान प्राधिकरण (UIDAI)
+c. राष्ट्रीय डेयरी विकास बोर्ड (NDDB)
+d. पेट्रोलियम व प्राकृतिक गैस नियामक बोर्ड (PNGRB)
+
+<b>स्तंभ-II (प्रमुख)</b>
+1. मीनेश शाह
+2. अनिल कुमार लाहोटी
+3. अनिल कुमार जैन
+4. सौरभ विजय`,
+                q_en: `Match Regulatory Authorities with their Heads:
+<b>Column-I</b>
+a. TRAI
+b. UIDAI
+c. NDDB
+d. PNGRB
+
+<b>Column-II</b>
+1. Meenesh Shah
+2. Anil Kumar Lahoti
+3. Anil Kumar Jain
+4. Saurabh Vijay`,
+                options_hi: [
+                    "A) a-2, b-4, c-1, d-3",
+                    "B) a-3, b-4, c-1, d-2",
+                    "C) a-2, b-1, c-4, d-3",
+                    "D) a-4, b-2, c-3, d-1"
+                ],
+                options_en: [
+                    "A) a-2, b-4, c-1, d-3",
+                    "B) a-3, b-4, c-1, d-2",
+                    "C) a-2, b-1, c-4, d-3",
+                    "D) a-4, b-2, c-3, d-1"
+                ],
+                correct: 0, // A
+                exp_hi: `<b>विस्तृत व्याख्या (@GYANVERSET):</b><br>• TRAI = अनिल कुमार लाहोटी (a-2)<br>• UIDAI CEO = सौरभ विजय (b-4)<br>• NDDB = मीनेश शाह (c-1)<br>• PNGRB = अनिल कुमार जैन (d-3)`,
+                exp_en: `<b>Detailed Explanation (@GYANVERSET):</b><br>• TRAI: Anil Kumar Lahoti | UIDAI: Saurabh Vijay | NDDB: Meenesh Shah | PNGRB: Anil Kumar Jain`
+            },
+            // Q22
+            {
+                id: 22,
+                type: "Assertion-Reason (A-R)",
+                q_hi: `नीचे दो कथन दिए गए हैं:
+<b>कथन (A):</b> लोक लेखा समिति (PAC) के अध्यक्ष के.सी. वेणुगोपाल हैं।
+<b>कारण (R):</b> प्राक्कलन समिति (Estimates Committee) के अध्यक्ष डॉ. संजय जायसवाल हैं।
+
+सही विकल्प चुनें:`,
+                q_en: `Given below are two statements:
+<b>Assertion (A):</b> Chairman of Public Accounts Committee (PAC) is K.C. Venugopal.
+<b>Reason (R):</b> Chairman of Estimates Committee is Dr. Sanjay Jaiswal.
+
+Choose the correct option:`,
+                options_hi: [
+                    "A) (A) और (R) दोनों सही हैं।",
+                    "B) (A) सही है परन्तु (R) गलत है।",
+                    "C) (A) गलत है परन्तु (R) सही है।",
+                    "D) दोनों असत्य हैं।"
+                ],
+                options_en: [
+                    "A) Both (A) and (R) are correct.",
+                    "B) (A) is correct but (R) is false.",
+                    "C) (A) is false but (R) is correct.",
+                    "D) Both are false."
+                ],
+                correct: 0, // A
+                exp_hi: `<b>विस्तृत व्याख्या (@GYANVERSET):</b><br>• दोनों कथन सही हैं। PAC अध्यक्ष = के.सी. वेणुगोपाल तथा प्राक्कलन समिति अध्यक्ष = डॉ. संजय जायसवाल।`,
+                exp_en: `<b>Detailed Explanation (@GYANVERSET):</b><br>• Both statements are factually correct.`
+            },
+            // Q23
+            {
+                id: 23,
+                type: "3-Statement Type",
+                q_hi: `सड़क एवं परिवहन प्राधिकरणों के संबंध में कथनों पर विचार कीजिए:
+1. सीमा सड़क संगठन (BRO) के महानिदेशक हरपाल सिंह हैं।
+2. भारतीय राष्ट्रीय राजमार्ग प्राधिकरण (NHAI) के अध्यक्ष संतोष कुमार यादव हैं।
+3. भारत के महापंजीयक एवं जनगणना आयुक्त मृत्युंजय कुमार नारायण हैं।
+
+उपर्युक्त में से कौन-सा/से कथन सत्य है/हैं?`,
+                q_en: `Consider the following statements regarding transport & infrastructure:
+1. DG of Border Roads Organisation (BRO) is Harpal Singh.
+2. Chairman of NHAI is Santosh Kumar Yadav.
+3. Registrar General & Census Commissioner of India is Mritunjay Kumar Narayan.
+
+Which of the above statement(s) is/are true?`,
+                options_hi: [
+                    "A) केवल 1 और 2",
+                    "B) केवल 2 और 3",
+                    "C) केवल 1 और 3",
+                    "D) 1, 2 और 3 सभी"
+                ],
+                options_en: [
+                    "A) Only 1 and 2",
+                    "B) Only 2 and 3",
+                    "C) Only 1 and 3",
+                    "D) All 1, 2 and 3"
+                ],
+                correct: 3, // D
+                exp_hi: `<b>विस्तृत व्याख्या (@GYANVERSET):</b><br>• तीनों कथन सत्य हैं। BRO = हरपाल सिंह, NHAI = संतोष कुमार यादव, जनगणना आयुक्त = मृत्युंजय कुमार नारायण।`,
+                exp_en: `<b>Detailed Explanation (@GYANVERSET):</b><br>• All three statements are correct.`
+            },
+            // Q24
+            {
+                id: 24,
+                type: "List Matching Type",
+                q_hi: `महारत्न कंपनियों के निदेशकों को सुमेलित कीजिए:
+<b>स्तंभ-I (कंपनी)</b>
+a. नेशनल थर्मल पावर कॉर्पोरेशन (NTPC)
+b. तेल एवं प्राकृतिक गैस निगम (ONGC)
+c. स्टील अथॉरिटी ऑफ इंडिया लि. (SAIL)
+d. इंडियन ऑयल कॉर्पोरेशन लि. (IOCL)
+
+<b>स्तंभ-II (निदेशक / अध्यक्ष)</b>
+1. अरुण कुमार सिंह
+2. गुरदीप सिंह
+3. अरविंदर सिंह साहनी
+4. डॉ. ए. के. पांडा`,
+                q_en: `Match Maharatna Heads:
+<b>Column-I</b>
+a. NTPC
+b. ONGC
+c. SAIL
+d. IOCL
+
+<b>Column-II</b>
+1. Arun Kumar Singh
+2. Gurdeep Singh
+3. Arvinder Singh Sahni
+4. Dr. A.K. Panda`,
+                options_hi: [
+                    "A) a-2, b-1, c-4, d-3",
+                    "B) a-1, b-2, c-3, d-4",
+                    "C) a-2, b-4, c-1, d-3",
+                    "D) a-4, b-1, c-2, d-3"
+                ],
+                options_en: [
+                    "A) a-2, b-1, c-4, d-3",
+                    "B) a-1, b-2, c-3, d-4",
+                    "C) a-2, b-4, c-1, d-3",
+                    "D) a-4, b-1, c-2, d-3"
+                ],
+                correct: 0, // A
+                exp_hi: `<b>विस्तृत व्याख्या (@GYANVERSET):</b><br>• NTPC = गुरदीप सिंह (a-2)<br>• ONGC = अरुण कुमार सिंह (b-1)<br>• SAIL = डॉ. ए. के. पांडा (c-4)<br>• IOCL = अरविंदर सिंह साहनी (d-3)`,
+                exp_en: `<b>Detailed Explanation (@GYANVERSET):</b><br>• NTPC: Gurdeep Singh | ONGC: Arun Kumar Singh | SAIL: Dr. A.K. Panda | IOCL: Arvinder Singh Sahni`
+            },
+            // Q25
+            {
+                id: 25,
+                type: "4-Statement Type",
+                q_hi: `महारत्न कंपनियों (ऊर्जा एवं इंजीनियरिंग क्षेत्र) के संदर्भ में निम्नलिखित कथनों पर विचार कीजिए:
+1. भारत पेट्रोलियम कॉर्पोरेशन लि. (BPCL) के निदेशक संजय खन्ना हैं।
+2. भारत हेवी इलेक्ट्रिकल्स लि. (BHEL) के निदेशक कोप्पु सदाशिव मूर्ति हैं।
+3. पावर ग्रिड कॉर्पोरेशन ऑफ इंडिया के निदेशक BV रामा मोहन हैं।
+4. हिंदुस्तान एयरोनॉटिक्स लिमिटेड (HAL) के निदेशक डी. के. सुनील हैं।
+
+उपर्युक्त में से कौन-से कथन सत्य हैं?`,
+                q_en: `Consider the following statements regarding Maharatna CPSEs:
+1. Director of BPCL is Sanjay Khanna.
+2. Director of BHEL is Koppu Sadashiv Murthy.
+3. Director of Power Grid is BV Rama Mohan.
+4. Director of HAL is D.K. Sunil.
+
+Which of the statements given above are true?`,
+                options_hi: [
+                    "A) केवल 1, 2 और 3",
+                    "B) केवल 2 और 4",
+                    "C) केवल 1 और 4",
+                    "D) 1, 2, 3 और 4 सभी"
+                ],
+                options_en: [
+                    "A) Only 1, 2 and 3",
+                    "B) Only 2 and 4",
+                    "C) Only 1 and 4",
+                    "D) All 1, 2, 3 and 4"
+                ],
+                correct: 3, // D
+                exp_hi: `<b>विस्तृत व्याख्या (@GYANVERSET):</b><br>• चारों कथन सत्य हैं। BPCL = संजय खन्ना, BHEL = कोप्पु सदाशिव मूर्ति, Power Grid = BV रामा मोहन, HAL = डी. के. सुनील।`,
+                exp_en: `<b>Detailed Explanation (@GYANVERSET):</b><br>• All statements 1, 2, 3 and 4 are correct.`
+            },
+            // Q26
+            {
+                id: 26,
+                type: "Assertion-Reason (A-R)",
+                q_hi: `नीचे दो कथन दिए गए हैं:
+<b>कथन (A):</b> ग्रामीण विद्युतीकरण निगम (REC) के निदेशक जितेन्द्र श्रीवास्तव हैं।
+<b>कारण (R):</b> ऑयल इंडिया लिमिटेड (OIL) के निदेशक रंजीत रथ हैं।
+
+कूट के आधार पर सही उत्तर चुनें:`,
+                q_en: `Given below are two statements:
+<b>Assertion (A):</b> Director of REC is Jitendra Srivastava.
+<b>Reason (R):</b> Director of Oil India Limited (OIL) is Ranjit Rath.
+
+Choose the correct option:`,
+                options_hi: [
+                    "A) (A) और (R) दोनों सही हैं।",
+                    "B) (A) सही है परन्तु (R) गलत है।",
+                    "C) (A) गलत है परन्तु (R) सही है।",
+                    "D) दोनों गलत हैं।"
+                ],
+                options_en: [
+                    "A) Both (A) and (R) are correct.",
+                    "B) (A) is correct but (R) is false.",
+                    "C) (A) is false but (R) is correct.",
+                    "D) Both are false."
+                ],
+                correct: 0, // A
+                exp_hi: `<b>विस्तृत व्याख्या (@GYANVERSET):</b><br>• दोनों कथन पूर्णतः सत्य हैं। REC = जितेन्द्र श्रीवास्तव और OIL = रंजीत रथ।`,
+                exp_en: `<b>Detailed Explanation (@GYANVERSET):</b><br>• Both statements are correct.`
+            },
+            // Q27
+            {
+                id: 27,
+                type: "List Matching Type",
+                q_hi: `प्रमुख सार्वजनिक उपक्रमों (PSUs) के CMD को उनकी कंपनियों के साथ सुमेलित कीजिए:
+<b>स्तंभ-I (PSU)</b>
+a. भारत संचार निगम लिमिटेड (BSNL)
+b. भारतीय विमानपत्तन प्राधिकरण (AAI)
+c. भारतीय पर्यटन विकास निगम (ITDC)
+d. महानगर टेलीफोन निगम लिमिटेड (MTNL)
+
+<b>स्तंभ-II (CMD / अध्यक्ष)</b>
+1. विपिन कुमार
+2. रॉबर्ट जे रवि
+3. मुग्धा सिन्हा
+4. रॉबर्ट जे रवि`,
+                q_en: `Match PSU CMDs with their companies:
+<b>Column-I</b>
+a. BSNL
+b. AAI
+c. ITDC
+d. MTNL
+
+<b>Column-II</b>
+1. Vipin Kumar
+2. Robert J. Ravi
+3. Mugdha Sinha
+4. Robert J. Ravi`,
+                options_hi: [
+                    "A) a-2, b-1, c-3, d-4",
+                    "B) a-1, b-2, c-4, d-3",
+                    "C) a-3, b-1, c-2, d-4",
+                    "D) a-2, b-4, c-1, d-3"
+                ],
+                options_en: [
+                    "A) a-2, b-1, c-3, d-4",
+                    "B) a-1, b-2, c-4, d-3",
+                    "C) a-3, b-1, c-2, d-4",
+                    "D) a-2, b-4, c-1, d-3"
+                ],
+                correct: 0, // A
+                exp_hi: `<b>विस्तृत व्याख्या (@GYANVERSET):</b><br>• BSNL = रॉबर्ट जे रवि (a-2)<br>• AAI = विपिन कुमार (b-1)<br>• ITDC = मुग्धा सिन्हा (c-3)<br>• MTNL = रॉबर्ट जे रवि (d-4)`,
+                exp_en: `<b>Detailed Explanation (@GYANVERSET):</b><br>• Note: Robert J. Ravi heads both BSNL and MTNL.`
+            },
+            // Q28
+            {
+                id: 28,
+                type: "3-Statement Type",
+                q_hi: `सार्वजनिक निर्माण एवं इंजीनियरिंग उपक्रमों के प्रमुखों के संदर्भ में विचार कीजिए:
+1. नेशनल बिल्डिंग्स कंस्ट्रक्शन कॉर्पोरेशन (NBCC) के निदेशक के.पी. महादेव स्वामी हैं।
+2. इंजीनियर्स इंडिया लिमिटेड (EIL) की निदेशक वर्तिका शुक्ला हैं।
+3. नेशनल एल्युमीनियम कंपनी लि. (NALCO) के निदेशक बृजेन्द्र प्रताप सिंह हैं।
+
+उपर्युक्त में से कौन-सा/से कथन सत्य है/हैं?`,
+                q_en: `Consider the following statements regarding Engineering PSUs:
+1. Director of NBCC is K.P. Mahadevaswamy.
+2. Director of EIL is Vartika Shukla.
+3. Director of NALCO is Brijendra Pratap Singh.
+
+Which of the above statement(s) is/are true?`,
+                options_hi: [
+                    "A) केवल 1 और 2",
+                    "B) केवल 2 और 3",
+                    "C) 1, 2 और 3 सभी",
+                    "D) केवल 1 और 3"
+                ],
+                options_en: [
+                    "A) Only 1 and 2",
+                    "B) Only 2 and 3",
+                    "C) All 1, 2 and 3",
+                    "D) Only 1 and 3"
+                ],
+                correct: 2, // C
+                exp_hi: `<b>विस्तृत व्याख्या (@GYANVERSET):</b><br>• तीनों कथन सत्य हैं। NBCC = के.पी. महादेव स्वामी, EIL = वर्तिका शुक्ला, NALCO = बृजेन्द्र प्रताप सिंह।`,
+                exp_en: `<b>Detailed Explanation (@GYANVERSET):</b><br>• All statements are correct.`
+            },
+            // Q29
+            {
+                id: 29,
+                type: "List Matching Type",
+                q_hi: `खनिज एवं भारी उद्योग उपक्रमों के निदेशकों को सुमेलित कीजिए:
+<b>स्तंभ-I (संस्था)</b>
+a. भारत इलेक्ट्रॉनिक्स लिमिटेड (BEL)
+b. नेशनल मिनरल डेवलपमेंट कॉर्पोरेशन (NMDC)
+c. राष्ट्रीय इस्पात निगम लिमिटेड (RINL)
+d. शिपिंग कॉर्पोरेशन ऑफ इंडिया (SCI)
+
+<b>स्तंभ-II (निदेशक)</b>
+1. अमिताभ मुखर्जी
+2. मनोज जैन
+3. बिनेश कुमार त्यागी
+4. ए. के. सक्सेना`,
+                q_en: `Match Mining & Industry Directors:
+<b>Column-I</b>
+a. BEL
+b. NMDC
+c. RINL
+d. SCI
+
+<b>Column-II</b>
+1. Amitava Mukherjee
+2. Manoj Jain
+3. Binesh Kumar Tyagi
+4. A.K. Saxena`,
+                options_hi: [
+                    "A) a-2, b-1, c-4, d-3",
+                    "B) a-1, b-2, c-3, d-4",
+                    "C) a-2, b-3, c-1, d-4",
+                    "D) a-4, b-1, c-2, d-3"
+                ],
+                options_en: [
+                    "A) a-2, b-1, c-4, d-3",
+                    "B) a-1, b-2, c-3, d-4",
+                    "C) a-2, b-3, c-1, d-4",
+                    "D) a-4, b-1, c-2, d-3"
+                ],
+                correct: 0, // A
+                exp_hi: `<b>विस्तृत व्याख्या (@GYANVERSET):</b><br>• BEL = मनोज जैन (a-2)<br>• NMDC = अमिताभ मुखर्जी (b-1)<br>• RINL = ए. के. सक्सेना (c-4)<br>• SCI = बिनेश कुमार त्यागी (d-3)`,
+                exp_en: `<b>Detailed Explanation (@GYANVERSET):</b><br>• BEL: Manoj Jain | NMDC: Amitava Mukherjee | RINL: A.K. Saxena | SCI: Binesh Kumar Tyagi`
+            },
+            // Q30
+            {
+                id: 30,
+                type: "Assertion-Reason (A-R)",
+                q_hi: `नीचे दो कथन दिए गए हैं:
+<b>कथन (A):</b> नेवेली लिग्नाइट कॉर्पोरेशन लि. (NLC) के निदेशक प्रसन्ना कुमार मोटुपल्ली हैं।
+<b>कारण (R):</b> नागरिक उड्डयन महानिदेशालय (DGCA) के महानिदेशक वीर विक्रम यादव हैं।
+
+सही विकल्प चुनें:`,
+                q_en: `Given below are two statements:
+<b>Assertion (A):</b> Director of NLC is Prasanna Kumar Motupalli.
+<b>Reason (R):</b> DG of Civil Aviation (DGCA) is Veer Vikram Yadav.
+
+Choose the correct option:`,
+                options_hi: [
+                    "A) (A) और (R) दोनों सही हैं।",
+                    "B) (A) सही है परन्तु (R) गलत है।",
+                    "C) (A) गलत है परन्तु (R) सही है।",
+                    "D) दोनों असत्य हैं।"
+                ],
+                options_en: [
+                    "A) Both (A) and (R) are correct.",
+                    "B) (A) is correct but (R) is false.",
+                    "C) (A) is false but (R) is correct.",
+                    "D) Both are false."
+                ],
+                correct: 0, // A
+                exp_hi: `<b>विस्तृत व्याख्या (@GYANVERSET):</b><br>• दोनों कथन पूर्णतः सत्य हैं। NLC निदेशक = प्रसन्ना कुमार मोटुपल्ली और नागरिक उड्डयन महानिदेशक = वीर विक्रम यादव।`,
+                exp_en: `<b>Detailed Explanation (@GYANVERSET):</b><br>• Both statements are correct.`
+            },
+            // Q31
+            {
+                id: 31,
+                type: "List Matching Type",
+                q_hi: `प्रमुख विश्वविद्यालयों एवं संस्थानों के कुलपतियों को सुमेलित कीजिए:
+<b>स्तंभ-I (विश्वविद्यालय)</b>
+a. विश्वविद्यालय अनुदान आयोग (UGC) अध्यक्ष
+b. कुलपति, दिल्ली विश्वविद्यालय (DU)
+c. कुलपति, जवाहरलाल नेहरू वि.वि. (JNU)
+d. कुलपति, बनारस हिंदू वि.वि. (BHU)
+
+<b>स्तंभ-II (प्रमुख / कुलपति)</b>
+1. योगेश सिंह
+2. विनीत जोशी
+3. अजीत कुमार चतुर्वेदी
+4. शांतिश्री धूलिपुडी पंडित`,
+                q_en: `Match University Vice-Chancellors:
+<b>Column-I</b>
+a. UGC Chairman
+b. VC, Delhi University
+c. VC, JNU
+d. VC, BHU
+
+<b>Column-II</b>
+1. Yogesh Singh
+2. Vineet Joshi
+3. Ajit Kumar Chaturvedi
+4. Shantisree Dhulipudi Pandit`,
+                options_hi: [
+                    "A) a-2, b-1, c-4, d-3",
+                    "B) a-1, b-2, c-3, d-4",
+                    "C) a-2, b-4, c-1, d-3",
+                    "D) a-3, b-1, c-4, d-2"
+                ],
+                options_en: [
+                    "A) a-2, b-1, c-4, d-3",
+                    "B) a-1, b-2, c-3, d-4",
+                    "C) a-2, b-4, c-1, d-3",
+                    "D) a-3, b-1, c-4, d-2"
+                ],
+                correct: 0, // A
+                exp_hi: `<b>विस्तृत व्याख्या (@GYANVERSET):</b><br>• UGC = विनीत जोशी (a-2)<br>• DU = योगेश सिंह (b-1)<br>• JNU = शांतिश्री धूलिपुडी पंडित (c-4)<br>• BHU = अजीत कुमार चतुर्वेदी (d-3)`,
+                exp_en: `<b>Detailed Explanation (@GYANVERSET):</b><br>• UGC: Vineet Joshi | DU: Yogesh Singh | JNU: Shantisree Pandit | BHU: Ajit Kumar Chaturvedi`
+            },
+            // Q32
+            {
+                id: 32,
+                type: "4-Statement Type",
+                q_hi: `स्कूली एवं शैक्षणिक अनुसंधान परिषदों के संबंध में निम्नलिखित पर विचार करें:
+1. NCERT के निदेशक दिनेश प्रसाद सकलानी हैं।
+2. CBSE के अध्यक्ष लोखंडे प्रशांत सीताराम हैं।
+3. साहित्य अकादमी के अध्यक्ष माधव कौशिक हैं।
+4. संगीत नाटक अकादमी की अध्यक्ष डॉ. संध्या पुरेचा हैं।
+
+उपर्युक्त में से कौन-से कथन सत्य हैं?`,
+                q_en: `Consider the following statements regarding School & Cultural Councils:
+1. Director of NCERT is Dinesh Prasad Saklani.
+2. Chairperson of CBSE is Lokhande Prashant Sitaram.
+3. President of Sahitya Akademi is Madhav Kaushik.
+4. Chairperson of Sangeet Natak Akademi is Dr. Sandhya Purecha.
+
+Which of the statements given above are true?`,
+                options_hi: [
+                    "A) केवल 1, 2 और 3",
+                    "B) केवल 2, 3 और 4",
+                    "C) 1, 2, 3 और 4 सभी",
+                    "D) केवल 1 और 4"
+                ],
+                options_en: [
+                    "A) Only 1, 2 and 3",
+                    "B) Only 2, 3 and 4",
+                    "C) All 1, 2, 3 and 4",
+                    "D) Only 1 and 4"
+                ],
+                correct: 2, // C
+                exp_hi: `<b>विस्तृत व्याख्या (@GYANVERSET):</b><br>• सभी चारों कथन सत्य हैं। NCERT = दिनेश प्रसाद सकलानी, CBSE = लोखंडे प्रशांत सीताराम, साहित्य अकादमी = माधव कौशिक, संगीत नाटक अकादमी = डॉ. संध्या पुरेचा।`,
+                exp_en: `<b>Detailed Explanation (@GYANVERSET):</b><br>• All four statements are correct.`
+            },
+            // Q33
+            {
+                id: 33,
+                type: "Assertion-Reason (A-R)",
+                q_hi: `नीचे दो कथन दिए गए हैं:
+<b>कथन (A):</b> ललित कला अकादमी के वर्तमान अध्यक्ष प्रो. वी. नागदास हैं।
+<b>कारण (R):</b> प्रेस इंफॉर्मेशन ब्यूरो (PIB) के महानिदेशक धीरेंद्र ओझा हैं।
+
+सही विकल्प चुनें:`,
+                q_en: `Given below are two statements:
+<b>Assertion (A):</b> Chairman of Lalit Kala Akademi is Prof. V. Nagdas.
+<b>Reason (R):</b> DG of Press Information Bureau (PIB) is Dhirendra Ojha.
+
+Choose the correct option:`,
+                options_hi: [
+                    "A) (A) और (R) दोनों सही हैं।",
+                    "B) (A) सही है परन्तु (R) गलत है।",
+                    "C) (A) गलत है परन्तु (R) सही है।",
+                    "D) दोनों गलत हैं।"
+                ],
+                options_en: [
+                    "A) Both (A) and (R) are correct.",
+                    "B) (A) is correct but (R) is false.",
+                    "C) (A) is false but (R) is correct.",
+                    "D) Both are false."
+                ],
+                correct: 0, // A
+                exp_hi: `<b>विस्तृत व्याख्या (@GYANVERSET):</b><br>• दोनों कथन पूर्णतः सत्य हैं। ललित कला अकादमी = प्रो. वी. नागदास, PIB = धीरेंद्र ओझा।`,
+                exp_en: `<b>Detailed Explanation (@GYANVERSET):</b><br>• Both statements are correct.`
+            },
+            // Q34
+            {
+                id: 34,
+                type: "List Matching Type",
+                q_hi: `सिनेमा, थियेटर एवं मीडिया प्रमुखों को सुमेलित कीजिए:
+<b>स्तंभ-I (संस्था)</b>
+a. नेशनल स्कूल ऑफ ड्रामा (NSD)
+b. भारतीय फिल्म और टेलीविजन संस्थान (FTII)
+c. महानिदेशक, आकाशवाणी
+d. अध्यक्ष, प्रसार भारती
+
+<b>स्तंभ-II (प्रमुख)</b>
+1. आर. माधवन
+2. परेश रावल
+3. प्रसून जोशी
+4. मौसमी चक्रवर्ती`,
+                q_en: `Match Film, Theatre & Media Heads:
+<b>Column-I</b>
+a. NSD
+b. FTII
+c. DG, All India Radio
+d. Chairman, Prasar Bharati
+
+<b>Column-II</b>
+1. R. Madhavan
+2. Paresh Rawal
+3. Prasoon Joshi
+4. Mausami Chakraborty`,
+                options_hi: [
+                    "A) a-2, b-1, c-4, d-3",
+                    "B) a-1, b-2, c-3, d-4",
+                    "C) a-3, b-1, c-4, d-2",
+                    "D) a-2, b-4, c-1, d-3"
+                ],
+                options_en: [
+                    "A) a-2, b-1, c-4, d-3",
+                    "B) a-1, b-2, c-3, d-4",
+                    "C) a-3, b-1, c-4, d-2",
+                    "D) a-2, b-4, c-1, d-3"
+                ],
+                correct: 0, // A
+                exp_hi: `<b>विस्तृत व्याख्या (@GYANVERSET):</b><br>• NSD = परेश रावल (a-2)<br>• FTII = आर. माधवन (b-1)<br>• आकाशवाणी = मौसमी चक्रवर्ती (c-4)<br>• प्रसार भारती = प्रसून जोशी (d-3)`,
+                exp_en: `<b>Detailed Explanation (@GYANVERSET):</b><br>• NSD: Paresh Rawal | FTII: R. Madhavan | AIR: Mausami Chakraborty | Prasar Bharati: Prasoon Joshi`
+            },
+            // Q35
+            {
+                id: 35,
+                type: "3-Statement Type",
+                q_hi: `प्रेस एवं समाचार एजेंसियों के प्रमुखों के संबंध में कथनों पर विचार कीजिए:
+1. प्रेस ट्रस्ट ऑफ इंडिया (PTI) के अध्यक्ष महेंद्र मोहन गुप्ता हैं।
+2. यूनाइटेड न्यूज ऑफ इंडिया (UNI) के अध्यक्ष आर. पी. गुप्ता हैं।
+3. इंडियन न्यूज पेपर सोसाइटी (INS) के अध्यक्ष विवेक गुप्ता हैं।
+
+उपर्युक्त में से कौन-सा/से कथन सत्य है/हैं?`,
+                q_en: `Consider statements regarding News Agencies:
+1. Chairman of PTI is Mahendra Mohan Gupta.
+2. Chairman of UNI is R.P. Gupta.
+3. President of INS is Vivek Gupta.
+
+Which of the above statement(s) is/are true?`,
+                options_hi: [
+                    "A) केवल 1 और 2",
+                    "B) केवल 2 और 3",
+                    "C) 1, 2 और 3 सभी",
+                    "D) केवल 1 और 3"
+                ],
+                options_en: [
+                    "A) Only 1 and 2",
+                    "B) Only 2 and 3",
+                    "C) All 1, 2 and 3",
+                    "D) Only 1 and 3"
+                ],
+                correct: 2, // C
+                exp_hi: `<b>विस्तृत व्याख्या (@GYANVERSET):</b><br>• तीनों कथन सत्य हैं। PTI = महेंद्र मोहन गुप्ता, UNI = आर. पी. गुप्ता, INS = विवेक गुप्ता।`,
+                exp_en: `<b>Detailed Explanation (@GYANVERSET):</b><br>• All statements are correct.`
+            },
+            // Q36
+            {
+                id: 36,
+                type: "List Matching Type",
+                q_hi: `रक्षा एवं अंतरिक्ष अनुसंधान प्रमुखों को सुमेलित कीजिए:
+<b>स्तंभ-I (संस्था)</b>
+a. रक्षा अनुसंधान एवं विकास संगठन (DRDO)
+b. परमाणु ऊर्जा नियामक बोर्ड (AERB)
+c. CEO & MD, ब्रह्मोस एयरोस्पेस
+d. निदेशक, विक्रम साराभाई अंतरिक्ष केंद्र (VSSC)
+
+<b>स्तंभ-II (प्रमुख)</b>
+1. डॉ. जयतीर्थ राघवेंद्र जोशी
+2. राजेश कुमार सिंह
+3. उपेन्द्र पी. राजीव
+4. ए. के. बालासुब्रह्मण्यन`,
+                q_en: `Match Defence & Space Heads:
+<b>Column-I</b>
+a. DRDO
+b. AERB
+c. CEO & MD, BrahMos Aerospace
+d. Director, VSSC
+
+<b>Column-II</b>
+1. Dr. Jaytirth Raghavendra Joshi
+2. Rajesh Kumar Singh
+3. Upendra P. Rajeev
+4. A.K. Balasubramanian`,
+                options_hi: [
+                    "A) a-2, b-4, c-1, d-3",
+                    "B) a-1, b-2, c-3, d-4",
+                    "C) a-2, b-1, c-4, d-3",
+                    "D) a-4, b-2, c-1, d-3"
+                ],
+                options_en: [
+                    "A) a-2, b-4, c-1, d-3",
+                    "B) a-1, b-2, c-3, d-4",
+                    "C) a-2, b-1, c-4, d-3",
+                    "D) a-4, b-2, c-1, d-3"
+                ],
+                correct: 0, // A
+                exp_hi: `<b>विस्तृत व्याख्या (@GYANVERSET):</b><br>• DRDO = राजेश कुमार सिंह (a-2)<br>• AERB = ए. के. बालासुब्रह्मण्यन (b-4)<br>• ब्रह्मोस = डॉ. जयतीर्थ राघवेंद्र जोशी (c-1)<br>• VSSC = उपेन्द्र पी. राजीव (d-3)`,
+                exp_en: `<b>Detailed Explanation (@GYANVERSET):</b><br>• DRDO: Rajesh Kumar Singh | AERB: A.K. Balasubramanian | BrahMos: Dr. Jaytirth Joshi | VSSC: Upendra P. Rajeev`
+            },
+            // Q37
+            {
+                id: 37,
+                type: "4-Statement Type",
+                q_hi: `संसदीय सचिवालय एवं सुरक्षा प्रमुखों के संबंध में कथनों पर विचार कीजिए:
+1. लोकसभा के वर्तमान महासचिव उत्पल कुमार सिंह हैं।
+2. राज्यसभा के वर्तमान महासचिव प्रमोद चंद्र मोदी हैं।
+3. राज्यसभा में सत्तापक्ष के नेता जेपी नड्डा हैं।
+4. 18वीं लोकसभा के अध्यक्ष ओम बिरला हैं।
+
+उपर्युक्त में से कौन-से कथन सत्य हैं?`,
+                q_en: `Consider statements regarding Parliamentary Secretariats:
+1. Secretary General of Lok Sabha is Utpal Kumar Singh.
+2. Secretary General of Rajya Sabha is Pramod Chandra Mody.
+3. Leader of the House in Rajya Sabha is J.P. Nadda.
+4. Speaker of 18th Lok Sabha is Om Birla.
+
+Which of the statements given above are true?`,
+                options_hi: [
+                    "A) केवल 1, 2 और 4",
+                    "B) केवल 2 और 3",
+                    "C) 1, 2, 3 और 4 सभी",
+                    "D) केवल 1 और 3"
+                ],
+                options_en: [
+                    "A) Only 1, 2 and 4",
+                    "B) Only 2 and 3",
+                    "C) All 1, 2, 3 and 4",
+                    "D) Only 1 and 3"
+                ],
+                correct: 2, // C
+                exp_hi: `<b>विस्तृत व्याख्या (@GYANVERSET):</b><br>• चारों कथन सत्य हैं। लोकसभा महासचिव = उत्पल कुमार सिंह, राज्यसभा महासचिव = प्रमोद चंद्र मोदी, राज्यसभा सत्तापक्ष = जेपी नड्डा, लोकसभा अध्यक्ष = ओम बिरला।`,
+                exp_en: `<b>Detailed Explanation (@GYANVERSET):</b><br>• All four statements are correct.`
+            },
+            // Q38
+            {
+                id: 38,
+                type: "Assertion-Reason (A-R)",
+                q_hi: `नीचे दो कथन दिए गए हैं:
+<b>कथन (A):</b> भारत के सॉलिसिटर जनरल ऑफ इंडिया तुषार मेहता हैं।
+<b>कारण (R):</b> राष्ट्रीय हरित न्यायाधिकरण (NGT) के अध्यक्ष न्यायमूर्ति प्रकाश श्रीवास्तव हैं।
+
+सही विकल्प चुनें:`,
+                q_en: `Given below are two statements:
+<b>Assertion (A):</b> Solicitor General of India is Tushar Mehta.
+<b>Reason (R):</b> Chairperson of NGT is Justice Prakash Shrivastava.
+
+Choose the correct option:`,
+                options_hi: [
+                    "A) (A) और (R) दोनों सही हैं।",
+                    "B) (A) सही है परन्तु (R) असत्य है।",
+                    "C) (A) असत्य है परन्तु (R) सही है।",
+                    "D) दोनों असत्य हैं।"
+                ],
+                options_en: [
+                    "A) Both (A) and (R) are correct.",
+                    "B) (A) is correct but (R) is false.",
+                    "C) (A) is false but (R) is correct.",
+                    "D) Both are false."
+                ],
+                correct: 0, // A
+                exp_hi: `<b>विस्तृत व्याख्या (@GYANVERSET):</b><br>• दोनों कथन पूर्णतः सत्य हैं। सॉलिसिटर जनरल = तुषार मेहता, NGT अध्यक्ष = न्यायमूर्ति प्रकाश श्रीवास्तव।`,
+                exp_en: `<b>Detailed Explanation (@GYANVERSET):</b><br>• Both statements are correct.`
+            },
+            // Q39
+            {
+                id: 39,
+                type: "3-Statement Type",
+                q_hi: `निर्वाचन आयोग (Election Commission) के संबंध में निम्नलिखित कथनों पर विचार कीजिए:
+1. भारत के 26वें मुख्य चुनाव आयुक्त ज्ञानेश कुमार हैं।
+2. वर्तमान चुनाव आयुक्तों में विवेक जोशी और सुखबीर संधू शामिल हैं।
+3. उप-चुनाव आयुक्तों में अजय भादू, आरके गुप्ता, उमेश सिंहा और सुदीप जैन शामिल हैं।
+
+उपर्युक्त में से कौन-सा/से कथन सत्य है/हैं?`,
+                q_en: `Consider statements regarding the Election Commission of India:
+1. 26th Chief Election Commissioner is Gyanesh Kumar.
+2. Current Election Commissioners include Vivek Joshi and Sukhbir Sandhu.
+3. Deputy Election Commissioners include Ajay Bhadoo, RK Gupta, Umesh Sinha, and Sudip Jain.
+
+Which of the above statement(s) is/are true?`,
+                options_hi: [
+                    "A) केवल 1 और 2",
+                    "B) केवल 2 और 3",
+                    "C) केवल 1 और 3",
+                    "D) 1, 2 और 3 सभी"
+                ],
+                options_en: [
+                    "A) Only 1 and 2",
+                    "B) Only 2 and 3",
+                    "C) Only 1 and 3",
+                    "D) All 1, 2 and 3"
+                ],
+                correct: 3, // D
+                exp_hi: `<b>विस्तृत व्याख्या (@GYANVERSET):</b><br>• तीनों कथन सत्य हैं। CEC = ज्ञानेश कुमार (26वें), EC = विवेक जोशी व सुखबीर संधू, उप-चुनाव आयुक्त = अजय भादू, आरके गुप्ता, उमेश सिंहा, सुदीप जैन।`,
+                exp_en: `<b>Detailed Explanation (@GYANVERSET):</b><br>• All statements are correct.`
+            },
+            // Q40
+            {
+                id: 40,
+                type: "List Matching Type",
+                q_hi: `सचिवालय एवं सुरक्षा बलों को सुमेलित कीजिए:
+<b>स्तंभ-I (संस्था)</b>
+a. महानिदेशक, सैन्य अभियान (DGMO)
+b. प्रधानमंत्री के निजी सचिव
+c. महानिदेशक, असम राइफल्स (AR)
+d. महानिदेशक, होम गार्ड (HG)
+
+<b>स्तंभ-II (प्रमुख)</b>
+1. निधि तिवारी
+2. ले. जनरल राजीव घई
+3. विवेक श्रीवास्तव
+4. विकास लखेड़ा`,
+                q_en: `Match Secretarial & Security heads:
+<b>Column-I</b>
+a. DGMO
+b. Private Secretary to PM
+c. DG, Assam Rifles
+d. DG, Home Guard
+
+<b>Column-II</b>
+1. Nidhi Tiwari
+2. Lt. Gen. Rajiv Ghai
+3. Vivek Srivastava
+4. Vikas Lakhera`,
+                options_hi: [
+                    "A) a-2, b-1, c-4, d-3",
+                    "B) a-1, b-2, c-3, d-4",
+                    "C) a-2, b-4, c-1, d-3",
+                    "D) a-3, b-1, c-4, d-2"
+                ],
+                options_en: [
+                    "A) a-2, b-1, c-4, d-3",
+                    "B) a-1, b-2, c-3, d-4",
+                    "C) a-2, b-4, c-1, d-3",
+                    "D) a-3, b-1, c-4, d-2"
+                ],
+                correct: 0, // A
+                exp_hi: `<b>विस्तृत व्याख्या (@GYANVERSET):</b><br>• DGMO = ले. जनरल राजीव घई (a-2)<br>• PM निजी सचिव = निधि तिवारी (b-1)<br>• असम राइफल्स = विकास लखेड़ा (c-4)<br>• होम गार्ड = विवेक श्रीवास्तव (d-3)`,
+                exp_en: `<b>Detailed Explanation (@GYANVERSET):</b><br>• DGMO: Lt. Gen. Rajiv Ghai | PS to PM: Nidhi Tiwari | Assam Rifles: Vikas Lakhera | Home Guard: Vivek Srivastava`
+            },
+            // Q41
+            {
+                id: 41,
+                type: "Assertion-Reason (A-R)",
+                q_hi: `नीचे दो कथन दिए गए हैं:
+<b>कथन (A):</b> भारत के वर्तमान वित्त सचिव अजय सेठ हैं।
+<b>कारण (R):</b> भारत के वर्तमान रक्षा सचिव राजेश कुमार सिंह हैं तथा राजस्व सचिव अरविंद श्रीवास्तव हैं।
+
+सही विकल्प चुनें:`,
+                q_en: `Given below are two statements:
+<b>Assertion (A):</b> Finance Secretary of India is Ajay Seth.
+<b>Reason (R):</b> Defence Secretary is Rajesh Kumar Singh and Revenue Secretary is Arvind Shrivastava.
+
+Choose the correct option:`,
+                options_hi: [
+                    "A) (A) और (R) दोनों सही हैं।",
+                    "B) (A) सही है परन्तु (R) गलत है।",
+                    "C) (A) गलत है परन्तु (R) सही है।",
+                    "D) दोनों गलत हैं।"
+                ],
+                options_en: [
+                    "A) Both (A) and (R) are correct.",
+                    "B) (A) is correct but (R) is false.",
+                    "C) (A) is false but (R) is correct.",
+                    "D) Both are false."
+                ],
+                correct: 0, // A
+                exp_hi: `<b>विस्तृत व्याख्या (@GYANVERSET):</b><br>• दोनों कथन सत्य हैं। वित्त सचिव = अजय सेठ, रक्षा सचिव = राजेश कुमार सिंह, राजस्व सचिव = अरविंद श्रीवास्तव।`,
+                exp_en: `<b>Detailed Explanation (@GYANVERSET):</b><br>• Both statements are correct.`
+            },
+            // Q42
+            {
+                id: 42,
+                type: "3-Statement Type",
+                q_hi: `सतर्कता एवं सुरक्षा जांच आयोगों के संदर्भ में विचार करें:
+1. केंद्रीय सतर्कता आयुक्त (CVC) प्रवीण कुमार श्रीवास्तव (19वें) हैं।
+2. सतर्कता आयुक्त, केंद्रीय सतर्कता आयोग प्रवीण वशिष्ठ हैं।
+3. इंटेलिजेंस ब्यूरो (IB) के निदेशक महेश दीक्षित हैं।
+
+उपर्युक्त में से कौन-सा/से कथन सत्य है/हैं?`,
+                q_en: `Consider Vigilance & Security commissions:
+1. Central Vigilance Commissioner (CVC) is Praveen Kumar Srivastava (19th).
+2. Vigilance Commissioner is Praveen Vashista.
+3. Director of IB is Mahesh Dixit.
+
+Which of the above statement(s) is/are true?`,
+                options_hi: [
+                    "A) केवल 1 और 2",
+                    "B) केवल 2 और 3",
+                    "C) केवल 1 और 3",
+                    "D) 1, 2 और 3 सभी"
+                ],
+                options_en: [
+                    "A) Only 1 and 2",
+                    "B) Only 2 and 3",
+                    "C) Only 1 and 3",
+                    "D) All 1, 2 and 3"
+                ],
+                correct: 3, // D
+                exp_hi: `<b>विस्तृत व्याख्या (@GYANVERSET):</b><br>• तीनों कथन सत्य हैं। CVC = प्रवीण कुमार श्रीवास्तव, सतर्कता आयुक्त = प्रवीण वशिष्ठ, IB = महेश दीक्षित।`,
+                exp_en: `<b>Detailed Explanation (@GYANVERSET):</b><br>• All statements are correct.`
+            },
+            // Q43
+            {
+                id: 43,
+                type: "List Matching Type",
+                q_hi: `अर्द्ध-सैनिक बलों को उनके प्रमुखों के साथ सुमेलित कीजिए:
+<b>स्तंभ-I (बल)</b>
+a. केंद्रीय औद्योगिक सुरक्षा बल (CISF)
+b. विशेष सुरक्षा समूह (SPG)
+c. राष्ट्रीय सुरक्षा गार्ड (NSG)
+d. सशस्त्र सीमा बल (SSB)
+
+<b>स्तंभ-II (प्रमुख)</b>
+1. प्रवीर रंजन
+2. आलोक शर्मा
+3. बी श्रीनिवासन
+4. संजय सिंघल`,
+                q_en: `Match Paramilitary Forces with Directors:
+<b>Column-I</b>
+a. CISF
+b. SPG
+c. NSG
+d. SSB
+
+<b>Column-II</b>
+1. Praveer Ranjan
+2. Alok Sharma
+3. B. Srinivasan
+4. Sanjay Singhal`,
+                options_hi: [
+                    "A) a-1, b-2, c-3, d-4",
+                    "B) a-2, b-1, c-4, d-3",
+                    "C) a-1, b-3, c-2, d-4",
+                    "D) a-4, b-2, c-3, d-1"
+                ],
+                options_en: [
+                    "A) a-1, b-2, c-3, d-4",
+                    "B) a-2, b-1, c-4, d-3",
+                    "C) a-1, b-3, c-2, d-4",
+                    "D) a-4, b-2, c-3, d-1"
+                ],
+                correct: 0, // A
+                exp_hi: `<b>विस्तृत व्याख्या (@GYANVERSET):</b><br>• CISF = प्रवीर रंजन (a-1)<br>• SPG = आलोक शर्मा (b-2)<br>• NSG = बी श्रीनिवासन (c-3)<br>• SSB = संजय सिंघल (d-4)`,
+                exp_en: `<b>Detailed Explanation (@GYANVERSET):</b><br>• CISF: Praveer Ranjan | SPG: Alok Sharma | NSG: B. Srinivasan | SSB: Sanjay Singhal`
+            },
+            // Q44
+            {
+                id: 44,
+                type: "4-Statement Type",
+                q_hi: `प्रमुख विश्वविद्यालयों एवं संस्थानों के संदर्भ में निम्नलिखित कथनों पर विचार कीजिए:
+1. नालंदा विश्वविद्यालय के कुलपति (Vice-Chancellor) सचिन चतुर्वेदी हैं।
+2. नालंदा विश्वविद्यालय के कुलाधिपति (Chancellor) अरविंद पनगड़िया हैं।
+3. गतिशक्ति विश्वविद्यालय के कुलाधिपति अश्विनी वैष्णव हैं।
+4. IGNOU की पहली महिला कुलपति प्रो. उमा कांजीलाल हैं।
+
+उपर्युक्त में से कौन-से कथन सत्य हैं?`,
+                q_en: `Consider statements regarding Universities:
+1. VC of Nalanda University is Sachin Chaturvedi.
+2. Chancellor of Nalanda University is Arvind Panagariya.
+3. Chancellor of Gati Shakti University is Ashwini Vaishnaw.
+4. First woman VC of IGNOU is Prof. Uma Kanjilal.
+
+Which of the statements given above are true?`,
+                options_hi: [
+                    "A) केवल 1, 2 और 3",
+                    "B) केवल 2, 3 और 4",
+                    "C) 1, 2, 3 और 4 सभी",
+                    "D) केवल 1 और 4"
+                ],
+                options_en: [
+                    "A) Only 1, 2 and 3",
+                    "B) Only 2, 3 and 4",
+                    "C) All 1, 2, 3 and 4",
+                    "D) Only 1 and 4"
+                ],
+                correct: 2, // C
+                exp_hi: `<b>विस्तृत व्याख्या (@GYANVERSET):</b><br>• सभी चारों कथन सत्य हैं। नालंदा VC = सचिन चतुर्वेदी, Chancellor = अरविंद पनगड़िया, गतिशक्ति Chancellor = अश्विनी वैष्णव, IGNOU VC = प्रो. उमा कांजीलाल।`,
+                exp_en: `<b>Detailed Explanation (@GYANVERSET):</b><br>• All statements are correct.`
+            },
+            // Q45
+            {
+                id: 45,
+                type: "Assertion-Reason (A-R)",
+                q_hi: `नीचे दो कथन दिए गए हैं:
+<b>कथन (A):</b> भारतीय विशिष्ट पहचान प्राधिकरण (UIDAI) के CEO सौरभ विजय हैं।
+<b>कारण (R):</b> TRAI के वर्तमान अध्यक्ष अनिल कुमार लाहोटी हैं।
+
+सही उत्तर चुनें:`,
+                q_en: `Given below are two statements:
+<b>Assertion (A):</b> CEO of UIDAI is Saurabh Vijay.
+<b>Reason (R):</b> Chairman of TRAI is Anil Kumar Lahoti.
+
+Choose the correct option:`,
+                options_hi: [
+                    "A) (A) और (R) दोनों सही हैं।",
+                    "B) (A) सही है परन्तु (R) गलत है।",
+                    "C) (A) गलत है परन्तु (R) सही है।",
+                    "D) दोनों गलत हैं।"
+                ],
+                options_en: [
+                    "A) Both (A) and (R) are correct.",
+                    "B) (A) is correct but (R) is false.",
+                    "C) (A) is false but (R) is correct.",
+                    "D) Both are false."
+                ],
+                correct: 0, // A
+                exp_hi: `<b>विस्तृत व्याख्या (@GYANVERSET):</b><br>• दोनों कथन पूर्णतः सत्य हैं। UIDAI CEO = सौरभ विजय और TRAI अध्यक्ष = अनिल कुमार लाहोटी।`,
+                exp_en: `<b>Detailed Explanation (@GYANVERSET):</b><br>• Both statements are correct.`
+            },
+            // Q46
+            {
+                id: 46,
+                type: "3-Statement Type",
+                q_hi: `महारत्न कंपनियों के संदर्भ में कथनों पर विचार कीजिए:
+1. भारत में वर्तमान में कुल 14 महारत्न कंपनियां हैं।
+2. 14वीं महारत्न कंपनी के रूप में HAL (हिंदुस्तान एयरोनॉटिक्स लिमिटेड) को दर्जा दिया गया जिसके निदेशक डी. के. सुनील हैं।
+3. कोल इंडिया लिमिटेड (CIL) के निदेशक बी. साईराम हैं।
+
+उपर्युक्त में से कौन-सा/से कथन सत्य है/हैं?`,
+                q_en: `Consider statements regarding Maharatna Companies:
+1. There are currently 14 Maharatna companies in India.
+2. Director of HAL is D.K. Sunil.
+3. Director of CIL is B. Sairam.
+
+Which of the above statement(s) is/are true?`,
+                options_hi: [
+                    "A) केवल 1 और 2",
+                    "B) केवल 2 और 3",
+                    "C) 1, 2 और 3 सभी",
+                    "D) केवल 1 और 3"
+                ],
+                options_en: [
+                    "A) Only 1 and 2",
+                    "B) Only 2 and 3",
+                    "C) All 1, 2 and 3",
+                    "D) Only 1 and 3"
+                ],
+                correct: 2, // C
+                exp_hi: `<b>विस्तृत व्याख्या (@GYANVERSET):</b><br>• तीनों कथन सत्य हैं। कुल महारत्न कंपनियां = 14, HAL निदेशक = डी. के. सुनील, कोल इंडिया निदेशक = बी. साईराम।`,
+                exp_en: `<b>Detailed Explanation (@GYANVERSET):</b><br>• All statements are correct.`
+            },
+            // Q47
+            {
+                id: 47,
+                type: "List Matching Type",
+                q_hi: `संसदीय समितियों एवं संवैधानिक आयोगों को सुमेलित कीजिए:
+<b>स्तंभ-I (समिति / आयोग)</b>
+a. प्राक्कलन समिति (Estimates Committee)
+b. 16वां वित्त आयोग
+c. राष्ट्रीय पिछड़ा वर्ग आयोग (NCBC)
+d. 23वां विधि आयोग
+
+<b>स्तंभ-II (अध्यक्ष)</b>
+1. साध्वी निरंजन ज्योति
+2. डॉ. संजय जायसवाल
+3. दिनेश माहेश्वरी
+4. अरविंद पनगड़िया`,
+                q_en: `Match Committees and Commissions:
+<b>Column-I</b>
+a. Estimates Committee
+b. 16th Finance Commission
+c. NCBC
+d. 23rd Law Commission
+
+<b>Column-II</b>
+1. Sadhvi Niranjan Jyoti
+2. Dr. Sanjay Jaiswal
+3. Dinesh Maheshwari
+4. Arvind Panagariya`,
+                options_hi: [
+                    "A) a-2, b-4, c-1, d-3",
+                    "B) a-4, b-2, c-1, d-3",
+                    "C) a-2, b-1, c-4, d-3",
+                    "D) a-3, b-4, c-1, d-2"
+                ],
+                options_en: [
+                    "A) a-2, b-4, c-1, d-3",
+                    "B) a-4, b-2, c-1, d-3",
+                    "C) a-2, b-1, c-4, d-3",
+                    "D) a-3, b-4, c-1, d-2"
+                ],
+                correct: 0, // A
+                exp_hi: `<b>विस्तृत व्याख्या (@GYANVERSET):</b><br>• प्राक्कलन समिति = डॉ. संजय जायसवाल (a-2)<br>• 16वां वित्त आयोग = अरविंद पनगड़िया (b-4)<br>• NCBC = साध्वी निरंजन ज्योति (c-1)<br>• 23वां विधि आयोग = दिनेश माहेश्वरी (d-3)`,
+                exp_en: `<b>Detailed Explanation (@GYANVERSET):</b><br>• Matches: a-2, b-4, c-1, d-3.`
+            },
+            // Q48
+            {
+                id: 48,
+                type: "Assertion-Reason (A-R)",
+                q_hi: `नीचे दो कथन दिए गए हैं:
+<b>कथन (A):</b> भारतीय थल सेनाध्यक्ष जनरल धीरज सेठ देश के 31वें थल सेनाध्यक्ष हैं।
+<b>कारण (R):</b> भारतीय नौ सेनाध्यक्ष एडमिरल कृष्णा स्वामीनाथन देश के 27वें नौ सेनाध्यक्ष हैं।
+
+सही विकल्प चुनें:`,
+                q_en: `Given below are two statements:
+<b>Assertion (A):</b> Army Chief General Dheeraj Seth is 31st Chief of Army Staff.
+<b>Reason (R):</b> Navy Chief Admiral Krishna Swaminathan is 27th Chief of Naval Staff.
+
+Choose the correct option:`,
+                options_hi: [
+                    "A) (A) और (R) दोनों सही हैं।",
+                    "B) (A) सही है परन्तु (R) गलत है।",
+                    "C) (A) गलत है परन्तु (R) सही है।",
+                    "D) दोनों गलत हैं।"
+                ],
+                options_en: [
+                    "A) Both (A) and (R) are correct.",
+                    "B) (A) is correct but (R) is false.",
+                    "C) (A) is false but (R) is correct.",
+                    "D) Both are false."
+                ],
+                correct: 0, // A
+                exp_hi: `<b>विस्तृत व्याख्या (@GYANVERSET):</b><br>• दोनों कथन पूर्णतः सत्य हैं। थल सेनाध्यक्ष धीरज सेठ (31वें) हैं और नौ सेनाध्यक्ष कृष्णा स्वामीनाथन (27वें) हैं।`,
+                exp_en: `<b>Detailed Explanation (@GYANVERSET):</b><br>• Both facts are accurate.`
+            },
+            // Q49
+            {
+                id: 49,
+                type: "3-Statement Type",
+                q_hi: `वैज्ञानिक संस्थानों के शीर्ष पदों के संबंध में निम्नलिखित कथनों पर विचार कीजिए:
+1. विक्रम साराभाई अंतरिक्ष केंद्र (VSSC) के निदेशक उपेन्द्र पी. राजीव हैं।
+2. परमाणु ऊर्जा नियामक बोर्ड (AERB) के अध्यक्ष ए. के. बालासुब्रह्मण्यन हैं।
+3. भाभा परमाणु अनुसंधान केन्द्र (BARC) के निदेशक विवेक भसीन हैं।
+
+उपर्युक्त में से कौन-सा/से कथन सत्य है/हैं?`,
+                q_en: `Consider statements regarding Scientific Bodies:
+1. Director of VSSC is Upendra P. Rajeev.
+2. Chairman of AERB is A.K. Balasubramanian.
+3. Director of BARC is Vivek Bhasin.
+
+Which of the above statement(s) is/are true?`,
+                options_hi: [
+                    "A) केवल 1 और 2",
+                    "B) केवल 2 और 3",
+                    "C) केवल 1 और 3",
+                    "D) 1, 2 और 3 सभी"
+                ],
+                options_en: [
+                    "A) Only 1 and 2",
+                    "B) Only 2 and 3",
+                    "C) Only 1 and 3",
+                    "D) All 1, 2 and 3"
+                ],
+                correct: 3, // D
+                exp_hi: `<b>विस्तृत व्याख्या (@GYANVERSET):</b><br>• तीनों कथन सत्य हैं। VSSC = उपेन्द्र पी. राजीव, AERB = ए. के. बालासुब्रह्मण्यन, BARC = विवेक भसीन।`,
+                exp_en: `<b>Detailed Explanation (@GYANVERSET):</b><br>• All statements are correct.`
+            },
+            // Q50
+            {
+                id: 50,
+                type: "4-Statement Type",
+                q_hi: `उच्चतम स्तर के संवैधानिक एवं राष्ट्रीय पदाधिकारियों के संबंध में कथनों पर विचार कीजिए:
+1. भारत के 15वें उपराष्ट्रपति सी. पी. राधाकृष्णन हैं।
+2. भारत के 15वें प्रधानमंत्री नरेंद्र मोदी हैं।
+3. देश के 28वें वायु सेनाध्यक्ष एयर चीफ मार्शल अमरप्रीत सिंह हैं।
+4. देश के 16वें महान्यायवादी आर. वेंकटरमणि हैं।
+
+उपर्युक्त में से कौन-से कथन सत्य हैं?`,
+                q_en: `Consider statements regarding highest constitutional dignitaries:
+1. 15th Vice-President is C.P. Radhakrishnan.
+2. 15th Prime Minister is Narendra Modi.
+3. 28th Chief of Air Staff is Air Chief Marshal Amar Preet Singh.
+4. 16th Attorney General is R. Venkataramani.
+
+Which of the statements given above are true?`,
+                options_hi: [
+                    "A) केवल 1, 2 और 3",
+                    "B) केवल 2, 3 और 4",
+                    "C) केवल 1 और 4",
+                    "D) 1, 2, 3 और 4 सभी"
+                ],
+                options_en: [
+                    "A) Only 1, 2 and 3",
+                    "B) Only 2, 3 and 4",
+                    "C) Only 1 and 4",
+                    "D) All 1, 2, 3 and 4"
+                ],
+                correct: 3, // D
+                exp_hi: `<b>विस्तृत व्याख्या (@GYANVERSET):</b><br>• चारों कथन शत-प्रतिशत सत्य हैं:<br>1. उपराष्ट्रपति = सी. पी. राधाकृष्णन (15वें)<br>2. प्रधानमंत्री = नरेंद्र मोदी (15वें)<br>3. वायु सेनाध्यक्ष = अमरप्रीत सिंह (28वें)<br>4. महान्यायवादी = आर. वेंकटरमणि (16वें)`,
+                exp_en: `<b>Detailed Explanation (@GYANVERSET):</b><br>• All four statements are completely accurate as per official records.`
+            }
+        ];
+
+        // --- APP STATE ---
+        let currentLang = 'hi';
+        let currentIndex = 0;
+        let userResponses = new Array(questionBank.length).fill(null);
+        let reviewMarks = new Array(questionBank.length).fill(false);
+        let timerSeconds = 120 * 60;
+        let timerInterval = null;
+        let isSubmitted = false;
+
+        // --- DOM ELEMENTS ---
+        const gateModal = document.getElementById('fullScreenGate');
+        const btnStartTest = document.getElementById('btnStartTest');
+        const qText = document.getElementById('qText');
+        const optionsContainer = document.getElementById('optionsContainer');
+        const qTypeBadge = document.getElementById('qTypeBadge');
+        const currentQNum = document.getElementById('currentQNum');
+        const totalQNum = document.getElementById('totalQNum');
+        const reviewBadge = document.getElementById('reviewBadge');
+        const instantExplanation = document.getElementById('instantExplanation');
+        const btnPrev = document.getElementById('btnPrev');
+        const btnNext = document.getElementById('btnNext');
+        const btnClear = document.getElementById('btnClear');
+        const btnReview = document.getElementById('btnReview');
+        const btnSubmitTestTop = document.getElementById('btnSubmitTestTop');
+        const btnLangToggle = document.getElementById('btnLangToggle');
+        const langText = document.getElementById('langText');
+        const timerDisplay = document.getElementById('timerDisplay');
+        const scorecardModal = document.getElementById('scorecardModal');
+        const btnReviewSolutions = document.getElementById('btnReviewSolutions');
+
+        totalQNum.textContent = questionBank.length;
+
+        // --- MANDATORY AUTO FULL SCREEN GATE ---
+        btnStartTest.addEventListener('click', () => {
+            const el = document.documentElement;
+            if (el.requestFullscreen) {
+                el.requestFullscreen().catch(() => {});
+            } else if (el.webkitRequestFullscreen) {
+                el.webkitRequestFullscreen();
+            } else if (el.msRequestFullscreen) {
+                el.msRequestFullscreen();
+            }
+            gateModal.classList.add('hidden');
+            startTimer();
+            loadQuestion(0);
+        });
+
+        // --- TIMER LOGIC ---
+        function startTimer() {
+            timerInterval = setInterval(() => {
+                if (timerSeconds <= 0) {
+                    clearInterval(timerInterval);
+                    submitTest();
+                    return;
+                }
+                timerSeconds--;
+                const m = Math.floor(timerSeconds / 60);
+                const s = timerSeconds % 60;
+                timerDisplay.textContent = `${String(m).padStart(2, '0')}:${String(s).padStart(2, '0')}`;
+            }, 1000);
+        }
+
+        // --- LOAD QUESTION & OPTIONS ---
+        function loadQuestion(index) {
+            currentIndex = index;
+            currentQNum.textContent = index + 1;
+            const q = questionBank[index];
+
+            qTypeBadge.textContent = q.type;
+            qText.innerHTML = (currentLang === 'hi') ? q.q_hi : q.q_en;
+
+            // Review Badge
+            if (reviewMarks[index]) {
+                reviewBadge.classList.remove('hidden');
+            } else {
+                reviewBadge.classList.add('hidden');
+            }
+
+            // Render Options
+            const opts = (currentLang === 'hi') ? q.options_hi : q.options_en;
+            optionsContainer.innerHTML = '';
+
+            opts.forEach((optText, optIdx) => {
+                const isSelected = userResponses[index] === optIdx;
+
+                const btn = document.createElement('button');
+                btn.className = `w-full text-left p-3.5 sm:p-4 rounded-xl border text-xs sm:text-sm font-medium transition-all flex items-start gap-3 active:scale-[0.99] ${
+                    isSelected 
+                        ? 'border-indigo-600 bg-indigo-50/70 text-indigo-950 font-semibold shadow-sm ring-1 ring-indigo-600' 
+                        : 'border-slate-200 hover:border-indigo-300 hover:bg-slate-50 text-slate-800'
+                }`;
+
+                const circle = document.createElement('span');
+                circle.className = `w-5 h-5 rounded-full flex-shrink-0 flex items-center justify-center text-[11px] font-bold mt-0.5 border ${
+                    isSelected 
+                        ? 'bg-indigo-600 text-white border-indigo-600' 
+                        : 'border-slate-300 text-slate-500 bg-white'
+                }`;
+                circle.textContent = String.fromCharCode(65 + optIdx);
+
+                const label = document.createElement('span');
+                label.className = "flex-1 leading-relaxed";
+                label.innerHTML = optText;
+
+                btn.appendChild(circle);
+                btn.appendChild(label);
+
+                btn.addEventListener('click', () => {
+                    if (isSubmitted) return;
+                    userResponses[index] = optIdx;
+                    loadQuestion(index);
+                });
+
+                optionsContainer.appendChild(btn);
+            });
+
+            // Instant Answer & Solution Box
+            if (userResponses[index] !== null || isSubmitted) {
+                instantExplanation.classList.remove('hidden');
+                const userChoice = userResponses[index];
+                const isUserCorrect = userChoice === q.correct;
+
+                if (isUserCorrect) {
+                    instantExplanation.className = "mt-6 p-4 rounded-xl border border-emerald-300 bg-emerald-50/80 text-emerald-900";
+                    instantExplanation.innerHTML = `
+                        <div class="flex items-center gap-2 font-bold mb-2 text-emerald-700">
+                            <i class="fa-solid fa-circle-check text-base"></i> Sahi Uttar! (+2.00)
+                        </div>
+                        <div class="text-slate-800 text-xs sm:text-sm">${(currentLang === 'hi') ? q.exp_hi : q.exp_en}</div>
+                    `;
+                } else {
+                    instantExplanation.className = "mt-6 p-4 rounded-xl border border-rose-300 bg-rose-50/80 text-rose-900";
+                    instantExplanation.innerHTML = `
+                        <div class="flex items-center gap-2 font-bold mb-2 text-rose-700">
+                            <i class="fa-solid fa-circle-xmark text-base"></i> Galat Uttar! (-0.20 Negative)
+                        </div>
+                        <div class="text-slate-800 text-xs sm:text-sm">${(currentLang === 'hi') ? q.exp_hi : q.exp_en}</div>
+                    `;
+                }
+            } else {
+                instantExplanation.classList.add('hidden');
+            }
+
+            // Prev/Next Button visibility
+            btnPrev.disabled = index === 0;
+            btnPrev.classList.toggle('opacity-50', index === 0);
+            btnPrev.classList.toggle('cursor-not-allowed', index === 0);
+
+            if (index === questionBank.length - 1) {
+                btnNext.innerHTML = `Submit Test <i class="fa-solid fa-paper-plane"></i>`;
+                btnNext.onclick = () => submitTest();
+            } else {
+                btnNext.innerHTML = `Next & Save <i class="fa-solid fa-arrow-right"></i>`;
+                btnNext.onclick = () => {
+                    if (currentIndex < questionBank.length - 1) loadQuestion(currentIndex + 1);
+                };
+            }
+        }
+
+        // --- NAVIGATION HANDLERS ---
+        btnPrev.addEventListener('click', () => {
+            if (currentIndex > 0) loadQuestion(currentIndex - 1);
+        });
+
+        btnClear.addEventListener('click', () => {
+            if (isSubmitted) return;
+            userResponses[currentIndex] = null;
+            loadQuestion(currentIndex);
+        });
+
+        btnReview.addEventListener('click', () => {
+            reviewMarks[currentIndex] = !reviewMarks[currentIndex];
+            loadQuestion(currentIndex);
+        });
+
+        // --- LANGUAGE SWITCHER ---
+        btnLangToggle.addEventListener('click', () => {
+            currentLang = (currentLang === 'hi') ? 'en' : 'hi';
+            langText.textContent = (currentLang === 'hi') ? 'English' : 'हिंदी';
+            loadQuestion(currentIndex);
+        });
+
+        // --- SUBMIT & SCORECARD GENERATION ---
+        function submitTest() {
+            clearInterval(timerInterval);
+            isSubmitted = true;
+
+            let correctCount = 0;
+            let incorrectCount = 0;
+            let unattemptedCount = 0;
+
+            userResponses.forEach((resp, i) => {
+                if (resp === null) {
+                    unattemptedCount++;
+                } else if (resp === questionBank[i].correct) {
+                    correctCount++;
+                } else {
+                    incorrectCount++;
+                }
+            });
+
+            const totalScore = (correctCount * 2.00) - (incorrectCount * 0.20);
+            const totalAttempted = correctCount + incorrectCount;
+            const accuracy = totalAttempted > 0 ? ((correctCount / totalAttempted) * 100).toFixed(1) : 0;
+
+            // Populate Scorecard
+            document.getElementById('scTotalScore').textContent = totalScore.toFixed(2);
+            document.getElementById('scCorrect').textContent = correctCount;
+            document.getElementById('scIncorrect').textContent = incorrectCount;
+            document.getElementById('scAccuracy').textContent = `${accuracy}%`;
+            document.getElementById('scTotalQ').textContent = questionBank.length;
+            document.getElementById('scAttempted').textContent = totalAttempted;
+            document.getElementById('scUnattempted').textContent = unattemptedCount;
+
+            scorecardModal.classList.remove('hidden');
+            scorecardModal.classList.add('flex');
+        }
+
+        btnSubmitTestTop.addEventListener('click', () => {
+            if (confirm("Kya aap sach me test submit karna chahte hain?")) {
+                submitTest();
+            }
+        });
+
+        btnReviewSolutions.addEventListener('click', () => {
+            scorecardModal.classList.add('hidden');
+            scorecardModal.classList.remove('flex');
+            loadQuestion(0);
+        });
+    </script>
+</body>
+</html>
