@@ -1,0 +1,1079 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BSSC SET-247 (GK & Science CBT Mock Test) | Gyanverse</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .custom-scrollbar::-webkit-scrollbar { width: 6px; }
+        .custom-scrollbar::-webkit-scrollbar-track { background: #f1f5f9; }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+    </style>
+</head>
+<body class="bg-slate-100 text-slate-800 font-sans min-h-screen flex flex-col select-none">
+
+    <!-- Header -->
+    <header class="bg-indigo-900 text-white shadow-md sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="flex items-center space-x-3">
+                <div class="bg-indigo-700 p-2 rounded-lg font-black tracking-wider text-xl text-amber-400">GV</div>
+                <div>
+                    <h1 class="text-lg md:text-xl font-bold leading-tight">BSSC (Inter Level / CGL-4) Exam | SET-247</h1>
+                    <p class="text-xs text-indigo-200">General Studies & General Science (Maths & Reasoning Excluded)</p>
+                </div>
+            </div>
+            
+            <div class="flex items-center space-x-4">
+                <div id="timerContainer" class="hidden items-center bg-indigo-950 px-3 py-1.5 rounded-lg border border-indigo-700">
+                    <i class="fa-regular fa-clock text-amber-400 mr-2 text-sm"></i>
+                    <span id="timer" class="font-mono text-base md:text-lg font-bold text-amber-300">120:00</span>
+                </div>
+                <button onclick="toggleFullScreen()" class="p-2 text-indigo-200 hover:text-white rounded-lg hover:bg-indigo-800 transition text-sm">
+                    <i class="fa-solid fa-expand"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Start / Instructions Screen -->
+    <div id="startScreen" class="max-w-4xl mx-auto my-auto p-6 w-full">
+        <div class="bg-white rounded-2xl shadow-xl overflow-hidden border border-slate-200">
+            <div class="bg-indigo-800 p-6 text-white text-center">
+                <span class="inline-block bg-amber-400 text-indigo-950 text-xs px-3 py-1 font-bold rounded-full uppercase tracking-wide mb-2">Special Mock Test</span>
+                <h2 class="text-2xl font-bold">BSSC All-in-One GK & GS Live Mock CBT</h2>
+                <p class="text-indigo-200 text-sm mt-1">Platform by Navin Kumar Singh | SET-247 Complete Official Questions</p>
+            </div>
+
+            <div class="p-6 md:p-8 space-y-6">
+                <!-- Telegram Channel Banner -->
+                <div class="bg-gradient-to-r from-blue-500 to-indigo-600 rounded-xl p-4 text-white flex flex-col sm:flex-row justify-between items-center shadow-md">
+                    <div class="flex items-center space-x-3 mb-3 sm:mb-0">
+                        <i class="fa-brands fa-telegram text-4xl text-amber-300"></i>
+                        <div>
+                            <h4 class="font-bold text-base">ऐसे ऑनलाइन टेस्ट देने के लिए टेलीग्राम जॉइन करें</h4>
+                            <p class="text-xs text-blue-100">Daily Free Tests, PDFs, and Real Exam Updates</p>
+                        </div>
+                    </div>
+                    <a href="https://t.me/GYANVERSET" target="_blank" class="bg-white text-blue-700 font-bold px-4 py-2 rounded-lg text-sm hover:bg-amber-300 hover:text-indigo-900 transition flex items-center space-x-2 shadow">
+                        <span>Join @GYANVERSET</span>
+                        <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
+                    </a>
+                </div>
+
+                <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 text-center">
+                    <div class="bg-slate-50 p-3 rounded-lg border border-slate-200">
+                        <div class="text-xs text-slate-500 font-semibold">Total Questions</div>
+                        <div class="text-xl font-bold text-indigo-900" id="infoTotalQ">52</div>
+                    </div>
+                    <div class="bg-slate-50 p-3 rounded-lg border border-slate-200">
+                        <div class="text-xs text-slate-500 font-semibold">Time Duration</div>
+                        <div class="text-xl font-bold text-indigo-900">120 Min</div>
+                    </div>
+                    <div class="bg-emerald-50 p-3 rounded-lg border border-emerald-200">
+                        <div class="text-xs text-emerald-600 font-semibold">Correct Marks</div>
+                        <div class="text-xl font-bold text-emerald-700">+2.00</div>
+                    </div>
+                    <div class="bg-rose-50 p-3 rounded-lg border border-rose-200">
+                        <div class="text-xs text-rose-600 font-semibold">Negative Marks</div>
+                        <div class="text-xl font-bold text-rose-700">-0.20</div>
+                    </div>
+                </div>
+
+                <div class="border-t border-slate-200 pt-4 space-y-2 text-sm text-slate-600">
+                    <h3 class="font-bold text-slate-800 text-base mb-2">महत्त्वपूर्ण निर्देश:</h3>
+                    <p><i class="fa-solid fa-circle-check text-indigo-600 mr-2 text-xs"></i>इस टेस्ट में केवल सामान्य अध्ययन (GK/GS) और सामान्य विज्ञान (General Science) के प्रश्न शामिल हैं। गणित और रीजनिंग के प्रश्नों को अलग रखा गया है।</p>
+                    <p><i class="fa-solid fa-circle-check text-indigo-600 mr-2 text-xs"></i>हर प्रश्न का हल और विस्तृत विश्लेषण (Discussion) परीक्षा परिणाम के बाद Review Mode में उपलब्ध रहेगा।</p>
+                    <p><i class="fa-solid fa-circle-check text-indigo-600 mr-2 text-xs"></i>आप प्रश्नों को 'Mark for Review' कर सकते हैं और कभी भी उत्तर बदल सकते हैं।</p>
+                </div>
+
+                <div class="text-center pt-2">
+                    <button onclick="startTest()" class="w-full sm:w-auto bg-indigo-700 hover:bg-indigo-800 text-white font-bold px-10 py-3.5 rounded-xl shadow-lg transition text-base tracking-wide transform hover:-translate-y-0.5">
+                        <i class="fa-solid fa-play mr-2"></i> टेस्ट शुरू करें (Start Test)
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- CBT Main Test Area -->
+    <div id="testScreen" class="hidden flex-1 max-w-7xl mx-auto w-full p-3 md:p-4 gap-4 flex-col md:flex-row">
+        <!-- Question Pane -->
+        <div class="flex-1 bg-white rounded-xl shadow-md border border-slate-200 flex flex-col justify-between overflow-hidden">
+            <!-- Question Header -->
+            <div class="px-5 py-3 border-b border-slate-100 flex justify-between items-center bg-slate-50">
+                <div class="flex items-center space-x-2">
+                    <span class="text-sm font-bold text-indigo-900 bg-indigo-100 px-3 py-1 rounded-full" id="qBadge">Question 1 of 52</span>
+                    <span class="text-xs text-slate-500 font-medium">BSSC SET-247</span>
+                </div>
+                <div class="text-xs font-semibold text-slate-600">
+                    Marks: <span class="text-emerald-600 font-bold">+2</span> | <span class="text-rose-600 font-bold">-0.2</span>
+                </div>
+            </div>
+
+            <!-- Question Body -->
+            <div class="p-5 md:p-6 overflow-y-auto flex-1 custom-scrollbar">
+                <div id="qText" class="text-base md:text-lg font-medium text-slate-900 leading-relaxed whitespace-pre-line mb-6"></div>
+                <div id="optionsContainer" class="space-y-3"></div>
+            </div>
+
+            <!-- Action Buttons Footer -->
+            <div class="px-5 py-4 border-t border-slate-200 bg-slate-50 flex flex-wrap gap-2 justify-between items-center">
+                <div class="flex gap-2">
+                    <button onclick="markForReview()" class="px-4 py-2 rounded-lg bg-amber-500 hover:bg-amber-600 text-white font-semibold text-sm transition">
+                        <i class="fa-solid fa-flag mr-1"></i> Mark for Review
+                    </button>
+                    <button onclick="clearResponse()" class="px-4 py-2 rounded-lg bg-slate-200 hover:bg-slate-300 text-slate-700 font-semibold text-sm transition">
+                        Clear Response
+                    </button>
+                </div>
+                <div class="flex gap-2">
+                    <button onclick="prevQuestion()" id="prevBtn" class="px-4 py-2 rounded-lg bg-indigo-100 hover:bg-indigo-200 text-indigo-900 font-bold text-sm transition">
+                        <i class="fa-solid fa-chevron-left mr-1"></i> Previous
+                    </button>
+                    <button onclick="nextQuestion()" id="nextBtn" class="px-5 py-2 rounded-lg bg-indigo-700 hover:bg-indigo-800 text-white font-bold text-sm transition shadow">
+                        Save & Next <i class="fa-solid fa-chevron-right ml-1"></i>
+                    </button>
+                    <button onclick="confirmSubmit()" class="px-5 py-2 rounded-lg bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-sm transition shadow">
+                        Submit Test
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Palette Side Pane -->
+        <div class="w-full md:w-80 bg-white rounded-xl shadow-md border border-slate-200 p-4 flex flex-col justify-between">
+            <div>
+                <h3 class="text-sm font-bold text-slate-800 mb-3 border-b pb-2 flex justify-between items-center">
+                    <span>Question Palette</span>
+                    <span class="text-xs text-indigo-600 font-normal">SET-247 (GK/GS)</span>
+                </h3>
+
+                <!-- Legend -->
+                <div class="grid grid-cols-2 gap-2 text-xs mb-4 text-slate-600">
+                    <div class="flex items-center"><span class="w-3.5 h-3.5 rounded bg-emerald-500 mr-2 inline-block"></span> Answered</div>
+                    <div class="flex items-center"><span class="w-3.5 h-3.5 rounded bg-rose-500 mr-2 inline-block"></span> Not Answered</div>
+                    <div class="flex items-center"><span class="w-3.5 h-3.5 rounded bg-amber-400 mr-2 inline-block"></span> Marked</div>
+                    <div class="flex items-center"><span class="w-3.5 h-3.5 rounded bg-slate-200 mr-2 inline-block"></span> Not Visited</div>
+                </div>
+
+                <!-- Number Grid -->
+                <div id="paletteGrid" class="grid grid-cols-6 gap-2 max-h-72 md:max-h-96 overflow-y-auto p-1 custom-scrollbar"></div>
+            </div>
+
+            <!-- Join Link in test screen -->
+            <div class="mt-4 pt-3 border-t text-center">
+                <a href="https://t.me/GYANVERSET" target="_blank" class="inline-flex items-center text-xs text-indigo-700 font-bold hover:underline">
+                    <i class="fa-brands fa-telegram mr-1 text-sm text-blue-500"></i> Join Telegram: @GYANVERSET
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Result / Review Screen -->
+    <div id="resultScreen" class="hidden max-w-5xl mx-auto my-6 p-4 w-full">
+        <!-- Scorecard -->
+        <div class="bg-white rounded-2xl shadow-xl overflow-hidden border border-slate-200 mb-6">
+            <div class="bg-indigo-900 p-6 text-white text-center">
+                <h2 class="text-2xl font-bold">Exam Result & Scorecard</h2>
+                <p class="text-indigo-200 text-sm mt-1">BSSC SET-247 (General Studies & Science)</p>
+            </div>
+
+            <div class="p-6 md:p-8 space-y-6">
+                <!-- Telegram Promo -->
+                <div class="bg-amber-50 border border-amber-200 rounded-xl p-4 flex flex-col sm:flex-row justify-between items-center text-amber-900">
+                    <div class="flex items-center space-x-3 mb-2 sm:mb-0">
+                        <i class="fa-brands fa-telegram text-3xl text-blue-600"></i>
+                        <div>
+                            <p class="font-bold text-sm">ऐसे और भी सेट्स और ऑनलाइन CBT टेस्ट के लिए ज्ञानवर्स से जुड़ें!</p>
+                            <p class="text-xs text-amber-800">Free PDF Solution & Real Test Updates</p>
+                        </div>
+                    </div>
+                    <a href="https://t.me/GYANVERSET" target="_blank" class="bg-blue-600 text-white font-bold px-4 py-2 rounded-lg text-xs hover:bg-blue-700 transition">
+                        Telegram: @GYANVERSET
+                    </a>
+                </div>
+
+                <!-- Stats Cards -->
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
+                    <div class="bg-slate-50 p-4 rounded-xl border border-slate-200">
+                        <div class="text-xs text-slate-500 font-medium">Total Score</div>
+                        <div id="finalScore" class="text-2xl font-black text-indigo-900 mt-1">0.00</div>
+                        <div class="text-[11px] text-slate-400 mt-0.5">Out of 104</div>
+                    </div>
+                    <div class="bg-emerald-50 p-4 rounded-xl border border-emerald-200">
+                        <div class="text-xs text-emerald-600 font-medium">Correct</div>
+                        <div id="correctCount" class="text-2xl font-black text-emerald-700 mt-1">0</div>
+                        <div class="text-[11px] text-emerald-500 mt-0.5">+2 each</div>
+                    </div>
+                    <div class="bg-rose-50 p-4 rounded-xl border border-rose-200">
+                        <div class="text-xs text-rose-600 font-medium">Incorrect</div>
+                        <div id="incorrectCount" class="text-2xl font-black text-rose-700 mt-1">0</div>
+                        <div class="text-[11px] text-rose-500 mt-0.5">-0.2 each</div>
+                    </div>
+                    <div class="bg-slate-50 p-4 rounded-xl border border-slate-200">
+                        <div class="text-xs text-slate-500 font-medium">Unattempted</div>
+                        <div id="unattemptedCount" class="text-2xl font-black text-slate-700 mt-1">0</div>
+                        <div class="text-[11px] text-slate-400 mt-0.5">0 marks</div>
+                    </div>
+                </div>
+
+                <div class="flex justify-center gap-4 pt-2">
+                    <button onclick="retakeTest()" class="bg-indigo-700 hover:bg-indigo-800 text-white font-bold px-6 py-2.5 rounded-xl text-sm transition">
+                        <i class="fa-solid fa-rotate-right mr-1"></i> Re-take Test
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Detailed Review Section -->
+        <div class="bg-white rounded-2xl shadow-xl overflow-hidden border border-slate-200 p-6 md:p-8">
+            <h3 class="text-xl font-bold text-slate-900 mb-6 border-b pb-3 flex items-center justify-between">
+                <span>Detailed Question Review & Official Solutions</span>
+                <span class="text-xs bg-indigo-100 text-indigo-800 px-3 py-1 rounded-full">Discussion Mode</span>
+            </h3>
+
+            <div id="reviewQuestionsList" class="space-y-8"></div>
+        </div>
+    </div>
+
+    <!-- Question Bank JSON (Extracted directly from PDF) -->
+    <script>
+        const questionsData = [
+            {
+                origId: 1,
+                q: "दिल्ली सल्तनत के दौरान 'मुकद्दम' पद का इस्तेमाल किनके लिए किया जाता था ?\n\nFor whom was the designation 'Muqaddam' used during the Delhi Sultanate?",
+                options: ["गाँव के सरपंच (Village Sarpanch)", "गाँव के लेखाकार (Village Accountant)", "राजस्व अधिकारी (Revenue Officer)", "उपर्युक्त में से कोई नहीं (None of the above)"],
+                ans: 0,
+                sol: "दिल्ली सल्तनत के दौरान 'मुकद्दम' पद का इस्तेमाल गाँव के सरपंच के लिए किया जाता था।\n\n• आरिज-ए-मुमालिक: सैन्य विभाग का प्रधान\n• सद्र-उस-सुदूर: धार्मिक मामले का प्रधान\n• अमीर-ए-हाजिब: दरबारी शिष्टाचार के नियमों को लागू करता था\n• कारकून: भूमि कर का हिसाब रखने वाला\n• मुतसर्रिफ: कारखानों की देखभाल, नियंत्रण और हिसाब का लेखा-जोखा तैयार करने वाला\n• दीवान-ए-खैरात: दान विभाग\n• दीवान-ए-इस्तिहाक: पेंशन विभाग"
+            },
+            {
+                origId: 2,
+                q: "मैदान में खेले जाने वाला कौन-सा खेल दुनिया में सर्वाधिक लोकप्रिय है?\n\nWhich field sport is the most popular in the world?",
+                options: ["हॉकी (Hockey)", "वॉलीबॉल (Volleyball)", "सोसर / फुटबॉल (Soccer / Football)", "क्रिकेट (Cricket)"],
+                ans: 2,
+                sol: "मैदान में खेले जाने वाला सोसर (फुटबॉल) खेल दुनिया में सर्वाधिक लोकप्रिय है।\n• फुटबॉल का जन्म इंग्लैंड में हुआ।\n• 1857 ई० में इंग्लैंड में विश्व का पहला फुटबॉल क्लब 'शेफील्ड फुटबॉल क्लब' का गठन हुआ।\n• भारत का पहला फुटबॉल क्लब 'डलहौजी क्लब' था।\n• फीफा की स्थापना 21 मई, 1904 को पेरिस (फ्रांस) में की गई थी, इसका वर्तमान मुख्यालय ज्यूरिख (स्विट्जरलैंड) में है। प्रत्येक टीम में 11 खिलाड़ी होते हैं।"
+            },
+            {
+                origId: 3,
+                q: "केन्द्रीय विधान सभा में हानिरहित बम किसने फेंके ?\n\nWho threw harmless bombs in the Central Legislative Assembly?",
+                options: ["जतिन दास (Jatin Das)", "बटुकेश्वर दत्त (Batukeshwar Dutt)", "भगत सिंह (Bhagat Singh)", "उपर्युक्त में से कोई नहीं (None of the above)"],
+                ans: 3,
+                sol: "केन्द्रीय विधान सभा में हानिरहित बम भगत सिंह और बटुकेश्वर दत्त दोनों ने फेंके थे (8 अप्रैल 1929 को), इसलिए दिए गए विकल्पों के अनुसार सही उत्तर (D) उपर्युक्त में से कोई नहीं है (क्योंकि दोनों ने मिलकर फेंका था)।\n• यह घटना ट्रेड डिस्प्यूट बिल तथा पब्लिक सेफ्टी बिल पर बहस के दौरान हुई थी।"
+            },
+            {
+                origId: 4,
+                q: "दिवाला और शोधन अक्षमता के सम्बन्ध में, निम्नलिखित कथनों पर विचार कीजिए:\n1. शोधन अक्षमता से तात्पर्य उस वित्तीय स्थिति से है, जिसमें कोई व्यक्ति या संस्था बकाया होने पर अपने ऋणों का भुगतान करने में असमर्थ होता है।\n2. दिवाला एक कानूनी प्रक्रिया को सन्दर्भित करता है, जहाँ देनदार की सम्पत्ति लेनदारों के लाभ के लिए समाप्त या पुनर्गठित की जाती है।\n3. शोधन अक्षमता एक अवस्था है, जबकि दिवाला निष्कर्ष है।\n4. भारतीय दिवाला और शोधन अक्षमता बोर्ड (IBBI) दिवाला और शोधन अक्षमता कार्यवाही की देखरेख के लिए जिम्मेदार नियामक निकाय है।\nउपर्युक्त में से कौन-सा/से कथन सही है/हैं?",
+                options: ["केवल 1 और 2", "1, 2 और 3", "2, 3 और 4", "केवल 4"],
+                ans: 3,
+                sol: "आधिकारिक उत्तर कुंजी के अनुसार कथन केवल (4) सही है।\n• भारतीय दिवाला और शोधन अक्षमता बोर्ड (IBBI) की स्थापना दिवाला और शोधन अक्षमता संहिता, 2016 के तहत 1 अक्टूबर, 2016 को हुई थी।"
+            },
+            {
+                origId: 5,
+                q: "संघ सरकार के वित्त में नवीनतम विकास के बारे में, निम्नलिखित कथनों पर विचार कीजिए:\n1. महामारी वित्तीय वर्ष 21 के दौरान संघ सरकार का राजकोषीय घाटा सकल घरेलू उत्पाद के 9.2 प्रतिशत तक पहुँच गया था।\n2. वित्तीय वर्ष 22 में राजकोषीय घाटा कम होकर सकल घरेलू उत्पाद का 7.7 प्रतिशत हो गया है।\n3. पिछले दो वर्षों में राजस्व संग्रह कम हो गया है।\nउपर्युक्त में से कौन-सा/से कथन सही है/हैं?",
+                options: ["2 और 3", "केवल 1", "1 और 2", "उपर्युक्त में से कोई नहीं"],
+                ans: 1,
+                sol: "कथन केवल (1) सही है कि महामारी वित्तीय वर्ष 2020-21 के दौरान संघ सरकार का राजकोषीय घाटा सकल घरेलू उत्पाद (GDP) का 9.2% तक पहुँच गया था।\n• वित्तीय वर्ष 2021-22 में राजकोषीय घाटा कम होकर GDP का 6.9% हो गया था (7.7% नहीं)।"
+            },
+            {
+                origId: 6,
+                q: "आर० बी० आई० के विदेशी मुद्रा भंडार (FER) में, निम्नलिखित में से कौन-से शामिल हैं?\n1. विदेशी मुद्रा परिसम्पत्तियाँ (FCA)\n2. सोना (Gold)\n3. विशेष आहरण अधिकार (SDR)\n4. आरक्षित किश्त स्थिति (Reserve Tranche Position)\nनीचे दिए गए कूट का प्रयोग कर सही उत्तर चुनिए:",
+                options: ["केवल 1, 2 और 3", "केवल 1 और 2", "केवल 2, 3 और 4", "उपर्युक्त सभी (All of the above)"],
+                ans: 3,
+                sol: "आर०बी०आई० के विदेशी मुद्रा भंडार (FER) में उपर्युक्त सभी 4 घटक शामिल होते हैं: विदेशी मुद्रा परिसंपत्तियां (FCA), स्वर्ण भंडार, विशेष आहरण अधिकार (SDR), और IMF के पास आरक्षित किश्त स्थिति (RTP)।"
+            },
+            {
+                origId: 7,
+                q: "1918 में मोंटफोर्ड सुधारों पर काँग्रेस ने एक महत्त्वपूर्ण रुख अपनाया, जिसके कारण पुराने उदारवादी अवशेष (सप्रू, जयकर और चिंतामणि) टूट गए, जिन्होंने गठन किया:\n\n(A) भारत सेवक समाज का\n(B) स्वराज पार्टी का\n(C) इंडियन नेशनल लिबरल फेडरेशन का\n(D) उपर्युक्त में से एक से अधिक",
+                options: ["भारत सेवक समाज का", "स्वराज पार्टी का", "इंडियन नेशनल लिबरल फेडरेशन का", "उपर्युक्त में से एक से अधिक"],
+                ans: 2,
+                sol: "1918 में मोंटफोर्ड सुधारों पर मतभेद के बाद सुरेंद्रनाथ बनर्जी के नेतृत्व में तेज बहादुर सप्रू, एम.आर. जयकर आदि ने 'इंडियन नेशनल लिबरल फेडरेशन' (भारतीय उदार संघ) का गठन किया। तेज बहादुर सप्रू इसके अध्यक्ष बने।"
+            },
+            {
+                origId: 8,
+                q: "निम्नलिखित में किस युद्ध में मुख्य विरोधियों का सही उल्लेख नहीं किया गया है?\n(A) पानीपत का प्रथम युद्ध - बाबर और इब्राहिम लोदी\n(B) पानीपत का द्वितीय युद्ध - टीपू सुल्तान और मराठा\n(C) हल्दीघाटी का युद्ध - महाराणा प्रताप और अकबर\n(D) उपर्युक्त में से एक से अधिक",
+                options: ["पानीपत का प्रथम युद्ध - बाबर और इब्राहिम लोदी", "पानीपत का द्वितीय युद्ध - टीपू सुल्तान और मराठा", "हल्दीघाटी का युद्ध - महाराणा प्रताप और अकबर", "उपर्युक्त में से एक से अधिक"],
+                ans: 1,
+                sol: "पानीपत का द्वितीय युद्ध (5 नवंबर, 1556) अकबर (बैरम खाँ) और हेमचन्द्र विक्रमादित्य (हेमू) के बीच हुआ था, टीपू सुल्तान और मराठा के बीच नहीं।"
+            },
+            {
+                origId: 9,
+                q: "निम्नलिखित में से कौन-से महात्मा गाँधी के सत्याग्रह के प्रमुख सिद्धान्त थे?\n1. सत्यवादिता\n2. अहिंसा\n3. निडरता\n4. संयम\nनिम्नलिखित कूट से सही उत्तर चुनें :",
+                options: ["केवल 1 एवं 2", "केवल 2 एवं 3", "केवल 1 एवं 3", "केवल 1, 2 एवं 3"],
+                ans: 3,
+                sol: "\"सत्यवादिता, अहिंसा और निडरता\" महात्मा गाँधी के सत्याग्रह के प्रमुख सिद्धांत थे। सत्याग्रह का शाब्दिक अर्थ 'सत्य के प्रति अटल रहना' है।"
+            },
+            {
+                origId: 10,
+                q: "प्रधानमंत्री कौशल विकास योजना (PMKVY) का संबंध है-\n(A) ग्रामीण विकास मंत्रालय से\n(B) पंचायती राज मंत्रालय से\n(C) सामाजिक न्याय एवं अधिकारिता मंत्रालय से\n(D) कौशल विकास और उद्यमिता मंत्रालय से",
+                options: ["ग्रामीण विकास मंत्रालय से", "पंचायती राज मंत्रालय से", "सामाजिक न्याय एवं अधिकारिता मंत्रालय से", "कौशल विकास और उद्यमिता मंत्रालय से"],
+                ans: 3,
+                sol: "प्रधानमंत्री कौशल विकास योजना का संबंध 'कौशल विकास और उद्यमिता मंत्रालय' (Ministry of Skill Development and Entrepreneurship) से है। यह योजना 15 जुलाई 2015 को शुरू की गई थी।"
+            },
+            {
+                origId: 21,
+                q: "एक विलयन का pH, 3 से 6 तक बदलता है। इसमें H+ आयन की सान्द्रता के सन्दर्भ में कौन-सा कथन सही है ?\n\nThe pH of a solution changes from 3 to 6. Which statement regarding the concentration of H+ ions in it is correct?",
+                options: ["3 गुना बढ़ जाएगी", "3 गुना कम हो जाएगी", "10 गुना कम हो जाएगी", "1000 गुना कम हो जाएगी"],
+                ans: 3,
+                sol: "pH = -log[H+]. pH 3 पर [H+] = 10^-3 M और pH 6 पर [H+] = 10^-6 M. अतः H+ आयन की सान्द्रता 10^3 = 1000 गुना कम हो जाएगी।"
+            },
+            {
+                origId: 22,
+                q: "यदि न्यूट्रॉन, प्रोटॉन, इलेक्ट्रॉन और ऐल्फा-कण समान गतिज ऊर्जाओं के साथ चल रहे हैं, कणों को उनके वेगों के बढ़ते हुए क्रम में किस प्रकार व्यवस्थित कर सकते हैं?",
+                options: ["ऐल्फा-कण, न्यूट्रॉन, प्रोटॉन, इलेक्ट्रॉन", "प्रोटॉन, इलेक्ट्रॉन, न्यूट्रॉन, ऐल्फा-कण", "इलेक्ट्रॉन, प्रोटॉन, न्यूट्रॉन, ऐल्फा-कण", "न्यूट्रॉन, प्रोटॉन, इलेक्ट्रॉन, ऐल्फा-कण"],
+                ans: 0,
+                sol: "गतिज ऊर्जा KE = (1/2)mv^2 => v = sqrt(2*KE / m). चूँकि गतिज ऊर्जा समान है, जिसका द्रव्यमान सबसे अधिक होगा उसका वेग सबसे कम होगा। द्रव्यमान क्रम: Alpha > Neutron > Proton > Electron. अतः वेग का बढ़ता क्रम: ऐल्फा-कण, न्यूट्रॉन, प्रोटॉन, इलेक्ट्रॉन।"
+            },
+            {
+                origId: 23,
+                q: "निम्नलिखित कथनों पर विचार करें:\n1. व्यतिकरण, विवर्तन और ध्रुवण जैसी घटनाओं की व्याख्या प्रकाश की तरंग प्रकृति द्वारा अच्छी तरह से की जा सकती है।\n2. प्रकाश वैद्युत प्रभाव और कॉम्पटन प्रभाव को प्रकाश की कण प्रकृति से समझा जा सकता है।\n3. प्रकाश की दोहरी प्रकृति होती है, लेकिन यह प्रयोग की प्रकृति पर निर्भर करता है कि प्रकाश की कण प्रकृति की आवश्यकता है या उसकी तरंग प्रकृति की।\nउपरोक्त में से कितने कथन सही है/हैं?",
+                options: ["केवल एक", "केवल दो", "सभी तीन", "इनमें से कोई नहीं"],
+                ans: 2,
+                sol: "उपरोक्त सभी तीनों कथन (1, 2 और 3) पूर्णतः सही हैं। प्रकाश में तरंग और कण दोनों की दोहरी प्रकृति (Wave-Particle Duality) पाई जाती है।"
+            },
+            {
+                origId: 24,
+                q: "एक मकान में दो बल्बों में से एक, दूसरे से अधिक चमकदार (रोशनी देता) है। इन दोनों में से किस बल्ब में उच्चतर अवरोधक (Resistance) है?\n\nIn a house, one of two bulbs is brighter than the other. Which of these two bulbs has higher resistance?",
+                options: ["मंद रोशनी वाले बल्ब में", "अधिक रोशनी वाले बल्ब में", "दोनों बल्बों में अवरोधक समतुल्य है", "रोशनी की तीव्रता अवरोधक पर निर्भर नहीं होती है"],
+                ans: 0,
+                sol: "घरेलू परिपथ समानांतर (Parallel) में होता है, जहाँ विभवांतर (V) समान रहता है। शक्ति P = V^2 / R. जिस बल्ब की शक्ति कम होगी (मंद रोशनी), उसका प्रतिरोध (R) अधिक होगा। अतः मंद रोशनी वाले बल्ब में उच्चतर प्रतिरोध होता है।"
+            },
+            {
+                origId: 25,
+                q: "भरण ऊतक (Ground Tissue) के सन्दर्भ में सही कथन है:\nA. भरण ऊतक में अधिचर्मीय ऊतक पाया जाता है।\nB. भरण ऊतक में संवहन पूल पाया जाता है।\nC. भरण ऊतक में कॉर्टेक्स, अन्तस्त्वचा, परिरम्भ एवं मज्जा सम्मिलित है।\nकूट:",
+                options: ["A व B", "केवल B", "B व C", "केवल C"],
+                ans: 3,
+                sol: "भरण ऊतक (Ground Tissue System) बाह्यत्वचा (Epidermis) और संवहन बंडल (Vascular Bundles) को छोड़कर शेष सभी पादप भागों को शामिल करता है। इसमें कॉर्टेक्स, अंतस्त्वचा, परिरम्भ, मज्जा और मज्जा किरणें शामिल होती हैं।"
+            },
+            {
+                origId: 26,
+                q: "निम्नलिखित कथनों को पढ़िए एवं सही कूट का चयन कीजिए:\n(A) मैक्लंग ने 'लिंग निर्धारण के गुणसूत्रीय वाद' का सिद्धान्त दिया।\n(B) 'लिंग निर्धारण के गुणसूत्रीय वाद' के अनुसार सन्तानों का लिंग लक्षण गुणसूत्रों पर निर्भर करता है।\n(C) आनुवंशिक लक्षणों के समान मेण्डल के नियमों के अनुसार ही वंशागत होता है।\nकूट:",
+                options: ["A व B", "C व B", "A व C", "ये सभी (All of these)"],
+                ans: 3,
+                sol: "दिए गए सभी कथन (A, B और C) सत्य हैं।"
+            },
+            {
+                origId: 32,
+                q: "निम्नलिखित कथनों पर विचार कीजिए:\n1. विभिन्न देशों में संविधान इसलिए निष्प्रभावी होते हैं, क्योंकि वे सैनिक शासकों या ऐसे अलोकप्रिय नेताओं के द्वारा बनाए जाते हैं, जिनके पास लोगों को अपने साथ लेकर चलने की क्षमता नहीं होती।\n2. भारत, दक्षिण अफ्रीका और अमेरिका का संविधान विश्व के सर्वाधिक सफल संविधान के उदाहरण हैं। इन संविधानों को एक सफल राष्ट्रीय आंदोलन के पश्चात बनाया गया।\nउपर्युक्त में से कौन-सा/से कथन सही है/हैं ?",
+                options: ["केवल 1", "केवल 2", "1 और 2 दोनों", "न तो 1 और न ही 2"],
+                ans: 2,
+                sol: "दोनों कथन (1 और 2) सही हैं।"
+            },
+            {
+                origId: 33,
+                q: "समता के अधिकार के संदर्भ में विचार कीजिए:\n1. समता का अधिकार सभी व्यक्तियों को समान रूप से विशेषाधिकारों तथा अवसरों का उपयोग करने का अधिकार देता है।\n2. यह राज्य द्वारा धर्म, जाति, वंश, लिंग तथा जन्म स्थान पर विभेद को वर्जित करता है।\n3. समानता का अधिकार 6 प्रकार की समानता का वर्णन करता है।\nउपर्युक्त कथनों में से कितने कथन सही नहीं हैं?",
+                options: ["केवल एक", "केवल दो", "सभी तीन", "उपर्युक्त में से कोई नहीं"],
+                ans: 1,
+                sol: "कथन 1 और 3 गलत हैं। संविधान में समता का अधिकार (अनुच्छेद 14-18) में पाँच अनुच्छेदों के तहत समानता के प्रावधान दिए गए हैं। अतः दो कथन सही नहीं हैं।"
+            },
+            {
+                origId: 34,
+                q: "निम्नलिखित कथनों पर विचार कीजिए:\n1. वर्ष 1920 में कांग्रेस के नागपुर अधिवेशन में भारतीय राष्ट्रीय कांग्रेस ने राज्यों के भाषाई आधार के गठन के सिद्धांत को स्वीकार किया था।\n2. स्वतंत्रता प्राप्ति के पश्चात राष्ट्रीय नेताओं ने सामाजिक-आर्थिक चुनौतियों के कारण राज्यों का भाषाई आधार पर गठन करने से इंकार कर दिया था।\nउपर्युक्त में से कौन-सा/से कथन सही है/हैं ?",
+                options: ["केवल 1", "केवल 2", "1 और 2", "न तो 1 और न ही 2"],
+                ans: 2,
+                sol: "दोनों कथन 1 और 2 सही हैं। 1920 नागपुर अधिवेशन में भाषाई सिद्धांत को स्वीकार किया गया था, लेकिन आजादी के बाद देश की एकता और सुरक्षा की प्राथमिकताओं के कारण नेताओं ने तत्काल भाषाई राज्यों के गठन को स्थगित करने का प्रयास किया था।"
+            },
+            {
+                origId: 35,
+                q: "निम्न में से कौन-सा अधिकार भारतीय नागरिकों के साथ विदेशी नागरिकों को भी प्राप्त है ?\n(A) संवैधानिक उपचारों का अधिकार\n(B) अभिव्यक्ति की स्वतंत्रता\n(C) विचरण तथा बसने का अधिकार\n(D) संगठन या संघ बनाने की स्वतंत्रता",
+                options: ["संवैधानिक उपचारों का अधिकार", "अभिव्यक्ति की स्वतंत्रता", "विचरण तथा बसने का अधिकार", "संगठन या संघ बनाने की स्वतंत्रता"],
+                ans: 0,
+                sol: "अनुच्छेद 15, 16, 19, 29 और 30 केवल भारतीय नागरिकों को प्राप्त हैं। अनुच्छेद 32 (संवैधानिक उपचारों का अधिकार) विदेशी नागरिकों को भी उन मौलिक अधिकारों के संरक्षण के लिए प्राप्त है जो उन्हें दिए गए हैं।"
+            },
+            {
+                origId: 36,
+                q: "राज्य के नीति-निदेशक तत्त्व किस प्रकार मौलिक अधिकार से भिन्न हैं?\n(A) निदेशक तत्व केंद्र सरकार के लिए हैं तथा मौलिक अधिकार राज्य सरकारों के लिए\n(B) निदेशक तत्त्व न्यायालय में प्रवर्तनीय नहीं हैं, जबकि मौलिक अधिकार प्रवर्तनीय हैं\n(C) निदेशक तत्त्व और मौलिक अधिकार दोनों न्यायालयों में 'वाद योग्य' हैं\n(D) उपर्युक्त में से कोई नहीं",
+                options: ["निदेशक तत्व केंद्र सरकार के लिए हैं तथा मौलिक अधिकार राज्य सरकारों के लिए", "निदेशक तत्त्व न्यायालय में प्रवर्तनीय नहीं हैं, जबकि मौलिक अधिकार प्रवर्तनीय हैं", "निदेशक तत्त्व और मौलिक अधिकार दोनों न्यायालयों में 'वाद योग्य' हैं", "उपर्युक्त में से कोई नहीं"],
+                ans: 1,
+                sol: "राज्य के नीति-निदेशक तत्व (DPSP) गैर-न्यायोचित (Non-enforceable/Non-justiciable) हैं, जबकि मौलिक अधिकार न्यायालय द्वारा प्रवर्तनीय (Enforceable) हैं।"
+            },
+            {
+                origId: 37,
+                q: "निम्नलिखित में से कौन-सा कथन मध्य उच्च भू-भाग के संदर्भ में सही है ?\n1. मध्य उच्च भू-भाग मालवा के पठार के अधिकतर भागों पर फैला है।\n2. मध्य उच्च भूमि पश्चिम में संकीर्ण और पूर्व में चौड़ी है।\n3. इस पठार के पूर्वी विस्तार को स्थानीय रूप से बघेलखंड एवं बुंदेलखंड के नाम से जाना जाता है।\nकूट:",
+                options: ["1, 2 और 3", "केवल 1", "1 और 3", "1 और 2"],
+                ans: 3,
+                sol: "उत्तर कुंजी के अनुसार विकल्प (D) 1 और 2 सही है।"
+            },
+            {
+                origId: 38,
+                q: "अफ्रीका महाद्वीप के संदर्भ में दिए गए कौन-से कथन सही हैं?\n(A) विषुवतीय वर्षा वन के उत्तर तथा दक्षिण में सवाना घास क्षेत्र का विस्तार पाया जाता है।\n(B) सवाना घास के मैदान के ऊपर और नीचे दोनों ओर विस्तृत मरुस्थल का विस्तार है।\n(C) 'a' और 'b' दोनों\n(D) उपर्युक्त में से कोई नहीं",
+                options: ["विषुवतीय वर्षा वन के उत्तर तथा दक्षिण में सवाना घास क्षेत्र का विस्तार पाया जाता है।", "सवाना घास के मैदान के ऊपर और नीचे दोनों ओर विस्तृत मरुस्थल का विस्तार है।", "'a' और 'b' दोनों", "उपर्युक्त में से कोई नहीं"],
+                ans: 2,
+                sol: "'a' और 'b' दोनों कथन सही हैं।"
+            },
+            {
+                origId: 39,
+                q: "ऑस्ट्रेलिया के पूर्वी, उत्तर-पूर्वी तथा दक्षिण-पश्चिम भागों में भारी वर्षा होती है। इसका मुख्य कारण क्या पाया जाता है ?\n(A) पवनों का स्थल से समुद्र की ओर चलना।\n(B) पछुआ पवनों का प्रभाव होना।\n(C) पवनों का समुद्र से स्थल की ओर चलना।\n(D) गर्म मरुस्थलों का अभाव होना।",
+                options: ["पवनों का स्थल से समुद्र की ओर चलना।", "पछुआ पवनों का प्रभाव होना।", "पवनों का समुद्र से स्थल की ओर चलना।", "गर्म मरुस्थलों का अभाव होना।"],
+                ans: 2,
+                sol: "पवनों का समुद्र से स्थल की ओर चलने के कारण आर्द्रता युक्त पवनें तटीय भागों में भारी वर्षा करती हैं।"
+            },
+            {
+                origId: 40,
+                q: "निम्नलिखित में से कौन-सी खनिजों की भौतिक विशेषताएँ हैं, जो खनिजों के अध्ययन एवं पहचान में सहायक होती हैं?\n1. क्रिस्टल का बाहरी रूप\n2. विदलन\n3. विभंजन\n4. कठोरता\nकूट:",
+                options: ["1 और 2", "2, 3 और 4", "1, 2 और 5", "ये सभी (All of these)"],
+                ans: 3,
+                sol: "क्रिस्टल रूप, विदलन (Cleavage), विभंजन (Fracture), कठोरता, चमक, रंग आदि सभी खनिजों के अध्ययन और पहचान की प्रमुख भौतिक विशेषताएँ हैं।"
+            },
+            {
+                origId: 41,
+                q: "निम्न में से कौन-सी विशेषताएँ काली मृदा से संबंधित हैं ?\n1. काली मृदा लंबे समय तक नमी को बनाए रखती है।\n2. काली मृदा में फॉस्फोरस, नाइट्रोजन और जैव तत्वों की अधिकता होती है।\nकूट:",
+                options: ["केवल 1", "केवल 2", "1 और 2 दोनों", "न तो 1 और न ही 2"],
+                ans: 0,
+                sol: "केवल कथन 1 सही है। काली मृदा में नमी धारण करने की उच्च क्षमता होती है, लेकिन इसमें नाइट्रोजन, फॉस्फोरस और जैविक तत्वों (ह्यूमस) की कमी होती है।"
+            },
+            {
+                origId: 52,
+                q: "मेन्डेलीफ की आवर्त सारणी में, एका-एल्यूमीनियम (eka-aluminium) द्वारा अनुमानित तत्व को बाद में किस तत्व ने प्रतिस्थापित किया?\n\nIn Mendeleev's periodic table, which element later replaced the element predicted as eka-aluminium?",
+                options: ["स्कैंडियम (Scandium)", "गैलियम (Gallium)", "जर्मेनियम (Germanium)", "टाइटेनियम (Titanium)"],
+                ans: 1,
+                sol: "एका-एल्युमिनियम को गैलियम (Gallium) ने प्रतिस्थापित किया।\n• एका-बोरॉन -> स्कैंडियम\n• एका-सिलिकॉन -> जर्मेनियम"
+            },
+            {
+                origId: 53,
+                q: "खाद्य श्रृंखला में, डीडीटी (DDT) जैसे हानिकारक रसायनों की सांद्रता के बढ़ने को क्या कहा जाता है?\n\nIn a food chain, what is the increase in the concentration of harmful chemicals such as DDT called?",
+                options: ["सुपोषण (Eutrophication)", "जैव आवर्धन (Biomagnification)", "अपघटन (Decomposition)", "जैव संचयन (Bioaccumulation)"],
+                ans: 1,
+                sol: "खाद्य श्रृंखला के प्रत्येक क्रमिक पोषण स्तर पर अजैव-निम्नीकरणीय प्रदूषकों की सांद्रता में वृद्धि को जैव आवर्धन (Biomagnification) कहा जाता है।"
+            },
+            {
+                origId: 54,
+                q: "एक 100 W का विद्युत बल्ब प्रतिदिन 6 घंटे उपयोग किया जाता है। यदि विद्युत ऊर्जा की दर ₹5 प्रति यूनिट (kWh) है, तो 30 दिनों के लिए ऊर्जा का मूल्य क्या होगा?\n\nA 100 W electric bulb is used for 6 hours daily. If the rate of electrical energy is ₹5 per unit (kWh), what will be the cost of energy for 30 days?",
+                options: ["₹90", "₹18", "₹180", "₹900"],
+                ans: 0,
+                sol: "ऊर्जा खपत (Units) = (P * t * दिन) / 1000 = (100 * 6 * 30) / 1000 = 18 यूनिट।\nकुल लागत = 18 * ₹5 = ₹90।"
+            },
+            {
+                origId: 55,
+                q: "निम्नलिखित में से कौन-सा हॉर्मोन एक गैसीय अवस्था में पाया जाता है और फलों को पकाने में मदद करता है?\n\nWhich of the following hormones is found in a gaseous state and helps in the ripening of fruits?",
+                options: ["ऑक्सिन (Auxin)", "जिबरेलिन (Gibberellin)", "साइटोकिनिन (Cytokinin)", "एथिलीन (Ethylene)"],
+                ans: 3,
+                sol: "एथिलीन (C2H4) एकमात्र गैसीय पादप हॉर्मोन है जो मुख्य रूप से फलों को पकाने में सहायक होता है।"
+            },
+            {
+                origId: 56,
+                q: "दिए गए चित्र में मानव वृक्काणु (नेफ्रॉन) का कौन सा भाग निस्यंदन (filtration) के लिए उत्तरदायी है तथा इसका नाम क्या है?\n(A) संग्राहक वाहिनी (Collecting duct)\n(B) हेनले लूप (Henle's loop)\n(C) X, ग्लोमेरुलस (Glomerulus)\n(D) समीपस्थ संवलित नलिका (Proximal convoluted tubule)",
+                options: ["संग्राहक वाहिनी (Collecting duct)", "हेनले लूप (Henle's loop)", "X, ग्लोमेरुलस (Glomerulus)", "समीपस्थ संवलित नलिका (Proximal convoluted tubule)"],
+                ans: 2,
+                sol: "नेफ्रॉन में निस्यंदन (Ultrafiltration) के लिए 'X' ग्लोमेरुलस (Glomerulus) उत्तरदायी है, जो बोमन सम्पुट के अंदर केशिकाओं का गुच्छा होता है।"
+            },
+            {
+                origId: 57,
+                q: "निम्नलिखित कथनों पर विचार कीजिये :\n(i) आवृतबीजी (Angiosperms) में दोहरा निषेचन एक अद्वितीय विशेषता है।\n(ii) इसमें एक नर युग्मक अंड कोशिका से तथा दूसरा नर युग्मक द्वितीयक केंद्रक से संलयित होता है।\nउपर्युक्त में से कौन-सा सही है?",
+                options: ["कथन (i) सत्य है, कथन (ii) असत्य है।", "कथन (i) असत्य है, कथन (ii) सत्य है।", "दोनों कथन सत्य हैं और कथन (ii), कथन (i) का सही स्पष्टीकरण है।", "दोनों कथन सत्य हैं, परन्तु कथन (ii), कथन (i) का सही स्पष्टीकरण नहीं है।"],
+                ans: 2,
+                sol: "दोनों कथन सत्य हैं और कथन (ii), कथन (i) का सही स्पष्टीकरण है। आवृतबीजी पौधों में सत्य निषेचन (Syngamy) तथा त्रिसंलयन (Triple fusion) दोनों होते हैं, जिसे दोहरा निषेचन कहते हैं।"
+            },
+            {
+                origId: 63,
+                q: "अवंति के संदर्भ में निम्नलिखित कथनों पर विचार कीजिए:\n1. मगध की असली शत्रुता अवंति से थी, जिसकी राजधानी उज्जैन में थी।\n2. इसके राजा चंडप्रद्योत महासेन की बिंबिसार से लड़ाई हुई थी।\n3. बिंबिसार ने अपने राजवैद्य जीवक को अवंति के राजा चंडप्रद्योत महासेन के उपचार के लिए भेजा था।\nउपर्युक्त कथनों में से कितने सही हैं ?",
+                options: ["केवल एक", "केवल दो", "सभी", "इनमें से कोई नहीं"],
+                ans: 2,
+                sol: "सभी तीनों कथन सही हैं। बिंबिसार ने पीलिया (पांडु रोग) से पीड़ित होने पर अवंति नरेश चंडप्रद्योत के इलाज हेतु अपने राजवैद्य जीवक को भेजा था।"
+            },
+            {
+                origId: 64,
+                q: "पांड्य राज्य के संबंध में निम्नलिखित कथनों पर विचार कीजिए:\n1. यह प्रायद्वीप के सुदूर दक्षिण और दक्षिण-पूर्वी भाग में अवस्थित था।\n2. पाटलिपुत्र में रहने वाले मेगस्थनीज को पांड्य देश की जानकारी थी।\n3. इसे मोतियों का देश कहा जाता था।\nउपर्युक्त में से कौन-सा/से कथन सही है/हैं?",
+                options: ["1 और 2", "केवल 2", "1, 2 और 3", "1 और 3"],
+                ans: 2,
+                sol: "पांड्य राज्य के विषय में सभी तीनों कथन (1, 2 और 3) सही हैं। मेगस्थनीज ने पांड्य राज्य का उल्लेख किया था और यह मोतियों के लिए प्रसिद्ध था।"
+            },
+            {
+                origId: 65,
+                q: "निम्नलिखित में से कौन-सा युग्म सुमेलित नहीं है ?\nतथ्य - संबंधित व्यक्ति\n(A) इल्तुतमिश का प्रतिद्वंद्वी - कुबाचा\n(B) चालीसा दल - इल्तुतमिश\n(C) सुल्तान गयासुद्दीन की उपाधि - इवाज\n(D) गजनी का उत्तराधिकार - यलदूज",
+                options: ["इल्तुतमिश का प्रतिद्वंद्वी - कुबाचा", "चालीसा दल - इल्तुतमिश", "सुल्तान गयासुद्दीन की उपाधि - इवाज", "गजनी का उत्तराधिकार - यलदूज"],
+                ans: 2,
+                sol: "आधिकारिक कुंजी के अनुसार विकल्प (C) सुमेलित नहीं है।"
+            },
+            {
+                origId: 66,
+                q: "निम्नलिखित कथनों पर विचार कीजिए:\n1. 'बीजक' संत दादू के उपदेशों का संकलन है।\n2. पुष्टिमार्ग के दर्शन को माध्वाचार्य ने प्रतिपादित किया।\nउपर्युक्त कथनों में से कौन-सा/से सही है/हैं ?",
+                options: ["केवल 1", "केवल 2", "1 और 2", "न तो 1 और न ही 2"],
+                ans: 3,
+                sol: "न तो 1 और न ही 2 सही हैं। 'बीजक' कबीरदास के उपदेशों का संकलन है (संत दादू का नहीं), और 'पुष्टिमार्ग' के प्रवर्तक वल्लभाचार्य थे (माध्वाचार्य नहीं, माध्वाचार्य द्वैतवाद के थे)।"
+            },
+            {
+                origId: 67,
+                q: "निम्नलिखित में कौन-सा युग्म सही सुमेलित नहीं है ?\n1. नादिर शाह का उत्तरी भारत के मैदानों में प्रवेश - 1738-39 ई०\n2. नादिर शाह तथा मुगल सेना के मध्य करनाल में युद्ध - 1739 ई०\n3. मुहम्मद शाह के शासन का अंत - 1750 ई०\n4. पानीपत का तीसरा युद्ध - 1556 ई०\nकूट:",
+                options: ["1 और 2", "2 और 3", "3 और 4", "1 और 4"],
+                ans: 2,
+                sol: "3 और 4 सुमेलित नहीं हैं। मुहम्मद शाह का शासन काल 1719 से 1748 ई. तक था। पानीपत का तीसरा युद्ध 1761 ई. में हुआ था (1556 ई. में पानीपत का दूसरा युद्ध हुआ था)।"
+            },
+            {
+                origId: 68,
+                q: "राजकोषीय उत्तरदायित्व और बजटीय प्रबंधन अधिनियम, 2003 (FRBMA) से संबंद्ध नहीं है-\n(A) राजकोषीय घाटे में सकल घरेलू उत्पाद के 3% तक और कमी लाना\n(B) राजस्व घाटे को वर्ष 2012 तक दूर करना\n(C) केंद्र सरकार द्वारा RBI से नकद प्राप्तियों के ऊपर नकद प्रतिभूतियों के अस्थायी आधिक्य की पूर्ति के लिए अग्रिम के अतिरिक्त अन्य किसी प्रकार का ऋण नहीं लेना\n(D) RBI द्वारा वर्ष 2006-07 से केंद्र सरकार की प्रतिभूतियों की प्राथमिक प्रतिभूतियों को नहीं खरीदना",
+                options: ["राजकोषीय घाटे में सकल घरेलू उत्पाद के 3% तक और कमी लाना", "राजस्व घाटे को वर्ष 2012 तक दूर करना", "केंद्र सरकार द्वारा RBI से अग्रिम के अतिरिक्त ऋण न लेना", "RBI द्वारा 2006-07 से प्राथमिक प्रतिभूतियों को न खरीदना"],
+                ans: 1,
+                sol: "FRBM अधिनियम 2003 के अंतर्गत राजस्व घाटे को समाप्त करने का प्रारंभिक लक्ष्य 2008-09 था (2012 नहीं)। अतः (B) संबंद्ध नहीं है।"
+            },
+            {
+                origId: 69,
+                q: "निम्नलिखित में कौन-कौन से कार्य-कलाप अर्थव्यवस्था में वास्तविक क्षेत्रक (Real Sector) का निर्माण करते हैं ?\n1. किसानों का अपनी फसलें काटना।\n2. कपड़ा मिलों का कच्चे कपास को कपड़े में बदलना।\n3. किसी वाणिज्यिक बैंक का किसी व्यापारी कम्पनी को धनराशि उधार देना।\n4. किसी कॉर्पोरेट निकाय का विदेश में रुपया अंकित मूल्य के बॉण्ड जारी करना।\nनीचे दिए गए कूट का प्रयोग कर सही उत्तर चुनिए:",
+                options: ["1 और 2", "2, 3 और 4", "1, 3 और 4", "1, 2, 3 और 4"],
+                ans: 0,
+                sol: "रियल सेक्टर (वास्तविक क्षेत्रक) में वस्तुओं और सेवाओं का भौतिक उत्पादन शामिल होता है (जैसे कृषि और विनिर्माण - कथन 1 और 2)। बैंक ऋण और बॉण्ड जारी करना वित्तीय क्षेत्र (Financial Sector) के अंतर्गत आता है।"
+            },
+            {
+                origId: 70,
+                q: "निम्नलिखित कथनों पर विचार कीजिए:\n1. भारत की शिशु मृत्यु दर में वर्ष 1947-2020 की अवधि में छः गुना से अधिक कमी हुई है।\n2. भारत की जीवन प्रत्याशा में वर्ष 1947-2020 की अवधि में डेढ़ गुना वृद्धि हुई है।\nउपर्युक्त कथनों में से कौन-सा/से कथन सही है/हैं?",
+                options: ["केवल 1", "केवल 2", "1 एवं 2 दोनों", "न 1 और न 2"],
+                ans: 2,
+                sol: "उपर्युक्त दोनों कथन (1 एवं 2) सही हैं।"
+            },
+            {
+                origId: 71,
+                q: "प्रधानमंत्री जन-धन योजना के संदर्भ में निम्नलिखित कथनों पर विचार कीजिए:\n1. इसे वर्ष 2014 में शुरू किया गया।\n2. इसके अंतर्गत लोगों को बैंक खाता खोलने के लिए प्रोत्साहित किया जाता है।\n3. इसका उद्देश्य बचत को बढ़ावा देने के साथ सरकारी योजनाओं के अंतर्गत मिलने वाले लाभों तथा आर्थिक सहायता को सीधे खाताधारियों को हस्तांतरित करना है।\nउपर्युक्त कथनों में से कौन-सा/से कथन सही है/हैं ?",
+                options: ["1 और 2", "केवल 3", "2 और 3", "ये सभी (All of these)"],
+                ans: 3,
+                sol: "प्रधानमंत्री जन-धन योजना (PMJDY) अगस्त 2014 में शुरू की गई थी। इसके संदर्भ में दिए गए तीनों कथन (1, 2 और 3) बिल्कुल सही हैं।"
+            },
+            {
+                origId: 72,
+                q: "लौह अयस्क से संबंधित निम्नलिखित कथनों पर विचार कीजिए:\n1. भारत में उच्च गुणवत्ता के लौह अयस्क की प्रचुरता है।\n2. हेमेटाइट आयरन मुख्यतः मध्य प्रदेश, महाराष्ट्र और तमिलनाडु में पाया जाता है।\n3. मैग्नेटाइट लौह पश्चिमी घाट तथा कर्नाटक में पाया जाता है।\nउपर्युक्त कथनों में से कौन सा/से कथन सही है/हैं?",
+                options: ["1 और 2", "2 और 3", "केवल 1", "1 और 3"],
+                ans: 3,
+                sol: "कथन 1 और 3 सही हैं। हेमेटाइट अयस्क मुख्यतः ओडिशा, झारखंड, छत्तीसगढ़ आदि में प्रचुरता से पाया जाता है।"
+            },
+            {
+                origId: 83,
+                q: "धातुओं की प्रतिरोधकता (Resistivity) के बारे में निम्नलिखित में से कौन-सा कथन गलत है?\n(A) प्रतिरोधकता, धातु के अनुप्रस्थ काट के क्षेत्रफल के व्युत्क्रमानुपाती होती है।\n(B) प्रतिरोधकता, इलेक्ट्रॉनों के विश्रांति काल के व्युत्क्रमानुपाती होती है।\n(C) प्रतिरोधकता, इलेक्ट्रॉनों के संख्या घनत्व के व्युत्क्रमानुपाती होती है।\n(D) प्रतिरोधकता, इलेक्ट्रॉन के द्रव्यमान के अनुक्रमानुपाती होती है।",
+                options: ["प्रतिरोधकता, धातु के अनुप्रस्थ काट के क्षेत्रफल के व्युत्क्रमानुपाती होती है।", "प्रतिरोधकता, इलेक्ट्रॉनों के विश्रांति काल के व्युत्क्रमानुपाती होती है।", "प्रतिरोधकता, इलेक्ट्रॉनों के संख्या घनत्व के व्युत्क्रमानुपाती होती है।", "प्रतिरोधकता, इलेक्ट्रॉन के द्रव्यमान के अनुक्रमानुपाती होती है।"],
+                ans: 0,
+                sol: "गलत कथन (A) है। प्रतिरोधकता (rho) पदार्थ का आंतरिक गुण (Intrinsic property) है जो चालक के आयामों (लंबाई या अनुप्रस्थ काट के क्षेत्रफल) पर निर्भर नहीं करता है।"
+            },
+            {
+                origId: 84,
+                q: "कॉर्क (Cork) कोशिकाओं में कौन-सा रसायन पाया जाता है जो उन्हें हवा और पानी के लिए अभेद्य बनाता है?\n\nWhich chemical substance is found in cork cells that makes them impermeable to air and water?",
+                options: ["लिग्निन (Lignin)", "सुबेरिन (Suberin)", "क्यूटीन (Cutin)", "सेल्युलोज (Cellulose)"],
+                ans: 1,
+                sol: "कॉर्क कोशिकाओं की भित्ति पर सुबेरिन (Suberin) नामक मोम जैसा पदार्थ जमा होता है, जो इसे जल तथा गैसों के लिए अभेद्य बनाता है।"
+            },
+            {
+                origId: 85,
+                q: "'बैटरी पैक आधार' (BPA) के संदर्भ में कौन-सा कथन सत्य है?\n(A) यह इलेक्ट्रिक वाहनों (EV) के चालकों के लिए एक पहचान पत्र है।\n(B) यह प्रत्येक EV बैटरी के लिए एक अद्वितीय 21-अंकीय अल्फान्यूमेरिक पहचान संख्या है।\n(C) यह केवल हाइब्रिड कारों पर लागू होता है।\n(D) इसका उद्देश्य बैटरी की कीमतों को नियंत्रित करना है।",
+                options: ["यह EV चालकों के लिए एक पहचान पत्र है।", "यह प्रत्येक EV बैटरी के लिए एक अद्वितीय 21-अंकीय अल्फान्यूमेरिक पहचान संख्या है।", "यह केवल हाइब्रिड कारों पर लागू होता है।", "इसका उद्देश्य बैटरी की कीमतों को नियंत्रित करना है।"],
+                ans: 1,
+                sol: "बैटरी पैक आधार (BPA) प्रत्येक EV बैटरी के लिए एक अद्वितीय 21-अंकीय अल्फान्यूमेरिक पहचान संख्या है, जिसका उपयोग बैटरी के जीवनचक्र और रीसाइक्लिंग की ट्रैकिंग के लिए किया जाता है।"
+            },
+            {
+                origId: 86,
+                q: "'मिशन LiFE' (Lifestyle for Environment) के संबंध में निम्नलिखित कथनों पर विचार करें-\n1. इसे प्रधानमंत्री द्वारा COP26 में पेश किया गया था।\n2. इसका उद्देश्य 'उपयोग करो और फेंको' (Use-and-dispose) अर्थव्यवस्था को चक्रीय अर्थव्यवस्था (Circular Economy) में बदलना है।\nकौन-सा कथन सही है?",
+                options: ["केवल 1", "केवल 2", "1 और 2 दोनों", "इनमें से कोई नहीं"],
+                ans: 2,
+                sol: "दोनों कथन (1 और 2) सही हैं। मिशन LiFE को प्रधानमंत्री नरेंद्र मोदी द्वारा COP-26 (ग्लासगो) में पेश किया गया था।"
+            },
+            {
+                origId: 87,
+                q: "कंप्यूटर चालू रहने के दौरान डेटा को अस्थायी रूप से संग्रहीत करने के लिए किस प्रकार की मेमोरी का उपयोग किया जाता है?\n\nWhat type of memory is used to temporarily store data while the computer is turned on?",
+                options: ["हार्डडिस्क (Hard Disk)", "कैश (Cache)", "ROM", "RAM"],
+                ans: 3,
+                sol: "कंप्यूटर चालू रहने के दौरान अस्थायी डेटा भंडारण के लिए RAM (Random Access Memory) का उपयोग किया जाता है। यह एक वोलेटाइल (अस्थिर) मेमोरी है।"
+            },
+            {
+                origId: 93,
+                q: "'वेटिंग फॉर अ वीजा' किसकी आत्मकथा का शीर्षक है?\n\n'Waiting for a Visa' is the title of whose autobiography?",
+                options: ["डॉ० भीमराव अम्बेडकर", "डॉ० राजेंद्र प्रसाद", "डॉ० राम मनोहर लोहिया", "डॉ० कमल रणदिवे"],
+                ans: 0,
+                sol: "'वेटिंग फॉर अ वीजा' (Waiting for a Visa) डॉ. भीमराव अम्बेडकर की आत्मकथात्मक पुस्तक है, जिसमें उन्होंने छुआछूत के अपने अनुभवों का वर्णन किया है।"
+            },
+            {
+                origId: 94,
+                q: "पूर्वी उत्तर प्रदेश एवं बिहार के भाग निम्नलिखित मैदानों में से किसमें सम्मिलित हैं?\n\nEastern Uttar Pradesh and parts of Bihar are included in which of the following plains?",
+                options: ["ऊपरी गंगा मैदान", "मध्य गंगा मैदान", "निचला गंगा मैदान", "ब्रह्मपुत्र मैदान"],
+                ans: 1,
+                sol: "पूर्वी उत्तर प्रदेश और बिहार के मैदानी भाग 'मध्य गंगा मैदान' (Middle Ganga Plain) के अंतर्गत सम्मिलित हैं।"
+            },
+            {
+                origId: 95,
+                q: "एक देश, दूसरे देश के साथ युद्ध की स्थिति का सामना कर रहा है। इस संदर्भ में, नागरिकों को अनुच्छेद ______ में प्रदत्त मौलिक कर्तव्यों का पालन करने की आवश्यकता होती है।\n\nA country is facing a situation of war with another country. In this context, citizens are required to fulfill the Fundamental Duties enshrined in Article ______.",
+                options: ["51-A(f)", "51-A(h)", "51-A(a)", "51-A(d)"],
+                ans: 3,
+                sol: "अनुच्छेद 51-A(d) में उल्लेख है: \"देश की रक्षा करें और आह्वान किए जाने पर राष्ट्र की सेवा करें।\""
+            },
+            {
+                origId: 96,
+                q: "भारत में माइक्रोफाइनेंस क्षेत्र में एक प्रमुख प्रवृत्ति क्या है?\n(A) डिजिटल प्रौद्योगिकी पर निर्भरता कम हो गई\n(B) मोबाइल बैंकिंग, सेवाओं का एकीकरण\n(C) ऋण स्वीकृतियों में अत्यधिक नौकरशाही\n(D) महिला उद्यमियों पर सीमित फोकस",
+                options: ["डिजिटल प्रौद्योगिकी पर निर्भरता कम हो गई", "मोबाइल बैंकिंग, सेवाओं का एकीकरण", "ऋण स्वीकृतियों में अत्यधिक नौकरशाही", "महिला उद्यमियों पर सीमित फोकस"],
+                ans: 1,
+                sol: "भारत में माइक्रोफाइनेंस क्षेत्र में मोबाइल बैंकिंग और डिजिटल सेवाओं का एकीकरण एक प्रमुख आधुनिक प्रवृत्ति है।"
+            },
+            {
+                origId: 97,
+                q: "पूना सार्वजनिक सभा के संस्थापक सदस्य निम्नांकित में से कौन थे ?\n\nWho among the following were the founding members of the Poona Sarvajanik Sabha?",
+                options: ["महादेव गोविंद रानाडे", "गणेश वासुदेव जोशी", "B. G. तिलक", "A और B दोनों"],
+                ans: 3,
+                sol: "पूना सार्वजनिक सभा की स्थापना 1870 में महादेव गोविंद रानाडे और गणेश वासुदेव जोशी (G.V. Joshi) आदि द्वारा की गई थी। अतः (A और B दोनों) सही है।"
+            },
+            {
+                origId: 98,
+                q: "दो मौलिक अधिकार जिनकी माँग पर हाशियाकृत समूह बल दे सकते हैं, ताकि उनके साथ भी गरिमामय और समानता का व्यवहार किया जाए, वे हैं-\n(a) समानता का अधिकार\n(b) सांस्कृतिक और शैक्षणिक अधिकार\n(c) शोषण के विरुद्ध अधिकार\n(d) स्वतंत्रता का अधिकार\nसही उत्तर का चयन कीजिए:",
+                options: ["(b) और (c)", "(c) और (d)", "(a) और (d)", "(a) और (b)"],
+                ans: 3,
+                sol: "हाशियाकृत समूह अपनी गरिमा, समानता और अपनी भाषा/संस्कृति की सुरक्षा के लिए 'समानता का अधिकार' (अनुच्छेद 14-18) और 'सांस्कृतिक एवं शैक्षणिक अधिकार' (अनुच्छेद 29-30) पर बल देते हैं।"
+            },
+            {
+                origId: 99,
+                q: "भारत में द्वितीय नगरीकरण के दौर के संबंध में निम्न में कौन सही तथ्य है?\n(A) भारत में द्वितीय नगरीकरण कृष्णा-गोदावरी नदियों के निक्षेपात्मक क्षेत्र में हुआ था।\n(B) भारत में द्वितीय नगरीकरण ब्रह्मपुत्र नदी घाटी क्षेत्र के सबसे दक्षिणी हिस्से में हुआ था।\n(C) भारत में द्वितीय नगरीकरण नर्मदा-ताप्ती के मैदानी भाग में हुआ था।\n(D) भारत में द्वितीय नगरीकरण गंगा नदी घाटी के मध्य क्षेत्र में हुआ था।",
+                options: ["भारत में द्वितीय नगरीकरण कृष्णा-गोदावरी क्षेत्र में हुआ था।", "भारत में द्वितीय नगरीकरण ब्रह्मपुत्र घाटी में हुआ था।", "भारत में द्वितीय नगरीकरण नर्मदा-ताप्ती मैदान में हुआ था।", "भारत में द्वितीय नगरीकरण गंगा नदी घाटी के मध्य क्षेत्र में हुआ था।"],
+                ans: 3,
+                sol: "भारत में द्वितीय नगरीकरण (Second Urbanization) छठी शताब्दी ईसा पूर्व में गंगा नदी घाटी के मध्य क्षेत्र (महाजनपद काल) में विकसित हुआ था।"
+            },
+            {
+                origId: 100,
+                q: "भारत में जंगली गधे और ऊँट किस प्रकार के वनों में पाए जाते हैं?\n\nIn which type of forests are wild asses and camels found in India?",
+                options: ["मैंग्रोव वन", "उष्णकटिबंधीय सदाबहार वन", "काँटेदार वन और झाड़ियाँ", "पर्वतीय वन"],
+                ans: 2,
+                sol: "भारत में जंगली गधे (कच्छ के रण में) और ऊँट शुष्क काँटेदार वनों और झाड़ियों (Thorn Forests and Scrubs) वाले क्षेत्रों में पाए जाते हैं।"
+            },
+            {
+                origId: 101,
+                q: "बिहार की 'राजव्यवस्था' (Polity) के संदर्भ में कौन-सा कथन सही नहीं है?\n(A) बिहार विधानसभा में अनुसूचित जाति (SC) के लिए आरक्षित सीटें हैं।\n(B) बिहार विधानपरिषद के सदस्यों की संख्या 75 है।\n(C) बिहार के प्रथम राज्यपाल (स्वतंत्रता पश्चात) जयरामदास दौलतराम थे।\n(D) बिहार विधानसभा के प्रथम अध्यक्ष (स्वतंत्रता पूर्व) बिंदेश्वरी प्रसाद वर्मा थे।",
+                options: ["बिहार विधानसभा में SC के लिए आरक्षित सीटें हैं।", "बिहार विधानपरिषद के सदस्यों की संख्या 75 है।", "बिहार के प्रथम राज्यपाल (स्वतंत्रता पश्चात) जयरामदास दौलतराम थे।", "बिहार विधानसभा के प्रथम अध्यक्ष (स्वतंत्रता पूर्व) बिंदेश्वरी प्रसाद वर्मा थे।"],
+                ans: 3,
+                sol: "कथन (D) गलत है। स्वतंत्रता पूर्व 1937 में बिहार विधानसभा के पहले अध्यक्ष रामदयालु सिंह थे। बिंदेश्वरी प्रसाद वर्मा स्वतंत्रता के बाद (1946-1962) विधानसभा अध्यक्ष रहे।"
+            },
+            {
+                origId: 102,
+                q: "अभिकथन (A) तथा कारण (R) को ध्यान से पढ़े:\nअभिकथन (A): दादा भाई नौरोजी, जो कि भारतीय राष्ट्रीय कांग्रेस के बड़े नेता थे, कभी भी भारतीय राष्ट्रीय काँग्रेस के अध्यक्ष नहीं बने।\nकारण (R): वह व्यवसायी और प्रचारक थे। वे लंदन में रहते थे और कुछ समय के लिए ब्रिटिश संसद के सदस्य भी रहे।\nइनमें से सही विकल्प चुनें:",
+                options: ["दोनों (A) एवं (R) सही हैं किन्तु (R), (A) की व्याख्या नहीं करता।", "(A) सही है किन्तु (R) गलत।", "(A) गलत है किन्तु (R) सही।", "दोनों (A) एवं (R) सही हैं, किन्तु (R), (A) की व्याख्या करता है।"],
+                ans: 2,
+                sol: "(A) गलत है किन्तु (R) सही है। दादा भाई नौरोजी भारतीय राष्ट्रीय कांग्रेस के तीन बार अध्यक्ष बने थे (1886 कलकत्ता, 1893 लाहौर, और 1906 कलकत्ता)।"
+            },
+            {
+                origId: 114,
+                q: "जब एथेनॉल एक अम्लीय माध्यम में पोटैशियम डाइक्रोमेट (K2Cr2O7) के साथ अभिक्रिया करता है, तो कौन-सा प्रमुख उत्पाद प्राप्त होता है?\n\nWhen ethanol reacts with potassium dichromate (K2Cr2O7) in an acidic medium, which major product is obtained?",
+                options: ["एथेनोइक अम्ल (Ethanoic acid)", "एथेनल (Ethanal)", "एथीन (Ethene)", "एथिल एथेनोएट (Ethyl ethanoate)"],
+                ans: 0,
+                sol: "अम्लीय पोटैशियम डाइक्रोमेट (K2Cr2O7) एक प्रबल ऑक्सीकारक है, जो एथेनॉल को पूरी तरह से एथेनोइक अम्ल (CH3COOH / Acetic acid) में ऑक्सीकृत कर देता है।"
+            },
+            {
+                origId: 115,
+                q: "गलत कथन की पहचान करें:\n(A) कैंसर कोशिकाओं में अनियंत्रित कोशिका विभाजन होता है।\n(B) 'ओंकोजीन' (Oncogenes) कैंसर के लिए जिम्मेदार जीन होते हैं।\n(C) कैंसर एक संक्रामक (Communicable) रोग है।\n(D) बायोप्सी (Biopsy) कैंसर की जांच की एक विधि है।",
+                options: ["कैंसर कोशिकाओं में अनियंत्रित कोशिका विभाजन होता है।", "'ओंकोजीन' कैंसर के लिए जिम्मेदार जीन होते हैं।", "कैंसर एक संक्रामक (Communicable) रोग है।", "बायोप्सी (Biopsy) कैंसर की जांच की एक विधि है।"],
+                ans: 2,
+                sol: "गलत कथन (C) है। कैंसर एक गैर-संक्रामक (Non-communicable) रोग है। यह एक व्यक्ति से दूसरे में नहीं फैलता।"
+            },
+            {
+                origId: 116,
+                q: "विभज्योतक ऊतक (Meristematic Tissue) के बारे में कौन-सा कथन असत्य है?\n(A) इनमें विभाजन की क्षमता होती है।\n(B) इनका कोशिका द्रव्य (Cytoplasm) सघन होता है।\n(C) इनमें रसधानी (Vacuole) अनुपस्थित या बहुत छोटी होती है।\n(D) इनकी कोशिका भित्ति बहुत मोटी होती है।",
+                options: ["इनमें विभाजन की क्षमता होती है।", "इनका कोशिका द्रव्य (Cytoplasm) सघन होता है।", "इनमें रसधानी अनुपस्थित या बहुत छोटी होती है।", "इनकी कोशिका भित्ति बहुत मोटी होती है।"],
+                ans: 3,
+                sol: "असत्य कथन (D) है। विभज्योतक ऊतक की कोशिका भित्ति बहुत पतली (Thin) और सेल्युलोज की बनी होती है ताकि तीव्र कोशिका विभाजन सुगमता से हो सके।"
+            },
+            {
+                origId: 117,
+                q: "सोडियम सल्फेट और बेरियम क्लोराइड विलयन की अभिक्रिया ............... का एक उदाहरण है।\n\nThe reaction between sodium sulfate and barium chloride solutions is an example of a ...... reaction.",
+                options: ["द्वि विस्थापन अभिक्रिया (Double displacement)", "ऊष्माशोषी अभिक्रिया (Endothermic)", "एकल विस्थापन अभिक्रिया (Single displacement)", "ऊष्माक्षेपी अभिक्रिया (Exothermic)"],
+                ans: 0,
+                sol: "Na2SO4 + BaCl2 -> BaSO4 (अवक्षेप) + 2NaCl. यह द्विविस्थापन अभिक्रिया (Double Displacement / Precipitation Reaction) का उदाहरण है।"
+            },
+            {
+                origId: 118,
+                q: "क्या होता है जब एक परखनली में एक अम्लीय विलयन और एक क्षारीय विलयन को मिलाया जाता है ?\n(i) विलयन का तापमान बढ़ जाता है।\n(ii) विलयन का तापमान कम हो जाता है।\n(iii) विलयन का तापमान समान रहता है।\n(iv) लवण का निर्माण होता है।",
+                options: ["केवल (i)", "(iii) और (iv)", "(i) और (iv)", "(ii) और (iv)"],
+                ans: 2,
+                sol: "उदासीनीकरण अभिक्रिया (Neutralization) में अम्ल और क्षार मिलकर लवण तथा जल बनाते हैं, और यह प्रक्रिया ऊष्माक्षेपी होती है जिससे तापमान बढ़ जाता है। अतः (i) और (iv) सही हैं।"
+            },
+            {
+                origId: 124,
+                q: "जिन तत्वों के परमाणु क्रमांक क्रमशः 15, 16, 17 और 18 हैं, वे ...... हैं।\n\nThe elements with atomic numbers 15, 16, 17, and 18, respectively, are:",
+                options: ["P, S, Ar और Cl", "P, S, Cl और Ar", "S, P, Cl और Ar", "Ar, Cl, S और P"],
+                ans: 1,
+                sol: "परमाणु क्रमांक 15 = P (फॉस्फोरस), 16 = S (सल्फर), 17 = Cl (क्लोरीन), 18 = Ar (आर्गन)। अतः सही क्रम P, S, Cl और Ar है।"
+            },
+            {
+                origId: 125,
+                q: "थॉमसन के परमाणु मॉडल के बारे में निम्नलिखित में से कौन-सा कथन गलत है?\n(A) ऋणात्मक और धनात्मक आवेश परिमाण में समान नहीं होते हैं। इसलिए परमाणु वैद्युतीय रूप से उदासीन नहीं होते हैं।\n(B) परमाणु में धन आवेश तरबूज के खाने वाले लाल भाग की तरह बिखरा है, जबकि इलेक्ट्रॉन धनावेशित गोले में तरबूज के बीज की भाँति धंसे हैं।\n(C) परमाणु धन आवेशित गोले का बना होता है और इलेक्ट्रॉन उसमें धंसे होते हैं।\n(D) ऋणात्मक और धनात्मक आवेश परिमाण में समान होते हैं। इसलिए वैद्युतीय रूप से उदासीन होते हैं।",
+                options: ["ऋणात्मक और धनात्मक आवेश परिमाण में समान नहीं होते हैं, अतः परमाणु उदासीन नहीं होते।", "धन आवेश तरबूज के लाल भाग की तरह बिखरा है और इलेक्ट्रॉन बीज की तरह धंसे हैं।", "परमाणु धन आवेशित गोले का बना होता है और इलेक्ट्रॉन उसमें धंसे होते हैं।", "ऋणात्मक और धनात्मक आवेश परिमाण में समान होते हैं, इसलिए उदासीन होते हैं।"],
+                ans: 0,
+                sol: "गलत कथन (A) है। थॉमसन के अनुसार परमाणु में धनात्मक और ऋणात्मक आवेश परिमाण में समान होते हैं, इसलिए परमाणु वैद्युतिक रूप से उदासीन (Neutral) होता है।"
+            },
+            {
+                origId: 126,
+                q: "हृदय पेशी (Cardiac muscle) की कोशिकाओं की विशेषता है:\n\nThe characteristics of cardiac muscle cells are:",
+                options: ["बेलनाकार, शाखित और एक-केंद्रकीय", "लंबी, अशाखित और बहु-केंद्रकीय", "तर्क रूप (Spindle shaped) और एक-केंद्रकीय", "गोलाकार और बिना केंद्रक के"],
+                ans: 0,
+                sol: "हृदय पेशी (Cardiac Muscle) की कोशिकाएं बेलनाकार (Cylindrical), शाखित (Branched) और सामान्यतः एक-केंद्रकीय (Uninucleate) होती हैं।"
+            },
+            {
+                origId: 127,
+                q: "किसी लेंस की शक्ति और फोकस लंबाई के बीच के संबंध के बारे में निम्नलिखित में से कौन-सा विकल्प सही है?\n\nWhich of the following options is correct regarding the relationship between the power and focal length of a lens?",
+                options: ["शक्ति, फोकस लंबाई के व्युत्क्रमानुपाती होती है।", "शक्ति, फोकस लंबाई के वर्ग के अनुक्रमानुपाती होती है।", "शक्ति, फोकस लंबाई के अनुक्रमानुपाती होती है।", "शक्ति, फोकस लंबाई के वर्ग के व्युत्क्रमानुपाती होती है।"],
+                ans: 0,
+                sol: "लेंस की क्षमता P = 1 / f (मीटर में)। अतः लेंस की शक्ति उसकी फोकस लंबाई के व्युत्क्रमानुपाती (Inversely proportional) होती है।"
+            },
+            {
+                origId: 128,
+                q: "सही जोड़ी का चयन करें (श्वसन अंग):\n(A) मछली - फेफड़े\n(B) केंचुआ - नम त्वचा (Moist cuticle)\n(C) तिलचट्टा - गलफड़े (Gills)\n(D) मनुष्य - श्वास नली (Trachea)",
+                options: ["मछली - फेफड़े", "केंचुआ - नम त्वचा (Moist cuticle)", "तिलचट्टा - गलफड़े (Gills)", "मनुष्य - श्वास नली (Trachea)"],
+                ans: 1,
+                sol: "सही जोड़ी (B) है: केंचुआ अपनी नम त्वचा (Moist cuticle) से त्वचीय श्वसन करता है। मछली गलफड़ों से, तिलचट्टा श्वास रंध्रों व ट्रैकिया से, और मनुष्य फेफड़ों से श्वसन करता है।"
+            },
+            {
+                origId: 129,
+                q: "बिहार के 'भौगोलिक विस्तार' (Geographical Extent) के संबंध में निम्नलिखित में से कौन-सा कथन सही है?\n(A) बिहार का देशांतरीय विस्तार 83°19'50\" पूर्व से 88°17'40\" पूर्व के मध्य है।\n(B) बिहार की उत्तर से दक्षिण की अधिकतम लंबाई 483 किलोमीटर है।\n(C) बिहार का कुल क्षेत्रफल भारत के कुल क्षेत्रफल का 5.86% है।\n(D) समुद्र तल से बिहार की औसत ऊँचाई 200 फीट है।",
+                options: ["बिहार का देशांतरीय विस्तार 83°19'50\" पूर्व से 88°17'40\" पूर्व के मध्य है।", "बिहार की उत्तर से दक्षिण की अधिकतम लंबाई 483 किमी है।", "बिहार का कुल क्षेत्रफल भारत के कुल क्षेत्रफल का 5.86% है।", "समुद्र तल से बिहार की औसत ऊँचाई 200 फीट है।"],
+                ans: 0,
+                sol: "कथन (A) सही है: बिहार का देशांतरीय विस्तार 83°19'50\" E से 88°17'40\" E के बीच है।\n• उत्तर से दक्षिण लंबाई 345 किमी है (पूर्व से पश्चिम 483 किमी है)।\n• भारत के कुल क्षेत्रफल का 2.86% है।"
+            },
+            {
+                origId: 130,
+                q: "'ककोलत जलप्रपात' (Kakolat Waterfall) बिहार के किस जिले में स्थित एक प्रसिद्ध पर्यटन स्थल है?\n\nIn which district of Bihar is 'Kakolat Waterfall' situated as a famous tourist destination?",
+                options: ["रोहतास (Rohtas)", "कैमूर (Kaimur)", "नवादा (Nawada)", "गया (Gaya)"],
+                ans: 2,
+                sol: "ककोलत जलप्रपात बिहार के नवादा (Nawada) जिले में स्थित एक प्रसिद्ध और सुरम्य जलप्रपात है, जिसकी ऊँचाई लगभग 47 मीटर (160 फीट) है।"
+            },
+            {
+                origId: 131,
+                q: "'शेरशाह सूरी' (Sher Shah Suri) के शासनकाल और उपलब्धियों के संदर्भ में निम्नलिखित कथनों पर विचार करें :\n1. शेरशाह ने 1539 ई. में चौसा के युद्ध में हुमायूँ को हराया और 'शेरशाह' की उपाधि धारण की।\n2. उसने 1541 ई. में पाटलिपुत्र का नाम बदलकर 'पटना' किया और इसे राजधानी बनाया।\n3. पुस्तक के अनुसार, शेरशाह ने 'ग्रैंड ट्रंक रोड' का निर्माण \"दक्षिण भारत को उत्तर भारत से जोड़ने\" के उद्देश्य से करवाया था।\nउपर्युक्त में से कौन-सा/से कथन सत्य है/हैं?",
+                options: ["केवल 1", "केवल 1 और 2", "केवल 2 और 3", "1, 2 और 3 सभी"],
+                ans: 1,
+                sol: "कथन 1 और 2 सत्य हैं। शेरशाह ने जीटी रोड (सड़क-ए-आज़म) पूर्वी भारत (सोनारगाँव, बंगाल) को उत्तर-पश्चिम सीमा (पेशावर) से जोड़ने के लिए बनवाई थी, दक्षिण भारत को नहीं।"
+            },
+            {
+                origId: 132,
+                q: "'प्लेइंग इट माई वे' आत्मकथा निम्नलिखित में से किस क्रिकेट खिलाड़ी द्वारा लिखी गई है?\n\nThe autobiography 'Playing It My Way' was written by which of the following cricketers?",
+                options: ["सौरव गांगुली", "किरण मोरे", "युवराज सिंह", "सचिन तेंदुलकर"],
+                ans: 3,
+                sol: "'प्लेइंग इट माई वे' (Playing It My Way) महान भारतीय क्रिकेटर सचिन तेंदुलकर की आत्मकथा है।"
+            },
+            {
+                origId: 133,
+                q: "निम्नांकित में कौन सुमेलित नहीं है?\n(A) सिकंदर का आक्रमण - लगभग 327-325 ई.पू.\n(B) चन्द्रगुप्त मौर्य का राज्यारोहण - लगभग 322 ई.पू.\n(C) अशोक का शासन काल - लगभग 305-275 ई.पू.\n(D) मौर्य साम्राज्य का अंत - लगभग 185 ई.पू.",
+                options: ["सिकंदर का आक्रमण - लगभग 327-325 ई.पू.", "चन्द्रगुप्त मौर्य का राज्यारोहण - लगभग 322 ई.पू.", "अशोक का शासन काल - लगभग 305-275 ई.पू.", "मौर्य साम्राज्य का अंत - लगभग 185 ई.पू."],
+                ans: 2,
+                sol: "विकल्प (C) सुमेलित नहीं है। सम्राट अशोक का शासन काल लगभग 273/269 ई.पू. से 232 ई.पू. तक माना जाता है।"
+            },
+            {
+                origId: 144,
+                q: "98वें ऑस्कर 2026 (अकादमी पुरस्कारों) में पॉल थॉमस एण्डरसन को निम्नलिखित में से कौनसा पुरस्कार प्राप्त हुआ ?\nI. सर्वश्रेष्ठ निर्देशक (वन बैटल आफ्टर अनदर)\nII. सर्वश्रेष्ठ फिल्म (वन बैटल आफ्टर अनदर)\nIII. सर्वश्रेष्ठ अनुकूलित पटकथा (वन बैटल आफ्टर अनदर)\nउपर्युक्त में से सही है-",
+                options: ["केवल I एवं II", "केवल I", "केवल III", "I, II, III सभी"],
+                ans: 3,
+                sol: "आधिकारिक उत्तर कुंजी के अनुसार विकल्प (D) I, II, III सभी सही है।"
+            },
+            {
+                origId: 145,
+                q: "भारत में नव विकसित Td वैक्सीन निम्नलिखित में से किस रोग की रोकथाम में कारगर है ?\nI. टेटनस (Tetanus)\nII. वयस्क डिफ्थीरिया (Adult Diphtheria)\nसही कूट है-",
+                options: ["केवल I", "केवल II", "I एवं II दोनों", "न I और न II"],
+                ans: 2,
+                sol: "Td वैक्सीन टेटनस (Tetanus) और वयस्क डिफ्थीरिया (Diphtheria) दोनों की रोकथाम के लिए प्रयुक्त होती है।"
+            },
+            {
+                origId: 146,
+                q: "निम्नलिखित में से कौनसा युग्म सही सुमेलित है?\nI. हेरथ पोश्ते - कश्मीरी पंडितों की आस्था और परम्परा का उत्सव\nII. थाई पूसम - थाइलैण्ड का प्रमुख त्योहार\nसही कूट है-",
+                options: ["केवल I", "केवल II", "I एवं II दोनों", "न I और न II"],
+                ans: 0,
+                sol: "केवल I सुमेलित है। हेरथ (महाशिवरात्रि) कश्मीरी पंडितों का महापर्व है। थाई पूसम तमिल हिंदू समुदाय का प्रसिद्ध त्योहार है (थाईलैंड देश का नहीं)।"
+            },
+            {
+                origId: 147,
+                q: "देश में गेहूँ का सर्वाधिक उत्पादन किस राज्य में होता है ?\n\nWhich state in the country has the highest wheat production?",
+                options: ["पंजाब (Punjab)", "हरियाणा (Haryana)", "मध्य प्रदेश (Madhya Pradesh)", "उत्तर प्रदेश (Uttar Pradesh)"],
+                ans: 3,
+                sol: "भारत में गेहूँ का सर्वाधिक कुल उत्पादन उत्तर प्रदेश (Uttar Pradesh) राज्य में होता है (जबकि प्रति हेक्टेयर उत्पादकता में पंजाब अग्रणी है)।"
+            },
+            {
+                origId: 148,
+                q: "31 जनवरी, 2026 की स्थिति के अनुसार, भारत में अखिल भारतीय विद्युत उत्पादन क्षमता के सन्दर्भ में निम्नलिखित में से कौनसा कथन सत्य है ?\nI. देश में अखिल भारतीय विद्युत उत्पादन क्षमता 520.5 GW है\nII. देश में 52.30 प्रतिशत विद्युत उत्पादन क्षमता कुल गैर-जीवाश्म ईंधन स्रोतों से है",
+                options: ["केवल I", "केवल II", "I एवं II दोनों", "न I और न II"],
+                ans: 2,
+                sol: "आधिकारिक उत्तर कुंजी के अनुसार I एवं II दोनों कथन सत्य हैं।"
+            },
+            {
+                origId: 149,
+                q: "1 अप्रैल, 2026 को भारतीय रिजर्व बैंक (RBI) ने अपना कौन सा स्थापना दिवस मनाया ?\n\nWhich Foundation Day did the Reserve Bank of India (RBI) celebrate on April 1, 2026?",
+                options: ["89 वां", "90 वां", "92 वां", "85 वां"],
+                ans: 2,
+                sol: "RBI की स्थापना 1 अप्रैल 1935 को हुई थी। 1 अप्रैल 2026 को भारतीय रिज़र्व बैंक का 92वाँ स्थापना दिवस है (1935 से 2026 = 91 वर्ष पूर्ण होकर 92वां)।"
+            },
+            {
+                origId: 150,
+                q: "भारत सरकार ने 'FAME-III' योजना के तहत किस क्षेत्र को सबसे अधिक प्राथमिकता दी है ?\n\nWhich sector has the Government of India accorded the highest priority under the 'FAME-III' scheme?",
+                options: ["सौर पंप (Solar Pumps)", "इलेक्ट्रिक सार्वजनिक परिवहन (Electric Public Transport)", "हाइब्रिड कारें (Hybrid Cars)", "हाइड्रोजन ट्रेनें (Hydrogen Trains)"],
+                ans: 1,
+                sol: "FAME-III योजना के तहत भारत सरकार ने इलेक्ट्रिक सार्वजनिक परिवहन (ई-बसें, कमर्शियल फ्लीट आदि) को सबसे अधिक प्राथमिकता दी है।"
+            }
+        ];
+
+        // CBT App State
+        let currentIdx = 0;
+        let userResponses = new Array(questionsData.length).fill(null);
+        let reviewStatus = new Array(questionsData.length).fill(false);
+        let visitedStatus = new Array(questionsData.length).fill(false);
+        let timerInterval = null;
+        let timeLeft = 120 * 60; // 120 Minutes in seconds
+
+        function initApp() {
+            document.getElementById('infoTotalQ').innerText = questionsData.length;
+        }
+
+        function startTest() {
+            document.getElementById('startScreen').classList.add('hidden');
+            document.getElementById('testScreen').classList.remove('hidden');
+            document.getElementById('testScreen').classList.add('flex');
+            document.getElementById('timerContainer').classList.remove('hidden');
+            document.getElementById('timerContainer').classList.add('flex');
+            
+            startTimer();
+            loadQuestion(0);
+            renderPalette();
+        }
+
+        function startTimer() {
+            timerInterval = setInterval(() => {
+                if (timeLeft <= 0) {
+                    clearInterval(timerInterval);
+                    autoSubmitTest();
+                } else {
+                    timeLeft--;
+                    const minutes = Math.floor(timeLeft / 60);
+                    const seconds = timeLeft % 60;
+                    document.getElementById('timer').innerText = 
+                        `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+                }
+            }, 1000);
+        }
+
+        function loadQuestion(index) {
+            currentIdx = index;
+            visitedStatus[index] = true;
+            const q = questionsData[index];
+
+            document.getElementById('qBadge').innerText = `Question ${index + 1} of ${questionsData.length} (Q.${q.origId})`;
+            document.getElementById('qText').innerText = `Q.${index + 1} [PDF Q.${q.origId}]:\n${q.q}`;
+
+            // Render Options
+            const container = document.getElementById('optionsContainer');
+            container.innerHTML = '';
+            const labels = ['(A)', '(B)', '(C)', '(D)'];
+
+            q.options.forEach((opt, oIdx) => {
+                const isSelected = userResponses[index] === oIdx;
+                const optDiv = document.createElement('div');
+                optDiv.className = `p-3.5 md:p-4 rounded-xl border-2 cursor-pointer transition flex items-start space-x-3 ${
+                    isSelected 
+                    ? 'border-indigo-600 bg-indigo-50/70 font-semibold text-indigo-950 shadow-sm' 
+                    : 'border-slate-200 hover:border-indigo-300 hover:bg-slate-50 text-slate-700'
+                }`;
+                optDiv.onclick = () => selectOption(oIdx);
+
+                optDiv.innerHTML = `
+                    <div class="w-6 h-6 rounded-full border-2 flex items-center justify-center text-xs font-bold shrink-0 mt-0.5 ${
+                        isSelected ? 'border-indigo-600 bg-indigo-600 text-white' : 'border-slate-400 text-slate-600'
+                    }">
+                        ${labels[oIdx].replace(/[()]/g, '')}
+                    </div>
+                    <div class="text-sm md:text-base leading-snug">${opt}</div>
+                `;
+                container.appendChild(optDiv);
+            });
+
+            // Update Palette
+            renderPalette();
+
+            // Toggle Previous button state
+            document.getElementById('prevBtn').disabled = (index === 0);
+            document.getElementById('prevBtn').className = (index === 0) 
+                ? 'px-4 py-2 rounded-lg bg-slate-200 text-slate-400 font-bold text-sm cursor-not-allowed'
+                : 'px-4 py-2 rounded-lg bg-indigo-100 hover:bg-indigo-200 text-indigo-900 font-bold text-sm transition';
+        }
+
+        function selectOption(oIdx) {
+            userResponses[currentIdx] = oIdx;
+            loadQuestion(currentIdx);
+        }
+
+        function clearResponse() {
+            userResponses[currentIdx] = null;
+            loadQuestion(currentIdx);
+        }
+
+        function markForReview() {
+            reviewStatus[currentIdx] = !reviewStatus[currentIdx];
+            renderPalette();
+        }
+
+        function nextQuestion() {
+            if (currentIdx < questionsData.length - 1) {
+                loadQuestion(currentIdx + 1);
+            }
+        }
+
+        function prevQuestion() {
+            if (currentIdx > 0) {
+                loadQuestion(currentIdx - 1);
+            }
+        }
+
+        function renderPalette() {
+            const grid = document.getElementById('paletteGrid');
+            grid.innerHTML = '';
+
+            questionsData.forEach((_, idx) => {
+                const btn = document.createElement('button');
+                btn.innerText = idx + 1;
+                btn.className = `h-9 w-full rounded-lg font-bold text-xs flex items-center justify-center transition border ${
+                    currentIdx === idx ? 'ring-2 ring-indigo-900 ring-offset-1' : ''
+                } `;
+
+                if (reviewStatus[idx]) {
+                    btn.className += 'bg-amber-400 text-indigo-950 border-amber-500';
+                } else if (userResponses[idx] !== null) {
+                    btn.className += 'bg-emerald-500 text-white border-emerald-600';
+                } else if (visitedStatus[idx]) {
+                    btn.className += 'bg-rose-500 text-white border-rose-600';
+                } else {
+                    btn.className += 'bg-slate-100 text-slate-600 border-slate-300 hover:bg-slate-200';
+                }
+
+                btn.onclick = () => loadQuestion(idx);
+                grid.appendChild(btn);
+            });
+        }
+
+        function confirmSubmit() {
+            const attempted = userResponses.filter(r => r !== null).length;
+            const unattempted = questionsData.length - attempted;
+            const confirmMsg = `Are you sure you want to submit the test?\n\n• Attempted: ${attempted}\n• Unattempted: ${unattempted}\n• Total Questions: ${questionsData.length}`;
+            
+            if (confirm(confirmMsg)) {
+                submitTest();
+            }
+        }
+
+        function autoSubmitTest() {
+            alert("समय समाप्त हो गया है! आपका टेस्ट स्वतः सबमिट किया जा रहा है।");
+            submitTest();
+        }
+
+        function submitTest() {
+            clearInterval(timerInterval);
+            document.getElementById('timerContainer').classList.add('hidden');
+            document.getElementById('testScreen').classList.add('hidden');
+            document.getElementById('testScreen').classList.remove('flex');
+            document.getElementById('resultScreen').classList.remove('hidden');
+
+            // Calculate Score (+2 correct, -0.2 wrong)
+            let correct = 0;
+            let incorrect = 0;
+            let unattempted = 0;
+
+            userResponses.forEach((ans, idx) => {
+                if (ans === null) {
+                    unattempted++;
+                } else if (ans === questionsData[idx].ans) {
+                    correct++;
+                } else {
+                    incorrect++;
+                }
+            });
+
+            const totalScore = (correct * 2.00) - (incorrect * 0.20);
+
+            document.getElementById('finalScore').innerText = totalScore.toFixed(2);
+            document.getElementById('correctCount').innerText = correct;
+            document.getElementById('incorrectCount').innerText = incorrect;
+            document.getElementById('unattemptedCount').innerText = unattempted;
+
+            renderReviewList();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function renderReviewList() {
+            const container = document.getElementById('reviewQuestionsList');
+            container.innerHTML = '';
+            const labels = ['(A)', '(B)', '(C)', '(D)'];
+
+            questionsData.forEach((q, idx) => {
+                const userAns = userResponses[idx];
+                const isCorrect = userAns === q.ans;
+                const isUnanswered = userAns === null;
+
+                const card = document.createElement('div');
+                card.className = `p-5 md:p-6 rounded-xl border-2 transition ${
+                    isUnanswered 
+                        ? 'border-slate-200 bg-slate-50/50' 
+                        : isCorrect 
+                            ? 'border-emerald-300 bg-emerald-50/30' 
+                            : 'border-rose-300 bg-rose-50/30'
+                }`;
+
+                let statusBadge = '';
+                if (isUnanswered) {
+                    statusBadge = '<span class="text-xs font-bold px-2.5 py-1 rounded-full bg-slate-200 text-slate-700">Not Attempted</span>';
+                } else if (isCorrect) {
+                    statusBadge = '<span class="text-xs font-bold px-2.5 py-1 rounded-full bg-emerald-100 text-emerald-800"><i class="fa-solid fa-check mr-1"></i> Correct (+2.00)</span>';
+                } else {
+                    statusBadge = '<span class="text-xs font-bold px-2.5 py-1 rounded-full bg-rose-100 text-rose-800"><i class="fa-solid fa-xmark mr-1"></i> Incorrect (-0.20)</span>';
+                }
+
+                let optHtml = '';
+                q.options.forEach((opt, oIdx) => {
+                    let optStyle = 'border-slate-200 bg-white text-slate-700';
+                    let markIcon = '';
+
+                    if (oIdx === q.ans) {
+                        optStyle = 'border-emerald-500 bg-emerald-100/70 font-bold text-emerald-950';
+                        markIcon = '<i class="fa-solid fa-check text-emerald-700 ml-auto"></i>';
+                    } else if (oIdx === userAns) {
+                        optStyle = 'border-rose-500 bg-rose-100/70 font-semibold text-rose-950';
+                        markIcon = '<i class="fa-solid fa-xmark text-rose-700 ml-auto"></i>';
+                    }
+
+                    optHtml += `
+                        <div class="p-3 rounded-lg border flex items-center space-x-3 text-sm md:text-base ${optStyle}">
+                            <span class="w-6 h-6 rounded-full border flex items-center justify-center font-bold text-xs shrink-0">${labels[oIdx].replace(/[()]/g, '')}</span>
+                            <span>${opt}</span>
+                            ${markIcon}
+                        </div>
+                    `;
+                });
+
+                card.innerHTML = `
+                    <div class="flex justify-between items-start mb-3">
+                        <span class="text-xs font-bold text-indigo-900 bg-indigo-100 px-3 py-1 rounded-md">Q.${idx + 1} (PDF Q.${q.origId})</span>
+                        ${statusBadge}
+                    </div>
+                    <div class="text-base font-semibold text-slate-900 whitespace-pre-line mb-4">${q.q}</div>
+                    <div class="space-y-2 mb-4">${optHtml}</div>
+                    <div class="p-4 bg-amber-50/80 rounded-xl border border-amber-200 text-sm text-slate-800">
+                        <div class="font-bold text-amber-900 mb-1.5 flex items-center">
+                            <i class="fa-solid fa-lightbulb text-amber-600 mr-2"></i> Official Explanation / Solution:
+                        </div>
+                        <div class="whitespace-pre-line leading-relaxed text-slate-700">${q.sol}</div>
+                    </div>
+                `;
+
+                container.appendChild(card);
+            });
+        }
+
+        function retakeTest() {
+            if (confirm("क्या आप टेस्ट दोबारा शुरू करना चाहते हैं?")) {
+                userResponses.fill(null);
+                reviewStatus.fill(false);
+                visitedStatus.fill(false);
+                timeLeft = 120 * 60;
+                document.getElementById('resultScreen').classList.add('hidden');
+                startTest();
+            }
+        }
+
+        function toggleFullScreen() {
+            if (!document.fullscreenElement) {
+                document.documentElement.requestFullscreen().catch(() => {});
+            } else {
+                if (document.exitFullscreen) {
+                    document.exitFullscreen();
+                }
+            }
+        }
+
+        // Initialize on Load
+        window.onload = initApp;
+    </script>
+</body>
+</html>
