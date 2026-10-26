@@ -1,0 +1,2532 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>GYANVERSE Mega CBT Portal - Lucent GK (Ch 28 to 31)</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
+            user-select: none;
+            -webkit-user-select: none;
+        }
+        .custom-radio {
+            accent-color: #2563eb;
+        }
+        .viewport-height {
+            min-height: 100vh;
+            min-height: -webkit-fill-available;
+        }
+    </style>
+</head>
+<body class="bg-slate-100 text-slate-800 flex flex-col viewport-height">
+
+    <!-- Auto Full Screen Entry Gate Overlay -->
+    <div id="start-overlay" class="fixed inset-0 bg-slate-950 bg-opacity-95 z-50 flex items-center justify-center p-4">
+        <div class="bg-white rounded-2xl shadow-2xl max-w-lg w-full p-6 sm:p-8 text-center border-t-4 border-blue-600">
+            <div class="w-16 h-16 bg-blue-100 text-blue-600 rounded-2xl flex items-center justify-center mx-auto mb-4 text-2xl font-bold shadow-inner">
+                <i class="fa-solid fa-graduation-cap"></i>
+            </div>
+            <h1 class="text-2xl sm:text-3xl font-black text-slate-900 tracking-tight">GYANVERSE CBT PORTAL</h1>
+            <p class="text-xs sm:text-sm font-bold text-blue-600 mt-1 uppercase tracking-wider">Lucent GK Mega Test (120 Questions)</p>
+            <p class="text-xs text-slate-500 mt-0.5">अध्याय 28 से 31: अरब आक्रमण, गजनवी, गौरी, सल्तनत काल एवं प्रशासन</p>
+            
+            <div class="my-5 bg-slate-50 border border-slate-200 rounded-xl p-4 text-left text-xs sm:text-sm space-y-2 text-slate-700">
+                <div class="flex items-center justify-between font-medium">
+                    <span><i class="fa-solid fa-list-ol text-blue-500 mr-2"></i>कुल प्रश्न:</span>
+                    <span class="font-bold text-slate-900">120 MCQs</span>
+                </div>
+                <div class="flex items-center justify-between font-medium">
+                    <span><i class="fa-regular fa-clock text-rose-500 mr-2"></i>समय सीमा:</span>
+                    <span class="font-bold text-slate-900">120 मिनट (Countdown)</span>
+                </div>
+                <div class="flex items-center justify-between font-medium">
+                    <span><i class="fa-solid fa-calculator text-emerald-500 mr-2"></i>अंक योजना:</span>
+                    <span class="font-bold text-emerald-600">+2.00 सही | -0.20 गलत</span>
+                </div>
+                <div class="flex items-center justify-between font-medium">
+                    <span><i class="fa-solid fa-language text-purple-500 mr-2"></i>भाषा माध्यम:</span>
+                    <span class="font-bold text-purple-700">द्विभाषी (हिंदी / English) Switcher</span>
+                </div>
+                <div class="flex items-center justify-between font-medium">
+                    <span><i class="fa-brands fa-telegram text-sky-500 mr-2"></i>ऑफिशियल टेलीग्राम:</span>
+                    <a href="https://t.me/GYANVERSET" target="_blank" class="font-bold text-sky-600 underline">@GYANVERSET</a>
+                </div>
+            </div>
+
+            <button id="btn-start" class="w-full py-3.5 bg-blue-600 hover:bg-blue-700 active:scale-95 text-white font-bold rounded-xl shadow-lg transition-all duration-200 flex items-center justify-center text-base">
+                <i class="fa-solid fa-expand mr-2"></i> Start Test (Auto Full Screen)
+            </button>
+            <p class="text-[11px] text-slate-400 mt-3">क्लिक करते ही टेस्ट फुल-स्क्रीन मोड में शुरू हो जाएगा।</p>
+        </div>
+    </div>
+
+    <!-- CBT Main Header -->
+    <header class="bg-white border-b border-slate-200 px-3 sm:px-6 py-2.5 sticky top-0 z-30 shadow-sm flex items-center justify-between">
+        <div class="flex items-center space-x-2">
+            <span class="text-lg sm:text-xl font-black tracking-wider text-blue-700">GYANVERSE</span>
+            <span class="hidden sm:inline-block text-[11px] bg-blue-100 text-blue-800 font-bold px-2 py-0.5 rounded">120 CBT</span>
+        </div>
+
+        <div class="flex items-center space-x-2 sm:space-x-3">
+            <!-- Language Switcher Button -->
+            <button id="btn-lang-toggle" class="px-2.5 py-1 bg-slate-100 hover:bg-slate-200 border border-slate-300 rounded-lg text-xs font-bold text-slate-700 transition flex items-center">
+                <i class="fa-solid fa-language mr-1 text-blue-600"></i>
+                <span id="lang-label">Eng</span>
+            </button>
+
+            <!-- Live Countdown Timer -->
+            <div class="flex items-center bg-slate-100 border border-slate-300 rounded-lg px-2.5 py-1 text-slate-700">
+                <i class="fa-regular fa-clock text-rose-500 mr-1.5 text-xs sm:text-sm animate-pulse"></i>
+                <span id="timer-display" class="font-mono font-bold text-xs sm:text-sm tracking-tight text-rose-600">120:00</span>
+            </div>
+
+            <!-- Submit Test Button in Header -->
+            <button id="btn-submit-header" class="px-3 sm:px-4 py-1.5 bg-emerald-600 hover:bg-emerald-700 active:scale-95 text-white text-xs sm:text-sm font-bold rounded-lg shadow transition flex items-center">
+                <i class="fa-solid fa-cloud-arrow-up mr-1.5"></i> Submit
+            </button>
+        </div>
+    </header>
+
+    <!-- Main Question Container (Full Width, No Sidebar Palette) -->
+    <main class="flex-1 w-full max-w-4xl mx-auto p-3 sm:p-6 flex flex-col justify-start">
+        
+        <!-- Progress Bar and Status Header -->
+        <div class="flex items-center justify-between text-xs font-semibold text-slate-500 mb-2">
+            <span id="question-tracker">Question 1 of 120</span>
+            <div class="flex items-center space-x-2">
+                <span id="status-badge" class="px-2 py-0.5 rounded text-[11px] bg-slate-200 text-slate-700 font-bold">नॉट आंसर्ड</span>
+            </div>
+        </div>
+
+        <!-- Question Card -->
+        <div class="bg-white rounded-2xl border border-slate-200 shadow-sm p-4 sm:p-6 mb-4">
+            
+            <div class="flex items-center justify-between border-b border-slate-100 pb-2 mb-3">
+                <span id="q-category" class="text-xs font-bold text-blue-600 uppercase tracking-wide">Lucent GK: Medieval History</span>
+                <span class="text-xs font-bold text-slate-400">+2.00 | -0.20</span>
+            </div>
+
+            <!-- Question Body -->
+            <div id="question-text" class="text-sm sm:text-base font-medium text-slate-900 leading-relaxed space-y-2">
+                <!-- Question injected via JS -->
+            </div>
+
+            <!-- Options Container -->
+            <div id="options-container" class="mt-5 space-y-2.5">
+                <!-- Options injected via JS -->
+            </div>
+
+            <!-- Instant Answer / Explanation Container (Appears immediately on click) -->
+            <div id="instant-feedback" class="hidden mt-4 p-3.5 bg-blue-50 border border-blue-200 rounded-xl transition duration-200">
+                <div class="flex items-center text-xs font-bold mb-1">
+                    <span id="feedback-result" class="mr-2"></span>
+                    <span class="text-slate-500" id="feedback-header">त्वरित समाधान (NCERT / Lucent GK):</span>
+                </div>
+                <p id="feedback-explanation" class="text-xs text-slate-700 leading-relaxed"></p>
+            </div>
+
+            <!-- Question Tag / Watermark -->
+            <div class="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-[11px] text-slate-400">
+                <span class="font-bold text-blue-500">@GYANVERSET</span>
+                <a href="https://t.me/GYANVERSET" target="_blank" class="hover:underline text-sky-500">https://t.me/GYANVERSET</a>
+            </div>
+        </div>
+
+        <!-- Navigation Buttons Container: Strictly Below Options -->
+        <div class="w-full bg-white border border-slate-200 rounded-xl p-2.5 shadow-sm grid grid-cols-4 gap-2 mb-6">
+            <button id="btn-prev" class="py-2.5 bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold rounded-lg text-xs sm:text-sm flex items-center justify-center transition">
+                <i class="fa-solid fa-angle-left mr-1"></i> <span id="label-prev">पिछला</span>
+            </button>
+            <button id="btn-clear" class="py-2.5 bg-amber-50 hover:bg-amber-100 text-amber-700 border border-amber-200 font-bold rounded-lg text-xs sm:text-sm flex items-center justify-center transition">
+                <i class="fa-solid fa-eraser mr-1"></i> <span id="label-clear">क्लियर</span>
+            </button>
+            <button id="btn-review" class="py-2.5 bg-purple-50 hover:bg-purple-100 text-purple-700 border border-purple-200 font-bold rounded-lg text-xs sm:text-sm flex items-center justify-center transition">
+                <i class="fa-regular fa-bookmark mr-1"></i> <span id="label-review">रिव्यू</span>
+            </button>
+            <button id="btn-next" class="py-2.5 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-lg text-xs sm:text-sm flex items-center justify-center shadow-md transition">
+                <span id="label-next">अगला</span> <i class="fa-solid fa-angle-right ml-1"></i>
+            </button>
+        </div>
+
+    </main>
+
+    <!-- Scorecard & Review Modal -->
+    <div id="modal-scorecard" class="fixed inset-0 bg-slate-950 bg-opacity-95 z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-white rounded-2xl shadow-2xl max-w-lg w-full p-5 sm:p-7 text-center">
+            <div class="w-14 h-14 bg-emerald-100 text-emerald-600 rounded-2xl flex items-center justify-center mx-auto mb-3 text-2xl font-bold shadow-inner">
+                <i class="fa-solid fa-award"></i>
+            </div>
+            <h2 class="text-xl sm:text-2xl font-black text-slate-900">GYANVERSE CBT परिणाम</h2>
+            <p class="text-xs text-slate-500 mt-1">Lucent GK (Ch 28 to 31) 120 Questions Mega Mock Test</p>
+
+            <!-- Detailed Metrics Grid -->
+            <div class="my-5 grid grid-cols-2 sm:grid-cols-4 gap-2 text-center text-xs">
+                <div class="bg-blue-50 border border-blue-100 p-2.5 rounded-xl">
+                    <span class="block text-slate-500 font-medium">कुल प्राप्तांक</span>
+                    <span id="res-score" class="text-base sm:text-lg font-black text-blue-700">0.00</span>
+                </div>
+                <div class="bg-emerald-50 border border-emerald-100 p-2.5 rounded-xl">
+                    <span class="block text-slate-500 font-medium">सही उत्तर</span>
+                    <span id="res-correct" class="text-base sm:text-lg font-black text-emerald-600">0</span>
+                </div>
+                <div class="bg-rose-50 border border-rose-100 p-2.5 rounded-xl">
+                    <span class="block text-slate-500 font-medium">गलत उत्तर</span>
+                    <span id="res-incorrect" class="text-base sm:text-lg font-black text-rose-600">0</span>
+                </div>
+                <div class="bg-amber-50 border border-amber-100 p-2.5 rounded-xl">
+                    <span class="block text-slate-500 font-medium">छोड़े गए</span>
+                    <span id="res-skipped" class="text-base sm:text-lg font-black text-amber-600">0</span>
+                </div>
+            </div>
+
+            <div class="bg-slate-50 border border-slate-200 rounded-xl p-3 text-xs flex justify-between items-center text-slate-700 mb-5">
+                <span>सटीकता (Accuracy): <strong id="res-accuracy" class="text-blue-600">0%</strong></span>
+                <span>कुल प्रश्न: <strong id="res-total">120</strong></span>
+            </div>
+
+            <div class="flex flex-col sm:flex-row gap-2">
+                <button id="btn-review-solutions" class="flex-1 py-2.5 bg-slate-800 hover:bg-slate-900 text-white font-bold rounded-xl text-xs sm:text-sm transition">
+                    <i class="fa-solid fa-book-open mr-1.5"></i> Check Solutions
+                </button>
+                <a href="https://t.me/GYANVERSET" target="_blank" class="flex-1 py-2.5 bg-sky-500 hover:bg-sky-600 text-white font-bold rounded-xl text-xs sm:text-sm flex items-center justify-center transition">
+                    <i class="fa-brands fa-telegram mr-1.5"></i> Telegram Join
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- CBT Script Logic & All 120 Bilingual Questions Data -->
+    <script>
+        // Data generation: All 120 High-Standard Questions from Chapters 28 to 31
+        // Balanced ~25% distribution across A, B, C, D
+        const questions = [
+            // Chapter 28: Arab Invasion (1-7)
+            {
+                id: 1,
+                hindi: {
+                    text: "भारत पर अरब आक्रमण के संदर्भ में निम्नलिखित कथनों पर विचार कीजिए:<br><br>1. मुहम्मद बिन कासिम के नेतृत्व में अरबों ने 712 ई. में सिंध पर प्रथम सफल विजय प्राप्त की थी।<br>2. अरब आक्रमण के समय सिंध पर राजा दाहिर का शासन था।<br>3. भारत पर अरबवासियों के आक्रमण का मुख्य उद्देश्य केवल राजनीतिक साम्राज्य विस्तार था।<br><br>उपर्युक्त में से कौन-सा/से कथन <strong>सही</strong> है/हैं?",
+                    options: ["केवल 1 और 2", "केवल 2 और 3", "1, 2 और 3", "केवल 1 और 3"],
+                    explanation: "कथन 1 और 2 सही हैं। कथन 3 गलत है क्योंकि अरबवासियों के आक्रमण का वास्तविक उद्देश्य धन-दौलत लूटना तथा इस्लाम धर्म का प्रचार-प्रसार करना था, न कि राजनीतिक साम्राज्य का विस्तार करना।"
+                },
+                english: {
+                    text: "Consider the following statements regarding the Arab invasion of India:<br><br>1. Arabs achieved their first successful victory over Sindh in 712 AD under Muhammad bin Qasim.<br>2. Sindh was ruled by King Dahir at the time of the Arab invasion.<br>3. The primary objective of the Arab invasion was solely political territorial expansion.<br><br>Which of the statements given above is/are <strong>correct</strong>?",
+                    options: ["Only 1 and 2", "Only 2 and 3", "1, 2 and 3", "Only 1 and 3"],
+                    explanation: "Statements 1 and 2 are correct. Statement 3 is incorrect as the primary objective of Arab invaders was to plunder wealth and spread Islam, not political territorial expansion."
+                },
+                correct: 0 // A
+            },
+            {
+                id: 2,
+                hindi: {
+                    text: "नीचे दो कथन दिए गए हैं, एक को कथन (A) तथा दूसरे को कारण (R) कहा गया है:<br><br><strong>कथन (A):</strong> 712 ई. में मुहम्मद बिन कासिम ने सिंध विजय के पश्चात भारत के आंतरिक भागों में व्यापक स्थायी साम्राज्य नहीं स्थापित किया।<br><strong>कारण (R):</strong> अरब आक्रमणकारियों का मूल मंतव्य धन-संपदा का अर्जन एवं इस्लाम का प्रसार करना था।<br><br>सही विकल्प का चयन कीजिए:",
+                    options: [
+                        "(A) और (R) दोनों सही हैं और (R), (A) की सही व्याख्या है।",
+                        "(A) और (R) दोनों सही हैं लेकिन (R), (A) की सही व्याख्या नहीं है।",
+                        "(A) सही है, लेकिन (R) गलत है।",
+                        "(A) गलत है, लेकिन (R) सही है।"
+                    ],
+                    explanation: "कथन (A) और कारण (R) दोनों सत्य हैं और (R), (A) की सही व्याख्या प्रस्तुत करता है।"
+                },
+                english: {
+                    text: "Given below are two statements, one labeled as Assertion (A) and other as Reason (R):<br><br><strong>Assertion (A):</strong> Muhammad bin Qasim did not establish a widespread permanent empire in interior India after conquering Sindh in 712 AD.<br><strong>Reason (R):</strong> The fundamental intent of the Arab invaders was the acquisition of wealth and propagation of Islam.<br><br>Select the correct answer:",
+                    options: [
+                        "Both (A) and (R) are true and (R) is the correct explanation of (A).",
+                        "Both (A) and (R) are true but (R) is NOT the correct explanation of (A).",
+                        "(A) is true but (R) is false.",
+                        "(A) is false but (R) is true."
+                    ],
+                    explanation: "Both (A) and (R) are correct, and (R) is the correct explanation of (A)."
+                },
+                correct: 0 // A
+            },
+            {
+                id: 3,
+                hindi: {
+                    text: "भारत पर हुए प्रारंभिक विदेशी आक्रमणों के संबंध में कौन-सा युग्म <strong>सही सुमेलित नहीं</strong> है?<br><br>1. प्रथम सफल अरब आक्रमण — 712 ई. (मुहम्मद बिन कासिम)<br>2. सिंध का तत्कालीन हिंदू शासक — दाहिर<br>3. अरबों का प्रमुख व्यापारिक बंदरगाह — देवल<br>4. सिंध पर अरब विजय का प्राथमिक उद्देश्य — संपूर्ण भारत में तुर्क सल्तनत की नींव रखना",
+                    options: ["केवल 1", "केवल 2", "केवल 3", "केवल 4"],
+                    explanation: "युग्म 4 गलत है। अरबों का उद्देश्य धन लूटना और इस्लाम का प्रचार था, भारत में तुर्क सल्तनत की नींव कुतुबुद्दीन ऐबक (1206 ई.) ने रखी थी।"
+                },
+                english: {
+                    text: "Which of the following pairs is <strong>NOT correctly matched</strong> regarding early foreign invasions?<br><br>1. First successful Arab invasion — 712 AD (Muhammad bin Qasim)<br>2. Contemporary Hindu ruler of Sindh — Dahir<br>3. Major Arab trade port in Sindh — Debal<br>4. Primary aim of Arab Sindh conquest — Establishing Turkic Sultanate across India",
+                    options: ["Only 1", "Only 2", "Only 3", "Only 4"],
+                    explanation: "Pair 4 is incorrect. Arab aim was plunder and spreading Islam; the Turkic Sultanate was founded much later by Qutbuddin Aibak in 1206 AD."
+                },
+                correct: 3 // D
+            },
+            {
+                id: 4,
+                hindi: {
+                    text: "सिंध पर अरब आक्रमण के संदर्भ में कौन-सा कथन <strong>असत्य</strong> है?",
+                    options: [
+                        "मुहम्मद बिन कासिम के आक्रमण के समय सिंध का शासक दाहिर था।",
+                        "अरबों की सिंध पर विजय 712 ईस्वी में संपन्न हुई थी।",
+                        "अरबों के आक्रमण के फलस्वरूप भारत में तुरंत एक विशाल केंद्रीय सत्ता स्थापित हो गई।",
+                        "अरबवासियों का मुख्य उद्देश्य धन-दौलत लूटना तथा धर्म का प्रचार करना था।"
+                    ],
+                    explanation: "कथन C असत्य है क्योंकि अरब आक्रमण का कोई स्थायी केंद्रीय साम्राज्यीय प्रभाव नहीं पड़ा और वे सिंध तथा मुल्तान तक ही सीमित रहे।"
+                },
+                english: {
+                    text: "Which statement is <strong>incorrect</strong> regarding the Arab invasion of Sindh?",
+                    options: [
+                        "Dahir was the ruler of Sindh during Muhammad bin Qasim's invasion.",
+                        "The Arab conquest of Sindh took place in 712 AD.",
+                        "As a result of Arab invasions, a vast centralized empire was immediately established in India.",
+                        "The main motive of the Arabs was to plunder wealth and propagate religion."
+                    ],
+                    explanation: "Option C is incorrect because the Arab conquest remained largely confined to Sindh and Multan without creating any pan-Indian empire."
+                },
+                correct: 2 // C
+            },
+            {
+                id: 5,
+                hindi: {
+                    text: "भारत पर प्रथम सफल मुस्लिम आक्रमण का नेतृत्व निम्नलिखित में से किस सेनानायक ने किया था?",
+                    options: ["महमूद गजनी", "सुबुक्तगीन", "मुहम्मद बिन कासिम", "कुतुबुद्दीन ऐबक"],
+                    explanation: "भारत पर पहला सफल मुस्लिम आक्रमण 712 ई. में मुहम्मद बिन कासिम के नेतृत्व में हुआ था।"
+                },
+                english: {
+                    text: "Who among the following commanders led the first successful Muslim invasion of India?",
+                    options: ["Mahmud Ghaznavi", "Subuktigin", "Muhammad bin Qasim", "Qutbuddin Aibak"],
+                    explanation: "The first successful Muslim invasion of India was led by Muhammad bin Qasim in 712 AD."
+                },
+                correct: 2 // C
+            },
+            {
+                id: 6,
+                hindi: {
+                    text: "अरबों द्वारा विजित सिंध प्रांत के बंदरगाह नगर 'देवल' के संदर्भ में कौन-सा कथन सत्य है?",
+                    options: [
+                        "यह मध्यकाल में गंगा नदी के मुहाने पर स्थित प्रमुख बंदरगाह था।",
+                        "यह सल्तनत काल एवं पूर्व-मध्यकाल में एक प्रसिद्ध अंतरराष्ट्रीय बंदरगाह था।",
+                        "यह केवल मुगलों द्वारा निर्मित एक नौसैनिक छावनी थी।",
+                        "यहाँ केवल स्थल मार्ग से ही व्यापारिक काफिले आते थे।"
+                    ],
+                    explanation: "देवल सिंध में स्थित एक प्रसिद्ध अंतरराष्ट्रीय बंदरगाह था जहाँ से समुद्री व्यापार संचालित होता था।"
+                },
+                english: {
+                    text: "Which statement is true regarding the port city 'Debal' captured by Arabs in Sindh?",
+                    options: [
+                        "It was a major port situated at the mouth of the Ganges river.",
+                        "It was a famous international port during early medieval and Sultanate eras.",
+                        "It was solely a naval cantonment established by the Mughals.",
+                        "Only overland merchant caravans operated from this town."
+                    ],
+                    explanation: "Debal was a renowned international sea port situated in Sindh used extensively for maritime trade."
+                },
+                correct: 1 // B
+            },
+            {
+                id: 7,
+                hindi: {
+                    text: "भारत पर अरबों के आक्रमण के समय निम्नलिखित में से कौन-सा कारक भारतीय शासकों की पराजय का कारण नहीं था?",
+                    options: [
+                        "दाहिर के प्रशासन में आंतरिक मतभेद एवं असंतोष",
+                        "भारत में आधुनिक तोपखाने का अत्यधिक प्रचलन",
+                        "स्थानीय स्तर पर सुदृढ़ केंद्रीय प्रतिरोध का अभाव",
+                        "अरब सेना का आक्रामक अश्वारोही सैन्य कौशल"
+                    ],
+                    explanation: "भारत में तोपखाने (gunpowder artillery) का प्रचलन 1526 में बाबर के पानीपत युद्ध के समय शुरू हुआ, 712 ई. में तोपखाना नहीं था।"
+                },
+                english: {
+                    text: "Which factor was NOT a cause of Indian rulers' defeat during Arab invasion of Sindh?",
+                    options: [
+                        "Internal discords and discontent under Dahir's rule",
+                        "Widespread use of modern artillery in India",
+                        "Absence of strong united centralized resistance",
+                        "Aggressive cavalry warfare skills of the Arab army"
+                    ],
+                    explanation: "Gunpowder artillery was introduced in India much later by Babur in 1526 AD; it did not exist during the 712 AD invasion."
+                },
+                correct: 1 // B
+            },
+
+            // Chapter 29: Mahmud Ghaznavi (8-35)
+            {
+                id: 8,
+                hindi: {
+                    text: "गजनी साम्राज्य की स्थापना एवं प्रारंभिक तुर्क आक्रमणों के संदर्भ में निम्नलिखित कथनों पर विचार कीजिए:<br><br>1. 932 ई. में अलप्तगीन नामक तुर्क सरदार ने गजनी साम्राज्य की स्थापना की थी।<br>2. अलप्तगीन की मृत्यु के पश्चात पिरीतिगीन के शासनकाल (972-977 ई.) में सर्वप्रथम भारत पर तुर्क आक्रमण हुआ।<br>3. प्रथम तुर्क आक्रमण के समय पंजाब में शाही वंश का शासक जयपाल शासन कर रहा था।<br><br>उपर्युक्त में से कौन-से कथन <strong>सत्य</strong> हैं?",
+                    options: ["केवल 1 और 2", "केवल 2 और 3", "1, 2 और 3", "केवल 1 और 3"],
+                    explanation: "तीनों कथन पूर्णतः सत्य हैं। अलप्तगीन ने 932 ई. में गजनी की नींव रखी, पिरीतिगीन के काल में पहला तुर्क आक्रमण हुआ जब पंजाब में शाही वंश का जयपाल शासक था।"
+                },
+                english: {
+                    text: "Consider the following statements regarding the founding of Ghaznavid empire and early Turkic raids:<br><br>1. Alptigin founded the Ghaznavid empire in 932 AD.<br>2. First Turkic invasion of India occurred during the reign of Piritigin (972-977 AD).<br>3. Jayapala of the Hindu Shahi dynasty was ruling Punjab during the first Turkic invasion.<br><br>Which of the statements given above are <strong>true</strong>?",
+                    options: ["Only 1 and 2", "Only 2 and 3", "1, 2 and 3", "Only 1 and 3"],
+                    explanation: "All three statements are factually correct as per Lucent GK history records."
+                },
+                correct: 2 // C
+            },
+            {
+                id: 9,
+                hindi: {
+                    text: "महमूद गजनी के राज्यारोहण एवं उपाधियों के संबंध में निम्नलिखित में से कौन-सा कथन <strong>गलत</strong> है?",
+                    options: [
+                        "महमूद गजनी सुबुक्तगीन का पुत्र था, जिसका जन्म 1 नवंबर, 971 ई. में हुआ था।",
+                        "अपने पिता के शासनकाल में महमूद गजनी खुरासान का प्रशासक था।",
+                        "महमूद गजनी 27 वर्ष की अवस्था में 998 ई. में गजनी की गद्दी पर बैठा।",
+                        "महमूद गजनी को 'सुल्तान' की उपाधि रोमन सम्राट ने प्रदान की थी।"
+                    ],
+                    explanation: "कथन D गलत है। बगदाद के खलीफा अल-आदिर बिल्लाह ने महमूद के पद को मान्यता देते हुए उसे 'यमीन-उद्-दौला' तथा 'यमीन-उल-मिल्लाह' की उपाधियाँ दी थीं।"
+                },
+                english: {
+                    text: "Which statement is <strong>incorrect</strong> regarding Mahmud Ghaznavi's ascension and titles?",
+                    options: [
+                        "Mahmud Ghaznavi was Subuktigin's son, born on November 1, 971 AD.",
+                        "During his father's reign, Mahmud was the governor of Khurasan.",
+                        "Mahmud ascended the throne of Ghazni in 998 AD at the age of 27.",
+                        "The title of 'Sultan' was bestowed upon Mahmud by the Roman Emperor."
+                    ],
+                    explanation: "Statement D is false. The Abbasid Caliph of Baghdad, Al-Qadir Billah, recognized his rule and conferred titles 'Yamin-ud-Daulah' and 'Yamin-ul-Millah'."
+                },
+                correct: 3 // D
+            },
+            {
+                id: 10,
+                hindi: {
+                    text: "नीचे दो कथन दिए गए हैं, एक को कथन (A) तथा दूसरे को कारण (R) कहा गया है:<br><br><strong>कथन (A):</strong> महमूद गजनी ने 1000 ई. से 1027 ई. के बीच भारत पर 17 बार आक्रमण किए।<br><strong>कारण (R):</strong> महमूद गजनी का वास्तविक उद्देश्य भारत की विपुल धन-संपदा को लूटना एवं अपने मध्य एशियाई साम्राज्य को आर्थिक सुदृढ़ता प्रदान करना था।<br><br>सही विकल्प का चयन कीजिए:",
+                    options: [
+                        "(A) और (R) दोनों सही हैं और (R), (A) की सही व्याख्या है।",
+                        "(A) और (R) दोनों सही हैं लेकिन (R), (A) की सही व्याख्या नहीं है।",
+                        "(A) सही है, लेकिन (R) गलत है।",
+                        "(A) गलत है, लेकिन (R) सही है।"
+                    ],
+                    explanation: "(A) और (R) दोनों सही हैं और (R), (A) की सही व्याख्या है क्योंकि 17 आक्रमणों का मुख्य ध्येय धन लूटकर गजनी को समृद्ध बनाना था।"
+                },
+                english: {
+                    text: "Given below are two statements, one labeled as Assertion (A) and other as Reason (R):<br><br><strong>Assertion (A):</strong> Mahmud Ghaznavi attacked India 17 times between 1000 AD and 1027 AD.<br><strong>Reason (R):</strong> Mahmud's actual objective was to plunder India's immense wealth to strengthen his Central Asian empire.<br><br>Select the correct answer:",
+                    options: [
+                        "Both (A) and (R) are true and (R) is the correct explanation of (A).",
+                        "Both (A) and (R) are true but (R) is NOT the correct explanation of (A).",
+                        "(A) is true but (R) is false.",
+                        "(A) is false but (R) is true."
+                    ],
+                    explanation: "Both (A) and (R) are true, and (R) correctly explains (A)."
+                },
+                correct: 0 // A
+            },
+            {
+                id: 11,
+                hindi: {
+                    text: "महमूद गजनी के प्रारंभिक भारतीय आक्रमणों के संदर्भ में निम्नलिखित कथनों पर विचार कीजिए:<br><br>1. महमूद गजनी ने भारत पर प्रथम आक्रमण 1000 ई. में पेशावर के कुछ भागों पर किया।<br>2. 1001 ई. में उसने शाही राजा जयपाल को पराजित किया था।<br>3. 1008 ई. में नगरकोट के विरुद्ध हमले को मूर्तिवाद के विरुद्ध पहली महत्वपूर्ण जीत माना जाता है।<br><br>उपर्युक्त में से कौन-सा/से कथन <strong>सत्य</strong> है/हैं?",
+                    options: ["केवल 1 और 2", "केवल 2 और 3", "1, 2 और 3", "केवल 1 और 3"],
+                    explanation: "तीनों कथन (1, 2 और 3) ऐतिहासिक रूप से बिल्कुल सत्य हैं।"
+                },
+                english: {
+                    text: "Consider the following statements regarding early Indian campaigns of Mahmud Ghaznavi:<br><br>1. Mahmud made his first invasion in 1000 AD on some parts of Peshawar.<br>2. In 1001 AD, he defeated the Hindu Shahi king Jayapala.<br>3. The attack on Nagarkot in 1008 AD is regarded as the first significant victory against idolatry.<br><br>Which of the statements given above is/are <strong>true</strong>?",
+                    options: ["Only 1 and 2", "Only 2 and 3", "1, 2 and 3", "Only 1 and 3"],
+                    explanation: "All three statements (1, 2, and 3) are historically verified facts."
+                },
+                correct: 2 // C
+            },
+            {
+                id: 12,
+                hindi: {
+                    text: "महमूद गजनी ने थानेसर के किस मंदिर की कांस्य निर्मित आदमकद प्रतिमा को गजनी भेजकर रंगभूमि में रखवाया था?",
+                    options: ["सूर्य मंदिर", "चक्रस्वामिन प्रतिमा", "सोमनाथ शिवलिंग", "रुद्रमहाकाल प्रतिमा"],
+                    explanation: "महमूद गजनी ने थानेसर के चक्रस्वामिन की कांस्य निर्मित आदमकद प्रतिमा को गजनी भेजकर वहाँ की रंगभूमि (अखाड़े) में रखवाया था।"
+                },
+                english: {
+                    text: "Which bronze life-size idol from Thanesar was sent by Mahmud Ghaznavi to Ghazni to be placed in an arena?",
+                    options: ["Surya idol", "Chakraswamin idol", "Somnath Shivalinga", "Rudramahakal idol"],
+                    explanation: "Mahmud Ghaznavi sent the life-size bronze statue of Chakraswamin from Thanesar to Ghazni to be placed in an arena."
+                },
+                correct: 1 // B
+            },
+            {
+                id: 13,
+                hindi: {
+                    text: "सोमनाथ मंदिर (सौराष्ट्र) पर महमूद गजनी के आक्रमण के संदर्भ में कौन-सा कथन <strong>गलत</strong> है?",
+                    options: [
+                        "यह आक्रमण 1025 ईस्वी में हुआ था।",
+                        "इस मंदिर की लूट में महमूद को करीब 20 लाख दीनार की संपत्ति हाथ लगी थी।",
+                        "सोमनाथ की रक्षा में सहायता करने के कारण महमूद ने अन्हिलवाड़ा के शासक पर भी आक्रमण किया।",
+                        "सोमनाथ मंदिर लूटकर ले जाते समय उस पर राजपूत सेना ने आक्रमण कर सारी संपत्ति छीन ली थी।"
+                    ],
+                    explanation: "कथन D गलत है। सोमनाथ मंदिर लूटकर ले जाते समय महमूद पर जाटों ने आक्रमण किया था और कुछ संपत्ति लूटी थी, न कि पूरी संपत्ति छीनी थी।"
+                },
+                english: {
+                    text: "Which statement is <strong>incorrect</strong> regarding Mahmud Ghaznavi's attack on Somnath temple (Saurashtra)?",
+                    options: [
+                        "This raid took place in 1025 AD.",
+                        "Mahmud acquired nearly 2 million (20 lakh) dinars in loot.",
+                        "Mahmud attacked ruler of Anhilwara because he assisted in defending Somnath.",
+                        "While retreating, Rajput armies ambushed Mahmud and recovered all looted property."
+                    ],
+                    explanation: "Statement D is incorrect. It was the Jats who attacked Mahmud during his retreat and plundered some wealth, not the Rajput armies recovering all loot."
+                },
+                correct: 3 // D
+            },
+            {
+                id: 14,
+                hindi: {
+                    text: "सोमनाथ मंदिर के पुनर्निर्माण के ऐतिहासिक तथ्यों पर विचार कीजिए:<br><br>1. 13 नवंबर, 1947 को सरदार वल्लभभाई पटेल द्वारा सोमनाथ के पुनर्निर्माण का संकल्प लिया गया।<br>2. 11 मई, 1951 को तत्कालीन राष्ट्रपति डॉ. राजेंद्र प्रसाद द्वारा मंदिर में शिवलिंग की प्राण-प्रतिष्ठा की गई।<br>3. सोमनाथ भारत के बारह आदि ज्योतिर्लिंगों में प्रथम माना जाता है।<br><br>उपर्युक्त में से कौन-से कथन <strong>सत्य</strong> हैं?",
+                    options: ["केवल 1 और 2", "केवल 2 और 3", "1, 2 और 3", "केवल 1 और 3"],
+                    explanation: "तीनों कथन 1, 2 और 3 पूर्णतः सत्य हैं।"
+                },
+                english: {
+                    text: "Consider the historical facts regarding modern reconstruction of Somnath temple:<br><br>1. On November 13, 1947, Sardar Vallabhbhai Patel initiated its reconstruction.<br>2. On May 11, 1951, President Dr. Rajendra Prasad performed the sanctification ceremony.<br>3. Somnath is regarded as the first among the 12 Jyotirlingas of India.<br><br>Which of the statements given above are <strong>true</strong>?",
+                    options: ["Only 1 and 2", "Only 2 and 3", "1, 2 and 3", "Only 1 and 3"],
+                    explanation: "All three statements (1, 2, and 3) are completely true."
+                },
+                correct: 2 // C
+            },
+            {
+                id: 15,
+                hindi: {
+                    text: "महमूद गजनी का अंतिम भारतीय आक्रमण (1027 ई.) किसके विरुद्ध हुआ था?",
+                    options: ["बुंदेलखंड के चंदेलों के विरुद्ध", "जाटों के विरुद्ध", "कन्नौज के प्रतिहारों के विरुद्ध", "कश्मीर के लोहार वंश के विरुद्ध"],
+                    explanation: "महमूद गजनी का 17वाँ एवं अंतिम भारतीय आक्रमण 1027 ई. में जाटों के विरुद्ध था (जिन्होंने 1025 में सोमनाथ से लौटते समय उसे लूटा था)।"
+                },
+                english: {
+                    text: "Against whom was Mahmud Ghaznavi's final Indian campaign launched in 1027 AD?",
+                    options: ["Against Chandellas of Bundelkhand", "Against the Jats", "Against Pratiharas of Kannauj", "Against Lohara dynasty of Kashmir"],
+                    explanation: "Mahmud Ghaznavi's 17th and final campaign was in 1027 AD against the Jats."
+                },
+                correct: 1 // B
+            },
+            {
+                id: 16,
+                hindi: {
+                    text: "सल्तनत पूर्व मध्यकाल में 'सुल्तान' की उपाधि धारण करने वाला पहला मुस्लिम शासक कौन था?",
+                    options: ["अलप्तगीन", "सुबुक्तगीन", "महमूद गजनी", "मुहम्मद गौरी"],
+                    explanation: "'सुल्तान' की उपाधि धारण करने वाला इतिहास का पहला शासक महमूद गजनी था।"
+                },
+                english: {
+                    text: "Who was the first Muslim ruler in medieval history to adopt the title of 'Sultan'?",
+                    options: ["Alptigin", "Subuktigin", "Mahmud Ghaznavi", "Muhammad Ghori"],
+                    explanation: "Mahmud Ghaznavi was the first ruler to assume the formal title of 'Sultan'."
+                },
+                correct: 2 // C
+            },
+            {
+                id: 17,
+                hindi: {
+                    text: "महमूद गजनी की सेना में उच्च पदों पर आसीन होने वाले प्रमुख हिंदू सेनापतियों का नाम क्या था?",
+                    options: ["हेमू एवं जयमल", "सेवंदराय एवं तिलक", "टोडरमल एवं मानसिंह", "आल्हा एवं ऊदल"],
+                    explanation: "महमूद गजनी की सेना में सेवंदराय एवं तिलक जैसे हिंदू उच्च सैन्य पदों पर आसीन थे।"
+                },
+                english: {
+                    text: "What were the names of prominent Hindu commanders who held high military ranks in Mahmud Ghaznavi's army?",
+                    options: ["Hemu and Jaimal", "Sewandrai and Tilak", "Todar Mal and Man Singh", "Alha and Udal"],
+                    explanation: "Sewandrai and Tilak were high-ranking Hindu military officers in Mahmud Ghaznavi's forces."
+                },
+                correct: 1 // B
+            },
+            {
+                id: 18,
+                hindi: {
+                    text: "महमूद गजनी के राजदरबार से संबंधित प्रमुख विद्वानों के संदर्भ में कौन-सा युग्म <strong>सही सुमेलित नहीं</strong> है?<br><br>1. अलबरूनी — 'किताब-उल-हिंद' के रचयिता<br>2. फिरदौसी — 'शाहनामा' के रचयिता<br>3. उतबी — दरबारी इतिहासकार<br>4. अमीर खुसरो — महमूद गजनी के मुख्य दरबारी कवि",
+                    options: ["केवल 1", "केवल 2", "केवल 3", "केवल 4"],
+                    explanation: "युग्म 4 गलत है। अमीर खुसरो बलबन से लेकर मुहम्मद बिन तुगलक के काल तक रहे थे, महमूद गजनी के दरबार में अलबरूनी, फिरदौसी, उतबी तथा फर्रूखी रहते थे।"
+                },
+                english: {
+                    text: "Which pair is <strong>NOT correctly matched</strong> regarding scholars associated with Mahmud Ghaznavi's court?<br><br>1. Alberuni — Author of 'Kitab-ul-Hind'<br>2. Firdausi — Author of 'Shahnama'<br>3. Utbi — Court historian<br>4. Amir Khusrau — Chief court poet of Mahmud Ghaznavi",
+                    options: ["Only 1", "Only 2", "Only 3", "Only 4"],
+                    explanation: "Pair 4 is incorrect. Amir Khusrau served Delhi Sultans from Balban to Muhammad bin Tughlaq. Mahmud's court included Alberuni, Firdausi, Utbi, and Farrukhi."
+                },
+                correct: 3 // D
+            },
+            {
+                id: 19,
+                hindi: {
+                    text: "महमूद गजनी की मृत्यु किस वर्ष हुई थी?",
+                    options: ["1025 ई.", "1027 ई.", "1030 ई.", "1035 ई."],
+                    explanation: "महमूद गजनी की मृत्यु 1030 ईस्वी में हुई थी।"
+                },
+                english: {
+                    text: "In which year did Mahmud Ghaznavi die?",
+                    options: ["1025 AD", "1027 AD", "1030 AD", "1035 AD"],
+                    explanation: "Mahmud Ghaznavi died in the year 1030 AD."
+                },
+                correct: 2 // C
+            },
+
+            // Chapter 30: Muhammad Ghori (20-35)
+            {
+                id: 20,
+                hindi: {
+                    text: "शहाबुद्दीन मुहम्मद गौरी के संदर्भ में निम्नलिखित कथनों पर विचार कीजिए:<br><br>1. गौर महमूद गजनी के अधीन एक छोटा-सा पहाड़ी राज्य था, जहाँ 1173 ई. में शहाबुद्दीन मुहम्मद गौरी शासक बना।<br>2. गौरी ने भारत पर पहला आक्रमण 1175 ई. में मुल्तान के विरुद्ध किया था।<br>3. 1178 ई. में गुजरात के पाटन पर गौरी के आक्रमण के समय वहाँ के चालुक्य शासक भीम-II ने उसे बुरी तरह परास्त किया।<br><br>उपर्युक्त में से कौन-से कथन <strong>सही</strong> हैं?",
+                    options: ["केवल 1 और 2", "केवल 2 और 3", "1, 2 और 3", "केवल 1 और 3"],
+                    explanation: "तीनों कथन 1, 2 और 3 बिल्कुल सत्य हैं। भीम द्वितीय (मूलराज द्वितीय/सोलंकी वंश) ने 1178 में गौरी को आबू पर्वत के समीप पराजित किया था।"
+                },
+                english: {
+                    text: "Consider the following statements regarding Shihabuddin Muhammad Ghori:<br><br>1. Ghor was a minor principality under Ghazni, where Muhammad Ghori became ruler in 1173 AD.<br>2. Ghori made his first invasion of India in 1175 AD against Multan.<br>3. In 1178 AD at Patan (Gujarat), Chaulukya ruler Bhima-II routed Ghori's forces.<br><br>Which of the statements given above are <strong>correct</strong>?",
+                    options: ["Only 1 and 2", "Only 2 and 3", "1, 2 and 3", "Only 1 and 3"],
+                    explanation: "All three statements (1, 2, and 3) are true."
+                },
+                correct: 2 // C
+            },
+            {
+                id: 21,
+                hindi: {
+                    text: "तराइन के प्रथम युद्ध (1191 ई.) के संदर्भ में कौन-सा कथन <strong>सत्य</strong> है?",
+                    options: [
+                        "इसमें मुहम्मद गौरी ने पृथ्वीराज चौहान को बंदी बना लिया था।",
+                        "इस युद्ध में पृथ्वीराज चौहान विजयी रहे तथा गौरी पराजित होकर भागा।",
+                        "इस युद्ध में जयचंद ने पृथ्वीराज चौहान का खुलकर साथ दिया था।",
+                        "इस युद्ध के पश्चात दिल्ली सल्तनत की तत्काल स्थापना हुई।"
+                    ],
+                    explanation: "1191 ई. के तराइन के प्रथम युद्ध में पृथ्वीराज चौहान ने मुहम्मद गौरी को बुरी तरह परास्त किया था।"
+                },
+                english: {
+                    text: "Which statement is <strong>true</strong> regarding the First Battle of Tarain (1191 AD)?",
+                    options: [
+                        "Muhammad Ghori captured Prithviraj Chauhan.",
+                        "Prithviraj Chauhan was victorious and Ghori was defeated.",
+                        "Jaichand openly allied with Prithviraj Chauhan.",
+                        "Delhi Sultanate was established immediately after this battle."
+                    ],
+                    explanation: "In the First Battle of Tarain (1191 AD), Prithviraj Chauhan routed Muhammad Ghori."
+                },
+                correct: 1 // B
+            },
+            {
+                id: 22,
+                hindi: {
+                    text: "तराइन के द्वितीय युद्ध (1192 ई.) का भारतीय इतिहास में क्या परिणाम रहा?",
+                    options: [
+                        "राजपूत परिसंघ ने गौरी को हमेशा के लिए भारत से खदेड़ दिया।",
+                        "मुहम्मद गौरी विजयी हुआ और भारत में तुर्क साम्राज्य की नींव सुदृढ़ हो गई।",
+                        "गौरी ने भारत की संपूर्ण सत्ता राजा जयचंद को सौंप दी।",
+                        "इल्तुतमिश ने दिल्ली में स्वयं को स्वतंत्र सुल्तान घोषित कर दिया।"
+                    ],
+                    explanation: "1192 ई. में तराइन के द्वितीय युद्ध में मुहम्मद गौरी विजयी रहा तथा पृथ्वीराज चौहान पराजित हुए, जिसने भारत में मुस्लिम सत्ता का मार्ग प्रशस्त किया।"
+                },
+                english: {
+                    text: "What was the outcome of the Second Battle of Tarain (1192 AD) in Indian history?",
+                    options: [
+                        "Rajput confederacy drove Ghori out of India permanently.",
+                        "Muhammad Ghori emerged victorious, establishing Muslim rule firmly in North India.",
+                        "Ghori surrendered all Indian territories to King Jaichand.",
+                        "Iltutmish declared himself independent Sultan of Delhi."
+                    ],
+                    explanation: "In 1192 AD, Ghori defeated Prithviraj Chauhan, laying the firm foundation for Turkish dominance in India."
+                },
+                correct: 1 // B
+            },
+            {
+                id: 23,
+                hindi: {
+                    text: "चंदावर का युद्ध (1194 ई.) किनके मध्य लड़ा गया था?",
+                    options: [
+                        "मुहम्मद गौरी एवं पृथ्वीराज चौहान",
+                        "मुहम्मद गौरी एवं भीम द्वितीय",
+                        "मुहम्मद गौरी एवं कन्नौज के राजा जयचंद",
+                        "कुतुबुद्दीन ऐबक एवं बख्तियार खिलजी"
+                    ],
+                    explanation: "1194 ई. में चंदावर का युद्ध मुहम्मद गौरी और कन्नौज के गहड़वाल राजा जयचंद के बीच लड़ा गया जिसमें जयचंद पराजित हुआ।"
+                },
+                english: {
+                    text: "Between whom was the Battle of Chandawar fought in 1194 AD?",
+                    options: [
+                        "Muhammad Ghori and Prithviraj Chauhan",
+                        "Muhammad Ghori and Bhima-II",
+                        "Muhammad Ghori and King Jaichand of Kannauj",
+                        "Qutbuddin Aibak and Bakhtiyar Khilji"
+                    ],
+                    explanation: "The Battle of Chandawar (1194 AD) was fought between Muhammad Ghori and Gahadavala ruler Jaichand of Kannauj (Ghori won)."
+                },
+                correct: 2 // C
+            },
+            {
+                id: 24,
+                hindi: {
+                    text: "तराइन के प्रथम युद्ध में पृथ्वीराज चौहान का मुख्य सेनापति कौन था?",
+                    options: ["गोविंद राय", "स्कंद", "आल्हा", "उदयसिंह"],
+                    explanation: "तराइन के प्रथम युद्ध में पृथ्वीराज चौहान का प्रमुख सेनापति स्कंद (Skanda) था।"
+                },
+                english: {
+                    text: "Who was the chief general/commander of Prithviraj Chauhan in the First Battle of Tarain?",
+                    options: ["Govind Rai", "Skanda", "Alha", "Uday Singh"],
+                    explanation: "Skanda was the trusted chief commander of Prithviraj Chauhan in the First Battle of Tarain."
+                },
+                correct: 1 // B
+            },
+            {
+                id: 25,
+                hindi: {
+                    text: "मुहम्मद गौरी की हत्या कब और किसके द्वारा की गई थी?",
+                    options: [
+                        "15 मार्च, 1206 ई. को (खोखरों/विद्रोहियों द्वारा)",
+                        "24 जून, 1206 ई. को (ऐबक द्वारा)",
+                        "1210 ई. में (घोड़े से गिरकर)",
+                        "1194 ई. में (चंदावर के मैदान में)"
+                    ],
+                    explanation: "15 मार्च, 1206 ई. को जब मुहम्मद गौरी गजनी लौट रहा था, तब सिंधु नदी के किनारे दमक नामक स्थान पर उसकी हत्या कर दी गई।"
+                },
+                english: {
+                    text: "When and under what circumstances was Muhammad Ghori assassinated?",
+                    options: [
+                        "On March 15, 1206 AD (by Khokhar rebels/assassins)",
+                        "On June 24, 1206 AD (by Aibak)",
+                        "In 1210 AD (falling from horseback)",
+                        "In 1194 AD (on the field of Chandawar)"
+                    ],
+                    explanation: "Muhammad Ghori was assassinated on March 15, 1206 AD at Damyak while returning to Ghazni."
+                },
+                correct: 0 // A
+            },
+
+            // Chapter 31: Ghulam Dynasty (26-45)
+            {
+                id: 26,
+                hindi: {
+                    text: "गुलाम वंश (मामलूक वंश) की स्थापना के संदर्भ में निम्नलिखित कथनों पर विचार कीजिए:<br><br>1. गुलाम वंश की स्थापना 1206 ई. में कुतुबुद्दीन ऐबक ने की थी, जो मुहम्मद गौरी का गुलाम था।<br>2. ऐबक ने अपना राज्याभिषेक 24 जून, 1206 को किया तथा अपनी राजधानी लाहौर बनाई।<br>3. सल्तनत काल में गुलामों को फारसी में 'बंदगाँ' कहा जाता था और इन्हें सैनिक सेवा हेतु खरीदा जाता था।<br><br>उपर्युक्त में से कौन-से कथन <strong>सत्य</strong> हैं?",
+                    options: ["केवल 1 और 2", "केवल 2 और 3", "1, 2 और 3", "केवल 1 और 3"],
+                    explanation: "तीनों कथन 1, 2 और 3 सत्य हैं।"
+                },
+                english: {
+                    text: "Consider statements regarding foundation of Slave Dynasty:<br><br>1. Slave dynasty was founded in 1206 AD by Qutbuddin Aibak, a slave of Muhammad Ghori.<br>2. Aibak was crowned on June 24, 1206, and established his capital at Lahore.<br>3. In Persian, military slaves were termed 'Bandagan', purchased specifically for military service.<br><br>Which of the statements given above are <strong>true</strong>?",
+                    options: ["Only 1 and 2", "Only 2 and 3", "1, 2 and 3", "Only 1 and 3"],
+                    explanation: "All three statements are historically true."
+                },
+                correct: 2 // C
+            },
+            {
+                id: 27,
+                hindi: {
+                    text: "कुतुबुद्दीन ऐबक की स्थापत्य कला एवं उपाधियों के संबंध में कौन-सा कथन <strong>असत्य</strong> है?",
+                    options: [
+                        "लाखों का दान देने के कारण कुतुबुद्दीन ऐबक को 'लाख बख्श' कहा जाता था।",
+                        "दिल्ली में कुव्वत-उल-इस्लाम मस्जिद तथा अजमेर में ढाई दिन का झोपड़ा ऐबक ने बनवाया था।",
+                        "कुतुबमीनार की नींव कुतुबुद्दीन ऐबक ने रखी थी।",
+                        "ऐबक ने खलीफा से बाकायदा सुल्तान पद की स्वीकृति प्राप्त कर सिक्के जारी किए।"
+                    ],
+                    explanation: "कथन D असत्य है। ऐबक ने कभी 'सुल्तान' की उपाधि नहीं ली (उसने केवल मलिक और सिपहसालार की पदवी रखी) और न ही खलीफा से वैधानिक स्वीकृति ली। खलीफा से स्वीकृति सर्वप्रथम इल्तुतमिश ने 1229 ई. में ली थी।"
+                },
+                english: {
+                    text: "Which statement is <strong>incorrect</strong> regarding Qutbuddin Aibak's architectural works and titles?",
+                    options: [
+                        "He was titled 'Lakh Bakhsh' due to his extraordinary generosity in giving gifts.",
+                        "He built Quwwat-ul-Islam mosque in Delhi and Dhai Din Ka Jhopda in Ajmer.",
+                        "He laid the foundation stone of Qutb Minar.",
+                        "Aibak obtained legal investiture as Sultan from the Caliph and minted coins."
+                    ],
+                    explanation: "Option D is incorrect. Aibak never assumed the royal title of Sultan nor struck coins; Iltutmish was the first to receive formal recognition from Baghdad Caliph in 1229 AD."
+                },
+                correct: 3 // D
+            },
+            {
+                id: 28,
+                hindi: {
+                    text: "कुतुबमीनार के निर्माण इतिहास के संदर्भ में निम्नलिखित कथनों पर विचार कीजिए:<br><br>1. कुतुबमीनार की पहली मंजिल का निर्माण कुतुबुद्दीन ऐबक ने (लगभग 1199 ई.) करवाया था।<br>2. इल्तुतमिश ने शेष मंजिलों का निर्माण करवाकर (लगभग 1229 ई.) इसे 4 मंजिला (225 फीट) बनाया।<br>3. फिरोजशाह तुगलक के समय बिजली गिरने से चौथी मंजिल नष्ट होने पर उसने दो छोटी मंजिलें बनवाकर इसे 5 मंजिला (234 फीट) कर दिया।<br><br>उपर्युक्त में से कौन-से कथन <strong>सही</strong> हैं?",
+                    options: ["केवल 1 और 2", "केवल 2 और 3", "1, 2 और 3", "केवल 1 और 3"],
+                    explanation: "तीनों कथन 1, 2 और 3 पूर्णतः सत्य हैं।"
+                },
+                english: {
+                    text: "Consider the construction history of Qutb Minar:<br><br>1. First storey was built by Qutbuddin Aibak around 1199 AD.<br>2. Iltutmish completed remaining storeys around 1229 AD making it 4 storeys (225 ft).<br>3. Firoz Shah Tughlaq repaired lightning damage to the 4th storey by adding two smaller storeys, making it 5 storeys (234 ft).<br><br>Which of the statements given above are <strong>correct</strong>?",
+                    options: ["Only 1 and 2", "Only 2 and 3", "1, 2 and 3", "Only 1 and 3"],
+                    explanation: "All three statements are completely true as documented in Lucent GK."
+                },
+                correct: 2 // C
+            },
+            {
+                id: 29,
+                hindi: {
+                    text: "प्राचीन नालंदा विश्वविद्यालय को ध्वस्त करने वाला कुतुबुद्दीन ऐबक का सहायक सेनानायक कौन था?",
+                    options: ["मलिक काफूर", "इख्तियारुद्दीन बख्तियार खिलजी", "उलूग खाँ", "जफर खाँ"],
+                    explanation: "ऐबक का सहायक सेनानायक बख्तियार खिलजी था, जिसने बिहार अभियान के दौरान नालंदा एवं विक्रमशिला को ध्वस्त किया था।"
+                },
+                english: {
+                    text: "Who was Aibak's subordinate commander responsible for destroying ancient Nalanda University?",
+                    options: ["Malik Kafur", "Ikhtiyaruddin Bakhtiyar Khilji", "Ulugh Khan", "Zafar Khan"],
+                    explanation: "Bakhtiyar Khilji destroyed Nalanda University during his eastern campaigns."
+                },
+                correct: 1 // B
+            },
+            {
+                id: 30,
+                hindi: {
+                    text: "कुतुबुद्दीन ऐबक की मृत्यु (1210 ई.) किस खेल के दौरान घोड़े से गिरने के कारण हुई थी?",
+                    options: ["पोलो (चौगान)", "शतरंज", "तीरंदाजी", "कुश्ती"],
+                    explanation: "1210 ई. में लाहौर में चौगान (पोलो) खेलते समय घोड़े से गिर जाने से ऐबक की मृत्यु हुई।"
+                },
+                english: {
+                    text: "Qutbuddin Aibak died in 1210 AD after falling from his horse while playing which sport?",
+                    options: ["Chaugan (Polo)", "Chess", "Archery", "Wrestling"],
+                    explanation: "Aibak died in Lahore in 1210 AD while playing Chaugan (medieval polo)."
+                },
+                correct: 0 // A
+            },
+            {
+                id: 31,
+                hindi: {
+                    text: "ऐबक की मृत्यु के बाद आरामशाह ने कितने महीनों तक शासन किया था, जिसकी हत्या कर इल्तुतमिश गद्दी पर बैठा?",
+                    options: ["4 महीने", "8 महीने", "1 वर्ष", "2 वर्ष"],
+                    explanation: "आरामशाह ने केवल आठ महीनों तक शासन किया, फिर इल्तुतमिश ने 1211 ई. में उसे हटाकर दिल्ली की गद्दी संभाली।"
+                },
+                english: {
+                    text: "How many months did Aram Shah rule after Aibak's death before being deposed and killed by Iltutmish?",
+                    options: ["4 months", "8 months", "1 year", "2 years"],
+                    explanation: "Aram Shah ruled for only about eight months before Iltutmish ascended the throne in 1211 AD."
+                },
+                correct: 1 // B
+            },
+            {
+                id: 32,
+                hindi: {
+                    text: "शमसुद्दीन इल्तुतमिश के संबंध में कौन-सा कथन <strong>असत्य</strong> है?",
+                    options: [
+                        "वह तुर्किस्तान का इल्बरी तुर्क था और ऐबक की मृत्यु के समय बदायूँ का गवर्नर था।",
+                        "इल्तुतमिश ने अपनी राजधानी लाहौर से दिल्ली स्थानांतरित की थी।",
+                        "उसने देहली-ए-कुहना के निकट हौज-ए-सुल्तानी का निर्माण करवाया था।",
+                        "इल्तुतमिश ने कभी भी बगदाद के खलीफा से सुल्तान पद का अधिकार-पत्र प्राप्त नहीं किया।"
+                    ],
+                    explanation: "कथन D असत्य है। इल्तुतमिश दिल्ली का पहला शासक था जिसने 1229 ई. में बगदाद के खलीफा से सुल्तान पद की वैधानिक स्वीकृति (सनद) प्राप्त की थी।"
+                },
+                english: {
+                    text: "Which statement is <strong>incorrect</strong> regarding Shamsuddin Iltutmish?",
+                    options: [
+                        "He was an Ilbari Turk and was governor of Badaun at the time of Aibak's death.",
+                        "He shifted the capital from Lahore to Delhi.",
+                        "He constructed Hauz-e-Sultani near Dehli-e-Kuhna.",
+                        "Iltutmish never sought or received legal sanction from the Caliph of Baghdad."
+                    ],
+                    explanation: "Statement D is false. In 1229 AD, Iltutmish became the first Sultan of Delhi to receive legal recognition from the Abbasid Caliph."
+                },
+                correct: 3 // D
+            },
+            {
+                id: 33,
+                hindi: {
+                    text: "इल्तुतमिश द्वारा किए गए महत्वपूर्ण कार्यों के संदर्भ में निम्नलिखित युग्मों पर विचार कीजिए:<br><br>1. शुद्ध अरबी सिक्के जारी करना — चाँदी का टंका (175 ग्रेन) एवं ताँबे का जीतल<br>2. सैन्य व प्रशासनिक अधिकारियों हेतु भू-क्षेत्र आवंटन — इक्ता प्रणाली की शुरुआत<br>3. तुर्की अमीरों का शक्तिशाली गुट — तुर्कान-ए-चिहलगानी (चालीसा दल)<br><br>उपर्युक्त में से कौन-से सुमेलित हैं?",
+                    options: ["केवल 1 और 2", "केवल 2 और 3", "1, 2 और 3", "केवल 1 और 3"],
+                    explanation: "तीनों ही युग्म (1, 2 और 3) इल्तुतमिश के प्रमुख ऐतिहासिक सुधारों के रूप में प्रसिद्ध हैं।"
+                },
+                english: {
+                    text: "Consider the key achievements of Iltutmish:<br><br>1. Pure Arabic coinage — Silver Tanka and Copper Jital<br>2. Revenue/military administrative land assignment — Introduction of Iqta system<br>3. Council of 40 loyal Turkish nobles — Turkan-i-Chihalgani (The Forty)<br><br>Which of the above are correctly matched?",
+                    options: ["Only 1 and 2", "Only 2 and 3", "1, 2 and 3", "Only 1 and 3"],
+                    explanation: "All three achievements (1, 2, and 3) were instituted by Iltutmish."
+                },
+                correct: 2 // C
+            },
+            {
+                id: 34,
+                hindi: {
+                    text: "मंगोल आक्रांता चंगेज खाँ के संदर्भ में निम्नलिखित कथनों पर विचार कीजिए:<br><br>1. मंगोल चीन के उत्तर में गोबी के रेगिस्तान के निवासी थे।<br>2. चंगेज खाँ का वास्तविक नाम तेमूचिन था, जिसका जन्म 1163 ई. में हुआ था।<br>3. चंगेज खाँ से बचने के लिए ख्वारिज्म के शाह जलालुद्दीन मंगबरनी को इल्तुतमिश ने दिल्ली में शरण देने से विनम्रतापूर्वक इनकार कर दिया था।<br><br>उपर्युक्त में से कौन-से कथन <strong>सत्य</strong> हैं?",
+                    options: ["केवल 1 और 2", "केवल 2 और 3", "1, 2 और 3", "केवल 1 और 3"],
+                    explanation: "तीनों कथन 1, 2 और 3 सत्य हैं। इल्तुतमिश की इस कूटनीति से दिल्ली नवजात अवस्था में मंगोलों के भीषण विनाश से बच गई।"
+                },
+                english: {
+                    text: "Consider statements regarding Mongol conqueror Chengiz Khan:<br><br>1. Mongols were nomadic inhabitants of the Gobi desert north of China.<br>2. Chengiz Khan's original name was Temüjin, born around 1163 AD.<br>3. To avoid Mongol invasion, Iltutmish diplomatically refused refuge to Jalaluddin Mangbarani of Khwarazm.<br><br>Which statements are <strong>true</strong>?",
+                    options: ["Only 1 and 2", "Only 2 and 3", "1, 2 and 3", "Only 1 and 3"],
+                    explanation: "All three statements are historically true."
+                },
+                correct: 2 // C
+            },
+            {
+                id: 35,
+                hindi: {
+                    text: "इल्तुतमिश के बाद गद्दी पर बैठने वाले अयोग्य शासक रुकनुद्दीन फिरोज के अल्पकालीन शासन पर उसकी किस महत्वाकांक्षी माँ का प्रभाव था?",
+                    options: ["मल्लिका-ए-जहाँ", "शाह तुरकान", "रजिया सुल्तान", "नूरजहाँ"],
+                    explanation: "रुकनुद्दीन फिरोज के अल्पकालीन शासन पर उसकी माँ शाह तुरकान का अवांछित प्रभाव छाया हुआ था।"
+                },
+                english: {
+                    text: "Whose ambitious mother, Shah Turkan, dominated the brief and incompetent reign of Ruknuddin Firoz after Iltutmish?",
+                    options: ["Mallika-e-Jahan", "Shah Turkan", "Razia Sultan", "Nur Jahan"],
+                    explanation: "Shah Turkan exerted control over Ruknuddin Firoz's short rule."
+                },
+                correct: 1 // B
+            },
+            {
+                id: 36,
+                hindi: {
+                    text: "प्रथम मुस्लिम महिला शासिका रजिया सुल्तान के संदर्भ में कौन-सा कथन <strong>असत्य</strong> है?",
+                    options: [
+                        "तुर्की अमीरों ने शाह तुरकान के प्रभाव से परेशान होकर रुकनुद्दीन को हटाकर रजिया को सुल्तान बनाया।",
+                        "रजिया ने पर्दा प्रथा का त्याग कर पुरुषों की तरह चोगा (काबा) एवं कुलाह (टोपी) पहनकर दरबार में प्रवेश किया।",
+                        "रजिया ने अभीसीनियाई हब्शी मलिक जमालुद्दीन याकूत को 'अमीर-ए-आखूर' (अश्वशाला का प्रधान) नियुक्त किया।",
+                        "रजिया ने तुर्क चालीसा दल के सभी 40 सरदारों को मृत्युदंड दे दिया था।"
+                    ],
+                    explanation: "कथन D असत्य है। रजिया तुर्कान-ए-चिहलगानी को समाप्त नहीं कर सकी, बल्कि तुर्क अमीरों ने ही उसके खिलाफ षड्यंत्र रचकर उसे अपदस्थ किया था।"
+                },
+                english: {
+                    text: "Which statement is <strong>incorrect</strong> regarding Razia Sultan, the first female Muslim monarch?",
+                    options: [
+                        "Turkish nobles deposed Ruknuddin and placed Razia on the throne.",
+                        "Razia discarded purdah, appearing in court wearing a tunic (Qaba) and cap (Kulah).",
+                        "She appointed Abyssinian noble Jamaluddin Yaqut as 'Amir-i-Akhur' (master of the stables).",
+                        "Razia executed all 40 members of the Turkan-i-Chihalgani council."
+                    ],
+                    explanation: "Statement D is false. Razia was unable to destroy the Chihalgani council; instead, the Turkish nobles conspired against and overthrew her."
+                },
+                correct: 3 // D
+            },
+            {
+                id: 37,
+                hindi: {
+                    text: "रजिया सुल्तान का विवाह किसके साथ हुआ था और उसकी हत्या 13 अक्टूबर, 1240 को डाकुओं द्वारा किस स्थान के पास कर दी गई?",
+                    options: [
+                        "अल्तुनिया से विवाह; कैथल के पास हत्या",
+                        "याकूत से विवाह; लाहौर के पास हत्या",
+                        "बलबन से विवाह; भटिंडा के पास हत्या",
+                        "मुइज्जुद्दीन बहरामशाह से विवाह; दिल्ली के पास हत्या"
+                    ],
+                    explanation: "रजिया ने भटिंडा के गवर्नर अल्तुनिया से विवाह किया और 13 अक्टूबर, 1240 को कैथल (हरियाणा) के निकट डाकुओं द्वारा दोनों की हत्या कर दी गई।"
+                },
+                english: {
+                    text: "Whom did Razia Sultan marry, and near which place was she assassinated by robbers on October 13, 1240?",
+                    options: [
+                        "Married Altuniya; assassinated near Kaithal",
+                        "Married Yaqut; assassinated near Lahore",
+                        "Married Balban; assassinated near Bhatinda",
+                        "Married Muizzuddin Bahram Shah; assassinated near Delhi"
+                    ],
+                    explanation: "Razia married Altuniya, and on October 13, 1240, both were murdered by robbers near Kaithal."
+                },
+                correct: 0 // A
+            },
+            {
+                id: 38,
+                hindi: {
+                    text: "दिल्ली का वह सुल्तान कौन था जो कुरान की नकलें बेचकर और टोपी सीकर सादगी से अपना जीवन-निर्वाह करता था?",
+                    options: ["आरामशाह", "अलाउद्दीन मसूद शाह", "नासिरुद्दीन महमूद", "गयासुद्दीन बलबन"],
+                    explanation: "नासिरुद्दीन महमूद (1246-1266 ई.) ऐसा सीधा-सादा सुल्तान था जो टोपियाँ सीकर अपना निर्वाह करता था।"
+                },
+                english: {
+                    text: "Which Sultan of Delhi led an austere life, earning his living by sewing caps and copying the Quran?",
+                    options: ["Aram Shah", "Alauddin Masud Shah", "Nasiruddin Mahmud", "Ghiyasuddin Balban"],
+                    explanation: "Nasiruddin Mahmud lived a very simple life, sustaining himself by sewing caps and transcribing the Quran."
+                },
+                correct: 2 // C
+            },
+            {
+                id: 39,
+                hindi: {
+                    text: "गयासुद्दीन बलबन के संदर्भ में निम्नलिखित कथनों पर विचार कीजिए:<br><br>1. बलबन का वास्तविक नाम बहाउद्दीन था और वह इल्तुतमिश का गुलाम था।<br>2. बलबन ने 'तुर्कान-ए-चिहलगानी' (चालीसा दल) का पूर्णतः दमन एवं विनाश किया।<br>3. नासिरुद्दीन महमूद ने बलबन को 'उलूग खाँ' की उपाधि प्रदान की थी।<br><br>उपर्युक्त में से कौन-से कथन <strong>सत्य</strong> हैं?",
+                    options: ["केवल 1 और 2", "केवल 2 और 3", "1, 2 और 3", "केवल 1 और 3"],
+                    explanation: "तीनों कथन 1, 2 और 3 पूर्ण रूप से सत्य हैं।"
+                },
+                english: {
+                    text: "Consider statements regarding Ghiyasuddin Balban:<br><br>1. Balban's real name was Bahauddin and he was initially a slave of Iltutmish.<br>2. Balban completely dismantled and destroyed the 'Turkan-i-Chihalgani'.<br>3. Nasiruddin Mahmud bestowed upon Balban the title of 'Ulugh Khan'.<br><br>Which statements are <strong>true</strong>?",
+                    options: ["Only 1 and 2", "Only 2 and 3", "1, 2 and 3", "Only 1 and 3"],
+                    explanation: "All three statements (1, 2, and 3) are true."
+                },
+                correct: 2 // C
+            },
+            {
+                id: 40,
+                hindi: {
+                    text: "राजदरबार में ईरानी (फारसी) परंपरा पर आधारित 'सिजदा' (घुटने टेककर सिर नवाना) और 'पैबोस' (सुल्तान के कदम चूमना) प्रथा की शुरुआत किस शासक ने की थी?",
+                    options: ["कुतुबुद्दीन ऐबक", "इल्तुतमिश", "बलबन", "अलाउद्दीन खिलजी"],
+                    explanation: "सुल्तान की प्रतिष्ठा बढ़ाने के लिए बलबन ने दरबार में सिजदा और पैबोस की कठोर ईरानी परंपरा शुरू की तथा 'नवरोज' उत्सव प्रारंभ कराया।"
+                },
+                english: {
+                    text: "Which Delhi Sultan introduced the Persian court etiquettes of 'Sijdah' (prostration) and 'Paibos' (kissing the Sultan's feet)?",
+                    options: ["Qutbuddin Aibak", "Iltutmish", "Balban", "Alauddin Khilji"],
+                    explanation: "Balban introduced Persian ceremonies of Sijdah and Paibos to elevate the prestige of monarchy."
+                },
+                correct: 2 // C
+            },
+            {
+                id: 41,
+                hindi: {
+                    text: "बलबन द्वारा अपने विरोधियों और मेवातियों के उपद्रव को समाप्त करने के लिए किस नीति का कठोरता से पालन किया गया था?",
+                    options: ["सुलह-ए-कुल की नीति", "लौह एवं रक्त (Iron and Blood) की नीति", "अहिंसा की नीति", "उदारवादी तुष्टीकरण की नीति"],
+                    explanation: "बलबन ने अपने विरोधियों के दमन के लिए अत्यंत क्रूर एवं कठोर 'लौह एवं रक्त' की नीति अपनाई।"
+                },
+                english: {
+                    text: "Which policy was rigorously pursued by Balban to eliminate rebels and suppress Mewati bandits?",
+                    options: ["Policy of Sulh-i-Kul", "Policy of Iron and Blood", "Policy of Non-violence", "Policy of Liberal Appeasement"],
+                    explanation: "Balban pursued the ruthless policy of 'Iron and Blood' against rebels and internal enemies."
+                },
+                correct: 1 // B
+            },
+            {
+                id: 42,
+                hindi: {
+                    text: "सल्तनत काल में दिल्ली के पास 'सीरी' नामक नया नगर निम्नलिखित में से किस शासक ने बसाया था?",
+                    options: ["इल्तुतमिश", "बलबन", "मुहम्मद बिन तुगलक", "बहलोल लोदी"],
+                    explanation: "सीरी नामक नया नगर बलबन ने बसाया था (यद्यपि सीरी का किला बाद में अलाउद्दीन खिलजी ने बनवाया था)।"
+                },
+                english: {
+                    text: "Which ruler founded the new town of 'Siri' near Delhi during the early Sultanate period?",
+                    options: ["Iltutmish", "Balban", "Muhammad bin Tughlaq", "Bahlol Lodi"],
+                    explanation: "Balban founded the settlement of Siri (where Alauddin Khilji subsequently built the Siri Fort)."
+                },
+                correct: 1 // B
+            },
+            {
+                id: 43,
+                hindi: {
+                    text: "बलबन अपनी सेना को हमेशा युद्ध हेतु मुस्तैद और दुरुस्त रखने के लिए क्या उपाय करता था?",
+                    options: [
+                        "वह सेना को निरंतर तिब्बत अभियान पर भेजता था।",
+                        "वह आखेट (शिकार) अभियान के बहाने सेना को लंबी दूरी तक कवायद (ड्रिल) कराता था।",
+                        "वह सेना के सभी जवानों को अनिवार्य कृषि कार्य में लगाता था।",
+                        "वह सेना को केवल महलों के पहरे तक सीमित रखता था।"
+                    ],
+                    explanation: "बलबन आखेट (शिकार) अभियान के बहाने अपनी सेना को मीलों तक कठिन शारीरिक कवायद कराकर हमेशा चुस्त रखता था।"
+                },
+                english: {
+                    text: "How did Balban keep his military forces alert, disciplined, and battle-ready during peace?",
+                    options: [
+                        "By continuously dispatching forces to Tibetan plateau",
+                        "Under the pretext of hunting expeditions, taking troops on long-distance forced drills",
+                        "By assigning compulsory agricultural labor to soldiers",
+                        "By restricting soldiers solely to palace guard duties"
+                    ],
+                    explanation: "Under the guise of royal hunting expeditions, Balban engaged his troops in rigorous marches and physical conditioning."
+                },
+                correct: 1 // B
+            },
+            {
+                id: 44,
+                hindi: {
+                    text: "बलबन के राजदरबार में रहने वाले प्रसिद्ध फारसी कवि निम्नलिखित में से कौन थे?",
+                    options: ["अलबरूनी एवं उतबी", "अमीर खुसरो एवं अमीर हसन", "फिरदौसी एवं मिनहाज", "अबुल फजल एवं फैजी"],
+                    explanation: "बलबन के दरबार में प्रसिद्ध फारसी कवि अमीर खुसरो एवं अमीर हसन रहते थे।"
+                },
+                english: {
+                    text: "Which renowned Persian poets adorned the royal court of Ghiyasuddin Balban?",
+                    options: ["Alberuni and Utbi", "Amir Khusrau and Amir Hasan", "Firdausi and Minhaj", "Abul Fazl and Faizi"],
+                    explanation: "Persian poets Amir Khusrau and Amir Hasan were patronage beneficiaries in Balban's court."
+                },
+                correct: 1 // B
+            },
+            {
+                id: 45,
+                hindi: {
+                    text: "गुलाम वंश का अंतिम शासक निम्नलिखित में से कौन था?",
+                    options: ["कैकुबाद", "शमसुद्दीन क्यूमर्स (कैमूर्र्श)", "नासिरुद्दीन महमूद", "जलालुद्दीन खिलजी"],
+                    explanation: "गुलाम वंश का अंतिम शासक शमसुद्दीन क्यूमर्स (कैमूर्र्श) था, जिसकी हत्या कर 1290 ई. में जलालुद्दीन खिलजी ने खिलजी वंश की स्थापना की।"
+                },
+                english: {
+                    text: "Who was the last ruler of the Slave (Mamluk) Dynasty?",
+                    options: ["Kaikubad", "Shamsuddin Kayumars", "Nasiruddin Mahmud", "Jalaluddin Khilji"],
+                    explanation: "Shamsuddin Kayumars was the final ruler of the Slave dynasty, deposed in 1290 AD by Jalaluddin Khilji."
+                },
+                correct: 1 // B
+            },
+
+            // Chapter 31: Khilji Dynasty (46-70)
+            {
+                id: 46,
+                hindi: {
+                    text: "खिलजी वंश की स्थापना 13 जून, 1290 ई. को जलालुद्दीन फिरोज खिलजी ने की थी। उसने अपनी राजधानी कहाँ बनाई थी?",
+                    options: ["लाहौर", "किलोखरी", "दौलताबाद", "आगरा"],
+                    explanation: "जलालुद्दीन फिरोज खिलजी ने अपनी राजधानी किलोखरी (कैकुबाद द्वारा निर्मित अपूर्ण महल) में बनाई थी।"
+                },
+                english: {
+                    text: "Jalaluddin Firoz Khilji founded the Khilji Dynasty on June 13, 1290. Where did he establish his capital?",
+                    options: ["Lahore", "Kilokhri", "Daulatabad", "Agra"],
+                    explanation: "Jalaluddin Firoz Khilji made Kilokhri his royal capital."
+                },
+                correct: 1 // B
+            },
+            {
+                id: 47,
+                hindi: {
+                    text: "जलालुद्दीन फिरोज खिलजी की हत्या 1296 ई. में उसके भतीजे एवं दामाद अलाउद्दीन खिलजी ने किस स्थान पर की थी?",
+                    options: ["कड़ा मानिकपुर (प्रयागराज के निकट)", "देवगिरि", "रणथंभौर", "चित्तौड़"],
+                    explanation: "1296 ई. में अलाउद्दीन खिलजी ने कड़ा मानिकपुर (प्रयाग) में अपने चाचा जलालुद्दीन की धोखे से हत्या कर दी और स्वयं सुल्तान बन बैठा।"
+                },
+                english: {
+                    text: "At which location did Alauddin Khilji assassinate his uncle and father-in-law Jalaluddin Khilji in 1296 AD?",
+                    options: ["Kara Manikpur (near Prayagraj)", "Devagiri", "Ranthambore", "Chittor"],
+                    explanation: "Alauddin murdered Jalaluddin treacherous at Kara Manikpur in 1296 AD."
+                },
+                correct: 0 // A
+            },
+            {
+                id: 48,
+                hindi: {
+                    text: "अलाउद्दीन खिलजी के बचपन का नाम क्या था?",
+                    options: ["फरीद खाँ", "अली तथा गुरशास्प", "जूना खाँ", "बहाउद्दीन"],
+                    explanation: "अलाउद्दीन खिलजी के बचपन का नाम अली तथा गुरशास्प था।"
+                },
+                english: {
+                    text: "What was the childhood name of Alauddin Khilji?",
+                    options: ["Farid Khan", "Ali and Gurshasp", "Jauna Khan", "Bahauddin"],
+                    explanation: "Alauddin Khilji's original childhood names were Ali and Gurshasp."
+                },
+                correct: 1 // B
+            },
+            {
+                id: 49,
+                hindi: {
+                    text: "अलाउद्दीन खिलजी द्वारा किए गए सैन्य सुधारों के संबंध में निम्नलिखित कथनों पर विचार कीजिए:<br><br>1. सेना को नकद वेतन देने एवं स्थायी सेना की नींव सर्वप्रथम अलाउद्दीन खिलजी ने रखी।<br>2. दिल्ली के सभी सुल्तानों में सबसे विशाल स्थायी सेना अलाउद्दीन के पास थी।<br>3. उसने घोड़ों को दागने (दाग) एवं सैनिकों का हुलिया (चेहरा) लिखने की प्रथा शुरू की।<br><br>उपर्युक्त में से कौन-से कथन <strong>सत्य</strong> हैं?",
+                    options: ["केवल 1 और 2", "केवल 2 और 3", "1, 2 और 3", "केवल 1 और 3"],
+                    explanation: "तीनों कथन 1, 2 और 3 पूर्णतः सत्य हैं।"
+                },
+                english: {
+                    text: "Consider statements regarding military reforms introduced by Alauddin Khilji:<br><br>1. He was the first Sultan to establish a large standing army paid in cash.<br>2. Among all Delhi Sultans, Alauddin maintained the largest standing army.<br>3. He introduced the practice of branding horses (Dagh) and maintaining descriptive rolls of soldiers (Huliya/Chehra).<br><br>Which statements are <strong>true</strong>?",
+                    options: ["Only 1 and 2", "Only 2 and 3", "1, 2 and 3", "Only 1 and 3"],
+                    explanation: "All three statements are historically accurate."
+                },
+                correct: 2 // C
+            },
+            {
+                id: 50,
+                hindi: {
+                    text: "अलाउद्दीन खिलजी ने भू-राजस्व की दर को बढ़ाकर उपज का कितना भाग कर दिया था और लूट के धन (खम्स) में राज्य का हिस्सा कितना किया?",
+                    options: [
+                        "भू-राजस्व 1/3 भाग; खम्स में 1/5 भाग",
+                        "भू-राजस्व 1/2 (50%) भाग; खम्स में सुल्तान का हिस्सा 3/4 (75%) भाग",
+                        "भू-राजस्व 1/4 भाग; खम्स में 1/2 भाग",
+                        "भू-राजस्व 1/10 भाग; खम्स पूर्णतः सैनिकों को दिया"
+                    ],
+                    explanation: "अलाउद्दीन ने भू-राजस्व बढ़ाकर उपज का 1/2 भाग (50%) कर दिया तथा खम्स (लूट के माल) में 1/4 की जगह 3/4 भाग सुल्तान का हिस्सा कर दिया।"
+                },
+                english: {
+                    text: "What rate of land revenue was fixed by Alauddin Khilji, and what was the state's share in Khams (booty of war)?",
+                    options: [
+                        "Revenue 1/3; Khams share 1/5",
+                        "Revenue 1/2 (50%); Sultan's share in Khams 3/4 (75%)",
+                        "Revenue 1/4; Khams share 1/2",
+                        "Revenue 1/10; Khams fully distributed to soldiers"
+                    ],
+                    explanation: "Alauddin raised land tax to 1/2 (50%) and claimed 3/4 (75%) of wartime plunder (Khams)."
+                },
+                correct: 1 // B
+            },
+            {
+                id: 51,
+                hindi: {
+                    text: "अलाउद्दीन खिलजी की बाजार-नियंत्रण प्रणाली के अंतर्गत बनाए गए नवीन पदों के कार्यों का कौन-सा मिलान <strong>गलत</strong> है?",
+                    options: [
+                        "दीवान-ए-रियासत — व्यापारियों पर नियंत्रण एवं बाजार व्यवस्था का सर्वोच्च संचालन",
+                        "शहना-ए-मंडी — प्रत्येक बाजार का अधीक्षक (दरोगा)",
+                        "बरीद — बाजार के अंदर घूमकर कीमतों व व्यवस्था का निरीक्षण करने वाला अधिकारी",
+                        "मुनहियान — केवल विदेशी व्यापारियों से चुंगी वसूलने वाला लिपिक"
+                    ],
+                    explanation: "विकल्प D गलत है। मुनहियान गुप्त सूचना एकत्र करने वाले गुप्तचर होते थे, जो सुल्तान को बाजार की गतिविधियों की जानकारी देते थे।"
+                },
+                english: {
+                    text: "Which match is <strong>incorrect</strong> regarding officials appointed under Alauddin Khilji's Market Control System?",
+                    options: [
+                        "Diwan-i-Riyasat — Supervised all merchants and overall administration of markets",
+                        "Shahna-i-Mandi — Superintendent/inspector of each marketplace",
+                        "Barid — Intelligence officer who toured markets to verify weights and prices",
+                        "Munhiyan — Petty tax clerk who only collected tolls from foreign merchants"
+                    ],
+                    explanation: "Option D is incorrect. Munhiyan were secret intelligence agents/spies reporting market compliance to the Sultan."
+                },
+                correct: 3 // D
+            },
+            {
+                id: 52,
+                hindi: {
+                    text: "अलाउद्दीन खिलजी के बाजार व्यवस्था में 'सराय-ए-अदल' नामक बाजार में मुख्य रूप से कौन-सी वस्तुएँ बिकने आती थीं?",
+                    options: [
+                        "केवल खाद्यान्न एवं अनाज",
+                        "वस्त्र, शक्कर, जड़ी-बूटी, मेवा, दीपक का तेल एवं अन्य निर्मित वस्तुएँ",
+                        "युद्ध के घोड़े, दास एवं मवेशी",
+                        "लोहा, बारूद एवं सैन्य हथियार"
+                    ],
+                    explanation: "सराय-ए-अदल सरकारी सहायता प्राप्त निर्मित वस्तुओं का बाजार था जहाँ वस्त्र, शक्कर, जड़ी-बूटियाँ, मेवा, तेल आदि बिकते थे।"
+                },
+                english: {
+                    text: "What primary items were sold in the 'Sarai-i-Adal' market established by Alauddin Khilji?",
+                    options: [
+                        "Only agricultural foodgrains and wheat",
+                        "Cloth, sugar, herbs, dry fruits, lamp oil, and other manufactured goods",
+                        "War horses, slaves, and cattle",
+                        "Iron, gunpowder, and weapons"
+                    ],
+                    explanation: "Sarai-i-Adal was designated for manufactured cloths, sugar, dried fruits, medicinal herbs, and lamp oil."
+                },
+                correct: 1 // B
+            },
+            {
+                id: 53,
+                hindi: {
+                    text: "दक्षिण भारत की विजय और धन संग्रह के लिए अलाउद्दीन खिलजी ने अपने किस योग्य सेनापति को भेजा था?",
+                    options: ["उलूग खाँ", "नुसरत खाँ", "मलिक काफूर (हजार दीनारी)", "जफर खाँ"],
+                    explanation: "अलाउद्दीन ने दक्षिण भारत (देवगिरि, वारंगल, द्वारसमुद्र, मदुरै) के सफल अभियानों के लिए मलिक काफूर को भेजा था।"
+                },
+                english: {
+                    text: "Which general was dispatched by Alauddin Khilji to lead conquests in Southern India?",
+                    options: ["Ulugh Khan", "Nusrat Khan", "Malik Kafur (Hazar Dinari)", "Zafar Khan"],
+                    explanation: "Malik Kafur led Alauddin's successful southern expeditions across the Deccan."
+                },
+                correct: 2 // C
+            },
+            {
+                id: 54,
+                hindi: {
+                    text: "अलाउद्दीन खिलजी द्वारा निर्मित प्रमुख स्थापत्यों में किसे 'इस्लामी वास्तुकला का रत्न' कहा जाता है?",
+                    options: ["सीरी का किला", "हजार सुतून महल", "अलाई दरवाजा", "जमइयत खाना मस्जिद"],
+                    explanation: "कुतुबमीनार परिसर में स्थित 'अलाई दरवाजा' को कला इतिहासकारों ने 'इस्लामी वास्तुकला का रत्न' (Gem of Islamic Architecture) कहा है।"
+                },
+                english: {
+                    text: "Which architectural marvel built by Alauddin Khilji is acclaimed as the 'Gem of Islamic Architecture'?",
+                    options: ["Siri Fort", "Hazar Sutun (Palace of Thousand Pillars)", "Alai Darwaza", "Jamait Khana Mosque"],
+                    explanation: "Alai Darwaza is widely hailed as the 'Gem of Islamic Architecture'."
+                },
+                correct: 2 // C
+            },
+            {
+                id: 55,
+                hindi: {
+                    text: "अलाउद्दीन खिलजी ने स्वयं को कौन-सी भव्य उपाधि से विभूषित किया था?",
+                    options: ["जिल्लिल्लाह", "सिकंदर-ए-सानी (द्वितीय सिकंदर)", "खलीफा", "रायत-ए-आला"],
+                    explanation: "विश्व विजय की महत्वाकांक्षा के कारण अलाउद्दीन खिलजी ने सिक्कों पर 'सिकंदर-ए-सानी' (द्वितीय सिकंदर) की उपाधि अंकित करवाई थी।"
+                },
+                english: {
+                    text: "With which title did Alauddin Khilji embellish himself on his royal coins?",
+                    options: ["Zillullah", "Sikandar-i-Sani (Alexander the Second)", "Caliph", "Rayat-i-Aala"],
+                    explanation: "Alauddin adopted the title 'Sikandar-i-Sani' (Second Alexander) aspiring for world conquests."
+                },
+                correct: 1 // B
+            },
+            {
+                id: 56,
+                hindi: {
+                    text: "अलाउद्दीन खिलजी द्वारा लगाए गए दो नवीन कर निम्नलिखित में से कौन-से थे?",
+                    options: [
+                        "जजिया एवं जकात",
+                        "चराई कर (दुधारू पशुओं पर) एवं गढ़ी कर (घरों व झोपड़ियों पर)",
+                        "हक-ए-शर्ब एवं उश्र",
+                        "खम्स एवं महसूल"
+                    ],
+                    explanation: "अलाउद्दीन ने दो नए कर लगाए: चराई कर (दुधारू मवेशियों पर) और गढ़ी कर (मकानों व झोपड़ियों पर)।"
+                },
+                english: {
+                    text: "Which two innovative taxes were introduced by Alauddin Khilji?",
+                    options: [
+                        "Jizya and Zakat",
+                        "Charai (tax on milch cattle) and Ghari (tax on houses and huts)",
+                        "Haq-i-Sharb and Ushra",
+                        "Khams and Mahsool"
+                    ],
+                    explanation: "Alauddin levied two new taxes: Charai (pasture tax on milch animals) and Ghari (house tax)."
+                },
+                correct: 1 // B
+            },
+            {
+                id: 57,
+                hindi: {
+                    text: "अलाउद्दीन खिलजी के शासनकाल में 1297 से 1306 ई. तक मंगोलों के कुल कितने आक्रमण हुए?",
+                    options: ["2", "4", "6", "10"],
+                    explanation: "अलाउद्दीन के शासनकाल में मंगोलों के कुल 6 भयंकर आक्रमण हुए (कादर खाँ, सल्दी, कुतलुग ख्वाजा, तारगी, अलीबेग-तर्ताक, कबाक-इकबालमंद)।"
+                },
+                english: {
+                    text: "How many major Mongol invasions were repulsed during the reign of Alauddin Khilji between 1297 and 1306 AD?",
+                    options: ["2", "4", "6", "10"],
+                    explanation: "Alauddin Khilji successfully withstood 6 massive Mongol invasions between 1297 and 1306 AD."
+                },
+                correct: 2 // C
+            },
+            {
+                id: 58,
+                hindi: {
+                    text: "अमीर खुसरो के संदर्भ में निम्नलिखित कथनों पर विचार कीजिए:<br><br>1. अमीर खुसरो का मूल नाम मुहम्मद हसन था और जन्म पटियाली (उत्तर प्रदेश) में हुआ था।<br>2. वे प्रसिद्ध सूफी संत शेख निजामुद्दीन औलिया के शिष्य थे।<br>3. उन्हें 'तूतिए-हिंद' (भारत का तोता) तथा सितार एवं तबले के आविष्कार का श्रेय दिया जाता है।<br>4. उन्होंने भारतीय संगीत में कव्वाली गायन और हिंदी खड़ी बोली को लोकप्रिय बनाया।<br><br>उपर्युक्त में से कौन-से कथन <strong>सत्य</strong> हैं?",
+                    options: ["केवल 1, 2 और 3", "केवल 2, 3 और 4", "केवल 1, 3 और 4", "सभी 1, 2, 3 और 4"],
+                    explanation: "सभी चारों कथन अमीर खुसरो के बारे में ऐतिहासिक रूप से बिल्कुल सत्य हैं।"
+                },
+                english: {
+                    text: "Consider statements regarding Amir Khusrau:<br><br>1. His original name was Muhammad Hasan, born at Patiali (UP).<br>2. He was a disciple of Sufi saint Sheikh Nizamuddin Auliya.<br>3. He was known as 'Tuti-i-Hind' (Parrot of India) and credited with inventing Sitar and Tabla.<br>4. He popularized Qawwali singing and Hindi Khadi Boli.<br><br>Which statements are <strong>true</strong>?",
+                    options: ["Only 1, 2 and 3", "Only 2, 3 and 4", "Only 1, 3 and 4", "All 1, 2, 3 and 4"],
+                    explanation: "All four statements (1, 2, 3, and 4) are completely true."
+                },
+                correct: 3 // D
+            },
+            {
+                id: 59,
+                hindi: {
+                    text: "अमीर खुसरो द्वारा रचित प्रमुख ऐतिहासिक कृतियों में कौन-सी शामिल नहीं है?",
+                    options: ["खजाइनुल फुतूह", "नूह सिपेहर", "देवल रानी खिज्र खाँ (मसनवी)", "किताब-उल-हिंद"],
+                    explanation: "'किताब-उल-हिंद' की रचना अलबरूनी ने की थी, जबकि शेष तीनों अमीर खुसरो की सुप्रसिद्ध रचनाएँ हैं।"
+                },
+                english: {
+                    text: "Which book is NOT an authored composition of Amir Khusrau?",
+                    options: ["Khazain-ul-Futuh", "Nuh Sipehr", "Deval Rani Khizr Khan", "Kitab-ul-Hind"],
+                    explanation: "'Kitab-ul-Hind' was written by Alberuni, whereas the others are celebrated works of Amir Khusrau."
+                },
+                correct: 3 // D
+            },
+            {
+                id: 60,
+                hindi: {
+                    text: "अलाउद्दीन खिलजी के बाद गद्दी पर बैठने वाले कुतुबुद्दीन मुबारक खिलजी के संदर्भ में कौन-सा कथन सत्य है?",
+                    options: [
+                        "उसने कभी भी स्वयं को खलीफा घोषित नहीं किया।",
+                        "उसे नग्न स्त्री-पुरुषों की संगत पसंद थी और वह कभी-कभी स्त्रियों के वस्त्र पहनकर या नग्न होकर दरबार में आता था।",
+                        "वह दिल्ली सल्तनत का सबसे गंभीर और विद्वान शासक था।",
+                        "उसने बलबन की चालीसा प्रणाली को पुनः जीवित किया।"
+                    ],
+                    explanation: "बरनी के अनुसार मुबारक खिलजी कभी-कभी नग्न दरबारियों के बीच दौड़ता था और उसने स्वयं को 'खलीफा' घोषित किया था।"
+                },
+                english: {
+                    text: "Which statement is historically true about Qutbuddin Mubarak Khilji who succeeded Alauddin?",
+                    options: [
+                        "He never declared himself the Caliph.",
+                        "He preferred companionship of naked women and men and occasionally entered court clad in feminine garments or naked.",
+                        "He was the most austere and scholarly Sultan of Delhi.",
+                        "He restored Balban's council of forty."
+                    ],
+                    explanation: "As chronicled by Barani, Mubarak Khilji indulged in eccentric behavior and declared himself the supreme Caliph."
+                },
+                correct: 1 // B
+            },
+            {
+                id: 61,
+                hindi: {
+                    text: "मुबारक खिलजी की हत्या कर 1320 ई. में दिल्ली के सिंहासन पर बैठने वाले खुसरो खाँ ने कौन-सी उपाधि धारण की थी?",
+                    options: ["सिकंदर-ए-सानी", "पैगंबर का सेनापति", "सुल्तान-ए-आलम", "जिल्लिल्लाह"],
+                    explanation: "खुसरो खाँ (एक धर्मांतरित भारतीय मुस्लिम) ने 'पैगंबर के सेनापति' की उपाधि धारण की थी।"
+                },
+                english: {
+                    text: "Which title was assumed by Khusrau Khan after murdering Mubarak Khilji in 1320 AD?",
+                    options: ["Sikandar-i-Sani", "Commander of the Prophet (Paigambar Ka Senapati)", "Sultan-i-Alam", "Zillullah"],
+                    explanation: "Khusrau Khan assumed the title of 'Commander of the Prophet'."
+                },
+                correct: 1 // B
+            },
+
+            // Chapter 31: Tughlaq Dynasty (62-85)
+            {
+                id: 62,
+                hindi: {
+                    text: "तुगलक वंश के संस्थापक गयासुद्दीन तुगलक (गाजी मलिक) के संदर्भ में निम्नलिखित कथनों पर विचार कीजिए:<br><br>1. गयासुद्दीन तुगलक ने अलाउद्दीन के समय में छीनी गई अमीरों की भूमि को वापस लौटा दिया।<br>2. सल्तनत काल में सिंचाई के लिए कुएँ एवं नहरों का निर्माण करवाने वाला संभवतः वह प्रथम शासक था।<br>3. उसने दिल्ली के पास रोमन शैली में 'तुगलकाबाद' नगर बसाया तथा 'छप्पनकोट' दुर्ग बनवाया।<br><br>उपर्युक्त में से कौन-से कथन <strong>सत्य</strong> हैं?",
+                    options: ["केवल 1 और 2", "केवल 2 और 3", "1, 2 और 3", "केवल 1 और 3"],
+                    explanation: "तीनों कथन 1, 2 और 3 पूर्णतः सत्य हैं।"
+                },
+                english: {
+                    text: "Consider statements regarding Ghiyasuddin Tughlaq (Ghazi Malik), founder of Tughlaq dynasty:<br><br>1. He restored ancestral lands to nobles confiscated by Alauddin.<br>2. He was likely the first Sultan to construct canals and wells for agricultural irrigation.<br>3. He founded Tughlaqabad city in Roman style near Delhi with the Chhappankot fort.<br><br>Which statements are <strong>true</strong>?",
+                    options: ["Only 1 and 2", "Only 2 and 3", "1, 2 and 3", "Only 1 and 3"],
+                    explanation: "All three statements (1, 2, and 3) are historically verified."
+                },
+                correct: 2 // C
+            },
+            {
+                id: 63,
+                hindi: {
+                    text: "1325 ई. में गयासुद्दीन तुगलक की मृत्यु किस कारण से हुई थी?",
+                    options: [
+                        "बंगाल अभियान से लौटते समय जूना खाँ द्वारा निर्मित लकड़ी के महल के ढह जाने से",
+                        "मंगोलों के साथ सीरी के युद्ध में वीरगति पाकर",
+                        "चौगान खेलते समय घोड़े से गिरकर",
+                        "गले की असाध्य बीमारी के कारण"
+                    ],
+                    explanation: "गयासुद्दीन तुगलक की मृत्यु अफगानपुर में जूना खाँ (मुहम्मद बिन तुगलक) द्वारा स्वागत हेतु बनवाए गए लकड़ी के महल के दब जाने से हुई।"
+                },
+                english: {
+                    text: "How did Ghiyasuddin Tughlaq die in 1325 AD?",
+                    options: [
+                        "Collapse of a wooden reception pavilion built by Jauna Khan while returning from Bengal",
+                        "Killed in action against Mongols at Siri",
+                        "Fall from horse playing Chaugan",
+                        "Severe chronic throat infection"
+                    ],
+                    explanation: "He was crushed to death when a temporary wooden pavilion collapsed at Afghanpur."
+                },
+                correct: 0 // A
+            },
+            {
+                id: 64,
+                hindi: {
+                    text: "मध्यकालीन सभी सुल्तानों में सर्वाधिक शिक्षित, विद्वान, खगोलशास्त्र, गणित एवं आयुर्विज्ञान का ज्ञाता सुल्तान कौन था, जिसे अपनी सनक भरी योजनाओं के कारण 'स्वप्नशील, पागल एवं रक्तपिपासु' कहा गया?",
+                    options: ["अलाउद्दीन खिलजी", "मुहम्मद बिन तुगलक (जूना खाँ)", "फिरोजशाह तुगलक", "सिकंदर लोदी"],
+                    explanation: "मुहम्मद बिन तुगलक सर्वाधिक विद्वान होने के बावजूद अपनी असफल योजनाओं और अत्यधिक कठोर दंडों के कारण 'पागल व रक्तपिपासु' कहलाया।"
+                },
+                english: {
+                    text: "Who was the most educated, erudite Sultan proficient in astronomy, mathematics, and medicine, yet termed 'visionary, madman, and bloodthirsty' due to disastrous schemes?",
+                    options: ["Alauddin Khilji", "Muhammad bin Tughlaq (Jauna Khan)", "Firoz Shah Tughlaq", "Sikandar Lodi"],
+                    explanation: "Muhammad bin Tughlaq was brilliant yet termed eccentric, mad, and bloodthirsty."
+                },
+                correct: 1 // B
+            },
+            {
+                id: 65,
+                hindi: {
+                    text: "मुहम्मद बिन तुगलक ने कृषि के सर्वांगीण विकास एवं बंजर भूमि को जोतने हेतु किस नए प्रशासनिक विभाग की स्थापना की थी?",
+                    options: ["दीवान-ए-मुस्तखराज", "दीवान-ए-कोही (अमीर-ए-कोही)", "दीवान-ए-खैरात", "दीवान-ए-अर्ज"],
+                    explanation: "मुहम्मद बिन तुगलक ने कृषि विकास के लिए 'दीवान-ए-अमीर-ए-कोही' नामक विभाग बनाया था।"
+                },
+                english: {
+                    text: "Which department was established by Muhammad bin Tughlaq to promote agriculture and bring uncultivated land under farming?",
+                    options: ["Diwan-i-Mustakhraj", "Diwan-i-Kohi (Amir-i-Kohi)", "Diwan-i-Khairat", "Diwan-i-Arz"],
+                    explanation: "Diwan-i-Kohi was founded by Muhammad bin Tughlaq dedicated to agricultural expansion."
+                },
+                correct: 1 // B
+            },
+            {
+                id: 66,
+                hindi: {
+                    text: "मुहम्मद बिन तुगलक ने अपनी राजधानी दिल्ली से कहाँ स्थानांतरित की थी और उसका नाम दौलताबाद रखा था?",
+                    options: ["वारंगल", "देवगिरि", "कन्नौज", "लाहौर"],
+                    explanation: "सुल्तान ने राजधानी दिल्ली से दक्षिण के देवगिरि में स्थानांतरित की और उसका नाम 'दौलताबाद' रखा।"
+                },
+                english: {
+                    text: "To which southern city did Muhammad bin Tughlaq shift his capital from Delhi, renaming it Daulatabad?",
+                    options: ["Warangal", "Devagiri", "Kannauj", "Lahore"],
+                    explanation: "He transferred the imperial capital from Delhi to Devagiri and renamed it Daulatabad."
+                },
+                correct: 1 // B
+            },
+            {
+                id: 67,
+                hindi: {
+                    text: "मुहम्मद बिन तुगलक द्वारा प्रचलित की गई 'सांकेतिक मुद्रा' (Token Currency) के संदर्भ में कौन-सा कथन <strong>असत्य</strong> है?",
+                    options: [
+                        "बरनी के अनुसार उसने ताँबे के तथा फरिश्ता के अनुसार काँसे के सिक्के चलवाए।",
+                        "सांकेतिक मुद्रा का मूल्य चाँदी के रुपए (टंका) के बराबर रखा गया था।",
+                        "एडवर्ड थॉमस ने मुहम्मद बिन तुगलक को 'प्रिंस ऑफ मनीअर्स' (धनवानों का राजकुमार) कहा।",
+                        "सांकेतिक मुद्रा का प्रयोग विश्व में पहली बार केवल मुहम्मद बिन तुगलक ने ही किया था।"
+                    ],
+                    explanation: "कथन D गलत है क्योंकि मुहम्मद तुगलक से पूर्व चीन के कुबलई खाँ तथा ईरान के गजन खाँ नामक मंगोल शासक ने भी सांकेतिक मुद्रा का सफल प्रयोग किया था।"
+                },
+                english: {
+                    text: "Which statement is <strong>incorrect</strong> regarding Token Currency issued by Muhammad bin Tughlaq?",
+                    options: [
+                        "According to Barani he issued copper coins, while according to Ferishta brass coins were used.",
+                        "The token coins had face value equivalent to silver Tanka.",
+                        "Edward Thomas designated Muhammad bin Tughlaq as the 'Prince of Moneyers'.",
+                        "Muhammad bin Tughlaq was the world's first monarch ever to experiment with token currency."
+                    ],
+                    explanation: "Statement D is incorrect because Kublai Khan in China and Gaikhatu/Ghazan Khan in Iran had already successfully experimented with paper/token currency."
+                },
+                correct: 3 // D
+            },
+            {
+                id: 68,
+                hindi: {
+                    text: "अफ्रीकी (मोरक्को) यात्री इब्न बतूता किस वर्ष भारत आया, जिसे मुहम्मद तुगलक ने दिल्ली का काजी नियुक्त किया और 1342 ई. में अपने राजदूत के रूप में चीन भेजा?",
+                    options: ["1325 ई.", "1333 ई.", "1351 ई.", "1398 ई."],
+                    explanation: "इब्न बतूता 1333 ई. में भारत आया, 8 वर्षों तक दिल्ली का काजी रहा और 1342 ई. में राजदूत बनकर चीन गया।"
+                },
+                english: {
+                    text: "In which year did Moroccan traveler Ibn Battuta arrive in India, subsequently appointed Qazi of Delhi and sent as envoy to China in 1342?",
+                    options: ["1325 AD", "1333 AD", "1351 AD", "1398 AD"],
+                    explanation: "Ibn Battuta reached Delhi in 1333 AD."
+                },
+                correct: 1 // B
+            },
+            {
+                id: 69,
+                hindi: {
+                    text: "इब्न बतूता के यात्रा वृत्तांत 'किताब-उल-रेहला' में वर्णित डाक व्यवस्था के प्रकारों का सही मिलान क्या है?",
+                    options: [
+                        "उलूक — अश्व (घोड़े) द्वारा डाक व्यवस्था; दावा — पैदल डाक व्यवस्था",
+                        "उलूक — कबूतर डाक व्यवस्था; दावा — ऊँट डाक व्यवस्था",
+                        "उलूक — पैदल डाक व्यवस्था; दावा — नाव द्वारा डाक व्यवस्था",
+                        "उलूक — केवल शाही गुप्तचर; दावा — विदेशी व्यापारी संदेशवाहक"
+                    ],
+                    explanation: "रेहला के अनुसार अश्व डाक व्यवस्था को 'उलूक' (हर चार मील पर) तथा पैदल डाक व्यवस्था को 'दावा' (हर एक मील पर तीन चौकियाँ) कहा जाता था।"
+                },
+                english: {
+                    text: "How did Ibn Battuta describe the postal communication network in his book 'Rehla'?",
+                    options: [
+                        "Uluq — Horse courier postal system; Dawa — Foot runner postal system",
+                        "Uluq — Pigeon carrier network; Dawa — Camel dispatch system",
+                        "Uluq — Foot runner system; Dawa — Boat courier service",
+                        "Uluq — Royal espionage; Dawa — Foreign merchant dispatch"
+                    ],
+                    explanation: "Ibn Battuta recorded horse courier system as 'Uluq' and foot runner relay system as 'Dawa'."
+                },
+                correct: 0 // A
+            },
+            {
+                id: 70,
+                hindi: {
+                    text: "मुहम्मद बिन तुगलक के समय संस्कृत कथाओं की श्रृंखला का फारसी में अनुवाद कर 'तूती नामा' लिखने वाला प्रथम व्यक्ति कौन था?",
+                    options: ["जियाउद्दीन बरनी", "जिया नख्शबी", "अलबरूनी", "शम्स-ए-सिराज अफीफ"],
+                    explanation: "मुहम्मद बिन तुगलक के काल में जिया नख्शबी ने संस्कृत कथाओं का फारसी में अनुवाद 'तूती नामा' (तोते की कहानी) नाम से किया था।"
+                },
+                english: {
+                    text: "Who translated Sanskrit tales into Persian titled 'Tuti Nama' during Muhammad bin Tughlaq's reign?",
+                    options: ["Ziauddin Barani", "Zia Nakhshabi", "Alberuni", "Shams-i-Siraj Afif"],
+                    explanation: "Zia Nakhshabi rendered Sanskrit stories into Persian under the title 'Tuti Nama'."
+                },
+                correct: 1 // B
+            },
+            {
+                id: 71,
+                hindi: {
+                    text: "मुहम्मद बिन तुगलक के शासनकाल में दक्षिण भारत में कौन-से दो प्रमुख स्वतंत्र साम्राज्य स्थापित हुए?",
+                    options: [
+                        "1336 ई. में विजयनगर (हरिहर-बुक्का) एवं 1347 ई. में बहमनी (अलाउद्दीन बहमन शाह)",
+                        "गोलकुंडा एवं बीजापुर",
+                        "अहमदनगर एवं बीदर",
+                        "मैसूर एवं मराठा साम्राज्य"
+                    ],
+                    explanation: "मुहम्मद तुगलक के शासन में ही 1336 ई. में विजयनगर साम्राज्य तथा 1347 ई. में बहमनी राज्य की नींव पड़ी।"
+                },
+                english: {
+                    text: "Which two major independent kingdoms arose in the Deccan during Muhammad bin Tughlaq's reign?",
+                    options: [
+                        "Vijayanagara in 1336 (Harihara-Bukka) and Bahmani in 1347 (Alauddin Bahman Shah)",
+                        "Golconda and Bijapur",
+                        "Ahmednagar and Bidar",
+                        "Mysore and Maratha empires"
+                    ],
+                    explanation: "Vijayanagara (1336 AD) and the Bahmani Sultanate (1347 AD) broke away during Muhammad Tughlaq's rule."
+                },
+                correct: 0 // A
+            },
+            {
+                id: 72,
+                hindi: {
+                    text: "20 मार्च, 1351 ई. को मुहम्मद बिन तुगलक की मृत्यु सिंध में थट्टा के निकट गोडाल में होने पर किस इतिहासकार ने लिखा कि 'अंततः लोगों को उससे मुक्ति मिली और उसे लोगों से'?",
+                    options: ["इब्न बतूता", "अब्दुल कादिर बदायूँनी", "जियाउद्दीन बरनी", "अमीर खुसरो"],
+                    explanation: "इतिहासकार बदायूँनी ने सुल्तान की मृत्यु पर यह प्रसिद्ध व्यंग्यात्मक टिप्पणी लिखी थी।"
+                },
+                english: {
+                    text: "Which historian famously remarked upon Muhammad bin Tughlaq's demise in 1351 AD: 'The Sultan was freed from his people, and the people from their Sultan'?",
+                    options: ["Ibn Battuta", "Abdul Qadir Badauni", "Ziauddin Barani", "Amir Khusrau"],
+                    explanation: "Historian Badauni penned this famous epitaph upon the death of Muhammad bin Tughlaq."
+                },
+                correct: 1 // B
+            },
+            {
+                id: 73,
+                hindi: {
+                    text: "फिरोजशाह तुगलक की कर व्यवस्था के संदर्भ में निम्नलिखित कथनों पर विचार कीजिए:<br><br>1. उसने 24 कष्टदायक करों को समाप्त कर केवल चार शरीयत सम्मत कर (खराज, खुम्स, जजिया, जकात) लगाए।<br>2. वह ब्राह्मणों पर जजिया कर लगाने वाला सल्तनत का प्रथम मुस्लिम शासक था।<br>3. उसने सिंचाई कर (हक-ए-शर्ब) लगाया जो उपज का 1/10 भाग वसूला जाता था।<br><br>उपर्युक्त में से कौन-से कथन <strong>सत्य</strong> हैं?",
+                    options: ["केवल 1 और 2", "केवल 2 और 3", "1, 2 और 3", "केवल 1 और 3"],
+                    explanation: "तीनों कथन 1, 2 और 3 ऐतिहासिक रूप से पूर्णतः सही हैं।"
+                },
+                english: {
+                    text: "Consider statements regarding Firoz Shah Tughlaq's fiscal and taxation system:<br><br>1. He abolished 24 oppressive taxes and imposed only four Sharia taxes (Kharaj, Khams, Jizya, Zakat).<br>2. He was the first Delhi Sultan to levy Jizya on Brahmins.<br>3. He introduced irrigation tax (Haq-i-Sharb) fixed at 1/10th of agricultural produce.<br><br>Which statements are <strong>true</strong>?",
+                    options: ["Only 1 and 2", "Only 2 and 3", "1, 2 and 3", "Only 1 and 3"],
+                    explanation: "All three statements (1, 2, and 3) are true."
+                },
+                correct: 2 // C
+            },
+            {
+                id: 74,
+                hindi: {
+                    text: "फिरोजशाह तुगलक द्वारा निर्मित नए नगरों में कौन-सा नगर शामिल नहीं है?",
+                    options: ["हिसार एवं फिरोजाबाद", "फतेहाबाद एवं फिरोजपुर", "जौनपुर", "तुगलकाबाद"],
+                    explanation: "तुगलकाबाद की स्थापना गयासुद्दीन तुगलक ने की थी, जबकि जौनपुर (जूना खाँ की स्मृति में), फिरोजाबाद, हिसार, फतेहाबाद और फिरोजपुर फिरोज तुगलक ने बसाए थे।"
+                },
+                english: {
+                    text: "Which city was NOT founded by Firoz Shah Tughlaq among the 300 towns he established?",
+                    options: ["Hisar and Firozabad", "Fatehabad and Firozpur", "Jaunpur", "Tughlaqabad"],
+                    explanation: "Tughlaqabad was founded by Ghiyasuddin Tughlaq, not Firoz Shah Tughlaq."
+                },
+                correct: 3 // D
+            },
+            {
+                id: 75,
+                hindi: {
+                    text: "अशोक के दो प्रस्तर स्तंभों (खिज्राबाद/टोपरा एवं मेरठ) को ढोकर दिल्ली लाकर किसने स्थापित करवाया था?",
+                    options: ["इल्तुतमिश", "अलाउद्दीन खिलजी", "फिरोजशाह तुगलक", "सिकंदर लोदी"],
+                    explanation: "फिरोजशाह तुगलक ने टोपरा और मेरठ से सम्राट अशोक के दो स्तंभों को दिल्ली मंगवाकर लगवाया था।"
+                },
+                english: {
+                    text: "Who transported two Ashokan stone pillars from Topra and Meerut and re-erected them in Delhi?",
+                    options: ["Iltutmish", "Alauddin Khilji", "Firoz Shah Tughlaq", "Sikandar Lodi"],
+                    explanation: "Firoz Shah Tughlaq brought two Ashokan pillars to Delhi from Topra and Meerut."
+                },
+                correct: 2 // C
+            },
+            {
+                id: 76,
+                hindi: {
+                    text: "सल्तनत कालीन किस शासक के समय दासों (गुलामों) की संख्या सर्वाधिक (लगभग 1,80,000) थी, जिनकी देखभाल हेतु उसने 'दीवान-ए-बंदगान' विभाग बनाया?",
+                    options: ["कुतुबुद्दीन ऐबक", "बलबन", "अलाउद्दीन खिलजी", "फिरोजशाह तुगलक"],
+                    explanation: "फिरोज तुगलक के पास 1.8 लाख दास थे, जिनकी देखरेख हेतु 'दीवान-ए-बंदगान' विभाग गठित किया गया।"
+                },
+                english: {
+                    text: "Which Sultan maintained the highest number of slaves (nearly 180,000), instituting 'Diwan-i-Bandagan' for their upkeep?",
+                    options: ["Qutbuddin Aibak", "Balban", "Alauddin Khilji", "Firoz Shah Tughlaq"],
+                    explanation: "Firoz Shah Tughlaq created Diwan-i-Bandagan to administer his massive corps of 180,000 slaves."
+                },
+                correct: 3 // D
+            },
+            {
+                id: 77,
+                hindi: {
+                    text: "फिरोजशाह तुगलक ने अनाथ मुस्लिम महिलाओं, विधवाओं एवं लड़कियों की आर्थिक सहायता हेतु किस नए विभाग की स्थापना की थी?",
+                    options: ["दीवान-ए-खैरात", "दीवान-ए-मुस्तखराज", "दीवान-ए-इस्तिहकाक", "दीवान-ए-कजा"],
+                    explanation: "दान एवं सहायता हेतु 'दीवान-ए-खैरात' तथा पेंशन हेतु 'दीवान-ए-इस्तिहकाक' की स्थापना फिरोज तुगलक ने की।"
+                },
+                english: {
+                    text: "Which department was set up by Firoz Shah Tughlaq to provide charity and financial support to orphan girls and widows?",
+                    options: ["Diwan-i-Khairat", "Diwan-i-Mustakhraj", "Diwan-i-Istihqaq", "Diwan-i-Qaza"],
+                    explanation: "Diwan-i-Khairat was created as a charity bureau for needy women and orphans."
+                },
+                correct: 0 // A
+            },
+            {
+                id: 78,
+                hindi: {
+                    text: "नगरकोट (कांगड़ा) के ज्वालामुखी मंदिर से लूटे गए 1300 संस्कृत ग्रंथों में से दर्शन व खगोल विज्ञान के महत्वपूर्ण ग्रंथ का फारसी में 'दलायल-ए-फिरोजशाही' नाम से अनुवाद किसने किया था?",
+                    options: ["अजीजुद्दीन किरमानी", "जियाउद्दीन बरनी", "अमीर हसन", "बदायूँनी"],
+                    explanation: "फारसी विद्वान अजीजुद्दीन किरमानी ने संस्कृत ग्रंथों का फारसी में अनुवाद किया जिसे 'दलायल-ए-फिरोजशाही' कहा गया।"
+                },
+                english: {
+                    text: "Who translated Sanskrit texts seized from the Jwalamukhi temple into Persian as 'Dalayal-i-Firozshahi' on philosophy and astronomy?",
+                    options: ["Azizuddin Kirmani", "Ziauddin Barani", "Amir Hasan", "Badauni"],
+                    explanation: "Azizuddin Kirmani rendered these ancient Sanskrit texts into Persian as Dalayal-i-Firozshahi."
+                },
+                correct: 0 // A
+            },
+            {
+                id: 79,
+                hindi: {
+                    text: "फिरोजशाह तुगलक द्वारा भारी संख्या में जारी करवाए गए चाँदी एवं ताँबे के मिश्रित सिक्कों को क्या कहा जाता था?",
+                    options: ["टंका एवं जीतल", "अद्धा एवं बिख", "दिरहम एवं दीनार", "बहलोली एवं निसार"],
+                    explanation: "फिरोज तुगलक द्वारा प्रचलित ताँबे व चाँदी मिश्रित मिश्रधातु सिक्के 'अद्धा' (आधा) और 'बिख' कहलाते थे।"
+                },
+                english: {
+                    text: "What were the alloy coins of mixed silver and copper issued extensively by Firoz Shah Tughlaq called?",
+                    options: ["Tanka and Jital", "Addha and Bikh", "Dirham and Dinar", "Bahloli and Nisar"],
+                    explanation: "Firoz Shah Tughlaq introduced fractional mixed currency named 'Addha' and 'Bikh'."
+                },
+                correct: 1 // B
+            },
+            {
+                id: 80,
+                hindi: {
+                    text: "तुगलक काल में निर्मित किस मकबरे की स्थापत्य शैली की तुलना जेरूसलम में स्थित 'उमर की मस्जिद' (Dome of the Rock) से की जाती है?",
+                    options: ["गयासुद्दीन तुगलक का मकबरा", "खान-ए-जहाँ तेलंगानी का मकबरा", "फिरोजशाह तुगलक का मकबरा", "शेख निजामुद्दीन औलिया का मकबरा"],
+                    explanation: "खान-ए-जहाँ तेलंगानी (फिरोज के वजीर) का अष्टकोणीय मकबरा जेरूसलम के उमर की मस्जिद के समान योजना पर बना है।"
+                },
+                english: {
+                    text: "Which Tughlaq-era octagonal tomb has its architectural design compared to the Mosque of Umar (Dome of the Rock) in Jerusalem?",
+                    options: ["Tomb of Ghiyasuddin Tughlaq", "Tomb of Khan-i-Jahan Telangani", "Tomb of Firoz Shah Tughlaq", "Tomb of Nizamuddin Auliya"],
+                    explanation: "The tomb of prime minister Khan-i-Jahan Telangani is architecturally compared to the Mosque of Umar."
+                },
+                correct: 1 // B
+            },
+            {
+                id: 81,
+                hindi: {
+                    text: "तुगलक वंश का अंतिम शासक कौन था, जिसके बारे में व्यंग्य किया जाता था कि 'शहंशाह का साम्राज्य दिल्ली से पालम तक ही रह गया है'?",
+                    options: ["गयासुद्दीन तुगलक शाह द्वितीय", "अबू बक्र शाह", "नासिरुद्दीन महमूद तुगलक", "मुहम्मद शाह"],
+                    explanation: "तुगलक वंश का अंतिम शासक नासिरुद्दीन महमूद तुगलक था।"
+                },
+                english: {
+                    text: "Who was the last ruler of Tughlaq dynasty about whom people satirized: 'The empire of the Emperor extends only from Delhi to Palam'?",
+                    options: ["Ghiyasuddin Tughlaq Shah II", "Abu Bakr Shah", "Nasiruddin Mahmud Tughlaq", "Muhammad Shah"],
+                    explanation: "Nasiruddin Mahmud Tughlaq was the last ruler whose kingdom had shrunk from Delhi to Palam."
+                },
+                correct: 2 // C
+            },
+            {
+                id: 82,
+                hindi: {
+                    text: "मध्य एशियाई तैमूरलंग ने किस सुल्तान के शासनकाल में 1398 ई. में दिल्ली पर भीषण आक्रमण किया और नरसंहार व लूटपाट की?",
+                    options: ["फिरोजशाह तुगलक", "नासिरुद्दीन महमूद तुगलक", "खिज्र खाँ", "बहलोल लोदी"],
+                    explanation: "तैमूरलंग ने 1398 ई. में नासिरुद्दीन महमूद तुगलक के समय दिल्ली पर आक्रमण किया था।"
+                },
+                english: {
+                    text: "During whose reign did Central Asian conqueror Timur Lang invade Delhi in 1398 AD causing catastrophic devastation?",
+                    options: ["Firoz Shah Tughlaq", "Nasiruddin Mahmud Tughlaq", "Khizr Khan", "Bahlol Lodi"],
+                    explanation: "Timur invaded Delhi in 1398 AD during the reign of Nasiruddin Mahmud Tughlaq."
+                },
+                correct: 1 // B
+            },
+            {
+                id: 83,
+                hindi: {
+                    text: "नासिरुद्दीन महमूद तुगलक के समय 'मलिकुशशर्क' (पूर्वाधिपति) की उपाधि धारण कर किस हिजड़े अमीर ने जौनपुर में स्वतंत्र 'शर्की राजवंश' की नींव रखी?",
+                    options: ["मलिक काफूर", "मलिक सरवर", "मलिक याकूत", "ख्वाजा जहाँ"],
+                    explanation: "मलिक सरवर ने जौनपुर में स्वतंत्र शर्की राज्य की स्थापना की थी।"
+                },
+                english: {
+                    text: "Which eunuch noble holding the title 'Malik-ush-Sharq' founded the independent Sharqi Sultanate at Jaunpur?",
+                    options: ["Malik Kafur", "Malik Sarwar", "Malik Yaqut", "Khwaja Jahan"],
+                    explanation: "Malik Sarwar broke away to establish the renowned Sharqi kingdom of Jaunpur."
+                },
+                correct: 1 // B
+            },
+
+            // Chapter 31: Sayyid & Lodi Dynasties (84-100)
+            {
+                id: 84,
+                hindi: {
+                    text: "सैय्यद वंश (1414-1451 ई.) के संस्थापक खिज्र खाँ के संदर्भ में निम्नलिखित कथनों पर विचार कीजिए:<br><br>1. खिज्र खाँ तैमूरलंग का सेनापति था, जिसने लौटते समय उसे मुल्तान, लाहौर और दीपालपुर का सूबेदार बनाया था।<br>2. उसने सुल्तान की उपाधि धारण न कर स्वयं को 'रैयत-ए-आला' की पदवी से ही संतुष्ट रखा।<br>3. वह तैमूर के पुत्र शाहरुख को नियमित रूप से कर भेजा करता था।<br><br>उपर्युक्त में से कौन-से कथन <strong>सत्य</strong> हैं?",
+                    options: ["केवल 1 और 2", "केवल 2 और 3", "1, 2 और 3", "केवल 1 और 3"],
+                    explanation: "तीनों कथन 1, 2 और 3 सत्य हैं।"
+                },
+                english: {
+                    text: "Consider statements regarding Khizr Khan, founder of Sayyid dynasty (1414-1451 AD):<br><br>1. Khizr Khan was Timur's lieutenant, appointed governor of Multan, Lahore, and Dipalpur.<br>2. He did not assume the title of Sultan, contenting with 'Rayat-i-Aala'.<br>3. He routinely remitted tribute to Timur's son and successor Shahrukh.<br><br>Which statements are <strong>true</strong>?",
+                    options: ["Only 1 and 2", "Only 2 and 3", "1, 2 and 3", "Only 1 and 3"],
+                    explanation: "All three statements are historically correct."
+                },
+                correct: 2 // C
+            },
+            {
+                id: 85,
+                hindi: {
+                    text: "सैय्यद वंश के इतिहास की प्रामाणिक जानकारी देने वाली पुस्तक 'तारीख-ए-मुबारकशाही' के लेखक कौन थे, जिन्हें मुबारक शाह का संरक्षण प्राप्त था?",
+                    options: ["याहिया बिन अहमद सरहिंदी", "जियाउद्दीन बरनी", "शम्स-ए-सिराज अफीफ", "हसन निजामी"],
+                    explanation: "याहिया बिन अहमद सरहिंदी ने मुबारक शाह के संरक्षण में 'तारीख-ए-मुबारकशाही' लिखी थी।"
+                },
+                english: {
+                    text: "Who authored 'Tarikh-i-Mubarak Shahi', the primary historical chronicle on the Sayyid Dynasty under the patronage of Mubarak Shah?",
+                    options: ["Yahya bin Ahmad Sirhindi", "Ziauddin Barani", "Shams-i-Siraj Afif", "Hasan Nizami"],
+                    explanation: "Yahya bin Ahmad Sirhindi composed the valuable Tarikh-i-Mubarak Shahi."
+                },
+                correct: 0 // A
+            },
+            {
+                id: 86,
+                hindi: {
+                    text: "सैय्यद वंश का अंतिम सुल्तान कौन था, जिसने स्वेच्छा से बदायूँ जाकर रहना स्वीकार किया?",
+                    options: ["खिज्र खाँ", "मुबारक शाह", "मुहम्मद शाह", "अलाउद्दीन आलम शाह"],
+                    explanation: "सैय्यद वंश का अंतिम सुल्तान अलाउद्दीन आलम शाह था, जिसने दिल्ली की सत्ता बहलोल लोदी के लिए छोड़ दी।"
+                },
+                english: {
+                    text: "Who was the last Sultan of the Sayyid Dynasty who relinquished throne and retired to Badaun?",
+                    options: ["Khizr Khan", "Mubarak Shah", "Muhammad Shah", "Alauddin Alam Shah"],
+                    explanation: "Alauddin Alam Shah was the last Sayyid ruler."
+                },
+                correct: 3 // D
+            },
+            {
+                id: 87,
+                hindi: {
+                    text: "दिल्ली पर 'प्रथम अफगान राज्य' की स्थापना का श्रेय किस शासक को दिया जाता है?",
+                    options: ["शेरशाह सूरी", "बहलोल लोदी", "सिकंदर लोदी", "इब्राहिम लोदी"],
+                    explanation: "दिल्ली पर प्रथम अफगान राज्य की स्थापना 1451 ई. में बहलोल लोदी ने की थी (द्वितीय अफगान साम्राज्य शेरशाह सूरी ने स्थापित किया था)।"
+                },
+                english: {
+                    text: "Credit for establishing the 'First Afghan Dynasty' in Delhi Sultanate belongs to whom?",
+                    options: ["Sher Shah Suri", "Bahlol Lodi", "Sikandar Lodi", "Ibrahim Lodi"],
+                    explanation: "Bahlol Lodi founded the First Afghan Empire in India in 1451 AD."
+                },
+                correct: 1 // B
+            },
+            {
+                id: 88,
+                hindi: {
+                    text: "बहलोल लोदी के शासन शैली एवं स्वभाव के संदर्भ में कौन-सा कथन सत्य है?",
+                    options: [
+                        "वह अपने सरदारों को 'मकसद-ए-अली' कहकर पुकारता था और सरदारों के खड़े रहने पर स्वयं भी खड़ा रहता था।",
+                        "उसने सिजदा और पैबोस की ईरानी प्रथा को अनिवार्य कर दिया था।",
+                        "उसने अपने अफगान सरदारों को पूरी तरह से प्रभावहीन कर दिया था।",
+                        "उसने ताँबे के सिक्के बंद करवा दिए थे।"
+                    ],
+                    explanation: "बहलोल लोदी अफगान कबायली समानता में विश्वास करता था, वह सरदारों को 'मकसद-ए-अली' कहता था और उनके साथ फर्श पर बैठता था।"
+                },
+                english: {
+                    text: "Which statement is true regarding the regal etiquette and style of Bahlol Lodi?",
+                    options: [
+                        "He addressed his Afghan nobles as 'Maqsad-i-Ali' and remained standing if his nobles stood.",
+                        "He enforced mandatory Sijdah and Paibos.",
+                        "He eliminated all authority of his Afghan tribal chiefs.",
+                        "He completely banned all copper coinage."
+                    ],
+                    explanation: "Bahlol respected tribal equality, referring to chiefs as 'Maqsad-i-Ali' and refusing to sit elevated above them."
+                },
+                correct: 0 // A
+            },
+            {
+                id: 89,
+                hindi: {
+                    text: "बहलोल लोदी के पुत्र निजाम खाँ ने 1489 ई. में किस उपाधि से दिल्ली की सत्ता संभाली?",
+                    options: ["सुल्तान सिकंदर शाह (सिकंदर लोदी)", "इब्राहिम शाह", "आदिल शाह", "शेरशाह"],
+                    explanation: "निजाम खाँ 'सुल्तान सिकंदर शाह' की उपाधि से गद्दी पर बैठा और इतिहास में सिकंदर लोदी के नाम से प्रसिद्ध हुआ।"
+                },
+                english: {
+                    text: "Under which title did Nizam Khan, son of Bahlol Lodi, ascend the throne in 1489 AD?",
+                    options: ["Sultan Sikandar Shah (Sikandar Lodi)", "Ibrahim Shah", "Adil Shah", "Sher Shah"],
+                    explanation: "Nizam Khan assumed the title 'Sultan Sikandar Shah'."
+                },
+                correct: 0 // A
+            },
+            {
+                id: 90,
+                hindi: {
+                    text: "1504 ई. में राजस्थान के शासकों पर नियंत्रण स्थापित करने के उद्देश्य से यमुना तट पर 'आगरा शहर' की स्थापना किसने की थी?",
+                    options: ["अलाउद्दीन खिलजी", "फिरोजशाह तुगलक", "सिकंदर लोदी", "बाबर"],
+                    explanation: "1504 ई. में सिकंदर लोदी ने आगरा नगर की स्थापना की और 1506 ई. में उसे अपनी राजधानी बनाया।"
+                },
+                english: {
+                    text: "Who founded the city of Agra in 1504 AD on the banks of Yamuna to maintain strategic control over Rajputana?",
+                    options: ["Alauddin Khilji", "Firoz Shah Tughlaq", "Sikandar Lodi", "Babur"],
+                    explanation: "Sikandar Lodi founded Agra in 1504 AD."
+                },
+                correct: 2 // C
+            },
+            {
+                id: 91,
+                hindi: {
+                    text: "भूमि की माप के लिए प्रामाणिक पैमाना 'गजे सिकंदरी' (30 इंच या 39 अंगुल) का प्रचलन किसने करवाया था?",
+                    options: ["शेरशाह सूरी", "सिकंदर लोदी", "अकबर", "अलाउद्दीन खिलजी"],
+                    explanation: "भूमि मापन हेतु 'गजे सिकंदरी' की शुरुआत सिकंदर लोदी ने की थी।"
+                },
+                english: {
+                    text: "Who introduced the standardized land measurement yard 'Gajj-i-Sikandari'?",
+                    options: ["Sher Shah Suri", "Sikandar Lodi", "Akbar", "Alauddin Khilji"],
+                    explanation: "Sikandar Lodi instituted the standardized measuring unit 'Gajj-i-Sikandari'."
+                },
+                correct: 1 // B
+            },
+            {
+                id: 92,
+                hindi: {
+                    text: "वह दिल्ली सुल्तान कौन था जो 'गुलरूखी' उपनाम से फारसी में सुंदर कविताएँ लिखा करता था?",
+                    options: ["अमीर खुसरो", "सिकंदर लोदी", "मुहम्मद बिन तुगलक", "इब्राहिम लोदी"],
+                    explanation: "सिकंदर लोदी 'गुलरूखी' उपनाम से फारसी में काव्य रचनाएँ लिखता था।"
+                },
+                english: {
+                    text: "Which Delhi Sultan penned Persian poetic verses under the pen name 'Gulrukhi'?",
+                    options: ["Amir Khusrau", "Sikandar Lodi", "Muhammad bin Tughlaq", "Ibrahim Lodi"],
+                    explanation: "Sikandar Lodi composed Persian verses under the pen name 'Gulrukhi'."
+                },
+                correct: 1 // B
+            },
+            {
+                id: 93,
+                hindi: {
+                    text: "सिकंदर लोदी के आदेश पर संस्कृत के एक प्रसिद्ध आयुर्वेद ग्रंथ का फारसी में किस नाम से अनुवाद किया गया था?",
+                    options: ["तारीख-ए-फिरोजशाही", "फरहंगे सिकंदरी", "मादनुल शिफा", "दलायल-ए-सिकंदरी"],
+                    explanation: "संस्कृत आयुर्वेद ग्रंथ का फारसी अनुवाद 'फरहंगे सिकंदरी' नाम से हुआ था।"
+                },
+                english: {
+                    text: "Under Sikandar Lodi's patronage, a classical Sanskrit medical/Ayurvedic treatise was translated into Persian as what?",
+                    options: ["Tarikh-i-Firozshahi", "Farhang-i-Sikandari", "Madan-ul-Shifa", "Dalayal-i-Sikandari"],
+                    explanation: "It was translated into Persian under the title Farhang-i-Sikandari."
+                },
+                correct: 1 // B
+            },
+            {
+                id: 94,
+                hindi: {
+                    text: "दिल्ली में प्रसिद्ध 'मोठ मस्जिद' का निर्माण 1505 ई. में सिकंदर लोदी के किस वजीर (प्रधानमंत्री) ने करवाया था?",
+                    options: ["मियाँ भोइया", "मलिक काफूर", "खान-ए-जहाँ", "अजीज कोका"],
+                    explanation: "मोठ मस्जिद का निर्माण सिकंदर लोदी के वजीर मियाँ भोइया द्वारा 1505 ई. में करवाया गया था।"
+                },
+                english: {
+                    text: "Who constructed the famous Moth Ki Masjid in Delhi in 1505 AD as prime minister of Sikandar Lodi?",
+                    options: ["Mian Bhoiya", "Malik Kafur", "Khan-i-Jahan", "Aziz Koka"],
+                    explanation: "Mian Bhoiya, wazir of Sikandar Lodi, constructed the Moth Ki Masjid."
+                },
+                correct: 0 // A
+            },
+            {
+                id: 95,
+                hindi: {
+                    text: "सिकंदर लोदी के धार्मिक एवं सामाजिक प्रतिबंधों के संदर्भ में कौन-सा कथन <strong>गलत</strong> है?",
+                    options: [
+                        "उसने नगरकोट के ज्वालामुखी मंदिर की मूर्ति को तोड़कर उसके टुकड़ों को कसाइयों को मांस तौलने के लिए दे दिया था।",
+                        "उसने मुसलमानों को ताजिया निकालने पर प्रतिबंध लगा दिया था।",
+                        "उसने मुस्लिम स्त्रियों को पीरों तथा संतों की मजारों पर जाने पर रोक लगा दी थी।",
+                        "उसने हिंदुओं के त्योहार होली में भाग लेने पर पूर्ण प्रतिबंध लगा दिया था और कभी भाग नहीं लिया।"
+                    ],
+                    explanation: "कथन D गलत है क्योंकि लूसेंट के अनुसार संभवतया दिल्ली के सुल्तानों में सिकंदर लोदी प्रथम सुल्तान था जो हिंदुओं के त्योहारों मुख्यतया होली में भाग लेता था।"
+                },
+                english: {
+                    text: "Which statement is <strong>incorrect</strong> regarding social and religious regulations of Sikandar Lodi?",
+                    options: [
+                        "He broke the idol of Jwalamukhi temple and gave fragments to butchers for weighing meat.",
+                        "He banned Muslims from taking out Tazia processions.",
+                        "He prohibited Muslim women from visiting shrines/tombs of saints.",
+                        "He strictly forbade participation in Hindu festivals and never took part in Holi."
+                    ],
+                    explanation: "Option D is incorrect. Chroniclers note that Sikandar Lodi was uniquely among the Sultans who participated in Hindu festivals, notably Holi."
+                },
+                correct: 3 // D
+            },
+            {
+                id: 96,
+                hindi: {
+                    text: "सिकंदर लोदी की मृत्यु 21 नवंबर, 1517 को किस बीमारी के कारण हुई थी?",
+                    options: ["गले की बीमारी (Throat disease)", "तपेदिक (TB)", "हैजा", "युद्ध में घायल होने से"],
+                    explanation: "सिकंदर लोदी की मृत्यु गले की गंभीर बीमारी के कारण 21 नवंबर, 1517 को हुई।"
+                },
+                english: {
+                    text: "Sikandar Lodi died on November 21, 1517 due to which medical illness?",
+                    options: ["Throat disease/infection", "Tuberculosis", "Cholera", "Battlefield wounds"],
+                    explanation: "Sikandar Lodi died due to a fatal throat illness."
+                },
+                correct: 0 // A
+            },
+            {
+                id: 97,
+                hindi: {
+                    text: "मेवाड़ के महाराणा सांगा एवं दिल्ली के सुल्तान इब्राहिम लोदी के मध्य 1518 ई. में कौन-सा प्रसिद्ध युद्ध लड़ा गया जिसमें इब्राहिम लोदी पराजित हुआ था?",
+                    options: ["खानवा का युद्ध", "खातोली का युद्ध", "बयाना का युद्ध", "घाघरा का युद्ध"],
+                    explanation: "1518 ई. में खातोली का युद्ध (Battle of Khatoli) राणा सांगा और इब्राहिम लोदी के बीच हुआ जिसमें राणा सांगा विजयी रहे।"
+                },
+                english: {
+                    text: "Which battle was fought in 1518 AD between Maharana Sanga of Mewar and Ibrahim Lodi, in which Ibrahim Lodi was defeated?",
+                    options: ["Battle of Khanwa", "Battle of Khatoli", "Battle of Bayana", "Battle of Ghaghra"],
+                    explanation: "The Battle of Khatoli (1518 AD) was won by Maharana Sanga against Ibrahim Lodi."
+                },
+                correct: 1 // B
+            },
+            {
+                id: 98,
+                hindi: {
+                    text: "21 अप्रैल, 1526 ई. को पानीपत के प्रथम युद्ध में इब्राहिम लोदी को पराजित कर भारत में मुगल वंश की स्थापना किसने की थी?",
+                    options: ["बाबर", "हुमायूँ", "शेरशाह सूरी", "अकबर"],
+                    explanation: "पानीपत के प्रथम युद्ध (21 अप्रैल, 1526) में बाबर ने इब्राहिम लोदी को पराजित किया और वह रणभूमि में मारा गया।"
+                },
+                english: {
+                    text: "Who defeated Ibrahim Lodi in the First Battle of Panipat on April 21, 1526, laying the foundation of Mughal Empire?",
+                    options: ["Babur", "Humayun", "Sher Shah Suri", "Akbar"],
+                    explanation: "Zahiruddin Muhammad Babur defeated and killed Ibrahim Lodi at Panipat on April 21, 1526."
+                },
+                correct: 0 // A
+            },
+            {
+                id: 99,
+                hindi: {
+                    text: "बाबर को भारत पर आक्रमण करने का गुप्त निमंत्रण निम्नलिखित में से किसने भेजा था?",
+                    options: [
+                        "पंजाब के सूबेदार दौलत खाँ लोदी एवं इब्राहिम लोदी के चाचा आलम खाँ ने",
+                        "राणा कुंभा एवं जयचंद ने",
+                        "महमूद लोदी एवं हसन खाँ मेवाती ने",
+                        "सिकंदर लोदी एवं मियाँ भोइया ने"
+                    ],
+                    explanation: "पंजाब के शासक दौलत खाँ लोदी तथा इब्राहिम लोदी के असंतुष्ट चाचा आलम खाँ लोदी ने बाबर को भारत पर हमले के लिए निमंत्रित किया था।"
+                },
+                english: {
+                    text: "Who extended formal invitations to Babur to invade India against Sultan Ibrahim Lodi?",
+                    options: [
+                        "Daulat Khan Lodi (governor of Punjab) and Alam Khan (uncle of Ibrahim Lodi)",
+                        "Rana Kumbha and Jaichand",
+                        "Mahmud Lodi and Hasan Khan Mewati",
+                        "Sikandar Lodi and Mian Bhoiya"
+                    ],
+                    explanation: "Daulat Khan Lodi and Alam Khan invited Babur to invade the Delhi Sultanate."
+                },
+                correct: 0 // A
+            },
+            {
+                id: 100,
+                hindi: {
+                    text: "दिल्ली सल्तनत का एकमात्र सुल्तान कौन था जो युद्धभूमि में वीरगति को प्राप्त (मारा गया) हुआ था?",
+                    options: ["कुतुबुद्दीन ऐबक", "मुहम्मद बिन तुगलक", "इब्राहिम लोदी", "बहादुर शाह"],
+                    explanation: "इब्राहिम लोदी दिल्ली सल्तनत का एकमात्र सुल्तान था जो युद्धभूमि (पानीपत के मैदान) में लड़ते हुए मारा गया।"
+                },
+                english: {
+                    text: "Who was the only Sultan of Delhi to be slain on the battlefield in combat?",
+                    options: ["Qutbuddin Aibak", "Muhammad bin Tughlaq", "Ibrahim Lodi", "Bahadur Shah"],
+                    explanation: "Ibrahim Lodi was the sole Sultan of Delhi who died fighting on the battlefield."
+                },
+                correct: 2 // C
+            },
+
+            // Sultanate Administration, Taxes, and Officers (101-120)
+            {
+                id: 101,
+                hindi: {
+                    text: "सल्तनत कालीन केंद्रीय शासन व्यवस्था के संदर्भ में निम्नलिखित कथनों पर विचार कीजिए:<br><br>1. केंद्रीय प्रशासन का सर्वोच्च मुखिया सुल्तान होता था।<br>2. बलबन एवं अलाउद्दीन खिलजी के समय अमीर पूर्णतः प्रभावहीन हो गए थे।<br>3. सल्तनत काल में अमीरों का महत्व अपने चरमोत्कर्ष पर लोदी वंश के शासनकाल में पहुँचा।<br><br>उपर्युक्त में से कौन-से कथन <strong>सत्य</strong> हैं?",
+                    options: ["केवल 1 और 2", "केवल 2 और 3", "1, 2 और 3", "केवल 1 और 3"],
+                    explanation: "तीनों कथन 1, 2 और 3 सत्य हैं।"
+                },
+                english: {
+                    text: "Consider statements regarding Sultanate centralized administration:<br><br>1. The Sultan was supreme sovereign head of central governance.<br>2. Nobles (Amirs) were completely subdued during reigns of Balban and Alauddin.<br>3. Importance of nobles reached its zenith during the Afghan Lodi dynasty.<br><br>Which statements are <strong>true</strong>?",
+                    options: ["Only 1 and 2", "Only 2 and 3", "1, 2 and 3", "Only 1 and 3"],
+                    explanation: "All three statements are historically true."
+                },
+                correct: 2 // C
+            },
+            {
+                id: 102,
+                hindi: {
+                    text: "सल्तनत काल में मंत्रिपरिषद को क्या कहा जाता था और उसकी बैठक कहाँ आयोजित होती थी?",
+                    options: [
+                        "मजलिस-ए-खलवत (बैठक: मजलिस-ए-खास में)",
+                        "बार-ए-खास (बैठक: दीवान-ए-आम में)",
+                        "मजलिस-ए-आली (बैठक: बार-ए-आजम में)",
+                        "दीवान-ए-विजारत (बैठक: हरम में)"
+                    ],
+                    explanation: "सल्तनत काल में मंत्रिपरिषद को 'मजलिस-ए-खलवत' कहा जाता था और इसकी बैठक 'मजलिस-ए-खास' में होती थी।"
+                },
+                english: {
+                    text: "What was the council of ministers designated as in Delhi Sultanate, and where did it convene?",
+                    options: [
+                        "Majlis-i-Khalwat (convened in Majlis-i-Khas)",
+                        "Bar-i-Khas (convened in Diwan-i-Aam)",
+                        "Majlis-i-Aali (convened in Bar-i-Azam)",
+                        "Diwan-i-Wizarat (convened in Harem)"
+                    ],
+                    explanation: "The Sultan's advisory council of ministers was called Majlis-i-Khalwat, convening inside Majlis-i-Khas."
+                },
+                correct: 0 // A
+            },
+            {
+                id: 103,
+                hindi: {
+                    text: "सल्तनत काल के प्रशासनिक विभागों एवं अधिकारियों के संबंध में कौन-सा युग्म <strong>सही सुमेलित नहीं</strong> है?<br><br>1. वजीर — राजस्व विभाग (दीवान-ए-विजारत) का प्रमुख<br>2. मुशरिफ-ए-मुमालिक — महालेखाकार (प्रांतों व विभागों के आय-व्यय का लेखा-जोखा)<br>3. मुस्तौफी-ए-मुमालिक — महालेखा परीक्षक (व्यय की जाँच)<br>4. आरिज-ए-मुमालिक — न्याय विभाग का प्रधान काजी",
+                    options: ["केवल 1", "केवल 2", "केवल 3", "केवल 4"],
+                    explanation: "युग्म 4 गलत है। आरिज-ए-मुमालिक 'दीवान-ए-अर्ज' (सैन्य विभाग) का प्रमुख होता था, जबकि न्याय विभाग का सर्वोच्च अधिकारी 'काजी-उल-कुजात' होता था।"
+                },
+                english: {
+                    text: "Which administrative office match is <strong>NOT correctly matched</strong> in Delhi Sultanate?<br><br>1. Wazir — Prime Minister & head of finance/revenue<br>2. Mushrif-i-Mumalik — Accountant General (ledger of state income and expenditure)<br>3. Mustaufi-i-Mumalik — Auditor General (inspection of expenses)<br>4. Ariz-i-Mumalik — Chief Justice of judicial affairs",
+                    options: ["Only 1", "Only 2", "Only 3", "Only 4"],
+                    explanation: "Pair 4 is incorrect. Ariz-i-Mumalik was the Minister of War (military department), whereas Chief Justice was Qazi-ul-Quzat."
+                },
+                correct: 3 // D
+            },
+            {
+                id: 104,
+                hindi: {
+                    text: "सल्तनत काल में राज्य के औपचारिक एवं गुप्त पत्राचार से संबंध रखने वाले विभाग को क्या कहा जाता था?",
+                    options: ["दीवान-ए-इंशा", "दीवान-ए-कजा", "दीवान-ए-विजारत", "दीवान-ए-अर्ज"],
+                    explanation: "शाही पत्राचार विभाग को 'दीवान-ए-इंशा' (जिसका प्रमुख दबीर-ए-खास होता था) कहा जाता था।"
+                },
+                english: {
+                    text: "Which department managed official and secret royal correspondence in Delhi Sultanate?",
+                    options: ["Diwan-i-Insha", "Diwan-i-Qaza", "Diwan-i-Wizarat", "Diwan-i-Arz"],
+                    explanation: "Diwan-i-Insha was the department of royal correspondence."
+                },
+                correct: 0 // A
+            },
+            {
+                id: 105,
+                hindi: {
+                    text: "सल्तनत कालीन कर व्यवस्था के अंतर्गत 'उश्र' (Ushr) एवं 'खराज' (Kharaj) में क्या मौलिक अंतर था?",
+                    options: [
+                        "उश्र मुसलमानों से लिया जाने वाला भूमि कर था, जबकि खराज गैर-मुसलमानों से लिया जाने वाला भूमि कर था।",
+                        "उश्र व्यापारिक चुंगी थी, जबकि खराज चारागाह कर था।",
+                        "उश्र केवल सोने-चाँदी पर लगता था, जबकि खराज अनाज पर लगता था।",
+                        "उश्र हिंदुओं से लिया जाने वाला धार्मिक कर था, जबकि खराज मुसलमानों का कर था।"
+                    ],
+                    explanation: "उश्र मुसलमानों से लिया जाने वाला भू-राजस्व (5% से 10%) था, जबकि खराज गैर-मुसलमानों (हिंदू किसानों) से लिया जाने वाला भू-राजस्व था।"
+                },
+                english: {
+                    text: "What was the fundamental distinction between 'Ushr' and 'Kharaj' land taxes in Delhi Sultanate?",
+                    options: [
+                        "Ushr was land revenue paid by Muslims, whereas Kharaj was land tax paid by non-Muslims.",
+                        "Ushr was merchant customs duty, while Kharaj was cattle grazing cess.",
+                        "Ushr was assessed on precious metals, while Kharaj on cereals.",
+                        "Ushr was religious tax on Hindus, while Kharaj was paid by Muslims."
+                    ],
+                    explanation: "Ushr was agricultural tithe on Muslim landowners, while Kharaj was regular land revenue paid by non-Muslim cultivators."
+                },
+                correct: 0 // A
+            },
+            {
+                id: 106,
+                hindi: {
+                    text: "सल्तनत काल में 'जकात' (Zakat) कर की प्रामाणिक प्रकृति क्या थी?",
+                    options: [
+                        "यह सभी नागरिकों पर अनिवार्य गृह कर था।",
+                        "यह मुसलमानों से लिया जाने वाला धार्मिक कर था, जो उनकी वार्षिक बचत/संपत्ति का 40वाँ हिस्सा (2.5%) होता था।",
+                        "यह केवल गैर-मुसलमानों की कृषि आय पर वसूला जाता था।",
+                        "यह विदेशी व्यापारियों से वसूला जाने वाला आयात शुल्क था।"
+                    ],
+                    explanation: "जकात मुसलमानों से लिया जाने वाला अनिवार्य धार्मिक दान/कर था जो संपत्ति का 40वाँ हिस्सा (2.5%) होता था।"
+                },
+                english: {
+                    text: "What was the canonical nature of 'Zakat' tax in the Delhi Sultanate?",
+                    options: [
+                        "Compulsory municipal house tax on all citizens",
+                        "Religious welfare tax levied exclusively on affluent Muslims, assessed at 1/40th (2.5%) of wealth",
+                        "Agricultural levy collected only from non-Muslim cultivators",
+                        "Customs import surcharge on overseas commodities"
+                    ],
+                    explanation: "Zakat was a religious tithe collected from Muslims amounting to 2.5% (1/40th) of their net wealth."
+                },
+                correct: 1 // B
+            },
+            {
+                id: 107,
+                hindi: {
+                    text: "सल्तनत काल में भूमि में गड़े हुए खजानों या लूट के माल (खम्स) के संदर्भ में कौन-सा शासक अपवाद था जिसने गड़े हुए खजानों में से राज्य के लिए कोई हिस्सा नहीं लिया?",
+                    options: ["अलाउद्दीन खिलजी", "मुहम्मद बिन तुगलक", "सिकंदर लोदी", "बलबन"],
+                    explanation: "सिकंदर लोदी ने गड़े हुए खजानों में से सुल्तान के लिए कोई हिस्सा नहीं लिया और संपूर्ण धन प्राप्तकर्ता को ही दे दिया।"
+                },
+                english: {
+                    text: "Which Sultan of Delhi stood as an exception by claiming no royal share whatsoever from buried treasures or unearthed hoardings?",
+                    options: ["Alauddin Khilji", "Muhammad bin Tughlaq", "Sikandar Lodi", "Balban"],
+                    explanation: "Sikandar Lodi refused to take any royal share from concealed or unearthed treasures."
+                },
+                correct: 2 // C
+            },
+            {
+                id: 108,
+                hindi: {
+                    text: "सल्तनत काल में प्रांतों (इक्ताओं/सूबों) को किस प्रशासनिक इकाई में विभाजित किया गया था, जिसका प्रमुख सैनिक अधिकारी 'शिकदार' होता था?",
+                    options: ["परगना", "शिक (जिला)", "ग्राम", "सदा"],
+                    explanation: "प्रांतों (इक्ताओं) को शिकों (जिलों) में बाँटा गया था, जिसका मुखिया 'शिकदार' होता था।"
+                },
+                english: {
+                    text: "Into which administrative units were provinces (Iqtas) divided, headed by military executive 'Shikdar'?",
+                    options: ["Pargana", "Shik (District)", "Gram", "Sadah"],
+                    explanation: "Provinces were divided into Shiks (districts), headed by a military officer called Shikdar."
+                },
+                correct: 1 // B
+            },
+            {
+                id: 109,
+                hindi: {
+                    text: "शिकों को 'परगनों' में विभाजित किया गया था। परगने का मुख्य प्रशासनिक अधिकारी कौन था और लगान को निश्चित करने वाला अधिकारी कौन कहलाता था?",
+                    options: [
+                        "आमिल (मुख्य अधिकारी) एवं मुशरिफ (लगान निश्चित करने वाला)",
+                        "पटवारी एवं मुकद्दम",
+                        "शिकदार एवं बरीद",
+                        "खुत एवं काजी"
+                    ],
+                    explanation: "परगने का मुख्य कार्यपालक अधिकारी 'आमिल' था और राजस्व निर्धारण करने वाला अधिकारी 'मुशरिफ' कहलाता था।"
+                },
+                english: {
+                    text: "Shiks were subdivided into Parganas. Who was the executive head of Pargana, and who assessed land revenue?",
+                    options: [
+                        "Aamil (executive head) and Mushrif (revenue assessment officer)",
+                        "Patwari and Muqaddam",
+                        "Shikdar and Barid",
+                        "Khut and Qazi"
+                    ],
+                    explanation: "Aamil was the chief executive official of a Pargana, while Mushrif measured and assessed land taxes."
+                },
+                correct: 0 // A
+            },
+            {
+                id: 110,
+                hindi: {
+                    text: "सल्तनत काल में एक शहर या 100 गाँवों के शासन व राजस्व की देखरेख करने वाला अधिकारी क्या कहलाता था?",
+                    options: ["अमीर-ए-सदा", "सर-ए-खेल", "मुकद्दम", "शिकदार"],
+                    explanation: "100 गाँवों अथवा एक शहर के शासन की देख-रेख 'अमीर-ए-सदा' (Centurion) नामक अधिकारी करता था।"
+                },
+                english: {
+                    text: "Which official was responsible for supervising administration and revenue of a town or group of 100 villages in Delhi Sultanate?",
+                    options: ["Amir-i-Sadah", "Sar-i-Khel", "Muqaddam", "Shikdar"],
+                    explanation: "Amir-i-Sadah was an officer in charge of a hundred villages."
+                },
+                correct: 0 // A
+            },
+            {
+                id: 111,
+                hindi: {
+                    text: "सल्तनत कालीन ग्राम प्रशासन के संदर्भ में सबसे प्रभावशाली ग्रामीण अभिजात वर्ग कौन थे?",
+                    options: [
+                        "खुत (छोटे जमींदार) और मुकद्दम (ग्राम मुखिया)",
+                        "आमिल और शिकदार",
+                        "काजी और मुफ्ती",
+                        "सर-ए-खेल और सिपहसालार"
+                    ],
+                    explanation: "ग्राम स्तर पर खुत (छोटे जमींदार), मुकद्दम (गाँव का मुखिया) और पटवारी सबसे प्रभावशाली ग्रामीण अधिकारी होते थे।"
+                },
+                english: {
+                    text: "Who were the most influential hereditary village magnates in rural administration of Delhi Sultanate?",
+                    options: [
+                        "Khut (small landed gentry) and Muqaddam (village headman)",
+                        "Aamil and Shikdar",
+                        "Qazi and Mufti",
+                        "Sar-i-Khel and Sipahsalar"
+                    ],
+                    explanation: "Khuts (landowners) and Muqaddams (village headmen) were the dominant rural aristocracy."
+                },
+                correct: 0 // A
+            },
+            {
+                id: 112,
+                hindi: {
+                    text: "सुल्तान की अपनी व्यक्तिगत स्थायी केंद्रीय सेना को सल्तनत काल में किस नाम से पुकारा जाता था?",
+                    options: ["हश्म-ए-कल्ब (खासखेल)", "हश्म-ए-अतराफ", "बंदगाँ-ए-खास", "सवार"],
+                    explanation: "सुल्तान की केंद्रीय स्थायी सेना को 'खासखेल' अथवा 'हश्म-ए-कल्ब' (सेना का केंद्र) कहा जाता था।"
+                },
+                english: {
+                    text: "What was the Sultan's personal imperial royal standing army specifically termed as in Delhi Sultanate?",
+                    options: ["Khashkhel (Hashm-i-Qalb)", "Hashm-i-Atraf", "Bandagan-i-Khas", "Sawar"],
+                    explanation: "The central standing army of the Sultan was known as Khashkhel or Hashm-i-Qalb."
+                },
+                correct: 0 // A
+            },
+            {
+                id: 113,
+                hindi: {
+                    text: "सल्तनत कालीन सैन्य व्यवस्था मंगोल सेना के दशमलव वर्गीकरण पर आधारित थी। इसके सही पदानुक्रम पर विचार कीजिए:<br><br>1. 10 अश्वारोही = 1 सर-ए-खेल<br>2. 10 सर-ए-खेल = 1 सिपहसालार<br>3. 10 सिपहसालार = 1 अमीर<br>4. 10 अमीर = 1 मलिक तथा 10 मलिक = 1 खान<br><br>उपर्युक्त में से कौन-से कथन <strong>सत्य</strong> हैं?",
+                    options: ["केवल 1 और 2", "केवल 2, 3 और 4", "केवल 1, 3 और 4", "सभी 1, 2, 3 और 4"],
+                    explanation: "दशमलव प्रणाली पर आधारित यह संपूर्ण पदानुक्रम (सर-ए-खेल → सिपहसालार → अमीर → मलिक → खान) पूर्णतः सत्य है।"
+                },
+                english: {
+                    text: "Military organization in Delhi Sultanate adopted Mongol decimal hierarchy. Consider the structure:<br><br>1. 10 horsemen = 1 Sar-i-Khel<br>2. 10 Sar-i-Khel = 1 Sipahsalar<br>3. 10 Sipahsalar = 1 Amir<br>4. 10 Amir = 1 Malik, and 10 Malik = 1 Khan<br><br>Which of the statements given above are <strong>true</strong>?",
+                    options: ["Only 1 and 2", "Only 2, 3 and 4", "Only 1, 3 and 4", "All 1, 2, 3 and 4"],
+                    explanation: "All four ranks of the Mongol decimal hierarchy are strictly accurate."
+                },
+                correct: 3 // D
+            },
+            {
+                id: 114,
+                hindi: {
+                    text: "सल्तनत काल में दुर्गों की दीवारों पर भारी पत्थर व बारूद की सहायता से गोला फेंकने वाली मशीनों को क्या कहा जाता था?",
+                    options: ["मंगलीक तथा अर्राद", "तोप तथा बंदूक", "चरख तथा कमान", "रहकला तथा गाजी"],
+                    explanation: "किलेबंदी युद्ध में पत्थर व प्रक्षेप्य फेंकने वाले यंत्रों को 'मंगलीक' तथा 'अर्राद' कहा जाता था।"
+                },
+                english: {
+                    text: "What were siege ballista and catapult war machines used for hurling heavy boulders during Sultanate sieges named?",
+                    options: ["Manglik and Arrad", "Top and Banduk", "Charkh and Kaman", "Rahkala and Ghazi"],
+                    explanation: "Catapults and stone-projecting ballistic engines were called Manglik and Arrad."
+                },
+                correct: 0 // A
+            },
+            {
+                id: 115,
+                hindi: {
+                    text: "सल्तनत काल में भू-राजस्व निर्धारण की विभिन्न पद्धतियों के संदर्भ में कौन-सा कथन सत्य है?",
+                    options: [
+                        "लगान निर्धारित करने की मिश्रित प्रणाली को 'मुक्ताई' कहा जाता था।",
+                        "भूमि की नाप-जोख (पैमाइश) के आधार पर क्षेत्रफल अनुसार लगान निर्धारण 'मसाहत' कहलाता था।",
+                        "मसाहत पद्धति की शुरुआत सर्वप्रथम अलाउद्दीन खिलजी ने की थी।",
+                        "उपर्युक्त सभी कथन सत्य हैं।"
+                    ],
+                    explanation: "सभी कथन सत्य हैं। मुक्ताई मिश्रित व्यवस्था थी और पैमाइश आधारित मसाहत प्रणाली अलाउद्दीन ने शुरू की थी।"
+                },
+                english: {
+                    text: "Which statement is true regarding revenue assessment methods in Delhi Sultanate?",
+                    options: [
+                        "Mixed system of revenue assessment was known as 'Muktai'.",
+                        "Assessment of land tax based on actual measurement/area was called 'Masahat'.",
+                        "The 'Masahat' measurement system was first instituted by Alauddin Khilji.",
+                        "All of the above statements are true."
+                    ],
+                    explanation: "All three statements accurately summarize Sultanate revenue assessment terms."
+                },
+                correct: 3 // D
+            },
+            {
+                id: 116,
+                hindi: {
+                    text: "सल्तनत काल में सीधे केंद्र (सुल्तान) के नियंत्रण में रहने वाली तथा राजकीय खजाने में राजस्व जमा करने वाली भूमि क्या कहलाती थी?",
+                    options: ["इक्ता भूमि", "खालसा भूमि", "मिल्क भूमि", "वक्फ भूमि"],
+                    explanation: "प्रत्यक्ष केंद्रीय नियंत्रण वाली भूमि को 'खालसा भूमि' कहा जाता था।"
+                },
+                english: {
+                    text: "What was crown land under direct centralized management of the royal treasury termed in Delhi Sultanate?",
+                    options: ["Iqta land", "Khalisa land", "Milk land", "Waqf land"],
+                    explanation: "Crown lands managed directly by the central imperial treasury were called Khalisa."
+                },
+                correct: 1 // B
+            },
+            {
+                id: 117,
+                hindi: {
+                    text: "सल्तनत कालीन न्याय व्यवस्था के संदर्भ में मुस्लिम कानून के चार प्रमुख स्रोत कौन-से थे?",
+                    options: [
+                        "कुरान, हदीस, इजमा एवं कयास",
+                        "शरीयत, फतवा, रवायत एवं दस्तूर",
+                        "वेद, पुराण, स्मृति एवं धर्मशास्त्र",
+                        "आइने-अकबरी, तुजुक, रेहला एवं सफरनामा"
+                    ],
+                    explanation: "मुस्लिम न्यायशास्त्र (फिकह) के चार प्रमुख स्रोत कुरान, हदीस, इजमा (विद्वानों की सर्वसम्मति) और कयास (सादृश्य तर्क) थे।"
+                },
+                english: {
+                    text: "What were the four cardinal sources of Islamic jurisprudence (Sharia) observed in Delhi Sultanate courts?",
+                    options: [
+                        "Quran, Hadith, Ijma, and Qiyas",
+                        "Shariat, Fatwa, Riwayat, and Dastur",
+                        "Vedas, Puranas, Smritis, and Dharmashastras",
+                        "Ain-i-Akbari, Tuzuk, Rehla, and Safarnama"],
+                    explanation: "The four primary sources of Islamic law are the Quran, Hadith, Ijma (consensus), and Qiyas (analogical deduction)."
+                },
+                correct: 0 // A
+            },
+            {
+                id: 118,
+                hindi: {
+                    text: "सुल्तान सप्ताह में कितनी बार दरबार में स्वयं प्रजा को प्रत्यक्ष न्याय प्रदान करने के लिए उपस्थित होता था?",
+                    options: ["प्रतिदिन", "सप्ताह में दो बार", "सप्ताह में एक बार (केवल जुमे को)", "महीने में एक बार"],
+                    explanation: "सल्तनत काल में सुल्तान सप्ताह में दो बार स्वयं दरबार में न्याय करने हेतु उपस्थित होता था।"
+                },
+                english: {
+                    text: "How many times per week did the Sultan personally sit in the royal court of justice to dispense direct judgment to subjects?",
+                    options: ["Every day", "Twice a week", "Once a week (on Fridays)", "Once a month"],
+                    explanation: "The Sultan personally presided over judicial hearings twice a week."
+                },
+                correct: 1 // B
+            },
+            {
+                id: 119,
+                hindi: {
+                    text: "सल्तनत काल में प्रसिद्ध व्यापारिक एवं औद्योगिक केंद्रों के संदर्भ में कौन-सा मिलान <strong>सही सुमेलित नहीं</strong> है?<br><br>1. सरस्वती (सरसूती) — उत्तम किस्म के चावल के लिए<br>2. अन्हिलवाड़ा — व्यापारियों के तीर्थ स्थल के रूप में<br>3. सतगाँव — रेशमी रजाइयों के निर्माण हेतु<br>4. आगरा — अंतरराष्ट्रीय बंदरगाह के रूप में",
+                    options: ["केवल 1", "केवल 2", "केवल 3", "केवल 4"],
+                    explanation: "युग्म 4 गलत है। आगरा नील उत्पादन के लिए प्रसिद्ध था, जबकि प्रसिद्ध अंतरराष्ट्रीय बंदरगाह 'देवल' (सिंध) था।"
+                },
+                english: {
+                    text: "Which commodity/place match is <strong>NOT correctly matched</strong> in Delhi Sultanate trade geography?<br><br>1. Sarsuti — Famous for superior quality rice<br>2. Anhilwara — Renowned as a pilgrim center of wealthy merchants<br>3. Satgaon — Specialized in silk quilts<br>4. Agra — Prominent international seaport",
+                    options: ["Only 1", "Only 2", "Only 3", "Only 4"],
+                    explanation: "Match 4 is false. Agra was known for indigo manufacture, while 'Debal' was the prominent international seaport."
+                },
+                correct: 3 // D
+            },
+            {
+                id: 120,
+                hindi: {
+                    text: "सल्तनत काल में सेना के लिए अच्छी नस्ल के घोड़े मुख्य रूप से किन देशों से आयात किए जाते थे और हाथी कहाँ से मँगाए जाते थे?",
+                    options: [
+                        "घोड़े: तुर्की, अरब एवं रूस से; हाथी: बंगाल से",
+                        "घोड़े: चीन एवं म्यांमार से; हाथी: तिब्बत से",
+                        "घोड़े: श्रीलंका से; हाथी: गुजरात से",
+                        "घोड़े: यूरोप से; हाथी: कश्मीर से"
+                    ],
+                    explanation: "सल्तनत काल में उच्च नस्ल के अरबी, तुर्की एवं तातार (रूसी) घोड़े मंगवाए जाते थे तथा युद्ध के लिए विशाल हाथी मुख्यतः बंगाल से मँगाए जाते थे।"
+                },
+                english: {
+                    text: "From where were superior warhorses imported and war elephants procured in Delhi Sultanate?",
+                    options: [
+                        "Horses from Turkey, Arabia, and Russia; Elephants from Bengal",
+                        "Horses from China and Myanmar; Elephants from Tibet",
+                        "Horses from Sri Lanka; Elephants from Gujarat",
+                        "Horses from Europe; Elephants from Kashmir"
+                    ],
+                    explanation: "High quality horses were imported from Arabia, Turkestan, and Russia, while battle elephants were sourced from Bengal."
+                },
+                correct: 0 // A
+            }
+        ];
+
+        // CBT Application State Variables
+        let currentLang = 'hi'; // 'hi' or 'en'
+        let currentIndex = 0;
+        let userResponses = new Array(questions.length).fill(null);
+        let reviewedStatus = new Array(questions.length).fill(false);
+        let timeLeft = 120 * 60; // 120 minutes in seconds
+        let timerInterval = null;
+        let testSubmitted = false;
+
+        // UI Element Selectors
+        const startOverlay = document.getElementById('start-overlay');
+        const btnStart = document.getElementById('btn-start');
+        const btnLangToggle = document.getElementById('btn-lang-toggle');
+        const langLabel = document.getElementById('lang-label');
+        const timerDisplay = document.getElementById('timer-display');
+        const questionText = document.getElementById('question-text');
+        const optionsContainer = document.getElementById('options-container');
+        const questionTracker = document.getElementById('question-tracker');
+        const statusBadge = document.getElementById('status-badge');
+        const instantFeedback = document.getElementById('instant-feedback');
+        const feedbackResult = document.getElementById('feedback-result');
+        const feedbackHeader = document.getElementById('feedback-header');
+        const feedbackExplanation = document.getElementById('feedback-explanation');
+
+        const btnPrev = document.getElementById('btn-prev');
+        const btnNext = document.getElementById('btn-next');
+        const btnClear = document.getElementById('btn-clear');
+        const btnReview = document.getElementById('btn-review');
+        const btnSubmitHeader = document.getElementById('btn-submit-header');
+
+        const labelPrev = document.getElementById('label-prev');
+        const labelClear = document.getElementById('label-clear');
+        const labelReview = document.getElementById('label-review');
+        const labelNext = document.getElementById('label-next');
+
+        const modalScorecard = document.getElementById('modal-scorecard');
+        const resScore = document.getElementById('res-score');
+        const resCorrect = document.getElementById('res-correct');
+        const resIncorrect = document.getElementById('res-incorrect');
+        const resSkipped = document.getElementById('res-skipped');
+        const resAccuracy = document.getElementById('res-accuracy');
+        const resTotal = document.getElementById('res-total');
+        const btnReviewSolutions = document.getElementById('btn-review-solutions');
+
+        // Mandatory Auto Full Screen Gate Entry
+        btnStart.addEventListener('click', () => {
+            const docElm = document.documentElement;
+            if (docElm.requestFullscreen) {
+                docElm.requestFullscreen().catch(err => {
+                    console.warn("Fullscreen request was prevented by browser policy: ", err);
+                });
+            } else if (docElm.webkitRequestFullscreen) {
+                docElm.webkitRequestFullscreen();
+            } else if (docElm.msRequestFullscreen) {
+                docElm.msRequestFullscreen();
+            }
+            startOverlay.classList.add('hidden');
+            startTimer();
+            loadQuestion(currentIndex);
+        });
+
+        // 120-Minute Countdown Timer
+        function startTimer() {
+            timerInterval = setInterval(() => {
+                if (timeLeft <= 0) {
+                    clearInterval(timerInterval);
+                    submitExam();
+                    return;
+                }
+                timeLeft--;
+                const mins = Math.floor(timeLeft / 60);
+                const secs = timeLeft % 60;
+                timerDisplay.textContent = `${String(mins).padStart(2, '0')}:${String(secs).padStart(2, '0')}`;
+            }, 1000);
+        }
+
+        // Language Switcher Toggle
+        btnLangToggle.addEventListener('click', () => {
+            if (currentLang === 'hi') {
+                currentLang = 'en';
+                langLabel.textContent = 'हिंदी';
+                labelPrev.textContent = 'Prev';
+                labelClear.textContent = 'Clear';
+                labelReview.textContent = 'Review';
+                labelNext.textContent = currentIndex === questions.length - 1 ? 'Save & Review' : 'Next';
+                feedbackHeader.textContent = 'Instant Verification (NCERT / Lucent GK):';
+            } else {
+                currentLang = 'hi';
+                langLabel.textContent = 'Eng';
+                labelPrev.textContent = 'पिछला';
+                labelClear.textContent = 'क्लियर';
+                labelReview.textContent = 'रिव्यू';
+                labelNext.textContent = currentIndex === questions.length - 1 ? 'रिव्यू & सेव' : 'अगला';
+                feedbackHeader.textContent = 'त्वरित समाधान (NCERT / Lucent GK):';
+            }
+            loadQuestion(currentIndex);
+        });
+
+        // Load Question Functionality
+        function loadQuestion(index) {
+            const q = questions[index];
+            const qData = currentLang === 'hi' ? q.hindi : q.english;
+            
+            questionTracker.textContent = `Question ${index + 1} of ${questions.length}`;
+            questionText.innerHTML = qData.text;
+
+            // Status Badge
+            updateStatusBadge(index);
+
+            // Render 4 Options
+            optionsContainer.innerHTML = '';
+            qData.options.forEach((optText, optIdx) => {
+                const isSelected = userResponses[index] === optIdx;
+                const optButton = document.createElement('label');
+                optButton.className = `flex items-center p-3 sm:p-3.5 border rounded-xl cursor-pointer transition text-xs sm:text-sm font-medium ${
+                    isSelected 
+                    ? 'border-blue-600 bg-blue-50 text-blue-900 shadow-sm' 
+                    : 'border-slate-200 bg-slate-50 hover:bg-slate-100 text-slate-800'
+                }`;
+
+                const letter = String.fromCharCode(65 + optIdx);
+                optButton.innerHTML = `
+                    <input type="radio" name="opt" value="${optIdx}" class="custom-radio w-4 h-4 mr-3" ${isSelected ? 'checked' : ''} ${testSubmitted ? 'disabled' : ''}>
+                    <span class="font-bold mr-2 text-slate-600">(${letter})</span>
+                    <span class="flex-1">${optText}</span>
+                `;
+
+                optButton.querySelector('input').addEventListener('change', () => {
+                    if (testSubmitted) return;
+                    selectAnswer(index, optIdx);
+                });
+
+                optionsContainer.appendChild(optButton);
+            });
+
+            // Instant Verification & Detailed Explanation Display
+            if (userResponses[index] !== null) {
+                showInstantFeedback(index);
+            } else {
+                instantFeedback.classList.add('hidden');
+            }
+
+            // Navigation Button States
+            btnPrev.disabled = index === 0;
+            btnPrev.classList.toggle('opacity-50', index === 0);
+            btnPrev.classList.toggle('cursor-not-allowed', index === 0);
+
+            if (index === questions.length - 1) {
+                labelNext.textContent = currentLang === 'hi' ? 'रिव्यू & सेव' : 'Save & Review';
+            } else {
+                labelNext.textContent = currentLang === 'hi' ? 'अगला' : 'Next';
+            }
+        }
+
+        function updateStatusBadge(index) {
+            if (reviewedStatus[index]) {
+                statusBadge.textContent = currentLang === 'hi' ? "मार्क फॉर रिव्यू" : "Marked for Review";
+                statusBadge.className = "px-2 py-0.5 rounded text-[11px] bg-purple-100 text-purple-700 font-bold";
+            } else if (userResponses[index] !== null) {
+                statusBadge.textContent = currentLang === 'hi' ? "उत्तरित (Answered)" : "Answered";
+                statusBadge.className = "px-2 py-0.5 rounded text-[11px] bg-emerald-100 text-emerald-700 font-bold";
+            } else {
+                statusBadge.textContent = currentLang === 'hi' ? "नॉट आंसर्ड" : "Not Answered";
+                statusBadge.className = "px-2 py-0.5 rounded text-[11px] bg-slate-200 text-slate-700 font-bold";
+            }
+        }
+
+        // On Option Selection
+        function selectAnswer(qIndex, optIndex) {
+            userResponses[qIndex] = optIndex;
+            showInstantFeedback(qIndex);
+            updateStatusBadge(qIndex);
+            loadQuestion(qIndex);
+        }
+
+        function showInstantFeedback(qIndex) {
+            const q = questions[qIndex];
+            const qData = currentLang === 'hi' ? q.hindi : q.english;
+            const isCorrect = userResponses[qIndex] === q.correct;
+            instantFeedback.classList.remove('hidden');
+
+            const correctLetter = String.fromCharCode(65 + q.correct);
+            if (isCorrect) {
+                feedbackResult.innerHTML = `<span class="text-emerald-600 font-bold"><i class="fa-solid fa-circle-check"></i> ${currentLang === 'hi' ? 'सही उत्तर (+2.00)' : 'Correct Answer (+2.00)'}</span>`;
+            } else {
+                feedbackResult.innerHTML = `<span class="text-rose-600 font-bold"><i class="fa-solid fa-circle-xmark"></i> ${currentLang === 'hi' ? 'गलत उत्तर (-0.20)' : 'Incorrect (-0.20)'} | ${currentLang === 'hi' ? 'सही विकल्प' : 'Correct Option'}: (${correctLetter})</span>`;
+            }
+
+            feedbackExplanation.innerHTML = qData.explanation;
+        }
+
+        // Navigation Handlers
+        btnPrev.addEventListener('click', () => {
+            if (currentIndex > 0) {
+                currentIndex--;
+                loadQuestion(currentIndex);
+            }
+        });
+
+        btnNext.addEventListener('click', () => {
+            if (currentIndex < questions.length - 1) {
+                currentIndex++;
+                loadQuestion(currentIndex);
+            }
+        });
+
+        btnClear.addEventListener('click', () => {
+            if (testSubmitted) return;
+            userResponses[currentIndex] = null;
+            instantFeedback.classList.add('hidden');
+            loadQuestion(currentIndex);
+        });
+
+        btnReview.addEventListener('click', () => {
+            if (testSubmitted) return;
+            reviewedStatus[currentIndex] = !reviewedStatus[currentIndex];
+            loadQuestion(currentIndex);
+        });
+
+        // Submit Logic
+        btnSubmitHeader.addEventListener('click', () => {
+            const confirmMsg = currentLang === 'hi' 
+                ? "क्या आप वाकई 120 प्रश्नों का टेस्ट सबमिट करना चाहते हैं?" 
+                : "Are you sure you want to submit the 120-question test?";
+            if (confirm(confirmMsg)) {
+                submitExam();
+            }
+        });
+
+        function submitExam() {
+            clearInterval(timerInterval);
+            testSubmitted = true;
+
+            let correctCount = 0;
+            let incorrectCount = 0;
+            let skippedCount = 0;
+
+            questions.forEach((q, idx) => {
+                const ans = userResponses[idx];
+                if (ans === null) {
+                    skippedCount++;
+                } else if (ans === q.correct) {
+                    correctCount++;
+                } else {
+                    incorrectCount++;
+                }
+            });
+
+            const totalScore = (correctCount * 2.00) - (incorrectCount * 0.20);
+            const attempted = correctCount + incorrectCount;
+            const accuracy = attempted > 0 ? ((correctCount / attempted) * 100).toFixed(1) : 0;
+
+            resScore.textContent = totalScore.toFixed(2);
+            resCorrect.textContent = correctCount;
+            resIncorrect.textContent = incorrectCount;
+            resSkipped.textContent = skippedCount;
+            resAccuracy.textContent = `${accuracy}%`;
+            resTotal.textContent = questions.length;
+
+            modalScorecard.classList.remove('hidden');
+        }
+
+        btnReviewSolutions.addEventListener('click', () => {
+            modalScorecard.classList.add('hidden');
+            currentIndex = 0;
+            loadQuestion(currentIndex);
+        });
+    </script>
+</body>
+</html>
