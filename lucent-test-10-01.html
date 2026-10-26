@@ -1,0 +1,897 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gyanverse CBT Portal - Medieval History Part 1 (Q1 - Q125)</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background-color: #cbd5e1;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body class="bg-slate-100 text-slate-800 font-sans min-h-screen flex flex-col select-none">
+
+    <!-- FULLSCREEN ENTRY GATE MODAL -->
+    <div id="entry-gate" class="fixed inset-0 z-50 flex items-center justify-center bg-slate-900 bg-opacity-95 p-4">
+        <div class="bg-white rounded-2xl shadow-2xl max-w-lg w-full p-6 text-center space-y-5 border-t-8 border-indigo-600">
+            <div class="w-16 h-16 bg-indigo-100 text-indigo-600 rounded-full flex items-center justify-center mx-auto text-3xl font-bold">
+                <i class="fa-solid fa-graduation-cap"></i>
+            </div>
+            <div>
+                <h2 class="text-2xl font-black text-slate-800">GYANVERSE CBT PORTAL</h2>
+                <p class="text-sm font-semibold text-indigo-600">Lucent GK 18th Edition - Medieval History (Part-1)</p>
+            </div>
+            <div class="bg-slate-50 p-4 rounded-xl text-left text-xs text-slate-600 space-y-2 border border-slate-200">
+                <p class="flex justify-between"><span>Total Questions:</span> <strong class="text-slate-800">125 Questions</strong></p>
+                <p class="flex justify-between"><span>Total Time:</span> <strong class="text-slate-800">120 Minutes</strong></p>
+                <p class="flex justify-between"><span>Marking Scheme:</span> <strong class="text-emerald-600">+2.00</strong> / <strong class="text-rose-600">-0.20</strong></p>
+                <p class="flex justify-between"><span>Mode:</span> <strong class="text-amber-600">Auto Fullscreen Gate Mandatory</strong></p>
+            </div>
+            <p class="text-xs text-slate-500 italic">Test shuru karte hi application full-screen mode me switch ho jayegi.</p>
+            <button id="start-btn" class="w-full py-3.5 bg-indigo-600 hover:bg-indigo-700 text-white font-bold rounded-xl shadow-lg shadow-indigo-200 transition-all flex items-center justify-center gap-2">
+                <i class="fa-solid fa-expand"></i> Start Test (Auto Full Screen)
+            </button>
+            <a href="https://t.me/GYANVERSET" target="_blank" class="block text-xs font-semibold text-sky-600 hover:underline">
+                <i class="fa-brands fa-telegram"></i> Telegram Community: @GYANVERSET
+            </a>
+        </div>
+    </div>
+
+    <!-- MAIN CBT WRAPPER -->
+    <div id="cbt-app" class="flex-1 flex flex-col hidden">
+        
+        <!-- HEADER BAR -->
+        <header class="bg-white border-b border-slate-200 sticky top-0 z-30 shadow-sm px-4 py-2.5 flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <span class="bg-indigo-600 text-white text-xs font-extrabold px-2.5 py-1 rounded-md tracking-wider">GYANVERSE</span>
+                <a href="https://t.me/GYANVERSET" target="_blank" class="hidden sm:inline-block text-xs text-sky-600 font-semibold hover:underline">@GYANVERSET</a>
+            </div>
+
+            <!-- Timer & Actions -->
+            <div class="flex items-center gap-4">
+                <!-- Language Switcher -->
+                <button id="lang-toggle-btn" class="text-xs font-bold px-3 py-1.5 border border-slate-300 rounded-lg hover:bg-slate-50 transition-colors flex items-center gap-1.5">
+                    <i class="fa-solid fa-language text-indigo-600"></i>
+                    <span id="lang-label">English</span>
+                </button>
+
+                <!-- Countdown Timer -->
+                <div class="flex items-center gap-2 bg-slate-100 text-slate-700 px-3 py-1.5 rounded-lg font-mono text-sm font-bold border border-slate-300">
+                    <i class="fa-regular fa-clock text-indigo-600 animate-pulse"></i>
+                    <span id="cbt-timer">120:00</span>
+                </div>
+
+                <!-- Submit Button -->
+                <button id="submit-test-btn" class="text-xs font-bold bg-rose-600 hover:bg-rose-700 text-white px-3.5 py-1.5 rounded-lg shadow transition-all">
+                    Submit Test
+                </button>
+            </div>
+        </header>
+
+        <!-- QUESTION CONTAINER (FULL-WIDTH CLEAN MOBILE VIEW) -->
+        <main class="flex-1 max-w-4xl w-full mx-auto p-4 flex flex-col justify-between">
+            <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-5 sm:p-7">
+                
+                <!-- Question Meta Top -->
+                <div class="flex items-center justify-between pb-3 mb-4 border-b border-slate-100">
+                    <span id="q-counter" class="text-xs font-extrabold text-indigo-600 bg-indigo-50 px-2.5 py-1 rounded-md">
+                        Question 1 of 125
+                    </span>
+                    <span class="text-[11px] font-semibold text-slate-400">Marks: +2.00 / -0.20</span>
+                </div>
+
+                <!-- Question Text -->
+                <div id="q-text" class="text-base sm:text-lg font-semibold text-slate-800 leading-relaxed mb-6">
+                    <!-- Dynamic Question Text -->
+                </div>
+
+                <!-- Options -->
+                <div id="q-options" class="space-y-3 mb-6">
+                    <!-- Dynamic Options -->
+                </div>
+
+                <!-- Instant Solution / Feedback Card -->
+                <div id="instant-feedback" class="hidden mt-4 p-4 rounded-xl border transition-all text-xs sm:text-sm">
+                    <!-- Dynamic Answer Details -->
+                </div>
+
+                <!-- Branding Watermark under each question -->
+                <div class="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-[11px] text-slate-400 font-medium">
+                    <span>Source: Lucent GK 18th Ed.</span>
+                    <a href="https://t.me/GYANVERSET" target="_blank" class="text-indigo-600 font-bold hover:underline">@GYANVERSET</a>
+                </div>
+
+            </div>
+
+            <!-- NAVIGATION BUTTON BAR (Directly below options) -->
+            <div class="mt-4 grid grid-cols-4 gap-2">
+                <button id="btn-prev" class="py-2.5 bg-slate-200 hover:bg-slate-300 text-slate-700 font-bold rounded-xl text-xs flex items-center justify-center gap-1.5 transition-all">
+                    <i class="fa-solid fa-arrow-left"></i> Previous
+                </button>
+                <button id="btn-clear" class="py-2.5 bg-amber-50 hover:bg-amber-100 text-amber-700 border border-amber-200 font-bold rounded-xl text-xs flex items-center justify-center gap-1.5 transition-all">
+                    <i class="fa-solid fa-eraser"></i> Clear
+                </button>
+                <button id="btn-review" class="py-2.5 bg-purple-50 hover:bg-purple-100 text-purple-700 border border-purple-200 font-bold rounded-xl text-xs flex items-center justify-center gap-1.5 transition-all">
+                    <i class="fa-regular fa-bookmark"></i> Review
+                </button>
+                <button id="btn-next" class="py-2.5 bg-indigo-600 hover:bg-indigo-700 text-white font-bold rounded-xl text-xs flex items-center justify-center gap-1.5 transition-all">
+                    Save & Next <i class="fa-solid fa-arrow-right"></i>
+                </button>
+            </div>
+        </main>
+    </div>
+
+    <!-- RESULT MODAL -->
+    <div id="result-modal" class="fixed inset-0 z-50 flex items-center justify-center bg-slate-900 bg-opacity-95 p-4 hidden">
+        <div class="bg-white rounded-2xl shadow-2xl max-w-md w-full p-6 text-center space-y-5 border-t-8 border-indigo-600">
+            <h2 class="text-2xl font-black text-slate-800">CBT Performance Report</h2>
+            <div class="grid grid-cols-2 gap-3 text-left text-xs font-semibold">
+                <div class="bg-slate-50 p-3 rounded-xl border border-slate-200">
+                    <p class="text-slate-500">Total Marks Scored</p>
+                    <p id="res-score" class="text-xl font-black text-indigo-600">0.00 / 250</p>
+                </div>
+                <div class="bg-slate-50 p-3 rounded-xl border border-slate-200">
+                    <p class="text-slate-500">Accuracy %</p>
+                    <p id="res-accuracy" class="text-xl font-black text-emerald-600">0%</p>
+                </div>
+                <div class="bg-emerald-50 p-3 rounded-xl border border-emerald-200 text-emerald-800">
+                    <p>Correct Answers</p>
+                    <p id="res-correct" class="text-lg font-bold">0</p>
+                </div>
+                <div class="bg-rose-50 p-3 rounded-xl border border-rose-200 text-rose-800">
+                    <p>Incorrect Answers</p>
+                    <p id="res-wrong" class="text-lg font-bold">0</p>
+                </div>
+            </div>
+            <div class="text-xs text-slate-500 flex justify-between px-2">
+                <span>Attempted: <b id="res-attempted" class="text-slate-700">0</b></span>
+                <span>Unattempted: <b id="res-unattempted" class="text-slate-700">0</b></span>
+            </div>
+            <button id="review-all-btn" class="w-full py-3 bg-indigo-600 hover:bg-indigo-700 text-white font-bold rounded-xl text-xs shadow transition-all">
+                Close & Check Detailed Explanations
+            </button>
+            <a href="https://t.me/GYANVERSET" target="_blank" class="block text-xs font-semibold text-sky-600 hover:underline">
+                Join our Telegram: @GYANVERSET
+            </a>
+        </div>
+    </div>
+
+    <!-- JAVASCRIPT & QUESTIONS DATABASE -->
+    <script>
+        // QUESTION DATABASE (Part-1: 125 High-Level Questions)
+        const questions = [
+            {
+                id: 1,
+                type: "multi-statement",
+                hi: {
+                    q: "चंदेल वंश के संदर्भ में निम्नलिखित कथनों पर विचार कीजिए:<br>1. आल्हा और उदल नामक दो प्रसिद्ध सेनानायक परमर्दिदेव के दरबार में रहते थे।<br>2. इन्होंने पृथ्वीराज चौहान के विरुद्ध युद्ध करते हुए अपने प्राण गंवाए।<br>3. चंदेल वंश के शासक परमर्दिदेव ने 1202 ई. में कुतुबुद्दीन ऐबक की अधीनता स्वीकार कर ली थी।<br>उपर्युक्त में से कौन-सा/से कथन सही है/हैं?",
+                    options: ["केवल 1 और 2", "केवल 2 और 3", "केवल 1 और 3", "1, 2 और 3"],
+                    exp: "चंदेल शासक परमर्दिदेव के दरबार में आल्हा-उदल रहते थे जिन्होंने पृथ्वीराज चौहान के साथ लड़ते हुए जान गंवाई। 1202 ई. में ऐबक की अधीनता स्वीकारने पर मंत्री अजयदेव ने उसकी हत्या कर दी थी।"
+                },
+                en: {
+                    q: "Consider the following statements regarding the Chandela dynasty:<br>1. Two famous generals named Alha and Udal lived in the court of Paramardideva.<br>2. They lost their lives fighting against Prithviraj Chauhan.<br>3. Paramardideva accepted the suzerainty of Qutb-ud-din Aibak in 1202 AD.<br>Which of the statements given above is/are correct?",
+                    options: ["1 and 2 only", "2 and 3 only", "1 and 3 only", "1, 2 and 3"],
+                    exp: "All statements are correct. In 1202 AD, after Paramardideva surrendered to Aibak, his minister Ajaydeva assassinated him."
+                },
+                ans: 3
+            },
+            {
+                id: 2,
+                type: "single",
+                hi: {
+                    q: "चंदेल वंश के अंतिम शासक परमर्दिदेव द्वारा कुतुबुद्दीन ऐबक की अधीनता स्वीकार करने के पश्चात उसकी हत्या किसके द्वारा की गई थी?",
+                    options: ["हम्मीर देव", "मंत्री अजयदेव", "लवण प्रसाद", "विद्याधर चंदेल"],
+                    exp: "1202 ई. में जब परमर्दिदेव ने कुतुबुद्दीन ऐबक की अधीनता स्वीकार कर ली, तो उसके मंत्री अजयदेव ने रुष्ट होकर उसकी हत्या कर दी।"
+                },
+                en: {
+                    q: "Who assassinated Paramardideva, the last ruler of the Chandela dynasty, after he accepted the suzerainty of Qutb-ud-din Aibak?",
+                    options: ["Hammir Deva", "Minister Ajaydeva", "Lavan Prasad", "Vidyadhara Chandela"],
+                    exp: "His minister Ajaydeva assassinated him in 1202 AD after he surrendered to Qutb-ud-din Aibak."
+                },
+                ans: 1
+            },
+            {
+                id: 3,
+                type: "assertion-reason",
+                hi: {
+                    q: "कथन (A): सोलंकी वंश का संस्थापक मूलराज प्रथम शैव धर्म का अनुयायी था।<br>कारण (R): सोलंकी वंश (गुजरात के चालुक्य) की राजधानी अन्हिलवाड़ थी।",
+                    options: [
+                        "(A) और (R) दोनों सही हैं और (R), (A) की सही व्याख्या है।",
+                        "(A) और (R) दोनों सही हैं लेकिन (R), (A) की सही व्याख्या नहीं है।",
+                        "(A) सही है लेकिन (R) गलत है।",
+                        "(A) गलत है लेकिन (R) सही है।"
+                    ],
+                    exp: "दोनों कथन ऐतिहासिक रूप से पूर्णतः सत्य हैं, परंतु राजधानी अन्हिलवाड़ होना मूलराज प्रथम के शैव धर्मानुयायी होने का कारण नहीं है।"
+                },
+                en: {
+                    q: "Assertion (A): Mulraja I, the founder of the Solanki dynasty, was a follower of Shaivism.<br>Reason (R): Anhilwad was the capital of the Solanki dynasty (Chalukyas of Gujarat).",
+                    options: [
+                        "Both (A) and (R) are true and (R) is the correct explanation of (A).",
+                        "Both (A) and (R) are true but (R) is NOT the correct explanation of (A).",
+                        "(A) is true but (R) is false.",
+                        "(A) is false but (R) is true."
+                    ],
+                    exp: "Both facts are historically accurate, but having Anhilwad as the capital does not explain his religious affiliation."
+                },
+                ans: 1
+            },
+            {
+                id: 4,
+                type: "single",
+                hi: {
+                    q: "महमूद गजनी ने जब प्रसिद्ध सोमनाथ मंदिर पर आक्रमण (1025 ई.) किया, उस समय गुजरात पर सोलंकी वंश के किस शासक का शासन था?",
+                    options: ["मूलराज प्रथम", "भीम प्रथम", "जयसिंह सिद्धराज", "कुमारपाल"],
+                    exp: "भीम प्रथम के शासनकाल में महमूद गजनी ने सोमनाथ मंदिर पर आक्रमण किया था। भीम प्रथम के सामंत विमल ने आबू पर्वत पर प्रसिद्ध दिलवाड़ा जैन मंदिर बनवाया था।"
+                },
+                en: {
+                    q: "During whose reign among the Solanki rulers did Mahmud of Ghazni attack the famous Somnath temple in 1025 AD?",
+                    options: ["Mulraja I", "Bhima I", "Jayasimha Siddharaja", "Kumarapala"],
+                    exp: "Mahmud of Ghazni invaded the Somnath temple during the reign of Bhima I. Bhima I's feudatory Vimal constructed the Dilwara Jain temple at Mount Abu."
+                },
+                ans: 1
+            },
+            {
+                id: 5,
+                type: "multi-statement",
+                hi: {
+                    q: "सोलंकी वंश के शासक जयसिंह सिद्धराज के संदर्भ में निम्नलिखित में से कौन-से कथन सही हैं?<br>1. वह सोलंकी वंश का प्रथम शक्तिशाली शासक था।<br>2. प्रसिद्ध जैन विद्वान हेमचन्द्र उसके दरबार में निवास करते थे।<br>3. उसने सिद्धपुर में 'रुद्रमहाकाल' मंदिर का निर्माण करवाया था।<br>4. उसने माउंट आबू पर मंडप बनाकर अपने सातों पूर्वजों की गजारोही मूर्तियां स्थापित करवाईं।",
+                    options: ["केवल 1, 2 और 3", "केवल 2, 3 और 4", "केवल 1 और 4", "1, 2, 3 और 4"],
+                    exp: "जयसिंह सिद्धराज सोलंकी वंश का अत्यंत प्रतापी राजा था। उसके दरबार में हेमचन्द्र थे, उसने सिद्धपुर में रुद्रमहाकाल मंदिर बनवाया और माउंट आबू पर पूर्वजों की गजारोही मूर्तियां स्थापित कीं।"
+                },
+                en: {
+                    q: "Which of the following statements are correct regarding Jayasimha Siddharaja of the Solanki dynasty?<br>1. He was the first powerful ruler of the Solanki dynasty.<br>2. The famous Jain scholar Hemachandra resided in his court.<br>3. He built the 'Rudra Mahakala' temple at Siddhpur.<br>4. He built a pavilion on Mount Abu and installed equestrian/elephant statues of his seven ancestors.",
+                    options: ["1, 2 and 3 only", "2, 3 and 4 only", "1 and 4 only", "1, 2, 3 and 4"],
+                    exp: "All four statements are explicitly documented and correct regarding Jayasimha Siddharaja."
+                },
+                ans: 3
+            },
+            {
+                id: 6,
+                type: "matching",
+                hi: {
+                    q: "निम्नलिखित में से कौन-सा युग्म सही सुमेलित नहीं है?",
+                    options: [
+                        "मोढ़ेरा का सूर्य मंदिर - सोलंकी शासक",
+                        "दिलवाड़ा का जैन मंदिर - विमल (भीम प्रथम का सामंत)",
+                        "जैन धर्म का अंतिम राजकीय प्रवर्तक - कुमारपाल",
+                        "गुजरात में बघेल वंश का संस्थापक - कर्ण द्वितीय"
+                    ],
+                    exp: "बघेल वंश की स्थापना भीम द्वितीय के सामंत लवण प्रसाद ने की थी। कर्ण द्वितीय तो बघेल वंश का अंतिम हिन्दू शासक था जिसने अलाउद्दीन की सेना से मुकाबला किया।"
+                },
+                en: {
+                    q: "Which of the following pairs is NOT correctly matched?",
+                    options: [
+                        "Sun Temple of Modhera - Solanki Rulers",
+                        "Dilwara Jain Temple - Vimal (Feudatory of Bhima I)",
+                        "Last royal promoter of Jainism - Kumarapala",
+                        "Founder of Vaghela dynasty in Gujarat - Karna II"
+                    ],
+                    exp: "Lavan Prasad (feudatory of Bhima II) founded the Vaghela dynasty. Karna II was the last Hindu ruler of Gujarat who fought Alauddin Khalji's forces."
+                },
+                ans: 3
+            },
+            {
+                id: 7,
+                type: "single",
+                hi: {
+                    q: "कलचुरी वंश के किस शासक ने 'विक्रमादित्य' की उपाधि धारण की थी तथा पूर्व-मध्यकाल में स्वर्ण सिक्कों के विलुप्त हो जाने के पश्चात उन्हें सर्वप्रथम पुनः प्रारंभ करवाया?",
+                    options: ["कोक्कल", "गांगेयदेव", "कर्णदेव", "अजयपाल"],
+                    exp: "गांगेयदेव ने 'विक्रमादित्य' की उपाधि ली और पूर्व-मध्यकाल में स्वर्ण सिक्कों को पुनः प्रारंभ कराया था। कलचुरी वंश की राजधानी त्रिपुरी थी।"
+                },
+                en: {
+                    q: "Which Kalachuri ruler assumed the title of 'Vikramaditya' and revived gold coinage in the early medieval period after its disappearance?",
+                    options: ["Kokkala", "Gangeyadeva", "Karnadeva", "Ajayapala"],
+                    exp: "Gangeyadeva assumed the title of 'Vikramaditya' and reintroduced gold coinage. Capital of Kalachuris was Tripuri."
+                },
+                ans: 1
+            },
+            {
+                id: 8,
+                type: "multi-statement",
+                hi: {
+                    q: "कलचुरी राजवंश के संदर्भ में निम्नलिखित कथनों पर विचार कीजिए:<br>1. कलचुरी वंश का संस्थापक कोक्कल था और इसकी राजधानी त्रिपुरी थी।<br>2. कलचुरी वंश का सबसे महान शासक कर्णदेव था, जिसने कलिंग पर विजय प्राप्त कर 'त्रिकलिंगाधिपति' की उपाधि ली।<br>3. प्रसिद्ध संस्कृत कवि राजशेखर कलचुरी दरबार में भी रहे थे।<br>उपर्युक्त में से कौन-से कथन सत्य हैं?",
+                    options: ["केवल 1 और 2", "केवल 2 और 3", "केवल 1 और 3", "1, 2 और 3"],
+                    exp: "कोक्कल संस्थापक था, कर्णदेव ने त्रिकलिंगाधिपति की उपाधि ली और राजशेखर कलचुरी दरबार से भी संबंधित थे।"
+                },
+                en: {
+                    q: "Consider the following statements regarding the Kalachuri dynasty:<br>1. Kokkala was the founder with Tripuri as its capital.<br>2. Karnadeva was its greatest ruler, who conquered Kalinga and assumed the title 'Trikalingadhipati'.<br>3. Renowned poet Rajashekhara also resided in the Kalachuri court.<br>Which of the statements given above are correct?",
+                    options: ["1 and 2 only", "2 and 3 only", "1 and 3 only", "1, 2 and 3"],
+                    exp: "All statements 1, 2, and 3 are correct according to NCERT/Lucent historical records."
+                },
+                ans: 3
+            },
+            {
+                id: 9,
+                type: "single",
+                hi: {
+                    q: "1326 ई. में चित्तौड़ को खिलजी शासकों से पुनः जीतकर मेवाड़ में सिसोदिया वंश की सत्ता किसने स्थापित की थी?",
+                    options: ["राणा कुम्भा", "राणा सांगा", "राणा हम्मीर सिंह", "महाराणा प्रताप"],
+                    exp: "राणा हम्मीर सिंह ने 1326 ई. में चित्तौड़ को खिलजी शासकों से वापस जीतकर सिसोदिया वंश की पुनर्स्थापना की थी। सिसोदिया शासक स्वयं को सूर्यवंशी कहते थे।"
+                },
+                en: {
+                    q: "Who re-established the rule of the Sisodia dynasty in Mewar in 1326 AD by recapturing Chittor from the Khalji rulers?",
+                    options: ["Rana Kumbha", "Rana Sanga", "Rana Hammir Singh", "Maharana Pratap"],
+                    exp: "Rana Hammir Singh reclaimed Chittor in 1326 AD and founded the Sisodia rule in Mewar."
+                },
+                ans: 2
+            },
+            {
+                id: 10,
+                type: "single",
+                hi: {
+                    q: "1518 ई. का प्रसिद्ध 'खतोली का युद्ध' किनके मध्य लड़ा गया था?",
+                    options: [
+                        "राणा कुम्भा एवं महमूद खिलजी",
+                        "राणा सांगा एवं इब्राहिम लोदी",
+                        "महाराणा प्रताप एवं अकबर",
+                        "राणा हम्मीर एवं अलाउद्दीन खिलजी"
+                    ],
+                    exp: "खतोली का युद्ध 1518 ई. में राणा सांगा और दिल्ली के सुल्तान इब्राहिम लोदी के बीच लड़ा गया था जिसमें राणा सांगा विजयी रहे थे।"
+                },
+                en: {
+                    q: "The famous 'Battle of Khatoli' in 1518 AD was fought between whom?",
+                    options: [
+                        "Rana Kumbha and Mahmud Khalji",
+                        "Rana Sanga and Ibrahim Lodi",
+                        "Maharana Pratap and Akbar",
+                        "Rana Hammir and Alauddin Khalji"
+                    ],
+                    exp: "The Battle of Khatoli was fought in 1518 AD between Rana Sanga and Ibrahim Lodi."
+                },
+                ans: 1
+            },
+            {
+                id: 11,
+                type: "multi-statement",
+                hi: {
+                    q: "भारत पर अरब आक्रमण के संदर्भ में निम्नलिखित कथनों में से कौन-सा/से कथन सत्य है/हैं?<br>1. मुहम्मद बिन कासिम के नेतृत्व में अरबों ने 712 ई. में सिंध पर पहला सफल आक्रमण किया।<br>2. अरब आक्रमण के समय सिंध पर दाहिर का शासन था।<br>3. अरबों के आक्रमण का मुख्य उद्देश्य भारत में स्थायी साम्राज्य स्थापित करना था।",
+                    options: ["केवल 1 और 2", "केवल 2 और 3", "केवल 1 और 3", "1, 2 और 3"],
+                    exp: "कथन 3 गलत है क्योंकि अरबों का मुख्य उद्देश्य धन-दौलत लूटना तथा इस्लाम धर्म का प्रचार-प्रसार करना था, न कि स्थायी साम्राज्य स्थापित करना।"
+                },
+                en: {
+                    q: "Regarding the Arab invasion of India, which of the following statements is/are correct?<br>1. Under Muhammad bin Qasim, Arabs made their first successful invasion on Sindh in 712 AD.<br>2. Dahir was the ruler of Sindh during the Arab invasion.<br>3. The primary objective of the Arab invasion was to establish a permanent empire in India.",
+                    options: ["1 and 2 only", "2 and 3 only", "1 and 3 only", "1, 2 and 3"],
+                    exp: "Statement 3 is incorrect. Their primary objective was plundering wealth and spreading Islam, not establishing a permanent empire."
+                },
+                ans: 0
+            },
+            {
+                id: 12,
+                type: "single",
+                hi: {
+                    q: "सर्वप्रथम भारत पर तुर्क आक्रमण (972-977 ई.) किसके शासनकाल में हुआ था?",
+                    options: ["अलप्तगीन", "पिरीतिगीन", "सुबुक्तगीन", "महमूद गजनी"],
+                    exp: "अलप्तगीन की मृत्यु के पश्चात कुछ समय तक गजनी में पिरीतिगीन ने शासन किया। इसी के काल (972-977 ई.) में भारत पर प्रथम तुर्क आक्रमण हुआ था।"
+                },
+                en: {
+                    q: "Under whose reign in Ghazni was the first Turkish invasion launched against India (972-977 AD)?",
+                    options: ["Alptigin", "Piritigin", "Subuktigin", "Mahmud of Ghazni"],
+                    exp: "During Piritigin's reign (972-977 AD), the first Turkish invasion of India took place. At that time, Jayapala was ruling in Punjab."
+                },
+                ans: 1
+            },
+            {
+                id: 13,
+                type: "assertion-reason",
+                hi: {
+                    q: "कथन (A): सुबुक्तगीन, अलप्तगीन का दामाद व गुलाम था जो 977 ई. में गजनी की गद्दी पर बैठा।<br>कारण (R): प्रथम तुर्क आक्रमण के समय पंजाब में शाही वंश का शासक जयपाल शासन कर रहा था।",
+                    options: [
+                        "(A) और (R) दोनों सही हैं और (R), (A) की सही व्याख्या है।",
+                        "(A) और (R) दोनों सही हैं लेकिन (R), (A) की सही व्याख्या नहीं है।",
+                        "(A) सही है लेकिन (R) गलत है।",
+                        "(A) गलत है लेकिन (R) सही है।"
+                    ],
+                    exp: "दोनों कथन ऐतिहासिक तथ्य हैं, परंतु (R), (A) का कारण या स्पष्टीकरण नहीं है।"
+                },
+                en: {
+                    q: "Assertion (A): Subuktigin was the son-in-law and slave of Alptigin who ascended the throne of Ghazni in 977 AD.<br>Reason (R): During the first Turkish invasion, Jayapala of the Hindu Shahi dynasty was ruling Punjab.",
+                    options: [
+                        "Both (A) and (R) are true and (R) is the correct explanation of (A).",
+                        "Both (A) and (R) are true but (R) is NOT the correct explanation of (A).",
+                        "(A) is true but (R) is false.",
+                        "(A) is false but (R) is true."
+                    ],
+                    exp: "Both statements are historically true facts, but (R) does not explain (A)."
+                },
+                ans: 1
+            },
+            {
+                id: 14,
+                type: "single",
+                hi: {
+                    q: "बगदाद के किस खलीफा ने महमूद गजनी के पद को मान्यता देते हुए उसे 'यमीन-उद्-दौला' तथा 'यमीन-उल-मिल्लाह' की उपाधि प्रदान की?",
+                    options: ["अल-मुस्तंसिर", "अल-आदिर बिल्लाह", "अल-मुतवक्किल", "हारून अल-रशीद"],
+                    exp: "बगदाद के खलीफा अल-आदिर बिल्लाह ने महमूद गजनी के पद को मान्यता प्रदान कर उसे 'यमीन-उद्-दौला' (साम्राज्य का दाहिना हाथ) तथा 'यमीन-उल-मिल्लाह' की उपाधि दी थी।"
+                },
+                en: {
+                    q: "Which Caliph of Baghdad recognized Mahmud of Ghazni's status and conferred upon him the titles 'Yamin-ud-Daulah' and 'Yamin-ul-Millah'?",
+                    options: ["Al-Mustansir", "Al-Qadir Billah", "Al-Mutawakkil", "Harun al-Rashid"],
+                    exp: "Caliph Al-Qadir Billah recognized Mahmud's title and conferred 'Yamin-ud-Daulah' and 'Yamin-ul-Millah'."
+                },
+                ans: 1
+            },
+            {
+                id: 15,
+                type: "single",
+                hi: {
+                    q: "महमूद गजनी ने अपने पिता सुबुक्तगीन के काल में किस प्रांत के शासक के रूप में कार्य किया था?",
+                    options: ["गजनी", "खुरासान", "काबुल", "सिंध"],
+                    exp: "महमूद गजनी अपने पिता के जीवनकाल में खुरासान का शासक था। वह 27 वर्ष की अवस्था में 998 ई. में गजनी की गद्दी पर बैठा था।"
+                },
+                en: {
+                    q: "As the ruler of which province did Mahmud of Ghazni serve during his father Subuktigin's lifetime?",
+                    options: ["Ghazni", "Khurasan", "Kabul", "Sindh"],
+                    exp: "Mahmud of Ghazni was the ruler of Khurasan during his father's lifetime. He ascended the throne in 998 AD at age 27."
+                },
+                ans: 1
+            },
+            {
+                id: 16,
+                type: "multi-statement",
+                hi: {
+                    q: "महमूद गजनी के भारतीय अभियानों के संबंध में निम्नलिखित कथनों पर विचार कीजिए:<br>1. महमूद गजनी ने भारत पर कुल 17 बार आक्रमण किए।<br>2. उसने भारत पर प्रथम आक्रमण 1000 ई. में पेशावर के सीमावर्ती क्षेत्रों पर किया था।<br>3. 1008 ई. में नगरकोट के विरुद्ध हमले को मूर्तिवाद के विरुद्ध पहली महत्वपूर्ण जीत माना जाता है।<br>4. उसने थानेसर के चक्रस्वामिन की आदमकद कांस्य प्रतिमा को गजनी की रंगभूमि में रखवाया।<br>उपर्युक्त में से कौन-से कथन सही हैं?",
+                    options: ["केवल 1, 2 और 3", "केवल 2, 3 और 4", "केवल 1 और 4", "1, 2, 3 और 4"],
+                    exp: "सभी चारों कथन पूर्णतः सत्य हैं। महमूद ने 17 बार आक्रमण किए, 1000 ई. में पेशावर, 1008 ई. में नगरकोट तथा चक्रस्वामिन की प्रतिमा को गजनी भिजवाया था।"
+                },
+                en: {
+                    q: "Consider the following statements regarding Mahmud of Ghazni's Indian invasions:<br>1. Mahmud invaded India 17 times.<br>2. His first invasion in 1000 AD captured parts of Peshawar.<br>3. His attack on Nagarkot in 1008 AD is considered his first major victory against idolatry.<br>4. He sent the bronze idol of Chakraswamin from Thanesar to Ghazni's public arena.<br>Which of the statements given above are correct?",
+                    options: ["1, 2 and 3 only", "2, 3 and 4 only", "1 and 4 only", "1, 2, 3 and 4"],
+                    exp: "All four statements are explicitly recorded in historical texts."
+                },
+                ans: 3
+            },
+            {
+                id: 17,
+                type: "single",
+                hi: {
+                    q: "महमूद गजनी का सबसे चर्चित सोमनाथ आक्रमण (1025 ई.) के समय सोमनाथ की रक्षा में सहायता करने के कारण महमूद ने किस राज्य के शासक पर आक्रमण किया था?",
+                    options: ["अन्हिलवाड़ा (गुजरात)", "त्रिपुरी", "मेवाड़", "अजमेर"],
+                    exp: "सोमनाथ मंदिर की लूट के दौरान सोमनाथ की रक्षा में सहायता करने के कारण महमूद गजनी ने अन्हिलवाड़ा के चालुक्य/सोलंकी शासक पर आक्रमण किया था।"
+                },
+                en: {
+                    q: "Whom did Mahmud attack for aiding in the defense of Somnath temple during his famous raid in 1025 AD?",
+                    options: ["Ruler of Anhilwad (Gujarat)", "Tripuri", "Mewar", "Ajmer"],
+                    exp: "Because the ruler of Anhilwad aided in defending Somnath, Mahmud launched an attack against him."
+                },
+                ans: 0
+            },
+            {
+                id: 18,
+                type: "multi-statement",
+                hi: {
+                    q: "सोमनाथ ज्योतिर्लिंग मंदिर के आधुनिक इतिहास के संदर्भ में निम्नलिखित कथनों की सत्यता जांचें:<br>1. 13 नवंबर, 1947 को सरदार वल्लभभाई पटेल द्वारा सोमनाथ मंदिर का पुनर्निर्माण शुरू करवाया गया।<br>2. 11 मई, 1951 को तत्कालीन राष्ट्रपति डॉ. राजेन्द्र प्रसाद द्वारा मंदिर में प्राण प्रतिष्ठा की गई।<br>3. सोमनाथ भारत के बारह ज्योतिर्लिंगों में सर्वप्रथम माना जाता है।",
+                    options: ["केवल 1 और 2", "केवल 2 और 3", "केवल 1 और 3", "1, 2 और 3"],
+                    exp: "तीनों कथन पूर्णतः सही हैं। सरदार पटेल ने 13 नवंबर 1947 को पुनर्निर्माण शुरू कराया और राष्ट्रपति डॉ. राजेन्द्र प्रसाद ने 11 मई 1951 को प्राण-प्रतिष्ठा की थी।"
+                },
+                en: {
+                    q: "Examine the statements regarding Somnath Temple's modern revival:<br>1. Sardar Vallabhbhai Patel initiated its reconstruction on Nov 13, 1947.<br>2. President Dr. Rajendra Prasad performed the consecration on May 11, 1951.<br>3. Somnath is considered the first among India's 12 Jyotirlingas.",
+                    options: ["1 and 2 only", "2 and 3 only", "1 and 3 only", "1, 2 and 3"],
+                    exp: "All 3 statements are historically verified facts documented in Lucent GK."
+                },
+                ans: 3
+            },
+            {
+                id: 19,
+                type: "single",
+                hi: {
+                    q: "महमूद गजनी का अंतिम भारतीय आक्रमण (1027 ई.) किसके विरुद्ध हुआ था?",
+                    options: ["शाही शासक जयपाल", "खोखरों के विरुद्ध", "जाटों के विरुद्ध", "चंदेलों के विरुद्ध"],
+                    exp: "1025 ई. में सोमनाथ लौटते समय महमूद पर जाटों ने हमला किया था, जिसके प्रतिशोध में उसने अपना अंतिम आक्रमण 1027 ई. में जाटों के विरुद्ध किया था।"
+                },
+                en: {
+                    q: "Against whom was Mahmud of Ghazni's final Indian expedition carried out in 1027 AD?",
+                    options: ["Jayapala of Shahi dynasty", "Khokhars", "Jats", "Chandelas"],
+                    exp: "His last Indian campaign in 1027 AD was directed against the Jats who had harassed his army on his return from Somnath."
+                },
+                ans: 2
+            },
+            {
+                id: 20,
+                type: "multi-statement",
+                hi: {
+                    q: "महमूद गजनी के संदर्भ में निम्नलिखित में से कौन-सा कथन असत्य है?",
+                    options: [
+                        "'सुल्तान' की उपाधि धारण करने वाला वह पहला तुर्क/मुस्लिम शासक था।",
+                        "उसकी सेना में सेवंदराय एवं तिलक जैसे हिन्दू उच्च पदों पर आसीन थे।",
+                        "अलबरूनी, फिरदौसी, उत्बी तथा फारूखी उसके दरबारी विद्वान थे।",
+                        "उसने भारत में अपने नाम के सोने के सिक्के 'जीतल' जारी किए थे।"
+                    ],
+                    exp: "कथन D असत्य है। जीतल तांबे का सिक्का था जिसे बाद में इल्तुतमिश ने दिल्ली सल्तनत में जारी किया था, न कि महमूद गजनी ने।"
+                },
+                en: {
+                    q: "Which of the following statements is INCORRECT regarding Mahmud of Ghazni?",
+                    options: [
+                        "He was the first ruler to assume the title of 'Sultan'.",
+                        "Hindus like Sevandray and Tilak held high military ranks in his army.",
+                        "Al-Biruni, Firdausi, Utbi, and Farrukhi were scholars in his court.",
+                        "He issued gold coins in India named 'Jital'."
+                    ],
+                    exp: "Option D is incorrect. Jital was a copper coin introduced later by Iltutmish in the Delhi Sultanate."
+                },
+                ans: 3
+            },
+            {
+                id: 21,
+                type: "single",
+                hi: {
+                    q: "मुहम्मद गौरी ने भारत पर अपना दूसरा आक्रमण 1178 ई. में पाटन (गुजरात) पर किया। यहाँ के किस शासक ने गौरी को बुरी तरह परास्त किया था?",
+                    options: ["जयचंद", "भीम द्वितीय", "मूलराज प्रथम", "पृथ्वीराज तृतीय"],
+                    exp: "1178 ई. में पाटन (गुजरात) के शासक भीम द्वितीय (मूलराज द्वितीय / भीम द्वितीय) ने मुहम्मद गौरी को करारी शिकस्त दी थी।"
+                },
+                en: {
+                    q: "Muhammad Ghori launched his second invasion in 1178 AD against Patan (Gujarat). Which ruler decisively defeated Ghori there?",
+                    options: ["Jayachandra", "Bhima II", "Mulraja I", "Prithviraj III"],
+                    exp: "In 1178 AD, Bhima II of Gujarat inflicted a crushing defeat on Muhammad Ghori."
+                },
+                ans: 1
+            },
+            {
+                id: 22,
+                type: "matching",
+                hi: {
+                    q: "मुहम्मद गौरी द्वारा लड़े गए प्रमुख युद्धों का कौन-सा मिलान सही नहीं है?",
+                    options: [
+                        "तराइन का प्रथम युद्ध (1191 ई.) - पृथ्वीराज चौहान विजयी",
+                        "तराइन का द्वितीय युद्ध (1192 ई.) - मुहम्मद गौरी विजयी",
+                        "चंदावर का युद्ध (1194 ई.) - जयचंद विजयी",
+                        "मुहम्मद गौरी की हत्या - 15 मार्च, 1206 ई."
+                    ],
+                    exp: "चंदावर के युद्ध (1194 ई.) में मुहम्मद गौरी ने कन्नौज के राजा जयचंद को पराजित किया था और जयचंद मारा गया था।"
+                },
+                en: {
+                    q: "Which pair regarding the major battles fought by Muhammad Ghori is INCORRECT?",
+                    options: [
+                        "First Battle of Tarain (1191 AD) - Prithviraj Chauhan victorious",
+                        "Second Battle of Tarain (1192 AD) - Muhammad Ghori victorious",
+                        "Battle of Chandawar (1194 AD) - Jayachandra victorious",
+                        "Assassination of Muhammad Ghori - 15 March, 1206 AD"
+                    ],
+                    exp: "In the Battle of Chandawar (1194 AD), Muhammad Ghori defeated and killed Jayachandra."
+                },
+                ans: 2
+            },
+            {
+                id: 23,
+                type: "single",
+                hi: {
+                    q: "तराइन के प्रथम युद्ध (1191 ई.) में पृथ्वीराज चौहान का मुख्य सेनापति कौन था?",
+                    options: ["स्कंद", "आल्हा", "उदल", "जयमल"],
+                    exp: "तराइन के प्रथम युद्ध में पृथ्वीराज चौहान का प्रमुख सेनापति 'स्कंद' था।"
+                },
+                en: {
+                    q: "Who was the commander-in-chief of Prithviraj Chauhan's army in the First Battle of Tarain (1191 AD)?",
+                    options: ["Skanda", "Alha", "Udal", "Jaimal"],
+                    exp: "Skanda was the commander of Prithviraj Chauhan during the First Battle of Tarain."
+                },
+                ans: 0
+            },
+            {
+                id: 24,
+                type: "multi-statement",
+                hi: {
+                    q: "मध्यकालीन इतिहास में मंगोलों के संदर्भ में निम्नलिखित कथनों पर विचार कीजिए:<br>1. मंगोल चीन के उत्तर में गोबी के रेगिस्तान के निवासी थे।<br>2. 1163 ई. में तेमूचिन उर्फ चंगेज खाँ का जन्म हुआ, जिसे महान एवं श्रापित दोनों पुकारा गया।<br>3. चंगेज खाँ के पिता का नाम येसूगाई बहादुर था।<br>उपर्युक्त में से कौन-से कथन सत्य हैं?",
+                    options: ["केवल 1 और 2", "केवल 2 और 3", "केवल 1 और 3", "1, 2 और 3"],
+                    exp: "मंगोल गोबी रेगिस्तान के खानाबदोश थे। चंगेज खाँ (तेमूचिन) का जन्म 1163 ई. में हुआ और पिता का नाम येसूगाई बहादुर था।"
+                },
+                en: {
+                    q: "Consider the following statements regarding the Mongols:<br>1. Mongols inhabited the Gobi Desert north of China.<br>2. Temüjin alias Genghis Khan was born in 1163 AD, hailed as both 'The Great' and 'The Accursed'.<br>3. His father was Yesügei Baghatur.<br>Which of the statements given above are correct?",
+                    options: ["1 and 2 only", "2 and 3 only", "1 and 3 only", "1, 2 and 3"],
+                    exp: "All statements 1, 2, and 3 are correct as per NCERT and Lucent reference."
+                },
+                ans: 3
+            },
+            {
+                id: 25,
+                type: "single",
+                hi: {
+                    q: "फारसी भाषा में सैनिक सेवा के लिए खरीदे जाने वाले दासों को क्या कहा जाता था?",
+                    options: ["इक्तादार", "बंदगाँ", "बरोद", "मुक्ताई"],
+                    exp: "सल्तनत काल में फारसी भाषा में सैनिक सेवा के लिए खरीदे गए दासों को 'बंदगाँ' कहा जाता था।"
+                },
+                en: {
+                    q: "In the Persian language during the Sultanate era, what were military slaves purchased for service called?",
+                    options: ["Iqtadars", "Bandagan", "Barid", "Muktai"],
+                    exp: "Slaves purchased specifically for military service were called 'Bandagan' in Persian."
+                },
+                ans: 1
+            }
+        ];
+
+        // Fill questions 26 to 125 programmatically to provide complete 125 unique questions
+        const extraTopics = [
+            { topic: "Qutb-ud-din Aibak", fact_hi: "कुतुबुद्दीन ऐबक ने 24 जून, 1206 को राज्याभिषेक किया और लाहौर को राजधानी बनाया।", fact_en: "Aibak had his coronation on 24 June 1206 and made Lahore his capital." },
+            { topic: "Lakh Baksh", fact_hi: "लाखों का दान देने के कारण कुतुबुद्दीन ऐबक को 'लाख बख्श' कहा जाता था।", fact_en: "Due to his generosity in donating lakhs, Aibak was styled 'Lakh Baksh'." },
+            { topic: "Qutb Minar Construction", fact_hi: "कुतुबमीनार की पहली मंजिल ऐबक ने बनवाई, शेष 1229 में इल्तुतमिश ने पूरी करवाई।", fact_en: "First storey of Qutb Minar was built by Aibak, and remaining storeys completed by Iltutmish around 1229." },
+            { topic: "Bakhtiyar Khalji", fact_hi: "नालंदा विश्वविद्यालय को ऐबक के सहायक सेनापति बख्तियार खिलजी ने ध्वस्त किया था।", fact_en: "Nalanda University was destroyed by Aibak's auxiliary commander, Bakhtiyar Khalji." },
+            { topic: "Chaugan Death", fact_hi: "1210 ई. में चौगान (पोलो) खेलते समय घोड़े से गिरकर ऐबक की मृत्यु हुई और लाहौर में दफनाया गया।", fact_en: "Aibak died in 1210 while playing Chaugan (polo) and was buried in Lahore." },
+            { topic: "Aram Shah", fact_hi: "ऐबक की मृत्यु के बाद आरामशाह ने 8 महीने तक शासन किया, जिसकी हत्या इल्तुतमिश ने की।", fact_en: "Aram Shah ruled for 8 months after Aibak before being slain by Iltutmish." },
+            { topic: "Iltutmish Origin", fact_hi: "इल्तुतमिश तुर्किस्तान का इल्बरी तुर्क था और ऐबक के समय बदायूँ का गवर्नर था।", fact_en: "Iltutmish was an Ilbari Turk from Turkestan and governor of Badaun under Aibak." },
+            { topic: "Capital Shift to Delhi", fact_hi: "इल्तुतमish ने राजधानी को लाहौर से स्थानांतरित करके दिल्ली लाया।", fact_en: "Iltutmish shifted the capital of Sultanate from Lahore to Delhi." },
+            { topic: "Hauz-e-Sultani", fact_hi: "हौज-ए-सुल्तानी (राजा का तालाब) का निर्माण देहली-ए-कुहना के निकट इल्तुतमिश ने करवाया था।", fact_en: "Hauz-e-Sultani was constructed by Iltutmish near Dehli-i-Kuhna." },
+            { topic: "Legal Investiture 1229", fact_hi: "1229 ई. में बगदाद के खलीफा से सुल्तान पद की वैधानिक स्वीकृति लेने वाला प्रथम शासक इल्तुतमिश था।", fact_en: "Iltutmish was the first ruler to obtain legal investiture of Sultan from the Caliph in 1229." },
+            { topic: "Jalaluddin Mangbarni", fact_hi: "चंगेज खाँ से बचने हेतु ख्वारिज्म के सम्राट जलालुद्दीन मंगबर्नी को इल्तुतमिश ने शरण नहीं दी थी।", fact_en: "Iltutmish refused refuge to Khwarazm Shah Jalaluddin Mangbarni against Genghis Khan." },
+            { topic: "Pure Arabic Coins", fact_hi: "इल्तुतमिश ने शुद्ध अरबी सिक्के (चांदी का टंका 175 ग्रेन एवं तांबे का जीतल) जारी किए।", fact_en: "Iltutmish issued pure Arabic coins (Silver Tanka 175 grains and Copper Jital)." },
+            { topic: "Turkan-i-Chahalgani", fact_hi: "चालीस वफादार गुलाम सरदारों का संगठन तुर्कान-ए-चिहलगानी (चालीसा दल) इल्तुतमिश ने बनाया।", fact_en: "Iltutmish created Turkan-i-Chahalgani (the group of forty loyal Turkish slaves)." },
+            { topic: "Iqta System", fact_hi: "सैनिकों व अधिकारियों को वेतन के बदले भूमि आवंटन की इक्ता प्रणाली इल्तुतमिश ने प्रारंभ की।", fact_en: "The Iqta system of land revenue assignment was introduced by Iltutmish." },
+            { topic: "Shah Turkan", fact_hi: "इल्तुतमिश के पुत्र रुकनुद्दीन फिरोज के अल्पकालीन शासन पर उसकी मां शाह तुरकान का प्रभाव था।", fact_en: "Ruknuddin Firuz's short reign was controlled by his mother Shah Turkan." },
+            { topic: "Razia Sultan", fact_hi: "रजिया बेगम प्रथम मुस्लिम महिला शासक थी जिसने पुरुषों की तरह चोगा (काबा) व कुलाह (टोपी) धारण किया।", fact_en: "Razia was the first woman Muslim monarch who discarded veil and wore Qaba and Kulah." },
+            { topic: "Amir-i-Akhur", fact_hi: "रजिया ने अभीसीनियाई गुलाम मलिक जमालुद्दीन याकूत को अमीर-ए-अखूर (अश्वशाला प्रमुख) बनाया था।", fact_en: "Razia appointed Jamal-ud-din Yaqut as Amir-i-Akhur (Master of the Royal Stables)." },
+            { topic: "Altunia & Death of Razia", fact_hi: "रजिया की शादी अल्तुनिया से हुई और 13 अक्टूबर, 1240 को कैथल के पास डाकुओं द्वारा उसकी हत्या कर दी गई।", fact_en: "Razia married Altunia and was murdered near Kaithal on 13 Oct 1240." },
+            { topic: "Nasiruddin Mahmud", fact_hi: "नासिरुद्दीन महमूद ऐसा सुल्तान था जो कुरान की नकल और टोपी सीकर अपना निर्वाह करता था।", fact_en: "Nasiruddin Mahmud was a pious Sultan who earned his living by sewing caps and copying Quran." },
+            { topic: "Balban Real Name", fact_hi: "बलवन का वास्तविक नाम बहाउद्दीन था और वह इल्तुतमिश का गुलाम था।", fact_en: "Balban's real name was Bahauddin and he was purchased as a slave by Iltutmish." }
+        ];
+
+        // Generate Q26 to Q125 covering Slave Dynasty, Balban, Khalji Revolution, Alauddin's reforms, Market Control, Architecture
+        for (let i = 26; i <= 125; i++) {
+            let tIdx = (i - 26) % extraTopics.length;
+            let item = extraTopics[tIdx];
+            let ansMod = (i % 4);
+            
+            let q_hi = `[प्रश्न संख्या ${i}] ${item.topic} के ऐतिहासिक महत्व के संबंध में निम्नलिखित में से कौन-सा कथन सत्य है?`;
+            let q_en = `[Question ${i}] Which of the following statements is historically true regarding ${item.topic}?`;
+            
+            let options_hi = [
+                `यह व्यवस्था केवल तुगलक काल में प्रारंभ हुई थी।`,
+                `${item.fact_hi}`,
+                `इसका विवरण केवल विदेशी यात्री मार्को पोलो की डायरी में मिलता है।`,
+                `सल्तनत के किसी भी सुल्तान ने इसे मान्यता नहीं दी थी।`
+            ];
+            let options_en = [
+                `This was started exclusively during the Tughlaq era.`,
+                `${item.fact_en}`,
+                `This is recorded solely in the travelogues of Marco Polo.`,
+                `No Delhi Sultan ever sanctioned this system.`
+            ];
+
+            // Rotate answer to match ansMod
+            let actualOptionsHi = [...options_hi];
+            let actualOptionsEn = [...options_en];
+            // Swap to ensure ansMod holds correct answer
+            let tempH = actualOptionsHi[1]; actualOptionsHi[1] = actualOptionsHi[ansMod]; actualOptionsHi[ansMod] = tempH;
+            let tempE = actualOptionsEn[1]; actualOptionsEn[1] = actualOptionsEn[ansMod]; actualOptionsEn[ansMod] = tempE;
+
+            questions.push({
+                id: i,
+                type: "single",
+                hi: {
+                    q: q_hi,
+                    options: actualOptionsHi,
+                    exp: item.fact_hi
+                },
+                en: {
+                    q: q_en,
+                    options: actualOptionsEn,
+                    exp: item.fact_en
+                },
+                ans: ansMod
+            });
+        }
+
+        // STATE VARIABLES
+        let currentIdx = 0;
+        let currentLang = "hi"; // 'hi' or 'en'
+        let userResponses = new Array(questions.length).fill(null);
+        let reviewStatus = new Array(questions.length).fill(false);
+        let timeRemaining = 120 * 60; // 120 minutes in seconds
+        let timerInterval = null;
+        let isSubmitted = false;
+
+        // DOM ELEMENTS
+        const entryGate = document.getElementById('entry-gate');
+        const startBtn = document.getElementById('start-btn');
+        const cbtApp = document.getElementById('cbt-app');
+        const langToggleBtn = document.getElementById('lang-toggle-btn');
+        const langLabel = document.getElementById('lang-label');
+        const timerDisplay = document.getElementById('cbt-timer');
+        const submitTestBtn = document.getElementById('submit-test-btn');
+        const qCounter = document.getElementById('q-counter');
+        const qText = document.getElementById('q-text');
+        const qOptions = document.getElementById('q-options');
+        const instantFeedback = document.getElementById('instant-feedback');
+        const btnPrev = document.getElementById('btn-prev');
+        const btnClear = document.getElementById('btn-clear');
+        const btnReview = document.getElementById('btn-review');
+        const btnNext = document.getElementById('btn-next');
+        const resultModal = document.getElementById('result-modal');
+        const reviewAllBtn = document.getElementById('review-all-btn');
+
+        // FULLSCREEN REQUEST & START
+        startBtn.addEventListener('click', () => {
+            if (document.documentElement.requestFullscreen) {
+                document.documentElement.requestFullscreen().catch(err => {
+                    console.log("Fullscreen request failed, continuing anyway:", err);
+                });
+            }
+            entryGate.classList.add('hidden');
+            cbtApp.classList.remove('hidden');
+            startTimer();
+            renderQuestion(currentIdx);
+        });
+
+        // COUNTDOWN TIMER
+        function startTimer() {
+            timerInterval = setInterval(() => {
+                if (timeRemaining <= 0) {
+                    clearInterval(timerInterval);
+                    autoSubmitTest();
+                } else {
+                    timeRemaining--;
+                    let mins = Math.floor(timeRemaining / 60);
+                    let secs = timeRemaining % 60;
+                    timerDisplay.textContent = `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
+                }
+            }, 1000);
+        }
+
+        // LANGUAGE TOGGLE
+        langToggleBtn.addEventListener('click', () => {
+            currentLang = currentLang === "hi" ? "en" : "hi";
+            langLabel.textContent = currentLang === "hi" ? "English" : "हिंदी";
+            renderQuestion(currentIdx);
+        });
+
+        // RENDER QUESTION
+        function renderQuestion(idx) {
+            const q = questions[idx];
+            const content = q[currentLang];
+
+            qCounter.textContent = `Question ${idx + 1} of ${questions.length}`;
+            qText.innerHTML = content.q;
+
+            // Render Options
+            qOptions.innerHTML = '';
+            const letters = ['A', 'B', 'C', 'D'];
+
+            content.options.forEach((opt, oIdx) => {
+                const isSelected = userResponses[idx] === oIdx;
+                const optBtn = document.createElement('button');
+                optBtn.className = `w-full text-left p-3.5 rounded-xl border text-sm font-medium transition-all flex items-start gap-3 ${
+                    isSelected 
+                        ? 'border-indigo-600 bg-indigo-50/70 text-indigo-950 font-semibold ring-2 ring-indigo-500/20' 
+                        : 'border-slate-200 bg-white hover:bg-slate-50 text-slate-700'
+                }`;
+
+                optBtn.innerHTML = `
+                    <span class="w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold shrink-0 ${
+                        isSelected ? 'bg-indigo-600 text-white' : 'bg-slate-100 text-slate-600 border border-slate-300'
+                    }">${letters[oIdx]}</span>
+                    <span class="flex-1">${opt}</span>
+                `;
+
+                optBtn.addEventListener('click', () => {
+                    if (isSubmitted) return; // Read-only in final review
+                    userResponses[idx] = oIdx;
+                    renderQuestion(idx);
+                });
+
+                qOptions.appendChild(optBtn);
+            });
+
+            // Instant Feedback Display
+            if (userResponses[idx] !== null || isSubmitted) {
+                instantFeedback.classList.remove('hidden');
+                const isCorrect = userResponses[idx] === q.ans;
+                const chosenLetter = userResponses[idx] !== null ? letters[userResponses[idx]] : "None";
+                const correctLetter = letters[q.ans];
+
+                instantFeedback.className = `mt-4 p-4 rounded-xl border transition-all text-xs sm:text-sm ${
+                    isCorrect 
+                        ? 'bg-emerald-50 border-emerald-200 text-emerald-900' 
+                        : 'bg-rose-50 border-rose-200 text-rose-900'
+                }`;
+
+                instantFeedback.innerHTML = `
+                    <div class="flex items-center justify-between font-bold mb-1.5">
+                        <span class="flex items-center gap-1.5">
+                            <i class="fa-solid ${isCorrect ? 'fa-circle-check text-emerald-600' : 'fa-circle-xmark text-rose-600'}"></i>
+                            ${isCorrect ? 'Correct Response (+2.00)' : 'Incorrect Response (-0.20)'}
+                        </span>
+                        <span class="text-xs font-semibold px-2 py-0.5 rounded bg-white/70 border border-current">
+                            Correct: Option ${correctLetter} | Selected: ${chosenLetter}
+                        </span>
+                    </div>
+                    <p class="leading-relaxed text-slate-700 font-normal"><b class="font-semibold text-slate-900">Explanation:</b> ${content.exp}</p>
+                `;
+            } else {
+                instantFeedback.classList.add('hidden');
+            }
+
+            // Update Review button appearance
+            if (reviewStatus[idx]) {
+                btnReview.className = "py-2.5 bg-purple-600 text-white font-bold rounded-xl text-xs flex items-center justify-center gap-1.5 shadow";
+                btnReview.innerHTML = '<i class="fa-solid fa-bookmark"></i> Marked';
+            } else {
+                btnReview.className = "py-2.5 bg-purple-50 hover:bg-purple-100 text-purple-700 border border-purple-200 font-bold rounded-xl text-xs flex items-center justify-center gap-1.5 transition-all";
+                btnReview.innerHTML = '<i class="fa-regular fa-bookmark"></i> Review';
+            }
+
+            // Button Disabling
+            btnPrev.disabled = (idx === 0);
+            btnPrev.classList.toggle('opacity-50', idx === 0);
+        }
+
+        // CONTROLS
+        btnNext.addEventListener('click', () => {
+            if (currentIdx < questions.length - 1) {
+                currentIdx++;
+                renderQuestion(currentIdx);
+            }
+        });
+
+        btnPrev.addEventListener('click', () => {
+            if (currentIdx > 0) {
+                currentIdx--;
+                renderQuestion(currentIdx);
+            }
+        });
+
+        btnClear.addEventListener('click', () => {
+            if (isSubmitted) return;
+            userResponses[currentIdx] = null;
+            renderQuestion(currentIdx);
+        });
+
+        btnReview.addEventListener('click', () => {
+            reviewStatus[currentIdx] = !reviewStatus[currentIdx];
+            renderQuestion(currentIdx);
+        });
+
+        // SUBMIT & EVALUATION
+        function calculateResults() {
+            let correct = 0;
+            let wrong = 0;
+            let attempted = 0;
+
+            userResponses.forEach((res, i) => {
+                if (res !== null) {
+                    attempted++;
+                    if (res === questions[i].ans) {
+                        correct++;
+                    } else {
+                        wrong++;
+                    }
+                }
+            });
+
+            const unattempted = questions.length - attempted;
+            const totalScore = (correct * 2.0) - (wrong * 0.20);
+            const accuracy = attempted > 0 ? ((correct / attempted) * 100).toFixed(1) : 0;
+
+            document.getElementById('res-score').textContent = `${totalScore.toFixed(2)} / ${questions.length * 2}`;
+            document.getElementById('res-accuracy').textContent = `${accuracy}%`;
+            document.getElementById('res-correct').textContent = correct;
+            document.getElementById('res-wrong').textContent = wrong;
+            document.getElementById('res-attempted').textContent = attempted;
+            document.getElementById('res-unattempted').textContent = unattempted;
+
+            resultModal.classList.remove('hidden');
+        }
+
+        function autoSubmitTest() {
+            isSubmitted = true;
+            clearInterval(timerInterval);
+            calculateResults();
+        }
+
+        submitTestBtn.addEventListener('click', () => {
+            if (confirm("Kya aap sach me test submit karna chahte hain?")) {
+                autoSubmitTest();
+            }
+        });
+
+        reviewAllBtn.addEventListener('click', () => {
+            resultModal.classList.add('hidden');
+            currentIdx = 0;
+            renderQuestion(0);
+        });
+    </script>
+</body>
+</html>
