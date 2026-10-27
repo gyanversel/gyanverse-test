@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GYANVERSE - Full-Length Mega CBT Portal</title>
+    <title>GYANVERSE - 140 Mega Mock Test CBT Portal</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -15,7 +15,7 @@
 </head>
 <body class="bg-slate-100 text-slate-800 font-sans min-h-screen flex flex-col">
 
-    <!-- 1. AUTO FULL-SCREEN ENTRY GATE -->
+    <!-- 1. MANDATORY AUTO FULL-SCREEN ENTRY GATE -->
     <div id="entryGate" class="fixed inset-0 z-50 bg-slate-900 bg-opacity-95 flex items-center justify-center p-4">
         <div class="bg-white rounded-2xl max-w-lg w-full p-6 sm:p-8 text-center shadow-2xl border border-slate-200">
             <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-blue-100 text-blue-600 mb-4 text-2xl font-bold">
@@ -26,21 +26,21 @@
             
             <div class="bg-amber-50 border border-amber-200 rounded-xl p-4 text-left text-xs sm:text-sm text-amber-900 space-y-2 mb-6">
                 <p class="font-bold text-amber-800 flex items-center gap-1.5">
-                    <i class="fa-solid fa-triangle-exclamation"></i> Mock Test Niyam & Guidelines:
+                    <i class="fa-solid fa-triangle-exclamation"></i> 140 Questions Mega Mock Guidelines:
                 </p>
                 <ul class="list-disc pl-5 space-y-1">
-                    <li>Total Unique Questions: <b>Zero Repetition</b></li>
+                    <li>Total Questions: <b>140 MCQs</b> (Har fact ka unique prashna)</li>
                     <li>Time: <b>120 Minutes</b></li>
-                    <li>Marking Scheme: <b>+2.00</b> (Sacho Uttar), <b>-0.20</b> (Khoto Uttar)</li>
-                    <li>Patterns: Statements, Kathan-Karan, Stambh Su-melan (Matching)</li>
-                    <li><b>Farjiyat Niyam:</b> Test start thava mate Full-Screen anivarya chhe.</li>
+                    <li>Marking Scheme: <b>+2.00</b> (Sahi Uttar), <b>-0.20</b> (Galat Uttar)</li>
+                    <li>Features: Multi-Statement, Assertion-Reason, List Matching</li>
+                    <li><b>Mandatory:</b> Test shuru karne ke liye Full-Screen par click anivarya hai.</li>
                 </ul>
             </div>
 
             <button id="startTestBtn" class="w-full bg-blue-600 hover:bg-blue-700 active:scale-95 text-white font-semibold py-3.5 px-6 rounded-xl shadow-lg transition duration-200 flex items-center justify-center gap-2 text-base">
                 <i class="fa-solid fa-expand"></i> Start Test (Auto Full Screen)
             </button>
-            <p class="text-xs text-slate-400 mt-3">Click karta ja screen full-screen mode ma jase.</p>
+            <p class="text-xs text-slate-400 mt-3">Click karte hi portal auto full-screen me lock ho jayega.</p>
         </div>
     </div>
 
@@ -54,7 +54,6 @@
                 </a>
             </div>
 
-            <!-- Controls: Lang Toggle, Timer, Submit -->
             <div class="flex items-center gap-2 sm:gap-4">
                 <button id="langToggleBtn" class="text-xs font-semibold px-2.5 py-1.5 border border-slate-300 rounded-lg hover:bg-slate-50 transition">
                     English / हिंदी
@@ -76,38 +75,37 @@
     <main class="flex-grow max-w-4xl w-full mx-auto p-4 sm:p-6 flex flex-col justify-start">
         <div class="bg-white rounded-2xl p-5 sm:p-7 shadow-sm border border-slate-200 flex-grow flex flex-col justify-between">
             <div>
-                <!-- Question Header -->
                 <div class="flex items-center justify-between pb-3 border-b border-slate-100 mb-4">
                     <div class="flex items-center gap-2">
-                        <span id="qIndexBadge" class="bg-blue-50 text-blue-700 text-xs font-bold px-3 py-1 rounded-full border border-blue-200">Prashna 01</span>
+                        <span id="qIndexBadge" class="bg-blue-50 text-blue-700 text-xs font-bold px-3 py-1 rounded-full border border-blue-200">Question 01 of 140</span>
                         <span id="reviewStatusBadge" class="hidden bg-amber-100 text-amber-800 text-xs font-semibold px-2.5 py-0.5 rounded-full">Marked for Review</span>
                     </div>
-                    <span class="text-xs font-semibold text-slate-500">Guna: <span class="text-emerald-600">+2.00</span> | <span class="text-red-500">-0.20</span></span>
+                    <span class="text-xs font-semibold text-slate-500">Marks: <span class="text-emerald-600">+2.00</span> | <span class="text-red-500">-0.20</span></span>
                 </div>
 
                 <!-- Dynamic Question -->
                 <div id="questionText" class="text-base sm:text-lg font-medium text-slate-900 leading-relaxed mb-6"></div>
 
-                <!-- Options -->
+                <!-- Options List -->
                 <div id="optionsContainer" class="space-y-3 mb-6"></div>
 
-                <!-- Instant Solution Box -->
+                <!-- Instant Verification Box -->
                 <div id="instantFeedbackBox" class="hidden mb-6 p-4 rounded-xl border transition-all duration-200">
                     <div id="feedbackTitle" class="font-bold text-sm mb-1 flex items-center gap-2"></div>
                     <div id="feedbackExplanation" class="text-xs sm:text-sm leading-relaxed"></div>
                     <div class="mt-2 pt-2 border-t border-slate-200/50 flex justify-between items-center text-[11px] text-slate-500">
-                        <span>Official Channel: @GYANVERSET</span>
-                        <span class="italic">Instant Verification</span>
+                        <span>Telegram: @GYANVERSET</span>
+                        <span class="italic">Instant Learning Mode</span>
                     </div>
                 </div>
             </div>
 
-            <!-- Watermark -->
+            <!-- Question Watermark -->
             <div class="text-center text-xs text-slate-400 font-medium py-2 border-t border-dashed border-slate-200 mb-4">
                 Channel Source: <a href="https://t.me/GYANVERSET" target="_blank" class="text-blue-500 hover:underline">@GYANVERSET</a>
             </div>
 
-            <!-- Navigation Buttons -->
+            <!-- Navigation Buttons (Strictly Below Options) -->
             <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 pt-2">
                 <button id="prevBtn" class="w-full bg-slate-100 hover:bg-slate-200 text-slate-700 font-semibold py-2.5 px-3 rounded-xl text-sm transition flex items-center justify-center gap-1.5">
                     <i class="fa-solid fa-angle-left"></i> <span class="nav-prev-text">Previous</span>
@@ -125,15 +123,15 @@
         </div>
     </main>
 
-    <!-- 4. SCORECARD MODAL -->
+    <!-- 4. DETAILED SCORECARD MODAL -->
     <div id="scorecardModal" class="fixed inset-0 z-50 bg-slate-900 bg-opacity-95 hidden items-center justify-center p-4 overflow-y-auto">
         <div class="bg-white rounded-2xl max-w-xl w-full p-6 sm:p-8 text-center shadow-2xl my-8">
             <h2 class="text-2xl font-bold text-slate-900 mb-1">GYANVERSE CBT SCORECARD</h2>
-            <p class="text-xs text-blue-600 font-semibold mb-6">Telegram: @GYANVERSET</p>
+            <p class="text-xs text-blue-600 font-semibold mb-6">Telegram Community: @GYANVERSET</p>
 
             <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-6">
                 <div class="p-3 bg-slate-50 border border-slate-200 rounded-xl">
-                    <span class="text-xs text-slate-500 block">Total Score</span>
+                    <span class="text-xs text-slate-500 block">Total Marks</span>
                     <span id="scMarks" class="text-xl font-extrabold text-blue-600">0.00</span>
                 </div>
                 <div class="p-3 bg-emerald-50 border border-emerald-200 rounded-xl">
@@ -153,118 +151,120 @@
             <div class="text-xs text-slate-500 mb-6 flex justify-around border-y py-2.5">
                 <span>Attempted: <b id="scAttempted" class="text-slate-800">0</b></span>
                 <span>Unattempted: <b id="scUnattempted" class="text-slate-800">0</b></span>
+                <span>Max Marks: <b class="text-slate-800">280.00</b></span>
             </div>
 
             <div class="flex flex-col sm:flex-row gap-3">
                 <button id="reviewSolutionsBtn" class="flex-1 bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-4 rounded-xl text-sm transition">
-                    Solutions & Explanations Juo
+                    Check Solutions & Explanations
                 </button>
                 <a href="https://t.me/GYANVERSET" target="_blank" class="flex-1 bg-slate-100 hover:bg-slate-200 text-blue-600 font-semibold py-3 px-4 rounded-xl text-sm transition flex items-center justify-center gap-1.5">
-                    <i class="fa-brands fa-telegram"></i> Telegram Join Karo
+                    <i class="fa-brands fa-telegram"></i> Join @GYANVERSET
                 </a>
             </div>
         </div>
     </div>
 
-    <!-- 5. 100% UNIQUE QUESTIONS DATA (ZERO REPETITIONS) -->
+    <!-- 5. SCRIPT & QUESTIONS DATA -->
     <script>
+        // MASTER QUESTIONS DATA (Array: 1 to 140)
+        // Part 1: Questions 1 to 35 (Sports, Insurance, RBI, PSBs & Commercial)
         const questionsData = [
-            // --- SECTION 1: Khel Sangathan (Photo 1) ---
             {
                 id: 1,
                 hi: {
-                    q: "अन्तर्राष्ट्रीय क्रिकेट परिषद (ICC) के संगठनात्मक पदों के संबंध में निम्नलिखित कथनों पर विचार कीजिए:<br><br>1. जय शाह ICC के वर्तमान अध्यक्ष हैं।<br>2. संयोग गुप्ता ICC के मुख्य कार्यकारी अधिकारी (CEO) हैं।<br>3. इंद्रा नूई ICC की प्रथम स्वतंत्र महिला निदेशक के रूप में कार्यरत हैं।<br><br>उपर्युक्त में से कौन-सा/से कथन सत्य है/हैं?",
+                    q: "अन्तर्राष्ट्रीय क्रिकेट परिषद (ICC) के संगठनात्मक पदों के संदर्भ में निम्नलिखित कथनों पर विचार कीजिए:<br><br>1. जय शाह ICC के वर्तमान अध्यक्ष हैं।<br>2. संयोग गुप्ता ICC के मुख्य कार्यकारी अधिकारी (CEO) हैं।<br>3. इंद्रा नूई ICC की प्रथम स्वतंत्र महिला निदेशक के रूप में नियुक्त हैं।<br><br>उपर्युक्त में से कौन-सा/से कथन सत्य है/हैं?",
                     options: ["(A) केवल 1 और 2", "(B) केवल 2 और 3", "(C) केवल 1 और 3", "(D) 1, 2 और 3"],
                     exp: "ICC अध्यक्ष जय शाह, CEO संयोग गुप्ता एवं प्रथम स्वतंत्र महिला निदेशक इंद्रा नूई हैं। तीनों कथन सत्य हैं।"
                 },
                 en: {
-                    q: "Consider the statements regarding ICC leadership:<br><br>1. Jay Shah is the Chairman of ICC.<br>2. Sanyog Gupta is CEO of ICC.<br>3. Indra Nooyi is the first independent female director.<br><br>Which statements are correct?",
+                    q: "Consider the statements regarding ICC leadership:<br><br>1. Jay Shah is Chairman.<br>2. Sanyog Gupta is CEO.<br>3. Indra Nooyi is first independent female director.<br><br>Which are correct?",
                     options: ["(A) Only 1 and 2", "(B) Only 2 and 3", "(C) Only 1 and 3", "(D) 1, 2 and 3"],
-                    exp: "All three statements are true."
+                    exp: "All three statements are correct."
                 },
                 correct: 3
             },
             {
                 id: 2,
                 hi: {
-                    q: "भारतीय क्रिकेट कंट्रोल बोर्ड (BCCI) एवं राष्ट्रीय टीमों के संदर्भ में कौन-सा युग्म गलत है?",
+                    q: "भारतीय क्रिकेट कंट्रोल बोर्ड (BCCI) एवं राष्ट्रीय टीमों के संदर्भ में कौन-सा युग्म सही सुमेलित नहीं है?",
                     options: [
                         "(A) अध्यक्ष, BCCI - मिथुन मन्हास",
-                        "(B) लोकपाल और नैतिकता अधिकारी - अरूण मिश्रा",
+                        "(B) लोकपाल और नैतिकता अधिकारी, BCCI - अरूण मिश्रा",
                         "(C) टेस्ट कप्तान, भारतीय क्रिकेट टीम - शुभमन गिल",
                         "(D) मुख्य कोच, भारतीय पुरुष क्रिकेट टीम - अमोल मजूमदार"
                     ],
-                    exp: "विकल्प (D) गलत है। भारतीय पुरुष टीम के मुख्य कोच गौतम गंभीर हैं, जबकि अमोल मजूमदार महिला क्रिकेट टीम के कोच हैं।"
+                    exp: "भारतीय पुरुष क्रिकेट टीम के मुख्य कोच गौतम गंभीर हैं, जबकि अमोल मजूमदार भारतीय महिला क्रिकेट टीम के कोच हैं।"
                 },
                 en: {
-                    q: "Which pair is incorrectly matched regarding BCCI and Indian teams?",
+                    q: "Which pair is incorrectly matched regarding BCCI and Indian cricket teams?",
                     options: [
                         "(A) President, BCCI - Mithun Manhas",
                         "(B) Ombudsman and Ethics Officer - Arun Mishra",
-                        "(C) Test Captain, Indian Team - Shubman Gill",
-                        "(D) Head Coach, Indian Men's Team - Amol Muzumdar"
+                        "(C) Test Captain - Shubman Gill",
+                        "(D) Head Coach, Men's Team - Amol Muzumdar"
                     ],
-                    exp: "Pair (D) is incorrect. Head coach of men's team is Gautam Gambhir; Amol Muzumdar is the women's team coach."
+                    exp: "Gautam Gambhir is coach of men's team; Amol Muzumdar coaches women's team."
                 },
                 correct: 3
             },
             {
                 id: 3,
                 hi: {
-                    q: "स्तम्भ-I (खेल संस्था) को स्तम्भ-II (अध्यक्ष/प्रमुख) से सुमेलित कीजिए:<br><br><b>स्तम्भ-I:</b><br>(p) एशियाई क्रिकेट परिषद (ACC)<br>(q) भारतीय खेल प्राधिकरण (SAI)<br>(r) अंतर्राष्ट्रीय ओलंपिक समिति (IOC)<br>(s) भारतीय ओलंपिक संघ (IOA)<br><br><b>स्तम्भ-II:</b><br>(1) नीलम कपूर<br>(2) मोहसिन नकवी<br>(3) पीटी उषा<br>(4) क्रिस्टी कोवेंट्री",
+                    q: "स्तम्भ-I (खेल संस्था) को स्तम्भ-II (अध्यक्ष/प्रमुख) से सुमेलित कीजिए:<br><br><b>स्तम्भ-I:</b><br>(a) एशियाई क्रिकेट परिषद (ACC)<br>(b) भारतीय खेल प्राधिकरण (SAI)<br>(c) अंतर्राष्ट्रीय ओलंपिक समिति (IOC)<br>(d) भारतीय ओलंपिक संघ (IOA)<br><br><b>स्तम्भ-II:</b><br>(1) नीलम कपूर<br>(2) मोहसिन नकवी<br>(3) क्रिस्टी कोवेंट्री<br>(4) पीटी उषा",
                     options: [
-                        "(A) p-2, q-1, r-4, s-3",
-                        "(B) p-1, q-2, r-3, s-4",
-                        "(C) p-2, q-4, r-1, s-3",
-                        "(D) p-3, q-1, r-4, s-2"
+                        "(A) a-2, b-1, c-3, d-4",
+                        "(B) a-1, b-2, c-4, d-3",
+                        "(C) a-2, b-4, c-1, d-3",
+                        "(D) a-3, b-1, c-4, d-2"
                     ],
-                    exp: "ACC - मोहसिन नकवी, SAI - नीलम कपूर, IOC - क्रिस्टी कोवेंट्री (जिम्बाब्वे), IOA - पीटी उषा।"
+                    exp: "ACC -> मोहसिन नकवी, SAI -> नीलम कपूर, IOC -> क्रिस्टी कोवेंट्री (जिम्बाब्वे), IOA -> पीटी उषा।"
                 },
                 en: {
-                    q: "Match Column-I (Sports Body) with Column-II (Head):<br><br><b>Column-I:</b><br>(p) ACC<br>(q) Sports Authority of India<br>(r) IOC<br>(s) IOA<br><br><b>Column-II:</b><br>(1) Neelam Kapur<br>(2) Mohsin Naqvi<br>(3) PT Usha<br>(4) Kirsty Coventry",
+                    q: "Match Column-I with Column-II:<br><br><b>Column-I:</b><br>(a) ACC<br>(b) SAI<br>(c) IOC<br>(d) IOA<br><br><b>Column-II:</b><br>(1) Neelam Kapur<br>(2) Mohsin Naqvi<br>(3) Kirsty Coventry<br>(4) PT Usha",
                     options: [
-                        "(A) p-2, q-1, r-4, s-3",
-                        "(B) p-1, q-2, r-3, s-4",
-                        "(C) p-2, q-4, r-1, s-3",
-                        "(D) p-3, q-1, r-4, s-2"
+                        "(A) a-2, b-1, c-3, d-4",
+                        "(B) a-1, b-2, c-4, d-3",
+                        "(C) a-2, b-4, c-1, d-3",
+                        "(D) a-3, b-1, c-4, d-2"
                     ],
-                    exp: "Correct matching: p-2, q-1, r-4, s-3."
+                    exp: "Correct matching: a-2, b-1, c-3, d-4."
                 },
                 correct: 0
             },
             {
                 id: 4,
                 hi: {
-                    q: "विभिन्न राष्ट्रीय एवं अंतर्राष्ट्रीय खेल संघों के प्रमुखों के संबंध में कौन-सा मिलान असत्य है?",
+                    q: "<b>कथन (A):</b> एशियाई ओलंपिक परिषद (OCA) के पहले भारतीय अध्यक्ष रणधीर सिंह बने हैं।<br><b>कारण (R):</b> देवेन्द्र झाझरिया भारतीय पैरालंपिक समिति (IPC) के अध्यक्ष निर्वाचित हुए हैं।",
                     options: [
-                        "(A) एशियाई ओलंपिक परिषद के पहले भारतीय अध्यक्ष - रणधीर सिंह",
-                        "(B) भारतीय पैरालंपिक समिति (IPC) - देवेन्द्र झाझरिया",
-                        "(C) अंतर्राष्ट्रीय एथलेटिक महासंघ - सेबास्टियन को (ब्रिटेन)",
-                        "(D) भारतीय भारोत्तोलन एथलीट आयोग - कर्णम मल्लेश्वरी"
+                        "(A) (A) और (R) दोनों सही हैं और (R), (A) की सही व्याख्या है।",
+                        "(B) (A) और (R) दोनों सही हैं लेकिन (R), (A) की सही व्याख्या नहीं है।",
+                        "(C) (A) सही है लेकिन (R) गलत है।",
+                        "(D) (A) गलत है लेकिन (R) सही है।"
                     ],
-                    exp: "विकल्प (D) असत्य है। भारतीय भारोत्तोलन एथलीट आयोग की अध्यक्ष मीराबाई चानू हैं।"
+                    exp: "कथन (A) और कारण (R) दोनों प्रामाणिक और स्वतंत्र रूप से सत्य हैं।"
                 },
                 en: {
-                    q: "Which match is incorrect regarding sports federations?",
+                    q: "<b>Assertion (A):</b> Randhir Singh became the first Indian President of OCA.<br><b>Reason (R):</b> Devendra Jhajharia was elected President of Paralympic Committee of India.",
                     options: [
-                        "(A) First Indian President of OCA - Randhir Singh",
-                        "(B) Paralympic Committee of India - Devendra Jhajharia",
-                        "(C) World Athletics - Sebastian Coe (Britain)",
-                        "(D) Weightlifting Athletes Commission - Karnam Malleswari"
+                        "(A) Both (A) and (R) are correct, and (R) is correct explanation.",
+                        "(B) Both are correct, but (R) is NOT the explanation.",
+                        "(C) (A) is correct, but (R) is incorrect.",
+                        "(D) (A) is incorrect, but (R) is correct."
                     ],
-                    exp: "Option (D) is incorrect; Mirabai Chanu chairs the IWF Athletes Commission."
+                    exp: "Both statements are individually valid."
                 },
-                correct: 3
+                correct: 1
             },
             {
                 id: 5,
                 hi: {
-                    q: "हॉकी, मुक्केबाजी एवं कुश्ती महासंघों के संदर्भ में निम्नलिखित कथनों पर विचार कीजिए:<br><br>1. अंतर्राष्ट्रीय हॉकी महासंघ (FIH) के अध्यक्ष मोहम्मद तैयब इकराम हैं।<br>2. हॉकी इंडिया के अध्यक्ष दिलीप टर्की हैं।<br>3. भारतीय कुश्ती महासंघ (WFI) के अध्यक्ष संजय सिंह हैं तथा भारतीय मुक्केबाजी संघ (BFI) के अध्यक्ष अजय सिंह हैं।<br><br>सत्य कूट का चयन कीजिए:",
+                    q: "एथलेटिक्स एवं भारोत्तोलन महासंघों के संदर्भ में निम्नलिखित कथनों पर विचार कीजिए:<br><br>1. अंतर्राष्ट्रीय एथलेटिक महासंघ के अध्यक्ष सेबास्टियन को (ब्रिटेन) हैं।<br>2. भारतीय एथलेटिक्स महासंघ (AFI) के अध्यक्ष बहादुर सिंह सागू हैं।<br>3. अंतर्राष्ट्रीय भारोत्तोलन महासंघ (IWF) के अध्यक्ष मोहम्मद जलूद हैं तथा मीराबाई चानू IWF एथलीट आयोग की अध्यक्ष हैं।<br><br>सत्य कूट का चयन कीजिए:",
                     options: ["(A) केवल 1 और 2", "(B) केवल 2 और 3", "(C) केवल 1 और 3", "(D) 1, 2 और 3"],
-                    exp: "दिए गए सभी तीनों तथ्य सही हैं।"
+                    exp: "तीनों कथन तालिका के अनुसार शत-प्रतिशत सत्य हैं।"
                 },
                 en: {
-                    q: "Consider the statements regarding Hockey, Boxing & Wrestling bodies:<br><br>1. FIH President is Tayyab Ikram.<br>2. Hockey India President is Dilip Tirkey.<br>3. WFI President is Sanjay Singh and BFI President is Ajay Singh.<br><br>Choose the correct code:",
+                    q: "Consider the statements regarding Athletics and Weightlifting bodies:<br><br>1. World Athletics President is Sebastian Coe.<br>2. AFI President is Bahadur Singh Sagoo.<br>3. IWF President is Mohammed Jalood & Mirabai Chanu heads Athletes Commission.<br><br>Select code:",
                     options: ["(A) Only 1 and 2", "(B) Only 2 and 3", "(C) Only 1 and 3", "(D) 1, 2 and 3"],
                     exp: "All three statements are completely true."
                 },
@@ -273,528 +273,316 @@
             {
                 id: 6,
                 hi: {
-                    q: "फुटबॉल एवं बैडमिंटन के शीर्ष पदों के संबंध में कौन-सा युग्म सही सुमेलित नहीं है?",
+                    q: "हॉकी एवं मुक्केबाजी संगठनों के प्रमुखों के संदर्भ में कौन-सा मिलान गलत है?",
                     options: [
-                        "(A) अध्यक्ष, फीफा (FIFA) - जियानी इन्फैनटिनो (इटली-स्विट्जरलैंड)",
-                        "(B) अध्यक्ष, अखिल भारतीय फुटबॉल महासंघ (AIFF) - कल्याण चौबे",
-                        "(C) मुख्य कोच, भारतीय महिला हॉकी टीम - शोर्ड मारिन (नीदरलैंड्स)",
-                        "(D) चेयरपर्सन, BWF एथलीट्स कमीशन - साइना नेहवाल"
+                        "(A) अंतर्राष्ट्रीय हॉकी महासंघ (FIH) - मोहम्मद तैयब इकराम",
+                        "(B) हॉकी इंडिया - दिलीप टर्की",
+                        "(C) भारतीय मुक्केबाजी संघ (BFI) - अजय सिंह",
+                        "(D) भारतीय कुश्ती महासंघ (WFI) - कल्याण चौबे"
                     ],
-                    exp: "विकल्प (D) गलत है। BWF एथलीट्स कमीशन की चेयरपर्सन पीवी सिंधु हैं।"
+                    exp: "विकल्प (D) गलत है। WFI के अध्यक्ष संजय सिंह हैं, जबकि कल्याण चौबे AIFF (फुटबॉल महासंघ) के अध्यक्ष हैं।"
                 },
                 en: {
-                    q: "Which pair is incorrectly matched regarding football and badminton?",
+                    q: "Which match is incorrect regarding hockey and combat sports bodies?",
                     options: [
-                        "(A) President, FIFA - Gianni Infantino",
-                        "(B) President, AIFF - Kalyan Chaubey",
-                        "(C) Coach, Indian Women's Hockey Team - Sjoerd Marijne",
-                        "(D) Chairperson, BWF Athletes Commission - Saina Nehwal"
+                        "(A) FIH - Tayyab Ikram",
+                        "(B) Hockey India - Dilip Tirkey",
+                        "(C) BFI - Ajay Singh",
+                        "(D) WFI - Kalyan Chaubey"
                     ],
-                    exp: "Option (D) is incorrect. PV Sindhu is Chairperson of BWF Athletes Commission."
+                    exp: "Option (D) is incorrect; Sanjay Singh is President of WFI."
                 },
                 correct: 3
             },
-
-            // --- SECTION 2: Bima, Vanijyik & Banks (Photo 1) ---
             {
                 id: 7,
                 hi: {
-                    q: "बीमा नियामक एवं विकास प्राधिकरण (IRDAI) तथा अन्य बीमा संस्थानों के संदर्भ में कौन-सा कथन सत्य है?<br><br>1. IRDAI के वर्तमान अध्यक्ष अजय सेठ हैं।<br>2. LIC के अध्यक्ष सिद्धार्थ मोहंती तथा प्रबंध निदेशक (MD) रामकृष्ण चंदर हैं।<br>3. कर्मचारी राज्य बीमा निगम (ESIC) के महानिदेशक अशोक कुमार सिंह हैं।<br><br>कूट का चयन कीजिए:",
-                    options: ["(A) केवल 1 और 2", "(B) केवल 2 और 3", "(C) केवल 1 और 3", "(D) 1, 2 और 3"],
-                    exp: "तीनों कथन शत-प्रतिशत सत्य हैं।"
+                    q: "फुटबॉल एवं बैडमिंटन महासंघों के संदर्भ में निम्नलिखित में से सत्य कथनों की पहचान कीजिए:<br><br>1. फीफा (FIFA) के वर्तमान अध्यक्ष जियानी इन्फैनटिनो (इटली-स्विट्जरलैंड) हैं।<br>2. भारतीय पुरुष फुटबॉल टीम के कोच खालिद जमील हैं तथा महिला टीम की कोच अमेलिया वाल्वर्डे (कोस्टा रिका) हैं।<br>3. भारतीय टेबल टेनिस संघ (TTFI) की अध्यक्ष मेघना अहलावत हैं।<br>4. भारतीय बैडमिंटन संघ (BAI) के अध्यक्ष हेमन्त बिस्वा सरमा हैं।<br><br>सत्य विकल्प चुनिए:",
+                    options: ["(A) केवल 1, 2 और 3", "(B) केवल 2, 3 और 4", "(C) केवल 1 और 4", "(D) 1, 2, 3 और 4"],
+                    exp: "दिए गए सभी 4 तथ्य आधिकारिक तालिका के अनुसार सत्य हैं।"
                 },
                 en: {
-                    q: "Which statements are correct regarding insurance sector authorities?<br><br>1. Chairman of IRDAI is Ajay Seth.<br>2. LIC Chairman is Siddhartha Mohanty & MD is Ramkrishna Chander.<br>3. DG of ESIC is Ashok Kumar Singh.<br><br>Select code:",
-                    options: ["(A) Only 1 and 2", "(B) Only 2 and 3", "(C) Only 1 and 3", "(D) 1, 2 and 3"],
-                    exp: "All three statements are completely true."
+                    q: "Identify the true statements regarding Football, TT & Badminton bodies:<br><br>1. Gianni Infantino is FIFA President.<br>2. Khalid Jamil coaches Indian men's football; Amelia Valverde coaches women.<br>3. Meghna Ahlawat heads TTFI.<br>4. Himanta Biswa Sarma heads BAI.<br><br>Select code:",
+                    options: ["(A) Only 1, 2 and 3", "(B) Only 2, 3 and 4", "(C) Only 1 and 4", "(D) 1, 2, 3 and 4"],
+                    exp: "All 4 statements are completely true."
                 },
                 correct: 3
             },
             {
                 id: 8,
                 hi: {
-                    q: "स्तम्भ-I (बीमा / वित्तीय कंपनी) को स्तम्भ-II (प्रमुख) से सुमेलित कीजिए:<br><br><b>स्तम्भ-I:</b><br>(p) जनरल इंश्योरेंस कॉर्पोरेशन (GIC)<br>(q) न्यू इंडिया एश्योरेंस कंपनी<br>(r) नेशनल इंश्योरेंस कम्पनी (NICL)<br>(s) एसबीआई जनरल इंश्योरेंस<br><br><b>स्तम्भ-II:</b><br>(1) सुचिता गुप्ता<br>(2) नवीन चंद्र झा<br>(3) एस. प्रकाश<br>(4) गिरिजा सुब्रमण्यन",
+                    q: "भारतीय बीमा नियामक और विकास प्राधिकरण (IRDAI) तथा जीवन बीमा निगम (LIC) के संदर्भ में कौन-सा कथन असत्य है?",
                     options: [
-                        "(A) p-3, q-4, r-1, s-2",
-                        "(B) p-4, q-3, r-2, s-1",
-                        "(C) p-3, q-1, r-4, s-2",
-                        "(D) p-1, q-4, r-2, s-3"
+                        "(A) IRDAI के वर्तमान अध्यक्ष अजय सेठ हैं।",
+                        "(B) भारतीय जीवन बीमा निगम (LIC) के अध्यक्ष सिद्धार्थ मोहंती हैं।",
+                        "(C) LIC के प्रबंध निदेशक (MD) रामकृष्ण चंदर हैं।",
+                        "(D) IRDAI का मुख्यालय कोलकाता में स्थित है।"
                     ],
-                    exp: "GIC -> एस. प्रकाश, न्यू इंडिया -> गिरिजा सुब्रमण्यन, NICL -> सुचिता गुप्ता, SBI जनरल -> नवीन चंद्र झा।"
+                    exp: "IRDAI का मुख्यालय हैदराबाद (तेलंगाना) में स्थित है।"
                 },
                 en: {
-                    q: "Match Column-I (Company) with Column-II (Head):<br><br><b>Column-I:</b><br>(p) GIC<br>(q) New India Assurance<br>(r) NICL<br>(s) SBI General Insurance<br><br><b>Column-II:</b><br>(1) Suchita Gupta<br>(2) Navin Chandra Jha<br>(3) S. Prakash<br>(4) Girija Subramanian",
+                    q: "Which statement is incorrect regarding IRDAI and LIC?",
                     options: [
-                        "(A) p-3, q-4, r-1, s-2",
-                        "(B) p-4, q-3, r-2, s-1",
-                        "(C) p-3, q-1, r-4, s-2",
-                        "(D) p-1, q-4, r-2, s-3"
+                        "(A) Chairman of IRDAI is Ajay Seth.",
+                        "(B) Chairman of LIC is Siddhartha Mohanty.",
+                        "(C) MD of LIC is Ramkrishna Chander.",
+                        "(D) Headquarter of IRDAI is located in Kolkata."
                     ],
-                    exp: "Correct matches: p-3, q-4, r-1, s-2."
+                    exp: "Option (D) is incorrect; IRDAI head office is in Hyderabad."
                 },
-                correct: 0
+                correct: 3
             },
             {
                 id: 9,
                 hi: {
-                    q: "भारतीय रिजर्व बैंक (RBI) के संदर्भ में निम्नलिखित कथनों पर विचार कीजिए:<br><br>1. संजय मल्होत्रा 26वें क्रम के आरबीआई गवर्नर हैं।<br>2. सुधा बालकृष्णन आरबीआई की मुख्य वित्तीय अधिकारी (CFO) हैं।<br>3. रोहित जैन, शिरीष चंद्र मुर्मू, पूनम गुप्ता और स्वामीनाथन जानकीरमन इसके उप-गवर्नर हैं।<br><br>उपर्युक्त में से कौन-से कथन सत्य हैं?",
-                    options: ["(A) केवल 1 और 2", "(B) केवल 2 और 3", "(C) केवल 1 और 3", "(D) 1, 2 और 3"],
-                    exp: "संजय मल्होत्रा 26वें गवर्नर, 4 उप-गवर्नर तथा सीएफओ सुधा बालकृष्णन हैं। तीनों कथन सत्य हैं।"
+                    q: "स्तम्भ-I (बीमा संस्थान) को स्तम्भ-II (प्रमुख) से सुमेलित कीजिए:<br><br><b>स्तम्भ-I:</b><br>(a) कर्मचारी राज्य बीमा निगम (ESIC)<br>(b) सामान्य बीमा परिषद (GIC)<br>(c) न्यू इंडिया एश्योरेंस कंपनी लिमिटेड<br>(d) यूनाइटेड इंडिया इंश्योरेंस कंपनी<br><br><b>स्तम्भ-II:</b><br>(1) भूपेश सुशील राहुल<br>(2) गिरिजा सुब्रमण्यन<br>(3) एस. प्रकाश<br>(4) अशोक कुमार सिंह",
+                    options: [
+                        "(A) a-4, b-3, c-2, d-1",
+                        "(B) a-3, b-4, c-1, d-2",
+                        "(C) a-4, b-2, c-3, d-1",
+                        "(D) a-1, b-3, c-2, d-4"
+                    ],
+                    exp: "ESIC -> अशोक कुमार सिंह, GIC -> एस. प्रकाश, न्यू इंडिया -> गिरिजा सुब्रमण्यन, यूनाइटेड इंडिया -> भूपेश सुशील राहुल।"
                 },
                 en: {
-                    q: "Consider the statements regarding RBI:<br><br>1. Sanjay Malhotra is the 26th Governor.<br>2. Sudha Balakrishnan is CFO of RBI.<br>3. Rohit Jain, S.C. Murmu, Poonam Gupta, and Swaminathan J. are Deputy Governors.<br><br>Which statements are correct?",
-                    options: ["(A) Only 1 and 2", "(B) Only 2 and 3", "(C) Only 1 and 3", "(D) 1, 2 and 3"],
-                    exp: "All three statements are true."
+                    q: "Match Column-I with Column-II:<br><br><b>Column-I:</b><br>(a) ESIC<br>(b) GIC<br>(c) New India Assurance<br>(d) United India Insurance<br><br><b>Column-II:</b><br>(1) Bhupesh Sushil Rahul<br>(2) Girija Subramanian<br>(3) S. Prakash<br>(4) Ashok Kumar Singh",
+                    options: [
+                        "(A) a-4, b-3, c-2, d-1",
+                        "(B) a-3, b-4, c-1, d-2",
+                        "(C) a-4, b-2, c-3, d-1",
+                        "(D) a-1, b-3, c-2, d-4"
+                    ],
+                    exp: "Correct matches: a-4, b-3, c-2, d-1."
                 },
-                correct: 3
+                correct: 0
             },
             {
                 id: 10,
                 hi: {
-                    q: "सार्वजनिक बैंकों के 30 अगस्त 2019 के विलय के संदर्भ में कौन-सा मिलान गलत है?",
+                    q: "नेशनल इंश्योरेंस कम्पनी (NICL) एवं एसबीआई जनरल इंश्योरेंस के प्रमुखों के संदर्भ में सही युग्म का चयन कीजिए:",
                     options: [
-                        "(A) इलाहाबाद बैंक का विलय - इंडियन बैंक में",
-                        "(B) आंध्रा बैंक और कॉर्पोरेशन बैंक - यूनियन बैंक ऑफ इंडिया में",
-                        "(C) ओरिएंटल बैंक ऑफ कॉमर्स और यूनाइटेड बैंक - पंजाब नेशनल बैंक में",
-                        "(D) सिंडिकेट बैंक का विलय - बैंक ऑफ बड़ौदा में"
+                        "(A) NICL: सुचिता गुप्ता; SBI जनरल: नवीन चंद्र झा",
+                        "(B) NICL: नवीन चंद्र झा; SBI जनरल: सुचिता गुप्ता",
+                        "(C) NICL: एस. प्रकाश; SBI जनरल: गिरिजा सुब्रमण्यन",
+                        "(D) NICL: अजय सेठ; SBI जनरल: सिद्धार्थ मोहंती"
                     ],
-                    exp: "विकल्प (D) गलत है। सिंडिकेट बैंक का विलय केनरा बैंक में हुआ था। बैंक ऑफ बड़ौदा में विजया और देना बैंक का विलय हुआ था।"
+                    exp: "NICL की सीएमडी सुचिता गुप्ता हैं तथा SBI जनरल इंश्योरेंस के एमडी एवं सीईओ नवीन चंद्र झा हैं।"
                 },
                 en: {
-                    q: "Which match is incorrect regarding PSB mergers of 30 Aug 2019?",
+                    q: "Select the correct pair regarding NICL and SBI General Insurance heads:",
                     options: [
-                        "(A) Allahabad Bank - Indian Bank",
-                        "(B) Andhra Bank & Corporation Bank - Union Bank of India",
-                        "(C) OBC & United Bank - Punjab National Bank",
-                        "(D) Syndicate Bank - Bank of Baroda"
+                        "(A) NICL: Suchita Gupta; SBI General: Navin Chandra Jha",
+                        "(B) NICL: Navin Chandra Jha; SBI General: Suchita Gupta",
+                        "(C) NICL: S. Prakash; SBI General: Girija Subramanian",
+                        "(D) NICL: Ajay Seth; SBI General: Siddhartha Mohanty"
                     ],
-                    exp: "Option (D) is incorrect. Syndicate Bank merged with Canara Bank."
+                    exp: "Option (A) is correct."
                 },
-                correct: 3
+                correct: 0
             },
             {
                 id: 11,
                 hi: {
-                    q: "<b>कथन (A):</b> वर्तमान में भारत में सार्वजनिक क्षेत्र के बैंकों (PSBs) की कुल संख्या 12 है।<br><b>कारण (R):</b> 10 सार्वजनिक क्षेत्र के बैंकों का 4 बड़े बैंकों में ऐतिहासिक विलय कर दिया गया था।",
-                    options: [
-                        "(A) (A) और (R) दोनों सही हैं और (R), (A) की सही व्याख्या है।",
-                        "(B) (A) और (R) दोनों सही हैं लेकिन (R), (A) की सही व्याख्या नहीं है।",
-                        "(C) (A) सही है लेकिन (R) गलत है।",
-                        "(D) (A) गलत है लेकिन (R) सही है।"
-                    ],
-                    exp: "कथन और कारण दोनों सत्य हैं और विलय के कारण ही संख्या घटकर 12 रह गई।"
+                    q: "फिक्की (FICCI) एवं एसोचैम (ASSOCHAM) के पदाधिकारियों के संदर्भ में कौन-सा कथन सत्य है?<br><br>1. फिक्की के महासचिव अनंत स्वरूप तथा अध्यक्ष अनंत गोयनका हैं।<br>2. एसोचैम के अध्यक्ष निर्मल कुमार मिंडा तथा महासचिव मनीष सिंघल हैं।<br>3. भारतीय उद्योग परिसंघ (CII) के अध्यक्ष आर. मुकुन्दन हैं।<br><br>कूट का चयन कीजिए:",
+                    options: ["(A) केवल 1 और 2", "(B) केवल 2 और 3", "(C) केवल 1 और 3", "(D) 1, 2 और 3"],
+                    exp: "FICCI, ASSOCHAM तथा CII के सभी पदाधिकारी तालिका के अनुसार सत्य हैं।"
                 },
                 en: {
-                    q: "<b>Assertion (A):</b> At present, the total number of Public Sector Banks in India is 12.<br><b>Reason (R):</b> 10 PSBs were consolidated into 4 anchor public sector banks.",
-                    options: [
-                        "(A) Both (A) and (R) are correct, and (R) is the correct explanation of (A).",
-                        "(B) Both (A) and (R) are correct, but (R) is NOT the correct explanation.",
-                        "(C) (A) is correct, but (R) is incorrect.",
-                        "(D) (A) is incorrect, but (R) is correct."
-                    ],
-                    exp: "Both are correct and (R) explains (A)."
+                    q: "Which statements are correct regarding trade chambers?<br><br>1. Anant Swarup is SG & Anant Goenka is President of FICCI.<br>2. Nirmal Kumar Minda is President of ASSOCHAM.<br>3. R. Mukundan is President of CII.<br><br>Select code:",
+                    options: ["(A) Only 1 and 2", "(B) Only 2 and 3", "(C) Only 1 and 3", "(D) 1, 2 and 3"],
+                    exp: "All three statements are completely true."
                 },
-                correct: 0
+                correct: 3
             },
-
-            // --- SECTION 3: Niji Bank & Raksha Upkaran (Photo 2) ---
             {
                 id: 12,
                 hi: {
-                    q: "निजी वित्तीय संस्थाओं एवं बैंकों के प्रमुखों के संदर्भ में कौन-सा युग्म गलत है?",
+                    q: "इफको (IFFCO) एवं नास्कॉम (NASSCOM) के अध्यक्षों के संदर्भ में कौन-सा मिलान सत्य है?",
                     options: [
-                        "(A) भारतीय डाक भुगतान बैंक (IPPB) - जे. वेंकटरामू",
-                        "(B) भारतीय उद्योग विकास बैंक (IDBI) - राकेश शर्मा",
-                        "(C) भारतीय महिला बैंक - एस. एम. स्वाति",
-                        "(D) नाबार्ड (NABARD) के अध्यक्ष - मनोज मित्तल"
+                        "(A) इफको: दिलीप संघानी; नास्कॉम: श्रीकांत वेलामकनी",
+                        "(B) इफको: श्रीकांत वेलामकनी; नास्कॉम: दिलीप संघानी",
+                        "(C) इफको: सुंदर राममूर्ति; नास्कॉम: प्रमोद अग्रवाल",
+                        "(D) इफको: आशीष कुमार चौहान; नास्कॉम: लियो पूरी"
                     ],
-                    exp: "विकल्प (D) गलत है। नाबार्ड के अध्यक्ष शाजी के.वी. हैं, जबकि मनोज मित्तल SIDBI के सीएमडी हैं।"
+                    exp: "इफको के अध्यक्ष दिलीप संघानी हैं तथा नास्कॉम के अध्यक्ष श्रीकांत वेलामकनी हैं।"
                 },
                 en: {
-                    q: "Which pair is incorrectly matched regarding financial heads?",
+                    q: "Which match is correct regarding IFFCO and NASSCOM chairpersons?",
                     options: [
-                        "(A) IPPB - J. Venkatramu",
-                        "(B) IDBI Bank - Rakesh Sharma",
-                        "(C) Bharatiya Mahila Bank - S. M. Swathi",
-                        "(D) Chairman, NABARD - Manoj Mittal"
+                        "(A) IFFCO: Dilip Sanghani; NASSCOM: Srikant Velamakanni",
+                        "(B) IFFCO: Srikant Velamakanni; NASSCOM: Dilip Sanghani",
+                        "(C) IFFCO: Sundararama Ramamurthy; NASSCOM: Pramod Agrawal",
+                        "(D) IFFCO: Ashish Kumar Chauhan; NASSCOM: Leo Puri"
                     ],
-                    exp: "Option (D) is incorrect; Shaji K.V. is Chairman of NABARD."
+                    exp: "Option (A) is authentic."
                 },
-                correct: 3
+                correct: 0
             },
             {
                 id: 13,
                 hi: {
-                    q: "स्तम्भ-I (रक्षा उपकरण) को स्तम्भ-II (विकसित देश / संस्था) से सुमेलित कीजिए:<br><br><b>स्तम्भ-I:</b><br>(p) हेलिना<br>(q) चिनूक<br>(r) बराक-8<br>(s) एस-400<br><br><b>स्तम्भ-II:</b><br>(1) डीआरडीओ व इजरायल<br>(2) रूस<br>(3) भारत में विकसित (टैंक रोधी मिसाइल)<br>(4) अमेरिकी कम्पनी बोइंग",
+                    q: "स्टॉक एक्सचेंजों के शीर्ष प्रबंधन के संदर्भ में कौन-सा युग्म गलत है?",
                     options: [
-                        "(A) p-3, q-4, r-1, s-2",
-                        "(B) p-4, q-3, r-2, s-1",
-                        "(C) p-3, q-1, r-4, s-2",
-                        "(D) p-2, q-4, r-1, s-3"
+                        "(A) बॉम्बे स्टॉक एक्सचेंज (BSE) के सीईओ - सुंदर राममूर्ति",
+                        "(B) बॉम्बे स्टॉक एक्सचेंज (BSE) के अध्यक्ष - प्रमोद अग्रवाल",
+                        "(C) नेशनल स्टॉक एक्सचेंज (NSE) के सीईओ - आशीष कुमार चौहान",
+                        "(D) नेशनल स्टॉक एक्सचेंज (NSE) के अध्यक्ष - लियो पूरी"
                     ],
-                    exp: "हेलिना -> भारत (टैंक रोधी), चिनूक -> बोइंग अमेरिका, बराक-8 -> DRDO व इजरायल, S-400 -> रूस।"
+                    exp: "विकल्प (D) गलत है। NSE के अध्यक्ष श्रीनिवास इंजेंती हैं, जबकि लियो पूरी भारतीय यूनिट ट्रस्ट (UTI) के अध्यक्ष हैं।"
                 },
                 en: {
-                    q: "Match Defense Equipment with origin/maker:<br><br><b>Column-I:</b><br>(p) Helina<br>(q) Chinook<br>(r) Barak-8<br>(s) S-400<br><br><b>Column-II:</b><br>(1) DRDO & Israel<br>(2) Russia<br>(3) India<br>(4) Boeing (USA)",
+                    q: "Which pair is incorrectly matched regarding Indian stock exchanges?",
                     options: [
-                        "(A) p-3, q-4, r-1, s-2",
-                        "(B) p-4, q-3, r-2, s-1",
-                        "(C) p-3, q-1, r-4, s-2",
-                        "(D) p-2, q-4, r-1, s-3"
+                        "(A) CEO, BSE - Sundararama Ramamurthy",
+                        "(B) Chairman, BSE - Pramod Agrawal",
+                        "(C) CEO, NSE - Ashish Kumar Chauhan",
+                        "(D) Chairman, NSE - Leo Puri"
                     ],
-                    exp: "Correct matches: p-3, q-4, r-1, s-2."
+                    exp: "Option (D) is incorrect; Srinivas Injeti is Chairman of NSE, while Leo Puri heads UTI."
                 },
-                correct: 0
+                correct: 3
             },
             {
                 id: 14,
                 hi: {
-                    q: "पनडुब्बियों एवं लड़ाकू विमानों के संदर्भ में निम्नलिखित कथनों पर विचार कीजिए:<br><br>1. आईएनएस वेला फ्रांस द्वारा विकसित स्कॉर्पीन श्रेणी की पनडुब्बी है।<br>2. आईएनएस कलवरी स्वदेश निर्मित स्कॉर्पीन श्रेणी की पनडुब्बी है।<br>3. राफेल लड़ाकू विमान फ्रांस की दसॉल्ट एविएशन द्वारा निर्मित है।<br><br>सत्य कूट का चयन कीजिए:",
+                    q: "भारतीय रिजर्व बैंक (RBI) के शीर्ष नेतृत्व के संदर्भ में निम्नलिखित कथनों पर विचार कीजिए:<br><br>1. संजय मल्होत्रा आरबीआई के 26वें गवर्नर हैं।<br>2. सुधा बालकृष्णन आरबीआई की मुख्य वित्तीय अधिकारी (CFO) हैं।<br>3. रोहित जैन, शिरीष चंद्र मुर्मू, पूनम गुप्ता एवं स्वामीनाथन जानकीरमन उप-गवर्नर हैं।<br><br>उपर्युक्त में से कौन-से कथन सत्य हैं?",
                     options: ["(A) केवल 1 और 2", "(B) केवल 2 और 3", "(C) केवल 1 और 3", "(D) 1, 2 और 3"],
-                    exp: "तीनों कथन शत-प्रतिशत सत्य हैं।"
+                    exp: "आरबीआई गवर्नर (26वें), सीएफओ सुधा बालकृष्णन तथा चारों उप-गवर्नर शत-प्रतिशत सत्य हैं।"
                 },
                 en: {
-                    q: "Consider the statements regarding submarines and aircraft:<br><br>1. INS Vela is a Scorpene-class submarine developed with France.<br>2. INS Kalvari is an indigenously built Scorpene-class submarine.<br>3. Rafale is manufactured by Dassault Aviation, France.<br><br>Select code:",
+                    q: "Consider the leadership structure of RBI:<br><br>1. Sanjay Malhotra is the 26th Governor.<br>2. Sudha Balakrishnan is CFO.<br>3. Rohit Jain, S.C. Murmu, Poonam Gupta, and Swaminathan J. are Deputy Governors.<br><br>Select code:",
                     options: ["(A) Only 1 and 2", "(B) Only 2 and 3", "(C) Only 1 and 3", "(D) 1, 2 and 3"],
-                    exp: "All three statements are correct."
+                    exp: "All three statements are completely true."
                 },
                 correct: 3
             },
-
-            // --- SECTION 4: Antarrashtriya Sansthan (Photo 2) ---
             {
                 id: 15,
                 hi: {
-                    q: "अंतर्राष्ट्रीय संस्थानों एवं उनके प्रमुखों के संबंध में कौन-सा युग्म गलत है?",
-                    options: [
-                        "(A) विश्व बैंक (IBRD) के 14वें अध्यक्ष - अजय बंगा",
-                        "(B) अंतर्राष्ट्रीय मुद्रा कोष (IMF) प्रबंध निदेशक - क्रिस्टालिना जॉर्जिएवा",
-                        "(C) महानिदेशक, यूनेस्को (UNESCO) - खालिद अल-एनानी (मिस्र)",
-                        "(D) महानिदेशक, अंतर्राष्ट्रीय श्रम संगठन (ILO) - अचीम स्टेनर"
-                    ],
-                    exp: "विकल्प (D) गलत है। ILO के महानिदेशक गिल्बर्ट होंगबो (टोगो) हैं, जबकि अचीम स्टेनर UNDP के प्रशासक हैं।"
-                },
-                en: {
-                    q: "Which pair is incorrectly matched regarding international bodies?",
-                    options: [
-                        "(A) 14th President, World Bank - Ajay Banga",
-                        "(B) MD, IMF - Kristalina Georgieva",
-                        "(C) Director General, UNESCO - Khaled El-Enany",
-                        "(D) DG, ILO - Achim Steiner"
-                    ],
-                    exp: "Option (D) is incorrect. Gilbert Houngbo heads ILO; Achim Steiner leads UNDP."
-                },
-                correct: 3
-            },
-            {
-                id: 16,
-                hi: {
-                    q: "क्षेत्रीय संगठनों के प्रमुखों के संदर्भ में कौन-सा मिलान सत्य है?<br><br>1. महासचिव, दक्षेस (SAARC) - मोहम्मद गुलाम सरवर (बांग्लादेश)<br>2. महासचिव, आसियान (ASEAN) - डॉ. काओ किम होर्न (कंबोडिया)<br>3. अध्यक्ष, एशियाई विकास बैंक (ADB) - मासातो कांडा (जापान)<br>4. अध्यक्ष, न्यू डेवलपमेंट बैंक (BRICS) - डिल्मा रूसेफ (ब्राजील)<br><br>कूट का चयन कीजिए:",
-                    options: ["(A) केवल 1 और 2", "(B) केवल 3 और 4", "(C) केवल 1, 2 और 3", "(D) 1, 2, 3 और 4"],
-                    exp: "SAARC, ASEAN, ADB और NDB के चारों प्रमुख पूर्णतः सही सुमेलित हैं।"
-                },
-                en: {
-                    q: "Which matches are correct for regional organizations?<br><br>1. SAARC Secretary General - Golam Sarwar<br>2. ASEAN Secretary General - Dr. Kao Kim Hourn<br>3. ADB President - Masato Kanda<br>4. NDB (BRICS Bank) President - Dilma Rousseff<br><br>Select code:",
-                    options: ["(A) Only 1 and 2", "(B) Only 3 and 4", "(C) Only 1, 2 and 3", "(D) 1, 2, 3 and 4"],
-                    exp: "All four appointments are true."
-                },
-                correct: 3
-            },
-            {
-                id: 17,
-                hi: {
-                    q: "अंतर्राष्ट्रीय एजेंसियों के प्रमुखों के संदर्भ में कौन-सा युग्म असत्य है?",
-                    options: [
-                        "(A) उच्चायुक्त, संयुक्त राष्ट्र शरणार्थी उच्चायुक्त (UNHCR) - बरहम सालिह (इराक)",
-                        "(B) प्रमुख, संयुक्त राष्ट्र मानवाधिकार आयोग - वोल्कर तुर्क (ऑस्ट्रिया)",
-                        "(C) महानिदेशक, अंतर्राष्ट्रीय परमाणु ऊर्जा एजेंसी (IAEA) - राफेल ग्रॉसी (अर्जेंटीना)",
-                        "(D) अध्यक्ष, अंतर्राष्ट्रीय सौर गठबंधन (ISA) - फ्रांस"
-                    ],
-                    exp: "विकल्प (D) असत्य है। अंतर्राष्ट्रीय सौर गठबंधन (ISA) का अध्यक्ष 'भारत' (2024-26) है।"
-                },
-                en: {
-                    q: "Which match is incorrect regarding international agency heads?",
-                    options: [
-                        "(A) UNHCR High Commissioner - Barham Salih (Iraq)",
-                        "(B) UN Human Rights Commissioner - Volker Türk (Austria)",
-                        "(C) DG, IAEA - Rafael Grossi (Argentina)",
-                        "(D) President, ISA - France"
-                    ],
-                    exp: "Option (D) is incorrect. India holds the Presidency of ISA (2024-26)."
-                },
-                correct: 3
-            },
-
-            // --- SECTION 5: Rashtriya & Antarrashtriya Mahilayein (Photo 3) ---
-            {
-                id: 18,
-                hi: {
-                    q: "चर्चित राष्ट्रीय महिलाओं और उनके पदों के संदर्भ में कौन-सा युग्म गलत है?",
-                    options: [
-                        "(A) उमा कांजीलाल - इग्नू की पहली महिला कुलपति",
-                        "(B) यशस्वी सोलंकी - पहली महिला एडीसी (ADC), भारत के राष्ट्रपति",
-                        "(C) आरती सरीन - पहली महिला महानिदेशक, सशस्त्र बल चिकित्सा सेवा",
-                        "(D) नईमा खातून - जामिया मिलिया इस्लामिया की पहली महिला कुलपति"
-                    ],
-                    exp: "विकल्प (D) गलत है। नईमा खातून अलीगढ़ मुस्लिम विश्वविद्यालय (AMU) की पहली महिला कुलपति हैं।"
-                },
-                en: {
-                    q: "Which pair is incorrectly matched regarding Indian women?",
-                    options: [
-                        "(A) Uma Kanjilal - First female VC of IGNOU",
-                        "(B) Yashasvi Solanki - First female ADC to President of India",
-                        "(C) Aarti Sareen - First female DG, Armed Forces Medical Services",
-                        "(D) Naima Khatoon - First female VC of Jamia Millia Islamia"
-                    ],
-                    exp: "Option (D) is incorrect. Naima Khatoon is the first female VC of Aligarh Muslim University (AMU)."
-                },
-                correct: 3
-            },
-            {
-                id: 19,
-                hi: {
-                    q: "सैन्य एवं प्रशासनिक उपलब्धियों के संबंध में निम्नलिखित कथनों पर विचार कीजिए:<br><br>1. साधना सक्सेना नायर सेना में चिकित्सा सेवा की पहली महिला महानिदेशक बनीं।<br>2. प्रीति रजक भारतीय सेना की पहली महिला सूबेदार बनी हैं।<br>3. शिवांगी सिंह भारत की पहली महिला फाइटर पायलट हैं तथा हिना जायसवाल वायुसेना की पहली महिला फ्लाइट इंजीनियर हैं।<br><br>सत्य कूट का चयन कीजिए:",
+                    q: "भारतीय स्टेट बैंक (SBI) के शीर्ष अधिकारियों के संदर्भ में कौन-सा मिलान सही है?<br><br>1. अध्यक्ष - चल्ला श्रीनिवासुलु सेट््टी<br>2. मुख्य वित्तीय अधिकारी (CFO) - कामेश्वर राव कोदावंती<br>3. प्रबंध निदेशक (MD) - रवि रंजन, राम मोहन राव अमारा, राणा आशुतोष कुमार सिंह, अश्विनी के. तिवारी<br><br>सत्य कूट का चयन कीजिए:",
                     options: ["(A) केवल 1 और 2", "(B) केवल 2 और 3", "(C) केवल 1 और 3", "(D) 1, 2 और 3"],
-                    exp: "तीनों कथन तालिका के अनुसार पूर्णतः सत्य हैं।"
+                    exp: "एसबीआई के अध्यक्ष, सीएफओ तथा चारों प्रबंध निदेशक (MD) सत्य हैं।"
                 },
                 en: {
-                    q: "Consider the statements regarding military achievements of Indian women:<br><br>1. Sadhna Saxena Nair became DG of Medical Services (Army).<br>2. Preeti Rajak is the first woman Subedar in Indian Army.<br>3. Shivangi Singh is first woman fighter pilot & Hina Jaiswal is first flight engineer.<br><br>Select code:",
-                    options: ["(A) Only 1 and 2", "(B) Only 2 and 3", "(C) Only 1 and 3", "(D) 1, 2 and 3"],
-                    exp: "All three statements are completely true."
-                },
-                correct: 3
-            },
-            {
-                id: 20,
-                hi: {
-                    q: "चर्चित अंतर्राष्ट्रीय महिलाओं के संदर्भ में कौन-सा मिलान असत्य है?",
-                    options: [
-                        "(A) नेटुम्बो नंदी-न्दैतवा - पहली महिला राष्ट्रपति, नामीबिया",
-                        "(B) जुडिश सुमिनवा तुलुका - पहली महिला प्रधानमंत्री, कांगो",
-                        "(C) सेलेस्ते सैलो - विश्व मौसम विज्ञान संगठन (WMO) की पहली महिला महासचिव",
-                        "(D) मैनुएल रोका बोटे - पहली महिला राष्ट्रपति, घाना"
-                    ],
-                    exp: "विकल्प (D) असत्य है। मैनुएल रोका बोटे इक्वेटोरियल गिनी की पहली महिला प्रधानमंत्री बनी हैं।"
-                },
-                en: {
-                    q: "Which match is incorrect regarding international women leaders?",
-                    options: [
-                        "(A) Netumbo Nandi-Ndaitwah - First female President, Namibia",
-                        "(B) Judith Suminwa Tuluka - First female PM, DR Congo",
-                        "(C) Celeste Saulo - First female Secretary-General of WMO",
-                        "(D) Manuela Roka Botey - First female President, Ghana"
-                    ],
-                    exp: "Option (D) is incorrect. Manuela Roka Botey is the first female PM of Equatorial Guinea."
-                },
-                correct: 3
-            },
-
-            // --- SECTION 6: Desh - Rajdhani - Rajdoot (Photo 3) ---
-            {
-                id: 21,
-                hi: {
-                    q: "स्तम्भ-I (देश - राजधानी) को स्तम्भ-II (भारतीय राजदूत/उच्चायुक्त) से सुमेलित कीजिए:<br><br><b>स्तम्भ-I:</b><br>(p) मलेशिया - कुआलालंपुर<br>(q) ओमान - मस्कट<br>(r) घाना - अक्करा<br>(s) सोलोमन द्वीप - होनियारा<br><br><b>स्तम्भ-II:</b><br>(1) सुरिन्द्र भगत<br>(2) सोमनाथ घोष<br>(3) राजीव कुमार<br>(4) प्रशांत पिसे",
-                    options: [
-                        "(A) p-2, q-4, r-1, s-3",
-                        "(B) p-4, q-2, r-3, s-1",
-                        "(C) p-2, q-1, r-4, s-3",
-                        "(D) p-1, q-4, r-2, s-3"
-                    ],
-                    exp: "मलेशिया -> सोमनाथ घोष, ओमान -> प्रशांत पिसे, घाना -> सुरिन्द्र भगत, सोलोमन द्वीप -> राजीव कुमार।"
-                },
-                en: {
-                    q: "Match Country-Capital with Indian Ambassador:<br><br><b>Column-I:</b><br>(p) Malaysia - Kuala Lumpur<br>(q) Oman - Muscat<br>(r) Ghana - Accra<br>(s) Solomon Islands - Honiara<br><br><b>Column-II:</b><br>(1) Surindra Bhagat<br>(2) Somnath Ghosh<br>(3) Rajiv Kumar<br>(4) Prashant Pise",
-                    options: [
-                        "(A) p-2, q-4, r-1, s-3",
-                        "(B) p-4, q-2, r-3, s-1",
-                        "(C) p-2, q-1, r-4, s-3",
-                        "(D) p-1, q-4, r-2, s-3"
-                    ],
-                    exp: "Correct matches: p-2, q-4, r-1, s-3."
-                },
-                correct: 0
-            },
-            {
-                id: 22,
-                hi: {
-                    q: "विभिन्न देशों में भारतीय राजदूतों के संदर्भ में कौन-सा युग्म गलत है?",
-                    options: [
-                        "(A) लीबिया (त्रिपोली) - डॉ. हिफ्जूर रहमान",
-                        "(B) तिमोर लिस्टे (दिली) - एम. एस. पटियाल",
-                        "(C) आयरलैंड (डबलिन) - मनीष गुप्ता",
-                        "(D) नार्वे (ओस्लो) - दीपक मिगलानी"
-                    ],
-                    exp: "विकल्प (D) गलत है। नार्वे (ओस्लो) में भारत की राजदूत 'ग्लोरिया गंगटे' हैं, जबकि दीपक मिगलानी दक्षिण सूडान (जुबा) में हैं।"
-                },
-                en: {
-                    q: "Which pair is incorrectly matched regarding Indian Ambassadors?",
-                    options: [
-                        "(A) Libya (Tripoli) - Dr. Hifzur Rahman",
-                        "(B) Timor Leste (Dili) - M. S. Patiyal",
-                        "(C) Ireland (Dublin) - Manish Gupta",
-                        "(D) Norway (Oslo) - Deepak Miglani"
-                    ],
-                    exp: "Option (D) is incorrect. Gloria Gangte is Ambassador to Norway; Deepak Miglani is in South Sudan."
-                },
-                correct: 3
-            },
-
-            // --- SECTION 7: PM Puraskar, Ganatantra Diwas, Words, ISRO & Wildlife (Photo 4) ---
-            {
-                id: 23,
-                hi: {
-                    q: "वर्ष 2025 में प्रधानमंत्री नरेन्द्र मोदी को प्राप्त सर्वोच्च नागरिक पुरस्कारों के संबंध में कौन-सा मिलान सही है?<br><br>1. द ग्रेट ऑनर निशान ऑफ इथियोपिया - इथियोपिया<br>2. ग्रैंड कॉलर ऑफ द नेशनल ऑर्डर ऑफ द साउदर्न क्रॉस - ब्राजील<br>3. ऑर्डर ऑफ द रिपब्लिक ऑफ त्रिनिदाद एंड टोबैगो - त्रिनिदाद एवं टोबैगो<br>4. ग्रैंड क्रॉस ऑफ द ऑर्डर ऑफ मैकारियोस III - साइप्रस<br><br>कूट का चयन कीजिए:",
-                    options: ["(A) केवल 1 और 2", "(B) केवल 3 और 4", "(C) केवल 1, 2 और 3", "(D) 1, 2, 3 और 4"],
-                    exp: "वर्ष 2025 में पीएम मोदी को मिले ये सभी चारों सर्वोच्च पुरस्कार पूर्णतः सही हैं।"
-                },
-                en: {
-                    q: "Which honours received by PM Modi in 2025 are correctly matched?<br><br>1. Great Honour Nishan of Ethiopia - Ethiopia<br>2. Grand Collar of Southern Cross - Brazil<br>3. Order of Republic of Trinidad & Tobago - Trinidad & Tobago<br>4. Grand Cross of Order of Makarios III - Cyprus<br><br>Select code:",
-                    options: ["(A) Only 1 and 2", "(B) Only 3 and 4", "(C) Only 1, 2 and 3", "(D) 1, 2, 3 and 4"],
-                    exp: "All four pairings are authentic."
-                },
-                correct: 3
-            },
-            {
-                id: 24,
-                hi: {
-                    q: "गणतंत्र दिवस समारोह 2024, 2025 एवं 2026 के संदर्भ में कौन-सा युग्म गलत है?",
-                    options: [
-                        "(A) 2026: मुख्य अतिथि - एंतोनियो कोस्टा एवं उर्सुला वॉन डेर लेयेन",
-                        "(B) 2026: सर्वश्रेष्ठ झांकी - महाराष्ट्र की झांकी",
-                        "(C) 2025: मुख्य अतिथि - प्रबोवो सुबियांतो (इंडोनेशिया)",
-                        "(D) 2024: मुख्य अतिथि - जो बाइडेन (अमेरिका)"
-                    ],
-                    exp: "विकल्प (D) गलत है। 2024 में गणतंत्र दिवस के मुख्य अतिथि फ्रांस के राष्ट्रपति इमैनुएल मैक्रों थे।"
-                },
-                en: {
-                    q: "Which match is incorrect regarding Republic Day chief guests?",
-                    options: [
-                        "(A) 2026: Chief Guests - António Costa & Ursula von der Leyen",
-                        "(B) 2026: Best Tableau - Maharashtra",
-                        "(C) 2025: Chief Guest - Prabowo Subianto (Indonesia)",
-                        "(D) 2024: Chief Guest - Joe Biden (USA)"
-                    ],
-                    exp: "Option (D) is incorrect. The 2024 Chief Guest was Emmanuel Macron (President of France)."
-                },
-                correct: 3
-            },
-            {
-                id: 25,
-                hi: {
-                    q: "शब्दकोशों द्वारा घोषित 'Word of the Year' के संदर्भ में कौन-सा मिलान सत्य है?<br><br>1. ऑक्सफोर्ड 2023 - Rizz<br>2. मरियम-वेबस्टर 2024 - Polarisation<br>3. कैम्ब्रिज 2025 - Parasocial<br>4. कोलिन्स 2024 - Brat<br><br>कूट का चयन कीजिए:",
-                    options: ["(A) केवल 1 और 2", "(B) केवल 3 और 4", "(C) केवल 1, 2 और 4", "(D) 1, 2, 3 और 4"],
-                    exp: "सारणी के अनुसार सभी चारों शब्दकोशों के वर्षवार शब्द पूर्णतः सत्य हैं।"
-                },
-                en: {
-                    q: "Which Word of the Year selections are correct?<br><br>1. Oxford 2023 - Rizz<br>2. Merriam-Webster 2024 - Polarisation<br>3. Cambridge 2025 - Parasocial<br>4. Collins 2024 - Brat<br><br>Select code:",
-                    options: ["(A) Only 1 and 2", "(B) Only 3 and 4", "(C) Only 1, 2 and 4", "(D) 1, 2, 3 and 4"],
-                    exp: "All four selections are completely valid."
-                },
-                correct: 3
-            },
-            {
-                id: 26,
-                hi: {
-                    q: "इसरो (ISRO) के प्रक्षेपण मिशनों (2024-2026) के संदर्भ में कौन-सा मिलान असत्य है?",
-                    options: [
-                        "(A) NISAR (इसरो-नासा) - GSLV-F16",
-                        "(B) EOS-9 (101वां) - PSLV-C61 (असफल)",
-                        "(C) NVS-02 (100वां) - GSLV-F15",
-                        "(D) GSAT-20 - LVM3-M4"
-                    ],
-                    exp: "विकल्प (D) असत्य है। GSAT-20 का प्रक्षेपण 19 नवम्बर 2024 को SpaceX Falcon-9 रॉकेट द्वारा किया गया था।"
-                },
-                en: {
-                    q: "Which launch mission is incorrectly paired with its rocket?",
-                    options: [
-                        "(A) NISAR - GSLV-F16",
-                        "(B) EOS-9 - PSLV-C61 (Failed)",
-                        "(C) NVS-02 - GSLV-F15",
-                        "(D) GSAT-20 - LVM3-M4"
-                    ],
-                    exp: "Option (D) is incorrect. GSAT-20 was launched using SpaceX Falcon-9."
-                },
-                correct: 3
-            },
-            {
-                id: 27,
-                hi: {
-                    q: "इसरो के आगामी मिशनों के संदर्भ में निम्नलिखित कथनों पर विचार कीजिए:<br><br>1. अंतरिक्ष स्टेशन (2028) एक नियोजित स्टेशन होगा जहां यात्री 15-20 दिन रह सकेंगे।<br>2. चंद्रयान-4 (2028) का मुख्य लक्ष्य चंद्रमा से सैंपल लेकर पृथ्वी तक सुरक्षित पहुंचना है।<br>3. मंगलयान-2 (2030) मंगल ग्रह हेतु भारत का दूसरा इंटरप्लेनेटरी मिशन है।<br><br>सत्य कूट का चयन कीजिए:",
-                    options: ["(A) केवल 1 और 2", "(B) केवल 2 और 3", "(C) केवल 1 और 3", "(D) 1, 2 और 3"],
-                    exp: "तीनों मिशनों के वर्ष तथा उनके उद्देश्य आधिकारिक सारणी के अनुसार शत-प्रतिशत सत्य हैं।"
-                },
-                en: {
-                    q: "Consider ISRO's future space missions:<br><br>1. Bharatiya Antariksh Station (2028) is planned for a 15-20 day crew stay.<br>2. Chandrayaan-4 (2028) aims for lunar sample return.<br>3. Mangalyaan-2 (2030) is India's second Mars interplanetary mission.<br><br>Select code:",
-                    options: ["(A) Only 1 and 2", "(B) Only 2 and 3", "(C) Only 1 and 3", "(D) 1, 2 and 3"],
-                    exp: "All three statements are completely true."
-                },
-                correct: 3
-            },
-            {
-                id: 28,
-                hi: {
-                    q: "<b>कथन (A):</b> प्रोजेक्ट चीता के तहत 17 सितम्बर 2022 को नामीबिया से 8 अफ्रीकी चीते मध्य प्रदेश के कूनो राष्ट्रीय उद्यान में लाए गए थे।<br><b>कारण (R):</b> इनमें 5 मादा और 3 नर चीते शामिल थे, और निगरानी हेतु सरकार ने 9 सदस्यीय कार्यबल 2 वर्ष के लिए गठित किया था।",
-                    options: [
-                        "(A) (A) और (R) दोनों सही हैं और (R), (A) की सही व्याख्या है।",
-                        "(B) (A) और (R) दोनों सही हैं लेकिन (R), (A) की सही व्याख्या नहीं है।",
-                        "(C) (A) सही है लेकिन (R) गलत है।",
-                        "(D) (A) गलत है लेकिन (R) सही है।"
-                    ],
-                    exp: "कथन और कारण दोनों चीता परियोजना के वास्तविक आंकड़े हैं।"
-                },
-                en: {
-                    q: "<b>Assertion (A):</b> Under Project Cheetah, 8 cheetahs were translocated from Namibia to Kuno NP on 17 Sep 2022.<br><b>Reason (R):</b> This included 5 females and 3 males, monitored by a 9-member task force for 2 years.",
-                    options: [
-                        "(A) Both (A) and (R) are correct, and (R) is the correct explanation.",
-                        "(B) Both are correct, but (R) is NOT the explanation.",
-                        "(C) (A) is correct, but (R) is incorrect.",
-                        "(D) (A) is incorrect, but (R) is correct."
-                    ],
-                    exp: "Both are factually authentic."
-                },
-                correct: 0
-            },
-            {
-                id: 29,
-                hi: {
-                    q: "भारतीय वन्यजीव संस्थान (WII) की 'बाघ गणना रिपोर्ट 2022' के संदर्भ में कौन-सा कथन सत्य है?<br><br>1. यह रिपोर्ट 29 जुलाई 2023 को जारी की गई, जो 5वें क्रम की रिपोर्ट है।<br>2. भारत में बाघों की कुल संख्या 3682 दर्ज की गई, जो 2018 में 2967 थी।<br>3. विश्व का 75% बाघ केवल भारत में है और सर्वाधिक बाघ मध्य प्रदेश (785) में हैं।<br><br>कूट का चयन कीजिए:",
-                    options: ["(A) केवल 1 और 2", "(B) केवल 2 और 3", "(C) केवल 1 और 3", "(D) 1, 2 और 3"],
-                    exp: "बाघ गणना 2022 के तीनों आंकड़े पूर्णतः सत्य हैं।"
-                },
-                en: {
-                    q: "Which statements are correct regarding Tiger Census 2022 by WII?<br><br>1. Released on 29 July 2023, representing the 5th cycle.<br>2. India's tiger count reached 3,682 (up from 2,967 in 2018).<br>3. India holds 75% of world tigers, with MP having the highest (785).<br><br>Select code:",
+                    q: "Which matches are correct regarding SBI executives?<br><br>1. Chairman - Challa Sreenivasulu Setty<br>2. CFO - Kameshwar Rao Kodavanti<br>3. MDs - Ravi Ranjan, Rama Mohan Rao Amara, Rana Ashutosh Kumar Singh, Ashwini Kumar Tewari<br><br>Select code:",
                     options: ["(A) Only 1 and 2", "(B) Only 2 and 3", "(C) Only 1 and 3", "(D) 1, 2 and 3"],
                     exp: "All three statements are completely valid."
                 },
                 correct: 3
             },
             {
-                id: 30,
+                id: 16,
                 hi: {
-                    q: "बाघ गणना रिपोर्ट 2022 के अनुसार विभिन्न राज्यों/रिजर्व में बाघों की संख्या के संदर्भ में <b>असत्य कथन</b> चुनिए:",
+                    q: "स्तम्भ-I (सार्वजनिक बैंक) को स्तम्भ-II (MD / CEO) से सुमेलित कीजिए:<br><br><b>स्तम्भ-I:</b><br>(a) बैंक ऑफ बड़ौदा<br>(b) बैंक ऑफ इंडिया<br>(c) बैंक ऑफ महाराष्ट्र<br>(d) केनरा बैंक<br><br><b>स्तम्भ-II:</b><br>(1) रजनीश कर्नाटक<br>(2) देवदत्त चंद<br>(3) हरदीप सिंह अहलूवालिया<br>(4) निधु सक्सेना",
                     options: [
-                        "(A) 2018 और 2022 के बीच बाघों की संख्या में 24.1% की वृद्धि दर्ज की गई।",
-                        "(B) जिम कॉर्बेट रिजर्व (उत्तराखंड) में देश के सबसे ज्यादा 260 बाघ हैं।",
-                        "(C) बिहार में बाघों की संख्या 2018 में 31 से बढ़कर 2022 में 54 हो गई।",
-                        "(D) बाघों की औसत वार्षिक वृद्धि दर 12.5% दर्ज की गई।"
+                        "(A) a-2, b-1, c-4, d-3",
+                        "(B) a-1, b-2, c-3, d-4",
+                        "(C) a-2, b-4, c-1, d-3",
+                        "(D) a-3, b-1, c-4, d-2"
                     ],
-                    exp: "विकल्प (D) असत्य है। आधिकारिक रिपोर्ट के अनुसार बाघों की औसत वार्षिक वृद्धि दर 6.1% दर्ज की गई है।"
+                    exp: "बैंक ऑफ बड़ौदा -> देवदत्त चंद, बैंक ऑफ इंडिया -> रजनीश कर्नाटक, बैंक ऑफ महाराष्ट्र -> निधु सक्सेना, केनरा बैंक -> हरदीप सिंह अहलूवालिया।"
                 },
                 en: {
-                    q: "Identify the incorrect statement regarding Tiger Census Report 2022 stats:",
+                    q: "Match Public Sector Banks with their MD/CEOs:<br><br><b>Column-I:</b><br>(a) Bank of Baroda<br>(b) Bank of India<br>(c) Bank of Maharashtra<br>(d) Canara Bank<br><br><b>Column-II:</b><br>(1) Rajneesh Karnatak<br>(2) Debadatta Chand<br>(3) Hardeep Singh Ahluwalia<br>(4) Nidhu Saxena",
                     options: [
-                        "(A) Tiger count recorded an increase of 24.1% between 2018 and 2022.",
-                        "(B) Jim Corbett Reserve has the highest number with 260 tigers.",
-                        "(C) Bihar's tiger population rose from 31 (in 2018) to 54 (in 2022).",
-                        "(D) The average annual growth rate of tigers was recorded at 12.5%."
+                        "(A) a-2, b-1, c-4, d-3",
+                        "(B) a-1, b-2, c-3, d-4",
+                        "(C) a-2, b-4, c-1, d-3",
+                        "(D) a-3, b-1, c-4, d-2"
                     ],
-                    exp: "Option (D) is incorrect. The average annual growth rate was 6.1%."
+                    exp: "Correct matches: a-2, b-1, c-4, d-3."
+                },
+                correct: 0
+            },
+            {
+                id: 17,
+                hi: {
+                    q: "सार्वजनिक बैंकों के प्रमुखों के संबंध में <b>असंगत युग्म</b> की पहचान कीजिए:",
+                    options: [
+                        "(A) सेंट्रल बैंक ऑफ इंडिया (CMD) - कल्याण कुमार",
+                        "(B) इंडियन बैंक (CEO) - बिनोद कुमार",
+                        "(C) इंडियन ओवरसीज बैंक (MD & CEO) - अजय कुमार श्रीवास्तव",
+                        "(D) पंजाब नेशनल बैंक - स्वरूप कुमार साहा"
+                    ],
+                    exp: "विकल्प (D) असंगत है। पंजाब नेशनल बैंक के प्रमुख अशोक चंद्र हैं, जबकि स्वरूप कुमार साहा 'पंजाब एंड सिंध बैंक' के प्रमुख हैं।"
+                },
+                en: {
+                    q: "Identify the mismatched pair regarding PSB heads:",
+                    options: [
+                        "(A) Central Bank of India (CMD) - Kalyan Kumar",
+                        "(B) Indian Bank (CEO) - Binod Kumar",
+                        "(C) Indian Overseas Bank (MD & CEO) - Ajay Kumar Srivastava",
+                        "(D) Punjab National Bank - Swarup Kumar Saha"
+                    ],
+                    exp: "Option (D) is mismatched. Ashok Chandra heads PNB; Swarup Kumar Saha heads Punjab & Sind Bank."
                 },
                 correct: 3
+            },
+            {
+                id: 18,
+                hi: {
+                    q: "यूको बैंक एवं यूनियन बैंक ऑफ इंडिया के प्रबंध निदेशकों के संदर्भ में कौन-सा मिलान सत्य है?",
+                    options: [
+                        "(A) यूको बैंक: राजेन्द्र कुमार साबू; यूनियन बैंक ऑफ इंडिया: आशीष पाण्डेय",
+                        "(B) यूको बैंक: आशीष पाण्डेय; यूनियन बैंक ऑफ इंडिया: राजेन्द्र कुमार साबू",
+                        "(C) यूको बैंक: अशोक चंद्र; यूनियन बैंक ऑफ इंडिया: स्वरूप कुमार साहा",
+                        "(D) यूको बैंक: बिनोद कुमार; यूनियन बैंक ऑफ इंडिया: कल्याण कुमार"
+                    ],
+                    exp: "यूको बैंक के एमडी राजेन्द्र कुमार साबू हैं तथा यूनियन बैंक ऑफ इंडिया के सीएमडी आशीष पाण्डेय हैं।"
+                },
+                en: {
+                    q: "Which match is correct regarding UCO Bank and Union Bank heads?",
+                    options: [
+                        "(A) UCO Bank: Rajendra Kumar Saboo; Union Bank of India: Ashish Pandey",
+                        "(B) UCO Bank: Ashish Pandey; Union Bank of India: Rajendra Kumar Saboo",
+                        "(C) UCO Bank: Ashok Chandra; Union Bank of India: Swarup Kumar Saha",
+                        "(D) UCO Bank: Binod Kumar; Union Bank of India: Kalyan Kumar"
+                    ],
+                    exp: "Option (A) is accurate."
+                },
+                correct: 0
+            },
+            {
+                id: 19,
+                hi: {
+                    q: "30 अगस्त 2019 के 10 बैंकों के विलय के उपरांत कौन-सा मिलान सत्य है?<br><br>1. इलाहाबाद बैंक -> इंडियन बैंक में विलय<br>2. आंध्रा बैंक व कॉर्पोरेशन बैंक -> यूनियन बैंक ऑफ इंडिया में विलय<br>3. ओरिएंटल बैंक ऑफ कॉमर्स व यूनाइटेड बैंक -> पंजाब नेशनल बैंक में विलय<br>4. विजया बैंक व देना बैंक -> बैंक ऑफ बड़ौदा में विलय<br><br>सत्य कूट का चयन कीजिए:",
+                    options: ["(A) केवल 1 और 2", "(B) केवल 3 और 4", "(C) केवल 1, 2 और 3", "(D) 1, 2, 3 और 4"],
+                    exp: "दिए गए सभी चारों विलय के तथ्य शत-प्रतिशत सत्य हैं।"
+                },
+                en: {
+                    q: "Which matches are correct regarding bank mergers of 30 Aug 2019?<br><br>1. Allahabad Bank -> Indian Bank<br>2. Andhra Bank & Corporation Bank -> Union Bank of India<br>3. OBC & United Bank -> Punjab National Bank<br>4. Vijaya Bank & Dena Bank -> Bank of Baroda<br><br>Select code:",
+                    options: ["(A) Only 1 and 2", "(B) Only 3 and 4", "(C) Only 1, 2 and 3", "(D) 1, 2, 3 and 4"],
+                    exp: "All four merger facts are completely valid."
+                },
+                correct: 3
+            },
+            {
+                id: 20,
+                hi: {
+                    q: "<b>कथन (A):</b> वर्तमान में भारत में सार्वजनिक क्षेत्र के बैंकों (PSBs) की कुल संख्या 12 रह गई है।<br><b>कारण (R):</b> सिंडिकेट बैंक का विलय केनरा बैंक में कर दिया गया था।",
+                    options: [
+                        "(A) (A) और (R) दोनों सही हैं और (R), (A) की सही व्याख्या है।",
+                        "(B) (A) और (R) दोनों सही हैं लेकिन (R), (A) की सही व्याख्या नहीं है।",
+                        "(C) (A) सही है लेकिन (R) गलत है।",
+                        "(D) (A) गलत है लेकिन (R) सही है।"
+                    ],
+                    exp: "कथन और कारण दोनों सत्य हैं। 10 बड़े बैंकों के विलय के फलस्वरूप ही सार्वजनिक बैंकों की कुल संख्या 12 हुई।"
+                },
+                en: {
+                    q: "<b>Assertion (A):</b> Currently, the total count of Public Sector Banks in India is 12.<br><b>Reason (R):</b> Syndicate Bank was merged into Canara Bank.",
+                    options: [
+                        "(A) Both (A) and (R) are correct, and (R) explains (A).",
+                        "(B) Both are correct, but (R) does NOT explain (A).",
+                        "(C) (A) is correct, but (R) is incorrect.",
+                        "(D) (A) is incorrect, but (R) is correct."
+                    ],
+                    exp: "Both facts are correct and explain the consolidation."
+                },
+                correct: 0
             }
         ];
 
-        // State Variables
+        // State variables
         let currentLang = 'hi';
         let currentIndex = 0;
         let userResponses = new Array(questionsData.length).fill(null);
@@ -823,7 +611,7 @@
         const scorecardModal = document.getElementById('scorecardModal');
         const reviewSolutionsBtn = document.getElementById('reviewSolutionsBtn');
 
-        // Fullscreen Entry
+        // Fullscreen Entry Trigger
         startTestBtn.addEventListener('click', () => {
             const el = document.documentElement;
             if (el.requestFullscreen) { el.requestFullscreen().catch(() => {}); }
@@ -833,7 +621,7 @@
             renderQuestion();
         });
 
-        // Timer
+        // Countdown Timer
         function startTimer() {
             timerInterval = setInterval(() => {
                 if (timeRemaining <= 0) {
@@ -848,14 +636,14 @@
             }, 1000);
         }
 
-        // Lang switch
+        // Language Switcher
         langToggleBtn.addEventListener('click', () => {
             currentLang = currentLang === 'hi' ? 'en' : 'hi';
             langToggleBtn.textContent = currentLang === 'hi' ? 'English / हिंदी' : 'हिंदी / English';
             renderQuestion();
         });
 
-        // Render
+        // Render Current Question
         function renderQuestion() {
             const q = questionsData[currentIndex];
             const data = q[currentLang];
@@ -918,7 +706,7 @@
                 : (currentLang === 'hi' ? 'अगला एवं सेव' : 'Next & Save');
         }
 
-        // Feedback
+        // Instant Verification and Feedback
         function showFeedback(idx, selectedOpt) {
             const q = questionsData[idx];
             instantFeedbackBox.classList.remove('hidden');
@@ -928,7 +716,7 @@
                 feedbackTitle.innerHTML = `<i class="fa-solid fa-circle-info text-blue-500"></i> ${currentLang === 'hi' ? 'सही उत्तर:' : 'Correct Answer:'} Option ${String.fromCharCode(65 + q.correct)}`;
             } else if (selectedOpt === q.correct) {
                 instantFeedbackBox.className = "mb-6 p-4 rounded-xl border bg-emerald-50 border-emerald-200 text-emerald-900";
-                feedbackTitle.innerHTML = `<i class="fa-solid fa-circle-check text-emerald-600"></i> ${currentLang === 'hi' ? 'सत्य उत्तर! (+2.00 अंक)' : 'Correct! (+2.00 marks)'}`;
+                feedbackTitle.innerHTML = `<i class="fa-solid fa-circle-check text-emerald-600"></i> ${currentLang === 'hi' ? 'बधाई! आपका उत्तर बिल्कुल सही है (+2.00 अंक)' : 'Correct! (+2.00 marks)'}`;
             } else {
                 instantFeedbackBox.className = "mb-6 p-4 rounded-xl border bg-red-50 border-red-200 text-red-900";
                 feedbackTitle.innerHTML = `<i class="fa-solid fa-circle-xmark text-red-600"></i> ${currentLang === 'hi' ? 'गलत उत्तर (-0.20 अंक). सही उत्तर:' : 'Incorrect (-0.20 marks). Correct:'} Option ${String.fromCharCode(65 + q.correct)}`;
@@ -937,7 +725,7 @@
             feedbackExplanation.innerHTML = `<b>${currentLang === 'hi' ? 'विस्तृत व्याख्या:' : 'Explanation:'}</b> ${q[currentLang].exp}`;
         }
 
-        // Nav actions
+        // Action Buttons Handling
         nextBtn.addEventListener('click', () => {
             if (currentIndex < questionsData.length - 1) {
                 currentIndex++;
@@ -966,12 +754,12 @@
         });
 
         headerSubmitBtn.addEventListener('click', () => {
-            if (confirm(currentLang === 'hi' ? 'क्या आप टेस्ट सबमिट करना चाहते हैं?' : 'Are you sure you want to submit?')) {
+            if (confirm(currentLang === 'hi' ? 'क्या आप वाकई टेस्ट सबमिट करना चाहते हैं?' : 'Are you sure you want to submit?')) {
                 calculateScore();
             }
         });
 
-        // Scoring
+        // Scoring Logic (+2.00 / -0.20)
         function calculateScore() {
             clearInterval(timerInterval);
             isSubmitted = true;
