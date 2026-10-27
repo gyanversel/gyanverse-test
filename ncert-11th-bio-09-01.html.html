@@ -1,0 +1,1367 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GYANVERSE - NCERT Biomolecules (9.1 to 9.6) CBT Test</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Tiro+Devanagari+Hindi:ital@0;1&family=Inter:wght@400;600;700&display=swap');
+        body {
+            font-family: 'Inter', 'Tiro Devanagari Hindi', sans-serif;
+            user-select: none;
+            -webkit-user-select: none;
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background-color: #cbd5e1;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body class="bg-slate-100 text-slate-800 min-h-screen flex flex-col justify-between">
+
+    <!-- ENTRY GATE OVERLAY (AUTO FULLSCREEN MANDATORY) -->
+    <div id="fullScreenGate" class="fixed inset-0 z-50 bg-slate-900 bg-opacity-95 flex items-center justify-center p-4">
+        <div class="max-w-md w-full bg-white rounded-2xl shadow-2xl p-6 text-center border-t-4 border-indigo-600">
+            <div class="w-16 h-16 bg-indigo-100 text-indigo-600 rounded-full flex items-center justify-center mx-auto mb-4 text-2xl font-bold">
+                GV
+            </div>
+            <h2 class="text-2xl font-bold text-slate-800 mb-1 tracking-tight">GYANVERSE CBT PORTAL</h2>
+            <p class="text-xs font-semibold text-indigo-600 mb-4 tracking-wide uppercase">NCERT Biology • Class 11 Chapter 9 (Topic 9.1 - 9.6)</p>
+            
+            <div class="bg-slate-50 rounded-xl p-4 text-left text-sm text-slate-600 mb-6 space-y-2 border border-slate-200">
+                <div class="flex items-center justify-between">
+                    <span>कुल प्रश्न (Total Questions):</span>
+                    <span class="font-bold text-slate-800">80 प्रश्न (Full Coverage)</span>
+                </div>
+                <div class="flex items-center justify-between">
+                    <span>समय सीमा (Duration):</span>
+                    <span class="font-bold text-slate-800">120 मिनट</span>
+                </div>
+                <div class="flex items-center justify-between">
+                    <span>अंकन योजना (Marking):</span>
+                    <span class="font-bold text-emerald-600">+2.00 / -0.20</span>
+                </div>
+                <div class="flex items-center justify-between">
+                    <span>मोड (Instant Review):</span>
+                    <span class="font-bold text-indigo-600">सक्रिय (Option Click Solution)</span>
+                </div>
+            </div>
+
+            <p class="text-xs text-rose-500 font-medium mb-5">
+                * निर्देश: निष्पक्ष परीक्षा अनुभव हेतु 'Start Test' पर क्लिक करते ही आपका ब्राउज़र स्वतः फुल-स्क्रीन मोड में आ जाएगा।
+            </p>
+
+            <button onclick="startAutoFullScreenTest()" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3.5 px-6 rounded-xl shadow-lg transition-all duration-200 flex items-center justify-center space-x-2">
+                <span>Start Test (Auto Full Screen)</span>
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+            </button>
+            <div class="mt-4 text-xs text-slate-400">
+                Official Telegram: <a href="https://t.me/GYANVERSET" target="_blank" class="text-indigo-500 font-semibold hover:underline">@GYANVERSET</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- MAIN CBT APP WRAPPER -->
+    <div id="cbtApp" class="flex-1 flex flex-col hidden">
+        <!-- TOP APP HEADER -->
+        <header class="bg-white border-b border-slate-200 sticky top-0 z-30 shadow-sm px-4 lg:px-8 py-3 flex items-center justify-between">
+            <div class="flex items-center space-x-3">
+                <span class="bg-indigo-600 text-white font-black text-lg px-2.5 py-1 rounded-md tracking-wider">GV</span>
+                <div>
+                    <h1 class="font-extrabold text-slate-800 text-base md:text-lg leading-tight">GYANVERSE</h1>
+                    <a href="https://t.me/GYANVERSET" target="_blank" class="text-xs text-indigo-600 font-bold hover:underline">@GYANVERSET</a>
+                </div>
+            </div>
+
+            <div class="flex items-center space-x-3 md:space-x-6">
+                <!-- Live 120-min Countdown Timer -->
+                <div class="flex items-center space-x-2 bg-indigo-50 text-indigo-800 px-3.5 py-1.5 rounded-lg border border-indigo-200">
+                    <svg class="w-4 h-4 text-indigo-600 animate-pulse" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                    <span id="timerDisplay" class="font-mono font-bold text-sm md:text-base">120:00</span>
+                </div>
+
+                <!-- Submit Test Button in header -->
+                <button onclick="confirmSubmitTest()" class="bg-rose-600 hover:bg-rose-700 text-white font-bold px-4 py-1.5 rounded-lg text-sm shadow transition-all duration-150">
+                    Submit Test
+                </button>
+            </div>
+        </header>
+
+        <!-- SUB HEADER: QUESTION COUNTER & MARKING -->
+        <div class="bg-slate-200 border-b border-slate-300 px-4 lg:px-8 py-2 flex items-center justify-between text-xs md:text-sm font-semibold text-slate-700">
+            <div id="questionIndicator">Question 1 of 80</div>
+            <div class="flex items-center space-x-4">
+                <span class="text-emerald-700 bg-emerald-100 px-2 py-0.5 rounded border border-emerald-300">+2.00</span>
+                <span class="text-rose-700 bg-rose-100 px-2 py-0.5 rounded border border-rose-300">-0.20</span>
+                <span id="reviewTag" class="hidden text-amber-700 bg-amber-100 px-2 py-0.5 rounded border border-amber-300">Marked for Review</span>
+            </div>
+        </div>
+
+        <!-- FULL-WIDTH CONTENT AREA (NO SIDEBAR GRID AS ORDERED) -->
+        <main class="flex-1 max-w-4xl w-full mx-auto p-4 md:p-6 lg:p-8 flex flex-col justify-start custom-scrollbar overflow-y-auto">
+            <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-5 md:p-8 mb-4">
+                
+                <!-- QUESTION TEXT BLOCK -->
+                <div class="mb-6">
+                    <div class="flex items-center justify-between text-xs font-bold text-slate-400 uppercase tracking-widest mb-2">
+                        <span id="qPatternBadge">Pattern: NCERT Conceptual</span>
+                        <span class="text-indigo-600">@GYANVERSET</span>
+                    </div>
+                    <div id="qText" class="text-base md:text-lg font-medium text-slate-900 leading-relaxed">
+                        <!-- Loaded dynamically -->
+                    </div>
+                </div>
+
+                <!-- OPTIONS LIST -->
+                <div id="optionsContainer" class="space-y-3 mb-6">
+                    <!-- Options loaded dynamically -->
+                </div>
+
+                <!-- INSTANT ANSWER & DETAILED EXPLANATION CARD (APPEARS ON CLICK) -->
+                <div id="instantFeedbackBox" class="hidden rounded-xl p-4 md:p-5 mb-6 border transition-all duration-200">
+                    <div id="feedbackTitle" class="font-bold text-sm mb-1"></div>
+                    <div id="feedbackExplanation" class="text-sm leading-relaxed text-slate-700 mt-2 border-t pt-2 border-slate-200"></div>
+                    <div class="text-[11px] font-semibold text-indigo-600 mt-2 text-right">
+                        प्रमाणित स्रोत: NCERT Class 11 Bio • @GYANVERSET
+                    </div>
+                </div>
+
+                <!-- NAVIGATION BUTTONS: STRICTLY POSITIONED DIRECTLY UNDER OPTIONS -->
+                <div class="pt-4 border-t border-slate-200 flex flex-wrap items-center justify-between gap-2.5">
+                    <div class="flex items-center space-x-2">
+                        <button onclick="prevQuestion()" id="btnPrev" class="px-4 py-2.5 rounded-xl border border-slate-300 bg-white hover:bg-slate-50 text-slate-700 text-sm font-semibold transition disabled:opacity-40">
+                            ← Prev
+                        </button>
+                        <button onclick="clearResponse()" class="px-4 py-2.5 rounded-xl border border-slate-300 bg-white hover:bg-slate-50 text-slate-600 text-sm font-semibold transition">
+                            Clear
+                        </button>
+                    </div>
+
+                    <div class="flex items-center space-x-2">
+                        <button onclick="toggleReviewCurrent()" id="btnReview" class="px-4 py-2.5 rounded-xl border border-amber-300 bg-amber-50 hover:bg-amber-100 text-amber-800 text-sm font-semibold transition">
+                            Mark for Review
+                        </button>
+                        <button onclick="nextQuestion()" id="btnNext" class="px-5 py-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white text-sm font-bold shadow transition">
+                            Next & Save →
+                        </button>
+                    </div>
+                </div>
+
+                <!-- PER-QUESTION WATERMARK TAG -->
+                <div class="text-center text-xs text-slate-400 mt-5 pt-3 border-t border-dashed border-slate-200 font-medium">
+                    Gyanverse NCERT Mega Test Series • Telegram: <a href="https://t.me/GYANVERSET" target="_blank" class="text-indigo-600 font-bold hover:underline">@GYANVERSET</a>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- SCORECARD & RESULT MODAL -->
+    <div id="scorecardModal" class="fixed inset-0 z-50 bg-slate-900 bg-opacity-90 hidden items-center justify-center p-4">
+        <div class="max-w-lg w-full bg-white rounded-2xl shadow-2xl p-6 text-center border-t-4 border-indigo-600">
+            <h2 class="text-2xl font-black text-slate-900 mb-1">CBT RESULT SCORECARD</h2>
+            <p class="text-xs text-indigo-600 font-semibold mb-4">GYANVERSE NCERT TEST SERIES (@GYANVERSET)</p>
+
+            <div class="grid grid-cols-2 gap-3 mb-5 text-left">
+                <div class="p-3 bg-slate-50 rounded-xl border border-slate-200">
+                    <span class="text-xs text-slate-500 font-medium">कुल प्राप्तांक (Score)</span>
+                    <div id="resScore" class="text-2xl font-black text-indigo-600">0.00</div>
+                    <span class="text-[10px] text-slate-400">Total Marks: 160.00</span>
+                </div>
+                <div class="p-3 bg-slate-50 rounded-xl border border-slate-200">
+                    <span class="text-xs text-slate-500 font-medium">सटीकता (Accuracy)</span>
+                    <div id="resAccuracy" class="text-2xl font-black text-emerald-600">0%</div>
+                    <span class="text-[10px] text-slate-400">Based on Attempts</span>
+                </div>
+                <div class="p-3 bg-emerald-50 rounded-xl border border-emerald-200">
+                    <span class="text-xs text-emerald-700 font-medium">सही उत्तर (Correct)</span>
+                    <div id="resCorrect" class="text-xl font-bold text-emerald-700">0</div>
+                </div>
+                <div class="p-3 bg-rose-50 rounded-xl border border-rose-200">
+                    <span class="text-xs text-rose-700 font-medium">गलत उत्तर (Incorrect)</span>
+                    <div id="resWrong" class="text-xl font-bold text-rose-700">0</div>
+                </div>
+            </div>
+
+            <div class="p-3 bg-indigo-50 border border-indigo-200 rounded-xl text-xs text-indigo-900 mb-5 leading-relaxed">
+                🎉 इस 80-प्रश्नों के विस्तृत अभ्यास टेस्ट को पूरा करने के लिए बधाई! अधिक टेस्ट और रिवीजन सामग्री के लिए टेलीग्राम चैनल से जुड़ें: 
+                <a href="https://t.me/GYANVERSET" target="_blank" class="font-bold underline block mt-1 text-indigo-700">https://t.me/GYANVERSET</a>
+            </div>
+
+            <div class="flex space-x-3">
+                <button onclick="reviewAllSolutions()" class="flex-1 bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2.5 rounded-xl text-sm transition">
+                    Review Questions
+                </button>
+                <button onclick="location.reload()" class="flex-1 bg-slate-200 hover:bg-slate-300 text-slate-800 font-bold py-2.5 rounded-xl text-sm transition">
+                    Re-take Test
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const quizData = [
+  {
+    "pattern": "3-Statement Pattern",
+    "q": "सजीव ऊतकों के रासायनिक संघटन के प्राथमिक विश्लेषण के संदर्भ में निम्नलिखित कथनों पर विचार कीजिए:<br><br>1. पादप, जंतु अथवा सूक्ष्मजीवी लेई के रासायनिक परीक्षण में कार्बन, हाइड्रोजन, ऑक्सीजन एवं नाइट्रोजन मुख्य तत्वों के रूप में प्राप्त होते हैं।<br>2. निर्जीव पदार्थ जैसे भू-पर्पटी के नमूने में मिलने वाले लगभग सभी तत्व सजीव ऊतकों के नमूने में भी उपस्थित होते हैं।<br>3. किसी भी सजीव में भू-पर्पटी की तुलना में सिलिकॉन का अनुपात सामान्यतया सर्वाधिक होता है।<br><br>उपरोक्त में से कौन-सा/से कथन <b>सत्य</b> है/हैं?",
+    "options": [
+      "केवल 1 और 3",
+      "केवल 2 और 3",
+      "केवल 1 और 2",
+      "1, 2 और 3"
+    ],
+    "correct": 2,
+    "exp": "NCERT 9.1 के अनुसार: सजीव और निर्जीव दोनों में समान तत्व मिलते हैं, किंतु सजीवों में भू-पर्पटी की तुलना में कार्बन और हाइड्रोजन का सापेक्षिक अनुपात अधिक होता है, जबकि सिलिकॉन सजीवों में नगण्य होता है।"
+  },
+  {
+    "pattern": "3-Statement Pattern",
+    "q": "ऊतक निष्कर्षण (Tissue Extraction) प्रक्रिया के संबंध में निम्नलिखित कथनों का विश्लेषण कीजिए:<br><br>1. सजीव ऊतक को खरल व मूसल की सहायता से ट्राइक्लोरोएसिटिक अम्ल (Cl₃CCOOH) के साथ पीसकर गाढ़ा कर्दम (slurry) तैयार किया जाता है।<br>2. कर्दम को महीन कपड़े से कसकर छानने पर अम्ल-विलेय अंश को निस्यंद (filtrate) कहते हैं।<br>3. अम्ल-अविलेय अंश को धारित (retentate) कहा जाता है।<br><br>उपरोक्त में से कौन-से कथन सत्य हैं?",
+    "options": [
+      "केवल 1 और 2",
+      "केवल 2 और 3",
+      "केवल 1 और 3",
+      "1, 2 और 3 सभी"
+    ],
+    "correct": 3,
+    "exp": "NCERT 9.1: सजीव ऊतक को Cl₃CCOOH में पीसकर कर्दम बनाया जाता है। छानने पर अम्ल-विलेय भाग निस्यंद तथा अम्ल-अविलेय भाग धारित कहलाता है।"
+  },
+  {
+    "pattern": "Assertion - Reason (कथन - कारण)",
+    "q": "<b>कथन (A):</b> किसी सजीव ऊतक के नम भार और शुष्क भार में स्पष्ट अंतर पाया जाता है।<br><b>कारण (R):</b> ऊतक को सुखाने पर उसमें उपस्थित संपूर्ण जल वाष्पीकृत हो जाता है, जिससे शेष बचा पदार्थ शुष्क भार कहलाता है।",
+    "options": [
+      "(A) और (R) दोनों सही हैं लेकिन (R), (A) की सही व्याख्या नहीं है।",
+      "(A) और (R) दोनों सही हैं और (R), (A) की सही व्याख्या है।",
+      "(A) सही है लेकिन (R) गलत है।",
+      "(A) गलत है लेकिन (R) सही है।"
+    ],
+    "correct": 1,
+    "exp": "NCERT 9.1: ऊतक की ताजी मात्रा नम भार कहलाती है। सुखाने पर जल वाष्पित हो जाता है और केवल शुष्क भार प्राप्त होता है।"
+  },
+  {
+    "pattern": "Assertion - Reason (कथन - कारण)",
+    "q": "<b>कथन (A):</b> शुष्क ऊतक को पूर्ण रूप से जलाने पर प्राप्त 'भस्म' (Ash) में कार्बनिक पदार्थ अनुपस्थित होते हैं।<br><b>कारण (R):</b> दहन के दौरान सभी कार्बनिक यौगिक ऑक्सीकृत होकर गैसीय रूप (CO₂ एवं जलवाष्प) में वायुमंडल में निष्कासित हो जाते हैं।",
+    "options": [
+      "(A) सही है लेकिन (R) गलत है।",
+      "(A) और (R) दोनों सही हैं लेकिन (R), (A) की सही व्याख्या नहीं है।",
+      "(A) और (R) दोनों सही हैं और (R), (A) की सही व्याख्या है।",
+      "(A) गलत है लेकिन (R) सही है।"
+    ],
+    "correct": 2,
+    "exp": "NCERT 9.1: ऊतकों को पूर्णतः जलाने पर सभी कार्बनिक यौगिक ऑक्सीकृत होकर CO₂ व H₂O वाष्प के रूप में निकल जाते हैं और शेष भस्म में केवल अकार्बनिक तत्व बचते हैं।"
+  },
+  {
+    "pattern": "Tricky Negative Pattern",
+    "q": "सजीव ऊतक के रासायनिक विश्लेषण में 'अम्ल-विलेय अंश' (Acid-soluble fraction) में निम्नलिखित में से कौन-सा अकार्बनिक घटक पाया जाता है?",
+    "options": [
+      "केवल वृहत् प्रोटीन अणु",
+      "सल्फेट एवं फॉस्फेट आयन",
+      "कोशिका भित्ति का सेलुलोज",
+      "कोशिका झिल्ली के लिपिड पुटिकाएं"
+    ],
+    "correct": 1,
+    "exp": "NCERT 9.1: अकार्बनिक यौगिक जैसे सल्फेट (SO₄²⁻) व फॉस्फेट (PO₄³⁻) अम्ल-घुलनशील अंश में मिलते हैं।"
+  },
+  {
+    "pattern": "4-Statement Pattern",
+    "q": "भू-पर्पटी तथा मानव शरीर में तत्वों की प्रतिशत मात्रा (तालिका 9.1) के आधार पर दिए गए कथनों में से कौन-सा <b>असत्य</b> है?",
+    "options": [
+      "मानव शरीर में भार के अनुसार सर्वाधिक पाया जाने वाला तत्व ऑक्सीजन (65.0%) है।",
+      "मानव शरीर में कार्बन (18.5%) भू-पर्पटी (0.03%) की तुलना में अत्यधिक प्रचुर होता है।",
+      "भू-पर्पटी में सिलिकॉन का प्रतिशत 27.7% होता है, जबकि मानव शरीर में यह अत्यधिक प्रचुरता में पाया जाता है।",
+      "नाइट्रोजन भू-पर्पटी में बहुत थोड़ा होता है, जबकि मानव शरीर में 3.3% होता है।"
+    ],
+    "correct": 2,
+    "exp": "NCERT तालिका 9.1: मानव शरीर में सिलिकॉन नगण्य (negligible) होता है, अत्यधिक प्रचुर नहीं।"
+  },
+  {
+    "pattern": "Matching Pattern",
+    "q": "तालिका 9.1 के अनुसार मानव शरीर में तत्वों की प्रतिशत मात्रा का सही मिलान कीजिए:<br><br>P. हाइड्रोजन &nbsp;&nbsp;&nbsp;&nbsp; 1. 0.5%<br>Q. कार्बन &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2. 18.5%<br>R. नाइट्रोजन &nbsp;&nbsp;&nbsp;&nbsp; 3. 3.3%<br>S. कैल्शियम &nbsp;&nbsp;&nbsp;&nbsp; 4. 1.5%<br>",
+    "options": [
+      "P-1, Q-2, R-3, S-4",
+      "P-2, Q-1, R-4, S-3",
+      "P-1, Q-3, R-2, S-4",
+      "P-4, Q-2, R-1, S-3"
+    ],
+    "correct": 0,
+    "exp": "NCERT तालिका 9.1: मानव शरीर में H = 0.5%, C = 18.5%, N = 3.3%, Ca = 1.5% होता है।"
+  },
+  {
+    "pattern": "3-Statement Pattern",
+    "q": "अमीनो अम्लों की मूलभूत रासायनिक संरचना के संदर्भ में निम्नलिखित कथनों पर विचार कीजिए:<br><br>1. अमीनो अम्ल प्रतिस्थापित मेथेन (substituted methanes) होते हैं।<br>2. इनके एक ही केंद्रीय कार्बन (α-कार्बन) पर चारों संयोजकता स्थलों से हाइड्रोजन, कार्बोक्सिल, अमीनो तथा R-समूह जुड़े होते हैं।<br>3. प्राकृतिक प्रोटीनों में पाए जाने वाले अमीनो अम्ल D-अमीनो अम्ल होते हैं।<br><br>उपरोक्त में से कौन-सा/से कथन सत्य है/हैं?",
+    "options": [
+      "केवल 1 और 3",
+      "केवल 2 और 3",
+      "केवल 1 और 2",
+      "1, 2 और 3"
+    ],
+    "correct": 2,
+    "exp": "NCERT 9.1: अमीनो अम्ल प्रतिस्थापित मेथेन हैं जिनमें α-कार्बन पर चार समूह (-H, -COOH, -NH₂ और -R) जुड़े होते हैं। प्राकृतिक प्रोटीनों में L-अमीनो अम्ल पाए जाते हैं।"
+  },
+  {
+    "pattern": "Tricky Identification",
+    "q": "वह सबसे सरलतम अमीनो अम्ल कौन-सा है, जिसमें α-कार्बन पर परिवर्तनशील 'R-समूह' के स्थान पर केवल एक हाइड्रोजन परमाणु (-H) उपस्थित होता है?",
+    "options": [
+      "ऐलेनीन (Alanine)",
+      "सीरीन (Serine)",
+      "ग्लाइसीन (Glycine)",
+      "वेलीन (Valine)"
+    ],
+    "correct": 2,
+    "exp": "NCERT 9.1 व चित्र 9.1: ग्लाइसीन में R-समूह केवल हाइड्रोजन (-H) होता है।"
+  },
+  {
+    "pattern": "Structural Pattern",
+    "q": "सीरीन (Serine) अमीनो अम्ल में α-कार्बन से जुड़े 'R-समूह' का रासायनिक स्वरूप क्या होता है?",
+    "options": [
+      "मेथिल समूह (-CH₃)",
+      "हाइड्रॉक्सीमेथिल समूह (-CH₂OH)",
+      "एथिल समूह (-C₂H₅)",
+      "आइसोप्रोपिल समूह"
+    ],
+    "correct": 1,
+    "exp": "NCERT 9.1 व चित्र 9.1: सीरीन में R-समूह हाइड्रॉक्सीमेथिल (-CH₂OH) होता है।"
+  },
+  {
+    "pattern": "Structural Pattern",
+    "q": "ऐलेनीन (Alanine) अमीनो अम्ल में R-समूह के रूप में कौन-सा समूह पाया जाता है?",
+    "options": [
+      "-CH₃",
+      "-H",
+      "-CH₂OH",
+      "-COOH"
+    ],
+    "correct": 0,
+    "exp": "NCERT 9.1 व चित्र 9.1: ऐलेनीन में परिवर्तनशील R-समूह मेथिल (-CH₃) होता है।"
+  },
+  {
+    "pattern": "Matching Pattern",
+    "q": "अमीनो अम्लों को उनके अम्लीय/क्षारीय/उदासीन स्वभाव के आधार पर सुमेलित कीजिए:<br><br>P. ग्लूटामिक अम्ल &nbsp;&nbsp;&nbsp;&nbsp; 1. क्षारीय (Basic)<br>Q. लाइसिन &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2. अम्लीय (Acidic)<br>R. वेलीन &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 3. उदासीन (Neutral)<br>S. टायरोसीन &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 4. एरोमैटिक (Aromatic)<br>",
+    "options": [
+      "P-4, Q-1, R-2, S-3",
+      "P-1, Q-2, R-3, S-4",
+      "P-2, Q-3, R-1, S-4",
+      "P-2, Q-1, R-3, S-4"
+    ],
+    "correct": 3,
+    "exp": "NCERT 9.1: ग्लूटामिक अम्ल अम्लीय है, लाइसिन क्षारीय है, वेलीन उदासीन है और टायरोसीन एरोमैटिक है।"
+  },
+  {
+    "pattern": "3-Statement Pattern",
+    "q": "एरोमैटिक (Aromatic) अमीनो अम्लों के संदर्भ में NCERT में उल्लिखित सही त्रयी (Trio) कौन-सी है?",
+    "options": [
+      "लाइसिन, आर्जिनिन और हिस्टिडीन",
+      "ग्लूटामिक अम्ल, एस्पार्टिक अम्ल और वेलीन",
+      "टायरोसीन, फेनिलऐलेनीन और ट्रिप्टोफान",
+      "ग्लाइसीन, ऐलेनीन और सीरीन"
+    ],
+    "correct": 2,
+    "exp": "NCERT 9.1 (पृष्ठ 144): एरोमैटिक अमीनो अम्लों के उदाहरण टायरोसीन, फेनिलऐलेनीन व ट्रिप्टोफान हैं।"
+  },
+  {
+    "pattern": "Assertion - Reason (कथन - कारण)",
+    "q": "<b>कथन (A):</b> विभिन्न pH वाले जलीय विलयनों में अमीनो अम्ल की वैद्युत रासायनिक संरचना में परिवर्तन होता रहता है।<br><b>कारण (R):</b> अमीनो अम्ल के अणु में उपस्थित अमीनो (-NH₂) व कार्बोक्सिल (-COOH) दोनों समूह आयनीकरण योग्य (ionizable) प्रकृति के होते हैं।",
+    "options": [
+      "(A) और (R) दोनों सही हैं लेकिन (R), (A) की सही व्याख्या नहीं है।",
+      "(A) और (R) दोनों सही हैं और (R), (A) की सही व्याख्या है।",
+      "(A) सही है लेकिन (R) गलत है।",
+      "(A) गलत है लेकिन (R) सही है।"
+    ],
+    "correct": 1,
+    "exp": "NCERT 9.1: -NH₂ व -COOH समूह आयनीकरण प्रकृति के होते हैं, जिससे pH बदलने पर ज्विटर आयन तथा अन्य आयनिक रूप बनते हैं।"
+  },
+  {
+    "pattern": "Tricky Definition",
+    "q": "अमीनो अम्ल के 'ज्विटर आयनिक प्रारूप' (Zwitterionic form) में नेट वैद्युत आवेश (Net Electrical Charge) कितना होता है?",
+    "options": [
+      "धनात्मक (+1)",
+      "ऋणात्मक (-1)",
+      "शून्य (Neutral / Zero)",
+      "परिवर्तनशील (+2)"
+    ],
+    "correct": 2,
+    "exp": "NCERT 9.1 चित्र 9.1: ज्विटर आयन में एक धनावेशित समूह (-NH₃⁺) और एक ऋणावेशित समूह (-COO⁻) एक साथ उपस्थित होते हैं, जिससे कुल नेट आवेश शून्य होता है।"
+  },
+  {
+    "pattern": "Factual Precision",
+    "q": "पाल्मिटिक अम्ल (Palmitic acid) के एक अणु में कार्बोक्सिल कार्बन (-COOH) सहित कुल कितने कार्बन परमाणु पाए जाते हैं?",
+    "options": [
+      "14 कार्बन",
+      "20 कार्बन",
+      "18 कार्बन",
+      "16 कार्बन"
+    ],
+    "correct": 3,
+    "exp": "NCERT 9.1: पाल्मिटिक अम्ल में कार्बोक्सिल कार्बन सहित कुल 16 कार्बन परमाणु होते हैं (CH₃-(CH₂)₁₄-COOH)।"
+  },
+  {
+    "pattern": "Factual Precision",
+    "q": "ऐरेकिडोनिक अम्ल (Arachidonic acid) में कार्बोक्सिल कार्बन को सम्मिलित करते हुए कुल कितने कार्बन परमाणु उपस्थित होते हैं?",
+    "options": [
+      "16 कार्बन",
+      "20 कार्बन",
+      "18 कार्बन",
+      "24 कार्बन"
+    ],
+    "correct": 1,
+    "exp": "NCERT 9.1: ऐरेकिडोनिक अम्ल में कार्बोक्सिल कार्बन सहित 20 कार्बन परमाणु होते हैं।"
+  },
+  {
+    "pattern": "3-Statement Pattern",
+    "q": "संतृप्त एवं असंतृप्त वसा अम्लों के संबंध में निम्नलिखित में से कौन-सा/से कथन सत्य है/हैं?<br><br>1. संतृप्त वसा अम्लों की हाइड्रोकार्बन श्रृंखला में कोई कार्बन-कार्बन द्वि-आबंध (C=C) नहीं होता।<br>2. असंतृप्त वसा अम्लों में एक या एक से अधिक C=C द्वि-आबंध उपस्थित होते हैं।<br>3. वसा अम्ल में R-समूह 1 कार्बन से 19 कार्बन तक की श्रृंखला वाला हो सकता है।<br><br>सही कूट का चयन कीजिए:",
+    "options": [
+      "केवल 1 और 2",
+      "केवल 2 और 3",
+      "1, 2 और 3 सभी",
+      "केवल 1 और 3"
+    ],
+    "correct": 2,
+    "exp": "NCERT 9.1: संतृप्त में कोई द्विआबंध नहीं होता, असंतृप्त में एक या अधिक द्विआबंध होते हैं, और R-समूह में 1 से 19 कार्बन हो सकते हैं।"
+  },
+  {
+    "pattern": "Structural Pattern",
+    "q": "ग्लिसरॉल (Glycerol) का रासायनिक नाम एवं संरचनात्मक पहचान क्या है?",
+    "options": [
+      "डाइहाइड्रॉक्सी एथेन",
+      "ट्राइकार्बोक्सिलिक प्रोपेन",
+      "टेट्राहाइड्रॉक्सी ब्यूटेन",
+      "ट्राइहाइड्रॉक्सी प्रोपेन (Trihydroxy propane)"
+    ],
+    "correct": 3,
+    "exp": "NCERT 9.1: ग्लिसरॉल एक साधारण लिपिड है जो रासायनिक रूप से ट्राइहाइड्रॉक्सी प्रोपेन (CH₂OH-CHOH-CH₂OH) होता है।"
+  },
+  {
+    "pattern": "Assertion - Reason (कथन - कारण)",
+    "q": "<b>कथन (A):</b> ग्लिसराइड्स (मोनो, डाइ व ट्राइग्लिसराइड) का निर्माण वसा अम्ल और ग्लिसरॉल के मध्य एस्टरीकरण द्वारा होता है।<br><b>कारण (R):</b> वसा अम्ल का कार्बोक्सिल समूह ग्लिसरॉल के हाइड्रॉक्सिल समूह से संघनित होकर एस्टर बंध बनाता है।",
+    "options": [
+      "(A) और (R) दोनों सही हैं और (R), (A) की सही व्याख्या है।",
+      "(A) और (R) दोनों सही हैं लेकिन (R), (A) की सही व्याख्या नहीं है।",
+      "(A) सही है लेकिन (R) गलत है।",
+      "(A) गलत है लेकिन (R) सही है।"
+    ],
+    "correct": 0,
+    "exp": "NCERT 9.1: वसा अम्ल ग्लिसरॉल से एस्टरीकृत होकर मोनोग्लिसराइड, डाइग्लिसराइड व ट्राइग्लिसराइड बनाते हैं।"
+  },
+  {
+    "pattern": "Tricky Negative Pattern",
+    "q": "जिंजेली तेल (Gingelly oil) सर्दियों में भी जमता नहीं है और द्रव तेल के रूप में बना रहता है, इसका प्रमुख कारण क्या है?",
+    "options": [
+      "इसका गलनांक (Melting point) अपेक्षाकृत बहुत अधिक होना",
+      "यह एक जटिल फॉस्फोलिपिड है",
+      "इसमें ग्लिसरॉल का पूर्ण अभाव होना",
+      "इसका गलनांक (Melting point) अपेक्षाकृत कम होना"
+    ],
+    "correct": 3,
+    "exp": "NCERT 9.1: तेलों का गलनांक अपेक्षाकृत कम होता है (जैसे जिंजेली तेल), अतः वे सर्दियों में तेल/द्रव रूप में ही रहते हैं।"
+  },
+  {
+    "pattern": "Factual Precision",
+    "q": "कोशिका झिल्ली में पाया जाने वाला प्रमुख फॉस्फोलिपिड, जिसमें एक फॉस्फोरिलीकृत कार्बनिक यौगिक जुड़ा होता है, कौन-सा है?",
+    "options": [
+      "कोलेस्ट्रॉल",
+      "जिंजेली तेल",
+      "लेसिथिन (Lecithin)",
+      "ट्राइग्लिसराइड"
+    ],
+    "correct": 2,
+    "exp": "NCERT 9.1 व चित्र 9.1: लेसिथिन कोशिका झिल्ली में पाया जाने वाला एक प्रमुख फॉस्फोलिपिड है।"
+  },
+  {
+    "pattern": "3-Statement Pattern",
+    "q": "नाइट्रोजनी क्षारों के विषमचक्रीय वलय के संदर्भ में सही कथनों का चुनाव कीजिए:<br><br>1. एडीनीन और ग्वानीन प्यूरीन (Purines) वर्ग के द्विवलयी विषमचक्रीय क्षारक हैं।<br>2. साइटोसीन, यूरेसिल और थायमीन पिरिमिडीन (Pyrimidines) वर्ग के एकल वलयी क्षारक हैं।<br>3. यूरेसिल केवल डीएनए में पाया जाता है, आरएनए में नहीं।<br><br>सत्य कूट चुनिए:",
+    "options": [
+      "केवल 1 और 2",
+      "केवल 2 और 3",
+      "केवल 1 और 3",
+      "1, 2 और 3"
+    ],
+    "correct": 0,
+    "exp": "NCERT 9.1 व 9.6: यूरेसिल आरएनए में पाया जाता है जबकि डीएनए में थायमीन होता है। अतः कथन 3 असत्य है।"
+  },
+  {
+    "pattern": "Definition & Trap",
+    "q": "जब एक नाइट्रोजनी क्षार एक पेंटोज शर्करा के साथ ग्लाइकोसिडिक बंध द्वारा जुड़ता है, तो बनने वाली रचना कहलाती है:",
+    "options": [
+      "न्यूक्लियोटाइड",
+      "फॉस्फोलिपिड",
+      "न्यूक्लिक अम्ल",
+      "न्यूक्लियोसाइड"
+    ],
+    "correct": 3,
+    "exp": "NCERT 9.1: नाइट्रोजन क्षार + शर्करा = न्यूक्लियोसाइड (जैसे एडीनोसिन, ग्वानोसिन, साइटिडिन, यूरिडीन, थायमिडिन)।"
+  },
+  {
+    "pattern": "Definition & Trap",
+    "q": "जब एक न्यूक्लियोसाइड की शर्करा के साथ फॉस्फेट समूह एस्टरीकृत हो जाता है, तो प्राप्त यौगिक कहलाता है:",
+    "options": [
+      "न्यूक्लियोटाइड",
+      "फॉस्फोलिपिड",
+      "ग्लाइकोलिपिड",
+      "विषमचक्रीय क्षार"
+    ],
+    "correct": 0,
+    "exp": "NCERT 9.1: न्यूक्लियोसाइड + फॉस्फेट = न्यूक्लियोटाइड (जैसे एडेनिलिक अम्ल, यूरिडिलिक अम्ल)।"
+  },
+  {
+    "pattern": "Matching Pattern",
+    "q": "नाइट्रोजन यौगिकों के सही नामकरण का मिलान कीजिए:<br><br>P. एडीनीन &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1. न्यूक्लियोटाइड<br>Q. एडीनोसिन &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2. न्यूक्लियोसाइड<br>R. एडीनिलिक अम्ल &nbsp;&nbsp; 3. नाइट्रोजनी क्षार<br>S. यूरिडिलिक अम्ल &nbsp;&nbsp; 4. आरएनए का न्यूक्लियोटाइड<br>",
+    "options": [
+      "P-1, Q-2, R-3, S-4",
+      "P-3, Q-2, R-1, S-4",
+      "P-3, Q-1, R-2, S-4",
+      "P-2, Q-3, R-4, S-1"
+    ],
+    "correct": 1,
+    "exp": "NCERT 9.1: एडीनीन = क्षार, एडीनोसिन = न्यूक्लियोसाइड, एडीनिलिक अम्ल = न्यूक्लियोटाइड।"
+  },
+  {
+    "pattern": "Tricky Negative Pattern",
+    "q": "निम्नलिखित में से कौन-सा यौगिक एक 'न्यूक्लियोसाइड' <b>नहीं</b> है?",
+    "options": [
+      "ग्वानोसिन",
+      "थायमिडिन",
+      "ग्वानिलिक अम्ल",
+      "साइटिडिन"
+    ],
+    "correct": 2,
+    "exp": "NCERT 9.1: ग्वानिलिक अम्ल एक न्यूक्लियोटाइड है, न्यूक्लियोसाइड नहीं।"
+  },
+  {
+    "pattern": "Factual Precision",
+    "q": "तंत्रिका ऊतक (Neural tissue) में लिपिड्स की संरचना के विषय में NCERT का विशिष्ट अवलोकन क्या है?",
+    "options": [
+      "तंत्रिका ऊतक में लिपिड पूर्णतः अनुपस्थित होते हैं।",
+      "तंत्रिका ऊतक में केवल साधारण वसा अम्ल मिलते हैं।",
+      "तंत्रिका ऊतक में विशेष तौर पर अधिक जटिल संरचना के लिपिड पाए जाते हैं।",
+      "तंत्रिका ऊतक में केवल मुक्त ग्लिसरॉल पाया जाता है।"
+    ],
+    "correct": 2,
+    "exp": "NCERT 9.1 (पृष्ठ 144): 'कुछ ऊतक विशेष तौर तंत्रिका ऊतक में अधिक जटिल संरचना के लिपिड पाए जाते हैं।'"
+  },
+  {
+    "pattern": "3-Statement Pattern",
+    "q": "प्राथमिक एवं द्वितीयक उपापचयजों के संबंध में निम्नलिखित कथनों पर विचार कीजिए:<br><br>1. ग्लूकोज, राइबोज, अमीनो अम्ल आदि प्राथमिक उपापचयज हैं जो सामान्य कार्यिकी में ज्ञात भूमिका निभाते हैं।<br>2. एल्केलॉइड्स, रबर, वाष्पशील तेल, रेजिन पादप, कवक व सूक्ष्मजीवों में पाए जाने वाले द्वितीयक उपापचयज हैं।<br>3. द्वितीयक उपापचयज जंतु ऊतकों में बहुतायत से संश्लेषित होते हैं।<br><br>उपरोक्त में से कौन-सा/से कथन सत्य है/हैं?",
+    "options": [
+      "केवल 2 और 3",
+      "केवल 1 और 2",
+      "केवल 1 और 3",
+      "1, 2 और 3"
+    ],
+    "correct": 1,
+    "exp": "NCERT 9.2: द्वितीयक उपापचयज पादप, कवक व सूक्ष्मजीव कोशिकाओं में पाए जाते हैं, सामान्यतः प्राणि ऊतकों में प्राथमिक उपापचयज ही मिलते हैं।"
+  },
+  {
+    "pattern": "Matching Pattern",
+    "q": "NCERT तालिका 9.3 के अनुसार वर्णक (Pigments) एवं एल्केलॉइड्स का सही मिलान कीजिए:<br><br>P. वर्णक (Pigments) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1. मॉर्फीन, कोडीन<br>Q. एल्केलॉइड्स (Alkaloids) &nbsp; 2. कैरोटीनॉइड्स, एंथोसायनिन<br>R. टॉक्सिन (Toxins) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 3. एब्रिन, रिसिन<br>S. लेक्टिन (Lectins) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 4. कोनकेनेवेलिन-ए<br>",
+    "options": [
+      "P-4, Q-1, R-2, S-3",
+      "P-1, Q-2, R-3, S-4",
+      "P-2, Q-3, R-1, S-4",
+      "P-2, Q-1, R-3, S-4"
+    ],
+    "correct": 3,
+    "exp": "NCERT तालिका 9.3: वर्णक = कैरोटीनॉइड्स/एंथोसायनिन; एल्केलॉइड = मॉर्फीन/कोडीन; टॉक्सिन = एब्रिन/रिसिन; लेक्टिन = कोनकेनेवेलिन-ए।"
+  },
+  {
+    "pattern": "Mis-matching Pattern",
+    "q": "द्वितीयक उपापचयजों (तालिका 9.3) के संदर्भ में कौन-सा युग्म <b>गलत सुमेलित</b> है?",
+    "options": [
+      "टरपीनॉइड्स — मोनोटरपींस, डाइटरपींस",
+      "टॉक्सिन — कोनकेनेवेलिन-ए",
+      "ड्रग्स — विनब्लास्टिन, करक्यूमिन",
+      "आवश्यक तेल — नींबू घास तेल"
+    ],
+    "correct": 1,
+    "exp": "NCERT तालिका 9.3: कोनकेनेवेलिन-ए एक 'लेक्टिन' है, टॉक्सिन नहीं। टॉक्सिन एब्रिन व रिसिन हैं।"
+  },
+  {
+    "pattern": "Tricky Negative Pattern",
+    "q": "तालिका 9.3 के अनुसार 'बहुलक पदार्थ' (Polymeric substances) श्रेणी में निम्नलिखित में से किसे शामिल किया गया है?",
+    "options": [
+      "रबर, गोंद एवं सेलुलोज",
+      "मॉर्फीन एवं कोडीन",
+      "नींबू घास तेल",
+      "विनब्लास्टिन एवं करक्यूमिन"
+    ],
+    "correct": 0,
+    "exp": "NCERT तालिका 9.3: बहुलक पदार्थ श्रेणी में 'रबर, गोंद, सेलुलोज' आते हैं।"
+  },
+  {
+    "pattern": "Factual Precision",
+    "q": "कैंसर चिकित्सा में प्रयुक्त होने वाली औषधि 'विनब्लास्टिन' (Vinblastine) द्वितीयक उपापचयज की किस श्रेणी से संबंधित है?",
+    "options": [
+      "एल्केलॉइड",
+      "टॉक्सिन",
+      "टरपीनॉइड",
+      "ड्रग्स (Drugs)"
+    ],
+    "correct": 3,
+    "exp": "NCERT तालिका 9.3: विनब्लास्टीन व करकुमीन को 'ड्रग्स' श्रेणी में रखा गया है।"
+  },
+  {
+    "pattern": "Factual Precision",
+    "q": "पादप जगत से प्राप्त 'कोनकेनेवेलिन-ए' (Concanavalin A) को किस वर्ग के अंतर्गत वर्गीकृत किया गया है?",
+    "options": [
+      "लेक्टिन्स (Lectins)",
+      "टॉक्सिन्स",
+      "आवश्यक तेल",
+      "वर्णक"
+    ],
+    "correct": 0,
+    "exp": "NCERT तालिका 9.3: कोनकेनेवेलिन-ए एक लेक्टिन (Lectin) है।"
+  },
+  {
+    "pattern": "Assertion - Reason (कथन - कारण)",
+    "q": "<b>कथन (A):</b> यद्यपि पादपों में द्वितीयक उपापचयजों के सभी कार्य स्पष्ट नहीं हैं, फिर भी इनका पारिस्थितिक महत्व अत्यंत व्यापक है।<br><b>कारण (R):</b> अनेक द्वितीयक उपापचयज जैसे गंध, मसाले, रबर, वर्णक एवं औषधियां मानव कल्याण में सीधे उपयोगी होते हैं।",
+    "options": [
+      "(A) और (R) दोनों सही हैं लेकिन (R), (A) की सही व्याख्या नहीं है।",
+      "(A) और (R) दोनों सही हैं और (R), (A) की सही व्याख्या है।",
+      "(A) सही है लेकिन (R) गलत है।",
+      "(A) गलत है लेकिन (R) सही है।"
+    ],
+    "correct": 0,
+    "exp": "NCERT 9.2: दोनों कथन सही हैं, परंतु मानव उपयोग (R) पौधों में उनके पारिस्थितिक महत्व (A) की व्याख्या नहीं है।"
+  },
+  {
+    "pattern": "Tricky Identification",
+    "q": "निम्नलिखित में से कौन-सा द्वितीयक उपापचयज एक 'टॉक्सिन' (Toxin) का उदाहरण है?",
+    "options": [
+      "कोडीन",
+      "एब्रिन (Abrin)",
+      "मोनोटरपीन",
+      "करक्यूमिन"
+    ],
+    "correct": 1,
+    "exp": "NCERT तालिका 9.3: एब्रिन व रिसिन घातक पादप टॉक्सिन हैं।"
+  },
+  {
+    "pattern": "Matching Pattern",
+    "q": "द्वितीयक उपापचयजों और उनकी रासायनिक श्रेणियों का सुमेलन कीजिए:<br><br>P. मॉर्फीन &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1. आवश्यक तेल<br>Q. मोनोटरपीन &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2. एल्केलॉइड<br>R. नींबू घास तेल &nbsp;&nbsp;&nbsp;&nbsp; 3. टरपीनॉइड<br>S. करक्यूमिन &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 4. ड्रग<br>",
+    "options": [
+      "P-1, Q-2, R-3, S-4",
+      "P-2, Q-3, R-1, S-4",
+      "P-2, Q-1, R-3, S-4",
+      "P-3, Q-2, R-4, S-1"
+    ],
+    "correct": 1,
+    "exp": "NCERT तालिका 9.3: मॉर्फीन = एल्केलॉइड, मोनोटरपीन = टरपीनॉइड, नींबूघास तेल = आवश्यक तेल, करक्यूमिन = ड्रग।"
+  },
+  {
+    "pattern": "3-Statement Pattern",
+    "q": "प्राथमिक उपापचयजों के संबंध में निम्नलिखित कथनों में से कौन-सा/से सही है/हैं?<br><br>1. ये सभी प्राणि ऊतकों में स्वाभाविक रूप से पाए जाते हैं।<br>2. ये जीवों की सामान्य शारीरिक और उपापचयी क्रियाओं में सीधे भाग लेते हैं।<br>3. इनके आण्विक कार्य और उपापचयी भूमिकाएं पूर्णतः ज्ञात हैं।<br><br>सही उत्तर चुनिए:",
+    "options": [
+      "केवल 1 और 2",
+      "केवल 2 और 3",
+      "1, 2 और 3 सभी",
+      "केवल 1 और 3"
+    ],
+    "correct": 2,
+    "exp": "NCERT 9.2: प्राथमिक उपापचयज प्राणि ऊतकों में मिलते हैं और इनकी सामान्य कार्यिकी भूमिकाएं भली-भांति ज्ञात हैं।"
+  },
+  {
+    "pattern": "Tricky Negative Pattern",
+    "q": "एंथोसायनिन (Anthocyanin) किस वर्ग का द्वितीयक उपापचयज है?",
+    "options": [
+      "एल्केलॉइड",
+      "रंगीन वर्णक (Pigment)",
+      "आवश्यक तेल",
+      "लेक्टिन"
+    ],
+    "correct": 1,
+    "exp": "NCERT तालिका 9.3: कैरोटीनॉइड्स व एंथोसायनिन वर्णक (Pigments) हैं।"
+  },
+  {
+    "pattern": "Factual Precision",
+    "q": "हल्दी में पाया जाने वाला सक्रिय घटक 'करक्यूमिन' (Curcumin) द्वितीयक उपापचयज की किस श्रेणी में सूचीबद्ध है?",
+    "options": [
+      "ड्रग्स (Drugs)",
+      "टॉक्सिन",
+      "एल्केलॉइड",
+      "आवश्यक तेल"
+    ],
+    "correct": 0,
+    "exp": "NCERT तालिका 9.3: करकुमीन को ड्रग्स (Drugs) वर्ग में रखा गया है।"
+  },
+  {
+    "pattern": "3-Statement Pattern",
+    "q": "जैव अणुओं के अणुभार (Molecular weight) के आधार पर वर्गीकरण के संदर्भ में विचार कीजिए:<br><br>1. अम्ल-विलेय अंश में पाए जाने वाले जैव सूक्ष्मअणुओं का अणुभार 18 से 800 डाल्टन (Da) के लगभग होता है।<br>2. अम्ल-अविलेय अंश में पाए जाने वाले वृहत् जैव अणुओं का अणुभार 10,000 डाल्टन या उससे अधिक होता है।<br>3. लिपिड्स का अणुभार 10,000 डाल्टन से अधिक होने के कारण वे वृहत् जैव अणु कहलाते हैं।<br><br>उपरोक्त में से कौन-सा/से कथन सत्य है/हैं?",
+    "options": [
+      "केवल 1 और 2",
+      "केवल 2 और 3",
+      "केवल 1 और 3",
+      "1, 2 और 3"
+    ],
+    "correct": 0,
+    "exp": "NCERT 9.3: लिपिड्स का अणुभार 800 डाल्टन से अधिक नहीं होता, अतः कथन 3 असत्य है।"
+  },
+  {
+    "pattern": "4-Statement Pattern",
+    "q": "अम्ल-अविलेय अंश (Acid-insoluble fraction) में पाए जाने वाले चार प्रमुख कार्बनिक यौगिक वर्ग कौन-से हैं?",
+    "options": [
+      "पॉलीसैकेराइड, मोनोसैकेराइड, प्रोटीन एवं अकार्बनिक लवण",
+      "प्रोटीन, अमीनो अम्ल, ग्लूकोज एवं लिपिड",
+      "न्यूक्लिक अम्ल, न्यूक्लियोटाइड, वसा अम्ल एवं ग्लिसरॉल",
+      "प्रोटीन, न्यूक्लिक अम्ल, पॉलीसैकेराइड एवं लिपिड"
+    ],
+    "correct": 3,
+    "exp": "NCERT 9.3: अम्ल अविलेय अंश में केवल चार प्रकार के कार्बनिक यौगिक—प्रोटीन, न्यूक्लिक अम्ल, पॉलीसैकेराइड व लिपिड मिलते हैं।"
+  },
+  {
+    "pattern": "Assertion - Reason (कथन - कारण)",
+    "q": "<b>कथन (A):</b> सही अर्थों में लिपिड वृहत् जैव अणु (Macromolecule) नहीं हैं।<br><b>कारण (R):</b> लिपिड्स का अणुभार 800 डाल्टन से अधिक नहीं होता तथा वे किसी एकलक के बहुलक नहीं होते।",
+    "options": [
+      "(A) गलत है लेकिन (R) सही है।",
+      "(A) और (R) दोनों सही हैं लेकिन (R), (A) की सही व्याख्या नहीं है।",
+      "(A) सही है लेकिन (R) गलत है।",
+      "(A) और (R) दोनों सही हैं और (R), (A) की सही व्याख्या है।"
+    ],
+    "correct": 3,
+    "exp": "NCERT 9.3: लिपिड कम अणुभार (<800 Da) के होते हैं और बहुलक नहीं होते, इसलिए वे सही अर्थ में वृहत् अणु नहीं हैं।"
+  },
+  {
+    "pattern": "3-Statement Pattern",
+    "q": "लिपिड्स के अम्ल-अविलेय अंश (Retentate) में पृथक होने के वैज्ञानिक कारण के संदर्भ में विचार कीजिए:<br><br>1. लिपिड कोशिका झिल्ली और अन्य कोशिकीय झिल्लियों के संरचनात्मक घटक होते हैं।<br>2. ऊतक को पीसने पर झिल्लियां विखंडित होकर जल-अघुलनशील पुटिकाएं (vesicles) बना लेती हैं।<br>3. ये पुटिकाएं छन्नी से छन नहीं पातीं और वृहत् आण्विक अंश के साथ धारित में रह जाती हैं।<br><br>उपरोक्त में से कौन-से कथन सत्य हैं?",
+    "options": [
+      "1, 2 और 3 सभी",
+      "केवल 2 और 3",
+      "केवल 1 और 3",
+      "केवल 1 और 2"
+    ],
+    "correct": 0,
+    "exp": "NCERT 9.3: झिल्लियां पुटिकाओं में टूटती हैं जो जल-अघुलनशील होने के कारण अम्ल-अविलेय भाग के साथ छनने से रुक जाती हैं।"
+  },
+  {
+    "pattern": "Factual Precision",
+    "q": "अम्ल-विलेय अंश (Filtrate) वास्तव में कोशिका के किस भाग के संगठन का प्रतिनिधित्व करता है?",
+    "options": [
+      "कोशिका भित्ति संगठन",
+      "केंद्रक संगठन",
+      "कोशिका द्रव्य संगठन (Cytoplasmic composition)",
+      "कोशिका झिल्ली संगठन"
+    ],
+    "correct": 2,
+    "exp": "NCERT 9.3: 'अम्ल विलेय अंश वास्तव में कोशिका द्रव्य संगठन का भाग है। कोशिका द्रव्य व अंगकों के वृहत् अणु अम्ल अविलेय अंश होते हैं।'"
+  },
+  {
+    "pattern": "Matching Pattern",
+    "q": "NCERT तालिका 9.4 के अनुसार कोशिकीय भार के औसत प्रतिशत का सही मिलान कीजिए:<br><br>P. जल &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1. 70 - 90%<br>Q. प्रोटीन &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2. 10 - 15%<br>R. न्यूक्लिक अम्ल &nbsp;&nbsp;&nbsp; 3. 5 - 7%<br>S. कार्बोहाइड्रेट &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 4. 3%<br>",
+    "options": [
+      "P-2, Q-1, R-3, S-4",
+      "P-1, Q-2, R-3, S-4",
+      "P-1, Q-3, R-2, S-4",
+      "P-4, Q-2, R-1, S-3"
+    ],
+    "correct": 1,
+    "exp": "NCERT तालिका 9.4: जल 70-90%, प्रोटीन 10-15%, न्यूक्लिक अम्ल 5-7%, कार्बोहाइड्रेट 3%।"
+  },
+  {
+    "pattern": "Factual Precision",
+    "q": "कोशिका के कुल भार में लिपिड्स और आयनों का औसत प्रतिशत (तालिका 9.4) क्रमशः कितना होता है?",
+    "options": [
+      "10% और 5%",
+      "3% और 2%",
+      "5% और 1%",
+      "2% और 1%"
+    ],
+    "correct": 3,
+    "exp": "NCERT तालिका 9.4: लिपिड = 2% और आयन = 1% होते हैं।"
+  },
+  {
+    "pattern": "Arranging Sequence",
+    "q": "सजीव कोशिकाओं में पाए जाने वाले रासायनिक घटकों को उनकी प्रचुरता के घटते क्रम (तालिका 9.4) में व्यवस्थित कीजिए:",
+    "options": [
+      "जल > प्रोटीन > कार्बोहाइड्रेट > लिपिड > न्यूक्लिक अम्ल > आयन",
+      "जल > न्यूक्लिक अम्ल > प्रोटीन > कार्बोहाइड्रेट > लिपिड > आयन",
+      "जल > प्रोटीन > न्यूक्लिक अम्ल > कार्बोहाइड्रेट > लिपिड > आयन",
+      "प्रोटीन > जल > कार्बोहाइड्रेट > न्यूक्लिक अम्ल > लिपिड > आयन"
+    ],
+    "correct": 2,
+    "exp": "NCERT तालिका 9.4: जल (70-90%) > प्रोटीन (10-15%) > न्यूक्लिक अम्ल (5-7%) > कार्बोहाइड्रेट (3%) > लिपिड (2%) > आयन (1%)।"
+  },
+  {
+    "pattern": "Assertion - Reason (कथन - कारण)",
+    "q": "<b>कथन (A):</b> सजीवों में सर्वाधिक प्रचुरता में मिलने वाला रासायनिक यौगिक जल (Water) है।<br><b>कारण (R):</b> जल एक सार्वत्रिक विलायक है जो कुल कोशिकीय भार का 70 से 90 प्रतिशत भाग बनाता है।",
+    "options": [
+      "(A) और (R) दोनों सही हैं और (R), (A) की सही व्याख्या है।",
+      "(A) और (R) दोनों सही हैं लेकिन (R), (A) की सही व्याख्या नहीं है।",
+      "(A) सही है लेकिन (R) गलत है।",
+      "(A) गलत है लेकिन (R) सही है।"
+    ],
+    "correct": 0,
+    "exp": "NCERT 9.3 व तालिका 9.4: जल कुल भार का 70-90% होने के कारण सर्वाधिक प्रचुर रसायन है।"
+  },
+  {
+    "pattern": "Tricky Conceptual Pattern",
+    "q": "यदि किसी जैविक नमूने का विश्लेषण किया जाए, तो वास्तविक बहुलकीय वृहत् अणुओं (True Polymeric Macromolecules) में किसे सम्मिलित <b>नहीं</b> किया जा सकता?",
+    "options": [
+      "प्रोटीन",
+      "न्यूक्लिक अम्ल",
+      "लिपिड",
+      "पॉलीसैकेराइड"
+    ],
+    "correct": 2,
+    "exp": "NCERT 9.3: लिपिड बहुलक नहीं होते, जबकि प्रोटीन, न्यूक्लिक अम्ल और पॉलीसैकेराइड वास्तविक बहुलक हैं।"
+  },
+  {
+    "pattern": "3-Statement Pattern",
+    "q": "प्रोटीन की बहुलक प्रकृति के संदर्भ में निम्नलिखित कथनों का परीक्षण कीजिए:<br><br>1. प्रोटीन अमीनो अम्लों की रेखीय श्रृंखलाएं होती हैं जो पेप्टाइड बंधों द्वारा जुड़ी रहती हैं।<br>2. प्रोटीन सदैव विषमबहुलक (Heteropolymers) होते हैं, कभी भी समबहुलक नहीं होते।<br>3. एक समबहुलक एक एकल एकलक की अनेक बार पुनरावृत्ति से बनता है।<br><br>सही कूट का चयन कीजिए:",
+    "options": [
+      "1, 2 और 3 सभी",
+      "केवल 2 और 3",
+      "केवल 1 और 3",
+      "केवल 1 और 2"
+    ],
+    "correct": 0,
+    "exp": "NCERT 9.4: प्रोटीन 20 प्रकार के अमीनो अम्लों के विषमबहुलक होते हैं, समबहुलक नहीं।"
+  },
+  {
+    "pattern": "Assertion - Reason (कथन - कारण)",
+    "q": "<b>कथन (A):</b> आहार की प्रोटीन हमारे स्वास्थ्य के लिए अनिवार्य अमीनो अम्लों का मुख्य स्रोत होती है।<br><b>कारण (R):</b> अनिवार्य अमीनो अम्ल हमारे शरीर द्वारा स्वयं संश्लेषित नहीं किए जा सकते, अतः इनकी आपूर्ति खाद्य पदार्थों से होना आवश्यक है।",
+    "options": [
+      "(A) सही है लेकिन (R) गलत है।",
+      "(A) और (R) दोनों सही हैं लेकिन (R), (A) की सही व्याख्या नहीं है।",
+      "(A) और (R) दोनों सही हैं और (R), (A) की सही व्याख्या है।",
+      "(A) गलत है लेकिन (R) सही है।"
+    ],
+    "correct": 2,
+    "exp": "NCERT 9.4: अनिवार्य अमीनो अम्ल शरीर में नहीं बनते, अतः भोजन द्वारा ग्रहण करना आवश्यक होता है।"
+  },
+  {
+    "pattern": "Matching Pattern",
+    "q": "तालिका 9.5 के अनुसार प्रोटीनों का उनके जैविक कार्यों के साथ सही मिलान कीजिए:<br><br>P. कोलेजन &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1. अंतराकोशिकीय भरण पदार्थ<br>Q. ट्रिप्सिन &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2. पाचक एंजाइम<br>R. इंसुलिन &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 3. पेप्टाइड हॉर्मोन<br>S. प्रतिरक्षी (Antibody) 4. संक्रामक रोगाणुओं से सुरक्षा<br>",
+    "options": [
+      "P-4, Q-2, R-1, S-3",
+      "P-2, Q-1, R-3, S-4",
+      "P-1, Q-3, R-2, S-4",
+      "P-1, Q-2, R-3, S-4"
+    ],
+    "correct": 3,
+    "exp": "NCERT तालिका 9.5: कोलेजन = भरण पदार्थ, ट्रिप्सिन = एंजाइम, इंसुलिन = हॉर्मोन, प्रतिरक्षी = रोगाणुओं से लड़ना।"
+  },
+  {
+    "pattern": "Factual Precision",
+    "q": "कोशिका झिल्ली के आर-पार ग्लूकोज के परिवहन को सुसाध्य बनाने वाला विशिष्ट प्रोटीन कौन-सा है?",
+    "options": [
+      "GLUT-1",
+      "GLUT-4",
+      "कोलेजन",
+      "ट्रिप्सिन"
+    ],
+    "correct": 1,
+    "exp": "NCERT तालिका 9.5: GLUT-4 ग्लूकोज का कोशिका में परिवहन कराने वाला प्रोटीन है।"
+  },
+  {
+    "pattern": "Factual Precision",
+    "q": "जंतु जगत (Animal world) में सर्वाधिक प्रचुरता में पाया जाने वाला प्रोटीन कौन-सा है?",
+    "options": [
+      "हीमोग्लोबिन",
+      "इंसुलिन",
+      "रुबिस्को (RuBisCO)",
+      "कोलेजन (Collagen)"
+    ],
+    "correct": 3,
+    "exp": "NCERT सारांश (पृष्ठ 160): प्राणी जगत में सर्वाधिक प्रचुरता में मिलने वाला प्रोटीन 'कोलेजन' है।"
+  },
+  {
+    "pattern": "Factual Precision",
+    "q": "सम्पूर्ण जैवमण्डल (Biosphere) में सर्वाधिक प्रचुरता में पाया जाने वाला प्रोटीन कौन-सा है?",
+    "options": [
+      "कोलेजन",
+      "केराटिन",
+      "सेलुलोज",
+      "रुबिस्को (RuBisCO)"
+    ],
+    "correct": 3,
+    "exp": "NCERT सारांश (पृष्ठ 160): संपूर्ण जैवमंडल में सर्वाधिक प्रचुर प्रोटीन RuBisCO (रिब्यूलोज बाइफॉस्फेट कार्बोक्सिलेज-ऑक्सीजिनेज) है।"
+  },
+  {
+    "pattern": "Mis-matching Pattern",
+    "q": "तालिका 9.5 के आधार पर प्रोटीन एवं उसके कार्य का कौन-सा युग्म <b>गलत सुमेलित</b> है?",
+    "options": [
+      "ग्राही (Receptors) — संवेदी ग्रहण (सूंघना, स्वाद, हॉर्मोन आदि)",
+      "GLUT-4 — इंसुलिन का स्रावण",
+      "ट्रिप्सिन — एंजाइम",
+      "कोलेजन — अंतरकोशिकीय भरण पदार्थ"
+    ],
+    "correct": 1,
+    "exp": "NCERT तालिका 9.5: GLUT-4 का कार्य 'ग्लूकोज का कोशिका में परिवहन' है, इंसुलिन स्रावण नहीं।"
+  },
+  {
+    "pattern": "3-Statement Pattern",
+    "q": "अनानिवार्य (Non-essential) अमीनो अम्लों के संबंध में कौन-सा कथन सत्य है?",
+    "options": [
+      "ये हमारे शरीर में बिल्कुल नहीं बनते।",
+      "ये हमारे शरीर में बनते हैं, अतः इन्हें भोजन में लेना अनिवार्य नहीं होता।",
+      "इनकी कमी से प्रोटीन संश्लेषण पूर्णतः रुक जाता है क्योंकि ये भोजन में नहीं मिलते।",
+      "ये केवल पादपों में पाए जाते हैं, जंतुओं में नहीं।"
+    ],
+    "correct": 1,
+    "exp": "NCERT 9.4: अनानिवार्य अमीनो अम्ल वे होते हैं जो हमारे शरीर में बनते हैं।"
+  },
+  {
+    "pattern": "Tricky NCERT Statement",
+    "q": "पेप्टाइड बंध (Peptide bond) के निर्माण के दौरान कौन-सा रासायनिक परिवर्तन घटित होता है?",
+    "options": [
+      "एक जल अणु का योग (जल-अपघटन)",
+      "दो -SH समूहों के मध्य ऑक्सीकरण",
+      "एक अमीनो अम्ल के -COOH व दूसरे के -NH₂ समूह के बीच अभिक्रिया से जल के अणु का निष्कासन (निर्जलीकरण)",
+      "फॉस्फोरिक अम्ल का निष्कासन"
+    ],
+    "correct": 2,
+    "exp": "NCERT 9.4 व 9.8: पेप्टाइड बंध निर्जलीकरण (Dehydration) द्वारा जल अणु निकलने से बनता है।"
+  },
+  {
+    "pattern": "Factual Precision",
+    "q": "संवेदी अंगों में गंध (Smell), स्वाद (Taste) तथा हॉर्मोन आदि को पहचानने के लिए कोशिका झिल्ली में उपस्थित प्रोटीन कहलाते हैं:",
+    "options": [
+      "एंजाइम",
+      "वाहक (Carriers)",
+      "ग्राही (Receptors)",
+      "एंटीबॉडी"
+    ],
+    "correct": 2,
+    "exp": "NCERT तालिका 9.5: संवेदी ग्रहण (सूंघना, स्वाद, हॉर्मोन आदि) ग्राही (Receptors) द्वारा होता है।"
+  },
+  {
+    "pattern": "4-Statement Pattern",
+    "q": "प्रोटीनों के कार्यों के संदर्भ में निम्नलिखित में से कौन-सा कार्य प्रोटीन द्वारा <b>नहीं</b> किया जाता?",
+    "options": [
+      "पोषकों का कोशिका झिल्ली से होकर अभिगमन",
+      "संक्रामक रोगाणुओं से शरीर की रक्षा",
+      "कोशिका भित्ति के प्रमुख संरचनात्मक बहुलक के रूप में कार्य करना",
+      "जैव रासायनिक अभिक्रियाओं का एंजाइम के रूप में उत्प्रेरण"
+    ],
+    "correct": 2,
+    "exp": "NCERT 9.4 व 9.5: पादप कोशिका भित्ति का संरचनात्मक बहुलक सेलुलोज (पॉलीसैकेराइड) होता है, प्रोटीन नहीं।"
+  },
+  {
+    "pattern": "Assertion - Reason (कथन - कारण)",
+    "q": "<b>कथन (A):</b> किसी भी प्रोटीन को समबहुलक (Homopolymer) नहीं माना जा सकता।<br><b>कारण (R):</b> प्रत्येक प्राकृतिक प्रोटीन 20 प्रकार के विभिन्न अमीनो अम्लों की विशिष्ट अनुक्रमिक श्रृंखला से निर्मित होता है।",
+    "options": [
+      "(A) और (R) दोनों सही हैं और (R), (A) की सही व्याख्या है।",
+      "(A) और (R) दोनों सही हैं लेकिन (R), (A) की सही व्याख्या नहीं है।",
+      "(A) सही है लेकिन (R) गलत है।",
+      "(A) गलत है लेकिन (R) सही है।"
+    ],
+    "correct": 0,
+    "exp": "NCERT 9.4: प्रोटीन सदैव 20 प्रकार के विभिन्न अमीनो अम्लों के विषमबहुलक होते हैं।"
+  },
+  {
+    "pattern": "3-Statement Pattern",
+    "q": "पॉलीसैकेराइड्स (Polysaccharides) के संदर्भ में निम्नलिखित कथनों पर विचार कीजिए:<br><br>1. ये मोनोसैकेराइड्स की लंबी श्रृंखलाएं होती हैं जो धागे के समान प्रतीत होती हैं।<br>2. सेलुलोज केवल ग्लूकोज मोनोसैकेराइड का बना एक समबहुलक (Homopolymer) है।<br>3. स्टार्च (मंड) पादप ऊतकों में मुख्य संचित ऊर्जा के रूप में पाया जाता है।<br><br>उपरोक्त में से कौन-से कथन सत्य हैं?",
+    "options": [
+      "केवल 1 और 2",
+      "केवल 2 और 3",
+      "केवल 1 और 3",
+      "1, 2 और 3 सभी"
+    ],
+    "correct": 3,
+    "exp": "NCERT 9.5: सेलुलोज ग्लूकोज का समबहुलक है, स्टार्च पादपों में संचित रूप है और पॉलीसैकेराइड लंबी श्रृंखलाएं हैं।"
+  },
+  {
+    "pattern": "Tricky NCERT Statement",
+    "q": "इनुलिन (Inulin) निम्नलिखित में से किस मोनोसैकेराइड का बहुलक होता है?",
+    "options": [
+      "ग्लूकोज",
+      "सुक्रोज",
+      "गैलेक्टोज",
+      "फ्रुक्टोज (Fructose)"
+    ],
+    "correct": 3,
+    "exp": "NCERT 9.5 (पृष्ठ 148): 'इनूलिन फ्रुक्टोज का बहुलक है।'"
+  },
+  {
+    "pattern": "Directional Identification",
+    "q": "ग्लाइकोजन जैसी पॉलीसैकेराइड श्रृंखला के सिरों (Ends) के रासायनिक स्वभाव के संबंध में कौन-सा कथन सत्य है?",
+    "options": [
+      "दोनों सिरे अन-अपचायक स्वभाव के होते हैं।",
+      "बायाँ सिरा अपचायक तथा दाहिना सिरा अन-अपचायक होता है।",
+      "दोनों सिरे अपचायक स्वभाव के होते हैं।",
+      "दाहिना सिरा अपचायक (Reducing) तथा बायाँ सिरा अन-अपचायक (Non-reducing) होता है।"
+    ],
+    "correct": 3,
+    "exp": "NCERT 9.5: 'एक पॉलीसैकेराइड श्रृंखला (जैसे ग्लाइकोजन) का दाहिना सिरा अपचायक व बायाँ सिरा अनअपचायक कहलाता है।'"
+  },
+  {
+    "pattern": "Assertion - Reason (कथन - कारण)",
+    "q": "<b>कथन (A):</b> स्टार्च (मंड) आयोडीन के साथ नीला रंग देता है, परंतु सेलुलोज आयोडीन के साथ नीला रंग नहीं देता।<br><b>कारण (R):</b> स्टार्च में द्वितीयक कुंडलीदार (helical) संरचना पाई जाती है जो आयोडीन अणुओं को थाम सकती है, जबकि सेलुलोज में ऐसी जटिल कुंडलियां नहीं होतीं।",
+    "options": [
+      "(A) और (R) दोनों सही हैं लेकिन (R), (A) की सही व्याख्या नहीं है।",
+      "(A) और (R) दोनों सही हैं और (R), (A) की सही व्याख्या है।",
+      "(A) सही है लेकिन (R) गलत है।",
+      "(A) गलत है लेकिन (R) सही है।"
+    ],
+    "correct": 1,
+    "exp": "NCERT 9.5: स्टार्च के कुंडलीय भाग में आयोडीन अणु समाहित होकर नीला रंग देते हैं, सेलुलोज में कुंडलियां न होने से आयोडीन प्रवेश नहीं कर पाता।"
+  },
+  {
+    "pattern": "3-Statement Pattern",
+    "q": "सेलुलोज की प्राकृतिक उपस्थिति के संदर्भ में सही कथनों का चयन कीजिए:<br><br>1. पादप कोशिका भित्ति मुख्य रूप से सेलुलोज की बनी होती है।<br>2. पौधों की लुगदी से बनने वाला कागज सेलुलोज होता है।<br>3. कपास (रूई) के रेशे सेलुलोज के बने होते हैं।<br><br>सही कूट का चयन कीजिए:",
+    "options": [
+      "केवल 1 और 2",
+      "1, 2 और 3 सभी",
+      "केवल 1 और 3",
+      "केवल 2 और 3"
+    ],
+    "correct": 1,
+    "exp": "NCERT 9.5: पादप कोशिका भित्ति, कागज व रूई के धागे सभी सेलुलोज से बने होते हैं।"
+  },
+  {
+    "pattern": "Structural Pattern",
+    "q": "आर्थ्रोपोडा (संधीपाद) के बाह्यकंकाल का निर्माण करने वाला 'काइटीन' (Chitin) रासायनिक रूप से क्या है?",
+    "options": [
+      "फ्रुक्टोज का विषमबहुलक",
+      "पेप्टिडोग्लाइकन",
+      "ग्लिसरॉल और वसा अम्ल का एस्टर",
+      "अमीनो शर्करा (N-एसिटाइल ग्लूकोसामाइन) से बना जटिल पॉलीसैकेराइड समबहुलक"
+    ],
+    "correct": 3,
+    "exp": "NCERT 9.5: आर्थ्रोपोडा का बाह्य कंकाल काइटीन से बना होता है जो अमीनो शर्करा (N-एसिटाइल ग्लूकोसामाइन) का जटिल समबहुलक है।"
+  },
+  {
+    "pattern": "Tricky Negative Pattern",
+    "q": "निम्नलिखित में से कौन-सा कार्बोहाइड्रेट जंतुओं (Animals) में ऊर्जा भंडार के रूप में संचित होता है?",
+    "options": [
+      "स्टार्च",
+      "इनुलिन",
+      "सेलुलोज",
+      "ग्लाइकोजन (Glycogen)"
+    ],
+    "correct": 3,
+    "exp": "NCERT 9.5: प्राणियों में संचित ऊर्जा ग्लाइकोजन के रूप में होती है।"
+  },
+  {
+    "pattern": "Factual Precision",
+    "q": "जटिल पॉलीसैकेराइड्स के निर्माण में भाग लेने वाली रासायनिक रूप से परिवर्तित शर्कराओं के उदाहरण कौन-से हैं?",
+    "options": [
+      "ग्लूकोसामाइन एवं N-एसिटाइल ग्लूकोसामाइन",
+      "ग्लिसरॉल एवं पाल्मिटिक अम्ल",
+      "राइबोज एवं डीऑक्सीराइबोज",
+      "एलेनीन एवं सीरीन"
+    ],
+    "correct": 0,
+    "exp": "NCERT 9.5: जटिल पॉलीसैकेराइड अमीनो शर्करा व परिवर्तित शर्करा (ग्लूकोसमीन, N-एसिटाइल ग्लूकोसमीन) से बनते हैं।"
+  },
+  {
+    "pattern": "3-Statement Pattern",
+    "q": "ग्लाइकोजन की संरचनात्मक आकृति के संबंध में NCERT का विवरण क्या है?",
+    "options": [
+      "यह केवल दक्षिणावर्ती त्रिविम कुंडलिनी बनाती है।",
+      "यह एक सरल अडालीदार सीधी छड़ी जैसी रचना है।",
+      "यह एक पूर्णतः अरेखीय शाखित संरचना है जो व्यंग्यचित्र (Cartoon) जैसी दिखाई देती है।",
+      "यह जल में पूर्णतः अघुलनशील त्रिविम जाल है।"
+    ],
+    "correct": 2,
+    "exp": "NCERT 9.5 व चित्र 9.2: ग्लाइकोजन शाखायुक्त होती है, जो व्यंग्यचित्र जैसी दिखाई देती है।"
+  },
+  {
+    "pattern": "Assertion - Reason (कथन - कारण)",
+    "q": "<b>कथन (A):</b> सेलुलोज का उपयोग आयोडीन परीक्षण द्वारा स्टार्च के संसूचन में बाधक नहीं बनता।<br><b>कारण (R):</b> सेलुलोज में जटिल कुंडलियां न होने के कारण यह आयोडीन के साथ नीला रंग प्रदर्शित नहीं करता।",
+    "options": [
+      "(A) और (R) दोनों सही हैं और (R), (A) की सही व्याख्या है।",
+      "(A) और (R) दोनों सही हैं लेकिन (R), (A) की सही व्याख्या नहीं है।",
+      "(A) सही है लेकिन (R) गलत है।",
+      "(A) गलत है लेकिन (R) सही है।"
+    ],
+    "correct": 0,
+    "exp": "NCERT 9.5: सेलुलोज कुंडलियां न होने से आयोडीन से नीला रंग नहीं देता, अतः स्टार्च के साथ कोई भ्रम नहीं होता।"
+  },
+  {
+    "pattern": "3-Statement Pattern",
+    "q": "न्यूक्लिक अम्लों (DNA एवं RNA) के संदर्भ में निम्नलिखित कथनों पर विचार कीजिए:<br><br>1. न्यूक्लिक अम्ल पॉली-न्यूक्लियोटाइड्स होते हैं जो अम्ल-अविलेय अंश में पाए जाते हैं।<br>2. ये पॉलीसैकेराइड्स एवं पॉलीपेप्टाइड्स के साथ मिलकर कोशिका का वास्तविक वृहत्आण्विक अंश बनाते हैं।<br>3. न्यूक्लिक अम्ल सभी सजीवों में आनुवंशिक पदार्थ (Genetic material) के रूप में कार्य करते हैं।<br><br>सही कूट चुनिए:",
+    "options": [
+      "केवल 1 और 2",
+      "केवल 2 और 3",
+      "केवल 1 और 3",
+      "1, 2 और 3 सभी"
+    ],
+    "correct": 3,
+    "exp": "NCERT 9.6: न्यूक्लिक अम्ल पॉली-न्यूक्लियोटाइड हैं, अविलेय अंश में मिलते हैं और आनुवंशिक पदार्थ के रूप में कार्य करते हैं।"
+  },
+  {
+    "pattern": "3-Component Identification",
+    "q": "एक न्यूक्लियोटाइड (Nucleotide) के निर्माण में भाग लेने वाले तीन भिन्न रासायनिक घटक कौन-से हैं?",
+    "options": [
+      "विषमचक्रीय नाइट्रोजनी क्षार + मोनोसैकेराइड पेंटोज शर्करा + फॉस्फोरिक अम्ल/फॉस्फेट",
+      "अमीनो अम्ल + वसा अम्ल + ग्लिसरॉल",
+      "नाइट्रोजनी क्षार + हेक्सोज शर्करा + सल्फेट",
+      "प्यूरिन क्षार + पिरिमिडीन क्षार + पेप्टाइड"
+    ],
+    "correct": 0,
+    "exp": "NCERT 9.6: एक न्यूक्लियोटाइड तीन घटकों—विषमचक्रीय यौगिक (क्षार), मोनोसैकेराइड व फॉस्फेट से मिलकर बनता है।"
+  },
+  {
+    "pattern": "Purine vs Pyrimidine Classification",
+    "q": "न्यूक्लिक अम्लों में पाए जाने वाले नाइट्रोजनी क्षारों के संबंध में सही कथन कौन-सा है?",
+    "options": [
+      "एडीनीन व ग्वानीन प्रतिस्थापित प्यूरीन हैं, जबकि साइटोसीन, यूरेसिल व थायमीन प्रतिस्थापित पिरिमिडीन हैं।",
+      "एडीनीन व थायमीन प्यूरीन हैं, जबकि ग्वानीन व साइटोसीन पिरिमिडीन हैं।",
+      "सभी पांचों क्षार प्यूरीन वर्ग के होते हैं।",
+      "यूरेसिल व थायमीन द्विवलयी प्यूरीन हैं।"
+    ],
+    "correct": 0,
+    "exp": "NCERT 9.6: एडीनीन व ग्वानीन प्यूरीन हैं, तथा साइटोसीन, यूरेसिल व थायमीन पिरिमिडीन हैं।"
+  },
+  {
+    "pattern": "Sugar Identification",
+    "q": "डीऑक्सीराइबोन्यूक्लिक अम्ल (DNA) तथा राइबोन्यूक्लिक अम्ल (RNA) में पाई जाने वाली मोनोसैकेराइड शर्कराएं क्रमशः कौन-सी हैं?",
+    "options": [
+      "ग्लूकोज एवं फ्रुक्टोज",
+      "2'-डीऑक्सीराइबोज एवं राइबोज (दोनों पेंटोज शर्कराएं)",
+      "राइबुलोज एवं सुक्रोज",
+      "डीऑक्सीराइबोज एवं माल्टोज"
+    ],
+    "correct": 1,
+    "exp": "NCERT 9.6: डीएनए में डीऑक्सीराइबोज तथा आरएनए में राइबोज शर्करा (मोनोसैकेराइड पेंटोज) पाई जाती है।"
+  },
+  {
+    "pattern": "Assertion - Reason (कथन - कारण)",
+    "q": "<b>कथन (A):</b> डीएनए (DNA) और आरएनए (RNA) दोनों ही पॉली-न्यूक्लियोटाइड बहुलक हैं।<br><b>कारण (R):</b> न्यूक्लिक अम्ल न्यूक्लियोटाइड एककों के आपस में जुड़ने से बनते हैं।",
+    "options": [
+      "(A) और (R) दोनों सही हैं लेकिन (R), (A) की सही व्याख्या नहीं है।",
+      "(A) और (R) दोनों सही हैं और (R), (A) की सही व्याख्या है।",
+      "(A) सही है लेकिन (R) गलत है।",
+      "(A) गलत है लेकिन (R) सही है।"
+    ],
+    "correct": 1,
+    "exp": "NCERT 9.6: न्यूक्लिक अम्ल न्यूक्लियोटाइड्स के बहुलक (पॉलीन्यूक्लियोटाइड) होते हैं।"
+  },
+  {
+    "pattern": "Tricky Negative Pattern",
+    "q": "निम्नलिखित में से कौन-सा नाइट्रोजनी क्षारक सामान्यतया केवल RNA में पाया जाता है और DNA में अनुपस्थित होता है?",
+    "options": [
+      "एडीनीन",
+      "यूरेसिल (Uracil)",
+      "ग्वानीन",
+      "थायमीन"
+    ],
+    "correct": 1,
+    "exp": "NCERT 9.6: यूरेसिल आरएनए में पाया जाता है, जबकि डीएनए में इसकी जगह थायमीन होता है।"
+  },
+  {
+    "pattern": "Tricky Negative Pattern",
+    "q": "निम्नलिखित में से कौन-सा नाइट्रोजनी क्षारक सामान्यतया केवल DNA में पाया जाता है और RNA में अनुपस्थित होता है?",
+    "options": [
+      "थायमीन (Thymine)",
+      "यूरेसिल",
+      "साइटोसीन",
+      "ग्वानीन"
+    ],
+    "correct": 0,
+    "exp": "NCERT 9.6: थायमीन डीएनए में पाया जाता है, आरएनए में थायमीन के स्थान पर यूरेसिल होता है।"
+  },
+  {
+    "pattern": "4-Statement Pattern",
+    "q": "विषमचक्रीय वलयों (Heterocyclic rings) की रासायनिक प्रकृति के आधार पर प्यूरीन एवं पिरिमिडीन में मूलभूत अंतर क्या है?",
+    "options": [
+      "प्यूरीन में द्विवलयी (Two-ring) विषमचक्रीय ढांचा होता है, जबकि पिरिमिडीन में एकल वलय (Single-ring) होता है।",
+      "पिरिमिडीन द्विवलयी होते हैं और प्यूरीन एकल वलयी होते हैं।",
+      "प्यूरीन में नाइट्रोजन नहीं होता केवल कार्बन होता है।",
+      "पिरिमिडीन कभी भी शर्करा से नहीं जुड़ सकते।"
+    ],
+    "correct": 0,
+    "exp": "NCERT 9.1 व 9.6 (चित्र 9.1): प्यूरीन (ऐडेनीन, ग्वानीन) द्विवलयी विषमचक्रीय क्षारक हैं, जबकि पिरिमिडीन (यूरेसिल, थायमीन, साइटोसीन) एकल वलयी विषमचक्रीय क्षारक हैं।"
+  }
+];
+
+        let currentQIndex = 0;
+        let userResponses = new Array(quizData.length).fill(null);
+        let reviewFlags = new Array(quizData.length).fill(false);
+        let testSubmitted = false;
+        let totalSeconds = 120 * 60; // 120 minutes
+        let timerInterval = null;
+
+        function startAutoFullScreenTest() {
+            const docEl = document.documentElement;
+            if (docEl.requestFullscreen) {
+                docEl.requestFullscreen().catch(err => console.log("FS error:", err));
+            } else if (docEl.webkitRequestFullscreen) {
+                docEl.webkitRequestFullscreen();
+            } else if (docEl.msRequestFullscreen) {
+                docEl.msRequestFullscreen();
+            }
+
+            document.getElementById('fullScreenGate').classList.add('hidden');
+            document.getElementById('cbtApp').classList.remove('hidden');
+
+            initTimer();
+            loadQuestion(0);
+        }
+
+        function initTimer() {
+            const timerEl = document.getElementById('timerDisplay');
+            timerInterval = setInterval(() => {
+                if (totalSeconds <= 0) {
+                    clearInterval(timerInterval);
+                    autoSubmitTest();
+                    return;
+                }
+                totalSeconds--;
+                const hrs = Math.floor(totalSeconds / 3600);
+                const mins = Math.floor((totalSeconds % 3600) / 60);
+                const secs = totalSeconds % 60;
+                timerEl.innerText = `${hrs > 0 ? hrs + ':' : ''}${mins < 10 ? '0' : ''}${mins}:${secs < 10 ? '0' : ''}${secs}`;
+            }, 1000);
+        }
+
+        function loadQuestion(index) {
+            currentQIndex = index;
+            const qData = quizData[index];
+
+            document.getElementById('questionIndicator').innerText = `Question ${index + 1} of ${quizData.length}`;
+            document.getElementById('qPatternBadge').innerText = qData.pattern;
+            document.getElementById('qText').innerHTML = qData.q;
+
+            const reviewTag = document.getElementById('reviewTag');
+            const btnReview = document.getElementById('btnReview');
+            if (reviewFlags[index]) {
+                reviewTag.classList.remove('hidden');
+                btnReview.innerText = "Unmark Review";
+                btnReview.classList.replace('bg-amber-50', 'bg-amber-200');
+            } else {
+                reviewTag.classList.add('hidden');
+                btnReview.innerText = "Mark for Review";
+                btnReview.classList.replace('bg-amber-200', 'bg-amber-50');
+            }
+
+            const optsContainer = document.getElementById('optionsContainer');
+            optsContainer.innerHTML = '';
+            const optionLetters = ['(A)', '(B)', '(C)', '(D)'];
+
+            qData.options.forEach((optText, optIdx) => {
+                const optBtn = document.createElement('div');
+                const isSelected = userResponses[index] === optIdx;
+
+                optBtn.className = `flex items-start p-3.5 md:p-4 rounded-xl border text-sm md:text-base cursor-pointer transition-all duration-150 ${
+                    isSelected 
+                        ? 'border-indigo-600 bg-indigo-50/70 text-indigo-950 shadow-sm ring-1 ring-indigo-500' 
+                        : 'border-slate-200 hover:border-indigo-300 hover:bg-slate-50 text-slate-800'
+                }`;
+
+                optBtn.innerHTML = `
+                    <span class="inline-flex items-center justify-center w-7 h-7 rounded-lg text-xs font-bold mr-3 shrink-0 ${
+                        isSelected ? 'bg-indigo-600 text-white' : 'bg-slate-100 text-slate-600 border border-slate-300'
+                    }">${optionLetters[optIdx]}</span>
+                    <span class="pt-0.5 leading-snug">${optText}</span>
+                `;
+
+                optBtn.onclick = () => selectOption(optIdx);
+                optsContainer.appendChild(optBtn);
+            });
+
+            updateInstantSolutionDisplay();
+
+            document.getElementById('btnPrev').disabled = (index === 0);
+            const btnNext = document.getElementById('btnNext');
+            if (index === quizData.length - 1) {
+                btnNext.innerText = "Finish & Review";
+            } else {
+                btnNext.innerText = "Next & Save →";
+            }
+        }
+
+        function selectOption(optIdx) {
+            userResponses[currentQIndex] = optIdx;
+            loadQuestion(currentQIndex);
+        }
+
+        function updateInstantSolutionDisplay() {
+            const feedbackBox = document.getElementById('instantFeedbackBox');
+            const titleEl = document.getElementById('feedbackTitle');
+            const expEl = document.getElementById('feedbackExplanation');
+            const chosen = userResponses[currentQIndex];
+            const qData = quizData[currentQIndex];
+
+            if (chosen !== null) {
+                feedbackBox.classList.remove('hidden');
+                if (chosen === qData.correct) {
+                    feedbackBox.className = "rounded-xl p-4 md:p-5 mb-6 border bg-emerald-50 border-emerald-200 text-emerald-900";
+                    titleEl.innerHTML = `<span class="flex items-center text-emerald-700 font-bold"><svg class="w-5 h-5 mr-1.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg> सही उत्तर! (+2.00 Marks)</span>`;
+                } else {
+                    feedbackBox.className = "rounded-xl p-4 md:p-5 mb-6 border bg-rose-50 border-rose-200 text-rose-900";
+                    titleEl.innerHTML = `<span class="flex items-center text-rose-700 font-bold"><svg class="w-5 h-5 mr-1.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd"/></svg> गलत उत्तर! (-0.20 Negative)</span>`;
+                }
+                expEl.innerHTML = `<b>NCERT विस्तृत हल:</b> ${qData.exp}`;
+            } else {
+                feedbackBox.classList.add('hidden');
+            }
+        }
+
+        function nextQuestion() {
+            if (currentQIndex < quizData.length - 1) {
+                loadQuestion(currentQIndex + 1);
+            } else {
+                confirmSubmitTest();
+            }
+        }
+
+        function prevQuestion() {
+            if (currentQIndex > 0) {
+                loadQuestion(currentQIndex - 1);
+            }
+        }
+
+        function clearResponse() {
+            userResponses[currentQIndex] = null;
+            loadQuestion(currentQIndex);
+        }
+
+        function toggleReviewCurrent() {
+            reviewFlags[currentQIndex] = !reviewFlags[currentQIndex];
+            loadQuestion(currentQIndex);
+        }
+
+        function confirmSubmitTest() {
+            const answeredCount = userResponses.filter(r => r !== null).length;
+            const remaining = quizData.length - answeredCount;
+            const confirmMsg = `क्या आप सचमुच टेस्ट सबमिट करना चाहते हैं?\n\nकुल प्रश्न: ${quizData.length}\nहल किए गए: ${answeredCount}\nशेष: ${remaining}`;
+            if (confirm(confirmMsg)) {
+                finalizeTest();
+            }
+        }
+
+        function autoSubmitTest() {
+            alert("समय समाप्त हो गया है! आपका टेस्ट स्वतः सबमिट किया जा रहा है।");
+            finalizeTest();
+        }
+
+        function finalizeTest() {
+            clearInterval(timerInterval);
+            testSubmitted = true;
+
+            let correct = 0;
+            let wrong = 0;
+
+            quizData.forEach((q, idx) => {
+                const ans = userResponses[idx];
+                if (ans !== null) {
+                    if (ans === q.correct) correct++;
+                    else wrong++;
+                }
+            });
+
+            const totalScore = (correct * 2.00) - (wrong * 0.20);
+            const totalAttempts = correct + wrong;
+            const accuracy = totalAttempts > 0 ? Math.round((correct / totalAttempts) * 100) : 0;
+
+            document.getElementById('resScore').innerText = totalScore.toFixed(2);
+            document.getElementById('resAccuracy').innerText = `${accuracy}%`;
+            document.getElementById('resCorrect').innerText = correct;
+            document.getElementById('resWrong').innerText = wrong;
+
+            const modal = document.getElementById('scorecardModal');
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+        }
+
+        function reviewAllSolutions() {
+            document.getElementById('scorecardModal').classList.add('hidden');
+            document.getElementById('scorecardModal').classList.remove('flex');
+            loadQuestion(0);
+        }
+    </script>
+</body>
+</html>
