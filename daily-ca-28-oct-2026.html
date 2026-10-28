@@ -1,0 +1,893 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GYANVERSE CBT - 28 October 2026 Special Mock Test</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Tiro+Devanagari+Hindi:ital@0;1&family=Inter:wght@400;500;600;700&display=swap');
+        body {
+            font-family: 'Inter', 'Tiro Devanagari Hindi', sans-serif;
+            user-select: none;
+        }
+        .hindi-text {
+            font-family: 'Tiro Devanagari Hindi', serif;
+        }
+    </style>
+</head>
+<body class="bg-slate-100 text-slate-800 min-h-screen flex flex-col">
+
+    <!-- FULL SCREEN ENTRY GATE OVERLAY -->
+    <div id="entry-gate" class="fixed inset-0 z-50 bg-slate-900/95 flex items-center justify-center p-4">
+        <div class="bg-white rounded-2xl shadow-2xl max-w-lg w-full p-6 sm:p-8 text-center border-t-8 border-indigo-600">
+            <div class="w-20 h-20 bg-indigo-100 text-indigo-600 rounded-full flex items-center justify-center mx-auto mb-4 text-3xl shadow-inner">
+                <i class="fa-solid fa-graduation-cap"></i>
+            </div>
+            <h1 class="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">GYANVERSE</h1>
+            <p class="text-indigo-600 font-semibold text-sm mb-2">Daily Current Affairs & NCERT High-Level CBT</p>
+            <div class="inline-block bg-amber-100 text-amber-800 text-xs px-3 py-1 rounded-full font-bold mb-5">
+                Set Date: 28 October 2026 | Full Blueprint Test
+            </div>
+            
+            <div class="text-left text-xs sm:text-sm bg-slate-50 p-4 rounded-xl border border-slate-200 mb-6 space-y-2 text-slate-700">
+                <div class="flex items-center justify-between font-bold text-slate-900 border-b pb-1">
+                    <span>कुल समय (Duration): 120 मिनट</span>
+                    <span>कुल प्रश्न: 15</span>
+                </div>
+                <div class="flex items-center justify-between text-green-700 font-semibold">
+                    <span>सही उत्तर (Correct): +2.00 अंक</span>
+                    <span class="text-rose-600">गलत उत्तर: -0.20 अंक</span>
+                </div>
+                <p class="text-slate-500 text-xs mt-2 italic">
+                    * अनिवार्य नियम: यह टेस्ट केवल ऑटो फुल-स्क्रीन मोड में ही संचालित होगा। शुरू करने के लिए नीचे दिए गए बटन पर क्लिक करें।
+                </p>
+            </div>
+
+            <button onclick="startAutoFullScreenTest()" class="w-full bg-gradient-to-r from-indigo-600 to-indigo-700 hover:from-indigo-700 hover:to-indigo-800 text-white font-bold py-3.5 px-6 rounded-xl shadow-lg shadow-indigo-500/30 transition-all flex items-center justify-center gap-2 text-base">
+                <i class="fa-solid fa-expand"></i> Start Test (Auto Full Screen)
+            </button>
+            <p class="mt-4 text-xs text-slate-400">
+                Official Telegram: <a href="https://t.me/GYANVERSET" target="_blank" class="text-indigo-600 underline font-semibold">@GYANVERSET</a>
+            </p>
+        </div>
+    </div>
+
+    <!-- MAIN CBT TEST CONTAINER -->
+    <div id="test-wrapper" class="hidden flex-col min-h-screen">
+        
+        <!-- HEADER -->
+        <header class="bg-white border-b border-slate-200 sticky top-0 z-30 shadow-sm px-4 py-3">
+            <div class="max-w-5xl mx-auto flex items-center justify-between">
+                <!-- Branding & Channel Link -->
+                <div class="flex items-center gap-3">
+                    <div class="bg-indigo-600 text-white font-black text-lg px-2.5 py-1 rounded-lg">GV</div>
+                    <div>
+                        <h2 class="font-black text-slate-900 text-base leading-tight">GYANVERSE</h2>
+                        <a href="https://t.me/GYANVERSET" target="_blank" class="text-[11px] font-bold text-indigo-600 flex items-center gap-1 hover:underline">
+                            <i class="fa-brands fa-telegram"></i> @GYANVERSET
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Timer, Lang Switcher & Top-Right Submit Button -->
+                <div class="flex items-center gap-2 sm:gap-4">
+                    <!-- Language Switcher -->
+                    <button onclick="toggleLanguage()" class="px-2.5 py-1 text-xs font-bold rounded-lg border border-slate-300 bg-slate-50 hover:bg-slate-100 text-slate-700 transition">
+                        <span id="lang-btn-text">हिंदी / ENG</span>
+                    </button>
+
+                    <!-- Live Countdown Timer -->
+                    <div class="flex items-center gap-2 bg-indigo-50 border border-indigo-200 text-indigo-700 px-3 py-1.5 rounded-xl font-mono font-bold text-sm sm:text-base">
+                        <i class="fa-regular fa-clock animate-pulse"></i>
+                        <span id="timer-display">120:00</span>
+                    </div>
+
+                    <!-- Top-Right Submit Button -->
+                    <button onclick="confirmSubmitTest()" class="bg-rose-600 hover:bg-rose-700 active:scale-95 text-white font-bold px-3.5 sm:px-4 py-1.5 rounded-xl text-xs sm:text-sm shadow-md transition flex items-center gap-1.5">
+                        <i class="fa-solid fa-flag-checkered"></i> <span>Submit</span>
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <!-- QUESTION PROGRESS BAR -->
+        <div class="w-full bg-slate-200 h-1.5">
+            <div id="progress-bar" class="bg-indigo-600 h-1.5 w-0 transition-all duration-300"></div>
+        </div>
+
+        <!-- MAIN QUESTION VIEWPORT (FULL-WIDTH, NO PALETTE GRID) -->
+        <main class="flex-1 max-w-4xl w-full mx-auto p-4 sm:p-6 flex flex-col justify-start">
+            
+            <!-- Question Card -->
+            <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-5 sm:p-7 relative mb-6">
+                
+                <!-- Card Header Info -->
+                <div class="flex items-center justify-between pb-3 mb-4 border-b border-slate-100 text-xs sm:text-sm font-semibold text-slate-500">
+                    <span class="bg-indigo-100 text-indigo-800 px-3 py-0.5 rounded-full" id="q-counter">Question 1 of 15</span>
+                    <div class="flex items-center gap-3">
+                        <span class="text-green-600 font-bold">+2.00</span>
+                        <span class="text-rose-500 font-bold">-0.20</span>
+                        <span id="review-tag" class="hidden bg-amber-100 text-amber-800 px-2 py-0.5 rounded text-xs font-bold">Marked for Review</span>
+                    </div>
+                </div>
+
+                <!-- Question Text -->
+                <div id="question-text" class="text-base sm:text-lg font-medium text-slate-900 leading-relaxed mb-6">
+                    <!-- Dynamic Question Text -->
+                </div>
+
+                <!-- Options Container -->
+                <div id="options-container" class="space-y-3 mb-6">
+                    <!-- Dynamic Options -->
+                </div>
+
+                <!-- Instant Feedback & Explanation Container -->
+                <div id="instant-explanation" class="hidden p-4 rounded-xl border mt-4 text-xs sm:text-sm leading-relaxed transition-all">
+                    <!-- Dynamic Instant Verification Explanation -->
+                </div>
+
+                <!-- Question Footer Tag / Watermark -->
+                <div class="mt-6 pt-3 border-t border-slate-100 flex items-center justify-between text-xs text-slate-400">
+                    <span>Daily Blueprint CBT Series</span>
+                    <a href="https://t.me/GYANVERSET" target="_blank" class="font-bold text-indigo-500 hover:text-indigo-700 flex items-center gap-1">
+                        <i class="fa-brands fa-telegram"></i> @GYANVERSET
+                    </a>
+                </div>
+
+                <!-- NAVIGATION BUTTONS CONTAINER (EXACTLY BELOW OPTIONS) -->
+                <div class="mt-6 pt-4 border-t border-slate-200 flex flex-wrap items-center justify-between gap-2">
+                    <div class="flex items-center gap-2">
+                        <button onclick="prevQuestion()" id="btn-prev" class="px-4 py-2 rounded-xl border border-slate-300 bg-white hover:bg-slate-50 text-slate-700 font-semibold text-xs sm:text-sm transition flex items-center gap-1.5 disabled:opacity-40">
+                            <i class="fa-solid fa-chevron-left"></i> Prev
+                        </button>
+                        <button onclick="clearResponse()" class="px-3.5 py-2 rounded-xl border border-rose-200 bg-rose-50 hover:bg-rose-100 text-rose-700 font-semibold text-xs sm:text-sm transition">
+                            Clear
+                        </button>
+                    </div>
+
+                    <div class="flex items-center gap-2">
+                        <button onclick="toggleMarkReview()" id="btn-review" class="px-4 py-2 rounded-xl border border-amber-300 bg-amber-50 hover:bg-amber-100 text-amber-800 font-semibold text-xs sm:text-sm transition flex items-center gap-1.5">
+                            <i class="fa-regular fa-bookmark"></i> Review
+                        </button>
+                        <button onclick="nextQuestion()" id="btn-next" class="px-5 py-2 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-xs sm:text-sm shadow-md transition flex items-center gap-1.5">
+                            Next & Save <i class="fa-solid fa-chevron-right"></i>
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+        </main>
+
+        <!-- FOOTER BRANDING -->
+        <footer class="bg-white border-t border-slate-200 py-3 text-center text-xs text-slate-500">
+            <p>© GYANVERSE — संकल्प से सफलता तक | जुड़ें हमारे टेलीग्राम से: <a href="https://t.me/GYANVERSET" target="_blank" class="text-indigo-600 font-bold hover:underline">@GYANVERSET</a></p>
+        </footer>
+    </div>
+
+    <!-- SCORECARD & SOLUTION MODAL -->
+    <div id="scorecard-modal" class="fixed inset-0 z-50 bg-slate-900/90 hidden items-center justify-center p-3 sm:p-4 overflow-y-auto">
+        <div class="bg-white rounded-2xl shadow-2xl max-w-2xl w-full p-5 sm:p-8 my-auto border-t-8 border-green-600">
+            
+            <div class="text-center mb-6">
+                <div class="w-16 h-16 bg-green-100 text-green-600 rounded-full flex items-center justify-center mx-auto mb-3 text-3xl">
+                    <i class="fa-solid fa-trophy"></i>
+                </div>
+                <h3 class="text-2xl font-black text-slate-900">GYANVERSE टेस्ट स्कोरकार्ड</h3>
+                <p class="text-xs sm:text-sm text-slate-500">28 October 2026 - Comprehensive Assessment Report</p>
+            </div>
+
+            <!-- Scorecard Grid -->
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-6 text-center">
+                <div class="bg-indigo-50 border border-indigo-100 p-3 rounded-xl">
+                    <span class="block text-xs font-bold text-indigo-600 uppercase">कुल प्राप्तांक</span>
+                    <span id="res-score" class="text-2xl font-black text-indigo-700">0.00</span>
+                    <span class="text-[10px] text-slate-400">/ 30.00</span>
+                </div>
+                <div class="bg-emerald-50 border border-emerald-100 p-3 rounded-xl">
+                    <span class="block text-xs font-bold text-emerald-600 uppercase">सही उत्तर</span>
+                    <span id="res-correct" class="text-2xl font-black text-emerald-700">0</span>
+                    <span class="text-[10px] text-slate-400">Questions</span>
+                </div>
+                <div class="bg-rose-50 border border-rose-100 p-3 rounded-xl">
+                    <span class="block text-xs font-bold text-rose-600 uppercase">गलत उत्तर</span>
+                    <span id="res-wrong" class="text-2xl font-black text-rose-700">0</span>
+                    <span class="text-[10px] text-slate-400">Questions</span>
+                </div>
+                <div class="bg-amber-50 border border-amber-100 p-3 rounded-xl">
+                    <span class="block text-xs font-bold text-amber-600 uppercase">सटीकता (Acc.)</span>
+                    <span id="res-acc" class="text-2xl font-black text-amber-700">0%</span>
+                    <span class="text-[10px] text-slate-400">Accuracy</span>
+                </div>
+            </div>
+
+            <div class="bg-slate-50 p-3.5 rounded-xl border border-slate-200 text-xs sm:text-sm text-slate-600 space-y-1 mb-6">
+                <div class="flex justify-between">
+                    <span>कुल प्रश्न (Total Questions):</span>
+                    <span class="font-bold text-slate-800">15</span>
+                </div>
+                <div class="flex justify-between">
+                    <span>हल किए गए (Attempted):</span>
+                    <span id="res-attempted" class="font-bold text-slate-800">0</span>
+                </div>
+                <div class="flex justify-between">
+                    <span>छोड़े गए (Left / Unattempted):</span>
+                    <span id="res-left" class="font-bold text-slate-800">0</span>
+                </div>
+                <div class="flex justify-between text-indigo-600 pt-1 border-t font-semibold">
+                    <span>टेलीग्राम चैनल:</span>
+                    <a href="https://t.me/GYANVERSET" target="_blank" class="hover:underline">@GYANVERSET</a>
+                </div>
+            </div>
+
+            <div class="flex flex-col sm:flex-row gap-3">
+                <button onclick="openSolutionMode()" class="flex-1 bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 rounded-xl shadow-md transition text-center text-sm">
+                    <i class="fa-solid fa-list-check"></i> Check Solutions (विस्तृत व्याख्या)
+                </button>
+                <button onclick="restartTest()" class="flex-1 bg-slate-200 hover:bg-slate-300 text-slate-800 font-bold py-3 rounded-xl transition text-center text-sm">
+                    <i class="fa-solid fa-rotate-right"></i> Retake Test
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- JAVASCRIPT LOGIC & DATABASE -->
+    <script>
+        // High-level Questions from Uploaded PDF (Zero Repetition, Pure Devanagari & English)
+        const questionsData = [
+            {
+                id: 1,
+                type: "statement",
+                hi: {
+                    question: "वाइल्डलाइफ फोटोग्राफर ऑफ द ईयर 2026 प्रतियोगिता के संबंध में निम्नलिखित कथनों पर विचार कीजिए:<br>1. भारतीय फोटोग्राफर सीताराम दिनकर राउल ने 'बिहेवियर: इनवर्टेब्रेट्स' श्रेणी में यह पुरस्कार जीता।<br>2. उनके पुरस्कृत फोटोग्राफ का शीर्षक 'शिफ्टिंग सैंड्स' (Shifting Sands) है, जिसमें थार मरुस्थल के बिच्छू को दर्शाया गया है।<br>3. सीताराम दिनकर राउल मूल रूप से राजस्थान के जैसलमेर जिले के निवासी हैं।<br>उपर्युक्त में से कौन-सा/से कथन <strong>सही</strong> है/हैं?",
+                    options: [
+                        "केवल 1 और 3",
+                        "केवल 1 और 2",
+                        "केवल 2 और 3",
+                        "1, 2 और 3 सभी"
+                    ],
+                    explanation: "कथन 1 और 2 सही हैं। सीताराम दिनकर राउल ने 'बिहेवियर: इनवर्टेब्रेट्स' में यह सम्मान जीता और उनके फोटो का शीर्षक 'शिफ्टिंग सैंड्स' है। कथन 3 गलत है क्योंकि वे मूल रूप से महाराष्ट्र के सिंधुदुर्ग जिले के रहने वाले हैं।"
+                },
+                en: {
+                    question: "Consider the following statements regarding the Wildlife Photographer of the Year 2026:<br>1. Indian photographer Sitaram Dinkar Raul won in the 'Behaviour: Invertebrates' category.<br>2. His winning photograph is titled 'Shifting Sands', capturing a scorpion in the Thar Desert.<br>3. Sitaram Dinkar Raul natively hails from Jaisalmer, Rajasthan.<br>Which of the statements given above is/are <strong>correct</strong>?",
+                    options: [
+                        "Only 1 and 3",
+                        "Only 1 and 2",
+                        "Only 2 and 3",
+                        "1, 2 and 3 all"
+                    ],
+                    explanation: "Statements 1 and 2 are correct. Statement 3 is incorrect as he is natively from Sindhudurg district of Maharashtra."
+                },
+                answerIndex: 1 // (B)
+            },
+            {
+                id: 2,
+                type: "assertion_reason",
+                hi: {
+                    question: "नीचे दो कथन दिए गए हैं, एक को कथन (A) तथा दूसरे को कारण (R) कहा गया है:<br><strong>कथन (A):</strong> केरल सरकार द्वारा देश की पहली सहकारी क्षेत्र की एयरलाइन 'को-केरलम' (Co-Keralam) के संचालन को मंजूरी दी गई है।<br><strong>कारण (R):</strong> इसका प्राथमिक उद्देश्य पश्चिमी तट और खाड़ी देशों के बीच अत्यधिक विमानन किराए को नियंत्रित करना और आंतरिक कनेक्टिविटी को सुदृढ़ बनाना है।",
+                    options: [
+                        "(A) और (R) दोनों सही हैं और (R), (A) की सही व्याख्या है।",
+                        "(A) और (R) दोनों सही हैं परंतु (R), (A) की सही व्याख्या नहीं है।",
+                        "(A) सही है परंतु (R) गलत है।",
+                        "(A) गलत है परंतु (R) सही है।"
+                    ],
+                    explanation: "कथन (A) और कारण (R) दोनों सत्य हैं और (R), (A) की सही व्याख्या है। केरल सिविल एविएशन डेवलपमेंट कोऑपरेटिव सोसाइटी के अंतर्गत 'को-केरलम' को मंजूरी दी गई है जो क्षेत्रीय संपर्क व किराए को संतुलित करेगा।"
+                },
+                en: {
+                    question: "Given below are two statements, one labeled as Assertion (A) and the other as Reason (R):<br><strong>Assertion (A):</strong> The Kerala Government approved India's first cooperative sector airline named 'Co-Keralam'.<br><strong>Reason (R):</strong> The primary objective is to improve regional connectivity and address monopolistic high airfares.<br>Select the correct answer:",
+                    options: [
+                        "Both (A) and (R) are true and (R) is the correct explanation of (A).",
+                        "Both (A) and (R) are true but (R) is NOT the correct explanation of (A).",
+                        "(A) is true but (R) is false.",
+                        "(A) is false but (R) is true."
+                    ],
+                    explanation: "Both Assertion and Reason are true, and Reason correctly explains why the cooperative model airline was initiated."
+                },
+                answerIndex: 0 // (A)
+            },
+            {
+                id: 3,
+                type: "tricky_negative",
+                hi: {
+                    question: "बैलन डी'ओर (Ballon d'Or) 2026 पुरस्कारों के संदर्भ में निम्नलिखित में से कौन-सा मिलान <strong>गलत (असतत्य)</strong> है?",
+                    options: [
+                        "सर्वश्रेष्ठ पुरुष फुटबॉलर - हैरी केन (Harry Kane)",
+                        "महिला बैलन डी'ओर - एलेक्सिया पुतेलास (Alexia Putellas)",
+                        "कोपा ट्रॉफी (सर्वश्रेष्ठ युवा खिलाड़ी) - रोड्रिगो हर्नांडेज़ (रोड्री)",
+                        "याशिन ट्रॉफी (सर्वश्रेष्ठ गोलकीपर) - उनाई साइमन (Unai Simón)"
+                    ],
+                    explanation: "विकल्प (C) गलत मिलान है क्योंकि कोपा ट्रॉफी (सर्वश्रेष्ठ युवा पुरुष खिलाड़ी) का पुरस्कार स्पेन के युवा खिलाड़ी लामिन यामाल (Lamine Yamal) ने जीता है, न कि रोड्री ने।"
+                },
+                en: {
+                    question: "Regarding the Ballon d'Or 2026 awards, which of the following pairs is <strong>incorrectly matched</strong>?",
+                    options: [
+                        "Best Men's Player - Harry Kane",
+                        "Women's Ballon d'Or - Alexia Putellas",
+                        "Kopa Trophy (Best Young Player) - Rodrigo Hernández (Rodri)",
+                        "Yashin Trophy (Best Goalkeeper) - Unai Simón"
+                    ],
+                    explanation: "Option (C) is incorrectly matched. The Kopa Trophy for the best young player was awarded to Lamine Yamal."
+                },
+                answerIndex: 2 // (C)
+            },
+            {
+                id: 4,
+                type: "statement",
+                hi: {
+                    question: "अक्टूबर 2026 में बंगाल की खाड़ी में उत्पन्न चक्रवाती तूफान 'अर्णव' (Cyclone Arnab) के संदर्भ में दिए गए कथनों पर विचार कीजिए:<br>1. इस चक्रवाती तूफान का नामकरण बांग्लादेश द्वारा किया गया है।<br>2. बंगाली भाषा में 'अर्णव' शब्द का अर्थ 'समुद्र' अथवा 'महासागर' होता है।<br>3. उत्तर हिंद महासागर में चक्रवातों के नामकरण पैनल में कुल 20 सदस्य देश शामिल हैं।<br>उपर्युक्त में से कौन-से कथन <strong>सही</strong> हैं?",
+                    options: [
+                        "केवल 1 और 3",
+                        "केवल 2 और 3",
+                        "केवल 1 और 2",
+                        "1, 2 और 3 सभी"
+                    ],
+                    explanation: "कथन 1 और 2 सही हैं। कथन 3 गलत है क्योंकि WMO/ESCAP उत्तर हिंद महासागर उष्णकटिबंधीय चक्रवात नामकरण पैनल में 13 सदस्य देश (भारत, बांग्लादेश, म्यांमार, ओमान, पाकिस्तान, श्रीलंका आदि) शामिल हैं।"
+                },
+                en: {
+                    question: "Consider the following statements regarding Cyclone 'Arnab' formed in the Bay of Bengal in October 2026:<br>1. The name 'Arnab' was contributed by Bangladesh.<br>2. In Bengali, 'Arnab' translates to 'Ocean' or 'Sea'.<br>3. There are currently 20 member nations in the North Indian Ocean cyclone naming panel.<br>Which of the statements given above are <strong>correct</strong>?",
+                    options: [
+                        "Only 1 and 3",
+                        "Only 2 and 3",
+                        "Only 1 and 2",
+                        "All 1, 2 and 3"
+                    ],
+                    explanation: "Statements 1 and 2 are correct. Statement 3 is wrong because the WMO/ESCAP panel comprises 13 member nations, not 20."
+                },
+                answerIndex: 2 // (C)
+            },
+            {
+                id: 5,
+                type: "matching",
+                hi: {
+                    question: "संयुक्त राष्ट्र के 'लॉस एंड डैमेज फंड' (FRLD) के संदर्भ में निम्नलिखित कथनों में से कौन-सा/से <strong>सही</strong> है/हैं?<br>1. नेपाल इस फंड से वित्तीय सहायता प्राप्त करने वाला दुनिया का पहला देश बना है।<br>2. इस कोष का अंतरिम ट्रस्टी एशियाई विकास बैंक (ADB) है।<br>3. इस कोष की स्थापना की सैद्धांतिक सहमति COP27 (मिस्र) में बनी थी।<br>सही कूट का चयन कीजिए:",
+                    options: [
+                        "केवल 1 और 2",
+                        "केवल 2 और 3",
+                        "केवल 1 और 3",
+                        "1, 2 और 3 सभी"
+                    ],
+                    explanation: "कथन 1 और 3 सही हैं। नेपाल को हालिया बाढ़-भूस्खलन के लिए पहली सहायता मिली और COP27 में सहमति बनी थी। कथन 2 गलत है क्योंकि इसका अंतरिम ट्रस्टी विश्व बैंक (World Bank) है, न कि ADB।"
+                },
+                en: {
+                    question: "Regarding the UN's 'Fund for Responding to Loss and Damage' (FRLD):<br>1. Nepal became the first country in the world to receive climate disaster funding from it.<br>2. The interim trustee of this fund is the Asian Development Bank (ADB).<br>3. The formal consensus to establish this fund was reached at COP27 in Sharm el-Sheikh.<br>Select the correct code:",
+                    options: [
+                        "Only 1 and 2",
+                        "Only 2 and 3",
+                        "Only 1 and 3",
+                        "1, 2 and 3 all"
+                    ],
+                    explanation: "Statements 1 and 3 are correct. Statement 2 is incorrect because the World Bank serves as the interim trustee."
+                },
+                answerIndex: 2 // (C)
+            },
+            {
+                id: 6,
+                type: "assertion_reason",
+                hi: {
+                    question: "<strong>कथन (A):</strong> इसरो तमिलनाडु के कुलशेखरपट्टिनम में भारत का दूसरा अंतरिक्ष प्रक्षेपण केंद्र (Spaceport) स्थापित कर रहा है।<br><strong>कारण (R):</strong> कुलशेखरपट्टिनम से SSLV प्रक्षेपण के समय रॉकेट को श्रीलंका के ऊपर से बचने हेतु डॉगलग (Dogleg) युद्धाभ्यास की आवश्यकता नहीं होगी, जिससे सीधे दक्षिण ध्रुवीय कक्षा में जाया जा सकेगा।",
+                    options: [
+                        "(A) और (R) दोनों सही हैं और (R), (A) की सही व्याख्या है।",
+                        "(A) और (R) दोनों सही हैं परंतु (R), (A) की सही व्याख्या नहीं है।",
+                        "(A) सही है लेकिन (R) गलत है।",
+                        "(A) गलत है लेकिन (R) सही है।"
+                    ],
+                    explanation: "(A) और (R) दोनों सही हैं और (R), (A) की सटीक वैज्ञानिक व्याख्या करता है। श्रीहरिकोटा से ध्रुवीय प्रक्षेपण में श्रीलंका से बचने के लिए घुमाव (dogleg maneuver) करना पड़ता था, जो कुलशेखरपट्टिनम से सीधा दक्षिण की ओर संभव होगा।"
+                },
+                en: {
+                    question: "<strong>Assertion (A):</strong> ISRO is establishing India's second spaceport at Kulasekharapatnam in Tamil Nadu.<br><strong>Reason (R):</strong> Launches from Kulasekharapatnam eliminate the need for a dogleg maneuver around Sri Lanka, providing a direct southward trajectory for polar orbits.",
+                    options: [
+                        "Both (A) and (R) are true and (R) is the correct explanation of (A).",
+                        "Both (A) and (R) are true but (R) is NOT the correct explanation of (A).",
+                        "(A) is true but (R) is false.",
+                        "(A) is false but (R) is true."
+                    ],
+                    explanation: "Both statements are correct and Reason precisely explains why Kulasekharapatnam was chosen for small satellite polar launches."
+                },
+                answerIndex: 0 // (A)
+            },
+            {
+                id: 7,
+                type: "matching",
+                hi: {
+                    question: "हाल ही में चर्चित 'नीलकुरिंजी' (Strobilanthes kunthiana) के संदर्भ में निम्नलिखित युग्मों पर विचार कीजिए:<br>1. फूल खिलने का अंतराल : 12 वर्ष<br>2. वानस्पतिक कुल (Family) : एकैन्थेसी (Acanthaceae)<br>3. प्राकृतिक आवास : पश्चिमी घाट के शोला वन एवं घास के मैदान<br>उपर्युक्त में से कौन-से युग्म सही सुमेलित हैं?",
+                    options: [
+                        "केवल 1 और 2",
+                        "केवल 2 और 3",
+                        "केवल 1 और 3",
+                        "1, 2 और 3 सभी"
+                    ],
+                    explanation: "सभी तीनों युग्म सही सुमेलित हैं। यह फूल 12 वर्ष के चक्र में खिलता है, इसका कुल Acanthaceae है तथा यह शोला ग्रासलैंड्स (मुन्नार, नीलगिरि) में पाया जाता है।"
+                },
+                en: {
+                    question: "Consider the following pairs regarding 'Neelakurinji' (Strobilanthes kunthiana):<br>1. Blooming Cycle : 12 Years<br>2. Botanical Family : Acanthaceae<br>3. Natural Habitat : Shola forests and montane grasslands of Western Ghats<br>Which of the above pairs are correctly matched?",
+                    options: [
+                        "Only 1 and 2",
+                        "Only 2 and 3",
+                        "Only 1 and 3",
+                        "1, 2 and 3 all"
+                    ],
+                    explanation: "All three pairs are accurate facts regarding Strobilanthes kunthiana."
+                },
+                answerIndex: 3 // (D)
+            },
+            {
+                id: 8,
+                type: "statement",
+                hi: {
+                    question: "भारत और श्रीलंका द्वारा संयुक्त रूप से शुरू की गई 'संहिता परियोजना' (SAMHITA Project) का मुख्य उद्देश्य क्या है?",
+                    options: [
+                        "कच्चातीवु द्वीप के समुद्री पारिस्थितिकी तंत्र का अध्ययन करना।",
+                        "प्राचीन तालपत्र, दुर्लभ बौद्ध पांडुलिपियों का संरक्षण व डिजिटलीकरण करना।",
+                        "जाफना और रामेश्वरम के बीच नई नौका सेवा का समन्वय करना।",
+                        "तमिल और सिंहली भाषा अनुवाद हेतु AI टूल विकसित करना।"
+                    ],
+                    explanation: "SAMHITA (South Asian Manuscript Histories and Textual Archive) का उद्देश्य प्राचीन तालपत्र और बौद्ध पांडुलिपियों का डिजिटलीकरण करना है, जिसकी शुरुआत कोलंबो के गंगारामया मंदिर से की गई।"
+                },
+                en: {
+                    question: "What is the primary objective of the 'SAMHITA Project' launched jointly by India and Sri Lanka?",
+                    options: [
+                        "Ecological restoration of the Kachchatheevu island marine belt.",
+                        "Digitization and preservation of ancient palm-leaf and Buddhist manuscripts.",
+                        "Direct coordination of ferry services between Jaffna and Rameswaram.",
+                        "Development of bilingual AI translation software for Tamil & Sinhala."
+                    ],
+                    explanation: "The SAMHITA project is dedicated to digitizing and archiving historical palm-leaf Buddhist manuscripts, partnered with Gangaramaya Temple in Colombo."
+                },
+                answerIndex: 1 // (B)
+            },
+            {
+                id: 9,
+                type: "matching",
+                hi: {
+                    question: "हालिया अंतर्राष्ट्रीय पुरस्कारों के संबंध में निम्नलिखित युग्मों में से कौन-सा <strong>सुमेलित नहीं</strong> है?<br><strong>स्तंभ-I (पुरस्कार) — स्तंभ-II (प्राप्तकर्ता)</strong>",
+                    options: [
+                        "सखारोव पुरस्कार 2026 — अंतर्राष्ट्रीय आपराधिक न्यायालय (ICC) व इसके अधिकारी",
+                        "साहित्य का नोबेल 2026 — एन कार्सन (Anne Carson)",
+                        "एबेल पुरस्कार 2026 — गेर्ड फाल्टिंग्स (Gerd Faltings)",
+                        "प्रिंसेस ऑफ एस्टुरियस स्पोर्ट्स 2026 — क्रिस्टियानो रोनाल्डो"
+                    ],
+                    explanation: "विकल्प (D) सही सुमेलित नहीं है। स्पेन का प्रतिष्ठित 'प्रिंसेस ऑफ एस्टुरियस स्पोर्ट्स अवार्ड 2026' अर्जेंटीना के दिग्गज फुटबॉलर लियोनेल मेस्सी को दिया गया है।"
+                },
+                en: {
+                    question: "Which of the following pairs is <strong>NOT correctly matched</strong> regarding recent international awards?<br><strong>Column-I (Award) — Column-II (Recipient)</strong>",
+                    options: [
+                        "Sakharov Prize 2026 — International Criminal Court (ICC) & Officials",
+                        "Nobel Prize in Literature 2026 — Anne Carson",
+                        "Abel Prize 2026 — Gerd Faltings",
+                        "Princess of Asturias Sports Award 2026 — Cristiano Ronaldo"
+                    ],
+                    explanation: "Option (D) is incorrect. The Princess of Asturias Sports Award 2026 was conferred upon Lionel Messi, making him the first individual footballer to receive it."
+                },
+                answerIndex: 3 // (D)
+            },
+            {
+                id: 10,
+                type: "statement",
+                hi: {
+                    question: "'कोएलिशन फॉर डिजास्टर रेजिलिएंट इंफ्रास्ट्रक्चर' (CDRI) के संबंध में निम्नलिखित कथनों पर विचार कीजिए:<br>1. अक्टूबर 2026 में पोलैंड इस गठबंधन में शामिल होने वाला नया यूरोपीय देश बना।<br>2. CDRI की शुरुआत वर्ष 2019 में संयुक्त राष्ट्र जलवायु शिखर सम्मेलन में भारतीय प्रधानमंत्री द्वारा की गई थी।<br>3. इस वैश्विक संगठन का स्थायी सचिवालय जिनेवा (स्विट्जरलैंड) में स्थित है।<br>उपर्युक्त में से कौन-सा/से कथन <strong>गलत (असत्य)</strong> है/हैं?",
+                    options: [
+                        "केवल 1 और 2",
+                        "केवल 3",
+                        "केवल 2 और 3",
+                        "कोई भी नहीं (सभी सही हैं)"
+                    ],
+                    explanation: "कथन 3 गलत है क्योंकि CDRI का मुख्यालय और स्थायी सचिवालय नई दिल्ली (भारत) में स्थित है, न कि जिनेवा में। कथन 1 और 2 पूर्णतः सत्य हैं।"
+                },
+                en: {
+                    question: "Consider the following statements regarding the Coalition for Disaster Resilient Infrastructure (CDRI):<br>1. In October 2026, Poland officially joined as a new member.<br>2. CDRI was launched by the Indian Prime Minister at the UN Climate Action Summit in 2019.<br>3. The permanent headquarters and secretariat of CDRI is located in Geneva, Switzerland.<br>Which of the statements given above is/are <strong>incorrect</strong>?",
+                    options: [
+                        "Only 1 and 2",
+                        "Only 3",
+                        "Only 2 and 3",
+                        "None of the above"
+                    ],
+                    explanation: "Statement 3 is incorrect because CDRI's secretariat is based in New Delhi, India."
+                },
+                answerIndex: 1 // (B)
+            },
+            {
+                id: 11,
+                type: "statement",
+                hi: {
+                    question: "24-25 अक्टूबर 2026 को आयोजित दूसरे 'राष्ट्रीय शहरी सम्मेलन' (National Urban Conclave 2026) के संबंध में विचार कीजिए:<br>1. इसका आयोजन भुवनेश्वर (ओडिशा) में आवास एवं शहरी मामलों के मंत्रालय द्वारा किया गया।<br>2. सम्मेलन की थीम 'अर्बन राइजिंग: रिथिंकिंग अर्बन सिस्टम्स, सॉल्यूशंस एंड डिलीवरी' थी।<br>3. इस दौरान PMAY-U 2.0 ऐप और 'सामर्थ्य' (SAMARTH) प्लेटफॉर्म का अनावरण किया गया।<br>सत्य कथनों का चयन कीजिए:",
+                    options: [
+                        "केवल 1 और 2",
+                        "केवल 2 और 3",
+                        "केवल 1 और 3",
+                        "1, 2 और 3 सभी"
+                    ],
+                    explanation: "तीनों कथन पूरी तरह सत्य हैं। यह कॉन्क्लेव भुवनेश्वर में आयोजित हुआ, थीम 'Urban Rising' थी और PMAY-U 2.0 मोबाइल ऐप तथा SAMARTH प्लेटफॉर्म लॉन्च किए गए।"
+                },
+                en: {
+                    question: "With reference to the 2nd National Urban Conclave held in October 2026, consider:<br>1. It was hosted in Bhubaneswar, Odisha by the Ministry of Housing and Urban Affairs.<br>2. The official theme was 'Urban Rising: Rethinking Urban Systems, Solutions and Delivery'.<br>3. PMAY-U 2.0 App and SAMARTH platform were unveiled.<br>Which of the statements given above are correct?",
+                    options: [
+                        "Only 1 and 2",
+                        "Only 2 and 3",
+                        "Only 1 and 3",
+                        "1, 2 and 3 all"
+                    ],
+                    explanation: "All three statements are correct."
+                },
+                answerIndex: 3 // (D)
+            },
+            {
+                id: 12,
+                type: "tricky_negative",
+                hi: {
+                    question: "भारतीय वनस्पति सर्वेक्षण (BSI) द्वारा खोजी गई पौधों की दो नई प्रजातियों 'ओफियोरिज़ा शिडियेंसिस' और 'ओफियोरिज़ा पेमेई' के संदर्भ में निम्नलिखित कथनों में से कौन-सा <strong>सही नहीं</strong> है?",
+                    options: [
+                        "इनकी खोज अरुणाचल प्रदेश के नामदाफा राष्ट्रीय उद्यान क्षेत्र में की गई है।",
+                        "ये दोनों प्रजातियाँ वानस्पतिक कुल 'रूबीएसी' (कॉफी/मैडर परिवार) से संबंधित हैं।",
+                        "'ओफियोरिज़ा पेमेई' का नामकरण प्रसिद्ध पर्यावरणविद सुंदरलाल बहुगुणा के सम्मान में किया गया है।",
+                        "'शिडियेंसिस' नाम स्थानीय लिसु जनजाति द्वारा प्रयुक्त गांव के पारंपरिक नाम पर रखा गया है।"
+                    ],
+                    explanation: "विकल्प (C) गलत कथन है क्योंकि 'ओफियोरिज़ा पेमेई' (Ophiorrhiza pemaye) का नामकरण अरुणाचल प्रदेश के मुख्यमंत्री पेमा खांडू के सम्मान में किया गया है।"
+                },
+                en: {
+                    question: "Regarding the two newly discovered plant species 'Ophiorrhiza shidiensis' and 'Ophiorrhiza pemaye' by BSI scientists, which statement is <strong>NOT correct</strong>?",
+                    options: [
+                        "They were discovered in and around Namdapha National Park in Arunachal Pradesh.",
+                        "Both species belong to the botanical family Rubiaceae (Coffee/Madder family).",
+                        "'Ophiorrhiza pemaye' is named in honor of environmentalist Sunderlal Bahuguna.",
+                        "'shidiensis' is derived from 'Shidi', the traditional Lisu name for Gandhigram village."
+                    ],
+                    explanation: "Option (C) is false because 'pemaye' was named in recognition of Arunachal Pradesh Chief Minister Pema Khandu."
+                },
+                answerIndex: 2 // (C)
+            },
+            {
+                id: 13,
+                type: "statement",
+                hi: {
+                    question: "अक्टूबर 2026 में 90 वर्ष की आयु में दिवंगत हुए पूर्व प्रधानमंत्री 'यासुओ फुकुदा' (Yasuo Fukuda) का संबंध किस देश से था?",
+                    options: [
+                        "दक्षिण कोरिया",
+                        "जापान",
+                        "सिंगापुर",
+                        "ताइवान"
+                    ],
+                    explanation: "यासुओ फुकुदा जापान के 91वें प्रधानमंत्री (2007-2008) थे। जापान की संसद को डाइट (Diet) कहा जाता है और मुद्रा येन (Yen) है।"
+                },
+                en: {
+                    question: "Former Prime Minister 'Yasuo Fukuda', who passed away in October 2026 at age 90, belonged to which country?",
+                    options: [
+                        "South Korea",
+                        "Japan",
+                        "Singapore",
+                        "Taiwan"
+                    ],
+                    explanation: "Yasuo Fukuda served as the 91st Prime Minister of Japan from 2007 to 2008."
+                },
+                answerIndex: 1 // (B)
+            },
+            {
+                id: 14,
+                type: "matching",
+                hi: {
+                    question: "हाल ही में संपन्न खेल प्रतियोगिताओं के संबंध में दिए गए युग्मों पर विचार कीजिए:<br>1. अल्माटी ओपन 2026 (पुरुष युगल) : यूकी भांबरी और रायन सेगरमैन<br>2. WBL वर्ल्ड बिलियर्ड्स चैंपियनशिप 2026 : पंकज आडवाणी (29वां विश्व खिताब)<br>3. यंगेस्ट महिला इंटरनेशनल मास्टर : बोधना शिवानंदन (11 वर्ष)<br>उपर्युक्त में से कौन-से युग्म सही हैं?",
+                    options: [
+                        "केवल 1 और 2",
+                        "केवल 2 और 3",
+                        "केवल 1 और 3",
+                        "1, 2 और 3 सभी"
+                    ],
+                    explanation: "तीनों युग्म शत-प्रतिशत सही हैं। यूकी भांबरी ने अल्माटी में 5वां युगल खिताब जीता, पंकज आडवाणी ने 29वां खिताब और 11 वर्षीया ब्रिटिश-भारतीय बोधना शिवानंदन यंगेस्ट WIM बनीं।"
+                },
+                en: {
+                    question: "Consider the following sports pairs:<br>1. Almaty Open 2026 Men's Doubles : Yuki Bhambri & Ryan Seggerman<br>2. WBL World Billiards Championship 2026 : Pankaj Advani (29th World Title)<br>3. Youngest Woman International Master : Bodhana Sivanandan (11 years)<br>Which of the above pairs are correct?",
+                    options: [
+                        "Only 1 and 2",
+                        "Only 2 and 3",
+                        "Only 1 and 3",
+                        "1, 2 and 3 all"
+                    ],
+                    explanation: "All three pairs are completely accurate as per the latest sports updates."
+                },
+                answerIndex: 3 // (D)
+            },
+            {
+                id: 15,
+                type: "statement",
+                hi: {
+                    question: "वर्ष 2029 में भारत पहली बार 'सीनियर विश्व भारोत्तोलन चैंपियनशिप' (IWF World Weightlifting Championships) की मेजबानी करेगा। यह आयोजन किस शहर में संपन्न होगा?",
+                    options: [
+                        "नई दिल्ली",
+                        "भुवनेश्वर",
+                        "अहमदाबाद (गुजरात)",
+                        "बेंगलुरु"
+                    ],
+                    explanation: "अंतर्राष्ट्रीय भारोत्तोलन महासंघ (IWF) के अनुसार भारत पहली बार 2029 में सीनियर विश्व भारोत्तोलन चैंपियनशिप की मेजबानी गुजरात के अहमदाबाद शहर में करेगा। IWF का मुख्यालय लुसाने (स्विट्जरलैंड) में है।"
+                },
+                en: {
+                    question: "India will host the 'Senior World Weightlifting Championships' (IWF) for the first time in the year 2029 in which city?",
+                    options: [
+                        "New Delhi",
+                        "Bhubaneswar",
+                        "Ahmedabad (Gujarat)",
+                        "Bengaluru"
+                    ],
+                    explanation: "The International Weightlifting Federation (IWF) awarded the hosting rights of the 2029 Senior World Championships to Ahmedabad, Gujarat."
+                },
+                answerIndex: 2 // (C)
+            }
+        ];
+
+        // State Variables
+        let currentQuestionIndex = 0;
+        let userResponses = new Array(questionsData.length).fill(null);
+        let reviewMarks = new Array(questionsData.length).fill(false);
+        let currentLang = 'hi'; // 'hi' or 'en'
+        let timerSeconds = 120 * 60; // 120 minutes
+        let timerInterval = null;
+        let isSubmitted = false;
+        let isSolutionMode = false;
+
+        // Auto Full-Screen Entry Gate Trigger
+        function startAutoFullScreenTest() {
+            const docElm = document.documentElement;
+            if (docElm.requestFullscreen) {
+                docElm.requestFullscreen().catch(err => console.log("Fullscreen blocked or not supported", err));
+            } else if (docElm.mozRequestFullScreen) {
+                docElm.mozRequestFullScreen();
+            } else if (docElm.webkitRequestFullScreen) {
+                docElm.webkitRequestFullScreen();
+            } else if (docElm.msRequestFullscreen) {
+                docElm.msRequestFullscreen();
+            }
+
+            document.getElementById('entry-gate').classList.add('hidden');
+            document.getElementById('test-wrapper').classList.remove('hidden');
+            document.getElementById('test-wrapper').classList.add('flex');
+            
+            startCountdown();
+            renderQuestion();
+        }
+
+        // Timer Logic
+        function startCountdown() {
+            timerInterval = setInterval(() => {
+                if (timerSeconds <= 0) {
+                    clearInterval(timerInterval);
+                    autoSubmitTest();
+                } else {
+                    timerSeconds--;
+                    const minutes = Math.floor(timerSeconds / 60);
+                    const seconds = timerSeconds % 60;
+                    document.getElementById('timer-display').innerText = 
+                        `${minutes < 10 ? '0' : ''}${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+                }
+            }, 1000);
+        }
+
+        // Toggle Language Function
+        function toggleLanguage() {
+            currentLang = currentLang === 'hi' ? 'en' : 'hi';
+            document.getElementById('lang-btn-text').innerText = currentLang === 'hi' ? 'हिंदी / ENG' : 'ENG / हिंदी';
+            renderQuestion();
+        }
+
+        // Render Current Question
+        function renderQuestion() {
+            const q = questionsData[currentQuestionIndex];
+            const qContent = q[currentLang];
+
+            // Progress and Counters
+            document.getElementById('q-counter').innerText = `Question ${currentQuestionIndex + 1} of ${questionsData.length}`;
+            const progressPercent = ((currentQuestionIndex + 1) / questionsData.length) * 100;
+            document.getElementById('progress-bar').style.width = `${progressPercent}%`;
+
+            // Review indicator
+            const reviewTag = document.getElementById('review-tag');
+            const reviewBtn = document.getElementById('btn-review');
+            if (reviewMarks[currentQuestionIndex]) {
+                reviewTag.classList.remove('hidden');
+                reviewBtn.classList.add('bg-amber-500', 'text-white');
+                reviewBtn.classList.remove('bg-amber-50', 'text-amber-800');
+            } else {
+                reviewTag.classList.add('hidden');
+                reviewBtn.classList.remove('bg-amber-500', 'text-white');
+                reviewBtn.classList.add('bg-amber-50', 'text-amber-800');
+            }
+
+            // Question Text
+            document.getElementById('question-text').innerHTML = `
+                <div class="flex items-start gap-2">
+                    <span class="font-bold text-indigo-600">Q${currentQuestionIndex + 1}.</span>
+                    <div>${qContent.question}</div>
+                </div>
+            `;
+
+            // Options List
+            const optionsContainer = document.getElementById('options-container');
+            optionsContainer.innerHTML = '';
+            const optionLabels = ['A', 'B', 'C', 'D'];
+
+            qContent.options.forEach((opt, idx) => {
+                const isSelected = userResponses[currentQuestionIndex] === idx;
+                const optionDiv = document.createElement('div');
+                
+                let borderClass = 'border-slate-200 hover:border-indigo-400 bg-white';
+                let indicatorClass = 'bg-slate-100 text-slate-700';
+
+                // Real-time styling
+                if (isSelected) {
+                    borderClass = 'border-indigo-600 bg-indigo-50/70 text-indigo-900 ring-2 ring-indigo-500/20';
+                    indicatorClass = 'bg-indigo-600 text-white';
+                }
+
+                // In Solution Mode or Post-Select instant verification
+                if (isSolutionMode || (userResponses[currentQuestionIndex] !== null)) {
+                    if (idx === q.answerIndex) {
+                        borderClass = 'border-emerald-500 bg-emerald-50 text-emerald-900 ring-2 ring-emerald-500/30';
+                        indicatorClass = 'bg-emerald-600 text-white';
+                    } else if (isSelected && idx !== q.answerIndex) {
+                        borderClass = 'border-rose-500 bg-rose-50 text-rose-900 ring-2 ring-rose-500/30';
+                        indicatorClass = 'bg-rose-600 text-white';
+                    }
+                }
+
+                optionDiv.className = `p-3.5 sm:p-4 rounded-xl border ${borderClass} cursor-pointer transition-all flex items-start gap-3`;
+                optionDiv.onclick = () => selectOption(idx);
+
+                optionDiv.innerHTML = `
+                    <div class="w-7 h-7 rounded-lg flex items-center justify-center font-bold text-xs shrink-0 ${indicatorClass} transition-colors">
+                        ${optionLabels[idx]}
+                    </div>
+                    <div class="text-sm sm:text-base font-normal pt-0.5 text-slate-800 leading-snug">
+                        ${opt}
+                    </div>
+                `;
+                optionsContainer.appendChild(optionDiv);
+            });
+
+            // Instant Verification & Explanation Section
+            const expContainer = document.getElementById('instant-explanation');
+            if (userResponses[currentQuestionIndex] !== null || isSolutionMode) {
+                expContainer.classList.remove('hidden');
+                const isCorrect = userResponses[currentQuestionIndex] === q.answerIndex;
+                
+                expContainer.className = `p-4 rounded-xl border mt-5 text-xs sm:text-sm leading-relaxed ${
+                    isCorrect ? 'bg-emerald-50 border-emerald-200 text-emerald-900' : 'bg-slate-50 border-slate-200 text-slate-800'
+                }`;
+
+                expContainer.innerHTML = `
+                    <div class="font-bold flex items-center gap-2 mb-1.5 ${isCorrect ? 'text-emerald-700' : 'text-slate-900'}">
+                        <i class="fa-solid ${isCorrect ? 'fa-circle-check text-emerald-600' : 'fa-circle-info text-indigo-600'}"></i>
+                        <span>${isCorrect ? 'सही उत्तर (Correct Answer)' : 'उत्तर एवं विस्तृत व्याख्या (Official Explanation)'} : विकल्प (${optionLabels[q.answerIndex]})</span>
+                    </div>
+                    <p class="text-slate-700 font-normal leading-relaxed">${qContent.explanation}</p>
+                    <div class="mt-2 text-[11px] text-slate-400 font-semibold flex items-center gap-1 justify-end">
+                        <span>Telegram Channel:</span>
+                        <a href="https://t.me/GYANVERSET" target="_blank" class="text-indigo-600 hover:underline">@GYANVERSET</a>
+                    </div>
+                `;
+            } else {
+                expContainer.classList.add('hidden');
+            }
+
+            // Buttons State
+            document.getElementById('btn-prev').disabled = currentQuestionIndex === 0;
+            const nextBtn = document.getElementById('btn-next');
+            if (currentQuestionIndex === questionsData.length - 1) {
+                nextBtn.innerHTML = `Finish & Score <i class="fa-solid fa-check-double"></i>`;
+            } else {
+                nextBtn.innerHTML = `Next & Save <i class="fa-solid fa-chevron-right"></i>`;
+            }
+        }
+
+        // Option Select Handler
+        function selectOption(idx) {
+            userResponses[currentQuestionIndex] = idx;
+            renderQuestion();
+        }
+
+        // Clear Current Question Response
+        function clearResponse() {
+            userResponses[currentQuestionIndex] = null;
+            renderQuestion();
+        }
+
+        // Toggle Mark for Review
+        function toggleMarkReview() {
+            reviewMarks[currentQuestionIndex] = !reviewMarks[currentQuestionIndex];
+            renderQuestion();
+        }
+
+        // Navigation Handlers
+        function nextQuestion() {
+            if (currentQuestionIndex < questionsData.length - 1) {
+                currentQuestionIndex++;
+                renderQuestion();
+            } else {
+                confirmSubmitTest();
+            }
+        }
+
+        function prevQuestion() {
+            if (currentQuestionIndex > 0) {
+                currentQuestionIndex--;
+                renderQuestion();
+            }
+        }
+
+        // Submit Logic with Confirmation
+        function confirmSubmitTest() {
+            const attempted = userResponses.filter(r => r !== null).length;
+            const unattempted = questionsData.length - attempted;
+            const isConfirm = confirm(`क्या आप वाकई टेस्ट सबमिट करना चाहते हैं?\n\nकुल प्रश्न: ${questionsData.length}\nहल किए गए: ${attempted}\nछोड़े गए: ${unattempted}`);
+            if (isConfirm) {
+                submitFinalAssessment();
+            }
+        }
+
+        function autoSubmitTest() {
+            alert("समय समाप्त हो गया है! आपका टेस्ट ऑटोमैटिक सबमिट किया जा रहा है।");
+            submitFinalAssessment();
+        }
+
+        function submitFinalAssessment() {
+            clearInterval(timerInterval);
+            isSubmitted = true;
+
+            let correctCount = 0;
+            let wrongCount = 0;
+            let unattemptedCount = 0;
+
+            userResponses.forEach((resp, i) => {
+                if (resp === null) {
+                    unattemptedCount++;
+                } else if (resp === questionsData[i].answerIndex) {
+                    correctCount++;
+                } else {
+                    wrongCount++;
+                }
+            });
+
+            // Scoring: +2 for correct, -0.20 for incorrect
+            const totalScore = (correctCount * 2.00) - (wrongCount * 0.20);
+            const totalAttempted = correctCount + wrongCount;
+            const accuracy = totalAttempted > 0 ? ((correctCount / totalAttempted) * 100).toFixed(1) : 0;
+
+            // Populate Scorecard
+            document.getElementById('res-score').innerText = totalScore.toFixed(2);
+            document.getElementById('res-correct').innerText = correctCount;
+            document.getElementById('res-wrong').innerText = wrongCount;
+            document.getElementById('res-acc').innerText = `${accuracy}%`;
+            document.getElementById('res-attempted').innerText = totalAttempted;
+            document.getElementById('res-left').innerText = unattemptedCount;
+
+            // Show Modal
+            const modal = document.getElementById('scorecard-modal');
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+        }
+
+        // Check Solutions Mode
+        function openSolutionMode() {
+            isSolutionMode = true;
+            document.getElementById('scorecard-modal').classList.add('hidden');
+            document.getElementById('scorecard-modal').classList.remove('flex');
+            currentQuestionIndex = 0;
+            renderQuestion();
+        }
+
+        // Retake / Restart Test
+        function restartTest() {
+            userResponses = new Array(questionsData.length).fill(null);
+            reviewMarks = new Array(questionsData.length).fill(false);
+            timerSeconds = 120 * 60;
+            isSubmitted = false;
+            isSolutionMode = false;
+            currentQuestionIndex = 0;
+
+            document.getElementById('scorecard-modal').classList.add('hidden');
+            document.getElementById('scorecard-modal').classList.remove('flex');
+            
+            startCountdown();
+            renderQuestion();
+        }
+    </script>
+</body>
+</html>
