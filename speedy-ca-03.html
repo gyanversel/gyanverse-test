@@ -1,105 +1,115 @@
 <!DOCTYPE html>
-<html lang="hi">
+<html lang="hi" class="h-full">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>GYANVERSE - 60 MCQ Special Current Affairs CBT Portal</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <title>GYANVERSE - 60 MCQ Bilingual CBT Portal</title>
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
   <!-- FontAwesome Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Tiro+Devanagari+Hindi:ital@0;1&family=Inter:wght@400;500;600;700&display=swap');
-    body {
+    
+    html, body {
+      height: 100%;
+      height: 100dvh;
+      margin: 0;
+      padding: 0;
+      overflow-x: hidden;
+      touch-action: manipulation;
       font-family: 'Inter', 'Tiro Devanagari Hindi', sans-serif;
       user-select: none;
       -webkit-user-select: none;
+      -webkit-tap-highlight-color: transparent;
     }
-    .custom-scrollbar::-webkit-scrollbar {
-      width: 6px;
+
+    /* Custom Mobile-Friendly Scrollbar */
+    .custom-scroll::-webkit-scrollbar {
+      width: 4px;
     }
-    .custom-scrollbar::-webkit-scrollbar-track {
-      background: #f1f5f9;
-    }
-    .custom-scrollbar::-webkit-scrollbar-thumb {
+    .custom-scroll::-webkit-scrollbar-thumb {
       background: #cbd5e1;
       border-radius: 4px;
     }
   </style>
 </head>
-<body class="bg-slate-100 text-slate-800 antialiased min-h-screen flex flex-col">
+<body class="bg-slate-100 text-slate-800 antialiased flex flex-col w-full h-full">
 
   <!-- ========================================== -->
   <!-- 1. MANDATORY FULL SCREEN ENTRY GATE OVERLAY -->
   <!-- ========================================== -->
-  <div id="startOverlay" class="fixed inset-0 z-50 flex items-center justify-center bg-slate-900 bg-opacity-95 p-4 backdrop-blur-sm">
-    <div class="max-w-xl w-full bg-white rounded-2xl shadow-2xl p-6 sm:p-8 text-center border-t-8 border-indigo-600">
-      <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-indigo-100 text-indigo-600 mb-4 text-2xl font-black shadow-inner">
+  <div id="startOverlay" class="fixed inset-0 z-50 flex items-center justify-center bg-slate-900 bg-opacity-95 p-3 sm:p-4 backdrop-blur-sm overflow-y-auto">
+    <div class="max-w-md w-full bg-white rounded-2xl shadow-2xl p-5 sm:p-7 text-center border-t-8 border-indigo-600 my-auto">
+      <div class="inline-flex items-center justify-center w-14 h-14 rounded-full bg-indigo-100 text-indigo-600 mb-3 text-2xl font-black shadow-inner">
         GV
       </div>
-      <h1 class="text-2xl sm:text-3xl font-extrabold text-slate-800 tracking-tight">GYANVERSE CBT TEST PORTAL</h1>
-      <p class="text-xs sm:text-sm font-semibold text-indigo-600 uppercase tracking-widest mt-1">Speedy 2025-26 Complete 60 Master MCQs (Zero Repetition)</p>
+      <h1 class="text-xl sm:text-2xl font-extrabold text-slate-800 tracking-tight">GYANVERSE CBT PORTAL</h1>
+      <p class="text-[11px] sm:text-xs font-semibold text-indigo-600 uppercase tracking-widest mt-1">Speedy 2025-26 Bilingual Mega Mock (60 MCQs)</p>
       
-      <div class="bg-indigo-50 border border-indigo-200 rounded-xl p-4 my-6 text-left space-y-2 text-xs sm:text-sm text-slate-700">
+      <div class="bg-indigo-50 border border-indigo-200 rounded-xl p-3 sm:p-4 my-4 text-left space-y-2 text-xs text-slate-700">
         <div class="flex items-center justify-between py-1 border-b border-indigo-100">
-          <span class="font-medium text-slate-500">कुल प्रश्न (Total Questions):</span>
+          <span class="font-medium text-slate-500">कुल प्रश्न (Questions):</span>
           <span class="font-bold text-slate-800">60 High-Standard MCQs</span>
         </div>
         <div class="flex items-center justify-between py-1 border-b border-indigo-100">
           <span class="font-medium text-slate-500">समय सीमा (Duration):</span>
-          <span class="font-bold text-slate-800">120 मिनट (120 Minutes)</span>
+          <span class="font-bold text-slate-800">120 मिनट (120 Mins)</span>
         </div>
         <div class="flex items-center justify-between py-1 border-b border-indigo-100">
-          <span class="font-medium text-slate-500">अंकन प्रणाली (Marking):</span>
-          <span class="font-bold text-emerald-600">+2.00 सही | -0.20 गलत अंकन</span>
+          <span class="font-medium text-slate-500">अंकन (Marking):</span>
+          <span class="font-bold text-emerald-600">+2.00 सही | -0.20 गलत</span>
         </div>
         <div class="flex items-center justify-between py-1">
-          <span class="font-medium text-slate-500">कवरेज स्कोप:</span>
-          <span class="font-bold text-indigo-700">पेज 1 व 2 का शत-प्रतिशत डेटा</span>
+          <span class="font-medium text-slate-500">डिस्प्ले मोड:</span>
+          <span class="font-bold text-indigo-700">100% Mobile Full-Screen Fit</span>
         </div>
       </div>
 
-      <div class="p-3 bg-amber-50 border border-amber-200 rounded-lg text-amber-800 text-xs text-left mb-6 flex items-start gap-2">
+      <div class="p-2.5 bg-amber-50 border border-amber-200 rounded-lg text-amber-800 text-[11px] text-left mb-4 flex items-start gap-2">
         <i class="fa-solid fa-expand text-amber-600 mt-0.5"></i>
-        <span>परीक्षा प्रारंभ करने के लिए नीचे दिए गए बटन पर क्लिक करें। टेस्ट अनिवार्य रूप से फुल-स्क्रीन मोड में ही ओपन होगा।</span>
+        <span>टेस्ट शुरू करने के लिए नीचे क्लिक करें। मोबाइल स्क्रीन ऑटोमैटिक फुल-स्क्रीन मोड में फिट हो जाएगी।</span>
       </div>
 
-      <div class="space-y-3">
-        <button id="startTestBtn" class="w-full py-3.5 px-6 bg-indigo-600 hover:bg-indigo-700 text-white font-bold rounded-xl shadow-lg hover:shadow-indigo-500/30 transition-all duration-200 flex items-center justify-center gap-2 text-base">
+      <div class="space-y-2.5">
+        <button id="startTestBtn" class="w-full py-3 px-4 bg-indigo-600 hover:bg-indigo-700 active:bg-indigo-800 text-white font-bold rounded-xl shadow-lg transition-all flex items-center justify-center gap-2 text-sm sm:text-base">
           <i class="fa-solid fa-expand"></i>
           <span>Start Test (Auto Full Screen)</span>
         </button>
         <a href="https://t.me/GYANVERSET" target="_blank" class="inline-flex items-center gap-1.5 text-xs text-slate-500 hover:text-indigo-600 transition">
-          <i class="fa-brands fa-telegram text-sky-500"></i> Join Telegram: <strong class="text-slate-700">@GYANVERSET</strong>
+          <i class="fa-brands fa-telegram text-sky-500"></i> Telegram: <strong class="text-slate-700">@GYANVERSET</strong>
         </a>
       </div>
     </div>
   </div>
 
   <!-- ========================================== -->
-  <!-- 2. MAIN HEADER (WITH TIMER & SUBMIT)       -->
+  <!-- 2. MAIN HEADER (MOBILE ADAPTIVE)           -->
   <!-- ========================================== -->
-  <header class="bg-white border-b border-slate-200 sticky top-0 z-30 shadow-sm">
-    <div class="max-w-5xl mx-auto px-4 py-2.5 sm:py-3 flex items-center justify-between">
-      <div class="flex items-center gap-3">
-        <div class="bg-indigo-600 text-white font-black text-sm sm:text-base px-2.5 py-1 rounded shadow">
+  <header class="bg-white border-b border-slate-200 sticky top-0 z-30 shadow-sm shrink-0">
+    <div class="w-full max-w-4xl mx-auto px-3 py-2 flex items-center justify-between">
+      <div class="flex items-center gap-2">
+        <div class="bg-indigo-600 text-white font-black text-xs sm:text-sm px-2 py-1 rounded shadow">
           GYANVERSE
         </div>
-        <a href="https://t.me/GYANVERSET" target="_blank" class="hidden sm:inline-flex items-center gap-1 text-xs text-sky-600 hover:text-sky-700 font-bold bg-sky-50 px-2 py-0.5 rounded border border-sky-200">
-          <i class="fa-brands fa-telegram"></i> @GYANVERSET
-        </a>
       </div>
 
-      <div class="flex items-center gap-2 sm:gap-4">
+      <div class="flex items-center gap-2">
+        <!-- Language Switcher -->
+        <button id="langToggleBtn" class="flex items-center gap-1 px-2.5 py-1 text-xs font-bold rounded-lg border border-indigo-200 bg-indigo-50 text-indigo-700 active:bg-indigo-100 transition">
+          <i class="fa-solid fa-language text-sm"></i>
+          <span id="currentLangLabel">English</span>
+        </button>
+
         <!-- Live Countdown Timer -->
-        <div class="flex items-center gap-1.5 bg-slate-900 text-white px-3 py-1 rounded-lg text-xs sm:text-sm font-mono font-bold shadow-inner">
+        <div class="flex items-center gap-1.5 bg-slate-900 text-white px-2.5 py-1 rounded-lg text-xs font-mono font-bold shadow-inner">
           <i class="fa-regular fa-clock text-amber-400"></i>
           <span id="timerDisplay">120:00</span>
         </div>
 
-        <!-- Submit Test Button (Top-Right) -->
-        <button id="headerSubmitBtn" class="bg-emerald-600 hover:bg-emerald-700 text-white text-xs sm:text-sm font-bold px-3.5 sm:px-4 py-1.5 rounded-lg shadow hover:shadow-emerald-500/20 transition-all flex items-center gap-1.5">
-          <i class="fa-solid fa-check-double"></i>
+        <!-- Submit Button -->
+        <button id="headerSubmitBtn" class="bg-emerald-600 hover:bg-emerald-700 active:bg-emerald-800 text-white text-xs font-bold px-3 py-1 rounded-lg shadow transition-all flex items-center gap-1">
+          <i class="fa-solid fa-check-double text-[11px]"></i>
           <span>Submit</span>
         </button>
       </div>
@@ -107,73 +117,76 @@
   </header>
 
   <!-- ========================================== -->
-  <!-- 3. MAIN TEST CONTAINER (FULL WIDTH CLEAN)  -->
+  <!-- 3. SCROLLABLE TEST BODY (FULL SCREEN FIT)  -->
   <!-- ========================================== -->
-  <main class="flex-1 max-w-5xl w-full mx-auto px-4 py-4 sm:py-6 flex flex-col justify-between">
-    
-    <!-- Question Card -->
-    <div class="bg-white rounded-xl shadow-sm border border-slate-200 p-4 sm:p-5 mb-4">
-      <div class="flex items-center justify-between pb-3 border-b border-slate-100">
-        <div class="flex items-center gap-2">
-          <span class="px-2.5 py-0.5 rounded-full text-xs font-bold bg-indigo-100 text-indigo-700" id="qNumberBadge">
-            प्रश्न 1 / 60
-          </span>
-          <span class="text-xs text-slate-500 hidden sm:inline" id="qTopicBadge">Current Affairs 2025-26</span>
+  <main class="flex-1 w-full max-w-4xl mx-auto p-3 sm:p-4 overflow-y-auto custom-scroll flex flex-col justify-between">
+    <div>
+      <!-- Question Info Bar -->
+      <div class="bg-white rounded-xl shadow-sm border border-slate-200 p-3 sm:p-4 mb-3">
+        <div class="flex items-center justify-between pb-2 border-b border-slate-100">
+          <div class="flex items-center gap-1.5">
+            <span class="px-2 py-0.5 rounded-full text-[11px] font-bold bg-indigo-100 text-indigo-700" id="qNumberBadge">
+              प्रश्न 1 / 60
+            </span>
+            <span class="text-[10px] sm:text-xs text-slate-500 truncate max-w-[140px] sm:max-w-none" id="qTopicBadge">
+              Current Affairs 2025-26
+            </span>
+          </div>
+          <div class="flex items-center gap-1.5 text-[11px]">
+            <span class="font-semibold text-emerald-600 bg-emerald-50 px-1.5 py-0.5 rounded border border-emerald-200">+2.00</span>
+            <span class="font-semibold text-rose-600 bg-rose-50 px-1.5 py-0.5 rounded border border-rose-200">-0.20</span>
+          </div>
         </div>
-        <div class="flex items-center gap-2 text-xs">
-          <span class="font-semibold text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">+2.00</span>
-          <span class="font-semibold text-rose-600 bg-rose-50 px-2 py-0.5 rounded border border-rose-200">-0.20</span>
+
+        <!-- Question Text Body -->
+        <div class="mt-3">
+          <div id="questionText" class="text-sm sm:text-base font-semibold text-slate-800 leading-relaxed">
+            <!-- Loaded dynamically -->
+          </div>
+
+          <!-- Telegram Watermark Tag Under Every Question -->
+          <div class="mt-3 pt-2 border-t border-slate-100 flex items-center justify-between text-[10px] text-slate-400">
+            <span>Speedy Bilingual Mock</span>
+            <a href="https://t.me/GYANVERSET" target="_blank" class="text-indigo-500 font-bold hover:underline">
+              @GYANVERSET
+            </a>
+          </div>
         </div>
       </div>
 
-      <!-- Question Text Body -->
-      <div class="mt-4">
-        <div id="questionText" class="text-base sm:text-lg font-semibold text-slate-800 leading-relaxed">
-          <!-- Populated by JavaScript -->
-        </div>
-
-        <!-- Mandatory Telegram Watermark Under Question -->
-        <div class="mt-4 pt-2 border-t border-slate-100 flex items-center justify-between text-[11px] text-slate-400">
-          <span>Speedy Current Affairs 100% Verified Blueprint</span>
-          <a href="https://t.me/GYANVERSET" target="_blank" class="text-indigo-500 font-bold hover:underline">
-            @GYANVERSET
-          </a>
-        </div>
+      <!-- Options Container -->
+      <div id="optionsContainer" class="space-y-2 mb-3">
+        <!-- Loaded dynamically -->
       </div>
-    </div>
 
-    <!-- Options Container -->
-    <div id="optionsContainer" class="space-y-2.5 sm:space-y-3 mb-4">
-      <!-- Options loaded dynamically -->
-    </div>
-
-    <!-- Instant Answer / Explanation Container -->
-    <div id="instantAnswerBox" class="hidden mb-4 p-4 rounded-xl border transition-all text-xs sm:text-sm">
-      <!-- Instant feedback loaded dynamically -->
+      <!-- Instant Answer Box -->
+      <div id="instantAnswerBox" class="hidden mb-3 p-3 rounded-xl border transition-all text-xs">
+        <!-- Loaded dynamically -->
+      </div>
     </div>
 
     <!-- ========================================== -->
-    <!-- 4. NAVIGATION BUTTONS (RIGHT BELOW OPTIONS)-->
+    <!-- 4. NAVIGATION BUTTONS (OPTIONS KE THEEK NICHE) -->
     <!-- ========================================== -->
-    <div class="bg-white rounded-xl shadow-sm border border-slate-200 p-3 flex flex-wrap items-center justify-between gap-2">
-      <div class="flex items-center gap-2">
-        <button id="prevBtn" class="px-3 sm:px-4 py-2 rounded-lg border border-slate-300 text-slate-700 text-xs sm:text-sm font-semibold hover:bg-slate-100 disabled:opacity-40 disabled:cursor-not-allowed transition flex items-center gap-1">
-          <i class="fa-solid fa-chevron-left text-xs"></i>
-          <span>Prev</span>
+    <div class="bg-white rounded-xl shadow-sm border border-slate-200 p-2 sm:p-3 flex items-center justify-between gap-1.5 mt-auto sticky bottom-0 z-20">
+      <div class="flex items-center gap-1.5">
+        <button id="prevBtn" class="px-2.5 sm:px-3 py-1.5 rounded-lg border border-slate-300 text-slate-700 text-xs font-semibold hover:bg-slate-100 disabled:opacity-40 disabled:cursor-not-allowed transition flex items-center gap-1">
+          <i class="fa-solid fa-chevron-left text-[10px]"></i>
+          <span id="prevBtnLabel">Prev</span>
         </button>
-        <button id="clearBtn" class="px-3 sm:px-4 py-2 rounded-lg border border-slate-300 text-slate-600 text-xs sm:text-sm font-semibold hover:bg-rose-50 hover:text-rose-600 hover:border-rose-200 transition">
-          Clear
+        <button id="clearBtn" class="px-2.5 sm:px-3 py-1.5 rounded-lg border border-slate-300 text-slate-600 text-xs font-semibold hover:bg-rose-50 hover:text-rose-600 hover:border-rose-200 transition">
+          <span id="clearBtnLabel">Clear</span>
         </button>
       </div>
 
-      <div class="flex items-center gap-2">
-        <button id="reviewBtn" class="px-3 sm:px-4 py-2 rounded-lg border border-amber-300 bg-amber-50 text-amber-700 text-xs sm:text-sm font-semibold hover:bg-amber-100 transition flex items-center gap-1.5">
-          <i class="fa-regular fa-bookmark"></i>
+      <div class="flex items-center gap-1.5">
+        <button id="reviewBtn" class="px-2.5 sm:px-3 py-1.5 rounded-lg border border-amber-300 bg-amber-50 text-amber-700 text-xs font-semibold hover:bg-amber-100 transition flex items-center gap-1">
+          <i class="fa-regular fa-bookmark text-[11px]"></i>
           <span id="reviewBtnText">Review</span>
         </button>
-        <button id="nextBtn" class="px-4 sm:px-5 py-2 rounded-lg bg-indigo-600 text-white text-xs sm:text-sm font-bold hover:bg-indigo-700 shadow hover:shadow-indigo-500/20 transition flex items-center gap-1">
-          <span>Next & Save</span>
-          <i class="fa-solid fa-chevron-right text-xs"></i>
+        <button id="nextBtn" class="px-3.5 sm:px-4 py-1.5 rounded-lg bg-indigo-600 text-white text-xs font-bold hover:bg-indigo-700 active:bg-indigo-800 shadow transition flex items-center gap-1">
+          <span id="nextBtnLabel">Next & Save</span>
+          <i class="fa-solid fa-chevron-right text-[10px]"></i>
         </button>
       </div>
     </div>
@@ -182,65 +195,65 @@
   <!-- ========================================== -->
   <!-- 5. SCORECARD MODAL                         -->
   <!-- ========================================== -->
-  <div id="resultModal" class="fixed inset-0 z-50 hidden bg-slate-900 bg-opacity-95 p-4 overflow-y-auto">
-    <div class="max-w-2xl mx-auto my-6 bg-white rounded-2xl shadow-2xl p-6 sm:p-8 border-t-8 border-emerald-600">
+  <div id="resultModal" class="fixed inset-0 z-50 hidden bg-slate-900 bg-opacity-95 p-3 sm:p-4 overflow-y-auto">
+    <div class="max-w-md sm:max-w-xl mx-auto my-auto bg-white rounded-2xl shadow-2xl p-5 sm:p-6 border-t-8 border-emerald-600">
       
-      <div class="text-center pb-4 border-b border-slate-200">
-        <div class="inline-flex items-center justify-center w-14 h-14 rounded-full bg-emerald-100 text-emerald-600 text-2xl font-black mb-2">
+      <div class="text-center pb-3 border-b border-slate-200">
+        <div class="inline-flex items-center justify-center w-12 h-12 rounded-full bg-emerald-100 text-emerald-600 text-xl font-black mb-1">
           <i class="fa-solid fa-trophy"></i>
         </div>
-        <h2 class="text-2xl font-black text-slate-800">CBT TEST SCORECARD</h2>
-        <p class="text-xs sm:text-sm text-slate-500 font-medium">Speedy 60/60 Master Current Affairs Test</p>
+        <h2 class="text-lg sm:text-xl font-black text-slate-800" id="scorecardHeading">CBT TEST SCORECARD</h2>
+        <p class="text-[11px] text-slate-500 font-medium">Speedy 60/60 Bilingual Master Mock Test</p>
       </div>
 
-      <div class="grid grid-cols-2 sm:grid-cols-3 gap-3 my-6">
-        <div class="bg-indigo-50 border border-indigo-100 rounded-xl p-3 text-center">
-          <p class="text-xs text-indigo-600 font-semibold">Total Score</p>
-          <p id="resTotalMarks" class="text-2xl font-black text-indigo-700 mt-0.5">0.00</p>
-          <p class="text-[10px] text-slate-400">Max: 120.00</p>
+      <div class="grid grid-cols-2 sm:grid-cols-3 gap-2 sm:gap-3 my-4">
+        <div class="bg-indigo-50 border border-indigo-100 rounded-xl p-2.5 text-center">
+          <p class="text-[11px] text-indigo-600 font-semibold" id="cardLabelTotalScore">Total Score</p>
+          <p id="resTotalMarks" class="text-xl font-black text-indigo-700 mt-0.5">0.00</p>
+          <p class="text-[9px] text-slate-400">Max: 120.00</p>
         </div>
-        <div class="bg-emerald-50 border border-emerald-100 rounded-xl p-3 text-center">
-          <p class="text-xs text-emerald-600 font-semibold">Correct</p>
-          <p id="resCorrect" class="text-2xl font-black text-emerald-700 mt-0.5">0</p>
-          <p class="text-[10px] text-emerald-600 font-medium">+2.00 marks each</p>
+        <div class="bg-emerald-50 border border-emerald-100 rounded-xl p-2.5 text-center">
+          <p class="text-[11px] text-emerald-600 font-semibold" id="cardLabelCorrect">Correct</p>
+          <p id="resCorrect" class="text-xl font-black text-emerald-700 mt-0.5">0</p>
+          <p class="text-[9px] text-emerald-600 font-medium">+2.00 each</p>
         </div>
-        <div class="bg-rose-50 border border-rose-100 rounded-xl p-3 text-center">
-          <p class="text-xs text-rose-600 font-semibold">Incorrect</p>
-          <p id="resIncorrect" class="text-2xl font-black text-rose-700 mt-0.5">0</p>
-          <p class="text-[10px] text-rose-600 font-medium">-0.20 marks each</p>
+        <div class="bg-rose-50 border border-rose-100 rounded-xl p-2.5 text-center">
+          <p class="text-[11px] text-rose-600 font-semibold" id="cardLabelIncorrect">Incorrect</p>
+          <p id="resIncorrect" class="text-xl font-black text-rose-700 mt-0.5">0</p>
+          <p class="text-[9px] text-rose-600 font-medium">-0.20 each</p>
         </div>
-        <div class="bg-slate-50 border border-slate-200 rounded-xl p-3 text-center">
-          <p class="text-xs text-slate-500 font-semibold">Unattempted</p>
-          <p id="resUnattempted" class="text-2xl font-black text-slate-700 mt-0.5">0</p>
-          <p class="text-[10px] text-slate-400">0.00 marks</p>
+        <div class="bg-slate-50 border border-slate-200 rounded-xl p-2.5 text-center">
+          <p class="text-[11px] text-slate-500 font-semibold" id="cardLabelUnattempted">Unattempted</p>
+          <p id="resUnattempted" class="text-xl font-black text-slate-700 mt-0.5">0</p>
+          <p class="text-[9px] text-slate-400">0.00 marks</p>
         </div>
-        <div class="bg-amber-50 border border-amber-100 rounded-xl p-3 text-center">
-          <p class="text-xs text-amber-600 font-semibold">Accuracy</p>
-          <p id="resAccuracy" class="text-2xl font-black text-amber-700 mt-0.5">0%</p>
-          <p class="text-[10px] text-slate-400">Hit rate</p>
+        <div class="bg-amber-50 border border-amber-100 rounded-xl p-2.5 text-center">
+          <p class="text-[11px] text-amber-600 font-semibold" id="cardLabelAccuracy">Accuracy</p>
+          <p id="resAccuracy" class="text-xl font-black text-amber-700 mt-0.5">0%</p>
+          <p class="text-[9px] text-slate-400">Hit rate</p>
         </div>
-        <div class="bg-sky-50 border border-sky-100 rounded-xl p-3 text-center">
-          <p class="text-xs text-sky-600 font-semibold">Attempted</p>
-          <p id="resAttempted" class="text-2xl font-black text-sky-700 mt-0.5">0</p>
-          <p class="text-[10px] text-slate-400">out of 60</p>
+        <div class="bg-sky-50 border border-sky-100 rounded-xl p-2.5 text-center">
+          <p class="text-[11px] text-sky-600 font-semibold" id="cardLabelAttempted">Attempted</p>
+          <p id="resAttempted" class="text-xl font-black text-sky-700 mt-0.5">0</p>
+          <p class="text-[9px] text-slate-400">out of 60</p>
         </div>
       </div>
 
-      <div class="bg-slate-900 text-white rounded-xl p-4 flex items-center justify-between text-xs sm:text-sm mb-6">
+      <div class="bg-slate-900 text-white rounded-xl p-3 flex items-center justify-between text-xs mb-4">
         <div>
-          <p class="font-bold">ऐसे और भी दैनिक टेस्ट व PDF के लिए जुड़ें</p>
-          <p class="text-slate-400 text-xs">Official Telegram Channel: @GYANVERSET</p>
+          <p class="font-bold text-[11px]">ऐसे और भी टेस्ट व PDF के लिए जुड़ें</p>
+          <p class="text-slate-400 text-[10px]">Telegram: @GYANVERSET</p>
         </div>
-        <a href="https://t.me/GYANVERSET" target="_blank" class="px-3 py-1.5 bg-sky-500 hover:bg-sky-600 text-white font-bold rounded-lg text-xs transition">
+        <a href="https://t.me/GYANVERSET" target="_blank" class="px-2.5 py-1 bg-sky-500 active:bg-sky-600 text-white font-bold rounded-lg text-[11px] transition">
           Join Now
         </a>
       </div>
 
-      <div class="flex flex-col sm:flex-row gap-3">
-        <button id="viewSolutionsBtn" class="flex-1 py-3 px-4 bg-indigo-600 hover:bg-indigo-700 text-white font-bold rounded-xl text-center shadow transition">
-          <i class="fa-solid fa-list-check mr-1.5"></i> Check Detailed Solutions
+      <div class="flex flex-col sm:flex-row gap-2">
+        <button id="viewSolutionsBtn" class="flex-1 py-2.5 px-3 bg-indigo-600 active:bg-indigo-700 text-white font-bold rounded-xl text-center shadow transition text-xs sm:text-sm">
+          <i class="fa-solid fa-list-check mr-1"></i> Check Solutions
         </button>
-        <button id="retakeTestBtn" class="py-3 px-6 bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold rounded-xl text-center transition">
+        <button id="retakeTestBtn" class="py-2.5 px-4 bg-slate-100 active:bg-slate-200 text-slate-700 font-bold rounded-xl text-center transition text-xs sm:text-sm">
           <i class="fa-solid fa-rotate-right mr-1"></i> Retake Test
         </button>
       </div>
@@ -251,597 +264,1163 @@
   <!-- ========================================== -->
   <!-- 6. SOLUTION REVIEW MODAL                   -->
   <!-- ========================================== -->
-  <div id="solutionReviewModal" class="fixed inset-0 z-50 hidden bg-slate-900 bg-opacity-95 p-3 sm:p-6 overflow-y-auto">
-    <div class="max-w-4xl mx-auto bg-white rounded-2xl shadow-2xl p-4 sm:p-8">
-      <div class="flex items-center justify-between pb-4 border-b border-slate-200">
+  <div id="solutionReviewModal" class="fixed inset-0 z-50 hidden bg-slate-900 bg-opacity-95 p-3 sm:p-5 overflow-y-auto">
+    <div class="max-w-3xl mx-auto bg-white rounded-2xl shadow-2xl p-4 sm:p-6 my-auto">
+      <div class="flex items-center justify-between pb-3 border-b border-slate-200">
         <div>
-          <h2 class="text-xl sm:text-2xl font-black text-slate-800">All 60 Questions Detailed Solutions</h2>
-          <p class="text-xs text-indigo-600 font-semibold">Speedy Line-by-Line Authentic Explanation</p>
+          <h2 class="text-base sm:text-lg font-black text-slate-800" id="solutionModalHeading">All 60 Questions Detailed Solutions</h2>
+          <p class="text-[11px] text-indigo-600 font-semibold">Speedy Line-by-Line Authentic Explanation</p>
         </div>
-        <button id="closeSolutionBtn" class="px-3 py-1.5 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-lg text-xs font-bold transition">
+        <button id="closeSolutionBtn" class="px-2.5 py-1 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-lg text-xs font-bold transition">
           <i class="fa-solid fa-xmark mr-1"></i> Close
         </button>
       </div>
 
-      <div id="solutionsListContainer" class="mt-6 space-y-6">
+      <div id="solutionsListContainer" class="mt-4 space-y-4">
         <!-- Rendered by JS -->
       </div>
     </div>
   </div>
 
   <!-- ========================================== -->
-  <!-- 7. COMPLETE DATA AND APP LOGIC             -->
+  <!-- 7. COMPLETE DATA & LOGIC                   -->
   <!-- ========================================== -->
   <script>
     const allQuestions = [
       {
         id: 1,
-        q: "वर्ष 2026 में प्रधानमंत्री नरेंद्र मोदी को विभिन्न देशों द्वारा प्रदान किए गए सर्वोच्च नागरिक सम्मानों के संदर्भ में निम्नलिखित कथनों पर विचार कीजिए:<br><br>1. 'ऑर्डर ऑफ हाइएस्ट फ्रेंडशिप' उज्बेकिस्तान द्वारा प्रदान किया गया।<br>2. 'गार्डियन ऑफ द ब्लू होराइजन' सेशेल्स द्वारा दिया गया।<br>3. 'बिंतांग आदिपूर्णा ऑफ द रिपब्लिक ऑफ इंडोनेशिया' इंडोनेशिया का सम्मान है।<br>4. 'ऑर्डर ऑफ द व्हाइट डबल क्रॉस (प्रथम श्रेणी)' स्लोवाकिया द्वारा दिया गया।<br><br>उपर्युक्त में से कौन-से कथन सही हैं?",
-        options: ["केवल 1 और 2", "केवल 2, 3 और 4", "केवल 1, 3 और 4", "1, 2, 3 और 4 सभी"],
-        correct: 3,
-        exp: "दिए गए चारों कथन सही हैं। वर्ष 2026 में उज्बेकिस्तान, सेशेल्स, इंडोनेशिया और स्लोवाकिया द्वारा ये सर्वोच्च सम्मान प्रधानमंत्री नरेंद्र मोदी को प्रदान किए गए।"
+        hi: {
+          q: "वर्ष 2026 में प्रधानमंत्री नरेंद्र मोदी को विभिन्न देशों द्वारा प्रदान किए गए सर्वोच्च नागरिक सम्मानों के संदर्भ में निम्नलिखित कथनों पर विचार कीजिए:<br><br>1. 'ऑर्डर ऑफ हाइएस्ट फ्रेंडशिप' उज्बेकिस्तान द्वारा प्रदान किया गया।<br>2. 'गार्डियन ऑफ द ब्लू होराइजन' सेशेल्स द्वारा दिया गया।<br>3. 'बिंतांग आदिपूर्णा ऑफ द रिपब्लिक ऑफ इंडोनेशिया' इंडोनेशिया का सम्मान है।<br>4. 'ऑर्डर ऑफ द व्हाइट डबल क्रॉस (प्रथम श्रेणी)' स्लोवाकिया द्वारा दिया गया।<br><br>उपर्युक्त में से कौन-से कथन सही हैं?",
+          options: ["केवल 1 और 2", "केवल 2, 3 और 4", "केवल 1, 3 और 4", "1, 2, 3 और 4 सभी"],
+          exp: "दिए गए चारों कथन सही हैं। वर्ष 2026 में उज्बेकिस्तान, सेशेल्स, इंडोनेशिया और स्लोवाकिया द्वारा ये सर्वोच्च सम्मान प्रधानमंत्री नरेंद्र मोदी को प्रदान किए गए।"
+        },
+        en: {
+          q: "Consider the following statements regarding the highest civilian honors conferred on Prime Minister Narendra Modi in 2026:<br><br>1. 'Order of Highest Friendship' was conferred by Uzbekistan.<br>2. 'Guardian of the Blue Horizon' was conferred by Seychelles.<br>3. 'Bintang Adipurna Order of the Republic of Indonesia' is an honor of Indonesia.<br>4. 'Order of the White Double Cross (First Class)' was conferred by Slovakia.<br><br>Which of the statements given above are correct?",
+          options: ["1 and 2 only", "2, 3 and 4 only", "1, 3 and 4 only", "All 1, 2, 3 and 4"],
+          exp: "All four statements are correct. In 2026, these highest civilian honors were bestowed on PM Narendra Modi by Uzbekistan, Seychelles, Indonesia, and Slovakia."
+        },
+        correct: 3
       },
       {
         id: 2,
-        q: "वर्ष 2026 में प्राप्त सर्वोच्च पुरस्कारों के संबंध में निम्नलिखित में से कौन-सा युग्म <strong>सही सुमेलित नहीं है</strong>?<br><br>1. रॉयल ऑर्डर ऑफ पोलर स्टार कमांडर ग्रैंड क्रॉस - स्वीडन<br>2. ग्रैंड क्रॉस ऑफ द रॉयल नॉर्वेजियन ऑर्डर ऑफ मेरिट - नॉर्वे<br>3. स्पीकर ऑफ द नेसेट मेडल - इज़राइल संसद का सर्वोच्च सम्मान<br>4. गार्डियन ऑफ द ब्लू होराइजन - उज्बेकिस्तान",
-        options: ["केवल 1", "केवल 2 और 3", "केवल 4", "केवल 3 और 4"],
-        correct: 2,
-        exp: "युग्म 4 गलत है। 'गार्डियन ऑफ द ब्लू होराइजन' सेशेल्स द्वारा दिया गया है, जबकि उज्बेकिस्तान द्वारा 'ऑर्डर ऑफ हाइएस्ट फ्रेंडशिप' दिया गया।"
+        hi: {
+          q: "वर्ष 2026 में प्राप्त सर्वोच्च पुरस्कारों के संबंध में निम्नलिखित में से कौन-सा युग्म <strong>सही सुमेलित नहीं है</strong>?<br><br>1. रॉयल ऑर्डर ऑफ पोलर स्टार कमांडर ग्रैंड क्रॉस - स्वीडन<br>2. ग्रैंड क्रॉस ऑफ द रॉयल नॉर्वेजियन ऑर्डर ऑफ मेरिट - नॉर्वे<br>3. स्पीकर ऑफ द नेसेट मेडल - इज़राइल संसद का सर्वोच्च सम्मान<br>4. गार्डियन ऑफ द ब्लू होराइजन - उज्बेकिस्तान",
+          options: ["केवल 1", "केवल 2 और 3", "केवल 4", "केवल 3 और 4"],
+          exp: "युग्म 4 गलत है। 'गार्डियन ऑफ द ब्लू होराइजन' सेशेल्स द्वारा दिया गया है, जबकि उज्बेकिस्तान द्वारा 'ऑर्डर ऑफ हाइएस्ट फ्रेंडशिप' दिया गया।"
+        },
+        en: {
+          q: "Which of the following pairs regarding highest awards received in 2026 is <strong>NOT correctly matched</strong>?<br><br>1. Royal Order of Polar Star Commander Grand Cross - Sweden<br>2. Grand Cross of the Royal Norwegian Order of Merit - Norway<br>3. Speaker of the Knesset Medal - Israel Parliament Highest Honor<br>4. Guardian of the Blue Horizon - Uzbekistan",
+          options: ["1 only", "2 and 3 only", "4 only", "3 and 4 only"],
+          exp: "Pair 4 is incorrect. 'Guardian of the Blue Horizon' was conferred by Seychelles, whereas Uzbekistan conferred the 'Order of Highest Friendship'."
+        },
+        correct: 2
       },
       {
         id: 3,
-        q: "वर्ष 2025 में प्रधानमंत्री मोदी को प्रदान किए गए अंतर्राष्ट्रीय पुरस्कारों के संबंध में निम्नलिखित कथनों पर विचार कीजिए:<br><br>1. 'ऑर्डर ऑफ ओमान' ओमान सल्तनत द्वारा दिया गया।<br>2. 'द ग्रेट ऑनर निशान ऑफ इथियोपिया' इथियोपिया द्वारा प्रदान किया गया।<br>3. 'ऑर्डर ऑफ द मोस्ट एंशिएंट वेल्विchia मिराबिलिस' नामीबिया द्वारा दिया गया।<br><br>सत्य कथनों का चयन कीजिए:",
-        options: ["केवल 1 और 2", "केवल 2 और 3", "केवल 1 और 3", "1, 2 और 3 सभी"],
-        correct: 3,
-        exp: "तीनों कथन पूरी तरह सत्य हैं। वर्ष 2025 में ओमान, इथियोपिया और नामीबिया द्वारा ये पुरस्कार दिए गए।"
+        hi: {
+          q: "वर्ष 2025 में प्रधानमंत्री मोदी को प्रदान किए गए अंतर्राष्ट्रीय पुरस्कारों के संबंध में निम्नलिखित कथनों पर विचार कीजिए:<br><br>1. 'ऑर्डर ऑफ ओमान' ओमान सल्तनत द्वारा दिया गया।<br>2. 'द ग्रेट ऑनर निशान ऑफ इथियोपिया' इथियोपिया द्वारा प्रदान किया गया।<br>3. 'ऑर्डर ऑफ द मोस्ट एंशिएंट वेल्विchia मिराबिलिस' नामीबिया द्वारा दिया गया।<br><br>सत्य कथनों का चयन कीजिए:",
+          options: ["केवल 1 और 2", "केवल 2 और 3", "केवल 1 और 3", "1, 2 और 3 सभी"],
+          exp: "तीनों कथन पूरी तरह सत्य हैं। वर्ष 2025 में ओमान, इथियोपिया और नामीबिया द्वारा ये पुरस्कार दिए गए।"
+        },
+        en: {
+          q: "Consider the following statements regarding the international awards conferred on PM Modi in 2025:<br><br>1. 'Order of Oman' was conferred by the Sultanate of Oman.<br>2. 'The Great Honor Nishan of Ethiopia' was conferred by Ethiopia.<br>3. 'Order of the Most Ancient Welwitschia Mirabilis' was conferred by Namibia.<br><br>Select the correct statements:",
+          options: ["1 and 2 only", "2 and 3 only", "1 and 3 only", "All 1, 2 and 3"],
+          exp: "All three statements are completely true. In 2025, these awards were conferred by Oman, Ethiopia, and Namibia."
+        },
+        correct: 3
       },
       {
         id: 4,
-        q: "सूची-I (पुरस्कार का नाम - 2025) को सूची-II (प्रदाता देश) से सुमेलित कीजिए:<br><br><strong>सूची-I</strong><br>(a) ग्रैंड कॉलर ऑफ द नेशनल ऑर्डर ऑफ द साउदर्न क्रॉस<br>(b) ऑर्डर ऑफ द रिपब्लिक ऑफ त्रिनिदाद एंड टोबैगो<br>(c) ऑफिसर ऑफ द ऑर्डर ऑफ द स्टार ऑफ घाना<br>(d) ग्रैंड क्रॉस ऑफ द ऑर्डर ऑफ मैकारियोस III<br><br><strong>सूची-II</strong><br>1. घाना<br>2. साइप्रस<br>3. ब्राजील<br>4. त्रिनिदाद एवं टोबैगो",
-        options: [
-          "(a)-3, (b)-4, (c)-1, (d)-2",
-          "(a)-4, (b)-3, (c)-1, (d)-2",
-          "(a)-3, (b)-1, (c)-4, (d)-2",
-          "(a)-2, (b)-4, (c)-1, (d)-3"
-        ],
-        correct: 0,
-        exp: "सही सुमेलन: (a)-3 ब्राजील, (b)-4 त्रिनिदाद एवं टोबैगो, (c)-1 घाना, (d)-2 साइप्रस।"
+        hi: {
+          q: "सूची-I (पुरस्कार का नाम - 2025) को सूची-II (प्रदाता देश) से सुमेलित कीजिए:<br><br><strong>सूची-I</strong><br>(a) ग्रैंड कॉलर ऑफ द नेशनल ऑर्डर ऑफ द साउदर्न क्रॉस<br>(b) ऑर्डर ऑफ द रिपब्लिक ऑफ त्रिनिदाद एंड टोबैगो<br>(c) ऑफिसर ऑफ द ऑर्डर ऑफ द स्टार ऑफ घाना<br>(d) ग्रैंड क्रॉस ऑफ द ऑर्डर ऑफ मैकारियोस III<br><br><strong>सूची-II</strong><br>1. घाना<br>2. साइप्रस<br>3. ब्राजील<br>4. त्रिनिदाद एवं टोबैगो",
+          options: [
+            "(a)-3, (b)-4, (c)-1, (d)-2",
+            "(a)-4, (b)-3, (c)-1, (d)-2",
+            "(a)-3, (b)-1, (c)-4, (d)-2",
+            "(a)-2, (b)-4, (c)-1, (d)-3"
+          ],
+          exp: "सही सुमेलन: (a)-3 ब्राजील, (b)-4 त्रिनिदाद एवं टोबैगो, (c)-1 घाना, (d)-2 साइप्रस।"
+        },
+        en: {
+          q: "Match List-I (Award Name - 2025) with List-II (Conferring Country):<br><br><strong>List-I</strong><br>(a) Grand Collar of the National Order of the Southern Cross<br>(b) Order of the Republic of Trinidad and Tobago<br>(c) Officer of the Order of the Star of Ghana<br>(d) Grand Cross of the Order of Makarios III<br><br><strong>List-II</strong><br>1. Ghana<br>2. Cyprus<br>3. Brazil<br>4. Trinidad and Tobago",
+          options: [
+            "(a)-3, (b)-4, (c)-1, (d)-2",
+            "(a)-4, (b)-3, (c)-1, (d)-2",
+            "(a)-3, (b)-1, (c)-4, (d)-2",
+            "(a)-2, (b)-4, (c)-1, (d)-3"
+          ],
+          exp: "Correct Match: (a)-3 Brazil, (b)-4 Trinidad and Tobago, (c)-1 Ghana, (d)-2 Cyprus."
+        },
+        correct: 0
       },
       {
         id: 5,
-        q: "नीचे दो कथन दिए गए हैं, एक को कथन (A) और दूसरे को कारण (R) कहा गया है:<br><br><strong>कथन (A):</strong> इज़राइल की संसद द्वारा प्रधानमंत्री नरेंद्र मोदी को 'स्पीकर ऑफ द नेसेट मेडल' प्रदान किया गया।<br><strong>कारण (R):</strong> यह सम्मान वर्ष 2026 में प्रदान किया गया जो इज़राइल संसद का सर्वोच्च सम्मान है।<br><br>सही विकल्प का चयन कीजिए:",
-        options: [
-          "(A) और (R) दोनों सही हैं और (R), (A) की सही व्याख्या है।",
-          "(A) और (R) दोनों सही हैं लेकिन (R), (A) की सही व्याख्या नहीं है।",
-          "(A) सही है लेकिन (R) गलत है।",
-          "(A) गलत है लेकिन (R) सही है।"
-        ],
-        correct: 0,
-        exp: "कथन (A) और कारण (R) दोनों सही हैं और (R) इज़राइल संसद के सर्वोच्च पदक के संदर्भ में सटीक व्याख्या प्रस्तुत करता है।"
+        hi: {
+          q: "नीचे दो कथन दिए गए हैं, एक को कथन (A) और दूसरे को कारण (R) कहा गया है:<br><br><strong>कथन (A):</strong> इज़राइल की संसद द्वारा प्रधानमंत्री नरेंद्र मोदी को 'स्पीकर ऑफ द नेसेट मेडल' प्रदान किया गया।<br><strong>कारण (R):</strong> यह सम्मान वर्ष 2026 में प्रदान किया गया जो इज़राइल संसद का सर्वोच्च सम्मान है।<br><br>सही विकल्प का चयन कीजिए:",
+          options: [
+            "(A) और (R) दोनों सही हैं और (R), (A) की सही व्याख्या है।",
+            "(A) और (R) दोनों सही हैं लेकिन (R), (A) की सही व्याख्या नहीं है।",
+            "(A) सही है लेकिन (R) गलत है।",
+            "(A) गलत है लेकिन (R) सही है।"
+          ],
+          exp: "कथन (A) और कारण (R) दोनों सही हैं और (R) इज़राइल संसद के सर्वोच्च पदक के संदर्भ में सटीक व्याख्या प्रस्तुत करता है।"
+        },
+        en: {
+          q: "Given below are two statements, labeled Assertion (A) and Reason (R):<br><br><strong>Assertion (A):</strong> The Parliament of Israel conferred the 'Speaker of the Knesset Medal' on Prime Minister Narendra Modi.<br><strong>Reason (R):</strong> This honor was conferred in 2026 and represents the highest honor of the Israeli Parliament.<br><br>Choose the correct option:",
+          options: [
+            "Both (A) and (R) are true and (R) is the correct explanation of (A).",
+            "Both (A) and (R) are true but (R) is NOT the correct explanation of (A).",
+            "(A) is true but (R) is false.",
+            "(A) is false but (R) is true."
+          ],
+          exp: "Both (A) and (R) are true and (R) serves as the precise institutional explanation for (A)."
+        },
+        correct: 0
       },
       {
         id: 6,
-        q: "प्रधानमंत्री नरेंद्र मोदी को 2025 और 2026 में मिले पुरस्कारों के संदर्भ में 'असंगत युग्म' की पहचान कीजिए:",
-        options: [
-          "स्लोवाकिया - ऑर्डर ऑफ द व्हाइट डबल क्रॉस (प्रथम श्रेणी) [2026]",
-          "स्वीडन - रॉयल ऑर्डर ऑफ पोलर स्टार कमांडर ग्रैंड क्रॉस [2026]",
-          "साइप्रस - ग्रैंड क्रॉस ऑफ द ऑर्डर ऑफ मैकारियोस III [2025]",
-          "ब्राजील - ऑर्डर ऑफ द मोस्ट एंशिएंट वेल्विchia मिराबिलिस [2025]"
-        ],
-        correct: 3,
-        exp: "विकल्प (D) असंगत है क्योंकि 'ऑर्डर ऑफ द मोस्ट एंशिएंट वेल्विchia मिराबिलिस' नामीबिया द्वारा दिया गया, जबकि ब्राजील द्वारा 'ग्रैंड कॉलर ऑफ द नेशनल ऑर्डर ऑफ द साउदर्न क्रॉस' दिया गया।"
+        hi: {
+          q: "प्रधानमंत्री नरेंद्र मोदी को 2025 और 2026 में मिले पुरस्कारों के संदर्भ में 'असंगत युग्म' की पहचान कीजिए:",
+          options: [
+            "स्लोवाकिया - ऑर्डर ऑफ द व्हाइट डबल क्रॉस (प्रथम श्रेणी) [2026]",
+            "स्वीडन - रॉयल ऑर्डर ऑफ पोलर स्टार कमांडर ग्रैंड क्रॉस [2026]",
+            "साइप्रस - ग्रैंड क्रॉस ऑफ द ऑर्डर ऑफ मैकारियोस III [2025]",
+            "ब्राजील - ऑर्डर ऑफ द मोस्ट एंशिएंट वेल्विchia मिराबिलिस [2025]"
+          ],
+          exp: "विकल्प (D) असंगत है क्योंकि 'ऑर्डर ऑफ द मोस्ट एंशिएंट वेल्विchia मिराबिलिस' नामीबिया द्वारा दिया गया, जबकि ब्राजील द्वारा 'ग्रैंड कॉलर ऑफ द नेशनल ऑर्डर ऑफ द साउदर्न क्रॉस' दिया गया।"
+        },
+        en: {
+          q: "Identify the <strong>MISMATCHED</strong> pair regarding awards conferred on PM Narendra Modi in 2025 and 2026:",
+          options: [
+            "Slovakia - Order of the White Double Cross (First Class) [2026]",
+            "Sweden - Royal Order of Polar Star Commander Grand Cross [2026]",
+            "Cyprus - Grand Cross of the Order of Makarios III [2025]",
+            "Brazil - Order of the Most Ancient Welwitschia Mirabilis [2025]"
+          ],
+          exp: "Option (D) is mismatched. 'Order of the Most Ancient Welwitschia Mirabilis' was conferred by Namibia, while Brazil conferred the 'Grand Collar of the National Order of the Southern Cross'."
+        },
+        correct: 3
       },
       {
         id: 7,
-        q: "निम्नलिखित में से किस देश ने वर्ष 2026 में प्रधानमंत्री नरेंद्र मोदी को 'बिंतांग आदिपूर्णा ऑफ द रिपब्लिक' सम्मान से नवाजा?",
-        options: ["मलेशिया", "इंडोनेशिया", "मालदीव", "मॉरीशस"],
-        correct: 1,
-        exp: "'बिंतांग आदिपूर्णा ऑफ द रिपब्लिक ऑफ इंडोनेशिया' सम्मान इंडोनेशिया द्वारा वर्ष 2026 में प्रदान किया गया।"
+        hi: {
+          q: "निम्नलिखित में से किस देश ने वर्ष 2026 में प्रधानमंत्री नरेंद्र मोदी को 'बिंतांग आदिपूर्णा ऑफ द रिपब्लिक' सम्मान से नवाजा?",
+          options: ["मलेशिया", "इंडोनेशिया", "मालदीव", "मॉरीशस"],
+          exp: "'बिंतांग आदिपूर्णा ऑफ द रिपब्लिक ऑफ इंडोनेशिया' सम्मान इंडोनेशिया द्वारा वर्ष 2026 में प्रदान किया गया।"
+        },
+        en: {
+          q: "Which of the following nations honored Prime Minister Narendra Modi with the 'Bintang Adipurna of the Republic' in 2026?",
+          options: ["Malaysia", "Indonesia", "Maldives", "Mauritius"],
+          exp: "The 'Bintang Adipurna Order of the Republic of Indonesia' was officially conferred by Indonesia in the year 2026."
+        },
+        correct: 1
       },
       {
         id: 8,
-        q: "77वें गणतंत्र दिवस समारोह 2026 के मुख्य अतिथियों के संदर्भ में निम्नलिखित कथनों पर विचार कीजिए:<br><br>1. एंटोनियो कोस्टा - यूरोपीय परिषद के अध्यक्ष<br>2. उर्सुला वॉन डेर लेयेन - यूरोपीय आयोग की अध्यक्ष<br>3. इस वर्ष दो अंतर्राष्ट्रीय संस्थागत प्रमुखों को संयुक्त रूप से मुख्य अतिथि बनाया गया।<br><br>उपर्युक्त में से कौन-से कथन सही हैं?",
-        options: ["केवल 1 और 2", "केवल 2 और 3", "केवल 1 और 3", "1, 2 और 3 सभी"],
-        correct: 3,
-        exp: "77वें गणतंत्र दिवस 2026 के मुख्य अतिथि एंटोनियो कोस्टा (यूरोपीय परिषद अध्यक्ष) और उर्सुला वॉन डेर लेयेन (यूरोपीय आयोग अध्यक्ष) दोनों संयुक्त रूप से रहे।"
+        hi: {
+          q: "77वें गणतंत्र दिवस समारोह 2026 के मुख्य अतिथियों के संदर्भ में निम्नलिखित कथनों पर विचार कीजिए:<br><br>1. एंटोनियो कोस्टा - यूरोपीय परिषद के अध्यक्ष<br>2. उर्सुला वॉन डेर लेयेन - यूरोपीय आयोग की अध्यक्ष<br>3. इस वर्ष दो अंतर्राष्ट्रीय संस्थागत प्रमुखों को संयुक्त रूप से मुख्य अतिथि बनाया गया।<br><br>उपर्युक्त में से कौन-से कथन सही हैं?",
+          options: ["केवल 1 और 2", "केवल 2 और 3", "केवल 1 और 3", "1, 2 और 3 सभी"],
+          exp: "77वें गणतंत्र दिवस 2026 के मुख्य अतिथि एंटोनियो कोस्टा (यूरोपीय परिषद अध्यक्ष) और उर्सुला वॉन डेर लेयेन (यूरोपीय आयोग अध्यक्ष) दोनों संयुक्त रूप से रहे।"
+        },
+        en: {
+          q: "Consider the following statements regarding the Chief Guests of the 77th Republic Day Celebrations 2026:<br><br>1. António Costa - President of the European Council<br>2. Ursula von der Leyen - President of the European Commission<br>3. Two international institutional leaders served jointly as chief guests.<br><br>Which of the statements given above are correct?",
+          options: ["1 and 2 only", "2 and 3 only", "1 and 3 only", "All 1, 2 and 3"],
+          exp: "All three statements are correct. Both leaders represented the European Union as joint chief guests for the 77th Republic Day."
+        },
+        correct: 3
       },
       {
         id: 9,
-        q: "गणतंत्र दिवस 2026 की आधिकारिक थीम निम्नलिखित में से क्या निर्धारित की गई थी?",
-        options: [
-          "स्वर्णिम भारत : विरासत और विकास",
-          "वंदे मातरम् के 150 वर्ष",
-          "विकसित भारत @2047",
-          "भारत : लोकतंत्र की जननी"
-        ],
-        correct: 1,
-        exp: "गणतंत्र दिवस 2026 की थीम 'वंदे मातरम् के 150 वर्ष' थी। जबकि 'स्वर्णिम भारत : विरासत और विकास' वर्ष 2025 की थीम थी।"
+        hi: {
+          q: "गणतंत्र दिवस 2026 की आधिकारिक थीम निम्नलिखित में से क्या निर्धारित की गई थी?",
+          options: [
+            "स्वर्णिम भारत : विरासत और विकास",
+            "वंदे मातरम् के 150 वर्ष",
+            "विकसित भारत @2047",
+            "भारत : लोकतंत्र की जननी"
+          ],
+          exp: "गणतंत्र दिवस 2026 की थीम 'वंदे मातरम् के 150 वर्ष' थी। जबकि 'स्वर्णिम भारत : विरासत और विकास' वर्ष 2025 की थीम थी।"
+        },
+        en: {
+          q: "What was the official theme designated for the Republic Day Celebrations 2026?",
+          options: [
+            "Swarnim Bharat : Virasat aur Vikas",
+            "150 Years of Vande Mataram",
+            "Viksit Bharat @2047",
+            "India : Mother of Democracy"
+          ],
+          exp: "The official theme for Republic Day 2026 was '150 Years of Vande Mataram'. 'Swarnim Bharat : Virasat aur Vikas' was the 2025 theme."
+        },
+        correct: 1
       },
       {
         id: 10,
-        q: "77वें गणतंत्र दिवस 2026 में प्रदर्शित झांकियों के पुरस्कारों के संबंध में सत्य कथन का चयन कीजिए:<br><br>1. राज्यों एवं केंद्रशासित प्रदेशों में सर्वश्रेष्ठ झांकी का पुरस्कार 'महाराष्ट्र' को मिला।<br>2. मंत्रालयों एवं विभागों की श्रेणी में सर्वश्रेष्ठ झांकी का पुरस्कार 'संस्कृति मंत्रालय' को प्राप्त हुआ।",
-        options: ["केवल 1", "केवल 2", "1 और 2 दोनों", "न तो 1 और न ही 2"],
-        correct: 2,
-        exp: "दोनों कथन सत्य हैं। राज्यों/UTs में प्रथम स्थान महाराष्ट्र की झांकी को तथा मंत्रालयों में संस्कृति मंत्रालय को सर्वश्रेष्ठ झांकी का पुरस्कार मिला।"
+        hi: {
+          q: "77वें गणतंत्र दिवस 2026 में प्रदर्शित झांकियों के पुरस्कारों के संबंध में सत्य कथन का चयन कीजिए:<br><br>1. राज्यों एवं केंद्रशासित प्रदेशों में सर्वश्रेष्ठ झांकी का पुरस्कार 'महाराष्ट्र' को मिला।<br>2. मंत्रालयों एवं विभागों की श्रेणी में सर्वश्रेष्ठ झांकी का पुरस्कार 'संस्कृति मंत्रालय' को प्राप्त हुआ।",
+          options: ["केवल 1", "केवल 2", "1 और 2 दोनों", "न तो 1 और न ही 2"],
+          exp: "दोनों कथन सत्य हैं। राज्यों/UTs में प्रथम स्थान महाराष्ट्र की झांकी को तथा मंत्रालयों में संस्कृति मंत्रालय को सर्वश्रेष्ठ झांकी का पुरस्कार मिला।"
+        },
+        en: {
+          q: "Select the correct statement(s) regarding the tableau awards at the 77th Republic Day 2026:<br><br>1. Among States and UTs, the best tableau award went to 'Maharashtra'.<br>2. In the Ministries and Departments category, the best tableau award was won by the 'Ministry of Culture'.",
+          options: ["1 only", "2 only", "Both 1 and 2", "Neither 1 nor 2"],
+          exp: "Both statements are correct. Maharashtra bagged first place among states/UTs, and Ministry of Culture among ministries."
+        },
+        correct: 2
       },
       {
         id: 11,
-        q: "गणतंत्र दिवस 2025 के संदर्भ में निम्नलिखित तथ्यों पर विचार कीजिए:<br><br>1. मुख्य अतिथि प्रबोवो सुबियांतो (इंडोनेशिया के राष्ट्रपति) थे।<br>2. सर्वश्रेष्ठ झांकी का पुरस्कार उत्तर प्रदेश की झांकी को मिला।<br>3. उत्तर प्रदेश की झांकी की थीम 'महाकुंभ 2025 : विरासत और विकास' थी।<br><br>उपर्युक्त में से कौन-से कथन सही हैं?",
-        options: ["केवल 1 और 2", "केवल 2 और 3", "केवल 1 और 3", "1, 2 और 3 सभी"],
-        correct: 3,
-        exp: "तीनों कथन पूरी तरह सत्य हैं। 2025 में मुख्य अतिथि इंडोनेशियाई राष्ट्रपति थे और यूपी की महाकुंभ थीम आधारित झांकी प्रथम रही थी।"
+        hi: {
+          q: "गणतंत्र दिवस 2025 के संदर्भ में निम्नलिखित तथ्यों पर विचार कीजिए:<br><br>1. मुख्य अतिथि प्रबोवो सुबियांतो (इंडोनेशिया के राष्ट्रपति) थे।<br>2. सर्वश्रेष्ठ झांकी का पुरस्कार उत्तर प्रदेश की झांकी को मिला।<br>3. उत्तर प्रदेश की झांकी की थीम 'महाकुंभ 2025 : विरासत और विकास' थी।<br><br>उपर्युक्त में से कौन-से कथन सही हैं?",
+          options: ["केवल 1 और 2", "केवल 2 और 3", "केवल 1 और 3", "1, 2 और 3 सभी"],
+          exp: "तीनों कथन पूरी तरह सत्य हैं। 2025 में मुख्य अतिथि इंडोनेशियाई राष्ट्रपति थे और यूपी की महाकुंभ थीम आधारित झांकी प्रथम रही थी।"
+        },
+        en: {
+          q: "Consider the following facts regarding Republic Day 2025:<br><br>1. The Chief Guest was Prabowo Subianto (President of Indonesia).<br>2. The best tableau award went to Uttar Pradesh.<br>3. The theme of Uttar Pradesh's tableau was 'Mahakumbh 2025 : Virasat aur Vikas'.<br><br>Which of the statements given above are correct?",
+          options: ["1 and 2 only", "2 and 3 only", "1 and 3 only", "All 1, 2 and 3"],
+          exp: "All three statements are completely true as per the official records."
+        },
+        correct: 3
       },
       {
         id: 12,
-        q: "गणतंत्र दिवस 2024 के मुख्य अतिथि निम्नलिखित में से किस देश के राष्ट्राध्यक्ष थे?",
-        options: ["अमेरिका (जो बाइडेन)", "फ्रांस (इमैनुएल मैक्रों)", "मिस्र (अब्देल फतह अल-सीसी)", "ब्राजील (लूला डा सिल्वा)"],
-        correct: 1,
-        exp: "गणतंत्र दिवस 2024 के मुख्य अतिथि फ्रांस के राष्ट्रपति इमैनुएल मैक्रों थे।"
+        hi: {
+          q: "गणतंत्र दिवस 2024 के मुख्य अतिथि निम्नलिखित में से किस देश के राष्ट्राध्यक्ष थे?",
+          options: ["अमेरिका (जो बाइडेन)", "फ्रांस (इमैनुएल मैक्रों)", "मिस्र (अब्देल फतह अल-सीसी)", "ब्राजील (लूला डा सिल्वा)"],
+          exp: "गणतंत्र दिवस 2024 के मुख्य अतिथि फ्रांस के राष्ट्रपति इमैनुएल मैक्रों थे।"
+        },
+        en: {
+          q: "The Chief Guest of Republic Day 2024 was the Head of State of which country?",
+          options: ["USA (Joe Biden)", "France (Emmanuel Macron)", "Egypt (Abdel Fattah el-Sisi)", "Brazil (Lula da Silva)"],
+          exp: "The Chief Guest for Republic Day 2024 was President Emmanuel Macron of France."
+        },
+        correct: 1
       },
       {
         id: 13,
-        q: "नीचे दो कथन दिए गए हैं:<br><br><strong>कथन (A):</strong> गणतंत्र दिवस समारोह 2026 में संस्कृति मंत्रालय की झांकी को मंत्रालयों/विभागों में सर्वश्रेष्ठ आंका गया।<br><strong>कारण (R):</strong> गणतंत्र दिवस 2026 का मूल विषय 'वंदे मातरम् के 150 वर्ष' के उत्सव पर केंद्रित था।<br><br>सही कूट का चयन कीजिए:",
-        options: [
-          "(A) और (R) दोनों सही हैं और (R), (A) की सही व्याख्या है।",
-          "(A) और (R) दोनों सही हैं लेकिन (R), (A) की सही व्याख्या नहीं है।",
-          "(A) सही है लेकिन (R) गलत है।",
-          "(A) गलत है लेकिन (R) सही है।"
-        ],
-        correct: 1,
-        exp: "(A) और (R) दोनों सत्य हैं परंतु समग्र थीम का होना मंत्रालय की झांकी के सर्वश्रेष्ठ चुने जाने का एकमात्र तकनीकी कारण नहीं है।"
+        hi: {
+          q: "नीचे दो कथन दिए गए हैं:<br><br><strong>कथन (A):</strong> गणतंत्र दिवस समारोह 2026 में संस्कृति मंत्रालय की झांकी को मंत्रालयों/विभागों में सर्वश्रेष्ठ आंका गया।<br><strong>कारण (R):</strong> गणतंत्र दिवस 2026 का मूल विषय 'वंदे मातरम् के 150 वर्ष' के उत्सव पर केंद्रित था।<br><br>सही कूट का चयन कीजिए:",
+          options: [
+            "(A) और (R) दोनों सही हैं और (R), (A) की सही व्याख्या है।",
+            "(A) और (R) दोनों सही हैं लेकिन (R), (A) की सही व्याख्या नहीं है।",
+            "(A) सही है लेकिन (R) गलत है।",
+            "(A) गलत है लेकिन (R) सही है।"
+          ],
+          exp: "(A) और (R) दोनों सत्य हैं परंतु समग्र थीम का होना मंत्रालय की झांकी के सर्वश्रेष्ठ चुने जाने का एकमात्र तकनीकी कारण नहीं है।"
+        },
+        en: {
+          q: "Given below are two statements:<br><br><strong>Assertion (A):</strong> In Republic Day 2026, Ministry of Culture won the best tableau award among ministries.<br><strong>Reason (R):</strong> The national theme of Republic Day 2026 focused on '150 Years of Vande Mataram'.<br><br>Select the correct code:",
+          options: [
+            "Both (A) and (R) are true and (R) is the correct explanation of (A).",
+            "Both (A) and (R) are true but (R) is NOT the correct explanation of (A).",
+            "(A) is true but (R) is false.",
+            "(A) is false but (R) is true."
+          ],
+          exp: "Both facts are correct, but the general national theme is not the analytical causal explanation for the ministry's specific win."
+        },
+        correct: 1
       },
       {
         id: 14,
-        q: "ऑक्सफोर्ड (Oxford) डिक्शनरी द्वारा चयनित 'Word of the Year' के कालानुक्रम पर विचार कीजिए:<br><br>1. वर्ष 2023 - Rizz<br>2. वर्ष 2024 - Brain rot<br>3. वर्ष 2025 - Rage Bait<br><br>उपर्युक्त में से कौन-सा/से सुमेलित है/हैं?",
-        options: ["केवल 1 और 2", "केवल 2 और 3", "केवल 1 और 3", "1, 2 और 3 सभी"],
-        correct: 3,
-        exp: "ऑक्सफोर्ड डिक्शनरी: 2023 में Rizz, 2024 में Brain rot, और 2025 में Rage Bait को Word of the Year घोषित किया गया।"
+        hi: {
+          q: "ऑक्सफोर्ड (Oxford) डिक्शनरी द्वारा चयनित 'Word of the Year' के कालानुक्रम पर विचार कीजिए:<br><br>1. वर्ष 2023 - Rizz<br>2. वर्ष 2024 - Brain rot<br>3. वर्ष 2025 - Rage Bait<br><br>उपर्युक्त में से कौन-सा/से सुमेलित है/हैं?",
+          options: ["केवल 1 और 2", "केवल 2 और 3", "केवल 1 और 3", "1, 2 और 3 सभी"],
+          exp: "ऑक्सफोर्ड डिक्शनरी: 2023 में Rizz, 2024 में Brain rot, और 2025 में Rage Bait को Word of the Year घोषित किया गया।"
+        },
+        en: {
+          q: "Consider the chronological 'Word of the Year' selected by Oxford Dictionary:<br><br>1. Year 2023 - Rizz<br>2. Year 2024 - Brain rot<br>3. Year 2025 - Rage Bait<br><br>Which of the above are correctly matched?",
+          options: ["1 and 2 only", "2 and 3 only", "1 and 3 only", "All 1, 2 and 3"],
+          exp: "All three are correctly matched: Oxford chose Rizz in 2023, Brain rot in 2024, and Rage Bait in 2025."
+        },
+        correct: 3
       },
       {
         id: 15,
-        q: "मरियम-वेबस्टर (Merriam-Webster) द्वारा वर्ष 2023, 2024 एवं 2025 के लिए घोषित 'Word of the Year' का सही क्रम क्या है?",
-        options: [
-          "Authentic -> Polarisation -> Slop",
-          "Hallucinate -> Manifest -> Parasocial",
-          "AI -> Brat -> Vibe Coding",
-          "Rizz -> Brain rot -> Rage Bait"
-        ],
-        correct: 0,
-        exp: "मरियम-वेबस्टर के शब्द: 2023 में 'Authentic', 2024 में 'Polarisation', तथा 2025 में 'Slop' रहे।"
+        hi: {
+          q: "मरियम-वेबस्टर (Merriam-Webster) द्वारा वर्ष 2023, 2024 एवं 2025 के लिए घोषित 'Word of the Year' का सही क्रम क्या है?",
+          options: [
+            "Authentic -> Polarisation -> Slop",
+            "Hallucinate -> Manifest -> Parasocial",
+            "AI -> Brat -> Vibe Coding",
+            "Rizz -> Brain rot -> Rage Bait"
+          ],
+          exp: "मरियम-वेबस्टर के शब्द: 2023 में 'Authentic', 2024 में 'Polarisation', तथा 2025 में 'Slop' रहे।"
+        },
+        en: {
+          q: "What is the correct sequence of 'Word of the Year' chosen by Merriam-Webster for 2023, 2024, and 2025?",
+          options: [
+            "Authentic -> Polarisation -> Slop",
+            "Hallucinate -> Manifest -> Parasocial",
+            "AI -> Brat -> Vibe Coding",
+            "Rizz -> Brain rot -> Rage Bait"
+          ],
+          exp: "Merriam-Webster sequence: 2023 Authentic, 2024 Polarisation, 2025 Slop."
+        },
+        correct: 0
       },
       {
         id: 16,
-        q: "कैम्ब्रिज (Cambridge) डिक्शनरी द्वारा वर्ष 2025 के लिए निम्नलिखित में से किस शब्द को 'Word of the Year' चुना गया?",
-        options: ["Parasocial", "Manifest", "Hallucinate", "Demure"],
-        correct: 0,
-        exp: "कैम्ब्रिज डिक्शनरी ने 2023 में 'Hallucinate', 2024 में 'Manifest' और 2025 में 'Parasocial' को चुना।"
+        hi: {
+          q: "कैम्ब्रिज (Cambridge) डिक्शनरी द्वारा वर्ष 2025 के लिए निम्नलिखित में से किस शब्द को 'Word of the Year' चुना गया?",
+          options: ["Parasocial", "Manifest", "Hallucinate", "Demure"],
+          exp: "कैम्ब्रिज डिक्शनरी ने 2023 में 'Hallucinate', 2024 में 'Manifest' और 2025 में 'Parasocial' को चुना।"
+        },
+        en: {
+          q: "Which word was selected as 'Word of the Year 2025' by Cambridge Dictionary?",
+          options: ["Parasocial", "Manifest", "Hallucinate", "Demure"],
+          exp: "Cambridge Dictionary chose 'Hallucinate' in 2023, 'Manifest' in 2024, and 'Parasocial' in 2025."
+        },
+        correct: 0
       },
       {
         id: 17,
-        q: "कोलिन्स (Collins) डिक्शनरी द्वारा घोषित शब्दों के संबंध में असत्य युग्म पहचानिए:",
-        options: [
-          "Word of the Year 2023 - AI",
-          "Word of the Year 2024 - Brat",
-          "Word of the Year 2025 - Vibe Coding",
-          "Word of the Year 2025 - 67"
-        ],
-        correct: 3,
-        exp: "विकल्प (D) गलत है। कोलिन्स का 2025 का शब्द 'Vibe Coding' है, जबकि '67' Dictionary.com का 2025 का Word of the Year है।"
+        hi: {
+          q: "कोलिन्स (Collins) डिक्शनरी द्वारा घोषित शब्दों के संबंध में असत्य युग्म पहचानिए:",
+          options: [
+            "Word of the Year 2023 - AI",
+            "Word of the Year 2024 - Brat",
+            "Word of the Year 2025 - Vibe Coding",
+            "Word of the Year 2025 - 67"
+          ],
+          exp: "विकल्प (D) गलत है। कोलिन्स का 2025 का शब्द 'Vibe Coding' है, जबकि '67' Dictionary.com का 2025 का Word of the Year है।"
+        },
+        en: {
+          q: "Identify the INCORRECT pair regarding Collins Dictionary Word of the Year:",
+          options: [
+            "Word of the Year 2023 - AI",
+            "Word of the Year 2024 - Brat",
+            "Word of the Year 2025 - Vibe Coding",
+            "Word of the Year 2025 - 67"
+          ],
+          exp: "Option (D) is incorrect. Collins Word of the Year 2025 is 'Vibe Coding', whereas '67' is from Dictionary.com."
+        },
+        correct: 3
       },
       {
         id: 18,
-        q: "डिक्शनरी.कॉम (Dictionary.com) द्वारा घोषित Word of the Year के संदर्भ में निम्नलिखित कथनों पर विचार कीजिए:<br><br>1. वर्ष 2023 के लिए 'Hallucinate' चुना गया था।<br>2. वर्ष 2024 के लिए 'Demure' चुना गया था।<br>3. वर्ष 2025 के लिए '67' को चुना गया है।<br><br>उपर्युक्त में से कौन-से कथन सत्य हैं?",
-        options: ["केवल 1 और 2", "केवल 2 और 3", "केवल 1 और 3", "1, 2 और 3 सभी"],
-        correct: 3,
-        exp: "तीनों कथन सही हैं: 2023 Hallucinate, 2024 Demure, 2025 में 67।"
+        hi: {
+          q: "डिक्शनरी.कॉम (Dictionary.com) द्वारा घोषित Word of the Year के संदर्भ में निम्नलिखित कथनों पर विचार कीजिए:<br><br>1. वर्ष 2023 के लिए 'Hallucinate' चुना गया था।<br>2. वर्ष 2024 के लिए 'Demure' चुना गया था।<br>3. वर्ष 2025 के लिए '67' को चुना गया है।<br><br>उपर्युक्त में से कौन-से कथन सत्य हैं?",
+          options: ["केवल 1 और 2", "केवल 2 और 3", "केवल 1 और 3", "1, 2 और 3 सभी"],
+          exp: "तीनों कथन सही हैं: 2023 Hallucinate, 2024 Demure, 2025 में 67।"
+        },
+        en: {
+          q: "Consider the following statements regarding Dictionary.com Word of the Year:<br><br>1. 'Hallucinate' was chosen for 2023.<br>2. 'Demure' was chosen for 2024.<br>3. '67' was chosen for 2025.<br><br>Which of the statements given above are correct?",
+          options: ["1 and 2 only", "2 and 3 only", "1 and 3 only", "All 1, 2 and 3"],
+          exp: "All three statements are correct as per Dictionary.com records."
+        },
+        correct: 3
       },
       {
         id: 19,
-        q: "सूची-I (डिक्शनरी) को सूची-II (Word of the Year 2025) से सुमेलित कीजिए:<br><br><strong>सूची-I</strong><br>(a) ऑक्सफोर्ड<br>(b) मरियम-वेबस्टर<br>(c) कैम्ब्रिज<br>(d) कोलिन्स<br><br><strong>सूची-II</strong><br>1. Slop<br>2. Rage Bait<br>3. Vibe Coding<br>4. Parasocial",
-        options: [
-          "(a)-2, (b)-1, (c)-4, (d)-3",
-          "(a)-1, (b)-2, (c)-3, (d)-4",
-          "(a)-2, (b)-4, (c)-1, (d)-3",
-          "(a)-3, (b)-1, (c)-4, (d)-2"
-        ],
-        correct: 0,
-        exp: "सही मिलान: ऑक्सफोर्ड - Rage Bait (2), मरियम-वेबस्टर - Slop (1), कैम्ब्रिज - Parasocial (4), कोलिन्स - Vibe Coding (3)।"
+        hi: {
+          q: "सूची-I (डिक्शनरी) को सूची-II (Word of the Year 2025) से सुमेलित कीजिए:<br><br><strong>सूची-I</strong><br>(a) ऑक्सफोर्ड<br>(b) मरियम-वेबस्टर<br>(c) कैम्ब्रिज<br>(d) कोलिन्स<br><br><strong>सूची-II</strong><br>1. Slop<br>2. Rage Bait<br>3. Vibe Coding<br>4. Parasocial",
+          options: [
+            "(a)-2, (b)-1, (c)-4, (d)-3",
+            "(a)-1, (b)-2, (c)-3, (d)-4",
+            "(a)-2, (b)-4, (c)-1, (d)-3",
+            "(a)-3, (b)-1, (c)-4, (d)-2"
+          ],
+          exp: "सही मिलान: ऑक्सफोर्ड - Rage Bait (2), मरियम-वेबस्टर - Slop (1), कैम्ब्रिज - Parasocial (4), कोलिन्स - Vibe Coding (3)।"
+        },
+        en: {
+          q: "Match List-I (Dictionary) with List-II (Word of the Year 2025):<br><br><strong>List-I</strong><br>(a) Oxford<br>(b) Merriam-Webster<br>(c) Cambridge<br>(d) Collins<br><br><strong>List-II</strong><br>1. Slop<br>2. Rage Bait<br>3. Vibe Coding<br>4. Parasocial",
+          options: [
+            "(a)-2, (b)-1, (c)-4, (d)-3",
+            "(a)-1, (b)-2, (c)-3, (d)-4",
+            "(a)-2, (b)-4, (c)-1, (d)-3",
+            "(a)-3, (b)-1, (c)-4, (d)-2"
+          ],
+          exp: "Correct matching: (a)-2 Oxford (Rage Bait), (b)-1 Merriam-Webster (Slop), (c)-4 Cambridge (Parasocial), (d)-3 Collins (Vibe Coding)."
+        },
+        correct: 0
       },
       {
         id: 20,
-        q: "इसरो के उपग्रह प्रक्षेपण मिशन 'EOS-05' के संबंध में निम्नलिखित कथनों पर विचार कीजिए:<br><br>1. इसका प्रक्षेपण 4 सितंबर 2026 को निर्धारित है।<br>2. इसके लिए प्रक्षेपण यान GSLV-F17 का उपयोग किया जाएगा।<br><br>सत्य कथन का चयन करें:",
-        options: ["केवल 1", "केवल 2", "1 और 2 दोनों", "न तो 1 और न ही 2"],
-        correct: 2,
-        exp: "दोनों कथन सत्य हैं: EOS-05 का प्रक्षेपण 4 सितंबर 2026 को रॉकेट GSLV-F17 से होना है।"
+        hi: {
+          q: "इसरो के उपग्रह प्रक्षेपण मिशन 'EOS-05' के संबंध में निम्नलिखित कथनों पर विचार कीजिए:<br><br>1. इसका प्रक्षेपण 4 सितंबर 2026 को निर्धारित है।<br>2. इसके लिए प्रक्षेपण यान GSLV-F17 का उपयोग किया जाएगा।<br><br>सत्य कथन का चयन करें:",
+          options: ["केवल 1", "केवल 2", "1 और 2 दोनों", "न तो 1 और न ही 2"],
+          exp: "दोनों कथन सत्य हैं: EOS-05 का प्रक्षेपण 4 सितंबर 2026 को रॉकेट GSLV-F17 से होना है।"
+        },
+        en: {
+          q: "Consider the following statements regarding ISRO's satellite mission 'EOS-05':<br><br>1. Its launch is scheduled for 4 September 2026.<br>2. It will utilize the GSLV-F17 launch vehicle.<br><br>Select the correct statement:",
+          options: ["1 only", "2 only", "Both 1 and 2", "Neither 1 nor 2"],
+          exp: "Both statements are correct: EOS-05 launch date is 4 September 2026 aboard GSLV-F17."
+        },
+        correct: 2
       },
       {
         id: 21,
-        q: "इसरो द्वारा 12 जनवरी 2026 को प्रक्षेपित उपग्रह 'EOS-N1' के संदर्भ में सत्य तथ्य चुनिए:",
-        options: [
-          "इसे GSLV-F16 द्वारा सफलतापूर्वक भू-स्थैतिक कक्षा में स्थापित किया गया।",
-          "इसे PSLV-C62 द्वारा प्रक्षेपित किया गया परंतु यह मिशन असफल रहा।",
-          "यह नासा और इसरो का संयुक्त पृथ्वी अवलोकन मिशन था।",
-          "यह स्पेसएक्स के फाल्कन-9 रॉकेट द्वारा प्रक्षेपित किया गया।"
-        ],
-        correct: 1,
-        exp: "तालिका के अनुसार EOS-N1 को 12 जनवरी 2026 को PSLV-C62 द्वारा प्रक्षेपित किया गया जो असफल रहा।"
+        hi: {
+          q: "इसरो द्वारा 12 जनवरी 2026 को प्रक्षेपित उपग्रह 'EOS-N1' के संदर्भ में सत्य तथ्य चुनिए:",
+          options: [
+            "इसे GSLV-F16 द्वारा सफलतापूर्वक भू-स्थैतिक कक्षा में स्थापित किया गया।",
+            "इसे PSLV-C62 द्वारा प्रक्षेपित किया गया परंतु यह मिशन असफल रहा।",
+            "यह नासा और इसरो का संयुक्त पृथ्वी अवलोकन मिशन था।",
+            "यह स्पेसएक्स के फाल्कन-9 रॉकेट द्वारा प्रक्षेपित किया गया।"
+          ],
+          exp: "तालिका के अनुसार EOS-N1 को 12 जनवरी 2026 को PSLV-C62 द्वारा प्रक्षेपित किया गया जो असफल रहा।"
+        },
+        en: {
+          q: "Select the true fact regarding the 'EOS-N1' satellite launched by ISRO on 12 January 2026:",
+          options: [
+            "It was successfully placed into geostationary orbit by GSLV-F16.",
+            "It was launched via PSLV-C62 but the mission was unsuccessful (failed).",
+            "It was a joint Earth observation mission of NASA and ISRO.",
+            "It was launched by SpaceX Falcon-9 rocket."
+          ],
+          exp: "As per official records, EOS-N1 was launched on 12 January 2026 aboard PSLV-C62 which failed."
+        },
+        correct: 1
       },
       {
         id: 22,
-        q: "LVM3 रॉकेट द्वारा प्रक्षेपित किए जाने वाले मिशनों के संबंध में निम्नलिखित में से कौन-सा युग्म सही है?<br><br>1. BlueBird Block-2 - 24 दिसंबर 2025 (LVM3-M6)<br>2. CMS-03 / GSAT-7R - 2 नवंबर 2025 (LVM3-M5)<br><br>कूट से उत्तर दीजिए:",
-        options: ["केवल 1", "केवल 2", "1 और 2 दोनों", "न तो 1 और न ही 2"],
-        correct: 2,
-        exp: "दोनों युग्म सत्य हैं: BlueBird Block-2 हेतु LVM3-M6 तथा CMS-03/GSAT-7R हेतु LVM3-M5 रॉकेट निर्धारित हैं।"
+        hi: {
+          q: "LVM3 रॉकेट द्वारा प्रक्षेपित किए जाने वाले मिशनों के संबंध में निम्नलिखित में से कौन-सा युग्म सही है?<br><br>1. BlueBird Block-2 - 24 दिसंबर 2025 (LVM3-M6)<br>2. CMS-03 / GSAT-7R - 2 नवंबर 2025 (LVM3-M5)<br><br>कूट से उत्तर दीजिए:",
+          options: ["केवल 1", "केवल 2", "1 और 2 दोनों", "न तो 1 और न ही 2"],
+          exp: "दोनों युग्म सत्य हैं: BlueBird Block-2 हेतु LVM3-M6 तथा CMS-03/GSAT-7R हेतु LVM3-M5 रॉकेट निर्धारित हैं।"
+        },
+        en: {
+          q: "Which pair is correct regarding missions launched by the LVM3 launch vehicle?<br><br>1. BlueBird Block-2 - 24 December 2025 (LVM3-M6)<br>2. CMS-03 / GSAT-7R - 2 November 2025 (LVM3-M5)<br><br>Answer using codes:",
+          options: ["1 only", "2 only", "Both 1 and 2", "Neither 1 nor 2"],
+          exp: "Both pairs are correct: BlueBird Block-2 with LVM3-M6 and CMS-03 with LVM3-M5."
+        },
+        correct: 2
       },
       {
         id: 23,
-        q: "इसरो एवं नासा (NASA) के अत्यंत प्रतीक्षित संयुक्त मिशन 'NISAR' के प्रक्षेपण का विवरण क्या है?",
-        options: [
-          "प्रक्षेपण तिथि: 30 जुलाई 2025 | यान: GSLV-F16",
-          "प्रक्षेपण तिथि: 25 जून 2025 | यान: PSLV-C61",
-          "प्रक्षेपण तिथि: 18 मई 2025 | यान: GSLV-F15",
-          "प्रक्षेपण तिथि: 30 दिसंबर 2024 | यान: LVM3-M6"
-        ],
-        correct: 0,
-        exp: "NISAR (इसरो-नासा संयुक्त मिशन) 30 जुलाई 2025 को GSLV-F16 प्रक्षेपण यान द्वारा प्रक्षेपित होना निर्धारित है।"
+        hi: {
+          q: "इसरो एवं नासा (NASA) के अत्यंत प्रतीक्षित संयुक्त मिशन 'NISAR' के प्रक्षेपण का विवरण क्या है?",
+          options: [
+            "प्रक्षेपण तिथि: 30 जुलाई 2025 | यान: GSLV-F16",
+            "प्रक्षेपण तिथि: 25 जून 2025 | यान: PSLV-C61",
+            "प्रक्षेपण तिथि: 18 मई 2025 | यान: GSLV-F15",
+            "प्रक्षेपण तिथि: 30 दिसंबर 2024 | यान: LVM3-M6"
+          ],
+          exp: "NISAR (इसरो-नासा संयुक्त मिशन) 30 जुलाई 2025 को GSLV-F16 प्रक्षेपण यान द्वारा प्रक्षेपित होना निर्धारित है।"
+        },
+        en: {
+          q: "What are the launch details for the ISRO-NASA joint Earth observation mission 'NISAR'?",
+          options: [
+            "Launch Date: 30 July 2025 | Vehicle: GSLV-F16",
+            "Launch Date: 25 June 2025 | Vehicle: PSLV-C61",
+            "Launch Date: 18 May 2025 | Vehicle: GSLV-F15",
+            "Launch Date: 30 December 2024 | Vehicle: LVM3-M6"
+          ],
+          exp: "NISAR (ISRO-NASA joint mission) is scheduled for 30 July 2025 aboard GSLV-F16."
+        },
+        correct: 0
       },
       {
         id: 24,
-        q: "अंतरिक्ष मिशन 'Axiom-4' तथा 'GSAT-20' में निम्नलिखित में से कौन-सी समानता है?",
-        options: [
-          "दोनों को इसरो के LVM3 रॉकेट से प्रक्षेपित किया गया।",
-          "दोनों का प्रक्षेपण स्पेसएक्स (SpaceX) के फाल्कन-9 (Falcon-9) रॉकेट से हुआ/निर्धारित है।",
-          "दोनों पूर्णतः चंद्रमा अन्वेषण मिशन हैं।",
-          "दोनों PSLV रॉकेट की विफलता के बाद पुनः प्रक्षेपित किए गए।"
-        ],
-        correct: 1,
-        exp: "Axiom-4 (25 जून 2025) तथा GSAT-20 (19 नवंबर 2024) दोनों का प्रक्षेपण स्पेसएक्स के फाल्कन-9 (Falcon-9) रॉकेट द्वारा हुआ/निर्धारित है।"
+        hi: {
+          q: "अंतरिक्ष मिशन 'Axiom-4' तथा 'GSAT-20' में निम्नलिखित में से कौन-सी समानता है?",
+          options: [
+            "दोनों को इसरो के LVM3 रॉकेट से प्रक्षेपित किया गया।",
+            "दोनों का प्रक्षेपण स्पेसएक्स (SpaceX) के फाल्कन-9 (Falcon-9) रॉकेट से हुआ/निर्धारित है।",
+            "दोनों पूर्णतः चंद्रमा अन्वेषण मिशन हैं।",
+            "दोनों PSLV रॉकेट की विफलता के बाद पुनः प्रक्षेपित किए गए।"
+          ],
+          exp: "Axiom-4 (25 जून 2025) तथा GSAT-20 (19 नवंबर 2024) दोनों का प्रक्षेपण स्पेसएक्स के फाल्कन-9 (Falcon-9) रॉकेट द्वारा हुआ/निर्धारित है।"
+        },
+        en: {
+          q: "What commonality exists between space missions 'Axiom-4' and 'GSAT-20'?",
+          options: [
+            "Both were launched by ISRO's LVM3 rocket.",
+            "Both were launched / scheduled via SpaceX's Falcon-9 rocket.",
+            "Both are lunar exploration missions.",
+            "Both were re-launched after PSLV rocket failures."
+          ],
+          exp: "Both Axiom-4 (25 June 2025) and GSAT-20 (19 Nov 2024) utilized/scheduled SpaceX Falcon-9 rockets."
+        },
+        correct: 1
       },
       {
         id: 25,
-        q: "इसरो के 100वें एवं 101वें प्रक्षेपण अभियानों के संबंध में विचार कीजिए:<br><br>1. 100वां मिशन NVS-02 उपग्रह का था जो 19 जनवरी 2025 को GSLV-F15 से प्रक्षेपित हुआ।<br>2. 101वां मिशन EOS-9 उपग्रह का था जो 18 मई 2025 को PSLV-C61 द्वारा प्रक्षेपित हुआ और असफल रहा।<br><br>उपर्युक्त में से कौन-सा/से कथन सत्य है/हैं?",
-        options: ["केवल 1", "केवल 2", "1 और 2 दोनों", "न तो 1 और न ही 2"],
-        correct: 2,
-        exp: "दोनों कथन सत्य हैं: NVS-02 (100वां) GSLV-F15 द्वारा तथा EOS-9 (101वां) PSLV-C61 (असफल) द्वारा रहा।"
+        hi: {
+          q: "इसरो के 100वें एवं 101वें प्रक्षेपण अभियानों के संबंध में विचार कीजिए:<br><br>1. 100वां मिशन NVS-02 उपग्रह का था जो 19 जनवरी 2025 को GSLV-F15 से प्रक्षेपित हुआ।<br>2. 101वां मिशन EOS-9 उपग्रह का था जो 18 मई 2025 को PSLV-C61 द्वारा प्रक्षेपित हुआ और असफल रहा।<br><br>उपर्युक्त में से कौन-सा/से कथन सत्य है/हैं?",
+          options: ["केवल 1", "केवल 2", "1 और 2 दोनों", "न तो 1 और न ही 2"],
+          exp: "दोनों कथन सत्य हैं: NVS-02 (100वां) GSLV-F15 द्वारा तथा EOS-9 (101वां) PSLV-C61 (असफल) द्वारा रहा।"
+        },
+        en: {
+          q: "Consider the following regarding ISRO's 100th and 101st launch missions:<br><br>1. The 100th mission was NVS-02 launched on 19 Jan 2025 via GSLV-F15.<br>2. The 101st mission was EOS-9 launched on 18 May 2025 via PSLV-C61 (failed).<br><br>Which of the statements given above are correct?",
+          options: ["1 only", "2 only", "Both 1 and 2", "Neither 1 nor 2"],
+          exp: "Both statements are correct according to the mission manifest."
+        },
+        correct: 2
       },
       {
         id: 26,
-        q: "दिसंबर 2024 में प्रक्षेपित मिशनों के संबंध में निम्नलिखित युग्मों पर विचार कीजिए:<br><br>1. SpaDeX मिशन - 30 दिसंबर 2024 (PSLV-C60)<br>2. प्रोबा-3 (Proba-3) मिशन - 5 दिसंबर 2024 (PSLV-C59)<br><br>इनमें से कौन-सा/से युग्म सही सुमेलित है/हैं?",
-        options: ["केवल 1", "केवल 2", "1 और 2 दोनों", "न तो 1 और न ही 2"],
-        correct: 2,
-        exp: "दोनों युग्म सत्य हैं: SpaDeX मिशन PSLV-C60 से और Proba-3 मिशन PSLV-C59 से प्रक्षेपित हुआ।"
+        hi: {
+          q: "दिसंबर 2024 में प्रक्षेपित मिशनों के संबंध में निम्नलिखित युग्मों पर विचार कीजिए:<br><br>1. SpaDeX मिशन - 30 दिसंबर 2024 (PSLV-C60)<br>2. प्रोबा-3 (Proba-3) मिशन - 5 दिसंबर 2024 (PSLV-C59)<br><br>इनमें से कौन-सा/से युग्म सही सुमेलित है/हैं?",
+          options: ["केवल 1", "केवल 2", "1 और 2 दोनों", "न तो 1 और न ही 2"],
+          exp: "दोनों युग्म सत्य हैं: SpaDeX मिशन PSLV-C60 से और Proba-3 मिशन PSLV-C59 से प्रक्षेपित हुआ।"
+        },
+        en: {
+          q: "Consider the pairs of missions launched in December 2024:<br><br>1. SpaDeX Mission - 30 December 2024 (PSLV-C60)<br>2. Proba-3 Mission - 5 December 2024 (PSLV-C59)<br><br>Which of the pairs are correctly matched?",
+          options: ["1 only", "2 only", "Both 1 and 2", "Neither 1 nor 2"],
+          exp: "Both pairs are correctly matched."
+        },
+        correct: 2
       },
       {
         id: 27,
-        q: "इसरो के प्रस्तावित 'भारतीय अंतरिक्ष स्टेशन' (Space Station) की योजना के संबंध में कौन-सा तथ्य सही है?",
-        options: [
-          "लक्ष्य वर्ष: 2026 | यात्री ठहराव: 60 दिन",
-          "लक्ष्य वर्ष: 2028 | नियोजित स्टेशन जहां यात्री 15-20 दिन रह सकेंगे",
-          "लक्ष्य वर्ष: 2030 | केवल रोबोटिक अनुसंधान केंद्र",
-          "लक्ष्य वर्ष: 2035 | नासा के साथ संयुक्त स्टेशन"
-        ],
-        correct: 1,
-        exp: "इसरो की योजना अनुसार 2028 तक एक नियोजित अंतरिक्ष स्टेशन स्थापित करना है जहां यात्री 15-20 दिन रह सकेंगे।"
+        hi: {
+          q: "इसरो के प्रस्तावित 'भारतीय अंतरिक्ष स्टेशन' (Space Station) की योजना के संबंध में कौन-सा तथ्य सही है?",
+          options: [
+            "लक्ष्य वर्ष: 2026 | यात्री ठहराव: 60 दिन",
+            "लक्ष्य वर्ष: 2028 | नियोजित स्टेशन जहां यात्री 15-20 दिन रह सकेंगे",
+            "लक्ष्य वर्ष: 2030 | केवल रोबोटिक अनुसंधान केंद्र",
+            "लक्ष्य वर्ष: 2035 | नासा के साथ संयुक्त स्टेशन"
+          ],
+          exp: "इसरो की योजना अनुसार 2028 तक एक नियोजित अंतरिक्ष स्टेशन स्थापित करना है जहां यात्री 15-20 दिन रह सकेंगे।"
+        },
+        en: {
+          q: "Which fact is correct regarding ISRO's proposed 'Indian Space Station'?",
+          options: [
+            "Target Year: 2026 | Crew stay: 60 days",
+            "Target Year: 2028 | Planned station where travelers can stay 15-20 days",
+            "Target Year: 2030 | Unmanned robotic research facility only",
+            "Target Year: 2035 | Joint space station with NASA"
+          ],
+          exp: "As per the roadmap, ISRO targets 2028 for a planned space station where astronauts can stay for 15-20 days."
+        },
+        correct: 1
       },
       {
         id: 28,
-        q: "इसरो के 'चंद्रयान-4' मिशन का प्राथमिक उद्देश्य क्या है?",
-        options: [
-          "चंद्रमा के दक्षिणी ध्रुव पर मानव उतारना",
-          "चंद्रमा से सैंपल लेकर पृथ्वी तक सुरक्षित वापस पहुंचना",
-          "चंद्रमा की कक्षा में स्थायी स्पेस स्टेशन बनाना",
-          "चंद्रमा पर केवल जल-बर्फ की ड्रिलिंग करना"
-        ],
-        correct: 1,
-        exp: "चंद्रयान-4 (लक्ष्य: 2028) का मुख्य उद्देश्य चंद्रमा की सतह से नमूने (सैंपल) एकत्रित कर पृथ्वी तक वापस लाना है।"
+        hi: {
+          q: "इसरो के 'चंद्रयान-4' मिशन का प्राथमिक उद्देश्य क्या है?",
+          options: [
+            "चंद्रमा के दक्षिणी ध्रुव पर मानव उतारना",
+            "चंद्रमा से सैंपल लेकर पृथ्वी तक सुरक्षित वापस पहुंचना",
+            "चंद्रमा की कक्षा में स्थायी स्पेस स्टेशन बनाना",
+            "चंद्रमा पर केवल जल-बर्फ की ड्रिलिंग करना"
+          ],
+          exp: "चंद्रयान-4 (लक्ष्य: 2028) का मुख्य उद्देश्य चंद्रमा की सतह से नमूने (सैंपल) एकत्रित कर पृथ्वी तक वापस लाना है।"
+        },
+        en: {
+          q: "What is the primary objective of ISRO's 'Chandrayaan-4' mission?",
+          options: [
+            "Landing astronauts on the lunar South Pole",
+            "Retrieving lunar samples and returning safely back to Earth",
+            "Building a permanent lunar orbital space station",
+            "Drilling deep water-ice cores on the Moon"
+          ],
+          exp: "Chandrayaan-4 (Target: 2028) aims to retrieve samples from the Moon and return them safely to Earth."
+        },
+        correct: 1
       },
       {
         id: 29,
-        q: "'LUPEX' मिशन के संदर्भ में निम्नलिखित कथनों पर विचार कीजिए:<br><br>1. यह मिशन वर्ष 2028 के लिए लक्षित है।<br>2. यह जापानी अंतरिक्ष एजेंसी JAXA और भारतीय अंतरिक्ष एजेंसी ISRO की संयुक्त परियोजना है।<br><br>सत्य कथन चुनें:",
-        options: ["केवल 1", "केवल 2", "1 और 2 दोनों", "न तो 1 और न ही 2"],
-        correct: 2,
-        exp: "दोनों कथन सत्य हैं: LUPEX (2028) JAXA (जापान) और ISRO की संयुक्त परियोजना है।"
+        hi: {
+          q: "'LUPEX' मिशन के संदर्भ में निम्नलिखित कथनों पर विचार कीजिए:<br><br>1. यह मिशन वर्ष 2028 के लिए लक्षित है।<br>2. यह जापानी अंतरिक्ष एजेंसी JAXA और भारतीय अंतरिक्ष एजेंसी ISRO की संयुक्त परियोजना है।<br><br>सत्य कथन चुनें:",
+          options: ["केवल 1", "केवल 2", "1 और 2 दोनों", "न तो 1 और न ही 2"],
+          exp: "दोनों कथन सत्य हैं: LUPEX (2028) JAXA (जापान) और ISRO की संयुक्त परियोजना है।"
+        },
+        en: {
+          q: "Consider the following statements regarding the 'LUPEX' mission:<br><br>1. It is targeted for the year 2028.<br>2. It is a joint project of JAXA (Japan) and ISRO (India).<br><br>Select the correct statement:",
+          options: ["1 only", "2 only", "Both 1 and 2", "Neither 1 nor 2"],
+          exp: "Both statements are correct: LUPEX is a joint Lunar Polar Exploration project between JAXA and ISRO targeted for 2028."
+        },
+        correct: 2
       },
       {
         id: 30,
-        q: "भारत के पहले मानव अंतरिक्ष मिशन 'गगनयान' के प्रक्षेपण का आधिकारिक लक्ष्य वर्ष क्या निर्धारित किया गया है?",
-        options: ["वर्ष 2025", "वर्ष 2026", "वर्ष 2027", "वर्ष 2028"],
-        correct: 2,
-        exp: "तालिका के अनुसार गगनयान (भारत का पहला मानव अंतरिक्ष मिशन) का लक्ष्य वर्ष 2027 निर्धारित है।"
+        hi: {
+          q: "भारत के पहले मानव अंतरिक्ष मिशन 'गगनयान' के प्रक्षेपण का आधिकारिक लक्ष्य वर्ष क्या निर्धारित किया गया है?",
+          options: ["वर्ष 2025", "वर्ष 2026", "वर्ष 2027", "वर्ष 2028"],
+          exp: "तालिका के अनुसार गगनयान (भारत का पहला मानव अंतरिक्ष मिशन) का लक्ष्य वर्ष 2027 निर्धारित है।"
+        },
+        en: {
+          q: "What is the official target launch year for India's first manned spaceflight mission 'Gaganyaan'?",
+          options: ["Year 2025", "Year 2026", "Year 2027", "Year 2028"],
+          exp: "According to the official manifest, Gaganyaan is scheduled for launch in 2027."
+        },
+        correct: 2
       },
       {
         id: 31,
-        q: "इसरो के इंटरप्लेनेटरी मिशनों के संदर्भ में सूची मिलान कीजिए:<br><br><strong>मिशन</strong><br>(a) शुक्रयान-1<br>(b) मंगलयान-2<br><br><strong>लक्ष्य वर्ष एवं उद्देश्य</strong><br>1. 2028 (शुक्र के वायुमंडल का अध्ययन करने के लिए)<br>2. 2030 (मंगल ग्रह हेतु भारत का दूसरा इंटरप्लेनेटरी मिशन)",
-        options: [
-          "(a)-1, (b)-2",
-          "(a)-2, (b)-1",
-          "(a)-1, (b)-1",
-          "(a)-2, (b)-2"
-        ],
-        correct: 0,
-        exp: "शुक्रयान-1 (2028) शुक्र के वायुमंडल के अध्ययन हेतु तथा मंगलयान-2 (2030) दूसरा इंटरप्लेनेटरी मिशन है।"
+        hi: {
+          q: "इसरो के इंटरप्लेनेटरी मिशनों के संदर्भ में सूची मिलान कीजिए:<br><br><strong>मिशन</strong><br>(a) शुक्रयान-1<br>(b) मंगलयान-2<br><br><strong>लक्ष्य वर्ष एवं उद्देश्य</strong><br>1. 2028 (शुक्र के वायुमंडल का अध्ययन करने के लिए)<br>2. 2030 (मंगल ग्रह हेतु भारत का दूसरा इंटरप्लेनेटरी मिशन)",
+          options: [
+            "(a)-1, (b)-2",
+            "(a)-2, (b)-1",
+            "(a)-1, (b)-1",
+            "(a)-2, (b)-2"
+          ],
+          exp: "शुक्रयान-1 (2028) शुक्र के वायुमंडल के अध्ययन हेतु तथा मंगलयान-2 (2030) दूसरा इंटरप्लेनेटरी मिशन है।"
+        },
+        en: {
+          q: "Match ISRO's interplanetary missions with their target years and objectives:<br><br><strong>Mission</strong><br>(a) Shukrayaan-1<br>(b) Mangalyaan-2<br><br><strong>Target & Goal</strong><br>1. 2028 (Study the atmosphere of Venus)<br>2. 2030 (India's second interplanetary mission to Mars)",
+          options: [
+            "(a)-1, (b)-2",
+            "(a)-2, (b)-1",
+            "(a)-1, (b)-1",
+            "(a)-2, (b)-2"
+          ],
+          exp: "Shukrayaan-1 (2028) studies Venus's atmosphere; Mangalyaan-2 (2030) is India's second Mars mission."
+        },
+        correct: 0
       },
       {
         id: 32,
-        q: "'प्रोजेक्ट चीता' के प्रथम चरण में नामीबिया से लाए गए चीतों की संरचना के संबंध में सही तथ्य क्या है?",
-        options: [
-          "17 सितंबर 2022 को कुल 8 चीते (5 मादा और 3 नर) लाए गए।",
-          "17 सितंबर 2022 को कुल 12 चीते (6 मादा और 6 नर) लाए गए।",
-          "15 अगस्त 2023 को कुल 8 चीते (4 मादा और 4 नर) लाए गए।",
-          "26 जनवरी 2023 को कुल 10 चीते (8 मादा और 2 नर) लाए गए।"
-        ],
-        correct: 0,
-        exp: "17 सितंबर 2022 को नामीबिया से 8 अफ्रीकी चीतों (5 मादा और 3 नर) को मध्य प्रदेश के कूनो राष्ट्रीय उद्यान में लाया गया था।"
+        hi: {
+          q: "'प्रोजेक्ट चीता' के प्रथम चरण में नामीबिया से लाए गए चीतों की संरचना के संबंध में सही तथ्य क्या है?",
+          options: [
+            "17 सितंबर 2022 को कुल 8 चीते (5 मादा और 3 नर) लाए गए।",
+            "17 सितंबर 2022 को कुल 12 चीते (6 मादा और 6 नर) लाए गए।",
+            "15 अगस्त 2023 को कुल 8 चीते (4 मादा और 4 नर) लाए गए।",
+            "26 जनवरी 2023 को कुल 10 चीते (8 मादा और 2 नर) लाए गए।"
+          ],
+          exp: "17 सितंबर 2022 को नामीबिया से 8 अफ्रीकी चीतों (5 मादा और 3 नर) को मध्य प्रदेश के कूनो राष्ट्रीय उद्यान में लाया गया था।"
+        },
+        en: {
+          q: "What is the accurate fact regarding the composition of cheetahs translocated in the first phase of 'Project Cheetah'?",
+          options: [
+            "On 17 September 2022, 8 cheetahs (5 females and 3 males) were brought.",
+            "On 17 September 2022, 12 cheetahs (6 females and 6 males) were brought.",
+            "On 15 August 2023, 8 cheetahs (4 females and 4 males) were brought.",
+            "On 26 January 2023, 10 cheetahs (8 females and 2 males) were brought."
+          ],
+          exp: "On 17 September 2022, 8 African cheetahs (5 females, 3 males) were translocated from Namibia to Kuno National Park, MP."
+        },
+        correct: 0
       },
       {
         id: 33,
-        q: "कूनो राष्ट्रीय उद्यान में नामीबिया से लाई गई किस मादा चीता की मृत्यु हो गई थी, जिसका विशेष उल्लेख मिलता है?",
-        options: ["आशा", "साशा", "ज्वाला", "सियाया"],
-        correct: 1,
-        exp: "कूनो राष्ट्रीय उद्यान में नामीबियाई मादा चीता 'साशा' की मृत्यु हो गई थी।"
+        hi: {
+          q: "कूनो राष्ट्रीय उद्यान में नामीबिया से लाई गई किस मादा चीता की मृत्यु हो गई थी, जिसका विशेष उल्लेख मिलता है?",
+          options: ["आशा", "साशा", "ज्वाला", "सियाया"],
+          exp: "कूनो राष्ट्रीय उद्यान में नामीबियाई मादा चीता 'साशा' की मृत्यु हो गई थी।"
+        },
+        en: {
+          q: "Which female cheetah brought from Namibia died in Kuno National Park, as highlighted in records?",
+          options: ["Aasha", "Sasha", "Jwala", "Siyaya"],
+          exp: "Female Namibian cheetah named 'Sasha' succumbed to a kidney ailment in Kuno National Park."
+        },
+        correct: 1
       },
       {
         id: 34,
-        q: "प्रोजेक्ट चीता की सतत निगरानी एवं प्रबंधन हेतु सरकार द्वारा गठित कार्यबल (Task Force) का स्वरूप क्या था?",
-        options: [
-          "5 सदस्यीय कार्यबल (3 वर्ष की अवधि हेतु)",
-          "7 सदस्यीय कार्यबल (1 वर्ष की अवधि हेतु)",
-          "9 सदस्यीय कार्यबल (2 वर्ष की अवधि हेतु)",
-          "11 सदस्यीय कार्यबल (5 वर्ष की अवधि हेतु)"
-        ],
-        correct: 2,
-        exp: "चीता परियोजना की निगरानी हेतु केंद्र सरकार ने 9 सदस्यीय कार्यबल को 2 वर्ष की अवधि के लिए गठित किया था।"
+        hi: {
+          q: "प्रोजेक्ट चीता की सतत निगरानी एवं प्रबंधन हेतु सरकार द्वारा गठित कार्यबल (Task Force) का स्वरूप क्या था?",
+          options: [
+            "5 सदस्यीय कार्यबल (3 वर्ष की अवधि हेतु)",
+            "7 सदस्यीय कार्यबल (1 वर्ष की अवधि हेतु)",
+            "9 सदस्यीय कार्यबल (2 वर्ष की अवधि हेतु)",
+            "11 सदस्यीय कार्यबल (5 वर्ष की अवधि हेतु)"
+          ],
+          exp: "चीता परियोजना की निगरानी हेतु केंद्र सरकार ने 9 सदस्यीय कार्यबल को 2 वर्ष की अवधि के लिए गठित किया था।"
+        },
+        en: {
+          q: "What was the official composition and tenure of the Task Force constituted by the government for Project Cheetah?",
+          options: [
+            "5-member task force for a 3-year tenure",
+            "7-member task force for a 1-year tenure",
+            "9-member task force for a 2-year tenure",
+            "11-member task force for a 5-year tenure"
+          ],
+          exp: "The Government formed a 9-member task force for a tenure of 2 years to oversee Project Cheetah."
+        },
+        correct: 2
       },
       {
         id: 35,
-        q: "प्रोजेक्ट चीता के तहत अगले 5 वर्षों में कुल कितने चीतों को भारत में पुनर्वासित करने की आधिकारिक योजना है?",
-        options: ["कुल 25 चीते", "कुल 50 चीते", "कुल 75 चीते", "कुल 100 चीते"],
-        correct: 1,
-        exp: "इस प्रोजेक्ट के तहत आगामी 5 वर्षों में कुल 50 चीतों को भारत लाने की योजना निर्धारित की गई है।"
+        hi: {
+          q: "प्रोजेक्ट चीता के तहत अगले 5 वर्षों में कुल कितने चीतों को भारत में पुनर्वासित करने की आधिकारिक योजना है?",
+          options: ["कुल 25 चीते", "कुल 50 चीते", "कुल 75 चीते", "कुल 100 चीते"],
+          exp: "इस प्रोजेक्ट के तहत आगामी 5 वर्षों में कुल 50 चीतों को भारत लाने की योजना निर्धारित की गई है।"
+        },
+        en: {
+          q: "Under Project Cheetah, what is the target number of cheetahs planned for reintroduction into India over the next 5 years?",
+          options: ["Total 25 cheetahs", "Total 50 cheetahs", "Total 75 cheetahs", "Total 100 cheetahs"],
+          exp: "The project outlines a strategic target to introduce a total of 50 cheetahs over 5 years."
+        },
+        correct: 1
       },
       {
         id: 36,
-        q: "'बाघ गणना रिपोर्ट : 2022' के संबंध में प्रशासनिक तथ्यों पर विचार कीजिए:<br><br>1. यह रिपोर्ट भारतीय वन्यजीव संस्थान द्वारा 29 जुलाई 2023 को जारी की गई।<br>2. वर्ष 2022 की रिपोर्ट इस श्रृंखला की 5वें क्रम की रिपोर्ट है।<br>3. यह राष्ट्रीय गणना प्रत्येक 4 वर्ष के अंतराल पर जारी की जाती है।<br><br>उपर्युक्त में से कौन-से कथन सही हैं?",
-        options: ["केवल 1 और 2", "केवल 2 और 3", "केवल 1 और 3", "1, 2 और 3 सभी"],
-        correct: 3,
-        exp: "तीनों कथन सही हैं: जारीकर्ता WII (29 जुलाई 2023), क्रम 5वां, और यह हर 4 वर्ष पर जारी होती है।"
+        hi: {
+          q: "'बाघ गणना रिपोर्ट : 2022' के संबंध में प्रशासनिक तथ्यों पर विचार कीजिए:<br><br>1. यह रिपोर्ट भारतीय वन्यजीव संस्थान द्वारा 29 जुलाई 2023 को जारी की गई।<br>2. वर्ष 2022 की रिपोर्ट इस श्रृंखला की 5वें क्रम की रिपोर्ट है।<br>3. यह राष्ट्रीय गणना प्रत्येक 4 वर्ष के अंतराल पर जारी की जाती है।<br><br>उपर्युक्त में से कौन-से कथन सही हैं?",
+          options: ["केवल 1 और 2", "केवल 2 और 3", "केवल 1 और 3", "1, 2 और 3 सभी"],
+          exp: "तीनों कथन सही हैं: जारीकर्ता WII (29 जुलाई 2023), क्रम 5वां, और यह हर 4 वर्ष पर जारी होती है।"
+        },
+        en: {
+          q: "Consider administrative facts regarding the 'Tiger Census Report : 2022':<br><br>1. Released by the Wildlife Institute of India on 29 July 2023.<br>2. The 2022 census report is the 5th cycle report.<br>3. This national census is conducted every 4 years.<br><br>Which of the statements given above are correct?",
+          options: ["1 and 2 only", "2 and 3 only", "1 and 3 only", "All 1, 2 and 3"],
+          exp: "All three statements are completely accurate."
+        },
+        correct: 3
       },
       {
         id: 37,
-        q: "बाघ गणना रिपोर्ट 2022 के अनुसार भारत में बाघों की कुल संख्या और उनकी वैश्विक हिस्सेदारी कितनी है?",
-        options: [
-          "कुल संख्या: 3682 | विश्व के कुल बाघों का 75%",
-          "कुल संख्या: 2967 | विश्व के कुल बाघों का 60%",
-          "कुल संख्या: 3167 | विश्व के कुल बाघों का 50%",
-          "कुल संख्या: 3925 | विश्व के कुल बाघों का 85%"
-        ],
-        correct: 0,
-        exp: "भारत में बाघों की कुल संख्या 3682 दर्ज की गई (2018 में 2967 थी) और विश्व के 75% बाघ केवल भारत में हैं।"
+        hi: {
+          q: "बाघ गणना रिपोर्ट 2022 के अनुसार भारत में बाघों की कुल संख्या और उनकी वैश्विक हिस्सेदारी कितनी है?",
+          options: [
+            "कुल संख्या: 3682 | विश्व के कुल बाघों का 75%",
+            "कुल संख्या: 2967 | विश्व के कुल बाघों का 60%",
+            "कुल संख्या: 3167 | विश्व के कुल बाघों का 50%",
+            "कुल संख्या: 3925 | विश्व के कुल बाघों का 85%"
+          ],
+          exp: "भारत में बाघों की कुल संख्या 3682 दर्ज की गई (2018 में 2967 थी) और विश्व के 75% बाघ केवल भारत में हैं।"
+        },
+        en: {
+          q: "According to Tiger Census 2022, what is the total tiger population in India and its share of the global total?",
+          options: [
+            "Total Population: 3682 | 75% of global tigers",
+            "Total Population: 2967 | 60% of global tigers",
+            "Total Population: 3167 | 50% of global tigers",
+            "Total Population: 3925 | 85% of global tigers"
+          ],
+          exp: "India's tiger population was 3682, accounting for 75% of the world's wild tigers."
+        },
+        correct: 0
       },
       {
         id: 38,
-        q: "बाघ गणना रिपोर्ट 2022 के आंकड़ों के संदर्भ में निम्नलिखित कथनों में से कौन-सा <strong>असत्य</strong> है?",
-        options: [
-          "देश में सर्वाधिक बाघ मध्य प्रदेश में (785 बाघ) दर्ज किए गए।",
-          "ताजा रिपोर्ट के अनुसार बाघों की संभावित संख्या न्यूनतम 3167 एवं अधिकतम 3925 है।",
-          "बाघों की संख्या में औसत वार्षिक वृद्धि दर 12.5% दर्ज की गई।",
-          "वर्ष 2018 और 2022 के बीच बाघों की कुल संख्या में 24.1% की वृद्धि दर्ज की गई।"
-        ],
-        correct: 2,
-        exp: "विकल्प (C) गलत है क्योंकि औसत वार्षिक वृद्धि दर 6.1% है (न कि 12.5%)। 2018 से 2022 के बीच कुल वृद्धि 24.1% रही।"
+        hi: {
+          q: "बाघ गणना रिपोर्ट 2022 के आंकड़ों के संदर्भ में निम्नलिखित कथनों में से कौन-सा <strong>असत्य</strong> है?",
+          options: [
+            "देश में सर्वाधिक बाघ मध्य प्रदेश में (785 बाघ) दर्ज किए गए।",
+            "ताजा रिपोर्ट के अनुसार बाघों की संभावित संख्या न्यूनतम 3167 एवं अधिकतम 3925 है।",
+            "बाघों की संख्या में औसत वार्षिक वृद्धि दर 12.5% दर्ज की गई।",
+            "वर्ष 2018 और 2022 के बीच बाघों की कुल संख्या में 24.1% की वृद्धि दर्ज की गई।"
+          ],
+          exp: "विकल्प (C) गलत है क्योंकि औसत वार्षिक वृद्धि दर 6.1% है (न कि 12.5%)। 2018 से 2022 के बीच कुल वृद्धि 24.1% रही।"
+        },
+        en: {
+          q: "Which statement is <strong>FALSE</strong> regarding the Tiger Census 2022 figures?",
+          options: [
+            "Highest tiger population was recorded in Madhya Pradesh (785 tigers).",
+            "Estimated population ranges between a minimum of 3167 and maximum of 3925.",
+            "Average annual growth rate was recorded at 12.5%.",
+            "Between 2018 and 2022, total tiger population grew by 24.1%."
+          ],
+          exp: "Option (C) is false because the average annual growth rate was 6.1%, not 12.5%."
+        },
+        correct: 2
       },
       {
         id: 39,
-        q: "बाघ गणना रिपोर्ट 2022 के अनुसार देश के किस टाइगर रिजर्व में सर्वाधिक बाघ पाए गए हैं?",
-        options: [
-          "बांधवगढ़ टाइगर रिजर्व (मध्य प्रदेश) - 210 बाघ",
-          "जिम कॉर्बेट रिजर्व (उत्तराखंड) - 260 बाघ",
-          "काजीरंगा नेशनल पार्क (असम) - 180 बाघ",
-          "सुंदरवन टाइगर रिजर्व (पश्चिम बंगाल) - 145 बाघ"
-        ],
-        correct: 1,
-        exp: "जिम कॉर्बेट रिजर्व (उत्तराखंड) में देश के सर्वाधिक 260 बाघ दर्ज किए गए हैं।"
+        hi: {
+          q: "बाघ गणना रिपोर्ट 2022 के अनुसार देश के किस टाइगर रिजर्व में सर्वाधिक बाघ पाए गए हैं?",
+          options: [
+            "बांधवगढ़ टाइगर रिजर्व (मध्य प्रदेश) - 210 बाघ",
+            "जिम कॉर्बेट रिजर्व (उत्तराखंड) - 260 बाघ",
+            "काजीरंगा नेशनल पार्क (असम) - 180 बाघ",
+            "सुंदरवन टाइगर रिजर्व (पश्चिम बंगाल) - 145 बाघ"
+          ],
+          exp: "जिम कॉर्बेट रिजर्व (उत्तराखंड) में देश के सर्वाधिक 260 बाघ दर्ज किए गए हैं।"
+        },
+        en: {
+          q: "Which tiger reserve recorded the highest tiger count in the country according to Tiger Census 2022?",
+          options: [
+            "Bandhavgarh Tiger Reserve (MP) - 210 tigers",
+            "Jim Corbett Reserve (Uttarakhand) - 260 tigers",
+            "Kaziranga National Park (Assam) - 180 tigers",
+            "Sundarbans Tiger Reserve (WB) - 145 tigers"
+          ],
+          exp: "Jim Corbett Reserve in Uttarakhand hosts the highest number of tigers at 260."
+        },
+        correct: 1
       },
       {
         id: 40,
-        q: "बाघ गणना रिपोर्ट 2022 के अनुसार बिहार राज्य में बाघों की संख्या वर्ष 2018 के 31 से बढ़कर वर्ष 2022 में कितनी हो गई है?",
-        options: ["45", "50", "54", "62"],
-        correct: 2,
-        exp: "बिहार में बाघों की संख्या 2018 में 31 थी जो 2022 की रिपोर्ट में बढ़कर 54 हो गई है।"
+        hi: {
+          q: "बाघ गणना रिपोर्ट 2022 के अनुसार बिहार राज्य में बाघों की संख्या वर्ष 2018 के 31 से बढ़कर वर्ष 2022 में कितनी हो गई है?",
+          options: ["45", "50", "54", "62"],
+          exp: "बिहार में बाघों की संख्या 2018 में 31 थी जो 2022 की रिपोर्ट में बढ़कर 54 हो गई है।"
+        },
+        en: {
+          q: "According to the 2022 report, the tiger count in Bihar increased from 31 in 2018 to how many in 2022?",
+          options: ["45", "50", "54", "62"],
+          exp: "In Bihar, the tiger count grew from 31 in 2018 to 54 in the 2022 census."
+        },
+        correct: 2
       },
       {
         id: 41,
-        q: "भारतीय सशस्त्र बलों एवं पुलिस बलों में प्रथम महिला प्रमुखों का सही मिलान कीजिए:<br><br><strong>महिला व्यक्तित्व</strong><br>(a) सोनाली मिश्रा<br>(b) आरती सरीन<br>(c) साधना सक्सेना नायर<br>(d) सुमन कुमारी<br><br><strong>पद / उपलब्धि</strong><br>1. BSF की पहली महिला स्नाइपर<br>2. रेलवे सुरक्षा बल (RPF) की पहली महिला महानिदेशक<br>3. पहली महिला महानिदेशक, सशस्त्र बल चिकित्सा सेवा<br>4. पहली महिला महानिदेशक, चिकित्सा सेवा (सेना)",
-        options: [
-          "(a)-2, (b)-3, (c)-4, (d)-1",
-          "(a)-3, (b)-2, (c)-1, (d)-4",
-          "(a)-2, (b)-4, (c)-3, (d)-1",
-          "(a)-1, (b)-3, (c)-4, (d)-2"
-        ],
-        correct: 0,
-        exp: "सोनाली मिश्रा (RPF DG), आरती सरीन (DG सशस्त्र बल चिकित्सा सेवा), साधना सक्सेना नायर (DG चिकित्सा सेवा - सेना), सुमन कुमारी (BSF स्नाइपर)।"
+        hi: {
+          q: "भारतीय सशस्त्र बलों एवं पुलिस बलों में प्रथम महिला प्रमुखों का सही मिलान कीजिए:<br><br><strong>महिला व्यक्तित्व</strong><br>(a) सोनाली मिश्रा<br>(b) आरती सरीन<br>(c) साधना सक्सेना नायर<br>(d) सुमन कुमारी<br><br><strong>पद / उपलब्धि</strong><br>1. BSF की पहली महिला स्नाइपर<br>2. रेलवे सुरक्षा बल (RPF) की पहली महिला महानिदेशक<br>3. पहली महिला महानिदेशक, सशस्त्र बल चिकित्सा सेवा<br>4. पहली महिला महानिदेशक, चिकित्सा सेवा (सेना)",
+          options: [
+            "(a)-2, (b)-3, (c)-4, (d)-1",
+            "(a)-3, (b)-2, (c)-1, (d)-4",
+            "(a)-2, (b)-4, (c)-3, (d)-1",
+            "(a)-1, (b)-3, (c)-4, (d)-2"
+          ],
+          exp: "सोनाली मिश्रा (RPF DG), आरती सरीन (DG सशस्त्र बल चिकित्सा सेवा), साधना सक्सेना नायर (DG चिकित्सा सेवा - सेना), सुमन कुमारी (BSF स्नाइपर)।"
+        },
+        en: {
+          q: "Match the first women leaders in Indian armed forces and security agencies:<br><br><strong>Personality</strong><br>(a) Sonali Mishra<br>(b) Aarti Sareen<br>(c) Sadhna Saxena Nair<br>(d) Suman Kumari<br><br><strong>Designation</strong><br>1. First woman sniper of BSF<br>2. First woman Director General of RPF<br>3. First woman DG Armed Forces Medical Services<br>4. First woman DG Medical Services (Army)",
+          options: [
+            "(a)-2, (b)-3, (c)-4, (d)-1",
+            "(a)-3, (b)-2, (c)-1, (d)-4",
+            "(a)-2, (b)-4, (c)-3, (d)-1",
+            "(a)-1, (b)-3, (c)-4, (d)-2"
+          ],
+          exp: "Sonali Mishra (2), Aarti Sareen (3), Sadhna Saxena Nair (4), Suman Kumari (1)."
+        },
+        correct: 0
       },
       {
         id: 42,
-        q: "केंद्रीय विश्वविद्यालयों की पहली महिला कुलपतियों के संदर्भ में सही युग्म पहचानिए:<br><br>1. प्रो. उमा कांजीलाल - इग्नू (IGNOU) की पहली महिला कुलपति<br>2. प्रो. नईमा खातून - अलीगढ़ मुस्लिम विश्वविद्यालय (AMU) की पहली महिला कुलपति",
-        options: ["केवल 1", "केवल 2", "1 और 2 दोनों", "न तो 1 और न ही 2"],
-        correct: 2,
-        exp: "दोनों सही हैं: उमा कांजीलाल इग्नू की तथा नईमा खातून एएमयू की पहली महिला कुलपति बनी हैं।"
+        hi: {
+          q: "केंद्रीय विश्वविद्यालयों की पहली महिला कुलपतियों के संदर्भ में सही युग्म पहचानिए:<br><br>1. प्रो. उमा कांजीलाल - इग्नू (IGNOU) की पहली महिला कुलपति<br>2. प्रो. नईमा खातून - अलीगढ़ मुस्लिम विश्वविद्यालय (AMU) की पहली महिला कुलपति",
+          options: ["केवल 1", "केवल 2", "1 और 2 दोनों", "न तो 1 और न ही 2"],
+          exp: "दोनों सही हैं: उमा कांजीलाल इग्नू की तथा नईमा खातून एएमयू की पहली महिला कुलपति बनी हैं।"
+        },
+        en: {
+          q: "Identify the correct pair(s) regarding the first female Vice Chancellors of central universities:<br><br>1. Prof. Uma Kanjilal - First woman VC of IGNOU<br>2. Prof. Naima Khatoon - First woman VC of Aligarh Muslim University (AMU)",
+          options: ["1 only", "2 only", "Both 1 and 2", "Neither 1 nor 2"],
+          exp: "Both statements are correct: Uma Kanjilal at IGNOU and Naima Khatoon at AMU."
+        },
+        correct: 2
       },
       {
         id: 43,
-        q: "भारतीय रक्षा बलों की एविएशन और पायलट शाखाओं में कीर्तिमान स्थापित करने वाली महिलाओं का मिलान कीजिए:<br><br><strong>व्यक्तित्व</strong><br>(a) आस्था पुनिया<br>(b) अभिलाषा बराक<br>(c) अनामिका राजीव<br>(d) शिवांगी सिंह<br><br><strong>उपलब्धि</strong><br>1. भारत की पहली महिला फाइटर पायलट<br>2. भारतीय नौसेना की पहली महिला फाइटर पायलट<br>3. भारतीय सेना की पहली महिला लड़ाकू हेलीकॉप्टर पायलट<br>4. भारतीय नौसेना की पहली महिला हेलीकॉप्टर पायलट",
-        options: [
-          "(a)-2, (b)-3, (c)-4, (d)-1",
-          "(a)-1, (b)-2, (c)-3, (d)-4",
-          "(a)-2, (b)-4, (c)-3, (d)-1",
-          "(a)-4, (b)-3, (c)-2, (d)-1"
-        ],
-        correct: 0,
-        exp: "आस्था पुनिया - नौसेना फाइटर पायलट (2), अभिलाषा बराक - थलसेना लड़ाकू हेलीकॉप्टर पायलट (3), अनामिका राजीव - नौसेना हेलीकॉप्टर पायलट (4), शिवांगी सिंह - भारत की पहली महिला फाइटर पायलट (1)।"
+        hi: {
+          q: "भारतीय रक्षा बलों की एविएशन और पायलट शाखाओं में कीर्तिमान स्थापित करने वाली महिलाओं का मिलान कीजिए:<br><br><strong>व्यक्तित्व</strong><br>(a) आस्था पुनिया<br>(b) अभिलाषा बराक<br>(c) अनामिका राजीव<br>(d) शिवांगी सिंह<br><br><strong>उपलब्धि</strong><br>1. भारत की पहली महिला फाइटर पायलट<br>2. भारतीय नौसेना की पहली महिला फाइटर पायलट<br>3. भारतीय सेना की पहली महिला लड़ाकू हेलीकॉप्टर पायलट<br>4. भारतीय नौसेना की पहली महिला हेलीकॉप्टर पायलट",
+          options: [
+            "(a)-2, (b)-3, (c)-4, (d)-1",
+            "(a)-1, (b)-2, (c)-3, (d)-4",
+            "(a)-2, (b)-4, (c)-3, (d)-1",
+            "(a)-4, (b)-3, (c)-2, (d)-1"
+          ],
+          exp: "आस्था पुनिया - नौसेना फाइटर पायलट (2), अभिलाषा बराक - थलसेना लड़ाकू हेलीकॉप्टर पायलट (3), अनामिका राजीव - नौसेना हेलीकॉप्टर पायलट (4), शिवांगी सिंह - भारत की पहली महिला फाइटर पायलट (1)।"
+        },
+        en: {
+          q: "Match pioneer women pilots in Indian defense aviation:<br><br><strong>Personality</strong><br>(a) Aastha Punia<br>(b) Abhilasha Barak<br>(c) Anamika Rajiv<br>(d) Shivangi Singh<br><br><strong>Achievement</strong><br>1. India's first woman fighter pilot<br>2. First woman fighter pilot of Indian Navy<br>3. Indian Army's first woman combat helicopter pilot<br>4. First woman helicopter pilot of Indian Navy",
+          options: [
+            "(a)-2, (b)-3, (c)-4, (d)-1",
+            "(a)-1, (b)-2, (c)-3, (d)-4",
+            "(a)-2, (b)-4, (c)-3, (d)-1",
+            "(a)-4, (b)-3, (c)-2, (d)-1"
+          ],
+          exp: "Correct matches: Aastha Punia (2), Abhilasha Barak (3), Anamika Rajiv (4), Shivangi Singh (1)."
+        },
+        correct: 0
       },
       {
         id: 44,
-        q: "राष्ट्रपति भवन में भारत के राष्ट्रपति की 'पहली महिला एडीसी' (ADC) बनने का गौरव किसे प्राप्त हुआ?",
-        options: ["यशस्वी सोलंकी", "प्रीति रजक", "गीता राणा", "हिना जायसवाल"],
-        correct: 0,
-        exp: "यशस्वी सोलंकी भारत के राष्ट्रपति की पहली महिला एडीसी (ADC) बनी हैं।"
+        hi: {
+          q: "राष्ट्रपति भवन में भारत के राष्ट्रपति की 'पहली महिला एडीसी' (ADC) बनने का गौरव किसे प्राप्त हुआ?",
+          options: ["यशस्वी सोलंकी", "प्रीति रजक", "गीता राणा", "हिना जायसवाल"],
+          exp: "यशस्वी सोलंकी भारत के राष्ट्रपति की पहली महिला एडीसी (ADC) बनी हैं।"
+        },
+        en: {
+          q: "Who achieved the distinction of becoming the first woman Aide-de-Camp (ADC) to the President of India?",
+          options: ["Yashasvi Solanki", "Preeti Rajak", "Geeta Rana", "Hina Jaiswal"],
+          exp: "Squadron Leader Yashasvi Solanki became the first woman ADC to the President of India."
+        },
+        correct: 0
       },
       {
         id: 45,
-        q: "पर्वतारोहण के क्षेत्र में उल्लेखनीय रिकॉर्ड बनाने वाली महिलाओं के संदर्भ में निम्नलिखित कथनों पर विचार कीजिए:<br><br>1. काम्या कार्तिकेयन - माउंट एवरेस्ट पर फतह करने वाली सबसे कम उम्र की भारतीय महिला।<br>2. ज्योति रात्रे - एवरेस्ट पर चढ़ने वाली सबसे उम्रदराज भारतीय महिला।<br><br>सत्य कथन चुनें:",
-        options: ["केवल 1", "केवल 2", "1 और 2 दोनों", "न तो 1 और न ही 2"],
-        correct: 2,
-        exp: "दोनों कथन सत्य हैं: सबसे कम उम्र में काम्या कार्तिकेयन तथा सबसे उम्रदराज ज्योति रात्रे हैं।"
+        hi: {
+          q: "पर्वतारोहण के क्षेत्र में उल्लेखनीय रिकॉर्ड बनाने वाली महिलाओं के संदर्भ में निम्नलिखित कथनों पर विचार कीजिए:<br><br>1. काम्या कार्तिकेयन - माउंट एवरेस्ट पर फतह करने वाली सबसे कम उम्र की भारतीय महिला।<br>2. ज्योति रात्रे - एवरेस्ट पर चढ़ने वाली सबसे उम्रदराज भारतीय महिला।<br><br>सत्य कथन चुनें:",
+          options: ["केवल 1", "केवल 2", "1 और 2 दोनों", "न तो 1 और न ही 2"],
+          exp: "दोनों कथन सत्य हैं: सबसे कम उम्र में काम्या कार्तिकेयन तथा सबसे उम्रदराज ज्योति रात्रे हैं।"
+        },
+        en: {
+          q: "Consider the following mountaineering achievements by Indian women:<br><br>1. Kaamya Karthikeyan - Youngest Indian woman to scale Mount Everest.<br>2. Jyoti Ratre - Oldest Indian woman to scale Mount Everest.<br><br>Select the correct statement:",
+          options: ["1 only", "2 only", "Both 1 and 2", "Neither 1 nor 2"],
+          exp: "Both statements are correct facts."
+        },
+        correct: 2
       },
       {
         id: 46,
-        q: "भारतीय सेना की पहली महिला 'सूबेदार' बनने वाली खिलाड़ी/सैनिक कौन हैं?",
-        options: ["प्रीति रजक", "अवनी लेखरा", "पीटी उषा", "सुमन कुमारी"],
-        correct: 0,
-        exp: "प्रीति रजक भारतीय सेना की पहली महिला सूबेदार बनी हैं।"
+        hi: {
+          q: "भारतीय सेना की पहली महिला 'सूबेदार' बनने वाली खिलाड़ी/सैनिक कौन हैं?",
+          options: ["प्रीति रजक", "अवनी लेखरा", "पीटी उषा", "सुमन कुमारी"],
+          exp: "प्रीति रजक भारतीय सेना की पहली महिला सूबेदार बनी हैं।"
+        },
+        en: {
+          q: "Who is the first woman to become a 'Subedar' in the Indian Army?",
+          options: ["Preeti Rajak", "Avani Lekhara", "PT Usha", "Suman Kumari"],
+          exp: "Champion trap shooter Preeti Rajak was promoted as the first woman Subedar of the Indian Army."
+        },
+        correct: 0
       },
       {
         id: 47,
-        q: "सियाचिन ग्लेशियर में तैनात होने वाली प्रथम महिलाओं के संबंध में सही युग्मों की पहचान कीजिए:<br><br>1. कैप्टन गीतिका कौल - सियाचिन में तैनात पहली महिला चिकित्सा अधिकारी<br>2. सुप्रिता सीटी - सियाचिन ग्लेशियर में तैनात (वायु सेना कोर) पहली महिला",
-        options: ["केवल 1", "केवल 2", "1 और 2 दोनों", "न तो 1 और न ही 2"],
-        correct: 2,
-        exp: "दोनों युग्म सत्य हैं: गीतिका कौल (चिकित्सा अधिकारी) और सुप्रिता सीटी (वायु सेना कोर) सियाचिन में तैनात पहली महिलाएं हैं।"
+        hi: {
+          q: "सियाचिन ग्लेशियर में तैनात होने वाली प्रथम महिलाओं के संबंध में सही युग्मों की पहचान कीजिए:<br><br>1. कैप्टन गीतिका कौल - सियाचिन में तैनात पहली महिला चिकित्सा अधिकारी<br>2. सुप्रिता सीटी - सियाचिन ग्लेशियर में तैनात (वायु सेना कोर) पहली महिला",
+          options: ["केवल 1", "केवल 2", "1 और 2 दोनों", "न तो 1 और न ही 2"],
+          exp: "दोनों युग्म सत्य हैं: गीतिका कौल (चिकित्सा अधिकारी) और सुप्रिता सीटी (वायु सेना कोर) सियाचिन में तैनात पहली महिलाएं हैं।"
+        },
+        en: {
+          q: "Identify the correct deployment records at Siachen Glacier:<br><br>1. Capt Geetika Koul - First woman medical officer deployed at Siachen<br>2. Suprita CT - First woman deployed at Siachen Glacier (Air Force Corps)",
+          options: ["1 only", "2 only", "Both 1 and 2", "Neither 1 nor 2"],
+          exp: "Both pairs are correct."
+        },
+        correct: 2
       },
       {
         id: 48,
-        q: "बिहार राज्य से संबंधित 'माधवी मनु कश्यप' ने निम्नलिखित में से कौन-सा ऐतिहासिक कीर्तिमान स्थापित किया है?",
-        options: [
-          "देश की पहली ट्रांसजेंडर दारोगा",
-          "बिहार लोक सेवा आयोग की पहली महिला अध्यक्ष",
-          "एवरेस्ट फतह करने वाली बिहार की पहली पर्वतारोही",
-          "रेलवे बोर्ड की पहली महिला सदस्य"
-        ],
-        correct: 0,
-        exp: "माधवी मनु कश्यप (बिहार) देश की पहली ट्रांसजेंडर दारोगा बनी हैं।"
+        hi: {
+          q: "बिहार राज्य से संबंधित 'माधवी मनु कश्यप' ने निम्नलिखित में से कौन-सा ऐतिहासिक कीर्तिमान स्थापित किया है?",
+          options: [
+            "देश की पहली ट्रांसजेंडर दारोगा",
+            "बिहार लोक सेवा आयोग की पहली महिला अध्यक्ष",
+            "एवरेस्ट फतह करने वाली बिहार की पहली पर्वतारोही",
+            "रेलवे बोर्ड की पहली महिला सदस्य"
+          ],
+          exp: "माधवी मनु कश्यप (बिहार) देश की पहली ट्रांसजेंडर दारोगा बनी हैं।"
+        },
+        en: {
+          q: "Which historic record was established by 'Madhavi Manu Kashyap' from Bihar?",
+          options: [
+            "Country's first transgender Sub-Inspector (Daroga)",
+            "First woman Chairperson of Bihar Public Service Commission",
+            "First female mountaineer from Bihar to scale Everest",
+            "First woman member of Railway Board"
+          ],
+          exp: "Madhavi Manu Kashyap became the first transgender Sub-Inspector (Bihar Police) in the country."
+        },
+        correct: 0
       },
       {
         id: 49,
-        q: "निम्नलिखित विशिष्ट महिला उपलब्धियों के संदर्भ में कौन-सा युग्म <strong>गलत सुमेलित</strong> है?",
-        options: [
-          "अक्षता कृष्णमूर्ति - मंगल पर रोवर संचालित करने वाली पहली भारतीय",
-          "जया वर्मा सिन्हा - रेलवे बोर्ड की पहली महिला अध्यक्ष एवं CEO",
-          "दीपिका मिश्रा - वीरता पदक प्राप्त पहली महिला वायुसेना अधिकारी",
-          "हिना जायसवाल - लद्दाख में सेना की पहली महिला अफसर"
-        ],
-        correct: 3,
-        exp: "विकल्प (D) गलत है। 'लद्दाख में सेना की पहली महिला अफसर' कर्नल गीता राणा बनी हैं। हिना जायसवाल 'वायुसेना की पहली महिला फ्लाइट इंजीनियर' हैं।"
+        hi: {
+          q: "निम्नलिखित विशिष्ट महिला उपलब्धियों के संदर्भ में कौन-सा युग्म <strong>गलत सुमेलित</strong> है?",
+          options: [
+            "अक्षता कृष्णमूर्ति - मंगल पर रोवर संचालित करने वाली पहली भारतीय",
+            "जया वर्मा सिन्हा - रेलवे बोर्ड की पहली महिला अध्यक्ष एवं CEO",
+            "दीपिका मिश्रा - वीरता पदक प्राप्त पहली महिला वायुसेना अधिकारी",
+            "हिना जायसवाल - लद्दाख में सेना की पहली महिला अफसर"
+          ],
+          exp: "विकल्प (D) गलत है। 'लद्दाख में सेना की पहली महिला अफसर' कर्नल गीता राणा बनी हैं। हिना जायसवाल 'वायुसेना की पहली महिला फ्लाइट इंजीनियर' हैं।"
+        },
+        en: {
+          q: "Which pair is <strong>MISMATCHED</strong> regarding notable women's accomplishments?",
+          options: [
+            "Akshata Krishnamurthy - First Indian to operate a rover on Mars",
+            "Jaya Varma Sinha - First woman Chairperson & CEO of Railway Board",
+            "Deepika Mishra - First woman IAF officer to receive a Gallantry Award",
+            "Hina Jaiswal - First woman army officer in Ladakh"
+          ],
+          exp: "Option (D) is mismatched. Geeta Rana is the first woman army officer in Ladakh; Hina Jaiswal is the first female flight engineer of IAF."
+        },
+        correct: 3
       },
       {
         id: 50,
-        q: "विभिन्न देशों में नवनिर्वाचित प्रथम महिला राष्ट्राध्यक्षों के संबंध में विचार कीजिए:<br><br>1. साने ताकाइची - जापान की पहली महिला प्रधानमंत्री<br>2. जेनिफर साइमंस - सूरीनाम की पहली महिला राष्ट्रपति<br>3. क्लाउडिया शीनबाम - मेक्सिको की पहली महिला राष्ट्रपति<br>4. डीना बोलुआर्ट - पेरू की पहली महिला राष्ट्रपति<br><br>उपर्युक्त में से कौन-से कथन सत्य हैं?",
-        options: ["केवल 1 और 3", "केवल 2, 3 और 4", "केवल 1, 2 और 4", "1, 2, 3 और 4 सभी"],
-        correct: 3,
-        exp: "चारों कथन सही हैं: जापान में साने ताकाइची, सूरीनाम में जेनिफर साइमंस, मेक्सिको में क्लाउडिया शीनबाम और पेरू में डीना बोलुआर्ट।"
+        hi: {
+          q: "विभिन्न देशों में नवनिर्वाचित प्रथम महिला राष्ट्राध्यक्षों के संबंध में विचार कीजिए:<br><br>1. साने ताकाइची - जापान की पहली महिला प्रधानमंत्री<br>2. जेनिफर साइमंस - सूरीनाम की पहली महिला राष्ट्रपति<br>3. क्लाउडिया शीनबाम - मेक्सिको की पहली महिला राष्ट्रपति<br>4. डीना बोलुआर्ट - पेरू की पहली महिला राष्ट्रपति<br><br>उपर्युक्त में से कौन-से कथन सत्य हैं?",
+          options: ["केवल 1 और 3", "केवल 2, 3 और 4", "केवल 1, 2 और 4", "1, 2, 3 और 4 सभी"],
+          exp: "चारों कथन सही हैं: जापान में साने ताकाइची, सूरीनाम में जेनिफर साइमंस, मेक्सिको में क्लाउडिया शीनबाम और पेरू में डीना बोलुआर्ट।"
+        },
+        en: {
+          q: "Consider the following first women heads of state/government globally:<br><br>1. Sanae Takaichi - First female Prime Minister of Japan<br>2. Jennifer Simons - First female President of Suriname<br>3. Claudia Sheinbaum - First female President of Mexico<br>4. Dina Boluarte - First female President of Peru<br><br>Which of the statements given above are correct?",
+          options: ["1 and 3 only", "2, 3 and 4 only", "1, 2 and 4 only", "All 1, 2, 3 and 4"],
+          exp: "All four statements are correct."
+        },
+        correct: 3
       },
       {
         id: 51,
-        q: "अंतर्राष्ट्रीय संस्थागत नियुक्तियों के संबंध में सत्य कथन का चयन कीजिए:<br><br>1. क्रिस्टी कोवेंट्री - पहली महिला अध्यक्ष, अंतर्राष्ट्रीय ओलंपिक समिति (IOC)<br>2. सेलेस्टे सैलो - विश्व मौसम विज्ञान संगठन (WMO) की पहली महिला महासचिव<br>3. रॉबर्टा मेत्सोला - पहली महिला अध्यक्ष, यूरोपीय संसद",
-        options: ["केवल 1 और 2", "केवल 2 और 3", "केवल 1 और 3", "1, 2 और 3 सभी"],
-        correct: 3,
-        exp: "तीनों कथन शत-प्रतिशत सत्य हैं।"
+        hi: {
+          q: "अंतर्राष्ट्रीय संस्थागत नियुक्तियों के संबंध में सत्य कथन का चयन कीजिए:<br><br>1. क्रिस्टी कोवेंट्री - पहली महिला अध्यक्ष, अंतर्राष्ट्रीय ओलंपिक समिति (IOC)<br>2. सेलेस्टे सैलो - विश्व मौसम विज्ञान संगठन (WMO) की पहली महिला महासचिव<br>3. रॉबर्टा मेत्सोला - पहली महिला अध्यक्ष, यूरोपीय संसद",
+          options: ["केवल 1 और 2", "केवल 2 और 3", "केवल 1 और 3", "1, 2 और 3 सभी"],
+          exp: "तीनों कथन शत-प्रतिशत सत्य हैं।"
+        },
+        en: {
+          q: "Select the true statement(s) regarding international institutional leadership:<br><br>1. Kirsty Coventry - First woman President of International Olympic Committee (IOC)<br>2. Celeste Saulo - First female Secretary-General of World Meteorological Organization (WMO)<br>3. Roberta Metsola - First female President of European Parliament",
+          options: ["1 and 2 only", "2 and 3 only", "1 and 3 only", "All 1, 2 and 3"],
+          exp: "All three statements are completely true."
+        },
+        correct: 3
       },
       {
         id: 52,
-        q: "अफ्रीकी देशों में सर्वोच्च पद पर आसीन होने वाली प्रथम महिलाओं के संबंध में सही मिलान कीजिए:<br><br><strong>महिला नेत्री</strong><br>(a) नेतम्बो नंदी-न्दैतवा<br>(b) जूडिश सुमिरनवा तुलुका<br>(c) मैनुएल रोका बोटे<br>(d) शर्ली बोचवे<br><br><strong>देश / संगठन</strong><br>1. पहली महिला प्रधानमंत्री, कांगो<br>2. पहली महिला राष्ट्रपति, नामीबिया<br>3. पहली महिला प्रधानमंत्री, इक्वेटोरियल गिनी<br>4. पहली अफ्रीकी महिला महासचिव, राष्ट्रमंडल",
-        options: [
-          "(a)-2, (b)-1, (c)-3, (d)-4",
-          "(a)-1, (b)-2, (c)-4, (d)-3",
-          "(a)-2, (b)-3, (c)-1, (d)-4",
-          "(a)-4, (b)-1, (c)-3, (d)-2"
-        ],
-        correct: 0,
-        exp: "नेतम्बो नंदी-न्दैतवा (नामीबिया राष्ट्रपति), जूडिश सुमिरनवा तुलुका (कांगो PM), मैनुएल रोका बोटे (इक्वेटोरियल गिनी PM), शर्ली बोचवे (राष्ट्रमंडल महासचिव)।"
+        hi: {
+          q: "अफ्रीकी देशों में सर्वोच्च पद पर आसीन होने वाली प्रथम महिलाओं के संबंध में सही मिलान कीजिए:<br><br><strong>महिला नेत्री</strong><br>(a) नेतम्बो नंदी-न्दैतवा<br>(b) जूडिश सुमिरनवा तुलुका<br>(c) मैनुएल रोका बोटे<br>(d) शर्ली बोचवे<br><br><strong>देश / संगठन</strong><br>1. पहली महिला प्रधानमंत्री, कांगो<br>2. पहली महिला राष्ट्रपति, नामीबिया<br>3. पहली महिला प्रधानमंत्री, इक्वेटोरियल गिनी<br>4. पहली अफ्रीकी महिला महासचिव, राष्ट्रमंडल",
+          options: [
+            "(a)-2, (b)-1, (c)-3, (d)-4",
+            "(a)-1, (b)-2, (c)-4, (d)-3",
+            "(a)-2, (b)-3, (c)-1, (d)-4",
+            "(a)-4, (b)-1, (c)-3, (d)-2"
+          ],
+          exp: "नेतम्बो नंदी-न्दैतवा (नामीबिया राष्ट्रपति), जूडिश सुमिरनवा तुलुका (कांगो PM), मैनुएल रोका बोटे (इक्वेटोरियल गिनी PM), शर्ली बोचवे (राष्ट्रमंडल महासचिव)।"
+        },
+        en: {
+          q: "Match prominent African women leaders with their positions:<br><br><strong>Leader</strong><br>(a) Netumbo Nandi-Ndaitwah<br>(b) Judith Suminwa Tuluka<br>(c) Manuel Roka Botey<br>(d) Shirley Botchwey<br><br><strong>Position / Nation</strong><br>1. First woman Prime Minister, Congo<br>2. First woman President, Namibia<br>3. First woman Prime Minister, Equatorial Guinea<br>4. First African woman Secretary-General, Commonwealth",
+          options: [
+            "(a)-2, (b)-1, (c)-3, (d)-4",
+            "(a)-1, (b)-2, (c)-4, (d)-3",
+            "(a)-2, (b)-3, (c)-1, (d)-4",
+            "(a)-4, (b)-1, (c)-3, (d)-2"
+          ],
+          exp: "Correct matching: (a)-2 Namibia, (b)-1 Congo, (c)-3 Equatorial Guinea, (d)-4 Commonwealth."
+        },
+        correct: 0
       },
       {
         id: 53,
-        q: "विश्व व्यापार संगठन (WTO) की पहली महिला महानिदेशक के रूप में कौन कार्यरत हैं?",
-        options: ["क्रिस्टालिना जॉर्जीवा", "नगोजी ओकोन्जो-इवेला", "गीता गोपीनाथ", "उर्सुला वॉन डेर लेयेन"],
-        correct: 1,
-        exp: "नगोजी ओकोन्जो-इवेला विश्व व्यापार संगठन (WTO) की पहली महिला महानिदेशक हैं।"
+        hi: {
+          q: "विश्व व्यापार संगठन (WTO) की पहली महिला महानिदेशक के रूप में कौन कार्यरत हैं?",
+          options: ["क्रिस्टालिना जॉर्जीवा", "नगोजी ओकोन्जो-इवेला", "गीता गोपीनाथ", "उर्सुला वॉन डेर लेयेन"],
+          exp: "नगोजी ओकोन्जो-इवेला विश्व व्यापार संगठन (WTO) की पहली महिला महानिदेशक हैं।"
+        },
+        en: {
+          q: "Who is serving as the first female Director General of the World Trade Organization (WTO)?",
+          options: ["Kristalina Georgieva", "Ngozi Okonjo-Iweala", "Gita Gopinath", "Ursula von der Leyen"],
+          exp: "Dr. Ngozi Okonjo-Iweala is the first woman Director General of the WTO."
+        },
+        correct: 1
       },
       {
         id: 54,
-        q: "थाईलैंड की सबसे युवा प्रधानमंत्री बनने का कीर्तिमान निम्नलिखित में से किसने बनाया है?",
-        options: ["यिंगलक शिनावात्रा", "पैटोंगटर्न शिनावात्रा", "आंग सान सू की", "शेख हसीना"],
-        correct: 1,
-        exp: "पैटोंगटर्न शिनावात्रा थाईलैंड की सबसे युवा प्रधानमंत्री बनी हैं।"
+        hi: {
+          q: "थाईलैंड की सबसे युवा प्रधानमंत्री बनने का कीर्तिमान निम्नलिखित में से किसने बनाया है?",
+          options: ["यिंगलक शिनावात्रा", "पैटोंगटर्न शिनावात्रा", "आंग सान सू की", "शेख हसीना"],
+          exp: "पैटोंगटर्न शिनावात्रा थाईलैंड की सबसे युवा प्रधानमंत्री बनी हैं।"
+        },
+        en: {
+          q: "Who made the record of becoming the youngest Prime Minister of Thailand?",
+          options: ["Yingluck Shinawatra", "Paetongtarn Shinawatra", "Aung San Suu Kyi", "Sheikh Hasina"],
+          exp: "Paetongtarn Shinawatra became Thailand's youngest Prime Minister."
+        },
+        correct: 1
       },
       {
         id: 55,
-        q: "मध्य-पूर्व और खाड़ी देशों में भारत के राजदूतों के संदर्भ में सूची-I (देश - राजधानी) को सूची-II (राजदूत) से सुमेलित कीजिए:<br><br><strong>सूची-I</strong><br>(a) इराक (बगदाद)<br>(b) कतर (दोहा)<br>(c) बहरीन (मनामा)<br>(d) ओमान (मस्कट)<br><br><strong>सूची-II</strong><br>1. डॉ. के. श्रीकर रेड्डी<br>2. ए. अजय कुमार<br>3. प्रशांत पिसे<br>4. प्रदीप सिंह राजपुरोहित",
-        options: [
-          "(a)-2, (b)-1, (c)-4, (d)-3",
-          "(a)-1, (b)-2, (c)-3, (d)-4",
-          "(a)-2, (b)-4, (c)-1, (d)-3",
-          "(a)-3, (b)-1, (c)-4, (d)-2"
-        ],
-        correct: 0,
-        exp: "इराक (ए. अजय कुमार), कतर (डॉ. के. श्रीकर रेड्डी), बहरीन (प्रदीप सिंह राजपुरोहित), ओमान (प्रशांत पिसे)।"
+        hi: {
+          q: "मध्य-पूर्व और खाड़ी देशों में भारत के राजदूतों के संदर्भ में सूची-I (देश - राजधानी) को सूची-II (राजदूत) से सुमेलित कीजिए:<br><br><strong>सूची-I</strong><br>(a) इराक (बगदाद)<br>(b) कतर (दोहा)<br>(c) बहरीन (मनामा)<br>(d) ओमान (मस्कट)<br><br><strong>सूची-II</strong><br>1. डॉ. के. श्रीकर रेड्डी<br>2. ए. अजय कुमार<br>3. प्रशांत पिसे<br>4. प्रदीप सिंह राजपुरोहित",
+          options: [
+            "(a)-2, (b)-1, (c)-4, (d)-3",
+            "(a)-1, (b)-2, (c)-3, (d)-4",
+            "(a)-2, (b)-4, (c)-1, (d)-3",
+            "(a)-3, (b)-1, (c)-4, (d)-2"
+          ],
+          exp: "इराक (ए. अजय कुमार), कतर (डॉ. के. श्रीकर रेड्डी), बहरीन (प्रदीप सिंह राजपुरोहित), ओमान (प्रशांत पिसे)।"
+        },
+        en: {
+          q: "Match Indian Ambassadors in Middle-East nations in List-I (Country - Capital) with List-II (Ambassador):<br><br><strong>List-I</strong><br>(a) Iraq (Baghdad)<br>(b) Qatar (Doha)<br>(c) Bahrain (Manama)<br>(d) Oman (Muscat)<br><br><strong>List-II</strong><br>1. Dr. K. Sreekar Reddy<br>2. A. Ajay Kumar<br>3. Prashant Pise<br>4. Pradeep Singh Rajpurohit",
+          options: [
+            "(a)-2, (b)-1, (c)-4, (d)-3",
+            "(a)-1, (b)-2, (c)-3, (d)-4",
+            "(a)-2, (b)-4, (c)-1, (d)-3",
+            "(a)-3, (b)-1, (c)-4, (d)-2"
+          ],
+          exp: "Iraq: A. Ajay Kumar (2), Qatar: Dr. K. Sreekar Reddy (1), Bahrain: Pradeep Singh Rajpurohit (4), Oman: Prashant Pise (3)."
+        },
+        correct: 0
       },
       {
         id: 56,
-        q: "यूरोपीय देशों में नियुक्त भारतीय राजदूतों के संबंध में निम्नलिखित युग्मों पर विचार कीजिए:<br><br>1. यूक्रेन (कीव) - अंजनी कुमार<br>2. लिथुआनिया (विल्नियस) - गीतिका श्रीवास्तव<br>3. आयरलैंड (डबलिन) - मनीष गुप्ता<br>4. अंडोरा (अंडोरा ला वेला) - जयंत खोबरागड़े<br><br>उपर्युक्त में से कौन-से युग्म सही सुमेलित हैं?",
-        options: ["केवल 1 और 2", "केवल 2, 3 और 4", "केवल 1, 3 और 4", "1, 2, 3 और 4 सभी"],
-        correct: 3,
-        exp: "चारों युग्म पूरी तरह सही हैं।"
+        hi: {
+          q: "यूरोपीय देशों में नियुक्त भारतीय राजदूतों के संबंध में निम्नलिखित युग्मों पर विचार कीजिए:<br><br>1. यूक्रेन (कीव) - अंजनी कुमार<br>2. लिथुआनिया (विल्नियस) - गीतिका श्रीवास्तव<br>3. आयरलैंड (डबलिन) - मनीष गुप्ता<br>4. अंडोरा (अंडोरा ला वेला) - जयंत खोबरागड़े<br><br>उपर्युक्त में से कौन-से युग्म सही सुमेलित हैं?",
+          options: ["केवल 1 और 2", "केवल 2, 3 और 4", "केवल 1, 3 और 4", "1, 2, 3 और 4 सभी"],
+          exp: "चारों युग्म पूरी तरह सही हैं।"
+        },
+        en: {
+          q: "Consider the following pairs of Indian Ambassadors to European nations:<br><br>1. Ukraine (Kyiv) - Anjani Kumar<br>2. Lithuania (Vilnius) - Geetika Srivastava<br>3. Ireland (Dublin) - Manish Gupta<br>4. Andorra (Andorra la Vella) - Jayant Khobragade<br><br>Which of the above pairs are correctly matched?",
+          options: ["1 and 2 only", "2, 3 and 4 only", "1, 3 and 4 only", "All 1, 2, 3 and 4"],
+          exp: "All four pairs are correctly matched as per official envoy postings."
+        },
+        correct: 3
       },
       {
         id: 57,
-        q: "लैटिन अमेरिकी एवं कैरेबियाई देशों में भारतीय राजदूतों के संदर्भ में 'असंगत युग्म' चुनिए:<br><br>(देश - राजधानी - राजदूत)",
-        options: [
-          "क्यूबा - हवाना - हंसराज सिंह वर्मा",
-          "उरुग्वे - मोंटेवीडियो - डॉ. विनॉय जॉर्ज",
-          "पनामा - पनामा सिटी - प्रतिभा पारकर",
-          "पेरू - लीमा - विनोद जे. बहाड़े"
-        ],
-        correct: 3,
-        exp: "विकल्प (D) असंगत है। पेरू (लीमा) में भारत के राजदूत 'सी. सुगंध राजाराम' हैं, जबकि 'विनोद जे. बहाड़े' कोलंबिया (बोगोटा) में राजदूत हैं।"
+        hi: {
+          q: "लैटिन अमेरिकी एवं कैरेबियाई देशों में भारतीय राजदूतों के संदर्भ में 'असंगत युग्म' चुनिए:<br><br>(देश - राजधानी - राजदूत)",
+          options: [
+            "क्यूबा - हवाना - हंसराज सिंह वर्मा",
+            "उरुग्वे - मोंटेवीडियो - डॉ. विनॉय जॉर्ज",
+            "पनामा - पनामा सिटी - प्रतिभा पारकर",
+            "पेरू - लीमा - विनोद जे. बहाड़े"
+          ],
+          exp: "विकल्प (D) असंगत है। पेरू (लीमा) में भारत के राजदूत 'सी. सुगंध राजाराम' हैं, जबकि 'विनोद जे. बहाड़े' कोलंबिया (बोगोटा) में राजदूत हैं।"
+        },
+        en: {
+          q: "Select the <strong>MISMATCHED</strong> pair regarding Indian Ambassadors to Latin America & Caribbean:<br><br>(Country - Capital - Ambassador)",
+          options: [
+            "Cuba - Havana - Hansraj Singh Verma",
+            "Uruguay - Montevideo - Dr. Vinay George",
+            "Panama - Panama City - Pratibha Parkar",
+            "Peru - Lima - Vinod J. Bahade"
+          ],
+          exp: "Option (D) is mismatched. Ambassador to Peru is C. Sugandh Rajaram; Vinod J. Bahade is Ambassador to Colombia (Bogota)."
+        },
+        correct: 3
       },
       {
         id: 58,
-        q: "एशियाई एवं प्रशांत देशों में नियुक्त भारतीय उच्चायुक्तों/राजदूतों का सही मिलान कीजिए:<br><br><strong>सूची-I (देश - राजधानी)</strong><br>(a) मलेशिया (कुआलालंपुर)<br>(b) बांग्लादेश (ढाका)<br>(c) न्यूजीलैंड (वेलिंगटन)<br>(d) थाईलैंड (बैंकॉक)<br><br><strong>सूची-II (राजदूत/उच्चायुक्त)</strong><br>1. दिनेश त्रिवेदी<br>2. सोमनाथ घोष<br>3. पुनीत अग्रवाल<br>4. नीता भूषण",
-        options: [
-          "(a)-2, (b)-1, (c)-4, (d)-3",
-          "(a)-1, (b)-2, (c)-3, (d)-4",
-          "(a)-2, (b)-4, (c)-1, (d)-3",
-          "(a)-3, (b)-1, (c)-4, (d)-2"
-        ],
-        correct: 0,
-        exp: "मलेशिया - सोमनाथ घोष (2), बांग्लादेश - दिनेश त्रिवेदी (1), न्यूजीलैंड - नीता भूषण (4), थाईलैंड - पुनीत अग्रवाल (3)।"
+        hi: {
+          q: "एशियाई एवं प्रशांत देशों में नियुक्त भारतीय उच्चायुक्तों/राजदूतों का सही मिलान कीजिए:<br><br><strong>सूची-I (देश - राजधानी)</strong><br>(a) मलेशिया (कुआलालंपुर)<br>(b) बांग्लादेश (ढाका)<br>(c) न्यूजीलैंड (वेलिंगटन)<br>(d) थाईलैंड (बैंकॉक)<br><br><strong>सूची-II (राजदूत/उच्चायुक्त)</strong><br>1. दिनेश त्रिवेदी<br>2. सोमनाथ घोष<br>3. पुनीत अग्रवाल<br>4. नीता भूषण",
+          options: [
+            "(a)-2, (b)-1, (c)-4, (d)-3",
+            "(a)-1, (b)-2, (c)-3, (d)-4",
+            "(a)-2, (b)-4, (c)-1, (d)-3",
+            "(a)-3, (b)-1, (c)-4, (d)-2"
+          ],
+          exp: "मलेशिया - सोमनाथ घोष (2), बांग्लादेश - दिनेश त्रिवेदी (1), न्यूजीलैंड - नीता भूषण (4), थाईलैंड - पुनीत अग्रवाल (3)।"
+        },
+        en: {
+          q: "Match Indian Envoys in Asia-Pacific nations:<br><br><strong>List-I (Country - Capital)</strong><br>(a) Malaysia (Kuala Lumpur)<br>(b) Bangladesh (Dhaka)<br>(c) New Zealand (Wellington)<br>(d) Thailand (Bangkok)<br><br><strong>List-II (Ambassador/HC)</strong><br>1. Dinesh Trivedi<br>2. Somnath Ghosh<br>3. Punit Agrawal<br>4. Neeta Bhushan",
+          options: [
+            "(a)-2, (b)-1, (c)-4, (d)-3",
+            "(a)-1, (b)-2, (c)-3, (d)-4",
+            "(a)-2, (b)-4, (c)-1, (d)-3",
+            "(a)-3, (b)-1, (c)-4, (d)-2"
+          ],
+          exp: "Malaysia (2), Bangladesh (1), New Zealand (4), Thailand (3)."
+        },
+        correct: 0
       },
       {
         id: 59,
-        q: "अफ्रीकी देशों में नियुक्त भारतीय राजदूतों के संबंध में निम्नलिखित में से कौन-सा युग्म <strong>सही सुमेलित नहीं है</strong>?",
-        options: [
-          "युगांडा (कंपाला) - अजय कुमार",
-          "घाना (अक्करा) - सुरिन्द्र भगत",
-          "लीबिया (त्रिपोली) - डॉ. हिफ्जुर रहमान",
-          "सोमालिया (मोगादिशू) - दीपक मिगलानी"
-        ],
-        correct: 3,
-        exp: "विकल्प (D) गलत सुमेलित है। सोमालिया (मोगादिशू) में भारत के राजदूत 'आदर्श स्वैका' हैं, जबकि 'दीपक मिगलानी' दक्षिण सूडान (जुबा) में राजदूत हैं।"
+        hi: {
+          q: "अफ्रीकी देशों में नियुक्त भारतीय राजदूतों के संबंध में निम्नलिखित में से कौन-सा युग्म <strong>सही सुमेलित नहीं है</strong>?",
+          options: [
+            "युगांडा (कंपाला) - अजय कुमार",
+            "घाना (अक्करा) - सुरिन्द्र भगत",
+            "लीबिया (त्रिपोली) - डॉ. हिफ्जुर रहमान",
+            "सोमालिया (मोगादिशू) - दीपक मिगलानी"
+          ],
+          exp: "विकल्प (D) गलत सुमेलित है। सोमालिया (मोगादिशू) में भारत के राजदूत 'आदर्श स्वैका' हैं, जबकि 'दीपक मिगलानी' दक्षिण सूडान (जुबा) में राजदूत हैं।"
+        },
+        en: {
+          q: "Which pair is <strong>NOT correctly matched</strong> regarding Indian Ambassadors to African nations?",
+          options: [
+            "Uganda (Kampala) - Ajay Kumar",
+            "Ghana (Accra) - Surindra Bhagat",
+            "Libya (Tripoli) - Dr. Hifzur Rehman",
+            "Somalia (Mogadishu) - Deepak Miglani"
+          ],
+          exp: "Option (D) is incorrect. The Ambassador to Somalia is Adarsh Swaika, while Deepak Miglani is posted in South Sudan (Juba)."
+        },
+        correct: 3
       },
       {
         id: 60,
-        q: "निम्नलिखित देशों, उनकी राजधानियों एवं भारतीय राजदूतों के संदर्भ में सूची का सही सुमेलन कीजिए:<br><br><strong>सूची-I (देश - राजधानी)</strong><br>(a) अजरबैजान (बाकू)<br>(b) जॉर्जिया (त्बिलिसी)<br>(c) तिमोर लिस्टे (दिली)<br>(d) अल साल्वाडोर (सैन साल्वाडोर)<br><br><strong>सूची-II (राजदूत)</strong><br>1. अमित कुमार मिश्रा<br>2. अभय कुमार<br>3. राज कुमार सिंह<br>4. एम. एस. पटियाल",
-        options: [
-          "(a)-2, (b)-1, (c)-4, (d)-3",
-          "(a)-1, (b)-2, (c)-3, (d)-4",
-          "(a)-2, (b)-4, (c)-1, (d)-3",
-          "(a)-4, (b)-1, (c)-2, (d)-3"
-        ],
-        correct: 0,
-        exp: "अजरबैजान - अभय कुमार (2), जॉर्जिया - अमित कुमार मिश्रा (1), तिमोर लिस्टे - एम. एस. पटियाल (4), अल साल्वाडोर - राज कुमार सिंह (3)। (नोट: होंडुरास में भी राज कुमार सिंह ही राजदूत हैं)।"
+        hi: {
+          q: "निम्नलिखित देशों, उनकी राजधानियों एवं भारतीय राजदूतों के संदर्भ में सूची का सही सुमेलन कीजिए:<br><br><strong>सूची-I (देश - राजधानी)</strong><br>(a) अजरबैजान (बाकू)<br>(b) जॉर्जिया (त्बिलिसी)<br>(c) तिमोर लिस्टे (दिली)<br>(d) अल साल्वाडोर (सैन साल्वाडोर)<br><br><strong>सूची-II (राजदूत)</strong><br>1. अमित कुमार मिश्रा<br>2. अभय कुमार<br>3. राज कुमार सिंह<br>4. एम. एस. पटियाल",
+          options: [
+            "(a)-2, (b)-1, (c)-4, (d)-3",
+            "(a)-1, (b)-2, (c)-3, (d)-4",
+            "(a)-2, (b)-4, (c)-1, (d)-3",
+            "(a)-4, (b)-1, (c)-2, (d)-3"
+          ],
+          exp: "अजरबैजान - अभय कुमार (2), जॉर्जिया - अमित कुमार मिश्रा (1), तिमोर लिस्टे - एम. एस. पटियाल (4), अल साल्वाडोर - राज कुमार सिंह (3)। (नोट: होंडुरास में भी राज कुमार सिंह ही राजदूत हैं)।"
+        },
+        en: {
+          q: "Match the following countries, capitals, and Indian ambassadors:<br><br><strong>List-I (Country - Capital)</strong><br>(a) Azerbaijan (Baku)<br>(b) Georgia (Tbilisi)<br>(c) Timor-Leste (Dili)<br>(d) El Salvador (San Salvador)<br><br><strong>List-II (Ambassador)</strong><br>1. Amit Kumar Mishra<br>2. Abhay Kumar<br>3. Raj Kumar Singh<br>4. M.S. Patiyal",
+          options: [
+            "(a)-2, (b)-1, (c)-4, (d)-3",
+            "(a)-1, (b)-2, (c)-3, (d)-4",
+            "(a)-2, (b)-4, (c)-1, (d)-3",
+            "(a)-4, (b)-1, (c)-2, (d)-3"
+          ],
+          exp: "Azerbaijan: Abhay Kumar (2), Georgia: Amit Kumar Mishra (1), Timor-Leste: M.S. Patiyal (4), El Salvador: Raj Kumar Singh (3)."
+        },
+        correct: 0
       }
     ];
 
-    // State
+    // State Variables
+    let currentLanguage = 'hi';
     let currentIndex = 0;
     let userAnswers = {};
     let reviewFlags = {};
@@ -853,6 +1432,8 @@
     // Elements
     const startOverlay = document.getElementById('startOverlay');
     const startTestBtn = document.getElementById('startTestBtn');
+    const langToggleBtn = document.getElementById('langToggleBtn');
+    const currentLangLabel = document.getElementById('currentLangLabel');
     const timerDisplay = document.getElementById('timerDisplay');
     const headerSubmitBtn = document.getElementById('headerSubmitBtn');
     
@@ -867,6 +1448,9 @@
     const reviewBtn = document.getElementById('reviewBtn');
     const reviewBtnText = document.getElementById('reviewBtnText');
     const nextBtn = document.getElementById('nextBtn');
+    const prevBtnLabel = document.getElementById('prevBtnLabel');
+    const clearBtnLabel = document.getElementById('clearBtnLabel');
+    const nextBtnLabel = document.getElementById('nextBtnLabel');
     
     const resultModal = document.getElementById('resultModal');
     const viewSolutionsBtn = document.getElementById('viewSolutionsBtn');
@@ -896,7 +1480,34 @@
       renderCurrentQuestion();
     });
 
-    // 2. Timer
+    // 2. Bilingual Toggle
+    langToggleBtn.addEventListener('click', () => {
+      currentLanguage = (currentLanguage === 'hi') ? 'en' : 'hi';
+      currentLangLabel.textContent = (currentLanguage === 'hi') ? 'English' : 'हिंदी';
+      updateUILabels();
+      renderCurrentQuestion();
+      if (submitted) {
+        renderAllSolutions();
+      }
+    });
+
+    function updateUILabels() {
+      if (currentLanguage === 'hi') {
+        prevBtnLabel.textContent = 'Prev';
+        clearBtnLabel.textContent = 'Clear';
+        nextBtnLabel.textContent = (currentIndex === allQuestions.length - 1) ? 'समीक्षा व सबमिट' : 'Next & Save';
+        document.getElementById('scorecardHeading').textContent = 'CBT टेस्ट स्कोरकार्ड';
+        document.getElementById('solutionModalHeading').textContent = 'सभी 60 प्रश्नों की विस्तृत व्याख्या';
+      } else {
+        prevBtnLabel.textContent = 'Prev';
+        clearBtnLabel.textContent = 'Clear';
+        nextBtnLabel.textContent = (currentIndex === allQuestions.length - 1) ? 'Review & Submit' : 'Next & Save';
+        document.getElementById('scorecardHeading').textContent = 'CBT TEST SCORECARD';
+        document.getElementById('solutionModalHeading').textContent = 'All 60 Questions Detailed Solutions';
+      }
+    }
+
+    // 3. Countdown Timer
     function initTimer() {
       if (timerId) clearInterval(timerId);
       timerId = setInterval(() => {
@@ -916,40 +1527,44 @@
       }, 1000);
     }
 
-    // 3. Render Question
+    // 4. Render Current Question
     function renderCurrentQuestion() {
       const item = allQuestions[currentIndex];
-      qNumberBadge.textContent = `प्रश्न ${currentIndex + 1} / 60`;
-      
-      // Categorize Sub-topics
-      if (currentIndex < 7) qTopicBadge.textContent = 'PM मोदी को प्राप्त सर्वोच्च सम्मान';
-      else if (currentIndex < 13) qTopicBadge.textContent = '77वां गणतंत्र दिवस समारोह';
-      else if (currentIndex < 19) qTopicBadge.textContent = 'Word of the Year';
-      else if (currentIndex < 31) qTopicBadge.textContent = 'ISRO मिशन (2024-2030)';
-      else if (currentIndex < 35) qTopicBadge.textContent = 'प्रोजेक्ट चीता';
-      else if (currentIndex < 40) qTopicBadge.textContent = 'बाघ गणना रिपोर्ट 2022';
-      else if (currentIndex < 49) qTopicBadge.textContent = 'चर्चित राष्ट्रीय महिलाएं';
-      else if (currentIndex < 54) qTopicBadge.textContent = 'चर्चित अंतर्राष्ट्रीय महिलाएं';
-      else qTopicBadge.textContent = 'भारतीय राजदूत / उच्चायुक्त';
+      const langData = (currentLanguage === 'hi') ? item.hi : item.en;
 
-      questionText.innerHTML = item.q;
+      qNumberBadge.textContent = (currentLanguage === 'hi')
+        ? `प्रश्न ${currentIndex + 1} / 60`
+        : `Question ${currentIndex + 1} of 60`;
+      
+      // Sub-topic Badges
+      if (currentIndex < 7) qTopicBadge.textContent = (currentLanguage === 'hi') ? 'PM मोदी सर्वोच्च सम्मान' : 'PM Modi Awards';
+      else if (currentIndex < 13) qTopicBadge.textContent = (currentLanguage === 'hi') ? '77वां गणतंत्र दिवस' : '77th Republic Day';
+      else if (currentIndex < 19) qTopicBadge.textContent = (currentLanguage === 'hi') ? 'Word of the Year' : 'Word of the Year';
+      else if (currentIndex < 31) qTopicBadge.textContent = (currentLanguage === 'hi') ? 'ISRO मिशन (2024-30)' : 'ISRO Space Missions';
+      else if (currentIndex < 35) qTopicBadge.textContent = (currentLanguage === 'hi') ? 'प्रोजेक्ट चीता' : 'Project Cheetah';
+      else if (currentIndex < 40) qTopicBadge.textContent = (currentLanguage === 'hi') ? 'बाघ गणना 2022' : 'Tiger Census 2022';
+      else if (currentIndex < 49) qTopicBadge.textContent = (currentLanguage === 'hi') ? 'राष्ट्रीय महिलाएं' : 'National Women';
+      else if (currentIndex < 54) qTopicBadge.textContent = (currentLanguage === 'hi') ? 'अंतर्राष्ट्रीय महिलाएं' : 'International Women';
+      else qTopicBadge.textContent = (currentLanguage === 'hi') ? 'राजदूत / उच्चायुक्त' : 'Ambassadors & Envoys';
+
+      questionText.innerHTML = langData.q;
 
       optionsContainer.innerHTML = '';
       const letters = ['A', 'B', 'C', 'D'];
       const chosen = userAnswers[item.id];
 
-      item.options.forEach((opt, idx) => {
+      langData.options.forEach((opt, idx) => {
         const isSelected = (chosen === idx);
         const optBtn = document.createElement('button');
         optBtn.type = 'button';
-        optBtn.className = `w-full text-left p-3.5 sm:p-4 rounded-xl border transition flex items-start gap-3 ${
+        optBtn.className = `w-full text-left p-3 sm:p-3.5 rounded-xl border transition flex items-start gap-2.5 ${
           isSelected 
             ? 'bg-indigo-50 border-indigo-600 ring-2 ring-indigo-500/20 text-indigo-950 font-medium' 
             : 'bg-white border-slate-200 hover:bg-slate-50 text-slate-700'
         }`;
 
         optBtn.innerHTML = `
-          <span class="inline-flex items-center justify-center w-6 h-6 rounded-full text-xs font-bold shrink-0 mt-0.5 ${
+          <span class="inline-flex items-center justify-center w-5 h-5 rounded-full text-xs font-bold shrink-0 mt-0.5 ${
             isSelected ? 'bg-indigo-600 text-white' : 'bg-slate-100 text-slate-600 border border-slate-300'
           }">
             ${letters[idx]}
@@ -971,25 +1586,25 @@
       if (instantFlags[item.id] && chosen !== undefined) {
         instantAnswerBox.classList.remove('hidden');
         if (chosen === item.correct) {
-          instantAnswerBox.className = 'mb-4 p-3.5 rounded-xl border bg-emerald-50 border-emerald-300 text-emerald-900';
+          instantAnswerBox.className = 'mb-3 p-3 rounded-xl border bg-emerald-50 border-emerald-300 text-emerald-900';
           instantAnswerBox.innerHTML = `
-            <div class="flex items-center gap-2 font-bold text-emerald-700 mb-1">
+            <div class="flex items-center gap-1.5 font-bold text-emerald-700 mb-1 text-xs sm:text-sm">
               <i class="fa-solid fa-circle-check"></i>
-              <span>सही उत्तर (+2.00 अंक)</span>
+              <span>${currentLanguage === 'hi' ? 'सही उत्तर (+2.00 अंक)' : 'Correct Answer (+2.00 Marks)'}</span>
             </div>
-            <p class="text-xs text-slate-700">${item.exp}</p>
+            <p class="text-[11px] sm:text-xs text-slate-700 leading-relaxed">${langData.exp}</p>
           `;
         } else {
-          instantAnswerBox.className = 'mb-4 p-3.5 rounded-xl border bg-rose-50 border-rose-300 text-rose-900';
+          instantAnswerBox.className = 'mb-3 p-3 rounded-xl border bg-rose-50 border-rose-300 text-rose-900';
           instantAnswerBox.innerHTML = `
-            <div class="flex items-center gap-2 font-bold text-rose-700 mb-1">
+            <div class="flex items-center gap-1.5 font-bold text-rose-700 mb-1 text-xs sm:text-sm">
               <i class="fa-solid fa-circle-xmark"></i>
-              <span>गलत उत्तर (-0.20 अंक)</span>
-              <span class="ml-auto text-xs bg-emerald-100 text-emerald-800 px-2 py-0.5 rounded font-semibold">
-                सही विकल्प: (${letters[item.correct]})
+              <span>${currentLanguage === 'hi' ? 'गलत उत्तर (-0.20 अंक)' : 'Incorrect Answer (-0.20 Marks)'}</span>
+              <span class="ml-auto text-[10px] bg-emerald-100 text-emerald-800 px-1.5 py-0.5 rounded font-semibold">
+                ${currentLanguage === 'hi' ? 'सही' : 'Correct'}: (${letters[item.correct]})
               </span>
             </div>
-            <p class="text-xs text-slate-700">${item.exp}</p>
+            <p class="text-[11px] sm:text-xs text-slate-700 leading-relaxed">${langData.exp}</p>
           `;
         }
       } else {
@@ -1000,17 +1615,17 @@
       prevBtn.disabled = (currentIndex === 0);
 
       if (reviewFlags[item.id]) {
-        reviewBtn.className = 'px-3 sm:px-4 py-2 rounded-lg border border-purple-400 bg-purple-100 text-purple-800 text-xs sm:text-sm font-semibold transition flex items-center gap-1.5';
-        reviewBtnText.textContent = 'चिह्नित (Review)';
+        reviewBtn.className = 'px-2.5 sm:px-3 py-1.5 rounded-lg border border-purple-400 bg-purple-100 text-purple-800 text-xs font-semibold transition flex items-center gap-1';
+        reviewBtnText.textContent = (currentLanguage === 'hi') ? 'चिह्नित' : 'Marked';
       } else {
-        reviewBtn.className = 'px-3 sm:px-4 py-2 rounded-lg border border-amber-300 bg-amber-50 text-amber-700 text-xs sm:text-sm font-semibold hover:bg-amber-100 transition flex items-center gap-1.5';
-        reviewBtnText.textContent = 'Review';
+        reviewBtn.className = 'px-2.5 sm:px-3 py-1.5 rounded-lg border border-amber-300 bg-amber-50 text-amber-700 text-xs font-semibold hover:bg-amber-100 transition flex items-center gap-1';
+        reviewBtnText.textContent = (currentLanguage === 'hi') ? 'Review' : 'Review';
       }
 
       if (currentIndex === allQuestions.length - 1) {
-        nextBtn.innerHTML = `<span>समीक्षा व सबमिट</span> <i class="fa-solid fa-check text-xs"></i>`;
+        nextBtnLabel.textContent = (currentLanguage === 'hi') ? 'समीक्षा व सबमिट' : 'Review & Submit';
       } else {
-        nextBtn.innerHTML = `<span>Next & Save</span> <i class="fa-solid fa-chevron-right text-xs"></i>`;
+        nextBtnLabel.textContent = (currentLanguage === 'hi') ? 'Next & Save' : 'Next & Save';
       }
     }
 
@@ -1027,7 +1642,8 @@
         currentIndex++;
         renderCurrentQuestion();
       } else {
-        if (confirm('क्या आप टेस्ट समाप्त और सबमिट करना चाहते हैं?')) {
+        const msg = (currentLanguage === 'hi') ? 'क्या आप टेस्ट समाप्त और सबमिट करना चाहते हैं?' : 'Do you want to submit the test?';
+        if (confirm(msg)) {
           processSubmit();
         }
       }
@@ -1047,12 +1663,13 @@
     });
 
     headerSubmitBtn.addEventListener('click', () => {
-      if (confirm('क्या आप 60 प्रश्नों का टेस्ट सबमिट करना चाहते हैं?')) {
+      const msg = (currentLanguage === 'hi') ? 'क्या आप 60 प्रश्नों का टेस्ट सबमिट करना चाहते हैं?' : 'Are you sure you want to finish and submit the test?';
+      if (confirm(msg)) {
         processSubmit();
       }
     });
 
-    // 4. Submission & Score Calculation
+    // 5. Submission & Scorecard
     function processSubmit() {
       submitted = true;
       clearInterval(timerId);
@@ -1086,18 +1703,19 @@
       resultModal.classList.remove('hidden');
     }
 
-    // 5. Solution Review
+    // 6. Detailed Solutions Rendering
     function renderAllSolutions() {
       solutionsListContainer.innerHTML = '';
       const letters = ['A', 'B', 'C', 'D'];
 
       allQuestions.forEach((q, idx) => {
+        const langData = (currentLanguage === 'hi') ? q.hi : q.en;
         const userChoice = userAnswers[q.id];
         const isRight = (userChoice === q.correct);
         const isLeft = (userChoice === undefined);
 
         const card = document.createElement('div');
-        card.className = `p-4 sm:p-5 rounded-xl border ${
+        card.className = `p-3.5 sm:p-4 rounded-xl border ${
           isLeft 
             ? 'bg-slate-50 border-slate-200' 
             : isRight 
@@ -1106,51 +1724,55 @@
         }`;
 
         let statusText = '';
-        if (isLeft) statusText = `<span class="bg-slate-200 text-slate-700 text-[11px] font-bold px-2 py-0.5 rounded">अनुत्तरित (0.00)</span>`;
-        else if (isRight) statusText = `<span class="bg-emerald-600 text-white text-[11px] font-bold px-2 py-0.5 rounded">+2.00 सही</span>`;
-        else statusText = `<span class="bg-rose-600 text-white text-[11px] font-bold px-2 py-0.5 rounded">-0.20 गलत</span>`;
+        if (isLeft) {
+          statusText = `<span class="bg-slate-200 text-slate-700 text-[10px] font-bold px-1.5 py-0.5 rounded">${currentLanguage === 'hi' ? 'अनुत्तरित (0.00)' : 'Unattempted (0.00)'}</span>`;
+        } else if (isRight) {
+          statusText = `<span class="bg-emerald-600 text-white text-[10px] font-bold px-1.5 py-0.5 rounded">${currentLanguage === 'hi' ? '+2.00 सही' : '+2.00 Correct'}</span>`;
+        } else {
+          statusText = `<span class="bg-rose-600 text-white text-[10px] font-bold px-1.5 py-0.5 rounded">${currentLanguage === 'hi' ? '-0.20 गलत' : '-0.20 Incorrect'}</span>`;
+        }
 
         let optHtml = '';
-        q.options.forEach((opt, optIndex) => {
+        langData.options.forEach((opt, optIndex) => {
           let optStyle = 'bg-white border-slate-200 text-slate-700';
           let tag = '';
 
           if (optIndex === q.correct) {
             optStyle = 'bg-emerald-100 border-emerald-400 font-bold text-emerald-900';
-            tag = `<span class="text-xs bg-emerald-600 text-white px-2 py-0.5 rounded text-[10px] ml-auto">सही उत्तर</span>`;
+            tag = `<span class="text-[9px] bg-emerald-600 text-white px-1.5 py-0.5 rounded ml-auto">${currentLanguage === 'hi' ? 'सही उत्तर' : 'Correct'}</span>`;
           } else if (optIndex === userChoice) {
             optStyle = 'bg-rose-100 border-rose-400 font-bold text-rose-900';
-            tag = `<span class="text-xs bg-rose-600 text-white px-2 py-0.5 rounded text-[10px] ml-auto">आपका चयन</span>`;
+            tag = `<span class="text-[9px] bg-rose-600 text-white px-1.5 py-0.5 rounded ml-auto">${currentLanguage === 'hi' ? 'आपका चयन' : 'Your Choice'}</span>`;
           }
 
           optHtml += `
-            <div class="p-2.5 rounded-lg border text-xs sm:text-sm flex items-center gap-2 ${optStyle}">
-              <span class="w-5 h-5 rounded-full bg-slate-200 flex items-center justify-center font-bold text-xs shrink-0">${letters[optIndex]}</span>
-              <span>${opt}</span>
+            <div class="p-2 rounded-lg border text-xs flex items-center gap-2 ${optStyle}">
+              <span class="w-4 h-4 rounded-full bg-slate-200 flex items-center justify-center font-bold text-[10px] shrink-0">${letters[optIndex]}</span>
+              <span class="leading-relaxed">${opt}</span>
               ${tag}
             </div>
           `;
         });
 
         card.innerHTML = `
-          <div class="flex items-center justify-between pb-2 mb-3 border-b border-slate-200">
-            <span class="font-black text-xs text-indigo-700">प्रश्न सं. ${idx + 1} / 60</span>
+          <div class="flex items-center justify-between pb-1.5 mb-2 border-b border-slate-200">
+            <span class="font-black text-xs text-indigo-700">${currentLanguage === 'hi' ? `प्रश्न ${idx + 1} / 60` : `Question ${idx + 1} of 60`}</span>
             ${statusText}
           </div>
-          <div class="text-sm sm:text-base font-semibold text-slate-800 mb-3 leading-relaxed">
-            ${q.q}
+          <div class="text-xs sm:text-sm font-semibold text-slate-800 mb-2 leading-relaxed">
+            ${langData.q}
           </div>
-          <div class="space-y-2 mb-3">
+          <div class="space-y-1.5 mb-2">
             ${optHtml}
           </div>
-          <div class="p-3 bg-white border border-slate-200 rounded-lg text-xs leading-relaxed text-slate-700">
-            <strong class="text-indigo-700 block mb-1">
-              <i class="fa-solid fa-lightbulb mr-1"></i> विस्तृत प्रामाणिक व्याख्या:
+          <div class="p-2.5 bg-white border border-slate-200 rounded-lg text-[11px] leading-relaxed text-slate-700">
+            <strong class="text-indigo-700 block mb-0.5">
+              <i class="fa-solid fa-lightbulb mr-1"></i> ${currentLanguage === 'hi' ? 'विस्तृत प्रामाणिक व्याख्या:' : 'Detailed Authentic Explanation:'}
             </strong>
-            ${q.exp}
+            ${langData.exp}
           </div>
-          <div class="mt-2 text-right">
-            <a href="https://t.me/GYANVERSET" target="_blank" class="text-[11px] font-bold text-sky-600 hover:underline">
+          <div class="mt-1.5 text-right">
+            <a href="https://t.me/GYANVERSET" target="_blank" class="text-[10px] font-bold text-sky-600 hover:underline">
               @GYANVERSET Official Channel
             </a>
           </div>
