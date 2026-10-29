@@ -14,15 +14,14 @@
             -webkit-tap-highlight-color: transparent;
         }
         .option-card {
-            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: all 0.15s ease-in-out;
         }
         .option-card:active {
-            transform: scale(0.99);
+            transform: scale(0.98);
         }
-        /* Custom Scrollbar */
         ::-webkit-scrollbar {
-            width: 5px;
-            height: 5px;
+            width: 4px;
+            height: 4px;
         }
         ::-webkit-scrollbar-track {
             background: #f1f5f9;
@@ -36,246 +35,238 @@
 <body class="min-h-screen flex flex-col justify-between text-slate-800">
 
     <!-- 1. MANDATORY AUTO FULL-SCREEN ENTRY GATE -->
-    <div id="entry-gate" class="fixed inset-0 z-50 bg-slate-900/95 backdrop-blur-md flex items-center justify-center p-4 overflow-y-auto">
-        <div class="bg-white rounded-2xl shadow-2xl max-w-lg w-full p-5 sm:p-7 border-t-8 border-indigo-600 text-center my-auto">
-            <div class="inline-flex items-center justify-center w-14 h-14 rounded-full bg-indigo-100 text-indigo-700 font-extrabold text-2xl mb-3 shadow-inner">
+    <div id="entry-gate" class="fixed inset-0 z-50 bg-slate-900/95 backdrop-blur-md flex items-center justify-center p-3 overflow-y-auto">
+        <div class="bg-white rounded-2xl shadow-2xl max-w-md w-full p-5 border-t-8 border-indigo-600 text-center my-auto">
+            <div class="inline-flex items-center justify-center w-12 h-12 rounded-full bg-indigo-100 text-indigo-700 font-extrabold text-xl mb-2 shadow-inner">
                 GV
             </div>
-            <h1 class="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">GYANVERSE</h1>
-            <p class="text-xs sm:text-sm font-bold text-indigo-600 uppercase tracking-wider mt-0.5 mb-3">
-                Official CBT Test Portal • @GYANVERSET
+            <h1 class="text-2xl font-extrabold text-slate-900 tracking-tight">GYANVERSE</h1>
+            <p class="text-xs font-bold text-indigo-600 uppercase tracking-wider mb-3">
+                Official Mobile CBT Portal • @GYANVERSET
             </p>
 
-            <div class="bg-slate-50 rounded-xl p-3.5 text-left border border-slate-200 mb-4 space-y-2 text-xs sm:text-sm text-slate-700">
-                <div class="font-bold text-slate-900 border-b border-slate-200 pb-1.5 mb-2 flex justify-between items-center">
-                    <span>📄 29 अक्टूबर 2026: करंट अफेयर्स (28 अक्टूबर रिवीजन सहित)</span>
-                    <span class="bg-indigo-600 text-white px-2 py-0.5 rounded text-xs">25 Qs</span>
+            <div class="bg-slate-50 rounded-xl p-3 text-left border border-slate-200 mb-3.5 space-y-2 text-xs text-slate-700">
+                <div class="font-bold text-slate-900 border-b border-slate-200 pb-1.5 flex justify-between items-center">
+                    <span>📄 29 अक्टूबर 2026: करंट अफेयर्स टेस्ट</span>
+                    <span class="bg-indigo-600 text-white px-2 py-0.5 rounded text-[11px]">25 Qs</span>
                 </div>
                 <div class="grid grid-cols-2 gap-2">
                     <div class="bg-white p-2 rounded border border-slate-200">
-                        <span class="text-slate-400 text-[11px] block">समय (Duration)</span>
+                        <span class="text-slate-400 text-[10px] block">समय (Duration)</span>
                         <span class="font-bold text-slate-800">120 Minutes</span>
                     </div>
                     <div class="bg-white p-2 rounded border border-slate-200">
-                        <span class="text-slate-400 text-[11px] block">अंक (Marking)</span>
+                        <span class="text-slate-400 text-[10px] block">अंक (Marking)</span>
                         <span class="font-bold text-emerald-600">+2.00</span> / <span class="font-bold text-rose-600">-0.20</span>
                     </div>
                 </div>
-                <ul class="list-disc list-inside space-y-1 pt-1 text-xs text-slate-600">
-                    <li><b>Instant Verification:</b> विकल्प चुनते ही सही उत्तर व विस्तृत व्याख्या तुरंत नीचे दिखेगी।</li>
-                    <li><b>Bilingual Mode:</b> किसी भी समय हिंदी / English भाषा बदलें।</li>
-                    <li><b>Pattern:</b> 3-4 कथन, कथन-कारण (A-R), सुमेलन एवं ट्रिकी प्रश्न।</li>
+                <ul class="list-disc list-inside space-y-1 pt-1 text-[11px] text-slate-600">
+                    <li><b>Mobile Fit UI:</b> छोटे व सटीक प्रश्न, जो मोबाइल स्क्रीन पर एक बार में फिट दिखें।</li>
+                    <li><b>Full Explanation:</b> विकल्प चुनते ही नीचे पूरी विस्तृत व्याख्या दिखेगी।</li>
                 </ul>
             </div>
 
-            <div class="bg-sky-50 border border-sky-200 rounded-xl p-3 mb-5">
-                <p class="text-xs font-semibold text-sky-900 mb-1.5">ऐसे ऑनलाइन टेस्ट देने के लिए टेलीग्राम जॉइन करें:</p>
-                <a href="https://t.me/GYANVERSET" target="_blank" class="inline-flex items-center justify-center gap-1.5 bg-sky-600 hover:bg-sky-700 text-white text-xs font-bold px-4 py-2 rounded-lg shadow transition">
+            <div class="bg-sky-50 border border-sky-200 rounded-xl p-2.5 mb-4">
+                <p class="text-[11px] font-semibold text-sky-900 mb-1.5">ऐसे ऑनलाइन टेस्ट देने के लिए टेलीग्राम जॉइन करें:</p>
+                <a href="https://t.me/GYANVERSET" target="_blank" class="inline-flex items-center justify-center gap-1.5 bg-sky-600 hover:bg-sky-700 text-white text-xs font-bold px-3.5 py-1.5 rounded-lg shadow transition">
                     <span>✈️ Join Telegram: @GYANVERSET</span>
                 </a>
             </div>
 
-            <button onclick="startTestWithFullScreen()" class="w-full bg-indigo-600 hover:bg-indigo-700 active:bg-indigo-800 text-white font-extrabold py-3.5 px-6 rounded-xl shadow-lg shadow-indigo-500/30 text-base sm:text-lg transition flex items-center justify-center gap-2">
+            <button onclick="startTestWithFullScreen()" class="w-full bg-indigo-600 hover:bg-indigo-700 active:bg-indigo-800 text-white font-extrabold py-3 px-5 rounded-xl shadow-lg shadow-indigo-500/30 text-sm sm:text-base transition flex items-center justify-center gap-2">
                 <span>⛶ Start Test (Auto Full Screen)</span>
             </button>
         </div>
     </div>
 
-    <!-- 2. TOP STICKY HEADER (Timer + Lang Switcher + Submit Button) -->
-    <header class="sticky top-0 z-30 bg-white border-b border-slate-200 shadow-sm px-3 py-2.5 sm:px-6">
-        <div class="max-w-4xl mx-auto flex items-center justify-between gap-2">
-            <!-- Brand Info -->
-            <div class="flex items-center gap-2">
-                <div class="w-9 h-9 rounded-lg bg-indigo-700 text-white font-extrabold flex items-center justify-center text-sm shadow">
+    <!-- 2. COMPACT TOP STICKY HEADER -->
+    <header class="sticky top-0 z-30 bg-white border-b border-slate-200 shadow-sm px-2.5 py-2 sm:px-5">
+        <div class="max-w-3xl mx-auto flex items-center justify-between gap-1.5">
+            <div class="flex items-center gap-1.5">
+                <div class="w-8 h-8 rounded-lg bg-indigo-700 text-white font-extrabold flex items-center justify-center text-xs shadow">
                     GV
                 </div>
                 <div>
-                    <div class="flex items-center gap-1.5">
-                        <span class="font-extrabold text-slate-900 text-sm sm:text-base tracking-tight">GYANVERSE</span>
-                        <a href="https://t.me/GYANVERSET" target="_blank" class="text-[10px] sm:text-xs bg-indigo-50 text-indigo-700 font-bold px-1.5 py-0.5 rounded border border-indigo-200 hover:bg-indigo-100">@GYANVERSET</a>
+                    <div class="flex items-center gap-1">
+                        <span class="font-extrabold text-slate-900 text-xs sm:text-sm tracking-tight">GYANVERSE</span>
+                        <a href="https://t.me/GYANVERSET" target="_blank" class="text-[9px] sm:text-[10px] bg-indigo-50 text-indigo-700 font-bold px-1.5 py-0.5 rounded border border-indigo-200">@GYANVERSET</a>
                     </div>
-                    <p class="text-[10px] sm:text-xs text-slate-500 font-medium truncate max-w-[130px] sm:max-w-xs">29 Oct 2026 Current Affairs CBT</p>
+                    <p class="text-[9px] sm:text-[11px] text-slate-500 font-medium">29 Oct 2026 Current Affairs</p>
                 </div>
             </div>
 
-            <!-- Right Controls: Language, Live Timer & Submit Button -->
-            <div class="flex items-center gap-1.5 sm:gap-3">
+            <div class="flex items-center gap-1.5">
                 <!-- Language Switcher -->
-                <button onclick="toggleLanguage()" id="lang-btn" class="bg-slate-100 hover:bg-slate-200 text-slate-800 font-bold text-xs px-2.5 py-1.5 rounded-lg border border-slate-300 transition flex items-center gap-1">
+                <button onclick="toggleLanguage()" id="lang-btn" class="bg-slate-100 hover:bg-slate-200 text-slate-800 font-bold text-[11px] px-2 py-1.5 rounded-lg border border-slate-300 transition flex items-center gap-1">
                     <span>🌐</span>
-                    <span id="lang-label">EN / हिं</span>
+                    <span id="lang-label">EN</span>
                 </button>
 
-                <!-- Live 120-Min Countdown Timer -->
-                <div class="bg-slate-900 text-white px-2.5 py-1.5 rounded-lg font-mono text-xs sm:text-sm font-bold flex items-center gap-1 shadow-inner">
-                    <span class="text-amber-400">⏱</span>
+                <!-- Live 120-Min Timer -->
+                <div class="bg-slate-900 text-white px-2 py-1.5 rounded-lg font-mono text-xs font-bold flex items-center gap-1 shadow-inner">
+                    <span class="text-amber-400 text-[11px]">⏱</span>
                     <span id="timer-display">120:00</span>
                 </div>
 
-                <!-- Submit Test Button (Top-Right Corner next to Timer) -->
-                <button onclick="openSubmitModal()" id="header-submit-btn" class="bg-rose-600 hover:bg-rose-700 active:bg-rose-800 text-white font-bold text-xs sm:text-sm px-3 py-1.5 rounded-lg shadow transition">
-                    Submit Test
+                <!-- Submit Button (Top-Right Corner next to Timer) -->
+                <button onclick="openSubmitModal()" id="header-submit-btn" class="bg-rose-600 hover:bg-rose-700 active:bg-rose-800 text-white font-bold text-[11px] sm:text-xs px-2.5 py-1.5 rounded-lg shadow transition">
+                    Submit
                 </button>
             </div>
         </div>
     </header>
 
-    <!-- 3. MAIN FULL-WIDTH QUESTION VIEWPORT (No Sidebar Palette) -->
-    <main class="flex-grow w-full max-w-4xl mx-auto px-3 py-4 sm:px-6 sm:py-6">
+    <!-- 3. MAIN COMPACT QUESTION VIEWPORT -->
+    <main class="flex-grow w-full max-w-3xl mx-auto px-2.5 py-2.5 sm:px-5 sm:py-4">
         
-        <!-- Review Mode Banner (Visible after submission) -->
-        <div id="review-mode-banner" class="hidden mb-4 bg-amber-50 border-l-4 border-amber-500 p-3 rounded-r-xl flex items-center justify-between">
+        <!-- Review Mode Banner -->
+        <div id="review-mode-banner" class="hidden mb-2.5 bg-amber-50 border-l-4 border-amber-500 p-2.5 rounded-r-xl flex items-center justify-between">
             <div>
-                <p class="text-xs sm:text-sm font-extrabold text-amber-900">🔍 SOLUTIONS & REVIEW MODE</p>
-                <p class="text-[11px] sm:text-xs text-amber-700">आप सभी प्रश्नों के विस्तृत हल देख रहे हैं।</p>
+                <p class="text-xs font-extrabold text-amber-900">🔍 SOLUTIONS & REVIEW MODE</p>
+                <p class="text-[10px] text-amber-700">सभी प्रश्नों की विस्तृत व्याख्या नीचे दी गई है।</p>
             </div>
-            <button onclick="showScorecardModal()" class="bg-amber-600 hover:bg-amber-700 text-white text-xs font-bold px-3 py-1.5 rounded-lg shadow">
+            <button onclick="showScorecardModal()" class="bg-amber-600 hover:bg-amber-700 text-white text-[11px] font-bold px-2.5 py-1 rounded-lg shadow">
                 📊 Scorecard
             </button>
         </div>
 
-        <!-- Question Card Container -->
-        <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-4 sm:p-6">
+        <!-- Question Card -->
+        <div class="bg-white rounded-xl shadow-sm border border-slate-200 p-3 sm:p-5">
             
-            <!-- Question Meta Bar -->
-            <div class="flex flex-wrap items-center justify-between gap-2 pb-3 mb-4 border-b border-slate-100">
-                <div class="flex items-center gap-2">
-                    <span id="q-number-badge" class="bg-indigo-600 text-white text-xs sm:text-sm font-extrabold px-3 py-1 rounded-lg shadow-sm">
+            <!-- Compact Question Meta Bar -->
+            <div class="flex items-center justify-between gap-1 pb-2 mb-2.5 border-b border-slate-100">
+                <div class="flex items-center gap-1.5 flex-wrap">
+                    <span id="q-number-badge" class="bg-indigo-600 text-white text-xs font-extrabold px-2.5 py-0.5 rounded-md">
                         Q. 1 / 25
                     </span>
-                    <span id="q-type-badge" class="bg-slate-100 text-slate-700 text-[11px] sm:text-xs font-bold px-2.5 py-1 rounded-md border border-slate-200">
-                        Statement Based
+                    <span id="q-type-badge" class="bg-slate-100 text-slate-700 text-[10px] font-bold px-2 py-0.5 rounded border border-slate-200">
+                        Statement
                     </span>
-                    <span id="review-status-badge" class="hidden bg-purple-100 text-purple-800 text-[11px] font-bold px-2 py-0.5 rounded border border-purple-300">
-                        ★ Marked for Review
+                    <span id="review-status-badge" class="hidden bg-purple-100 text-purple-800 text-[10px] font-bold px-1.5 py-0.5 rounded border border-purple-300">
+                        ★ Review
                     </span>
                 </div>
-                <div class="flex items-center gap-1.5 text-xs font-bold">
-                    <span class="bg-emerald-50 text-emerald-700 px-2 py-0.5 rounded border border-emerald-200">+2.00</span>
-                    <span class="bg-rose-50 text-rose-700 px-2 py-0.5 rounded border border-rose-200">-0.20</span>
+                <div class="flex items-center gap-1 text-[10px] font-bold shrink-0">
+                    <span class="bg-emerald-50 text-emerald-700 px-1.5 py-0.5 rounded border border-emerald-200">+2.0</span>
+                    <span class="bg-rose-50 text-rose-700 px-1.5 py-0.5 rounded border border-rose-200">-0.2</span>
                 </div>
             </div>
 
-            <!-- Question Text -->
-            <div id="question-text" class="text-sm sm:text-base font-semibold text-slate-900 leading-relaxed whitespace-pre-line mb-4">
-                <!-- Dynamic Question Content -->
+            <!-- Compact Question Text -->
+            <div id="question-text" class="text-[13px] sm:text-[15px] font-semibold text-slate-900 leading-snug whitespace-pre-line mb-2.5">
+                <!-- Dynamic Short Question -->
             </div>
 
-            <!-- Mandatory Brand Watermark Below Question -->
-            <div class="mb-4 flex items-center justify-between bg-slate-50 px-3 py-1.5 rounded-lg border border-slate-200/80">
-                <span class="text-[11px] sm:text-xs font-extrabold text-indigo-700 tracking-wide">@GYANVERSET</span>
-                <a href="https://t.me/GYANVERSET" target="_blank" class="text-[11px] font-semibold text-sky-600 hover:underline">
-                    Join Telegram: t.me/GYANVERSET
+            <!-- Compact Brand Watermark -->
+            <div class="mb-2.5 flex items-center justify-between bg-slate-50 px-2.5 py-1 rounded border border-slate-200/80">
+                <span class="text-[10px] font-extrabold text-indigo-700">@GYANVERSET</span>
+                <a href="https://t.me/GYANVERSET" target="_blank" class="text-[10px] font-semibold text-sky-600 hover:underline">
+                    Telegram: t.me/GYANVERSET
                 </a>
             </div>
 
-            <!-- Options Container -->
-            <div id="options-container" class="space-y-2.5 mb-5">
+            <!-- Compact Options Container -->
+            <div id="options-container" class="space-y-1.5 mb-3">
                 <!-- Dynamic Options -->
             </div>
 
-            <!-- 4. NAVIGATION BUTTONS DIRECTLY BELOW OPTIONS (Mobile Friendly) -->
-            <div class="pt-3 border-t border-slate-200 grid grid-cols-2 sm:grid-cols-4 gap-2">
-                <button onclick="prevQuestion()" id="btn-prev" class="bg-slate-100 hover:bg-slate-200 active:bg-slate-300 text-slate-800 font-bold py-2.5 px-3 rounded-xl text-xs sm:text-sm border border-slate-300 transition flex items-center justify-center gap-1 disabled:opacity-40">
-                    <span>⬅</span> <span id="lbl-prev">Prev</span>
+            <!-- 4. NAVIGATION BUTTONS DIRECTLY BELOW OPTIONS -->
+            <div class="pt-2.5 border-t border-slate-200 grid grid-cols-4 gap-1.5">
+                <button onclick="prevQuestion()" id="btn-prev" class="bg-slate-100 hover:bg-slate-200 active:bg-slate-300 text-slate-800 font-bold py-2 px-1.5 rounded-lg text-[11px] sm:text-xs border border-slate-300 transition flex items-center justify-center gap-1 disabled:opacity-40">
+                    <span>⬅</span> <span>Prev</span>
                 </button>
 
-                <button onclick="clearResponse()" id="btn-clear" class="bg-rose-50 hover:bg-rose-100 active:bg-rose-200 text-rose-700 font-bold py-2.5 px-3 rounded-xl text-xs sm:text-sm border border-rose-200 transition flex items-center justify-center gap-1">
-                    <span>✖</span> <span id="lbl-clear">Clear</span>
+                <button onclick="clearResponse()" id="btn-clear" class="bg-rose-50 hover:bg-rose-100 active:bg-rose-200 text-rose-700 font-bold py-2 px-1.5 rounded-lg text-[11px] sm:text-xs border border-rose-200 transition flex items-center justify-center gap-1">
+                    <span>✖</span> <span>Clear</span>
                 </button>
 
-                <button onclick="toggleMarkReview()" id="btn-review" class="bg-purple-50 hover:bg-purple-100 active:bg-purple-200 text-purple-700 font-bold py-2.5 px-3 rounded-xl text-xs sm:text-sm border border-purple-200 transition flex items-center justify-center gap-1">
-                    <span>★</span> <span id="lbl-review">Review</span>
+                <button onclick="toggleMarkReview()" id="btn-review" class="bg-purple-50 hover:bg-purple-100 active:bg-purple-200 text-purple-700 font-bold py-2 px-1.5 rounded-lg text-[11px] sm:text-xs border border-purple-200 transition flex items-center justify-center gap-1">
+                    <span>★</span> <span>Review</span>
                 </button>
 
-                <button onclick="nextAndSave()" id="btn-next" class="bg-indigo-600 hover:bg-indigo-700 active:bg-indigo-800 text-white font-bold py-2.5 px-3 rounded-xl text-xs sm:text-sm shadow-md shadow-indigo-500/20 transition flex items-center justify-center gap-1">
-                    <span id="lbl-next">Next & Save</span> <span>➡</span>
+                <button onclick="nextAndSave()" id="btn-next" class="bg-indigo-600 hover:bg-indigo-700 active:bg-indigo-800 text-white font-bold py-2 px-1.5 rounded-lg text-[11px] sm:text-xs shadow transition flex items-center justify-center gap-1">
+                    <span>Next</span> <span>➡</span>
                 </button>
             </div>
 
-            <!-- 5. INSTANT ANSWER & DETAILED EXPLANATION BOX -->
-            <div id="instant-feedback-box" class="hidden mt-5 rounded-xl border p-4 transition-all">
-                <div id="feedback-header" class="font-extrabold text-sm sm:text-base mb-2 flex items-center justify-between">
+            <!-- 5. INSTANT ANSWER & FULL DETAILED EXPLANATION BOX -->
+            <div id="instant-feedback-box" class="hidden mt-3.5 rounded-xl border p-3 sm:p-4 transition-all">
+                <div id="feedback-header" class="font-extrabold text-xs sm:text-sm mb-1.5 flex items-center justify-between">
                     <!-- Instant status -->
                 </div>
-                <div id="feedback-explanation" class="text-xs sm:text-sm text-slate-700 leading-relaxed whitespace-pre-line border-t border-slate-200/80 pt-2.5 mt-2">
-                    <!-- Detailed PDF Line-by-Line Explanation -->
+                <div id="feedback-explanation" class="text-xs sm:text-[13.5px] text-slate-700 leading-relaxed whitespace-pre-line border-t border-slate-200/80 pt-2 mt-1.5">
+                    <!-- Full Detailed PDF Explanation -->
                 </div>
-                <div class="mt-3 pt-2 border-t border-slate-200/60 flex items-center justify-between text-[11px] font-bold text-indigo-700">
-                    <span>Official Source: GYANVERSE Study Material</span>
+                <div class="mt-2.5 pt-1.5 border-t border-slate-200/60 flex items-center justify-between text-[10px] font-bold text-indigo-700">
+                    <span>GYANVERSE Official Solution</span>
                     <a href="https://t.me/GYANVERSET" target="_blank" class="underline">@GYANVERSET</a>
                 </div>
             </div>
 
         </div>
 
-        <!-- Quick Progress Bar Indicator (Full Width Clean Footer Info) -->
-        <div class="mt-4 bg-white rounded-xl p-3 border border-slate-200 shadow-sm flex flex-wrap items-center justify-between gap-2 text-xs font-semibold text-slate-600">
-            <div class="flex items-center gap-3">
-                <span class="flex items-center gap-1"><span class="w-2.5 h-2.5 rounded-full bg-emerald-500 inline-block"></span> Answered: <b id="stat-answered" class="text-slate-900">0</b></span>
-                <span class="flex items-center gap-1"><span class="w-2.5 h-2.5 rounded-full bg-purple-500 inline-block"></span> Review: <b id="stat-review" class="text-slate-900">0</b></span>
-                <span class="flex items-center gap-1"><span class="w-2.5 h-2.5 rounded-full bg-slate-300 inline-block"></span> Left: <b id="stat-left" class="text-slate-900">25</b></span>
+        <!-- Compact Progress Footer -->
+        <div class="mt-2.5 bg-white rounded-xl px-3 py-2 border border-slate-200 shadow-sm flex items-center justify-between gap-2 text-[11px] font-semibold text-slate-600">
+            <div class="flex items-center gap-2.5">
+                <span class="flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-emerald-500 inline-block"></span> Done: <b id="stat-answered" class="text-slate-900">0</b></span>
+                <span class="flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-purple-500 inline-block"></span> Rev: <b id="stat-review" class="text-slate-900">0</b></span>
+                <span class="flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-slate-300 inline-block"></span> Left: <b id="stat-left" class="text-slate-900">25</b></span>
             </div>
-            <div class="flex items-center gap-2">
-                <label for="jump-select" class="text-slate-500">Jump to:</label>
-                <select id="jump-select" onchange="jumpToQuestion(this.value)" class="bg-slate-100 border border-slate-300 rounded-lg px-2 py-1 text-xs font-bold text-slate-800 focus:outline-none focus:ring-2 focus:ring-indigo-500">
-                    <!-- Populated via JS -->
+            <div class="flex items-center gap-1.5">
+                <label for="jump-select" class="text-slate-500">Go:</label>
+                <select id="jump-select" onchange="jumpToQuestion(this.value)" class="bg-slate-100 border border-slate-300 rounded px-1.5 py-0.5 text-[11px] font-bold text-slate-800">
                 </select>
             </div>
         </div>
     </main>
 
     <!-- 6. SCORECARD MODAL -->
-    <div id="scorecard-modal" class="hidden fixed inset-0 z-50 bg-slate-900/80 backdrop-blur-sm flex items-center justify-center p-4 overflow-y-auto">
-        <div class="bg-white rounded-2xl shadow-2xl max-w-md w-full p-5 sm:p-6 border-t-8 border-indigo-600 my-auto text-center">
-            <div class="inline-flex items-center justify-center w-12 h-12 rounded-full bg-indigo-100 text-indigo-700 font-extrabold text-xl mb-2">
+    <div id="scorecard-modal" class="hidden fixed inset-0 z-50 bg-slate-900/80 backdrop-blur-sm flex items-center justify-center p-3 overflow-y-auto">
+        <div class="bg-white rounded-2xl shadow-2xl max-w-md w-full p-5 border-t-8 border-indigo-600 my-auto text-center">
+            <div class="inline-flex items-center justify-center w-11 h-11 rounded-full bg-indigo-100 text-indigo-700 font-extrabold text-lg mb-1.5">
                 🏆
             </div>
-            <h2 class="text-xl sm:text-2xl font-extrabold text-slate-900">GYANVERSE SCORECARD</h2>
-            <p class="text-xs font-bold text-indigo-600 mb-4">@GYANVERSET • 29 Oct 2026 Current Affairs</p>
+            <h2 class="text-xl font-extrabold text-slate-900">GYANVERSE SCORECARD</h2>
+            <p class="text-[11px] font-bold text-indigo-600 mb-3">@GYANVERSET • 29 Oct 2026 Current Affairs</p>
 
-            <!-- Big Score Display -->
-            <div class="bg-gradient-to-br from-indigo-600 to-indigo-800 text-white rounded-2xl p-4 mb-4 shadow-lg">
-                <p class="text-xs uppercase tracking-wider text-indigo-200 font-semibold">Total Marks Scored</p>
-                <p class="text-3xl sm:text-4xl font-extrabold mt-1">
-                    <span id="score-total">0.00</span> <span class="text-lg font-normal text-indigo-200">/ 50.00</span>
+            <div class="bg-gradient-to-br from-indigo-600 to-indigo-800 text-white rounded-xl p-3.5 mb-3.5 shadow-lg">
+                <p class="text-[11px] uppercase tracking-wider text-indigo-200 font-semibold">Total Marks Scored</p>
+                <p class="text-3xl font-extrabold mt-0.5">
+                    <span id="score-total">0.00</span> <span class="text-base font-normal text-indigo-200">/ 50.00</span>
                 </p>
             </div>
 
-            <!-- Detailed Stats Grid -->
-            <div class="grid grid-cols-2 gap-2.5 text-left mb-5">
-                <div class="bg-emerald-50 border border-emerald-200 p-3 rounded-xl">
-                    <span class="text-[11px] font-bold text-emerald-700 uppercase block">✔ Correct (+2.0)</span>
-                    <span id="score-correct" class="text-xl font-extrabold text-emerald-800">0</span>
+            <div class="grid grid-cols-2 gap-2 text-left mb-4">
+                <div class="bg-emerald-50 border border-emerald-200 p-2.5 rounded-xl">
+                    <span class="text-[10px] font-bold text-emerald-700 uppercase block">✔ Correct (+2.0)</span>
+                    <span id="score-correct" class="text-lg font-extrabold text-emerald-800">0</span>
                 </div>
-                <div class="bg-rose-50 border border-rose-200 p-3 rounded-xl">
-                    <span class="text-[11px] font-bold text-rose-700 uppercase block">✖ Incorrect (-0.2)</span>
-                    <span id="score-incorrect" class="text-xl font-extrabold text-rose-800">0</span>
+                <div class="bg-rose-50 border border-rose-200 p-2.5 rounded-xl">
+                    <span class="text-[10px] font-bold text-rose-700 uppercase block">✖ Incorrect (-0.2)</span>
+                    <span id="score-incorrect" class="text-lg font-extrabold text-rose-800">0</span>
                 </div>
-                <div class="bg-slate-50 border border-slate-200 p-3 rounded-xl">
-                    <span class="text-[11px] font-bold text-slate-600 uppercase block">⚪ Unattempted</span>
-                    <span id="score-left" class="text-xl font-extrabold text-slate-800">0</span>
+                <div class="bg-slate-50 border border-slate-200 p-2.5 rounded-xl">
+                    <span class="text-[10px] font-bold text-slate-600 uppercase block">⚪ Left</span>
+                    <span id="score-left" class="text-lg font-extrabold text-slate-800">0</span>
                 </div>
-                <div class="bg-amber-50 border border-amber-200 p-3 rounded-xl">
-                    <span class="text-[11px] font-bold text-amber-700 uppercase block">🎯 Accuracy</span>
-                    <span id="score-accuracy" class="text-xl font-extrabold text-amber-900">0%</span>
+                <div class="bg-amber-50 border border-amber-200 p-2.5 rounded-xl">
+                    <span class="text-[10px] font-bold text-amber-700 uppercase block">🎯 Accuracy</span>
+                    <span id="score-accuracy" class="text-lg font-extrabold text-amber-900">0%</span>
                 </div>
             </div>
 
-            <!-- Telegram Promotion in Scorecard -->
-            <div class="bg-sky-50 border border-sky-200 rounded-xl p-3 mb-4">
-                <p class="text-xs font-bold text-sky-900 mb-1.5">डेली फ्री PDF और टेस्ट सीरीज़ के लिए टेलीग्राम से जुड़ें:</p>
-                <a href="https://t.me/GYANVERSET" target="_blank" class="inline-block bg-sky-600 hover:bg-sky-700 text-white text-xs font-bold px-4 py-2 rounded-lg shadow">
+            <div class="bg-sky-50 border border-sky-200 rounded-xl p-2.5 mb-4">
+                <p class="text-[11px] font-bold text-sky-900 mb-1">डेली फ्री PDF और टेस्ट के लिए टेलीग्राम से जुड़ें:</p>
+                <a href="https://t.me/GYANVERSET" target="_blank" class="inline-block bg-sky-600 hover:bg-sky-700 text-white text-xs font-bold px-3.5 py-1.5 rounded-lg shadow">
                     ✈️ Join @GYANVERSET
                 </a>
             </div>
 
-            <!-- Action Buttons -->
-            <div class="flex gap-2.5">
-                <button onclick="enterReviewMode()" class="flex-1 bg-indigo-600 hover:bg-indigo-700 text-white font-extrabold py-3 px-4 rounded-xl shadow text-xs sm:text-sm transition">
+            <div class="flex gap-2">
+                <button onclick="enterReviewMode()" class="flex-1 bg-indigo-600 hover:bg-indigo-700 text-white font-extrabold py-2.5 px-3 rounded-xl shadow text-xs transition">
                     📖 Check Solutions
                 </button>
-                <button onclick="location.reload()" class="bg-slate-100 hover:bg-slate-200 text-slate-800 font-bold py-3 px-4 rounded-xl border border-slate-300 text-xs sm:text-sm transition">
+                <button onclick="location.reload()" class="bg-slate-100 hover:bg-slate-200 text-slate-800 font-bold py-2.5 px-3 rounded-xl border border-slate-300 text-xs transition">
                     🔄 Restart
                 </button>
             </div>
@@ -284,922 +275,667 @@
 
     <script>
         // ============================================================================
-        // COMPLETE 25 QUESTIONS DATABASE (STRICTLY FROM 29 OCT & 28 OCT REVISION PDF)
-        // Balanced Option Distribution: A(6), B(7), C(6), D(6)
+        // SHORT & CRISP QUESTIONS FOR MOBILE FIT + FULL DETAILED SOLUTIONS
         // ============================================================================
         const questionsData = [
             {
                 id: 1,
-                type_hi: "4-कथन आधारित (Statement Type)",
-                type_en: "4-Statement Based",
-                q_hi: `भारतीय पायलट कैप्टन स्मित मच्छर (Capt. Smit Machchhar) को अक्टूबर 2026 में मिले नागरिक बहादुरी सम्मानों के संदर्भ में निम्नलिखित कथनों पर विचार कीजिए:
-1. संयुक्त अरब अमीरात (UAE) के राष्ट्रपति शेख मोहम्मद बिन जायद अल नाहयान ने 27 अक्टूबर 2026 को अबू धाबी में उन्हें 'फर्स्ट क्लास ऑर्डर ऑफ जायद II' से सम्मानित किया।
-2. यह पुरस्कार उन्हें 30 सितंबर 2026 को एयर इंडिया की उड़ान AI-1073 (दुबई से तेल अवीव) में हुई आपातकालीन घटना को नाकाम करने के लिए दिया गया।
-3. इससे पूर्व उन्हें गुजरात सरकार द्वारा 'विशिष्ट गरिमा पुरस्कार' और इज़राइल का सर्वोच्च नागरिक वीरता पुरस्कार 'स्टेट ऑफ इज़राइल प्रेसिडेंशियल अवार्ड फॉर सिविलियन हीरोइज्म' भी मिल चुका है।
-4. कैप्टन स्मित मच्छर से पहले 'फर्स्ट क्लास ऑर्डर ऑफ जायद II' सम्मान भारतीय राजदूत नवदीप सूरी और संजय सुधीर को मिल चुका है।
-
-उपर्युक्त में से कौन-से कथन सही हैं?`,
-                q_en: `Consider the following statements regarding the civilian bravery honours conferred upon Indian pilot Capt. Smit Machchhar in October 2026:
-1. UAE President Sheikh Mohamed bin Zayed Al Nahyan honoured him with the 'First Class Order of Zayed II' in Abu Dhabi on 27 October 2026.
-2. This award was given for thwarting a severe cockpit emergency on 30 September 2026 aboard Air India flight AI-1073 (Dubai to Tel Aviv).
-3. Prior to this, he also received Gujarat Government's 'Vishisht Garima Award' and Israel's 'State of Israel Presidential Award for Civilian Heroism'.
-4. Before Capt. Smit Machchhar, Indian Ambassadors Navdeep Suri and Sanjay Sudhir had received the 'First Class Order of Zayed II'.
-
-Which of the statements given above are correct?`,
-                options_hi: [
-                    "केवल 1, 2 और 3",
-                    "केवल 2, 3 और 4",
-                    "केवल 1, 3 और 4",
-                    "1, 2, 3 और 4 सभी"
-                ],
-                options_en: [
-                    "1, 2 and 3 only",
-                    "2, 3 and 4 only",
-                    "1, 3 and 4 only",
-                    "All 1, 2, 3 and 4"
-                ],
+                type_hi: "3-कथन (Statement)",
+                type_en: "3-Statement",
+                q_hi: `कैप्टन स्मित मच्छर के संदर्भ में सही कथन चुनें:
+1. UAE ने इन्हें 'फर्स्ट क्लास ऑर्डर ऑफ जायद II' सम्मान दिया।
+2. इन्होंने एयर इंडिया विमान AI-1073 की आपात घटना नाकाम की।
+3. इन्हें गुजरात का 'विशिष्ट गरिमा पुरस्कार' व इज़राइल का सर्वोच्च नागरिक वीरता पुरस्कार भी मिला।`,
+                q_en: `Select the correct statement(s) regarding Capt. Smit Machchhar:
+1. UAE honoured him with 'First Class Order of Zayed II'.
+2. He thwarted an emergency on Air India flight AI-1073.
+3. He also received Gujarat's 'Vishisht Garima Award' & Israel's highest civilian heroism award.`,
+                options_hi: ["केवल 1 और 2", "केवल 2 और 3", "केवल 1 और 3", "1, 2 और 3 सभी"],
+                options_en: ["1 and 2 only", "2 and 3 only", "1 and 3 only", "All 1, 2 and 3"],
                 correct: 2, // C
-                exp_hi: `• कथन 1, 3 और 4 बिल्कुल सही हैं।
-• कथन 2 गलत है क्योंकि यह घटना एयर इंडिया नहीं, बल्कि 30 सितंबर 2026 को 'फ्लाईदुबई' (Flydubai) की उड़ान FZ-1073 (दुबई से तेल अवीव) के दौरान हुई थी।
-• UAE राजधानी: अबू धाबी | मुद्रा: यूएई दिरहम।`,
-                exp_en: `• Statements 1, 3, and 4 are correct.
-• Statement 2 is incorrect because the incident occurred on 30 September 2026 aboard 'Flydubai' flight FZ-1073 (from Dubai to Tel Aviv), not Air India.
-• UAE Capital: Abu Dhabi | Currency: UAE Dirham.`
+                exp_hi: `• कथन 1 और 3 सही हैं, जबकि कथन 2 गलत है।
+• मुख्य तथ्य: संयुक्त अरब अमीरात (UAE) के राष्ट्रपति शेख मोहम्मद बिन जायद अल नाहयान ने 27 अक्टूबर 2026 को अबू धाबी में भारतीय पायलट कैप्टन स्मित मच्छर और फ्लाईदुबई (Flydubai) के क्रू सदस्यों को शीर्ष नागरिक बहादुरी अवार्ड 'फर्स्ट क्लास ऑर्डर ऑफ जायद II' से सम्मानित किया।
+• कारण: 30 सितंबर 2026 को 'फ्लाईदुबई' की उड़ान FZ-1073 (दुबई से तेल अवीव) के कॉकपिट में हुई गंभीर आपातकालीन घटना को नाकाम करने के लिए (एयर इंडिया नहीं)।
+• कैप्टन स्मित मच्छर को मिले 3 बड़े सम्मान:
+1. गुजरात सरकार: 'विशिष्ट गरिमा पुरस्कार'।
+2. इज़राइल सरकार: सर्वोच्च नागरिक वीरता पुरस्कार 'State of Israel Presidential Award for Civilian Heroism'।
+3. UAE: 'फर्स्ट क्लास ऑर्डर ऑफ जायद II' (इससे पहले यह सम्मान भारतीय राजदूत नवदीप सूरी और संजय सुधीर को मिल चुका है)।
+• UAE स्टेटिक जीके: राजधानी- अबू धाबी | मुद्रा- यूएई दिरहम।`,
+                exp_en: `• Statements 1 and 3 are correct; Statement 2 is incorrect.
+• Key Facts: UAE President Sheikh Mohamed bin Zayed Al Nahyan awarded 'First Class Order of Zayed II' to Indian pilot Capt. Smit Machchhar on 27 Oct 2026 in Abu Dhabi.
+• Reason: For thwarting a severe cockpit emergency on 30 Sept 2026 aboard 'Flydubai' flight FZ-1073 (Dubai to Tel Aviv), not Air India.
+• Prior recipients of this UAE award: Indian Ambassadors Navdeep Suri and Sanjay Sudhir.`
             },
             {
                 id: 2,
-                type_hi: "3-कथन आधारित (Tricky Negative)",
-                type_en: "3-Statement Based (Negative)",
-                q_hi: `संयुक्त विशेष बल अभ्यास 'गरुड़ शक्ति' (Garuda Shakti) 2026 के संदर्भ में निम्नलिखित कथनों पर विचार कीजिए:
-1. 27 अक्टूबर से 6 नवंबर 2026 तक इस अभ्यास का 11वां संस्करण भारत और इंडोनेशिया के बीच आयोजित किया जा रहा है।
-2. वर्ष 2026 के इस संस्करण का आयोजन भारत के मिजोरम (वैरेंगटे) में किया जा रहा है।
-3. इसमें भारत की ओर से पैराशूट रेजिमेंट (Special Forces) और इंडोनेशियाई विशेष बल 'कोपासस' (Kopassus) शामिल हुए हैं।
-
-उपर्युक्त में से कौन-सा/से कथन गलत है/हैं?`,
-                q_en: `Consider the following statements regarding the Joint Special Forces Exercise 'Garuda Shakti' 2026:
-1. The 11th edition of this exercise is being held between India and Indonesia from 27 October to 6 November 2026.
-2. The 2026 edition is being hosted in Vairengte, Mizoram (India).
-3. India's Parachute Regiment (Special Forces) and Indonesian Special Forces 'Kopassus' are participating in it.
-
-Which of the statement(s) given above is/are INCORRECT?`,
-                options_hi: [
-                    "केवल 1 और 2",
-                    "केवल 2",
-                    "केवल 2 और 3",
-                    "केवल 1 और 3"
-                ],
-                options_en: [
-                    "1 and 2 only",
-                    "2 only",
-                    "2 and 3 only",
-                    "1 and 3 only"
-                ],
+                type_hi: "3-कथन (Negative)",
+                type_en: "3-Statement",
+                q_hi: `सैन्य अभ्यास 'गरुड़ शक्ति 2026' के बारे में कौन-सा कथन गलत है?
+1. यह भारत और इंडोनेशिया के बीच 11वां संस्करण है।
+2. इसका आयोजन वैरेंगटे (मिजोरम, भारत) में हो रहा है।
+3. इसमें भारत की पैराशूट रेजिमेंट और इंडोनेशिया का 'कोपासस' बल शामिल है।`,
+                q_en: `Which statement is INCORRECT regarding 'Garuda Shakti 2026' exercise?
+1. It is the 11th edition between India and Indonesia.
+2. It is being held at Vairengte (Mizoram, India).
+3. India's Parachute Regiment & Indonesia's 'Kopassus' are participating.`,
+                options_hi: ["केवल 1 और 2", "केवल 2", "केवल 2 और 3", "केवल 3"],
+                options_en: ["1 and 2 only", "2 only", "2 and 3 only", "3 only"],
                 correct: 1, // B
-                exp_hi: `• केवल कथन 2 गलत है (पूछा गया है कौन-सा कथन गलत है)।
-• 11वें गरुड़ शक्ति अभ्यास 2026 का आयोजन स्थल मिजोरम नहीं, बल्कि 'बान्युवांगी, इंडोनेशिया' (Banyuwangi, Indonesia) है। कथन 1 और 3 सही हैं।`,
-                exp_en: `• Only Statement 2 is incorrect (Question asks for the incorrect statement).
-• The venue for the 11th Garuda Shakti 2026 exercise is 'Banyuwangi, Indonesia', not Mizoram. Statements 1 and 3 are correct.`
+                exp_hi: `• केवल कथन 2 गलत है (प्रश्न में गलत कथन पूछा गया है)।
+• मुख्य तथ्य: संयुक्त विशेष बल अभ्यास 'गरुड़ शक्ति' (Garuda Shakti) का 11वां संस्करण 27 अक्टूबर से 6 नवंबर 2026 तक भारत और इंडोनेशिया के बीच आयोजित किया जा रहा है।
+• आयोजन स्थल (2026): मिजोरम नहीं, बल्कि 'बान्युवांगी, इंडोनेशिया' (Banyuwangi, Indonesia) में आयोजित हो रहा है।
+• प्रतिभागी बल: भारतीय पैराशूट रेजिमेंट (Special Forces) और इंडोनेशियाई विशेष बल (Kopassus)।`,
+                exp_en: `• Only Statement 2 is incorrect.
+• Key Facts: The 11th edition of 'Garuda Shakti' (27 Oct – 6 Nov 2026) between India and Indonesia is being held at 'Banyuwangi, Indonesia' (not Mizoram).
+• Participating Forces: India's Parachute Regiment (Special Forces) and Indonesian Special Forces (Kopassus).`
             },
             {
                 id: 3,
-                type_hi: "स्तंभ सुमेलन (List Matching)",
+                type_hi: "स्तंभ सुमेलन (Matching)",
                 type_en: "List Matching",
-                q_hi: `प्रमुख सैन्य अभ्यास 2026 (स्तंभ-I) को उनके संबंधित भागीदार देशों (स्तंभ-II) के साथ सुमेलित कीजिए:
-स्तंभ-I (सैन्य अभ्यास)          स्तंभ-II (शामिल देश)
-P. इब्सामार IX (IBSAMAR IX)   1. भारत और किर्गिस्तान
-Q. लामित्ये 2026 (Lamitiye)    2. भारत, ब्राजील और दक्षिण अफ्रीका
-R. खंजर-XIII (Khanjar-XIII)    3. भारतीय नौसेना और ब्रिटेन की रॉयल नेवी
-S. कोंकण 2026 (Konkan)        4. भारत और सेशेल्स
-
-सही कूट का चयन कीजिए:`,
-                q_en: `Match Important Military Exercises 2026 (Column-I) with their partner nations (Column-II):
-Column-I (Exercise)           Column-II (Partner Nations)
-P. IBSAMAR IX                 1. India and Kyrgyzstan
-Q. Lamitiye 2026              2. India, Brazil and South Africa
-R. Khanjar-XIII               3. Indian Navy and UK's Royal Navy
-S. Konkan 2026                4. India and Seychelles
-
-Select the correct code:`,
-                options_hi: [
-                    "P-2, Q-4, R-1, S-3",
-                    "P-2, Q-1, R-4, S-3",
-                    "P-4, Q-2, R-1, S-3",
-                    "P-3, Q-4, R-1, S-2"
-                ],
-                options_en: [
-                    "P-2, Q-4, R-1, S-3",
-                    "P-2, Q-1, R-4, S-3",
-                    "P-4, Q-2, R-1, S-3",
-                    "P-3, Q-4, R-1, S-2"
-                ],
+                q_hi: `सैन्य अभ्यास (2026) को भागीदार देशों से सुमेलित करें:
+P. इब्सामार IX      1. भारत - किर्गिस्तान
+Q. लामित्ये 2026   2. भारत, ब्राजील, द. अफ्रीका
+R. खंजर-XIII       3. भारत - ब्रिटेन (रॉयल नेवी)
+S. कोंकण 2026     4. भारत - सेशेल्स`,
+                q_en: `Match Military Exercises (2026) with partner countries:
+P. IBSAMAR IX      1. India - Kyrgyzstan
+Q. Lamitiye 2026   2. India, Brazil, S. Africa
+R. Khanjar-XIII    3. India - UK (Royal Navy)
+S. Konkan 2026     4. India - Seychelles`,
+                options_hi: ["P-2, Q-4, R-1, S-3", "P-2, Q-1, R-4, S-3", "P-4, Q-2, R-1, S-3", "P-3, Q-4, R-1, S-2"],
+                options_en: ["P-2, Q-4, R-1, S-3", "P-2, Q-1, R-4, S-3", "P-4, Q-2, R-1, S-3", "P-3, Q-4, R-1, S-2"],
                 correct: 0, // A
-                exp_hi: `• सही सुमेलन:
-- इब्सामार IX (IBSAMAR IX): भारत, ब्राजील और दक्षिण अफ्रीका (P-2)
-- लामित्ये 2026 (Lamitiye 2026): भारत और सेशेल्स (Q-4)
-- खंजर-XIII (Khanjar-XIII): भारत और किर्गिस्तान (R-1)
-- कोंकण 2026 (Konkan 2026): भारतीय नौसेना और ब्रिटेन की रॉयल नेवी (S-3)
-- अन्य: ऑस्ट्रा हिंद (भारत-ऑस्ट्रेलिया), इंद्र 2026 (भारत-रूस), धर्म गार्जियन 2026 (भारत-जापान)।`,
-                exp_en: `• Correct Matching:
+                exp_hi: `• प्रमुख सैन्य अभ्यास रिवीजन (2026) का पूरा विवरण:
+1. इब्सामार IX (IBSAMAR IX): भारत, ब्राजील और दक्षिण अफ्रीका (P-2)
+2. लामित्ये 2026 (Lamitiye 2026): भारत और सेशेल्स (Q-4)
+3. खंजर-XIII (Khanjar-XIII): भारत और किर्गिस्तान (R-1)
+4. कोंकण 2026 (Konkan 2026): भारतीय नौसेना और ब्रिटेन की रॉयल नेवी (S-3)
+5. ऑस्ट्रा हिंद (AustraHind): भारत और ऑस्ट्रेलिया
+6. इंद्र 2026 (INDRA 2026): भारत और रूस
+7. धर्म गार्जियन 2026 (Dharma Guardian 2026): भारतीय सेना और जापान ग्राउंड सेल्फ डिफेंस फोर्स (JGSDF)।`,
+                exp_en: `• Complete Military Exercises Revision (2026):
 - IBSAMAR IX: India, Brazil and South Africa (P-2)
 - Lamitiye 2026: India and Seychelles (Q-4)
 - Khanjar-XIII: India and Kyrgyzstan (R-1)
 - Konkan 2026: Indian Navy and UK Royal Navy (S-3)
-- Others: AustraHind (India-Australia), INDRA 2026 (India-Russia), Dharma Guardian 2026 (India-Japan).`
+- AustraHind: India & Australia | INDRA 2026: India & Russia | Dharma Guardian 2026: India & Japan (JGSDF).`
             },
             {
                 id: 4,
-                type_hi: "4-कथन आधारित (Statement Type)",
-                type_en: "4-Statement Based",
-                q_hi: `अक्टूबर 2026 में राष्ट्रपति द्रौपदी मुर्मू द्वारा अनुमोदित 'फ्रंटियर टेरिटोरियल अथॉरिटी बिल, 2026' के संदर्भ में निम्नलिखित कथनों पर विचार कीजिए:
-1. यह विधेयक नागालैंड विधानसभा द्वारा 3 सितंबर 2026 को सर्वसम्मति से पारित किया गया था।
-2. यह प्राधिकरण नागालैंड के 6 पूर्वी जिलों— तुएनसांग, मोन, लोंगलेंग, किफिरे, नोकलाक और शामतोर तक अधिकार क्षेत्र बढ़ाता है।
-3. इसमें कोन्याक, चांग, फोम और संगतम जैसी प्रमुख स्वदेशी जनजातियां शामिल हैं।
-4. वर्तमान में नागालैंड के मुख्यमंत्री नेफ्यू रियो हैं तथा नंद किशोर यादव राज्य के 23वें राज्यपाल हैं।
-
-उपर्युक्त में से कौन-से कथन सही हैं?`,
-                q_en: `Consider the following statements regarding the 'Frontier Territorial Authority Bill, 2026' approved by President Droupadi Murmu in October 2026:
-1. The bill was unanimously passed by the Nagaland Legislative Assembly on 3 September 2026.
-2. It extends jurisdiction to 6 eastern districts of Nagaland—Tuensang, Mon, Longleng, Kiphire, Noklak, and Shamator.
-3. Major indigenous tribes included are Konyak, Chang, Phom, and Sangtam.
-4. Currently, Neiphiu Rio is the Chief Minister of Nagaland and Nand Kishore Yadav is the 23rd Governor of the state.
-
-Which of the statements given above are correct?`,
-                options_hi: [
-                    "केवल 1, 2 और 3",
-                    "केवल 1, 3 और 4",
-                    "केवल 2 और 4",
-                    "1, 2, 3 और 4 सभी"
-                ],
-                options_en: [
-                    "1, 2 and 3 only",
-                    "1, 3 and 4 only",
-                    "2 and 4 only",
-                    "All 1, 2, 3 and 4"
-                ],
+                type_hi: "4-कथन (Statement)",
+                type_en: "4-Statement",
+                q_hi: `'फ्रंटियर टेरिटोरियल अथॉरिटी बिल, 2026' पर विचार करें:
+1. राष्ट्रपति द्रौपदी मुर्मू ने नागालैंड के इस बिल को मंजूरी दी।
+2. इसमें 6 पूर्वी जिले (तुएनसांग, मोन, लोंगलेंग, किफिरे, नोकलाक, शामतोर) हैं।
+3. इसमें कोन्याक, चांग, फोम व संगतम जनजातियां शामिल हैं।
+4. नागालैंड के CM नेफ्यू रियो व 23वें राज्यपाल नंद किशोर यादव हैं।
+सही कथन कौन-से हैं?`,
+                q_en: `Consider 'Frontier Territorial Authority Bill, 2026':
+1. President Droupadi Murmu approved this bill of Nagaland.
+2. It covers 6 eastern districts (Tuensang, Mon, Longleng, Kiphire, Noklak, Shamator).
+3. It includes Konyak, Chang, Phom & Sangtam tribes.
+4. Nagaland CM is Neiphiu Rio & 23rd Governor is Nand Kishore Yadav.
+Which statements are correct?`,
+                options_hi: ["केवल 1, 2 और 3", "केवल 1, 3 और 4", "केवल 2 और 4", "1, 2, 3 और 4 सभी"],
+                options_en: ["1, 2 and 3 only", "1, 3 and 4 only", "2 and 4 only", "All 1, 2, 3 and 4"],
                 correct: 3, // D
-                exp_hi: `• चारों कथन (1, 2, 3 और 4) पूर्णतः सही हैं।
-• उद्देश्य: पूर्वी नागालैंड के 6 जिलों को सामाजिक-आर्थिक, शैक्षिक और बुनियादी ढांचे के विकास हेतु विधाई, कार्यकारी और वित्तीय स्वायत्तता प्रदान करना।
-• नागालैंड स्थापना: 1 दिसंबर 1963 | राजधानी: कोहिमा | सीटें: लोकसभा 1, राज्यसभा 1, विधानसभा 60।`,
-                exp_en: `• All four statements (1, 2, 3, and 4) are completely correct.
-• Objective: To grant legislative, executive, and financial autonomy to the 6 eastern districts of Nagaland.
-• Nagaland Formation: 1 Dec 1963 | Capital: Kohima | Seats: LS 1, RS 1, Assembly 60.`
+                exp_hi: `• चारों कथन (1, 2, 3 और 4) बिल्कुल सही हैं।
+• मुख्य बिंदु: अक्टूबर 2026 में राष्ट्रपति द्रौपदी मुर्मू जी ने नागालैंड के 'फ्रंटियर टेरिटोरियल अथॉरिटी बिल, 2026' को मंजूरी दी (नागालैंड विधानसभा द्वारा 3 सितंबर 2026 को सर्वसम्मति से पारित)।
+• शामिल 6 पूर्वी जिले: तुएनसांग, मोन, लोंगलेंग, किफिरे, नोकलाक और शामतोर।
+• प्रमुख जनजातियां: कोन्याक, चांग, फोम और संगतम।
+• उद्देश्य: पूर्वी नागालैंड के इन 6 जिलों को विकास हेतु विधाई, कार्यकारी और वित्तीय स्वायत्तता प्रदान करना।
+• नागालैंड स्टेटिक जीके: स्थापना- 1 दिसंबर 1963 | राजधानी- कोहिमा | CM- नेफ्यू रियो | राज्यपाल- नंद किशोर यादव (23वें) | सीटें- लोकसभा 1, राज्यसभा 1, विधानसभा 60।`,
+                exp_en: `• All four statements (1, 2, 3, and 4) are correct.
+• Passed unanimously by Nagaland Assembly on 3 Sept 2026 and approved by President Droupadi Murmu in Oct 2026 to grant legislative, executive, and financial autonomy to 6 eastern districts of Nagaland.
+• Nagaland Static GK: Formed 1 Dec 1963 | Capital: Kohima | Seats: LS 1, RS 1, Assembly 60.`
             },
             {
                 id: 5,
-                type_hi: "कथन-कारण (Assertion-Reason)",
-                type_en: "Assertion-Reason (A-R)",
-                q_hi: `नीचे दो कथन दिए गए हैं, एक को कथन (A) और दूसरे को कारण (R) कहा गया है:
-कथन (A): अक्टूबर 2026 में तमिलनाडु के कुड्डालोर जिले में स्थित वीरनम झील (Veeranam Lake) में 18 ग्रेटर फ्लेमिंगो (Phoenicopterus roseus) का देखा जाना एक दुर्लभ पारिस्थितिक घटना मानी गई है।
-कारण (R): ग्रेटर फ्लेमिंगो सामान्यतः तटीय आर्द्रभूमियों, लैगून और खारे पानी की झीलों में पाए जाते हैं, जबकि वीरनम झील एक अंतर्देशीय मीठे पानी का जलाशय (Freshwater Reservoir) है।
-
-नीचे दिए गए कूट से सही उत्तर चुनिए:`,
-                q_en: `Given below are two statements, one labelled as Assertion (A) and the other as Reason (R):
-Assertion (A): The sighting of 18 Greater Flamingos (Phoenicopterus roseus) at Veeranam Lake in Cuddalore district of Tamil Nadu in October 2026 is considered a rare ecological event.
-Reason (R): Greater Flamingos are typically found in coastal wetlands, lagoons, and saline lakes, whereas Veeranam Lake is an inland freshwater reservoir.
-
-Select the correct answer using the code given below:`,
+                type_hi: "कथन-कारण (A-R)",
+                type_en: "Assertion-Reason",
+                q_hi: `कथन (A): तमिलनाडु की वीरनम झील में 18 ग्रेटर फ्लेमिंगो (Phoenicopterus roseus) दिखना एक दुर्लभ घटना है।
+कारण (R): फ्लेमिंगो सामान्यतः खारे/तटीय जल में मिलते हैं, जबकि वीरनम एक मीठे पानी की झील है।`,
+                q_en: `Assertion (A): Sighting of 18 Greater Flamingos (Phoenicopterus roseus) at Tamil Nadu's Veeranam Lake is a rare ecological event.
+Reason (R): Flamingos usually inhabit coastal/saline wetlands, whereas Veeranam is an inland freshwater lake.`,
                 options_hi: [
                     "(A) और (R) दोनों सही हैं और (R), (A) की सही व्याख्या है।",
-                    "(A) और (R) दोनों सही हैं लेकिन (R), (A) की सही व्याख्या नहीं है।",
+                    "(A) और (R) दोनों सही हैं पर (R) सही व्याख्या नहीं है।",
                     "(A) सही है लेकिन (R) गलत है।",
                     "(A) गलत है लेकिन (R) सही है।"
                 ],
                 options_en: [
-                    "Both (A) and (R) are true and (R) is the correct explanation of (A).",
-                    "Both (A) and (R) are true but (R) is not the correct explanation of (A).",
+                    "Both (A) & (R) are true and (R) is the correct explanation.",
+                    "Both (A) & (R) are true but (R) is not the correct explanation.",
                     "(A) is true but (R) is false.",
                     "(A) is false but (R) is true."
                 ],
                 correct: 0, // A
                 exp_hi: `• (A) और (R) दोनों सही हैं तथा (R), (A) की सही व्याख्या करता है।
-• तमिलनाडु के कुड्डालोर जिले की वीरनम झील एक मीठे पानी का जलाशय है, इसलिए तटीय/खारे पानी में रहने वाले ग्रेटर फ्लेमिंगो (वैज्ञानिक नाम: Phoenicopterus roseus) का यहाँ दिखना एक दुर्लभ घटना है।`,
-                exp_en: `• Both (A) and (R) are true, and (R) is the correct explanation of (A).
-• Veeranam Lake in Cuddalore district of Tamil Nadu is a freshwater reservoir; hence the sighting of Greater Flamingos (Phoenicopterus roseus), which usually inhabit coastal/saline wetlands, is a rare ecological phenomenon.`
+• मुख्य तथ्य: अक्टूबर 2026 में तमिलनाडु के कुड्डालोर (Cuddalore) जिले में स्थित वीरनम झील में 18 ग्रेटर फ्लेमिंगो देखे गए हैं।
+• विशेषता: वीरनम झील एक मीठे पानी का जलाशय (Freshwater Reservoir) है, जबकि ग्रेटर फ्लेमिंगो (वैज्ञानिक नाम: Phoenicopterus roseus) सामान्यतः तटीय क्षेत्रों, लैगून और खारे पानी की झीलों में पाए जाते हैं।`,
+                exp_en: `• Both (A) and (R) are true and (R) is the correct explanation of (A).
+• Location: Veeranam Lake is a freshwater reservoir in Cuddalore district of Tamil Nadu. Sighting of Greater Flamingos (Phoenicopterus roseus) in an inland freshwater lake is rare.`
             },
             {
                 id: 6,
-                type_hi: "असत्य युग्म की पहचान (Mis-matching Pair)",
-                type_en: "Identify Incorrect Pair",
-                q_hi: `तमिलनाडु से जुड़े महत्वपूर्ण करंट अफेयर्स रिवीजन (2026) के संदर्भ में निम्नलिखित में से कौन-सा युग्म सही सुमेलित नहीं है?`,
-                q_en: `With reference to Tamil Nadu's important Current Affairs Revision (2026), which of the following pairs is NOT correctly matched?`,
+                type_hi: "असत्य युग्म (Mismatch)",
+                type_en: "Incorrect Pair",
+                q_hi: `तमिलनाडु करंट अफेयर्स (2026) के संदर्भ में कौन-सा युग्म सही सुमेलित नहीं है?`,
+                q_en: `Which pair is NOT correctly matched regarding Tamil Nadu Current Affairs (2026)?`,
                 options_hi: [
-                    "अन्नलक्षी योजना — पात्र दुल्हनों को 8 ग्राम (22 कैरेट) सोने का सिक्का और एक सिल्क साड़ी उपहार देना",
-                    "थाईमामन थंगा मोथिरम थिट्टम — सरकारी अस्पतालों में जन्म लेने वाले नवजात शिशुओं को सोने की अंगूठी देना",
-                    "अन्नपूर्णी सुपर सिक्स एलपीजी योजना — महिलाओं को हर साल 6 मुफ्त एलपीजी सिलेंडर प्रदान करना",
-                    "स्टारबक्स (Starbucks) का भारत में पहला ग्लोबल कैपेबिलिटी सेंटर (GCC) — चेन्नई (तमिलनाडु)"
+                    "अन्नलक्षी योजना — दुल्हनों को 8 ग्राम सोने का सिक्का व सिल्क साड़ी",
+                    "थाईमामन थंगा मोथिरम थिट्टम — नवजात शिशुओं को सोने की अंगूठी",
+                    "अन्नपूर्णी सुपर सिक्स योजना — महिलाओं को सालाना 6 एलपीजी सिलेंडर",
+                    "स्टारबक्स का भारत में पहला GCC — चेन्नई (तमिलनाडु)"
                 ],
                 options_en: [
-                    "Annalakshmi Scheme — Gifting 8 grams (22 carat) gold coin and a silk saree to eligible brides",
-                    "Thaimaman Thanga Mothiram Thittam — Gifting gold rings to newborns in government hospitals",
-                    "Annapoorani Super Six LPG Scheme — Providing 6 free LPG cylinders every year to women",
-                    "Starbucks' first Global Capability Centre (GCC) in India — Chennai (Tamil Nadu)"
+                    "Annalakshmi Scheme — 8g gold coin & silk saree to brides",
+                    "Thaimaman Thanga Mothiram — Gold ring to newborns",
+                    "Annapoorani Super Six Scheme — 6 LPG cylinders/year to women",
+                    "Starbucks' first GCC in India — Chennai (Tamil Nadu)"
                 ],
                 correct: 2, // C
-                exp_hi: `• विकल्प (C) सही सुमेलित नहीं है (असत्य युग्म है)।
-• 'अन्नपूर्णी सुपर सिक्स एलपीजी योजना' के तहत तमिलनाडु में महिलाओं को हर साल 6 नहीं, बल्कि '3 एलपीजी सिलेंडर' प्रदान किए जाते हैं (नाम में 'सुपर सिक्स' एक भ्रामक ट्रैप है)।
-• अन्य तथ्य: वर्षा जल संचयन जागरूकता अभियान का शुभंकर 'थुली' (Thuli) और 'ड्रीम ओलंपिक्स 2036' पहल भी तमिलनाडु की हैं।`,
-                exp_en: `• Option (C) is NOT correctly matched.
-• Under the 'Annapoorani Super Six LPG Scheme', women in Tamil Nadu are provided '3 LPG cylinders' per year (not 6).
-• Other facts: 'Thuli' mascot for rainwater harvesting awareness and 'Dream Olympics 2036' initiative also belong to Tamil Nadu.`
+                exp_hi: `• विकल्प (C) सही सुमेलित नहीं है।
+• तमिलनाडु से जुड़े सभी महत्वपूर्ण करंट अफेयर्स रिवीजन (2026):
+1. अन्नपूर्णी सुपर सिक्स एलपीजी योजना: महिलाओं को हर साल 6 नहीं, बल्कि '3 एलपीजी सिलेंडर' प्रदान करने हेतु शुरू की गई है।
+2. अन्नलक्षी योजना: पात्र दुल्हनों को 8 ग्राम (22 कैरेट) सोने का सिक्का और एक सिल्क साड़ी उपहार देने हेतु।
+3. थाईमामन थंगा मोथिरम थिट्टम: सरकारी अस्पतालों में जन्म लेने वाले नवजात शिशुओं को सोने की अंगूठी देने हेतु।
+4. 'थुली' (Thuli) शुभंकर: वर्षा जल संचयन जागरूकता अभियान के लिए लॉन्च।
+5. ड्रीम ओलंपिक्स 2036 पहल: 2036 ओलंपिक के लिए पदक विजेता तैयार करने हेतु।
+6. स्टारबक्स (Starbucks): भारत में अपना पहला ग्लोबल कैपेबिलिटी सेंटर (GCC) चेन्नई में स्थापित किया।`,
+                exp_en: `• Option (C) is incorrect because under 'Annapoorani Super Six LPG Scheme', women are provided '3 LPG cylinders' every year (not 6).
+• All other Tamil Nadu initiatives (Annalakshmi, Thaimaman Thanga Mothiram, Thuli mascot, Dream Olympics 2036, Starbucks GCC in Chennai) are correctly matched.`
             },
             {
                 id: 7,
-                type_hi: "4-कथन आधारित (Statement Type)",
-                type_en: "4-Statement Based",
-                q_hi: `वाणिज्य विभाग की 'रिलीफ' (RELIEF) योजना के संदर्भ में निम्नलिखित कथनों पर विचार कीजिए:
-1. अक्टूबर 2026 में वाणिज्य विभाग ने निर्यातकों के लिए इस योजना के घटक-II (Component-II) की समय-सीमा बढ़ाकर 31 मार्च 2027 तक कर दी है।
-2. RELIEF का पूर्ण रूप 'Resilience and Logistics Intervention for Export Facilitation' है।
-3. इस योजना की शुरुआत 19 मार्च 2026 को पश्चिम एशिया में जारी भू-राजनीतिक तनाव और समुद्री लॉजिस्टिक्स की बाधाओं के बीच भारतीय निर्यातकों को राहत देने के लिए हुई थी।
-4. यह घटक खाड़ी और पश्चिम एशियाई क्षेत्रों में जाने वाले शिपमेंट के लिए ECGC के माध्यम से बिना किसी अपवाद के 100% का क्रेडिट रिस्क कवर प्रदान करता है।
-
-उपर्युक्त में से कौन-से कथन सही हैं?`,
-                q_en: `Consider the following statements regarding the Department of Commerce's 'RELIEF' scheme:
-1. In October 2026, the Department of Commerce extended the timeline of Component-II of this scheme for exporters up to 31 March 2027.
-2. RELIEF stands for 'Resilience and Logistics Intervention for Export Facilitation'.
-3. Launched on 19 March 2026, it aims to support Indian exporters amid West Asian geopolitical tensions and maritime logistics disruptions.
-4. This component provides 100% credit risk cover without exception through ECGC for shipments headed to Gulf and West Asian regions.
-
-Which of the statements given above are correct?`,
-                options_hi: [
-                    "केवल 1 और 2",
-                    "केवल 1, 2 और 3",
-                    "केवल 2, 3 और 4",
-                    "1, 2, 3 और 4 सभी"
-                ],
-                options_en: [
-                    "1 and 2 only",
-                    "1, 2 and 3 only",
-                    "2, 3 and 4 only",
-                    "All 1, 2, 3 and 4"
-                ],
+                type_hi: "4-कथन (Statement)",
+                type_en: "4-Statement",
+                q_hi: `वाणिज्य विभाग की 'RELIEF' योजना पर विचार करें:
+1. इसके घटक-II की समय-सीमा 31 मार्च 2027 तक बढ़ाई गई।
+2. पूर्ण रूप: Resilience and Logistics Intervention for Export Facilitation.
+3. शुरुआत: 19 मार्च 2026 (पश्चिम एशिया तनाव से निर्यातकों को राहत हेतु)।
+4. इसमें ECGC के माध्यम से 100% क्रेडिट रिस्क कवर मिलता है।
+सही कथन चुनें:`,
+                q_en: `Consider the Commerce Dept's 'RELIEF' scheme:
+1. Component-II timeline extended up to 31 March 2027.
+2. Full form: Resilience and Logistics Intervention for Export Facilitation.
+3. Launched on 19 March 2026 for exporters amid West Asia tensions.
+4. It provides 100% credit risk cover via ECGC.
+Select the correct statements:`,
+                options_hi: ["केवल 1 और 2", "केवल 1, 2 और 3", "केवल 2, 3 और 4", "1, 2, 3 और 4 सभी"],
+                options_en: ["1 and 2 only", "1, 2 and 3 only", "2, 3 and 4 only", "All 1, 2, 3 and 4"],
                 correct: 1, // B
-                exp_hi: `• कथन 1, 2 और 3 सही हैं।
-• कथन 4 गलत है क्योंकि यह घटक खाड़ी और पश्चिम एशियाई क्षेत्रों में जाने वाले शिपमेंट के लिए ECGC के माध्यम से 100% नहीं, बल्कि '95% का क्रेडिट रिस्क कवर' प्रदान करता है।`,
+                exp_hi: `• कथन 1, 2 और 3 सही हैं, जबकि कथन 4 गलत है।
+• मुख्य तथ्य: अक्टूबर 2026 में वाणिज्य विभाग ने निर्यातकों के लिए 'रिलीफ' (RELIEF - Resilience and Logistics Intervention for Export Facilitation) योजना के घटक-II की समय-सीमा बढ़ाकर 31 मार्च 2027 कर दी है।
+• शुरुआत एवं उद्देश्य: 19 मार्च 2026 को पश्चिम एशिया (West Asia) में भू-राजनीतिक तनाव और समुद्री लॉजिस्टिक्स की बाधाओं के बीच भारतीय निर्यातकों को राहत देने हेतु शुरू हुई।
+• प्रमुख लाभ: यह घटक खाड़ी और पश्चिम एशियाई क्षेत्रों के शिपमेंट के लिए ECGC के माध्यम से 100% नहीं, बल्कि '95% का क्रेडिट रिस्क कवर' प्रदान करता है।`,
                 exp_en: `• Statements 1, 2, and 3 are correct.
-• Statement 4 is incorrect because this component provides '95% credit risk cover' (not 100%) through ECGC for shipments to Gulf and West Asian regions.`
+• Statement 4 is incorrect because Component-II provides '95% credit risk cover' (not 100%) through ECGC for shipments to Gulf and West Asian regions.`
             },
             {
                 id: 8,
-                type_hi: "4-कथन आधारित (Botany & GK)",
-                type_en: "4-Statement Based",
-                q_hi: `अक्टूबर 2026 में खोजी गई विशाल वाटर लिली की नई प्रजाति 'विक्टोरिया कोलंबियाना' (Victoria colombiana) के संदर्भ में निम्नलिखित कथनों पर विचार कीजिए:
-1. इसकी खोज कोलंबिया के गुएनिया (Guainía) विभाग के इनिरीडा (Inírida) नदी क्षेत्र में की गई है और इसका प्रकाशन शोध पत्रिका 'Phytotaxa' में हुआ है।
-2. यह विक्टोरिया जीनस (Genus Victoria) और निम्फेसी परिवार (Nymphaeaceae family) से संबंधित है, जिसकी तैरती पत्तियां 2 मीटर तक चौड़ी हो सकती हैं।
-3. यह विक्टोरिया जीनस की तीसरी वैज्ञानिक रूप से मान्यता प्राप्त प्रजाति है।
-4. कोलंबिया की राजधानी बोगोटा है और वर्तमान राष्ट्रपति एबेलार्डो डे ला एस्पिरिएला (Abelardo de la Espriella) हैं।
-
-उपर्युक्त में से कौन-से कथन सही हैं?`,
-                q_en: `Consider the following statements regarding the newly discovered giant water lily species 'Victoria colombiana' in October 2026:
-1. It was discovered in the Inírida river region of Guainía department in Colombia and published in the journal 'Phytotaxa'.
-2. It belongs to Genus Victoria and the Nymphaeaceae family, with floating leaves that can grow up to 2 meters wide.
-3. It is the 3rd scientifically recognized species of Genus Victoria.
-4. The capital of Colombia is Bogotá and its current President is Abelardo de la Espriella.
-
-Which of the statements given above are correct?`,
-                options_hi: [
-                    "केवल 1, 2 और 3",
-                    "केवल 1 और 2",
-                    "केवल 2, 3 और 4",
-                    "केवल 1, 2 और 4"
-                ],
-                options_en: [
-                    "1, 2 and 3 only",
-                    "1 and 2 only",
-                    "2, 3 and 4 only",
-                    "1, 2 and 4 only"
-                ],
+                type_hi: "4-कथन (Botany)",
+                type_en: "4-Statement",
+                q_hi: `नई वाटर लिली प्रजाति 'विक्टोरिया कोलंबियाना' के संदर्भ में सही कथन चुनें:
+1. खोज: कोलंबिया के गुएनिया (इनिरीडा नदी क्षेत्र) में हुई।
+2. यह निम्फेसी परिवार से है व पत्तियां 2 मीटर तक चौड़ी होती हैं।
+3. यह विक्टोरिया जीनस की तीसरी मान्यता प्राप्त प्रजाति है।
+4. कोलंबिया के राष्ट्रपति एबेलार्डो डे ला एस्पिरिएला हैं।`,
+                q_en: `Select correct statements regarding 'Victoria colombiana':
+1. Discovered in Inírida river region, Guainía (Colombia).
+2. Belongs to Nymphaeaceae family; leaves up to 2m wide.
+3. It is the 3rd recognized species of Genus Victoria.
+4. Colombia's President is Abelardo de la Espriella.`,
+                options_hi: ["केवल 1, 2 और 3", "केवल 1 और 2", "केवल 2, 3 और 4", "केवल 1, 2 और 4"],
+                options_en: ["1, 2 and 3 only", "1 and 2 only", "2, 3 and 4 only", "1, 2 and 4 only"],
                 correct: 3, // D
                 exp_hi: `• कथन 1, 2 और 4 सही हैं।
-• कथन 3 गलत है क्योंकि 'विक्टोरिया कोलंबियाना' विक्टोरिया जीनस की तीसरी नहीं, बल्कि 'चौथी (4th)' वैज्ञानिक रूप से मान्यता प्राप्त प्रजाति है (अन्य 3 प्रजातियां: V. amazonica, V. cruziana, V. boliviana)।`,
+• कथन 3 गलत है क्योंकि 'विक्टोरिया कोलंबियाना' (Victoria colombiana) विक्टोरिया जीनस की तीसरी नहीं, बल्कि 'चौथी (4th)' वैज्ञानिक रूप से मान्यता प्राप्त प्रजाति है (अन्य 3 प्रजातियां: V. amazonica, V. cruziana, V. boliviana)।
+• यह शोध पत्रिका 'Phytotaxa' में प्रकाशित हुई है।
+• कोलंबिया स्टेटिक जीके: राजधानी- बोगोटा (Bogotá) | मुद्रा- कोलंबियाई पेसो | राष्ट्रपति- एबेलार्डो डे ला एस्पिरिएला।`,
                 exp_en: `• Statements 1, 2, and 4 are correct.
-• Statement 3 is incorrect because 'Victoria colombiana' is the 'fourth (4th)' scientifically recognized species of Genus Victoria (the other 3 being V. amazonica, V. cruziana, and V. boliviana).`
+• Statement 3 is incorrect because 'Victoria colombiana' (published in journal Phytotaxa) is the '4th' recognized species of Genus Victoria (others: V. amazonica, V. cruziana, V. boliviana).`
             },
             {
                 id: 9,
-                type_hi: "कथन-कारण (Assertion-Reason)",
-                type_en: "Assertion-Reason (A-R)",
-                q_hi: `नीचे दो कथन दिए गए हैं, एक को कथन (A) और दूसरे को कारण (R) कहा गया है:
-कथन (A): अक्टूबर 2026 में उत्तराखंड राज्य का आपदा प्रतिवादन बल (SDRF) गुणवत्ता प्रबंधन प्रणाली के लिए 'ISO 9001:2015' प्रमाणन प्राप्त करने वाला भारत का पहला आपदा प्रतिक्रिया बल बन गया है।
-कारण (R): अंतरराष्ट्रीय मानकीकरण संगठन (ISO) द्वारा विकसित यह मानक किसी संगठन की कार्यप्रणाली को व्यवस्थित करने, प्रक्रियाओं में एकरूपता लाने, जवाबदेही सुनिश्चित करने और आपदा राहत एवं बचाव कार्यों की गुणवत्ता में निरंतर सुधार करने के उद्देश्य से दिया जाता है।
-
-नीचे दिए गए कूट से सही उत्तर चुनिए:`,
-                q_en: `Given below are two statements, one labelled as Assertion (A) and the other as Reason (R):
-Assertion (A): In October 2026, Uttarakhand's State Disaster Response Force (SDRF) became India's first disaster response force to receive 'ISO 9001:2015' certification for Quality Management System.
-Reason (R): Developed by the International Organization for Standardization (ISO), this standard aims to streamline organizational workflows, bring uniformity in processes, ensure accountability, and continuously improve the quality of disaster relief and rescue operations.
-
-Select the correct answer using the code given below:`,
+                type_hi: "कथन-कारण (A-R)",
+                type_en: "Assertion-Reason",
+                q_hi: `कथन (A): उत्तराखंड SDRF गुणवत्ता प्रबंधन हेतु 'ISO 9001:2015' प्रमाणन पाने वाला भारत का पहला आपदा प्रतिक्रिया बल बना है।
+कारण (R): यह मानक राहत एवं बचाव कार्यों की गुणवत्ता, एकरूपता और जवाबदेही सुनिश्चित करने के लिए दिया जाता है।`,
+                q_en: `Assertion (A): Uttarakhand SDRF became India's first disaster response force to get 'ISO 9001:2015' certification.
+Reason (R): This standard ensures uniformity, accountability, and continuous quality improvement in rescue operations.`,
                 options_hi: [
-                    "(A) और (R) दोनों सही हैं लेकिन (R), (A) की सही व्याख्या नहीं है।",
+                    "(A) और (R) दोनों सही हैं पर (R) सही व्याख्या नहीं है।",
                     "(A) सही है लेकिन (R) गलत है।",
                     "(A) और (R) दोनों सही हैं और (R), (A) की सही व्याख्या है।",
                     "(A) गलत है लेकिन (R) सही है।"
                 ],
                 options_en: [
-                    "Both (A) and (R) are true but (R) is not the correct explanation of (A).",
+                    "Both (A) & (R) are true but (R) is not the correct explanation.",
                     "(A) is true but (R) is false.",
-                    "Both (A) and (R) are true and (R) is the correct explanation of (A).",
+                    "Both (A) & (R) are true and (R) is the correct explanation.",
                     "(A) is false but (R) is true."
                 ],
                 correct: 2, // C
-                exp_hi: `• (A) और (R) दोनों पूर्णतः सत्य हैं और (R), (A) की सही व्याख्या है।
-• उत्तराखंड SDRF गुणवत्ता प्रबंधन प्रणाली (Quality Management System) के लिए ISO 9001:2015 प्रमाणन पाने वाला देश का पहला आपदा प्रतिक्रिया बल बना है।`,
+                exp_hi: `• (A) और (R) दोनों सही हैं तथा (R), (A) की सही व्याख्या है।
+• मुख्य उपलब्धि: अक्टूबर 2026 में उत्तराखंड राज्य का आपदा प्रतिवादन बल (SDRF) गुणवत्ता प्रबंधन प्रणाली (Quality Management System) के लिए अंतरराष्ट्रीय मानकीकरण संगठन (ISO) द्वारा विकसित 'ISO 9001:2015' प्रमाणन प्राप्त करने वाला भारत का पहला आपदा प्रतिक्रिया बल बन गया है।`,
                 exp_en: `• Both (A) and (R) are true and (R) is the correct explanation of (A).
-• Uttarakhand SDRF became India's first disaster response force to obtain ISO 9001:2015 certification for its Quality Management System.`
+• Uttarakhand SDRF is India's first disaster response force to achieve ISO 9001:2015 certification for Quality Management System.`
             },
             {
                 id: 10,
-                type_hi: "4-कथन आधारित (Tricky Fact Trap)",
-                type_en: "4-Statement Based",
-                q_hi: `13वीं आसियान रक्षा मंत्रियों की बैठक-प्लस (13th ADMM-Plus) 2026 के संदर्भ में निम्नलिखित कथनों पर विचार कीजिए:
-1. इसका आयोजन 28 से 29 अक्टूबर 2026 को फिलीपींस के सेबू (लापू-लापू सिटी) में किया गया।
-2. इस बैठक में भारतीय प्रतिनिधिमंडल का नेतृत्व विदेश मंत्री डॉ. एस. जयशंकर ने किया।
-3. वर्ष 2026 के लिए इस बैठक की थीम "एक साथ अपने भविष्य को दिशा देना" ("Navigating Our Future Together") रखी गई।
-4. इसमें आसियान (ASEAN) के 11 सदस्य देश और भारत सहित 8 संवाद भागीदार देश (Dialogue Partners) शामिल हैं।
-
-उपर्युक्त में से कौन-से कथन सही हैं?`,
-                q_en: `Consider the following statements regarding the 13th ASEAN Defence Ministers' Meeting-Plus (13th ADMM-Plus) 2026:
-1. It was held from 28 to 29 October 2026 in Lapu-Lapu City, Cebu (Philippines).
-2. The Indian delegation at this meeting was led by External Affairs Minister Dr. S. Jaishankar.
-3. The theme for 2026 was "Navigating Our Future Together".
-4. It comprises 11 ASEAN member states and 8 Dialogue Partners including India.
-
-Which of the statements given above are correct?`,
-                options_hi: [
-                    "केवल 1, 3 और 4",
-                    "केवल 1, 2 और 3",
-                    "केवल 2 और 4",
-                    "1, 2, 3 और 4 सभी"
-                ],
-                options_en: [
-                    "1, 3 and 4 only",
-                    "1, 2 and 3 only",
-                    "2 and 4 only",
-                    "All 1, 2, 3 and 4"
-                ],
+                type_hi: "4-कथन (Summit)",
+                type_en: "4-Statement",
+                q_hi: `13वीं ADMM-Plus बैठक 2026 के संदर्भ में सही कथन चुनें:
+1. आयोजन: 28-29 अक्टूबर 2026 को सेबू (फिलीपींस) में हुआ।
+2. भारतीय प्रतिनिधिमंडल का नेतृत्व विदेश मंत्री एस. जयशंकर ने किया।
+3. थीम: "Navigating Our Future Together" थी।
+4. इसमें 11 ASEAN देश और 8 संवाद भागीदार देश शामिल हैं।`,
+                q_en: `Select correct statements regarding 13th ADMM-Plus 2026:
+1. Held on 28-29 Oct 2026 in Cebu (Philippines).
+2. Indian delegation was led by EAM S. Jaishankar.
+3. Theme: "Navigating Our Future Together".
+4. Comprises 11 ASEAN states & 8 Dialogue Partners.`,
+                options_hi: ["केवल 1, 3 और 4", "केवल 1, 2 और 3", "केवल 2 और 4", "1, 2, 3 और 4 सभी"],
+                options_en: ["1, 3 and 4 only", "1, 2 and 3 only", "2 and 4 only", "All 1, 2, 3 and 4"],
                 correct: 0, // A
                 exp_hi: `• कथन 1, 3 और 4 सही हैं।
-• कथन 2 गलत है क्योंकि 13वीं ADMM-Plus बैठक में भारतीय प्रतिनिधिमंडल का नेतृत्व विदेश मंत्री एस. जयशंकर ने नहीं, बल्कि रक्षा मंत्री 'श्री राजनाथ सिंह' जी ने किया था।
-• 8 संवाद भागीदार: भारत, अमेरिका, चीन, रूस, जापान, दक्षिण कोरिया, ऑस्ट्रेलिया और न्यूजीलैंड।`,
+• कथन 2 गलत है क्योंकि 28 से 29 अक्टूबर 2026 को लापू-लापू सिटी, सेबू (फिलीपींस) में आयोजित 13वीं आसियान रक्षा मंत्रियों की बैठक-प्लस (13th ADMM-Plus) में भारतीय प्रतिनिधिमंडल का नेतृत्व रक्षा मंत्री 'श्री राजनाथ सिंह' जी ने किया था (एस. जयशंकर ने नहीं)।
+• थीम 2026: "एक साथ अपने भविष्य को दिशा देना" ("Navigating Our Future Together")।
+• शामिल देश: 11 आसियान सदस्य देश + 8 संवाद भागीदार (भारत, अमेरिका, चीन, रूस, जापान, दक्षिण कोरिया, ऑस्ट्रेलिया और न्यूजीलैंड)।`,
                 exp_en: `• Statements 1, 3, and 4 are correct.
-• Statement 2 is incorrect because the Indian delegation was led by Defence Minister 'Shri Rajnath Singh', not External Affairs Minister S. Jaishankar.
-• 8 Dialogue Partners: India, USA, China, Russia, Japan, South Korea, Australia, and New Zealand.`
+• Statement 2 is incorrect because Defence Minister 'Shri Rajnath Singh' led the Indian delegation at the 13th ADMM-Plus in Lapu-Lapu City, Cebu (Philippines).`
             },
             {
                 id: 11,
-                type_hi: "4-कथन आधारित (Sports Awards)",
-                type_en: "4-Statement Based",
-                q_hi: `वर्ष 2026 के बैलोन डी'ओर (Ballon d'Or) पुरस्कार समारोह के संदर्भ में निम्नलिखित कथनों पर विचार कीजिए:
-1. इंग्लैंड और आर्सेनल फुटबॉल क्लब के स्टार विंगर बुकायो साका (Bukayo Saka) को प्रतिष्ठित 'सुकरात अवार्ड' (Sócrates Award) से सम्मानित किया गया।
-2. सुकरात अवार्ड की शुरुआत ब्राजील के महान फुटबॉलर सुकरात के सम्मान में वर्ष 2022 में मानवीय और सामाजिक कार्यों के लिए की गई थी।
-3. वर्ष 2026 का प्रतिष्ठित 'पुरुष बैलोन डी'ओर' पुरस्कार इंग्लैंड के हैरी केन (Harry Kane) ने जीता है।
-4. वर्ष 2026 का 'महिला बैलोन डी'ओर' लामिन यामाल ने और 'कोपा ट्रॉफी' एलेक्सिया पुटेलस ने जीती है।
-
-उपर्युक्त में से कौन-से कथन सही हैं?`,
-                q_en: `Consider the following statements regarding the 2026 Ballon d'Or awards ceremony:
-1. England and Arsenal star winger Bukayo Saka was honoured with the prestigious 'Sócrates Award'.
-2. The Sócrates Award was instituted in 2022 in honour of Brazilian footballer Sócrates to recognize humanitarian and social work off the pitch.
-3. The 2026 Men's Ballon d'Or was won by England's Harry Kane.
-4. The 2026 Women's Ballon d'Or was won by Lamine Yamal and the Kopa Trophy was won by Alexia Putellas.
-
-Which of the statements given above are correct?`,
-                options_hi: [
-                    "केवल 1 और 2",
-                    "केवल 1, 2 और 3",
-                    "केवल 2, 3 और 4",
-                    "1, 2, 3 और 4 सभी"
-                ],
-                options_en: [
-                    "1 and 2 only",
-                    "1, 2 and 3 only",
-                    "2, 3 and 4 only",
-                    "All 1, 2, 3 and 4"
-                ],
+                type_hi: "4-कथन (Football)",
+                type_en: "4-Statement",
+                q_hi: `बैलोन डी'ओर 2026 पुरस्कारों के संदर्भ में सही कथन चुनें:
+1. बुकायो साका (इंग्लैंड/आर्सेनल) को 'सुकरात अवार्ड' मिला।
+2. सुकरात अवार्ड 2022 में सामाजिक कार्यों हेतु शुरू हुआ था।
+3. पुरुष बैलोन डी'ओर 2026 हैरी केन (इंग्लैंड) ने जीता।
+4. महिला बैलोन डी'ओर लामिन यामाल ने जीता।`,
+                q_en: `Select correct statements regarding Ballon d'Or 2026:
+1. Bukayo Saka (England/Arsenal) won the 'Sócrates Award'.
+2. Sócrates Award started in 2022 for humanitarian work.
+3. Harry Kane (England) won the Men's Ballon d'Or 2026.
+4. Lamine Yamal won the Women's Ballon d'Or.`,
+                options_hi: ["केवल 1 और 2", "केवल 1, 2 और 3", "केवल 2, 3 और 4", "1, 2, 3 और 4 सभी"],
+                options_en: ["1 and 2 only", "1, 2 and 3 only", "2, 3 and 4 only", "All 1, 2, 3 and 4"],
                 correct: 1, // B
                 exp_hi: `• कथन 1, 2 और 3 सही हैं।
-• कथन 4 गलत (उल्टा) है क्योंकि महिला बैलोन डी'ओर 'एलेक्सिया पुटेलस' (Alexia Putellas) ने जीता है, जबकि सर्वश्रेष्ठ युवा खिलाड़ी की कोपा ट्रॉफी (Kopa Trophy) 'लामिन यामाल' (Lamine Yamal) ने जीती है।`,
+• कथन 4 गलत है क्योंकि वर्ष 2026 का 'महिला बैलोन डी'ओर' एलेक्सिया पुटेलस (Alexia Putellas) ने जीता है, जबकि 'कोपा ट्रॉफी' (सर्वश्रेष्ठ युवा खिलाड़ी) लामिन यामाल (Lamine Yamal) ने जीती है।
+• सुकरात अवार्ड: ब्राजील के महान फुटबॉलर सुकरात के सम्मान में 2022 में शुरू हुआ; 2026 में बुकायो साका को बच्चों की जीवन-रक्षक सर्जरी में सहयोग जैसे मानवीय कार्यों के लिए मिला।`,
                 exp_en: `• Statements 1, 2, and 3 are correct.
-• Statement 4 is reversed/incorrect because the Women's Ballon d'Or was won by 'Alexia Putellas' and the Kopa Trophy was won by 'Lamine Yamal'.`
+• Statement 4 is incorrect: Women's Ballon d'Or 2026 was won by Alexia Putellas, while the Kopa Trophy was won by Lamine Yamal.`
             },
             {
                 id: 12,
-                type_hi: "3-कथन आधारित (Environment Award)",
-                type_en: "3-Statement Based",
-                q_hi: `प्रतिष्ठित वैश्विक पर्यावरण पुरस्कार 'अर्थशॉट प्राइज' (Earthshot Prize) 2026 के संदर्भ में निम्नलिखित कथनों पर विचार कीजिए:
-1. भारत में पहली बार इसका आयोजन 16 से 17 नवंबर 2026 तक मुंबई शहर में किया जा रहा है।
-2. यह इस वैश्विक पर्यावरण पुरस्कार का छठा (6th) वार्षिक संस्करण है।
-3. इसकी स्थापना वर्ष 2020 में ब्रिटेन के प्रिंस विलियम द्वारा पर्यावरण संरक्षण एवं जलवायु समाधान के 5 क्षेत्रों में पुरस्कार देने हेतु की गई थी।
-
-उपर्युक्त में से कौन-से कथन सही हैं?`,
-                q_en: `Consider the following statements regarding the prestigious global environmental award 'Earthshot Prize' 2026:
-1. It is being hosted in India for the first time in Mumbai from 16 to 17 November 2026.
-2. This marks the sixth (6th) annual edition of this global environmental prize.
-3. It was founded in 2020 by Britain's Prince William to award solutions across 5 environmental and climate areas.
-
-Which of the statements given above are correct?`,
-                options_hi: [
-                    "केवल 1 और 2",
-                    "केवल 2 और 3",
-                    "केवल 1 और 3",
-                    "1, 2 और 3 सभी"
-                ],
-                options_en: [
-                    "1 and 2 only",
-                    "2 and 3 only",
-                    "1 and 3 only",
-                    "All 1, 2 and 3"
-                ],
+                type_hi: "3-कथन (Environment)",
+                type_en: "3-Statement",
+                q_hi: `'अर्थशॉट प्राइज 2026' (Earthshot Prize) पर विचार करें:
+1. भारत में पहली बार इसका आयोजन मुंबई (16-17 नवंबर) में हो रहा है।
+2. यह इस पुरस्कार का 6वां वार्षिक संस्करण है।
+3. इसकी स्थापना 2020 में ब्रिटेन के प्रिंस विलियम ने की थी।
+सही कथन कौन-से हैं?`,
+                q_en: `Consider 'Earthshot Prize 2026':
+1. Hosted in India for the first time in Mumbai (16-17 Nov).
+2. It is the 6th annual edition of this prize.
+3. Founded in 2020 by Britain's Prince William.
+Which statements are correct?`,
+                options_hi: ["केवल 1 और 2", "केवल 2 और 3", "केवल 1 और 3", "1, 2 और 3 सभी"],
+                options_en: ["1 and 2 only", "2 and 3 only", "1 and 3 only", "All 1, 2 and 3"],
                 correct: 3, // D
                 exp_hi: `• तीनों कथन (1, 2 और 3) पूर्णतः सही हैं।
-• अर्थशॉट प्राइज 2026 (6वां संस्करण) का आयोजन भारत में पहली बार मुंबई में 16-17 नवंबर 2026 को किया जा रहा है।`,
-                exp_en: `• All three statements (1, 2, and 3) are completely correct.
-• The 6th edition of the Earthshot Prize is being held in India for the first time in Mumbai on 16–17 November 2026.`
+• मुख्य तथ्य: प्रतिष्ठित वैश्विक पर्यावरण पुरस्कार 'अर्थशॉट प्राइज' का छठा (6th) संस्करण भारत में पहली बार मुंबई शहर में 16 से 17 नवंबर 2026 तक आयोजित किया जा रहा है।
+• स्थापना: वर्ष 2020 में ब्रिटेन के प्रिंस विलियम द्वारा पर्यावरण संरक्षण एवं जलवायु समाधान के 5 क्षेत्रों में पुरस्कार देने हेतु।`,
+                exp_en: `• All three statements (1, 2, and 3) are correct.
+• The 6th edition of Prince William's Earthshot Prize (founded in 2020 across 5 climate categories) is being hosted in Mumbai on 16-17 Nov 2026.`
             },
             {
                 id: 13,
-                type_hi: "कथन-कारण (Tricky Tech Trap)",
-                type_en: "Assertion-Reason (Tech Trap)",
-                q_hi: `नीचे दो कथन दिए गए हैं, एक को कथन (A) और दूसरे को कारण (R) कहा गया है:
-कथन (A): भारतीय नौसेना अकादमी (INA, एझिमाला) की एक टीम ने लंबी दूरी के समुद्री खोज और बचाव अभियानों (Maritime Search and Rescue) के लिए दो मानव रहित हवाई वाहनों (UAVs) पर आधारित स्वदेशी 'ट्विन ड्रोन सिस्टम' विकसित किया है।
-कारण (R): रेडियो फ्रीक्वेंसी कम्युनिकेशन (RF Communication) से जुड़े इस सिस्टम में 'हेक्साकॉप्टर' समुद्र में फंसे व्यक्ति की सटीक लोकेशन खोजता है, जबकि 'क्वाडकॉप्टर' तुरंत उस स्थान पर जीवन रक्षक बचाव उपकरण (Lifebuoy) पहुंचाता है।
-
-नीचे दिए गए कूट से सही उत्तर चुनिए:`,
-                q_en: `Given below are two statements, one labelled as Assertion (A) and the other as Reason (R):
-Assertion (A): A team from the Indian Naval Academy (INA, Ezhimala) has developed an indigenous 'Twin Drone System' based on two UAVs for long-range Maritime Search and Rescue operations.
-Reason (R): Linked via Radio Frequency (RF) Communication, the 'Hexacopter' locates the exact position of the person stranded at sea, while the 'Quadcopter' immediately delivers the lifebuoy/rescue equipment to the spot.
-
-Select the correct answer using the code given below:`,
+                type_hi: "कथन-कारण (Tech Trap)",
+                type_en: "Assertion-Reason",
+                q_hi: `कथन (A): भारतीय नौसेना अकादमी (INA, एझिमाला) ने समुद्री बचाव हेतु स्वदेशी 'ट्विन ड्रोन सिस्टम' विकसित किया है।
+कारण (R): इसमें 'हेक्साकॉप्टर' फंसे व्यक्ति की लोकेशन खोजता है और 'क्वाडकॉप्टर' लाइफबॉय (Lifebuoy) पहुंचाता है।`,
+                q_en: `Assertion (A): Indian Naval Academy (INA, Ezhimala) developed an indigenous 'Twin Drone System' for sea rescue.
+Reason (R): Here, 'Hexacopter' locates the stranded person and 'Quadcopter' delivers the Lifebuoy.`,
                 options_hi: [
-                    "(A) और (R) दोनों सही हैं और (R), (A) की सही व्याख्या है।",
-                    "(A) और (R) दोनों सही हैं लेकिन (R), (A) की सही व्याख्या नहीं है।",
+                    "(A) और (R) दोनों सही हैं और (R) सही व्याख्या है।",
+                    "(A) और (R) दोनों सही हैं पर (R) सही व्याख्या नहीं है।",
                     "(A) सही है लेकिन (R) गलत है।",
                     "(A) गलत है लेकिन (R) सही है।"
                 ],
                 options_en: [
-                    "Both (A) and (R) are true and (R) is the correct explanation of (A).",
-                    "Both (A) and (R) are true but (R) is not the correct explanation of (A).",
+                    "Both (A) & (R) are true and (R) is the correct explanation.",
+                    "Both (A) & (R) are true but (R) is not the correct explanation.",
                     "(A) is true but (R) is false.",
                     "(A) is false but (R) is true."
                 ],
                 correct: 2, // C
                 exp_hi: `• (A) सही है लेकिन (R) गलत है!
-• कारण (R) में दोनों ड्रोन के कार्य आपस में बदल दिए गए हैं:
+• कारण (R) में दोनों ड्रोन के कार्य उल्टे लिखे गए हैं। सही कार्यप्रणाली:
 1. क्वाडकॉप्टर (Quadcopter): यह समुद्र के पानी में फंसे व्यक्ति की सटीक लोकेशन खोजता है।
-2. हेक्साकॉप्टर (Hexacopter): यह चिन्हित स्थान पर जीवन रक्षक बचाव उपकरण (Lifebuoy) पहुंचाता है।`,
+2. हेक्साकॉप्टर (Hexacopter): यह तुरंत उस चिन्हित स्थान पर जीवन रक्षक बचाव उपकरण (Lifebuoy / Rescue Equipment) पहुंचाता है।
+• संचार तकनीक: दोनों ड्रोन लंबी दूरी के रेडियो फ्रीक्वेंसी कम्युनिकेशन (RF Communication) से आपस में जुड़े होते हैं।`,
                 exp_en: `• (A) is true but (R) is false!
-• In Reason (R), the functions of the two drones are swapped:
-1. Quadcopter: Pinpoints the exact location of the person stranded in the sea.
-2. Hexacopter: Delivers the life-saving rescue equipment (Lifebuoy) to the marked location.`
+• In (R), the drone roles are reversed. Correct roles:
+1. Quadcopter: Pinpoints the exact location of the person stranded at sea.
+2. Hexacopter: Delivers the life-saving rescue equipment (Lifebuoy). Both are linked via RF Communication.`
             },
             {
                 id: 14,
-                type_hi: "3-कथन आधारित (Important Days)",
-                type_en: "3-Statement Based",
-                q_hi: `'सतर्कता जागरूकता सप्ताह 2026' (Vigilance Awareness Week 2026) के संदर्भ में निम्नलिखित कथनों पर विचार कीजिए:
-1. इसका आयोजन 26 अक्टूबर से 1 नवंबर 2026 तक किया जा रहा है।
-2. केंद्रीय सतर्कता आयोग (CVC) द्वारा इसकी शुरुआत वर्ष 2000 में सार्वजनिक जीवन में ईमानदारी और पारदर्शिता को बढ़ावा देने के लिए की गई थी।
-3. वर्ष 2026 की थीम "सत्यनिष्ठा से समृद्धि" ("Probity for Prosperity") है।
-
-उपर्युक्त में से कौन-से कथन सही हैं?`,
-                q_en: `Consider the following statements regarding 'Vigilance Awareness Week 2026':
-1. It is being observed from 26 October to 1 November 2026.
-2. It was initiated by the Central Vigilance Commission (CVC) in the year 2000 to promote integrity and transparency in public life.
-3. The theme for 2026 is "Probity for Prosperity" ("सत्यनिष्ठा से समृद्धि").
-
-Which of the statements given above are correct?`,
-                options_hi: [
-                    "केवल 1 और 2",
-                    "केवल 1 और 3",
-                    "केवल 2 और 3",
-                    "1, 2 और 3 सभी"
-                ],
-                options_en: [
-                    "1 and 2 only",
-                    "1 and 3 only",
-                    "2 and 3 only",
-                    "All 1, 2 and 3"
-                ],
+                type_hi: "3-कथन (Important Days)",
+                type_en: "3-Statement",
+                q_hi: `'सतर्कता जागरूकता सप्ताह 2026' के संदर्भ में सही कथन चुनें:
+1. आयोजन: 26 अक्टूबर से 1 नवंबर 2026 तक।
+2. शुरुआत: केंद्रीय सतर्कता आयोग (CVC) द्वारा वर्ष 2000 में।
+3. थीम 2026: "सत्यनिष्ठा से समृद्धि" (Probity for Prosperity)।`,
+                q_en: `Select correct statements regarding 'Vigilance Awareness Week 2026':
+1. Observed from 26 October to 1 November 2026.
+2. Started by Central Vigilance Commission (CVC) in 2000.
+3. Theme 2026: "Probity for Prosperity".`,
+                options_hi: ["केवल 1 और 2", "केवल 1 और 3", "केवल 2 और 3", "1, 2 और 3 सभी"],
+                options_en: ["1 and 2 only", "1 and 3 only", "2 and 3 only", "All 1, 2 and 3"],
                 correct: 3, // D
                 exp_hi: `• तीनों कथन (1, 2 और 3) बिल्कुल सही हैं।
-• सतर्कता जागरूकता सप्ताह 2026: 26 अक्टूबर से 1 नवंबर 2026 | शुरुआत: वर्ष 2000 (CVC द्वारा) | थीम 2026: "सत्यनिष्ठा से समृद्धि" ("Probity for Prosperity")।`,
-                exp_en: `• All three statements (1, 2, and 3) are completely correct.
-• Vigilance Awareness Week 2026: 26 Oct to 1 Nov 2026 | Started: 2000 by CVC | Theme 2026: "Probity for Prosperity".`
+• आयोजन अवधि: 26 अक्टूबर से 1 नवंबर 2026।
+• शुरुआत: केंद्रीय सतर्कता आयोग (CVC) द्वारा वर्ष 2000 में सार्वजनिक जीवन और सरकारी कामकाज में ईमानदारी, पारदर्शिता व जवाबदेही बढ़ाने हेतु।
+• थीम (2026): "सत्यनिष्ठा से समृद्धि" ("Probity for Prosperity")।`,
+                exp_en: `• All three statements (1, 2, and 3) are correct.
+• Vigilance Awareness Week 2026 is observed from 26 Oct to 1 Nov 2026 with the theme "Probity for Prosperity".`
             },
             {
                 id: 15,
-                type_hi: "4-कथन आधारित (Cricket Records)",
-                type_en: "4-Statement Based",
-                q_hi: `अक्टूबर 2026 में टी20 (T20) क्रिकेट में सर्वाधिक शतक लगाने वाले भारतीय बल्लेबाज के रिकॉर्ड के संदर्भ में निम्नलिखित कथनों पर विचार कीजिए:
-1. अभिषेक शर्मा समग्र टी20 क्रिकेट (Overall T20 Format) में सर्वाधिक शतक लगाने वाले भारतीय बल्लेबाज बन गए हैं।
-2. उन्होंने न्यूजीलैंड के खिलाफ वेलिंगटन में खेले गए तीसरे टी20 मुकाबले में मात्र 35 गेंदों में शतक (38 गेंदों में 113 रन) जड़कर यह उपलब्धि हासिल की।
-3. उन्होंने रोहित शर्मा के 10 टी20 शतकों का रिकॉर्ड तोड़ते हुए कुल 11 टी20 शतक पूरे किए।
-4. इस सूची में के. एल. राहुल, संजू सैमसन और रोहित शर्मा 8-8 शतकों के साथ संयुक्त रूप से तीसरे स्थान पर हैं।
-
-उपर्युक्त में से कौन-से कथन सही हैं?`,
-                q_en: `Consider the following statements regarding the record for most centuries by an Indian batter in overall T20 cricket in October 2026:
-1. Abhishek Sharma has become the Indian batter with the most centuries in overall T20 cricket.
-2. He achieved this feat against New Zealand in the 3rd T20I at Wellington by scoring a century in just 35 balls (113 runs off 38 balls).
-3. He broke Rohit Sharma's record of 10 T20 centuries to reach a total of 11 T20 centuries.
-4. KL Rahul, Sanju Samson, and Rohit Sharma are jointly ranked third on this list with 8 T20 centuries each.
-
-Which of the statements given above are correct?`,
-                options_hi: [
-                    "केवल 1, 2 और 4",
-                    "केवल 1, 2 और 3",
-                    "केवल 2, 3 और 4",
-                    "1, 2, 3 और 4 सभी"
-                ],
-                options_en: [
-                    "1, 2 and 4 only",
-                    "1, 2 and 3 only",
-                    "2, 3 and 4 only",
-                    "All 1, 2, 3 and 4"
-                ],
+                type_hi: "4-कथन (Cricket Record)",
+                type_en: "4-Statement",
+                q_hi: `टी20 क्रिकेट में सर्वाधिक भारतीय शतकों के रिकॉर्ड पर विचार करें:
+1. अभिषेक शर्मा सर्वाधिक टी20 शतक (11) जड़ने वाले भारतीय बने।
+2. उन्होंने वेलिंगटन में न्यूजीलैंड के खिलाफ 35 गेंदों में शतक जड़ा।
+3. उन्होंने रोहित शर्मा के 10 शतकों का रिकॉर्ड तोड़ा।
+4. राहुल, सैमसन और रोहित (8-8 शतक) संयुक्त तीसरे स्थान पर हैं।
+सही कथन चुनें:`,
+                q_en: `Consider the record for most Indian T20 centuries:
+1. Abhishek Sharma (11) hit the most T20 hundreds by an Indian.
+2. He hit a 35-ball ton vs New Zealand at Wellington.
+3. He broke Rohit Sharma's record of 10 T20 centuries.
+4. Rahul, Samson & Rohit (8 each) are jointly ranked 3rd.
+Select correct statements:`,
+                options_hi: ["केवल 1, 2 और 4", "केवल 1, 2 और 3", "केवल 2, 3 और 4", "1, 2, 3 और 4 सभी"],
+                options_en: ["1, 2 and 4 only", "1, 2 and 3 only", "2, 3 and 4 only", "All 1, 2, 3 and 4"],
                 correct: 0, // A
-                exp_hi: `• कथन 1, 2 और 4 सही हैं।
-• कथन 3 गलत है क्योंकि अभिषेक शर्मा (11 शतक, प्रथम रैंक) ने रोहित शर्मा का नहीं, बल्कि 'विराट कोहली के 10 टी20 शतकों' (द्वितीय रैंक) का रिकॉर्ड तोड़ा है।
-• संयुक्त तृतीय रैंक: के. एल. राहुल, संजू सैमसन और रोहित शर्मा (8-8 शतक)।`,
+                exp_hi: `• कथन 1, 2 और 4 सही हैं, जबकि कथन 3 गलत है।
+• मुख्य तथ्य: अभिषेक शर्मा ने न्यूजीलैंड के खिलाफ वेलिंगटन में तीसरे टी20 में मात्र 35 गेंदों में शतक (38 गेंदों में 113 रन) जड़कर समग्र टी20 क्रिकेट में सर्वाधिक 11 शतक लगाने वाले भारतीय बनने का गौरव प्राप्त किया।
+• किसका रिकॉर्ड तोड़ा: उन्होंने रोहित शर्मा का नहीं, बल्कि 'विराट कोहली के 10 टी20 शतकों' का रिकॉर्ड तोड़ा है।
+• शीर्ष भारतीय टी20 शतकवीर: 1. अभिषेक शर्मा (11 शतक) | 2. विराट कोहली (10 शतक) | 3. के. एल. राहुल, संजू सैमसन और रोहित शर्मा (8-8 शतक)।`,
                 exp_en: `• Statements 1, 2, and 4 are correct.
-• Statement 3 is incorrect because Abhishek Sharma (11 centuries, Rank 1) broke the record of 'Virat Kohli' (10 T20 centuries, Rank 2), not Rohit Sharma.
-• Joint Rank 3: KL Rahul, Sanju Samson, and Rohit Sharma (8 centuries each).`
+• Statement 3 is incorrect because Abhishek Sharma (11 centuries) broke 'Virat Kohli's record of 10 T20 centuries', not Rohit Sharma's.`
             },
             {
                 id: 16,
-                type_hi: "3-कथन आधारित (Tricky Venue Swap)",
-                type_en: "3-Statement Based (Venue Swap)",
-                q_hi: `9वीं हीरो हॉकी पुरुष एशियाई चैंपियंस ट्रॉफी 2026 के संदर्भ में निम्नलिखित कथनों पर विचार कीजिए:
-1. इसका आयोजन 27 अक्टूबर से 5 नवंबर 2026 तक पंजाब के जालंधर और मोहाली शहरों में किया जा रहा है।
-2. इसमें कुल 6 देश— भारत, मलेशिया, जापान, दक्षिण कोरिया, चीन और बांग्लादेश शामिल हैं।
-3. लीग चरण के सभी मुकाबले मोहाली के बलबीर सिंह सीनियर स्टेडियम में तथा सेमीफाइनल और फाइनल मुकाबले जालंधर के ओलंपियन सुरजीत हॉकी स्टेडियम में खेले जा रहे हैं।
-
-उपर्युक्त में से कौन-से कथन सही हैं?`,
-                q_en: `Consider the following statements regarding the 9th Hero Hockey Men's Asian Champions Trophy 2026:
-1. It is being organized from 27 October to 5 November 2026 in Jalandhar and Mohali cities of Punjab.
-2. Six countries—India, Malaysia, Japan, South Korea, China, and Bangladesh—are participating in it.
-3. All league stage matches are being played at Balbir Singh Sr. Stadium in Mohali, while the semi-finals and final will be held at Olympian Surjeet Hockey Stadium in Jalandhar.
-
-Which of the statements given above are correct?`,
-                options_hi: [
-                    "केवल 1 और 3",
-                    "केवल 1 और 2",
-                    "केवल 2 और 3",
-                    "1, 2 और 3 सभी"
-                ],
-                options_en: [
-                    "1 and 3 only",
-                    "1 and 2 only",
-                    "2 and 3 only",
-                    "All 1, 2 and 3"
-                ],
+                type_hi: "3-कथन (Hockey)",
+                type_en: "3-Statement",
+                q_hi: `9वीं हीरो हॉकी पुरुष एशियाई चैंपियंस ट्रॉफी 2026 पर विचार करें:
+1. आयोजन: 27 अक्टूबर-5 नवंबर तक जालंधर व मोहाली में।
+2. शामिल 6 देश: भारत, मलेशिया, जापान, द. कोरिया, चीन, बांग्लादेश।
+3. लीग मैच मोहाली में तथा सेमीफाइनल व फाइनल जालंधर में होंगे।
+सही कथन कौन-से हैं?`,
+                q_en: `Consider 9th Men's Asian Champions Trophy Hockey 2026:
+1. Held from 27 Oct–5 Nov in Jalandhar & Mohali (Punjab).
+2. 6 Nations: India, Malaysia, Japan, S. Korea, China, Bangladesh.
+3. League matches in Mohali; Semi-finals & Final in Jalandhar.
+Which statements are correct?`,
+                options_hi: ["केवल 1 और 3", "केवल 1 और 2", "केवल 2 और 3", "1, 2 और 3 सभी"],
+                options_en: ["1 and 3 only", "1 and 2 only", "2 and 3 only", "All 1, 2 and 3"],
                 correct: 1, // B
                 exp_hi: `• केवल कथन 1 और 2 सही हैं।
 • कथन 3 गलत (उल्टा) है:
-- जालंधर चरण (27 अक्टूबर - 2 नवंबर): लीग चरण के सभी मुकाबले और उद्घाटन समारोह जालंधर के बर्टन पार्क स्थित 'ओलंपियन सुरजीत हॉकी स्टेडियम' में खेले जा रहे हैं।
-- मोहाली चरण (4 - 5 नवंबर): सेमीफाइनल, फाइनल और समापन समारोह मोहाली के 'ओलंपियन बलबीर सिंह सीनियर अंतरराष्ट्रीय हॉकी स्टेडियम' में आयोजित होंगे।`,
+- जालंधर चरण (27 अक्टूबर से 2 नवंबर 2026): लीग चरण के सभी मुकाबले और उद्घाटन समारोह जालंधर के बर्टन पार्क स्थित 'ओलंपियन सुरजीत हॉकी स्टेडियम' में खेले जा रहे हैं।
+- मोहाली चरण (4 से 5 नवंबर 2026): सेमीफाइनल, फाइनल और समापन समारोह मोहाली के 'ओलंपियन बलबीर सिंह सीनियर अंतरराष्ट्रीय हॉकी स्टेडियम' में आयोजित किए जाएंगे।`,
                 exp_en: `• Only Statements 1 and 2 are correct.
-• Statement 3 is reversed:
-- Jalandhar Leg (27 Oct – 2 Nov): League matches and opening ceremony at 'Olympian Surjeet Hockey Stadium', Burlton Park, Jalandhar.
-- Mohali Leg (4 – 5 Nov): Semi-finals, final, and closing ceremony at 'Olympian Balbir Singh Senior International Hockey Stadium', Mohali.`
+• Statement 3 is reversed: League matches are held at Olympian Surjeet Hockey Stadium (Jalandhar), while Semi-finals and Final are at Olympian Balbir Singh Sr. Stadium (Mohali).`
             },
             {
                 id: 17,
-                type_hi: "4-कथन आधारित (Governance & State GK)",
-                type_en: "4-Statement Based",
-                q_hi: `'मिशन कर्मयोगी 2026' (Mission Karmayogi 2026) के प्रभावी क्रियान्वयन में राज्यों की रैंकिंग के संदर्भ में निम्नलिखित कथनों पर विचार कीजिए:
-1. सरकारी अधिकारियों और कर्मचारियों के क्षमता विकास में उत्तर प्रदेश ने देश में प्रथम स्थान प्राप्त किया है।
-2. उत्तर प्रदेश में iGOT कर्मयोगी प्लेटफॉर्म पर लगभग 19.23 लाख पंजीकृत उपयोगकर्ता हैं, जिनकी सक्रिय भागीदारी 99% से अधिक दर्ज की गई है।
-3. यूपी गृह विभाग ने अकेले 1 करोड़ से अधिक कोर्स पूरे किए हैं।
-4. शीर्ष 3 राज्यों/केंद्र शासित प्रदेशों में उत्तर प्रदेश के बाद गुजरात दूसरे स्थान पर और मध्य प्रदेश तीसरे स्थान पर रहा है।
-
-उपर्युक्त में से कौन-से कथन सही हैं?`,
-                q_en: `Consider the following statements regarding the state rankings in effective implementation of 'Mission Karmayogi 2026':
-1. Uttar Pradesh secured the first rank in the country in capacity building of government officers and employees.
-2. Uttar Pradesh has around 19.23 lakh registered users on the iGOT Karmayogi platform with over 99% active participation.
-3. The UP Home Department alone completed more than 1 crore courses.
-4. Among the top 3 States/UTs, Uttar Pradesh is followed by Gujarat in second place and Madhya Pradesh in third place.
-
-Which of the statements given above are correct?`,
-                options_hi: [
-                    "केवल 1 और 2",
-                    "केवल 2, 3 और 4",
-                    "केवल 1, 2 और 3",
-                    "1, 2, 3 और 4 सभी"
-                ],
-                options_en: [
-                    "1 and 2 only",
-                    "2, 3 and 4 only",
-                    "1, 2 and 3 only",
-                    "All 1, 2, 3 and 4"
-                ],
+                type_hi: "4-कथन (Governance)",
+                type_en: "4-Statement",
+                q_hi: `'मिशन कर्मयोगी 2026' रैंकिंग के संदर्भ में सही कथन चुनें:
+1. क्रियान्वयन में उत्तर प्रदेश ने देश में प्रथम स्थान प्राप्त किया।
+2. यूपी में iGOT पर 19.23 लाख यूजर और >99% सक्रिय भागीदारी है।
+3. यूपी गृह विभाग ने अकेले 1 करोड़ से अधिक कोर्स पूरे किए।
+4. शीर्ष 3 में यूपी के बाद गुजरात दूसरे व महाराष्ट्र तीसरे स्थान पर है।`,
+                q_en: `Select correct statements on 'Mission Karmayogi 2026':
+1. Uttar Pradesh secured 1st rank in the country.
+2. UP has 19.23 lakh iGOT users with >99% active participation.
+3. UP Home Dept alone completed over 1 crore courses.
+4. Gujarat ranked 2nd and Maharashtra ranked 3rd after UP.`,
+                options_hi: ["केवल 1 और 2", "केवल 2, 3 और 4", "केवल 1, 2 और 3", "1, 2, 3 और 4 सभी"],
+                options_en: ["1 and 2 only", "2, 3 and 4 only", "1, 2 and 3 only", "All 1, 2, 3 and 4"],
                 correct: 2, // C
                 exp_hi: `• कथन 1, 2 और 3 सही हैं।
-• कथन 4 गलत है क्योंकि शीर्ष 3 राज्य/केंद्र शासित प्रदेश हैं: 1. उत्तर प्रदेश (प्रथम स्थान) | 2. राजस्थान (द्वितीय स्थान) | 3. जम्मू और कश्मीर (तृतीय स्थान)।
-• उत्तर प्रदेश स्थापना दिवस: 24 जनवरी 1950 | राजधानी: लखनऊ | मुख्यमंत्री: योगी आदित्यनाथ | राज्यपाल: आनंदीबेन पटेल।`,
+• कथन 4 गलत है क्योंकि शीर्ष 3 राज्य/केंद्र शासित प्रदेश हैं:
+1. उत्तर प्रदेश (प्रथम स्थान)
+2. राजस्थान (द्वितीय स्थान)
+3. जम्मू और कश्मीर (तृतीय स्थान)
+• उत्तर प्रदेश स्टेटिक जीके: स्थापना दिवस- 24 जनवरी 1950 | राजधानी- लखनऊ | मुख्यमंत्री- योगी आदित्यनाथ | राज्यपाल- आनंदीबेन पटेल।`,
                 exp_en: `• Statements 1, 2, and 3 are correct.
-• Statement 4 is incorrect because the Top 3 States/UTs are: 1. Uttar Pradesh (1st) | 2. Rajasthan (2nd) | 3. Jammu & Kashmir (3rd).
-• UP Foundation Day: 24 Jan 1950 | Capital: Lucknow | CM: Yogi Adityanath | Governor: Anandiben Patel.`
+• Statement 4 is incorrect because the Top 3 States/UTs are: 1. Uttar Pradesh | 2. Rajasthan | 3. Jammu & Kashmir.`
             },
             {
                 id: 18,
-                type_hi: "4-कथन आधारित (28 Oct Revision)",
-                type_en: "4-Statement Based (Revision)",
-                q_hi: `28 अक्टूबर 2026 करंट अफेयर्स रिवीजन के संदर्भ में निम्नलिखित कथनों पर विचार कीजिए:
-1. 'वाइल्डलाइफ फोटोग्राफर ऑफ द ईयर 2026' में 'बिहेवियर: इनवर्टेब्रेट्स' श्रेणी का पुरस्कार महाराष्ट्र (सिंधुदुर्ग) के सीताराम दिनकर राउल ने थार मरुस्थल में पीले बिच्छू की फोटो 'Shifting Sand' के लिए जीता।
-2. केरल सरकार ने 'को केरलम' (Co-Keralam) नाम से भारत की पहली सहकारी क्षेत्र की एयरलाइन को मंजूरी दी है, जो 72-सीटर के 2 लीज़ एयरक्राफ्ट से कोच्चि से परिचालन करेगी।
-3. केरल के मुन्नार (मीसपुलीमाला) की ढलानों पर 12 वर्षों बाद खिले दुर्लभ 'नीलकुरिंजी' फूलों का वानस्पतिक नाम Strobilanthes kunthiana है, जो पश्चिमी घाट में 2470 मीटर ऊँचाई पर खिले हैं।
-4. भारतीय वनस्पति सर्वेक्षण (BSI) ने पौधों की दो नई प्रजातियों (Ophiorrhiza shidiensis व Ophiorrhiza pemae) की खोज केरल के मुन्नार में की है।
-
-उपर्युक्त में से कौन-से कथन सही हैं?`,
-                q_en: `Consider the following statements regarding the 28 October 2026 Current Affairs Revision:
-1. Sitaram Dinkar Raul (Sindhudurg, Maharashtra) won the 'Wildlife Photographer of the Year 2026' in the 'Behaviour: Invertebrates' category for his photo 'Shifting Sand' (yellow scorpion in Thar desert).
-2. Kerala government approved India's first cooperative sector airline named 'Co-Keralam', operating from Kochi with two leased 72-seater aircraft.
-3. The botanical name of the rare 'Neelakurinji' flowers that bloomed after 12 years on Munnar (Meesapulimala) slopes at 2470m altitude in Western Ghats is Strobilanthes kunthiana.
-4. Botanical Survey of India (BSI) discovered two new plant species (Ophiorrhiza shidiensis and Ophiorrhiza pemae) in Munnar, Kerala.
-
-Which of the statements given above are correct?`,
-                options_hi: [
-                    "केवल 1 और 2",
-                    "केवल 2, 3 और 4",
-                    "केवल 1, 3 और 4",
-                    "केवल 1, 2 और 3"
-                ],
-                options_en: [
-                    "1 and 2 only",
-                    "2, 3 and 4 only",
-                    "1, 3 and 4 only",
-                    "1, 2 and 3 only"
-                ],
+                type_hi: "4-कथन (28 Oct Rev.)",
+                type_en: "4-Statement",
+                q_hi: `28 अक्टूबर रिवीजन के संदर्भ में सही कथन चुनें:
+1. सीताराम दिनकर राउल ने 'Shifting Sand' फोटो हेतु वाइल्डलाइफ फोटोग्राफर अवार्ड जीता।
+2. केरल ने भारत की पहली सहकारी एयरलाइन 'को केरलम' को मंजूरी दी।
+3. 12 वर्ष बाद मुन्नार में खिले नीलकुरिंजी का नाम Strobilanthes kunthiana है।
+4. BSI ने Ophiorrhiza की दो नई प्रजातियां केरल में खोजीं।`,
+                q_en: `Select correct statements from 28 Oct Revision:
+1. Sitaram Dinkar Raul won Wildlife Photographer award for 'Shifting Sand'.
+2. Kerala approved India's 1st cooperative airline 'Co-Keralam'.
+3. Neelakurinji (Strobilanthes kunthiana) bloomed in Munnar after 12 yrs.
+4. BSI discovered two new Ophiorrhiza species in Kerala.`,
+                options_hi: ["केवल 1 और 2", "केवल 2, 3 और 4", "केवल 1, 3 और 4", "केवल 1, 2 और 3"],
+                options_en: ["1 and 2 only", "2, 3 and 4 only", "1, 3 and 4 only", "1, 2 and 3 only"],
                 correct: 3, // D
-                exp_hi: `• कथन 1, 2 और 3 सही हैं।
-• कथन 4 गलत है क्योंकि भारतीय वनस्पति सर्वेक्षण (BSI) ने रूबिएसी/कॉफी कुल की दो नई प्रजातियों (Ophiorrhiza shidiensis व Ophiorrhiza pemae) की खोज केरल में नहीं, बल्कि 'अरुणाचल प्रदेश' में की है (CM पेमा खांडू व लिसू समुदाय के ग्राम 'शिडी' के नाम पर)।`,
+                exp_hi: `• कथन 1, 2 और 3 सही हैं, जबकि कथन 4 गलत है।
+• विस्तृत व्याख्या:
+1. सीताराम दिनकर राउल (सिंधुदुर्ग, महाराष्ट्र) ने थार मरुस्थल में पीले बिच्छू की फोटो 'Shifting Sand' के लिए वाइल्डलाइफ फोटोग्राफर ऑफ द ईयर 2026 ('बिहेवियर: इनवर्टेब्रेट्स' श्रेणी) जीता।
+2. 'को केरलम' (Co-Keralam): 72-सीटर के 2 लीज़ एयरक्राफ्ट से कोच्चि से परिचालन।
+3. नीलकुरिंजी (Strobilanthes kunthiana): मुन्नार (मीसपुलीमाला) की ढलानों पर पश्चिमी घाट में 2470 मीटर ऊँचाई पर खिले।
+4. कथन 4 गलत: BSI ने रूबिएसी/कॉफी कुल की दो नई प्रजातियां (Ophiorrhiza shidiensis व Ophiorrhiza pemae) केरल में नहीं, बल्कि 'अरुणाचल प्रदेश' में खोजी हैं (CM पेमा खांडू व लिसू ग्राम 'शिडी' के नाम पर)।`,
                 exp_en: `• Statements 1, 2, and 3 are correct.
-• Statement 4 is incorrect because BSI discovered the two new Rubiaceae/coffee family species (Ophiorrhiza shidiensis and Ophiorrhiza pemae) in 'Arunachal Pradesh' (named after CM Pema Khandu and Lisu community village 'Shidi'), not Kerala.`
+• Statement 4 is incorrect because BSI discovered Ophiorrhiza shidiensis and Ophiorrhiza pemae in 'Arunachal Pradesh' (named after CM Pema Khandu and Shidi village), not Kerala.`
             },
             {
                 id: 19,
-                type_hi: "4-कथन आधारित (Disaster & Space)",
-                type_en: "4-Statement Based",
-                q_hi: `अक्टूबर 2026 के प्रमुख राष्ट्रीय-अंतरराष्ट्रीय घटनाक्रमों के संदर्भ में निम्नलिखित कथनों पर विचार कीजिए:
-1. बंगाल की खाड़ी में आए चक्रवाती तूफान 'अर्णब' (Cyclone Arnab) का नामकरण बांग्लादेश ने किया, जो आंध्र प्रदेश के बापटला और विशाखापत्तनम के बीच यनम के पास तट से टकराया।
-2. संयुक्त राष्ट्र के 'लॉस एंड डैमेज फंड' से जलवायु वित्तीय सहायता ($21.6 मिलियन) पाने वाला दुनिया का पहला देश नेपाल बना (अगस्त 2026 की बाढ़ व हिमनद आपदा हेतु)।
-3. ISRO अध्यक्ष डॉ. वी. नारायणन ने वर्ष 2029 तक भारत के 4 सक्रिय लॉन्चपैड (श्रीहरिकोटा में 2 + कुलशेखरपट्टिनम, तमिलनाडु में SSLV परिसर) स्थापित करने की घोषणा की है।
-4. अक्टूबर 2026 में पोलैंड ने अपने प्रधानमंत्री डोनाल्ड टस्क की भारत यात्रा के दौरान आपदा रोधी गठबंधन 'CDRI' में शामिल होने की घोषणा की।
-
-उपर्युक्त में से कौन-से कथन सही हैं?`,
-                q_en: `Consider the following statements regarding major national and international events of October 2026:
-1. Cyclone 'Arnab' in the Bay of Bengal was named by Bangladesh and made landfall near Yanam between Bapatla and Visakhapatnam in Andhra Pradesh.
-2. Nepal became the world's first country to receive climate financial assistance ($21.6 million) from the UN 'Loss & Damage Fund' (for August 2026 floods and glacial disaster).
-3. ISRO Chairman Dr. V. Narayanan announced that India will have 4 active launchpads by 2029 (2 at Sriharikota + SSLV complex at Kulasekarapattinam, Tamil Nadu).
-4. In October 2026, Poland announced its joining of the India-led 'CDRI' during PM Donald Tusk's visit to India.
-
-Which of the statements given above are correct?`,
-                options_hi: [
-                    "1, 2, 3 और 4 सभी",
-                    "केवल 1, 2 और 3",
-                    "केवल 2, 3 और 4",
-                    "केवल 1 और 4"
-                ],
-                options_en: [
-                    "All 1, 2, 3 and 4",
-                    "1, 2 and 3 only",
-                    "2, 3 and 4 only",
-                    "1 and 4 only"
-                ],
+                type_hi: "4-कथन (28 Oct Rev.)",
+                type_en: "4-Statement",
+                q_hi: `निम्नलिखित कथनों पर विचार करें:
+1. चक्रवात 'अर्णब' का नाम बांग्लादेश ने रखा (आंध्र तट से टकराया)।
+2. UN 'लॉस एंड डैमेज फंड' से सहायता ($21.6M) पाने वाला पहला देश नेपाल बना।
+3. ISRO प्रमुख डॉ. वी. नारायणन ने 2029 तक 4 सक्रिय लॉन्चपैड की घोषणा की।
+4. पोलैंड (PM डोनाल्ड टस्क) भारत के CDRI गठबंधन में शामिल हुआ।
+सही कथन कौन-से हैं?`,
+                q_en: `Consider the following statements:
+1. Cyclone 'Arnab' was named by Bangladesh (hit AP coast).
+2. Nepal became 1st nation to get UN 'Loss & Damage Fund' aid ($21.6M).
+3. ISRO Chief Dr. V. Narayanan announced 4 active launchpads by 2029.
+4. Poland (PM Donald Tusk) joined India-led CDRI.
+Which statements are correct?`,
+                options_hi: ["1, 2, 3 और 4 सभी", "केवल 1, 2 और 3", "केवल 2, 3 और 4", "केवल 1 और 4"],
+                options_en: ["All 1, 2, 3 and 4", "1, 2 and 3 only", "2, 3 and 4 only", "1 and 4 only"],
                 correct: 0, // A
                 exp_hi: `• चारों कथन (1, 2, 3 और 4) पूर्णतः सही हैं।
-• अतिरिक्त तथ्य: पोलैंड की मुद्रा 'ज़्लॉटी' (Zloty) है।`,
-                exp_en: `• All four statements (1, 2, 3, and 4) are completely correct.
-• Additional fact: The currency of Poland is 'Zloty'.`
+• मुख्य तथ्य:
+1. चक्रवात 'अर्णब': बांग्लादेश द्वारा नामकरण; आंध्र प्रदेश के बापटला और विशाखापत्तनम के बीच यनम के पास तट से टकराया।
+2. नेपाल: अगस्त 2026 की बाढ़ व हिमनद आपदा से उबरने हेतु UN Loss & Damage Fund से $21.6 मिलियन मंजूर।
+3. ISRO के 4 सक्रिय लॉन्चपैड (2029 तक): श्रीहरिकोटा में 2 सक्रिय लॉन्चपैड + कुलशेखरपट्टिनम (तमिलनाडु) में SSLV परिसर।
+4. पोलैंड: प्रधानमंत्री डोनाल्ड टस्क की भारत यात्रा के दौरान CDRI में शामिल; मुद्रा- ज़्लॉटी।`,
+                exp_en: `• All four statements (1, 2, 3, and 4) are completely correct as per the 28 October 2026 revision facts.`
             },
             {
                 id: 20,
-                type_hi: "स्तंभ सुमेलन (28 Oct Revision)",
-                type_en: "List Matching (Revision)",
-                q_hi: `स्तंभ-I (अंतरराष्ट्रीय घटनाक्रम/परियोजनाएं 2026) को स्तंभ-II (संबंधित संस्था/देश/विवरण) के साथ सुमेलित कीजिए:
-स्तंभ-I                                     स्तंभ-II
-P. 'संहिता' (SAMHITA) परियोजना             1. अंतरराष्ट्रीय आपराधिक न्यायालय (ICC), द हेग
-Q. सखारोव पुरस्कार 2026 (यूरोपीय संसद)       2. भुवनेश्वर, ओडिशा
-R. दूसरा राष्ट्रीय शहरी सम्मेलन 2026           3. श्रीलंका (गंगारामया मंदिर, कोलंबो)
-S. पूर्व प्रधानमंत्री यासुओ फुकुदा का निधन       4. जापान (वर्तमान PM: सनाए ताकाइची)
-
-सही कूट का चयन कीजिए:`,
-                q_en: `Match Column-I (Events/Projects 2026) with Column-II (Associated Organization/Country/Venue):
-Column-I                                  Column-II
-P. 'SAMHITA' Project                      1. International Criminal Court (ICC), The Hague
-Q. Sakharov Prize 2026 (European Parl.)   2. Bhubaneswar, Odisha
-R. 2nd National Urban Conclave 2026       3. Sri Lanka (Gangaramaya Temple, Colombo)
-S. Passing of former PM Yasuo Fukuda      4. Japan (Current PM: Sanae Takaichi)
-
-Select the correct code:`,
-                options_hi: [
-                    "P-3, Q-2, R-1, S-4",
-                    "P-3, Q-1, R-2, S-4",
-                    "P-1, Q-3, R-2, S-4",
-                    "P-3, Q-1, R-4, S-2"
-                ],
-                options_en: [
-                    "P-3, Q-2, R-1, S-4",
-                    "P-3, Q-1, R-2, S-4",
-                    "P-1, Q-3, R-2, S-4",
-                    "P-3, Q-1, R-4, S-2"
-                ],
+                type_hi: "स्तंभ सुमेलन (Matching)",
+                type_en: "List Matching",
+                q_hi: `स्तंभ-I को स्तंभ-II से सुमेलित कीजिए:
+P. 'संहिता' (SAMHITA) परियोजना   1. ICC (द हेग, नीदरलैंड)
+Q. सखारोव पुरस्कार 2026            2. भुवनेश्वर, ओडिशा
+R. दूसरा राष्ट्रीय शहरी सम्मेलन        3. श्रीलंका (गंगारामया मंदिर)
+S. पूर्व PM यासुओ फुकुदा निधन      4. जापान`,
+                q_en: `Match Column-I with Column-II:
+P. 'SAMHITA' Project            1. ICC (The Hague)
+Q. Sakharov Prize 2026          2. Bhubaneswar, Odisha
+R. 2nd National Urban Conclave  3. Sri Lanka (Gangaramaya Temple)
+S. Ex-PM Yasuo Fukuda demise    4. Japan`,
+                options_hi: ["P-3, Q-2, R-1, S-4", "P-3, Q-1, R-2, S-4", "P-1, Q-3, R-2, S-4", "P-3, Q-1, R-4, S-2"],
+                options_en: ["P-3, Q-2, R-1, S-4", "P-3, Q-1, R-2, S-4", "P-1, Q-3, R-2, S-4", "P-3, Q-1, R-4, S-2"],
                 correct: 1, // B
-                exp_hi: `• सही सुमेलन:
-- P-3: भारत ने श्रीलंका के साथ प्राचीन पांडुलिपियों के डिजिटलीकरण और बौद्ध विरासत संरक्षण हेतु 'संहिता' (SAMHITA) परियोजना शुरू की (प्रथम भागीदार: गंगारामया मंदिर, कोलंबो)।
-- Q-1: यूरोपीय संसद का 'सखारोव पुरस्कार 2026' अंतरराष्ट्रीय आपराधिक न्यायालय (ICC, मुख्यालय: द हेग; अध्यक्ष: तोमोको अकाने) को मिला।
-- R-2: दूसरा राष्ट्रीय शहरी सम्मेलन 2026 (24-25 अक्टूबर) भुवनेश्वर, ओडिशा में संपन्न हुआ।
-- S-4: जापान के पूर्व PM यासुओ फुकुदा (2007-08) का 90 वर्ष की आयु में निधन हुआ (वर्तमान PM: सनाए ताकाइची)।`,
-                exp_en: `• Correct Matching:
-- P-3: India launched Project 'SAMHITA' with Sri Lanka (first partner: Gangaramaya Temple, Colombo).
-- Q-1: Sakharov Prize 2026 awarded to International Criminal Court (ICC, HQ: The Hague; President: Tomoko Akane).
-- R-2: 2nd National Urban Conclave 2026 (24-25 Oct) held in Bhubaneswar, Odisha.
-- S-4: Former Japanese PM Yasuo Fukuda (2007-08) passed away at 90 (Current PM: Sanae Takaichi).`
+                exp_hi: `• सही सुमेलन और विस्तृत तथ्य:
+- P-3 ('संहिता' परियोजना): भारत ने श्रीलंका के साथ प्राचीन पांडुलिपियों के डिजिटलीकरण और बौद्ध विरासत संरक्षण हेतु शुरू की (प्रथम भागीदार: ऐतिहासिक गंगारामया मंदिर, कोलंबो)।
+- Q-1 (सखारोव पुरस्कार 2026): यूरोपीय संसद ने विचार की स्वतंत्रता के लिए 'अंतरराष्ट्रीय आपराधिक न्यायालय' (ICC, मुख्यालय: द हेग; अध्यक्ष: तोमोको अकाने) को दिया।
+- R-2 (दूसरा राष्ट्रीय शहरी सम्मेलन 2026): 24-25 अक्टूबर 2026 को भुवनेश्वर (ओडिशा) में संपन्न।
+- S-4 (यासुओ फुकुदा): जापान के पूर्व प्रधानमंत्री (2007-08) का 90 वर्ष की आयु में निधन (वर्तमान PM: सनाए ताकाइची)।`,
+                exp_en: `• Correct Matching: P-3 (SAMHITA Project with Sri Lanka), Q-1 (Sakharov Prize 2026 to ICC), R-2 (2nd Urban Conclave in Bhubaneswar), S-4 (Former PM Yasuo Fukuda of Japan).`
             },
             {
                 id: 21,
-                type_hi: "3-कथन आधारित (Sports Revision)",
-                type_en: "3-Statement Based (Sports)",
-                q_hi: `टेनिस और भारोत्तोलन से जुड़े 28 अक्टूबर 2026 के करंट अफेयर्स के संदर्भ में निम्नलिखित कथनों पर विचार कीजिए:
-1. कज़ाकिस्तान में आयोजित 'ATP 250 अल्माटी ओपन 2026' में पुरुष युगल का खिताब भारत के यूकी भांबरी और अमेरिका के रयान सेगरमैन की जोड़ी ने जीता, जो यूकी भांबरी का 5वां ATP युगल खिताब है।
-2. वर्ष 2029 में अहमदाबाद (गुजरात) भारत में पहली बार 'सीनियर विश्व भारोत्तोलन चैंपियनशिप' की मेजबानी करेगा।
-3. अंतरराष्ट्रीय भारोत्तोलन महासंघ (IWF) का मुख्यालय जेनेवा (स्विट्जरलैंड) में है और इसके अध्यक्ष तोमोको अकाने हैं।
-
-उपर्युक्त में से कौन-से कथन सही हैं?`,
-                q_en: `Consider the following statements regarding Tennis and Weightlifting current affairs from the 28 October 2026 revision:
-1. India's Yuki Bhambri and USA's Ryan Seggerman won the Men's Doubles title at 'ATP 250 Almaty Open 2026' in Kazakhstan, marking Bhambri's 5th ATP doubles title.
-2. In 2029, Ahmedabad (Gujarat) will host the 'Senior World Weightlifting Championship' for the first time in India.
-3. The headquarters of the International Weightlifting Federation (IWF) is in Geneva (Switzerland) and its President is Tomoko Akane.
-
-Which of the statements given above are correct?`,
-                options_hi: [
-                    "केवल 1 और 3",
-                    "केवल 2 और 3",
-                    "1, 2 और 3 सभी",
-                    "केवल 1 और 2"
-                ],
-                options_en: [
-                    "1 and 3 only",
-                    "2 and 3 only",
-                    "All 1, 2 and 3",
-                    "1 and 2 only"
-                ],
+                type_hi: "3-कथन (Sports)",
+                type_en: "3-Statement",
+                q_hi: `खेल करंट अफेयर्स (2026) पर विचार करें:
+1. ATP 250 अल्माटी ओपन पुरुष युगल खिताब यूकी भांबरी व रयान सेगरमैन ने जीता।
+2. 2029 में अहमदाबाद पहली बार सीनियर विश्व भारोत्तोलन चैंपियनशिप की मेजबानी करेगा।
+3. IWF का मुख्यालय जेनेवा में है और इसके अध्यक्ष तोमोको अकाने हैं।
+सही कथन चुनें:`,
+                q_en: `Consider Sports Current Affairs (2026):
+1. Yuki Bhambri & Ryan Seggerman won ATP 250 Almaty Open doubles.
+2. Ahmedabad will host 2029 Senior World Weightlifting Championship.
+3. IWF HQ is in Geneva and its President is Tomoko Akane.
+Select correct statements:`,
+                options_hi: ["केवल 1 और 3", "केवल 2 और 3", "1, 2 और 3 सभी", "केवल 1 और 2"],
+                options_en: ["1 and 3 only", "2 and 3 only", "All 1, 2 and 3", "1 and 2 only"],
                 correct: 3, // D
                 exp_hi: `• केवल कथन 1 और 2 सही हैं।
-• कथन 3 गलत है क्योंकि अंतरराष्ट्रीय भारोत्तोलन महासंघ (IWF) का मुख्यालय जेनेवा में नहीं, बल्कि 'लुसाने, स्विट्जरलैंड' (Lausanne, Switzerland) में है और इसके अध्यक्ष 'मोहम्मद हसन जलूद' हैं (तोमोको अकाने ICC की अध्यक्ष हैं)।`,
+• कथन 3 गलत है क्योंकि अंतरराष्ट्रीय भारोत्तोलन महासंघ (IWF) का मुख्यालय जेनेवा में नहीं, बल्कि 'लुसाने, स्विट्जरलैंड' (Lausanne, Switzerland) में है और इसके अध्यक्ष 'मोहम्मद हसन जलूद' हैं (तोमोको अकाने ICC की अध्यक्ष हैं)।
+• अतिरिक्त तथ्य: अल्माटी ओपन (कज़ाकिस्तान) यूकी भांबरी का 5वां ATP युगल खिताब है।`,
                 exp_en: `• Only Statements 1 and 2 are correct.
-• Statement 3 is incorrect because the IWF headquarters is in 'Lausanne, Switzerland' (not Geneva) and its President is 'Mohammed Hasan Jalood' (Tomoko Akane is the President of ICC).`
+• Statement 3 is incorrect: IWF Headquarters is in Lausanne, Switzerland (not Geneva) and its President is Mohammed Hasan Jalood.`
             },
             {
                 id: 22,
-                type_hi: "कथन-कारण (Assertion-Reason)",
-                type_en: "Assertion-Reason (A-R)",
-                q_hi: `नीचे दो कथन दिए गए हैं, एक को कथन (A) और दूसरे को कारण (R) कहा गया है:
-कथन (A): वर्ष 2026 के बैलोन डी'ओर समारोह में इंग्लैंड और आर्सेनल के फुटबॉलर बुकायो साका को प्रतिष्ठित 'सुकरात अवार्ड' (Sócrates Award) प्रदान किया गया।
-कारण (R): यह पुरस्कार उन्हें वर्ष 2026 के फुटबॉल सीजन में यूरोप में सर्वाधिक गोल करने और मैदान पर सर्वश्रेष्ठ आक्रामक खेल प्रदर्शन के लिए दिया गया है।
-
-नीचे दिए गए कूट से सही उत्तर चुनिए:`,
-                q_en: `Given below are two statements, one labelled as Assertion (A) and the other as Reason (R):
-Assertion (A): England and Arsenal footballer Bukayo Saka was presented the prestigious 'Sócrates Award' at the 2026 Ballon d'Or ceremony.
-Reason (R): This award was given to him for scoring the highest number of goals in Europe and displaying the best attacking performance on the pitch during the 2026 season.
-
-Select the correct answer using the code given below:`,
+                type_hi: "कथन-कारण (A-R)",
+                type_en: "Assertion-Reason",
+                q_hi: `कथन (A): बैलोन डी'ओर 2026 समारोह में बुकायो साका को 'सुकरात अवार्ड' से सम्मानित किया गया।
+कारण (R): यह पुरस्कार उन्हें फुटबॉल मैदान पर सर्वाधिक गोल करने के लिए दिया गया है।`,
+                q_en: `Assertion (A): Bukayo Saka was honoured with the 'Sócrates Award' at the 2026 Ballon d'Or ceremony.
+Reason (R): This award was given to him for scoring the highest goals on the football pitch.`,
                 options_hi: [
-                    "(A) और (R) दोनों सही हैं और (R), (A) की सही व्याख्या है।",
-                    "(A) और (R) दोनों सही हैं लेकिन (R), (A) की सही व्याख्या नहीं है।",
+                    "(A) और (R) दोनों सही हैं और (R) सही व्याख्या है।",
+                    "(A) और (R) दोनों सही हैं पर (R) सही व्याख्या नहीं है।",
                     "(A) सही है लेकिन (R) गलत है।",
                     "(A) गलत है लेकिन (R) सही है।"
                 ],
                 options_en: [
-                    "Both (A) and (R) are true and (R) is the correct explanation of (A).",
-                    "Both (A) and (R) are true but (R) is not the correct explanation of (A).",
+                    "Both (A) & (R) are true and (R) is the correct explanation.",
+                    "Both (A) & (R) are true but (R) is not the correct explanation.",
                     "(A) is true but (R) is false.",
                     "(A) is false but (R) is true."
                 ],
                 correct: 2, // C
                 exp_hi: `• (A) सही है लेकिन (R) गलत है।
-• सुकरात अवार्ड फुटबॉल मैदान पर खेल प्रदर्शन के लिए नहीं, बल्कि मैदान से बाहर किए गए बेहतरीन सामाजिक और परोपकारी (मानवीय) कार्यों (जैसे बच्चों की जीवन-रक्षक सर्जरी में सहयोग) के लिए दिया जाता है।`,
+• मुख्य तथ्य: 'सुकरात अवार्ड' (Sócrates Award) फुटबॉल मैदान पर खेल प्रदर्शन या गोल करने के लिए नहीं, बल्कि मैदान से बाहर किए गए बेहतरीन सामाजिक और परोपकारी (मानवीय) कार्यों (जैसे बच्चों की जीवन-रक्षक सर्जरी में सहयोग) के लिए दिया गया है।`,
                 exp_en: `• (A) is true but (R) is false.
-• The Sócrates Award is NOT given for on-pitch football performance, but for outstanding social and humanitarian work off the pitch (such as supporting life-saving surgeries for children).`
+• The Sócrates Award recognizes off-pitch humanitarian and social work (like funding children's life-saving surgeries), not on-field goal scoring.`
             },
             {
                 id: 23,
-                type_hi: "असत्य युग्म की पहचान (Themes & Summits)",
-                type_en: "Identify Incorrect Pair",
-                q_hi: `वर्ष 2026 के महत्वपूर्ण सम्मेलनों/अभियानों और उनकी आधिकारिक थीम/शुभंकर के संदर्भ में निम्नलिखित में से कौन-सा युग्म सही सुमेलित नहीं है?`,
-                q_en: `With reference to important 2026 conferences/campaigns and their official themes/mascots, which of the following pairs is NOT correctly matched?`,
+                type_hi: "असत्य युग्म (Themes)",
+                type_en: "Incorrect Pair",
+                q_hi: `वर्ष 2026 के सम्मेलन/अभियान और उनकी थीम/शुभंकर का कौन-सा युग्म गलत है?`,
+                q_en: `Which pair of 2026 Conclave/Campaign and its Theme/Mascot is INCORRECT?`,
                 options_hi: [
-                    "दूसरा राष्ट्रीय शहरी सम्मेलन 2026 (भुवनेश्वर) — Urban Rising: Rethinking Urban Systems, Solutions and Delivery",
-                    "13वीं ADMM-Plus बैठक 2026 (सेबू, फिलीपींस) — Navigating Our Future Together (एक साथ अपने भविष्य को दिशा देना)",
-                    "सतर्कता जागरूकता सप्ताह 2026 — Integrity and Transparency for Viksit Bharat (विकसित भारत के लिए सत्यनिष्ठा)",
-                    "तमिलनाडु वर्षा जल संचयन जागरूकता अभियान का शुभंकर — थुली (Thuli)"
+                    "दूसरा राष्ट्रीय शहरी सम्मेलन — Urban Rising: Rethinking Urban Systems...",
+                    "13वीं ADMM-Plus बैठक — Navigating Our Future Together",
+                    "सतर्कता जागरूकता सप्ताह 2026 — Integrity for Viksit Bharat",
+                    "तमिलनाडु वर्षा जल संचयन शुभंकर — थुली (Thuli)"
                 ],
                 options_en: [
-                    "2nd National Urban Conclave 2026 (Bhubaneswar) — Urban Rising: Rethinking Urban Systems, Solutions and Delivery",
-                    "13th ADMM-Plus Meeting 2026 (Cebu, Philippines) — Navigating Our Future Together",
-                    "Vigilance Awareness Week 2026 — Integrity and Transparency for Viksit Bharat",
-                    "Mascot of Tamil Nadu Rainwater Harvesting Awareness Campaign — Thuli"
+                    "2nd National Urban Conclave — Urban Rising: Rethinking Urban Systems...",
+                    "13th ADMM-Plus Meeting — Navigating Our Future Together",
+                    "Vigilance Awareness Week 2026 — Integrity for Viksit Bharat",
+                    "TN Rainwater Harvesting Mascot — Thuli"
                 ],
                 correct: 2, // C
-                exp_hi: `• विकल्प (C) सही सुमेलित नहीं है।
-• सतर्कता जागरूकता सप्ताह 2026 (26 अक्टूबर से 1 नवंबर 2026) की आधिकारिक थीम "सत्यनिष्ठा से समृद्धि" ("Probity for Prosperity") है।`,
-                exp_en: `• Option (C) is NOT correctly matched.
-• The official theme of Vigilance Awareness Week 2026 (26 Oct to 1 Nov 2026) is "Probity for Prosperity" ("सत्यनिष्ठा से समृद्धि").`
+                exp_hi: `• विकल्प (C) गलत सुमेलित है।
+• सभी महत्वपूर्ण थीम (2026):
+1. सतर्कता जागरूकता सप्ताह 2026 (26 अक्टूबर - 1 नवंबर): "सत्यनिष्ठा से समृद्धि" ("Probity for Prosperity")।
+2. दूसरा राष्ट्रीय शहरी सम्मेलन 2026 (भुवनेश्वर): "Urban Rising: Rethinking Urban Systems, Solutions and Delivery"।
+3. 13वीं ADMM-Plus बैठक (सेबू, फिलीपींस): "Navigating Our Future Together" ("एक साथ अपने भविष्य को दिशा देना")।
+4. तमिलनाडु वर्षा जल संचयन जागरूकता अभियान का शुभंकर: 'थुली' (Thuli)।`,
+                exp_en: `• Option (C) is incorrect because the official theme of Vigilance Awareness Week 2026 is "Probity for Prosperity" ("सत्यनिष्ठा से समृद्धि").`
             },
             {
                 id: 24,
-                type_hi: "स्तंभ सुमेलन (Scientific Names)",
-                type_en: "List Matching (Scientific Names)",
-                q_hi: `स्तंभ-I (चर्चा में रहीं प्रजातियां) को स्तंभ-II (उनके वैज्ञानिक/वानस्पतिक नाम एवं स्थान) के साथ सुमेलित कीजिए:
-स्तंभ-I (प्रजाति)                    स्तंभ-II (वैज्ञानिक नाम / स्थान)
-P. ग्रेटर फ्लेमिंगो (वीरनम झील)        1. Strobilanthes kunthiana (मुन्नार, केरल)
-Q. नीलकुरिंजी फूल (12 वर्ष बाद खिले)   2. Phoenicopterus roseus (कुड्डालोर, तमिलनाडु)
-R. विशाल वाटर लिली की चौथी प्रजाति     3. Ophiorrhiza shidiensis (अरुणाचल प्रदेश)
-S. रूबिएसी/कॉफी कुल की नई प्रजाति     4. Victoria colombiana (इनिरीडा नदी, कोलंबिया)
-
-सही कूट का चयन कीजिए:`,
-                q_en: `Match Column-I (Species in News) with Column-II (Scientific/Botanical Name & Location):
-Column-I (Species)                   Column-II (Scientific Name / Location)
-P. Greater Flamingo (Veeranam Lake)  1. Strobilanthes kunthiana (Munnar, Kerala)
-Q. Neelakurinji flower (12 yrs)      2. Phoenicopterus roseus (Cuddalore, Tamil Nadu)
-R. 4th species of Giant Water Lily   3. Ophiorrhiza shidiensis (Arunachal Pradesh)
-S. New Rubiaceae/Coffee species      4. Victoria colombiana (Inírida river, Colombia)
-
-Select the correct code:`,
-                options_hi: [
-                    "P-2, Q-1, R-4, S-3",
-                    "P-1, Q-2, R-4, S-3",
-                    "P-2, Q-4, R-1, S-3",
-                    "P-2, Q-1, R-3, S-4"
-                ],
-                options_en: [
-                    "P-2, Q-1, R-4, S-3",
-                    "P-1, Q-2, R-4, S-3",
-                    "P-2, Q-4, R-1, S-3",
-                    "P-2, Q-1, R-3, S-4"
-                ],
+                type_hi: "स्तंभ सुमेलन (Science)",
+                type_en: "List Matching",
+                q_hi: `चर्चित प्रजातियों को उनके वैज्ञानिक नाम से सुमेलित करें:
+P. ग्रेटर फ्लेमिंगो          1. Strobilanthes kunthiana
+Q. नीलकुरिंजी फूल        2. Phoenicopterus roseus
+R. विशाल वाटर लिली     3. Ophiorrhiza shidiensis
+S. कॉफी कुल नई प्रजाति  4. Victoria colombiana`,
+                q_en: `Match the species in news with their scientific names:
+P. Greater Flamingo     1. Strobilanthes kunthiana
+Q. Neelakurinji Flower  2. Phoenicopterus roseus
+R. Giant Water Lily     3. Ophiorrhiza shidiensis
+S. New Coffee species   4. Victoria colombiana`,
+                options_hi: ["P-2, Q-1, R-4, S-3", "P-1, Q-2, R-4, S-3", "P-2, Q-4, R-1, S-3", "P-2, Q-1, R-3, S-4"],
+                options_en: ["P-2, Q-1, R-4, S-3", "P-1, Q-2, R-4, S-3", "P-2, Q-4, R-1, S-3", "P-2, Q-1, R-3, S-4"],
                 correct: 0, // A
-                exp_hi: `• सही सुमेलन:
-- P-2: ग्रेटर फ्लेमिंगो — Phoenicopterus roseus (वीरनम झील, कुड्डालोर, तमिलनाडु)
-- Q-1: नीलकुरिंजी फूल — Strobilanthes kunthiana (मुन्नार/मीसपुलीमाला, केरल)
-- R-4: विशाल वाटर लिली — Victoria colombiana (इनिरीडा नदी क्षेत्र, कोलंबिया)
-- S-3: रूबिएसी/कॉफी कुल की नई प्रजाति — Ophiorrhiza shidiensis व Ophiorrhiza pemae (अरुणाचल प्रदेश)।`,
-                exp_en: `• Correct Matching:
-- P-2: Greater Flamingo — Phoenicopterus roseus (Veeranam Lake, Cuddalore, TN)
-- Q-1: Neelakurinji — Strobilanthes kunthiana (Munnar, Kerala)
-- R-4: Giant Water Lily — Victoria colombiana (Inírida river, Colombia)
-- S-3: New Rubiaceae species — Ophiorrhiza shidiensis & Ophiorrhiza pemae (Arunachal Pradesh).`
+                exp_hi: `• सही सुमेलन और स्थान:
+- P-2: ग्रेटर फ्लेमिंगो — Phoenicopterus roseus (वीरनम झील, कुड्डालोर, तमिलनाडु में 18 फ्लेमिंगो दिखे)।
+- Q-1: नीलकुरिंजी फूल — Strobilanthes kunthiana (केरल के मुन्नार/मीसपुलीमाला में 12 वर्षों बाद खिले)।
+- R-4: विशाल वाटर लिली की चौथी प्रजाति — Victoria colombiana (इनिरीडा नदी क्षेत्र, गुएनिया, कोलंबिया)।
+- S-3: रूबिएसी/कॉफी कुल की नई प्रजाति — Ophiorrhiza shidiensis व Ophiorrhiza pemae (अरुणाचल प्रदेश में BSI द्वारा खोजी गईं)।`,
+                exp_en: `• Correct Matching: P-2 (Greater Flamingo: Phoenicopterus roseus), Q-1 (Neelakurinji: Strobilanthes kunthiana), R-4 (Giant Water Lily: Victoria colombiana), S-3 (Rubiaceae species: Ophiorrhiza shidiensis).`
             },
             {
                 id: 25,
-                type_hi: "4-कथन आधारित (Static GK & Heads)",
-                type_en: "4-Statement Based (Static GK)",
-                q_hi: `अक्टूबर 2026 की करंट अफेयर्स PDF में उल्लिखित राष्ट्राध्यक्षों, राज्यपालों और संस्था प्रमुखों के संदर्भ में निम्नलिखित कथनों पर विचार कीजिए:
-1. संयुक्त अरब अमीरात (UAE) के राष्ट्रपति शेख मोहम्मद बिन जायद अल नाहयान हैं।
-2. कोलंबिया के वर्तमान राष्ट्रपति एबेलार्डो डे ला एस्पिरिएला हैं और जापान की वर्तमान प्रधानमंत्री सनाए ताकाइची हैं।
-3. अंतरराष्ट्रीय आपराधिक न्यायालय (ICC) की अध्यक्ष तोमोको अकाने हैं और अंतरराष्ट्रीय भारोत्तोलन महासंघ (IWF) के अध्यक्ष मोहम्मद हसन जलूद हैं।
-4. नागालैंड के राज्यपाल आनंदीबेन पटेल हैं और उत्तर प्रदेश के राज्यपाल नंद किशोर यादव हैं।
-
-उपर्युक्त में से कौन-सा/से कथन गलत है/हैं?`,
-                q_en: `Consider the following statements regarding Heads of State, Governors, and Organization Chiefs mentioned in the October 2026 Current Affairs PDF:
-1. The President of the United Arab Emirates (UAE) is Sheikh Mohamed bin Zayed Al Nahyan.
-2. The current President of Colombia is Abelardo de la Espriella and the current Prime Minister of Japan is Sanae Takaichi.
-3. The President of the International Criminal Court (ICC) is Tomoko Akane and the President of the International Weightlifting Federation (IWF) is Mohammed Hasan Jalood.
-4. The Governor of Nagaland is Anandiben Patel and the Governor of Uttar Pradesh is Nand Kishore Yadav.
-
-Which of the statement(s) given above is/are INCORRECT?`,
-                options_hi: [
-                    "केवल 1 और 3",
-                    "केवल 2 और 4",
-                    "केवल 3",
-                    "केवल 4"
-                ],
-                options_en: [
-                    "1 and 3 only",
-                    "2 and 4 only",
-                    "3 only",
-                    "4 only"
-                ],
+                type_hi: "4-कथन (Static GK)",
+                type_en: "4-Statement",
+                q_hi: `प्रमुख पदों के संदर्भ में कौन-सा कथन गलत है?
+1. UAE के राष्ट्रपति: शेख मोहम्मद बिन जायद अल नाहयान।
+2. कोलंबिया के राष्ट्रपति: एबेलार्डो डे ला एस्पिरिएला | जापान PM: सनाए ताकाइची।
+3. ICC अध्यक्ष: तोमोको अकाने | IWF अध्यक्ष: मोहम्मद हसन जलूद।
+4. नागालैंड के राज्यपाल: आनंदीबेन पटेल | यूपी के राज्यपाल: नंद किशोर यादव।`,
+                q_en: `Which statement is INCORRECT regarding key heads/governors?
+1. UAE President: Sheikh Mohamed bin Zayed Al Nahyan.
+2. Colombia Pres: Abelardo de la Espriella | Japan PM: Sanae Takaichi.
+3. ICC Pres: Tomoko Akane | IWF Pres: Mohammed Hasan Jalood.
+4. Nagaland Governor: Anandiben Patel | UP Governor: Nand Kishore Yadav.`,
+                options_hi: ["केवल 1 और 3", "केवल 2 और 4", "केवल 3", "केवल 4"],
+                options_en: ["1 and 3 only", "2 and 4 only", "3 only", "4 only"],
                 correct: 3, // D
-                exp_hi: `• केवल कथन 4 गलत है (पूछा गया है कौन-सा कथन गलत है)।
-• कथन 4 में राज्यपालों के नाम आपस में बदल दिए गए हैं: नागालैंड के राज्यपाल 'नंद किशोर यादव' (23वें राज्यपाल) हैं, जबकि उत्तर प्रदेश की राज्यपाल 'आनंदीबेन पटेल' हैं। कथन 1, 2 और 3 पूर्णतः सही हैं।`,
-                exp_en: `• Only Statement 4 is incorrect (Question asks for the incorrect statement).
-• In Statement 4, the Governors are swapped: 'Nand Kishore Yadav' is the 23rd Governor of Nagaland, whereas 'Anandiben Patel' is the Governor of Uttar Pradesh. Statements 1, 2, and 3 are correct.`
+                exp_hi: `• केवल कथन 4 गलत है।
+• सही तथ्य:
+- नागालैंड के राज्यपाल: 'नंद किशोर यादव' (23वें राज्यपाल) हैं और मुख्यमंत्री नेफ्यू रियो हैं।
+- उत्तर प्रदेश की राज्यपाल: 'आनंदीबेन पटेल' हैं और मुख्यमंत्री योगी आदित्यनाथ हैं।
+- कथन 1, 2 और 3 में दिए गए सभी राष्ट्राध्यक्ष और अंतरराष्ट्रीय संगठन प्रमुख पूर्णतः सही हैं।`,
+                exp_en: `• Only Statement 4 is incorrect because the Governors are swapped: Nand Kishore Yadav is the 23rd Governor of Nagaland, while Anandiben Patel is the Governor of Uttar Pradesh.`
             }
         ];
 
         // ============================================================================
-        // APPLICATION STATE VARIABLES
+        // APP STATE & FUNCTIONS
         // ============================================================================
         let currentIndex = 0;
-        let currentLang = 'hi'; // 'hi' or 'en'
+        let currentLang = 'hi';
         let userAnswers = new Array(questionsData.length).fill(null);
         let markedForReview = new Array(questionsData.length).fill(false);
         let isTestSubmitted = false;
-        let timerSeconds = 120 * 60; // 120 Minutes
+        let timerSeconds = 120 * 60;
         let timerInterval = null;
 
-        // ============================================================================
-        // INITIALIZATION & FULL SCREEN MANDATORY GATE
-        // ============================================================================
         function initApp() {
             populateJumpDropdown();
             renderQuestion();
@@ -1235,23 +971,16 @@ Which of the statement(s) given above is/are INCORRECT?`,
             }, 1000);
         }
 
-        // ============================================================================
-        // LANGUAGE SWITCHER (हिंदी / English)
-        // ============================================================================
         function toggleLanguage() {
             currentLang = currentLang === 'hi' ? 'en' : 'hi';
-            document.getElementById('lang-label').textContent = currentLang === 'hi' ? 'English' : 'हिंदी';
+            document.getElementById('lang-label').textContent = currentLang === 'hi' ? 'EN' : 'हिं';
             renderQuestion();
         }
 
-        // ============================================================================
-        // RENDER QUESTION, OPTIONS & INSTANT EXPLANATION
-        // ============================================================================
         function renderQuestion() {
             const q = questionsData[currentIndex];
             const selectedOpt = userAnswers[currentIndex];
 
-            // Header Badges
             document.getElementById('q-number-badge').textContent = `Q. ${currentIndex + 1} / ${questionsData.length}`;
             document.getElementById('q-type-badge').textContent = currentLang === 'hi' ? q.type_hi : q.type_en;
 
@@ -1262,10 +991,8 @@ Which of the statement(s) given above is/are INCORRECT?`,
                 reviewBadge.classList.add('hidden');
             }
 
-            // Question Text
             document.getElementById('question-text').textContent = currentLang === 'hi' ? q.q_hi : q.q_en;
 
-            // Options Rendering
             const optionsContainer = document.getElementById('options-container');
             optionsContainer.innerHTML = '';
             const opts = currentLang === 'hi' ? q.options_hi : q.options_en;
@@ -1279,16 +1006,15 @@ Which of the statement(s) given above is/are INCORRECT?`,
                 let badgeStyle = "bg-slate-100 text-slate-700 border-slate-300";
                 let rightIcon = "";
 
-                // Instant Verification Styling when an option is clicked or in Review Mode
                 if (selectedOpt !== null || isTestSubmitted) {
                     if (isCorrectOpt) {
                         cardStyle = "bg-emerald-50 border-emerald-500 text-emerald-950 font-semibold shadow-sm";
                         badgeStyle = "bg-emerald-600 text-white border-emerald-600";
-                        rightIcon = `<span class="text-emerald-700 font-extrabold text-xs sm:text-sm ml-2 shrink-0">✔ सही उत्तर</span>`;
+                        rightIcon = `<span class="text-emerald-700 font-extrabold text-[11px] ml-1.5 shrink-0">✔ सही</span>`;
                     } else if (isSelected && !isCorrectOpt) {
                         cardStyle = "bg-rose-50 border-rose-500 text-rose-950 font-semibold shadow-sm";
                         badgeStyle = "bg-rose-600 text-white border-rose-600";
-                        rightIcon = `<span class="text-rose-700 font-extrabold text-xs sm:text-sm ml-2 shrink-0">✖ आपका उत्तर</span>`;
+                        rightIcon = `<span class="text-rose-700 font-extrabold text-[11px] ml-1.5 shrink-0">✖ गलत</span>`;
                     } else {
                         cardStyle = "bg-white border-slate-200 opacity-75 text-slate-600";
                     }
@@ -1296,26 +1022,24 @@ Which of the statement(s) given above is/are INCORRECT?`,
 
                 const btn = document.createElement('button');
                 btn.type = 'button';
-                btn.className = `option-card w-full text-left p-3 sm:p-3.5 rounded-xl border-2 flex items-start justify-between gap-2 ${cardStyle}`;
+                btn.className = `option-card w-full text-left px-2.5 py-2 sm:p-3 rounded-xl border-2 flex items-center justify-between gap-2 ${cardStyle}`;
                 btn.onclick = () => selectOption(idx);
 
                 btn.innerHTML = `
-                    <div class="flex items-start gap-2.5 sm:gap-3">
-                        <span class="w-6 h-6 sm:w-7 sm:h-7 rounded-lg border font-extrabold text-xs sm:text-sm flex items-center justify-center shrink-0 mt-0.5 ${badgeStyle}">
+                    <div class="flex items-center gap-2">
+                        <span class="w-5 h-5 sm:w-6 sm:h-6 rounded-md border font-extrabold text-[11px] sm:text-xs flex items-center justify-center shrink-0 ${badgeStyle}">
                             ${labels[idx]}
                         </span>
-                        <span class="text-xs sm:text-sm leading-relaxed">${optText}</span>
+                        <span class="text-xs sm:text-sm leading-snug">${optText}</span>
                     </div>
                     ${rightIcon}
                 `;
                 optionsContainer.appendChild(btn);
             });
 
-            // Navigation button states
             document.getElementById('btn-prev').disabled = currentIndex === 0;
             document.getElementById('jump-select').value = currentIndex;
 
-            // Instant Answer & Detailed Explanation Box
             const feedbackBox = document.getElementById('instant-feedback-box');
             const feedbackHeader = document.getElementById('feedback-header');
             const feedbackExp = document.getElementById('feedback-explanation');
@@ -1325,28 +1049,22 @@ Which of the statement(s) given above is/are INCORRECT?`,
                 const correctLetter = labels[q.correct];
 
                 if (selectedOpt === q.correct) {
-                    feedbackBox.className = "mt-5 rounded-xl border-2 border-emerald-400 bg-emerald-50/70 p-4 transition-all";
+                    feedbackBox.className = "mt-3.5 rounded-xl border-2 border-emerald-400 bg-emerald-50/70 p-3 sm:p-4 transition-all";
                     feedbackHeader.innerHTML = `
-                        <span class="text-emerald-800 flex items-center gap-1.5">
-                            <span>✅ बिल्कुल सही उत्तर! (Correct Answer: Option ${correctLetter})</span>
-                        </span>
-                        <span class="bg-emerald-600 text-white text-xs px-2 py-0.5 rounded">+2.00 Marks</span>
+                        <span class="text-emerald-800">✅ बिल्कुल सही! (उत्तर: विकल्प ${correctLetter})</span>
+                        <span class="bg-emerald-600 text-white text-[10px] px-2 py-0.5 rounded">+2.00</span>
                     `;
                 } else if (selectedOpt !== null && selectedOpt !== q.correct) {
-                    feedbackBox.className = "mt-5 rounded-xl border-2 border-rose-400 bg-rose-50/70 p-4 transition-all";
+                    feedbackBox.className = "mt-3.5 rounded-xl border-2 border-rose-400 bg-rose-50/70 p-3 sm:p-4 transition-all";
                     feedbackHeader.innerHTML = `
-                        <span class="text-rose-800 flex items-center gap-1.5">
-                            <span>❌ गलत उत्तर! (सही उत्तर: विकल्प ${correctLetter} है)</span>
-                        </span>
-                        <span class="bg-rose-600 text-white text-xs px-2 py-0.5 rounded">-0.20 Marks</span>
+                        <span class="text-rose-800">❌ गलत उत्तर! (सही उत्तर: विकल्प ${correctLetter})</span>
+                        <span class="bg-rose-600 text-white text-[10px] px-2 py-0.5 rounded">-0.20</span>
                     `;
                 } else {
-                    feedbackBox.className = "mt-5 rounded-xl border-2 border-amber-400 bg-amber-50/70 p-4 transition-all";
+                    feedbackBox.className = "mt-3.5 rounded-xl border-2 border-amber-400 bg-amber-50/70 p-3 sm:p-4 transition-all";
                     feedbackHeader.innerHTML = `
-                        <span class="text-amber-900 flex items-center gap-1.5">
-                            <span>⚪ अनुत्तरित प्रश्न (सही उत्तर: विकल्प ${correctLetter} है)</span>
-                        </span>
-                        <span class="bg-amber-600 text-white text-xs px-2 py-0.5 rounded">0.00 Marks</span>
+                        <span class="text-amber-900">⚪ अनुत्तरित (सही उत्तर: विकल्प ${correctLetter})</span>
+                        <span class="bg-amber-600 text-white text-[10px] px-2 py-0.5 rounded">0.00</span>
                     `;
                 }
 
@@ -1356,9 +1074,6 @@ Which of the statement(s) given above is/are INCORRECT?`,
             }
         }
 
-        // ============================================================================
-        // INTERACTION HANDLERS
-        // ============================================================================
         function selectOption(optIndex) {
             if (isTestSubmitted) return;
             userAnswers[currentIndex] = optIndex;
@@ -1426,9 +1141,6 @@ Which of the statement(s) given above is/are INCORRECT?`,
             document.getElementById('stat-left').textContent = left;
         }
 
-        // ============================================================================
-        // SUBMIT & SCORECARD CALCULATION (+2.00 / -0.20)
-        // ============================================================================
         function openSubmitModal() {
             isTestSubmitted = true;
             if (timerInterval) clearInterval(timerInterval);
@@ -1469,14 +1181,13 @@ Which of the statement(s) given above is/are INCORRECT?`,
         function enterReviewMode() {
             document.getElementById('scorecard-modal').classList.add('hidden');
             document.getElementById('review-mode-banner').classList.remove('hidden');
-            document.getElementById('header-submit-btn').textContent = "Scorecard";
+            document.getElementById('header-submit-btn').textContent = "Score";
             document.getElementById('header-submit-btn').onclick = showScorecardModal;
             currentIndex = 0;
             renderQuestion();
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
-        // Start App Initialization
         window.onload = initApp;
     </script>
 </body>
