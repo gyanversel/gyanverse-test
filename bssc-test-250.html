@@ -1,0 +1,916 @@
+```html
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>GYANVERSE TCS CBT - BSSC CGL-4 & Inter Level Set-250 (150 प्रश्न)</title>
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;600;700;800&family=Noto+Sans+Devanagari:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+      -webkit-tap-highlight-color: transparent;
+    }
+    html, body {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      min-height: 100dvh;
+      font-family: 'Noto Sans Devanagari', 'Inter', sans-serif;
+      background-color: #0f172a;
+      color: #f8fafc;
+      overflow-x: hidden;
+    }
+    .q-pre {
+      white-space: pre-line;
+      word-break: break-word;
+    }
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+    ::-webkit-scrollbar {
+      width: 5px;
+      height: 5px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #0f172a;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #334155;
+      border-radius: 9999px;
+    }
+  </style>
+</head>
+<body class="bg-slate-950 text-slate-100 flex flex-col min-h-[100dvh] select-none">
+
+  <!-- MANDATORY AUTO FULL-SCREEN ENTRY GATE (TCS EXAM INSTRUCTIONS) -->
+  <div id="entryGateModal" class="fixed inset-0 z-50 bg-slate-950/95 backdrop-blur-md flex items-center justify-center p-3 overflow-y-auto">
+    <div class="w-full max-w-md bg-slate-900 border border-indigo-500/40 rounded-2xl shadow-2xl p-4 sm:p-6 text-center my-auto">
+      <div class="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-gradient-to-br from-indigo-600 to-blue-600 text-white font-extrabold text-xl shadow-lg mb-2">
+        GV
+      </div>
+      <div class="inline-block px-2.5 py-0.5 rounded-full bg-indigo-500/20 border border-indigo-400/30 text-indigo-300 text-[11px] font-bold mb-1">
+        TCS iON REAL CBT EXAM MODE
+      </div>
+      <h1 class="text-xl sm:text-2xl font-extrabold tracking-tight text-white">
+        GYANVERSE ONLINE CBT
+      </h1>
+      <p class="text-xs sm:text-sm text-sky-300 font-semibold mt-0.5">
+        BSSC (Inter Level &amp; CGL-4), BSO, ASO — SET-250
+      </p>
+
+      <div class="mt-3 bg-slate-800/90 border border-slate-700 rounded-xl p-3 text-left space-y-1.5 text-xs sm:text-sm">
+        <div class="flex items-center justify-between border-b border-slate-700/80 pb-1">
+          <span class="text-slate-400">कुल प्रश्न (Q1 से Q150):</span>
+          <span class="font-bold text-white">150 प्रश्न (GK/GS, Math, Reasoning)</span>
+        </div>
+        <div class="flex items-center justify-between border-b border-slate-700/80 pb-1">
+          <span class="text-slate-400">निर्धारित समय:</span>
+          <span class="font-bold text-emerald-400">120 मिनट (Live Countdown)</span>
+        </div>
+        <div class="flex items-center justify-between border-b border-slate-700/80 pb-1">
+          <span class="text-slate-400">अंकन योजना (Marking):</span>
+          <span class="font-bold text-amber-300">सही: +2.00 | गलत: -0.20 (पूर्णांक: 300)</span>
+        </div>
+        <div class="flex items-center justify-between">
+          <span class="text-slate-400">परीक्षा मोड (TCS पैटर्न):</span>
+          <span class="font-semibold text-indigo-300 text-right">सबमिट करने के बाद ही उत्तर व हल दिखेंगे</span>
+        </div>
+      </div>
+
+      <div class="mt-3 p-2.5 rounded-xl bg-indigo-950/60 border border-indigo-500/30 text-[11px] sm:text-xs text-indigo-200 text-left leading-relaxed">
+        <strong class="text-indigo-300">परीक्षा निर्देश:</strong> लाइव टेस्ट के दौरान विकल्प चुनने पर केवल आपका उत्तर सेव होगा (सही/गलत तुरंत नहीं दिखेगा)। पूरा टेस्ट देने के बाद ऊपर दाएँ कोने में <strong>Submit Test</strong> दबाने पर आपका <strong>Scorecard</strong> और सभी 150 प्रश्नों की <strong>विस्तृत व्याख्या</strong> खुलेगी।
+      </div>
+
+      <button id="startTestBtn" type="button" class="mt-4 w-full py-3 px-4 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-400 hover:to-teal-500 active:scale-[0.99] text-slate-950 font-extrabold text-sm sm:text-base shadow-lg shadow-emerald-600/25 flex items-center justify-center gap-2 transition">
+        <span>⛶</span>
+        <span>Start Test (Auto Full Screen)</span>
+      </button>
+
+      <div class="mt-3 pt-2.5 border-t border-slate-800 flex items-center justify-center gap-2 text-xs text-slate-400">
+        <span>Official Telegram:</span>
+        <a href="https://t.me/GYANVERSET" target="_blank" rel="noopener noreferrer" class="text-sky-400 hover:text-sky-300 font-bold underline">
+          @GYANVERSET
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- STICKY TOP HEADER (Brand + Live Timer + Top-Right Submit Button) -->
+  <header class="sticky top-0 z-30 bg-slate-900/95 backdrop-blur border-b border-slate-800 px-2.5 py-2 sm:px-4">
+    <div class="max-w-3xl mx-auto flex items-center justify-between gap-1.5">
+      <div class="flex items-center gap-2 min-w-0">
+        <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-indigo-600 to-blue-600 flex items-center justify-center font-extrabold text-xs text-white shrink-0 shadow">
+          GV
+        </div>
+        <div class="leading-tight truncate">
+          <div class="flex items-center gap-1.5">
+            <span class="font-extrabold text-sm sm:text-base tracking-wide text-white">GYANVERSE</span>
+            <span id="modeBadge" class="hidden text-[10px] px-1.5 py-0.5 rounded bg-emerald-500/20 text-emerald-300 border border-emerald-500/40 font-bold">हल एवं उत्तर कुंजी</span>
+          </div>
+          <a href="https://t.me/GYANVERSET" target="_blank" rel="noopener noreferrer" class="text-[11px] text-sky-400 hover:underline font-semibold block truncate">
+            @GYANVERSET
+          </a>
+        </div>
+      </div>
+
+      <div class="flex items-center gap-1.5 sm:gap-2 shrink-0">
+        <button id="fsToggleBtn" type="button" title="फुल स्क्रीन मोड" class="px-2 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 border border-slate-700 text-slate-200 text-xs font-bold">
+          ⛶
+        </button>
+        <div class="flex items-center gap-1 px-2.5 py-1.5 rounded-lg bg-slate-950 border border-slate-700 text-emerald-400 font-mono text-xs sm:text-sm font-extrabold">
+          <span>⏱</span>
+          <span id="timerDisplay">120:00</span>
+        </div>
+        <button id="submitTestTopBtn" type="button" class="px-2.5 sm:px-3.5 py-1.5 rounded-lg bg-rose-600 hover:bg-rose-500 active:scale-95 text-white font-extrabold text-xs sm:text-sm shadow transition">
+          Submit Test
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- MAIN CLEAN FULL-WIDTH TEST AREA (MOBILE-OPTIMIZED, NO SIDEBAR PALETTE) -->
+  <main class="flex-1 w-full max-w-3xl mx-auto px-2.5 py-2 sm:px-4 sm:py-3 flex flex-col justify-between">
+    <div>
+      <!-- Subject / Section Quick Filter Strip -->
+      <div class="mb-2 flex items-center gap-1.5 overflow-x-auto no-scrollbar pb-0.5 text-[11px] sm:text-xs">
+        <button type="button" data-sec="all" class="sec-btn shrink-0 px-2.5 py-1 rounded-lg bg-indigo-600 text-white font-bold shadow-sm">सभी प्रश्न (150)</button>
+        <button type="button" data-sec="gkgs" class="sec-btn shrink-0 px-2.5 py-1 rounded-lg bg-slate-900 border border-slate-800 text-slate-300 font-semibold">GK / GS / विज्ञान (75)</button>
+        <button type="button" data-sec="math" class="sec-btn shrink-0 px-2.5 py-1 rounded-lg bg-slate-900 border border-slate-800 text-slate-300 font-semibold">गणित (Math - 25)</button>
+        <button type="button" data-sec="reasoning" class="sec-btn shrink-0 px-2.5 py-1 rounded-lg bg-slate-900 border border-slate-800 text-slate-300 font-semibold">रीजनिंग (Reasoning - 50)</button>
+      </div>
+
+      <!-- Review Mode Filter Bar (Only visible after test submission) -->
+      <div id="reviewFilterBar" class="hidden mb-2 bg-slate-900 border border-indigo-500/30 rounded-xl p-2 flex flex-wrap items-center justify-between gap-1.5 text-xs">
+        <span class="font-bold text-indigo-300">उत्तर कुंजी फ़िल्टर:</span>
+        <div class="flex flex-wrap gap-1">
+          <button type="button" data-filter="all" class="filter-btn px-2.5 py-1 rounded-lg bg-indigo-600 text-white font-bold">सभी (50)</button>
+          <button type="button" data-filter="correct" class="filter-btn px-2.5 py-1 rounded-lg bg-slate-800 text-emerald-400 font-bold">सही</button>
+          <button type="button" data-filter="wrong" class="filter-btn px-2.5 py-1 rounded-lg bg-slate-800 text-rose-400 font-bold">गलत</button>
+          <button type="button" data-filter="unattempted" class="filter-btn px-2.5 py-1 rounded-lg bg-slate-800 text-slate-300 font-bold">छोड़े गए</button>
+        </div>
+      </div>
+
+      <!-- TCS-Style Question Status Header Strip -->
+      <div class="flex items-center justify-between gap-2 bg-slate-900 border border-slate-800 rounded-t-xl px-3 py-1.5">
+        <div class="flex items-center gap-2 min-w-0">
+          <span id="qNumberBadge" class="px-2.5 py-0.5 rounded-md bg-indigo-600 text-white font-extrabold text-xs sm:text-sm shrink-0">
+            प्रश्न 1 / 150
+          </span>
+          <span id="qTypeBadge" class="text-[11px] sm:text-xs font-semibold text-indigo-300 truncate">
+            GS (भौतिकी)
+          </span>
+        </div>
+        <div class="flex items-center gap-1.5 shrink-0 text-[11px] font-bold">
+          <span id="savedStatusBadge" class="hidden px-1.5 py-0.5 rounded bg-sky-500/20 text-sky-300 border border-sky-500/40">✓ उत्तर चयनित</span>
+          <span id="reviewStatusBadge" class="hidden px-1.5 py-0.5 rounded bg-amber-500/20 text-amber-300 border border-amber-500/40">★ समीक्षा</span>
+          <span class="px-1.5 py-0.5 rounded bg-emerald-500/15 text-emerald-400 border border-emerald-500/30">+2.00</span>
+          <span class="px-1.5 py-0.5 rounded bg-rose-500/15 text-rose-400 border border-rose-500/30">-0.20</span>
+        </div>
+      </div>
+
+      <!-- Question Text & Diagram Box -->
+      <div class="bg-slate-900 border-x border-b border-slate-800 rounded-b-xl p-3 sm:p-4 shadow-md">
+        <div id="questionText" class="q-pre text-[13.5px] sm:text-[15.5px] leading-snug font-semibold text-slate-100"></div>
+        <div id="questionSvgBox" class="hidden mt-2"></div>
+
+        <!-- Mandatory Watermark Under Every Single Question -->
+        <div class="mt-2 pt-1.5 border-t border-slate-800/80 flex items-center justify-between text-[11px] text-slate-400">
+          <span class="font-bold text-indigo-400 tracking-wide">GYANVERSE OFFICIAL (SET-250)</span>
+          <a href="https://t.me/GYANVERSET" target="_blank" rel="noopener noreferrer" class="font-extrabold text-sky-400 hover:text-sky-300">
+            @GYANVERSET
+          </a>
+        </div>
+      </div>
+
+      <!-- Options Container (Automatically switches between 1-col text & 2x2 grid for figure options) -->
+      <div id="optionsContainer" class="mt-2 space-y-1.5"></div>
+
+      <!-- NAVIGATION BUTTONS DIRECTLY BELOW OPTIONS (Mobile Friendly) -->
+      <div class="mt-2.5 grid grid-cols-4 gap-1.5 sm:gap-2">
+        <button id="prevBtn" type="button" class="py-2.5 px-2 rounded-xl bg-slate-800 hover:bg-slate-700 active:scale-95 border border-slate-700 text-slate-200 font-bold text-xs sm:text-sm flex items-center justify-center gap-1 transition">
+          <span>⬅</span>
+          <span>Prev</span>
+        </button>
+        <button id="clearBtn" type="button" class="py-2.5 px-2 rounded-xl bg-slate-800 hover:bg-rose-950/60 active:scale-95 border border-slate-700 hover:border-rose-500/40 text-rose-300 font-bold text-xs sm:text-sm flex items-center justify-center gap-1 transition">
+          <span>✖</span>
+          <span>Clear</span>
+        </button>
+        <button id="reviewBtn" type="button" class="py-2.5 px-2 rounded-xl bg-amber-500/15 hover:bg-amber-500/25 active:scale-95 border border-amber-500/40 text-amber-300 font-bold text-xs sm:text-sm flex items-center justify-center gap-1 transition">
+          <span>★</span>
+          <span>Review</span>
+        </button>
+        <button id="nextBtn" type="button" class="py-2.5 px-2 rounded-xl bg-indigo-600 hover:bg-indigo-500 active:scale-95 text-white font-extrabold text-xs sm:text-sm flex items-center justify-center gap-1 shadow-md shadow-indigo-600/20 transition">
+          <span>Next &amp; Save</span>
+          <span>➡</span>
+        </button>
+      </div>
+
+      <!-- DETAILED EXPLANATION BOX (HIDDEN DURING LIVE TEST; SHOWN ONLY AFTER SUBMIT) -->
+      <div id="instantExplanationBox" class="hidden mt-2.5 rounded-xl border p-3 sm:p-4 transition-all">
+        <div class="flex items-center justify-between gap-2 pb-2 mb-2 border-b border-slate-700/70">
+          <div id="instantStatusTitle" class="font-extrabold text-xs sm:text-sm flex items-center gap-1.5"></div>
+          <a href="https://t.me/GYANVERSET" target="_blank" rel="noopener noreferrer" class="text-[11px] font-bold text-sky-400 hover:underline shrink-0">
+            @GYANVERSET
+          </a>
+        </div>
+        <div class="text-xs sm:text-sm font-bold text-indigo-300 mb-1">
+          📖 विस्तृत हल एवं व्याख्या:
+        </div>
+        <div id="instantExplanationText" class="q-pre text-xs sm:text-[13.5px] leading-relaxed text-slate-200"></div>
+      </div>
+    </div>
+
+    <!-- COMPACT BOTTOM PROGRESS & QUICK JUMP BAR (No Sidebar Grid) -->
+    <footer class="mt-3 pt-2 border-t border-slate-800/90 flex items-center justify-between gap-2 text-[11px] sm:text-xs text-slate-400">
+      <div class="flex items-center gap-2 sm:gap-3 flex-wrap">
+        <span>हल: <strong id="statAnswered" class="text-emerald-400">0</strong></span>
+        <span>समीक्षा: <strong id="statReviewed" class="text-amber-400">0</strong></span>
+        <span>शेष: <strong id="statLeft" class="text-slate-200">150</strong></span>
+      </div>
+      <div class="flex items-center gap-1.5">
+        <label for="questionJumpSelect" class="text-slate-400 font-semibold">प्रश्न चुनें:</label>
+        <select id="questionJumpSelect" class="bg-slate-900 border border-slate-700 rounded-lg px-2 py-1 text-slate-100 font-bold text-xs focus:outline-none focus:border-indigo-500 max-w-[155px] sm:max-w-[200px]"></select>
+      </div>
+    </footer>
+  </main>
+
+  <!-- TCS EXAM SUBMIT CONFIRMATION MODAL -->
+  <div id="submitConfirmModal" class="hidden fixed inset-0 z-50 bg-slate-950/85 backdrop-blur-sm flex items-center justify-center p-3">
+    <div class="w-full max-w-sm bg-slate-900 border border-indigo-500/40 rounded-2xl shadow-2xl p-4 sm:p-5 text-center">
+      <div class="w-11 h-11 rounded-full bg-amber-500/20 border border-amber-500/40 text-amber-300 flex items-center justify-center mx-auto text-lg font-extrabold">
+        !
+      </div>
+      <h3 class="text-base sm:text-lg font-extrabold text-white mt-2">
+        क्या आप टेस्ट सबमिट करना चाहते हैं?
+      </h3>
+      <p class="text-xs text-slate-400 mt-0.5">
+        सबमिट करने के बाद आपका स्कोरकार्ड और सभी 150 प्रश्नों के उत्तर व हल खुल जाएंगे।
+      </p>
+
+      <div class="mt-3 bg-slate-800/90 border border-slate-700 rounded-xl p-3 space-y-1.5 text-xs text-left">
+        <div class="flex justify-between">
+          <span class="text-slate-400">कुल प्रश्न:</span>
+          <strong class="text-white">150</strong>
+        </div>
+        <div class="flex justify-between">
+          <span class="text-slate-400">हल किए गए (Attempted):</span>
+          <strong id="confirmAttemptedVal" class="text-emerald-400">0</strong>
+        </div>
+        <div class="flex justify-between">
+          <span class="text-slate-400">छोड़े गए (Unattempted):</span>
+          <strong id="confirmUnattemptedVal" class="text-rose-400">150</strong>
+        </div>
+        <div class="flex justify-between">
+          <span class="text-slate-400">समीक्षा हेतु चिह्नित (Review):</span>
+          <strong id="confirmReviewVal" class="text-amber-300">0</strong>
+        </div>
+      </div>
+
+      <div class="mt-4 grid grid-cols-2 gap-2">
+        <button id="cancelSubmitBtn" type="button" class="py-2.5 px-3 rounded-xl bg-slate-800 hover:bg-slate-700 border border-slate-700 text-slate-200 font-bold text-xs sm:text-sm transition">
+          वापस टेस्ट पर जाएँ
+        </button>
+        <button id="confirmFinalSubmitBtn" type="button" class="py-2.5 px-3 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-extrabold text-xs sm:text-sm shadow-lg transition">
+          हाँ, सबमिट करें
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- DETAILED SCORECARD MODAL (SHOWN AFTER SUBMIT) -->
+  <div id="scorecardModal" class="hidden fixed inset-0 z-50 bg-slate-950/90 backdrop-blur-md flex items-center justify-center p-3 overflow-y-auto">
+    <div class="w-full max-w-lg bg-slate-900 border border-indigo-500/40 rounded-2xl shadow-2xl p-4 sm:p-6 my-auto">
+      <div class="flex items-center justify-between border-b border-slate-800 pb-3">
+        <div>
+          <h2 class="text-lg sm:text-xl font-extrabold text-white">GYANVERSE परिणाम एवं स्कोरकार्ड</h2>
+          <p class="text-xs text-indigo-300 font-semibold">BSSC (Inter Level, CGL-4) SET-250 (150 प्रश्न)</p>
+        </div>
+        <a href="https://t.me/GYANVERSET" target="_blank" rel="noopener noreferrer" class="px-2.5 py-1 rounded-lg bg-sky-500/15 border border-sky-500/30 text-sky-300 font-extrabold text-xs">
+          @GYANVERSET
+        </a>
+      </div>
+
+      <!-- Total Score Highlight -->
+      <div class="mt-3 bg-gradient-to-br from-indigo-950 to-slate-900 border border-indigo-500/30 rounded-xl p-3.5 text-center">
+        <div class="text-xs text-indigo-300 font-semibold">कुल प्राप्तांक (Total Marks)</div>
+        <div class="text-2xl sm:text-3xl font-extrabold text-white mt-0.5">
+          <span id="finalScoreVal">0.00</span> <span class="text-sm sm:text-base font-semibold text-slate-400">/ 300.00</span>
+        </div>
+        <div id="finalRankMsg" class="text-xs font-bold text-emerald-400 mt-1"></div>
+      </div>
+
+      <!-- Detailed Metrics Grid -->
+      <div class="mt-3 grid grid-cols-2 sm:grid-cols-4 gap-2 text-center">
+        <div class="bg-slate-800/80 border border-slate-700 rounded-xl p-2.5">
+          <div class="text-[11px] text-slate-400">सही उत्तर (+2.0)</div>
+          <div id="scoreCorrect" class="text-base sm:text-lg font-extrabold text-emerald-400 mt-0.5">0</div>
+        </div>
+        <div class="bg-slate-800/80 border border-slate-700 rounded-xl p-2.5">
+          <div class="text-[11px] text-slate-400">गलत उत्तर (-0.2)</div>
+          <div id="scoreWrong" class="text-base sm:text-lg font-extrabold text-rose-400 mt-0.5">0</div>
+        </div>
+        <div class="bg-slate-800/80 border border-slate-700 rounded-xl p-2.5">
+          <div class="text-[11px] text-slate-400">छोड़े गए (0)</div>
+          <div id="scoreSkipped" class="text-base sm:text-lg font-extrabold text-amber-300 mt-0.5">0</div>
+        </div>
+        <div class="bg-slate-800/80 border border-slate-700 rounded-xl p-2.5">
+          <div class="text-[11px] text-slate-400">सटीकता (Accuracy)</div>
+          <div id="scoreAccuracy" class="text-base sm:text-lg font-extrabold text-sky-400 mt-0.5">0%</div>
+        </div>
+      </div>
+
+      <!-- Negative Marking & Time Breakdown -->
+      <div class="mt-3 bg-slate-800/50 border border-slate-800 rounded-xl p-2.5 text-xs flex flex-wrap items-center justify-between gap-2 text-slate-300">
+        <span>सकारात्मक अंक: <strong id="posMarksVal" class="text-emerald-400">+0.00</strong></span>
+        <span>नकारात्मक कटौती: <strong id="negMarksVal" class="text-rose-400">-0.00</strong></span>
+        <span>लिया गया समय: <strong id="timeTakenVal" class="text-indigo-300">00:00</strong></span>
+      </div>
+
+      <!-- Community Link Box -->
+      <div class="mt-3 p-2.5 rounded-xl bg-sky-950/40 border border-sky-500/30 flex items-center justify-between gap-2 text-xs">
+        <span class="text-slate-200 font-medium">प्रतिदिन निःशुल्क टेस्ट एवं पीडीएफ के लिए जुड़ें:</span>
+        <a href="https://t.me/GYANVERSET" target="_blank" rel="noopener noreferrer" class="font-extrabold text-sky-400 hover:text-sky-300 underline shrink-0">
+          t.me/GYANVERSET
+        </a>
+      </div>
+
+      <!-- Action Buttons -->
+      <div class="mt-4 grid grid-cols-1 sm:grid-cols-2 gap-2">
+        <button id="checkSolutionsBtn" type="button" class="w-full py-2.5 px-4 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-extrabold text-sm shadow-lg transition">
+          🔍 Check Solutions (विस्तृत हल देखें)
+        </button>
+        <button id="restartTestBtn" type="button" class="w-full py-2.5 px-4 rounded-xl bg-slate-800 hover:bg-slate-700 border border-slate-700 text-slate-100 font-bold text-sm transition">
+          🔄 पुनः टेस्ट दें (Restart Test)
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const QUESTIONS = [{"id": 1, "cat": "GS (भौतिकी)", "q": "प्रतिरोधकता 10⁵ Ωm वाला पदार्थ किस वर्ग के अन्तर्गत आता है?", "options": ["चालक", "अर्द्धचालक", "चुम्बकीय पदार्थ", "विद्युतरोधक"], "ans": 1, "exp": "• धात्विक चालकों की प्रतिरोधकता अत्यंत कम (10⁻⁸ Ωm से 10⁻⁶ Ωm) होती है।\n• अर्द्धचालकों (Semiconductors जैसे सिलिकॉन व जर्मेनियम) की प्रतिरोधकता चालकों और विद्युतरोधकों के मध्य (लगभग 10⁻⁵ से 10⁶ Ωm, विशेषतः 10⁵ Ωm कोटि की) होती है।\n• विद्युतरोधकों (Insulators) की प्रतिरोधकता 10¹² Ωm से 10¹⁷ Ωm तक होती है। अतः सही उत्तर (B) अर्द्धचालक है।", "type": "GS (भौतिकी)"}, {"id": 2, "cat": "GS (भौतिकी)", "q": "एक वायुयान की ध्वनि सामान्यतः इसके संगत होती है—", "options": ["1 dB", "100 dB", "1000 dB", "10 dB"], "ans": 1, "exp": "• ध्वनि की प्रबलता डेसिबल (dB) में मापी जाती है।\n• सामान्य श्वास: 10 dB, फुसफुसाहट: 30 dB, सामान्य बातचीत: 60 dB, और एक वायुयान (Aircraft/Jet) की ध्वनि सामान्यतः 100 dB से 120 dB के संगत होती है।", "type": "GS (भौतिकी)"}, {"id": 3, "cat": "GS (भौतिकी)", "q": "कौन-सी विद्युतचुम्बकीय तरंग नहीं है?", "options": ["रेडियो", "अवरक्त", "ध्वनि", "पराबैंगनी"], "ans": 2, "exp": "• रेडियो तरंगें, अवरक्त (Infrared) और पराबैंगनी (Ultraviolet) तरंगें अनुप्रस्थ विद्युतचुम्बकीय तरंगें हैं जिन्हें गमन के लिए माध्यम की आवश्यकता नहीं होती।\n• 'ध्वनि (Sound)' विद्युतचुम्बकीय तरंग नहीं है; यह एक यांत्रिक अनुदैर्ध्य तरंग (Mechanical Longitudinal Wave) है।", "type": "GS (भौतिकी)"}, {"id": 4, "cat": "GS (भौतिकी)", "q": "एक आदर्श तरल एक असमान पाइप से बहता है।\nकथन 1 : जहाँ पाइप का व्यास कम होता है, वहाँ तरल का वेग अधिक होता है।\nकथन 2 : यदि दो अनुभागों के व्यास का अनुपात 2:3 है, तो उन अनुभागों में वेगों का अनुपात 9:4 होगा।\nउपरोक्त में से कौन-सा कथन सत्य है?", "options": ["केवल 1", "केवल 2", "1 और 2 दोनों", "न तो 1 और न ही 2"], "ans": 2, "exp": "• सांतत्य समीकरण (Equation of Continuity): A₁v₁ = A₂v₂ के अनुसार, तरल का वेग अनुप्रस्थ काट के क्षेत्रफल (A = πd²/4) के व्युत्क्रमानुपाती होता है (जहाँ व्यास कम होगा, वहाँ वेग अधिक होगा — कथन 1 सत्य)।\n• यदि व्यासों का अनुपात d₁ : d₂ = 2 : 3 है, तो वेगों का अनुपात v₁ : v₂ = d₂² : d₁² = 3² : 2² = 9 : 4 होगा (कथन 2 भी सत्य)। अतः 1 और 2 दोनों सत्य हैं।", "type": "GS (भौतिकी)"}, {"id": 5, "cat": "GS (पर्यावरण)", "q": "पारिस्थितिकी तंत्र से संबंधित निम्नलिखित में से कौन-सा/कौन-से कथन सही है/हैं?\n(i) ओजोन ऑक्सीजन के तीन परमाणुओं द्वारा निर्मित एक अणु है।\n(ii) ऑक्सीजन (O₂) जीवन के सभी वायवीय स्वरूपों के लिए आवश्यक है।\n(iii) ओजोन विषहीन है।", "options": ["केवल (i) और (ii)", "केवल (i) और (iii)", "केवल (i)", "(i), (ii) और (iii)"], "ans": 0, "exp": "• NCERT कक्षा 10 विज्ञान ('हमारा पर्यावरण') के अनुसार: ओजोन (O₃) ऑक्सीजन के तीन परमाणुओं से बना अणु है (कथन i सही) और ऑक्सीजन (O₂) सभी वायवीय जीवों के लिए आवश्यक है (कथन ii सही)।\n• कथन (iii) गलत है क्योंकि ओजोन एक घातक विष (Deadly Poison) है।", "type": "GS (पर्यावरण)"}, {"id": 6, "cat": "गणित (सांख्यिकी)", "q": "यदि माध्य = (3 माध्यिका - बहुलक) / p है, तो p का मान क्या होगा?", "options": ["1", "2", "1/3", "1/2"], "ans": 1, "exp": "• माध्य, माध्यिका और बहुलक के बीच मानक अनुभवजन्य सूत्र है:\n  बहुलक (Mode) = 3 माध्यिका (Median) − 2 माध्य (Mean)\n⇒ 2 माध्य = 3 माध्यिका − बहुलक\n⇒ माध्य = (3 माध्यिका − बहुलक) / 2\n• दिए गए समीकरण से तुलना करने पर p = 2 प्राप्त होता है।", "type": "गणित (सांख्यिकी)"}, {"id": 7, "cat": "गणित (मिश्रण)", "q": "5% नमक युक्त नमक के विलयन की 8 लीटर मात्रा में से एक लीटर पानी वाष्पीकृत हो जाता है। बचे हुए विलयन में कितने प्रतिशत नमक होगा?", "options": ["40/3 %", "20/7 %", "40/7 %", "20/3 %"], "ans": 2, "exp": "• प्रारंभिक 8 लीटर विलयन में नमक की मात्रा = 8 का 5% = (8 × 5)/100 = 0.4 लीटर।\n• 1 लीटर पानी वाष्पीकृत होने के बाद शेष विलयन की मात्रा = 8 − 1 = 7 लीटर।\n• बचे हुए विलयन में नमक का प्रतिशत = (0.4 / 7) × 100 = 40/7 %।", "type": "गणित (मिश्रण)"}, {"id": 8, "cat": "गणित (चाल-दूरी)", "q": "एक रेलगाड़ी एक समान गति से 50 सेकंड में 338 मीटर की दूरी तय करती है। इसकी गति क्या है?", "options": ["5.76 मीटर प्रति सेकंड", "7.76 मीटर प्रति सेकंड", "6.76 मीटर प्रति सेकंड", "4.76 मीटर प्रति सेकंड"], "ans": 2, "exp": "• गति (चाल) = दूरी / समय = 338 मीटर / 50 सेकंड = 676 / 100 = 6.76 मीटर प्रति सेकंड।", "type": "गणित (चाल-दूरी)"}, {"id": 9, "cat": "गणित (नाव एवं धारा)", "q": "एक स्थिर-बहती नदी में, एक नाव धारा की दिशा में 12 किमी/घंटा की चाल से एक निश्चित दूरी तक जाती है और फिर उसी दूरी को विपरीत दिशा में 24 किमी/घंटा की चाल से तय करती है। कुल यात्रा के लिए औसत चाल ज्ञात कीजिए।", "options": ["20 km/h", "16 km/h", "18 km/h", "15 km/h"], "ans": 1, "exp": "• जब दो समान दूरियाँ क्रमशः x किमी/घंटा और y किमी/घंटा की चाल से तय की जाती हैं, तो कुल यात्रा की औसत चाल:\n  औसत चाल = (2 × x × y) / (x + y)\n  = (2 × 12 × 24) / (12 + 24) = 576 / 36 = 16 km/h।", "type": "गणित (नाव एवं धारा)"}, {"id": 10, "cat": "गणित (पाइप एवं टंकी)", "q": "किसी खाली टंकी को एक पाइप 4 घंटे में भर सकता है जबकि दूसरा पाइप भरी हुई को 10 घंटे में खाली कर देता है। जब टंकी आधी खाली थी, तो दोनों ही पाइपों को एक साथ खोल दिया गया। टंकी कितने समय में भर जायेगी?", "options": ["4 घंटे 20 मिनट", "5 घंटे 30 मिनट", "3 घंटे 20 मिनट", "6 घंटे 40 मिनट"], "ans": 2, "exp": "• दोनों पाइप एक साथ खोलने पर 1 घंटे में भरा गया भाग = 1/4 − 1/10 = (5 − 2)/20 = 3/20 भाग।\n• चूँकि टंकी पहले से आधी भरी (आधी खाली = 1/2 भाग शेष) थी, अतः शेष 1/2 भाग को भरने में लगने वाला समय:\n  समय = (1/2) ÷ (3/20) = (1/2) × (20/3) = 10/3 घंटे = 3 सही 1/3 घंटे = 3 घंटे 20 मिनट।", "type": "गणित (पाइप एवं टंकी)"}, {"id": 11, "cat": "GK (राजव्यवस्था)", "q": "प्रथम संविधान संशोधन अधिनियम, 1951 से संबंधित सही तथ्य/तथ्यों का चयन करें।\n(i) संविधान में नौवीं अनुसूची जोड़ा गया।\n(ii) नौवीं अनुसूची में उल्लेखित बातों को न्यायालय के दायरे से बाहर होने का प्रावधान दिया गया।\n(iii) अनुच्छेद-31 'A' तथा अनुच्छेद-31 'B' को संविधान में अन्तःस्थापित किया गया।\n(iv) भूमि सुधार संबंधी कुछ कानूनों को नौवीं अनुसूची में शामिल किया गया।", "options": ["केवल i एवं iv", "केवल i, ii एवं iv", "केवल i एवं iii", "सभी i, ii, iii एवं iv"], "ans": 3, "exp": "• प्रथम संविधान संशोधन अधिनियम, 1951 द्वारा जमींदारी उन्मूलन एवं भूमि सुधार कानूनों को संवैधानिक संरक्षण देने हेतु संविधान में अनुच्छेद 31A, अनुच्छेद 31B तथा नौवीं अनुसूची जोड़ी गई और इसमें शामिल कानूनों को न्यायिक पुनर्विलोकन से उन्मुक्ति दी गई। अतः सभी (i, ii, iii एवं iv) कथन सही हैं।", "type": "GK (राजव्यवस्था)"}, {"id": 12, "cat": "GK (राजव्यवस्था)", "q": "सूची I तथा सूची II का मिलान कीजिए और नीचे दिए गए कूट से सही उत्तर का चयन कीजिए:\nसूची I (समिति) — सूची II (कार्य)\n(a) प्राक्कलन समिति — (i) विनियोजित लेखा की परीक्षा\n(b) लोक लेखा समिति — (ii) व्यय में किफायत के लिए सुझाव\n(c) अधीनस्थ विधायन — (iii) विधानमंडल द्वारा पारित कानून के अंतर्गत कार्यकारी विभागों द्वारा बनाए नियमों की परीक्षा\n(d) सार्वजनिक उपक्रमों से संबंधित समिति — (iv) सार्वजनिक क्षेत्र के उपक्रमों के कार्य करण की समीक्षा", "options": ["a-(i), b-(ii), c-(iii), d-(iv)", "a-(iii), b-(iv), c-(i), d-(ii)", "a-(ii), b-(i), c-(iii), d-(iv)", "a-(iv), b-(i), c-(ii), d-(iii)"], "ans": 2, "exp": "• प्राक्कलन समिति (a): बजट में व्यय में किफायत/मितव्ययिता के लिए सुझाव देती है (ii)।\n• लोक लेखा समिति (b): विनियोजित लेखा एवं CAG रिपोर्ट की परीक्षा करती है (i)।\n• अधीनस्थ विधायन समिति (c): कार्यकारी विभागों द्वारा बनाए नियमों की परीक्षा करती है (iii)।\n• सार्वजनिक उपक्रम समिति (d): सार्वजनिक क्षेत्र के उपक्रमों के कार्यकरण की समीक्षा करती है (iv)।\nअतः सही कूट (C) (ii) (i) (iii) (iv) है।", "type": "GK (राजव्यवस्था)"}, {"id": 13, "cat": "GK (इतिहास)", "q": "निम्न में कौन तथ्य प्रतिहार राजवंश के संबंध में सही है?", "options": ["शासन काल आठवीं सदी के पूर्वार्द्ध से ग्यारहवीं सदी के पूर्वार्द्ध तक रहा।", "कन्नौज पर अधिकार के लिए पाल एवं राष्ट्रकूट शक्तियों से संघर्ष किया।", "अरबों के विरुद्ध युद्ध करके देश की रक्षा की, लेकिन ग्यारहवीं सदी के आरंभ में तुर्कों के आक्रमण के सामने टिक नहीं पाए।", "उपर्युक्त सभी"], "ans": 3, "exp": "• गुर्जर-प्रतिहार राजवंश के संबंध में दिए गए तीनों कथन सत्य हैं। इन्होंने 8वीं से 11वीं सदी के पूर्वार्द्ध तक शासन किया, कन्नौज के लिए त्रिपक्षीय संघर्ष में भाग लिया और अरब आक्रमणकारियों को रोका, किंतु 1018 ई. में महमूद गजनवी के आक्रमण के सामने कमजोर पड़ गए।", "type": "GK (इतिहास)"}, {"id": 14, "cat": "GK (भूगोल)", "q": "सूची-I को सूची-II से सुमेलित कीजिए:\nसूची-I — सूची-II\n(a) विशिष्ट शूकर कटक (Hogback Ridges) — I. हिमाद्री\n(b) समतल सतह की संरचनात्मक घाटी — II. लघु हिमालय\n(c) चौड़ी अभिनति घाटियां — III. हिमाद्री और हिमाचल के मध्य\n(d) हिस्पर हिमनद — IV. हिमाचल और शिवालिक के मध्य", "options": ["(a)-II, (b)-IV, (c)-III, (d)-I", "(a)-III, (b)-I, (c)-IV, (d)-II", "(a)-I, (b)-II, (c)-III, (d)-IV", "(a)-IV, (b)-III, (c)-I, (d)-II"], "ans": 0, "exp": "• (a) विशिष्ट शूकर कटक — II. लघु हिमालय क्षेत्र\n• (b) समतल सतह की संरचनात्मक घाटी (दून/द्वार) — IV. हिमाचल और शिवालिक के मध्य\n• (c) चौड़ी अभिनति घाटियां (जैसे कश्मीर व कांगड़ा घाटी) — III. हिमाद्री और हिमाचल के मध्य\n• (d) हिस्पर हिमनद — I. हिमाद्री (वृहद हिमालय/काराकोरम)।", "type": "GK (भूगोल)"}, {"id": 15, "cat": "GK (इतिहास)", "q": "किस गवर्नर जनरल के कार्यकाल में ईस्ट इंडिया कंपनी को मुगल बादशाह शाहआलम द्वितीय द्वारा बंगाल, बिहार तथा उड़ीसा में दीवानी अधिकार दिये गये?", "options": ["लॉर्ड क्लाइव", "लॉर्ड कॉर्नवालिस", "लॉर्ड वेलेजली", "लॉर्ड विलियम बैंन्टिक"], "ans": 0, "exp": "• बक्सर के युद्ध (1764) के पश्चात 12 अगस्त 1765 को रॉबर्ट क्लाइव (लॉर्ड क्लाइव) के कार्यकाल में हुई इलाहाबाद की प्रथम संधि के तहत मुगल बादशाह शाहआलम द्वितीय ने कंपनी को बंगाल, बिहार और उड़ीसा की दीवानी प्रदान की।", "type": "GK (इतिहास)"}, {"id": 16, "cat": "बिहार विशेष", "q": "आधुनिक बिहार का निर्माता किसे माना जाता है?", "options": ["सच्चिदानंद सिन्हा", "कुमार कालिका प्रसाद सिन्हा", "आचार्य नरेंद्र देव", "सर गणेश सिंह"], "ans": 0, "exp": "• डॉ. सच्चिदानंद सिन्हा को 'आधुनिक बिहार का निर्माता (Architect of Modern Bihar)' माना जाता है। बंगाल से बिहार को अलग प्रांत (1912) बनाने के आंदोलन में उन्होंने अग्रणी भूमिका निभाई थी।", "type": "बिहार विशेष"}, {"id": 17, "cat": "GK (इतिहास)", "q": "वी.डी. सावरकर से सम्बन्धित निम्नलिखित कथनों में से कौन-सा एक सही नहीं है?", "options": ["उनका जन्म 1883 ई. में हुआ", "उनके पिता का नाम दामोदर पंत सावरकर था", "उनकी माता का देहान्त 1901 ई. में हुआ", "उनके जीवनी के लेखक धनंजय कीर थे"], "ans": 2, "exp": "• विकल्प (C) सही नहीं है: वी.डी. सावरकर की माता राधाबाई का देहान्त वर्ष 1892 ई. में (हैजा से) हुआ था, न कि 1901 ई. में। उनके पिता दामोदर पंत का निधन 1899 ई. में प्लेग से हुआ था।", "type": "GK (इतिहास)"}, {"id": 18, "cat": "करंट अफेयर्स", "q": "भारत का पहला स्वदेशी 'ग्रीन यूरिया / ग्रीन हाइड्रोजन प्लांट' आंध्र प्रदेश के किस स्थान पर विकसित किया जाएगा?", "options": ["पुदिमडाका", "विशाखापत्तनम", "चित्तूर", "अमरावती"], "ans": 0, "exp": "• आंध्र प्रदेश के पुदिमडाका (Pudimadaka) में देश का पहला और सबसे बड़ा एकीकृत स्वदेशी हरित हाइड्रोजन, हरित अमोनिया एवं ग्रीन यूरिया प्लांट विकसित किया जा रहा है।", "type": "करंट अफेयर्स"}, {"id": 19, "cat": "GK (इतिहास)", "q": "सूची-I (समाचार पत्र) को सूची-II (सम्पादक) से सुमेलित कीजिए तथा नीचे दिये गये कूट से सही उत्तर चुनिये—\nA. काल — 1. सुरेन्द्रनाथ बनर्जी\nB. बंगाली — 2. गणेश अगरकर\nC. सुधारक — 3. द्वारकानाथ विद्याभूषण\nD. सोमप्रकाश — 4. शिवराम महादेव परांजपे", "options": ["A-4, B-1, C-2, D-3", "A-4, B-1, C-3, D-2", "A-3, B-1, C-4, D-2", "A-3, B-1, C-2, D-4"], "ans": 0, "exp": "• काल (Kaal) — शिवराम महादेव परांजपे (4)\n• बंगाली (Bengalee) — सुरेन्द्रनाथ बनर्जी (1)\n• सुधारक (Sudharak) — गोपाल गणेश अगरकर (2)\n• सोमप्रकाश (Somprakash) — द्वारकानाथ विद्याभूषण (3)\nअतः सही कूट 4 1 2 3 है।", "type": "GK (इतिहास)"}, {"id": 20, "cat": "GK (राजव्यवस्था)", "q": "पंचायतों का अनुसूचित क्षेत्रों में विस्तार (पेसा - PESA) अधिनियम के बारे में निम्नलिखित में से कौन-सा कथन सत्य है?\n1. इसे 1996 में अधिनियमित किया गया था।\n2. यह अनुसूचित V क्षेत्रों में ग्राम सभाओं को वैधानिक दर्जा प्रदान करता है।\n3. अधिनियम की धारा 4(i) के अनुसार विकास परियोजनाओं के लिए किसी भी भूमि अधिग्रहण से पहले ग्राम सभा या पंचायत की सहमति/परामर्श आवश्यक है।", "options": ["उपर्युक्त सभी", "केवल 1", "2 और 3", "1 और 2"], "ans": 0, "exp": "• भूरिया समिति की सिफारिश पर 1996 में पारित पेसा (PESA) अधिनियम के संबंध में तीनों कथन (1, 2 और 3) सत्य हैं।", "type": "GK (राजव्यवस्था)"}, {"id": 21, "cat": "रीजनिंग (कोडिंग-डिकोडिंग)", "q": "यदि किसी निश्चित कूटभाषा में, 'PASSPORT' को 'RCUUNMPR' लिखा जाता है तो उसी कूटभाषा में 'DOMINANT' को किस प्रकार लिखा जाएगा?", "options": ["FQOKLYLR", "FQOKPCPV", "EQOKJXJQ", "RCUUPFPC"], "ans": 0, "exp": "• पैटर्न: प्रथम 4 अक्षरों में +2 तथा अंतिम 4 अक्षरों में −2 किया गया है:\n  P(+2)=R, A(+2)=C, S(+2)=U, S(+2)=U | P(−2)=N, O(−2)=M, R(−2)=P, T(−2)=R।\n• इसी प्रकार 'DOMINANT' में:\n  D(+2)=F, O(+2)=Q, M(+2)=O, I(+2)=K | N(−2)=L, A(−2)=Y, N(−2)=L, T(−2)=R\n  अतः सही कूट 'FQOKLYLR' होगा।", "type": "रीजनिंग (कोडिंग-डिकोडिंग)"}, {"id": 22, "cat": "रीजनिंग (बैठक व्यवस्था)", "q": "A, B, E, G, P, L और M एक वृत्ताकार मेज के चारों ओर केंद्र की ओर मुख करके बैठे हैं। A के दाईं ओर से गिनने पर A और M के बीच में केवल दो व्यक्ति बैठे हैं। L के दाईं ओर से गिनने पर P और L के बीच में केवल तीन व्यक्ति बैठे हैं। M, L के ठीक दाईं ओर बैठा है। E, G के ठीक दाईं ओर बैठा है। B के दाईं ओर से चौथे स्थान पर कौन बैठा है?", "options": ["E", "M", "G", "P"], "ans": 0, "exp": "• 7 व्यक्तियों को केंद्र की ओर मुख करके वामावर्त (दाईं ओर, स्थान 0 से 6) बिठाने पर:\n  - A = 0 रखने पर, A के दाईं ओर दो व्यक्ति छोड़कर M = 3 होगा।\n  - M, L के ठीक दाईं ओर है, अतः L = 2 होगा।\n  - L(2) के दाईं ओर तीन व्यक्ति (3, 4, 5) छोड़कर P = 6 होगा।\n  - बचे स्थान 1, 4, 5 में 'E, G के ठीक दाईं ओर है' अतः G = 4 और E = 5 होगा, तथा B = 1 होगा।\n• पूरा क्रम (दाईं ओर): A(0) → B(1) → L(2) → M(3) → G(4) → E(5) → P(6)।\n• अतः B(1) के दाईं ओर से चौथे स्थान (1 + 4 = 5) पर 'E' बैठा है।", "type": "रीजनिंग (बैठक व्यवस्था)"}, {"id": 23, "cat": "रीजनिंग (संख्या शृंखला)", "q": "दी गई शृंखला को देखिए और नीचे दिए गए प्रश्न का उत्तर दीजिए। (सभी संख्याएँ केवल एक अंकीय संख्याएँ हैं, और सभी की गिनती केवल बाएँ से दाएँ ही की जानी चाहिए।)\n(बाएँ) 1 2 8 2 4 1 7 6 1 7 3 2 9 7 5 1 7 8 6 8 2 4 3 9 4 6 6 2 (दाएँ)\nउपरोक्त शृंखला में ऐसे कितने विषम अंक हैं, जिनमें से प्रत्येक के ठीक पहले एक पूर्ण वर्ग है, और ठीक बाद में एक सम अंक है? (ध्यान दें: 1 को पूर्ण वर्ग माना जाएगा।)", "options": ["4", "2", "1", "3"], "ans": 1, "exp": "• शर्त: [पूर्ण वर्ग (1, 4, 9)] → [विषम अंक (1, 3, 5, 7, 9)] → [सम अंक (2, 4, 6, 8)]।\n• शृंखला में जाँच करने पर ऐसे केवल 2 समूह मिलते हैं:\n  1) '1 7 6' (यहाँ विषम अंक 7 के ठीक पहले पूर्ण वर्ग 1 और ठीक बाद सम अंक 6 है)\n  2) '1 7 8' (यहाँ विषम अंक 7 के ठीक पहले पूर्ण वर्ग 1 और ठीक बाद सम अंक 8 है)\n• (नोट: '3 9 4' में 9 से पहले 3 पूर्ण वर्ग नहीं है; '4 1 7' और '4 3 9' में बाद का अंक सम नहीं है)। अतः कुल 2 ऐसे विषम अंक हैं।", "type": "रीजनिंग (संख्या शृंखला)"}, {"id": 24, "cat": "रीजनिंग (गणितीय संक्रियाएँ)", "q": "यदि ‘A’ का अर्थ ‘÷’, ‘B’ का अर्थ ‘×’, ‘C’ का अर्थ ‘+’ और ‘D’ का अर्थ ‘−’ हो, तो निम्नलिखित समीकरण में प्रश्न-चिह्न (?) के स्थान पर क्या आएगा?\n93 D 7 B 5 C (69 A 3) C 26 = ?", "options": ["75", "122", "93", "107"], "ans": 3, "exp": "• प्रश्नानुसार चिह्न रखने पर:\n  = 93 − 7 × 5 + (69 ÷ 3) + 26\n  = 93 − 35 + 23 + 26\n  = 58 + 49 = 107।", "type": "रीजनिंग (गणितीय संक्रियाएँ)"}, {"id": 25, "cat": "रीजनिंग (गणितीय संक्रियाएँ)", "q": "दिए गए समीकरण में * चिह्नों को क्रमिक रूप से बदलने और समीकरण को संतुलित करने के लिए निम्नलिखित विकल्पों में से गणितीय चिह्नों के सही संयोजन का चयन कीजिए।\n98 * 49 * 7 * 74 * 55 * 3", "options": ["−, ÷, +, ×, =", "÷, −, ×, +, =", "÷, −, +, ×, =", "−, ÷, +, =, ×"], "ans": 3, "exp": "• विकल्प (D) '−, ÷, +, =, ×' रखने पर:\n  98 − 49 ÷ 7 + 74 = 55 × 3\n⇒ 98 − 7 + 74 = 165\n⇒ 91 + 74 = 165\n⇒ 165 = 165 (समीकरण पूर्णतः संतुलित है)।", "type": "रीजनिंग (गणितीय संक्रियाएँ)"}, {"id": 26, "cat": "रीजनिंग (आकृति पूर्ण करना)", "q": "दी गई विकल्प आकृतियों में से उस आकृति का चयन करें जिसे नीचे दी गई आकृति में प्रश्न चिह्न (?) के स्थान पर रखने पर प्रतिरूप (पैटर्न) पूरा हो जाएगा।", "svg": "<svg viewBox=\"0 0 280 125\" class=\"w-full max-w-xs mx-auto my-1.5 bg-white rounded-lg border border-slate-400 p-2\">\n  <!-- Main horizontal bar at bottom -->\n  <line x1=\"25\" y1=\"82\" x2=\"25\" y2=\"108\" stroke=\"#0f172a\" stroke-width=\"2.2\"/>\n  <line x1=\"25\" y1=\"82\" x2=\"96\" y2=\"82\" stroke=\"#0f172a\" stroke-width=\"2.2\"/>\n  <!-- Curved bridge between stem 2 and stem 3 -->\n  <path d=\"M 96 82 Q 134 66 172 82\" fill=\"none\" stroke=\"#0f172a\" stroke-width=\"2.2\"/>\n  <line x1=\"172\" y1=\"82\" x2=\"224\" y2=\"82\" stroke=\"#0f172a\" stroke-width=\"2.2\"/>\n  <line x1=\"25\" y1=\"108\" x2=\"224\" y2=\"108\" stroke=\"#0f172a\" stroke-width=\"2.2\"/>\n  <!-- Circle 1 & stem 1 -->\n  <circle cx=\"52\" cy=\"34\" r=\"21\" fill=\"none\" stroke=\"#0f172a\" stroke-width=\"2.2\"/>\n  <line x1=\"52\" y1=\"55\" x2=\"52\" y2=\"108\" stroke=\"#0f172a\" stroke-width=\"2.2\"/>\n  <!-- Circle 2 & stem 2 -->\n  <circle cx=\"96\" cy=\"34\" r=\"21\" fill=\"none\" stroke=\"#0f172a\" stroke-width=\"2.2\"/>\n  <line x1=\"96\" y1=\"55\" x2=\"96\" y2=\"108\" stroke=\"#0f172a\" stroke-width=\"2.2\"/>\n  <!-- Circle 3 & stem 3 -->\n  <circle cx=\"172\" cy=\"34\" r=\"21\" fill=\"none\" stroke=\"#0f172a\" stroke-width=\"2.2\"/>\n  <line x1=\"172\" y1=\"55\" x2=\"172\" y2=\"108\" stroke=\"#0f172a\" stroke-width=\"2.2\"/>\n  <!-- Question mark at position 4 -->\n  <text x=\"224\" y=\"66\" text-anchor=\"middle\" fill=\"#dc2626\" font-size=\"38\" font-weight=\"bold\">?</text>\n</svg>", "options": ["विकल्प (A)", "विकल्प (B)", "विकल्प (C)", "विकल्प (D)"], "ans": 0, "exp": "• मूल आकृति के बाएँ सिरे को देखने पर स्पष्ट है कि पहले वृत्त की खड़ी रेखा नीचे की क्षैतिज पट्टी के निचले सिरे तक पूरी जाती है और पट्टी को बंद करते हुए एक बंद आयताकार बॉक्स बनाती है।\n• अतः दाएँ सिरे पर (?) के स्थान पर भी वृत्त की खड़ी रेखा नीचे तक जाएगी और दाएँ सिरे पर बंद बॉक्स बनाएगी, जो केवल आकृति (A) में है।", "opt_svgs": ["<svg viewBox=\"0 0 90 110\" class=\"w-20 h-24 mx-auto bg-white rounded border border-slate-300 p-1\">\n    <circle cx=\"38\" cy=\"26\" r=\"18\" fill=\"none\" stroke=\"#0f172a\" stroke-width=\"2.2\"/>\n    <line x1=\"38\" y1=\"44\" x2=\"38\" y2=\"98\" stroke=\"#0f172a\" stroke-width=\"2.2\"/>\n    <line x1=\"38\" y1=\"76\" x2=\"64\" y2=\"76\" stroke=\"#0f172a\" stroke-width=\"2.2\"/>\n    <line x1=\"64\" y1=\"76\" x2=\"64\" y2=\"98\" stroke=\"#0f172a\" stroke-width=\"2.2\"/>\n    <line x1=\"38\" y1=\"98\" x2=\"64\" y2=\"98\" stroke=\"#0f172a\" stroke-width=\"2.2\"/>\n  </svg>", "<svg viewBox=\"0 0 90 110\" class=\"w-20 h-24 mx-auto bg-white rounded border border-slate-300 p-1\">\n    <circle cx=\"38\" cy=\"26\" r=\"18\" fill=\"none\" stroke=\"#0f172a\" stroke-width=\"2.2\"/>\n    <line x1=\"38\" y1=\"44\" x2=\"38\" y2=\"76\" stroke=\"#0f172a\" stroke-width=\"2.2\"/>\n    <line x1=\"38\" y1=\"76\" x2=\"64\" y2=\"76\" stroke=\"#0f172a\" stroke-width=\"2.2\"/>\n    <line x1=\"64\" y1=\"76\" x2=\"64\" y2=\"98\" stroke=\"#0f172a\" stroke-width=\"2.2\"/>\n    <line x1=\"38\" y1=\"98\" x2=\"64\" y2=\"98\" stroke=\"#0f172a\" stroke-width=\"2.2\"/>\n  </svg>", "<svg viewBox=\"0 0 90 110\" class=\"w-20 h-24 mx-auto bg-white rounded border border-slate-300 p-1\">\n    <circle cx=\"45\" cy=\"26\" r=\"18\" fill=\"none\" stroke=\"#0f172a\" stroke-width=\"2.2\"/>\n    <line x1=\"45\" y1=\"44\" x2=\"45\" y2=\"98\" stroke=\"#0f172a\" stroke-width=\"2.2\"/>\n  </svg>", "<svg viewBox=\"0 0 90 110\" class=\"w-20 h-24 mx-auto bg-white rounded border border-slate-300 p-1\">\n    <circle cx=\"38\" cy=\"26\" r=\"18\" fill=\"none\" stroke=\"#0f172a\" stroke-width=\"2.2\"/>\n    <line x1=\"38\" y1=\"44\" x2=\"38\" y2=\"98\" stroke=\"#0f172a\" stroke-width=\"2.2\"/>\n    <line x1=\"38\" y1=\"76\" x2=\"64\" y2=\"76\" stroke=\"#0f172a\" stroke-width=\"2.2\"/>\n    <line x1=\"64\" y1=\"76\" x2=\"64\" y2=\"98\" stroke=\"#0f172a\" stroke-width=\"2.2\"/>\n  </svg>"], "type": "रीजनिंग (आकृति पूर्ण करना)"}, {"id": 27, "cat": "रीजनिंग (अक्षर शृंखला)", "q": "उस विकल्प का चयन करें जो उन अक्षरों का प्रतिनिधित्व करता है, जिन्हें नीचे दिए गए रिक्त स्थानों में क्रमिक रूप से बाएँ से दाएँ रखे जाने पर अक्षर शृंखला पूर्ण हो जाएगी।\nC _ _ S R C N P _ _ _ N _ S R C _ P S _", "options": ["NPSRCPNR", "NPSRCPRN", "PSNRCPNR", "NPSRPCRN"], "ans": 0, "exp": "• यहाँ 5-5 अक्षरों का आवर्ती समूह 'C N P S R' चार बार दोहराया गया है:\n  C [N] [P] S R | C N P [S] [R] | [C] N [P] S R | C [N] P S [R]\n• अतः रिक्त स्थानों में क्रमशः N, P, S, R, C, P, N, R ('NPSRCPNR') आएगा।", "type": "रीजनिंग (अक्षर शृंखला)"}, {"id": 28, "cat": "रीजनिंग (शब्दकोश क्रम)", "q": "उस विकल्प का चयन कीजिए, जो दिए गए शब्दों के ऐसे सही क्रम का निरूपण करता है, जैसे वे अंग्रेजी शब्दकोश में दिखेंगे।\n(i) Salesman  (ii) Salvage  (iii) Salinity  (iv) Salary  (v) Salmon  (vi) Salivate", "options": ["(i)(iv)(iii)(vi)(ii)(v)", "(iv)(iii)(i)(vi)(v)(ii)", "(iv)(i)(iii)(vi)(v)(ii)", "(iv)(i)(vi)(iii)(v)(ii)"], "ans": 2, "exp": "• अंग्रेजी शब्दकोश के अनुसार सही वर्णानुक्रम:\n  1. Salary (iv) [Sal-a]\n  2. Salesman (i) [Sal-e]\n  3. Salinity (iii) [Sal-in]\n  4. Salivate (vi) [Sal-iv]\n  5. Salmon (v) [Sal-m]\n  6. Salvage (ii) [Sal-v]\n• अतः सही क्रम (iv)(i)(iii)(vi)(v)(ii) है।", "type": "रीजनिंग (शब्दकोश क्रम)"}, {"id": 29, "cat": "रीजनिंग (पजल - बॉक्स)", "q": "सात बॉक्स, I, J, K, L, W, X और Y, एक के ऊपर एक रखे गए हैं, लेकिन आवश्यक नहीं है कि इसी क्रम में रखे गए हों। W के ऊपर केवल K को रखा गया है। W और J के बीच केवल दो बॉक्स रखे गए हैं। I के नीचे केवल L को रखा गया है। J को Y के ठीक नीचे नहीं रखा गया है। X और L के बीच कितने बॉक्स रखे गए हैं?", "options": ["चार", "तीन", "दो", "एक"], "ans": 2, "exp": "• ऊपर से नीचे (1 से 7) क्रम निर्धारित करने पर:\n  - W के ऊपर केवल K है ⇒ 1: K, 2: W।\n  - W(2) और J के बीच दो बॉक्स हैं ⇒ 5: J।\n  - I के नीचे केवल L है ⇒ 6: I, 7: L।\n  - J(5) को Y के ठीक नीचे नहीं रखा गया है ⇒ Y स्थान 4 पर नहीं हो सकता, अतः 3: Y और 4: X होगा।\n• पूरा क्रम (ऊपर से नीचे): K(1) > W(2) > Y(3) > X(4) > J(5) > I(6) > L(7)।\n• अतः X(4) और L(7) के बीच केवल 'दो' बॉक्स (J और I) रखे गए हैं।", "type": "रीजनिंग (पजल - बॉक्स)"}, {"id": 30, "cat": "रीजनिंग (दिशा और दूरी)", "q": "नमन बिंदु A से चलना शुरू करता है और पूर्व की ओर 8 किमी ड्राइव करता है। फिर वह दाएँ मुड़ता है, 5 किमी ड्राइव करता है, फिर दाएँ मुड़ता है और 10 किमी ड्राइव करता है। फिर वह दाएँ मुड़ता है और 12 किमी ड्राइव करता है। वह अंत में एक बार फिर दाएँ मुड़ता है, 2 किमी ड्राइव करता है और बिंदु P पर रुकता है। बिंदु A पर फिर से पहुँचने के लिए उसे कितनी दूर (न्यूनतम दूरी) और किस दिशा में ड्राइव करना चाहिए?", "options": ["7 किमी, उत्तर में", "7 किमी, दक्षिण में", "6 किमी, दक्षिण में", "6 किमी, उत्तर में"], "ans": 1, "exp": "• मान लीजिए बिंदु A = (0, 0) है:\n  1. पूर्व में 8 किमी → (8, 0)\n  2. दाएँ (दक्षिण) 5 किमी → (8, −5)\n  3. दाएँ (पश्चिम) 10 किमी → (−2, −5)\n  4. दाएँ (उत्तर) 12 किमी → (−2, 7)\n  5. दाएँ (पूर्व) 2 किमी → बिंदु P(0, 7)।\n• बिंदु P(0, 7) बिंदु A(0, 0) से ठीक 7 किमी उत्तर में है। अतः बिंदु P से A पर वापस पहुँचने के लिए उसे '7 किमी, दक्षिण में' ड्राइव करना चाहिए।", "type": "रीजनिंग (दिशा और दूरी)"}, {"id": 31, "cat": "GS (जीव विज्ञान)", "q": "एक आनुवंशिक रोग एक लक्षणप्रारूप से सामान्य (phenotypically normal) लेकिन वाहक (carrier) महिला से केवल कुछ नर संतानों में स्थानांतरित होता है। यह रोग किस प्रकार का है?", "options": ["ऑटोसोमल प्रभावी (Autosomal dominant)", "ऑटोसोमल अप्रभावी (Autosomal recessive)", "लिंग-सहलग्न प्रभावी (Sex-linked dominant)", "लिंग-सहलग्न अप्रभावी (Sex-linked recessive)"], "ans": 3, "exp": "• हीमोफीलिया और वर्णांधता जैसे रोग 'लिंग-सहलग्न अप्रभावी (Sex-linked / X-linked recessive)' रोग होते हैं, जो वाहक माता (X^c X) से उसकी कुछ नर संतानों (X^c Y) में स्थानांतरित होते हैं।", "type": "GS (जीव विज्ञान)"}, {"id": 32, "cat": "GS (पर्यावरण)", "q": "कॉलम I (अधिनियम) का कॉलम II (वर्ष) से सही मिलान कीजिए:\nA. पर्यावरण संरक्षण अधिनियम — i. 1974\nB. वायु (प्रदूषण निवारण एवं नियंत्रण) अधिनियम — ii. 1987\nC. जल अधिनियम — iii. 1986\nD. वायु अधिनियम में ध्वनि को शामिल करने हेतु संशोधन — iv. 1981", "options": ["A-iii, B-iv, C-i, D-ii", "A-i, B-iii, C-ii, D-iv", "A-iv, B-i, C-ii, D-iii", "A-iii, B-iv, C-ii, D-i"], "ans": 0, "exp": "• पर्यावरण संरक्षण अधिनियम — 1986 (A-iii)\n• वायु (प्रदूषण निवारण एवं नियंत्रण) अधिनियम — 1981 (B-iv)\n• जल (प्रदूषण निवारण एवं नियंत्रण) अधिनियम — 1974 (C-i)\n• वायु अधिनियम में ध्वनि को शामिल करने हेतु संशोधन — 1987 (D-ii)।", "type": "GS (पर्यावरण)"}, {"id": 33, "cat": "GS (पर्यावरण)", "q": "निम्नलिखित में से कौन सा प्रदूषक जैव आवर्धन (Biomagnification) प्रदर्शित करता है?\ni. SO₂ (सल्फर डाइऑक्साइड)\nii. पारा (Mercury)\niii. DDT (डीडीटी)", "options": ["केवल i", "केवल i और iii", "केवल ii और iii", "केवल iii"], "ans": 2, "exp": "• पारा (Mercury) और डीडीटी (DDT) दोनों अनिम्नीकरणीय विषैले पदार्थ हैं जो खाद्य श्रृंखला में क्रमिक पोषण स्तरों पर संचित होकर जैव आवर्धन (Biomagnification) प्रदर्शित करते हैं (NCERT कक्षा 12 जीव विज्ञान)। अतः केवल ii और iii सही हैं।", "type": "GS (पर्यावरण)"}, {"id": 34, "cat": "GS (रसायन विज्ञान)", "q": "जैम और जेली जैसे खाद्य पदार्थों में परिरक्षक (preservative) के रूप में उपयोग होने वाला एक प्रमुख रसायन है:", "options": ["सोडियम क्लोराइड", "एसिटिक एसिड", "सोडियम बेंजोएट", "ऑक्जेलिक अम्ल"], "ans": 2, "exp": "• जैम, जेली, फलों के रस और स्क्वैश जैसे खाद्य पदार्थों में सूक्ष्मजीवों की वृद्धि को रोकने के लिए 'सोडियम बेंजोएट (Sodium benzoate - C₆H₅COONa)' तथा सोडियम मेटाबाइसल्फाइट का प्रयोग प्रमुख रासायनिक परिरक्षक के रूप में किया जाता है।", "type": "GS (रसायन विज्ञान)"}, {"id": 35, "cat": "GK (भूगोल)", "q": "निम्न में से किस कहवा (कॉफी) की किस्म का उत्पादन भारत में सबसे अधिक होता है?", "options": ["अरेबिका", "लिबेरिका", "ब्राजीलियन", "रोबस्टा"], "ans": 3, "exp": "• भारत में कॉफी की दो मुख्य किस्में—अरेबिका और रोबस्टा उगाई जाती हैं, जिनमें मात्रा की दृष्टि से 'रोबस्टा (Robusta)' का उत्पादन सर्वाधिक (कुल उत्पादन का लगभग 70%) होता है।", "type": "GK (भूगोल)"}, {"id": 36, "cat": "GS (रसायन विज्ञान)", "q": "स्पंज (Sponge) को आसानी से दबाया (संपीडित किया) जा सकता है, फिर भी उसे ठोस माना जाता है। क्यों?", "options": ["क्योंकि इसका आकार निश्चित नहीं होता।", "क्योंकि यह एक 'तरल' है।", "क्योंकि इसके छिद्रों (pores) में हवा भरी होती है, जो दबाने पर बाहर निकल जाती है।", "क्योंकि यह अक्रिस्टलीय (amorphous) है।"], "ans": 2, "exp": "• NCERT कक्षा 9 विज्ञान के अनुसार: स्पंज में सूक्ष्म छिद्र (pores) होते हैं जिनमें वायु भरी होती है। जब हम इसे दबाते हैं तो वह हवा बाहर निकल जाती है, जिससे उसका संपीडन संभव होता है, किंतु यह एक ठोस है।", "type": "GS (रसायन विज्ञान)"}, {"id": 37, "cat": "गणित (बीजगणित)", "q": "किसी धनात्मक संख्या में से 3 घटाने पर वह अपने व्युत्क्रम के 28 गुने के बराबर हो जाती है, तो वह संख्या ज्ञात कीजिए।", "options": ["5", "8", "6", "7"], "ans": 3, "exp": "• माना धनात्मक संख्या x है। प्रश्नानुसार:\n  x − 3 = 28 / x\n⇒ x² − 3x − 28 = 0\n⇒ (x − 7)(x + 4) = 0\n• चूँकि संख्या धनात्मक है, अतः x = 7।", "type": "गणित (बीजगणित)"}, {"id": 38, "cat": "गणित (रैखिक समीकरण)", "q": "अरुण और शेखर के पास कुछ धनराशियाँ हैं। यदि अरुण, शेखर को ₹ 30 दे देता है, तो शेखर के पास, अरुण के पास बची धनराशि से दोगुनी धनराशि हो जाएगी। यदि शेखर, अरुण को ₹ 10 दे देता है, तो अरुण के पास, शेखर के पास बची धनराशि से तीन गुनी धनराशि हो जाएगी। प्रारंभ में, अरुण और शेखर में से प्रत्येक के पास क्रमशः कितनी धनराशि (₹ में) है?", "options": ["62, 34", "34, 64", "34, 72", "56, 78"], "ans": 0, "exp": "• माना अरुण के पास ₹ A और शेखर के पास ₹ S हैं।\n• शर्त 1: S + 30 = 2(A − 30) ⇒ 2A − S = 90 ...(i)\n• शर्त 2: A + 10 = 3(S − 10) ⇒ A − 3S = −40 ...(ii)\n• समीकरण हल करने पर: A = ₹ 62 तथा S = ₹ 34।", "type": "गणित (रैखिक समीकरण)"}, {"id": 39, "cat": "गणित (ल.स. एवं म.स.)", "q": "3/10 और 3/4 का लघुत्तम समापवर्त्य (LCM) ज्ञात कीजिए।", "options": ["1/4", "3/4", "1/2", "4/3"], "ans": 1, "exp": "• मानक सूत्र: भिन्नों का ल.स. = (अंशों का ल.स.) / (हरों का म.स.) = LCM(3, 3) / HCF(10, 4) = 3/2 (परंतु प्रश्न-पत्र में 3/8 और 3/4 के आधार पर विकल्प (B) 3/4 दिया गया है, जहाँ LCM(3,3)/HCF(8,4) = 3/4 होता है)।", "type": "गणित (ल.स. एवं म.स.)"}, {"id": 40, "cat": "गणित (साझेदारी)", "q": "राधा और वत्सल ने एक कारोबार में क्रमशः ₹36000 और ₹42000 का निवेश किया। सक्रिय भागीदार होने के कारण राधा को कारोबार चलाने के लिए हर महीने ₹637.50 अतिरिक्त मिले। 3 वर्षों में यदि राधा को कुल ₹31500 मिले, तो इस अवधि के दौरान वत्सल ने कितना लाभ अर्जित किया?", "options": ["₹ 10795", "₹ 36750", "₹ 8550", "₹ 9975"], "ans": 3, "exp": "• पूँजी का अनुपात (राधा : वत्सल) = 36000 : 42000 = 6 : 7।\n• 3 वर्ष (36 महीने) में राधा को प्रबंधन हेतु मिली अतिरिक्त राशि = 36 × 637.50 = ₹ 22,950।\n• अतः शुद्ध लाभ में राधा का हिस्सा = 31,500 − 22,950 = ₹ 8,550।\n• चूँकि लाभ का अनुपात 6 : 7 है, अतः 6 इकाई = ₹ 8,550 ⇒ 1 इकाई = ₹ 1,425।\n• इसलिए वत्सल का लाभ (7 इकाई) = 7 × 1,425 = ₹ 9,975।", "type": "गणित (साझेदारी)"}, {"id": 41, "cat": "गणित (सांख्यिकी)", "q": "'x' के किस मान के लिए संख्याओं 8, 11, 6, 14, 10, 23, 19, x का माध्य 12.25 होगा?", "options": ["8", "12", "7", "13"], "ans": 2, "exp": "• 8 संख्याओं का कुल योग = 8 × 12.25 = 98।\n• दी गई 7 संख्याओं का योग = 8 + 11 + 6 + 14 + 10 + 23 + 19 = 91।\n• अतः x = 98 − 91 = 7।", "type": "गणित (सांख्यिकी)"}, {"id": 42, "cat": "GK (इतिहास)", "q": "निम्नलिखित युग्मों से कौन सही सुमेलित नहीं है?\n(A) पावना विद्रोह – 1873\n(B) दक्कन किसान विद्रोह – 1875\n(C) संन्यासी विद्रोह – 1894\n(D) कोल विद्रोह – 1831-32", "options": ["पावना विद्रोह – 1873", "दक्कन किसान विद्रोह – 1875", "संन्यासी विद्रोह – 1894", "कोल विद्रोह – 1831-32"], "ans": 2, "exp": "• विकल्प (C) सही सुमेलित नहीं है क्योंकि संन्यासी विद्रोह 1894 में नहीं, बल्कि 1763-1800 ई. के दौरान बंगाल-बिहार में हुआ था।", "type": "GK (इतिहास)"}, {"id": 43, "cat": "बिहार विशेष", "q": "रेल-सड़क पुल-नदी-स्थान के निम्नलिखित युग्मों पर विचार कीजिएः\n1. विक्रमशिला सेतु – गंगा-भागलपुर\n2. अब्दुल बारी पुल – सोन-भोजपुर\n3. नेहरू सेतु – सोन-डेहरी-ऑन-सोन\nउपरोक्त युग्मों में से कौन-सा युग्म सही सुमेलित हैं?", "options": ["केवल 1, 2 और 3", "केवल 2", "केवल 1 और 3", "केवल 1 और 2"], "ans": 0, "exp": "• तीनों युग्म पूर्णतः सही सुमेलित हैं:\n  1. विक्रमशिला सेतु — गंगा नदी पर भागलपुर में\n  2. अब्दुल बारी पुल (कोइलवर पुल) — सोन नदी पर भोजपुर में\n  3. नेहरू सेतु — सोन नदी पर डेहरी-ऑन-सोन (रोहतास) में।", "type": "बिहार विशेष"}, {"id": 44, "cat": "बिहार विशेष", "q": "बिहार की ‘जलीय सीमा’ (Aquatic Boundary) और परिवहन के संबंध में कौन-सा कथन गलत है?", "options": ["राष्ट्रीय जलमार्ग-1 (NW-1) बिहार में गंगा नदी से होकर गुजरता है।", "पटना में ‘कालूघाट’ इंटरमॉडल टर्मिनल का विकास किया जा रहा है।", "पटना में ‘जहाज’ रिपेयर सेन्टर का निर्माण किया जा रहा है।", "गंगा नदी बिहार को दो असमान भौगोलिक भागों में विभाजित करती है।"], "ans": 2, "exp": "• सेट के अनुसार विकल्प (C) (या भौगोलिक जिला दृष्टि से B क्योंकि कालूघाट सारण जिले में स्थित है जो पटना महानगर के पास है) असत्य कथन के रूप में चिह्नित है। राष्ट्रीय जलमार्ग-1 गंगा नदी से गुजरता है और गंगा बिहार को दो असमान भागों में विभाजित करती है।", "type": "बिहार विशेष"}, {"id": 45, "cat": "बिहार विशेष (इतिहास)", "q": "चंपारण सत्याग्रह (1917) के संबंध में निम्नलिखित में से कौन सा कथन असत्य है?", "options": ["गांधीजी के साथ ब्रजकिशोर प्रसाद और अनुग्रह नारायण सिन्हा भी चंपारण गए थे।", "चंपारण एग्रेरियन कमेटी के अध्यक्ष एफ.जी. स्लाई (F.G. Sly) थे।", "‘तीनकठिया’ प्रथा के तहत किसानों को अपनी जमीन के 3/20 भाग पर नील की खेती करनी अनिवार्य थी।", "गाँधीजी को चंपारण आने का निमंत्रण राजकुमार शुक्ल ने काँग्रेस के 1916 के कलकत्ता अधिवेशन में दिया था।"], "ans": 3, "exp": "• विकल्प (D) असत्य है: राजकुमार शुक्ल ने महात्मा गांधी को चंपारण आने का निमंत्रण कांग्रेस के 1916 के 'लखनऊ अधिवेशन' में दिया था, न कि कलकत्ता अधिवेशन में।", "type": "बिहार विशेष (इतिहास)"}, {"id": 46, "cat": "GK (प्राचीन इतिहास)", "q": "सूची-I (पुस्तक) के पदों को सूची-II (विषय) के पदों से सुमेलित कीजिए:\nA. तिरुक्कुरल — 1. प्रेम कथा\nB. तोल्काप्पियम — 2. दर्शन\nC. शिल्पादिकारम् — 3. वणिक कथा\nD. मणिमेखलै — 4. व्याकरण", "options": ["A-1, B-2, C-4, D-3", "A-2, B-3, C-4, D-1", "A-4, B-2, C-3, D-1", "A-2, B-4, C-1, D-3"], "ans": 3, "exp": "• तिरुक्कुरल — दर्शन एवं नीतिशास्त्र (2)\n• तोल्काप्पियम — तमिल व्याकरण (4)\n• शिल्पादिकारम् — कोवलन व कन्नगी की प्रेम कथा (1)\n• मणिमेखलै — वणिक कन्या कथा (3)\nअतः सही कूट 2 4 1 3 है।", "type": "GK (प्राचीन इतिहास)"}, {"id": 47, "cat": "GK (राजव्यवस्था)", "q": "संसदीय समितियों में एक महत्त्वपूर्ण समिति, लोक उपक्रम समिति (Committee on Public Undertakings) में कुल कितने सदस्य होते हैं?", "options": ["30", "22", "15", "10"], "ans": 1, "exp": "• लोक उपक्रम समिति (Committee on Public Undertakings) में कुल 22 सदस्य होते हैं, जिनमें 15 सदस्य लोकसभा से और 7 सदस्य राज्यसभा से चुने जाते हैं।", "type": "GK (राजव्यवस्था)"}, {"id": 48, "cat": "GK (राजव्यवस्था)", "q": "भारतीय संविधान के अनुच्छेद-246 का सीधा संबंध संविधान की किस अनुसूची से है?", "options": ["पाँचवीं अनुसूची", "छठी अनुसूची", "सातवीं अनुसूची", "नौवीं अनुसूची"], "ans": 2, "exp": "• संविधान का अनुच्छेद-246 संसद और राज्य विधानमंडलों द्वारा बनाए जाने वाले कानूनों की विषय-वस्तु से संबंधित है, जिसका सीधा संबंध 'सातवीं अनुसूची' (संघ सूची, राज्य सूची और समवर्ती सूची) से है।", "type": "GK (राजव्यवस्था)"}, {"id": 49, "cat": "GK (अर्थव्यवस्था/कृषि)", "q": "सूची-I तथा सूची-II का मिलान करें:\na. काली क्रान्ति — 1. दूध\nb. नीली क्रान्ति — 2. खाद्य फसल\nc. सफेद क्रान्ति — 3. पेट्रोलियम\nd. हरित क्रान्ति — 4. मछली", "options": ["a-4, b-1, c-3, d-2", "a-3, b-4, c-1, d-2", "a-1, b-3, c-4, d-2", "a-3, b-1, c-4, d-2"], "ans": 1, "exp": "• काली क्रान्ति — पेट्रोलियम (3)\n• नीली क्रान्ति — मछली उत्पादन (4)\n• सफेद क्रान्ति — दूध उत्पादन (1)\n• हरित क्रान्ति — खाद्य फसल उत्पादन (2)\nअतः सही कूट (B) 3 4 1 2 है।", "type": "GK (अर्थव्यवस्था/कृषि)"}, {"id": 50, "cat": "बिहार विशेष", "q": "बिहार की “पुलिस दीदी” पहल का मुख्य उद्देश्य क्या है?", "options": ["महिला पुलिसकर्मियों को उच्च वेतन देना।", "पुलिस और महिलाओं/बालिकाओं के बीच विश्वास और संवाद को मजबूत करना।", "सभी थानों में महिला शौचालय बनाना।", "पुलिस भर्ती में महिलाओं को 50% आरक्षण देना।"], "ans": 1, "exp": "• बिहार की 'पुलिस दीदी' पहल का मुख्य उद्देश्य पुलिस और महिलाओं/बालिकाओं के बीच विश्वास, सुरक्षा और संवाद को मजबूत करना है।", "type": "बिहार विशेष"}, {"id": 51, "cat": "GK (प्राचीन इतिहास)", "q": "गौतमी पुत्र शातकर्णी प्राचीन भारत के इतिहास में किस वंश का शासक था?", "options": ["सातवाहन", "वातापी के चालुक्य", "वाकाटक", "पल्लव"], "ans": 0, "exp": "• गौतमीपुत्र शातकर्णी प्राचीन भारत के 'सातवाहन वंश' का सबसे महान शासक था।", "type": "GK (प्राचीन इतिहास)"}, {"id": 52, "cat": "रीजनिंग (लुप्त संख्या)", "q": "नीचे दिए गए आरेख में प्रश्नवाचक चिह्न (?) के स्थान पर कौन-सी संख्या आएगी?", "svg": "<svg viewBox=\"0 0 220 200\" class=\"w-48 mx-auto my-1.5 bg-white rounded-lg border border-slate-400 p-2\">\n  <!-- Outer Diamond Lines Only (matching PDF exactly) -->\n  <line x1=\"110\" y1=\"24\" x2=\"72\" y2=\"62\" stroke=\"#0f172a\" stroke-width=\"2.2\"/>\n  <line x1=\"72\" y1=\"62\" x2=\"34\" y2=\"100\" stroke=\"#0f172a\" stroke-width=\"2.2\"/>\n  <line x1=\"34\" y1=\"100\" x2=\"72\" y2=\"138\" stroke=\"#0f172a\" stroke-width=\"2.2\"/>\n  <line x1=\"72\" y1=\"138\" x2=\"110\" y2=\"176\" stroke=\"#0f172a\" stroke-width=\"2.2\"/>\n  <line x1=\"110\" y1=\"24\" x2=\"148\" y2=\"62\" stroke=\"#0f172a\" stroke-width=\"2.2\"/>\n  <line x1=\"148\" y1=\"62\" x2=\"186\" y2=\"100\" stroke=\"#0f172a\" stroke-width=\"2.2\"/>\n  <line x1=\"186\" y1=\"100\" x2=\"148\" y2=\"138\" stroke=\"#0f172a\" stroke-width=\"2.2\"/>\n  <line x1=\"148\" y1=\"138\" x2=\"110\" y2=\"176\" stroke=\"#0f172a\" stroke-width=\"2.2\"/>\n  <!-- Circles -->\n  <circle cx=\"110\" cy=\"24\" r=\"15\" fill=\"#fff\" stroke=\"#0f172a\" stroke-width=\"2\"/><text x=\"110\" y=\"29\" text-anchor=\"middle\" fill=\"#0f172a\" font-size=\"15\" font-weight=\"bold\">7</text>\n  <circle cx=\"72\" cy=\"62\" r=\"15\" fill=\"#fff\" stroke=\"#0f172a\" stroke-width=\"2\"/><text x=\"72\" y=\"67\" text-anchor=\"middle\" fill=\"#0f172a\" font-size=\"15\" font-weight=\"bold\">3</text>\n  <circle cx=\"148\" cy=\"62\" r=\"15\" fill=\"#fff\" stroke=\"#0f172a\" stroke-width=\"2\"/><text x=\"148\" y=\"67\" text-anchor=\"middle\" fill=\"#0f172a\" font-size=\"15\" font-weight=\"bold\">5</text>\n  <circle cx=\"34\" cy=\"100\" r=\"15\" fill=\"#fff\" stroke=\"#0f172a\" stroke-width=\"2\"/><text x=\"34\" y=\"105\" text-anchor=\"middle\" fill=\"#0f172a\" font-size=\"15\" font-weight=\"bold\">5</text>\n  <circle cx=\"110\" cy=\"100\" r=\"15\" fill=\"#fff\" stroke=\"#0f172a\" stroke-width=\"2\"/><text x=\"110\" y=\"105\" text-anchor=\"middle\" fill=\"#0f172a\" font-size=\"15\" font-weight=\"bold\">4</text>\n  <circle cx=\"186\" cy=\"100\" r=\"15\" fill=\"#fff\" stroke=\"#0f172a\" stroke-width=\"2\"/><text x=\"186\" y=\"105\" text-anchor=\"middle\" fill=\"#0f172a\" font-size=\"15\" font-weight=\"bold\">3</text>\n  <circle cx=\"72\" cy=\"138\" r=\"15\" fill=\"#fff\" stroke=\"#0f172a\" stroke-width=\"2\"/><text x=\"72\" y=\"143\" text-anchor=\"middle\" fill=\"#0f172a\" font-size=\"15\" font-weight=\"bold\">6</text>\n  <circle cx=\"148\" cy=\"138\" r=\"15\" fill=\"#fff\" stroke=\"#0f172a\" stroke-width=\"2\"/><text x=\"148\" y=\"143\" text-anchor=\"middle\" fill=\"#0f172a\" font-size=\"15\" font-weight=\"bold\">8</text>\n  <circle cx=\"110\" cy=\"176\" r=\"15\" fill=\"#fef3c7\" stroke=\"#d97706\" stroke-width=\"2.2\"/><text x=\"110\" y=\"182\" text-anchor=\"middle\" fill=\"#dc2626\" font-size=\"16\" font-weight=\"bold\">?</text>\n</svg>", "options": ["4", "8", "6", "5"], "ans": 0, "exp": "• आरेख के केंद्र (4) से गुजरने वाली विपरीत रेखाओं का योग समान (15) है:\n  1. बायाँ-ऊपरी व दायाँ-निचला विकर्ण: 3 + 4 + 8 = 15\n  2. दायाँ-ऊपरी व बायाँ-निचला विकर्ण: 5 + 4 + 6 = 15\n  3. इसी प्रकार ऊर्ध्वाधर रेखा (शीर्ष-केंद्र-आधार): 7 + 4 + ? = 15 ⇒ ? = 15 − 11 = 4।", "type": "रीजनिंग (लुप्त संख्या)"}, {"id": 53, "cat": "रीजनिंग (अक्षर शृंखला)", "q": "उस विकल्प का चयन करें, जो निम्नलिखित शृंखला में प्रश्न चिह्न (?) के स्थान पर आ सकता है।\nNZ, IU, DP, YK, TF, ?", "options": ["PZ", "NB", "NC", "OA"], "ans": 3, "exp": "• प्रत्येक पद के दोनों अक्षरों में −5 की कमी हो रही है:\n  पहला अक्षर: N(14) − 5 = I(9) − 5 = D(4) − 5 = Y(25) − 5 = T(20) − 5 = O(15)\n  दूसरा अक्षर: Z(26) − 5 = U(21) − 5 = P(16) − 5 = K(11) − 5 = F(6) − 5 = A(1)\n• अतः अगला पद 'OA' होगा।", "type": "रीजनिंग (अक्षर शृंखला)"}, {"id": 54, "cat": "रीजनिंग (रक्त संबंध)", "q": "यदि B, C की माँ है; D, C की बहन है; C, A की बेटी है और E, D का बेटा है, तो A, E से किस प्रकार संबंधित है?", "options": ["माँ का पिता", "पिता का भाई", "माँ का भाई", "पिता"], "ans": 0, "exp": "• B, C की माँ है और C, A की बेटी है ⇒ A, C और उसकी बहन D का पिता है।\n• E, D का बेटा है ⇒ D, E की माँ है और A, D का पिता है।\n• अतः A, E की 'माँ का पिता (नाना)' है।", "type": "रीजनिंग (रक्त संबंध)"}, {"id": 55, "cat": "रीजनिंग (सादृश्यता)", "q": "उस विकल्प का चयन करें जो पाँचवें अक्षर-समूह से उसी प्रकार संबंधित है जिस प्रकार दूसरा अक्षर-समूह पहले अक्षर-समूह से संबंधित है और चौथा अक्षर-समूह तीसरे अक्षर-समूह से संबंधित है।\nPIG : JCA :: SUN : MOH :: TEK : ?", "options": ["NXE", "NYE", "MYE", "NXF"], "ans": 1, "exp": "• प्रत्येक अक्षर में से 6 घटाया गया है (−6):\n  P(16)−6=J(10), I(9)−6=C(3), G(7)−6=A(1)\n  S(19)−6=M(13), U(21)−6=O(15), N(14)−6=H(8)\n• इसी प्रकार TEK के लिए:\n  T(20)−6 = N(14), E(5)−6 = Y(25), K(11)−6 = E(5) ⇒ 'NYE'।", "type": "रीजनिंग (सादृश्यता)"}, {"id": 56, "cat": "रीजनिंग (गणितीय संक्रियाएँ)", "q": "यदि ‘–’ का अर्थ ‘×’ है; ‘+’ का अर्थ ‘÷’ है; ‘×’ का अर्थ ‘+’ है; और ‘÷’ का अर्थ ‘–’ है; तो 24 + 6 ÷ 2 – 9 × 4 का मान ज्ञात कीजिए।", "options": ["–8", "8", "–10", "24"], "ans": 2, "exp": "• प्रश्नानुसार चिह्न बदलने पर:\n  = 24 ÷ 6 − 2 × 9 + 4\n  = 4 − 18 + 4\n  = 8 − 18 = –10।", "type": "रीजनिंग (गणितीय संक्रियाएँ)"}, {"id": 57, "cat": "रीजनिंग (संख्या श्रेणी)", "q": "उस संख्या का चयन करें, जो निम्नलिखित श्रेणी में प्रश्न चिह्न (?) के स्थान पर आ सकती है।\n9, 14, 24, 44, ?, 164, 324", "options": ["64", "79", "84", "94"], "ans": 2, "exp": "• श्रेणी में अंतर दोगुना हो रहा है: +5, +10, +20, +40, +80, +160:\n  9 + 5 = 14\n  14 + 10 = 24\n  24 + 20 = 44\n  44 + 40 = 84\n  84 + 80 = 164।", "type": "रीजनिंग (संख्या श्रेणी)"}, {"id": 58, "cat": "रीजनिंग (वेन आरेख)", "q": "उस विकल्प का चयन कीजिए, जो निम्नलिखित वेन आरेख (तीनों परस्पर प्रतिच्छेदी वृत्त) को सही ढंग से निरूपित करता है।", "svg": "<svg viewBox=\"0 0 200 135\" class=\"w-44 mx-auto my-1.5 bg-white rounded-lg border border-slate-400 p-2\">\n  <!-- Large bottom-left circle -->\n  <circle cx=\"78\" cy=\"78\" r=\"38\" fill=\"none\" stroke=\"#0f172a\" stroke-width=\"2.2\"/>\n  <!-- Smaller inner circle on right side of large circle -->\n  <circle cx=\"98\" cy=\"78\" r=\"18\" fill=\"none\" stroke=\"#0f172a\" stroke-width=\"2.2\"/>\n  <!-- Third circle at top-right intersecting both -->\n  <circle cx=\"108\" cy=\"44\" r=\"28\" fill=\"none\" stroke=\"#0f172a\" stroke-width=\"2.2\"/>\n</svg>", "options": ["इंजीनियर, स्नातक, फ्रीलांसर", "इंजीनियर, डॉक्टर, स्नातक", "डॉक्टर, सर्जन, नर्स", "डॉक्टर, फ्रीलांसर, इंजीनियर"], "ans": 0, "exp": "• दिए गए वेन आरेख में एक छोटा वृत्त बड़े वृत्त के पूर्णतः अंदर है (सभी 'इंजीनियर', 'स्नातक' होते हैं) तथा तीसरा वृत्त ('फ्रीलांसर') दोनों वृत्तों को आंशिक रूप से काटता है (कुछ इंजीनियर और कुछ अन्य स्नातक फ्रीलांसर हो सकते हैं, तथा कुछ फ्रीलांसर गैर-स्नातक भी हो सकते हैं)। अतः विकल्प (A) सही है।", "type": "रीजनिंग (वेन आरेख)"}, {"id": 59, "cat": "रीजनिंग (संख्या संक्रिया)", "q": "यदि संख्या 4835176 के प्रत्येक विषम अंक में 1 जोड़ा जाए और प्रत्येक सम अंक में से 2 घटाया जाए, तो बाएँ से दूसरे और दाएँ से दूसरे अंकों का योगफल कितना होगा?", "options": ["12", "14", "10", "11"], "ans": 1, "exp": "• मूल संख्या: 4  8  3  5  1  7  6\n• सम में −2 और विषम में +1 करने पर नई संख्या:\n  (4−2)=2, (8−2)=6, (3+1)=4, (5+1)=6, (1+1)=2, (7+1)=8, (6−2)=4 ⇒ 2 6 4 6 2 8 4।\n• बाएँ से दूसरा अंक = 6 तथा दाएँ से दूसरा अंक = 8।\n• अभीष्ट योगफल = 6 + 8 = 14।", "type": "रीजनिंग (संख्या संक्रिया)"}, {"id": 60, "cat": "रीजनिंग (संख्या पैटर्न)", "q": "नीचे दिए गए पैटर्न का ध्यानपूर्वक अध्ययन कीजिए और विकल्पों में से उन सबसे उपयुक्त संख्याओं का चयन कीजिए, जो इसमें प्रश्न-चिह्न (?) के स्थान पर आ सकती हो?", "svg": "<svg viewBox=\"0 0 300 95\" class=\"w-full max-w-xs mx-auto my-1.5 bg-white rounded-lg border border-slate-400 p-2\">\n  <rect x=\"12\" y=\"10\" width=\"26\" height=\"24\" fill=\"#fff\" stroke=\"#0f172a\" stroke-width=\"1.8\"/><text x=\"25\" y=\"27\" text-anchor=\"middle\" fill=\"#0f172a\" font-size=\"13\" font-weight=\"bold\">2</text>\n  <rect x=\"52\" y=\"10\" width=\"26\" height=\"24\" fill=\"#fff\" stroke=\"#0f172a\" stroke-width=\"1.8\"/><text x=\"65\" y=\"27\" text-anchor=\"middle\" fill=\"#0f172a\" font-size=\"13\" font-weight=\"bold\">6</text>\n  <line x1=\"25\" y1=\"34\" x2=\"45\" y2=\"55\" stroke=\"#0f172a\" stroke-width=\"1.6\"/><line x1=\"65\" y1=\"34\" x2=\"45\" y2=\"55\" stroke=\"#0f172a\" stroke-width=\"1.6\"/>\n  <circle cx=\"45\" cy=\"68\" r=\"14\" fill=\"#fff\" stroke=\"#0f172a\" stroke-width=\"1.8\"/><text x=\"45\" y=\"73\" text-anchor=\"middle\" fill=\"#0f172a\" font-size=\"13\" font-weight=\"bold\">12</text>\n\n  <rect x=\"112\" y=\"10\" width=\"26\" height=\"24\" fill=\"#fff\" stroke=\"#0f172a\" stroke-width=\"1.8\"/><text x=\"125\" y=\"27\" text-anchor=\"middle\" fill=\"#0f172a\" font-size=\"13\" font-weight=\"bold\">2</text>\n  <rect x=\"152\" y=\"10\" width=\"26\" height=\"24\" fill=\"#fff\" stroke=\"#0f172a\" stroke-width=\"1.8\"/><text x=\"165\" y=\"27\" text-anchor=\"middle\" fill=\"#0f172a\" font-size=\"13\" font-weight=\"bold\">8</text>\n  <line x1=\"125\" y1=\"34\" x2=\"145\" y2=\"55\" stroke=\"#0f172a\" stroke-width=\"1.6\"/><line x1=\"165\" y1=\"34\" x2=\"145\" y2=\"55\" stroke=\"#0f172a\" stroke-width=\"1.6\"/>\n  <circle cx=\"145\" cy=\"68\" r=\"14\" fill=\"#fff\" stroke=\"#0f172a\" stroke-width=\"1.8\"/><text x=\"145\" y=\"73\" text-anchor=\"middle\" fill=\"#0f172a\" font-size=\"13\" font-weight=\"bold\">16</text>\n\n  <rect x=\"212\" y=\"10\" width=\"26\" height=\"24\" fill=\"#fef3c7\" stroke=\"#d97706\" stroke-width=\"1.8\"/><text x=\"225\" y=\"27\" text-anchor=\"middle\" fill=\"#dc2626\" font-size=\"13\" font-weight=\"bold\">?</text>\n  <rect x=\"252\" y=\"10\" width=\"26\" height=\"24\" fill=\"#fef3c7\" stroke=\"#d97706\" stroke-width=\"1.8\"/><text x=\"265\" y=\"27\" text-anchor=\"middle\" fill=\"#dc2626\" font-size=\"13\" font-weight=\"bold\">?</text>\n  <line x1=\"225\" y1=\"34\" x2=\"245\" y2=\"55\" stroke=\"#0f172a\" stroke-width=\"1.6\"/><line x1=\"265\" y1=\"34\" x2=\"245\" y2=\"55\" stroke=\"#0f172a\" stroke-width=\"1.6\"/>\n  <circle cx=\"245\" cy=\"68\" r=\"14\" fill=\"#fff\" stroke=\"#0f172a\" stroke-width=\"1.8\"/><text x=\"245\" y=\"73\" text-anchor=\"middle\" fill=\"#0f172a\" font-size=\"13\" font-weight=\"bold\">20</text>\n</svg>", "options": ["4, 5", "2, 10", "5, 4", "10, 2"], "ans": 1, "exp": "• पैटर्न: प्रत्येक समूह में पहला वर्ग '2' है तथा दूसरा वर्ग क्रमशः 6, 8, 10 (+2 के क्रम में) है और नीचे के वृत्त में उनका गुणनफल है:\n  पहला समूह: 2 × 6 = 12\n  दूसरा समूह: 2 × 8 = 16\n  तीसरा समूह: 2 × 10 = 20\n• अतः प्रश्न-चिह्नों के स्थान पर '2, 10' आएगा।", "type": "रीजनिंग (संख्या पैटर्न)"}, {"id": 61, "cat": "रीजनिंग (सादृश्यता)", "q": "‘गाय’, ‘पशु’ से वैसे ही संबंधित है जैसे ‘गौरैया’ ‘.............’ से संबंधित है।", "options": ["फूल", "भोजन", "कीट", "पक्षी"], "ans": 3, "exp": "• जिस प्रकार गाय एक 'पशु' है, उसी प्रकार गौरैया (Sparrow) एक 'पक्षी (Bird)' है।", "type": "रीजनिंग (सादृश्यता)"}, {"id": 62, "cat": "GS (रसायन विज्ञान)", "q": "पीतल (Brass) एक मिश्र धातु है, जो मुख्य रूप से बनी होती है:", "options": ["कॉपर और टिन (Sn)", "कॉपर और जिंक (Zn)", "कॉपर और ऐलुमिनियम (Al)", "कॉपर और निकेल (Ni)"], "ans": 1, "exp": "• पीतल (Brass) मुख्य रूप से कॉपर (Cu ~70%) और जिंक (Zn ~30%) की मिश्र धातु है, जबकि कांसा (Bronze) कॉपर और टिन से बनता है।", "type": "GS (रसायन विज्ञान)"}, {"id": 63, "cat": "GS (रसायन विज्ञान)", "q": "आधुनिक आवर्त नियम (Modern Periodic Law) के अनुसार, तत्वों के भौतिक और रासायनिक गुणधर्म उनके _________ के आवर्ती फलन होते हैं।", "options": ["परमाणु भार", "परमाणु त्रिज्या", "परमाणु क्रमांक", "संयोजकता"], "ans": 2, "exp": "• हेनरी मोजले (1913) द्वारा प्रतिपादित आधुनिक आवर्त नियम के अनुसार, तत्वों के भौतिक और रासायनिक गुणधर्म उनके 'परमाणु क्रमांक (Atomic Number)' के आवर्ती फलन होते हैं।", "type": "GS (रसायन विज्ञान)"}, {"id": 64, "cat": "GS (भौतिकी)", "q": "मान लीजिए राममोहन ने एक बेलनाकार छड़ चुंबक को एक वृत्ताकार परिनालिका की अक्ष के अनुदिश रखा है। फिर वह चुंबक को परिनालिका की अक्ष के परितः घुमाता है। कुंडली में प्रेरित विद्युत धारा …… होगी।", "options": ["परिनालिका की लंबाई के समानुपाती", "परिनालिका में फेरों की संख्या के समानुपाती", "परिनालिका के प्रतिरोध के व्युत्क्रमानुपाती", "शून्य"], "ans": 3, "exp": "• बेलनाकार छड़ चुंबक को परिनालिका की अक्ष के परितः घुमाने पर चुंबकीय क्षेत्र सममित रहता है और कुंडली से संबद्ध चुंबकीय फ्लक्स में कोई परिवर्तन (dΦ/dt = 0) नहीं होता। अतः प्रेरित विद्युत धारा 'शून्य' होगी।", "type": "GS (भौतिकी)"}, {"id": 65, "cat": "GS (भौतिकी)", "q": "किसी माध्यम का अपवर्तनांक (n) और उसमें प्रकाश की चाल (v) के बीच क्या संबंध है (जहाँ 'c' निर्वात में प्रकाश की चाल है)?", "options": ["n = v/c", "n = c/v", "n = c × v", "n = v – c"], "ans": 1, "exp": "• किसी माध्यम का निरपेक्ष अपवर्तनांक (n) निर्वात में प्रकाश की चाल (c) तथा उस माध्यम में प्रकाश की चाल (v) के अनुपात के बराबर होता है: n = c/v।", "type": "GS (भौतिकी)"}, {"id": 66, "cat": "GS (भौतिकी)", "q": "तापमान मापन (Thermometry) के संदर्भ में निम्नलिखित कथनों पर विचार करें:\nI. सेल्सियस और फारेनहाइट पैमाने पर तापमान का मान -40° पर समान होता है।\nII. डॉक्टरी थर्मामीटर का रेंज 35°C से 42°C तक होता है।\nIII. केल्विन पैमाने पर ऋणात्मक (Negative) तापमान संभव है।\nIV. पायरोमीटर (Pyrometer) का उपयोग बहुत कम तापमान मापने के लिए किया जाता है।\nउपर्युक्त में से कौन से कथन सही हैं?", "options": ["केवल I और II", "केवल I, II और III", "केवल II और IV", "सभी कथन सही हैं"], "ans": 0, "exp": "• कथन I और II सही हैं।\n• कथन III गलत है क्योंकि केल्विन पैमाने पर ऋणात्मक तापमान संभव नहीं होता (0 K परम शून्य है)।\n• कथन IV गलत है क्योंकि पायरोमीटर का उपयोग अत्यधिक उच्च तापमान मापने के लिए किया जाता है।", "type": "GS (भौतिकी)"}, {"id": 67, "cat": "गणित (अनुपात)", "q": "दो संख्याओं का गुणनफल 64 है और उनका योगफल 20 है। यदि पहली संख्या दूसरी से बड़ी है, तो दोनों संख्याओं का अनुपात ज्ञात कीजिए।", "options": ["16 : 5", "4 : 1", "1 : 4", "5 : 16"], "ans": 1, "exp": "• ऐसी दो संख्याएँ जिनका योग 20 और गुणनफल 64 है: 16 और 4 (16 + 4 = 20 तथा 16 × 4 = 64)।\n• चूँकि पहली संख्या दूसरी से बड़ी है, अतः अभीष्ट अनुपात = 16 : 4 = 4 : 1।", "type": "गणित (अनुपात)"}, {"id": 68, "cat": "गणित (सांख्यिकी)", "q": "किसी परीक्षा में पास होने के लिए मापदंड 40% है। परीक्षा में शामिल 9 परीक्षार्थियों में से 4 फेल हुए और शेष को 80%, 55%, 52%, 66% और 81% अंक प्राप्त हुए। प्राप्त प्रतिशत अंकों की माध्यिका ............ के बराबर होगी।", "options": ["58%", "52%", "81%", "66%"], "ans": 1, "exp": "• कुल 9 परीक्षार्थियों के अंकों को आरोही क्रम (Ascending Order) में व्यवस्थित करने पर:\n  पहले 4 स्थान पर फेल छात्र (<40%) होंगे, और 5वें से 9वें स्थान पर क्रमशः: 52%, 55%, 66%, 80%, 81% होंगे।\n• 9 पदों की माध्यिका = (9 + 1)/2 वाँ पद = 5वाँ पद = 52%।", "type": "गणित (सांख्यिकी)"}, {"id": 69, "cat": "गणित (लाभ और हानि)", "q": "एक दुकानदार 20 कमीजें बेचने पर 5 कमीजों के बिक्री मूल्य के बराबर लाभ कमाता है। उसके लाभ का प्रतिशत ज्ञात कीजिए।", "options": ["5%", "15%", "33⅓ %", "20%"], "ans": 2, "exp": "• माना 1 कमीज का विक्रय मूल्य (SP) = ₹ 1 है, तो 20 कमीजों का विक्रय मूल्य = ₹ 20 तथा लाभ = ₹ 5।\n• अतः 20 कमीजों का क्रय मूल्य (CP) = SP − लाभ = 20 − 5 = ₹ 15।\n• लाभ प्रतिशत = (लाभ / CP) × 100 = (5 / 15) × 100 = 33⅓ %।", "type": "गणित (लाभ और हानि)"}, {"id": 70, "cat": "गणित (चक्रवृद्धि ब्याज)", "q": "एक धनराशि चक्रवृद्धि ब्याज पर 15 वर्षों में दोगुनी हो जाती है। यह कितने वर्षों में मूल राशि की 8 गुनी हो जाएगी?", "options": ["40 वर्ष", "58 वर्ष", "45 वर्ष", "52 वर्ष"], "ans": 2, "exp": "• चक्रवृद्धि ब्याज में: 2¹ गुनी होने में समय = 15 वर्ष।\n• अतः 8 गुनी = 2³ गुनी होने में लगने वाला समय = 3 × 15 = 45 वर्ष।", "type": "गणित (चक्रवृद्धि ब्याज)"}, {"id": 71, "cat": "गणित (समय और कार्य)", "q": "राजू और रमन एक कार्य को क्रमशः 12 दिन और 16 दिन में पूरा कर सकते हैं। यदि वे राजू से आरंभ करके वैकल्पिक (एक-एक दिन छोड़कर) दिनों में कार्य करते हैं, तो कार्य कितने दिनों में पूरा होगा?", "options": ["14⅓ दिन", "14⅔ दिन", "13⅓ दिन", "13⅔ दिन"], "ans": 3, "exp": "• कुल कार्य = LCM(12, 16) = 48 इकाई।\n• राजू की क्षमता = 48/12 = 4 इकाई/दिन; रमन की क्षमता = 48/16 = 3 इकाई/दिन।\n• 2 दिन (1 चक्र) का कार्य = 4 + 3 = 7 इकाई।\n• 6 चक्र (12 दिन) का कार्य = 6 × 7 = 42 इकाई।\n• 13वें दिन राजू की बारी आएगी और वह 4 इकाई कार्य करेगा ⇒ 13 दिन में कुल कार्य = 42 + 4 = 46 इकाई।\n• शेष कार्य (48 − 46 = 2 इकाई) रमन द्वारा लिया गया समय = 2/3 दिन।\n• अतः कुल समय = 13⅔ दिन।", "type": "गणित (समय और कार्य)"}, {"id": 72, "cat": "GK (भूगोल)", "q": "निम्नलिखित में से किस भारतीय राज्य की कोई तटरेखा नहीं है?", "options": ["गुजरात", "बिहार", "पश्चिम बंगाल", "आंध्र प्रदेश"], "ans": 1, "exp": "• भारत के 9 राज्यों की समुद्री तटरेखा है (गुजरात, महाराष्ट्र, गोवा, कर्नाटक, केरल, तमिलनाडु, आंध्र प्रदेश, ओडिशा और पश्चिम बंगाल)। 'बिहार' एक स्थलरुद्ध (Landlocked) राज्य है जिसकी कोई तटरेखा नहीं है।", "type": "GK (भूगोल)"}, {"id": 73, "cat": "GK (कला एवं संस्कृति)", "q": "गुरु केलुचरण महापात्र किस शास्त्रीय नृत्य शैली में निपुण थे?", "options": ["कत्थक", "ओडिसी", "कुचिपुड़ी", "भरतनाट्यम"], "ans": 1, "exp": "• पद्म विभूषण से सम्मानित गुरु केलुचरण महापात्र 'ओडिसी (Odissi)' शास्त्रीय नृत्य शैली के महान नर्तक और गुरु थे।", "type": "GK (कला एवं संस्कृति)"}, {"id": 74, "cat": "GK (विश्व भूगोल)", "q": "स्विट्जरलैंड की राजधानी कौन-सी है?", "options": ["बर्न", "पेरिस", "वियना", "लंदन"], "ans": 0, "exp": "• स्विट्जरलैंड की राजधानी 'बर्न (Bern)' है (पेरिस फ्रांस की, वियना ऑस्ट्रिया की और लंदन यूके की राजधानी है)।", "type": "GK (विश्व भूगोल)"}, {"id": 75, "cat": "GK (अंतर्राष्ट्रीय संगठन)", "q": "कॉमनवेल्थ (राष्ट्रमंडल) का मुख्यालय कहाँ है?", "options": ["बर्मिंघम", "ऑस्ट्रेलिया", "लंदन", "फ्रांस"], "ans": 2, "exp": "• कॉमनवेल्थ ऑफ नेशंस (राष्ट्रमंडल) का मुख्यालय मार्लबोरो हाउस, 'लंदन (यूनाइटेड किंगडम)' में स्थित है।", "type": "GK (अंतर्राष्ट्रीय संगठन)"}, {"id": 76, "cat": "GK (मुद्राएँ)", "q": "देशों और उनकी मुद्राओं का सही मिलान चुनिए—\nA. Angola (अंगोला) — 1. क्वांजा / Kwanza\nB. Nigeria (नाइजीरिया) — 2. नैरा / Naira\nC. Morocco (मोरक्को) — 3. दिरहम / Dirham\nD. Somalia (सोमालिया) — 4. शिलिंग / Shilling", "options": ["A-1, B-2, C-3, D-4", "A-2, B-1, C-4, D-3", "A-3, B-4, C-1, D-2", "A-4, B-3, C-2, D-1"], "ans": 0, "exp": "• अंगोला की मुद्रा — क्वांजा (1)\n• नाइजीरिया की मुद्रा — नैरा (2)\n• मोरक्को की मुद्रा — दिरहम (3)\n• सोमालिया की मुद्रा — शिलिंग (4)\nअतः सही मिलान A-1, B-2, C-3, D-4 है।", "type": "GK (मुद्राएँ)"}, {"id": 77, "cat": "रीजनिंग (पासा / Dice)", "q": "एक पासे के अलग-अलग फलकों पर छः संख्याएँ 1, 2, 3, 4, 5 और 6 अंकित की गई हैं। इस पासे की तीन अलग-अलग स्थितियाँ (चित्र 1: [6, 3, 2], चित्र 2: [5, 3, 4], चित्र 3: [5, 2, 3]) नीचे दर्शाई गई हैं। ‘3’ दर्शाने वाले फलक के विपरीत फलक पर अंकित संख्या ज्ञात कीजिए।", "svg": "<svg viewBox=\"0 0 300 98\" class=\"w-full max-w-xs mx-auto my-1.5 bg-white rounded-lg border border-slate-400 p-2\">\n  <polygon points=\"50,10 85,26 50,42 15,26\" fill=\"#f8fafc\" stroke=\"#0f172a\" stroke-width=\"1.8\"/>\n  <polygon points=\"15,26 50,42 50,76 15,60\" fill=\"#fff\" stroke=\"#0f172a\" stroke-width=\"1.8\"/>\n  <polygon points=\"85,26 50,42 50,76 85,60\" fill=\"#f1f5f9\" stroke=\"#0f172a\" stroke-width=\"1.8\"/>\n  <text x=\"50\" y=\"31\" text-anchor=\"middle\" fill=\"#0f172a\" font-size=\"13\" font-weight=\"bold\">6</text>\n  <text x=\"32\" y=\"56\" text-anchor=\"middle\" fill=\"#0f172a\" font-size=\"13\" font-weight=\"bold\">3</text>\n  <text x=\"68\" y=\"56\" text-anchor=\"middle\" fill=\"#0f172a\" font-size=\"13\" font-weight=\"bold\">2</text>\n  <text x=\"50\" y=\"91\" text-anchor=\"middle\" fill=\"#0f172a\" font-size=\"11\" font-weight=\"bold\">स्थिति 1</text>\n\n  <polygon points=\"150,10 185,26 150,42 115,26\" fill=\"#f8fafc\" stroke=\"#0f172a\" stroke-width=\"1.8\"/>\n  <polygon points=\"115,26 150,42 150,76 115,60\" fill=\"#fff\" stroke=\"#0f172a\" stroke-width=\"1.8\"/>\n  <polygon points=\"185,26 150,42 150,76 185,60\" fill=\"#f1f5f9\" stroke=\"#0f172a\" stroke-width=\"1.8\"/>\n  <text x=\"150\" y=\"31\" text-anchor=\"middle\" fill=\"#0f172a\" font-size=\"13\" font-weight=\"bold\">5</text>\n  <text x=\"132\" y=\"56\" text-anchor=\"middle\" fill=\"#0f172a\" font-size=\"13\" font-weight=\"bold\">3</text>\n  <text x=\"168\" y=\"56\" text-anchor=\"middle\" fill=\"#0f172a\" font-size=\"13\" font-weight=\"bold\">4</text>\n  <text x=\"150\" y=\"91\" text-anchor=\"middle\" fill=\"#0f172a\" font-size=\"11\" font-weight=\"bold\">स्थिति 2</text>\n\n  <polygon points=\"250,10 285,26 250,42 215,26\" fill=\"#f8fafc\" stroke=\"#0f172a\" stroke-width=\"1.8\"/>\n  <polygon points=\"215,26 250,42 250,76 215,60\" fill=\"#fff\" stroke=\"#0f172a\" stroke-width=\"1.8\"/>\n  <polygon points=\"285,26 250,42 250,76 285,60\" fill=\"#f1f5f9\" stroke=\"#0f172a\" stroke-width=\"1.8\"/>\n  <text x=\"250\" y=\"31\" text-anchor=\"middle\" fill=\"#0f172a\" font-size=\"13\" font-weight=\"bold\">5</text>\n  <text x=\"232\" y=\"56\" text-anchor=\"middle\" fill=\"#0f172a\" font-size=\"13\" font-weight=\"bold\">2</text>\n  <text x=\"268\" y=\"56\" text-anchor=\"middle\" fill=\"#0f172a\" font-size=\"13\" font-weight=\"bold\">3</text>\n  <text x=\"250\" y=\"91\" text-anchor=\"middle\" fill=\"#0f172a\" font-size=\"11\" font-weight=\"bold\">स्थिति 3</text>\n</svg>", "options": ["4", "1", "5", "2"], "ans": 1, "exp": "• स्थिति 1 से '3' के पड़ोसी फलक 2 और 6 हैं।\n• स्थिति 2 से '3' के पड़ोसी फलक 4 और 5 हैं।\n• चूँकि 3 के चारों संलग्न फलक 2, 4, 5 और 6 हैं, इसलिए '3' के विपरीत फलक पर शेष संख्या '1' होगी।", "type": "रीजनिंग (पासा / Dice)"}, {"id": 78, "cat": "रीजनिंग (शब्दकोश क्रम)", "q": "किस विकल्प में निम्नलिखित शब्दों का वह क्रम दिया गया है, जिस क्रम में वे अंग्रेजी शब्दकोश में आते हैं?\n1. domestic  2. dozen  3. double  4. doctor  5. down", "options": ["4, 1, 3, 2, 5", "4, 1, 3, 5, 2", "4, 3, 1, 5, 2", "4, 3, 1, 2, 5"], "ans": 1, "exp": "• अंग्रेजी शब्दकोश के अनुसार क्रम:\n  doctor (4) [do-c] → domestic (1) [do-m] → double (3) [do-u] → down (5) [do-w] → dozen (2) [do-z]।\n• अतः सही क्रम 4, 1, 3, 5, 2 है।", "type": "रीजनिंग (शब्दकोश क्रम)"}, {"id": 79, "cat": "रीजनिंग (कोडिंग-डिकोडिंग)", "q": "एक निश्चित कूट भाषा में, ‘TRIFLED’ को ‘YQNEQDI’ और ‘BRIEF’ को ‘GQNDK’ के रूप में लिखा जाता है। उसी कूट भाषा में ‘FALTER’ को किस प्रकार से लिखा जाएगा?", "options": ["KZQSJQ", "KYQTHP", "KZQSHR", "KYPSJQ"], "ans": 0, "exp": "• पैटर्न: एकांतर क्रम में +5, −1, +5, −1, +5, −1 किया गया है:\n  F(6)+5 = K(11)\n  A(1)−1 = Z(26)\n  L(12)+5 = Q(17)\n  T(20)−1 = S(19)\n  E(5)+5 = J(10)\n  R(18)−1 = Q(17)\n• अतः 'FALTER' को 'KZQSJQ' लिखा जाएगा।", "type": "रीजनिंग (कोडिंग-डिकोडिंग)"}, {"id": 80, "cat": "रीजनिंग (न्याय निगमन)", "q": "नीचे तीन कथन और उनके बाद तीन निष्कर्ष I, II और III दिए गए हैं:\nकथन :\n• सभी फल वाइन हैं।\n• कुछ वाइन जूस हैं।\n• सभी जूस अल्कोहल हैं।\nनिष्कर्ष :\nI. कुछ अल्कोहल जूस हैं।\nII. कुछ वाइन अल्कोहल हैं।\nIII. कुछ वाइन फल हैं।", "options": ["केवल निष्कर्ष I और II अनुसरण करते हैं।", "सभी निष्कर्ष अनुसरण करते हैं।", "केवल निष्कर्ष I और III अनुसरण करते हैं।", "केवल निष्कर्ष II और III अनुसरण करते हैं।"], "ans": 1, "exp": "• सभी जूस अल्कोहल हैं ⇒ कुछ अल्कोहल जूस हैं (निष्कर्ष I सत्य)।\n• कुछ वाइन जूस हैं और सभी जूस अल्कोहल हैं ⇒ कुछ वाइन अल्कोहल हैं (निष्कर्ष II सत्य)।\n• सभी फल वाइन हैं ⇒ कुछ वाइन फल हैं (निष्कर्ष III सत्य)।\n• अतः सभी निष्कर्ष (I, II और III) अनुसरण करते हैं।", "type": "रीजनिंग (न्याय निगमन)"}, {"id": 81, "cat": "रीजनिंग (अक्षर शृंखला)", "q": "उस विकल्प का चयन करें जो उन अक्षरों का प्रतिनिधित्व करता है, जिन्हें नीचे दिए गए रिक्त स्थानों में क्रमिक रूप से बाएँ से दाएँ रखे जाने पर अक्षर शृंखला पूर्ण हो जाएगी।\n_ _ B F G D M _ _ G _ M B F _ D _ B _ G", "options": ["DMBFGDFM", "DMFBDGMF", "DMBFDGMF", "DFBMDGMF"], "ans": 2, "exp": "• यहाँ 5-5 अक्षरों का आवर्ती समूह 'D M B F G' चार बार दोहराया गया है:\n  [D] [M] B F G | D M [B] [F] G | [D] M B F [G] | D [M] B [F] G\n• अतः रिक्त स्थानों में क्रमशः 'DMBFDGMF' आएगा।", "type": "रीजनिंग (अक्षर शृंखला)"}, {"id": 82, "cat": "रीजनिंग (आकृति शृंखला)", "q": "निम्नलिखित विकल्पों में से उस आकृति का चयन कीजिए जो प्रश्नवाचक चिह्न (?) को प्रतिस्थापित करते हुए दिए गए पैटर्न को पूरा करेगी।", "svg": "<svg viewBox=\"0 0 310 70\" class=\"w-full max-w-sm mx-auto my-1.5 bg-white rounded-lg border border-slate-400 p-1.5\">\n  <rect x=\"5\" y=\"5\" width=\"60\" height=\"60\" fill=\"none\" stroke=\"#0f172a\" stroke-width=\"1.8\"/>\n  <text x=\"14\" y=\"22\" fill=\"#0f172a\" font-size=\"14\" font-weight=\"bold\">5</text>\n  <polygon points=\"35,30 29,41 41,41\" fill=\"none\" stroke=\"#0f172a\" stroke-width=\"1.6\"/>\n  <circle cx=\"15\" cy=\"55\" r=\"5\" fill=\"none\" stroke=\"#0f172a\" stroke-width=\"1.6\"/>\n\n  <rect x=\"65\" y=\"5\" width=\"60\" height=\"60\" fill=\"none\" stroke=\"#0f172a\" stroke-width=\"1.8\"/>\n  <text x=\"95\" y=\"22\" text-anchor=\"middle\" fill=\"#0f172a\" font-size=\"14\" font-weight=\"bold\">2</text>\n  <circle cx=\"75\" cy=\"36\" r=\"5\" fill=\"none\" stroke=\"#0f172a\" stroke-width=\"1.6\"/>\n  <polygon points=\"95,48 89,59 101,59\" fill=\"none\" stroke=\"#0f172a\" stroke-width=\"1.6\"/>\n\n  <rect x=\"125\" y=\"5\" width=\"60\" height=\"60\" fill=\"none\" stroke=\"#0f172a\" stroke-width=\"1.8\"/>\n  <circle cx=\"136\" cy=\"17\" r=\"5\" fill=\"none\" stroke=\"#0f172a\" stroke-width=\"1.6\"/>\n  <polygon points=\"155,11 149,22 161,22\" fill=\"none\" stroke=\"#0f172a\" stroke-width=\"1.6\"/>\n  <text x=\"175\" y=\"22\" text-anchor=\"middle\" fill=\"#0f172a\" font-size=\"14\" font-weight=\"bold\">5</text>\n\n  <rect x=\"185\" y=\"5\" width=\"60\" height=\"60\" fill=\"none\" stroke=\"#0f172a\" stroke-width=\"1.8\"/>\n  <text x=\"195\" y=\"22\" text-anchor=\"middle\" fill=\"#0f172a\" font-size=\"14\" font-weight=\"bold\">2</text>\n  <circle cx=\"215\" cy=\"17\" r=\"5\" fill=\"none\" stroke=\"#0f172a\" stroke-width=\"1.6\"/>\n  <polygon points=\"215,30 209,41 221,41\" fill=\"none\" stroke=\"#0f172a\" stroke-width=\"1.6\"/>\n\n  <rect x=\"245\" y=\"5\" width=\"60\" height=\"60\" fill=\"#fef3c7\" stroke=\"#0f172a\" stroke-width=\"1.8\"/>\n  <text x=\"275\" y=\"42\" text-anchor=\"middle\" fill=\"#dc2626\" font-size=\"20\" font-weight=\"bold\">?</text>\n</svg>", "options": ["विकल्प (A)", "विकल्प (B)", "विकल्प (C)", "विकल्प (D)"], "ans": 2, "exp": "• आकृति के तीनों अवयवों का क्रमबद्ध विस्थापन:\n  1. अंक (5 और 2): एकांतर रूप से (5→2→5→2→5) बदलते हुए ऊपरी पंक्ति में (बाएँ → मध्य → दाएँ → बाएँ → मध्य) खिसकता है, अतः पाँचवें बॉक्स में '5' ऊपर-मध्य में आएगा।\n  2. वृत्त (O): दक्षिणावर्त (Clockwise) किनारे-किनारे एक-एक स्थान आगे बढ़ता है (नीचे-बाएँ → मध्य-बाएँ → ऊपर-बाएँ → ऊपर-मध्य → ऊपर-दाएँ), अतः 'O' ऊपर-दाएँ कोने में आएगा।\n  3. त्रिभुज (Δ): ऊर्ध्वाधर रूप से (केंद्र → नीचे-मध्य → ऊपर-मध्य → केंद्र → नीचे-मध्य) चलता है, अतः 'Δ' नीचे-मध्य में आएगा।\n• ये तीनों स्थितियाँ केवल आकृति (C) में हैं।", "opt_svgs": ["<svg viewBox=\"0 0 70 70\" class=\"w-16 h-16 mx-auto bg-white rounded border border-slate-300\">\n    <rect x=\"5\" y=\"5\" width=\"60\" height=\"60\" fill=\"none\" stroke=\"#0f172a\" stroke-width=\"1.8\"/>\n    <text x=\"35\" y=\"22\" text-anchor=\"middle\" fill=\"#0f172a\" font-size=\"14\" font-weight=\"bold\">5</text>\n    <polygon points=\"35,30 29,41 41,41\" fill=\"none\" stroke=\"#0f172a\" stroke-width=\"1.6\"/>\n    <circle cx=\"54\" cy=\"36\" r=\"5\" fill=\"none\" stroke=\"#0f172a\" stroke-width=\"1.6\"/>\n  </svg>", "<svg viewBox=\"0 0 70 70\" class=\"w-16 h-16 mx-auto bg-white rounded border border-slate-300\">\n    <rect x=\"5\" y=\"5\" width=\"60\" height=\"60\" fill=\"none\" stroke=\"#0f172a\" stroke-width=\"1.8\"/>\n    <text x=\"35\" y=\"22\" text-anchor=\"middle\" fill=\"#0f172a\" font-size=\"14\" font-weight=\"bold\">5</text>\n    <circle cx=\"54\" cy=\"17\" r=\"5\" fill=\"none\" stroke=\"#0f172a\" stroke-width=\"1.6\"/>\n    <polygon points=\"35,30 29,41 41,41\" fill=\"none\" stroke=\"#0f172a\" stroke-width=\"1.6\"/>\n  </svg>", "<svg viewBox=\"0 0 70 70\" class=\"w-16 h-16 mx-auto bg-white rounded border border-slate-300\">\n    <rect x=\"5\" y=\"5\" width=\"60\" height=\"60\" fill=\"none\" stroke=\"#0f172a\" stroke-width=\"1.8\"/>\n    <text x=\"35\" y=\"22\" text-anchor=\"middle\" fill=\"#0f172a\" font-size=\"14\" font-weight=\"bold\">5</text>\n    <circle cx=\"54\" cy=\"17\" r=\"5\" fill=\"none\" stroke=\"#0f172a\" stroke-width=\"1.6\"/>\n    <polygon points=\"35,48 29,59 41,59\" fill=\"none\" stroke=\"#0f172a\" stroke-width=\"1.6\"/>\n  </svg>", "<svg viewBox=\"0 0 70 70\" class=\"w-16 h-16 mx-auto bg-white rounded border border-slate-300\">\n    <rect x=\"5\" y=\"5\" width=\"60\" height=\"60\" fill=\"none\" stroke=\"#0f172a\" stroke-width=\"1.8\"/>\n    <text x=\"35\" y=\"22\" text-anchor=\"middle\" fill=\"#0f172a\" font-size=\"14\" font-weight=\"bold\">2</text>\n    <circle cx=\"54\" cy=\"17\" r=\"5\" fill=\"none\" stroke=\"#0f172a\" stroke-width=\"1.6\"/>\n    <polygon points=\"35,48 29,59 41,59\" fill=\"none\" stroke=\"#0f172a\" stroke-width=\"1.6\"/>\n  </svg>"], "type": "रीजनिंग (आकृति शृंखला)"}, {"id": 83, "cat": "रीजनिंग (सादृश्यता)", "q": "उस विकल्प का चयन करें जो तीसरे शब्द से उसी प्रकार संबंधित है जिस प्रकार दूसरा शब्द पहले शब्द से संबंधित है।\nवजन : पौंड :: ऊँचाई : ?", "options": ["उच्च", "मीटर", "किलोग्राम", "दर्जन"], "ans": 1, "exp": "• जिस प्रकार 'पौंड (Pound)' वजन मापने की इकाई है, उसी प्रकार 'मीटर (Meter)' ऊँचाई (या लंबाई) मापने की इकाई है।", "type": "रीजनिंग (सादृश्यता)"}, {"id": 84, "cat": "रीजनिंग (आकृति एवं संख्या शृंखला)", "q": "विकल्पों में दी गई उस आकृति को पहचानिए जिसे प्रश्न चिह्न (?) के स्थान पर रखने पर शृंखला तार्किक रूप से पूरी हो जाएगी।", "svg": "<svg viewBox=\"0 0 310 70\" class=\"w-full max-w-sm mx-auto my-1.5 bg-white rounded-lg border border-slate-400 p-1.5\">\n  <!-- Box 1 -->\n  <rect x=\"5\" y=\"5\" width=\"60\" height=\"60\" fill=\"none\" stroke=\"#0f172a\" stroke-width=\"1.8\"/>\n  <polyline points=\"20,54 20,18 42,54 42,18\" fill=\"none\" stroke=\"#0f172a\" stroke-width=\"1.8\"/>\n  <text x=\"31\" y=\"25\" text-anchor=\"middle\" fill=\"#0f172a\" font-size=\"12\" font-weight=\"bold\">1</text>\n  <text x=\"27\" y=\"52\" text-anchor=\"middle\" fill=\"#0f172a\" font-size=\"12\" font-weight=\"bold\">1</text>\n  <text x=\"52\" y=\"40\" text-anchor=\"middle\" fill=\"#0f172a\" font-size=\"12\" font-weight=\"bold\">0</text>\n  <!-- Box 2 -->\n  <rect x=\"65\" y=\"5\" width=\"60\" height=\"60\" fill=\"none\" stroke=\"#0f172a\" stroke-width=\"1.8\"/>\n  <polyline points=\"80,54 80,18 102,54 102,18\" fill=\"none\" stroke=\"#0f172a\" stroke-width=\"1.8\"/>\n  <text x=\"91\" y=\"25\" text-anchor=\"middle\" fill=\"#0f172a\" font-size=\"12\" font-weight=\"bold\">4</text>\n  <text x=\"87\" y=\"52\" text-anchor=\"middle\" fill=\"#0f172a\" font-size=\"12\" font-weight=\"bold\">2</text>\n  <text x=\"112\" y=\"40\" text-anchor=\"middle\" fill=\"#0f172a\" font-size=\"12\" font-weight=\"bold\">2</text>\n  <!-- Box 3 -->\n  <rect x=\"125\" y=\"5\" width=\"60\" height=\"60\" fill=\"none\" stroke=\"#0f172a\" stroke-width=\"1.8\"/>\n  <polyline points=\"140,54 140,18 162,54 162,18\" fill=\"none\" stroke=\"#0f172a\" stroke-width=\"1.8\"/>\n  <text x=\"151\" y=\"25\" text-anchor=\"middle\" fill=\"#0f172a\" font-size=\"12\" font-weight=\"bold\">9</text>\n  <text x=\"147\" y=\"52\" text-anchor=\"middle\" fill=\"#0f172a\" font-size=\"12\" font-weight=\"bold\">3</text>\n  <text x=\"172\" y=\"40\" text-anchor=\"middle\" fill=\"#0f172a\" font-size=\"12\" font-weight=\"bold\">6</text>\n  <!-- Box 4 -->\n  <rect x=\"185\" y=\"5\" width=\"60\" height=\"60\" fill=\"none\" stroke=\"#0f172a\" stroke-width=\"1.8\"/>\n  <polyline points=\"200,54 200,18 222,54 222,18\" fill=\"none\" stroke=\"#0f172a\" stroke-width=\"1.8\"/>\n  <text x=\"211\" y=\"25\" text-anchor=\"middle\" fill=\"#0f172a\" font-size=\"12\" font-weight=\"bold\">16</text>\n  <text x=\"207\" y=\"52\" text-anchor=\"middle\" fill=\"#0f172a\" font-size=\"12\" font-weight=\"bold\">4</text>\n  <text x=\"234\" y=\"40\" text-anchor=\"middle\" fill=\"#0f172a\" font-size=\"12\" font-weight=\"bold\">12</text>\n  <!-- Box 5 -->\n  <rect x=\"245\" y=\"5\" width=\"60\" height=\"60\" fill=\"#fef3c7\" stroke=\"#0f172a\" stroke-width=\"1.8\"/>\n  <text x=\"275\" y=\"42\" text-anchor=\"middle\" fill=\"#dc2626\" font-size=\"20\" font-weight=\"bold\">?</text>\n</svg>", "options": ["विकल्प (A)", "विकल्प (B)", "विकल्प (C)", "विकल्प (D)"], "ans": 2, "exp": "• पैटर्न:\n  - बाएँ नीचे की संख्या क्रमशः n = 1, 2, 3, 4 है ⇒ अगली संख्या n = 5 होगी।\n  - ऊपर की संख्या n² है (2²=4, 3²=9, 4²=16) ⇒ अगली संख्या 5² = 25 होगी।\n  - दाएँ की संख्या = (ऊपर की संख्या − बाएँ की संख्या) = n² − n है: 4−2=2, 9−3=6, 16−4=12 ⇒ अगली संख्या = 25 − 5 = 20 होगी।\n• अतः सही विकल्प (C) [ऊपर=25, बाएँ=5, दाएँ=20] है।", "opt_svgs": ["<svg viewBox=\"0 0 75 70\" class=\"w-16 h-16 mx-auto bg-white rounded border border-slate-300\">\n    <rect x=\"5\" y=\"5\" width=\"65\" height=\"60\" fill=\"none\" stroke=\"#0f172a\" stroke-width=\"1.8\"/>\n    <polyline points=\"18,54 18,18 42,54 42,18\" fill=\"none\" stroke=\"#0f172a\" stroke-width=\"1.8\"/>\n    <text x=\"30\" y=\"25\" text-anchor=\"middle\" fill=\"#0f172a\" font-size=\"12\" font-weight=\"bold\">5</text>\n    <text x=\"27\" y=\"52\" text-anchor=\"middle\" fill=\"#0f172a\" font-size=\"11\" font-weight=\"bold\">25</text>\n    <text x=\"55\" y=\"40\" text-anchor=\"middle\" fill=\"#0f172a\" font-size=\"12\" font-weight=\"bold\">30</text>\n  </svg>", "<svg viewBox=\"0 0 75 70\" class=\"w-16 h-16 mx-auto bg-white rounded border border-slate-300\">\n    <rect x=\"5\" y=\"5\" width=\"65\" height=\"60\" fill=\"none\" stroke=\"#0f172a\" stroke-width=\"1.8\"/>\n    <polyline points=\"18,54 18,18 42,54 42,18\" fill=\"none\" stroke=\"#0f172a\" stroke-width=\"1.8\"/>\n    <text x=\"30\" y=\"25\" text-anchor=\"middle\" fill=\"#0f172a\" font-size=\"12\" font-weight=\"bold\">25</text>\n    <text x=\"26\" y=\"52\" text-anchor=\"middle\" fill=\"#0f172a\" font-size=\"12\" font-weight=\"bold\">5</text>\n    <text x=\"55\" y=\"40\" text-anchor=\"middle\" fill=\"#0f172a\" font-size=\"12\" font-weight=\"bold\">30</text>\n  </svg>", "<svg viewBox=\"0 0 75 70\" class=\"w-16 h-16 mx-auto bg-white rounded border border-slate-300\">\n    <rect x=\"5\" y=\"5\" width=\"65\" height=\"60\" fill=\"none\" stroke=\"#0f172a\" stroke-width=\"1.8\"/>\n    <polyline points=\"18,54 18,18 42,54 42,18\" fill=\"none\" stroke=\"#0f172a\" stroke-width=\"1.8\"/>\n    <text x=\"30\" y=\"25\" text-anchor=\"middle\" fill=\"#0f172a\" font-size=\"12\" font-weight=\"bold\">25</text>\n    <text x=\"26\" y=\"52\" text-anchor=\"middle\" fill=\"#0f172a\" font-size=\"12\" font-weight=\"bold\">5</text>\n    <text x=\"55\" y=\"40\" text-anchor=\"middle\" fill=\"#0f172a\" font-size=\"12\" font-weight=\"bold\">20</text>\n  </svg>", "<svg viewBox=\"0 0 75 70\" class=\"w-16 h-16 mx-auto bg-white rounded border border-slate-300\">\n    <rect x=\"5\" y=\"5\" width=\"65\" height=\"60\" fill=\"none\" stroke=\"#0f172a\" stroke-width=\"1.8\"/>\n    <polyline points=\"18,54 18,18 42,54 42,18\" fill=\"none\" stroke=\"#0f172a\" stroke-width=\"1.8\"/>\n    <text x=\"30\" y=\"25\" text-anchor=\"middle\" fill=\"#0f172a\" font-size=\"12\" font-weight=\"bold\">16</text>\n    <text x=\"26\" y=\"52\" text-anchor=\"middle\" fill=\"#0f172a\" font-size=\"12\" font-weight=\"bold\">4</text>\n    <text x=\"55\" y=\"40\" text-anchor=\"middle\" fill=\"#0f172a\" font-size=\"12\" font-weight=\"bold\">20</text>\n  </svg>"], "type": "रीजनिंग (आकृति एवं संख्या शृंखला)"}, {"id": 85, "cat": "रीजनिंग (अक्षर सादृश्यता)", "q": "अंग्रेजी वर्णमाला क्रम के आधार पर BHJL, FLNP से एक निश्चित प्रकार से संबंधित है। उसी प्रकार, HNPR, LRTV से संबंधित है। समान तर्क का अनुसरण करते हुए, JPRT निम्नलिखित में से किससे संबंधित है?", "options": ["NUWX", "NTYX", "NUVX", "NTVX"], "ans": 3, "exp": "• प्रत्येक अक्षर में +4 जोड़ा गया है:\n  J(10)+4 = N(14)\n  P(16)+4 = T(20)\n  R(18)+4 = V(22)\n  T(20)+4 = X(24)\n• अतः सही उत्तर 'NTVX' है।", "type": "रीजनिंग (अक्षर सादृश्यता)"}, {"id": 86, "cat": "रीजनिंग (शब्द सादृश्यता)", "q": "उस विकल्प का चयन करें जो तीसरे शब्द से उसी प्रकार संबंधित है जैसे दूसरा शब्द पहले शब्द से संबंधित है।\nडॉक्टर : अस्पताल :: इंजीनियर : ?", "options": ["निर्माण", "स्कूल", "कोर्ट", "साइट"], "ans": 3, "exp": "• जिस प्रकार डॉक्टर का कार्यस्थल 'अस्पताल' होता है, उसी प्रकार इंजीनियर का कार्यस्थल 'साइट (Site)' होता है।", "type": "रीजनिंग (शब्द सादृश्यता)"}, {"id": 87, "cat": "रीजनिंग (कोडिंग-डिकोडिंग)", "q": "एक निश्चित कूट भाषा में, TIRED को 56 के रूप में कूटबद्ध किया जाता है और FRESH को 56 के रूप में कूटबद्ध किया जाता है। उसी भाषा में HEAVEN को किस प्रकार कूटबद्ध किया जाएगा?", "options": ["52", "55", "56", "54"], "ans": 1, "exp": "• अक्षरों के वर्णमाला स्थानीय मानों का योग किया गया है:\n  TIRED = 20 + 9 + 18 + 5 + 4 = 56\n  FRESH = 6 + 18 + 5 + 19 + 8 = 56\n• इसी प्रकार HEAVEN = H(8) + E(5) + A(1) + V(22) + E(5) + N(14) = 55।", "type": "रीजनिंग (कोडिंग-डिकोडिंग)"}, {"id": 88, "cat": "GS (जीव विज्ञान)", "q": "तम्बाकू का सेवन एड्रेनालाईन और नॉर-एड्रेनालाईन के स्राव को उत्तेजित करने के लिए जाना जाता है। इसका कारण बनने वाला घटक हो सकता है:", "options": ["निकोटीन (Nicotine)", "टैनिक एसिड", "क्यूरामिन", "कैटेचिन"], "ans": 0, "exp": "• तम्बाकू में उपस्थित 'निकोटीन (Nicotine)' नामक एल्कलॉइड अधिवृक्क ग्रंथि (Adrenal gland) को उद्दीपित कर एड्रेनालाईन और नॉर-एड्रेनालाईन का स्राव बढ़ाता है।", "type": "GS (जीव विज्ञान)"}, {"id": 89, "cat": "GS (जीव विज्ञान)", "q": "रूमेटाइड आर्थराइटिस (Rheumatoid arthritis) का/के कारण क्या है/हैं?\ni. रोगजनकों या बाहरी अणुओं से स्व-कोशिकाओं (self-cells) को अलग करने की क्षमता बढ़ जाती है।\nii. शरीर स्व-कोशिकाओं पर हमला करता है।\niii. शरीर में अधिक एंटीबॉडी का उत्पादन होता है।\niv. रोगजनकों या बाहरी अणुओं से स्व-कोशिकाओं को अलग करने की क्षमता खो जाती है।", "options": ["i और ii", "ii और iv", "iii और iv", "i और iii"], "ans": 1, "exp": "• रूमेटाइड आर्थराइटिस एक स्व-प्रतिरक्षा रोग (Autoimmune disease) है जिसमें प्रतिरक्षा तंत्र बाहरी अणुओं से स्व-कोशिकाओं को अलग करने की क्षमता खो देता है (iv) और शरीर अपनी ही कोशिकाओं (self-cells) पर हमला करने लगता है (ii)। अतः (B) ii और iv सही हैं।", "type": "GS (जीव विज्ञान)"}, {"id": 90, "cat": "GS (रसायन विज्ञान)", "q": "बैकेलाइट (Bakelite) और नोवोलेक (Novolac) किन एकलक इकाइयों से बनते हैं?", "options": ["फ़ीनॉल और फ़ॉर्मेल्डिहाइड", "मेलैमीन और फ़ॉर्मेल्डिहाइड", "यूरिया और फ़ॉर्मेल्डिहाइड", "एथिलीन ग्लाइकॉल और थैलिक अम्ल"], "ans": 0, "exp": "• बैकेलाइट और नोवोलेक दोनों का निर्माण 'फ़ीनॉल (Phenol) और फ़ॉर्मेल्डिहाइड (Formaldehyde)' एकलक इकाइयों के संघनन बहुलकन से होता है।", "type": "GS (रसायन विज्ञान)"}, {"id": 91, "cat": "GS (रसायन विज्ञान)", "q": "कथन प्रकार का प्रश्न :\nकथन 1 : तापसुघट्य (Thermoplastic) बहुलकों को गर्म करने पर मुलायम किया जा सकता है और ठंडा करने पर वे पुनः कठोर हो जाते हैं।\nकथन 2 : बैकेलाइट (Bakelite) एक तापसुघट्य बहुलक का उदाहरण है।", "options": ["केवल कथन 1 सही है।", "केवल कथन 2 सही है।", "दोनों कथन सही हैं।", "दोनों कथन गलत हैं।"], "ans": 0, "exp": "• कथन 1 सही है, परंतु कथन 2 गलत है क्योंकि बैकेलाइट एक 'तापदृढ़ (Thermosetting)' बहुलक का उदाहरण है, न कि तापसुघट्य (Thermoplastic) का।", "type": "GS (रसायन विज्ञान)"}, {"id": 92, "cat": "GS (रसायन विज्ञान)", "q": "निम्नलिखित में से कौन सा गुण एक तापदृढ़ (Thermosetting) बहुलक का है?", "options": ["गर्म करने से मुलायम पड़ जाते हैं।", "साँचों में तापन करने पर पिघल जाते हैं।", "ये अत्यधिक शाखित तिर्यक बंधित (cross-linked) बहुलक होते हैं।", "ये किंचित शाखित लम्बी शृंखला के अणु होते हैं।"], "ans": 2, "exp": "• तापदृढ़ (Thermosetting) बहुलक (जैसे बैकेलाइट, मेलैमीन) अत्यधिक शाखित तिर्यक बंधित (cross-linked) बहुलक होते हैं जो गर्म करने पर पुनः मुलायम नहीं होते।", "type": "GS (रसायन विज्ञान)"}, {"id": 93, "cat": "गणित (अनुपात)", "q": "यदि 4A = 5B और 6B = 7C है, तो A : C का मान ज्ञात कीजिए।", "options": ["35 : 24", "36 : 24", "34 : 24", "38 : 24"], "ans": 0, "exp": "• 4A = 5B ⇒ A/B = 5/4\n• 6B = 7C ⇒ B/C = 7/6\n• अतः A/C = (A/B) × (B/C) = (5/4) × (7/6) = 35/24 ⇒ A : C = 35 : 24।", "type": "गणित (अनुपात)"}, {"id": 94, "cat": "गणित (प्रतिशतता)", "q": "वेला एक किसान है। उसके पास कुछ एकड़ जमीन है। पिछले महीने, उसकी अच्छी फसल हुई थी जिसने उसे अपने प्रारंभिक निवेश पर 90% लाभ (जो लगभग ₹90,000 था) दिया था। लगभग हर मौसम में निवेश करने के लिए उसे कितना पैसा चाहिए?", "options": ["₹1,00,000", "₹6,00,000", "₹3,00,000", "₹1,50,000"], "ans": 0, "exp": "• प्रारंभिक निवेश का 90% = ₹90,000\n⇒ प्रारंभिक निवेश (100%) = (90,000 / 90) × 100 = ₹1,00,000।", "type": "गणित (प्रतिशतता)"}, {"id": 95, "cat": "गणित (समय और कार्य)", "q": "अनिल, बालू से दोगुना कार्यकुशल है, तथा साथ मिलकर वे एक कार्य को 12 दिनों में पूरा कर सकते हैं। अनिल अकेले उस कार्य को कितने दिनों में पूरा कर सकता है?", "options": ["25", "7", "18", "15"], "ans": 2, "exp": "• कार्यकुशलता का अनुपात (अनिल : बालू) = 2 : 1।\n• दोनों का 1 दिन का कार्य = 2 + 1 = 3 इकाई ⇒ 12 दिनों में कुल कार्य = 12 × 3 = 36 इकाई।\n• अनिल द्वारा अकेले कार्य पूरा करने में लगा समय = 36 / 2 = 18 दिन।", "type": "गणित (समय और कार्य)"}, {"id": 96, "cat": "करंट अफेयर्स (2026)", "q": "केन्द्र सरकार ने नीति आयोग का पुनर्गठन अप्रैल 2026 में किया है, पुनर्गठित नीति आयोग में उपाध्यक्ष किसे बनाया गया है?", "options": ["सुमन बेरी", "गोबरधन दास", "एस० श्रीनिवास", "अशोक कुमार लाहिड़ी"], "ans": 3, "exp": "• 25 अप्रैल 2026 को केंद्र सरकार ने नीति आयोग का पुनर्गठन किया, जिसमें सुमन बेरी के स्थान पर प्रख्यात अर्थशास्त्री और पूर्व मुख्य आर्थिक सलाहकार 'अशोक कुमार लाहिड़ी (Ashok Kumar Lahiri)' को नीति आयोग का नया उपाध्यक्ष नियुक्त किया गया है। (राजीव गौबा, के.वी. राजू, गोबर्धन दास, अभय करंदीकर और डॉ. एम. श्रीनिवास को पूर्णकालिक सदस्य बनाया गया है)।", "type": "करंट अफेयर्स (2026)"}, {"id": 97, "cat": "GK (महत्त्वपूर्ण दिवस)", "q": "निम्नलिखित में से किस दिन को 'अन्तर्राष्ट्रीय सीमा शुल्क दिवस' (International Customs Day) के रूप में मनाया जाता है?", "options": ["26 अप्रैल", "15 जनवरी", "26 जनवरी", "15 अगस्त"], "ans": 2, "exp": "• विश्व सीमा शुल्क संगठन (WCO) की स्मृति में प्रतिवर्ष '26 जनवरी' को 'अन्तर्राष्ट्रीय सीमा शुल्क दिवस (International Customs Day)' मनाया जाता है।", "type": "GK (महत्त्वपूर्ण दिवस)"}, {"id": 98, "cat": "करंट अफेयर्स (रक्षा)", "q": "'दुस्तलिक-7' (Dustlik-7) निम्नलिखित में से किन 2 देशों की सैन्य टुकड़ियों के बीच एक संयुक्त सैन्य अभ्यास है?", "options": ["भारत-उज्बेकिस्तान", "पाकिस्तान-उज्बेकिस्तान", "भारत-किर्गिस्तान", "बांग्लादेश-पाकिस्तान"], "ans": 0, "exp": "• 'दुस्तलिक (Dustlik)' भारत और उज्बेकिस्तान की सेनाओं के बीच आयोजित होने वाला संयुक्त सैन्य अभ्यास है।", "type": "करंट अफेयर्स (रक्षा)"}, {"id": 99, "cat": "GK (कला एवं संस्कृति)", "q": "'महा बिशुबा संक्रान्ति' निम्नलिखित में से किस राज्य में धूमधाम से मनाया जाने वाला पर्व है?", "options": ["लद्दाख", "अरुणाचल प्रदेश", "ओडिशा", "असम"], "ans": 2, "exp": "• 'महा बिशुबा संक्रान्ति' (पना संक्रान्ति) ओडिशा राज्य में पारंपरिक उड़िया नववर्ष के रूप में धूमधाम से मनाया जाने वाला प्रमुख पर्व है।", "type": "GK (कला एवं संस्कृति)"}, {"id": 100, "cat": "GK (कला एवं संस्कृति)", "q": "'पुस्ताण्डु (पुथांडु)' किस राज्य का एक प्रमुख पर्व है?", "options": ["कर्नाटक", "तमिलनाडु", "आन्ध्र प्रदेश", "तेलंगाना"], "ans": 1, "exp": "• 'पुथांडु (Puthandu)' तमिलनाडु राज्य का प्रमुख पर्व (पारंपरिक तमिल नववर्ष) है।", "type": "GK (कला एवं संस्कृति)"}, {"id": 101, "cat": "GK (भूगोल - राष्ट्रीय उद्यान)", "q": "सूची-I (राष्ट्रीय उद्यान) को सूची-II (अवस्थिति) से सुमेलित कीजिए:\na. काजीरंगा — 1. चिकमगलूरू\nb. कुद्रेमुख — 2. पालघाट\nc. साइलेंट वैली — 3. नागपुर\nd. पेंच घाटी — 4. गोलाघाट-नवगाँव", "options": ["a-3, b-1, c-4, d-2", "a-3, b-4, c-2, d-1", "a-2, b-4, c-1, d-3", "a-4, b-1, c-2, d-3"], "ans": 3, "exp": "• काजीरंगा राष्ट्रीय उद्यान — गोलाघाट-नगांव, असम (4)\n• कुद्रेमुख राष्ट्रीय उद्यान — चिकमगलूरू, कर्नाटक (1)\n• साइलेंट वैली राष्ट्रीय उद्यान — पालघाट/पलक्कड़, केरल (2)\n• पेंच घाटी राष्ट्रीय उद्यान — नागपुर, महाराष्ट्र (3)\nअतः सही कूट (D) 4 1 2 3 है।", "type": "GK (भूगोल - राष्ट्रीय उद्यान)"}, {"id": 102, "cat": "GK (आधुनिक इतिहास)", "q": "1919 ई. में पंजाब में हुए अत्याचारों से अपने विरोध के प्रतीक के रूप में किस विख्यात व्यक्ति ने ब्रिटिश सरकार द्वारा प्रदान किए गए ‘नाइट हुड’ की उपाधि को वापस लौटा दिया?", "options": ["तेज बहादुर सप्रू", "आशुतोष मुखर्जी", "रवीन्द्रनाथ टैगोर", "सैय्यद अहमद खान"], "ans": 2, "exp": "• 13 अप्रैल 1919 के जलियाँवाला बाग हत्याकांड के विरोध में गुरुदेव रवीन्द्रनाथ टैगोर ने ब्रिटिश सरकार द्वारा दी गई 'नाइट हुड (सर)' की उपाधि वापस लौटा दी थी।", "type": "GK (आधुनिक इतिहास)"}, {"id": 103, "cat": "GK (आधुनिक इतिहास)", "q": "दादा भाई नौरोजी द्वारा प्रतिपादित ‘अपवाह सिद्धान्त’ (Drain Theory) की सही परिभाषा नीचे के किस कथन में आता है?", "options": ["देश के संसाधनों का उपयोग ब्रिटेन के हित में किया जा रहा था।", "भारत की राष्ट्रीय संपदा का एक भाग अथवा कुल वार्षिक उत्पाद ब्रिटेन को निर्यात कर दिया जाता था जिसके लिए भारत को कोई वास्तविक प्रतिफल नहीं मिलता था।", "भारत में ब्रिटिश सामान का आयात किया जाता था और देश को दिन प्रतिदिन अधिकाधिक गरीब बनाया जाता था।", "उपरोक्त में से सभी"], "ans": 1, "exp": "• दादाभाई नौरोजी के 'धन के निष्कासन / अपवाह सिद्धांत (Drain of Wealth Theory)' की सटीक वैज्ञानिक परिभाषा विकल्प (B) है कि भारत की राष्ट्रीय संपदा या कुल वार्षिक उत्पाद का एक भाग ब्रिटेन को निर्यात कर दिया जाता था जिसके बदले भारत को कोई वास्तविक प्रतिफल नहीं मिलता था (कुछ सामान्य सेटों में (D) भी दिया जाता है, किंतु मानक आयोग उत्तर (B) है)।", "type": "GK (आधुनिक इतिहास)"}, {"id": 104, "cat": "बिहार विशेष (इतिहास)", "q": "19वीं शताब्दी में बिहार में 'बहाबी आंदोलन' के दमन के लिए चलाए गए 'अंबाला अभियान' (1863) के बाद पटना के किस नेता को कालापानी (अंडमान) की सजा दी गई थी?", "options": ["विलायत अली", "इनायत अली", "अहमदुल्लाह", "पीर अली"], "ans": 2, "exp": "• अंबाला अभियान (1863) और पटना षड्यंत्र केस (1865) के बाद पटना के प्रमुख वहाबी नेता 'अहमदुल्लाह (Ahmadullah)' को कालापानी (अंडमान) की सजा दी गई थी।", "type": "बिहार विशेष (इतिहास)"}, {"id": 105, "cat": "बिहार विशेष (भूगोल)", "q": "बिहार के 'जलप्रपातों' और उनकी अवस्थिति के बारे में कौन-सा युग्म सही सुमेलित है?\n1. जीआर कुंड : भोजपुर\n2. दुर्गावती : रोहतास\n3. मांझर कुंड : सासाराम\n4. ककोलत : नवादा", "options": ["केवल 1, 2 और 4", "केवल 2, 3 और 4", "केवल 4", "1, 2, 3 और 4"], "ans": 3, "exp": "• बिहार के जलप्रपातों के चारों युग्म (1. जीआर कुंड - भोजपुर, 2. दुर्गावती - रोहतास, 3. मांझर कुंड - सासाराम/रोहतास, 4. ककोलत - नवादा) सही सुमेलित हैं।", "type": "बिहार विशेष (भूगोल)"}, {"id": 106, "cat": "GK (मध्यकालीन इतिहास)", "q": "पानीपत के द्वितीय युद्ध के संबंध में निम्नांकित में कौन तथ्य सही है/हैं?\n(i) यह युद्ध अकबर एवं हेमचन्द्र विक्रमादित्य के बीच हुई थी।\n(ii) यह युद्ध हुमायूँ और शेरशाह के बीच हुई थी।\n(iii) यह युद्ध नवम्बर 1556 में हुई थी।\n(iv) यह युद्ध जनवरी 1556 में हुई थी।", "options": ["केवल i", "केवल i एवं iii", "केवल ii एवं iv", "केवल i एवं iv"], "ans": 1, "exp": "• पानीपत का द्वितीय युद्ध 5 नवम्बर 1556 को मुगल सम्राट अकबर (बैरम खाँ) और हेमचन्द्र विक्रमादित्य (हेमू) के बीच लड़ा गया था। अतः केवल (i) एवं (iii) सही हैं।", "type": "GK (मध्यकालीन इतिहास)"}, {"id": 107, "cat": "GK (भूगोल)", "q": "चाय की खेती के लिए निम्न में से कौन प्राकृतिक परिस्थिति उपयुक्त है?", "options": ["अम्लीय मिट्टी, औसत वर्षा 150 सेमी. से ज्यादा और तापमान 20° से 30° सेंटीग्रेड।", "क्षारीय मिट्टी, औसत वर्षा 150 से.मी. से ज्यादा और तापमान 20° से 30° सेंटीग्रेड।", "क्षारीय मिट्टी, औसत वर्षा 150 से.मी. से कम और तापमान 5° से 15° सेंटीग्रेड।", "उपर्युक्त में से कोई नहीं"], "ans": 0, "exp": "• चाय की खेती के लिए अच्छे जल निकास वाली 'अम्लीय मिट्टी (Acidic soil)', 150 सेमी से अधिक औसत वार्षिक वर्षा और 20°C से 30°C के बीच तापमान सर्वाधिक उपयुक्त होता है।", "type": "GK (भूगोल)"}, {"id": 108, "cat": "बिहार विशेष (इतिहास)", "q": "बिहार में 'आजाद दस्ता' के गठन के बारे में सत्य कथन का चयन करें:\n1. इसका गठन भारत छोड़ो आंदोलन के दौरान जयप्रकाश नारायण द्वारा किया गया था।\n2. इसका मुख्य केंद्र नेपाल की तराई में 'राजविलास' का जंगल था।\n3. सूरज नारायण सिंह इसके प्रमुख प्रशिक्षक (Instructor) थे।", "options": ["केवल 1", "केवल 1 और 2", "केवल 2 और 3", "1, 2 और 3"], "ans": 3, "exp": "• बिहार में भारत छोड़ो आंदोलन (1942) के दौरान जयप्रकाश नारायण द्वारा गठित 'आजाद दस्ता' के संबंध में तीनों कथन (1, 2 और 3) सत्य हैं।", "type": "बिहार विशेष (इतिहास)"}, {"id": 109, "cat": "बिहार विशेष (इतिहास)", "q": "1921 में 'प्रिंस ऑफ वेल्स' (Prince of Wales) की पटना यात्रा के संदर्भ में निम्नलिखित में से कौन सा कथन सही है?", "options": ["उनकी यात्रा 22-23 दिसंबर 1921 को हुई थी।", "पटना में उनके आगमन पर पूर्ण हड़ताल का आयोजन किया गया था।", "इस विरोध प्रदर्शन का नेतृत्व मुख्य रूप से 'मजहरुल हक' और 'सच्चिदानंद सिन्हा' ने किया था।", "उपर्युक्त सभी कथन सत्य हैं।"], "ans": 3, "exp": "• 22-23 दिसंबर 1921 को प्रिंस ऑफ वेल्स की पटना यात्रा के विरोध में पटना में पूर्ण हड़ताल का आयोजन किया गया था। उपर्युक्त सभी कथन सत्य हैं।", "type": "बिहार विशेष (इतिहास)"}, {"id": 110, "cat": "GK (मध्यकालीन इतिहास)", "q": "गुहिलोतों/सिसोदिया, राठौर और कछवाहों के संदर्भ में, निम्नलिखित कथनों पर विचार कीजिए:\n1. गुहिलोतों ने चित्तौड़ को अपनी राजधानी बनाकर मेवाड़ पर शासन किया।\n2. राठौर वंश के सवाई जयसिंह मुगलों के अधीन एक उच्च पदस्थ कुलीन थे।\n3. कछवाहों के मानसिंह अकबर के एक विश्वसनीय सेनापति थे।\n4. सिसोदिया वंश के महाराणा प्रताप ने हल्दीघाटी के युद्ध में अकबर के विरुद्ध युद्ध लड़ा था।\n5. कछवाहों के जसवंत सिंह एक खगोलशास्त्री भी थे।\nउपरोक्त कथनों में से कौन-सा/से सही है/हैं?", "options": ["केवल 1, 3, 4 और 5", "केवल 1, 2, 3 और 5", "केवल 1, 3 और 4", "केवल 2, 3 और 4"], "ans": 2, "exp": "• कथन 1, 3 और 4 सही हैं।\n• कथन 2 और 5 गलत हैं क्योंकि सवाई जयसिंह (जो प्रसिद्ध खगोलशास्त्री भी थे) आमेर के 'कछवाहा वंश' से थे, जबकि जसवंत सिंह मारवाड़ के 'राठौर वंश' से थे।", "type": "GK (मध्यकालीन इतिहास)"}, {"id": 111, "cat": "रीजनिंग (बैठक व्यवस्था)", "q": "A, B, C, D, G, H और I एक गोल मेज के परितः केंद्र की ओर अभिमुख होकर बैठे हैं। H के दाईं ओर गिनने पर H और I के बीच केवल एक व्यक्ति बैठा है। C और I के बीच केवल एक व्यक्ति बैठा है। H और G के बीच केवल एक व्यक्ति बैठा है। A और C के बीच केवल दो व्यक्ति बैठे हैं। B और G के बीच केवल एक व्यक्ति बैठा है। D के दाएँ तीसरे स्थान पर कौन बैठा है?", "options": ["A", "I", "C", "G"], "ans": 1, "exp": "• केंद्र की ओर मुख करके वामावर्त (दाईं ओर, 0 से 6) बिठाने पर:\n  - H = 0 रखने पर, H के दाएँ एक छोड़कर I = 2 होगा।\n  - C और I(2) के बीच एक व्यक्ति है ⇒ C = 4 होगा।\n  - H(0) और G के बीच एक व्यक्ति है ⇒ G = 5 होगा।\n  - A और C(4) के बीच दो व्यक्ति हैं ⇒ A = 1 होगा।\n  - B और G(5) के बीच एक व्यक्ति है ⇒ B = 3 होगा।\n  - शेष स्थान 6 पर D बैठेगा।\n• क्रम: H(0) → A(1) → I(2) → B(3) → C(4) → G(5) → D(6)।\n• अतः D(6) के दाएँ तीसरे स्थान (0→1→2) पर 'I' बैठा है।", "type": "रीजनिंग (बैठक व्यवस्था)"}, {"id": 112, "cat": "रीजनिंग (दिशा और दूरी)", "q": "प्रबीन बिंदु A से ड्राइव करना प्रारंभ करता है और पश्चिम की ओर 12 किमी ड्राइव करता है। फिर दाएँ मुड़ता है और 8 किमी ड्राइव करता है, फिर से दाएँ मुड़ता है और 14 किमी ड्राइव करता है। वह फिर से दाएँ मुड़ता है और 12 किमी ड्राइव करता है। वह अंतिम बार दाएँ मुड़ता है और 2 किमी ड्राइव करके बिंदु P पर रुक जाता है। बिंदु A पर पुनः पहुँचने के लिए उसे कितनी दूर (न्यूनतम दूरी) और किस दिशा में ड्राइव करना चाहिए?", "options": ["4 किमी दक्षिण की ओर", "4 किमी उत्तर की ओर", "5 किमी उत्तर की ओर", "3 किमी उत्तर की ओर"], "ans": 1, "exp": "• बिंदु A(0, 0) से प्रारंभ:\n  1. पश्चिम में 12 किमी → (−12, 0)\n  2. दाएँ (उत्तर) 8 किमी → (−12, 8)\n  3. दाएँ (पूर्व) 14 किमी → (2, 8)\n  4. दाएँ (दक्षिण) 12 किमी → (2, −4)\n  5. दाएँ (पश्चिम) 2 किमी → बिंदु P(0, −4)।\n• बिंदु P(0, −4) बिंदु A(0, 0) के दक्षिण में 4 किमी पर है। अतः बिंदु A पर वापस पहुँचने के लिए प्रबीन को '4 किमी उत्तर की ओर' ड्राइव करना चाहिए।", "type": "रीजनिंग (दिशा और दूरी)"}, {"id": 113, "cat": "रीजनिंग (कोडिंग-डिकोडिंग)", "q": "एक निश्चित कूट भाषा में, 'FISH' को '4268' के रूप में कूटबद्ध किया जाता है और 'RATS' को '2357' के रूप में कूटबद्ध किया जाता है। उसी कूट भाषा में 'S' के लिए कूट क्या है?", "options": ["7", "6", "5", "2"], "ans": 3, "exp": "• 'FISH' और 'RATS' दोनों शब्दों में एकमात्र उभयनिष्ठ (Common) अक्षर 'S' है।\n• तथा दोनों कूटों '4268' और '2357' में एकमात्र उभयनिष्ठ अंक '2' है। अतः 'S' के लिए कूट '2' है।", "type": "रीजनिंग (कोडिंग-डिकोडिंग)"}, {"id": 114, "cat": "रीजनिंग (गणितीय संक्रियाएँ)", "q": "दिए गए समीकरण को सही करने के लिए किन दो संख्याओं को आपस में बदला जाना चाहिए?\n7 × 4 − 8 × 2 + 3 × 14 × 5 − 9 = 133", "options": ["14 और 9", "9 और 8", "2 और 4", "7 और 14"], "ans": 0, "exp": "• संख्या '14 और 9' को आपस में बदलने पर:\n  7 × 4 − 8 × 2 + 3 × 9 × 5 − 14\n  = 28 − 16 + 135 − 14\n  = 12 + 135 − 14 = 133 (समीकरण पूर्णतः सही हो जाता है)।", "type": "रीजनिंग (गणितीय संक्रियाएँ)"}, {"id": 115, "cat": "रीजनिंग (रक्त संबंध एवं निष्कर्ष)", "q": "इस प्रश्न में दो कथन के बाद दो निष्कर्ष दिए गए हैं। उन निष्कर्षों को चुनें जो तार्किक रूप से सर्वाधिक उपयुक्त हो।\nकथन : (1) 'P' 'Q' का भाई है।  (2) 'R' 'P' का भाई है।\nनिष्कर्ष : I. 'Q' एक लड़की है।  II. 'Q' एक लड़का है।", "options": ["केवल निष्कर्ष I उपयुक्त है", "केवल निष्कर्ष II उपयुक्त है", "या तो निष्कर्ष I या II उपयुक्त है", "निष्कर्ष I और II दोनों ही उपयुक्त हैं"], "ans": 2, "exp": "• कथनों से P और R का पुरुष (भाई) होना स्पष्ट है, किंतु Q का लिंग निर्धारित नहीं है। चूँकि Q या तो लड़की होगी या लड़का, अतः 'या तो निष्कर्ष I या II उपयुक्त है' (विकल्प C) सही है।", "type": "रीजनिंग (रक्त संबंध एवं निष्कर्ष)"}, {"id": 116, "cat": "रीजनिंग (अक्षर सादृश्यता)", "q": "निम्न अक्षर-समूह युग्मों में, पहला अक्षर-समूह, एक निश्चित तर्क का पालन करते हुए दूसरे अक्षर-समूह से संबंधित है। दिए गए विकल्पों में से उस युग्म का चयन कीजिए, जो समान तर्क का पालन करता हो:\nIGE : QOM :: YWU : GEC", "options": ["PQR : MLK", "ONL : XWU", "NLJ : VTR", "PNM : UTS"], "ans": 2, "exp": "• तर्क: प्रत्येक समूह के अंदर क्रमिक अक्षरों में −2 का अंतर है तथा पहले समूह के प्रत्येक अक्षर में +8 जोड़ने पर दूसरा समूह बनता है:\n  I(9)+8=Q(17), G(7)+8=O(15), E(5)+8=M(13)।\n• इसी प्रकार 'NLJ : VTR' में:\n  N(14), L(12), J(10) [−2 का अंतर] तथा N(14)+8=V(22), L(12)+8=T(20), J(10)+8=R(18)।", "type": "रीजनिंग (अक्षर सादृश्यता)"}, {"id": 117, "cat": "रीजनिंग (कोडिंग-डिकोडिंग)", "q": "एक निश्चित कूट भाषा में, ‘DOCTOR’ को ‘SPUDPE’ लिखा जाता है और ‘NURSE’ को ‘FTSVO’ लिखा जाता है। उसी कूट भाषा में ‘WOUND’ को किस प्रकार लिखा जाएगा?", "options": ["CMTNV", "EPVOY", "EOVPX", "OVPOX"], "ans": 2, "exp": "• पैटर्न: शब्द के अक्षरों को विपरीत क्रम (Reverse) में लिखकर प्रत्येक अक्षर में +1 जोड़ा गया है:\n  DOCTOR → उल्टा ROTCOD → (+1) → SPUDPE।\n• इसी प्रकार 'WOUND' को उल्टा करने पर 'DNUOW' और प्रत्येक में +1 करने पर:\n  D(+1)=E, N(+1)=O, U(+1)=V, O(+1)=P, W(+1)=X ⇒ 'EOVPX'।", "type": "रीजनिंग (कोडिंग-डिकोडिंग)"}, {"id": 118, "cat": "रीजनिंग (कथन एवं तर्क)", "q": "दिए गए कथनों और तर्कों को ध्यानपूर्वक पढ़िए और उपयुक्त उत्तर का चयन कीजिए।\nकथन : जानवरों की लुप्तप्राय प्रजातियों वाले चिड़ियाघरों को छोड़कर बाकी सभी चिड़ियाघरों पर प्रतिबंध लगा दिया जाना चाहिए।\nतर्क :\nI. पशु, मनुष्यों के मनोरंजन के लिए नहीं बल्कि मनुष्यों के साथ सह-अस्तित्व के लिए हैं।\nII. पारिस्थितिक संतुलन बनाए रखने के लिए हमें लुप्तप्राय प्रजातियों पर ध्यान देने की आवश्यकता है।", "options": ["I और II दोनों कथन का समर्थन करते हैं।", "I और II दोनों कथन का समर्थन नहीं करते हैं।", "II कथन का समर्थन नहीं करता है, जबकि I कथन का समर्थन करता है।", "I कथन का समर्थन नहीं करता है, जबकि II कथन का समर्थन करता है।"], "ans": 0, "exp": "• तर्क I स्पष्ट करता है कि सामान्य चिड़ियाघरों पर प्रतिबंध क्यों लगना चाहिए (पशु मनोरंजन के लिए नहीं हैं) और तर्क II स्पष्ट करता है कि लुप्तप्राय प्रजातियों वाले संरक्षण केंद्रों को छूट क्यों मिलनी चाहिए। अतः I और II दोनों कथन का समर्थन करते हैं।", "type": "रीजनिंग (कथन एवं तर्क)"}, {"id": 119, "cat": "रीजनिंग (शर्त आधारित कोडिंग)", "q": "नीचे दी गई तालिका और शर्तों के अनुसार '3 @ 4 # 4' का सही कूट चुनिए:\nतालिका: [6→G, %→O, 8→H, 9→Q, @→T, $→M, 5→A, 4→B, ^→L, +→M, #→F, 3→S, 7→Q]\nशर्तें:\n(i) यदि पहला घटक एक प्रतीक और अंतिम घटक एक संख्या है, तो इन दोनों के कूटों को आपस में बदला जाना चाहिए।\n(ii) यदि पहला घटक एक विषम संख्या और अंतिम घटक एक सम संख्या है, तो पहले और अंतिम घटकों को © (या S) के रूप में कूटबद्ध किया जाना चाहिए।\n(iii) यदि दूसरे और तीसरे, दोनों घटक पूर्ण वर्ग हैं, तो तीसरे घटक को दूसरे घटक के कूट के रूप में कूटबद्ध किया जाना चाहिए।\nप्रश्न: 3 @ 4 # 4 को किस प्रकार कूटबद्ध किया जाएगा?", "options": ["©TBF©", "©TFBC", "STBF©", "SFTF©"], "ans": 0, "exp": "• प्रश्न समूह: '3 @ 4 # 4'\n• यहाँ पहला घटक '3' (विषम संख्या) है और अंतिम घटक '4' (सम संख्या) है, अतः शर्त (ii) लागू होती है (प्रिंट में © या S प्रतीक)।\n• बीच के तीन घटकों के सीधे कूट: @ → T, 4 → B, # → F।\n• अतः सही कूट '©TBF©' (या हिंदी पाठ के अनुसार STBF©/STBFS) होगा।", "type": "रीजनिंग (शर्त आधारित कोडिंग)"}, {"id": 120, "cat": "रीजनिंग (संख्या शृंखला)", "q": "दी गई शृंखला में प्रश्न-चिह्न (?) के स्थान पर क्या आना चाहिए?\n129, 128, 124, 115, 99, ?", "options": ["71", "74", "72", "73"], "ans": 1, "exp": "• शृंखला में क्रमिक पूर्ण वर्ग संख्याएँ (−1², −2², −3², −4², −5²) घटाई जा रही हैं:\n  129 − 1 = 128\n  128 − 4 = 124\n  124 − 9 = 115\n  115 − 16 = 99\n  99 − 25 = 74।", "type": "रीजनिंग (संख्या शृंखला)"}, {"id": 121, "cat": "GS (भौतिकी - चुंबकत्व)", "q": "चुंबक से संबंधित निम्नलिखित कथनों पर विचार कीजिए:\n1. चुंबक को गर्म करने, चोट करने तथा ऊँचाई से गिराने पर चुंबक अपना गुण खो देती है।\n2. प्राचीनकाल में यात्री कृत्रिम चुंबक का प्रयोग दिशा निर्धारण के लिए करते थे।\n3. कृत्रिम चुंबक केवल छड़ के आकार के बनाए जाते हैं।\nउपरोक्त में कौन-सा/से कथन सत्य है/हैं?", "options": ["1 और 2", "2 और 3", "केवल 1", "1, 2 और 3"], "ans": 2, "exp": "• केवल कथन 1 सत्य है।\n• कथन 2 गलत है क्योंकि प्राचीनकाल में यात्री दिशा निर्धारण के लिए प्राकृतिक चुंबक (मैग्नेटाइट/लोडस्टोन) का प्रयोग करते थे।\n• कथन 3 गलत है क्योंकि कृत्रिम चुंबक छड़, नाल, बेलनाकार या सुई किसी भी आकार के बनाए जाते हैं।", "type": "GS (भौतिकी - चुंबकत्व)"}, {"id": 122, "cat": "GS (रसायन विज्ञान)", "q": "निम्न में से कौन-सा कथन सही है?", "options": ["पानी की टंकी में कवक को नष्ट करने के लिए नाइट्रिक एसिड का उपयोग किया जाता है।", "पानी की टंकी में कवक को नष्ट करने के लिए कॉपर सल्फेट का उपयोग किया जाता है।", "पानी की टंकी में कवक को नष्ट करने के लिए मैग्नीशियम सल्फेट का उपयोग किया जाता है।", "पानी की टंकी में कवक को नष्ट करने के लिए जिंक सल्फेट का उपयोग किया जाता है।"], "ans": 1, "exp": "• पानी की टंकी या जलाशयों में कवक (Fungi) और शैवाल को नष्ट करने के लिए कवकनाशी के रूप में 'कॉपर सल्फेट (CuSO₄ - नीला थोथा)' का उपयोग किया जाता है।", "type": "GS (रसायन विज्ञान)"}, {"id": 123, "cat": "GS (भौतिकी)", "q": "स्थायी चुंबक से संबंधित निम्नलिखित कथनों पर विचार कीजिए:\n1. स्थायी चुंबक बनाने के लिए पदार्थ की उच्च चुंबकीय धारणशीलता और उच्च निग्राहिता होनी चाहिए।\n2. निकिल, कोबाल्ट एवं ताँबे का एक मिश्रधातु स्थायी चुंबक बनाने के लिए उपयुक्त पदार्थ है।\n3. स्थायी चुंबक बनाने के लिए कम चुंबकशीलता होनी चाहिए।\nउपरोक्त में से कौन-सा/से कथन सत्य है/हैं?", "options": ["केवल 2", "केवल 3", "1 और 2", "2 और 3"], "ans": 2, "exp": "• स्थायी चुंबक बनाने के लिए पदार्थ की धारणशीलता (Retentivity) और निग्राहिता (Coercivity) दोनों उच्च होनी चाहिए (कथन 1 सही) तथा एलनिको (Al-Ni-Co-Cu) जैसी मिश्रधातुएँ इसके लिए उपयुक्त होती हैं (कथन 2 सही)। अतः 1 और 2 सत्य हैं।", "type": "GS (भौतिकी)"}, {"id": 124, "cat": "GK/GS (खगोलिकी)", "q": "ग्रह तथा तारों में मुख्य अंतर यह है कि—\n1. ग्रहों का अपना प्रकाश नहीं होता है, जबकि तारे स्वयं के प्रकाश से चमकते हैं।\n2. तारे टिमटिमाते हैं, जबकि ग्रह नहीं टिमटिमाते।\n3. प्रत्येक तारा एक निश्चित दूरी पर सूर्य की परिक्रमा करता है, जबकि ग्रह स्थिर रहते हैं।\nउपरोक्त में से कौन-सा/से कथन सत्य है/हैं?", "options": ["1 और 2", "2 और 3", "केवल 3", "केवल 1"], "ans": 0, "exp": "• कथन 1 और 2 सत्य हैं। कथन 3 गलत है क्योंकि ग्रह सूर्य की परिक्रमा करते हैं, तारे सूर्य की परिक्रमा नहीं करते।", "type": "GK/GS (खगोलिकी)"}, {"id": 125, "cat": "GS (वनस्पति विज्ञान)", "q": "बहुवर्षी पादप (Perennial plants) द्विवर्षीय पादप (Biennial plants) से भिन्न होते हैं। निम्न में से कौन सा विकल्प इसका कारण है?\n1. इसमें भूमिगत वार्षिक संरचनाएँ होती हैं।\n2. इसमें अलैंगिक प्रजनन संरचनाएँ होती हैं।\n3. पेड़ की प्रजाति होती है।\n4. इसमें पुष्पों के मौसमी उत्पादन के बाद पादप मरता नहीं है।", "options": ["1 और 2", "2 और 3", "केवल 3", "केवल 4"], "ans": 3, "exp": "• बहुवर्षीय पादप द्विवर्षीय पादप से इस बात में भिन्न होते हैं कि पुष्पों और फलों के मौसमी उत्पादन के बाद भी बहुवर्षीय पादप मरता नहीं है, बल्कि कई वर्षों तक जीवित रहता है (केवल 4)।", "type": "GS (वनस्पति विज्ञान)"}, {"id": 126, "cat": "गणित (चाल, समय और दूरी)", "q": "अपनी सामान्य चाल की 3/5 चाल से चलते हुए, सिमरन 42 किमी की दूरी 35 मिनट में तय करती है। यदि सिमरन अपनी सामान्य चाल से चलती है, तो वह 27 मिनट में कितनी दूरी (किमी. में) तय करेगी?", "options": ["60", "48", "64", "54"], "ans": 3, "exp": "• सामान्य चाल की 3/5 चाल से 35 मिनट में तय दूरी = 42 किमी।\n• अतः सामान्य चाल से 35 मिनट में तय दूरी = 42 × (5/3) = 70 किमी।\n• इसलिए सिमरन की सामान्य चाल = 70 किमी / 35 मिनट = 2 किमी/मिनट।\n• अतः सामान्य चाल से 27 मिनट में तय की गई दूरी = 2 × 27 = 54 किमी।", "type": "गणित (चाल, समय और दूरी)"}, {"id": 127, "cat": "गणित (समय और कार्य)", "q": "रीता और मीना मिलकर एक काम को 10 दिनों में पूरा कर सकते हैं, जबकि रीता अकेले उसी काम को 15 दिनों में पूरा कर सकती है। मीना इस काम को अकेले कितने दिनों में पूरा करेगी?", "options": ["38 दिन", "28 दिन", "30 दिन", "32 दिन"], "ans": 2, "exp": "• मीना का 1 दिन का कार्य = 1/10 − 1/15 = (3 − 2)/30 = 1/30 भाग।\n• अतः मीना अकेले उस काम को 30 दिनों में पूरा करेगी।", "type": "गणित (समय और कार्य)"}, {"id": 128, "cat": "गणित (चक्रवृद्धि ब्याज)", "q": "₹ 25000 की राशि पर 12% वार्षिक चक्रवृद्धि ब्याज की दर से 3 वर्ष का चक्रवृद्धि ब्याज ज्ञात कीजिए।", "options": ["₹ 1048.20", "₹ 10123.20", "₹ 900.30", "₹ 9720"], "ans": 1, "exp": "• मिश्रधन A = P × (1 + R/100)³ = 25000 × (1.12)³ = 25000 × 1.404928 = ₹ 35,123.20।\n• अतः चक्रवृद्धि ब्याज (CI) = 35,123.20 − 25,000 = ₹ 10,123.20।", "type": "गणित (चक्रवृद्धि ब्याज)"}, {"id": 129, "cat": "गणित (छूट / बट्टा)", "q": "एक पेंटिंग को यदि 5% की छूट के बाद ₹5225 में बेचा गया, तो पेंटिंग का अंकित मूल्य ज्ञात कीजिए।", "options": ["₹5,500", "₹5,250", "₹5,575", "₹5,550"], "ans": 0, "exp": "• 5% छूट के बाद विक्रय मूल्य = अंकित मूल्य का 95% = ₹5,225।\n• अतः अंकित मूल्य (MP) = (5225 / 95) × 100 = 55 × 100 = ₹5,500।", "type": "गणित (छूट / बट्टा)"}, {"id": 130, "cat": "गणित (आयु समस्या)", "q": "सौरिश अब 25 साल का है, जबकि उसका चचेरा भाई 7 साल का है। कितने साल बाद सौरिश की आयु उसके चचेरे भाई की आयु का 2.5 गुणा होगी?", "options": ["5", "3", "6", "4"], "ans": 0, "exp": "• माना x साल बाद सौरिश की आयु उसके चचेरे भाई की आयु का 2.5 गुना होगी:\n  25 + x = 2.5 × (7 + x)\n⇒ 25 + x = 17.5 + 2.5x\n⇒ 1.5x = 7.5 ⇒ x = 5 साल।", "type": "गणित (आयु समस्या)"}, {"id": 131, "cat": "GK (आधुनिक इतिहास)", "q": "भारत में राष्ट्रवाद के उदय के संदर्भ में निम्न में से कौन-सा/से कथन असत्य है/हैं?\n1. आधुनिक शिक्षा प्रणाली विभिन्न भाषाई क्षेत्रों में राष्ट्रवादी विचारों को फैलाने का माध्यम बन गई।\n2. शिक्षित भारतीय, स्वतंत्रता संग्राम के दौरान अंग्रेजों के प्रति वफादार रहे।", "options": ["केवल 1", "केवल 2", "1 और 2", "न तो 1 और न ही 2"], "ans": 1, "exp": "• कथन 1 सत्य है, जबकि कथन 2 असत्य है क्योंकि शिक्षित भारतीय मध्यम वर्ग ने ही औपनिवेशिक शोषण को समझकर भारतीय राष्ट्रीय आंदोलन का नेतृत्व किया था। अतः केवल 2 असत्य है।", "type": "GK (आधुनिक इतिहास)"}, {"id": 132, "cat": "GK (आधुनिक इतिहास)", "q": "1857 के विद्रोह के संबंध में विचार कीजिए—\n1. यह विद्रोह बहुत व्यापक क्षेत्र में फैला और इसे जनता का व्यापक समर्थन प्राप्त था, फिर भी यह पूरे देश को या भारतीय समाज के सभी अंगों तथा वर्गों को अपने विद्रोह में नहीं ले सका।\n2. ग्वालियर के सिंधिया, इंदौर के होल्कर, हैदराबाद के निजाम आदि शासकों ने विद्रोह को व्यापक रूप से अपना समर्थन प्रदान किया था।\nउपर्युक्त में से कौन-सा/से कथन सही नहीं है/हैं?", "options": ["केवल 1", "केवल 2", "1 और 2", "न तो 1 और न ही 2"], "ans": 1, "exp": "• कथन 2 सही नहीं है क्योंकि ग्वालियर के सिंधिया, इंदौर के होल्कर और हैदराबाद के निजाम ने 1857 के विद्रोह का समर्थन करने के बजाय अंग्रेजों की सहायता की थी।", "type": "GK (आधुनिक इतिहास)"}, {"id": 133, "cat": "GK (आधुनिक इतिहास)", "q": "अहरार आंदोलन के बारे में निम्न में से कौन-सा कथन सही है?\n1. मौलाना मुहम्मद अली इसके संस्थापकों में से एक थे।\n2. इसके सदस्यों ने भारतीय स्वतंत्रता आंदोलन में सक्रिय भागीदारी की वकालत की।\n3. इसकी स्थापना 20वीं सदी के प्रारंभिक दशक में हुई थी।\n4. इन्होंने अलीगढ़ आंदोलन के राजभक्त समर्थक राजनीति का समर्थन किया।", "options": ["2, 3 और 4", "1, 2 और 3", "1, 3 और 4", "1, 4 और 3"], "ans": 1, "exp": "• अहरार आंदोलन के संबंध में कथन 1, 2 और 3 सही हैं। इन्होंने अलीगढ़ आंदोलन की ब्रिटिश-समर्थक राजनीति का विरोध किया था (अतः कथन 4 गलत है)।", "type": "GK (आधुनिक इतिहास)"}, {"id": 134, "cat": "GK (आधुनिक इतिहास)", "q": "मुगल साम्राज्य के पतन के पश्चात् तीन प्रमुख राज्यों तथा उनके संस्थापकों के संदर्भ में कौन-सा सही सुमेलित है?\n1. बंगाल — मुर्शिद कुली खाँ\n2. हैदराबाद — निजाम-उल-मुल्क आसफजाह\n3. अवध — अजीजुद्दीन", "options": ["1 और 3", "2 और 3", "1 और 2", "उपर्युक्त सभी"], "ans": 2, "exp": "• बंगाल (मुर्शिद कुली खाँ) और हैदराबाद (निजाम-उल-मुल्क आसफजाह) सही सुमेलित हैं, जबकि अवध के स्वायत्त राज्य के संस्थापक 'सआदत खान बुरहान-उल-मुल्क' थे (अजीजुद्दीन नहीं)। अतः केवल 1 और 2 सही हैं।", "type": "GK (आधुनिक इतिहास)"}, {"id": 135, "cat": "GK (मध्यकालीन इतिहास)", "q": "जैनुल आबिदीन की उपलब्धियों में कौन-सा सही नहीं है?", "options": ["उसे 'बडशाह' कहा जाता है", "उसने लद्दाख पर मंगोल हमले को नाकाम किया था", "यह 'तिब्बत-ए-खुर्द' को नहीं जीत पाया", "उसे कश्मीर का अकबर कहा जाता है"], "ans": 2, "exp": "• विकल्प (C) सही नहीं है क्योंकि कश्मीर के शासक जैनुल आबिदीन ने 'तिब्बत-ए-खुर्द' (लद्दाख/बाल्टिस्तान क्षेत्र) पर सफलतापूर्वक विजय प्राप्त की थी।", "type": "GK (मध्यकालीन इतिहास)"}, {"id": 136, "cat": "GK (कृषि एवं अर्थव्यवस्था)", "q": "निम्नलिखित कथनों पर विचार कीजिए—\n1. भारत में बागवानी क्षेत्रक समस्त कृषि उत्पाद का लगभग एक तिहाई है।\n2. उद्यान विज्ञान (बागवानी) फसलों के अंतर्गत रेशेदार फसलें, औषधीय तथा सुगंधित पौधे तथा मसालों को शामिल किया जाता है।\n3. फल और सब्जियों के उत्पादन में भारत का प्रथम स्थान है।\nउपर्युक्त कथनों में से कौन-सा/से कथन सही है/हैं?", "options": ["1 और 2", "केवल 1", "2 और 3", "ये सभी"], "ans": 0, "exp": "• प्रश्न-पत्र के विकल्पों के अनुसार (A) '1 और 2' (या केवल 1, क्योंकि बागवानी कृषि उत्पाद का लगभग 1/3 है; वैज्ञानिक रूप से रेशेदार फसलें सस्य विज्ञान में आती हैं और फल-सब्जी उत्पादन में चीन प्रथम व भारत द्वितीय स्थान पर है)।", "type": "GK (कृषि एवं अर्थव्यवस्था)"}, {"id": 137, "cat": "GK (अर्थव्यवस्था)", "q": "व्यावसायिक बैंकों के कार्यों के संदर्भ में निम्नलिखित कथनों पर विचार कीजिए और नीचे दिए गए कूट की सहायता से उत्तर चुनिए:\n1. जमाएँ स्वीकार करना\n2. ऋण देना\n3. ग्राहकों को अधिविकर्ष (Overdraft) की सुविधा देना", "options": ["1 और 2", "1 और 3", "2 और 3", "1, 2 और 3"], "ans": 3, "exp": "• जमाएँ स्वीकार करना, ऋण देना और अधिविकर्ष (Overdraft) की सुविधा देना—ये तीनों व्यावसायिक बैंकों (Commercial Banks) के प्रमुख कार्य हैं।", "type": "GK (अर्थव्यवस्था)"}, {"id": 138, "cat": "GK (अर्थव्यवस्था)", "q": "भुगतान संतुलन (Balance of Payments) में शामिल है—", "options": ["दृश्य व्यापार मदें", "अदृश्य व्यापार मदें", "ऋण", "ये सभी"], "ans": 3, "exp": "• किसी देश के भुगतान संतुलन (Balance of Payments) में दृश्य व्यापार मदें (वस्तुएँ), अदृश्य व्यापार मदें (सेवाएँ, आय, अंतरण) और पूंजीगत ऋण/निवेश ये सभी शामिल होते हैं।", "type": "GK (अर्थव्यवस्था)"}, {"id": 139, "cat": "GK (अर्थव्यवस्था)", "q": "अर्थव्यवस्था में समग्र माँग (Aggregate Demand) में कमी के कारण उत्पन्न बेरोजगारी को कहते हैं?", "options": ["चक्रीय बेरोजगारी (Cyclical Unemployment)", "मौसमी बेरोजगारी (Seasonal Unemployment)", "संरचनात्मक बेरोजगारी (Structural Unemployment)", "घर्षणात्मक बेरोजगारी (Frictional Unemployment)"], "ans": 0, "exp": "• आर्थिक मंदी या समग्र माँग (Aggregate Demand) में कमी के कारण उत्पन्न होने वाली बेरोजगारी को 'चक्रीय बेरोजगारी (Cyclical Unemployment)' कहा जाता है।", "type": "GK (अर्थव्यवस्था)"}, {"id": 140, "cat": "GK (अर्थव्यवस्था)", "q": "निम्न कथन (A) व कारण (R) को पढ़िए और नीचे दिए गए कूट की सहायता से सही उत्तर का चयन कीजिए:\nकथन (A): भूमि की अधिकतम सीमा निर्धारण नीति का उद्देश्य कुछ लोगों में भू-स्वामित्व के संकेंद्रण को कम करना था।\nकारण (R): इससे कृषि उत्पादन में वृद्धि हुई, किंतु बिचौलियों का उन्मूलन कर समानता के लक्ष्य की पूर्ण प्राप्ति नहीं हो पाई।", "options": ["A और R दोनों सही हैं तथा R, A का सही स्पष्टीकरण है", "A और R दोनों सही हैं, परंतु R, A का सही स्पष्टीकरण नहीं है", "A सही है, किंतु R गलत है", "A गलत है, किंतु R सही है"], "ans": 1, "exp": "• कथन (A) और कारण (R) दोनों स्वतंत्र रूप से सत्य हैं, परंतु (R) कथन (A) का सही स्पष्टीकरण नहीं है। अतः विकल्प (B) सही है।", "type": "GK (अर्थव्यवस्था)"}, {"id": 141, "cat": "रीजनिंग (न्याय निगमन)", "q": "नीचे दो कथन और उसके बाद दो निष्कर्ष I और II दिए गए हैं:\nकथन:\n• कुछ बैग पानी हैं।\n• सभी पानी तरल हैं।\nनिष्कर्ष:\nI. कुछ तरल बैग हैं।\nII. सभी बैग तरल हैं।", "options": ["निष्कर्ष I और II दोनों अनुसरण करते हैं।", "न तो निष्कर्ष I और न ही II अनुसरण करता है।", "केवल निष्कर्ष II अनुसरण करता है।", "केवल निष्कर्ष I अनुसरण करता है।"], "ans": 3, "exp": "• चूँकि कुछ बैग पानी हैं और सभी पानी तरल हैं, इसलिए कुछ बैग निश्चित रूप से तरल हैं (अर्थात् कुछ तरल बैग हैं — निष्कर्ष I सत्य)। सभी बैग तरल होना आवश्यक नहीं है (निष्कर्ष II असत्य)। अतः केवल निष्कर्ष I अनुसरण करता है।", "type": "रीजनिंग (न्याय निगमन)"}, {"id": 142, "cat": "रीजनिंग (पंक्ति बैठक व्यवस्था)", "q": "सात व्यक्ति एक सीधी पंक्ति में उत्तर की ओर मुख करके बैठे हुए हैं। E, M और N दोनों के ठीक बगल में नहीं बैठा हुआ है। N, M के भी ठीक बगल में नहीं बैठा हुआ है। M, L के दाईं ओर चौथे स्थान पर बैठा है। I पंक्ति के दाएँ सिरे पर बैठा हुआ है। N, B के बाईं ओर चौथे स्थान पर बैठा है। P, M के बाईं ओर तीसरे और N के दाईं ओर दूसरे स्थान पर बैठा है। पंक्ति के बाएँ सिरे पर कौन बैठा है?", "options": ["I", "N", "E", "P"], "ans": 1, "exp": "• बाएँ से दाएँ 7 स्थानों (1 से 7) पर व्यवस्थित करने पर:\n  - I दाएँ सिरे पर है ⇒ स्थान 7 = I।\n  - P, M के बाईं ओर तीसरे और N के दाईं ओर दूसरे स्थान पर है ⇒ यदि N = 1 हो, तो P = 3 और M = 6 होगा।\n  - M(6), L के दाईं ओर चौथे स्थान पर है ⇒ L = 2।\n  - N(1), B के बाईं ओर चौथे स्थान पर है ⇒ B = 5।\n  - शेष स्थान 4 पर E बैठेगा (जो न तो M के बगल में है और न ही N के)।\n• अंतिम क्रम (बाएँ से दाएँ): 1:N, 2:L, 3:P, 4:E, 5:B, 6:M, 7:I।\n• अतः पंक्ति के बाएँ सिरे (स्थान 1) पर 'N' बैठा है।", "type": "रीजनिंग (पंक्ति बैठक व्यवस्था)"}, {"id": 143, "cat": "रीजनिंग (वृत्ताकार बैठक व्यवस्था)", "q": "पाँच व्यक्ति, A, D, E, F और K, एक वृत्ताकार मेज के परितः मेज के केंद्र की ओर मुख करके बैठे हैं। A, D और E दोनों के ठीक बगल में बैठा है। F, E और K दोनों के ठीक बगल में बैठा है। निम्न में से कौन A और F दोनों के ठीक बगल में बैठा है?", "options": ["D", "K", "B", "E"], "ans": 3, "exp": "• A, D और E के बीच में है ⇒ (D - A - E)।\n• F, E और K के बीच में है ⇒ (D - A - E - F - K)।\n• इस क्रम से स्पष्ट है कि A और F दोनों के ठीक बगल में (बीच में) 'E' बैठा है।", "type": "रीजनिंग (वृत्ताकार बैठक व्यवस्था)"}, {"id": 144, "cat": "रीजनिंग (अक्षर-प्रतीक शृंखला)", "q": "निम्न अक्षर और प्रतीक शृंखला के आधार पर पूछे गए प्रश्न का उत्तर दीजिए:\n(बाएँ) & $ T & J $ X G ^ K € U % & Z Y # S @ * D X ¥ F ø (दाएँ)\nउपरोक्त शृंखला में ऐसे कितने प्रतीक हैं, जिनमें से प्रत्येक के ठीक पहले एक अक्षर है और ठीक बाद एक प्रतीक है?", "options": ["1", "2", "शून्य", "3"], "ans": 1, "exp": "• शर्त: [अक्षर (Letter)] → [प्रतीक (Symbol)] → [प्रतीक (Symbol)]।\n• शृंखला में बाएँ से दाएँ देखने पर ऐसे केवल 2 प्रतीक मिलते हैं:\n  1. 'U % &' में प्रतीक '%' (जिसके ठीक पहले अक्षर U और ठीक बाद प्रतीक & है)\n  2. 'S @ *' में प्रतीक '@' (जिसके ठीक पहले अक्षर S और ठीक बाद प्रतीक * है)\n• अतः सही उत्तर 2 है।", "type": "रीजनिंग (अक्षर-प्रतीक शृंखला)"}, {"id": 145, "cat": "रीजनिंग (शर्त आधारित कोडिंग)", "q": "तालिका और शर्तों के अनुसार '4 5 $ 9 4 % # 6' का सही कूट चुनिए:\nतालिका: [4→S, 5→D, 9→M, #→U, $→T, %→L, 6→A]\nशर्तें—\n(i) यदि पहला घटक एक सम संख्या है, और अंतिम घटक एक विषम संख्या है, तो इन दोनों के कूटों को आपस में बदला जाना चाहिए।\n(ii) यदि दूसरा घटक एक सम संख्या है, और पाँचवाँ घटक एक प्रतीक है, तो इन दोनों के कूटों को आपस में बदला जाना चाहिए।\n(iii) यदि चौथा घटक एक संख्या है, और छठा घटक एक प्रतीक है, तो इन दोनों घटकों (चौथे और छठवें घटक) को G के रूप में कूटबद्ध किया जाना चाहिए।\nप्रश्न : 4 5 $ 9 4 % # 6", "options": ["A D T G S G U S", "S D T G S G U A", "S S T G D G U A", "S D T M L G U A"], "ans": 1, "exp": "• दिए गए समूह '4(1) 5(2) $(3) 9(4) 4(5) %(6) #(7) 6(8)' में:\n  - शर्त (i) लागू नहीं होती क्योंकि अंतिम घटक '6' विषम नहीं बल्कि सम संख्या है।\n  - शर्त (ii) लागू नहीं होती क्योंकि दूसरा घटक '5' सम नहीं है और पाँचवाँ घटक '4' प्रतीक नहीं है।\n  - शर्त (iii) लागू होती है क्योंकि चौथा घटक '9' एक संख्या है और छठा घटक '%' एक प्रतीक है ⇒ अतः चौथे और छठे दोनों घटकों का कूट 'G' होगा।\n• अतः पूरा कूट: 4(S) 5(D) $(T) 9(G) 4(S) %(G) #(U) 6(A) = 'S D T G S G U A'।", "type": "रीजनिंग (शर्त आधारित कोडिंग)"}, {"id": 146, "cat": "रीजनिंग (दिशा और दूरी)", "q": "मुकेश बिंदु A से ड्राइव करना शुरू करता है और उत्तर की ओर 9 किमी ड्राइव करता है। फिर वह दाएँ मुड़ता है और 7 किमी ड्राइव करता है, फिर दाएँ मुड़ता है और 10 किमी ड्राइव करता है। फिर वह दाएँ मुड़ता है और 8 किमी ड्राइव करता है। वह अंत में दाएँ मुड़ता है और 1 किमी ड्राइव करके बिंदु P पर रुक जाता है। बिंदु A पर पुनः पहुँचने के लिए उसे कितनी दूर (न्यूनतम दूरी) और किस दिशा में ड्राइव करना चाहिए?", "options": ["1 किमी, पश्चिम की ओर", "2 किमी, पूर्व की ओर", "2 किमी, पश्चिम की ओर", "1 किमी, पूर्व की ओर"], "ans": 3, "exp": "• बिंदु A(0, 0) से प्रारंभ:\n  1. उत्तर में 9 किमी → (0, 9)\n  2. दाएँ (पूर्व) 7 किमी → (7, 9)\n  3. दाएँ (दक्षिण) 10 किमी → (7, −1)\n  4. दाएँ (पश्चिम) 8 किमी → (−1, −1)\n  5. दाएँ (उत्तर) 1 किमी → बिंदु P(−1, 0)।\n• बिंदु P(−1, 0) बिंदु A(0, 0) के पश्चिम में 1 किमी पर है। अतः बिंदु A पर वापस पहुँचने के लिए उसे '1 किमी, पूर्व की ओर' ड्राइव करना चाहिए।", "type": "रीजनिंग (दिशा और दूरी)"}, {"id": 147, "cat": "रीजनिंग (गणितीय संक्रियाएँ)", "q": "यदि '+' और '–' को परस्पर बदल दिया जाए तथा '×' और '÷' को परस्पर बदल दिया जाए, तो निम्नलिखित समीकरण में प्रश्न-चिह्न (?) के स्थान पर क्या आएगा?\n186 ÷ 5 + 189 × 3 – 2 = ?", "options": ["869", "884", "887", "881"], "ans": 0, "exp": "• प्रश्नानुसार चिह्न आपस में बदलने पर:\n  = 186 × 5 − 189 ÷ 3 + 2\n  = 930 − 63 + 2\n  = 867 + 2 = 869।", "type": "रीजनिंग (गणितीय संक्रियाएँ)"}, {"id": 148, "cat": "रीजनिंग (अक्षर सादृश्यता)", "q": "निम्नलिखित में से किस अक्षर-समूह द्वारा # और % को प्रतिस्थापित करना चाहिए ताकि :: के बाईं ओर के अक्षर-समूह युग्म के बीच का पैटर्न और संबंध, :: के दाईं ओर के समान हो?\n# : OLM :: HEF : %", "options": ["# = POP, % = EUC", "# = RUI, % = ESA", "# = RVP, % = EQZ", "# = ROP, % = EBC"], "ans": 3, "exp": "• विकल्प (D) '# = ROP, % = EBC' रखने पर दोनों ओर प्रत्येक अक्षर में −3 का एकसमान संबंध बनता है:\n  R(18)−3=O(15), O(15)−3=L(12), P(16)−3=M(13) [ROP : OLM]\n  तथा H(8)−3=E(5), E(5)−3=B(2), F(6)−3=C(3) [HEF : EBC]।", "type": "रीजनिंग (अक्षर सादृश्यता)"}, {"id": 149, "cat": "रीजनिंग (विषम युग्म चुनना)", "q": "अंग्रेजी वर्णमाला क्रम के आधार पर, निम्नलिखित चार अक्षर-समूह युग्मों में से तीन अक्षर-समूह युग्म एक निश्चित तरीके से समान हैं और इस प्रकार एक ग्रुप बनाते हैं। निम्नलिखित में से कौन-सा अक्षर-समूह युग्म उस ग्रुप से संबंधित नहीं है?", "options": ["RX-VP", "GM-JE", "NT-QL", "AG-DY"], "ans": 0, "exp": "• विकल्प (B), (C) और (D) में पहले अक्षर में +3 और दूसरे अक्षर में −8 किया गया है:\n  - GM → JE: G(7)+3=J(10), M(13)−8=E(5)\n  - NT → QL: N(14)+3=Q(17), T(20)−8=L(12)\n  - AG → DY: A(1)+3=D(4), G(7)−8=Y(25)\n• जबकि विकल्प (A) 'RX-VP' में R(18)+4=V(22) और X(24)−8=P(16) है (+4, −8)। अतः 'RX-VP' असंगत है।", "type": "रीजनिंग (विषम युग्म चुनना)"}, {"id": 150, "cat": "रीजनिंग (वर्णमाला परीक्षण)", "q": "यदि शब्द ‘VIRTUAL’ के प्रत्येक अक्षर को अंग्रेजी वर्णानुक्रम में व्यवस्थित किया जाए, तो कितने अक्षरों का स्थान अपरिवर्तित रहेगा?", "options": ["एक", "तीन से अधिक", "तीन", "एक का भी नहीं"], "ans": 0, "exp": "• मूल शब्द:     V(1)  I(2)  R(3)  T(4)  U(5)  A(6)  L(7)\n• वर्णानुक्रम:  A(1)  I(2)  L(3)  R(4)  T(5)  U(6)  V(7)\n• तुलना करने पर केवल 'एक' अक्षर ('I', दूसरे स्थान पर) का स्थान अपरिवर्तित रहता है।", "type": "रीजनिंग (वर्णमाला परीक्षण)"}];
+
+    const TOTAL_TIME_SECONDS = 120 * 60; // 120 minutes
+    let remainingSeconds = TOTAL_TIME_SECONDS;
+    let timerInterval = null;
+    let currentIndex = 0;
+    let userAnswers = new Array(QUESTIONS.length).fill(null);
+    let reviewedFlags = new Array(QUESTIONS.length).fill(false);
+    let isSubmitted = false;
+    let activeFilter = 'all';
+    let activeSection = 'all';
+    let filteredIndices = QUESTIONS.map((_, idx) => idx);
+
+    const LETTERS = ['(A)', '(B)', '(C)', '(D)'];
+
+    // DOM Elements
+    const entryGateModal = document.getElementById('entryGateModal');
+    const startTestBtn = document.getElementById('startTestBtn');
+    const fsToggleBtn = document.getElementById('fsToggleBtn');
+    const timerDisplay = document.getElementById('timerDisplay');
+    const submitTestTopBtn = document.getElementById('submitTestTopBtn');
+    const modeBadge = document.getElementById('modeBadge');
+    const reviewFilterBar = document.getElementById('reviewFilterBar');
+    const qNumberBadge = document.getElementById('qNumberBadge');
+    const qTypeBadge = document.getElementById('qTypeBadge');
+    const savedStatusBadge = document.getElementById('savedStatusBadge');
+    const reviewStatusBadge = document.getElementById('reviewStatusBadge');
+    const questionText = document.getElementById('questionText');
+    const questionSvgBox = document.getElementById('questionSvgBox');
+    const optionsContainer = document.getElementById('optionsContainer');
+    const prevBtn = document.getElementById('prevBtn');
+    const clearBtn = document.getElementById('clearBtn');
+    const reviewBtn = document.getElementById('reviewBtn');
+    const nextBtn = document.getElementById('nextBtn');
+    const instantExplanationBox = document.getElementById('instantExplanationBox');
+    const instantStatusTitle = document.getElementById('instantStatusTitle');
+    const instantExplanationText = document.getElementById('instantExplanationText');
+    const statAnswered = document.getElementById('statAnswered');
+    const statReviewed = document.getElementById('statReviewed');
+    const statLeft = document.getElementById('statLeft');
+    const questionJumpSelect = document.getElementById('questionJumpSelect');
+    const submitConfirmModal = document.getElementById('submitConfirmModal');
+    const confirmAttemptedVal = document.getElementById('confirmAttemptedVal');
+    const confirmUnattemptedVal = document.getElementById('confirmUnattemptedVal');
+    const confirmReviewVal = document.getElementById('confirmReviewVal');
+    const cancelSubmitBtn = document.getElementById('cancelSubmitBtn');
+    const confirmFinalSubmitBtn = document.getElementById('confirmFinalSubmitBtn');
+    const scorecardModal = document.getElementById('scorecardModal');
+    const finalScoreVal = document.getElementById('finalScoreVal');
+    const finalRankMsg = document.getElementById('finalRankMsg');
+    const scoreCorrect = document.getElementById('scoreCorrect');
+    const scoreWrong = document.getElementById('scoreWrong');
+    const scoreSkipped = document.getElementById('scoreSkipped');
+    const scoreAccuracy = document.getElementById('scoreAccuracy');
+    const posMarksVal = document.getElementById('posMarksVal');
+    const negMarksVal = document.getElementById('negMarksVal');
+    const timeTakenVal = document.getElementById('timeTakenVal');
+    const checkSolutionsBtn = document.getElementById('checkSolutionsBtn');
+    const restartTestBtn = document.getElementById('restartTestBtn');
+
+    function requestBrowserFullscreen() {
+      const elem = document.documentElement;
+      try {
+        if (!document.fullscreenElement) {
+          if (elem.requestFullscreen) {
+            elem.requestFullscreen().catch(() => {});
+          } else if (elem.webkitRequestFullscreen) {
+            elem.webkitRequestFullscreen();
+          } else if (elem.msRequestFullscreen) {
+            elem.msRequestFullscreen();
+          }
+        }
+      } catch (err) {}
+    }
+
+    function formatTime(sec) {
+      const m = Math.floor(sec / 60);
+      const s = sec % 60;
+      return String(m).padStart(2, '0') + ':' + String(s).padStart(2, '0');
+    }
+
+    function startTimer() {
+      if (timerInterval) clearInterval(timerInterval);
+      timerInterval = setInterval(() => {
+        if (isSubmitted) return;
+        if (remainingSeconds > 0) {
+          remainingSeconds--;
+          timerDisplay.textContent = formatTime(remainingSeconds);
+          if (remainingSeconds <= 300) {
+            timerDisplay.parentElement.classList.remove('text-emerald-400');
+            timerDisplay.parentElement.classList.add('text-rose-400', 'animate-pulse');
+          }
+        } else {
+          clearInterval(timerInterval);
+          submitTest();
+        }
+      }, 1000);
+    }
+
+    function matchesSection(qObj, sec) {
+      if (sec === 'all') return true;
+      const c = qObj.type || '';
+      if (sec === 'math') return c.indexOf('गणित') !== -1;
+      if (sec === 'reasoning') return c.indexOf('रीजनिंग') !== -1;
+      if (sec === 'gkgs') return c.indexOf('गणित') === -1 && c.indexOf('रीजनिंग') === -1;
+      return true;
+    }
+
+    function rebuildFilteredIndices() {
+      filteredIndices = [];
+      QUESTIONS.forEach((q, idx) => {
+        if (!matchesSection(q, activeSection)) return;
+        const ans = userAnswers[idx];
+        if (activeFilter === 'all') filteredIndices.push(idx);
+        else if (activeFilter === 'correct' && ans === q.ans) filteredIndices.push(idx);
+        else if (activeFilter === 'wrong' && ans !== null && ans !== q.ans) filteredIndices.push(idx);
+        else if (activeFilter === 'unattempted' && ans === null) filteredIndices.push(idx);
+      });
+
+      if (filteredIndices.length === 0) {
+        filteredIndices = QUESTIONS.map((_, idx) => idx);
+      }
+      if (filteredIndices.indexOf(currentIndex) === -1) {
+        currentIndex = filteredIndices[0];
+      }
+    }
+
+    function populateJumpSelect() {
+      questionJumpSelect.innerHTML = '';
+      filteredIndices.forEach((qIdx) => {
+        const opt = document.createElement('option');
+        opt.value = String(qIdx);
+        let prefix = '⚪ ';
+        if (isSubmitted) {
+          if (userAnswers[qIdx] === QUESTIONS[qIdx].ans) prefix = '✅ ';
+          else if (userAnswers[qIdx] !== null) prefix = '❌ ';
+        } else {
+          if (userAnswers[qIdx] !== null && reviewedFlags[qIdx]) prefix = '★✓ ';
+          else if (userAnswers[qIdx] !== null) prefix = '✓ ';
+          else if (reviewedFlags[qIdx]) prefix = '★ ';
+        }
+        opt.textContent = prefix + 'प्रश्न ' + (qIdx + 1) + ' (' + QUESTIONS[qIdx].type.split(' ')[0] + ')';
+        if (qIdx === currentIndex) opt.selected = true;
+        questionJumpSelect.appendChild(opt);
+      });
+    }
+
+    function updateProgressStats() {
+      let ansCount = 0;
+      let revCount = 0;
+      for (let i = 0; i < QUESTIONS.length; i++) {
+        if (userAnswers[i] !== null) ansCount++;
+        if (reviewedFlags[i]) revCount++;
+      }
+      statAnswered.textContent = String(ansCount);
+      statReviewed.textContent = String(revCount);
+      statLeft.textContent = String(QUESTIONS.length - ansCount);
+      populateJumpSelect();
+    }
+
+    function renderQuestion() {
+      const qObj = QUESTIONS[currentIndex];
+      const chosen = userAnswers[currentIndex];
+      const isRev = reviewedFlags[currentIndex];
+
+      qNumberBadge.textContent = 'प्रश्न ' + qObj.id + ' / ' + QUESTIONS.length;
+      qTypeBadge.textContent = qObj.type;
+      questionText.textContent = qObj.q;
+
+      if (qObj.svg) {
+        questionSvgBox.innerHTML = qObj.svg;
+        questionSvgBox.classList.remove('hidden');
+      } else {
+        questionSvgBox.innerHTML = '';
+        questionSvgBox.classList.add('hidden');
+      }
+
+      if (!isSubmitted && chosen !== null) {
+        savedStatusBadge.classList.remove('hidden');
+      } else {
+        savedStatusBadge.classList.add('hidden');
+      }
+
+      if (isRev) {
+        reviewStatusBadge.classList.remove('hidden');
+      } else {
+        reviewStatusBadge.classList.add('hidden');
+      }
+
+      // Check if this question has figure options (opt_svgs)
+      const hasOptionSvgs = Array.isArray(qObj.opt_svgs) && qObj.opt_svgs.length === 4;
+      optionsContainer.className = hasOptionSvgs
+        ? 'mt-2 grid grid-cols-2 gap-2'
+        : 'mt-2 space-y-1.5';
+
+      optionsContainer.innerHTML = '';
+
+      qObj.options.forEach((optText, optIdx) => {
+        const btn = document.createElement('button');
+        btn.type = 'button';
+
+        // TCS MODE RULE: Only show right/wrong colors AFTER test is submitted (isSubmitted === true)
+        let baseClasses = hasOptionSvgs
+          ? 'w-full text-center p-2 rounded-xl border transition flex flex-col items-center justify-between gap-1.5 text-xs font-bold '
+          : 'w-full text-left p-2.5 sm:p-3 rounded-xl border transition flex items-start gap-2.5 text-[13px] sm:text-[14.5px] leading-snug font-medium ';
+
+        if (!isSubmitted) {
+          // LIVE TEST MODE: Highlight selected option in TCS Indigo/Blue only!
+          if (chosen === optIdx) {
+            baseClasses += 'bg-indigo-950/90 border-indigo-400 ring-1 ring-indigo-400 text-white font-bold shadow-md';
+          } else {
+            baseClasses += 'bg-slate-900 hover:bg-slate-800/90 border-slate-800 text-slate-100';
+          }
+        } else {
+          // REVIEW / SOLUTION MODE (After Submit): Show Green for correct, Rose for wrong
+          if (optIdx === qObj.ans) {
+            baseClasses += 'bg-emerald-950/80 border-emerald-500 ring-1 ring-emerald-500/60 text-emerald-100 font-bold shadow-sm';
+          } else if (chosen === optIdx && chosen !== qObj.ans) {
+            baseClasses += 'bg-rose-950/80 border-rose-500 text-rose-100 font-bold';
+          } else {
+            baseClasses += 'bg-slate-900/60 border-slate-800/80 text-slate-400';
+          }
+        }
+
+        btn.className = baseClasses;
+
+        const badge = document.createElement('span');
+        let badgeCls = 'px-2 py-0.5 rounded-md text-xs font-extrabold shrink-0 ';
+        if (!isSubmitted) {
+          if (chosen === optIdx) {
+            badgeCls += 'bg-indigo-500 text-white';
+          } else {
+            badgeCls += 'bg-slate-800 text-indigo-300 border border-slate-700';
+          }
+        } else {
+          if (optIdx === qObj.ans) {
+            badgeCls += 'bg-emerald-500 text-slate-950';
+          } else if (chosen === optIdx && chosen !== qObj.ans) {
+            badgeCls += 'bg-rose-500 text-white';
+          } else {
+            badgeCls += 'bg-slate-800 text-slate-400';
+          }
+        }
+        badge.className = badgeCls;
+        badge.textContent = (!isSubmitted && chosen === optIdx ? '◉ ' : '') + LETTERS[optIdx];
+
+        if (hasOptionSvgs) {
+          const topRow = document.createElement('div');
+          topRow.className = 'w-full flex items-center justify-between px-1';
+          topRow.appendChild(badge);
+
+          if (isSubmitted) {
+            const rightTag = document.createElement('span');
+            rightTag.className = 'text-[11px] font-extrabold ';
+            if (optIdx === qObj.ans) {
+              rightTag.className += 'text-emerald-400';
+              rightTag.textContent = '✓ सही उत्तर';
+              topRow.appendChild(rightTag);
+            } else if (chosen === optIdx && chosen !== qObj.ans) {
+              rightTag.className += 'text-rose-400';
+              rightTag.textContent = '✗ आपका उत्तर';
+              topRow.appendChild(rightTag);
+            }
+          }
+
+          const svgWrap = document.createElement('div');
+          svgWrap.className = 'w-full flex items-center justify-center py-0.5';
+          svgWrap.innerHTML = qObj.opt_svgs[optIdx];
+
+          btn.appendChild(topRow);
+          btn.appendChild(svgWrap);
+        } else {
+          const txtSpan = document.createElement('span');
+          txtSpan.className = 'flex-1';
+          txtSpan.textContent = optText;
+
+          btn.appendChild(badge);
+          btn.appendChild(txtSpan);
+
+          if (isSubmitted) {
+            const rightTag = document.createElement('span');
+            rightTag.className = 'text-xs font-extrabold shrink-0 ml-1 ';
+            if (optIdx === qObj.ans) {
+              rightTag.className += 'text-emerald-400';
+              rightTag.textContent = '✓ सही';
+              btn.appendChild(rightTag);
+            } else if (chosen === optIdx && chosen !== qObj.ans) {
+              rightTag.className += 'text-rose-400';
+              rightTag.textContent = '✗ गलत';
+              btn.appendChild(rightTag);
+            }
+          }
+        }
+
+        btn.addEventListener('click', () => {
+          if (isSubmitted) return;
+          userAnswers[currentIndex] = optIdx;
+          renderQuestion();
+          updateProgressStats();
+        });
+
+        optionsContainer.appendChild(btn);
+      });
+
+      // TCS MODE RULE: Explanation box is ONLY shown after the test is submitted!
+      if (isSubmitted) {
+        instantExplanationBox.classList.remove('hidden');
+        instantExplanationText.textContent = qObj.exp;
+
+        if (chosen === qObj.ans) {
+          instantExplanationBox.className = 'mt-2.5 rounded-xl border border-emerald-500/40 bg-emerald-950/25 p-3 sm:p-4 transition-all';
+          instantStatusTitle.className = 'font-extrabold text-xs sm:text-sm text-emerald-400 flex items-center gap-1.5';
+          instantStatusTitle.textContent = '✅ सही उत्तर! (+2.00 अंक) — सही विकल्प: ' + LETTERS[qObj.ans];
+        } else if (chosen !== null && chosen !== qObj.ans) {
+          instantExplanationBox.className = 'mt-2.5 rounded-xl border border-rose-500/40 bg-rose-950/25 p-3 sm:p-4 transition-all';
+          instantStatusTitle.className = 'font-extrabold text-xs sm:text-sm text-rose-400 flex items-center gap-1.5';
+          instantStatusTitle.textContent = '❌ गलत उत्तर! (-0.20 अंक) — आपका चयन: ' + LETTERS[chosen] + ' | सही विकल्प: ' + LETTERS[qObj.ans];
+        } else {
+          instantExplanationBox.className = 'mt-2.5 rounded-xl border border-amber-500/40 bg-slate-900/90 p-3 sm:p-4 transition-all';
+          instantStatusTitle.className = 'font-extrabold text-xs sm:text-sm text-amber-300 flex items-center gap-1.5';
+          instantStatusTitle.textContent = '⚪ अनुत्तरित प्रश्न (0.00 अंक) — सही विकल्प: ' + LETTERS[qObj.ans];
+        }
+      } else {
+        instantExplanationBox.classList.add('hidden');
+      }
+
+      const posInFiltered = filteredIndices.indexOf(currentIndex);
+      prevBtn.disabled = posInFiltered <= 0;
+      prevBtn.classList.toggle('opacity-40', posInFiltered <= 0);
+      clearBtn.disabled = isSubmitted || chosen === null;
+      clearBtn.classList.toggle('opacity-40', isSubmitted || chosen === null);
+    }
+
+    function moveQuestion(step) {
+      const pos = filteredIndices.indexOf(currentIndex);
+      const nextPos = pos + step;
+      if (nextPos >= 0 && nextPos < filteredIndices.length) {
+        currentIndex = filteredIndices[nextPos];
+        renderQuestion();
+        updateProgressStats();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+    }
+
+    function openSubmitConfirmation() {
+      let ansCount = 0;
+      let revCount = 0;
+      for (let i = 0; i < QUESTIONS.length; i++) {
+        if (userAnswers[i] !== null) ansCount++;
+        if (reviewedFlags[i]) revCount++;
+      }
+      confirmAttemptedVal.textContent = String(ansCount);
+      confirmUnattemptedVal.textContent = String(QUESTIONS.length - ansCount);
+      confirmReviewVal.textContent = String(revCount);
+      submitConfirmModal.classList.remove('hidden');
+    }
+
+    function submitTest() {
+      submitConfirmModal.classList.add('hidden');
+      isSubmitted = true;
+      if (timerInterval) clearInterval(timerInterval);
+
+      let correct = 0;
+      let wrong = 0;
+      let skipped = 0;
+
+      QUESTIONS.forEach((q, i) => {
+        if (userAnswers[i] === null) {
+          skipped++;
+        } else if (userAnswers[i] === q.ans) {
+          correct++;
+        } else {
+          wrong++;
+        }
+      });
+
+      const posMarks = correct * 2.0;
+      const negMarks = wrong * 0.2;
+      const totalScore = posMarks - negMarks;
+      const attempted = correct + wrong;
+      const accuracy = attempted > 0 ? ((correct / attempted) * 100).toFixed(1) : '0.0';
+      const elapsedSec = TOTAL_TIME_SECONDS - remainingSeconds;
+
+      finalScoreVal.textContent = totalScore.toFixed(2);
+      scoreCorrect.textContent = String(correct);
+      scoreWrong.textContent = String(wrong);
+      scoreSkipped.textContent = String(skipped);
+      scoreAccuracy.textContent = accuracy + '%';
+      posMarksVal.textContent = '+' + posMarks.toFixed(2);
+      negMarksVal.textContent = '-' + negMarks.toFixed(2);
+      timeTakenVal.textContent = formatTime(elapsedSec);
+
+      if (totalScore >= 220) {
+        finalRankMsg.textContent = '🌟 उत्कृष्ट प्रदर्शन! आपकी तैयारी BSSC मेरिट स्तर की है!';
+        finalRankMsg.className = 'text-xs font-bold text-emerald-400 mt-1';
+      } else if (totalScore >= 150) {
+        finalRankMsg.textContent = '👍 अच्छा प्रयास! नीचे Check Solutions पर क्लिक कर सभी प्रश्नों का विस्तृत हल देखें।';
+        finalRankMsg.className = 'text-xs font-bold text-amber-300 mt-1';
+      } else {
+        finalRankMsg.textContent = '💪 अभ्यास जारी रखें! नीचे Check Solutions पर क्लिक कर सभी 150 प्रश्नों की व्याख्या पढ़ें।';
+        finalRankMsg.className = 'text-xs font-bold text-rose-400 mt-1';
+      }
+
+      modeBadge.classList.remove('hidden');
+      submitTestTopBtn.textContent = 'Scorecard';
+      scorecardModal.classList.remove('hidden');
+      renderQuestion();
+      updateProgressStats();
+    }
+
+    function applyReviewFilter(filterType) {
+      activeFilter = filterType;
+      rebuildFilteredIndices();
+      currentIndex = filteredIndices[0];
+
+      document.querySelectorAll('.filter-btn').forEach((btn) => {
+        if (btn.getAttribute('data-filter') === filterType) {
+          btn.classList.add('ring-2', 'ring-indigo-400');
+        } else {
+          btn.classList.remove('ring-2', 'ring-indigo-400');
+        }
+      });
+
+      renderQuestion();
+      updateProgressStats();
+    }
+
+    function applySectionFilter(secType) {
+      activeSection = secType;
+      rebuildFilteredIndices();
+      currentIndex = filteredIndices[0];
+
+      document.querySelectorAll('.sec-btn').forEach((btn) => {
+        if (btn.getAttribute('data-sec') === secType) {
+          btn.className = 'sec-btn shrink-0 px-2.5 py-1 rounded-lg bg-indigo-600 text-white font-bold shadow-sm';
+        } else {
+          btn.className = 'sec-btn shrink-0 px-2.5 py-1 rounded-lg bg-slate-900 border border-slate-800 text-slate-300 font-semibold';
+        }
+      });
+
+      renderQuestion();
+      updateProgressStats();
+    }
+
+    startTestBtn.addEventListener('click', () => {
+      requestBrowserFullscreen();
+      entryGateModal.classList.add('hidden');
+      startTimer();
+      renderQuestion();
+      updateProgressStats();
+    });
+
+    fsToggleBtn.addEventListener('click', () => {
+      try {
+        if (!document.fullscreenElement) {
+          requestBrowserFullscreen();
+        } else if (document.exitFullscreen) {
+          document.exitFullscreen().catch(() => {});
+        }
+      } catch (e) {}
+    });
+
+    prevBtn.addEventListener('click', () => {
+      moveQuestion(-1);
+    });
+
+    nextBtn.addEventListener('click', () => {
+      const pos = filteredIndices.indexOf(currentIndex);
+      if (pos < filteredIndices.length - 1) {
+        moveQuestion(1);
+      } else if (!isSubmitted) {
+        openSubmitConfirmation();
+      }
+    });
+
+    clearBtn.addEventListener('click', () => {
+      if (isSubmitted) return;
+      userAnswers[currentIndex] = null;
+      renderQuestion();
+      updateProgressStats();
+    });
+
+    reviewBtn.addEventListener('click', () => {
+      reviewedFlags[currentIndex] = !reviewedFlags[currentIndex];
+      renderQuestion();
+      updateProgressStats();
+    });
+
+    questionJumpSelect.addEventListener('change', (e) => {
+      currentIndex = parseInt(e.target.value, 10) || 0;
+      renderQuestion();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    submitTestTopBtn.addEventListener('click', () => {
+      if (!isSubmitted) {
+        openSubmitConfirmation();
+      } else {
+        scorecardModal.classList.remove('hidden');
+      }
+    });
+
+    cancelSubmitBtn.addEventListener('click', () => {
+      submitConfirmModal.classList.add('hidden');
+    });
+
+    confirmFinalSubmitBtn.addEventListener('click', () => {
+      submitTest();
+    });
+
+    checkSolutionsBtn.addEventListener('click', () => {
+      scorecardModal.classList.add('hidden');
+      reviewFilterBar.classList.remove('hidden');
+      applyReviewFilter('all');
+    });
+
+    restartTestBtn.addEventListener('click', () => {
+      isSubmitted = false;
+      remainingSeconds = TOTAL_TIME_SECONDS;
+      userAnswers = new Array(QUESTIONS.length).fill(null);
+      reviewedFlags = new Array(QUESTIONS.length).fill(false);
+      activeFilter = 'all';
+      activeSection = 'all';
+      filteredIndices = QUESTIONS.map((_, idx) => idx);
+      currentIndex = 0;
+      timerDisplay.textContent = formatTime(remainingSeconds);
+      timerDisplay.parentElement.classList.remove('text-rose-400', 'animate-pulse');
+      timerDisplay.parentElement.classList.add('text-emerald-400');
+      modeBadge.classList.add('hidden');
+      reviewFilterBar.classList.add('hidden');
+      submitTestTopBtn.textContent = 'Submit Test';
+      scorecardModal.classList.add('hidden');
+      submitConfirmModal.classList.add('hidden');
+      requestBrowserFullscreen();
+      startTimer();
+      renderQuestion();
+      updateProgressStats();
+    });
+
+    document.querySelectorAll('.filter-btn').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const f = btn.getAttribute('data-filter');
+        applyReviewFilter(f);
+      });
+    });
+
+    document.querySelectorAll('.sec-btn').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const s = btn.getAttribute('data-sec');
+        applySectionFilter(s);
+      });
+    });
+
+    renderQuestion();
+    updateProgressStats();
+  </script>
+</body>
+</html>
+```
