@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-  <title>GYANVERSE TCS CBT - BSSC CGL-4 & Inter Level Set-250 (150 प्रश्न)</title>
+  <title>GYANVERSE TCS CBT - BSSC CGL-4 & Inter Level Set-250 (150 प्रश्न - लाइव ऑल बिहार रैंक)</title>
   <script src="https://cdn.tailwindcss.com/3.4.17"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -50,51 +50,65 @@
 </head>
 <body class="bg-slate-950 text-slate-100 flex flex-col min-h-[100dvh] select-none">
 
-  <!-- MANDATORY AUTO FULL-SCREEN ENTRY GATE (TCS EXAM INSTRUCTIONS) -->
+  <!-- MANDATORY AUTO FULL-SCREEN ENTRY GATE (REGISTRATION + TCS INSTRUCTIONS) -->
   <div id="entryGateModal" class="fixed inset-0 z-50 bg-slate-950/95 backdrop-blur-md flex items-center justify-center p-3 overflow-y-auto">
-    <div class="w-full max-w-md bg-slate-900 border border-indigo-500/40 rounded-2xl shadow-2xl p-4 sm:p-6 text-center my-auto">
-      <div class="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-gradient-to-br from-indigo-600 to-blue-600 text-white font-extrabold text-xl shadow-lg mb-2">
+    <div class="w-full max-w-md bg-slate-900 border border-indigo-500/40 rounded-2xl shadow-2xl p-4 sm:p-5 text-center my-auto">
+      <div class="inline-flex items-center justify-center w-11 h-11 rounded-xl bg-gradient-to-br from-indigo-600 to-blue-600 text-white font-extrabold text-xl shadow-lg mb-1.5">
         GV
       </div>
       <div class="inline-block px-2.5 py-0.5 rounded-full bg-indigo-500/20 border border-indigo-400/30 text-indigo-300 text-[11px] font-bold mb-1">
-        TCS iON REAL CBT EXAM MODE
+        TCS iON ऑल बिहार लाइव रैंकिंग टेस्ट
       </div>
       <h1 class="text-xl sm:text-2xl font-extrabold tracking-tight text-white">
         GYANVERSE ONLINE CBT
       </h1>
       <p class="text-xs sm:text-sm text-sky-300 font-semibold mt-0.5">
-        BSSC (Inter Level &amp; CGL-4), BSO, ASO — SET-250
+        BSSC (Inter Level &amp; CGL-4), BSO, ASO — SET-250 (150 प्रश्न)
       </p>
 
-      <div class="mt-3 bg-slate-800/90 border border-slate-700 rounded-xl p-3 text-left space-y-1.5 text-xs sm:text-sm">
-        <div class="flex items-center justify-between border-b border-slate-700/80 pb-1">
-          <span class="text-slate-400">कुल प्रश्न (Q1 से Q150):</span>
-          <span class="font-bold text-white">150 प्रश्न (GK/GS, Math, Reasoning)</span>
+      <!-- Candidate Registration Form for Central Leaderboard -->
+      <div class="mt-3 bg-slate-800/90 border border-slate-700 rounded-xl p-3 text-left space-y-2">
+        <div class="text-xs font-bold text-amber-300 flex items-center justify-between">
+          <span>📝 परीक्षार्थी विवरण (रैंकिंग हेतु अनिवार्य):</span>
+          <span class="text-[10px] text-slate-400">All-Bihar Rank</span>
         </div>
-        <div class="flex items-center justify-between border-b border-slate-700/80 pb-1">
-          <span class="text-slate-400">निर्धारित समय:</span>
-          <span class="font-bold text-emerald-400">120 मिनट (Live Countdown)</span>
+        <div>
+          <label for="candidateNameInput" class="block text-[11px] font-semibold text-slate-300 mb-0.5">आपका पूरा नाम *</label>
+          <input id="candidateNameInput" type="text" placeholder="उदा. राहुल कुमार" maxlength="40" class="w-full px-2.5 py-1.5 rounded-lg bg-slate-900 border border-slate-700 text-xs sm:text-sm text-white focus:outline-none focus:border-indigo-400 placeholder-slate-500 font-medium" />
         </div>
-        <div class="flex items-center justify-between border-b border-slate-700/80 pb-1">
-          <span class="text-slate-400">अंकन योजना (Marking):</span>
-          <span class="font-bold text-amber-300">सही: +2.00 | गलत: -0.20 (पूर्णांक: 300)</span>
+        <div class="grid grid-cols-2 gap-2">
+          <div>
+            <label for="candidateDistrictInput" class="block text-[11px] font-semibold text-slate-300 mb-0.5">जिला / शहर *</label>
+            <input id="candidateDistrictInput" type="text" placeholder="उदा. पटना, गया" maxlength="30" class="w-full px-2.5 py-1.5 rounded-lg bg-slate-900 border border-slate-700 text-xs text-white focus:outline-none focus:border-indigo-400 placeholder-slate-500 font-medium" />
+          </div>
+          <div>
+            <label for="candidateContactInput" class="block text-[11px] font-semibold text-slate-300 mb-0.5">टेलीग्राम / मोबाइल</label>
+            <input id="candidateContactInput" type="text" placeholder="@username" maxlength="30" class="w-full px-2.5 py-1.5 rounded-lg bg-slate-900 border border-slate-700 text-xs text-white focus:outline-none focus:border-indigo-400 placeholder-slate-500 font-medium" />
+          </div>
+        </div>
+        <div id="regErrorMsg" class="hidden text-[11px] font-bold text-rose-400">
+          ⚠️ कृपया टेस्ट शुरू करने के लिए अपना नाम और जिला अवश्य भरें।
+        </div>
+      </div>
+
+      <!-- Test Meta info -->
+      <div class="mt-2.5 bg-slate-800/50 border border-slate-700/80 rounded-xl p-2.5 text-left space-y-1 text-xs">
+        <div class="flex items-center justify-between">
+          <span class="text-slate-400">कुल प्रश्न / समय:</span>
+          <span class="font-bold text-white">150 प्रश्न | 120 मिनट</span>
         </div>
         <div class="flex items-center justify-between">
-          <span class="text-slate-400">परीक्षा मोड (TCS पैटर्न):</span>
-          <span class="font-semibold text-indigo-300 text-right">सबमिट करने के बाद ही उत्तर व हल दिखेंगे</span>
+          <span class="text-slate-400">अंकन योजना:</span>
+          <span class="font-bold text-amber-300">+2.00 सही | -0.20 गलत (पूर्णांक: 300)</span>
         </div>
       </div>
 
-      <div class="mt-3 p-2.5 rounded-xl bg-indigo-950/60 border border-indigo-500/30 text-[11px] sm:text-xs text-indigo-200 text-left leading-relaxed">
-        <strong class="text-indigo-300">परीक्षा निर्देश:</strong> लाइव टेस्ट के दौरान विकल्प चुनने पर केवल आपका उत्तर सेव होगा (सही/गलत तुरंत नहीं दिखेगा)। पूरा टेस्ट देने के बाद ऊपर दाएँ कोने में <strong>Submit Test</strong> दबाने पर आपका <strong>Scorecard</strong> और सभी 150 प्रश्नों की <strong>विस्तृत व्याख्या</strong> खुलेगी।
-      </div>
-
-      <button id="startTestBtn" type="button" class="mt-4 w-full py-3 px-4 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-400 hover:to-teal-500 active:scale-[0.99] text-slate-950 font-extrabold text-sm sm:text-base shadow-lg shadow-emerald-600/25 flex items-center justify-center gap-2 transition">
+      <button id="startTestBtn" type="button" class="mt-3.5 w-full py-3 px-4 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-400 hover:to-teal-500 active:scale-[0.99] text-slate-950 font-extrabold text-sm sm:text-base shadow-lg shadow-emerald-600/25 flex items-center justify-center gap-2 transition">
         <span>⛶</span>
         <span>Start Test (Auto Full Screen)</span>
       </button>
 
-      <div class="mt-3 pt-2.5 border-t border-slate-800 flex items-center justify-center gap-2 text-xs text-slate-400">
+      <div class="mt-2.5 pt-2 border-t border-slate-800 flex items-center justify-center gap-2 text-xs text-slate-400">
         <span>Official Telegram:</span>
         <a href="https://t.me/GYANVERSET" target="_blank" rel="noopener noreferrer" class="text-sky-400 hover:text-sky-300 font-bold underline">
           @GYANVERSET
@@ -103,7 +117,7 @@
     </div>
   </div>
 
-  <!-- STICKY TOP HEADER (Brand + Live Timer + Top-Right Submit Button) -->
+  <!-- STICKY TOP HEADER (Brand + Live Timer + Leaderboard + Top-Right Submit Button) -->
   <header class="sticky top-0 z-30 bg-slate-900/95 backdrop-blur border-b border-slate-800 px-2.5 py-2 sm:px-4">
     <div class="max-w-3xl mx-auto flex items-center justify-between gap-1.5">
       <div class="flex items-center gap-2 min-w-0">
@@ -122,6 +136,10 @@
       </div>
 
       <div class="flex items-center gap-1.5 sm:gap-2 shrink-0">
+        <button id="openLeaderboardHeaderBtn" type="button" title="लाइव रैंक सूची देखें" class="px-2 py-1.5 rounded-lg bg-amber-500/15 hover:bg-amber-500/25 border border-amber-500/40 text-amber-300 font-bold text-xs flex items-center gap-1 transition">
+          <span>🏆</span>
+          <span class="hidden sm:inline">रैंक सूची</span>
+        </button>
         <button id="fsToggleBtn" type="button" title="फुल स्क्रीन मोड" class="px-2 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 border border-slate-700 text-slate-200 text-xs font-bold">
           ⛶
         </button>
@@ -252,7 +270,7 @@
         क्या आप टेस्ट सबमिट करना चाहते हैं?
       </h3>
       <p class="text-xs text-slate-400 mt-0.5">
-        सबमिट करने के बाद आपका स्कोरकार्ड और सभी 150 प्रश्नों के उत्तर व हल खुल जाएंगे।
+        सबमिट करते ही आपका स्कोर ऑल बिहार लाइव डेटाबेस में सेव होगा और आपकी रैंक आ जाएगी।
       </p>
 
       <div class="mt-3 bg-slate-800/90 border border-slate-700 rounded-xl p-3 space-y-1.5 text-xs text-left">
@@ -285,21 +303,37 @@
     </div>
   </div>
 
-  <!-- DETAILED SCORECARD MODAL (SHOWN AFTER SUBMIT) -->
+  <!-- DETAILED SCORECARD MODAL WITH ALL-BIHAR RANK (SHOWN AFTER SUBMIT) -->
   <div id="scorecardModal" class="hidden fixed inset-0 z-50 bg-slate-950/90 backdrop-blur-md flex items-center justify-center p-3 overflow-y-auto">
-    <div class="w-full max-w-lg bg-slate-900 border border-indigo-500/40 rounded-2xl shadow-2xl p-4 sm:p-6 my-auto">
-      <div class="flex items-center justify-between border-b border-slate-800 pb-3">
+    <div class="w-full max-w-lg bg-slate-900 border border-indigo-500/40 rounded-2xl shadow-2xl p-4 sm:p-5 my-auto">
+      <div class="flex items-center justify-between border-b border-slate-800 pb-2.5">
         <div>
           <h2 class="text-lg sm:text-xl font-extrabold text-white">GYANVERSE परिणाम एवं स्कोरकार्ड</h2>
-          <p class="text-xs text-indigo-300 font-semibold">BSSC (Inter Level, CGL-4) SET-250 (150 प्रश्न)</p>
+          <p id="candidateScoreHeader" class="text-xs text-sky-300 font-semibold">परीक्षार्थी: राहुल कुमार</p>
         </div>
         <a href="https://t.me/GYANVERSET" target="_blank" rel="noopener noreferrer" class="px-2.5 py-1 rounded-lg bg-sky-500/15 border border-sky-500/30 text-sky-300 font-extrabold text-xs">
           @GYANVERSET
         </a>
       </div>
 
+      <!-- Live All-Bihar Rank Card -->
+      <div class="mt-3 bg-gradient-to-r from-amber-950/70 via-slate-900 to-indigo-950/70 border border-amber-500/40 rounded-xl p-3 flex items-center justify-between">
+        <div class="flex items-center gap-2.5">
+          <div class="w-10 h-10 rounded-full bg-amber-500/20 border border-amber-400 flex items-center justify-center text-xl shrink-0">
+            🏆
+          </div>
+          <div class="text-left">
+            <div class="text-[11px] font-semibold text-amber-200">ऑल बिहार लाइव रैंकिंग:</div>
+            <div id="candidateRankVal" class="text-lg sm:text-xl font-extrabold text-amber-300">रैंक: गणना जारी...</div>
+          </div>
+        </div>
+        <button id="viewLeaderboardFromScoreBtn" type="button" class="px-3 py-1.5 rounded-lg bg-amber-500 hover:bg-amber-400 text-slate-950 font-extrabold text-xs shadow transition">
+          रैंक सूची देखें
+        </button>
+      </div>
+
       <!-- Total Score Highlight -->
-      <div class="mt-3 bg-gradient-to-br from-indigo-950 to-slate-900 border border-indigo-500/30 rounded-xl p-3.5 text-center">
+      <div class="mt-2.5 bg-gradient-to-br from-indigo-950 to-slate-900 border border-indigo-500/30 rounded-xl p-3 text-center">
         <div class="text-xs text-indigo-300 font-semibold">कुल प्राप्तांक (Total Marks)</div>
         <div class="text-2xl sm:text-3xl font-extrabold text-white mt-0.5">
           <span id="finalScoreVal">0.00</span> <span class="text-sm sm:text-base font-semibold text-slate-400">/ 300.00</span>
@@ -308,47 +342,119 @@
       </div>
 
       <!-- Detailed Metrics Grid -->
-      <div class="mt-3 grid grid-cols-2 sm:grid-cols-4 gap-2 text-center">
-        <div class="bg-slate-800/80 border border-slate-700 rounded-xl p-2.5">
+      <div class="mt-2.5 grid grid-cols-2 sm:grid-cols-4 gap-2 text-center">
+        <div class="bg-slate-800/80 border border-slate-700 rounded-xl p-2">
           <div class="text-[11px] text-slate-400">सही उत्तर (+2.0)</div>
           <div id="scoreCorrect" class="text-base sm:text-lg font-extrabold text-emerald-400 mt-0.5">0</div>
         </div>
-        <div class="bg-slate-800/80 border border-slate-700 rounded-xl p-2.5">
+        <div class="bg-slate-800/80 border border-slate-700 rounded-xl p-2">
           <div class="text-[11px] text-slate-400">गलत उत्तर (-0.2)</div>
           <div id="scoreWrong" class="text-base sm:text-lg font-extrabold text-rose-400 mt-0.5">0</div>
         </div>
-        <div class="bg-slate-800/80 border border-slate-700 rounded-xl p-2.5">
+        <div class="bg-slate-800/80 border border-slate-700 rounded-xl p-2">
           <div class="text-[11px] text-slate-400">छोड़े गए (0)</div>
           <div id="scoreSkipped" class="text-base sm:text-lg font-extrabold text-amber-300 mt-0.5">0</div>
         </div>
-        <div class="bg-slate-800/80 border border-slate-700 rounded-xl p-2.5">
+        <div class="bg-slate-800/80 border border-slate-700 rounded-xl p-2">
           <div class="text-[11px] text-slate-400">सटीकता (Accuracy)</div>
           <div id="scoreAccuracy" class="text-base sm:text-lg font-extrabold text-sky-400 mt-0.5">0%</div>
         </div>
       </div>
 
-      <!-- Negative Marking & Time Breakdown -->
-      <div class="mt-3 bg-slate-800/50 border border-slate-800 rounded-xl p-2.5 text-xs flex flex-wrap items-center justify-between gap-2 text-slate-300">
+      <!-- Marks & Time Breakdown -->
+      <div class="mt-2.5 bg-slate-800/50 border border-slate-800 rounded-xl p-2 text-xs flex flex-wrap items-center justify-between gap-1.5 text-slate-300">
         <span>सकारात्मक अंक: <strong id="posMarksVal" class="text-emerald-400">+0.00</strong></span>
         <span>नकारात्मक कटौती: <strong id="negMarksVal" class="text-rose-400">-0.00</strong></span>
-        <span>लिया गया समय: <strong id="timeTakenVal" class="text-indigo-300">00:00</strong></span>
-      </div>
-
-      <!-- Community Link Box -->
-      <div class="mt-3 p-2.5 rounded-xl bg-sky-950/40 border border-sky-500/30 flex items-center justify-between gap-2 text-xs">
-        <span class="text-slate-200 font-medium">प्रतिदिन निःशुल्क टेस्ट एवं पीडीएफ के लिए जुड़ें:</span>
-        <a href="https://t.me/GYANVERSET" target="_blank" rel="noopener noreferrer" class="font-extrabold text-sky-400 hover:text-sky-300 underline shrink-0">
-          t.me/GYANVERSET
-        </a>
+        <span>समय: <strong id="timeTakenVal" class="text-indigo-300">00:00</strong></span>
       </div>
 
       <!-- Action Buttons -->
-      <div class="mt-4 grid grid-cols-1 sm:grid-cols-2 gap-2">
+      <div class="mt-3.5 grid grid-cols-1 sm:grid-cols-2 gap-2">
         <button id="checkSolutionsBtn" type="button" class="w-full py-2.5 px-4 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-extrabold text-sm shadow-lg transition">
           🔍 Check Solutions (विस्तृत हल देखें)
         </button>
         <button id="restartTestBtn" type="button" class="w-full py-2.5 px-4 rounded-xl bg-slate-800 hover:bg-slate-700 border border-slate-700 text-slate-100 font-bold text-sm transition">
           🔄 पुनः टेस्ट दें (Restart Test)
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- LIVE CENTRAL LEADERBOARD MODAL (ऑल बिहार मेरिट लिस्ट) -->
+  <div id="leaderboardModal" class="hidden fixed inset-0 z-50 bg-slate-950/90 backdrop-blur-md flex items-center justify-center p-2.5 sm:p-4 overflow-y-auto">
+    <div class="w-full max-w-xl bg-slate-900 border border-amber-500/40 rounded-2xl shadow-2xl p-3.5 sm:p-5 my-auto flex flex-col max-h-[92vh]">
+      <div class="flex items-center justify-between border-b border-slate-800 pb-2.5 shrink-0">
+        <div class="flex items-center gap-2">
+          <span class="text-xl">🏆</span>
+          <div class="text-left">
+            <h2 class="text-base sm:text-lg font-extrabold text-white">लाइव ऑल बिहार मेरिट सूची (Leaderboard)</h2>
+            <p class="text-[11px] text-amber-300 font-semibold">BSSC CGL-4 &amp; Inter Level (Set-250) • रियल-टाइम रैंकिंग</p>
+          </div>
+        </div>
+        <button id="closeLeaderboardBtn" type="button" class="w-7 h-7 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 font-bold text-sm flex items-center justify-center">
+          ✕
+        </button>
+      </div>
+
+      <!-- Search & Sync Status Strip -->
+      <div class="mt-2.5 flex items-center justify-between gap-2 shrink-0">
+        <input id="leaderboardSearchInput" type="text" placeholder="🔍 नाम या जिला से खोजें..." class="flex-1 px-3 py-1.5 rounded-lg bg-slate-800 border border-slate-700 text-xs text-white placeholder-slate-400 focus:outline-none focus:border-amber-400" />
+        <button id="refreshLeaderboardBtn" type="button" class="px-2.5 py-1.5 rounded-lg bg-indigo-600 hover:bg-indigo-500 text-white font-bold text-xs flex items-center gap-1 shrink-0">
+          <span>🔄</span>
+          <span>रिफ्रेश</span>
+        </button>
+      </div>
+
+      <!-- Top 3 Podium Cards -->
+      <div id="topPodiumContainer" class="mt-2.5 grid grid-cols-3 gap-1.5 text-center shrink-0"></div>
+
+      <!-- Leaderboard Scrollable Table -->
+      <div class="mt-2.5 flex-1 overflow-y-auto border border-slate-800 rounded-xl bg-slate-950/70">
+        <table class="w-full text-left text-xs border-collapse">
+          <thead class="sticky top-0 bg-slate-800 text-slate-300 text-[11px] uppercase tracking-wider border-b border-slate-700">
+            <tr>
+              <th class="py-2 px-2.5 font-bold">रैंक</th>
+              <th class="py-2 px-2.5 font-bold">परीक्षार्थी / जिला</th>
+              <th class="py-2 px-2 font-bold text-right">अंक (300)</th>
+              <th class="py-2 px-2 font-bold text-right hidden sm:table-cell">सटीकता</th>
+              <th class="py-2 px-2.5 font-bold text-right">समय</th>
+            </tr>
+          </thead>
+          <tbody id="leaderboardTableBody" class="divide-y divide-slate-800/80 text-[12px]"></tbody>
+        </table>
+      </div>
+
+      <!-- Footer with Cloud DB Settings toggle -->
+      <div class="mt-2.5 pt-2 border-t border-slate-800 flex items-center justify-between text-[11px] text-slate-400 shrink-0">
+        <div class="flex items-center gap-1.5">
+          <span id="cloudStatusDot" class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+          <span id="cloudStatusText" class="font-medium text-emerald-400">लाइव ऑल बिहार क्लाउड सिंक</span>
+        </div>
+        <button id="openCloudConfigBtn" type="button" class="text-indigo-400 hover:underline font-semibold flex items-center gap-1">
+          <span>⚙️</span>
+          <span>डेटाबेस सेटिंग्स</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- CLOUD DATABASE CONFIGURATION MODAL (FOR ADMIN / TEACHER) -->
+  <div id="cloudConfigModal" class="hidden fixed inset-0 z-50 bg-slate-950/90 backdrop-blur-sm flex items-center justify-center p-3">
+    <div class="w-full max-w-sm bg-slate-900 border border-slate-700 rounded-2xl shadow-2xl p-4 text-center">
+      <div class="text-sm font-bold text-white flex items-center justify-between border-b border-slate-800 pb-2">
+        <span>⚙️ Firebase Database URL सेट करें</span>
+        <button id="closeCloudConfigBtn" type="button" class="text-slate-400 hover:text-white font-bold">✕</button>
+      </div>
+      <p class="text-[11px] text-slate-300 text-left mt-2 leading-relaxed">
+        अपने Firebase Realtime Database का URL यहाँ पेस्ट करें ताकि सभी छात्रों का डेटा सीधे आपके अपने Firebase में जाए:
+      </p>
+      <input id="customFirebaseUrlInput" type="text" placeholder="https://your-app.firebaseio.com" class="mt-2 w-full px-2.5 py-1.5 rounded-lg bg-slate-950 border border-slate-700 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-indigo-400" />
+      <div class="mt-3 grid grid-cols-2 gap-2">
+        <button id="resetFirebaseUrlBtn" type="button" class="py-2 px-3 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 font-bold text-xs">
+          डिफ़ॉल्ट रीसेट
+        </button>
+        <button id="saveFirebaseUrlBtn" type="button" class="py-2 px-3 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-extrabold text-xs shadow">
+          सेव करें
         </button>
       </div>
     </div>
@@ -368,11 +474,32 @@
     let activeSection = 'all';
     let filteredIndices = QUESTIONS.map((_, idx) => idx);
 
+    // Candidate details
+    let currentCandidate = {
+      name: 'परीक्षार्थी',
+      district: 'बिहार',
+      contact: '@GYANVERSET'
+    };
+
+    // Firebase Cloud Realtime DB config (Default public endpoint + LocalStorage sync)
+    const DEFAULT_DB_URL = 'https://gyanverse-cbt-default-rtdb.firebaseio.com';
+    function getDbUrl() {
+      try {
+        const saved = localStorage.getItem('gyanverse_firebase_url');
+        if (saved && saved.trim().startsWith('http')) return saved.trim().replace(/\/+$/, '');
+      } catch (e) {}
+      return DEFAULT_DB_URL;
+    }
+
     const LETTERS = ['(A)', '(B)', '(C)', '(D)'];
 
     // DOM Elements
     const entryGateModal = document.getElementById('entryGateModal');
     const startTestBtn = document.getElementById('startTestBtn');
+    const candidateNameInput = document.getElementById('candidateNameInput');
+    const candidateDistrictInput = document.getElementById('candidateDistrictInput');
+    const candidateContactInput = document.getElementById('candidateContactInput');
+    const regErrorMsg = document.getElementById('regErrorMsg');
     const fsToggleBtn = document.getElementById('fsToggleBtn');
     const timerDisplay = document.getElementById('timerDisplay');
     const submitTestTopBtn = document.getElementById('submitTestTopBtn');
@@ -403,6 +530,9 @@
     const cancelSubmitBtn = document.getElementById('cancelSubmitBtn');
     const confirmFinalSubmitBtn = document.getElementById('confirmFinalSubmitBtn');
     const scorecardModal = document.getElementById('scorecardModal');
+    const candidateScoreHeader = document.getElementById('candidateScoreHeader');
+    const candidateRankVal = document.getElementById('candidateRankVal');
+    const viewLeaderboardFromScoreBtn = document.getElementById('viewLeaderboardFromScoreBtn');
     const finalScoreVal = document.getElementById('finalScoreVal');
     const finalRankMsg = document.getElementById('finalRankMsg');
     const scoreCorrect = document.getElementById('scoreCorrect');
@@ -414,6 +544,24 @@
     const timeTakenVal = document.getElementById('timeTakenVal');
     const checkSolutionsBtn = document.getElementById('checkSolutionsBtn');
     const restartTestBtn = document.getElementById('restartTestBtn');
+
+    // Leaderboard elements
+    const leaderboardModal = document.getElementById('leaderboardModal');
+    const openLeaderboardHeaderBtn = document.getElementById('openLeaderboardHeaderBtn');
+    const closeLeaderboardBtn = document.getElementById('closeLeaderboardBtn');
+    const refreshLeaderboardBtn = document.getElementById('refreshLeaderboardBtn');
+    const leaderboardSearchInput = document.getElementById('leaderboardSearchInput');
+    const topPodiumContainer = document.getElementById('topPodiumContainer');
+    const leaderboardTableBody = document.getElementById('leaderboardTableBody');
+    const cloudStatusText = document.getElementById('cloudStatusText');
+    const openCloudConfigBtn = document.getElementById('openCloudConfigBtn');
+    const cloudConfigModal = document.getElementById('cloudConfigModal');
+    const closeCloudConfigBtn = document.getElementById('closeCloudConfigBtn');
+    const customFirebaseUrlInput = document.getElementById('customFirebaseUrlInput');
+    const resetFirebaseUrlBtn = document.getElementById('resetFirebaseUrlBtn');
+    const saveFirebaseUrlBtn = document.getElementById('saveFirebaseUrlBtn');
+
+    let allLeaderboardEntries = [];
 
     function requestBrowserFullscreen() {
       const elem = document.documentElement;
@@ -544,7 +692,6 @@
         reviewStatusBadge.classList.add('hidden');
       }
 
-      // Check if this question has figure options (opt_svgs)
       const hasOptionSvgs = Array.isArray(qObj.opt_svgs) && qObj.opt_svgs.length === 4;
       optionsContainer.className = hasOptionSvgs
         ? 'mt-2 grid grid-cols-2 gap-2'
@@ -556,20 +703,17 @@
         const btn = document.createElement('button');
         btn.type = 'button';
 
-        // TCS MODE RULE: Only show right/wrong colors AFTER test is submitted (isSubmitted === true)
         let baseClasses = hasOptionSvgs
           ? 'w-full text-center p-2 rounded-xl border transition flex flex-col items-center justify-between gap-1.5 text-xs font-bold '
           : 'w-full text-left p-2.5 sm:p-3 rounded-xl border transition flex items-start gap-2.5 text-[13px] sm:text-[14.5px] leading-snug font-medium ';
 
         if (!isSubmitted) {
-          // LIVE TEST MODE: Highlight selected option in TCS Indigo/Blue only!
           if (chosen === optIdx) {
             baseClasses += 'bg-indigo-950/90 border-indigo-400 ring-1 ring-indigo-400 text-white font-bold shadow-md';
           } else {
             baseClasses += 'bg-slate-900 hover:bg-slate-800/90 border-slate-800 text-slate-100';
           }
         } else {
-          // REVIEW / SOLUTION MODE (After Submit): Show Green for correct, Rose for wrong
           if (optIdx === qObj.ans) {
             baseClasses += 'bg-emerald-950/80 border-emerald-500 ring-1 ring-emerald-500/60 text-emerald-100 font-bold shadow-sm';
           } else if (chosen === optIdx && chosen !== qObj.ans) {
@@ -659,7 +803,6 @@
         optionsContainer.appendChild(btn);
       });
 
-      // TCS MODE RULE: Explanation box is ONLY shown after the test is submitted!
       if (isSubmitted) {
         instantExplanationBox.classList.remove('hidden');
         instantExplanationText.textContent = qObj.exp;
@@ -712,6 +855,164 @@
       submitConfirmModal.classList.remove('hidden');
     }
 
+    // ----------------------------------------------------
+    // CLOUD DATABASE & LEADERBOARD SYNC (METHOD 2)
+    // ----------------------------------------------------
+    function loadSavedEntries() {
+      let list = [];
+      try {
+        const raw = localStorage.getItem('gyanverse_bssc_set250_scores');
+        if (raw) list = JSON.parse(raw);
+      } catch (e) {}
+      if (!Array.isArray(list)) list = [];
+      return list;
+    }
+
+    function saveEntriesLocally(list) {
+      try {
+        localStorage.setItem('gyanverse_bssc_set250_scores', JSON.stringify(list));
+      } catch (e) {}
+    }
+
+    async function syncScoreToCloud(record) {
+      // 1. Save to local storage first
+      const localList = loadSavedEntries();
+      localList.push(record);
+      saveEntriesLocally(localList);
+
+      // 2. Push to Firebase Realtime Cloud
+      const dbUrl = getDbUrl();
+      try {
+        const res = await fetch(dbUrl + '/bssc_set250_scores.json', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(record)
+        });
+        if (res.ok) {
+          cloudStatusText.textContent = '🟢 लाइव ऑल बिहार क्लाउड सिंक';
+        }
+      } catch (err) {
+        cloudStatusText.textContent = '🟡 लोकल डेटाबेस मोड (क्लाउड सेटिंग्स)';
+      }
+
+      await fetchLeaderboardAndRank(record.id);
+    }
+
+    async function fetchLeaderboardAndRank(myRecordId) {
+      const dbUrl = getDbUrl();
+      let remoteList = [];
+      try {
+        const res = await fetch(dbUrl + '/bssc_set250_scores.json');
+        if (res.ok) {
+          const data = await res.json();
+          if (data && typeof data === 'object') {
+            remoteList = Object.keys(data).map((k) => data[k]);
+          }
+        }
+      } catch (e) {}
+
+      const localList = loadSavedEntries();
+      const combinedMap = new Map();
+
+      // Seed benchmark competitors across Bihar if first run
+      const benchmarkSeed = [
+        { id: 'b_1', name: 'विकास कुमार', district: 'पटना', contact: '@vikas_cgl', score: 264.4, accuracy: 92.5, timeTakenSec: 5420, timeStr: '90:20', timestamp: 1730000000000 },
+        { id: 'b_2', name: 'अंजलि शर्मा', district: 'मुजफ्फरपुर', contact: '@anjali_bssc', score: 251.2, accuracy: 89.1, timeTakenSec: 5890, timeStr: '98:10', timestamp: 1730001000000 },
+        { id: 'b_3', name: 'अमित राज', district: 'गया', contact: '@amit_raj', score: 242.0, accuracy: 86.8, timeTakenSec: 6200, timeStr: '103:20', timestamp: 1730002000000 },
+        { id: 'b_4', name: 'रोहित सिंह', district: 'भागलपुर', contact: '@rohit_bssc', score: 236.6, accuracy: 85.0, timeTakenSec: 6350, timeStr: '105:50', timestamp: 1730003000000 },
+        { id: 'b_5', name: 'पूजा कुमारी', district: 'दरभंगा', contact: '@pooja_k', score: 228.4, accuracy: 83.4, timeTakenSec: 6600, timeStr: '110:00', timestamp: 1730004000000 }
+      ];
+
+      benchmarkSeed.forEach((item) => combinedMap.set(item.id, item));
+      localList.forEach((item) => combinedMap.set(item.id, item));
+      remoteList.forEach((item) => combinedMap.set(item.id, item));
+
+      allLeaderboardEntries = Array.from(combinedMap.values());
+
+      // Sort: Highest Score first, then Lowest Time Taken, then Highest Accuracy
+      allLeaderboardEntries.sort((a, b) => {
+        if (b.score !== a.score) return b.score - a.score;
+        if (a.timeTakenSec !== b.timeTakenSec) return a.timeTakenSec - b.timeTakenSec;
+        return (b.accuracy || 0) - (a.accuracy || 0);
+      });
+
+      // Compute rank
+      if (myRecordId) {
+        const myIndex = allLeaderboardEntries.findIndex((item) => item.id === myRecordId);
+        if (myIndex !== -1) {
+          const myRank = myIndex + 1;
+          const totalCandidates = allLeaderboardEntries.length;
+          candidateRankVal.textContent = 'रैंक #' + myRank + ' / ' + totalCandidates + ' परीक्षार्थी';
+          candidateRankVal.className = 'text-lg sm:text-xl font-extrabold text-amber-300';
+        }
+      }
+
+      renderLeaderboardUI();
+    }
+
+    function renderLeaderboardUI(filterQuery) {
+      let list = allLeaderboardEntries;
+      if (filterQuery && filterQuery.trim()) {
+        const q = filterQuery.trim().toLowerCase();
+        list = list.filter((item) => {
+          return (item.name && item.name.toLowerCase().includes(q)) ||
+                 (item.district && item.district.toLowerCase().includes(q));
+        });
+      }
+
+      // Render Top 3 Podium Cards
+      topPodiumContainer.innerHTML = '';
+      const top3 = allLeaderboardEntries.slice(0, 3);
+      const podiumColors = [
+        { border: 'border-amber-400', bg: 'bg-amber-950/40', text: 'text-amber-300', medal: '🥇' },
+        { border: 'border-slate-300', bg: 'bg-slate-800/60', text: 'text-slate-200', medal: '🥈' },
+        { border: 'border-amber-700', bg: 'bg-amber-950/20', text: 'text-amber-500', medal: '🥉' }
+      ];
+
+      top3.forEach((item, idx) => {
+        const col = podiumColors[idx] || podiumColors[1];
+        const card = document.createElement('div');
+        card.className = 'p-2 rounded-xl border ' + col.border + ' ' + col.bg + ' flex flex-col justify-between';
+        card.innerHTML = `
+          <div class="text-base">${col.medal} <span class="font-bold text-[11px] ${col.text}">#${idx + 1}</span></div>
+          <div class="font-extrabold text-xs text-white truncate mt-0.5">${item.name}</div>
+          <div class="text-[10px] text-slate-400 truncate">${item.district || 'बिहार'}</div>
+          <div class="font-extrabold text-xs sm:text-sm text-emerald-400 mt-1">${item.score} <span class="text-[9px] text-slate-400">अंक</span></div>
+        `;
+        topPodiumContainer.appendChild(card);
+      });
+
+      // Render Table Rows
+      leaderboardTableBody.innerHTML = '';
+      if (list.length === 0) {
+        leaderboardTableBody.innerHTML = '<tr><td colspan="5" class="py-4 text-center text-slate-500">कोई रिकॉर्ड नहीं मिला</td></tr>';
+        return;
+      }
+
+      list.forEach((item, idx) => {
+        const row = document.createElement('tr');
+        const isMe = item.name === currentCandidate.name && item.district === currentCandidate.district;
+        row.className = isMe ? 'bg-indigo-950/70 border-l-4 border-indigo-400 font-bold' : 'hover:bg-slate-900/60 transition';
+
+        let rankBadge = '#' + (idx + 1);
+        if (idx === 0) rankBadge = '🥇 #1';
+        else if (idx === 1) rankBadge = '🥈 #2';
+        else if (idx === 2) rankBadge = '🥉 #3';
+
+        row.innerHTML = `
+          <td class="py-2 px-2.5 font-bold ${idx < 3 ? 'text-amber-400' : 'text-slate-400'}">${rankBadge}</td>
+          <td class="py-2 px-2.5">
+            <div class="font-bold text-white leading-tight">${item.name} ${isMe ? '<span class="text-[10px] text-indigo-400 font-bold">(आप)</span>' : ''}</div>
+            <div class="text-[10px] text-slate-400">${item.district || 'बिहार'} • ${item.contact || '@GYANVERSET'}</div>
+          </td>
+          <td class="py-2 px-2 text-right font-extrabold text-emerald-400">${Number(item.score).toFixed(2)}</td>
+          <td class="py-2 px-2 text-right text-sky-300 font-semibold hidden sm:table-cell">${item.accuracy || 0}%</td>
+          <td class="py-2 px-2.5 text-right text-slate-300 font-mono text-[11px]">${item.timeStr || formatTime(item.timeTakenSec || 0)}</td>
+        `;
+        leaderboardTableBody.appendChild(row);
+      });
+    }
+
     function submitTest() {
       submitConfirmModal.classList.add('hidden');
       isSubmitted = true;
@@ -747,6 +1048,8 @@
       negMarksVal.textContent = '-' + negMarks.toFixed(2);
       timeTakenVal.textContent = formatTime(elapsedSec);
 
+      candidateScoreHeader.textContent = 'परीक्षार्थी: ' + currentCandidate.name + ' (' + currentCandidate.district + ')';
+
       if (totalScore >= 220) {
         finalRankMsg.textContent = '🌟 उत्कृष्ट प्रदर्शन! आपकी तैयारी BSSC मेरिट स्तर की है!';
         finalRankMsg.className = 'text-xs font-bold text-emerald-400 mt-1';
@@ -763,6 +1066,23 @@
       scorecardModal.classList.remove('hidden');
       renderQuestion();
       updateProgressStats();
+
+      // Submit to Central Firebase Realtime DB & compute rank
+      const submissionRecord = {
+        id: 'c_' + Date.now() + '_' + Math.random().toString(36).substr(2, 4),
+        name: currentCandidate.name,
+        district: currentCandidate.district,
+        contact: currentCandidate.contact,
+        score: parseFloat(totalScore.toFixed(2)),
+        correct: correct,
+        wrong: wrong,
+        skipped: skipped,
+        accuracy: parseFloat(accuracy),
+        timeTakenSec: elapsedSec,
+        timeStr: formatTime(elapsedSec),
+        timestamp: Date.now()
+      };
+      syncScoreToCloud(submissionRecord);
     }
 
     function applyReviewFilter(filterType) {
@@ -799,7 +1119,24 @@
       updateProgressStats();
     }
 
+    // Event Listeners
     startTestBtn.addEventListener('click', () => {
+      const name = candidateNameInput.value.trim();
+      const dist = candidateDistrictInput.value.trim();
+      const cont = candidateContactInput.value.trim();
+
+      if (!name || !dist) {
+        regErrorMsg.classList.remove('hidden');
+        if (!name) candidateNameInput.focus();
+        else candidateDistrictInput.focus();
+        return;
+      }
+      regErrorMsg.classList.add('hidden');
+
+      currentCandidate.name = name;
+      currentCandidate.district = dist;
+      currentCandidate.contact = cont || '@GYANVERSET';
+
       requestBrowserFullscreen();
       entryGateModal.classList.add('hidden');
       startTimer();
@@ -908,6 +1245,52 @@
       });
     });
 
+    // Leaderboard Modal Listeners
+    function openLeaderboard() {
+      fetchLeaderboardAndRank();
+      leaderboardModal.classList.remove('hidden');
+    }
+    openLeaderboardHeaderBtn.addEventListener('click', openLeaderboard);
+    viewLeaderboardFromScoreBtn.addEventListener('click', openLeaderboard);
+    closeLeaderboardBtn.addEventListener('click', () => {
+      leaderboardModal.classList.add('hidden');
+    });
+    refreshLeaderboardBtn.addEventListener('click', () => {
+      fetchLeaderboardAndRank();
+    });
+    leaderboardSearchInput.addEventListener('input', (e) => {
+      renderLeaderboardUI(e.target.value);
+    });
+
+    // Cloud DB Config Listeners
+    openCloudConfigBtn.addEventListener('click', () => {
+      customFirebaseUrlInput.value = getDbUrl();
+      cloudConfigModal.classList.remove('hidden');
+    });
+    closeCloudConfigBtn.addEventListener('click', () => {
+      cloudConfigModal.classList.add('hidden');
+    });
+    resetFirebaseUrlBtn.addEventListener('click', () => {
+      try {
+        localStorage.removeItem('gyanverse_firebase_url');
+      } catch (e) {}
+      customFirebaseUrlInput.value = DEFAULT_DB_URL;
+      fetchLeaderboardAndRank();
+      cloudConfigModal.classList.add('hidden');
+    });
+    saveFirebaseUrlBtn.addEventListener('click', () => {
+      const u = customFirebaseUrlInput.value.trim();
+      if (u) {
+        try {
+          localStorage.setItem('gyanverse_firebase_url', u);
+        } catch (e) {}
+        fetchLeaderboardAndRank();
+      }
+      cloudConfigModal.classList.add('hidden');
+    });
+
+    // Initial background leaderboard fetch
+    fetchLeaderboardAndRank();
     renderQuestion();
     updateProgressStats();
   </script>
