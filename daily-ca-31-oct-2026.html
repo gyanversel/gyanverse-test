@@ -1,0 +1,2043 @@
+```html
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>GYANVERSE 31 Oct 2026 CBT Online Exam</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Tiro+Devanagari+Hindi:ital@0;1&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Inter', 'Tiro Devanagari Hindi', sans-serif;
+      -webkit-tap-highlight-color: transparent;
+      user-select: none;
+    }
+    .hindi-text {
+      font-family: 'Tiro Devanagari Hindi', 'Inter', serif;
+    }
+    /* Hide scrollbars for slick mobile view */
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+    /* Custom radio pulse */
+    .opt-selected {
+      border-color: #2563eb !important;
+      background-color: #eff6ff !important;
+      box-shadow: 0 0 0 1.5px #2563eb;
+    }
+  </style>
+</head>
+<body class="bg-slate-100 text-slate-800 antialiased min-h-screen flex flex-col justify-between">
+
+  <!-- ================= TOP HEADER (TCS iON + GYANVERSE) ================= -->
+  <header class="bg-gradient-to-r from-blue-900 via-indigo-900 to-slate-900 text-white shadow-md sticky top-0 z-40">
+    <div class="max-w-4xl mx-auto px-3 py-2 flex items-center justify-between">
+      <!-- Left: Logo & Branding -->
+      <div class="flex items-center space-x-2">
+        <button id="gvLogoBtn" class="bg-amber-400 hover:bg-amber-300 text-slate-950 font-black text-sm px-2.5 py-1 rounded-md shadow-sm transition active:scale-95 flex items-center gap-1" title="Admin Access (Click 4x)">
+          <span>GV</span>
+          <span class="text-[10px] bg-black/20 px-1 rounded">2026</span>
+        </button>
+        <div>
+          <div class="flex items-center gap-1.5">
+            <span class="font-bold tracking-tight text-sm sm:text-base text-amber-300">GYANVERSE</span>
+            <span class="bg-blue-600/80 text-[10px] uppercase font-semibold px-1.5 py-0.2 rounded text-white hidden sm:inline">CBT iON</span>
+          </div>
+          <a href="https://t.me/GYANVERSET" target="_blank" class="text-[11px] text-cyan-300 hover:underline flex items-center gap-1">
+            <svg class="w-3 h-3 fill-current" viewBox="0 0 24 24"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221l-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.446 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.121l-6.871 4.326-2.962-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.196 1.006.128.832.942z"/></svg>
+            @GYANVERSET
+          </a>
+        </div>
+      </div>
+
+      <!-- Right: Action Buttons & Timer -->
+      <div class="flex items-center space-x-2">
+        <button id="btnHeaderRank" class="bg-indigo-700/80 hover:bg-indigo-600 text-amber-200 text-xs font-semibold px-2.5 py-1.5 rounded-lg border border-indigo-400/40 flex items-center gap-1 transition">
+          <span>🏆</span> <span class="hidden sm:inline">ऑल-बिहार</span> रैंक
+        </button>
+        <button id="btnHeaderHistory" class="bg-slate-800/80 hover:bg-slate-700 text-slate-200 text-xs px-2 py-1.5 rounded-lg border border-slate-600 hidden" title="पिछला हल देखें">
+          📜 हल
+        </button>
+        <!-- Timer Pill -->
+        <div id="timerContainer" class="bg-black/60 px-2.5 py-1 rounded-lg border border-amber-400/30 flex items-center space-x-1.5">
+          <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+          <span id="timerDisplay" class="font-mono font-bold text-amber-300 text-sm tracking-wider">30:00</span>
+        </div>
+        <!-- Submit Button in Header -->
+        <button id="btnHeaderSubmit" class="bg-emerald-600 hover:bg-emerald-500 active:scale-95 text-white font-bold text-xs px-3 py-1.5 rounded-lg shadow-sm border border-emerald-400 transition hidden">
+          सबमिट
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ================= MAIN APP CONTAINER ================= -->
+  <main class="max-w-4xl mx-auto w-full px-2.5 sm:px-4 py-2.5 flex-1 flex flex-col justify-start">
+
+    <!-- 1. ENTRY GATE / CANDIDATE REGISTRATION SCREEN -->
+    <section id="screenRegister" class="bg-white rounded-2xl shadow-xl border border-slate-200 p-4 sm:p-6 my-auto max-w-xl mx-auto w-full">
+      <div class="text-center mb-5">
+        <div class="inline-flex p-2.5 bg-blue-50 text-blue-700 rounded-2xl mb-2">
+          <svg class="w-9 h-9" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
+        </div>
+        <h1 class="text-xl sm:text-2xl font-black text-slate-900 tracking-tight">GYANVERSE CBT परीक्षा पोर्टल</h1>
+        <p class="text-xs sm:text-sm text-slate-500 mt-1">31 अक्टूबर 2026 : डेली करंट अफेयर्स, स्टैटिक जीके एवं स्पेशल रिवीजन बुलेटिन</p>
+      </div>
+
+      <!-- Test Highlights Banner -->
+      <div class="grid grid-cols-3 gap-2 bg-slate-50 p-2.5 rounded-xl border border-slate-200 text-center mb-5 text-xs">
+        <div>
+          <span class="text-slate-400 block text-[10px]">कुल प्रश्न</span>
+          <span class="font-extrabold text-blue-700 text-sm">33 प्रश्न</span>
+        </div>
+        <div>
+          <span class="text-slate-400 block text-[10px]">पूर्णांक / समय</span>
+          <span class="font-extrabold text-slate-700 text-sm">66 अंक | 30m</span>
+        </div>
+        <div>
+          <span class="text-slate-400 block text-[10px]">नेगेटिव मार्किंग</span>
+          <span class="font-extrabold text-rose-600 text-sm">-0.20 अंक</span>
+        </div>
+      </div>
+
+      <!-- Resume Test Alert (Shown if active unsubmitted session exists) -->
+      <div id="resumeBox" class="hidden mb-4 p-3 bg-amber-50 border border-amber-300 rounded-xl flex items-center justify-between text-xs text-amber-900">
+        <div>
+          <span class="font-bold block">▶ पूर्व सत्र सक्रिय है!</span>
+          <span class="text-[11px] text-amber-700">आपका पिछला टेस्ट प्रगति पर था।</span>
+        </div>
+        <button id="btnResumeTest" class="bg-amber-600 hover:bg-amber-500 text-white font-bold px-3 py-1.5 rounded-lg text-xs shadow transition">
+          जारी रखें ➔
+        </button>
+      </div>
+
+      <!-- Previous Result Alert (Shown if submitted session exists) -->
+      <div id="viewPastResultBox" class="hidden mb-4 p-3 bg-emerald-50 border border-emerald-300 rounded-xl flex items-center justify-between text-xs text-emerald-900">
+        <div>
+          <span class="font-bold block">📋 पिछला स्कोरकार्ड उपलब्ध</span>
+          <span class="text-[11px] text-emerald-700">उत्तर व व्याख्या देखने के लिए क्लिक करें।</span>
+        </div>
+        <button id="btnPastSolutions" class="bg-emerald-600 hover:bg-emerald-500 text-white font-bold px-3 py-1.5 rounded-lg text-xs shadow transition">
+          हल देखें 🔍
+        </button>
+      </div>
+
+      <!-- Registration Form -->
+      <form id="formRegister" class="space-y-3.5">
+        <div>
+          <label class="block text-xs font-semibold text-slate-700 mb-1">परीक्षार्थी का पूरा नाम *</label>
+          <input type="text" id="regName" required placeholder="उदा. राहुल कुमार" class="w-full px-3 py-2 text-sm border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition">
+        </div>
+
+        <div>
+          <label class="block text-xs font-semibold text-slate-700 mb-1">गृह जिला / शहर (बिहार के 38 जिले) *</label>
+          <select id="regDistrict" required class="w-full px-3 py-2 text-sm border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none bg-white transition">
+            <option value="">-- अपना जिला चुनें --</option>
+            <option value="पटना">पटना (Patna)</option>
+            <option value="गया">गया (Gaya)</option>
+            <option value="मुजफ्फरपुर">मुजफ्फरपुर (Muzaffarpur)</option>
+            <option value="भागलपुर">भागलपुर (Bhagalpur)</option>
+            <option value="दरभंगा">दरभंगा (Darbhanga)</option>
+            <option value="पूर्णिया">पूर्णिया (Purnia)</option>
+            <option value="रोहतास">रोहतास (Rohtas)</option>
+            <option value="नालंदा">नालंदा (Nalanda)</option>
+            <option value="सारण">सारण / छपरा (Saran)</option>
+            <option value="भोजपुर">भोजपुर / आरा (Bhojpur)</option>
+            <option value="वैशाली">वैशाली / हाजीपुर (Vaishali)</option>
+            <option value="समस्तीपुर">समस्तीपुर (Samastipur)</option>
+            <option value="बेगूसराय">बेगूसराय (Begusarai)</option>
+            <option value="सीवान">सीवान (Siwan)</option>
+            <option value="गोपालगंज">गोपालगंज (Gopalganj)</option>
+            <option value="पूर्वी चंपारण">पूर्वी चंपारण / मोतिहारी (East Champaran)</option>
+            <option value="पश्चिम चंपारण">पश्चिम चंपारण / बेतिया (West Champaran)</option>
+            <option value="सीतामढ़ी">सीतामढ़ी (Sitamarhi)</option>
+            <option value="शिवहर">शिवहर (Sheohar)</option>
+            <option value="मधुबनी">मधुबनी (Madhubani)</option>
+            <option value="सहरसा">सहरसा (Saharsa)</option>
+            <option value="सुपौल">सुपौल (Supaul)</option>
+            <option value="मधेपुरा">मधेपुरा (Madhepura)</option>
+            <option value="कटिहार">कटिहार (Katihar)</option>
+            <option value="अररिया">अररिया (Araria)</option>
+            <option value="किशनगंज">किशनगंज (Kishanganj)</option>
+            <option value="मुंगेर">मुंगेर (Munger)</option>
+            <option value="खगड़िया">खगड़िया (Khagaria)</option>
+            <option value="जमुई">जमुई (Jamui)</option>
+            <option value="लखीसराय">लखीसराय (Lakhisarai)</option>
+            <option value="शेखपुरा">शेखपुरा (Sheikhpura)</option>
+            <option value="बांका">बांका (Banka)</option>
+            <option value="नवादा">नवादा (Nawada)</option>
+            <option value="औरंगाबाद">औरंगाबाद (Aurangabad)</option>
+            <option value="जहानाबाद">जहानाबाद (Jehanabad)</option>
+            <option value="अरवल">अरवल (Arwal)</option>
+            <option value="कैमूर">कैमूर / भभुआ (Kaimur)</option>
+            <option value="बक्सर">बक्सर (Buxar)</option>
+            <option value="अन्य राज्य">अन्य राज्य (Other State)</option>
+          </select>
+        </div>
+
+        <div>
+          <label class="block text-xs font-semibold text-slate-700 mb-1">टेलीग्राम यूजरनेम *</label>
+          <div class="relative">
+            <span class="absolute inset-y-0 left-0 pl-3 flex items-center text-slate-400 text-sm">@</span>
+            <input type="text" id="regTelegram" required placeholder="username" class="w-full pl-8 pr-3 py-2 text-sm border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition">
+          </div>
+          <span class="text-[10px] text-slate-400">रैंक सूची व मेरिट लिस्ट सत्यापन के लिए।</span>
+        </div>
+
+        <!-- Instructions checklist -->
+        <div class="bg-amber-50/70 border border-amber-200/80 p-2.5 rounded-lg text-[11px] text-amber-900 space-y-1">
+          <p class="font-bold text-amber-950 flex items-center gap-1">
+            <svg class="w-3.5 h-3.5 text-amber-600" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"></path></svg>
+            TCS iON परीक्षा निर्देश:
+          </p>
+          <ul class="list-disc list-inside space-y-0.5 text-slate-700">
+            <li>प्रत्येक सही उत्तर: <b>+2.00 अंक</b> | प्रत्येक गलत उत्तर: <b>-0.20 अंक</b></li>
+            <li>लाइव टेस्ट के दौरान सही/गलत उत्तर प्रदर्शित नहीं होंगे।</li>
+            <li>सबमिट करते ही रियल-टाइम ऑल-बिहार मेरिट रैंक जनरेट होगी।</li>
+          </ul>
+        </div>
+
+        <button type="submit" class="w-full bg-gradient-to-r from-blue-700 to-indigo-700 hover:from-blue-600 hover:to-indigo-600 text-white font-bold py-3 px-4 rounded-xl shadow-lg transition active:scale-[0.98] flex items-center justify-center gap-2 text-sm">
+          <span>🚀 Start Test (Auto Full Screen)</span>
+        </button>
+      </form>
+    </section>
+
+
+    <!-- 2. EXAM INTERFACE SCREEN (TCS iON Mobile First) -->
+    <section id="screenExam" class="hidden flex-1 flex flex-col justify-between">
+      
+      <!-- Top Section Tabs -->
+      <div class="flex items-center gap-1.5 overflow-x-auto no-scrollbar py-1 mb-2">
+        <button data-filter="all" class="sec-tab active px-3 py-1 rounded-full text-xs font-bold transition whitespace-nowrap bg-blue-600 text-white shadow-sm">
+          सभी प्रश्न (33)
+        </button>
+        <button data-filter="mcq" class="sec-tab px-3 py-1 rounded-full text-xs font-semibold transition whitespace-nowrap bg-white text-slate-700 border border-slate-300">
+          करंट अफेयर्स MCQs (15)
+        </button>
+        <button data-filter="booster" class="sec-tab px-3 py-1 rounded-full text-xs font-semibold transition whitespace-nowrap bg-white text-slate-700 border border-slate-300">
+          वन-लाइनर बूस्टर (15)
+        </button>
+        <button data-filter="homework" class="sec-tab px-3 py-1 rounded-full text-xs font-semibold transition whitespace-nowrap bg-white text-slate-700 border border-slate-300">
+          अभ्यास प्रश्न (3)
+        </button>
+      </div>
+
+      <!-- Question Card Container -->
+      <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-4 sm:p-5 flex-1 flex flex-col justify-between">
+        
+        <!-- Question Header Meta -->
+        <div>
+          <div class="flex items-center justify-between pb-2 mb-2 border-b border-slate-100">
+            <div class="flex items-center gap-2">
+              <span id="badgeQNum" class="bg-slate-900 text-amber-300 font-extrabold text-xs px-2.5 py-1 rounded-md">Q. 1 / 33</span>
+              <span id="badgeQSec" class="text-[11px] font-semibold text-blue-700 bg-blue-50 px-2 py-0.5 rounded border border-blue-200">भाग 2 : मुख्य MCQs</span>
+            </div>
+            <div class="flex items-center gap-1.5">
+              <span id="reviewTag" class="hidden text-[10px] bg-purple-100 text-purple-700 font-bold px-1.5 py-0.5 rounded">★ समीक्षा</span>
+              <span class="text-[10px] text-slate-500 font-mono">+2.00 / -0.20</span>
+            </div>
+          </div>
+
+          <!-- Official Watermark Bar -->
+          <div class="bg-gradient-to-r from-blue-50 via-slate-50 to-blue-50 text-[10px] text-slate-500 px-2 py-0.5 rounded mb-3 flex items-center justify-between border border-blue-100">
+            <span>GYANVERSE (ज्ञानवर्स) EXCLUSIVE</span>
+            <span class="text-blue-600 font-medium">Join Telegram: @GYANVERSET</span>
+          </div>
+
+          <!-- Question Text -->
+          <div id="qText" class="hindi-text text-sm sm:text-base font-semibold text-slate-900 leading-relaxed mb-4">
+            <!-- Question content injected dynamically -->
+          </div>
+
+          <!-- Options Container -->
+          <div id="optionsList" class="space-y-2.5">
+            <!-- Options injected dynamically -->
+          </div>
+        </div>
+
+        <!-- Navigation Buttons Row (Directly below options) -->
+        <div class="pt-4 mt-3 border-t border-slate-100">
+          <div class="grid grid-cols-4 gap-2">
+            <button id="btnPrev" class="bg-slate-200 hover:bg-slate-300 text-slate-800 text-xs font-bold py-2.5 px-2 rounded-xl transition flex items-center justify-center gap-1">
+              ⬅ Prev
+            </button>
+            <button id="btnClear" class="bg-slate-100 hover:bg-rose-50 text-slate-600 hover:text-rose-600 text-xs font-semibold py-2.5 px-1 rounded-xl border border-slate-300 transition flex items-center justify-center gap-1">
+              ✖ Clear
+            </button>
+            <button id="btnReview" class="bg-purple-50 hover:bg-purple-100 text-purple-700 text-xs font-bold py-2.5 px-1 rounded-xl border border-purple-200 transition flex items-center justify-center gap-1">
+              ★ Review
+            </button>
+            <button id="btnNext" class="bg-blue-600 hover:bg-blue-700 active:scale-95 text-white text-xs font-bold py-2.5 px-2 rounded-xl shadow transition flex items-center justify-center gap-1">
+              Next ➡
+            </button>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Bottom Jump Dropdown & Fast Status Strip -->
+      <div class="mt-2.5 bg-white p-2.5 rounded-xl border border-slate-200 shadow-sm flex items-center justify-between gap-2">
+        <div class="flex items-center gap-1.5 text-xs text-slate-600">
+          <span class="font-semibold text-[11px]">प्रश्न पर जाएँ:</span>
+          <select id="jumpSelect" class="bg-slate-50 border border-slate-300 rounded-lg px-2 py-1 text-xs font-semibold outline-none focus:ring-1 focus:ring-blue-500">
+            <!-- Options 1 to 33 -->
+          </select>
+        </div>
+        
+        <div class="flex items-center gap-2 text-[11px]">
+          <span class="flex items-center gap-1 text-emerald-700 font-semibold">
+            <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 inline-block"></span>
+            <span id="lblCountAttempted">0</span>
+          </span>
+          <span class="flex items-center gap-1 text-slate-400 font-semibold">
+            <span class="w-2.5 h-2.5 rounded-full bg-slate-300 inline-block"></span>
+            <span id="lblCountLeft">33</span>
+          </span>
+          <span class="flex items-center gap-1 text-purple-600 font-semibold">
+            <span class="w-2.5 h-2.5 rounded-full bg-purple-500 inline-block"></span>
+            <span id="lblCountReview">0</span>
+          </span>
+        </div>
+      </div>
+
+    </section>
+
+
+    <!-- 3. DETAILED SCORECARD SCREEN -->
+    <section id="screenScorecard" class="hidden flex-1 flex flex-col justify-start max-w-2xl mx-auto w-full">
+      <div class="bg-white rounded-2xl shadow-xl border border-slate-200 p-4 sm:p-6 mb-4">
+        
+        <!-- Header Ribbon -->
+        <div class="text-center pb-3 border-b border-slate-100">
+          <span class="inline-block bg-emerald-100 text-emerald-800 font-extrabold text-xs px-3 py-1 rounded-full uppercase tracking-wider mb-1">
+            ✓ टेस्ट सफलतापूर्वक सबमिट हुआ
+          </span>
+          <h2 class="text-lg sm:text-xl font-black text-slate-900" id="resCandidateName">अभ्यर्थी का नाम</h2>
+          <p class="text-xs text-slate-500" id="resCandidateInfo">जिला: पटना | @telegram</p>
+        </div>
+
+        <!-- Big Score Display -->
+        <div class="my-4 p-4 rounded-2xl bg-gradient-to-br from-blue-900 via-indigo-900 to-slate-900 text-white text-center shadow-lg relative overflow-hidden">
+          <div class="absolute -right-6 -bottom-6 opacity-10 text-8xl font-black">GV</div>
+          <span class="text-xs uppercase text-amber-300 font-semibold tracking-wider block">कुल प्राप्तांक (Total Score)</span>
+          <div class="text-3xl sm:text-4xl font-extrabold my-1">
+            <span id="resTotalMarks" class="text-amber-400">00.00</span>
+            <span class="text-base text-slate-300 font-normal"> / 66.00</span>
+          </div>
+
+          <!-- Real-Time Rank Badge -->
+          <div class="inline-flex items-center gap-2 bg-white/10 px-3 py-1 rounded-full text-xs mt-1 border border-white/20">
+            <span>🏆 ऑल-बिहार रैंक:</span>
+            <span id="resRankDisplay" class="font-extrabold text-amber-300">#1 / 1</span>
+            <span class="text-slate-400">|</span>
+            <span id="resPercentile" class="text-cyan-300 font-bold">100%ile</span>
+          </div>
+        </div>
+
+        <!-- Metric Grid -->
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-2.5 text-center text-xs mb-4">
+          <div class="p-2.5 rounded-xl bg-emerald-50 border border-emerald-200">
+            <span class="text-emerald-700 block text-[11px] font-medium">सही उत्तर</span>
+            <span id="resCorrect" class="text-lg font-black text-emerald-700">0</span>
+            <span class="text-[10px] text-emerald-600 block">(+0.00 अंक)</span>
+          </div>
+          <div class="p-2.5 rounded-xl bg-rose-50 border border-rose-200">
+            <span class="text-rose-700 block text-[11px] font-medium">गलत उत्तर</span>
+            <span id="resWrong" class="text-lg font-black text-rose-700">0</span>
+            <span class="text-[10px] text-rose-600 block">(-0.00 अंक)</span>
+          </div>
+          <div class="p-2.5 rounded-xl bg-slate-50 border border-slate-200">
+            <span class="text-slate-600 block text-[11px] font-medium">छोड़े गए</span>
+            <span id="resLeft" class="text-lg font-black text-slate-700">0</span>
+            <span class="text-[10px] text-slate-500 block">(0.00 अंक)</span>
+          </div>
+          <div class="p-2.5 rounded-xl bg-blue-50 border border-blue-200">
+            <span class="text-blue-700 block text-[11px] font-medium">सटीकता (Accuracy)</span>
+            <span id="resAccuracy" class="text-lg font-black text-blue-700">0%</span>
+            <span id="resTimeTaken" class="text-[10px] text-blue-600 block">समय: 0m</span>
+          </div>
+        </div>
+
+        <!-- Section-wise Breakdown Mini Table -->
+        <div class="overflow-x-auto text-xs border border-slate-200 rounded-xl mb-4">
+          <table class="w-full text-left">
+            <thead class="bg-slate-50 text-slate-600 border-b border-slate-200 text-[11px]">
+              <tr>
+                <th class="p-2">सेक्शन</th>
+                <th class="p-2 text-center">कुल</th>
+                <th class="p-2 text-center text-emerald-700">सही</th>
+                <th class="p-2 text-center text-rose-700">गलत</th>
+                <th class="p-2 text-center">अंक</th>
+              </tr>
+            </thead>
+            <tbody id="resSectionTable" class="divide-y divide-slate-100 font-medium">
+              <!-- Rendered via JS -->
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Action CTAs -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+          <button id="btnViewSolutions" class="w-full bg-blue-600 hover:bg-blue-500 text-white font-bold py-2.5 px-4 rounded-xl shadow transition flex items-center justify-center gap-1.5 text-xs sm:text-sm">
+            <span>🔍 Check Solutions (उत्तर व व्याख्या)</span>
+          </button>
+          <button id="btnOpenRankFromScore" class="w-full bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold py-2.5 px-4 rounded-xl shadow transition flex items-center justify-center gap-1.5 text-xs sm:text-sm">
+            <span>🏆 ऑल-बिहार मेरिट सूची देखें</span>
+          </button>
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- 4. CHECK SOLUTIONS & EXPLANATIONS SCREEN -->
+    <section id="screenSolutions" class="hidden flex-1 flex flex-col justify-start max-w-3xl mx-auto w-full">
+      
+      <!-- Sticky Solution Filter Header -->
+      <div class="sticky top-14 bg-slate-100/95 backdrop-blur z-30 py-2 mb-3 border-b border-slate-200 flex items-center justify-between gap-2">
+        <div class="flex items-center gap-1 overflow-x-auto no-scrollbar text-xs">
+          <button data-sol-filter="all" class="sol-tab active bg-slate-900 text-white font-bold px-2.5 py-1 rounded-lg transition">सभी (33)</button>
+          <button data-sol-filter="correct" class="sol-tab bg-white text-emerald-700 border border-slate-300 font-semibold px-2.5 py-1 rounded-lg transition">✔ सही</button>
+          <button data-sol-filter="wrong" class="sol-tab bg-white text-rose-700 border border-slate-300 font-semibold px-2.5 py-1 rounded-lg transition">✖ गलत</button>
+          <button data-sol-filter="left" class="sol-tab bg-white text-slate-600 border border-slate-300 font-semibold px-2.5 py-1 rounded-lg transition">⚪ छोड़े गए</button>
+        </div>
+        <button id="btnBackToScore" class="bg-slate-200 hover:bg-slate-300 text-slate-800 text-xs font-bold px-3 py-1 rounded-lg transition shrink-0">
+          ⬅ स्कोरकार्ड
+        </button>
+      </div>
+
+      <!-- Solutions Cards List -->
+      <div id="solutionsCardList" class="space-y-4 pb-12">
+        <!-- Injected via JavaScript -->
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ================= FOOTER BRANDING ================= -->
+  <footer class="bg-white border-t border-slate-200 py-2.5 text-center text-xs text-slate-500">
+    <div class="max-w-4xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-1.5">
+      <div class="flex items-center gap-1 font-semibold text-slate-700">
+        <span class="w-2 h-2 rounded-full bg-blue-600"></span>
+        <span>GYANVERSE (ज्ञानवर्स) - आपकी सफलता का विश्वसनीय साथी</span>
+      </div>
+      <div class="flex items-center gap-2 text-[11px]">
+        <span>टेलीग्राम:</span>
+        <a href="https://t.me/GYANVERSET" target="_blank" class="text-blue-600 font-bold hover:underline">@GYANVERSET</a>
+        <span class="text-slate-300">|</span>
+        <span class="text-slate-400">PDF बुलेटिन: 31 अक्टूबर 2026</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ================= MODAL: SUBMIT CONFIRMATION ================= -->
+  <div id="modalConfirmSubmit" class="fixed inset-0 bg-black/60 z-50 hidden flex items-center justify-center p-3 backdrop-blur-sm">
+    <div class="bg-white rounded-2xl max-w-sm w-full p-4 sm:p-5 shadow-2xl border border-slate-200">
+      <div class="text-center mb-3">
+        <div class="w-10 h-10 bg-amber-100 text-amber-700 rounded-full flex items-center justify-center mx-auto mb-2 text-xl font-bold">!</div>
+        <h3 class="text-base font-bold text-slate-900">क्या आप टेस्ट सबमिट करना चाहते हैं?</h3>
+        <p class="text-xs text-slate-500 mt-0.5">सबमिट के बाद आपकी ऑल-बिहार मेरिट रैंक निर्धारित होगी।</p>
+      </div>
+
+      <div class="bg-slate-50 rounded-xl p-3 border border-slate-200 text-xs space-y-2 mb-4">
+        <div class="flex justify-between">
+          <span class="text-slate-500">कुल प्रश्न:</span>
+          <span class="font-bold text-slate-800">33</span>
+        </div>
+        <div class="flex justify-between">
+          <span class="text-emerald-700">हल किए गए (Attempted):</span>
+          <span id="modalAttempted" class="font-bold text-emerald-700">0</span>
+        </div>
+        <div class="flex justify-between">
+          <span class="text-slate-400">छोड़े गए (Left):</span>
+          <span id="modalLeft" class="font-bold text-slate-600">33</span>
+        </div>
+        <div class="flex justify-between">
+          <span class="text-purple-700">समीक्षाधीन (Review):</span>
+          <span id="modalReview" class="font-bold text-purple-700">0</span>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-2 gap-2">
+        <button id="btnCancelSubmit" class="bg-slate-200 hover:bg-slate-300 text-slate-700 font-bold py-2.5 px-3 rounded-xl text-xs transition">
+          वापस परीक्षा में जाएँ
+        </button>
+        <button id="btnFinalSubmitConfirm" class="bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-2.5 px-3 rounded-xl text-xs shadow transition">
+          हाँ, फाइनल सबमिट करें
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= MODAL: ALL-BIHAR LIVE RANKING LEADERBOARD ================= -->
+  <div id="modalLeaderboard" class="fixed inset-0 bg-black/60 z-50 hidden flex items-center justify-center p-2 sm:p-4 backdrop-blur-sm">
+    <div class="bg-white rounded-2xl max-w-2xl w-full max-h-[92vh] flex flex-col shadow-2xl border border-slate-200 overflow-hidden">
+      
+      <!-- Leaderboard Header -->
+      <div class="p-3.5 bg-gradient-to-r from-blue-900 to-indigo-900 text-white flex items-center justify-between">
+        <div>
+          <h3 class="font-black text-sm sm:text-base flex items-center gap-1.5 text-amber-300">
+            <span>🏆 GYANVERSE लाइव ऑल-बिहार मेरिट रैंकिंग</span>
+          </h3>
+          <p class="text-[11px] text-blue-200">31 अक्टूबर 2026 स्पेशल टेस्ट | लाइव क्लाउड डेटा</p>
+        </div>
+        <button id="btnCloseLeaderboard" class="text-white hover:bg-white/20 rounded-lg p-1.5 transition">
+          ✕
+        </button>
+      </div>
+
+      <!-- Filters Strip -->
+      <div class="p-2.5 bg-slate-50 border-b border-slate-200 flex flex-col sm:flex-row gap-2">
+        <div class="relative flex-1">
+          <input type="text" id="filterRankSearch" placeholder="छात्र का नाम या @username खोजें..." class="w-full pl-3 pr-3 py-1.5 text-xs border border-slate-300 rounded-lg outline-none focus:ring-1 focus:ring-blue-500">
+        </div>
+        <select id="filterRankDistrict" class="px-2 py-1.5 text-xs border border-slate-300 rounded-lg bg-white outline-none">
+          <option value="">सभी 38 जिले (All Bihar)</option>
+          <option value="पटना">पटना</option>
+          <option value="गया">गया</option>
+          <option value="मुजफ्फरपुर">मुजफ्फरपुर</option>
+          <option value="भागलपुर">भागलपुर</option>
+          <option value="दरभंगा">दरभंगा</option>
+          <option value="पूर्णिया">पूर्णिया</option>
+          <option value="रोहतास">रोहतास</option>
+          <option value="नालंदा">नालंदा</option>
+          <option value="सारण">सारण</option>
+          <option value="भोजपुर">भोजपुर</option>
+          <option value="वैशाली">वैशाली</option>
+          <option value="समस्तीपुर">समस्तीपुर</option>
+          <option value="बेगूसराय">बेगूसराय</option>
+        </select>
+      </div>
+
+      <!-- Top 3 Podium (Visual) -->
+      <div id="podiumArea" class="bg-gradient-to-b from-blue-50/50 to-white p-3 border-b border-slate-200">
+        <div class="text-[10px] text-center font-bold text-slate-400 uppercase tracking-wider mb-2">शीर्ष 3 मेधावी छात्र (Top 3 Rankers)</div>
+        <div class="grid grid-cols-3 gap-2 text-center" id="podiumList">
+          <!-- Populated by JS -->
+        </div>
+      </div>
+
+      <!-- Full Rank Table List -->
+      <div class="flex-1 overflow-y-auto p-2 no-scrollbar">
+        <div id="leaderboardStatus" class="text-center py-4 text-xs text-slate-500">
+          डेटा लोड हो रहा है...
+        </div>
+        <table class="w-full text-left text-xs border-collapse">
+          <thead class="bg-slate-100 text-slate-600 sticky top-0 text-[10px]">
+            <tr>
+              <th class="p-2">रैंक</th>
+              <th class="p-2">परीक्षार्थी</th>
+              <th class="p-2">जिला</th>
+              <th class="p-2 text-right">अंक</th>
+              <th class="p-2 text-right">सटीकता</th>
+            </tr>
+          </thead>
+          <tbody id="leaderboardTbody" class="divide-y divide-slate-100 font-medium">
+            <!-- Dynamic rows -->
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Footer Info -->
+      <div class="p-2.5 bg-slate-50 border-t border-slate-200 text-center text-[11px] text-slate-500 flex items-center justify-between">
+        <span id="rankCountLabel">कुल परीक्षार्थी: 0</span>
+        <a href="https://t.me/GYANVERSET" target="_blank" class="text-blue-600 font-semibold hover:underline">टेलीग्राम पर जुड़ें: @GYANVERSET</a>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ================= MODAL: SECRET ADMIN FIREBASE SETTINGS ================= -->
+  <div id="modalAdmin" class="fixed inset-0 bg-black/70 z-50 hidden flex items-center justify-center p-3 backdrop-blur-sm">
+    <div class="bg-white rounded-2xl max-w-md w-full p-4 sm:p-5 shadow-2xl border border-slate-300">
+      
+      <!-- Step 1: PIN Screen -->
+      <div id="adminPinArea">
+        <div class="text-center mb-3">
+          <span class="text-2xl">🔐</span>
+          <h3 class="font-bold text-slate-900 text-sm">GYANVERSE Admin Security</h3>
+          <p class="text-xs text-slate-500">डेटाबेस प्रबंधन हेतु अधिकृत पिन दर्ज करें:</p>
+        </div>
+        <input type="password" id="adminPinInput" placeholder="पिन दर्ज करें (1234 या GYANVERSE)" class="w-full px-3 py-2 text-sm border border-slate-300 rounded-lg text-center font-mono mb-3">
+        <div class="grid grid-cols-2 gap-2">
+          <button id="btnAdminPinCancel" class="bg-slate-200 text-slate-700 py-2 rounded-lg text-xs font-bold">रद्द करें</button>
+          <button id="btnAdminPinSubmit" class="bg-blue-600 text-white py-2 rounded-lg text-xs font-bold">अनलॉक करें</button>
+        </div>
+      </div>
+
+      <!-- Step 2: Config Area (Hidden until PIN is correct) -->
+      <div id="adminConfigArea" class="hidden space-y-3">
+        <div class="flex items-center justify-between pb-2 border-b border-slate-200">
+          <h4 class="font-bold text-xs text-blue-900">Firebase Realtime Database URL</h4>
+          <span class="text-[10px] bg-emerald-100 text-emerald-800 px-1.5 py-0.5 rounded font-mono">AUTHORIZED</span>
+        </div>
+        <p class="text-[11px] text-slate-500">डिफ़ॉल्ट स्थायी डेटाबेस URL सेट है। आवश्यकता पड़ने पर इसे अपडेट किया जा सकता है:</p>
+        <textarea id="txtFirebaseUrl" rows="2" class="w-full p-2 text-xs font-mono border border-slate-300 rounded-lg focus:ring-1 focus:ring-blue-500"></textarea>
+        
+        <div class="flex justify-between items-center text-[11px]">
+          <button id="btnResetDefaultUrl" class="text-blue-600 hover:underline">डिफ़ॉल्ट रीसेट करें</button>
+          <button id="btnClearLocalHistory" class="text-rose-600 hover:underline">लोकल डेटा साफ़ करें</button>
+        </div>
+
+        <div class="grid grid-cols-2 gap-2 pt-2 border-t border-slate-100">
+          <button id="btnAdminClose" class="bg-slate-200 text-slate-700 py-2 rounded-lg text-xs font-bold">बंद करें</button>
+          <button id="btnSaveFirebaseUrl" class="bg-emerald-600 text-white py-2 rounded-lg text-xs font-bold">URL सेव करें</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+
+  <!-- ================= JAVASCRIPT: DATA & CBT ENGINE ================= -->
+  <script>
+    /* =========================================================================
+       1. COMPLETE 33 QUESTIONS MASTER DATA FROM GYANVERSE 31 OCT 2026 BULLETIN
+       - Part 1: 15 Questions from 30 Oct Revision Booster
+       - Part 2: 15 Comprehensive MCQs from 31 Oct
+       - Part 3: 3 Practice / Homework Questions
+       ========================================================================= */
+    const GYANVERSE_QUESTIONS = [
+      // -------------------------------------------------------------
+      // PART 2: MAIN 15 MCQS (From Page 2 to 7 of PDF)
+      // -------------------------------------------------------------
+      {
+        id: 1,
+        sec: "mcq",
+        secName: "भाग 2 : 31 अक्टूबर 2026 विस्तृत MCQs",
+        q: "भारतीय वाणिज्य एवं उद्योग महासंघ (FICCI) के नए अध्यक्ष (President) के रूप में किसे नामित किया गया है?",
+        options: [
+          "अनंत गोयनका",
+          "अनंत स्वरूप",
+          "विजय शंकर",
+          "संजीव पुरी"
+        ],
+        ans: 2, // (C) विजय शंकर
+        exp: "• सटीक उत्तर: (C) विजय शंकर\n• मुख्य बिंदु: भारतीय वाणिज्य एवं उद्योग महासंघ (FICCI) ने वर्ष 2026-27 के लिए विजय शंकर को अपने नए अध्यक्ष के रूप में नामित किया है।\n• किसका स्थान लेंगे: वे निवर्तमान अध्यक्ष अनंत गोयनका का स्थान लेंगे।\n• FICCI स्टैटिक जीके: पूर्ण रूप Federation of Indian Chambers of Commerce and Industry; स्थापना 1927; मुख्यालय - नई दिल्ली; वर्तमान महासचिव - अनंत स्वरूप।"
+      },
+      {
+        id: 2,
+        sec: "mcq",
+        secName: "भाग 2 : 31 अक्टूबर 2026 विस्तृत MCQs",
+        q: "26 से 29 अक्टूबर 2026 तक द्विपक्षीय नौसेना अभ्यास 'IN-ROKN' का दूसरा संस्करण भारत और किस देश के बीच आयोजित हुआ?",
+        options: [
+          "जापान",
+          "ऑस्ट्रेलिया",
+          "सिंगापुर",
+          "दक्षिण कोरिया"
+        ],
+        ans: 3, // (D) दक्षिण कोरिया
+        exp: "• सटीक उत्तर: (D) दक्षिण कोरिया (South Korea)\n• आयोजन स्थल: दक्षिण कोरिया के बुसान नौसेना बेस (Busan Naval Base) पर 26 से 29 अक्टूबर 2026 तक।\n• भागीदारी: भारत की ओर से स्वदेशी स्टील्थ फ्रिगेट INS सह्याद्री (INS Sahyadri) ने हिस्सा लिया, जबकि दक्षिण कोरिया की ओर से ROKS Munmu the Great शामिल हुआ।\n• दक्षिण कोरिया (2026 अपडेट): वर्तमान राष्ट्रपति ली जे म्युंग (Lee Jae-myung); वर्तमान प्रधानमंत्री हान जियोंग-सुक (वर्ष 2026 में दूसरी महिला प्रधानमंत्री बनीं)।"
+      },
+      {
+        id: 3,
+        sec: "mcq",
+        secName: "भाग 2 : 31 अक्टूबर 2026 विस्तृत MCQs",
+        q: "भारत का पहला 'फिजिकल एआई स्कूल' (Physical AI School) किस संस्थान में स्थापित किया जाएगा?",
+        options: [
+          "आईआईटी खड़गपुर",
+          "आईआईटी मद्रास",
+          "आईआईटी रोपड़",
+          "आईआईटी बॉम्बे"
+        ],
+        ans: 0, // (A) आईआईटी खड़गपुर
+        exp: "• सटीक उत्तर: (A) आईआईटी खड़गपुर (IIT Kharagpur)\n• मुख्य घोषणा: देश का पहला फिजिकल एआई स्कूल आईआईटी खड़गपुर में स्थापित किया जाएगा। इसके लिए संस्थान ने अपने पूर्व छात्र विनोद गुप्ता और आईआईटी खड़गपुर फाउंडेशन (अमेरिका) के साथ MoU किया है।\n• नाम व निवेश: 'बेंजामिन गुप्ता स्कूल ऑफ फिजिकल एआई' (कुल ₹35 करोड़ निवेश)।\n• विशेष तथ्य: देश की पहली सरकारी एआई यूनिवर्सिटी कर्नाटक के बेंगलुरु में स्थापित की जा रही है।"
+      },
+      {
+        id: 4,
+        sec: "mcq",
+        secName: "भाग 2 : 31 अक्टूबर 2026 विस्तृत MCQs",
+        q: "राष्ट्रीय एकता दिवस (National Unity Day) 2026 कब मनाया गया?",
+        options: [
+          "29 अक्टूबर",
+          "31 अक्टूबर",
+          "30 अक्टूबर",
+          "28 अक्टूबर"
+        ],
+        ans: 1, // (B) 31 अक्टूबर
+        exp: "• सटीक उत्तर: (B) 31 अक्टूबर\n• जयंती एवं महत्व: लौह पुरुष सरदार वल्लभभाई पटेल की जयंती के उपलक्ष्य में हर वर्ष 31 अक्टूबर को राष्ट्रीय एकता दिवस मनाया जाता है। वर्ष 2026 में उनकी 151वीं जयंती मनाई गई।\n• थीम 2026: 'एक भारत श्रेष्ठ भारत' (Ek Bharat Shreshtha Bharat)।\n• मुख्य स्थल: गुजरात के एकता नगर (स्टैच्यू ऑफ यूनिटी)।"
+      },
+      {
+        id: 5,
+        sec: "mcq",
+        secName: "भाग 2 : 31 अक्टूबर 2026 विस्तृत MCQs",
+        q: "अक्टूबर 2026 में भारतीय मूल के किस नासा (NASA) अंतरिक्ष यात्री ने इंटरनेशनल स्पेस स्टेशन (ISS) पर अपने करियर का चौथा स्पेसवॉक पूरा किया?",
+        options: [
+          "राजा चारी",
+          "अनिल मेनन",
+          "सुनीता विलियम्स",
+          "जोशुआ कुट्रिक"
+        ],
+        ans: 1, // (B) अनिल मेनन
+        exp: "• सटीक उत्तर: (B) अनिल मेनन\n• विवरण: नासा के भारतीय मूल के अंतरिक्ष यात्री अनिल मेनन ने 29 अक्टूबर 2026 को अपने करियर का चौथा स्पेसवॉक पूरा किया (7 घंटे 11 मिनट)।\n• सहयोगी: कनाडाई अंतरिक्ष यात्री जोशुआ कुट्रिक (पहला स्पेसवॉक)। उद्देश्य: सातवाँ नया रोल-आउट सोलर एरे (iROSA) स्थापित करना।\n• ISS स्टैटिक: प्रक्षेपण 1998; पृथ्वी से 400 किमी ऊपर; 5 एजेंसियाँ: NASA, Roscosmos, ESA, JAXA, CSA।"
+      },
+      {
+        id: 6,
+        sec: "mcq",
+        secName: "भाग 2 : 31 अक्टूबर 2026 विस्तृत MCQs",
+        q: "वर्ष 2026 की 'विश्व के 100 सर्वश्रेष्ठ संग्रहालयों' की सूची में बिहार के पटना स्थित 'बिहार संग्रहालय' को कौन-सा स्थान मिला है?",
+        options: [
+          "5वाँ स्थान",
+          "7वाँ स्थान",
+          "9वाँ स्थान",
+          "12वाँ स्थान"
+        ],
+        ans: 2, // (C) 9वाँ स्थान
+        exp: "• सटीक उत्तर: (C) 9वाँ स्थान (9th Rank)\n• जारीकर्ता: म्यूनिख (जर्मनी) की यात्रा गाइड 'Worth a Journey' द्वारा जारी विश्व के 100 सर्वश्रेष्ठ संग्रहालयों की सूची में पटना स्थित बिहार संग्रहालय (Bihar Museum) को 9वाँ स्थान मिला।\n• उपलब्धि: बिहार संग्रहालय एशिया में पहले स्थान पर रहा तथा इस वैश्विक सूची में शामिल भारत का एकमात्र संग्रहालय बना।\n• बिहार 2026 अपडेट: मुख्यमंत्री - सम्राट चौधरी; राज्यपाल - लेफ्टिनेंट जनरल (सेवानिवृत्त) सैयद अता हसनैन।"
+      },
+      {
+        id: 7,
+        sec: "mcq",
+        secName: "भाग 2 : 31 अक्टूबर 2026 विस्तृत MCQs",
+        q: "अक्टूबर 2026 में केंद्रीय पर्यावरण मंत्री भूपेंद्र यादव ने कहाँ आयोजित जैव विविधता सम्मेलन (CBD COP-17) के दौरान भारत के चार प्रमुख प्रकाशन जारी किए?",
+        options: [
+          "येरेवन, आर्मेनिया",
+          "बाकू, अज़रबैजान",
+          "बेलेम, ब्राजील",
+          "अंकारा, तुर्की"
+        ],
+        ans: 0, // (A) येरेवन, आर्मेनिया
+        exp: "• सटीक उत्तर: (A) येरेवन, आर्मेनिया (Yerevan, Armenia)\n• सम्मेलन: जैविक विविधता पर सम्मेलन (CBD) की 17वीं बैठक (COP-17) 19 से 30 अक्टूबर 2026 तक आर्मेनिया की राजधानी येरेवन में आयोजित हुई।\n• थीम: 'प्रकृति के लिए कार्रवाई करना' (Taking Action for Nature)।\n• UNFCCC जलवायु तुलना: COP-30 (2025 ब्राजील), COP-31 (2026 तुर्की), COP-32 (2027 इथियोपिया)।"
+      },
+      {
+        id: 8,
+        sec: "mcq",
+        secName: "भाग 2 : 31 अक्टूबर 2026 विस्तृत MCQs",
+        q: "अक्टूबर 2026 में केंद्रीय मंत्रिमंडल ने किस अवधि के लिए 'खेलो इंडिया खेल सामग्री विनिर्माण योजना' हेतु ₹1,856.67 करोड़ के वित्तीय परिव्यय को मंजूरी दी?",
+        options: [
+          "2026-27 से 2030-31",
+          "2026-27 से 2033-34",
+          "2026-27 से 2035-36",
+          "2026-27 से 2031-32"
+        ],
+        ans: 1, // (B) 2026-27 से 2033-34
+        exp: "• सटीक उत्तर: (B) 2026-27 से 2033-34\n• मंजूरी एवं बजट: केंद्रीय बजट 2026-27 में घोषित इस योजना को मंत्रिमंडल ने 28 अक्टूबर 2026 को मंजूरी दी (बजट: ₹1,856.67 करोड़, अवधि: 2026-27 से 2033-34)।\n• उद्देश्य: भारत को खेल सामग्री विनिर्माण, नवाचार और निर्यात का ग्लोबल हब बनाना।\n• खेलो इंडिया यूथ गेम्स 2026 (8वाँ संस्करण): 11 से 22 दिसंबर 2026 तक तेलंगाना राज्य में आयोजित।"
+      },
+      {
+        id: 9,
+        sec: "mcq",
+        secName: "भाग 2 : 31 अक्टूबर 2026 विस्तृत MCQs",
+        q: "108 दिनों के 'इंडिया बिनाले 2026' (India Biennale 2026) कला, वास्तुकला और डिजाइन महोत्सव का आयोजन किस मंत्रालय द्वारा किया जा रहा है?",
+        options: [
+          "पर्यटन मंत्रालय",
+          "शिक्षा मंत्रालय",
+          "गृह मंत्रालय",
+          "संस्कृति मंत्रालय"
+        ],
+        ans: 3, // (D) संस्कृति मंत्रालय
+        exp: "• सटीक उत्तर: (D) संस्कृति मंत्रालय (Ministry of Culture)\n• आयोजन: 4 दिसंबर 2026 से 21 मार्च 2027 तक (108 दिन)। प्रमुख स्थल: दिल्ली का ऐतिहासिक जंतर-मंतर।\n• थीम: 'तत् त्वम् असि' (Tat Tvam Asi - You Are That)।\n• 2026 मंत्री अपडेट: संस्कृति एवं पर्यटन मंत्री - गजेंद्र सिंह शेखावत; शिक्षा मंत्री - प्रह्लाद जोशी (धर्मेंद्र प्रधान के स्थान पर)।"
+      },
+      {
+        id: 10,
+        sec: "mcq",
+        secName: "भाग 2 : 31 अक्टूबर 2026 विस्तृत MCQs",
+        q: "नासा (NASA) के किस स्पेसक्राफ्ट ने बृहस्पति (Jupiter) के 'बो शॉक' (Bow Shock) क्षेत्र में जटिल प्लाज्मा तरंगों और कई परतों का पता लगाया है?",
+        options: [
+          "यूरोपा क्लिपर",
+          "वॉयजर-2",
+          "जूनो (Juno)",
+          "कैसिनी"
+        ],
+        ans: 2, // (C) जूनो (Juno)
+        exp: "• सटीक उत्तर: (C) जूनो (Juno Spacecraft)\n• खोज: जूनो ने बृहस्पति के 'बो शॉक' क्षेत्र में सौर कणों को धीमा व गर्म करने वाली जटिल प्लाज्मा तरंगों की पहचान की।\n• जूनो तथ्य: 5 अगस्त 2011 को लॉन्च। यह बृहस्पति तक सौर ऊर्जा से संचालित होने वाला पहला अंतरिक्ष यान है।\n• सौरमंडल का सबसे बड़ा उपग्रह: गैनीमीड (बृहस्पति का चंद्रमा)।"
+      },
+      {
+        id: 11,
+        sec: "mcq",
+        secName: "भाग 2 : 31 अक्टूबर 2026 विस्तृत MCQs",
+        q: "अक्टूबर 2026 में सैन्य मामलों के विभाग (DMA) में अतिरिक्त सचिव का पद संभालने वाले भारतीय वायुसेना के पहले अधिकारी कौन बन गए हैं?",
+        options: [
+          "आशुतोष दीक्षित",
+          "अमर प्रीत सिंह",
+          "विक्रम गौर",
+          "विवेक राम चौधरी"
+        ],
+        ans: 2, // (C) विक्रम गौर
+        exp: "• सटीक उत्तर: (C) एयर मार्शल विक्रम गौर\n• ऐतिहासिक नियुक्ति: रक्षा मंत्रालय के सैन्य मामलों के विभाग (Department of Military Affairs - DMA) में अतिरिक्त सचिव बनने वाले IAF के पहले अधिकारी बने।\n• वायुसेना प्रमुख (2026 अपडेट): वाइस चीफ ऑफ एयर स्टाफ एयर मार्शल आशुतोष दीक्षित वर्तमान में चीफ और वाइस चीफ दोनों का प्रभार संभाल रहे हैं।"
+      },
+      {
+        id: 12,
+        sec: "mcq",
+        secName: "भाग 2 : 31 अक्टूबर 2026 विस्तृत MCQs",
+        q: "अक्टूबर 2026 में केंद्रीय मंत्रिमंडल ने भारत में शिपिंग कंटेनरों के घरेलू निर्माण को बढ़ावा देने के लिए किस योजना को मंजूरी दी?",
+        options: [
+          "पीएम समुद्री कंटेनर योजना",
+          "भारत शिपिंग मिशन",
+          "सागरमाला कंटेनर योजना",
+          "कंटेनर विनिर्माण प्रोत्साहन योजना"
+        ],
+        ans: 3, // (D) कंटेनर विनिर्माण प्रोत्साहन योजना
+        exp: "• सटीक उत्तर: (D) कंटेनर विनिर्माण प्रोत्साहन योजना (Container Manufacturing Promotion Scheme)\n• बजट व मंजूरी: वित्त वर्ष 2039-40 तक कुल बजट ₹10,000 करोड़ अनुमोदित।\n• उद्देश्य: कंटेनर निर्माण में आयात निर्भरता खत्म करना और घरेलू क्षमता 10 गुना तक बढ़ाना।"
+      },
+      {
+        id: 13,
+        sec: "mcq",
+        secName: "भाग 2 : 31 अक्टूबर 2026 विस्तृत MCQs",
+        q: "अक्टूबर 2026 में नई दिल्ली स्थित 'सेवा तीर्थ' में आयोजित 54वीं प्रगति (PRAGATI) बैठक की अध्यक्षता किसने की?",
+        options: [
+          "अमित शाह",
+          "नरेंद्र मोदी",
+          "राजनाथ सिंह",
+          "निर्मला सीतारमण"
+        ],
+        ans: 1, // (B) नरेंद्र मोदी
+        exp: "• सटीक उत्तर: (B) प्रधानमंत्री नरेंद्र मोदी\n• बैठक विवरण: 28 अक्टूबर 2026 को पीएमओ 'सेवा तीर्थ' में 54वीं PRAGATI बैठक की अध्यक्षता की। 31 राज्यों/UTs की ₹16,000 करोड़ से अधिक की ढांचागत परियोजनाओं की समीक्षा हुई।\n• PRAGATI का पूर्ण रूप: Pro-Active Governance And Timely Implementation।\n• AI शिखर सम्मेलन: AI Impact Summit 2026 नई दिल्ली में; AI Impact Summit 2027 जेनेवा (स्विट्जरलैंड) में आयोजित होगी।"
+      },
+      {
+        id: 14,
+        sec: "mcq",
+        secName: "भाग 2 : 31 अक्टूबर 2026 विस्तृत MCQs",
+        q: "महिला प्रीमियर लीग (WPL) में शामिल होने वाली सबसे कम उम्र (15 वर्ष) की खिलाड़ी कौन बन गई हैं?",
+        options: [
+          "शेफाली वर्मा",
+          "ऋचा घोष",
+          "उमा काश्वी",
+          "श्रेयांका पाटिल"
+        ],
+        ans: 2, // (C) उमा काश्वी
+        exp: "• सटीक उत्तर: (C) उमा काश्वी (Uma Kashvi)\n• रिकॉर्ड एवं टीम: कर्नाटक की ऑलराउंडर उमा काश्वी मात्र 15 वर्ष 202 दिन की उम्र में WPL में अनुबंधित होने वाली सबसे युवा खिलाड़ी बनीं। दिल्ली कैपिटल्स ने ₹10 लाख में खरीदा।\n• महिला क्रिकेट टीम 2026 अपडेट: स्मृति मंधाना भारतीय महिला क्रिकेट टीम की नई कप्तान बनीं।"
+      },
+      {
+        id: 15,
+        sec: "mcq",
+        secName: "भाग 2 : 31 अक्टूबर 2026 विस्तृत MCQs",
+        q: "अक्टूबर 2026 में भारत के जाने-माने पैरा एथलीट नीरज यादव का निधन हो गया, उन्होंने एशियन पैरा गेम्स में कितने स्वर्ण पदक (Gold Medal) जीते थे?",
+        options: [
+          "1 स्वर्ण पदक",
+          "2 स्वर्ण पदक",
+          "3 स्वर्ण पदक",
+          "4 स्वर्ण पदक"
+        ],
+        ans: 2, // (C) 3 स्वर्ण पदक
+        exp: "• सटीक उत्तर: (C) 3 स्वर्ण पदक (Three Gold Medals)\n• विवरण: भारत के दिग्गज पैरा एथलीट नीरज यादव (42 वर्ष, F55 श्रेणी) का निधन हो गया।\n• पदक रिकॉर्ड: कुल 3 स्वर्ण पदक — 2018 जकार्ता एशियन पैरा गेम्स में जैवलिन में 1 स्वर्ण; 2023 हांगझोऊ एशियन पैरा गेम्स में जैवलिन और डिस्कस थ्रो दोनों में स्वर्ण पदक।"
+      },
+
+      // -------------------------------------------------------------
+      // PART 1: 15 QUESTIONS FROM 30 OCT REVISION BOOSTER (Page 1-2)
+      // -------------------------------------------------------------
+      {
+        id: 16,
+        sec: "booster",
+        secName: "भाग 1 : 30 अक्टूबर 2026 रिवीजन बूस्टर",
+        q: "अक्टूबर 2026 में भारत-तिब्बत सीमा पुलिस (ITBP) के महानिदेशक (DG) का अतिरिक्त प्रभार किसे सौंपा गया?",
+        options: [
+          "संजय सिंघल",
+          "राहुल रसगोत्रा",
+          "अनीश दयाल सिंह",
+          "दिनकर गुप्ता"
+        ],
+        ans: 0, // संजय सिंघल
+        exp: "• सटीक उत्तर: (A) संजय सिंघल\n• ITBP (Indo-Tibetan Border Police) के महानिदेशक पद का अतिरिक्त प्रभार वरिष्ठ आईपीएस अधिकारी संजय सिंघल को सौंपा गया।"
+      },
+      {
+        id: 17,
+        sec: "booster",
+        secName: "भाग 1 : 30 अक्टूबर 2026 रिवीजन बूस्टर",
+        q: "वर्ल्ड जस्टिस प्रोजेक्ट (WJP) 'विधि का शासन सूचकांक 2026' (Rule of Law Index) में 143 देशों में भारत किस स्थान पर रहा?",
+        options: [
+          "79वें स्थान पर",
+          "88वें स्थान पर",
+          "92वें स्थान पर",
+          "104वें स्थान पर"
+        ],
+        ans: 1, // 88वें स्थान पर
+        exp: "• सटीक उत्तर: (B) 88वें स्थान पर\n• भारत का स्कोर 0.48 रहा। शीर्ष 3 देश: (1) डेनमार्क, (2) नॉर्वे, (3) फिनलैंड।"
+      },
+      {
+        id: 18,
+        sec: "booster",
+        secName: "भाग 1 : 30 अक्टूबर 2026 रिवीजन बूस्टर",
+        q: "अक्टूबर 2026 में किस राज्य ने 'ऑरेंज ओकलीफ' (Orange Oakleaf) को अपनी पहली राजकीय तितली के रूप में मंजूरी दी?",
+        options: [
+          "मध्य प्रदेश",
+          "छत्तीसगढ़",
+          "उत्तराखंड",
+          "हिमाचल प्रदेश"
+        ],
+        ans: 1, // छत्तीसगढ़
+        exp: "• सटीक उत्तर: (B) छत्तीसगढ़\n• छत्तीसगढ़ सरकार ने दुर्लभ 'ऑरेंज ओकलीफ' (Kallima inachus) को अपनी पहली राजकीय तितली के रूप में अधिसूचित किया।"
+      },
+      {
+        id: 19,
+        sec: "booster",
+        secName: "भाग 1 : 30 अक्टूबर 2026 रिवीजन बूस्टर",
+        q: "अक्टूबर 2026 में केंद्रीय जलशक्ति मंत्री सी. आर. पाटिल ने सतत भूजल प्रबंधन के लिए कौन-सा मोबाइल ऐप लॉन्च किया?",
+        options: [
+          "जल धारा ऐप",
+          "अमृत भूजल ऐप",
+          "पुनः भरण ऐप (Punah Bharan App)",
+          "नीर संचयन ऐप"
+        ],
+        ans: 2, // पुनः भरण ऐप
+        exp: "• सटीक उत्तर: (C) पुनः भरण ऐप (Punah Bharan App)\n• केंद्रीय जलशक्ति मंत्री सी. आर. पाटिल ने भूजल पुनर्भरण और निगरानी हेतु यह समर्पित ऐप लॉन्च किया।"
+      },
+      {
+        id: 20,
+        sec: "booster",
+        secName: "भाग 1 : 30 अक्टूबर 2026 रिवीजन बूस्टर",
+        q: "केंद्रीय मंत्रिमंडल द्वारा स्वीकृत 'प्रधानमंत्री विकसित ग्राम स्वराज योजना' (2026-27 से 2030-31) का कुल बजट कितना है?",
+        options: [
+          "₹5,200.00 करोड़",
+          "₹7,395.55 करोड़",
+          "₹9,500.25 करोड़",
+          "₹11,000.00 करोड़"
+        ],
+        ans: 1, // ₹7,395.55 करोड़
+        exp: "• सटीक उत्तर: (B) ₹7,395.55 करोड़\n• योजना की अवधि: 2026-27 से 2030-31 तक। मूल योजना 24 अप्रैल 2018 को शुरू हुई थी।"
+      },
+      {
+        id: 21,
+        sec: "booster",
+        secName: "भाग 1 : 30 अक्टूबर 2026 रिवीजन बूस्टर",
+        q: "20 से 22 नवंबर 2026 तक भारत पहली बार शंघाई सहयोग संगठन (SCO) 'सिविलाइजेशनल डायलॉग फोरम' की मेजबानी कहाँ करेगा?",
+        options: [
+          "मुंबई",
+          "वाराणसी",
+          "नई दिल्ली",
+          "जयपुर"
+        ],
+        ans: 2, // नई दिल्ली
+        exp: "• सटीक उत्तर: (C) नई दिल्ली\n• भारत पहली बार SCO सिविलिजेशनल डायलॉग फोरम की मेजबानी नई दिल्ली में 20 से 22 नवंबर 2026 को करेगा।"
+      },
+      {
+        id: 22,
+        sec: "booster",
+        secName: "भाग 1 : 30 अक्टूबर 2026 रिवीजन बूस्टर",
+        q: "अक्टूबर 2026 में विश्व स्वास्थ्य संगठन (WHO) ने किस देश में इबोला वैक्सीन 'एरवेबो' (Ervebo) के क्लिनिकल ट्रायल की शुरुआत की?",
+        options: [
+          "डेमोक्रेटिक रिपब्लिक ऑफ कांगो (DRC)",
+          "युगांडा",
+          "सिएरा लियोन",
+          "नाइजीरिया"
+        ],
+        ans: 0, // DRC
+        exp: "• सटीक उत्तर: (A) डेमोक्रेटिक रिपब्लिक ऑफ कांगो (DRC)\n• WHO ने घातक इबोला वायरस से निपटने हेतु DRC में 'एरवेबो' वैक्सीन का ट्रायल प्रारंभ किया।"
+      },
+      {
+        id: 23,
+        sec: "booster",
+        secName: "भाग 1 : 30 अक्टूबर 2026 रिवीजन बूस्टर",
+        q: "27 अक्टूबर 2026 को गोवा शिपयार्ड लिमिटेड द्वारा भारतीय नौसेना के लिए लॉन्च किए गए चौथे NGOPV का नाम क्या है?",
+        options: [
+          "INS त्रिशूल",
+          "INS सृष्टि (INS Srishti)",
+          "INS विक्रांत",
+          "INS अमोघ"
+        ],
+        ans: 1, // INS सृष्टि
+        exp: "• सटीक उत्तर: (B) INS सृष्टि (INS Srishti)\n• गोवा शिपयार्ड लिमिटेड (GSL) द्वारा चौथे नेक्स्ट जनरेशन ऑफशोर पेट्रोल वेसल 'INS सृष्टि' का जलावतरण किया गया।"
+      },
+      {
+        id: 24,
+        sec: "booster",
+        secName: "भाग 1 : 30 अक्टूबर 2026 रिवीजन बूस्टर",
+        q: "'Timeless India: Protection and Revival of Indian Cultural Identity Under the Leadership of PM Narendra Modi' पुस्तक के लेखक/संपादक कौन हैं?",
+        options: [
+          "अरुण शौरी",
+          "तरुण विजय",
+          "राम माधव",
+          "विक्रम संपत"
+        ],
+        ans: 1, // तरुण विजय
+        exp: "• सटीक उत्तर: (B) तरुण विजय\n• पूर्व सांसद एवं वरिष्ठ लेखक तरुण विजय द्वारा यह पुस्तक लिखी और संपादित की गई है।"
+      },
+      {
+        id: 25,
+        sec: "booster",
+        secName: "भाग 1 : 30 अक्टूबर 2026 रिवीजन बूस्टर",
+        q: "अंतरराष्ट्रीय प्रकृति संरक्षण संघ (IUCN) ने किस वर्ष तक दुनिया भर के लगभग 96% कोरल रीफ पारिस्थितिकी तंत्र पर संकट आने की चेतावनी दी है?",
+        options: [
+          "वर्ष 2050 तक",
+          "वर्ष 2060 तक",
+          "वर्ष 2075 तक",
+          "वर्ष 2090 तक"
+        ],
+        ans: 2, // वर्ष 2075 तक
+        exp: "• सटीक उत्तर: (C) वर्ष 2075 तक\n• IUCN की नई वैश्विक रिपोर्ट के अनुसार ग्लोबल वार्मिंग व समुद्री प्रदूषण के कारण 2075 तक 96% प्रवाल भित्तियाँ गंभीर संकट में होंगी।"
+      },
+      {
+        id: 26,
+        sec: "booster",
+        secName: "भाग 1 : 30 अक्टूबर 2026 रिवीजन बूस्टर",
+        q: "अक्टूबर 2026 में प्रधानमंत्री नरेंद्र मोदी ने 'मन की बात' के 139वें एपिसोड में किस राज्य की 'नवसृजन पहल' की सराहना की?",
+        options: [
+          "हरियाणा",
+          "पंजाब",
+          "उत्तर प्रदेश",
+          "राजस्थान"
+        ],
+        ans: 1, // पंजाब
+        exp: "• सटीक उत्तर: (B) पंजाब\n• पंजाब राज्य में नवाचार एवं युवाओं के स्वरोजगार से जुड़ी 'नवसृजन पहल' की सराहना पीएम मोदी ने 'मन की बात' में की।"
+      },
+      {
+        id: 27,
+        sec: "booster",
+        secName: "भाग 1 : 30 अक्टूबर 2026 रिवीजन बूस्टर",
+        q: "अक्टूबर 2026 में केंद्र सरकार ने केंद्रीय मोटर वाहन नियमों में संशोधन करते हुए फ्लेक्स-फ्यूल वाहनों में किस ईंधन के 100% इस्तेमाल को मंजूरी दी?",
+        options: [
+          "100% संपीड़ित बायोगैस (CBG)",
+          "100% हाइड्रोजन",
+          "100% इथेनॉल (E100)",
+          "100% बायोडीजल"
+        ],
+        ans: 2, // 100% इथेनॉल (E100)
+        exp: "• सटीक उत्तर: (C) 100% इथेनॉल (E100)\n• हरित ऊर्जा को बढ़ावा देने के लिए फ्लेक्स-फ्यूल इंजनों में 100% शुद्ध इथेनॉल (E100) प्रयोग की वैधानिक अनुमति दी गई।"
+      },
+      {
+        id: 28,
+        sec: "booster",
+        secName: "भाग 1 : 30 अक्टूबर 2026 रिवीजन बूस्टर",
+        q: "अक्टूबर 2026 में केंद्रीय मंत्री हरदीप सिंह पुरी ने 29वीं ऊर्जा प्रौद्योगिकी बैठक (Energy Technology Meet) का उद्घाटन कहाँ किया?",
+        options: [
+          "अहमदाबाद",
+          "गोवा",
+          "कोच्चि",
+          "हैदराबाद"
+        ],
+        ans: 1, // गोवा
+        exp: "• सटीक उत्तर: (B) गोवा\n• थीम: 'ऊर्जा नवाचार में तेजी लाना: अनुसंधान से व्यवसायीकरण तक' (Accelerating Energy Innovations: From R&D to Commercialization)।"
+      },
+      {
+        id: 29,
+        sec: "booster",
+        secName: "भाग 1 : 30 अक्टूबर 2026 रिवीजन बूस्टर",
+        q: "अक्टूबर 2026 में ऐतिहासिक 'राजी पड़हा राजकीय मुड़मा जत्रा मेला' किस राज्य में श्रद्धा और उल्लास के साथ मनाया गया?",
+        options: [
+          "ओडिशा",
+          "झारखंड",
+          "छत्तीसगढ़",
+          "मध्य प्रदेश"
+        ],
+        ans: 1, // झारखंड
+        exp: "• सटीक उत्तर: (B) झारखंड\n• मुड़मा जत्रा मेला आदिवासी संस्कृति, पारंपरिक एकता व पड़हा व्यवस्था का झारखंड का सुप्रसिद्ध राजकीय मेला है।"
+      },
+      {
+        id: 30,
+        sec: "booster",
+        secName: "भाग 1 : 30 अक्टूबर 2026 रिवीजन बूस्टर",
+        q: "अक्टूबर 2026 में केंद्रीय मंत्री किरेन रिजिजू ने 'तागी राजा युद्ध स्मारक पार्क' का उद्घाटन किस राज्य में किया?",
+        options: [
+          "असम",
+          "अरुणाचल प्रदेश",
+          "नागालैंड",
+          "मणिपुर"
+        ],
+        ans: 1, // अरुणाचल प्रदेश
+        exp: "• सटीक उत्तर: (B) अरुणाचल प्रदेश\n• तागी राजा 1830 के दशक के महान स्वतंत्रता सेनानी थे। अरुणाचल प्रदेश में उनके सम्मान में यह युद्ध स्मारक पार्क स्थापित हुआ।"
+      },
+
+      // -------------------------------------------------------------
+      // PART 3: HOMEWORK & PRACTICE QUIZ (Page 8 of PDF)
+      // -------------------------------------------------------------
+      {
+        id: 31,
+        sec: "homework",
+        secName: "भाग 3 : अभ्यास टेस्ट (Daily Homework Quiz)",
+        q: "[अभ्यास प्रश्न 1] भारतीय वाणिज्य एवं उद्योग महासंघ (FICCI) के नए अध्यक्ष (2026-27) के रूप में किसे नामित किया गया है?",
+        options: [
+          "अनंत गोयनका",
+          "संजीव पुरी",
+          "विजय शंकर",
+          "अनंत स्वरूप"
+        ],
+        ans: 2, // विजय शंकर
+        exp: "• सटीक उत्तर: (C) विजय शंकर\n• FICCI ने 2026-27 के लिए विजय शंकर को नया अध्यक्ष नामित किया (अनंत गोयनका का स्थान लेंगे)।"
+      },
+      {
+        id: 32,
+        sec: "homework",
+        secName: "भाग 3 : अभ्यास टेस्ट (Daily Homework Quiz)",
+        q: "[अभ्यास प्रश्न 2] भारत का पहला 'फिजिकल एआई स्कूल' (बेंजामिन गुप्ता स्कूल ऑफ फिजिकल एआई) किस संस्थान में स्थापित किया जाएगा?",
+        options: [
+          "आईआईटी बॉम्बे",
+          "आईआईटी दिल्ली",
+          "आईआईटी खड़गपुर",
+          "आईआईटी कानपुर"
+        ],
+        ans: 2, // आईआईटी खड़गपुर
+        exp: "• सटीक उत्तर: (C) आईआईटी खड़गपुर\n• आईआईटी खड़गपुर में ₹35 करोड़ की लागत से 'बेंजामिन गुप्ता स्कूल ऑफ फिजिकल एआई' स्थापित हो रहा है।"
+      },
+      {
+        id: 33,
+        sec: "homework",
+        secName: "भाग 3 : अभ्यास टेस्ट (Daily Homework Quiz)",
+        q: "[अभ्यास प्रश्न 3] महिला प्रीमियर लीग (WPL) में शामिल होने वाली सबसे कम उम्र (15 वर्ष 202 दिन) की खिलाड़ी कौन बन गई हैं?",
+        options: [
+          "उमा काश्वी (दिल्ली कैपिटल्स)",
+          "शेफाली वर्मा (दिल्ली कैपिटल्स)",
+          "ऋचा घोष (RCB)",
+          "श्रेयांका पाटिल (RCB)"
+        ],
+        ans: 0, // उमा काश्वी
+        exp: "• सटीक उत्तर: (A) उमा काश्वी (दिल्ली कैपिटल्स)\n• कर्नाटक की 15 वर्षीय हरफनमौला खिलाड़ी उमा काश्वी WPL इतिहास की सबसे युवा खिलाड़ी बनीं।"
+      }
+    ];
+
+    /* =========================================================================
+       2. GLOBAL STATE & FIREBASE STORAGE LOGIC
+       ========================================================================= */
+    const STORAGE_KEY_SESSION = "gyanverse_cbt_session_31oct2026";
+    const STORAGE_KEY_HISTORY = "gyanverse_cbt_history_31oct2026";
+    const STORAGE_KEY_DB_URL  = "gyanverse_cbt_rtdb_url";
+    const DEFAULT_RTDB_URL    = "https://gyanverse-cbt-b5f75-default-rtdb.firebaseio.com";
+
+    let state = {
+      user: null, // { name, district, telegram }
+      currentIdx: 0, // 0 to 32
+      answers: {}, // { qId: optionIndex (0..3) }
+      reviews: {}, // { qId: boolean }
+      filterSec: "all",
+      timeLeftSec: 30 * 60, // 30 minutes (1800 seconds)
+      timerInterval: null,
+      isSubmitted: false,
+      result: null // calculation cache
+    };
+
+    // Helper: Get Authorized DB URL
+    function getDatabaseUrl() {
+      const custom = localStorage.getItem(STORAGE_KEY_DB_URL);
+      return (custom && custom.trim().length > 10) ? custom.trim() : DEFAULT_RTDB_URL;
+    }
+
+    // Auto-save active session to LocalStorage (Protects against accidental reloads)
+    function saveSessionToLocal() {
+      if (!state.isSubmitted && state.user) {
+        localStorage.setItem(STORAGE_KEY_SESSION, JSON.stringify({
+          user: state.user,
+          currentIdx: state.currentIdx,
+          answers: state.answers,
+          reviews: state.reviews,
+          timeLeftSec: state.timeLeftSec,
+          savedAt: new Date().toISOString()
+        }));
+      }
+    }
+
+    /* =========================================================================
+       3. DOM ELEMENTS
+       ========================================================================= */
+    const screenRegister   = document.getElementById("screenRegister");
+    const screenExam       = document.getElementById("screenExam");
+    const screenScorecard  = document.getElementById("screenScorecard");
+    const screenSolutions  = document.getElementById("screenSolutions");
+
+    const timerDisplay     = document.getElementById("timerDisplay");
+    const btnHeaderSubmit  = document.getElementById("btnHeaderSubmit");
+    const btnHeaderRank    = document.getElementById("btnHeaderRank");
+    const btnHeaderHistory = document.getElementById("btnHeaderHistory");
+    const gvLogoBtn        = document.getElementById("gvLogoBtn");
+
+    // Registration elements
+    const formRegister     = document.getElementById("formRegister");
+    const regName          = document.getElementById("regName");
+    const regDistrict      = document.getElementById("regDistrict");
+    const regTelegram      = document.getElementById("regTelegram");
+    const resumeBox        = document.getElementById("resumeBox");
+    const btnResumeTest    = document.getElementById("btnResumeTest");
+    const viewPastResultBox= document.getElementById("viewPastResultBox");
+    const btnPastSolutions = document.getElementById("btnPastSolutions");
+
+    // Exam elements
+    const badgeQNum        = document.getElementById("badgeQNum");
+    const badgeQSec        = document.getElementById("badgeQSec");
+    const reviewTag        = document.getElementById("reviewTag");
+    const qText            = document.getElementById("qText");
+    const optionsList      = document.getElementById("optionsList");
+    const btnPrev          = document.getElementById("btnPrev");
+    const btnNext          = document.getElementById("btnNext");
+    const btnClear         = document.getElementById("btnClear");
+    const btnReview        = document.getElementById("btnReview");
+    const jumpSelect       = document.getElementById("jumpSelect");
+    const lblCountAttempted= document.getElementById("lblCountAttempted");
+    const lblCountLeft     = document.getElementById("lblCountLeft");
+    const lblCountReview   = document.getElementById("lblCountReview");
+
+    // Modal elements
+    const modalConfirmSubmit = document.getElementById("modalConfirmSubmit");
+    const btnCancelSubmit    = document.getElementById("btnCancelSubmit");
+    const btnFinalSubmitConfirm = document.getElementById("btnFinalSubmitConfirm");
+    const modalAttempted     = document.getElementById("modalAttempted");
+    const modalLeft          = document.getElementById("modalLeft");
+    const modalReview        = document.getElementById("modalReview");
+
+    const modalLeaderboard   = document.getElementById("modalLeaderboard");
+    const btnCloseLeaderboard= document.getElementById("btnCloseLeaderboard");
+    const podiumList         = document.getElementById("podiumList");
+    const leaderboardTbody   = document.getElementById("leaderboardTbody");
+    const leaderboardStatus  = document.getElementById("leaderboardStatus");
+    const filterRankSearch   = document.getElementById("filterRankSearch");
+    const filterRankDistrict = document.getElementById("filterRankDistrict");
+    const rankCountLabel     = document.getElementById("rankCountLabel");
+
+    const modalAdmin         = document.getElementById("modalAdmin");
+    const adminPinArea       = document.getElementById("adminPinArea");
+    const adminConfigArea    = document.getElementById("adminConfigArea");
+    const adminPinInput      = document.getElementById("adminPinInput");
+    const btnAdminPinCancel  = document.getElementById("btnAdminPinCancel");
+    const btnAdminPinSubmit  = document.getElementById("btnAdminPinSubmit");
+    const txtFirebaseUrl     = document.getElementById("txtFirebaseUrl");
+    const btnSaveFirebaseUrl = document.getElementById("btnSaveFirebaseUrl");
+    const btnResetDefaultUrl = document.getElementById("btnResetDefaultUrl");
+    const btnClearLocalHistory = document.getElementById("btnClearLocalHistory");
+    const btnAdminClose      = document.getElementById("btnAdminClose");
+
+    // Scorecard Elements
+    const resCandidateName   = document.getElementById("resCandidateName");
+    const resCandidateInfo   = document.getElementById("resCandidateInfo");
+    const resTotalMarks      = document.getElementById("resTotalMarks");
+    const resRankDisplay     = document.getElementById("resRankDisplay");
+    const resPercentile      = document.getElementById("resPercentile");
+    const resCorrect         = document.getElementById("resCorrect");
+    const resWrong           = document.getElementById("resWrong");
+    const resLeft            = document.getElementById("resLeft");
+    const resAccuracy        = document.getElementById("resAccuracy");
+    const resTimeTaken       = document.getElementById("resTimeTaken");
+    const resSectionTable    = document.getElementById("resSectionTable");
+    const btnViewSolutions   = document.getElementById("btnViewSolutions");
+    const btnOpenRankFromScore = document.getElementById("btnOpenRankFromScore");
+
+    // Solutions Elements
+    const solutionsCardList  = document.getElementById("solutionsCardList");
+    const btnBackToScore     = document.getElementById("btnBackToScore");
+
+    /* =========================================================================
+       4. INITIALIZATION & CHECK FOR RESUME / HISTORY
+       ========================================================================= */
+    function initApp() {
+      // Build Jump Select dropdown
+      jumpSelect.innerHTML = "";
+      GYANVERSE_QUESTIONS.forEach((q, i) => {
+        const opt = document.createElement("option");
+        opt.value = i;
+        opt.textContent = `प्रश्न ${i + 1}`;
+        jumpSelect.appendChild(opt);
+      });
+
+      // Check if previous completed submission exists
+      const savedHistory = localStorage.getItem(STORAGE_KEY_HISTORY);
+      if (savedHistory) {
+        try {
+          const parsedHistory = JSON.parse(savedHistory);
+          if (parsedHistory && parsedHistory.userAnswers) {
+            viewPastResultBox.classList.remove("hidden");
+            btnHeaderHistory.classList.remove("hidden");
+          }
+        } catch(e){}
+      }
+
+      // Check if active unfinished test exists in localStorage
+      const savedSession = localStorage.getItem(STORAGE_KEY_SESSION);
+      if (savedSession) {
+        try {
+          const parsed = JSON.parse(savedSession);
+          if (parsed && parsed.user && parsed.timeLeftSec > 0) {
+            resumeBox.classList.remove("hidden");
+            regName.value = parsed.user.name || "";
+            regDistrict.value = parsed.user.district || "";
+            regTelegram.value = (parsed.user.telegram || "").replace("@", "");
+          }
+        } catch (e) {}
+      }
+    }
+
+    /* =========================================================================
+       5. FULL-SCREEN HELPER
+       ========================================================================= */
+    function triggerFullScreen() {
+      try {
+        const elem = document.documentElement;
+        if (elem.requestFullscreen) {
+          elem.requestFullscreen().catch(() => {});
+        } else if (elem.webkitRequestFullscreen) {
+          elem.webkitRequestFullscreen().catch(() => {});
+        } else if (elem.msRequestFullscreen) {
+          elem.msRequestFullscreen().catch(() => {});
+        }
+      } catch (err) {
+        console.warn("Fullscreen request not permitted by browser:", err);
+      }
+    }
+
+    /* =========================================================================
+       6. EXAM NAVIGATION & RENDERING (TCS iON MODE - ZERO REVEAL)
+       ========================================================================= */
+    function getFilteredIndices() {
+      if (state.filterSec === "all") {
+        return GYANVERSE_QUESTIONS.map((_, i) => i);
+      }
+      return GYANVERSE_QUESTIONS
+        .map((q, i) => (q.sec === state.filterSec ? i : -1))
+        .filter(idx => idx !== -1);
+    }
+
+    function renderCurrentQuestion() {
+      const q = GYANVERSE_QUESTIONS[state.currentIdx];
+      if (!q) return;
+
+      // Update Header Badges
+      badgeQNum.textContent = `Q. ${state.currentIdx + 1} / ${GYANVERSE_QUESTIONS.length}`;
+      badgeQSec.textContent = q.secName;
+      jumpSelect.value = state.currentIdx;
+
+      // Review tag
+      if (state.reviews[q.id]) {
+        reviewTag.classList.remove("hidden");
+        btnReview.classList.add("bg-purple-600", "text-white");
+        btnReview.classList.remove("bg-purple-50", "text-purple-700");
+      } else {
+        reviewTag.classList.add("hidden");
+        btnReview.classList.remove("bg-purple-600", "text-white");
+        btnReview.classList.add("bg-purple-50", "text-purple-700");
+      }
+
+      // Question Text
+      qText.textContent = q.q;
+
+      // Options List Render (TCS iON: ONLY select & highlight, NO answers shown)
+      optionsList.innerHTML = "";
+      const selectedOption = state.answers[q.id];
+
+      const optionLabels = ["(A)", "(B)", "(C)", "(D)"];
+      q.options.forEach((optText, optIdx) => {
+        const isChosen = selectedOption === optIdx;
+
+        const optDiv = document.createElement("div");
+        optDiv.className = `p-3 rounded-xl border transition cursor-pointer flex items-center justify-between text-xs sm:text-sm font-medium ${
+          isChosen 
+            ? "opt-selected border-blue-600 bg-blue-50/90 text-blue-950 font-bold" 
+            : "border-slate-200 bg-white hover:bg-slate-50 text-slate-800"
+        }`;
+
+        optDiv.innerHTML = `
+          <div class="flex items-center gap-2.5">
+            <span class="w-6 h-6 rounded-lg flex items-center justify-center font-bold text-xs ${
+              isChosen ? 'bg-blue-600 text-white' : 'bg-slate-100 text-slate-700 border border-slate-300'
+            }">${optionLabels[optIdx]}</span>
+            <span class="hindi-text">${optText}</span>
+          </div>
+          <div class="w-4 h-4 rounded-full border flex items-center justify-center ${
+            isChosen ? 'border-blue-600 bg-blue-600' : 'border-slate-300 bg-white'
+          }">
+            ${isChosen ? '<span class="w-1.5 h-1.5 rounded-full bg-white"></span>' : ''}
+          </div>
+        `;
+
+        optDiv.onclick = () => {
+          state.answers[q.id] = optIdx;
+          renderCurrentQuestion();
+          updateBottomCounters();
+          saveSessionToLocal();
+        };
+
+        optionsList.appendChild(optDiv);
+      });
+
+      // Update Prev / Next buttons visibility / text
+      btnPrev.disabled = state.currentIdx === 0;
+      btnPrev.classList.toggle("opacity-50", state.currentIdx === 0);
+      btnPrev.classList.toggle("cursor-not-allowed", state.currentIdx === 0);
+
+      if (state.currentIdx === GYANVERSE_QUESTIONS.length - 1) {
+        btnNext.textContent = "Submit ➔";
+        btnNext.className = "bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold py-2.5 px-2 rounded-xl shadow transition flex items-center justify-center gap-1";
+      } else {
+        btnNext.textContent = "Next ➡";
+        btnNext.className = "bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold py-2.5 px-2 rounded-xl shadow transition flex items-center justify-center gap-1";
+      }
+
+      updateBottomCounters();
+    }
+
+    function updateBottomCounters() {
+      let attempted = 0;
+      let reviewed = 0;
+      GYANVERSE_QUESTIONS.forEach(q => {
+        if (state.answers[q.id] !== undefined) attempted++;
+        if (state.reviews[q.id]) reviewed++;
+      });
+      const left = GYANVERSE_QUESTIONS.length - attempted;
+
+      lblCountAttempted.textContent = attempted;
+      lblCountLeft.textContent = left;
+      lblCountReview.textContent = reviewed;
+    }
+
+    /* =========================================================================
+       7. TIMER ENGINE
+       ========================================================================= */
+    function startTimer() {
+      if (state.timerInterval) clearInterval(state.timerInterval);
+
+      state.timerInterval = setInterval(() => {
+        if (state.timeLeftSec > 0) {
+          state.timeLeftSec--;
+          const m = Math.floor(state.timeLeftSec / 60);
+          const s = state.timeLeftSec % 60;
+          timerDisplay.textContent = `${String(m).padStart(2, '0')}:${String(s).padStart(2, '0')}`;
+
+          // Warning red tint on last 3 minutes
+          if (state.timeLeftSec < 180) {
+            timerDisplay.classList.add("text-rose-400");
+          }
+
+          // Periodic session backup every 10 seconds
+          if (state.timeLeftSec % 10 === 0) {
+            saveSessionToLocal();
+          }
+        } else {
+          // Time Over - Auto Submit
+          clearInterval(state.timerInterval);
+          executeFinalSubmission(true);
+        }
+      }, 1000);
+    }
+
+    /* =========================================================================
+       8. SCORE CALCULATION & SUBMISSION LOGIC
+       ========================================================================= */
+    function calculateResults() {
+      let correct = 0;
+      let wrong = 0;
+      let left = 0;
+
+      // Section-wise metrics
+      const secStats = {
+        mcq: { name: "करंट अफेयर्स MCQs (15)", total: 0, correct: 0, wrong: 0, marks: 0 },
+        booster: { name: "वन-लाइनर बूस्टर (15)", total: 0, correct: 0, wrong: 0, marks: 0 },
+        homework: { name: "अभ्यास प्रश्न (3)", total: 0, correct: 0, wrong: 0, marks: 0 }
+      };
+
+      GYANVERSE_QUESTIONS.forEach(q => {
+        secStats[q.sec].total++;
+        const userChoice = state.answers[q.id];
+
+        if (userChoice === undefined) {
+          left++;
+        } else if (userChoice === q.ans) {
+          correct++;
+          secStats[q.sec].correct++;
+          secStats[q.sec].marks += 2.0;
+        } else {
+          wrong++;
+          secStats[q.sec].wrong++;
+          secStats[q.sec].marks -= 0.20;
+        }
+      });
+
+      const totalMarks = (correct * 2.00) - (wrong * 0.20);
+      const totalAttempted = correct + wrong;
+      const accuracy = totalAttempted > 0 ? ((correct / totalAttempted) * 100).toFixed(1) : "0.0";
+      const timeSpentSec = (30 * 60) - state.timeLeftSec;
+      const timeTakenMinutes = Math.floor(timeSpentSec / 60);
+
+      return {
+        totalMarks: Math.max(0, totalMarks).toFixed(2),
+        rawTotalMarks: totalMarks.toFixed(2),
+        correct,
+        wrong,
+        left,
+        totalAttempted,
+        accuracy,
+        timeSpentSec,
+        timeTakenMinutes,
+        secStats
+      };
+    }
+
+    async function executeFinalSubmission(auto = false) {
+      if (state.timerInterval) clearInterval(state.timerInterval);
+      state.isSubmitted = true;
+
+      // Calculate score
+      const res = calculateResults();
+      state.result = res;
+
+      // Clean active resume session
+      localStorage.removeItem(STORAGE_KEY_SESSION);
+
+      // Create permanent history record
+      const submissionRecord = {
+        id: "gv_" + Date.now() + "_" + Math.floor(Math.random() * 1000),
+        user: state.user,
+        marks: parseFloat(res.rawTotalMarks),
+        scoreDisplay: res.totalMarks,
+        correct: res.correct,
+        wrong: res.wrong,
+        left: res.left,
+        accuracy: parseFloat(res.accuracy),
+        timeSpentSec: res.timeSpentSec,
+        timeTakenMin: res.timeTakenMinutes,
+        submittedAt: new Date().toLocaleString('hi-IN'),
+        timestamp: Date.now(),
+        userAnswers: state.answers // Detailed choices array preserved permanently
+      };
+
+      // 1. Save Locally for permanent revisit
+      localStorage.setItem(STORAGE_KEY_HISTORY, JSON.stringify(submissionRecord));
+      btnHeaderHistory.classList.remove("hidden");
+
+      // 2. Post to Authorized Firebase Realtime Database
+      await postToFirebase(submissionRecord);
+
+      // 3. Render Scorecard UI
+      renderScorecard(submissionRecord, res);
+
+      // Switch screen
+      screenExam.classList.add("hidden");
+      screenRegister.classList.add("hidden");
+      screenScorecard.classList.remove("hidden");
+      btnHeaderSubmit.classList.add("hidden");
+
+      // Fetch dynamic rank from live cloud
+      fetchLiveLeaderboardRank(submissionRecord);
+    }
+
+    // Firebase REST API POST
+    async function postToFirebase(record) {
+      const dbUrl = getDatabaseUrl();
+      const endpoint = `${dbUrl.replace(/\/+$/, '')}/cbt_attempts_31oct.json`;
+
+      try {
+        const response = await fetch(endpoint, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(record)
+        });
+        if (!response.ok) {
+          console.warn("Firebase returned non-OK status. Fallback LocalStorage active.");
+        }
+      } catch (err) {
+        console.warn("Firebase network push error (Offline fallback engaged):", err);
+      }
+    }
+
+    /* =========================================================================
+       9. SCORECARD RENDER
+       ========================================================================= */
+    function renderScorecard(record, res) {
+      resCandidateName.textContent = record.user.name;
+      resCandidateInfo.textContent = `जिला: ${record.user.district} | @${record.user.telegram}`;
+      resTotalMarks.textContent = record.marks >= 0 ? record.marks.toFixed(2) : "0.00";
+      resCorrect.textContent = record.correct;
+      resWrong.textContent = record.wrong;
+      resLeft.textContent = record.left;
+      resAccuracy.textContent = record.accuracy + "%";
+      resTimeTaken.textContent = `समय: ${record.timeTakenMin || 0} मिनट`;
+
+      // Render Section Table
+      resSectionTable.innerHTML = "";
+      Object.keys(res.secStats).forEach(secKey => {
+        const item = res.secStats[secKey];
+        const tr = document.createElement("tr");
+        tr.innerHTML = `
+          <td class="p-2 text-slate-800 font-semibold">${item.name}</td>
+          <td class="p-2 text-center text-slate-500">${item.total}</td>
+          <td class="p-2 text-center text-emerald-600 font-bold">${item.correct}</td>
+          <td class="p-2 text-center text-rose-600 font-bold">${item.wrong}</td>
+          <td class="p-2 text-center font-black text-blue-700">${item.marks.toFixed(2)}</td>
+        `;
+        resSectionTable.appendChild(tr);
+      });
+    }
+
+    /* =========================================================================
+       10. LIVE ALL-BIHAR CLOUD RANKING CALCULATION
+       ========================================================================= */
+    async function fetchLiveLeaderboardRank(currentAttempt = null) {
+      const dbUrl = getDatabaseUrl();
+      const endpoint = `${dbUrl.replace(/\/+$/, '')}/cbt_attempts_31oct.json`;
+      leaderboardStatus.textContent = "लाइव क्लाउड डेटाबेस से मेरिट रैंक प्राप्त हो रही है...";
+
+      let allRecords = [];
+
+      try {
+        const res = await fetch(endpoint);
+        if (res.ok) {
+          const data = await res.json();
+          if (data) {
+            allRecords = Object.values(data);
+          }
+        }
+      } catch (e) {
+        console.warn("Could not fetch remote ranks, falling back to local list:", e);
+      }
+
+      // If current attempt not in remote yet, merge
+      if (currentAttempt && !allRecords.some(r => r.id === currentAttempt.id)) {
+        allRecords.push(currentAttempt);
+      }
+
+      // If database is completely empty (first user), add seed benchmarks
+      if (allRecords.length === 0 && currentAttempt) {
+        allRecords.push(currentAttempt);
+      } else if (allRecords.length === 0) {
+        // Mock seed for realistic preview
+        allRecords = [
+          { id: "s1", user: { name: "अमित कुमार", district: "पटना", telegram: "amit_patna" }, marks: 62.00, accuracy: 96.0, timeTakenMin: 22, submittedAt: "31/10/2026, 09:30" },
+          { id: "s2", user: { name: "रवि रंजन", district: "गया", telegram: "ravi_bpsc" }, marks: 58.40, accuracy: 92.5, timeTakenMin: 24, submittedAt: "31/10/2026, 09:45" },
+          { id: "s3", user: { name: "पूजा कुमारी", district: "मुजफ्फरपुर", telegram: "pooja_gyan" }, marks: 54.80, accuracy: 89.0, timeTakenMin: 26, submittedAt: "31/10/2026, 10:00" }
+        ];
+      }
+
+      // Sort: Highest Marks first, then higher Accuracy, then lesser time
+      allRecords.sort((a, b) => {
+        if (b.marks !== a.marks) return b.marks - a.marks;
+        if (b.accuracy !== a.accuracy) return b.accuracy - a.accuracy;
+        return (a.timeSpentSec || 0) - (b.timeSpentSec || 0);
+      });
+
+      // Calculate my rank
+      if (currentAttempt) {
+        const myIndex = allRecords.findIndex(r => r.id === currentAttempt.id);
+        if (myIndex !== -1) {
+          const rank = myIndex + 1;
+          const totalCandidates = allRecords.length;
+          resRankDisplay.textContent = `🏆 #${rank} / ${totalCandidates} परीक्षार्थी`;
+          const percentile = (((totalCandidates - rank) / totalCandidates) * 100).toFixed(1);
+          resPercentile.textContent = `${percentile}%ile`;
+        }
+      }
+
+      // Render Leaderboard Modal Lists
+      renderLeaderboardTable(allRecords);
+    }
+
+    function renderLeaderboardTable(records) {
+      leaderboardStatus.textContent = "";
+      rankCountLabel.textContent = `कुल परीक्षार्थी: ${records.length}`;
+
+      // 1. Render Top 3 Podium
+      podiumList.innerHTML = "";
+      const top3Badges = ["🥇 प्रथम", "🥈 द्वितीय", "🥉 तृतीय"];
+      const podiumColors = [
+        "bg-amber-100 border-amber-300 text-amber-950",
+        "bg-slate-100 border-slate-300 text-slate-800",
+        "bg-orange-100 border-orange-300 text-orange-950"
+      ];
+
+      for (let i = 0; i < 3; i++) {
+        const rec = records[i];
+        const podDiv = document.createElement("div");
+        if (rec) {
+          podDiv.className = `p-2 rounded-xl border ${podiumColors[i]} shadow-xs flex flex-col items-center`;
+          podDiv.innerHTML = `
+            <span class="text-xs font-black block">${top3Badges[i]}</span>
+            <span class="font-bold text-xs truncate max-w-[90px] mt-0.5">${rec.user.name}</span>
+            <span class="text-[10px] text-slate-500 truncate">${rec.user.district}</span>
+            <span class="font-black text-xs text-blue-700 mt-1">${rec.marks} अंक</span>
+          `;
+        } else {
+          podDiv.className = "p-2 rounded-xl border border-dashed border-slate-200 text-slate-300 flex flex-col items-center justify-center text-xs";
+          podDiv.innerHTML = `<span>${top3Badges[i]}</span><span class="text-[10px]">प्रतीक्षारत</span>`;
+        }
+        podiumList.appendChild(podDiv);
+      }
+
+      // 2. Render Full List Table
+      window.__CURRENT_LEADERBOARD = records;
+      applyLeaderboardFilters();
+    }
+
+    function applyLeaderboardFilters() {
+      const records = window.__CURRENT_LEADERBOARD || [];
+      const searchStr = (filterRankSearch.value || "").toLowerCase().trim();
+      const distStr = filterRankDistrict.value;
+
+      leaderboardTbody.innerHTML = "";
+
+      const filtered = records.filter(r => {
+        const matchesName = !searchStr || 
+          r.user.name.toLowerCase().includes(searchStr) || 
+          r.user.telegram.toLowerCase().includes(searchStr);
+        const matchesDist = !distStr || r.user.district === distStr;
+        return matchesName && matchesDist;
+      });
+
+      if (filtered.length === 0) {
+        leaderboardTbody.innerHTML = `<tr><td colspan="5" class="text-center py-6 text-slate-400 text-xs">कोई रिकॉर्ड नहीं मिला।</td></tr>`;
+        return;
+      }
+
+      filtered.forEach((rec, idx) => {
+        const originalRank = records.findIndex(item => item.id === rec.id) + 1;
+        const tr = document.createElement("tr");
+        tr.className = "hover:bg-slate-50 border-b border-slate-100 transition";
+
+        let rankBadgeClass = "text-slate-700 font-bold";
+        if (originalRank === 1) rankBadgeClass = "text-amber-600 font-black text-sm";
+        else if (originalRank === 2) rankBadgeClass = "text-slate-500 font-black text-sm";
+        else if (originalRank === 3) rankBadgeClass = "text-orange-600 font-black text-sm";
+
+        tr.innerHTML = `
+          <td class="p-2 ${rankBadgeClass}">#${originalRank}</td>
+          <td class="p-2">
+            <span class="font-bold text-slate-900 block">${rec.user.name}</span>
+            <span class="text-[10px] text-blue-600">@${rec.user.telegram}</span>
+          </td>
+          <td class="p-2 text-slate-600 text-xs">${rec.user.district}</td>
+          <td class="p-2 text-right font-extrabold text-blue-700">${rec.marks}</td>
+          <td class="p-2 text-right text-emerald-700 font-semibold">${rec.accuracy}%</td>
+        `;
+        leaderboardTbody.appendChild(tr);
+      });
+    }
+
+    /* =========================================================================
+       11. CHECK SOLUTIONS REVIEW ENGINE
+       ========================================================================= */
+    function renderSolutions(filter = "all") {
+      solutionsCardList.innerHTML = "";
+
+      // Load answers from state or saved history
+      let userAnswers = state.answers;
+      if (Object.keys(userAnswers).length === 0) {
+        const past = localStorage.getItem(STORAGE_KEY_HISTORY);
+        if (past) {
+          try { userAnswers = JSON.parse(past).userAnswers || {}; } catch(e){}
+        }
+      }
+
+      const optionLabels = ["(A)", "(B)", "(C)", "(D)"];
+
+      GYANVERSE_QUESTIONS.forEach((q, idx) => {
+        const userChoice = userAnswers[q.id];
+        const isCorrect = userChoice === q.ans;
+        const isLeft = userChoice === undefined;
+
+        // Apply filter
+        if (filter === "correct" && !isCorrect) return;
+        if (filter === "wrong" && (isCorrect || isLeft)) return;
+        if (filter === "left" && !isLeft) return;
+
+        const card = document.createElement("div");
+        card.className = "bg-white rounded-2xl p-4 sm:p-5 border border-slate-200 shadow-sm";
+
+        // Status badge
+        let statusBadge = "";
+        if (isCorrect) {
+          statusBadge = `<span class="bg-emerald-100 text-emerald-800 text-[10px] font-bold px-2 py-0.5 rounded">✔ सही उत्तर (+2.00)</span>`;
+        } else if (isLeft) {
+          statusBadge = `<span class="bg-slate-100 text-slate-600 text-[10px] font-bold px-2 py-0.5 rounded">⚪ हल नहीं किया (0.00)</span>`;
+        } else {
+          statusBadge = `<span class="bg-rose-100 text-rose-800 text-[10px] font-bold px-2 py-0.5 rounded">✖ गलत चयन (-0.20)</span>`;
+        }
+
+        // Render Options with Color Codes
+        let optionsHtml = "";
+        q.options.forEach((optText, optIdx) => {
+          let optStyle = "border-slate-200 bg-white text-slate-700";
+          let badgeText = "";
+
+          if (optIdx === q.ans) {
+            // Correct Answer is ALWAYS Green
+            optStyle = "border-emerald-500 bg-emerald-50 text-emerald-950 font-bold ring-1 ring-emerald-500";
+            badgeText = `<span class="text-[10px] text-emerald-700 font-extrabold ml-auto">✓ सही उत्तर</span>`;
+          } else if (userChoice === optIdx && !isCorrect) {
+            // User Wrong Choice is Red
+            optStyle = "border-rose-400 bg-rose-50 text-rose-950 font-bold";
+            badgeText = `<span class="text-[10px] text-rose-700 font-bold ml-auto">✖ आपका चयन</span>`;
+          }
+
+          optionsHtml += `
+            <div class="p-2.5 rounded-xl border ${optStyle} flex items-center justify-between text-xs sm:text-sm my-1.5 transition">
+              <div class="flex items-center gap-2">
+                <span class="font-bold text-xs">${optionLabels[optIdx]}</span>
+                <span class="hindi-text">${optText}</span>
+              </div>
+              ${badgeText}
+            </div>
+          `;
+        });
+
+        card.innerHTML = `
+          <div class="flex items-center justify-between pb-2 mb-2 border-b border-slate-100">
+            <div class="flex items-center gap-2">
+              <span class="bg-slate-900 text-amber-300 font-black text-xs px-2.5 py-1 rounded-md">Q. ${idx + 1}</span>
+              <span class="text-[11px] text-blue-700 font-semibold bg-blue-50 px-2 py-0.5 rounded">${q.secName}</span>
+            </div>
+            ${statusBadge}
+          </div>
+
+          <div class="hindi-text font-bold text-slate-900 text-sm sm:text-base mb-3 leading-relaxed">
+            ${q.q}
+          </div>
+
+          <div class="space-y-1 mb-3">
+            ${optionsHtml}
+          </div>
+
+          <!-- Step-by-Step Hindi Explanation Box -->
+          <div class="bg-blue-50/70 border border-blue-200/80 rounded-xl p-3 text-xs text-slate-800">
+            <div class="flex items-center gap-1.5 font-bold text-blue-900 mb-1">
+              <svg class="w-4 h-4 text-blue-600" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"></path></svg>
+              <span>विस्तृत व्याख्या एवं मुख्य तथ्य (Explanation):</span>
+            </div>
+            <div class="hindi-text whitespace-pre-line leading-relaxed text-slate-700 font-medium">
+              ${q.exp}
+            </div>
+          </div>
+        `;
+
+        solutionsCardList.appendChild(card);
+      });
+    }
+
+    /* =========================================================================
+       12. EVENT LISTENERS & USER INTERACTIONS
+       ========================================================================= */
+
+    // Form Submission: Start Test
+    formRegister.addEventListener("submit", (e) => {
+      e.preventDefault();
+      const name = regName.value.trim();
+      const district = regDistrict.value;
+      const telegram = regTelegram.value.trim().replace("@", "");
+
+      if (!name || !district || !telegram) return;
+
+      state.user = { name, district, telegram };
+      triggerFullScreen();
+
+      // Show exam interface
+      screenRegister.classList.add("hidden");
+      screenExam.classList.remove("hidden");
+      btnHeaderSubmit.classList.remove("hidden");
+
+      renderCurrentQuestion();
+      startTimer();
+      saveSessionToLocal();
+    });
+
+    // Resume button
+    btnResumeTest.addEventListener("click", () => {
+      const savedSession = localStorage.getItem(STORAGE_KEY_SESSION);
+      if (savedSession) {
+        try {
+          const parsed = JSON.parse(savedSession);
+          state.user = parsed.user;
+          state.currentIdx = parsed.currentIdx || 0;
+          state.answers = parsed.answers || {};
+          state.reviews = parsed.reviews || {};
+          state.timeLeftSec = parsed.timeLeftSec || (30 * 60);
+
+          triggerFullScreen();
+          screenRegister.classList.add("hidden");
+          screenExam.classList.remove("hidden");
+          btnHeaderSubmit.classList.remove("hidden");
+
+          renderCurrentQuestion();
+          startTimer();
+        } catch (e){}
+      }
+    });
+
+    // Past Solutions from Entry Gate
+    btnPastSolutions.addEventListener("click", () => {
+      screenRegister.classList.add("hidden");
+      screenSolutions.classList.remove("hidden");
+      renderSolutions("all");
+    });
+
+    // Past Solutions from Header
+    btnHeaderHistory.addEventListener("click", () => {
+      screenRegister.classList.add("hidden");
+      screenExam.classList.add("hidden");
+      screenScorecard.classList.add("hidden");
+      screenSolutions.classList.remove("hidden");
+      renderSolutions("all");
+    });
+
+    // Navigation Buttons
+    btnPrev.addEventListener("click", () => {
+      if (state.currentIdx > 0) {
+        state.currentIdx--;
+        renderCurrentQuestion();
+        saveSessionToLocal();
+      }
+    });
+
+    btnNext.addEventListener("click", () => {
+      if (state.currentIdx < GYANVERSE_QUESTIONS.length - 1) {
+        state.currentIdx++;
+        renderCurrentQuestion();
+        saveSessionToLocal();
+      } else {
+        openSubmitModal();
+      }
+    });
+
+    btnClear.addEventListener("click", () => {
+      const q = GYANVERSE_QUESTIONS[state.currentIdx];
+      delete state.answers[q.id];
+      renderCurrentQuestion();
+      updateBottomCounters();
+      saveSessionToLocal();
+    });
+
+    btnReview.addEventListener("click", () => {
+      const q = GYANVERSE_QUESTIONS[state.currentIdx];
+      state.reviews[q.id] = !state.reviews[q.id];
+      renderCurrentQuestion();
+      updateBottomCounters();
+      saveSessionToLocal();
+    });
+
+    jumpSelect.addEventListener("change", (e) => {
+      state.currentIdx = parseInt(e.target.value, 10);
+      renderCurrentQuestion();
+      saveSessionToLocal();
+    });
+
+    // Section Filter Tabs in Exam Screen
+    document.querySelectorAll(".sec-tab").forEach(tab => {
+      tab.addEventListener("click", () => {
+        document.querySelectorAll(".sec-tab").forEach(t => {
+          t.classList.remove("active", "bg-blue-600", "text-white");
+          t.classList.add("bg-white", "text-slate-700");
+        });
+        tab.classList.add("active", "bg-blue-600", "text-white");
+        tab.classList.remove("bg-white", "text-slate-700");
+
+        state.filterSec = tab.dataset.filter;
+        const validIndices = getFilteredIndices();
+        if (validIndices.length > 0 && !validIndices.includes(state.currentIdx)) {
+          state.currentIdx = validIndices[0];
+        }
+        renderCurrentQuestion();
+      });
+    });
+
+    // Submit Modal Open & Triggers
+    function openSubmitModal() {
+      let attempted = 0;
+      let review = 0;
+      GYANVERSE_QUESTIONS.forEach(q => {
+        if (state.answers[q.id] !== undefined) attempted++;
+        if (state.reviews[q.id]) review++;
+      });
+      const left = GYANVERSE_QUESTIONS.length - attempted;
+
+      modalAttempted.textContent = attempted;
+      modalLeft.textContent = left;
+      modalReview.textContent = review;
+      modalConfirmSubmit.classList.remove("hidden");
+    }
+
+    btnHeaderSubmit.addEventListener("click", openSubmitModal);
+    btnCancelSubmit.addEventListener("click", () => modalConfirmSubmit.classList.add("hidden"));
+    btnFinalSubmitConfirm.addEventListener("click", () => {
+      modalConfirmSubmit.classList.add("hidden");
+      executeFinalSubmission();
+    });
+
+    // Scorecard to Solutions
+    btnViewSolutions.addEventListener("click", () => {
+      screenScorecard.classList.add("hidden");
+      screenSolutions.classList.remove("hidden");
+      renderSolutions("all");
+    });
+
+    btnBackToScore.addEventListener("click", () => {
+      screenSolutions.classList.add("hidden");
+      screenScorecard.classList.remove("hidden");
+    });
+
+    // Solutions Filter Tabs
+    document.querySelectorAll(".sol-tab").forEach(tab => {
+      tab.addEventListener("click", () => {
+        document.querySelectorAll(".sol-tab").forEach(t => {
+          t.classList.remove("active", "bg-slate-900", "text-white");
+          t.classList.add("bg-white", "text-slate-700");
+        });
+        tab.classList.add("active", "bg-slate-900", "text-white");
+        tab.classList.remove("bg-white", "text-slate-700");
+
+        renderSolutions(tab.dataset.solFilter);
+      });
+    });
+
+    // Leaderboard Modal Open/Close
+    function openLeaderboard() {
+      modalLeaderboard.classList.remove("hidden");
+      fetchLiveLeaderboardRank();
+    }
+    btnHeaderRank.addEventListener("click", openLeaderboard);
+    btnOpenRankFromScore.addEventListener("click", openLeaderboard);
+    btnCloseLeaderboard.addEventListener("click", () => modalLeaderboard.classList.add("hidden"));
+
+    filterRankSearch.addEventListener("input", applyLeaderboardFilters);
+    filterRankDistrict.addEventListener("change", applyLeaderboardFilters);
+
+    /* =========================================================================
+       13. SECRET ADMIN PANEL (4 CLICKS ON 'GV' LOGO WITH PIN PROTECTION)
+       ========================================================================= */
+    let gvLogoClicks = 0;
+    let clickResetTimeout = null;
+
+    gvLogoBtn.addEventListener("click", () => {
+      gvLogoClicks++;
+      clearTimeout(clickResetTimeout);
+      clickResetTimeout = setTimeout(() => { gvLogoClicks = 0; }, 1500);
+
+      if (gvLogoClicks >= 4) {
+        gvLogoClicks = 0;
+        openAdminModal();
+      }
+    });
+
+    function openAdminModal() {
+      adminPinInput.value = "";
+      adminPinArea.classList.remove("hidden");
+      adminConfigArea.classList.add("hidden");
+      txtFirebaseUrl.value = getDatabaseUrl();
+      modalAdmin.classList.remove("hidden");
+    }
+
+    btnAdminPinCancel.addEventListener("click", () => modalAdmin.classList.add("hidden"));
+    btnAdminClose.addEventListener("click", () => modalAdmin.classList.add("hidden"));
+
+    btnAdminPinSubmit.addEventListener("click", () => {
+      const pin = adminPinInput.value.trim();
+      if (pin === "1234" || pin.toUpperCase() === "GYANVERSE") {
+        adminPinArea.classList.add("hidden");
+        adminConfigArea.classList.remove("hidden");
+      } else {
+        adminPinInput.value = "";
+        adminPinInput.placeholder = "गलत पिन! पुनः प्रयास करें";
+        adminPinInput.classList.add("border-rose-500");
+      }
+    });
+
+    btnSaveFirebaseUrl.addEventListener("click", () => {
+      const val = txtFirebaseUrl.value.trim();
+      if (val.startsWith("https://")) {
+        localStorage.setItem(STORAGE_KEY_DB_URL, val);
+        modalAdmin.classList.add("hidden");
+      }
+    });
+
+    btnResetDefaultUrl.addEventListener("click", () => {
+      localStorage.removeItem(STORAGE_KEY_DB_URL);
+      txtFirebaseUrl.value = DEFAULT_RTDB_URL;
+    });
+
+    btnClearLocalHistory.addEventListener("click", () => {
+      localStorage.removeItem(STORAGE_KEY_HISTORY);
+      localStorage.removeItem(STORAGE_KEY_SESSION);
+      location.reload();
+    });
+
+    // Start App on Window Load
+    window.addEventListener("DOMContentLoaded", initApp);
+  </script>
+</body>
+</html>
+```
