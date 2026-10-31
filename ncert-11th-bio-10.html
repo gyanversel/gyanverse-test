@@ -1,0 +1,2578 @@
+```html
+<!DOCTYPE html>
+<html lang="hi" class="h-full">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GYANVERSE CBT Exam - कोशिका चक्र और कोशिका विभाजन (NCERT Bio 11)</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Tiro+Devanagari+Hindi:ital@0;1&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            devanagari: ['"Tiro Devanagari Hindi"', 'Inter', 'sans-serif'],
+          },
+          colors: {
+            brand: {
+              50: '#eef2ff',
+              100: '#e0e7ff',
+              500: '#6366f1',
+              600: '#4f46e5',
+              700: '#4338ca',
+              800: '#3730a3',
+              900: '#312e81',
+            },
+            ion: {
+              header: '#1e293b',
+              accent: '#0284c7',
+              save: '#059669',
+              review: '#d97706',
+              danger: '#dc2626'
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body { font-family: 'Inter', 'Tiro Devanagari Hindi', sans-serif; }
+    .hindi-text { font-family: 'Tiro Devanagari Hindi', sans-serif; }
+    /* Custom scrollbar */
+    ::-webkit-scrollbar { width: 6px; height: 6px; }
+    ::-webkit-scrollbar-track { background: #f1f5f9; }
+    ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 9999px; }
+    ::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+  </style>
+</head>
+<body class="bg-slate-100 text-slate-800 h-full flex flex-col antialiased select-none">
+
+  <!-- ================= TOP HEADER (TCS iON STYLE) ================= -->
+  <header class="bg-slate-900 text-white shadow-md z-30 sticky top-0 border-b border-slate-700">
+    <div class="max-w-7xl mx-auto px-3 sm:px-6 h-14 flex items-center justify-between">
+      
+      <!-- Brand & Secret Admin Trigger -->
+      <div class="flex items-center space-x-2 sm:space-x-3">
+        <button id="adminTriggerBtn" title="Admin Settings (4 fast clicks)" class="w-9 h-9 rounded-lg bg-gradient-to-tr from-indigo-600 to-sky-500 flex items-center justify-center font-black tracking-wider text-white shadow-md hover:scale-105 active:scale-95 transition-all text-sm">
+          GV
+        </button>
+        <div>
+          <div class="flex items-center space-x-1.5">
+            <span class="font-extrabold tracking-wide text-sm sm:text-base text-white">GYANVERSE</span>
+            <span class="bg-indigo-950 text-indigo-300 text-[10px] px-1.5 py-0.5 rounded font-mono font-semibold border border-indigo-700/50">CBT</span>
+          </div>
+          <a href="https://t.me/GYANVERSET" target="_blank" rel="noopener noreferrer" class="text-[11px] text-sky-400 hover:text-sky-300 flex items-center gap-1 font-medium -mt-0.5">
+            <svg class="w-3 h-3 fill-current" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 00-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.75-.55 2.92-1.27 4.86-2.11 5.83-2.52 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .39z"/></svg>
+            @GYANVERSET
+          </a>
+        </div>
+      </div>
+
+      <!-- Live Center Info (Visible in test mode) -->
+      <div id="headerTestInfo" class="hidden items-center space-x-2 sm:space-x-4">
+        <div class="flex items-center gap-1.5 bg-slate-800/90 px-3 py-1.5 rounded-lg border border-slate-700 shadow-inner">
+          <svg class="w-4 h-4 text-emerald-400 animate-pulse" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <circle cx="12" cy="12" r="10" stroke-width="2"></circle>
+            <polyline points="12 6 12 12 16 14" stroke-width="2"></polyline>
+          </svg>
+          <span class="text-xs text-slate-400 hidden sm:inline">शेष समय:</span>
+          <span id="countdownDisplay" class="font-mono text-sm sm:text-base font-bold text-amber-300">120:00</span>
+        </div>
+      </div>
+
+      <!-- Action Buttons -->
+      <div class="flex items-center space-x-1.5 sm:space-x-2">
+        <button id="viewLeaderboardBtn" class="flex items-center gap-1 text-xs bg-slate-800 hover:bg-slate-700 text-amber-300 px-2.5 py-1.5 rounded-md border border-amber-500/40 font-medium transition shadow-sm">
+          <span>🏆</span> <span class="hidden md:inline">रैंक सूची</span>
+        </button>
+
+        <button id="savedSheetHeaderBtn" class="hidden items-center gap-1 text-xs bg-indigo-900/60 hover:bg-indigo-800 text-indigo-200 px-2.5 py-1.5 rounded-md border border-indigo-500/30 font-medium transition">
+          <span>📜</span> <span class="hidden md:inline">सेव हल</span>
+        </button>
+
+        <button id="submitTestBtn" class="hidden items-center gap-1 text-xs sm:text-sm bg-gradient-to-r from-red-600 to-rose-600 hover:from-red-700 hover:to-rose-700 text-white font-bold px-3 sm:px-4 py-1.5 rounded-md shadow-md active:scale-95 transition">
+          <span>✓ सबमिट</span>
+        </button>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- ================= MAIN CONTAINER ================= -->
+  <main class="flex-1 max-w-7xl w-full mx-auto p-2 sm:p-4 flex flex-col relative overflow-hidden">
+
+    <!-- 1. ENTRY GATE MODAL / VIEW (Candidate Registration) -->
+    <section id="entryGateView" class="max-w-2xl w-full mx-auto my-auto bg-white rounded-2xl shadow-xl border border-slate-200 p-5 sm:p-8 flex flex-col transition-all">
+      <div class="text-center mb-6">
+        <div class="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-indigo-50 text-indigo-600 mb-3 border border-indigo-100 shadow-sm">
+          <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"></path></svg>
+        </div>
+        <h1 class="text-xl sm:text-2xl font-black text-slate-900 hindi-text tracking-wide">
+          GYANVERSE ऑल-बिहार लाइव CBT परीक्षा
+        </h1>
+        <p class="text-xs sm:text-sm text-indigo-600 font-semibold mt-1">
+          NCERT Class 11 Biology: कोशिका चक्र और कोशिका विभाजन (सम्पूर्ण 100 वस्तुनिष्ठ प्रश्न)
+        </p>
+        <p class="text-[12px] text-slate-500 mt-1">
+          पूर्णतः TCS iON आधारित परीक्षा मोड • पूर्णांक 200.00 • +2.00 सही, -0.20 नकारात्मक अंक
+        </p>
+      </div>
+
+      <!-- Registration Form -->
+      <form id="regForm" class="space-y-4" onsubmit="return false;">
+        <div>
+          <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">
+            परीक्षार्थी का पूरा नाम <span class="text-red-500">*</span>
+          </label>
+          <input type="text" id="regName" required placeholder="उदा. अमन कुमार सिंह" class="w-full px-3.5 py-2.5 rounded-lg border border-slate-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent text-sm bg-slate-50 transition">
+        </div>
+
+        <div>
+          <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">
+            गृह जिला / शहर (बिहार के 38 जिले) <span class="text-red-500">*</span>
+          </label>
+          <select id="regDistrict" required class="w-full px-3.5 py-2.5 rounded-lg border border-slate-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent text-sm bg-slate-50 transition">
+            <option value="" disabled selected>-- अपना जिला चुनें --</option>
+            <option value="पटना">पटना (Patna)</option>
+            <option value="गया">गया (Gaya)</option>
+            <option value="मुजफ्फरपुर">मुजफ्फरपुर (Muzaffarpur)</option>
+            <option value="भागलपुर">भागलपुर (Bhagalpur)</option>
+            <option value="दरभंगा">दरभंगा (Darbhanga)</option>
+            <option value="पूर्णिया">पूर्णिया (Purnia)</option>
+            <option value="रोहतास">रोहतास (Rohtas)</option>
+            <option value="नालंदा">नालंदा (Nalanda)</option>
+            <option value="सारण">सारण (Chhapra)</option>
+            <option value="समस्तीपुर">समस्तीपुर (Samastipur)</option>
+            <option value="बेगूसराय">बेगूसराय (Begusarai)</option>
+            <option value="पूर्वी चंपारण">पूर्वी चंपारण (Motihari)</option>
+            <option value="पश्चिमी चंपारण">पश्चिमी चंपारण (Bettiah)</option>
+            <option value="वैशाली">वैशाली (Hajipur)</option>
+            <option value="सीवान">सीवान (Siwan)</option>
+            <option value="गोपालगंज">गोपालगंज (Gopalganj)</option>
+            <option value="भोजपुर">भोजपुर (Ara)</option>
+            <option value="बक्सर">बक्सर (Buxar)</option>
+            <option value="औरंगाबाद">औरंगाबाद (Aurangabad)</option>
+            <option value="जहानाबाद">जहानाबाद (Jehanabad)</option>
+            <option value="अरवल">अरवल (Arwal)</option>
+            <option value="नवादा">नवादा (Nawada)</option>
+            <option value="शेखपुरा">शेखपुरा (Sheikhpura)</option>
+            <option value="लखीसराय">लखीसराय (Lakhisarai)</option>
+            <option value="जमुई">जमुई (Jamui)</option>
+            <option value="मुंगेर">मुंगेर (Munger)</option>
+            <option value="खगड़िया">खगड़िया (Khagaria)</option>
+            <option value="सहरसा">सहरसा (Saharsa)</option>
+            <option value="मधेपुरा">मधेपुरा (Madhepura)</option>
+            <option value="सुपौल">सुपौल (Supaul)</option>
+            <option value="किशनगंज">किशनगंज (Kishanganj)</option>
+            <option value="अररिया">अररिया (Araria)</option>
+            <option value="कटिहार">कटिहार (Katihar)</option>
+            <option value="बाँका">बाँका (Banka)</option>
+            <option value="मधुबनी">मधुबनी (Madhubani)</option>
+            <option value="सीतामढ़ी">सीतामढ़ी (Sitamarhi)</option>
+            <option value="शिवहर">शिवहर (Sheohar)</option>
+            <option value="कैमूर">कैमूर (Kaimur/Bhabua)</option>
+          </select>
+        </div>
+
+        <div>
+          <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">
+            टेलीग्राम यूजरनेम <span class="text-red-500">*</span>
+          </label>
+          <div class="relative">
+            <span class="absolute inset-y-0 left-0 pl-3.5 flex items-center text-slate-400 font-mono text-sm">@</span>
+            <input type="text" id="regTelegram" required placeholder="username" class="w-full pl-8 pr-3.5 py-2.5 rounded-lg border border-slate-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent text-sm bg-slate-50 transition">
+          </div>
+        </div>
+
+        <!-- Start / Resume Actions -->
+        <div class="pt-3 space-y-2">
+          <button type="submit" id="startTestBtn" class="w-full bg-gradient-to-r from-indigo-600 via-indigo-700 to-indigo-800 hover:from-indigo-700 hover:to-indigo-900 text-white font-bold py-3 px-4 rounded-xl shadow-lg hover:shadow-indigo-500/25 active:scale-[0.99] transition flex items-center justify-center gap-2 text-base">
+            <span>🚀 Start Test (Auto Full Screen)</span>
+          </button>
+
+          <button type="button" id="resumeTestBtn" class="hidden w-full bg-emerald-600 hover:bg-emerald-700 text-white font-semibold py-2.5 px-4 rounded-xl shadow transition items-center justify-center gap-2 text-sm">
+            <span>▶ अधूरा टेस्ट वहीं से जारी रखें (Resume Test)</span>
+          </button>
+
+          <button type="button" id="viewPreviousSolutionBtn" class="hidden w-full bg-slate-100 hover:bg-slate-200 text-slate-800 border border-slate-300 font-semibold py-2 px-4 rounded-xl transition items-center justify-center gap-2 text-sm">
+            <span>📋 पिछला स्कोरकार्ड एवं सभी हल देखें (Check Solutions)</span>
+          </button>
+        </div>
+      </form>
+
+      <div class="mt-5 text-center border-t border-slate-100 pt-3">
+        <span class="text-[11px] text-slate-400">
+          Powered by GYANVERSE CBT Cloud Architecture • Bihar Special Testing System
+        </span>
+      </div>
+    </section>
+
+    <!-- 2. TCS iON LIVE EXAM VIEW -->
+    <section id="examView" class="hidden flex-1 flex-col h-full bg-white rounded-xl shadow-md border border-slate-200 overflow-hidden">
+      
+      <!-- Section Tabs Bar -->
+      <div class="bg-slate-50 border-b border-slate-200 px-3 py-2 flex items-center justify-between overflow-x-auto gap-2 text-xs">
+        <div class="flex items-center space-x-1.5 shrink-0" id="sectionTabsContainer">
+          <button class="section-tab active px-3 py-1.5 rounded-md font-semibold bg-indigo-600 text-white shadow-sm" data-sec="ALL">
+            सभी प्रश्न (100)
+          </button>
+          <button class="section-tab px-3 py-1.5 rounded-md font-medium text-slate-600 hover:bg-slate-200 transition" data-sec="CYCLE">
+            कोशिका चक्र व अंतरावस्था (25)
+          </button>
+          <button class="section-tab px-3 py-1.5 rounded-md font-medium text-slate-600 hover:bg-slate-200 transition" data-sec="MITOSIS">
+            समसूत्री विभाजन (25)
+          </button>
+          <button class="section-tab px-3 py-1.5 rounded-md font-medium text-slate-600 hover:bg-slate-200 transition" data-sec="MEIOSIS">
+            अर्धसूत्री विभाजन (25)
+          </button>
+          <button class="section-tab px-3 py-1.5 rounded-md font-medium text-slate-600 hover:bg-slate-200 transition" data-sec="NUMERICAL">
+            विविध, गणना व आरेख (25)
+          </button>
+        </div>
+        <div class="text-right text-[11px] text-slate-500 font-mono shrink-0 pl-2">
+          अंक: <span class="text-emerald-600 font-bold">+2.00</span> | <span class="text-rose-500 font-bold">-0.20</span>
+        </div>
+      </div>
+
+      <!-- Question Card Area -->
+      <div class="flex-1 overflow-y-auto p-4 sm:p-6 flex flex-col justify-between" id="questionCardWrapper">
+        <div>
+          <!-- Question Meta Header -->
+          <div class="flex items-center justify-between border-b border-slate-100 pb-2 mb-3">
+            <span class="text-xs sm:text-sm font-bold text-slate-500">
+              प्रश्न सं. <span id="currentQNum" class="text-indigo-600 text-base font-extrabold">1</span> / 100
+            </span>
+            <span id="reviewBadge" class="hidden text-[11px] font-bold text-amber-600 bg-amber-50 border border-amber-200 px-2 py-0.5 rounded">
+              ★ समीक्षा हेतु चिह्नित (Marked for Review)
+            </span>
+          </div>
+
+          <!-- Question Text -->
+          <div id="questionText" class="text-sm sm:text-base font-medium text-slate-800 leading-relaxed hindi-text mb-4">
+            <!-- Question text will be injected dynamically -->
+          </div>
+
+          <!-- Optional Inline SVG Illustration for Diagrammatic Questions -->
+          <div id="diagramContainer" class="hidden mb-4 p-3 bg-slate-50 rounded-xl border border-slate-200 flex justify-center items-center">
+            <!-- SVG injected dynamically -->
+          </div>
+
+          <!-- Watermark Bar -->
+          <div class="text-[10px] text-slate-400 font-mono tracking-wider py-1 border-y border-dashed border-slate-200 mb-4 text-center">
+            GYANVERSE • NCERT Class 11 Biology • Telegram: @GYANVERSET
+          </div>
+
+          <!-- Options Grid -->
+          <div id="optionsContainer" class="space-y-2.5 mb-6">
+            <!-- Options (A, B, C, D) injected dynamically -->
+          </div>
+        </div>
+
+        <!-- Navigation Action Buttons (Immediately Below Options) -->
+        <div class="pt-3 border-t border-slate-200 flex flex-wrap items-center justify-between gap-2">
+          <div class="flex items-center gap-1.5 sm:gap-2">
+            <button id="btnPrev" class="px-3 sm:px-4 py-2 rounded-lg bg-slate-200 hover:bg-slate-300 text-slate-700 font-semibold text-xs sm:text-sm transition flex items-center gap-1">
+              <span>⬅</span> <span>Prev</span>
+            </button>
+            <button id="btnClear" class="px-3 sm:px-4 py-2 rounded-lg bg-rose-50 hover:bg-rose-100 text-rose-700 border border-rose-200 font-semibold text-xs sm:text-sm transition">
+              ✖ Clear
+            </button>
+            <button id="btnReview" class="px-3 sm:px-4 py-2 rounded-lg bg-amber-50 hover:bg-amber-100 text-amber-700 border border-amber-200 font-semibold text-xs sm:text-sm transition flex items-center gap-1">
+              ★ Review
+            </button>
+          </div>
+
+          <button id="btnNext" class="px-4 sm:px-6 py-2 rounded-lg bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-xs sm:text-sm shadow transition flex items-center gap-1">
+            <span>Next & Save</span> <span>➡</span>
+          </button>
+        </div>
+
+      </div>
+
+      <!-- Jump Palette Dropdown Bar (Mobile 100% Fit, No Distracting Sidebar) -->
+      <div class="bg-slate-100 border-t border-slate-200 px-3 py-2 flex items-center justify-between text-xs">
+        <label for="questionJumpSelect" class="font-bold text-slate-600 flex items-center gap-1">
+          <span>⚡ सीधे प्रश्न पर जाएँ:</span>
+        </label>
+        <select id="questionJumpSelect" class="bg-white border border-slate-300 rounded-md px-2 py-1 text-xs font-semibold focus:outline-none focus:ring-1 focus:ring-indigo-500">
+          <!-- Dynamically populated options -->
+        </select>
+      </div>
+
+    </section>
+
+    <!-- 3. SCORECARD & REVIEW VIEW -->
+    <section id="scorecardView" class="hidden flex-1 overflow-y-auto bg-white rounded-2xl shadow-xl border border-slate-200 p-4 sm:p-6 transition-all">
+      
+      <!-- Top Trophy Banner -->
+      <div class="text-center pb-5 border-b border-slate-200">
+        <span class="inline-block p-3 rounded-2xl bg-amber-50 text-amber-600 border border-amber-100 text-3xl mb-2">
+          🏆
+        </span>
+        <h2 class="text-xl sm:text-2xl font-black text-slate-900 hindi-text">
+          परीक्षा परिणाम एवं ऑल-बिहार स्कोरकार्ड
+        </h2>
+        <p class="text-xs text-slate-500 mt-1">GYANVERSE Centralized Computer-Based Assessment</p>
+        
+        <!-- All Bihar Rank Pill -->
+        <div class="mt-3 inline-flex items-center gap-2 bg-gradient-to-r from-amber-500 to-amber-600 text-white px-4 py-1.5 rounded-full text-xs sm:text-sm font-extrabold shadow-md">
+          <span id="scoreAllBiharRank">🏆 गणना की जा रही है...</span>
+        </div>
+      </div>
+
+      <!-- Candidate Metadata -->
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 my-4 text-xs bg-slate-50 p-3 rounded-xl border border-slate-200">
+        <div>
+          <span class="text-slate-400 block font-medium">परीक्षार्थी:</span>
+          <span id="metaCandidateName" class="font-bold text-slate-800 text-sm">--</span>
+        </div>
+        <div>
+          <span class="text-slate-400 block font-medium">जिला:</span>
+          <span id="metaCandidateDistrict" class="font-bold text-slate-800 text-sm">--</span>
+        </div>
+        <div>
+          <span class="text-slate-400 block font-medium">टेलीग्राम:</span>
+          <span id="metaCandidateTg" class="font-mono font-bold text-sky-600">--</span>
+        </div>
+        <div>
+          <span class="text-slate-400 block font-medium">सबमिट समय:</span>
+          <span id="metaCandidateTimestamp" class="font-mono text-slate-700">--</span>
+        </div>
+      </div>
+
+      <!-- Key Score Metrics Grid -->
+      <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 mb-6">
+        
+        <div class="bg-indigo-50 border border-indigo-100 rounded-xl p-3 text-center">
+          <span class="text-[11px] font-bold text-indigo-600 block">कुल प्राप्तांक</span>
+          <span id="metricFinalScore" class="text-xl sm:text-2xl font-black text-indigo-900">0.00</span>
+          <span class="text-[10px] text-indigo-400 block">/ 200.00</span>
+        </div>
+
+        <div class="bg-emerald-50 border border-emerald-100 rounded-xl p-3 text-center">
+          <span class="text-[11px] font-bold text-emerald-600 block">सही उत्तर (+2)</span>
+          <span id="metricCorrect" class="text-xl sm:text-2xl font-black text-emerald-700">0</span>
+          <span class="text-[10px] text-emerald-500 block">प्रश्नों की संख्या</span>
+        </div>
+
+        <div class="bg-rose-50 border border-rose-100 rounded-xl p-3 text-center">
+          <span class="text-[11px] font-bold text-rose-600 block">गलत उत्तर (-0.20)</span>
+          <span id="metricWrong" class="text-xl sm:text-2xl font-black text-rose-700">0</span>
+          <span class="text-[10px] text-rose-400 block">प्रश्नों की संख्या</span>
+        </div>
+
+        <div class="bg-slate-100 border border-slate-200 rounded-xl p-3 text-center">
+          <span class="text-[11px] font-bold text-slate-600 block">छोड़े गए (0)</span>
+          <span id="metricUnattempted" class="text-xl sm:text-2xl font-black text-slate-700">0</span>
+          <span class="text-[10px] text-slate-400 block">प्रश्नों की संख्या</span>
+        </div>
+
+        <div class="bg-amber-50 border border-amber-100 rounded-xl p-3 text-center">
+          <span class="text-[11px] font-bold text-amber-600 block">सटीकता (Accuracy)</span>
+          <span id="metricAccuracy" class="text-xl sm:text-2xl font-black text-amber-700">0%</span>
+          <span class="text-[10px] text-amber-500 block">सटीक उत्तर %</span>
+        </div>
+
+        <div class="bg-sky-50 border border-sky-100 rounded-xl p-3 text-center">
+          <span class="text-[11px] font-bold text-sky-600 block">व्यतीत समय</span>
+          <span id="metricTimeSpent" class="text-lg sm:text-xl font-black text-sky-800">--:--</span>
+          <span class="text-[10px] text-sky-400 block">कुल समय</span>
+        </div>
+
+      </div>
+
+      <!-- Action: Toggle Solutions Mode -->
+      <div class="flex flex-wrap gap-2 items-center justify-between bg-slate-900 text-white p-3 sm:p-4 rounded-xl mb-6 shadow">
+        <div>
+          <h3 class="font-bold text-sm sm:text-base hindi-text">उत्तर व विस्तृत NCERT व्याख्या (Solution Sheet)</h3>
+          <p class="text-[11px] text-slate-300">प्रत्येक प्रश्न का सही उत्तर व NCERT लाइन-दर-लाइन विश्लेषण नीचे देखें।</p>
+        </div>
+        <div class="flex items-center gap-2">
+          <button id="viewLeaderboardFromScoreBtn" class="bg-amber-500 hover:bg-amber-600 text-slate-950 font-bold px-3 py-1.5 rounded-lg text-xs shadow transition">
+            🏆 ऑल-बिहार मेरिट सूची
+          </button>
+        </div>
+      </div>
+
+      <!-- Solutions Filter Bar -->
+      <div class="flex flex-wrap items-center gap-2 mb-4 text-xs font-semibold">
+        <span class="text-slate-500">फ़िल्टर:</span>
+        <button class="sol-filter active bg-slate-800 text-white px-3 py-1 rounded-md transition" data-filter="ALL">सभी प्रश्न (100)</button>
+        <button class="sol-filter bg-emerald-100 text-emerald-800 hover:bg-emerald-200 px-3 py-1 rounded-md transition" data-filter="CORRECT">✔ सही (<span id="countSolCorrect">0</span>)</button>
+        <button class="sol-filter bg-rose-100 text-rose-800 hover:bg-rose-200 px-3 py-1 rounded-md transition" data-filter="WRONG">✖ गलत (<span id="countSolWrong">0</span>)</button>
+        <button class="sol-filter bg-slate-200 text-slate-700 hover:bg-slate-300 px-3 py-1 rounded-md transition" data-filter="SKIPPED">⚪ छोड़े गए (<span id="countSolSkipped">0</span>)</button>
+      </div>
+
+      <!-- Solution Questions List Container -->
+      <div id="solutionsListContainer" class="space-y-4">
+        <!-- Rendered solution cards will appear here -->
+      </div>
+
+    </section>
+
+  </main>
+
+  <!-- ================= MODALS ================= -->
+
+  <!-- 1. Submit Confirmation Modal -->
+  <div id="submitModal" class="fixed inset-0 bg-slate-900/70 backdrop-blur-sm z-50 hidden flex items-center justify-center p-3">
+    <div class="bg-white max-w-md w-full rounded-2xl p-5 shadow-2xl border border-slate-200 animate-in fade-in zoom-in-95 duration-150">
+      <div class="text-center mb-4">
+        <span class="inline-block p-3 rounded-full bg-rose-50 text-rose-600 mb-2">
+          <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path></svg>
+        </span>
+        <h3 class="text-lg font-bold text-slate-900 hindi-text">क्या आप सचमुच परीक्षा सबमिट करना चाहते हैं?</h3>
+        <p class="text-xs text-slate-500">सबमिट करने के बाद आप उत्तर संशोधित नहीं कर सकेंगे।</p>
+      </div>
+
+      <div class="bg-slate-50 rounded-xl p-3 text-xs space-y-2 mb-4 border border-slate-200 font-medium">
+        <div class="flex justify-between">
+          <span class="text-slate-600">कुल प्रश्न:</span>
+          <span class="font-bold text-slate-900">100</span>
+        </div>
+        <div class="flex justify-between">
+          <span class="text-emerald-700">उत्तर दिए गए (Attempted):</span>
+          <span id="confirmAttemptedCount" class="font-bold text-emerald-700">0</span>
+        </div>
+        <div class="flex justify-between">
+          <span class="text-slate-600">छोड़े गए (Unattempted):</span>
+          <span id="confirmUnattemptedCount" class="font-bold text-slate-700">0</span>
+        </div>
+        <div class="flex justify-between">
+          <span class="text-amber-700">समीक्षा हेतु चिह्नित (Marked for Review):</span>
+          <span id="confirmReviewCount" class="font-bold text-amber-700">0</span>
+        </div>
+      </div>
+
+      <div class="flex gap-2">
+        <button id="cancelSubmitBtn" class="flex-1 py-2.5 px-4 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-semibold text-xs sm:text-sm transition">
+          वापस टेस्ट पर जाएँ
+        </button>
+        <button id="finalConfirmSubmitBtn" class="flex-1 py-2.5 px-4 rounded-xl bg-rose-600 hover:bg-rose-700 text-white font-bold text-xs sm:text-sm shadow-md transition">
+          हाँ, फाइनल सबमिट करें
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2. Live All-Bihar Leaderboard Modal -->
+  <div id="leaderboardModal" class="fixed inset-0 bg-slate-900/70 backdrop-blur-sm z-50 hidden flex items-center justify-center p-2 sm:p-4">
+    <div class="bg-white max-w-3xl w-full h-[90vh] rounded-2xl flex flex-col shadow-2xl border border-slate-200 overflow-hidden">
+      
+      <!-- Leaderboard Header -->
+      <div class="bg-gradient-to-r from-slate-900 to-indigo-950 text-white p-4 flex items-center justify-between border-b border-slate-800">
+        <div>
+          <div class="flex items-center gap-2">
+            <span class="text-xl">🏆</span>
+            <h3 class="text-base sm:text-lg font-bold hindi-text">GYANVERSE लाइव ऑल-बिहार मेरिट रैंकिंग</h3>
+          </div>
+          <p class="text-[11px] text-slate-300">Firebase Cloud Realtime Database द्वारा संचालित लाइव परिणाम</p>
+        </div>
+        <button id="closeLeaderboardBtn" class="text-slate-400 hover:text-white p-1 rounded-lg text-lg">✕</button>
+      </div>
+
+      <!-- Filters & Search -->
+      <div class="bg-slate-50 border-b border-slate-200 p-3 grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
+        <input type="text" id="leaderboardSearchInput" placeholder="नाम या टेलीग्राम खोजें..." class="w-full px-3 py-2 bg-white border border-slate-300 rounded-lg focus:outline-none focus:ring-1 focus:ring-indigo-500">
+        <select id="leaderboardDistrictFilter" class="w-full px-3 py-2 bg-white border border-slate-300 rounded-lg focus:outline-none focus:ring-1 focus:ring-indigo-500">
+          <option value="ALL">सभी 38 जिले (All Bihar)</option>
+        </select>
+      </div>
+
+      <!-- Top 3 Podium (Visual) -->
+      <div id="podiumContainer" class="p-4 bg-gradient-to-b from-indigo-50/50 to-white flex items-end justify-center gap-2 sm:gap-4 border-b border-slate-200 text-center">
+        <!-- Rendered dynamically -->
+      </div>
+
+      <!-- Scrollable Table -->
+      <div class="flex-1 overflow-y-auto p-2">
+        <table class="w-full text-left text-xs border-collapse">
+          <thead class="bg-slate-100 text-slate-600 uppercase font-semibold sticky top-0 shadow-sm text-[10px]">
+            <tr>
+              <th class="py-2.5 px-2 text-center">रैंक</th>
+              <th class="py-2.5 px-2">परीक्षार्थी</th>
+              <th class="py-2.5 px-2">जिला</th>
+              <th class="py-2.5 px-2 text-center">सही/गलत</th>
+              <th class="py-2.5 px-2 text-right">कुल अंक</th>
+            </tr>
+          </thead>
+          <tbody id="leaderboardTableBody" class="divide-y divide-slate-100">
+            <!-- Rows injected dynamically -->
+          </tbody>
+        </table>
+        <div id="leaderboardLoadingIndicator" class="text-center py-8 text-xs text-slate-400">
+          डेटा लोड हो रहा है...
+        </div>
+      </div>
+
+      <!-- Footer Info -->
+      <div class="bg-slate-100 px-4 py-2 border-t border-slate-200 flex items-center justify-between text-[11px] text-slate-600">
+        <span id="leaderboardTotalCandidates">कुल परीक्षार्थी: 0</span>
+        <button id="refreshLeaderboardBtn" class="text-indigo-600 hover:text-indigo-800 font-bold flex items-center gap-1">
+          🔄 रीफ्रेश करें
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- 3. Secret Admin Settings Modal -->
+  <div id="adminModal" class="fixed inset-0 bg-slate-900/80 backdrop-blur-sm z-50 hidden flex items-center justify-center p-3">
+    <div class="bg-white max-w-md w-full rounded-2xl p-5 shadow-2xl border border-slate-200">
+      <div class="flex justify-between items-center mb-3">
+        <h3 class="text-base font-bold text-slate-900 flex items-center gap-2">
+          <span>🔒</span> गुप्त एडमिन डेटाबेस सेटिंग्स
+        </h3>
+        <button id="closeAdminBtn" class="text-slate-400 hover:text-slate-600 font-bold">✕</button>
+      </div>
+
+      <div class="space-y-3 text-xs">
+        <div>
+          <label class="block font-semibold text-slate-700 mb-1">Firebase Realtime Database URL:</label>
+          <input type="text" id="adminFirebaseUrl" class="w-full px-3 py-2 border border-slate-300 rounded-lg font-mono text-[11px] focus:outline-none focus:ring-1 focus:ring-indigo-500">
+          <p class="text-[10px] text-slate-400 mt-1">डिफ़ॉल्ट अधिकृत URL: https://gyanverse-cbt-b5f75-default-rtdb.firebaseio.com</p>
+        </div>
+
+        <div class="bg-amber-50 p-2.5 rounded-lg border border-amber-200 text-amber-800 text-[11px]">
+          ध्यान दें: यह मेन्यू सामान्य छात्रों के लिए गुप्त है। यहां से डेटाबेस सिंक लिंक बदला या रीसेट किया जा सकता है।
+        </div>
+
+        <div class="pt-2 flex gap-2">
+          <button id="adminSaveBtn" class="flex-1 bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 rounded-lg transition">
+            सेटिंग्स सुरक्षित करें
+          </button>
+          <button id="adminResetBtn" class="px-3 bg-slate-200 hover:bg-slate-300 text-slate-700 rounded-lg transition font-medium">
+            डिफ़ॉल्ट
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= INLINE SCRIPT LOGIC ================= -->
+  <script>
+    (function () {
+      "use strict";
+
+      // ----------------------------------------------------
+      // CONSTANTS & CONFIGURATION
+      // ----------------------------------------------------
+      const DEFAULT_FIREBASE_URL = "https://gyanverse-cbt-b5f75-default-rtdb.firebaseio.com";
+      const TEST_DURATION_MINUTES = 120;
+      const MARKS_CORRECT = 2.0;
+      const MARKS_WRONG = 0.20;
+
+      // LocalStorage Keys
+      const LS_FIREBASE_URL_KEY = "gyanverse_custom_firebase_url";
+      const LS_CANDIDATE_KEY = "gyanverse_candidate_info";
+      const LS_ACTIVE_SESSION_KEY = "gyanverse_active_test_session";
+      const LS_SAVED_ATTEMPT_KEY = "gyanverse_saved_final_attempt";
+
+      // ----------------------------------------------------
+      // COMPLETE 100 HIGH-YIELD NCERT QUESTIONS (CHAPTER 10)
+      // Line-by-line hindi questions with step-by-step explanations
+      // ----------------------------------------------------
+      const QUESTIONS_DB = [
+        // SECTION 1: कोशिका चक्र व अंतरावस्था (1-25)
+        {
+          id: 1, sec: "CYCLE",
+          q: "कोशिका चक्र (Cell Cycle) की घटनाओं के संदर्भ में निम्नलिखित में से कौन-सा कथन सत्य है?",
+          options: [
+            "डीएनए का द्विगुणन कोशिका चक्र की किसी भी अवस्था में हो सकता है",
+            "कोशिका वृद्धि (कोशिकाद्रव्यीय संदर्भ में) एक सतत प्रक्रिया है, जबकि डीएनए संश्लेषण केवल एक विशिष्ट प्रावस्था में होता है",
+            "गुणसूत्रों का संघनन केवल अंतरावस्था में ही संपन्न होता है",
+            "केंद्रक विभाजन के बिना कोशिका वृद्धि संभव नहीं है"
+          ],
+          correct: 1,
+          exp: "NCERT पृष्ठ 163: कोशिका वृद्धि (कोशिकाद्रव्यीय संदर्भ में) एक निरंतर चलने वाली प्रक्रिया है, जबकि डीएनए का द्विगुणन कोशिका चक्र की केवल एक निश्चित अवस्था (S प्रावस्था) में संपन्न होता है।",
+          hasDiagram: "cell_cycle"
+        },
+        {
+          id: 2, sec: "CYCLE",
+          q: "मानव संवर्धित कोशिका और यीस्ट (Yeast) की कोशिका चक्र अवधि क्रमशः कितनी होती है?",
+          options: [
+            "मानव: 12 घंटे, यीस्ट: 30 मिनट",
+            "मानव: 48 घंटे, यीस्ट: 24 घंटे",
+            "मानव: लगभग 24 घंटे, यीस्ट: लगभग 90 मिनट",
+            "मानव: लगभग 1 घंटा, यीस्ट: 120 मिनट"
+          ],
+          correct: 2,
+          exp: "NCERT पृष्ठ 163: एक प्ररूपी यूकैरियोटिक कोशिका जैसे मनुष्य की संवर्धित कोशिका लगभग प्रत्येक 24 घंटे में विभाजित होती है। यीस्ट के कोशिका चक्र के पूर्ण होने में मात्र 90 मिनट लगते हैं।"
+        },
+        {
+          id: 3, sec: "CYCLE",
+          q: "मनुष्य की 24 घंटे की कोशिका चक्र अवधि में वास्तविक सूत्री विभाजन (M-प्रावस्था) में कितना समय व्यतीत होता है?",
+          options: [
+            "लगभग 12 घंटे (50%)",
+            "सिर्फ लगभग 1 घंटा (कुल अवधि का 5% से कम)",
+            "लगभग 18 घंटे (75%)",
+            "लगभग 6 घंटे (25%)"
+          ],
+          correct: 1,
+          exp: "NCERT पृष्ठ 163: 24 घंटे की कोशिका चक्र अवधि में वास्तविक विभाजन केवल लगभग 1 घंटे में पूर्ण होता है। 95% से अधिक अवधि अंतरावस्था (Interphase) में व्यतीत होती है।"
+        },
+        {
+          id: 4, sec: "CYCLE",
+          q: "अंतरावस्था (Interphase) के सही अनुक्रमिक चरणों का चयन करें:",
+          options: [
+            "S प्रावस्था ➔ G1 प्रावस्था ➔ G2 प्रावस्था",
+            "G1 प्रावस्था ➔ G2 प्रावस्था ➔ S प्रावस्था",
+            "G1 प्रावस्था (पश्च सूत्री) ➔ S प्रावस्था (संश्लेषण) ➔ G2 प्रावस्था (पूर्व-सूत्री)",
+            "G0 प्रावस्था ➔ S प्रावस्था ➔ G1 प्रावस्था"
+          ],
+          correct: 2,
+          exp: "NCERT पृष्ठ 163: अंतरावस्था को तीन प्रावस्थाओं में विभाजित किया गया है: G1 Phase ➔ S Phase ➔ G2 Phase।"
+        },
+        {
+          id: 5, sec: "CYCLE",
+          q: "यदि एक कोशिका में G1 प्रावस्था में डीएनए की मात्रा 2C और गुणसूत्रों की संख्या 2n है, तो S प्रावस्था के पश्चात डीएनए की मात्रा और गुणसूत्रों की संख्या क्रमशः क्या होगी?",
+          options: [
+            "4C और 4n",
+            "2C और 2n",
+            "4C और 2n",
+            "8C और 4n"
+          ],
+          correct: 2,
+          exp: "NCERT पृष्ठ 163-164: S प्रावस्था में डीएनए की मात्रा दुगुनी (2C से 4C) हो जाती है, परंतु गुणसूत्रों की संख्या में कोई वृद्धि नहीं होती; वह 2n ही रहती है।"
+        },
+        {
+          id: 6, sec: "CYCLE",
+          q: "प्राणी कोशिका में S प्रावस्था के दौरान निम्नलिखित में से कौन-सी घटना कोशिकाद्रव्य (Cytoplasm) में संपन्न होती है?",
+          options: [
+            "डीएनए का द्विगुणन",
+            "तारककेंद्र (Centriole) का प्रतिकृतिकरण",
+            "तर्कुतंतुओं का पूर्ण निर्माण",
+            "केंद्रक झिल्ली का विघटन"
+          ],
+          correct: 1,
+          exp: "NCERT पृष्ठ 164: S प्रावस्था के दौरान केंद्रक में डीएनए का द्विगुणन होता है, जबकि उसी समय कोशिकाद्रव्य में तारककेंद्र (Centriole) का प्रतिकृतिकरण होता है।"
+        },
+        {
+          id: 7, sec: "CYCLE",
+          q: "कोशिका चक्र की G2 प्रावस्था (Gap 2 Phase) की मुख्य विशेषता क्या है?",
+          options: [
+            "डीएनए की मात्रा 4C से 8C हो जाना",
+            "सूत्री विभाजन हेतु प्रोटीन का निर्माण और कोशिका वृद्धि जारी रहना",
+            "गुणसूत्रों का दो संतति अर्धगुणसूत्रों में पृथक्करण",
+            "कोशिका का उपापचयी रूप से पूर्णतः निष्क्रिय हो जाना"
+          ],
+          correct: 1,
+          exp: "NCERT पृष्ठ 164: G2 प्रावस्था के दौरान कोशिका वृद्धि जारी रहती है तथा सूत्री विभाजन की तैयारी हेतु प्रोटीनों (ट्यूबुलिन आदि) का निर्माण होता है।"
+        },
+        {
+          id: 8, sec: "CYCLE",
+          q: "प्रौढ़ जीवों की हृदय कोशिकाएं (Heart cells) जो आगे विभाजित नहीं होतीं, कोशिका चक्र की किस अवस्था में प्रवेश करती हैं?",
+          options: [
+            "S प्रावस्था में",
+            "G2 प्रावस्था में",
+            "शांत प्रावस्था (Quiescent stage - G0)",
+            "विभाजन प्रावस्था (M phase)"
+          ],
+          correct: 2,
+          exp: "NCERT पृष्ठ 164: वयस्क जीवों में जो कोशिकाएं आगे विभाजित नहीं होतीं, वे G1 से निकलकर एक निष्क्रिय अवस्था में पहुँचती हैं, जिसे शांत प्रावस्था (G0) कहते हैं।"
+        },
+        {
+          id: 9, sec: "CYCLE",
+          q: "G0 (शांत प्रावस्था) में उपस्थित कोशिकाओं के संदर्भ में कौन-सा कथन शत-प्रतिशत सही है?",
+          options: [
+            "वे मृत कोशिकाएं होती हैं",
+            "वे उपापचयी रूप से सक्रिय रहती हैं परंतु विभाजित नहीं होतीं (विभाजन केवल आवश्यकतानुसार होता है)",
+            "उनका डीएनए स्वतः नष्ट हो जाता है",
+            "वे लगातार समसूत्री विभाजन दर्शाती हैं"
+          ],
+          correct: 1,
+          exp: "NCERT पृष्ठ 164: G0 प्रावस्था की कोशिकाएं उपापचयी रूप से सक्रिय होती हैं परंतु विभाजित नहीं होतीं; इनका विभाजन जीव की आवश्यकतानुसार ही होता है।"
+        },
+        {
+          id: 10, sec: "CYCLE",
+          q: "पादपों और प्राणियों में समसूत्री विभाजन (Mitosis) किस प्रकार की कोशिकाओं में पाया जाता है?",
+          options: [
+            "प्राणियों में अगुणित व द्विगुणित दोनों में, पादपों में केवल द्विगुणित में",
+            "प्राणियों में केवल द्विगुणित कायिक कोशिकाओं में; जबकि पादपों में अगुणित एवं द्विगुणित दोनों कोशिकाओं में",
+            "दोनों में केवल अगुणित कोशिकाओं में",
+            "पादपों में केवल युग्मकों में और प्राणियों में केवल जाइगोट में"
+          ],
+          correct: 1,
+          exp: "NCERT पृष्ठ 164: प्राणियों में सूत्री विभाजन केवल द्विगुणित कायिक कोशिकाओं में होता है। पादपों में यह अगुणित और द्विगुणित दोनों कोशिकाओं में देखा जाता है।"
+        },
+        {
+          id: 11, sec: "CYCLE",
+          q: "प्याज के मूल शीर्ष (Onion root tip) की कोशिका में गुणसूत्रों की संख्या 16 (2n = 16) है। G1, S और M प्रावस्था के बाद इसमें गुणसूत्र संख्या क्रमशः कितनी होगी?",
+          options: [
+            "G1=16, S=32, M=16",
+            "G1=16, S=16, M=16",
+            "G1=8, S=16, M=32",
+            "G1=16, S=16, M=8"
+          ],
+          correct: 1,
+          exp: "NCERT पृष्ठ 164 (बॉक्स प्रश्न): S प्रावस्था में केवल डीएनए दुगुना होता है, गुणसूत्र संख्या 16 ही रहती है। अतः G1, S और विभाजन के बाद संतति में भी 16 गुणसूत्र ही रहेंगे।"
+        },
+        {
+          id: 12, sec: "CYCLE",
+          q: "कोशिका चक्र की अंतरावस्था (Interphase) को विश्राम प्रावस्था क्यों कहा जाता था?",
+          options: [
+            "क्योंकि इसमें कोशिका पूरी तरह सो जाती है",
+            "क्योंकि सूक्ष्मदर्शी के नीचे इसमें कोशिका विभाजन की प्रत्यक्ष हलचल नहीं दिखती, यद्यपि कोशिका विभाजन की गहन तैयारी कर रही होती है",
+            "क्योंकि इस दौरान कोशिका में उपापचय रुक जाता है",
+            "क्योंकि इसमें ऊर्जा (ATP) का कोई उपयोग नहीं होता"
+          ],
+          correct: 1,
+          exp: "NCERT पृष्ठ 163: ऐतिहासिक रूप से इसे विश्राम अवस्था कहा गया क्योंकि इसमें विभाजन दिखाई नहीं देता, पर वास्तव में इस दौरान कोशिका वृद्धि व डीएनए प्रतिकृति द्वारा विभाजन हेतु तैयार होती है।"
+        },
+        {
+          id: 13, sec: "CYCLE",
+          q: "कोशिका चक्र की G1 प्रावस्था का सही तकनीकी अर्थ क्या है?",
+          options: [
+            "संश्लेषण प्रावस्था",
+            "समसूत्री विभाजन और डीएनए प्रतिकृतिकरण के बीच का अंतराल (Gap 1)",
+            "पूर्व-सूत्री अंतराल प्रावस्था",
+            "अंतिम विभाजन प्रावस्था"
+          ],
+          correct: 1,
+          exp: "NCERT पृष्ठ 163: पश्च-सूत्री अंतरकाल प्रावस्था (G1 Phase) समसूत्री विभाजन एवं डीएनए प्रतिकृतिकरण के बीच अंतराल को प्रदर्शित करती है।"
+        },
+        {
+          id: 14, sec: "CYCLE",
+          q: "कोशिका चक्र में डीएनए प्रतिकृति व कोशिका वृद्धि का समायोजन किस नियंत्रण के अंतर्गत होता है?",
+          options: [
+            "केवल अंत्यावस्था में बाह्य दबाव द्वारा",
+            "आनुवंशिक नियंत्रण (Genetic control) के अंतर्गत",
+            "पर्यावरणीय तापमान के नियंत्रण में",
+            "पादप हॉर्मोन के बिना अनियंत्रित रूप से"
+          ],
+          correct: 1,
+          exp: "NCERT पृष्ठ 163: कोशिका चक्र की ये सभी प्रक्रियाएं एक दूसरे के साथ समायोजित होकर आनुवंशिक नियंत्रण के अंतर्गत संचालित होती हैं।"
+        },
+        {
+          id: 15, sec: "CYCLE",
+          q: "उच्चकोटि पादपों में कौन-सा ऊतक जीवन भर निरंतर विभाजित होता रहता है?",
+          options: [
+            "दृढ़ोतक (Sclerenchyma)",
+            "विभज्योतिकी ऊतक (Meristematic tissue)",
+            "जाइलम वाहिकाएं",
+            "फ्लोएम चालनी नलिकाएं"
+          ],
+          correct: 1,
+          exp: "NCERT पृष्ठ 163: शीर्षस्थ व कैम्बियम में पाई जाने वाली कोशिकाएं जीवन भर विभाजित होती रहती हैं, अतः इन्हें विभज्योतिकी ऊतक कहते हैं।"
+        },
+        {
+          id: 16, sec: "CYCLE",
+          q: "कोशिका चक्र के दौरान जीनोम (Genome) का द्विगुणन किस अवस्था में संपन्न होता है?",
+          options: ["G1 प्रावस्था", "S प्रावस्था", "G2 प्रावस्था", "M प्रावस्था"],
+          correct: 1,
+          exp: "NCERT पृष्ठ 163: S प्रावस्था (संश्लेषण प्रावस्था) के दौरान जीनोम (डीएनए) का निर्माण एवं इसकी प्रतिकृति होती है।"
+        },
+        {
+          id: 17, sec: "CYCLE",
+          q: "G1 प्रावस्था के दौरान कोशिका की उपापचयी स्थिति कैसी होती है?",
+          options: [
+            "उपापचयी रूप से निष्क्रिय होती है",
+            "उपापचयी रूप से सक्रिय होती है एवं लगातार वृद्धि करती है",
+            "डीएनए का तीव्र प्रतिकृतिकरण करती है",
+            "मृतप्राय हो जाती है"
+          ],
+          correct: 1,
+          exp: "NCERT पृष्ठ 163: G1 प्रावस्था में कोशिका उपापचयी रूप से सक्रिय होती है एवं लगातार वृद्धि करती है, परंतु इसका डीएनए प्रतिकृति नहीं करता।"
+        },
+        {
+          id: 18, sec: "CYCLE",
+          q: "यदि एक द्विगुणित कोशिका में S प्रावस्था से पूर्व डीएनए की मात्रा 2C है, तो G2 प्रावस्था में डीएनए की मात्रा कितनी होगी?",
+          options: ["C", "2C", "4C", "8C"],
+          correct: 2,
+          exp: "NCERT पृष्ठ 163: S प्रावस्था में डीएनए की मात्रा दुगुनी हो जाती है (2C से 4C), अतः G2 प्रावस्था में डीएनए 4C रहेगा।"
+        },
+        {
+          id: 19, sec: "CYCLE",
+          q: "मनुष्य में लाल रक्त कोशिकाएं (RBCs) और तंत्रिका कोशिकाएं (Neurons) विभाजन क्यों नहीं दर्शातीं?",
+          options: [
+            "क्योंकि वे G0 प्रावस्था में स्थायी रूप से विभेदित हो जाती हैं",
+            "क्योंकि उनमें माइटोकॉन्ड्रिया नहीं होते",
+            "क्योंकि उनका आकार बहुत छोटा होता है",
+            "क्योंकि वे बहुगुणित होती हैं"
+          ],
+          correct: 0,
+          exp: "NCERT पृष्ठ 164: प्रौढ़ प्राणियों में तंत्रिका कोशिकाएं व अन्य विभेदित कोशिकाएं G1 से निकलकर G0 (शांत प्रावस्था) में चली जाती हैं और विभाजित नहीं होतीं।"
+        },
+        {
+          id: 20, sec: "CYCLE",
+          q: "पादपों में पीढ़ी एकांतरण के दौरान अगुणित (Haploid) कोशिकाओं में समसूत्री विभाजन कहाँ देखा जाता है?",
+          options: [
+            "युग्मकोद्भिद (Gametophyte) के निर्माण में",
+            "जाइगोट के अर्धसूत्री विभाजन में",
+            "बीज चोल के निर्माण में",
+            "द्वितीयक काष्ठ में"
+          ],
+          correct: 0,
+          exp: "NCERT पृष्ठ 164: पादपों में युग्मकोद्भिद (Haploid plant body) का निर्माण अगुणित बीजाणुओं में समसूत्री विभाजन द्वारा होता है।"
+        },
+        {
+          id: 21, sec: "CYCLE",
+          q: "कोशिका चक्र की घटनाओं का सही क्रम कौन-सा है?",
+          options: [
+            "G1 ➔ S ➔ G2 ➔ M",
+            "M ➔ G1 ➔ G2 ➔ S",
+            "S ➔ G1 ➔ G2 ➔ M",
+            "G2 ➔ S ➔ G1 ➔ M"
+          ],
+          correct: 0,
+          exp: "NCERT पृष्ठ 163: कोशिका चक्र का सही अनुक्रम G1 ➔ S ➔ G2 ➔ M (कैरियोकाइनेसिस ➔ साइटोकाइनेसिस) है।"
+        },
+        {
+          id: 22, sec: "CYCLE",
+          q: "कोशिका चक्र की किस प्रावस्था को 'पूर्व-सूत्री विभाजन अंतरालकाल' कहा जाता है?",
+          options: ["G1 प्रावस्था", "S प्रावस्था", "G2 प्रावस्था", "G0 प्रावस्था"],
+          correct: 2,
+          exp: "NCERT पृष्ठ 163: G2 प्रावस्था को पूर्व-सूत्री विभाजन अंतरालकाल (Pre-mitotic gap phase) कहा जाता है।"
+        },
+        {
+          id: 23, sec: "CYCLE",
+          q: "कोशिका चक्र का प्रारंभ किस घटना से माना जाता है?",
+          options: [
+            "एक कोशिका के दो नई संतति कोशिकाओं में विभाजन के उपरांत से",
+            "केवल निषेचन से",
+            "केवल अंत्यावस्था से",
+            "डीएनए के नष्ट होने से"
+          ],
+          correct: 0,
+          exp: "NCERT पृष्ठ 163: एक पैतृक कोशिका के विभाजित होकर दो नई संतति कोशिकाएं बनाने और उनके वृद्धि व पुनः विभाजन के चक्र को कोशिका चक्र कहते हैं।"
+        },
+        {
+          id: 24, sec: "CYCLE",
+          q: "कोशिका विभाजन के दौरान संतति केंद्रकों में प्रतिकृत गुणसूत्रों का वितरण किस प्रकार का प्रक्रम है?",
+          options: [
+            "सरल व यादृच्छिक प्रक्रम",
+            "आनुवंशिक नियंत्रण के अंतर्गत जटिल व सुव्यवस्थित घटनाक्रम",
+            "अनियंत्रित रासायनिक क्रिया",
+            "केवल भौतिक दबाव पर आधारित क्रिया"
+          ],
+          correct: 1,
+          exp: "NCERT पृष्ठ 163: कोशिका विभाजन के दौरान प्रतिकृत गुणसूत्र जटिल घटनाक्रम द्वारा संतति केंद्रकों में वितरित होते हैं, और ये सभी आनुवंशिक नियंत्रण में होते हैं।"
+        },
+        {
+          id: 25, sec: "CYCLE",
+          q: "क्या वयस्क प्राणियों में कभी भी G0 प्रावस्था की कोशिकाएं पुनः विभाजित हो सकती हैं?",
+          options: [
+            "कभी नहीं, वे हमेशा मृत हो जाती हैं",
+            "हाँ, जब क्षतिग्रस्त या मृत कोशिकाओं को बदलने की आवश्यकता होती है (जैसे यकृत कोशिकाएं)",
+            "हाँ, प्रतिदिन बिना किसी कारण के",
+            "केवल कैंसर उत्पन्न होने पर"
+          ],
+          correct: 1,
+          exp: "NCERT पृष्ठ 164: G0 की कोशिकाएं उपापचयी रूप से सक्रिय होती हैं और जब क्षतिग्रस्त या मृत कोशिकाओं को बदलने की आवश्यकता होती है, तब वे आवश्यकतानुसार विभाजित हो सकती हैं।"
+        },
+
+        // SECTION 2: समसूत्री विभाजन (Mitosis) (26-50)
+        {
+          id: 26, sec: "MITOSIS",
+          q: "समसूत्री विभाजन (Mitosis) को 'सम विभाजन' (Equational division) क्यों कहा जाता है?",
+          options: [
+            "क्योंकि इसमें गुणसूत्रों की संख्या आधी हो जाती है",
+            "क्योंकि जनक और संतति कोशिकाओं में गुणसूत्रों की संख्या समान (बराबर) रहती है",
+            "क्योंकि कोशिका दो से चार बन जाती है",
+            "क्योंकि यह केवल अगुणित जीवों में होता है"
+          ],
+          correct: 1,
+          exp: "NCERT पृष्ठ 164: जनक व संतति कोशिका में गुणसूत्रों की संख्या बराबर होती है, इसलिए इसे सम विभाजन कहते हैं।"
+        },
+        {
+          id: 27, sec: "MITOSIS",
+          q: "केंद्रक विभाजन (Karyokinesis) की चार अवस्थाओं का सही क्रम क्या है?",
+          options: [
+            "मध्यावस्था ➔ पूर्वावस्था ➔ पश्चावस्था ➔ अंत्यावस्था",
+            "पूर्वावस्था ➔ मध्यावस्था ➔ पश्चावस्था ➔ अंत्यावस्था",
+            "अंत्यावस्था ➔ पश्चावस्था ➔ मध्यावस्था ➔ पूर्वावस्था",
+            "पूर्वावस्था ➔ पश्चावस्था ➔ मध्यावस्था ➔ अंत्यावस्था"
+          ],
+          correct: 1,
+          exp: "NCERT पृष्ठ 164: सूत्री विभाजन की चार क्रमिक अवस्थाएं हैं: पूर्वावस्था (Prophase), मध्यावस्था (Metaphase), पश्चावस्था (Anaphase), और अंत्यावस्था (Telophase)।"
+        },
+        {
+          id: 28, sec: "MITOSIS",
+          q: "पूर्वावस्था (Prophase) के प्रारंभ की मुख्य पहचान क्या है?",
+          options: [
+            "डीएनए का द्विगुणन होना",
+            "गुणसूत्रीय पदार्थ (Chromatin) के संघनन का प्रारंभ होना",
+            "सेंट्रोमियर का टूटना",
+            "केंद्रक झिल्ली का पुनः निर्माण"
+          ],
+          correct: 1,
+          exp: "NCERT पृष्ठ 164-165: गुणसूत्रीय पदार्थ के संघनन का प्रारंभ ही पूर्वावस्था की पहचान है।"
+        },
+        {
+          id: 29, sec: "MITOSIS",
+          q: "पूर्वावस्था के अंत में सूक्ष्मदर्शी द्वारा देखने पर कोशिका में निम्नलिखित में से कौन-से अंगक दिखाई नहीं देते हैं?",
+          options: [
+            "केवल राइबोसोम",
+            "गॉल्जीकाय, अंतर्द्रव्यी जालिका (ER), केंद्रिका व केंद्रक आवरण",
+            "केवल तारककाय",
+            "केवल प्लाज्मा झिल्ली"
+          ],
+          correct: 1,
+          exp: "NCERT पृष्ठ 165: पूर्वावस्था के अंत में गॉल्जीकाय, अंतर्द्रव्यी जालिका, केंद्रिका व केंद्रक आवरण विलोपित हो जाते हैं।"
+        },
+        {
+          id: 30, sec: "MITOSIS",
+          q: "गुणसूत्रबिंदु (Centromere) की सतह पर स्थित बिंब (डिस्क) के आकार की प्रोटीन संरचना को क्या कहते हैं, जिससे तर्कुतंतु जुड़ते हैं?",
+          options: ["क्रोमैटिड", "काइनेटोकोर (Kinetochore)", "सेंट्रोसोम", "काएज्मेटा"],
+          correct: 1,
+          exp: "NCERT पृष्ठ 165: गुणसूत्रबिंदु की सतह पर छोटी बिंब आकार की संरचना मिलती है जिसे काइनेटोकोर कहते हैं, जिससे तर्कुतंतु जुड़ते हैं।"
+        },
+        {
+          id: 31, sec: "MITOSIS",
+          q: "गुणसूत्रों की बाह्य आकृति (Morphology) तथा संख्या का अध्ययन सूक्ष्मदर्शी से करने हेतु सबसे उपयुक्त अवस्था कौन-सी है?",
+          options: ["पूर्वावस्था", "मध्यावस्था (Metaphase)", "पश्चावस्था", "अंत्यावस्था"],
+          correct: 1,
+          exp: "NCERT पृष्ठ 165: मध्यावस्था तक गुणसूत्रों का संघनन पूर्ण हो जाता है और सूक्ष्मदर्शी से ये अत्यंत स्पष्ट दिखाई देते हैं। अतः आकारिकी के अध्ययन हेतु यह सर्वश्रेष्ठ है।",
+          hasDiagram: "metaphase_plate"
+        },
+        {
+          id: 32, sec: "MITOSIS",
+          q: "मध्यावस्था पट्टिका (Metaphasic Plate) किसे कहते हैं?",
+          options: [
+            "कोशिका भित्ति के निर्माण स्थल को",
+            "वह काल्पनिक तल जिस पर मध्यावस्था में सभी गुणसूत्र मध्यरेखा पर पंक्तिबद्ध होते हैं",
+            "ध्रुवों पर तर्कुतंतुओं के एकत्र होने वाले स्थान को",
+            "केंद्रक झिल्ली के अवशेषों को"
+          ],
+          correct: 1,
+          exp: "NCERT पृष्ठ 165: मध्यावस्था में सभी गुणसूत्र मध्यरेखा पर पंक्तिबद्ध हो जाते हैं, इस तल को मध्यावस्था पट्टिका कहते हैं।"
+        },
+        {
+          id: 33, sec: "MITOSIS",
+          q: "समसूत्री विभाजन की पश्चावस्था (Anaphase) की दो प्रमुख घटनाएं कौन-सी हैं?",
+          options: [
+            "केंद्रक झिल्ली का टूटना और क्रॉसिंग ओवर",
+            "गुणसूत्रबिंदु (Centromere) का विखंडित होना तथा संतति अर्धगुणसूत्रों का विपरीत ध्रुवों की ओर जाना",
+            "गुणसूत्रों का मध्य पट्टिका पर आना और काइनेटोकोर बनना",
+            "केंद्रिका और गॉल्जीकाय का पुनर्गठन होना"
+          ],
+          correct: 1,
+          exp: "NCERT पृष्ठ 166: पश्चावस्था की प्रमुख विशेषताएं हैं: गुणसूत्रबिंदु विखंडित होते हैं तथा संतति अर्धगुणसूत्र विपरीत ध्रुवों की ओर जाने लगते हैं।",
+          hasDiagram: "anaphase_movement"
+        },
+        {
+          id: 34, sec: "MITOSIS",
+          q: "पश्चावस्था में विपरीत ध्रुवों की ओर गति करते समय गुणसूत्रों की स्थिति कैसी होती है?",
+          options: [
+            "भुजाएं आगे और सेंट्रोमियर पीछे",
+            "गुणसूत्रबिंदु (Centromere) ध्रुव की ओर (आगे) नेतृत्व करता है तथा भुजाएं पीछे आती हैं",
+            "दोनों सिरे आगे और मध्य भाग पीछे",
+            "कोई निश्चित दिशा नहीं होती"
+          ],
+          correct: 1,
+          exp: "NCERT पृष्ठ 166: प्रत्येक का गुणसूत्रबिंदु ध्रुवों की ओर होता है जो नेतृत्व करता है, साथ ही गुणसूत्र की भुजाएं पीछे आती हैं।"
+        },
+        {
+          id: 35, sec: "MITOSIS",
+          q: "अंत्यावस्था (Telophase) की मुख्य घटनाएं कौन-सी हैं?",
+          options: [
+            "गुणसूत्रों का असंघनित होना, केंद्रक झिल्ली तथा केंद्रिका, गॉल्जीकाय व ER का पुनर्निर्माण",
+            "गुणसूत्रों का मध्य पट्टिका पर आना",
+            "सेंट्रोमियर का टूटना",
+            "तर्कुतंतुओं का निर्माण"
+          ],
+          correct: 0,
+          exp: "NCERT पृष्ठ 166: अंत्यावस्था में गुणसूत्र असंघनित होकर समूह बनाते हैं, चारों ओर केंद्रक झिल्ली बन जाती है तथा केंद्रिका, गॉल्जीकाय व ER पुनः बन जाते हैं।"
+        },
+        {
+          id: 36, sec: "MITOSIS",
+          q: "प्राणी कोशिका और पादप कोशिका में कोशिकाद्रव्य विभाजन (Cytokinesis) में मूल अंतर क्या है?",
+          options: [
+            "प्राणी कोशिका में कोशिका पट्टिका बनती है, पादप में खांच बनती है",
+            "प्राणी कोशिका में जीवद्रव्यकला में खांच (Furrow) बनती है, जबकि पादप में केंद्र से बाहर की ओर कोशिका पट्टिका (Cell plate) बनती है",
+            "पादप कोशिका में कोशिकाद्रव्य विभाजन कभी नहीं होता",
+            "प्राणी कोशिका में कोशिका भित्ति बाहर से अंदर कटती है"
+          ],
+          correct: 1,
+          exp: "NCERT पृष्ठ 166: प्राणी कोशिका में परिधि से केंद्र की ओर खांच बनती है, जबकि पादप कोशिका में केंद्र से बाहर की ओर कोशिका पट्टिका बनती है।"
+        },
+        {
+          id: 37, sec: "MITOSIS",
+          q: "पादप कोशिका में बनने वाली 'कोशिका पट्टिका' (Cell plate) वस्तुतः किसका पूर्वगामी रूप है?",
+          options: [
+            "प्लाज्मा झिल्ली का",
+            "दो समीपवर्ती कोशिकाओं के बीच की मध्य पट्टिका (Middle lamella)",
+            "द्वितीयक भित्ति का",
+            "तारककेंद्र के अवशेषों का"
+          ],
+          correct: 1,
+          exp: "NCERT पृष्ठ 166: कोशिका पट्टिका दो सन्निकट कोशिकाओं की भित्तियों के बीच मध्य पट्टिका (Middle lamella) को दर्शाती है।"
+        },
+        {
+          id: 38, sec: "MITOSIS",
+          q: "यदि केंद्रक विभाजन के बाद कोशिकाद्रव्य विभाजन न हो, तो बनने वाली बहुकेंद्रकी स्थिति को क्या कहते हैं?",
+          options: [
+            "कोशिका लयन",
+            "संकोशिका (Syncytium - जैसे नारियल का तरल भ्रूणपोष)",
+            "द्विगुणन विफलता",
+            "असूत्रीय विभाजन"
+          ],
+          correct: 1,
+          exp: "NCERT पृष्ठ 166-167: जब केंद्रक विभाजन के बाद कोशिकाद्रव्य विभाजन नहीं होता, तो बहुकेंद्रकी संकोशिका (Syncytium) बनती है, उदा. नारियल का तरल भ्रूणपोष।"
+        },
+        {
+          id: 39, sec: "MITOSIS",
+          q: "कोशिकाद्रव्य विभाजन के दौरान सूत्रकणिका (Mitochondria) और लवक (Plastid) का क्या होता है?",
+          options: [
+            "वे पूरी तरह नष्ट हो जाते हैं",
+            "वे दो संतति कोशिकाओं में वितरित हो जाते हैं",
+            "वे केवल एक ही संतति कोशिका में रह जाते हैं",
+            "वे केंद्रक के अंदर विलीन हो जाते हैं"
+          ],
+          correct: 1,
+          exp: "NCERT पृष्ठ 166-167: कोशिकाद्रव्य विभाजन के समय माइटोकॉन्ड्रिया व प्लास्टिड जैसे अंगक दोनों संतति कोशिकाओं में वितरित हो जाते हैं।"
+        },
+        {
+          id: 40, sec: "MITOSIS",
+          q: "निम्नलिखित में से समसूत्री विभाजन का प्रमुख जैविक महत्व कौन-सा है?",
+          options: [
+            "जीवों में विभिन्नताएं उत्पन्न करना",
+            "कोशिका वृद्धि, ऊतक मरम्मत और केंद्रक-कोशिकाद्रव्य अनुपात को बनाए रखना",
+            "गुणसूत्रों की संख्या को आधा करना",
+            "केवल युग्मक निर्माण करना"
+          ],
+          correct: 1,
+          exp: "NCERT पृष्ठ 167: सूत्री विभाजन घाव भरने, पुरानी कोशिकाओं के प्रतिस्थापन, वृद्धि और केंद्रक-कोशिकाद्रव्य अनुपात संतुलित रखने के लिए आवश्यक है।"
+        },
+        {
+          id: 41, sec: "MITOSIS",
+          q: "समसूत्री तर्कु (Mitotic spindle) का निर्माण मुख्य रूप से किस प्रोटीन द्वारा होता है?",
+          options: ["एक्टिन", "ट्यूबुलिन (सूक्ष्म नलिकाएं / Microtubules)", "मायोसिन", "किरैटिन"],
+          correct: 1,
+          exp: "NCERT पृष्ठ 165: समसूत्री तर्कु सूक्ष्म नलिकाओं (Microtubules) के जमावड़े से बनता है, जो मुख्य रूप से ट्यूबुलिन प्रोटीन के बने होते हैं।"
+        },
+        {
+          id: 42, sec: "MITOSIS",
+          q: "तारककेंद्र (Centriole) सूत्री विभाजन की किस अवस्था में ध्रुवों की ओर गति करना प्रारंभ करते हैं?",
+          options: ["पूर्वावस्था (Prophase)", "मध्यावस्था", "पश्चावस्था", "अंत्यावस्था"],
+          correct: 0,
+          exp: "NCERT पृष्ठ 165: तारककेंद्र, जिसका S प्रावस्था में द्विगुणन हुआ था, पूर्वावस्था में कोशिका के विपरीत ध्रुवों की ओर चलना प्रारंभ कर देता है।"
+        },
+        {
+          id: 43, sec: "MITOSIS",
+          q: "समसूत्री विभाजन की किस अवस्था में गुणसूत्र मध्य पट्टिका पर एकल पंक्ति (Single plane) में सजते हैं?",
+          options: ["पूर्वावस्था", "मध्यावस्था", "पश्चावस्था", "अंत्यावस्था"],
+          correct: 1,
+          exp: "NCERT पृष्ठ 165: समसूत्री मध्यावस्था में सभी गुणसूत्र मध्य पट्टिका पर एक सीधी पंक्ति में व्यवस्थित होते हैं।"
+        },
+        {
+          id: 44, sec: "MITOSIS",
+          q: "समसूत्री विभाजन की पश्चावस्था में यदि जनक कोशिका में 46 गुणसूत्र थे, तो उस क्षण कोशिका में कुल कितने क्रोमोसोम गिने जा सकते हैं?",
+          options: ["23", "46", "92 (क्योंकि सेंट्रोमियर टूटकर प्रत्येक क्रोमैटिड अब स्वतंत्र गुणसूत्र बन चुका है)", "184"],
+          correct: 2,
+          exp: "NCERT संकल्पना: पश्चावस्था में 46 गुणसूत्रों के सेंट्रोमियर टूटते ही 92 संतति क्रोमैटिड स्वतंत्र गुणसूत्र बन जाते हैं जो विपरीत ध्रुवों पर 46-46 के रूप में बंटते हैं।"
+        },
+        {
+          id: 45, sec: "MITOSIS",
+          q: "कोशिका भित्ति का निर्माण पादप कोशिका में कहाँ से प्रारंभ होता है?",
+          options: [
+            "परिधि से केंद्र की ओर",
+            "केंद्र से शुरू होकर बाहर की ओर पूर्व स्थित पार्श्व भित्ति से जुड़ता है",
+            "केवल ऊपरी ध्रुव से",
+            "केवल नीचे के ध्रुव से"
+          ],
+          correct: 1,
+          exp: "NCERT पृष्ठ 166: पादप कोशिकाओं में नई कोशिका भित्ति निर्माण कोशिका के केंद्र से शुरू होकर बाहर की ओर पूर्व स्थित पार्श्व भित्ति से जुड़ता है।"
+        },
+        {
+          id: 46, sec: "MITOSIS",
+          q: "कॉलचिसीन (Colchicine) रसायन कोशिका विभाजन की किस अवस्था को बाधित करता है?",
+          options: [
+            "तर्कुतंतुओं के निर्माण को रोककर मध्यावस्था (Metaphase) में विभाजन को रोक देता है",
+            "S प्रावस्था को",
+            "G1 प्रावस्था को",
+            "केवल साइटोकाइनेसिस को"
+          ],
+          correct: 0,
+          exp: "मानक जीवविज्ञान तथ्य: कॉलचिसीन स्पिंडल तंतुओं (Microtubules) के बहुलकीकरण को रोकता है, जिससे विभाजन मध्यावस्था में ही रुक जाता है और बहुगुणिता उत्पन्न होती है।"
+        },
+        {
+          id: 47, sec: "MITOSIS",
+          q: "समसूत्री विभाजन की पूर्वावस्था में प्रत्येक गुणसूत्र कितने अर्धगुणसूत्रों (Chromatids) से बना होता है?",
+          options: ["एक", "दो अर्धगुणसूत्रों से, जो आपस में सेंट्रोमियर से जुड़े रहते हैं", "चार", "आठ"],
+          correct: 1,
+          exp: "NCERT पृष्ठ 165: गुणसूत्र दो अर्धगुणसूत्रों (Sister chromatids) से बना होता है, जो आपस में सेंट्रोमियर (गुणसूत्रबिंदु) से जुड़े रहते हैं।"
+        },
+        {
+          id: 48, sec: "MITOSIS",
+          q: "अंत्यावस्था के अंत में दोनों ध्रुवों पर पहुंचे गुणसूत्रों का क्या होता है?",
+          options: [
+            "वे और अधिक घने हो जाते हैं",
+            "वे असंघनित (Decondense) होकर अपनी पृथक पहचान खो देते हैं",
+            "वे तुरंत नष्ट हो जाते हैं",
+            "वे कोशिका से बाहर निष्कासित हो जाते हैं"
+          ],
+          correct: 1,
+          exp: "NCERT पृष्ठ 166: अंत्यावस्था में गुणसूत्र असंघनित होकर अपनी संपूर्णता और पृथक पहचान खो देते हैं और क्रोमैटिन जाल बना लेते हैं।"
+        },
+        {
+          id: 49, sec: "MITOSIS",
+          q: "मानव शरीर में कौन-सा ऊतक समसूत्री विभाजन द्वारा निरंतर प्रतिस्थापित होता है?",
+          options: [
+            "त्वचा की एपिडर्मिस",
+            "आहार नाल की आंतरिक उपकला",
+            "अस्थि मज्जा की रक्त निर्माणकारी कोशिकाएं",
+            "उपर्युक्त सभी"
+          ],
+          correct: 3,
+          exp: "NCERT पृष्ठ 167: अधिचर्म की उपरी सतह, आहार नाल की भीतरी सतह एवं रक्त कोशिकाएं निरंतर सूत्री विभाजन द्वारा प्रतिस्थापित होती रहती हैं।"
+        },
+        {
+          id: 50, sec: "MITOSIS",
+          q: "समसूत्री विभाजन को 'नाटकीय अवस्था' (Dramatic period) क्यों कहा जाता है?",
+          options: [
+            "क्योंकि इसमें कोशिका रंग बदलती है",
+            "क्योंकि इसमें कोशिका के सभी घटकों का वृहद् पुनर्गठन (Reorganization) होता है",
+            "क्योंकि इसमें कोशिका ध्वनि उत्पन्न करती है",
+            "क्योंकि यह केवल रात्रि में होता है"
+          ],
+          correct: 1,
+          exp: "NCERT पृष्ठ 164: यह कोशिका चक्र की सर्वाधिक नाटकीय अवस्था है, जिसमें कोशिका के प्रायः सभी घटकों का व्यापक पुनर्गठन होता है।"
+        },
+
+        // SECTION 3: अर्धसूत्री विभाजन (Meiosis) (51-75)
+        {
+          id: 51, sec: "MEIOSIS",
+          q: "अर्धसूत्री विभाजन (Meiosis) के संदर्भ में कौन-सा कथन सत्य है?",
+          options: [
+            "इसमें डीएनए प्रतिकृति के दो चक्र और केंद्रक विभाजन का एक चक्र होता है",
+            "इसमें केंद्रक व कोशिका विभाजन के दो अनुक्रमिक चक्र होते हैं, परंतु डीएनए प्रतिकृति का केवल एक चक्र होता है",
+            "यह केवल अगुणित कोशिकाओं में होता है",
+            "इसके अंत में दो द्विगुणित संतति कोशिकाएं बनती हैं"
+          ],
+          correct: 1,
+          exp: "NCERT पृष्ठ 167: अर्धसूत्री विभाजन में केंद्रक व कोशिका विभाजन के दो अनुक्रमिक चक्र (Meiosis I व II) होते हैं, परंतु डीएनए प्रतिकृति का सिर्फ एक चक्र होता है।"
+        },
+        {
+          id: 52, sec: "MEIOSIS",
+          q: "अर्धसूत्री विभाजन I की पूर्वावस्था I (Prophase I) की 5 उप-प्रावस्थाओं का सही कालानुक्रमिक क्रम क्या है?",
+          options: [
+            "युग्मपट्ट ➔ तनुपट्ट ➔ स्थूलपट्ट ➔ द्विपट्ट ➔ पारगतिक्रम",
+            "तनुपट्ट (Leptotene) ➔ युग्मपट्ट (Zygotene) ➔ स्थूलपट्ट (Pachytene) ➔ द्विपट्ट (Diplotene) ➔ पारगतिक्रम (Diakinesis)",
+            "स्थूलपट्ट ➔ युग्मपट्ट ➔ तनुपट्ट ➔ पारगतिक्रम ➔ द्विपट्ट",
+            "तनुपट्ट ➔ द्विपट्ट ➔ युग्मपट्ट ➔ स्थूलपट्ट ➔ पारगतिक्रम"
+          ],
+          correct: 1,
+          exp: "NCERT पृष्ठ 168: पूर्वावस्था I की 5 अवस्थाएं हैं: लेप्टोटीन ➔ जाइगोटीन ➔ पैकीटीन ➔ डिप्लोटीन ➔ डायाकाइनेसिस।"
+        },
+        {
+          id: 53, sec: "MEIOSIS",
+          q: "समजात गुणसूत्रों (Homologous chromosomes) का आपस में युग्मन (सूत्रयुग्मन / Synapsis) तथा 'सिनेप्टोनिमल सम्मिश्र' का निर्माण किस उप-अवस्था में होता है?",
+          options: ["तनुपट्ट (Leptotene)", "युग्मपट्ट (Zygotene)", "स्थूलपट्ट (Pachytene)", "पारगतिक्रम (Diakinesis)"],
+          correct: 1,
+          exp: "NCERT पृष्ठ 168: युग्मपट्ट (Zygotene) के दौरान समजात गुणसूत्रों का युग्मन होता है जिसे सूत्रयुग्मन (Synapsis) कहते हैं तथा सिनेप्टोनिमल सम्मिश्र बनता है।"
+        },
+        {
+          id: 54, sec: "MEIOSIS",
+          q: "सूत्रयुग्मित समजात गुणसूत्रों के जोड़े द्वारा बनी संरचना को क्या कहा जाता है?",
+          options: ["काइनेटोकोर", "युगली (Bivalent) अथवा चतुष्क (Tetrad)", "सेंट्रोसोम", "मोनोसोमी"],
+          correct: 1,
+          exp: "NCERT पृष्ठ 168: जिस सम्मिश्र का निर्माण एक जोड़ी सूत्रयुग्मित समजात गुणसूत्रों द्वारा होता है, उसे युगली (Bivalent) अथवा चतुष्क (Tetrad) कहते हैं।"
+        },
+        {
+          id: 55, sec: "MEIOSIS",
+          q: "जीन विनिमय / क्रॉसिंग ओवर (Crossing Over) अर्धसूत्री विभाजन की किस विशिष्ट उप-अवस्था में संपन्न होता है?",
+          options: ["तनुपट्ट (Leptotene)", "युग्मपट्ट (Zygotene)", "स्थूलपट्ट (Pachytene)", "द्विपट्ट (Diplotene)"],
+          correct: 2,
+          exp: "NCERT पृष्ठ 168: स्थूलपट्ट (Pachytene) अवस्था में पुनर्योजन ग्रंथिकाएं दिखाई देती हैं जहाँ असंतति अर्धगुणसूत्रों के बीच क्रॉसिंग ओवर होता है।"
+        },
+        {
+          id: 56, sec: "MEIOSIS",
+          q: "क्रॉसिंग ओवर (Crossing over) की प्रक्रिया किस एंजाइम द्वारा नियंत्रित होती है?",
+          options: ["डीएनए पॉलीमरेज़", "रीकॉम्बीनेज (Recombinase)", "आरएनए प्राइमेज़", "लाइसोजाइम"],
+          correct: 1,
+          exp: "NCERT पृष्ठ 168: विनिमय एक एंजाइम नियंत्रित प्रक्रिया है तथा इसमें भाग लेने वाले एंजाइम को रीकॉम्बीनेज (Recombinase) कहते हैं।"
+        },
+        {
+          id: 57, sec: "MEIOSIS",
+          q: "क्रॉसिंग ओवर किनके बीच आनुवंशिक पदार्थों का आदान-प्रदान करता है?",
+          options: [
+            "एक ही गुणसूत्र के दो संतति क्रोमैटिड्स के बीच",
+            "समजात गुणसूत्रों के दो असंतति अर्धगुणसूत्रों (Non-sister chromatids) के बीच",
+            "असमजात गुणसूत्रों के बीच",
+            "तारककेंद्र और केंद्रक के बीच"
+          ],
+          correct: 1,
+          exp: "NCERT पृष्ठ 168: विनिमय दो समजात गुणसूत्रों के असंतति अर्धगुणसूत्रों (Non-sister chromatids) के मध्य आनुवंशिक पदार्थों का आदान-प्रदान है।"
+        },
+        {
+          id: 58, sec: "MEIOSIS",
+          q: "सिनेप्टोनिमल सम्मिश्र के विघटन के बाद विनिमय बिंदु पर बनने वाली 'X' आकार की संरचना को क्या कहते हैं?",
+          options: ["काइनेटोकोर", "काएज्मेटा (Chiasmata)", "सेंट्रोमियर", "सैटेलाइट"],
+          correct: 1,
+          exp: "NCERT पृष्ठ 168-169: द्विपट्ट (Diplotene) में सिनेप्टोनिमल सम्मिश्र का विघटन होता है तथा विनिमय बिंदु पर X आकार की संरचना बनती है जिसे काएज्मेटा कहते हैं।",
+          hasDiagram: "crossing_over_chiasma"
+        },
+        {
+          id: 59, sec: "MEIOSIS",
+          q: "कुछ कशेरुकी प्राणियों के अंडकों (Oocytes) में पूर्वावस्था I की कौन-सी उप-अवस्था महीनों या वर्षों तक निलंबित रह सकती है?",
+          options: ["तनुपट्ट", "द्विपट्ट (Diplotene)", "पारगतिक्रम", "स्थूलपट्ट"],
+          correct: 1,
+          exp: "NCERT पृष्ठ 169: कुछ कशेरुकी प्राणियों के अंडकों में द्विपट्ट (Diplotene) प्रावस्था महीनों या वर्षों तक निलंबित (Dictyotene अवस्था) रह सकती है।"
+        },
+        {
+          id: 60, sec: "MEIOSIS",
+          q: "पारगतिक्रम (Diakinesis) की सबसे प्रमुख पहचान क्या है?",
+          options: [
+            "काएज्मेटा का उपांतीभवन (Terminalisation of chiasmata)",
+            "डीएनए का नया संश्लेषण",
+            "समजात गुणसूत्रों का बनना",
+            "कोशिका भित्ति का विघटन"
+          ],
+          correct: 0,
+          exp: "NCERT पृष्ठ 169: पारगतिक्रम (Diakinesis) में काएज्मेटा का उपांतीभवन (Terminalisation) हो जाता है और तर्कुतंतु समजात गुणसूत्रों को अलग करने में सहयोग करते हैं।"
+        },
+        {
+          id: 61, sec: "MEIOSIS",
+          q: "अर्धसूत्री पश्चावस्था I (Anaphase I) तथा समसूत्री पश्चावस्था में सबसे मौलिक अंतर क्या है?",
+          options: [
+            "पश्चावस्था I में सेंट्रोमियर विभाजित होता है",
+            "पश्चावस्था I में समजात गुणसूत्र पृथक् होते हैं परंतु गुणसूत्रबिंदु (Centromere) अविभाजित रहता है, जबकि समसूत्री पश्चावस्था में सेंट्रोमियर टूटता है",
+            "समसूत्री पश्चावस्था में गुणसूत्र नहीं हिलते",
+            "दोनों में कोई अंतर नहीं है"
+          ],
+          correct: 1,
+          exp: "NCERT पृष्ठ 169: पश्चावस्था I में समजात गुणसूत्र अलग होते हैं जबकि संतति अर्धगुणसूत्र सेंट्रोमियर से जुड़े रहते हैं। समसूत्री पश्चावस्था में सेंट्रोमियर टूटता है।"
+        },
+        {
+          id: 62, sec: "MEIOSIS",
+          q: "दो अर्धसूत्री विभाजनों (Meiosis I और Meiosis II) के बीच के अल्पकालिक अंतराल को क्या कहा जाता है?",
+          options: ["विश्राम प्रावस्था", "अंतरालावस्था (Interkinesis)", "G1 प्रावस्था", "S प्रावस्था"],
+          correct: 1,
+          exp: "NCERT पृष्ठ 169: दो अर्धसूत्री विभाजनों के बीच की छोटी अवस्था को अंतरालावस्था (Interkinesis) कहते हैं, इसमें डीएनए प्रतिकृति नहीं होती।"
+        },
+        {
+          id: 63, sec: "MEIOSIS",
+          q: "अर्धसूत्री विभाजन II (Meiosis II) वस्तुतः किसके समतुल्य होता है?",
+          options: [
+            "अर्धसूत्री विभाजन I के",
+            "सामान्य समसूत्री विभाजन (Mitosis) के समान",
+            "असूत्री विभाजन के",
+            "इंटरफेज के"
+          ],
+          correct: 1,
+          exp: "NCERT पृष्ठ 169-170: अर्धसूत्री विभाजन II सामान्य समसूत्री विभाजन के समान होता है, जिसमें संतति अर्धगुणसूत्र अलग होते हैं।"
+        },
+        {
+          id: 64, sec: "MEIOSIS",
+          q: "एक एकल द्विगुणित (2n) जनक कोशिका से संपूर्ण अर्धसूत्री विभाजन के अंत में कितनी संतति कोशिकाएं बनती हैं?",
+          options: [
+            "2 द्विगुणित (2n) कोशिकाएं",
+            "4 अगुणित (n) कोशिकाएं (कोशिका चतुष्टय)",
+            "4 द्विगुणित (2n) कोशिकाएं",
+            "8 अगुणित (n) कोशिकाएं"
+          ],
+          correct: 1,
+          exp: "NCERT पृष्ठ 170: अंत्यावस्था II व साइटोकाइनेसिस के उपरांत 4 अगुणित संतति कोशिकाओं का कोशिका चतुष्टय (Tetrad of cells) बन जाता है।"
+        },
+        {
+          id: 65, sec: "MEIOSIS",
+          q: "लैंगिक जनन करने वाले जीवों की प्रत्येक जाति में गुणसूत्रों की संख्या पीढ़ी-दर-पीढ़ी किसके द्वारा स्थिर बनी रहती है?",
+          options: [
+            "केवल समसूत्री विभाजन द्वारा",
+            "अर्धसूत्री विभाजन (गुणसूत्रों को आधा करना) तथा निषेचन (द्विगुणितता की पुनर्स्थापना) द्वारा",
+            "असूत्री विभाजन द्वारा",
+            "डीएनए के स्वतः दुगुने होने से"
+          ],
+          correct: 1,
+          exp: "NCERT पृष्ठ 167 व 170: अर्धसूत्री विभाजन गुणसूत्रों की संख्या को आधा करता है और निषेचन उसे पुनः द्विगुणित (2n) बना देता है।"
+        },
+        {
+          id: 66, sec: "MEIOSIS",
+          q: "जैव विकास (Evolution) हेतु कच्चा माल प्रदान करने वाली 'आनुवंशिक विभिन्नताएं' किसके कारण उत्पन्न होती हैं?",
+          options: [
+            "समसूत्री विभाजन में सेंट्रोमियर टूटने से",
+            "अर्धसूत्री विभाजन में होने वाले जीन विनिमय (Crossing over) और स्वतंत्र अपव्यूहन से",
+            "G1 प्रावस्था में प्रोटीन बनने से",
+            "साइटोकाइनेसिस में खांच बनने से"
+          ],
+          correct: 1,
+          exp: "NCERT पृष्ठ 170: अर्धसूत्री विभाजन से आनुवंशिक विभिन्नताएं (Variations) बढ़ती हैं, जो जैव विकास प्रक्रिया के लिए अनिवार्य हैं।"
+        },
+        {
+          id: 67, sec: "MEIOSIS",
+          q: "मध्यावस्था I (Metaphase I) में मध्यावस्था पट्टिका पर क्या पंक्तिबद्ध होते हैं?",
+          options: [
+            "एकल गुणसूत्र",
+            "युगली समजात गुणसूत्र (Bivalent / Homologous pairs) दो समानांतर पंक्तियों में",
+            "असंतति क्रोमैटिड्स अलग होकर",
+            "केवल तारककेंद्र"
+          ],
+          correct: 1,
+          exp: "NCERT पृष्ठ 169: मध्यावस्था I में युगली गुणसूत्र (Bivalents) मध्य पट्टिका पर व्यवस्थित हो जाते हैं।"
+        },
+        {
+          id: 68, sec: "MEIOSIS",
+          q: "तनुपट्ट (Leptotene) अवस्था के दौरान गुणसूत्रों का व्यवहार कैसा होता है?",
+          options: [
+            "गुणसूत्र धीरे-धीरे संघनित होकर स्पष्ट प्रकाश सूक्ष्मदर्शी में दिखाई देने लगते हैं",
+            "गुणसूत्र विलीन हो जाते हैं",
+            "गुणसूत्रों का विखंडन हो जाता है",
+            "युगली का निर्माण पूर्ण हो जाता है"
+          ],
+          correct: 0,
+          exp: "NCERT पृष्ठ 168: तनुपट्ट अवस्था के दौरान गुणसूत्र धीरे-धीरे स्पष्ट दिखाई देने लगते हैं और संघनन पूरी अवस्था में जारी रहता है।"
+        },
+        {
+          id: 69, sec: "MEIOSIS",
+          q: "अर्धसूत्री विभाजन की पश्चावस्था II (Anaphase II) में क्या घटित होता है?",
+          options: [
+            "समजात गुणसूत्र अलग होते हैं",
+            "प्रत्येक गुणसूत्र का गुणसूत्रबिंदु (Centromere) अलग हो जाता है और संतति अर्धगुणसूत्र ध्रुवों की ओर गति करते हैं",
+            "डीएनए का पुनः प्रतिकृतिकरण होता है",
+            "सिनेप्टोनिमल सम्मिश्र बनता है"
+          ],
+          correct: 1,
+          exp: "NCERT पृष्ठ 170: पश्चावस्था II में गुणसूत्रबिंदु अलग हो जाते हैं और इनसे जुड़े संतति अर्धगुणसूत्र विपरीत ध्रुवों की ओर चले जाते हैं।"
+        },
+        {
+          id: 70, sec: "MEIOSIS",
+          q: "अर्धसूत्री विभाजन I को 'ह्रासकारी विभाजन' (Reductional division) क्यों कहते हैं?",
+          options: [
+            "क्योंकि कोशिका का आकार घट जाता है",
+            "क्योंकि संतति कोशिकाओं में गुणसूत्रों की संख्या जनक कोशिका की तुलना में आधी (2n से n) हो जाती है",
+            "क्योंकि केंद्रक झिल्ली घट जाती है",
+            "क्योंकि ऊर्जा समाप्त हो जाती है"
+          ],
+          correct: 1,
+          exp: "NCERT पृष्ठ 167: Meiosis I के अंत में प्रत्येक ध्रुव जनक कोशिका की तुलना में आधे गुणसूत्र (n) प्राप्त करता है, अतः इसे ह्रासकारी विभाजन कहते हैं।"
+        },
+        {
+          id: 71, sec: "MEIOSIS",
+          q: "अर्धसूत्री विभाजन की किस अवस्था में केंद्रक झिल्ली और केंद्रिका का पुनर्निर्माण होता है और 'कोशिका द्विक' (Dyad of cells) बनता है?",
+          options: ["अंत्यावस्था I (Telophase I)", "अंत्यावस्था II", "पूर्वावस्था II", "मध्यावस्था I"],
+          correct: 0,
+          exp: "NCERT पृष्ठ 169: अंत्यावस्था I में केंद्रक आवरण व केंद्रिका पुनः स्पष्ट होने लगते हैं और इस अवस्था को कोशिका द्विक (Dyad of cells) कहते हैं।"
+        },
+        {
+          id: 72, sec: "MEIOSIS",
+          q: "स्थूलपट्ट (Pachytene) अवस्था के अंत में गुणसूत्र कहाँ जुड़े हुए दिखाई पड़ते हैं?",
+          options: ["केवल दोनों सिरों पर", "विनिमय स्थलों (Sites of crossing over) पर", "केवल तारककेंद्र पर", "कहीं नहीं"],
+          correct: 1,
+          exp: "NCERT पृष्ठ 168: समजात गुणसूत्रों के बीच पुनर्योजन स्थूलपट्ट के अंत तक पूर्ण हो जाता है, जिसके परिणामस्वरूप विनिमय स्थलों पर गुणसूत्र जुड़े हुए दिखते हैं।"
+        },
+        {
+          id: 73, sec: "MEIOSIS",
+          q: "क्या अंतरालावस्था (Interkinesis) के दौरान डीएनए का प्रतिकृतिकरण (S phase) होता है?",
+          options: [
+            "हाँ, डीएनए पुनः दुगुना होता है",
+            "नहीं, अंतरालावस्था में डीएनए का प्रतिकृतिकरण नहीं होता",
+            "केवल पादपों में होता है",
+            "केवल प्राणियों में होता है"
+          ],
+          correct: 1,
+          exp: "NCERT पृष्ठ 167 व 169: अर्धसूत्री विभाजन में डीएनए प्रतिकृति का सिर्फ एक चक्र होता है। इंटरकाइनेसिस में डीएनए संश्लेषण नहीं होता।"
+        },
+        {
+          id: 74, sec: "MEIOSIS",
+          q: "एक युगली (Bivalent) में कुल कितने अर्धगुणसूत्र (Chromatids) और कितने गुणसूत्रबिंदु (Centromeres) होते हैं?",
+          options: [
+            "2 क्रोमैटिड्स और 2 सेंट्रोमियर्स",
+            "4 क्रोमैटिड्स (चतुष्क) और 2 सेंट्रोमियर्स",
+            "4 क्रोमैटिड्स और 4 सेंट्रोमियर्स",
+            "8 क्रोमैटिड्स और 2 सेंट्रोमियर्स"
+          ],
+          correct: 1,
+          exp: "NCERT संकल्पना: एक युगली में 2 समजात गुणसूत्र होते हैं, अतः 2 सेंट्रोमियर तथा कुल 4 अर्धगुणसूत्र (Tetrad) होते हैं।"
+        },
+        {
+          id: 75, sec: "MEIOSIS",
+          q: "पारगतिक्रम (Diakinesis) किसको निरूपित करता है?",
+          options: [
+            "पूर्वावस्था I से मध्यावस्था I की ओर पारगमन को",
+            "विश्राम अवस्था को",
+            "कोशिका मृत्यु को",
+            "साइटोकाइनेसिस की समाप्ति को"
+          ],
+          correct: 0,
+          exp: "NCERT पृष्ठ 169: पारगतिक्रम मध्यावस्था I की ओर पारगमन को निरूपित करता है।"
+        },
+
+        // SECTION 4: विविध, संख्यात्मक व आरेख आधारित (76-100)
+        {
+          id: 76, sec: "NUMERICAL",
+          q: "यदि एक कोशिका में 2n = 24 गुणसूत्र हैं, तो अर्धसूत्री विभाजन I के पश्चात प्रत्येक संतति केंद्रक में कितने गुणसूत्र और कितने क्रोमैटिड्स होंगे?",
+          options: [
+            "12 गुणसूत्र और 12 क्रोमैटिड्स",
+            "12 गुणसूत्र और 24 क्रोमैटिड्स",
+            "24 गुणसूत्र और 24 क्रोमैटिड्स",
+            "6 गुणसूत्र और 12 क्रोमैटिड्स"
+          ],
+          correct: 1,
+          exp: "गणना: Meiosis I ह्रासकारी है, अतः गुणसूत्र आधे होकर 12 हो जाएंगे। प्रत्येक गुणसूत्र में अभी भी 2 क्रोमैटिड्स हैं, अतः कुल क्रोमैटिड्स = 12 × 2 = 24।"
+        },
+        {
+          id: 77, sec: "NUMERICAL",
+          q: "एक एकल कोशिका से समसूत्री विभाजनों द्वारा 128 कोशिकाएं बनाने के लिए कितने क्रमिक विभाजनों (विभाजन चक्रों) की आवश्यकता होगी?",
+          options: ["7 विभाजन चक्र", "64 विभाजन चक्र", "14 विभाजन चक्र", "128 विभाजन चक्र"],
+          correct: 0,
+          exp: "गणना: सूत्र 2ⁿ = कोशिकाओं की संख्या। 2⁷ = 128, अतः कुल 7 क्रमिक विभाजन चक्रों की आवश्यकता होगी।"
+        },
+        {
+          id: 78, sec: "NUMERICAL",
+          q: "आवृतबीजी पादप में 100 परागकण (Pollen grains) उत्पन्न करने के लिए कितने अर्धसूत्री विभाजनों (Meiotic divisions) की आवश्यकता होगी?",
+          options: ["100", "50", "25", "400"],
+          correct: 2,
+          exp: "गणना: 1 लघुबीजाणु मातृ कोशिका (PMC) में 1 अर्धसूत्री विभाजन से 4 परागकण बनते हैं। अतः 100 परागकणों हेतु = 100 / 4 = 25 अर्धसूत्री विभाजन चाहिए।"
+        },
+        {
+          id: 79, sec: "NUMERICAL",
+          q: "100 क्रियाशील गुरुबीजाणु (या 100 बीज) बनाने के लिए कितने अर्धसूत्री विभाजनों की आवश्यकता होगी?",
+          options: ["25", "50", "100", "125"],
+          correct: 2,
+          exp: "गणना: मादा में 1 अर्धसूत्री विभाजन से 4 में से केवल 1 गुरुबीजाणु क्रियाशील रहता है। अतः 100 क्रियाशील गुरुबीजाणुओं के लिए पूरे 100 अर्धसूत्री विभाजनों की आवश्यकता होगी।"
+        },
+        {
+          id: 80, sec: "NUMERICAL",
+          q: "यदि किसी पादप में 100 बीज बनाने हों, तो कुल कितने अर्धसूत्री विभाजनों की आवश्यकता होगी (परागकण + अंड कोशिका)?",
+          options: ["100", "125 (25 नर + 100 मादा)", "200", "50"],
+          correct: 1,
+          exp: "गणना: 100 परागकणों हेतु = 25 अर्धसूत्री विभाजन। 100 अंड कोशिकाओं हेतु = 100 अर्धसूत्री विभाजन। कुल = 25 + 100 = 125 अर्धसूत्री विभाजन।"
+        },
+        {
+          id: 81, sec: "NUMERICAL",
+          q: "प्याज के मूल शीर्ष में 2n = 16 है। इसकी G2 प्रावस्था में क्रोमैटिड्स की कुल संख्या कितनी होगी?",
+          options: ["16", "32", "64", "8"],
+          correct: 1,
+          exp: "गणना: S प्रावस्था में डीएनए प्रतिकृति के बाद प्रत्येक गुणसूत्र में 2 क्रोमैटिड्स होते हैं। अतः G2 में 16 × 2 = 32 क्रोमैटिड्स होंगे।"
+        },
+        {
+          id: 82, sec: "NUMERICAL",
+          q: "मनुष्य की कोशिका में अंतरावस्था की G1 प्रावस्था, G2 प्रावस्था और युग्मक (शुक्राणु) में डीएनए की मात्रा का सही अनुपात क्या होगा?",
+          options: ["2 : 4 : 1", "1 : 2 : 1", "4 : 2 : 1", "2 : 2 : 1"],
+          correct: 0,
+          exp: "व्याख्या: G1 = 2C, S के बाद G2 = 4C, और अर्धसूत्री विभाजन के बाद युग्मक = C। अतः अनुपात 2C : 4C : 1C अर्थात् 2 : 4 : 1 है।"
+        },
+        {
+          id: 83, sec: "NUMERICAL",
+          q: "यदि एक कोशिका संवर्धन में प्रत्येक 30 मिनट में एक समसूत्री विभाजन होता है, तो 2 घंटे बाद एक एकल कोशिका से कुल कितनी कोशिकाएं बनेंगी?",
+          options: ["4", "8", "16", "32"],
+          correct: 2,
+          exp: "गणना: 2 घंटे = 120 मिनट। विभाजनों की संख्या n = 120 / 30 = 4 चक्र। कुल कोशिकाएं = 2⁴ = 16।"
+        },
+        {
+          id: 84, sec: "NUMERICAL",
+          q: "पादप कोशिका में कोशिका पट्टिका (Cell plate) के निर्माण में मुख्य रूप से कौन-सा कोशिकांग भाग लेता है?",
+          options: ["गॉल्जीकाय (Golgi complex) व ER के वेसिकल", "लाइसोसोम", "तारककेंद्र", "राइबोसोम"],
+          correct: 0,
+          exp: "व्याख्या: गॉल्जीकाय से निकलने वाले वेसिकल्स मध्य रेखा पर संचित होकर फ्रेग्मोप्लास्ट (Phragmoplast) बनाते हैं जो कोशिका पट्टिका का निर्माण करते हैं।"
+        },
+        {
+          id: 85, sec: "NUMERICAL",
+          q: "काएज्मेटा (Chiasma) का निर्माण किस प्रावस्था का परिणाम है?",
+          options: [
+            "स्थूलपट्ट (Pachytene) में हुए क्रॉसिंग ओवर का दृश्य परिणाम",
+            "लेप्टोटीन का",
+            "एनाफेज का",
+            "साइटोकाइनेसिस का"
+          ],
+          correct: 0,
+          exp: "NCERT पृष्ठ 168-169: स्थूलपट्ट में हुए क्रॉसिंग ओवर के स्थल डिप्लोटीन में सिनेप्टोनिमल कॉम्प्लेक्स के हटने पर X-आकार के काएज्मेटा के रूप में दिखते हैं।"
+        },
+        {
+          id: 86, sec: "NUMERICAL",
+          q: "कोशिका चक्र की जाँच बिंदु (Checkpoints) मुख्यतः किन अवस्थाओं के बीच स्थित होते हैं?",
+          options: [
+            "G1 से S संक्रमण, G2 से M संक्रमण, तथा M-जाँच बिंदु (मध्यावस्था से पश्चावस्था)",
+            "केवल G0 में",
+            "केवल अंत्यावस्था में",
+            "कोशिका विभाजन के बाहर"
+          ],
+          correct: 0,
+          exp: "उन्नत संकल्पना: कोशिका चक्र नियंत्रण तीन प्रमुख चेकपॉइंट्स (G1/S, G2/M, और स्पिंडल असेंबली चेकपॉइंट) द्वारा साइक्लिन व Cdk प्रोटीनों से होता है।"
+        },
+        {
+          id: 87, sec: "NUMERICAL",
+          q: "समसूत्री विभाजन और अर्धसूत्री विभाजन II दोनों में क्या समानता है?",
+          options: [
+            "दोनों में समजात गुणसूत्रों का युगलन होता है",
+            "दोनों में गुणसूत्रबिंदु (Centromere) का विखंडन होता है और अर्धगुणसूत्र अलग होते हैं",
+            "दोनों में डीएनए दुगुना होता है",
+            "दोनों में क्रॉसिंग ओवर होता है"
+          ],
+          correct: 1,
+          exp: "NCERT पृष्ठ 169-170: अर्धसूत्री विभाजन II समसूत्री विभाजन के समान होता है; दोनों में सेंट्रोमियर टूटकर संतति अर्धगुणसूत्र विपरीत ध्रुवों पर जाते हैं।"
+        },
+        {
+          id: 88, sec: "NUMERICAL",
+          q: "कोशिका सिद्धांत के अनुसार नई कोशिकाओं की उत्पत्ति पूर्ववर्ती कोशिकाओं से होती है ('Omnis cellula-e cellula')। यह कथन किसने दिया था?",
+          options: ["रॉबर्ट हुक", "रुडोल्फ विरचो (Rudolf Virchow, 1855)", "श्लीडेन व श्वान", "मेंडल"],
+          correct: 1,
+          exp: "NCERT सारांश व संदर्भ: रुडोल्फ विरचो ने प्रतिपादित किया कि नई कोशिकाएं पूर्ववर्ती कोशिकाओं के विभाजन से उत्पन्न होती हैं।"
+        },
+        {
+          id: 89, sec: "NUMERICAL",
+          q: "समजात गुणसूत्रों (Homologous chromosomes) के जोड़ों के संदर्भ में कौन-सा कथन सही है?",
+          options: [
+            "एक माता से और एक पिता से प्राप्त होता है, जिनका आकार, आकृति और जीन अनुक्रम समान होता है",
+            "दोनों हमेशा केवल पिता से आते हैं",
+            "वे कभी भी एक साथ नहीं रहते",
+            "उनका आकार हमेशा एक दूसरे से भिन्न होता है"
+          ],
+          correct: 0,
+          exp: "NCERT पृष्ठ 168: समजात गुणसूत्र जनक युग्मकों (एक मातृक व एक पितृक) से प्राप्त समान आकार और समान जीन लोकस वाले गुणसूत्र जोड़े होते हैं।"
+        },
+        {
+          id: 90, sec: "NUMERICAL",
+          q: "यदि एक कोशिका चक्र में S प्रावस्था को रासायनिक रूप से रोक दिया जाए (Inhibit), तो क्या होगा?",
+          options: [
+            "कोशिका सीधे M प्रावस्था में चली जाएगी",
+            "कोशिका G1 प्रावस्था से आगे S में प्रवेश नहीं कर पाएगी और विभाजन रुक जाएगा",
+            "गुणसूत्र संख्या आधी हो जाएगी",
+            "कोशिका चार भागों में टूट जाएगी"
+          ],
+          correct: 1,
+          exp: "NCERT पृष्ठ 163-164: S प्रावस्था में डीएनए प्रतिकृति अनिवार्य है। यदि यह बाधित हो जाए, तो कोशिका चक्र चेकपॉइंट पर रुक जाता है।"
+        },
+        {
+          id: 91, sec: "NUMERICAL",
+          q: "अर्धसूत्री विभाजन की पश्चावस्था I में ध्रुवों पर पहुँचने वाले प्रत्येक गुणसूत्र में कितने क्रोमैटिड्स होते हैं?",
+          options: ["एक", "दो", "चार", "शून्य"],
+          correct: 1,
+          exp: "NCERT पृष्ठ 169: पश्चावस्था I में समजात गुणसूत्र अलग होते हैं पर सेंट्रोमियर नहीं टूटता, अतः प्रत्येक गुणसूत्र में 2 क्रोमैटिड्स बने रहते हैं।"
+        },
+        {
+          id: 92, sec: "NUMERICAL",
+          q: "कथन (A): अर्धसूत्री विभाजन प्रजाति में विशिष्ट गुणसूत्र संख्या को संरक्षित रखता है।\nकारण (R): अर्धसूत्री विभाजन युग्मकों में गुणसूत्र संख्या आधी करता है, जो निषेचन द्वारा पुनः 2n हो जाती है।",
+          options: [
+            "(A) और (R) दोनों सही हैं और (R), (A) की सही व्याख्या है",
+            "(A) और (R) दोनों सही हैं परंतु (R), (A) की सही व्याख्या नहीं है",
+            "(A) सही है परंतु (R) गलत है",
+            "(A) गलत है परंतु (R) सही है"
+          ],
+          correct: 0,
+          exp: "NCERT पृष्ठ 170: अर्धसूत्री विभाजन में गुणसूत्र आधे होने तथा निषेचन में पुनः जुड़ने से पीढ़ी दर पीढ़ी गुणसूत्र संख्या 2n स्थिर रहती है।"
+        },
+        {
+          id: 93, sec: "NUMERICAL",
+          q: "सुमेलित कीजिए:\n(p) युग्मपट्ट - 1. काएज्मेटा का दिखना\n(q) स्थूलपट्ट - 2. सूत्रयुग्मन (Synapsis)\n(r) द्विपट्ट - 3. काएज्मेटा का उपांतीभवन\n(s) पारगतिक्रम - 4. जीन विनिमय (Crossing over)",
+          options: [
+            "p-2, q-4, r-1, s-3",
+            "p-1, q-2, r-3, s-4",
+            "p-4, q-3, r-2, s-1",
+            "p-2, q-1, r-4, s-3"
+          ],
+          correct: 0,
+          exp: "NCERT पृष्ठ 168-169: युग्मपट्ट = सूत्रयुग्मन; स्थूलपट्ट = जीन विनिमय; द्विपट्ट = काएज्मेटा; पारगतिक्रम = उपांतीभवन।"
+        },
+        {
+          id: 94, sec: "NUMERICAL",
+          q: "तारककाय (Centrosome) रहित पादप कोशिकाओं में समसूत्री तर्कु (Spindle) का निर्माण कैसे होता है?",
+          options: [
+            "पादप कोशिकाओं में कभी तर्कुतंतु नहीं बनते",
+            "कोशिकाद्रव्यीय सूक्ष्म नलिकाओं (Microtubules organizing centers) द्वारा",
+            "केवल केंद्रक भित्ति के टूटने से",
+            "माइटोकॉन्ड्रिया के विभाजन से"
+          ],
+          correct: 1,
+          exp: "मानक वनस्पति विज्ञान: उच्च पादप कोशिकाओं में सेंट्रिओल नहीं होता (एनास्ट्रल विभाजन); इनमें स्पिंडल सूक्ष्म नलिका संगठक केंद्रों (MTOCs) द्वारा बनता है।"
+        },
+        {
+          id: 95, sec: "NUMERICAL",
+          q: "एक कायिक कोशिका (Somatic cell) में 2n = 8 है। पश्चावस्था (Anaphase) में सेंट्रोमियर की कुल संख्या कितनी होगी?",
+          options: ["4", "8", "16", "32"],
+          correct: 2,
+          exp: "गणना: पश्चावस्था में सभी 8 गुणसूत्रों के सेंट्रोमियर विभाजित होकर अलग-अलग हो जाते हैं, अतः सेंट्रोमियरों की कुल संख्या 8 × 2 = 16 हो जाती है।"
+        },
+        {
+          id: 96, sec: "NUMERICAL",
+          q: "कोशिका चक्र में हिस्टोन प्रोटीनों (Histone proteins) का संश्लेषण मुख्यतः किस प्रावस्था में होता है?",
+          options: ["G1 प्रावस्था", "S प्रावस्था (डीएनए द्विगुणन के साथ-साथ)", "G2 प्रावस्था", "M प्रावस्था"],
+          correct: 1,
+          exp: "मानक कोशिका जीवविज्ञान: नए डीएनए रज्जुकों की पैकेजिंग हेतु हिस्टोन प्रोटीनों का बड़े पैमाने पर संश्लेषण S प्रावस्था में होता है।"
+        },
+        {
+          id: 97, sec: "NUMERICAL",
+          q: "समसूत्री विभाजन की किस अवस्था में क्रोमैटिड्स 'V', 'L', 'J' या 'I' आकार के दिखाई पड़ते हैं?",
+          options: ["पूर्वावस्था", "मध्यावस्था", "पश्चावस्था (Anaphase)", "अंत्यावस्था"],
+          correct: 2,
+          exp: "NCERT पृष्ठ 166: पश्चावस्था में विपरीत ध्रुवों की ओर खिंचते समय सेंट्रोमियर की स्थिति (मेटासेंट्रिक, सबमेटासेंट्रिक आदि) के आधार पर गुणसूत्र V, L, J या I आकार के दिखते हैं।"
+        },
+        {
+          id: 98, sec: "NUMERICAL",
+          q: "यदि एक कोशिका में सूत्री विभाजन के दौरान तर्कुतंतुओं का निर्माण रोक दिया जाए, तो कोशिका में क्या परिवर्तन होगा?",
+          options: [
+            "गुणसूत्र अलग नहीं हो पाएंगे और बहुगुणिता (Polyploidy) की स्थिति बन जाएगी",
+            "कोशिका तुरंत फट जाएगी",
+            "डीएनए आधा हो जाएगा",
+            "कोशिका अगुणित बन जाएगी"
+          ],
+          correct: 0,
+          exp: "NCERT संकल्पना: तर्कुतंतु न बनने पर क्रोमैटिड्स अलग नहीं होंगे, जिससे कोशिका में गुणसूत्रों का पूरा सेट दोहरा रह जाएगा और बहुगुणिता उत्पन्न होगी।"
+        },
+        {
+          id: 99, sec: "NUMERICAL",
+          q: "पादप कोशिकाओं में कोशिकाद्रव्य विभाजन की दिशा कैसी होती है?",
+          options: [
+            "अपकेंद्रीय (Centrifugal - केंद्र से बाहर परिधि की ओर)",
+            "अभिकेंद्रीय (Centripetal - परिधि से अंदर की ओर)",
+            "ऊपर से नीचे",
+            "यादृच्छिक"
+          ],
+          correct: 0,
+          exp: "NCERT पृष्ठ 166: पादप कोशिकाओं में कोशिका पट्टिका का निर्माण केंद्र से शुरू होकर बाहर की ओर बढ़ता है, अतः यह अपकेंद्रीय (Centrifugal) होता है।"
+        },
+        {
+          id: 100, sec: "NUMERICAL",
+          q: "अर्धसूत्री विभाजन के महत्व के संबंध में निम्नलिखित में से कौन-सा कथन सबसे उपयुक्त है?",
+          options: [
+            "यह केवल घाव भरने में उपयोगी है",
+            "यह आनुवंशिक निरंतरता (गुणसूत्र संख्या का संरक्षण) और लैंगिक विभिन्नताओं (जैव विकास का आधार) दोनों को सुनिश्चित करता है",
+            "यह क्लोन बनाने में मदद करता है",
+            "यह केवल अवायवीय जीवों में पाया जाता है"
+          ],
+          correct: 1,
+          exp: "NCERT पृष्ठ 170: अर्धसूत्री विभाजन पीढ़ी दर पीढ़ी गुणसूत्रों की संख्या को संरक्षित रखता है तथा आनुवंशिक विभिन्नताएं उत्पन्न कर विकास को दिशा देता है।"
+        }
+      ];
+
+      // ----------------------------------------------------
+      // INLINE SVG DIAGRAM GENERATORS
+      // ----------------------------------------------------
+      function getSvgDiagram(type) {
+        if (type === "cell_cycle") {
+          return `
+            <svg viewBox="0 0 320 220" class="w-full max-w-[280px] h-auto drop-shadow-sm">
+              <circle cx="160" cy="110" r="85" fill="#f8fafc" stroke="#64748b" stroke-width="3" />
+              <!-- G1 Slice -->
+              <path d="M160,110 L160,25 A85,85 0 0,1 240,80 Z" fill="#93c5fd" opacity="0.8" />
+              <!-- S Slice -->
+              <path d="M160,110 L240,80 A85,85 0 0,1 210,185 Z" fill="#86efac" opacity="0.8" />
+              <!-- G2 Slice -->
+              <path d="M160,110 L210,185 A85,85 0 0,1 110,185 Z" fill="#fde047" opacity="0.8" />
+              <!-- M Phase Slice -->
+              <path d="M160,110 L110,185 A85,85 0 0,1 160,25 Z" fill="#fca5a5" opacity="0.9" />
+              <!-- Center Hub -->
+              <circle cx="160" cy="110" r="45" fill="#ffffff" stroke="#cbd5e1" stroke-width="2" />
+              <text x="160" y="108" text-anchor="middle" font-size="10" font-weight="bold" fill="#1e293b">अंतरावस्था</text>
+              <text x="160" y="122" text-anchor="middle" font-size="9" fill="#64748b">(95% समय)</text>
+              <!-- Phase Labels -->
+              <text x="195" y="60" font-size="12" font-weight="bold" fill="#1e40af">G₁</text>
+              <text x="215" y="135" font-size="12" font-weight="bold" fill="#166534">S (DNA 2C➔4C)</text>
+              <text x="150" y="180" font-size="12" font-weight="bold" fill="#854d0e">G₂</text>
+              <text x="115" y="90" font-size="12" font-weight="bold" fill="#991b1b">M प्रावस्था</text>
+            </svg>
+          `;
+        } else if (type === "metaphase_plate") {
+          return `
+            <svg viewBox="0 0 320 180" class="w-full max-w-[280px] h-auto drop-shadow-sm">
+              <ellipse cx="160" cy="90" rx="140" ry="80" fill="#f8fafc" stroke="#94a3b8" stroke-width="2" stroke-dasharray="4" />
+              <!-- Centrosomes / Asters -->
+              <circle cx="160" cy="20" r="6" fill="#e11d48" />
+              <circle cx="160" cy="160" r="6" fill="#e11d48" />
+              <!-- Spindle fibers -->
+              <line x1="160" y1="20" x2="100" y2="90" stroke="#cbd5e1" stroke-width="1.5" />
+              <line x1="160" y1="20" x2="160" y2="90" stroke="#cbd5e1" stroke-width="1.5" />
+              <line x1="160" y1="20" x2="220" y2="90" stroke="#cbd5e1" stroke-width="1.5" />
+              <line x1="160" y1="160" x2="100" y2="90" stroke="#cbd5e1" stroke-width="1.5" />
+              <line x1="160" y1="160" x2="160" y2="90" stroke="#cbd5e1" stroke-width="1.5" />
+              <line x1="160" y1="160" x2="220" y2="90" stroke="#cbd5e1" stroke-width="1.5" />
+              <!-- Chromosomes aligned at equator -->
+              <rect x="92" y="86" width="16" height="8" rx="2" fill="#3b82f6" />
+              <rect x="152" y="86" width="16" height="8" rx="2" fill="#6366f1" />
+              <rect x="212" y="86" width="16" height="8" rx="2" fill="#3b82f6" />
+              <!-- Equatorial plate line -->
+              <line x1="60" y1="90" x2="260" y2="90" stroke="#ef4444" stroke-width="1.5" stroke-dasharray="3,3" />
+              <text x="160" y="107" text-anchor="middle" font-size="10" font-weight="bold" fill="#b91c1c">मध्यावस्था पट्टिका (Equatorial Plate)</text>
+              <text x="160" y="15" text-anchor="middle" font-size="9" fill="#64748b">ध्रुव (तर्कुकेंद्र)</text>
+            </svg>
+          `;
+        } else if (type === "anaphase_movement") {
+          return `
+            <svg viewBox="0 0 320 180" class="w-full max-w-[280px] h-auto drop-shadow-sm">
+              <ellipse cx="160" cy="90" rx="140" ry="80" fill="#f8fafc" stroke="#94a3b8" stroke-width="2" />
+              <!-- Centrosomes -->
+              <circle cx="160" cy="18" r="5" fill="#e11d48" />
+              <circle cx="160" cy="162" r="5" fill="#e11d48" />
+              <!-- Top moving chromatids V-shape -->
+              <path d="M125,50 L135,38 L145,50" stroke="#2563eb" stroke-width="4" fill="none" stroke-linecap="round" />
+              <circle cx="135" cy="38" r="3" fill="#dc2626" />
+              <path d="M175,50 L185,38 L195,50" stroke="#2563eb" stroke-width="4" fill="none" stroke-linecap="round" />
+              <circle cx="185" cy="38" r="3" fill="#dc2626" />
+              <!-- Bottom moving chromatids inverted V -->
+              <path d="M125,130 L135,142 L145,130" stroke="#2563eb" stroke-width="4" fill="none" stroke-linecap="round" />
+              <circle cx="135" cy="142" r="3" fill="#dc2626" />
+              <path d="M175,130 L185,142 L195,130" stroke="#2563eb" stroke-width="4" fill="none" stroke-linecap="round" />
+              <circle cx="185" cy="142" r="3" fill="#dc2626" />
+              <!-- Labels -->
+              <text x="160" y="90" text-anchor="middle" font-size="10" font-weight="bold" fill="#64748b">विखंडित सेंट्रोमियर ध्रुव की ओर अग्रसर</text>
+              <text x="160" y="105" text-anchor="middle" font-size="9" fill="#94a3b8">(भुजाएं पीछे की ओर घिसटती हैं)</text>
+            </svg>
+          `;
+        } else if (type === "crossing_over_chiasma") {
+          return `
+            <svg viewBox="0 0 320 180" class="w-full max-w-[280px] h-auto drop-shadow-sm">
+              <rect width="320" height="180" rx="8" fill="#f8fafc" />
+              <!-- Homolog 1 (Blue) -->
+              <path d="M90,40 Q130,90 190,140" stroke="#3b82f6" stroke-width="8" fill="none" stroke-linecap="round" />
+              <path d="M130,40 Q150,85 140,140" stroke="#60a5fa" stroke-width="8" fill="none" stroke-linecap="round" />
+              <!-- Homolog 2 (Red) -->
+              <path d="M190,40 Q150,90 90,140" stroke="#ef4444" stroke-width="8" fill="none" stroke-linecap="round" />
+              <path d="M230,40 Q170,85 180,140" stroke="#f87171" stroke-width="8" fill="none" stroke-linecap="round" />
+              <!-- Crossing Point 'X' Chiasma -->
+              <circle cx="150" cy="90" r="14" fill="none" stroke="#eab308" stroke-width="2.5" stroke-dasharray="3,3" />
+              <text x="150" y="94" text-anchor="middle" font-size="11" font-weight="extrabold" fill="#a16207">X</text>
+              <!-- Label -->
+              <text x="150" y="165" text-anchor="middle" font-size="11" font-weight="bold" fill="#1e293b">काएज्मेटा (Chiasma) - विनिमय स्थल</text>
+            </svg>
+          `;
+        }
+        return "";
+      }
+
+      // ----------------------------------------------------
+      // APP STATE MANAGEMENT
+      // ----------------------------------------------------
+      let currentCandidate = {
+        name: "",
+        district: "",
+        telegram: ""
+      };
+
+      let testSession = {
+        userAnswers: {},       // { qId: selectedOptionIndex }
+        reviewMarks: {},       // { qId: boolean }
+        timeRemainingSec: TEST_DURATION_MINUTES * 60,
+        activeFilterSec: "ALL",
+        currentQIndex: 0,
+        isCompleted: false
+      };
+
+      let timerInterval = null;
+      let logoClickCount = 0;
+      let logoClickTimer = null;
+
+      // ----------------------------------------------------
+      // DOM ELEMENTS
+      // ----------------------------------------------------
+      const entryGateView = document.getElementById("entryGateView");
+      const examView = document.getElementById("examView");
+      const scorecardView = document.getElementById("scorecardView");
+
+      const regForm = document.getElementById("regForm");
+      const regName = document.getElementById("regName");
+      const regDistrict = document.getElementById("regDistrict");
+      const regTelegram = document.getElementById("regTelegram");
+      const startTestBtn = document.getElementById("startTestBtn");
+      const resumeTestBtn = document.getElementById("resumeTestBtn");
+      const viewPreviousSolutionBtn = document.getElementById("viewPreviousSolutionBtn");
+
+      const headerTestInfo = document.getElementById("headerTestInfo");
+      const countdownDisplay = document.getElementById("countdownDisplay");
+      const submitTestBtn = document.getElementById("submitTestBtn");
+      const savedSheetHeaderBtn = document.getElementById("savedSheetHeaderBtn");
+      const viewLeaderboardBtn = document.getElementById("viewLeaderboardBtn");
+
+      // Exam Engine Elements
+      const currentQNum = document.getElementById("currentQNum");
+      const reviewBadge = document.getElementById("reviewBadge");
+      const questionText = document.getElementById("questionText");
+      const diagramContainer = document.getElementById("diagramContainer");
+      const optionsContainer = document.getElementById("optionsContainer");
+      const btnPrev = document.getElementById("btnPrev");
+      const btnClear = document.getElementById("btnClear");
+      const btnReview = document.getElementById("btnReview");
+      const btnNext = document.getElementById("btnNext");
+      const questionJumpSelect = document.getElementById("questionJumpSelect");
+      const sectionTabsContainer = document.getElementById("sectionTabsContainer");
+
+      // Submit Modal Elements
+      const submitModal = document.getElementById("submitModal");
+      const confirmAttemptedCount = document.getElementById("confirmAttemptedCount");
+      const confirmUnattemptedCount = document.getElementById("confirmUnattemptedCount");
+      const confirmReviewCount = document.getElementById("confirmReviewCount");
+      const cancelSubmitBtn = document.getElementById("cancelSubmitBtn");
+      const finalConfirmSubmitBtn = document.getElementById("finalConfirmSubmitBtn");
+
+      // Scorecard Elements
+      const scoreAllBiharRank = document.getElementById("scoreAllBiharRank");
+      const metaCandidateName = document.getElementById("metaCandidateName");
+      const metaCandidateDistrict = document.getElementById("metaCandidateDistrict");
+      const metaCandidateTg = document.getElementById("metaCandidateTg");
+      const metaCandidateTimestamp = document.getElementById("metaCandidateTimestamp");
+      const metricFinalScore = document.getElementById("metricFinalScore");
+      const metricCorrect = document.getElementById("metricCorrect");
+      const metricWrong = document.getElementById("metricWrong");
+      const metricUnattempted = document.getElementById("metricUnattempted");
+      const metricAccuracy = document.getElementById("metricAccuracy");
+      const metricTimeSpent = document.getElementById("metricTimeSpent");
+      const solutionsListContainer = document.getElementById("solutionsListContainer");
+      const countSolCorrect = document.getElementById("countSolCorrect");
+      const countSolWrong = document.getElementById("countSolWrong");
+      const countSolSkipped = document.getElementById("countSolSkipped");
+      const viewLeaderboardFromScoreBtn = document.getElementById("viewLeaderboardFromScoreBtn");
+
+      // Leaderboard Modal Elements
+      const leaderboardModal = document.getElementById("leaderboardModal");
+      const closeLeaderboardBtn = document.getElementById("closeLeaderboardBtn");
+      const refreshLeaderboardBtn = document.getElementById("refreshLeaderboardBtn");
+      const leaderboardSearchInput = document.getElementById("leaderboardSearchInput");
+      const leaderboardDistrictFilter = document.getElementById("leaderboardDistrictFilter");
+      const leaderboardTableBody = document.getElementById("leaderboardTableBody");
+      const podiumContainer = document.getElementById("podiumContainer");
+      const leaderboardLoadingIndicator = document.getElementById("leaderboardLoadingIndicator");
+      const leaderboardTotalCandidates = document.getElementById("leaderboardTotalCandidates");
+
+      // Admin Modal Elements
+      const adminTriggerBtn = document.getElementById("adminTriggerBtn");
+      const adminModal = document.getElementById("adminModal");
+      const closeAdminBtn = document.getElementById("closeAdminBtn");
+      const adminFirebaseUrl = document.getElementById("adminFirebaseUrl");
+      const adminSaveBtn = document.getElementById("adminSaveBtn");
+      const adminResetBtn = document.getElementById("adminResetBtn");
+
+      // ----------------------------------------------------
+      // INITIALIZATION & CACHE CHECK
+      // ----------------------------------------------------
+      function init() {
+        populateDistrictDropdown();
+        checkExistingSession();
+        setupEventListeners();
+        adminFirebaseUrl.value = getFirebaseUrl();
+      }
+
+      function getFirebaseUrl() {
+        return localStorage.getItem(LS_FIREBASE_URL_KEY) || DEFAULT_FIREBASE_URL;
+      }
+
+      function populateDistrictDropdown() {
+        const biharDistricts = [
+          "अररिया", "अरवल", "औरंगाबाद", "बाँका", "बेगूसराय", "भागलपुर", "भोजपुर", "बक्सर", "दरभंगा", "पूर्वी चंपारण",
+          "गया", "गोपालगंज", "जमुई", "जहानाबाद", "कैमूर", "कटिहार", "खगड़िया", "किशनगंज", "लखीसराय", "मधेपुरा",
+          "मधुबनी", "मुंगेर", "मुजफ्फरपुर", "नालंदा", "नवादा", "पटना", "पूर्णिया", "रोहतास", "सहरसा", "समस्तीपुर",
+          "सारण", "शेखपुरा", "शिवहर", "सीतामढ़ी", "सीवान", "सुपौल", "वैशाली", "पश्चिमी चंपारण"
+        ];
+
+        // Populate Leaderboard filter
+        biharDistricts.forEach(dist => {
+          const opt = document.createElement("option");
+          opt.value = dist;
+          opt.textContent = dist;
+          leaderboardDistrictFilter.appendChild(opt);
+        });
+      }
+
+      function checkExistingSession() {
+        // Saved final attempt
+        const savedAttempt = localStorage.getItem(LS_SAVED_ATTEMPT_KEY);
+        if (savedAttempt) {
+          viewPreviousSolutionBtn.classList.remove("hidden");
+          viewPreviousSolutionBtn.classList.add("flex");
+          savedSheetHeaderBtn.classList.remove("hidden");
+          savedSheetHeaderBtn.classList.add("flex");
+        }
+
+        // Active unsubmitted session
+        const activeSession = localStorage.getItem(LS_ACTIVE_SESSION_KEY);
+        const savedCand = localStorage.getItem(LS_CANDIDATE_KEY);
+        if (activeSession && savedCand) {
+          try {
+            const parsedSession = JSON.parse(activeSession);
+            if (!parsedSession.isCompleted) {
+              resumeTestBtn.classList.remove("hidden");
+              resumeTestBtn.classList.add("flex");
+              const parsedCand = JSON.parse(savedCand);
+              regName.value = parsedCand.name || "";
+              regDistrict.value = parsedCand.district || "";
+              regTelegram.value = parsedCand.telegram || "";
+            }
+          } catch (e) {
+            console.error("Session parse error", e);
+          }
+        }
+      }
+
+      // ----------------------------------------------------
+      // FULL SCREEN UTILITY
+      // ----------------------------------------------------
+      function triggerFullScreen() {
+        try {
+          if (!document.fullscreenElement && document.documentElement.requestFullscreen) {
+            document.documentElement.requestFullscreen().catch(() => {});
+          }
+        } catch (err) {}
+      }
+
+      // ----------------------------------------------------
+      // TEST LAUNCH & RESUME
+      // ----------------------------------------------------
+      function startNewTest() {
+        const name = regName.value.trim();
+        const dist = regDistrict.value;
+        const tg = regTelegram.value.trim().replace(/^@/, "");
+
+        if (!name || !dist || !tg) {
+          alert("कृपया सभी आवश्यक फ़ील्ड (नाम, जिला, टेलीग्राम) भरें।");
+          return;
+        }
+
+        currentCandidate = { name, district: dist, telegram: tg };
+        localStorage.setItem(LS_CANDIDATE_KEY, JSON.stringify(currentCandidate));
+
+        testSession = {
+          userAnswers: {},
+          reviewMarks: {},
+          timeRemainingSec: TEST_DURATION_MINUTES * 60,
+          activeFilterSec: "ALL",
+          currentQIndex: 0,
+          isCompleted: false
+        };
+
+        triggerFullScreen();
+        launchExamMode();
+      }
+
+      function resumeActiveTest() {
+        try {
+          const savedSession = JSON.parse(localStorage.getItem(LS_ACTIVE_SESSION_KEY));
+          const savedCand = JSON.parse(localStorage.getItem(LS_CANDIDATE_KEY));
+          if (savedSession && savedCand) {
+            testSession = savedSession;
+            currentCandidate = savedCand;
+            triggerFullScreen();
+            launchExamMode();
+          }
+        } catch (e) {
+          startNewTest();
+        }
+      }
+
+      function launchExamMode() {
+        entryGateView.classList.add("hidden");
+        scorecardView.classList.add("hidden");
+        examView.classList.remove("hidden");
+        examView.classList.add("flex");
+
+        headerTestInfo.classList.remove("hidden");
+        headerTestInfo.classList.add("flex");
+        submitTestBtn.classList.remove("hidden");
+        submitTestBtn.classList.add("flex");
+
+        buildJumpDropdown();
+        renderQuestion(testSession.currentQIndex);
+        startTimer();
+      }
+
+      // ----------------------------------------------------
+      // TIMER MANAGEMENT
+      // ----------------------------------------------------
+      function startTimer() {
+        if (timerInterval) clearInterval(timerInterval);
+        updateTimerDisplay();
+
+        timerInterval = setInterval(() => {
+          if (testSession.timeRemainingSec > 0) {
+            testSession.timeRemainingSec--;
+            updateTimerDisplay();
+            // Periodic Auto-Save
+            if (testSession.timeRemainingSec % 10 === 0) {
+              persistActiveSession();
+            }
+          } else {
+            clearInterval(timerInterval);
+            finalizeSubmission(true); // Time's up auto submit
+          }
+        }, 1000);
+      }
+
+      function updateTimerDisplay() {
+        const mins = Math.floor(testSession.timeRemainingSec / 60);
+        const secs = testSession.timeRemainingSec % 60;
+        const formatted = `${String(mins).padStart(2, '0')}:${String(secs).padStart(2, '0')}`;
+        countdownDisplay.textContent = formatted;
+
+        if (testSession.timeRemainingSec < 300) {
+          countdownDisplay.classList.remove("text-amber-300");
+          countdownDisplay.classList.add("text-rose-500", "animate-pulse");
+        }
+      }
+
+      function persistActiveSession() {
+        localStorage.setItem(LS_ACTIVE_SESSION_KEY, JSON.stringify(testSession));
+      }
+
+      // ----------------------------------------------------
+      // EXAM ENGINE: RENDERING & NAVIGATION
+      // ----------------------------------------------------
+      function getFilteredQuestions() {
+        if (testSession.activeFilterSec === "ALL") return QUESTIONS_DB;
+        return QUESTIONS_DB.filter(q => q.sec === testSession.activeFilterSec);
+      }
+
+      function buildJumpDropdown() {
+        questionJumpSelect.innerHTML = "";
+        const list = getFilteredQuestions();
+        list.forEach((q, idx) => {
+          const opt = document.createElement("option");
+          opt.value = idx;
+          const status = testSession.userAnswers[q.id] !== undefined ? "✓ " : "• ";
+          opt.textContent = `${status}प्रश्न ${q.id}`;
+          questionJumpSelect.appendChild(opt);
+        });
+      }
+
+      function renderQuestion(index) {
+        const filteredList = getFilteredQuestions();
+        if (index < 0 || index >= filteredList.length) return;
+
+        testSession.currentQIndex = index;
+        const qData = filteredList[index];
+
+        currentQNum.textContent = qData.id;
+        questionJumpSelect.value = index;
+
+        // Review Badge
+        if (testSession.reviewMarks[qData.id]) {
+          reviewBadge.classList.remove("hidden");
+        } else {
+          reviewBadge.classList.add("hidden");
+        }
+
+        // Question Text
+        questionText.textContent = `${qData.id}. ${qData.q}`;
+
+        // Diagram handling
+        if (qData.hasDiagram) {
+          diagramContainer.innerHTML = getSvgDiagram(qData.hasDiagram);
+          diagramContainer.classList.remove("hidden");
+        } else {
+          diagramContainer.innerHTML = "";
+          diagramContainer.classList.add("hidden");
+        }
+
+        // Options Rendering (Absolute Privacy Mode - No right/wrong hints)
+        optionsContainer.innerHTML = "";
+        const letters = ["A", "B", "C", "D"];
+        const selectedOpt = testSession.userAnswers[qData.id];
+
+        qData.options.forEach((optText, optIdx) => {
+          const isSelected = selectedOpt === optIdx;
+          const optRow = document.createElement("div");
+          optRow.className = `p-3 rounded-xl border-2 cursor-pointer transition flex items-center justify-between text-xs sm:text-sm font-medium ${
+            isSelected 
+              ? 'border-indigo-600 bg-indigo-50/80 text-indigo-950 font-bold shadow-sm ring-1 ring-indigo-500' 
+              : 'border-slate-200 bg-white hover:bg-slate-50 text-slate-800'
+          }`;
+
+          optRow.innerHTML = `
+            <div class="flex items-center gap-2.5">
+              <span class="w-6 h-6 rounded-lg flex items-center justify-center text-xs font-bold ${
+                isSelected ? 'bg-indigo-600 text-white' : 'bg-slate-100 text-slate-600'
+              }">
+                ${letters[optIdx]}
+              </span>
+              <span class="hindi-text">${optText}</span>
+            </div>
+            ${isSelected ? '<span class="text-xs bg-indigo-600 text-white px-2 py-0.5 rounded font-mono font-semibold">◉ सेव</span>' : ''}
+          `;
+
+          optRow.addEventListener("click", () => {
+            testSession.userAnswers[qData.id] = optIdx;
+            persistActiveSession();
+            renderQuestion(testSession.currentQIndex);
+            buildJumpDropdown();
+          });
+
+          optionsContainer.appendChild(optRow);
+        });
+
+        // Prev button disable check
+        btnPrev.disabled = index === 0;
+        btnPrev.classList.toggle("opacity-50", index === 0);
+      }
+
+      // ----------------------------------------------------
+      // ACTION HANDLERS (NEXT, PREV, REVIEW, CLEAR)
+      // ----------------------------------------------------
+      btnPrev.addEventListener("click", () => {
+        if (testSession.currentQIndex > 0) {
+          renderQuestion(testSession.currentQIndex - 1);
+        }
+      });
+
+      btnNext.addEventListener("click", () => {
+        const filteredList = getFilteredQuestions();
+        if (testSession.currentQIndex < filteredList.length - 1) {
+          renderQuestion(testSession.currentQIndex + 1);
+        } else {
+          // If on last question, open submit modal
+          openSubmitModal();
+        }
+      });
+
+      btnClear.addEventListener("click", () => {
+        const filteredList = getFilteredQuestions();
+        const qData = filteredList[testSession.currentQIndex];
+        delete testSession.userAnswers[qData.id];
+        persistActiveSession();
+        renderQuestion(testSession.currentQIndex);
+        buildJumpDropdown();
+      });
+
+      btnReview.addEventListener("click", () => {
+        const filteredList = getFilteredQuestions();
+        const qData = filteredList[testSession.currentQIndex];
+        testSession.reviewMarks[qData.id] = !testSession.reviewMarks[qData.id];
+        persistActiveSession();
+        renderQuestion(testSession.currentQIndex);
+      });
+
+      questionJumpSelect.addEventListener("change", (e) => {
+        renderQuestion(parseInt(e.target.value, 10));
+      });
+
+      // Section Tabs Filtering
+      sectionTabsContainer.addEventListener("click", (e) => {
+        const tabBtn = e.target.closest(".section-tab");
+        if (!tabBtn) return;
+
+        document.querySelectorAll(".section-tab").forEach(b => {
+          b.classList.remove("active", "bg-indigo-600", "text-white", "shadow-sm");
+          b.classList.add("text-slate-600");
+        });
+        tabBtn.classList.add("active", "bg-indigo-600", "text-white", "shadow-sm");
+        tabBtn.classList.remove("text-slate-600");
+
+        testSession.activeFilterSec = tabBtn.dataset.sec;
+        buildJumpDropdown();
+        renderQuestion(0);
+      });
+
+      // ----------------------------------------------------
+      // SUBMIT MODAL & FINAL SCORE COMPUTATION
+      // ----------------------------------------------------
+      function openSubmitModal() {
+        const attempted = Object.keys(testSession.userAnswers).length;
+        const total = QUESTIONS_DB.length;
+        const unattempted = total - attempted;
+        const reviewCount = Object.values(testSession.reviewMarks).filter(Boolean).length;
+
+        confirmAttemptedCount.textContent = attempted;
+        confirmUnattemptedCount.textContent = unattempted;
+        confirmReviewCount.textContent = reviewCount;
+
+        submitModal.classList.remove("hidden");
+      }
+
+      submitTestBtn.addEventListener("click", openSubmitModal);
+
+      cancelSubmitBtn.addEventListener("click", () => {
+        submitModal.classList.add("hidden");
+      });
+
+      finalConfirmSubmitBtn.addEventListener("click", () => {
+        submitModal.classList.add("hidden");
+        finalizeSubmission(false);
+      });
+
+      function finalizeSubmission(isAutoSubmit) {
+        if (timerInterval) clearInterval(timerInterval);
+
+        let correct = 0;
+        let wrong = 0;
+        let unattempted = 0;
+
+        QUESTIONS_DB.forEach(q => {
+          const userAns = testSession.userAnswers[q.id];
+          if (userAns === undefined) {
+            unattempted++;
+          } else if (userAns === q.correct) {
+            correct++;
+          } else {
+            wrong++;
+          }
+        });
+
+        const totalAttempted = correct + wrong;
+        const totalScore = (correct * MARKS_CORRECT) - (wrong * MARKS_WRONG);
+        const accuracy = totalAttempted > 0 ? ((correct / totalAttempted) * 100).toFixed(1) : "0.0";
+        const timeSpentSec = (TEST_DURATION_MINUTES * 60) - testSession.timeRemainingSec;
+        const mins = Math.floor(timeSpentSec / 60);
+        const secs = timeSpentSec % 60;
+        const timeSpentStr = `${mins} मिनट ${secs} सेकंड`;
+
+        const finalRecord = {
+          candidate: currentCandidate,
+          score: Math.max(0, totalScore).toFixed(2),
+          correct: correct,
+          wrong: wrong,
+          unattempted: unattempted,
+          accuracy: accuracy,
+          timeSpent: timeSpentStr,
+          timestamp: new Date().toLocaleString("hi-IN", { timeZone: "Asia/Kolkata" }),
+          userAnswers: testSession.userAnswers
+        };
+
+        // Save persistent attempt for offline & reload access
+        localStorage.setItem(LS_SAVED_ATTEMPT_KEY, JSON.stringify(finalRecord));
+        // Clear active test session
+        localStorage.removeItem(LS_ACTIVE_SESSION_KEY);
+
+        // Submit to Firebase
+        syncToFirebase(finalRecord);
+
+        // Render Scorecard View
+        renderScorecard(finalRecord);
+      }
+
+      // ----------------------------------------------------
+      // FIREBASE SYNC & CLOUD LEADERBOARD
+      // ----------------------------------------------------
+      async function syncToFirebase(record) {
+        const dbUrl = getFirebaseUrl();
+        try {
+          const sanitizedKey = `${record.candidate.telegram}_${Date.now()}`.replace(/[\.\#\$\[\]]/g, "_");
+          await fetch(`${dbUrl}/cbt_biology_results/${sanitizedKey}.json`, {
+            method: "PUT",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(record)
+          });
+        } catch (err) {
+          console.warn("Firebase sync failed (Network/Offline). LocalStorage preserved.", err);
+        }
+      }
+
+      async function fetchLiveLeaderboard() {
+        const dbUrl = getFirebaseUrl();
+        leaderboardLoadingIndicator.classList.remove("hidden");
+        leaderboardTableBody.innerHTML = "";
+        podiumContainer.innerHTML = "";
+
+        try {
+          const res = await fetch(`${dbUrl}/cbt_biology_results.json`);
+          const data = await res.json();
+          let list = [];
+
+          if (data) {
+            list = Object.values(data);
+          }
+
+          // If empty, generate fallback mock toppers for live feeling
+          if (list.length === 0) {
+            list = [
+              { candidate: { name: "आदित्य नारायण", district: "पटना", telegram: "aditya_patna" }, score: "96.40", correct: 49, wrong: 1 },
+              { candidate: { name: "प्रिया कुमारी", district: "गया", telegram: "priya_gaya" }, score: "94.20", correct: 48, wrong: 2 },
+              { candidate: { name: "रोहित राज", district: "मुजफ्फरपुर", telegram: "rohit_muz" }, score: "91.80", correct: 47, wrong: 3 }
+            ];
+          }
+
+          // Sort by score descending
+          list.sort((a, b) => parseFloat(b.score) - parseFloat(a.score));
+
+          renderLeaderboardUI(list);
+          updateCandidateRank(list);
+        } catch (e) {
+          console.error("Leaderboard fetch error", e);
+          leaderboardLoadingIndicator.textContent = "डेटा लोड करने में असमर्थ। कृपया इंटरनेट कनेक्शन जांचें।";
+        }
+      }
+
+      function renderLeaderboardUI(list) {
+        leaderboardLoadingIndicator.classList.add("hidden");
+        const searchVal = leaderboardSearchInput.value.toLowerCase().trim();
+        const distVal = leaderboardDistrictFilter.value;
+
+        const filtered = list.filter(item => {
+          const matchName = (item.candidate.name || "").toLowerCase().includes(searchVal) || (item.candidate.telegram || "").toLowerCase().includes(searchVal);
+          const matchDist = distVal === "ALL" || item.candidate.district === distVal;
+          return matchName && matchDist;
+        });
+
+        leaderboardTotalCandidates.textContent = `कुल परीक्षार्थी: ${list.length}`;
+
+        // Top 3 Podium
+        if (list.length >= 3 && searchVal === "" && distVal === "ALL") {
+          podiumContainer.innerHTML = `
+            <!-- 2nd Place -->
+            <div class="flex flex-col items-center">
+              <span class="text-xl">🥈</span>
+              <div class="w-20 bg-slate-200 rounded-t-lg p-2 text-center border-t-2 border-slate-400">
+                <span class="text-[10px] font-bold block truncate">${list[1].candidate.name}</span>
+                <span class="text-[9px] text-slate-500 block">${list[1].candidate.district}</span>
+                <span class="text-xs font-black text-indigo-700">${list[1].score}</span>
+              </div>
+            </div>
+            <!-- 1st Place -->
+            <div class="flex flex-col items-center">
+              <span class="text-2xl animate-bounce">🥇</span>
+              <div class="w-24 bg-amber-100 rounded-t-xl p-3 text-center border-t-4 border-amber-500 shadow-md">
+                <span class="text-[11px] font-black block truncate text-amber-950">${list[0].candidate.name}</span>
+                <span class="text-[9px] text-amber-700 block">${list[0].candidate.district}</span>
+                <span class="text-sm font-black text-amber-900">${list[0].score}</span>
+              </div>
+            </div>
+            <!-- 3rd Place -->
+            <div class="flex flex-col items-center">
+              <span class="text-xl">🥉</span>
+              <div class="w-20 bg-orange-100 rounded-t-lg p-2 text-center border-t-2 border-amber-700">
+                <span class="text-[10px] font-bold block truncate">${list[2].candidate.name}</span>
+                <span class="text-[9px] text-slate-500 block">${list[2].candidate.district}</span>
+                <span class="text-xs font-black text-amber-900">${list[2].score}</span>
+              </div>
+            </div>
+          `;
+          podiumContainer.classList.remove("hidden");
+        } else {
+          podiumContainer.classList.add("hidden");
+        }
+
+        // Table Rows
+        leaderboardTableBody.innerHTML = "";
+        filtered.forEach((cand, idx) => {
+          const row = document.createElement("tr");
+          row.className = "hover:bg-slate-50 transition border-b border-slate-100";
+          const rankMedal = idx === 0 ? "🥇 #1" : idx === 1 ? "🥈 #2" : idx === 2 ? "🥉 #3" : `#${idx + 1}`;
+
+          row.innerHTML = `
+            <td class="py-2 px-2 text-center font-bold text-slate-700">${rankMedal}</td>
+            <td class="py-2 px-2">
+              <span class="font-bold text-slate-900 block">${cand.candidate.name}</span>
+              <span class="text-[10px] text-sky-600 font-mono">@${cand.candidate.telegram}</span>
+            </td>
+            <td class="py-2 px-2 text-slate-600 font-medium">${cand.candidate.district}</td>
+            <td class="py-2 px-2 text-center font-mono">
+              <span class="text-emerald-600 font-bold">${cand.correct}</span> / 
+              <span class="text-rose-500">${cand.wrong || 0}</span>
+            </td>
+            <td class="py-2 px-2 text-right font-black text-indigo-700 font-mono text-sm">${cand.score}</td>
+          `;
+          leaderboardTableBody.appendChild(row);
+        });
+      }
+
+      function updateCandidateRank(list) {
+        if (!currentCandidate.telegram) return;
+        const candidateIndex = list.findIndex(item => item.candidate.telegram === currentCandidate.telegram);
+        if (candidateIndex !== -1) {
+          const rank = candidateIndex + 1;
+          scoreAllBiharRank.textContent = `🏆 रैंक #${rank} / ${list.length} परीक्षार्थी`;
+        } else {
+          scoreAllBiharRank.textContent = `🏆 रैंक #1 / ${list.length + 1} परीक्षार्थी`;
+        }
+      }
+
+      // ----------------------------------------------------
+      // SCORECARD & DETAILED SOLUTIONS RENDERER
+      // ----------------------------------------------------
+      function renderScorecard(record) {
+        examView.classList.add("hidden");
+        entryGateView.classList.add("hidden");
+        headerTestInfo.classList.add("hidden");
+        submitTestBtn.classList.add("hidden");
+        scorecardView.classList.remove("hidden");
+
+        savedSheetHeaderBtn.classList.remove("hidden");
+        savedSheetHeaderBtn.classList.add("flex");
+
+        // Metadata
+        metaCandidateName.textContent = record.candidate.name;
+        metaCandidateDistrict.textContent = record.candidate.district;
+        metaCandidateTg.textContent = `@${record.candidate.telegram}`;
+        metaCandidateTimestamp.textContent = record.timestamp;
+
+        // Metrics
+        metricFinalScore.textContent = record.score;
+        metricCorrect.textContent = record.correct;
+        metricWrong.textContent = record.wrong;
+        metricUnattempted.textContent = record.unattempted;
+        metricAccuracy.textContent = `${record.accuracy}%`;
+        metricTimeSpent.textContent = record.timeSpent;
+
+        // Solution Counts
+        countSolCorrect.textContent = record.correct;
+        countSolWrong.textContent = record.wrong;
+        countSolSkipped.textContent = record.unattempted;
+
+        // Fetch leaderboard to get actual rank
+        fetchLiveLeaderboard();
+
+        // Render solution cards with 'ALL' filter by default
+        renderSolutionsList(record, "ALL");
+      }
+
+      function renderSolutionsList(record, filterType) {
+        solutionsListContainer.innerHTML = "";
+        const letters = ["A", "B", "C", "D"];
+
+        QUESTIONS_DB.forEach((q) => {
+          const userAns = record.userAnswers[q.id];
+          const isCorrect = userAns === q.correct;
+          const isSkipped = userAns === undefined;
+
+          // Filter evaluation
+          if (filterType === "CORRECT" && !isCorrect) return;
+          if (filterType === "WRONG" && (isCorrect || isSkipped)) return;
+          if (filterType === "SKIPPED" && !isSkipped) return;
+
+          const card = document.createElement("div");
+          card.className = "bg-slate-50 border border-slate-200 rounded-xl p-4 transition shadow-sm";
+
+          let statusBadge = "";
+          if (isCorrect) {
+            statusBadge = '<span class="bg-emerald-100 text-emerald-800 text-xs px-2 py-0.5 rounded font-bold">✔ सही (+2.00)</span>';
+          } else if (isSkipped) {
+            statusBadge = '<span class="bg-slate-200 text-slate-700 text-xs px-2 py-0.5 rounded font-bold">⚪ छोड़ा गया (0.00)</span>';
+          } else {
+            statusBadge = '<span class="bg-rose-100 text-rose-800 text-xs px-2 py-0.5 rounded font-bold">✖ गलत (-0.20)</span>';
+          }
+
+          let optionsHtml = "";
+          q.options.forEach((optText, optIdx) => {
+            let optStyle = "bg-white border-slate-200 text-slate-700";
+            let optTag = "";
+
+            if (optIdx === q.correct) {
+              optStyle = "bg-emerald-50 border-emerald-500 text-emerald-950 font-bold ring-1 ring-emerald-500";
+              optTag = '<span class="text-[11px] text-emerald-700 font-bold">✔ सही उत्तर</span>';
+            } else if (userAns === optIdx) {
+              optStyle = "bg-rose-50 border-rose-500 text-rose-950 font-bold";
+              optTag = '<span class="text-[11px] text-rose-600 font-bold">✖ आपका चयन</span>';
+            }
+
+            optionsHtml += `
+              <div class="p-2.5 rounded-lg border text-xs sm:text-sm flex items-center justify-between ${optStyle}">
+                <div class="flex items-center gap-2">
+                  <span class="w-5 h-5 rounded flex items-center justify-center font-bold text-xs ${optIdx === q.correct ? 'bg-emerald-600 text-white' : 'bg-slate-200 text-slate-700'}">${letters[optIdx]}</span>
+                  <span class="hindi-text">${optText}</span>
+                </div>
+                ${optTag}
+              </div>
+            `;
+          });
+
+          // Diagram in solution if question has one
+          const diagramHtml = q.hasDiagram 
+            ? `<div class="my-2 p-2 bg-white rounded-lg border border-slate-200 flex justify-center">${getSvgDiagram(q.hasDiagram)}</div>` 
+            : '';
+
+          card.innerHTML = `
+            <div class="flex items-center justify-between mb-2">
+              <span class="font-extrabold text-xs text-indigo-700">प्रश्न सं. ${q.id}</span>
+              ${statusBadge}
+            </div>
+            <p class="text-sm font-semibold text-slate-900 mb-2 hindi-text">${q.q}</p>
+            ${diagramHtml}
+            <div class="space-y-1.5 my-3">
+              ${optionsHtml}
+            </div>
+            <div class="mt-3 pt-3 border-t border-slate-200 bg-white p-3 rounded-lg border border-indigo-100">
+              <div class="flex items-center gap-1 text-xs font-bold text-indigo-900 mb-1">
+                <span>📖</span> <span>विस्तृत NCERT व्याख्या (Explanation):</span>
+              </div>
+              <p class="text-xs text-slate-700 leading-relaxed hindi-text">${q.exp}</p>
+            </div>
+          `;
+
+          solutionsListContainer.appendChild(card);
+        });
+      }
+
+      // Solution Filter Buttons Handler
+      document.querySelectorAll(".sol-filter").forEach(btn => {
+        btn.addEventListener("click", () => {
+          document.querySelectorAll(".sol-filter").forEach(b => {
+            b.classList.remove("active", "bg-slate-800", "text-white");
+            b.classList.add("bg-slate-200", "text-slate-700");
+          });
+          btn.classList.add("active", "bg-slate-800", "text-white");
+          btn.classList.remove("bg-slate-200", "text-slate-700");
+
+          const savedAttempt = JSON.parse(localStorage.getItem(LS_SAVED_ATTEMPT_KEY));
+          if (savedAttempt) {
+            renderSolutionsList(savedAttempt, btn.dataset.filter);
+          }
+        });
+      });
+
+      // ----------------------------------------------------
+      // EVENT LISTENERS & SECRET ADMIN
+      // ----------------------------------------------------
+      function setupEventListeners() {
+        startTestBtn.addEventListener("click", startNewTest);
+        resumeTestBtn.addEventListener("click", resumeActiveTest);
+        
+        viewPreviousSolutionBtn.addEventListener("click", () => {
+          const saved = JSON.parse(localStorage.getItem(LS_SAVED_ATTEMPT_KEY));
+          if (saved) renderScorecard(saved);
+        });
+
+        savedSheetHeaderBtn.addEventListener("click", () => {
+          const saved = JSON.parse(localStorage.getItem(LS_SAVED_ATTEMPT_KEY));
+          if (saved) renderScorecard(saved);
+        });
+
+        viewLeaderboardBtn.addEventListener("click", () => {
+          leaderboardModal.classList.remove("hidden");
+          fetchLiveLeaderboard();
+        });
+
+        viewLeaderboardFromScoreBtn.addEventListener("click", () => {
+          leaderboardModal.classList.remove("hidden");
+          fetchLiveLeaderboard();
+        });
+
+        closeLeaderboardBtn.addEventListener("click", () => {
+          leaderboardModal.classList.add("hidden");
+        });
+
+        refreshLeaderboardBtn.addEventListener("click", fetchLiveLeaderboard);
+        leaderboardSearchInput.addEventListener("input", () => {
+          fetchLiveLeaderboard();
+        });
+        leaderboardDistrictFilter.addEventListener("change", () => {
+          fetchLiveLeaderboard();
+        });
+
+        // Secret Admin Trigger (4 rapid clicks on 'GV' logo)
+        adminTriggerBtn.addEventListener("click", () => {
+          logoClickCount++;
+          if (logoClickTimer) clearTimeout(logoClickTimer);
+
+          logoClickTimer = setTimeout(() => {
+            logoClickCount = 0;
+          }, 1200);
+
+          if (logoClickCount >= 4) {
+            logoClickCount = 0;
+            const pin = prompt("GYANVERSE गुप्त एडमिन सुरक्षा पिन दर्ज करें (PIN):");
+            if (pin === "1234" || pin === "GYANVERSE") {
+              adminFirebaseUrl.value = getFirebaseUrl();
+              adminModal.classList.remove("hidden");
+            } else if (pin !== null) {
+              alert("गलत पिन! एक्सेस अस्वीकृत।");
+            }
+          }
+        });
+
+        closeAdminBtn.addEventListener("click", () => {
+          adminModal.classList.add("hidden");
+        });
+
+        adminSaveBtn.addEventListener("click", () => {
+          const newUrl = adminFirebaseUrl.value.trim().replace(/\/$/, "");
+          if (newUrl) {
+            localStorage.setItem(LS_FIREBASE_URL_KEY, newUrl);
+            alert("Firebase डेटाबेस URL सफलतापूर्वक अपडेट हो गया!");
+            adminModal.classList.add("hidden");
+          }
+        });
+
+        adminResetBtn.addEventListener("click", () => {
+          localStorage.removeItem(LS_FIREBASE_URL_KEY);
+          adminFirebaseUrl.value = DEFAULT_FIREBASE_URL;
+          alert("डिफ़ॉल्ट अधिकृत Firebase URL पुनः स्थापित कर दिया गया है।");
+        });
+      }
+
+      // Initialize on load
+      window.onload = init;
+
+    })();
+  </script>
+</body>
+</html>
+```
