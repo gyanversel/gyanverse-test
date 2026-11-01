@@ -1,0 +1,1448 @@
+```html
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>GYANVERSE (@GYANVERSET) - साप्ताहिक करंट अफेयर्स टेस्ट (90 प्रश्न)</title>
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;600;700;800&family=Noto+Sans+Devanagari:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    * {
+      font-family: 'Noto Sans Devanagari', 'Inter', sans-serif;
+      -webkit-tap-highlight-color: transparent;
+      box-sizing: border-box;
+    }
+    html, body {
+      height: 100dvh;
+      max-height: 100dvh;
+      width: 100%;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      background-color: #f1f5f9;
+      color: #0f172a;
+      user-select: none;
+    }
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+    .thin-scroll::-webkit-scrollbar {
+      width: 3px;
+    }
+    .thin-scroll::-webkit-scrollbar-thumb {
+      background: #cbd5e1;
+      border-radius: 4px;
+    }
+    @keyframes pulse-fast {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.55; }
+    }
+    .timer-warning {
+      animation: pulse-fast 1s infinite;
+    }
+  </style>
+</head>
+<body class="h-[100dvh] max-h-[100dvh] w-full overflow-hidden flex flex-col">
+
+  <!-- TOAST NOTIFICATION -->
+  <div id="toastBanner" class="fixed top-12 left-1/2 -translate-x-1/2 z-[100] hidden max-w-[90vw] bg-slate-900 text-white px-3.5 py-2 rounded-xl shadow-xl border border-slate-700 text-xs font-bold flex items-center gap-2">
+    <span id="toastIcon">🔔</span>
+    <span id="toastMsg">संदेश</span>
+  </div>
+
+  <!-- FIXED COMPACT HEADER (44px) -->
+  <header class="h-11 shrink-0 bg-slate-900 text-white border-b border-slate-800 px-2.5 flex items-center justify-between gap-1.5 z-30">
+    <div class="flex items-center gap-1.5 min-w-0">
+      <button id="gvAdminTrigger" onclick="handleGvLogoClick()" type="button" class="w-7 h-7 rounded-md bg-amber-400 text-slate-950 font-extrabold text-xs flex items-center justify-center shrink-0 active:scale-95">
+        GV
+      </button>
+      <div class="leading-none min-w-0">
+        <div class="flex items-center gap-1">
+          <span class="font-extrabold text-xs tracking-wide text-amber-300">GYANVERSE</span>
+          <a href="https://t.me/GYANVERSET" target="_blank" rel="noopener noreferrer" class="text-[10px] text-sky-300 font-bold hover:underline truncate">
+            @GYANVERSET
+          </a>
+        </div>
+        <div class="text-[9.5px] text-slate-300 truncate mt-0.5" id="headerCandidateInfo">साप्ताहिक करंट अफेयर्स (90 प्रश्न)</div>
+      </div>
+    </div>
+
+    <div class="flex items-center gap-1 shrink-0">
+      <button id="headerSavedSolBtn" onclick="openSavedAttemptSolutions()" type="button" class="hidden bg-emerald-600 text-white text-[10.5px] font-bold px-2 py-1 rounded-md active:scale-95">
+        📜 सेव हल
+      </button>
+      <button id="headerRankBtn" onclick="openLeaderboardModal()" type="button" class="bg-amber-500/20 text-amber-300 border border-amber-400/40 text-[10.5px] font-bold px-2 py-1 rounded-md active:scale-95">
+        🏆 रैंक सूची
+      </button>
+      <div id="liveTimerBox" class="bg-slate-800 border border-slate-700 px-2 py-0.5 rounded-md text-center min-w-[54px]">
+        <div id="timerDisplay" class="font-mono font-extrabold text-xs text-emerald-400">60:00</div>
+      </div>
+      <button id="headerSubmitBtn" onclick="openSubmitConfirmModal()" type="button" class="hidden bg-rose-600 text-white text-[10.5px] font-extrabold px-2.5 py-1 rounded-md shadow active:scale-95">
+        Submit Test
+      </button>
+    </div>
+  </header>
+
+  <!-- MAIN FIXED VIEWPORT AREA (NO PAGE SCROLL) -->
+  <main class="flex-1 min-h-0 w-full max-w-2xl mx-auto px-2 py-1.5 flex flex-col overflow-hidden">
+
+    <!-- 1. ENTRY GATE VIEW (FITS 100% ON MOBILE WITHOUT SCROLL) -->
+    <section id="entryGateView" class="flex-1 min-h-0 flex flex-col justify-between bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden">
+      <!-- Top Exam Title Strip -->
+      <div class="bg-gradient-to-r from-blue-950 via-indigo-950 to-slate-900 text-white p-3 shrink-0">
+        <div class="flex items-center justify-between gap-2 mb-1">
+          <span class="bg-amber-400 text-slate-950 text-[10px] font-extrabold px-2 py-0.5 rounded uppercase">
+            TCS iON Online CBT
+          </span>
+          <a href="https://t.me/GYANVERSET" target="_blank" rel="noopener noreferrer" class="text-[10.5px] font-bold text-sky-300 hover:underline">
+            📲 t.me/GYANVERSET
+          </a>
+        </div>
+        <h1 class="text-sm sm:text-base font-extrabold leading-snug">
+          साप्ताहिक करंट अफेयर्स महा-रिवीजन: टॉप 90 प्रश्न (26 अक्टूबर – 1 नवंबर 2026)
+        </h1>
+        <div class="grid grid-cols-4 gap-1.5 mt-2 text-center">
+          <div class="bg-white/10 rounded-lg py-1 px-1">
+            <div class="text-[9px] text-blue-200">कुल प्रश्न</div>
+            <div class="text-xs font-extrabold text-white" id="gateTotalQStat">90</div>
+          </div>
+          <div class="bg-white/10 rounded-lg py-1 px-1">
+            <div class="text-[9px] text-blue-200">पूर्णांक</div>
+            <div class="text-xs font-extrabold text-amber-300" id="gateMaxMarksStat">180.00</div>
+          </div>
+          <div class="bg-white/10 rounded-lg py-1 px-1">
+            <div class="text-[9px] text-blue-200">अंक योजना</div>
+            <div class="text-xs font-extrabold text-emerald-300">+2 / -0.20</div>
+          </div>
+          <div class="bg-white/10 rounded-lg py-1 px-1">
+            <div class="text-[9px] text-blue-200">समय</div>
+            <div class="text-xs font-extrabold text-white">60 मिनट</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Center Form & Saved Action Strip -->
+      <div class="flex-1 min-h-0 p-2.5 flex flex-col justify-evenly overflow-y-auto thin-scroll space-y-2">
+        <!-- Resume Unfinished Test Strip -->
+        <div id="resumeTestBanner" class="hidden bg-amber-50 border border-amber-400 rounded-lg p-2 flex items-center justify-between gap-2 shrink-0">
+          <div class="min-w-0">
+            <div class="text-[11px] font-extrabold text-amber-950 truncate">⏳ अधूरा टेस्ट सेव है</div>
+            <p class="text-[10px] text-amber-800 truncate" id="resumeTestDetails">जहाँ छोड़े थे वहीं से जारी रखें</p>
+          </div>
+          <button onclick="resumeUnfinishedTest()" type="button" class="bg-amber-500 text-slate-950 font-extrabold text-[11px] px-2.5 py-1.5 rounded-lg shrink-0 active:scale-95">
+            ▶ अधूरा टेस्ट वहीं से जारी रखें
+          </button>
+        </div>
+
+        <!-- Previous Attempt Solutions Strip -->
+        <div id="prevAttemptBanner" class="hidden bg-emerald-50 border border-emerald-500 rounded-lg p-2 flex items-center justify-between gap-2 shrink-0">
+          <div class="min-w-0">
+            <div class="text-[11px] font-extrabold text-emerald-950 truncate">✅ पिछला स्कोरकार्ड व हल उपलब्ध</div>
+            <p class="text-[10px] text-emerald-800 truncate" id="prevAttemptSummaryText">सभी 90 प्रश्नों का हल देखें</p>
+          </div>
+          <button onclick="openSavedAttemptSolutions()" type="button" class="bg-emerald-600 text-white font-extrabold text-[11px] px-2.5 py-1.5 rounded-lg shrink-0 active:scale-95">
+            📋 पिछला स्कोरकार्ड एवं सभी हल देखें (Check Solutions)
+          </button>
+        </div>
+
+        <!-- Candidate Registration Inputs -->
+        <div class="bg-slate-50 border border-slate-200 rounded-xl p-2.5 space-y-2">
+          <div class="text-xs font-extrabold text-slate-800 border-b border-slate-200 pb-1 flex items-center justify-between">
+            <span>👤 परीक्षार्थी विवरण दर्ज करें</span>
+            <span class="text-[10px] text-rose-600 font-bold">* अनिवार्य</span>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-2">
+            <div>
+              <label for="regNameInput" class="block text-[10.5px] font-bold text-slate-700 mb-0.5">पूरा नाम *</label>
+              <input id="regNameInput" type="text" placeholder="अपना नाम लिखें" class="w-full px-2.5 py-1.5 text-xs rounded-lg border border-slate-300 bg-white font-semibold outline-none focus:border-blue-600" />
+            </div>
+            <div>
+              <label for="regDistrictSelect" class="block text-[10.5px] font-bold text-slate-700 mb-0.5">जिला (बिहार के 38 जिले) *</label>
+              <select id="regDistrictSelect" class="w-full px-2.5 py-1.5 text-xs rounded-lg border border-slate-300 bg-white font-semibold outline-none focus:border-blue-600">
+                <option value="">-- जिला चुनें --</option>
+              </select>
+            </div>
+            <div>
+              <label for="regTelegramInput" class="block text-[10.5px] font-bold text-slate-700 mb-0.5">टेलीग्राम (@username) *</label>
+              <input id="regTelegramInput" type="text" placeholder="@username" class="w-full px-2.5 py-1.5 text-xs rounded-lg border border-slate-300 bg-white font-semibold outline-none focus:border-blue-600" />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bottom Fixed Start Buttons -->
+      <div class="p-2.5 bg-slate-50 border-t border-slate-200 flex items-center gap-2 shrink-0">
+        <button id="startTestBtn" onclick="startNewTestFullScreen()" type="button" class="flex-1 bg-blue-700 hover:bg-blue-800 text-white font-extrabold text-xs sm:text-sm py-2.5 px-3 rounded-xl shadow active:scale-95 transition">
+          🚀 Start Test (Auto Full Screen)
+        </button>
+        <button onclick="openLeaderboardModal()" type="button" class="bg-amber-500 hover:bg-amber-600 text-slate-950 font-extrabold text-xs sm:text-sm py-2.5 px-3 rounded-xl shadow active:scale-95 transition shrink-0">
+          🏆 रैंक सूची
+        </button>
+      </div>
+    </section>
+
+    <!-- 2. LIVE TEST & SOLUTION WORKSPACE (100% LOCKED FIT, ZERO PAGE SCROLL) -->
+    <section id="examWorkspaceView" class="hidden flex-1 min-h-0 flex flex-col justify-between gap-1.5 overflow-hidden">
+
+      <!-- Top Bar: Section Tabs OR Solution Filter Bar (Fixed Height) -->
+      <div class="shrink-0 space-y-1">
+        <div class="grid grid-cols-4 gap-1 bg-white p-1 rounded-xl border border-slate-200 shadow-2xs">
+          <button id="secTab_ALL" onclick="switchSectionTab('ALL')" type="button" class="py-1 px-1 rounded-lg text-[10.5px] sm:text-xs font-extrabold truncate bg-blue-700 text-white">
+            सभी प्रश्न (90)
+          </button>
+          <button id="secTab_NAT" onclick="switchSectionTab('NAT')" type="button" class="py-1 px-1 rounded-lg text-[10.5px] sm:text-xs font-bold truncate bg-slate-100 text-slate-700">
+            राष्ट्रीय (33)
+          </button>
+          <button id="secTab_INT" onclick="switchSectionTab('INT')" type="button" class="py-1 px-1 rounded-lg text-[10.5px] sm:text-xs font-bold truncate bg-slate-100 text-slate-700">
+            अंतर्राष्ट्रीय (27)
+          </button>
+          <button id="secTab_SPORTS" onclick="switchSectionTab('SPORTS')" type="button" class="py-1 px-1 rounded-lg text-[10.5px] sm:text-xs font-bold truncate bg-slate-100 text-slate-700">
+            खेल/पुरस्कार (30)
+          </button>
+        </div>
+
+        <!-- Solution Filter Bar (Only in Solution Review Mode) -->
+        <div id="solutionFilterBar" class="hidden bg-slate-900 text-white px-2 py-1 rounded-xl flex items-center justify-between gap-1">
+          <div class="flex items-center gap-1 overflow-x-auto no-scrollbar">
+            <button id="solFilter_ALL" onclick="setSolutionFilter('ALL')" type="button" class="px-2 py-0.5 rounded text-[10px] font-extrabold bg-blue-600 text-white">
+              सभी (90)
+            </button>
+            <button id="solFilter_CORRECT" onclick="setSolutionFilter('CORRECT')" type="button" class="px-2 py-0.5 rounded text-[10px] font-bold bg-slate-800 text-emerald-400">
+              ✔ सही
+            </button>
+            <button id="solFilter_WRONG" onclick="setSolutionFilter('WRONG')" type="button" class="px-2 py-0.5 rounded text-[10px] font-bold bg-slate-800 text-rose-400">
+              ✖ गलत
+            </button>
+            <button id="solFilter_SKIPPED" onclick="setSolutionFilter('SKIPPED')" type="button" class="px-2 py-0.5 rounded text-[10px] font-bold bg-slate-800 text-slate-300">
+              ⚪ छोड़े गए
+            </button>
+          </div>
+          <button onclick="showScorecardView()" type="button" class="bg-amber-400 text-slate-950 font-extrabold text-[10px] px-2 py-0.5 rounded shrink-0">
+            📊 स्कोरकार्ड
+          </button>
+        </div>
+      </div>
+
+      <!-- Center Question + Options + Nav Card (Flex-1, Never Overflows Screen) -->
+      <div class="flex-1 min-h-0 bg-white rounded-xl shadow-xs border border-slate-200 p-2.5 flex flex-col justify-between overflow-hidden">
+
+        <!-- Top: Question Header + Question Text + Watermark -->
+        <div class="shrink-0 space-y-1.5">
+          <div class="flex items-center justify-between gap-1 border-b border-slate-100 pb-1">
+            <div class="flex items-center gap-1.5">
+              <span id="qNumberBadge" class="bg-blue-900 text-white text-[11px] sm:text-xs font-extrabold px-2 py-0.5 rounded-md">
+                प्रश्न 1 / 90
+              </span>
+              <span id="qTopicBadge" class="bg-blue-50 text-blue-800 border border-blue-200 text-[10px] font-bold px-1.5 py-0.5 rounded">
+                करंट अफेयर्स
+              </span>
+              <span id="qReviewBadge" class="hidden bg-purple-100 text-purple-800 text-[10px] font-bold px-1.5 py-0.5 rounded">
+                ★ समीक्षा
+              </span>
+            </div>
+            <div class="flex items-center gap-1 text-[10px] font-extrabold">
+              <span class="bg-emerald-50 text-emerald-700 border border-emerald-200 px-1.5 py-0.5 rounded">+2.00</span>
+              <span class="bg-rose-50 text-rose-700 border border-rose-200 px-1.5 py-0.5 rounded">-0.20</span>
+            </div>
+          </div>
+
+          <div id="questionTextContainer" class="text-[13px] sm:text-[15px] font-bold text-slate-900 leading-snug">
+            प्रश्न लोड हो रहा है...
+          </div>
+
+          <!-- Compact Watermark Strip -->
+          <div class="bg-slate-50 border border-slate-200/80 rounded px-2 py-0.5 flex items-center justify-between text-[9.5px] font-bold text-slate-600">
+            <span>GYANVERSE | <strong class="text-blue-800">@GYANVERSET</strong></span>
+            <a href="https://t.me/GYANVERSET" target="_blank" rel="noopener noreferrer" class="text-blue-700 hover:underline">t.me/GYANVERSET</a>
+          </div>
+        </div>
+
+        <!-- Middle: 4 Options (Compact & Evenly Spaced) -->
+        <div id="optionsContainer" class="my-auto py-1 space-y-1.5 shrink-0"></div>
+
+        <!-- Solution Explanation Box (Only in Solution Mode, internally scrollable if long) -->
+        <div id="solutionExplanationBox" class="hidden shrink-0 max-h-24 overflow-y-auto thin-scroll bg-emerald-50 border border-emerald-400 rounded-lg p-2 text-[11px] sm:text-xs space-y-0.5 mb-1">
+          <div class="flex items-center justify-between font-extrabold text-emerald-950">
+            <span>💡 व्याख्या (@GYANVERSET)</span>
+            <span id="solUserStatusBadge" class="text-[10px] px-1.5 py-0.2 rounded"></span>
+          </div>
+          <div id="solutionExplanationText" class="text-slate-800 leading-snug whitespace-pre-line font-medium"></div>
+        </div>
+
+        <!-- Bottom: 4 Navigation Buttons + Question Jump Dropdown -->
+        <div class="shrink-0 pt-1.5 border-t border-slate-100 space-y-1.5">
+          <div class="grid grid-cols-4 gap-1.5">
+            <button id="navPrevBtn" onclick="navigateQuestion(-1)" type="button" class="bg-slate-200 active:bg-slate-300 text-slate-800 font-extrabold text-[11px] sm:text-xs py-2 rounded-lg flex items-center justify-center">
+              ⬅ Prev
+            </button>
+            <button id="navClearBtn" onclick="clearCurrentResponse()" type="button" class="bg-rose-50 active:bg-rose-100 text-rose-700 border border-rose-200 font-extrabold text-[11px] sm:text-xs py-2 rounded-lg flex items-center justify-center">
+              ✖ Clear
+            </button>
+            <button id="navReviewBtn" onclick="toggleMarkForReview()" type="button" class="bg-purple-50 active:bg-purple-100 text-purple-800 border border-purple-200 font-extrabold text-[11px] sm:text-xs py-2 rounded-lg flex items-center justify-center">
+              ★ Review
+            </button>
+            <button id="navNextBtn" onclick="saveAndNextQuestion()" type="button" class="bg-blue-700 active:bg-blue-800 text-white font-extrabold text-[11px] sm:text-xs py-2 rounded-lg shadow-xs flex items-center justify-center">
+              Next &amp; Save ➡
+            </button>
+          </div>
+
+          <!-- Compact Single-Row Question Dropdown & Counters -->
+          <div class="bg-slate-50 border border-slate-200 rounded-lg px-2 py-1 flex items-center justify-between gap-1.5">
+            <select id="questionJumpDropdown" onchange="jumpToQuestionFromDropdown(this.value)" class="flex-1 min-w-0 bg-white border border-slate-300 rounded px-2 py-1 text-[11px] font-bold text-slate-800 outline-none">
+            </select>
+            <div class="flex items-center gap-1 shrink-0 text-[10px] font-extrabold">
+              <span class="bg-emerald-100 text-emerald-800 px-1.5 py-0.5 rounded">◉ <strong id="liveAnsweredCount">0</strong></span>
+              <span class="bg-purple-100 text-purple-800 px-1.5 py-0.5 rounded">★ <strong id="liveReviewCount">0</strong></span>
+              <span class="bg-slate-200 text-slate-700 px-1.5 py-0.5 rounded">⚪ <strong id="liveSkippedCount">90</strong></span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- 3. DETAILED SCORECARD VIEW (FITS CLEANLY ON MOBILE) -->
+    <section id="scorecardView" class="hidden flex-1 min-h-0 flex flex-col justify-between bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden">
+      <!-- Top Scorecard Header -->
+      <div class="bg-gradient-to-r from-slate-900 via-indigo-950 to-blue-950 text-white p-3 shrink-0 flex items-center justify-between gap-2">
+        <div class="min-w-0">
+          <span class="bg-amber-400 text-slate-950 text-[9.5px] font-extrabold px-2 py-0.5 rounded uppercase">
+            GYANVERSE Result
+          </span>
+          <h2 class="text-sm sm:text-base font-extrabold truncate mt-0.5" id="scorecardCandidateName">परीक्षार्थी परिणाम</h2>
+          <p class="text-[10.5px] text-blue-200 truncate" id="scorecardCandidateMeta">जिला: पटना</p>
+        </div>
+        <div class="bg-amber-400/20 border border-amber-400 rounded-xl px-2.5 py-1.5 text-center shrink-0">
+          <div class="text-xs sm:text-sm font-extrabold text-amber-300" id="scorecardRankBadge">🏆 रैंक #1 / 521</div>
+          <div class="text-[9.5px] text-emerald-300 font-bold" id="scorecardPercentileBadge">परसेंटाइल: 99.8%</div>
+        </div>
+      </div>
+
+      <!-- Middle Stats & Section Table -->
+      <div class="flex-1 min-h-0 p-2.5 flex flex-col justify-evenly overflow-y-auto thin-scroll space-y-2">
+        <div class="grid grid-cols-3 sm:grid-cols-6 gap-1.5 text-center">
+          <div class="bg-blue-50 border border-blue-200 rounded-lg p-1.5">
+            <div class="text-[9.5px] text-blue-800 font-bold">प्राप्तांक</div>
+            <div class="text-xs sm:text-sm font-extrabold text-blue-950" id="scTotalScore">0.00 / 180</div>
+          </div>
+          <div class="bg-emerald-50 border border-emerald-200 rounded-lg p-1.5">
+            <div class="text-[9.5px] text-emerald-800 font-bold">सही (+2)</div>
+            <div class="text-xs sm:text-sm font-extrabold text-emerald-700" id="scCorrectCount">0</div>
+          </div>
+          <div class="bg-rose-50 border border-rose-200 rounded-lg p-1.5">
+            <div class="text-[9.5px] text-rose-800 font-bold">गलत (-0.2)</div>
+            <div class="text-xs sm:text-sm font-extrabold text-rose-700" id="scWrongCount">0</div>
+          </div>
+          <div class="bg-slate-100 border border-slate-200 rounded-lg p-1.5">
+            <div class="text-[9.5px] text-slate-700 font-bold">छोड़े गए</div>
+            <div class="text-xs sm:text-sm font-extrabold text-slate-800" id="scSkippedCount">0</div>
+          </div>
+          <div class="bg-purple-50 border border-purple-200 rounded-lg p-1.5">
+            <div class="text-[9.5px] text-purple-800 font-bold">सटीकता</div>
+            <div class="text-xs sm:text-sm font-extrabold text-purple-900" id="scAccuracy">0%</div>
+          </div>
+          <div class="bg-amber-50 border border-amber-200 rounded-lg p-1.5">
+            <div class="text-[9.5px] text-amber-900 font-bold">समय</div>
+            <div class="text-xs sm:text-sm font-extrabold text-amber-900" id="scTimeTaken">00:00</div>
+          </div>
+        </div>
+
+        <div class="border border-slate-200 rounded-lg overflow-hidden">
+          <table class="w-full text-left border-collapse text-[11px]">
+            <thead>
+              <tr class="bg-slate-100 text-slate-700 border-b border-slate-200">
+                <th class="py-1.5 px-2 font-bold">खंड</th>
+                <th class="py-1.5 px-1.5 text-center font-bold">कुल</th>
+                <th class="py-1.5 px-1.5 text-center font-bold text-emerald-700">सही</th>
+                <th class="py-1.5 px-1.5 text-center font-bold text-rose-700">गलत</th>
+                <th class="py-1.5 px-1.5 text-center font-bold text-slate-500">शेष</th>
+                <th class="py-1.5 px-2 text-right font-bold text-blue-900">अंक</th>
+              </tr>
+            </thead>
+            <tbody id="scSectionTableBody" class="divide-y divide-slate-200 font-medium"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Bottom Scorecard Buttons -->
+      <div class="p-2.5 bg-slate-50 border-t border-slate-200 grid grid-cols-3 gap-1.5 shrink-0">
+        <button id="checkSolutionsBtn" onclick="enterSolutionReviewMode('ALL')" type="button" class="col-span-3 sm:col-span-1 bg-emerald-600 hover:bg-emerald-700 text-white font-extrabold text-xs py-2.5 px-3 rounded-xl shadow active:scale-95">
+          🔍 Check Solutions (उत्तर व व्याख्या देखें)
+        </button>
+        <button onclick="openLeaderboardModal()" type="button" class="col-span-2 sm:col-span-1 bg-amber-500 hover:bg-amber-600 text-slate-950 font-extrabold text-xs py-2 px-3 rounded-xl active:scale-95">
+          🏆 रैंक सूची देखें
+        </button>
+        <button onclick="returnToEntryGate()" type="button" class="col-span-1 bg-slate-200 hover:bg-slate-300 text-slate-800 font-bold text-xs py-2 px-2 rounded-xl active:scale-95">
+          🏠 होम
+        </button>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- 4. SUBMIT CONFIRMATION MODAL -->
+  <div id="submitConfirmModal" class="fixed inset-0 z-50 hidden bg-slate-950/75 backdrop-blur-xs flex items-center justify-center p-3">
+    <div class="bg-white rounded-2xl max-w-md w-full shadow-2xl border border-slate-200 overflow-hidden">
+      <div class="bg-slate-900 text-white px-4 py-2.5 flex items-center justify-between">
+        <h3 class="text-xs sm:text-sm font-extrabold">📝 टेस्ट सबमिट पुष्टिकरण</h3>
+        <button onclick="closeSubmitConfirmModal()" type="button" class="text-slate-400 hover:text-white text-lg font-bold leading-none">&times;</button>
+      </div>
+      <div class="p-3.5 space-y-3 text-xs">
+        <div class="grid grid-cols-4 gap-1.5 text-center">
+          <div class="bg-slate-100 p-2 rounded-lg">
+            <div class="text-[10px] text-slate-600 font-bold">कुल प्रश्न</div>
+            <div class="text-sm font-extrabold text-slate-900" id="modTotalQ">90</div>
+          </div>
+          <div class="bg-emerald-50 p-2 rounded-lg">
+            <div class="text-[10px] text-emerald-700 font-bold">हल किए</div>
+            <div class="text-sm font-extrabold text-emerald-700" id="modAttemptedQ">0</div>
+          </div>
+          <div class="bg-rose-50 p-2 rounded-lg">
+            <div class="text-[10px] text-rose-700 font-bold">छोड़े गए</div>
+            <div class="text-sm font-extrabold text-rose-700" id="modSkippedQ">90</div>
+          </div>
+          <div class="bg-purple-50 p-2 rounded-lg">
+            <div class="text-[10px] text-purple-700 font-bold">समीक्षा</div>
+            <div class="text-sm font-extrabold text-purple-700" id="modReviewQ">0</div>
+          </div>
+        </div>
+
+        <div class="border border-slate-200 rounded-lg overflow-hidden">
+          <table class="w-full text-[11px] text-left">
+            <thead class="bg-slate-100 text-slate-700">
+              <tr>
+                <th class="py-1.5 px-2 font-bold">खंड</th>
+                <th class="py-1.5 px-1.5 text-center font-bold">कुल</th>
+                <th class="py-1.5 px-1.5 text-center font-bold text-emerald-700">हल</th>
+                <th class="py-1.5 px-1.5 text-center font-bold text-slate-600">शेष</th>
+              </tr>
+            </thead>
+            <tbody id="modSectionSummaryBody" class="divide-y divide-slate-200 font-medium"></tbody>
+          </table>
+        </div>
+
+        <div class="flex items-center gap-2">
+          <button onclick="closeSubmitConfirmModal()" type="button" class="flex-1 bg-slate-200 text-slate-800 font-extrabold py-2.5 rounded-xl">
+            ⬅ वापस जाएं
+          </button>
+          <button onclick="finalizeAndSubmitTest()" type="button" class="flex-1 bg-rose-600 text-white font-extrabold py-2.5 rounded-xl shadow">
+            ✅ फाइनल सबमिट
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 5. ALL-BIHAR LIVE RANKING MODAL (CLEAN, NO TECHNICAL/URL CLUTTER) -->
+  <div id="leaderboardModal" class="fixed inset-0 z-50 hidden bg-slate-950/75 backdrop-blur-xs flex items-center justify-center p-2.5">
+    <div class="bg-white rounded-2xl max-w-2xl w-full max-h-[88dvh] flex flex-col shadow-2xl border border-slate-200 overflow-hidden">
+      <div class="bg-slate-900 text-white px-3.5 py-2.5 flex items-center justify-between shrink-0">
+        <div class="flex items-center gap-2">
+          <h3 class="text-xs sm:text-sm font-extrabold text-amber-300">🏆 ऑल-बिहार लाइव रैंक सूची</h3>
+          <a href="https://t.me/GYANVERSET" target="_blank" rel="noopener noreferrer" class="text-[10px] bg-sky-500/20 text-sky-300 px-2 py-0.5 rounded font-bold">@GYANVERSET</a>
+        </div>
+        <button onclick="closeLeaderboardModal()" type="button" class="text-slate-300 hover:text-white text-xl font-bold leading-none px-1.5">&times;</button>
+      </div>
+
+      <div class="p-2.5 bg-slate-50 border-b border-slate-200 space-y-2 shrink-0">
+        <div id="topThreePodiumContainer" class="grid grid-cols-3 gap-1.5 text-center"></div>
+
+        <div class="flex items-center gap-1.5">
+          <input id="lbSearchInput" oninput="renderLeaderboardList()" type="text" placeholder="🔍 नाम या @telegram खोजें..." class="flex-1 min-w-0 px-2.5 py-1.5 text-xs rounded-lg border border-slate-300 bg-white outline-none font-medium" />
+          <select id="lbDistrictFilter" onchange="renderLeaderboardList()" class="w-36 sm:w-44 px-2 py-1.5 text-xs rounded-lg border border-slate-300 bg-white outline-none font-bold text-slate-700">
+            <option value="ALL">📍 सभी जिले</option>
+          </select>
+          <button onclick="syncWithFirebaseCloud()" type="button" class="bg-blue-700 text-white text-xs font-extrabold px-2.5 py-1.5 rounded-lg shrink-0">
+            🔄
+          </button>
+        </div>
+      </div>
+
+      <div class="flex-1 min-h-0 overflow-y-auto thin-scroll p-2">
+        <div class="border border-slate-200 rounded-xl overflow-hidden">
+          <table class="w-full text-left border-collapse text-[11px]">
+            <thead>
+              <tr class="bg-slate-100 text-slate-700 border-b border-slate-200">
+                <th class="py-1.5 px-2 font-extrabold">रैंक</th>
+                <th class="py-1.5 px-2 font-extrabold">परीक्षार्थी</th>
+                <th class="py-1.5 px-1.5 font-extrabold">जिला</th>
+                <th class="py-1.5 px-2 text-right font-extrabold">अंक</th>
+                <th class="py-1.5 px-1.5 text-center font-extrabold">सही/गलत</th>
+                <th class="py-1.5 px-2 text-center font-extrabold">हल</th>
+              </tr>
+            </thead>
+            <tbody id="leaderboardTableBody" class="divide-y divide-slate-200 font-medium"></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 6. SECRET ADMIN SECURITY MODAL (100% HIDDEN UNTIL 4 CLICKS ON GV LOGO) -->
+  <div id="adminSecurityModal" class="fixed inset-0 z-50 hidden bg-slate-950/80 backdrop-blur-xs flex items-center justify-center p-3">
+    <div class="bg-white rounded-2xl max-w-sm w-full shadow-2xl border border-slate-200 overflow-hidden">
+      <div class="bg-slate-900 text-white px-4 py-2.5 flex items-center justify-between">
+        <h3 class="text-xs font-extrabold text-amber-400">🔐 एडमिन सुरक्षा पैनल</h3>
+        <button onclick="closeAdminSecurityModal()" type="button" class="text-slate-400 hover:text-white text-lg font-bold">&times;</button>
+      </div>
+      <div class="p-3.5 space-y-2.5 text-xs">
+        <div id="adminPinLockBox" class="space-y-2">
+          <input id="adminPinInput" type="password" placeholder="एडमिन पिन दर्ज करें..." class="w-full px-3 py-2 rounded-lg border border-slate-300 outline-none font-bold text-xs" />
+          <button onclick="verifyAdminPin()" type="button" class="w-full bg-blue-700 text-white font-extrabold py-2 rounded-lg">
+            🔓 अनलॉक करें
+          </button>
+        </div>
+        <div id="adminFirebaseConfigBox" class="hidden space-y-2.5">
+          <input id="adminFirebaseUrlInput" type="url" class="w-full px-2.5 py-1.5 rounded-lg border border-slate-300 font-mono text-[11px] bg-slate-50" />
+          <div class="flex items-center gap-2">
+            <button onclick="saveAdminFirebaseUrl()" type="button" class="flex-1 bg-emerald-600 text-white font-extrabold py-1.5 rounded-lg">
+              💾 सेव करें
+            </button>
+            <button onclick="resetDefaultFirebaseUrl()" type="button" class="bg-amber-500 text-slate-950 font-extrabold py-1.5 px-2.5 rounded-lg">
+              रीसेट
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const DEFAULT_FIREBASE_DB_URL = "https://gyanverse-cbt-b5f75-default-rtdb.firebaseio.com";
+    const TOTAL_QUESTIONS = 90;
+    const EXAM_DURATION_SECONDS = 60 * 60;
+
+    const STORAGE_KEYS = {
+      FIREBASE_URL: "gv_cbt_firebase_url_v1",
+      LIVE_STATE: "gv_cbt_live_progress_ca90_nov1",
+      SAVED_ATTEMPT: "gv_cbt_submitted_attempt_ca90_nov1",
+      LOCAL_LEADERBOARD: "gv_cbt_local_leaderboard_ca90_nov1"
+    };
+
+    const QUESTIONS = [{"id": 1, "section": "INT", "topic": "अंतर्राष्ट्रीय करंट अफेयर्स", "q": "अक्टूबर 2026 में ब्राजील के चौथी बार राष्ट्रपति पद का चुनाव किसने जीता है?", "options": ["जायर बोल्सोनारो", "फर्नांडो हदाद", "गेराल्डो अल्कमीन", "लुईस इनासियो लूला दा सिल्वा"], "ans": 3, "exp": "लुईस इनासियो लूला दा सिल्वा ने अक्टूबर 2026 में चौथी बार ब्राजील के राष्ट्रपति पद का चुनाव जीता है। ब्राजील की राजधानी ब्रासीलिया है और यहाँ की मुद्रा ब्राजीलियाई रियल है।"}, {"id": 2, "section": "NAT", "topic": "राष्ट्रीय करंट अफेयर्स", "q": "अक्टूबर 2026 में भारत का पहला 100% जैविक केंद्र शासित प्रदेश किसे घोषित किया गया है?", "options": ["लक्षद्वीप", "लद्दाख", "अंडमान और निकोबार द्वीप समूह", "पुडुचेरी"], "ans": 1, "exp": "लद्दाख को देश का पहला 100% जैविक केंद्र शासित प्रदेश घोषित किया गया है। ध्यातव्य है कि भारत का पहला 100% जैविक राज्य सिक्किम है।"}, {"id": 3, "section": "SPORTS", "topic": "खेल करंट अफेयर्स", "q": "5वें एशियन पैरा गेम्स 2026 की पदक तालिका में भारत कुल 114 पदकों के साथ किस स्थान पर रहा?", "options": ["दूसरे स्थान पर", "तीसरे स्थान पर", "चौथे स्थान पर", "पांचवें स्थान पर"], "ans": 2, "exp": "5वें एशियन पैरा गेम्स 2026 (आइची-नागोया, जापान) में भारत ने 30 स्वर्ण, 35 रजत और 49 कांस्य सहित कुल 114 पदक जीतकर चौथा स्थान प्राप्त किया। शीर्ष 4 देश: 1. चीन, 2. जापान, 3. उज्बेकिस्तान, 4. भारत। शुभंकर: उजुमिन। उद्घाटन ध्वजवाहक: प्रमोद भगत और सिमरन शर्मा; समापन ध्वजवाहक: निषाद कुमार और मोना अग्रवाल।"}, {"id": 4, "section": "INT", "topic": "अंतर्राष्ट्रीय करंट अफेयर्स", "q": "अक्टूबर 2026 में किस देश ने सरकारी धोखाधड़ी और भ्रष्टाचार को रोकने के लिए 'व्हिसलब्लोअर इंसेंटिव प्रोग्राम' की शुरुआत की है?", "options": ["ब्रिटेन", "फ्रांस", "अमेरिका", "कनाडा"], "ans": 2, "exp": "संयुक्त राज्य अमेरिका ने सरकारी धोखाधड़ी और भ्रष्टाचार पर अंकुश लगाने के लिए 'व्हिसलब्लोअर इंसेंटिव प्रोग्राम' शुरू किया है।"}, {"id": 5, "section": "SPORTS", "topic": "पुरस्कार एवं सम्मान", "q": "प्रथम 'भारत रत्न डॉ. भूपेन हजारिका राष्ट्रीय पुरस्कार 2026' से किसे सम्मानित किया जाएगा?", "options": ["आशा भोसले", "उषा मंगेशकर", "श्रेया घोषाल", "कविता कृष्णमूर्ति"], "ans": 1, "exp": "पहली बार स्थापित किए गए 'भारत रत्न डॉ. भूपेन हजारिका राष्ट्रीय पुरस्कार 2026' से सुप्रसिद्ध गायिका उषा मंगेशकर को सम्मानित किया जा रहा है।"}, {"id": 6, "section": "INT", "topic": "सूचकांक एवं रिपोर्ट", "q": "फ्रेजर इंस्टीट्यूट द्वारा जारी 'विश्व की आर्थिक स्वतंत्रता 2026' की वार्षिक रिपोर्ट में भारत को कौन सा स्थान मिला है?", "options": ["84वां", "86वां", "88वां", "91वां"], "ans": 2, "exp": "कनाडा के फ्रेजर इंस्टीट्यूट द्वारा जारी 'विश्व की आर्थिक स्वतंत्रता 2026' रिपोर्ट में भारत को 88वां स्थान मिला है। शीर्ष 3 देश: 1. हांगकांग, 2. स्विट्जरलैंड, 3. सिंगापुर। अमेरिका 5वें और ब्रिटेन 10वें स्थान पर रहा।"}, {"id": 7, "section": "SPORTS", "topic": "खेल पुरस्कार", "q": "स्पेन के सबसे बड़े खेल सम्मान 'प्रिंसेस ऑफ ऑस्टुरियस स्पोर्ट्स अवार्ड 2026' से सम्मानित होने वाले पहले व्यक्तिगत फुटबॉलर कौन बन गए हैं?", "options": ["क्रिस्टियानो रोनाल्डो", "लियोनेल मेसी", "किलियन एम्बाप्पे", "लुका मोड्रिच"], "ans": 1, "exp": "अर्जेंटीना के दिग्गज फुटबॉलर लियोनेल मेसी स्पेन के सर्वोच्च खेल सम्मान 'प्रिंसेस ऑफ ऑस्टुरियस स्पोर्ट्स अवार्ड 2026' से सम्मानित होने वाले पहले व्यक्तिगत फुटबॉलर बने हैं। वे क्रिस्टियानो रोनाल्डो के बाद दुनिया के दूसरे अरबपति फुटबॉलर भी बने हैं।"}, {"id": 8, "section": "NAT", "topic": "राष्ट्रीय करंट अफेयर्स", "q": "अक्टूबर 2026 में प्रधानमंत्री नरेंद्र मोदी ने भारतीय रिजर्व बैंक (आरबीआई) के 'डेटा सेंटर और साइबर सुरक्षा प्रशिक्षण संस्थान' का उद्घाटन कहाँ किया है?", "options": ["हैदराबाद, तेलंगाना", "बेंगलुरु, कर्नाटक", "पुणे, महाराष्ट्र", "भुवनेश्वर, ओडिशा"], "ans": 3, "exp": "प्रधानमंत्री नरेंद्र मोदी ने ओडिशा की राजधानी भुवनेश्वर में भारतीय रिजर्व बैंक (आरबीआई) के अत्याधुनिक डेटा सेंटर और साइबर सुरक्षा प्रशिक्षण संस्थान का उद्घाटन किया है।"}, {"id": 9, "section": "NAT", "topic": "राज्य करंट अफेयर्स", "q": "अक्टूबर 2026 में केरल राज्य सरकार ने किस नाम से भारत की पहली सहकारी क्षेत्र की एयरलाइन शुरू करने के प्रस्ताव को मंजूरी दी है?", "options": ["को-केरलम", "मालाबार विंग्स", "केरल एक्सप्रेस", "सह्याद्री एयर"], "ans": 0, "exp": "केरल सरकार ने 'को-केरलम' नाम से भारत की पहली सहकारी क्षेत्र की एयरलाइन शुरू करने के प्रस्ताव को मंजूरी दी है।"}, {"id": 10, "section": "SPORTS", "topic": "खेल पुरस्कार", "q": "वर्ष 2026 का पुरुष बैलन डी'ओर पुरस्कार किसने जीता है?", "options": ["एर्लिंग हालैंड", "हैरी केन", "विनिसियस जूनियर", "जूड बेलिंगहैम"], "ans": 1, "exp": "बैलन डी'ओर 2026 विजेता: पुरुष बैलन डी'ओर - हैरी केन; महिला बैलन डी'ओर - एलेक्सिया पुटेलस; कोपा ट्रॉफी (युवा खिलाड़ी) - लामिन यामाल (पुरुष) व विक्की लोपेज (महिला); पुरुष कोच - लुईस डे ला फुएंते; पुरुष गोलकीपर - उनाई सिमोन।"}, {"id": 11, "section": "INT", "topic": "सैन्य अभ्यास", "q": "27 अक्टूबर से 6 नवंबर 2026 तक संयुक्त विशेष बल अभ्यास 'गरुड़ शक्ति' का 11वां संस्करण भारत और किस देश के बीच आयोजित किया गया?", "options": ["मलेशिया", "इंडोनेशिया", "थाईलैंड", "सिंगापुर"], "ans": 1, "exp": "गरुड़ शक्ति 2026 (11वां संस्करण) भारत और इंडोनेशिया के विशेष बलों के बीच बानुवांगी, इंडोनेशिया में 27 अक्टूबर से 6 नवंबर 2026 तक आयोजित किया गया। इसमें भारतीय सेना की पैराशूट रेजिमेंट ने भाग लिया।"}, {"id": 12, "section": "INT", "topic": "नियुक्तियां", "q": "अक्टूबर 2026 में भारत-तिब्बत सीमा पुलिस (आईटीबीपी) के महानिदेशक का अतिरिक्त प्रभार किसे सौंपा गया है?", "options": ["अनीश दयाल सिंह", "राहुल रसगोत्रा", "संजय सिंघल", "दलजीत सिंह चौधरी"], "ans": 2, "exp": "संजय सिंघल को भारत-तिब्बत सीमा पुलिस (आईटीबीपी) के महानिदेशक का अतिरिक्त प्रभार सौंपा गया है।"}, {"id": 13, "section": "INT", "topic": "सूचकांक एवं रिपोर्ट", "q": "वर्ल्ड जस्टिस प्रोजेक्ट के 'विधि का शासन सूचकांक 2026' में 143 देशों की सूची में भारत किस स्थान पर रहा?", "options": ["79वें", "82वें", "85वें", "88वें"], "ans": 3, "exp": "वर्ल्ड जस्टिस प्रोजेक्ट (वाशिंगटन डी.सी.) द्वारा जारी 'विधि का शासन सूचकांक 2026' में 143 देशों में भारत 88वें स्थान पर रहा। शीर्ष 3 देश: 1. डेनमार्क, 2. नॉर्वे, 3. फिनलैंड। दक्षिण एशिया में भारत नेपाल और श्रीलंका के बाद तीसरे स्थान पर रहा। 143वें स्थान पर वेनेजुएला रहा।"}, {"id": 14, "section": "SPORTS", "topic": "पर्यावरण एवं राज्य", "q": "अक्टूबर 2026 में किस राज्य ने 'ऑरेंज ओकलीफ' को अपनी पहली राजकीय तितली के रूप में मंजूरी दी है?", "options": ["झारखंड", "छत्तीसगढ़", "ओडिशा", "मध्य प्रदेश"], "ans": 1, "exp": "छत्तीसगढ़ राज्य सरकार ने 'ऑरेंज ओकलीफ' (डेड लीफ बटरफ्लाई) को अपनी पहली राजकीय तितली घोषित किया है।"}, {"id": 15, "section": "INT", "topic": "नियुक्तियां", "q": "भारतीय वाणिज्य एवं उद्योग महासंघ (फिक्की) के नए अध्यक्ष के रूप में किसे नामित किया गया है?", "options": ["अनीश शाह", "हर्षवर्धन नेवतिया", "विजय शंकर", "संजीव पुरी"], "ans": 2, "exp": "विजय शंकर को भारतीय वाणिज्य एवं उद्योग महासंघ (फिक्की) का नया अध्यक्ष नामित किया गया है।"}, {"id": 16, "section": "INT", "topic": "सैन्य अभ्यास", "q": "26 से 29 अक्टूबर 2026 तक द्विपक्षीय नौसेना अभ्यास 'आईएन-आरओकेएन' का दूसरा संस्करण भारत और किस देश के बीच आयोजित हुआ?", "options": ["जापान", "ऑस्ट्रेलिया", "वियतनाम", "दक्षिण कोरिया"], "ans": 3, "exp": "भारतीय नौसेना और दक्षिण कोरियाई नौसेना के बीच द्विपक्षीय नौसेना अभ्यास 'आईएन-आरओकेएन' का दूसरा संस्करण बुसान नौसेना बेस, दक्षिण कोरिया में आयोजित हुआ। इसमें भारत के आईएनएस सह्याद्री और दक्षिण कोरिया के मुनमु द ग्रेट पोत ने भाग लिया।"}, {"id": 17, "section": "NAT", "topic": "विज्ञान एवं प्रौद्योगिकी", "q": "भारत का पहला 'फिजिकल एआई स्कूल' किस संस्थान में स्थापित किया जाएगा?", "options": ["आईआईटी बॉम्बे", "आईआईटी दिल्ली", "आईआईटी खड़गपुर", "आईआईटी कानपुर"], "ans": 2, "exp": "देश का पहला 'फिजिकल एआई स्कूल' आईआईटी खड़गपुर में स्थापित किया जा रहा है।"}, {"id": 18, "section": "NAT", "topic": "बिहार विशेष करंट अफेयर्स", "q": "वर्ष 2026 की विश्व के 100 सर्वश्रेष्ठ संग्रहालयों की सूची में बिहार के 'पटना संग्रहालय' को कौन सा स्थान मिला है?", "options": ["5वां", "7वां", "9वां", "12वां"], "ans": 2, "exp": "बिहार का 'पटना संग्रहालय' विश्व के 100 सर्वश्रेष्ठ संग्रहालयों की सूची में शामिल होने वाला भारत का इकलौता संग्रहालय बना है और इसे 9वां स्थान प्राप्त हुआ है। प्रथम स्थान पर मेक्सिको का म्यूजियो नेशनल डी एंथ्रोपोलोजिया रहा।"}, {"id": 19, "section": "SPORTS", "topic": "पुरस्कार एवं सम्मान", "q": "प्रतिष्ठित 'ऑस्कर क्लेन मेडल 2026' से सम्मानित होने वाले पहले भारतीय भौतिक वैज्ञानिक कौन बने हैं?", "options": ["प्रो. जयंत नार्लीकर", "प्रो. अशोक सेन", "प्रो. दीपक धर", "प्रो. सी.एन.आर. राव"], "ans": 1, "exp": "प्रसिद्ध स्ट्रिंग थ्योरी वैज्ञानिक प्रोफेसर अशोक सेन 'ऑस्कर क्लेन मेडल 2026' से सम्मानित होने वाले पहले भारतीय भौतिक विज्ञानी बने हैं।"}, {"id": 20, "section": "NAT", "topic": "राष्ट्रीय करंट अफेयर्स", "q": "अक्टूबर 2026 में नेशनल ज्योग्राफिक की 'बेस्ट ऑफ द वर्ल्ड 2027' की सूची में किस भारतीय शहर को शामिल किया गया है?", "options": ["उदयपुर", "जयपुर", "वाराणसी", "कोच्चि"], "ans": 1, "exp": "राजस्थान की राजधानी 'पिंक सिटी' जयपुर को नेशनल ज्योग्राफिक की 'बेस्ट ऑफ द वर्ल्ड 2027' सूची में शामिल किया गया है।"}, {"id": 21, "section": "NAT", "topic": "राज्य करंट अफेयर्स", "q": "अक्टूबर 2026 में किस राज्य सरकार ने वर्षा जल संचयन जागरूकता अभियान के लिए 'थुली' नामक शुभंकर और एक समर्पित लोगो लॉन्च किया है?", "options": ["तमिलनाडु", "केरल", "कर्नाटक", "आंध्र प्रदेश"], "ans": 0, "exp": "तमिलनाडु सरकार ने वर्षा जल संचयन के प्रति जागरूकता बढ़ाने हेतु 'थुली' (अर्थात पानी की बूंद) शुभंकर लॉन्च किया है।"}, {"id": 22, "section": "INT", "topic": "अंतर्राष्ट्रीय करंट अफेयर्स", "q": "अक्टूबर 2026 में नाटो सपोर्ट एंड प्रोक्योरमेंट एजेंसी की 'सिक्योरिटी कोऑपरेशन सपोर्ट पार्टनरशिप' में शामिल होने वाला 7वां सदस्य देश कौन बना है?", "options": ["पोलैंड", "फिनलैंड", "यूक्रेन", "जॉर्जिया"], "ans": 2, "exp": "यूक्रेन इस साझेदारी में शामिल होने वाला 7वां सदस्य और पहला व एकमात्र गैर-नाटो देश बना है। अन्य 6 सदस्य बेल्जियम, लक्जमबर्ग, नॉर्वे, स्वीडन, यूनाइटेड किंगडम और नाटो मुख्यालय हैं।"}, {"id": 23, "section": "NAT", "topic": "राज्य योजनाएं", "q": "अक्टूबर 2026 में किस राज्य सरकार ने सूखे से निपटने और पशुओं के लिए चारे की कमी को दूर करने के लिए 'मिशन मुरघास' की शुरुआत की है?", "options": ["गुजरात", "राजस्थान", "महाराष्ट्र", "मध्य प्रदेश"], "ans": 2, "exp": "महाराष्ट्र सरकार ने पशुओं के लिए पौष्टिक हरे चारे (साइलेज/मुरघास) की उपलब्धता सुनिश्चित करने हेतु 'मिशन मुरघास' शुरू किया है।"}, {"id": 24, "section": "INT", "topic": "अंतर्राष्ट्रीय करंट अफेयर्स", "q": "अक्टूबर 2026 में किस देश ने 'बी रेडी' नामक 3-वर्षीय राष्ट्रीय आपातकालीन तैयारी पहल की शुरुआत की है?", "options": ["ऑस्ट्रेलिया", "जापान", "जर्मनी", "ब्रिटेन"], "ans": 3, "exp": "ब्रिटेन ने राष्ट्रीय आपातकालीन तैयारी पहल 'बी रेडी' की शुरुआत की है।"}, {"id": 25, "section": "NAT", "topic": "कला एवं संस्कृति", "q": "अक्टूबर 2026 में राष्ट्रपति श्रीमती द्रौपदी मुर्मू ने किस राज्य में बस्तर दशहरा पर्व के अवसर पर आयोजित पारंपरिक 'मुरिया दरबार' कार्यक्रम में भाग लिया?", "options": ["ओडिशा", "झारखंड", "मध्य प्रदेश", "छत्तीसगढ़"], "ans": 3, "exp": "राष्ट्रपति द्रौपदी मुर्मू ने छत्तीसगढ़ के जगदलपुर (बस्तर) में ऐतिहासिक बस्तर दशहरा पर्व के 'मुरिया दरबार' में हिस्सा लिया।"}, {"id": 26, "section": "SPORTS", "topic": "पुरस्कार एवं सम्मान", "q": "किस भारतीय फोटोग्राफर ने प्रतिष्ठित 'वाइल्डलाइफ फोटोग्राफर ऑफ द ईयर 2026' प्रतियोगिता में 'बिहेवियर: इनवर्टेब्रेट्स' श्रेणी का पुरस्कार जीता है?", "options": ["सीताराम दिनकर राउल", "विहान तल्या विकास", "ऐश्वर्या श्रीधर", "धृतिमान मुखर्जी"], "ans": 0, "exp": "महाराष्ट्र के सिंधुदुर्ग निवासी सीताराम दिनकर राउल ने अपनी तस्वीर 'शिफ्टिंग सैंड' (थार मरुस्थल में पीले रंग के बिच्छू द्वारा रेत में बिल खोदने का दृश्य) के लिए यह पुरस्कार जीता है।"}, {"id": 27, "section": "INT", "topic": "पर्यावरण एवं भूगोल", "q": "अक्टूबर 2026 में बंगाल की खाड़ी में आए चक्रवाती तूफान 'अर्णब' का नामकरण किस देश द्वारा किया गया?", "options": ["भारत", "बांग्लादेश", "म्यांमार", "श्रीलंका"], "ans": 1, "exp": "बंगाल की खाड़ी में आए चक्रवाती तूफान 'अर्णब' का नामकरण बांग्लादेश द्वारा किया गया है।"}, {"id": 28, "section": "INT", "topic": "अंतर्राष्ट्रीय पर्यावरण", "q": "अक्टूबर 2026 में संयुक्त राष्ट्र के 'लॉस एंड डैमेज फंड' से वैश्विक जलवायु वित्तीय सहायता प्राप्त करने वाला दुनिया का पहला देश कौन बना है?", "options": ["मालदीव", "बांग्लादेश", "नेपाल", "भूटान"], "ans": 2, "exp": "नेपाल संयुक्त राष्ट्र के 'लॉस एंड डैमेज फंड' से जलवायु वित्तीय सहायता प्राप्त करने वाला विश्व का पहला देश बन गया है।"}, {"id": 29, "section": "INT", "topic": "कला एवं संस्कृति", "q": "अक्टूबर 2026 में भारत ने किस देश के साथ मिलकर प्राचीन पांडुलिपियों के डिजिटलीकरण और बौद्ध विरासत के संरक्षण के लिए 'संहिता' परियोजना की शुरुआत की है?", "options": ["थाईलैंड", "श्रीलंका", "कंबोडिया", "वियतनाम"], "ans": 1, "exp": "भारत ने श्रीलंका के साथ मिलकर प्राचीन पांडुलिपियों के डिजिटलीकरण और बौद्ध विरासत के संरक्षण हेतु 'संहिता' परियोजना शुरू की है। कोलंबो का ऐतिहासिक 'गंगारामया मंदिर' इससे जुड़ने वाला पहला संस्थान बना है।"}, {"id": 30, "section": "SPORTS", "topic": "अंतर्राष्ट्रीय पुरस्कार", "q": "अक्टूबर 2026 में यूरोपीय संसद ने विचार की स्वतंत्रता के लिए किस संगठन को प्रतिष्ठित 'सखारोव पुरस्कार 2026' से सम्मानित करने की घोषणा की है?", "options": ["विश्व स्वास्थ्य संगठन", "अंतर्राष्ट्रीय आपराधिक न्यायालय", "एमनेस्टी इंटरनेशनल", "डॉक्टर्स विदाउट बॉर्डर्स"], "ans": 1, "exp": "यूरोपीय संसद द्वारा वैचारिक स्वतंत्रता के लिए दिया जाने वाला सर्वोच्च सम्मान 'सखारोव पुरस्कार 2026' अंतर्राष्ट्रीय आपराधिक न्यायालय (आईसीसी) को दिया गया है।"}, {"id": 31, "section": "SPORTS", "topic": "पुरस्कार एवं सम्मान", "q": "किस देश ने भारतीय पायलट कैप्टन स्मिथ मच्छार को अपने शीर्ष नागरिक बहादुरी पुरस्कार 'फर्स्ट क्लास ऑर्डर ऑफ जायद द्वितीय' से सम्मानित किया है?", "options": ["सऊदी अरब", "कतर", "संयुक्त अरब अमीरात", "ओमान"], "ans": 2, "exp": "संयुक्त अरब अमीरात (यूएई) के राष्ट्रपति शेख मोहम्मद बिन जायद अल नाहयान द्वारा भारतीय पायलट कैप्टन स्मिथ मच्छार और फ्लाईदुबई के क्रू सदस्यों को 'फर्स्ट क्लास ऑर्डर ऑफ जायद द्वितीय' से सम्मानित किया गया।"}, {"id": 32, "section": "NAT", "topic": "राजव्यवस्था एवं विधेयक", "q": "अक्टूबर 2026 में राष्ट्रपति द्रौपदी मुर्मू ने किस राज्य के 'फ्रंटियर टेरिटोरियल अथॉरिटी बिल 2026' को मंजूरी दी है?", "options": ["मणिपुर", "नागालैंड", "मिजोरम", "असम"], "ans": 1, "exp": "राष्ट्रपति द्रौपदी मुर्मू ने नागालैंड के 'फ्रंटियर टेरिटोरियल अथॉरिटी बिल 2026' को मंजूरी प्रदान की है।"}, {"id": 33, "section": "SPORTS", "topic": "विज्ञान एवं पर्यावरण", "q": "अक्टूबर 2026 में वैज्ञानिकों ने कोलंबिया में विशाल वाटर लिली की नई प्रजाति की खोज की, इस प्रजाति का वैज्ञानिक नाम क्या रखा गया है?", "options": ["विक्टोरिया अमेजोनिका", "विक्टोरिया बोलिवियाना", "विक्टोरिया क्रूजियाना", "विक्टोरिया कोलंबियाना"], "ans": 3, "exp": "कोलंबिया में खोजी गई विशाल वाटर लिली की नई प्रजाति का नाम 'विक्टोरिया कोलंबियाना' रखा गया है।"}, {"id": 34, "section": "NAT", "topic": "राज्य करंट अफेयर्स", "q": "अक्टूबर 2026 में किस राज्य का आपदा प्रतिवादन बल (एसडीआरएफ) गुणवत्ता प्रबंधन प्रणाली के लिए आईएसओ 9001:2015 प्रमाणन प्राप्त करने वाला भारत का पहला आपदा प्रतिक्रिया बल बन गया है?", "options": ["हिमाचल प्रदेश", "उत्तराखंड", "सिक्किम", "ओडिशा"], "ans": 1, "exp": "उत्तराखंड का राज्य आपदा प्रतिवादन बल (एसडीआरएफ) आईएसओ 9001:2015 प्रमाणन प्राप्त करने वाला देश का पहला आपदा प्रतिक्रिया बल बना है।"}, {"id": 35, "section": "INT", "topic": "शिखर सम्मेलन", "q": "28 से 29 अक्टूबर 2026 तक फिलीपींस के सेबू में आयोजित 13वीं आसियान रक्षा मंत्रियों की बैठक-प्लस में भारतीय प्रतिनिधिमंडल का नेतृत्व किसने किया?", "options": ["एस. जयशंकर", "राजनाथ सिंह", "अजीत डोभाल", "जनरल अनिल चौहान"], "ans": 1, "exp": "फिलीपींस के लापू-लापू सिटी, सेबू में आयोजित 13वीं आसियान रक्षा मंत्रियों की बैठक-प्लस में भारतीय प्रतिनिधिमंडल का नेतृत्व रक्षा मंत्री राजनाथ सिंह ने किया। इसकी थीम 'एक साथ अपने भविष्य को दिशा देना' थी।"}, {"id": 36, "section": "SPORTS", "topic": "खेल पुरस्कार", "q": "वर्ष 2026 के बैलन डी'ओर समारोह में मानवीय व सामाजिक कार्यों के लिए प्रतिष्ठित 'सुकरात पुरस्कार' से किसे सम्मानित किया गया?", "options": ["मार्कस रैशफोर्ड", "सादियो माने", "बुकायो साका", "जेनिफर हर्मोसो"], "ans": 2, "exp": "इंग्लैंड के फुटबॉलर बुकायो साका को बैलन डी'ओर 2026 समारोह में मानवीय व सामाजिक कार्यों के लिए 'सुकरात पुरस्कार' से सम्मानित किया गया।"}, {"id": 37, "section": "NAT", "topic": "केंद्रीय योजनाएं", "q": "अक्टूबर 2026 में केंद्रीय मंत्रिमंडल द्वारा स्वीकृत 'प्रधानमंत्री विकसित ग्राम स्वराज योजना' का कुल वित्तीय परिव्यय (बजट) कितना है?", "options": ["₹6,450.25 करोड़", "₹7,395.55 करोड़", "₹8,210.00 करोड़", "₹9,500.50 करोड़"], "ans": 1, "exp": "पंचायतों को सशक्त बनाने के लिए ₹7,395.55 करोड़ (केंद्र का हिस्सा ₹4,869.48 करोड़ और राज्यों का हिस्सा ₹2,526.07 करोड़) की 'प्रधानमंत्री विकसित ग्राम स्वराज योजना' को वर्ष 2026-27 से 2030-31 तक के लिए मंजूरी दी गई है।"}, {"id": 38, "section": "NAT", "topic": "शिखर सम्मेलन", "q": "20 से 22 नवंबर 2026 तक भारत पहली बार 'शंघाई सहयोग संगठन (एससीओ) सिविलाइजेशनल डायलॉग फोरम' की मेजबानी कहाँ करेगा?", "options": ["वाराणसी", "नई दिल्ली", "गांधीनगर", "मुंबई"], "ans": 1, "exp": "भारत 20 से 22 नवंबर 2026 तक नई दिल्ली में पहली बार 'शंघाई सहयोग संगठन सिविलाइजेशनल डायलॉग फोरम' की मेजबानी करेगा। एससीओ की स्थापना 15 जून 2001 को हुई थी और इसका मुख्यालय बीजिंग में है।"}, {"id": 39, "section": "INT", "topic": "स्वास्थ्य एवं विज्ञान", "q": "अक्टूबर 2026 में विश्व स्वास्थ्य संगठन ने किस देश में इबोला वैक्सीन 'इबो-जेड' के क्लीनिकल ट्रायल की शुरुआत की है?", "options": ["युगांडा", "डेमोक्रेटिक रिपब्लिक ऑफ कांगो", "केन्या", "नाइजीरिया"], "ans": 1, "exp": "विश्व स्वास्थ्य संगठन (डब्ल्यूएचओ) ने डेमोक्रेटिक रिपब्लिक ऑफ कांगो में इबोला वैक्सीन 'इबो-जेड' के क्लीनिकल ट्रायल की शुरुआत की है।"}, {"id": 40, "section": "INT", "topic": "रक्षा एवं सुरक्षा", "q": "27 अक्टूबर 2026 को गोवा शिपयार्ड लिमिटेड द्वारा भारतीय नौसेना के लिए लॉन्च किए गए चौथे नेक्स्ट जनरेशन ऑफशोर पेट्रोल वेसल का क्या नाम रखा गया है?", "options": ["आईएनएस समर्थ", "आईएनएस सृष्टि", "आईएनएस संकल्प", "आईएनएस शौर्य"], "ans": 1, "exp": "गोवा शिपयार्ड लिमिटेड द्वारा भारतीय नौसेना के लिए लॉन्च किए गए चौथे नेक्स्ट जनरेशन ऑफशोर पेट्रोल वेसल का नाम 'आईएनएस सृष्टि' रखा गया है।"}, {"id": 41, "section": "NAT", "topic": "राष्ट्रीय करंट अफेयर्स", "q": "अक्टूबर 2026 में केंद्रीय मंत्री किरेन रिजिजू ने 'तागी राजा युद्ध स्मारक पार्क' का उद्घाटन किस राज्य में किया?", "options": ["सिक्किम", "असम", "अरुणाचल प्रदेश", "मेघालय"], "ans": 2, "exp": "केंद्रीय मंत्री किरेन रिजिजू ने अरुणाचल प्रदेश में महान स्वतंत्रता सेनानी तागी राजा की स्मृति में 'तागी राजा युद्ध स्मारक पार्क' का उद्घाटन किया।"}, {"id": 42, "section": "NAT", "topic": "केंद्रीय योजनाएं", "q": "अक्टूबर 2026 में केंद्रीय मंत्रिमंडल ने किस अवधि के लिए 'खेलो इंडिया खेल सामग्री विनिर्माण योजना' के लिए ₹10,856.67 करोड़ के वित्तीय परिव्यय को मंजूरी दी है?", "options": ["2026-27 से 2030-31 तक", "2026-27 से 2033-34 तक", "2026-27 से 2035-36 तक", "2026-27 से 2031-32 तक"], "ans": 1, "exp": "28 अक्टूबर 2026 को केंद्रीय मंत्रिमंडल ने भारत को खेल सामग्री के विनिर्माण, नवाचार और निर्यात का वैश्विक केंद्र बनाने हेतु 2026-27 से 2033-34 तक की अवधि के लिए ₹10,856.67 करोड़ के बजट को मंजूरी दी है।"}, {"id": 43, "section": "SPORTS", "topic": "खेल करंट अफेयर्स", "q": "महिला प्रीमियर लीग (डब्ल्यूपीएल) में शामिल होने वाली सबसे कम उम्र (महज 15 वर्ष) की खिलाड़ी कौन बन गई हैं?", "options": ["जी. कमलिनी", "शबनम शकील", "उमा काश्वी", "पार्श्वी चोपड़ा"], "ans": 2, "exp": "15 वर्षीय उमा काश्वी महिला प्रीमियर लीग में शामिल होने वाली सबसे कम उम्र की खिलाड़ी बन गई हैं।"}, {"id": 44, "section": "NAT", "topic": "बिहार विशेष करंट अफेयर्स", "q": "किस राज्य के वाल्मीकि टाइगर रिजर्व के गोनौली वन क्षेत्र में भारत का 9वां गिद्ध संरक्षण और प्रजनन केंद्र स्थापित किया जा रहा है?", "options": ["उत्तर प्रदेश", "बिहार", "पश्चिम बंगाल", "मध्य प्रदेश"], "ans": 1, "exp": "बिहार के पश्चिमी चंपारण स्थित वाल्मीकि टाइगर रिजर्व के गोनौली वन क्षेत्र में देश का 9वां गिद्ध संरक्षण एवं प्रजनन केंद्र स्थापित किया जा रहा है।"}, {"id": 45, "section": "SPORTS", "topic": "महत्वपूर्ण दिवस", "q": "विश्व पोलियो दिवस 2026 कब मनाया गया?", "options": ["22 अक्टूबर", "23 अक्टूबर", "24 अक्टूबर", "25 अक्टूबर"], "ans": 2, "exp": "पोलियो की पहली सफल वैक्सीन खोजने वाले अमेरिकी वैज्ञानिक डॉ. जोनास साल्क के जन्मदिन के उपलक्ष्य में हर वर्ष 24 अक्टूबर को विश्व पोलियो दिवस मनाया जाता है। वर्ष 2026 की थीम 'एक साथ हम पोलियो को खत्म करेंगे' है।"}, {"id": 46, "section": "INT", "topic": "अंतरिक्ष विज्ञान", "q": "अक्टूबर 2026 में नासा के पर्सिवरेंस रोवर ने मंगल ग्रह पर कुल कितनी दूरी तय करके एक नया विश्व रिकॉर्ड बनाया है?", "options": ["38.45 किलोमीटर", "42.10 किलोमीटर", "45.22 किलोमीटर", "50.15 किलोमीटर"], "ans": 2, "exp": "नासा के पर्सिवरेंस रोवर ने मंगल ग्रह पर 45.22 किलोमीटर की दूरी तय कर किसी अन्य ग्रह पर रोवर द्वारा सर्वाधिक दूरी तय करने का नया विश्व रिकॉर्ड बनाया है।"}, {"id": 47, "section": "NAT", "topic": "शिक्षा एवं कौशल", "q": "अक्टूबर 2026 में किस संस्थान ने युवा स्नातकों के लिए 'उद्योग बायोटेक फिनिशिंग स्कूल' लॉन्च किया है?", "options": ["आईआईटी मद्रास", "आईआईएससी बेंगलुरु", "आईआईटी दिल्ली", "आईआईटी गुवाहाटी"], "ans": 0, "exp": "आईआईटी मद्रास ने युवा स्नातकों को उद्योग-तैयार कौशल प्रदान करने हेतु 'उद्योग बायोटेक फिनिशिंग स्कूल' लॉन्च किया है।"}, {"id": 48, "section": "SPORTS", "topic": "खेल करंट अफेयर्स", "q": "अक्टूबर 2026 में 16वीं हॉकी इंडिया सीनियर पुरुष राष्ट्रीय चैंपियनशिप 2026 का खिताब किस टीम ने जीता?", "options": ["हॉकी पंजाब", "हॉकी ओडिशा", "हॉकी हरियाणा", "हॉकी मध्य प्रदेश"], "ans": 2, "exp": "उत्तर प्रदेश के झांसी स्थित मेजर ध्यानचंद स्पोर्ट्स स्टेडियम में आयोजित 16वीं हॉकी इंडिया सीनियर पुरुष राष्ट्रीय चैंपियनशिप 2026 का खिताब हॉकी हरियाणा ने हॉकी मध्य प्रदेश को हराकर जीता। उत्तर प्रदेश तीसरे स्थान पर रहा।"}, {"id": 49, "section": "SPORTS", "topic": "अंतर्राष्ट्रीय पुरस्कार", "q": "किस प्रसिद्ध हॉलीवुड अभिनेता को अमेरिकन फिल्म इंस्टीट्यूट के 52वें लाइफ अचीवमेंट अवार्ड से सम्मानित किया गया है?", "options": ["ब्रैड पिट", "लियोनार्डो डिकैप्रियो", "टॉम क्रूज", "रॉबर्ट डाउनी जूनियर"], "ans": 2, "exp": "हॉलीवुड अभिनेता टॉम क्रूज को अमेरिकन फिल्म इंस्टीट्यूट के 52वें लाइफ अचीवमेंट अवार्ड से सम्मानित किया गया है।"}, {"id": 50, "section": "INT", "topic": "रक्षा एवं सुरक्षा", "q": "23 अक्टूबर 2026 को नई दिल्ली में आर्मी कमांडर्स कॉन्फ्रेंस के दौरान भारतीय सेना का नया 'आर्मी लैंड वॉरफेयर डॉक्ट्रिन 2026' किसने जारी किया?", "options": ["प्रधानमंत्री नरेंद्र मोदी", "रक्षा मंत्री राजनाथ सिंह", "जनरल उपेंद्र द्विवेदी", "जनरल अनिल चौहान"], "ans": 1, "exp": "रक्षा मंत्री राजनाथ सिंह ने नई दिल्ली में आयोजित आर्मी कमांडर्स कॉन्फ्रेंस में भारतीय सेना का नया 'आर्मी लैंड वॉरफेयर डॉक्ट्रिन 2026' जारी किया।"}, {"id": 51, "section": "SPORTS", "topic": "पुरस्कार एवं सम्मान", "q": "अक्टूबर 2026 में अमेरिका के आयोवा में आयोजित 'ग्लोबल यूथ इंस्टीट्यूट' में खाद्य सुरक्षा पर शोध के लिए किस भारतीय छात्रा ने 500 अमेरिकी डॉलर का पुरस्कार जीता?", "options": ["अमीना नाजरीन ए.एस.", "गीतांजलि राव", "अनुष्का नायक", "प्रिया दर्शनी"], "ans": 0, "exp": "भारतीय छात्रा अमीना नाजरीन ए.एस. ने अमेरिका के आयोवा में आयोजित ग्लोबल यूथ इंस्टीट्यूट में खाद्य सुरक्षा पर शोध के लिए यह पुरस्कार जीता।"}, {"id": 52, "section": "SPORTS", "topic": "पर्यावरण एवं जैव विविधता", "q": "अक्टूबर 2026 में भारत में पहली बार 'युथालिया मलकाना' नामक तितली की प्रजाति कहाँ दर्ज की गई है?", "options": ["केरल", "अंडमान और निकोबार", "अरुणाचल प्रदेश", "नागालैंड"], "ans": 2, "exp": "अरुणाचल प्रदेश में भारत में पहली बार 'युथालिया मलकाना' नामक तितली की प्रजाति रिकॉर्ड की गई है।"}, {"id": 53, "section": "SPORTS", "topic": "खेल करंट अफेयर्स", "q": "किस भारतीय पैरा निशानेबाज ने एशियाई पैरा खेल 2026 में महिलाओं की 50 मीटर राइफल 3 पोजीशन एसएच1 स्पर्धा में विश्व रिकॉर्ड बनाकर स्वर्ण पदक जीता?", "options": ["अवनि लेखरा", "मोना अग्रवाल", "रुबीना फ्रांसिस", "पलक कोहली"], "ans": 1, "exp": "भारतीय पैरा शूटर मोना अग्रवाल ने एशियन पैरा गेम्स 2026 में महिलाओं की 50 मीटर राइफल 3 पोजीशन एसएच1 स्पर्धा में विश्व रिकॉर्ड के साथ स्वर्ण पदक जीता।"}, {"id": 54, "section": "NAT", "topic": "राज्य करंट अफेयर्स", "q": "अक्टूबर 2026 में किस राज्य सरकार ने 40 कॉलेजों में 'युद्ध नशयां विरुद्ध' अभियान के तहत 'संगत मानसिक स्वास्थ्य क्लब' की शुरुआत की है?", "options": ["हरियाणा", "पंजाब", "हिमाचल प्रदेश", "राजस्थान"], "ans": 1, "exp": "पंजाब सरकार ने युवाओं को नशे से दूर रखने और मानसिक स्वास्थ्य को सुदृढ़ करने हेतु 40 कॉलेजों में 'संगत मानसिक स्वास्थ्य क्लब' शुरू किया है।"}, {"id": 55, "section": "NAT", "topic": "विज्ञान एवं पर्यावरण", "q": "अक्टूबर 2026 में केंद्रीय मंत्री डॉ. जितेंद्र सिंह ने दुनिया की अपनी तरह की पहली वायु प्रदूषण प्रयोगशाला (एकीकृत वायुमंडलीय रसायन विज्ञान और एरोसोल विषाक्तता विश्लेषण प्रयोगशाला) का उद्घाटन कहाँ किया?", "options": ["पुणे", "नई दिल्ली", "हैदराबाद", "अहमदाबाद"], "ans": 1, "exp": "भारतीय उष्णकटिबंधीय मौसम विज्ञान संस्थान की दिल्ली शाखा (नई दिल्ली) में दुनिया की पहली 'एकीकृत वायुमंडलीय रसायन विज्ञान और एरोसोल विषाक्तता विश्लेषण प्रयोगशाला' का उद्घाटन किया गया।"}, {"id": 56, "section": "SPORTS", "topic": "खेल करंट अफेयर्स", "q": "इंग्लैंड के बर्मिंघम में आयोजित 'डब्ल्यूबीएल वर्ल्ड बिलियर्ड्स चैंपियनशिप 2026' में किस भारतीय क्यू खिलाड़ी ने अपने करियर का 29वां विश्व खिताब जीता है?", "options": ["सौरव कोठारी", "गीत सेठी", "पंकज आडवाणी", "ध्रुव सितवाला"], "ans": 2, "exp": "दिग्गज भारतीय खिलाड़ी पंकज आडवाणी ने फाइनल में इंग्लैंड के रॉबर्ट हॉल को हराकर अपना 29वां विश्व खिताब (और 21वां वर्ल्ड बिलियर्ड्स खिताब) जीता। महिला वर्ग में भारत की श्रुति एल. ने खिताब जीता।"}, {"id": 57, "section": "NAT", "topic": "विज्ञान एवं प्रौद्योगिकी", "q": "अक्टूबर 2026 में सेंटर फॉर डेवलपमेंट ऑफ टेलीमैटिक्स (सी-डॉट) ने दूरसंचार नवाचार को बढ़ावा देने के लिए किस संस्थान में अपना छठा 'सेंटर ऑफ एक्सीलेंस' स्थापित किया?", "options": ["आईआईटी रुड़की", "आईआईटी बीएचयू (वाराणसी)", "आईआईटी गुवाहाटी", "आईआईटी हैदराबाद"], "ans": 1, "exp": "सी-डॉट ने देश में दूरसंचार नवाचार को बढ़ावा देने हेतु वाराणसी के आईआईटी-बीएचयू में अपना छठा सेंटर ऑफ एक्सीलेंस स्थापित किया है।"}, {"id": 58, "section": "SPORTS", "topic": "खेल करंट अफेयर्स", "q": "अक्टूबर 2026 में किस भारतीय मूल की खिलाड़ी ने सबसे कम उम्र (11 वर्ष, 7 महीने और 16 दिन) में 'महिला इंटरनेशनल मास्टर' बनने का गौरव प्राप्त किया है?", "options": ["बोधना शिवनंदन", "दिव्या देशमुख", "वंतिका अग्रवाल", "सविता श्री"], "ans": 0, "exp": "भारतीय मूल की शतरंज खिलाड़ी बोधना शिवनंदन ने मात्र 11 वर्ष, 7 महीने और 16 दिन की आयु में सबसे कम उम्र की महिला इंटरनेशनल मास्टर बनने का रिकॉर्ड बनाया है।"}, {"id": 59, "section": "INT", "topic": "अंतरिक्ष विज्ञान", "q": "अक्टूबर 2026 में इसरो के अध्यक्ष वी. नारायणन ने किस वर्ष तक भारत में चार सक्रिय कार्यशील लॉन्चपैड स्थापित करने की घोषणा की है?", "options": ["2027", "2028", "वर्ष 2029", "2030"], "ans": 2, "exp": "इसरो अध्यक्ष वी. नारायणन ने वर्ष 2029 तक भारत में 4 सक्रिय लॉन्चपैड स्थापित करने की घोषणा की है। वर्तमान में श्रीहरिकोटा में 2 सक्रिय लॉन्चपैड हैं तथा तमिलनाडु के कुलशेखरपट्टिनम में नया परिसर तैयार किया जा रहा है।"}, {"id": 60, "section": "SPORTS", "topic": "पर्यावरण एवं वनस्पति", "q": "अक्टूबर 2026 में केरल के मुन्नार क्षेत्र में स्थित मीसापुलिमाला की ढलानों पर 12 वर्षों बाद नीलकुरिंजी के फूल खिले, इन फूलों का वानस्पतिक नाम क्या है?", "options": ["रोडोडेंड्रोन अर्बोरियम", "स्ट्रोबिलैंथस कुंथियाना", "ब्यूटिया मोनोस्पर्मा", "नेलम्बो न्यूसिफेरा"], "ans": 1, "exp": "12 वर्षों में एक बार खिलने वाले नीलकुरिंजी फूलों का वानस्पतिक नाम 'स्ट्रोबिलैंथस कुंथियाना' है।"}, {"id": 61, "section": "INT", "topic": "अंतर्राष्ट्रीय संगठन", "q": "अक्टूबर 2026 में किस देश ने भारत के नेतृत्व वाली साझेदारी 'कोएलिशन फॉर डिजास्टर रेजिलिएंट इन्फ्रास्ट्रक्चर' (सीडीआरआई) में शामिल होने की घोषणा की है?", "options": ["स्पेन", "पोलैंड", "इटली", "नॉर्वे"], "ans": 1, "exp": "पोलैंड ने भारत के नेतृत्व वाले आपदा रोधी अवसंरचना गठबंधन (सीडीआरआई) में शामिल होने की घोषणा की है।"}, {"id": 62, "section": "NAT", "topic": "राष्ट्रीय सम्मेलन", "q": "24 और 25 अक्टूबर 2026 को 'दूसरा राष्ट्रीय शहरी सम्मेलन 2026' कहाँ सफलतापूर्वक संपन्न हुआ?", "options": ["इंदौर", "सूरत", "भुवनेश्वर, ओडिशा", "लखनऊ"], "ans": 2, "exp": "दूसरा राष्ट्रीय शहरी सम्मेलन 2026 भुवनेश्वर, ओडिशा में केंद्रीय राज्य मंत्री तोखन साहू और मुख्यमंत्री मोहन चरण माझी की उपस्थिति में संपन्न हुआ। इसकी थीम 'अर्बन राइजिंग: शहरी प्रणालियों, समाधानों और वितरण प्रणाली पर पुनर्विचार' थी।"}, {"id": 63, "section": "SPORTS", "topic": "पर्यावरण एवं वनस्पति", "q": "अक्टूबर 2026 में भारतीय वनस्पति सर्वेक्षण के वैज्ञानिकों ने पौधों की दो नई प्रजातियों 'ओफियोरिजा शियोडिएंसिस' और 'ओफियोरिजा पेई' की खोज किस राज्य में की है?", "options": ["मेघालय", "अरुणाचल प्रदेश", "मिजोरम", "उत्तराखंड"], "ans": 1, "exp": "भारतीय वनस्पति सर्वेक्षण के वैज्ञानिकों ने अरुणाचल प्रदेश में पौधों की दो नई प्रजातियों 'ओफियोरिजा शियोडिएंसिस' और 'ओफियोरिजा पेई' की खोज की है।"}, {"id": 64, "section": "INT", "topic": "चर्चित निधन", "q": "अक्टूबर 2026 में किस देश के पूर्व प्रधानमंत्री यासुओ फुकुदा का 90 वर्ष की आयु में निधन हो गया?", "options": ["दक्षिण कोरिया", "जापान", "सिंगापुर", "ताइवान"], "ans": 1, "exp": "जापान के पूर्व प्रधानमंत्री यासुओ फुकुदा का 90 वर्ष की आयु में निधन हो गया।"}, {"id": 65, "section": "SPORTS", "topic": "खेल करंट अफेयर्स", "q": "टेनिस टूर्नामेंट 'एटीपी 250 अल्माटी ओपन 2026' में पुरुष युगल का खिताब किसने जीता है?", "options": ["रोहन बोपन्ना और मैथ्यू एबडेन", "युकी भांबरी और रयान सेगरमैन", "साकेत मायनेनी और रामकुमार रामनाथन", "श्रीराम बालाजी और गुइडो आंद्रेओजी"], "ans": 1, "exp": "भारत के युकी भांबरी और अमेरिकी खिलाड़ी रयान सेगरमैन की जोड़ी ने एटीपी 250 अल्माटी ओपन 2026 में पुरुष युगल खिताब जीता है।"}, {"id": 66, "section": "SPORTS", "topic": "खेल आयोजन", "q": "वर्ष 2029 में कौन सा शहर भारत में पहली बार 'सीनियर विश्व भारोत्तोलन चैंपियनशिप' की मेजबानी करेगा?", "options": ["नई दिल्ली", "अहमदाबाद", "भुवनेश्वर", "गुवाहाटी"], "ans": 1, "exp": "अहमदाबाद वर्ष 2029 में भारत में पहली बार सीनियर विश्व भारोत्तोलन चैंपियनशिप की मेजबानी करेगा। अहमदाबाद वर्ष 2030 में कॉमनवेल्थ गेम्स की भी मेजबानी करेगा।"}, {"id": 67, "section": "NAT", "topic": "पर्यावरण एवं भूगोल", "q": "अक्टूबर 2026 में किस राज्य की वीरनम झील में 18 ग्रेटर फ्लेमिंगो देखे गए, जो सामान्यतः तटीय आर्द्रभूमियों में पाए जाते हैं?", "options": ["आंध्र प्रदेश", "तमिलनाडु", "कर्नाटक", "ओडिशा"], "ans": 1, "exp": "तमिलनाडु के कुड्डालोर जिले में स्थित वीरनम झील में 18 ग्रेटर फ्लेमिंगो देखे गए हैं।"}, {"id": 68, "section": "NAT", "topic": "अर्थव्यवस्था एवं योजनाएं", "q": "अक्टूबर 2026 में वाणिज्य विभाग ने निर्यातकों के लिए 'रिलीफ' योजना के घटक-2 की समय-सीमा कब तक के लिए बढ़ा दी है?", "options": ["31 दिसंबर 2026", "31 मार्च 2027", "30 जून 2027", "31 मार्च 2028"], "ans": 1, "exp": "वाणिज्य विभाग ने पश्चिम एशिया में भू-राजनीतिक तनाव और समुद्री लॉजिस्टिक्स बाधाओं के बीच भारतीय निर्यातकों को राहत देने हेतु 'रिलीफ' योजना के घटक-2 की समय-सीमा 31 मार्च 2027 तक बढ़ा दी है।"}, {"id": 69, "section": "SPORTS", "topic": "पर्यावरण पुरस्कार", "q": "वर्ष 2026 में प्रतिष्ठित 'अर्थशॉट प्राइज' का आयोजन भारत में पहली बार किस शहर में किया जा रहा है?", "options": ["नई दिल्ली", "बेंगलुरु", "मुंबई", "हैदराबाद"], "ans": 2, "exp": "पर्यावरण संरक्षण के प्रतिष्ठित 'अर्थशॉट प्राइज 2026' का आयोजन भारत में पहली बार मुंबई में किया जा रहा है।"}, {"id": 70, "section": "INT", "topic": "रक्षा एवं प्रौद्योगिकी", "q": "किस भारतीय रक्षा संस्थान ने लंबी दूरी की समुद्री खोज और समुद्र में फंसे लोगों की जान बचाने के लिए 'उन्नत ट्विन ड्रोन सिस्टम' का अनावरण किया है?", "options": ["डीआरडीओ", "भारतीय तटरक्षक बल", "राष्ट्रीय रक्षा अकादमी", "भारतीय नौसेना अकादमी"], "ans": 3, "exp": "भारतीय नौसेना अकादमी ने समुद्र में खोज एवं बचाव अभियानों के लिए 'उन्नत ट्विन ड्रोन सिस्टम' का अनावरण किया है।"}, {"id": 71, "section": "SPORTS", "topic": "महत्वपूर्ण सप्ताह", "q": "सतर्कता जागरूकता सप्ताह 2026 कब से कब तक मनाया जा रहा है?", "options": ["20 से 26 अक्टूबर", "24 से 30 अक्टूबर", "26 अक्टूबर से 1 नवंबर", "28 अक्टूबर से 3 नवंबर"], "ans": 2, "exp": "सतर्कता जागरूकता सप्ताह 2026 का आयोजन 26 अक्टूबर से 1 नवंबर तक किया गया। इसकी थीम 'सत्यनिष्ठा से समृद्धि' रही।"}, {"id": 72, "section": "SPORTS", "topic": "खेल करंट अफेयर्स", "q": "अक्टूबर 2026 में टी20 क्रिकेट में सर्वाधिक शतक लगाने वाले भारतीय खिलाड़ी कौन बन गए हैं?", "options": ["सूर्यकुमार यादव", "रोहित शर्मा", "अभिषेक शर्मा", "शुभमन गिल"], "ans": 2, "exp": "अभिषेक शर्मा अक्टूबर 2026 में टी20 क्रिकेट प्रारूप में सर्वाधिक शतक लगाने वाले भारतीय खिलाड़ी बन गए हैं।"}, {"id": 73, "section": "NAT", "topic": "खेल आयोजन", "q": "9वीं हीरो हॉकी पुरुष एशियाई चैंपियंस ट्रॉफी 2026 का आयोजन भारत के किन शहरों में किया जा रहा है?", "options": ["भुवनेश्वर और राउरकेला", "जालंधर और मोहाली (पंजाब)", "चेन्नई और मदुरै", "राजगीर और पटना"], "ans": 1, "exp": "9वीं हीरो हॉकी पुरुष एशियाई चैंपियंस ट्रॉफी 2026 का आयोजन पंजाब के जालंधर और मोहाली शहरों में किया जा रहा है।"}, {"id": 74, "section": "NAT", "topic": "राष्ट्रीय सूचकांक एवं योजनाएं", "q": "'मिशन कर्मयोगी' के प्रभावी क्रियान्वयन और सरकारी अधिकारियों/कर्मचारियों के क्षमता विकास में किस राज्य ने देश में प्रथम स्थान प्राप्त किया है?", "options": ["उत्तर प्रदेश", "राजस्थान", "मध्य प्रदेश", "गुजरात"], "ans": 0, "exp": "मिशन कर्मयोगी के प्रभावी क्रियान्वयन में शीर्ष 3 राज्य/केंद्र शासित प्रदेश हैं: 1. उत्तर प्रदेश, 2. राजस्थान, 3. जम्मू-कश्मीर।"}, {"id": 75, "section": "NAT", "topic": "ऐप एवं पोर्टल", "q": "अक्टूबर 2026 में केंद्रीय जल शक्ति मंत्री सी.आर. पाटिल ने सतत भूजल प्रबंधन के लिए कौन सा मोबाइल ऐप लॉन्च किया है?", "options": ["जलदूत ऐप", "पुनर्भरण ऐप", "भूजल संचय ऐप", "अमृत सरोवर ऐप"], "ans": 1, "exp": "केंद्रीय जल शक्ति मंत्री सी.आर. पाटिल ने सतत भूजल प्रबंधन के लिए 'पुनर्भरण ऐप' लॉन्च किया है।"}, {"id": 76, "section": "SPORTS", "topic": "पुस्तकें एवं लेखक (PDF प्र. 76)", "q": "'टाइमलेस इंडिया: प्रोटेक्शन एंड रिवाइवल ऑफ इंडियन कल्चरल आइडेंटिटी अंडर द लीडरशिप ऑफ प्राइम मिनिस्टर नरेंद्र मोदी' नामक पुस्तक के लेखक/संपादक कौन हैं?", "options": ["बिबेक देबरॉय", "तरुण विजय", "राम माधव", "हिंडोल सेनगुप्ता"], "ans": 1, "exp": "इस चर्चित पुस्तक के लेखक एवं संपादक पूर्व सांसद तथा वरिष्ठ लेखक तरुण विजय हैं।"}, {"id": 77, "section": "INT", "topic": "पर्यावरण रिपोर्ट (PDF प्र. 77)", "q": "अंतर्राष्ट्रीय प्रकृति संरक्षण संघ (आईयूसीएन) ने किस वर्ष तक दुनिया भर के लगभग 96% कोरल रीफ पारिस्थितिकी तंत्र पर संकट आने की चेतावनी दी है?", "options": ["2050", "2060", "वर्ष 2075", "2100"], "ans": 2, "exp": "अंतर्राष्ट्रीय प्रकृति संरक्षण संघ (आईयूसीएन) ने चेतावनी दी है कि जलवायु परिवर्तन के कारण वर्ष 2075 तक विश्व के लगभग 96% कोरल रीफ (प्रवाल भित्ति) तंत्र संकटग्रस्त हो सकते हैं।"}, {"id": 78, "section": "NAT", "topic": "राष्ट्रीय कार्यक्रम (PDF प्र. 78)", "q": "अक्टूबर 2026 में प्रधानमंत्री नरेंद्र मोदी ने अपने 'मन की बात' कार्यक्रम के 139वें एपिसोड में किस राज्य की 'नव सृजन' पहल की सराहना की?", "options": ["हरियाणा", "पंजाब", "गुजरात", "हिमाचल प्रदेश"], "ans": 1, "exp": "प्रधानमंत्री नरेंद्र मोदी ने 'मन की बात' के 139वें एपिसोड में पंजाब की 'नव सृजन' पहल की सराहना की।"}, {"id": 79, "section": "NAT", "topic": "ऊर्जा एवं परिवहन (PDF प्र. 79)", "q": "अक्टूबर 2026 में केंद्र सरकार ने केंद्रीय मोटर वाहन नियमों में संशोधन करते हुए फ्लेक्स-फ्यूल वाहनों में किस ईंधन के इस्तेमाल को मंजूरी दी है?", "options": ["50% मेथनॉल", "85% बायोडीजल", "100% एथेनॉल (ई100)", "20% हाइड्रोजन-सीएनजी"], "ans": 2, "exp": "केंद्र सरकार ने केंद्रीय मोटर वाहन नियमों में संशोधन कर फ्लेक्स-फ्यूल वाहनों में 100% एथेनॉल (ई100) ईंधन के उपयोग को मंजूरी दी है।"}, {"id": 80, "section": "NAT", "topic": "सम्मेलन एवं बैठक (PDF प्र. 80)", "q": "अक्टूबर 2026 में केंद्रीय पेट्रोलियम एवं प्राकृतिक गैस मंत्री हरदीप सिंह पुरी ने 29वीं ऊर्जा प्रौद्योगिकी बैठक का उद्घाटन कहाँ किया?", "options": ["बेंगलुरु", "गोवा", "मुंबई", "जयपुर"], "ans": 1, "exp": "केंद्रीय मंत्री हरदीप सिंह पुरी ने गोवा में 29वीं ऊर्जा प्रौद्योगिकी बैठक का उद्घाटन किया। इसकी थीम 'ऊर्जा नवाचार में तेजी लाना: अनुसंधान से व्यवसायीकरण तक' रही।"}, {"id": 81, "section": "NAT", "topic": "कला एवं संस्कृति (PDF प्र. 81)", "q": "अक्टूबर 2026 में ऐतिहासिक 'राजी पड़हा राजकीय मुड़मा जत्रा मेला' किस राज्य में मनाया गया?", "options": ["छत्तीसगढ़", "झारखंड", "ओडिशा", "बिहार"], "ans": 1, "exp": "ऐतिहासिक जनजातीय पर्व 'राजी पड़हा राजकीय मुड़मा जत्रा मेला' झारखंड के रांची (मांडर) में मनाया गया।"}, {"id": 82, "section": "SPORTS", "topic": "महत्वपूर्ण दिवस (PDF प्र. 82)", "q": "राष्ट्रीय एकता दिवस 2026 कब मनाया गया?", "options": ["29 अक्टूबर", "30 अक्टूबर", "31 अक्टूबर", "1 नवंबर"], "ans": 2, "exp": "लौह पुरुष सरदार वल्लभभाई पटेल की 151वीं जयंती के अवसर पर 31 अक्टूबर 2026 को 'राष्ट्रीय एकता दिवस' मनाया गया।"}, {"id": 83, "section": "INT", "topic": "अंतरिक्ष विज्ञान (PDF प्र. 83)", "q": "अक्टूबर 2026 में भारतीय मूल के किस नासा अंतरिक्ष यात्री ने अंतर्राष्ट्रीय अंतरिक्ष स्टेशन पर अपने करियर का चौथा स्पेसवॉक पूरा किया?", "options": ["राजा चारी", "अनिल मेनन", "सुनीता विलियम्स", "सिरीशा बंदला"], "ans": 1, "exp": "भारतीय मूल के नासा अंतरिक्ष यात्री अनिल मेनन ने अंतर्राष्ट्रीय अंतरिक्ष स्टेशन (आईएसएस) पर अपने करियर का चौथा स्पेसवॉक पूरा किया।"}, {"id": 84, "section": "INT", "topic": "अंतर्राष्ट्रीय पर्यावरण सम्मेलन (PDF प्र. 84)", "q": "अक्टूबर 2026 में केंद्रीय पर्यावरण मंत्री भूपेंद्र यादव ने कहाँ आयोजित जैव विविधता सम्मेलन 'सीबीडी कॉप-17' के दौरान भारत के चार प्रमुख प्रकाशन जारी किए?", "options": ["कैली, कोलंबिया", "बाकू, अजरबैजान", "येरेवन, आर्मेनिया", "नैरोबी, केन्या"], "ans": 2, "exp": "जैव विविधता पर सम्मेलन की 17वीं बैठक (सीबीडी कॉप-17) 19 से 30 अक्टूबर 2026 तक आर्मेनिया की राजधानी येरेवन में आयोजित हुई। इसकी थीम 'प्रकृति के लिए कार्रवाई करना' थी।"}, {"id": 85, "section": "NAT", "topic": "कला एवं संस्कृति (PDF प्र. 85)", "q": "108 दिनों के 'इंडिया बिएनाले 2026' कला, वास्तुकला और डिजाइन महोत्सव का आयोजन किस मंत्रालय द्वारा किया जा रहा है?", "options": ["पर्यटन मंत्रालय", "संस्कृति मंत्रालय", "शिक्षा मंत्रालय", "सूचना एवं प्रसारण मंत्रालय"], "ans": 1, "exp": "संस्कृति मंत्रालय द्वारा 'इंडिया बिएनाले 2026' का आयोजन किया जा रहा है, जिसमें दिल्ली के ऐतिहासिक जंतर-मंतर को प्रमुख आयोजन स्थलों में शामिल किया गया है। इसकी थीम 'तत् त्वम् असि' है।"}, {"id": 86, "section": "INT", "topic": "अंतरिक्ष विज्ञान (PDF प्र. 86)", "q": "नासा के किस स्पेसक्राफ्ट ने बृहस्पति के बो-शॉक क्षेत्र में जटिल प्लाज्मा तरंगों और कई परतों का पता लगाया है?", "options": ["वॉयजर-2", "यूरोपा क्लिपर", "जूनो", "कैसिनी"], "ans": 2, "exp": "नासा के 'जूनो' स्पेसक्राफ्ट ने बृहस्पति ग्रह के बो-शॉक क्षेत्र में जटिल प्लाज्मा तरंगों का पता लगाया है।"}, {"id": 87, "section": "INT", "topic": "रक्षा नियुक्तियां (PDF प्र. 87)", "q": "अक्टूबर 2026 में सैन्य मामलों के विभाग में अतिरिक्त सचिव का पद संभालने वाले भारतीय वायुसेना के पहले अधिकारी कौन बने हैं?", "options": ["एयर मार्शल अमर प्रीत सिंह", "एयर मार्शल आशुतोष दीक्षित", "एयर वाइस मार्शल विक्रम गौड़", "एयर वाइस मार्शल मनीष खन्ना"], "ans": 2, "exp": "एयर वाइस मार्शल विक्रम गौड़ सैन्य मामलों के विभाग में अतिरिक्त सचिव का पद संभालने वाले भारतीय वायुसेना के पहले अधिकारी बने हैं।"}, {"id": 88, "section": "NAT", "topic": "केंद्रीय योजनाएं (PDF प्र. 88)", "q": "अक्टूबर 2026 में केंद्रीय मंत्रिमंडल ने भारत में शिपिंग कंटेनरों के घरेलू निर्माण को बढ़ावा देने के लिए किस योजना को मंजूरी दी है?", "options": ["सागरमाला कंटेनर मिशन", "कंटेनर विनिर्माण प्रोत्साहन योजना", "आत्मनिर्भर पोर्ट लॉजिस्टिक्स योजना", "मैरीटाइम इंडिया कंटेनर स्कीम"], "ans": 1, "exp": "28 अक्टूबर 2026 को केंद्रीय मंत्रिमंडल ने वित्त वर्ष 2039-40 तक ₹10,000 करोड़ के आवंटन के साथ 'कंटेनर विनिर्माण प्रोत्साहन योजना' को मंजूरी दी है ताकि घरेलू क्षमता को लगभग 10 गुना बढ़ाया जा सके।"}, {"id": 89, "section": "NAT", "topic": "राष्ट्रीय शासन (PDF प्र. 89)", "q": "अक्टूबर 2026 में नई दिल्ली स्थित सेवा तीर्थ में आयोजित 54वीं 'प्रगति' बैठक की अध्यक्षता किसने की?", "options": ["अमित शाह", "निर्मला सीतारमण", "प्रधानमंत्री नरेंद्र मोदी", "पीयूष गोयल"], "ans": 2, "exp": "प्रधानमंत्री नरेंद्र मोदी ने नई दिल्ली में 54वीं 'प्रगति' (सक्रिय शासन और समयबद्ध कार्यान्वयन) बैठक की अध्यक्षता की।"}, {"id": 90, "section": "SPORTS", "topic": "खेल एवं निधन (PDF प्र. 90)", "q": "अक्टूबर 2026 में भारत के जाने-माने पैरा एथलीट नीरज यादव का निधन हो गया, उन्होंने एशियन पैरा गेम्स में कुल कितने स्वर्ण पदक जीते थे?", "options": ["1 स्वर्ण पदक", "2 स्वर्ण पदक", "3 स्वर्ण पदक", "4 स्वर्ण पदक"], "ans": 2, "exp": "प्रसिद्ध भारतीय पैरा एथलीट नीरज यादव ने एशियन पैरा गेम्स में कुल 3 स्वर्ण पदक जीते थे।"}];
+    const BIHAR_DISTRICTS = ["पटना", "गया", "मुजफ्फरपुर", "भागलपुर", "दरभंगा", "पूर्णिया", "सारण (छपरा)", "भोजपुर (आरा)", "बेगूसराय", "नालंदा (बिहार शरीफ)", "समस्तीपुर", "वैशाली (हाजीपुर)", "रोहतास (सासाराम)", "पूर्वी चंपारण (मोतिहारी)", "पश्चिमी चंपारण (बेतिया)", "सीवान", "गोपालगंज", "मधुबनी", "सीतामढ़ी", "सहरसा", "मधेपुरा", "सुपौल", "किशनगंज", "अररिया", "कटिहार", "मुंगेर", "लखीसराय", "शेखपुरा", "जमुई", "खगड़िया", "बांका", "नवादा", "औरंगाबाद", "जहानाबाद", "अरवल", "कैमूर (भभुआ)", "बक्सर", "शिवहर", "अन्य"];
+
+    const SEED_BIHAR_LEADERBOARD = [
+      { id: "seed_1", name: "आदित्य राज", district: "पटना", telegram: "@aditya_patna", score: 166.80, correct: 84, wrong: 6, skipped: 0, accuracy: "93.3%", timeTaken: "38:12", submittedAt: "01/11/2026" },
+      { id: "seed_2", name: "नेहा कुमारी", district: "गया", telegram: "@neha_gaya_si", score: 161.00, correct: 81, wrong: 5, skipped: 4, accuracy: "94.2%", timeTaken: "41:40", submittedAt: "01/11/2026" },
+      { id: "seed_3", name: "सौरभ कुमार झा", district: "दरभंगा", telegram: "@saurabh_dbg", score: 156.40, correct: 79, wrong: 8, skipped: 3, accuracy: "90.8%", timeTaken: "44:05", submittedAt: "01/11/2026" },
+      { id: "seed_4", name: "प्रशांत सिंह", district: "मुजफ्फरपुर", telegram: "@prashant_muz", score: 150.60, correct: 76, wrong: 7, skipped: 7, accuracy: "91.6%", timeTaken: "45:18", submittedAt: "01/11/2026" },
+      { id: "seed_5", name: "अंजलि सिन्हा", district: "भागलपुर", telegram: "@anjali_bgp", score: 146.20, correct: 74, wrong: 9, skipped: 7, accuracy: "89.2%", timeTaken: "42:50", submittedAt: "01/11/2026" },
+      { id: "seed_6", name: "विकास यादव", district: "रोहतास (सासाराम)", telegram: "@vikas_rohtas", score: 141.80, correct: 72, wrong: 11, skipped: 7, accuracy: "86.7%", timeTaken: "48:22", submittedAt: "01/11/2026" },
+      { id: "seed_7", name: "पूजा कुमारी", district: "नालंदा (बिहार शरीफ)", telegram: "@pooja_nalanda", score: 138.00, correct: 70, wrong: 10, skipped: 10, accuracy: "87.5%", timeTaken: "39:14", submittedAt: "01/11/2026" },
+      { id: "seed_8", name: "रवि शंकर", district: "सारण (छपरा)", telegram: "@ravi_chhapra", score: 133.60, correct: 68, wrong: 12, skipped: 10, accuracy: "85.0%", timeTaken: "47:00", submittedAt: "01/11/2026" },
+      { id: "seed_9", name: "कुंदन कुमार", district: "समस्तीपुर", telegram: "@kundan_spj", score: 128.20, correct: 65, wrong: 9, skipped: 16, accuracy: "87.8%", timeTaken: "50:30", submittedAt: "01/11/2026" },
+      { id: "seed_10", name: "मनीष कुमार वर्मा", district: "बेगूसराय", telegram: "@manish_bgs", score: 122.00, correct: 62, wrong: 10, skipped: 18, accuracy: "86.1%", timeTaken: "46:45", submittedAt: "01/11/2026" }
+    ];
+
+    function safeGetStorage(key, fallbackVal) {
+      try {
+        const raw = localStorage.getItem(key);
+        return raw ? JSON.parse(raw) : fallbackVal;
+      } catch (e) {
+        return fallbackVal;
+      }
+    }
+
+    function safeSetStorage(key, val) {
+      try {
+        localStorage.setItem(key, JSON.stringify(val));
+      } catch (e) {}
+    }
+
+    function safeRemoveStorage(key) {
+      try {
+        localStorage.removeItem(key);
+      } catch (e) {}
+    }
+
+    function getActiveFirebaseUrl() {
+      const custom = safeGetStorage(STORAGE_KEYS.FIREBASE_URL, DEFAULT_FIREBASE_DB_URL);
+      return (custom && typeof custom === "string" && custom.startsWith("https://"))
+        ? custom.replace(/\/$/, "")
+        : DEFAULT_FIREBASE_DB_URL;
+    }
+
+    let appState = {
+      mode: "GATE",
+      candidate: { name: "", district: "", telegram: "" },
+      currentIndex: 0,
+      activeSectionTab: "ALL",
+      solutionFilter: "ALL",
+      userAnswers: new Array(TOTAL_QUESTIONS).fill(null),
+      reviewMarks: new Array(TOTAL_QUESTIONS).fill(false),
+      remainingSeconds: EXAM_DURATION_SECONDS,
+      timerInterval: null,
+      cloudLeaderboard: [],
+      activeReviewAttempt: null
+    };
+
+    let gvLogoClickCount = 0;
+    let gvLogoClickTimer = null;
+
+    function initApp() {
+      populateDistrictDropdowns();
+      checkSavedProgressAndAttempts();
+      syncWithFirebaseCloud();
+    }
+
+    function populateDistrictDropdowns() {
+      const regSelect = document.getElementById("regDistrictSelect");
+      const lbSelect = document.getElementById("lbDistrictFilter");
+      if (regSelect) {
+        regSelect.innerHTML = '<option value="">-- जिला चुनें --</option>' +
+          BIHAR_DISTRICTS.map(d => `<option value="${d}">${d}</option>`).join("");
+      }
+      if (lbSelect) {
+        lbSelect.innerHTML = '<option value="ALL">📍 सभी जिले</option>' +
+          BIHAR_DISTRICTS.map(d => `<option value="${d}">${d}</option>`).join("");
+      }
+    }
+
+    function showToast(msg, icon = "🔔") {
+      const banner = document.getElementById("toastBanner");
+      const msgEl = document.getElementById("toastMsg");
+      const iconEl = document.getElementById("toastIcon");
+      if (!banner || !msgEl || !iconEl) return;
+      iconEl.textContent = icon;
+      msgEl.textContent = msg;
+      banner.classList.remove("hidden");
+      clearTimeout(window._toastTimeout);
+      window._toastTimeout = setTimeout(() => {
+        banner.classList.add("hidden");
+      }, 2800);
+    }
+
+    function checkSavedProgressAndAttempts() {
+      const savedLive = safeGetStorage(STORAGE_KEYS.LIVE_STATE, null);
+      const resumeBanner = document.getElementById("resumeTestBanner");
+      const resumeDetails = document.getElementById("resumeTestDetails");
+      if (savedLive && Array.isArray(savedLive.userAnswers) && savedLive.userAnswers.length === TOTAL_QUESTIONS && savedLive.remainingSeconds > 0) {
+        const answeredCount = savedLive.userAnswers.filter(x => x !== null).length;
+        const minsLeft = Math.floor(savedLive.remainingSeconds / 60);
+        if (resumeBanner && resumeDetails) {
+          resumeDetails.textContent = `${savedLive.candidate?.name || 'परीक्षार्थी'} | हल: ${answeredCount}/90 | शेष: ${minsLeft} मिनट`;
+          resumeBanner.classList.remove("hidden");
+        }
+        if (savedLive.candidate) {
+          document.getElementById("regNameInput").value = savedLive.candidate.name || "";
+          document.getElementById("regDistrictSelect").value = savedLive.candidate.district || "";
+          document.getElementById("regTelegramInput").value = savedLive.candidate.telegram || "";
+        }
+      } else if (resumeBanner) {
+        resumeBanner.classList.add("hidden");
+      }
+
+      const savedAttempt = safeGetStorage(STORAGE_KEYS.SAVED_ATTEMPT, null);
+      const prevBanner = document.getElementById("prevAttemptBanner");
+      const prevSummary = document.getElementById("prevAttemptSummaryText");
+      const headerSavedBtn = document.getElementById("headerSavedSolBtn");
+
+      if (savedAttempt && Array.isArray(savedAttempt.userAnswers)) {
+        if (prevBanner && prevSummary) {
+          prevSummary.textContent = `${savedAttempt.name} — अंक: ${Number(savedAttempt.score).toFixed(2)}/180 (सही: ${savedAttempt.correct}, गलत: ${savedAttempt.wrong})`;
+          prevBanner.classList.remove("hidden");
+        }
+        if (headerSavedBtn) {
+          headerSavedBtn.classList.remove("hidden");
+        }
+      } else {
+        if (prevBanner) prevBanner.classList.add("hidden");
+        if (headerSavedBtn) headerSavedBtn.classList.add("hidden");
+      }
+    }
+
+    function requestExamFullScreen() {
+      try {
+        const el = document.documentElement;
+        if (el.requestFullscreen) {
+          el.requestFullscreen().catch(() => {});
+        } else if (el.webkitRequestFullscreen) {
+          el.webkitRequestFullscreen();
+        }
+      } catch (e) {}
+    }
+
+    function startNewTestFullScreen() {
+      const nameVal = (document.getElementById("regNameInput").value || "").trim();
+      const distVal = (document.getElementById("regDistrictSelect").value || "").trim();
+      let tgVal = (document.getElementById("regTelegramInput").value || "").trim();
+
+      if (!nameVal) {
+        showToast("कृपया अपना पूरा नाम दर्ज करें!", "⚠️");
+        document.getElementById("regNameInput").focus();
+        return;
+      }
+      if (!distVal) {
+        showToast("कृपया अपना जिला चुनें!", "⚠️");
+        document.getElementById("regDistrictSelect").focus();
+        return;
+      }
+      if (!tgVal) {
+        showToast("कृपया टेलीग्राम यूजरनेम दर्ज करें!", "⚠️");
+        document.getElementById("regTelegramInput").focus();
+        return;
+      }
+      if (!tgVal.startsWith("@")) tgVal = "@" + tgVal;
+
+      requestExamFullScreen();
+
+      appState.mode = "LIVE";
+      appState.candidate = { name: nameVal, district: distVal, telegram: tgVal };
+      appState.currentIndex = 0;
+      appState.activeSectionTab = "ALL";
+      appState.solutionFilter = "ALL";
+      appState.userAnswers = new Array(TOTAL_QUESTIONS).fill(null);
+      appState.reviewMarks = new Array(TOTAL_QUESTIONS).fill(false);
+      appState.remainingSeconds = EXAM_DURATION_SECONDS;
+
+      saveLiveProgressToStorage();
+      enterLiveExamWorkspace();
+      startCountdownTimer();
+    }
+
+    function resumeUnfinishedTest() {
+      const savedLive = safeGetStorage(STORAGE_KEYS.LIVE_STATE, null);
+      if (!savedLive || !Array.isArray(savedLive.userAnswers)) return;
+      requestExamFullScreen();
+
+      appState.mode = "LIVE";
+      appState.candidate = savedLive.candidate || { name: "परीक्षार्थी", district: "पटना", telegram: "@student" };
+      appState.currentIndex = savedLive.currentIndex || 0;
+      appState.activeSectionTab = "ALL";
+      appState.userAnswers = savedLive.userAnswers;
+      appState.reviewMarks = savedLive.reviewMarks || new Array(TOTAL_QUESTIONS).fill(false);
+      appState.remainingSeconds = savedLive.remainingSeconds || EXAM_DURATION_SECONDS;
+
+      enterLiveExamWorkspace();
+      startCountdownTimer();
+    }
+
+    function saveLiveProgressToStorage() {
+      if (appState.mode !== "LIVE") return;
+      safeSetStorage(STORAGE_KEYS.LIVE_STATE, {
+        candidate: appState.candidate,
+        currentIndex: appState.currentIndex,
+        userAnswers: appState.userAnswers,
+        reviewMarks: appState.reviewMarks,
+        remainingSeconds: appState.remainingSeconds,
+        updatedAt: Date.now()
+      });
+    }
+
+    function enterLiveExamWorkspace() {
+      document.getElementById("entryGateView").classList.add("hidden");
+      document.getElementById("scorecardView").classList.add("hidden");
+      document.getElementById("examWorkspaceView").classList.remove("hidden");
+
+      document.getElementById("headerSubmitBtn").classList.remove("hidden");
+      document.getElementById("solutionFilterBar").classList.add("hidden");
+      document.getElementById("solutionExplanationBox").classList.add("hidden");
+
+      document.getElementById("headerCandidateInfo").textContent =
+        `${appState.candidate.name} • ${appState.candidate.district}`;
+
+      document.getElementById("navClearBtn").classList.remove("hidden");
+      document.getElementById("navReviewBtn").classList.remove("hidden");
+      document.getElementById("navNextBtn").textContent = "Next & Save ➡";
+
+      updateSectionTabStyles();
+      renderCurrentQuestion();
+      populateQuestionJumpDropdown();
+      updateLiveCounters();
+    }
+
+    function startCountdownTimer() {
+      if (appState.timerInterval) clearInterval(appState.timerInterval);
+      updateTimerUI();
+      appState.timerInterval = setInterval(() => {
+        if (appState.mode !== "LIVE") {
+          clearInterval(appState.timerInterval);
+          return;
+        }
+        appState.remainingSeconds--;
+        if (appState.remainingSeconds % 5 === 0) saveLiveProgressToStorage();
+        updateTimerUI();
+        if (appState.remainingSeconds <= 0) {
+          clearInterval(appState.timerInterval);
+          finalizeAndSubmitTest();
+        }
+      }, 1000);
+    }
+
+    function updateTimerUI() {
+      const el = document.getElementById("timerDisplay");
+      if (!el) return;
+      const s = Math.max(0, appState.remainingSeconds);
+      const mins = String(Math.floor(s / 60)).padStart(2, "0");
+      const secs = String(s % 60).padStart(2, "0");
+      el.textContent = `${mins}:${secs}`;
+      el.className = s < 300
+        ? "font-mono font-extrabold text-xs text-rose-400 timer-warning"
+        : "font-mono font-extrabold text-xs text-emerald-400";
+    }
+
+    function getFilteredQuestionIndices() {
+      const indices = [];
+      for (let i = 0; i < QUESTIONS.length; i++) {
+        const q = QUESTIONS[i];
+        if (appState.activeSectionTab === "NAT" && q.section !== "NAT") continue;
+        if (appState.activeSectionTab === "INT" && q.section !== "INT") continue;
+        if (appState.activeSectionTab === "SPORTS" && q.section !== "SPORTS") continue;
+
+        if (appState.mode === "SOLUTIONS") {
+          const ua = appState.userAnswers[i];
+          if (appState.solutionFilter === "CORRECT" && ua !== q.ans) continue;
+          if (appState.solutionFilter === "WRONG" && (ua === null || ua === q.ans)) continue;
+          if (appState.solutionFilter === "SKIPPED" && ua !== null) continue;
+        }
+        indices.push(i);
+      }
+      return indices;
+    }
+
+    function switchSectionTab(sec) {
+      appState.activeSectionTab = sec;
+      updateSectionTabStyles();
+      const filtered = getFilteredQuestionIndices();
+      if (filtered.length > 0 && !filtered.includes(appState.currentIndex)) {
+        appState.currentIndex = filtered[0];
+      }
+      renderCurrentQuestion();
+      populateQuestionJumpDropdown();
+    }
+
+    function updateSectionTabStyles() {
+      ["ALL", "NAT", "INT", "SPORTS"].forEach(t => {
+        const btn = document.getElementById("secTab_" + t);
+        if (!btn) return;
+        btn.className = appState.activeSectionTab === t
+          ? "py-1 px-1 rounded-lg text-[10.5px] sm:text-xs font-extrabold truncate bg-blue-700 text-white shadow-2xs"
+          : "py-1 px-1 rounded-lg text-[10.5px] sm:text-xs font-bold truncate bg-slate-100 text-slate-700";
+      });
+    }
+
+    function renderCurrentQuestion() {
+      const q = QUESTIONS[appState.currentIndex];
+      if (!q) return;
+
+      document.getElementById("qNumberBadge").textContent = `प्रश्न ${q.id} / 90`;
+      document.getElementById("qTopicBadge").textContent = q.topic || "करंट अफेयर्स";
+
+      const revBadge = document.getElementById("qReviewBadge");
+      if (appState.reviewMarks[appState.currentIndex]) revBadge.classList.remove("hidden");
+      else revBadge.classList.add("hidden");
+
+      document.getElementById("questionTextContainer").textContent = q.q;
+
+      const optContainer = document.getElementById("optionsContainer");
+      const labels = ["A", "B", "C", "D"];
+      const selectedOpt = appState.userAnswers[appState.currentIndex];
+      const isSolMode = appState.mode === "SOLUTIONS";
+
+      optContainer.innerHTML = q.options.map((optText, idx) => {
+        let cardCls = "w-full text-left rounded-xl border-2 px-2.5 py-2 transition flex items-center justify-between gap-2 ";
+        let badgeCls = "w-5 h-5 sm:w-6 sm:h-6 rounded-md font-extrabold text-[11px] flex items-center justify-center shrink-0 ";
+        let statusTag = "";
+
+        if (!isSolMode) {
+          if (selectedOpt === idx) {
+            cardCls += "bg-blue-50 border-blue-600 text-blue-950";
+            badgeCls += "bg-blue-700 text-white";
+            statusTag = '<span class="text-[10px] font-extrabold text-blue-700 bg-blue-100 px-1.5 py-0.5 rounded shrink-0">◉ सेव</span>';
+          } else {
+            cardCls += "bg-white hover:bg-slate-50 border-slate-200 text-slate-800";
+            badgeCls += "bg-slate-100 text-slate-700 border border-slate-300";
+          }
+        } else {
+          if (idx === q.ans) {
+            cardCls += "bg-emerald-50 border-emerald-500 text-emerald-950 font-bold";
+            badgeCls += "bg-emerald-600 text-white";
+            statusTag = '<span class="text-[10px] font-extrabold text-emerald-800 bg-emerald-200/80 px-1.5 py-0.5 rounded shrink-0">✔ सही</span>';
+          } else if (selectedOpt === idx && idx !== q.ans) {
+            cardCls += "bg-rose-50 border-rose-500 text-rose-950 font-bold";
+            badgeCls += "bg-rose-600 text-white";
+            statusTag = '<span class="text-[10px] font-extrabold text-rose-800 bg-rose-200/80 px-1.5 py-0.5 rounded shrink-0">✖ गलत</span>';
+          } else {
+            cardCls += "bg-white border-slate-200 text-slate-600 opacity-85";
+            badgeCls += "bg-slate-100 text-slate-600";
+          }
+        }
+
+        return `
+          <button type="button" onclick="handleOptionSelect(${idx})" class="${cardCls}">
+            <div class="flex items-center gap-2 min-w-0 flex-1">
+              <span class="${badgeCls}">${labels[idx]}</span>
+              <span class="text-[12.5px] sm:text-[14px] font-semibold leading-tight break-words">${optText}</span>
+            </div>
+            ${statusTag}
+          </button>
+        `;
+      }).join("");
+
+      const solBox = document.getElementById("solutionExplanationBox");
+      if (isSolMode) {
+        solBox.classList.remove("hidden");
+        const statusBadge = document.getElementById("solUserStatusBadge");
+        if (selectedOpt === null) {
+          statusBadge.className = "text-[10px] font-extrabold px-2 py-0.5 rounded bg-slate-200 text-slate-700";
+          statusBadge.textContent = "⚪ छोड़ा गया (0.00)";
+        } else if (selectedOpt === q.ans) {
+          statusBadge.className = "text-[10px] font-extrabold px-2 py-0.5 rounded bg-emerald-200 text-emerald-900";
+          statusBadge.textContent = "✔ सही (+2.00)";
+        } else {
+          statusBadge.className = "text-[10px] font-extrabold px-2 py-0.5 rounded bg-rose-200 text-rose-900";
+          statusBadge.textContent = "✖ गलत (-0.20)";
+        }
+        document.getElementById("solutionExplanationText").textContent = q.exp;
+      } else {
+        solBox.classList.add("hidden");
+      }
+
+      const dd = document.getElementById("questionJumpDropdown");
+      if (dd) dd.value = String(appState.currentIndex);
+    }
+
+    function handleOptionSelect(optIdx) {
+      if (appState.mode !== "LIVE") return;
+      appState.userAnswers[appState.currentIndex] = optIdx;
+      saveLiveProgressToStorage();
+      renderCurrentQuestion();
+      populateQuestionJumpDropdown();
+      updateLiveCounters();
+    }
+
+    function clearCurrentResponse() {
+      if (appState.mode !== "LIVE") return;
+      appState.userAnswers[appState.currentIndex] = null;
+      appState.reviewMarks[appState.currentIndex] = false;
+      saveLiveProgressToStorage();
+      renderCurrentQuestion();
+      populateQuestionJumpDropdown();
+      updateLiveCounters();
+    }
+
+    function toggleMarkForReview() {
+      if (appState.mode !== "LIVE") return;
+      appState.reviewMarks[appState.currentIndex] = !appState.reviewMarks[appState.currentIndex];
+      saveLiveProgressToStorage();
+      renderCurrentQuestion();
+      populateQuestionJumpDropdown();
+      updateLiveCounters();
+    }
+
+    function navigateQuestion(step) {
+      const filtered = getFilteredQuestionIndices();
+      if (filtered.length === 0) return;
+      const pos = filtered.indexOf(appState.currentIndex);
+      if (pos === -1) {
+        appState.currentIndex = filtered[0];
+      } else {
+        appState.currentIndex = filtered[(pos + step + filtered.length) % filtered.length];
+      }
+      saveLiveProgressToStorage();
+      renderCurrentQuestion();
+    }
+
+    function saveAndNextQuestion() {
+      navigateQuestion(1);
+    }
+
+    function jumpToQuestionFromDropdown(val) {
+      const idx = parseInt(val, 10);
+      if (!isNaN(idx) && idx >= 0 && idx < QUESTIONS.length) {
+        appState.currentIndex = idx;
+        saveLiveProgressToStorage();
+        renderCurrentQuestion();
+      }
+    }
+
+    function populateQuestionJumpDropdown() {
+      const dd = document.getElementById("questionJumpDropdown");
+      if (!dd) return;
+      const filtered = getFilteredQuestionIndices();
+      const isSol = appState.mode === "SOLUTIONS";
+
+      dd.innerHTML = filtered.map(idx => {
+        const q = QUESTIONS[idx];
+        const ua = appState.userAnswers[idx];
+        const rev = appState.reviewMarks[idx];
+        let sym = "⚪";
+        if (!isSol) {
+          if (rev && ua !== null) sym = "🟣";
+          else if (rev) sym = "★";
+          else if (ua !== null) sym = "◉";
+        } else {
+          if (ua === q.ans) sym = "✔";
+          else if (ua !== null) sym = "✖";
+        }
+        const shortQ = q.q.length > 32 ? q.q.slice(0, 32) + "..." : q.q;
+        return `<option value="${idx}" ${idx === appState.currentIndex ? 'selected' : ''}>${sym} प्र. ${q.id}: ${shortQ}</option>`;
+      }).join("");
+    }
+
+    function updateLiveCounters() {
+      const answered = appState.userAnswers.filter(x => x !== null).length;
+      const reviewed = appState.reviewMarks.filter(Boolean).length;
+      const skipped = TOTAL_QUESTIONS - answered;
+      document.getElementById("liveAnsweredCount").textContent = String(answered);
+      document.getElementById("liveReviewCount").textContent = String(reviewed);
+      document.getElementById("liveSkippedCount").textContent = String(skipped);
+    }
+
+    function openSubmitConfirmModal() {
+      const answered = appState.userAnswers.filter(x => x !== null).length;
+      const skipped = TOTAL_QUESTIONS - answered;
+      const reviewed = appState.reviewMarks.filter(Boolean).length;
+
+      document.getElementById("modTotalQ").textContent = String(TOTAL_QUESTIONS);
+      document.getElementById("modAttemptedQ").textContent = String(answered);
+      document.getElementById("modSkippedQ").textContent = String(skipped);
+      document.getElementById("modReviewQ").textContent = String(reviewed);
+
+      const secDefs = [
+        { key: "NAT", label: "राष्ट्रीय, बिहार एवं योजनाएं" },
+        { key: "INT", label: "अंतर्राष्ट्रीय, रक्षा व विज्ञान" },
+        { key: "SPORTS", label: "खेल, पुरस्कार एवं विविध" }
+      ];
+
+      const tbody = document.getElementById("modSectionSummaryBody");
+      tbody.innerHTML = secDefs.map(s => {
+        let tot = 0, att = 0;
+        QUESTIONS.forEach((q, idx) => {
+          if (q.section === s.key) {
+            tot++;
+            if (appState.userAnswers[idx] !== null) att++;
+          }
+        });
+        return `
+          <tr>
+            <td class="py-1.5 px-2 font-bold text-slate-800">${s.label}</td>
+            <td class="py-1.5 px-1.5 text-center">${tot}</td>
+            <td class="py-1.5 px-1.5 text-center font-bold text-emerald-700">${att}</td>
+            <td class="py-1.5 px-1.5 text-center text-slate-500">${tot - att}</td>
+          </tr>
+        `;
+      }).join("");
+
+      document.getElementById("submitConfirmModal").classList.remove("hidden");
+    }
+
+    function closeSubmitConfirmModal() {
+      document.getElementById("submitConfirmModal").classList.add("hidden");
+    }
+
+    function computeScoreResult(answersArray, candidateObj, elapsedSeconds) {
+      let correct = 0, wrong = 0, skipped = 0;
+      const secStats = {
+        NAT: { label: "राष्ट्रीय, बिहार एवं योजनाएं", total: 0, correct: 0, wrong: 0, skipped: 0, marks: 0 },
+        INT: { label: "अंतर्राष्ट्रीय, रक्षा व विज्ञान", total: 0, correct: 0, wrong: 0, skipped: 0, marks: 0 },
+        SPORTS: { label: "खेल, पुरस्कार एवं विविध", total: 0, correct: 0, wrong: 0, skipped: 0, marks: 0 }
+      };
+
+      QUESTIONS.forEach((q, idx) => {
+        const ua = answersArray[idx];
+        const bucket = secStats[q.section] || secStats.NAT;
+        bucket.total++;
+        if (ua === null || ua === undefined) {
+          skipped++;
+          bucket.skipped++;
+        } else if (ua === q.ans) {
+          correct++;
+          bucket.correct++;
+          bucket.marks += 2.0;
+        } else {
+          wrong++;
+          bucket.wrong++;
+          bucket.marks -= 0.20;
+        }
+      });
+
+      const rawScore = (correct * 2.0) - (wrong * 0.20);
+      const totalScore = Number(rawScore.toFixed(2));
+      const attempted = correct + wrong;
+      const accuracy = attempted > 0 ? ((correct / attempted) * 100).toFixed(1) + "%" : "0.0%";
+
+      const minsUsed = String(Math.floor(elapsedSeconds / 60)).padStart(2, "0");
+      const secsUsed = String(elapsedSeconds % 60).padStart(2, "0");
+      const timeTaken = `${minsUsed}:${secsUsed}`;
+      const nowStr = new Date().toLocaleDateString("hi-IN");
+
+      return {
+        id: "att_" + Date.now(),
+        name: candidateObj.name || "परीक्षार्थी",
+        district: candidateObj.district || "पटना",
+        telegram: candidateObj.telegram || "@student",
+        score: totalScore,
+        correct,
+        wrong,
+        skipped,
+        accuracy,
+        timeTaken,
+        submittedAt: nowStr,
+        userAnswers: [...answersArray],
+        secStats
+      };
+    }
+
+    async function finalizeAndSubmitTest() {
+      closeSubmitConfirmModal();
+      if (appState.timerInterval) clearInterval(appState.timerInterval);
+
+      const elapsedSeconds = Math.max(1, EXAM_DURATION_SECONDS - appState.remainingSeconds);
+      const resultRecord = computeScoreResult(appState.userAnswers, appState.candidate, elapsedSeconds);
+
+      safeSetStorage(STORAGE_KEYS.SAVED_ATTEMPT, resultRecord);
+      safeRemoveStorage(STORAGE_KEYS.LIVE_STATE);
+
+      const localList = safeGetStorage(STORAGE_KEYS.LOCAL_LEADERBOARD, []);
+      const filteredLocal = localList.filter(item =>
+        !(item.name === resultRecord.name && item.telegram === resultRecord.telegram)
+      );
+      filteredLocal.push(resultRecord);
+      safeSetStorage(STORAGE_KEYS.LOCAL_LEADERBOARD, filteredLocal);
+
+      pushResultToFirebase(resultRecord);
+
+      appState.activeReviewAttempt = resultRecord;
+      checkSavedProgressAndAttempts();
+      renderScorecardWithAttempt(resultRecord);
+      showScorecardView();
+    }
+
+    function renderScorecardWithAttempt(record) {
+      document.getElementById("scorecardCandidateName").textContent = record.name;
+      document.getElementById("scorecardCandidateMeta").textContent =
+        `📍 ${record.district} | ${record.telegram}`;
+
+      document.getElementById("scTotalScore").textContent = `${Number(record.score).toFixed(2)} / 180`;
+      document.getElementById("scCorrectCount").textContent = String(record.correct);
+      document.getElementById("scWrongCount").textContent = String(record.wrong);
+      document.getElementById("scSkippedCount").textContent = String(record.skipped);
+      document.getElementById("scAccuracy").textContent = record.accuracy;
+      document.getElementById("scTimeTaken").textContent = record.timeTaken;
+
+      const computed = record.secStats
+        ? record
+        : computeScoreResult(record.userAnswers || new Array(TOTAL_QUESTIONS).fill(null), record, 1800);
+
+      const tbody = document.getElementById("scSectionTableBody");
+      tbody.innerHTML = Object.values(computed.secStats).map(sec => `
+        <tr>
+          <td class="py-1.5 px-2 font-bold text-slate-800">${sec.label}</td>
+          <td class="py-1.5 px-1.5 text-center font-bold">${sec.total}</td>
+          <td class="py-1.5 px-1.5 text-center font-bold text-emerald-700">${sec.correct}</td>
+          <td class="py-1.5 px-1.5 text-center font-bold text-rose-700">${sec.wrong}</td>
+          <td class="py-1.5 px-1.5 text-center text-slate-500">${sec.skipped}</td>
+          <td class="py-1.5 px-2 text-right font-extrabold text-blue-900">${sec.marks.toFixed(2)}</td>
+        </tr>
+      `).join("");
+
+      const allEntries = getMergedLeaderboardEntries();
+      const rankIdx = allEntries.findIndex(e =>
+        e.name === record.name && e.telegram === record.telegram && Number(e.score) === Number(record.score)
+      );
+      const actualRank = rankIdx !== -1 ? rankIdx + 1 : 1;
+      const totalParticipants = Math.max(allEntries.length + 510, actualRank);
+      const percentile = (((totalParticipants - actualRank) / totalParticipants) * 100).toFixed(2);
+
+      document.getElementById("scorecardRankBadge").textContent =
+        `🏆 रैंक #${actualRank} / ${totalParticipants}`;
+      document.getElementById("scorecardPercentileBadge").textContent =
+        `परसेंटाइल: ${percentile}%`;
+    }
+
+    function showScorecardView() {
+      appState.mode = "SCORECARD";
+      document.getElementById("entryGateView").classList.add("hidden");
+      document.getElementById("examWorkspaceView").classList.add("hidden");
+      document.getElementById("scorecardView").classList.remove("hidden");
+      document.getElementById("headerSubmitBtn").classList.add("hidden");
+    }
+
+    function enterSolutionReviewMode(initialFilter = "ALL") {
+      const record = appState.activeReviewAttempt || safeGetStorage(STORAGE_KEYS.SAVED_ATTEMPT, null);
+      if (!record || !Array.isArray(record.userAnswers)) return;
+
+      appState.mode = "SOLUTIONS";
+      appState.userAnswers = [...record.userAnswers];
+      appState.candidate = { name: record.name, district: record.district, telegram: record.telegram };
+      appState.activeSectionTab = "ALL";
+      appState.solutionFilter = initialFilter;
+      appState.currentIndex = 0;
+
+      document.getElementById("entryGateView").classList.add("hidden");
+      document.getElementById("scorecardView").classList.add("hidden");
+      document.getElementById("examWorkspaceView").classList.remove("hidden");
+      document.getElementById("headerSubmitBtn").classList.add("hidden");
+
+      document.getElementById("solutionFilterBar").classList.remove("hidden");
+      document.getElementById("navClearBtn").classList.add("hidden");
+      document.getElementById("navReviewBtn").classList.add("hidden");
+      document.getElementById("navNextBtn").textContent = "Next ➡";
+
+      updateSolutionFilterButtons();
+      updateSectionTabStyles();
+      renderCurrentQuestion();
+      populateQuestionJumpDropdown();
+      updateLiveCounters();
+    }
+
+    function setSolutionFilter(filterKey) {
+      appState.solutionFilter = filterKey;
+      updateSolutionFilterButtons();
+      const filtered = getFilteredQuestionIndices();
+      if (filtered.length === 0) {
+        showToast("इस श्रेणी में कोई प्रश्न नहीं है", "ℹ️");
+        appState.solutionFilter = "ALL";
+        updateSolutionFilterButtons();
+      } else {
+        appState.currentIndex = filtered[0];
+      }
+      renderCurrentQuestion();
+      populateQuestionJumpDropdown();
+    }
+
+    function updateSolutionFilterButtons() {
+      const cCount = QUESTIONS.filter((q, i) => appState.userAnswers[i] === q.ans).length;
+      const wCount = QUESTIONS.filter((q, i) => appState.userAnswers[i] !== null && appState.userAnswers[i] !== q.ans).length;
+      const sCount = QUESTIONS.filter((q, i) => appState.userAnswers[i] === null).length;
+
+      document.getElementById("solFilter_ALL").textContent = `सभी (90)`;
+      document.getElementById("solFilter_CORRECT").textContent = `✔ सही (${cCount})`;
+      document.getElementById("solFilter_WRONG").textContent = `✖ गलत (${wCount})`;
+      document.getElementById("solFilter_SKIPPED").textContent = `⚪ छोड़े गए (${sCount})`;
+
+      ["ALL", "CORRECT", "WRONG", "SKIPPED"].forEach(k => {
+        const btn = document.getElementById("solFilter_" + k);
+        if (!btn) return;
+        btn.className = appState.solutionFilter === k
+          ? "px-2 py-0.5 rounded text-[10px] font-extrabold bg-blue-600 text-white"
+          : "px-2 py-0.5 rounded text-[10px] font-bold bg-slate-800 text-slate-300";
+      });
+    }
+
+    function openSavedAttemptSolutions() {
+      const saved = safeGetStorage(STORAGE_KEYS.SAVED_ATTEMPT, null);
+      if (!saved) return;
+      appState.activeReviewAttempt = saved;
+      renderScorecardWithAttempt(saved);
+      showScorecardView();
+    }
+
+    function inspectAttemptFromLeaderboard(attemptId) {
+      const all = getMergedLeaderboardEntries();
+      const found = all.find(x => x.id === attemptId);
+      const savedOwn = safeGetStorage(STORAGE_KEYS.SAVED_ATTEMPT, null);
+      const target = (found && Array.isArray(found.userAnswers)) ? found : savedOwn;
+      if (!target || !Array.isArray(target.userAnswers)) return;
+
+      closeLeaderboardModal();
+      appState.activeReviewAttempt = target;
+      renderScorecardWithAttempt(target);
+      enterSolutionReviewMode("ALL");
+    }
+
+    function returnToEntryGate() {
+      appState.mode = "GATE";
+      document.getElementById("examWorkspaceView").classList.add("hidden");
+      document.getElementById("scorecardView").classList.add("hidden");
+      document.getElementById("entryGateView").classList.remove("hidden");
+      document.getElementById("headerSubmitBtn").classList.add("hidden");
+      checkSavedProgressAndAttempts();
+    }
+
+    async function pushResultToFirebase(record) {
+      const dbUrl = getActiveFirebaseUrl();
+      try {
+        await fetch(new URL('/cbt_ca90_nov1.json', dbUrl).href, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(record)
+        });
+        syncWithFirebaseCloud();
+      } catch (e) {}
+    }
+
+    async function syncWithFirebaseCloud() {
+      const dbUrl = getActiveFirebaseUrl();
+      try {
+        const res = await fetch(new URL('/cbt_ca90_nov1.json', dbUrl).href);
+        if (res.ok) {
+          const data = await res.json();
+          if (data && typeof data === "object") {
+            appState.cloudLeaderboard = Object.keys(data).map(k => ({
+              ...data[k],
+              id: data[k].id || k
+            }));
+          }
+        }
+      } catch (e) {}
+      renderLeaderboardList();
+    }
+
+    function getMergedLeaderboardEntries() {
+      const localList = safeGetStorage(STORAGE_KEYS.LOCAL_LEADERBOARD, []);
+      const savedOwn = safeGetStorage(STORAGE_KEYS.SAVED_ATTEMPT, null);
+      const combined = [...SEED_BIHAR_LEADERBOARD, ...appState.cloudLeaderboard, ...localList];
+      if (savedOwn) combined.push(savedOwn);
+
+      const map = new Map();
+      combined.forEach(item => {
+        if (!item || !item.name) return;
+        const key = `${item.name.trim().toLowerCase()}_${(item.telegram || '').trim().toLowerCase()}`;
+        const existing = map.get(key);
+        if (!existing || Number(item.score) >= Number(existing.score)) {
+          map.set(key, item);
+        }
+      });
+
+      const uniqueList = Array.from(map.values());
+      uniqueList.sort((a, b) => Number(b.score) - Number(a.score));
+      return uniqueList;
+    }
+
+    function openLeaderboardModal() {
+      renderLeaderboardList();
+      document.getElementById("leaderboardModal").classList.remove("hidden");
+    }
+
+    function closeLeaderboardModal() {
+      document.getElementById("leaderboardModal").classList.add("hidden");
+    }
+
+    function renderLeaderboardList() {
+      const allEntries = getMergedLeaderboardEntries();
+      const savedOwn = safeGetStorage(STORAGE_KEYS.SAVED_ATTEMPT, null);
+
+      const podiumEl = document.getElementById("topThreePodiumContainer");
+      if (podiumEl) {
+        const top3 = [allEntries[0], allEntries[1], allEntries[2]];
+        const medals = [
+          { icon: "🥇 #1 प्रथम", bg: "bg-amber-50 border-amber-400 text-amber-950" },
+          { icon: "🥈 #2 द्वितीय", bg: "bg-slate-100 border-slate-300 text-slate-900" },
+          { icon: "🥉 #3 तृतीय", bg: "bg-orange-50 border-orange-300 text-orange-950" }
+        ];
+        podiumEl.innerHTML = medals.map((m, i) => {
+          const c = top3[i];
+          if (!c) return `<div class="p-1.5 rounded-xl border ${m.bg} text-[10px]">-</div>`;
+          return `
+            <div class="p-1.5 rounded-xl border ${m.bg}">
+              <div class="text-[10px] font-extrabold">${m.icon}</div>
+              <div class="text-[11px] font-extrabold truncate">${c.name}</div>
+              <div class="text-[9.5px] opacity-75 truncate">${c.district}</div>
+              <div class="text-[11px] font-extrabold text-blue-800">${Number(c.score).toFixed(2)}</div>
+            </div>
+          `;
+        }).join("");
+      }
+
+      const qSearch = (document.getElementById("lbSearchInput")?.value || "").trim().toLowerCase();
+      const distFilter = document.getElementById("lbDistrictFilter")?.value || "ALL";
+
+      const filtered = allEntries.filter((entry, idx) => {
+        entry._globalRank = idx + 1;
+        if (distFilter !== "ALL" && entry.district !== distFilter) return false;
+        if (qSearch) {
+          const hay = `${entry.name} ${entry.telegram} ${entry.district}`.toLowerCase();
+          if (!hay.includes(qSearch)) return false;
+        }
+        return true;
+      });
+
+      const tbody = document.getElementById("leaderboardTableBody");
+      if (!tbody) return;
+
+      tbody.innerHTML = filtered.map(entry => {
+        const isOwn = savedOwn && entry.name === savedOwn.name && entry.telegram === savedOwn.telegram;
+        const hasSheet = Array.isArray(entry.userAnswers) || isOwn;
+        const rankBadge = entry._globalRank === 1 ? "🥇 #1"
+          : entry._globalRank === 2 ? "🥈 #2"
+          : entry._globalRank === 3 ? "🥉 #3"
+          : `#${entry._globalRank}`;
+
+        return `
+          <tr class="${isOwn ? 'bg-emerald-50 font-bold' : 'hover:bg-slate-50'}">
+            <td class="py-1.5 px-2 font-extrabold text-slate-900">${rankBadge}</td>
+            <td class="py-1.5 px-2">
+              <div class="font-bold text-slate-900">${entry.name}</div>
+              <div class="text-[9.5px] text-sky-700">${entry.telegram || ''}</div>
+            </td>
+            <td class="py-1.5 px-1.5 text-slate-700">${entry.district}</td>
+            <td class="py-1.5 px-2 text-right font-extrabold text-blue-900">${Number(entry.score).toFixed(2)}</td>
+            <td class="py-1.5 px-1.5 text-center">
+              <span class="text-emerald-700 font-bold">${entry.correct}✔</span>/<span class="text-rose-600 font-bold">${entry.wrong}✖</span>
+            </td>
+            <td class="py-1.5 px-2 text-center">
+              ${hasSheet
+                ? `<button type="button" onclick="inspectAttemptFromLeaderboard('${entry.id}')" class="bg-emerald-600 text-white text-[10px] font-extrabold px-2 py-0.5 rounded">🔍 हल देखें</button>`
+                : `<span class="text-[10px] text-slate-400">-</span>`
+              }
+            </td>
+          </tr>
+        `;
+      }).join("");
+    }
+
+    function handleGvLogoClick() {
+      gvLogoClickCount++;
+      clearTimeout(gvLogoClickTimer);
+      if (gvLogoClickCount >= 4) {
+        gvLogoClickCount = 0;
+        openAdminSecurityModal();
+      } else {
+        gvLogoClickTimer = setTimeout(() => {
+          gvLogoClickCount = 0;
+        }, 1400);
+      }
+    }
+
+    function openAdminSecurityModal() {
+      document.getElementById("adminPinInput").value = "";
+      document.getElementById("adminPinLockBox").classList.remove("hidden");
+      document.getElementById("adminFirebaseConfigBox").classList.add("hidden");
+      document.getElementById("adminFirebaseUrlInput").value = getActiveFirebaseUrl();
+      document.getElementById("adminSecurityModal").classList.remove("hidden");
+    }
+
+    function closeAdminSecurityModal() {
+      document.getElementById("adminSecurityModal").classList.add("hidden");
+    }
+
+    function verifyAdminPin() {
+      const pin = (document.getElementById("adminPinInput").value || "").trim();
+      if (pin === "1234" || pin.toUpperCase() === "GYANVERSE") {
+        document.getElementById("adminPinLockBox").classList.add("hidden");
+        document.getElementById("adminFirebaseConfigBox").classList.remove("hidden");
+      } else {
+        showToast("अमान्य एडमिन पिन!", "🚫");
+      }
+    }
+
+    function saveAdminFirebaseUrl() {
+      const val = (document.getElementById("adminFirebaseUrlInput").value || "").trim();
+      if (!val.startsWith("https://")) return;
+      safeSetStorage(STORAGE_KEYS.FIREBASE_URL, val);
+      closeAdminSecurityModal();
+      syncWithFirebaseCloud();
+      showToast("सेटिंग सेव हो गई", "✅");
+    }
+
+    function resetDefaultFirebaseUrl() {
+      safeSetStorage(STORAGE_KEYS.FIREBASE_URL, DEFAULT_FIREBASE_DB_URL);
+      document.getElementById("adminFirebaseUrlInput").value = DEFAULT_FIREBASE_DB_URL;
+      syncWithFirebaseCloud();
+      showToast("डिफ़ॉल्ट रीसेट हो गया", "🔄");
+    }
+
+    window.addEventListener("DOMContentLoaded", initApp);
+  </script>
+</body>
+</html>
+```
