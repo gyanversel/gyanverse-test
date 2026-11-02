@@ -3,7 +3,7 @@
 <html lang="hi" class="h-full">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover">
   <title>GYANVERSE CBT: 2 नवंबर 2026 दैनिक समसामयिकी</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -23,10 +23,7 @@
       font-family: 'Inter', 'Tiro Devanagari Hindi', sans-serif;
       background-color: #f1f5f9;
       color: #0f172a;
-      user-select: none;
-      -webkit-user-select: none;
     }
-    /* Custom compact scrollbar for scrollable sections */
     ::-webkit-scrollbar {
       width: 4px;
       height: 4px;
@@ -61,10 +58,13 @@
       </div>
     </div>
 
-    <!-- Right: Saved Sol, Leaderboard, Timer, Submit -->
+    <!-- Right: Saved Sol, Palette, Leaderboard, Timer, Submit -->
     <div class="flex items-center gap-1.5 sm:gap-2">
       <button id="btnHeaderSaved" onclick="openSavedSolutionsModal()" class="hidden sm:flex items-center gap-1 bg-slate-800 hover:bg-slate-700 text-amber-300 border border-amber-500/30 text-[11px] font-medium px-2 py-1 rounded active:scale-95 transition">
         📜 <span class="hidden md:inline">सेव</span> हल
+      </button>
+      <button onclick="togglePaletteModal()" class="flex items-center gap-1 bg-slate-800 hover:bg-slate-700 text-sky-300 border border-sky-500/30 text-[11px] font-medium px-2 py-1 rounded active:scale-95 transition" title="प्रश्न पैलेट (1-15)">
+        ▦ <span class="hidden xs:inline">पैलेट</span>
       </button>
       <button onclick="openLeaderboardModal()" class="flex items-center gap-1 bg-slate-800 hover:bg-slate-700 text-amber-300 border border-amber-500/30 text-[11px] font-medium px-2 py-1 rounded active:scale-95 transition">
         🏆 <span class="hidden xs:inline">रैंक</span>
@@ -78,10 +78,10 @@
     </div>
   </header>
 
-  <!-- ================= MAIN WORKSPACE (flex-1 min-h-0 flex flex-col justify-between overflow-hidden) ================= -->
+  <!-- ================= MAIN WORKSPACE ================= -->
   <main class="flex-1 min-h-0 flex flex-col justify-between overflow-hidden p-2 sm:p-3 max-w-4xl w-full mx-auto">
     
-    <!-- TOP SECTION TABS ROW (h-8 shrink-0 mb-1.5) -->
+    <!-- TOP SECTION TABS ROW -->
     <div class="h-8 shrink-0 mb-1.5 grid grid-cols-4 gap-1 select-none">
       <button onclick="selectSection('all')" id="tab-all" class="sec-tab active text-[10px] sm:text-xs font-semibold rounded-lg border border-slate-300 bg-white text-slate-800 flex items-center justify-center truncate px-1 shadow-xs transition">
         सभी (15)
@@ -111,7 +111,7 @@
       </button>
     </div>
 
-    <!-- MAIN QUESTION CARD (flex-1 min-h-0 flex flex-col justify-between overflow-hidden) -->
+    <!-- MAIN QUESTION CARD -->
     <div class="flex-1 min-h-0 bg-white rounded-xl shadow-sm border border-slate-200/90 flex flex-col justify-between overflow-hidden p-2.5 sm:p-3 relative">
       
       <!-- CARD HEADER: Question Counter, Marking Badge, Section -->
@@ -137,7 +137,7 @@
       <!-- QUESTION TEXT -->
       <div class="shrink-0 my-1 sm:my-1.5">
         <p id="qTextDisplay" class="text-[13px] sm:text-[15px] font-semibold text-slate-800 leading-snug">
-          <!-- Question text injected here -->
+          <!-- Question text injected here safely -->
         </p>
       </div>
 
@@ -146,25 +146,25 @@
         GYANVERSE | @GYANVERSET | t.me/GYANVERSET
       </div>
 
-      <!-- OPTIONS CONTAINER (Scrollable if needed on tiny screens, but fits comfortably) -->
+      <!-- OPTIONS CONTAINER -->
       <div id="optionsContainer" class="flex-1 min-h-0 overflow-y-auto space-y-1 sm:space-y-1.5 py-1">
-        <!-- 4 or 5 Option buttons injected dynamically -->
+        <!-- Option buttons injected dynamically -->
       </div>
 
-      <!-- EXPLANATION BOX (Visible only in Solution Mode, max-h-24 overflow-y-auto) -->
+      <!-- EXPLANATION BOX (Solution Mode only) -->
       <div id="explanationContainer" class="hidden shrink-0 max-h-24 sm:max-h-28 overflow-y-auto bg-slate-50 border border-slate-200 rounded-lg p-2 my-1 text-[11px] sm:text-xs leading-relaxed text-slate-700">
         <div class="font-bold text-slate-900 border-b border-slate-200 pb-1 mb-1 flex items-center justify-between">
           <span>📖 विस्तृत व्याख्या (Explanation):</span>
           <span class="text-[10px] text-emerald-700 font-bold bg-emerald-100 px-1.5 py-0.2 rounded" id="expCorrectTag"></span>
         </div>
         <div id="explanationContent">
-          <!-- Explanation HTML injected here -->
+          <!-- Explanation HTML -->
         </div>
       </div>
 
-      <!-- 4-COLUMN NAVIGATION BAR (⬅ Prev, ✖ Clear, ★ Review, Next & Save ➡) -->
+      <!-- 4-COLUMN NAVIGATION BAR (Prev, Clear, Review, Next) -->
       <div class="shrink-0 grid grid-cols-4 gap-1.5 pt-1.5 mt-auto border-t border-slate-100 select-none">
-        <button id="btnPrev" onclick="navigateQuestion(-1)" class="bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-[11px] sm:text-xs py-1.5 rounded-lg border border-slate-300 shadow-2xs active:scale-95 transition flex items-center justify-center gap-1">
+        <button id="btnPrev" onclick="navigateFiltered(-1)" class="bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-[11px] sm:text-xs py-1.5 rounded-lg border border-slate-300 shadow-2xs active:scale-95 transition flex items-center justify-center gap-1">
           <span>⬅ Prev</span>
         </button>
         <button id="btnClear" onclick="clearCurrentAnswer()" class="bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-[11px] sm:text-xs py-1.5 rounded-lg border border-slate-300 shadow-2xs active:scale-95 transition flex items-center justify-center gap-1">
@@ -173,7 +173,7 @@
         <button id="btnReview" onclick="toggleReviewCurrent()" class="bg-amber-100 hover:bg-amber-200 text-amber-800 font-bold text-[11px] sm:text-xs py-1.5 rounded-lg border border-amber-300 shadow-2xs active:scale-95 transition flex items-center justify-center gap-1">
           <span id="btnReviewText">★ Review</span>
         </button>
-        <button id="btnNext" onclick="navigateQuestion(1)" class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-[11px] sm:text-xs py-1.5 rounded-lg shadow-2xs active:scale-95 transition flex items-center justify-center gap-1">
+        <button id="btnNext" onclick="navigateFiltered(1)" class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-[11px] sm:text-xs py-1.5 rounded-lg shadow-2xs active:scale-95 transition flex items-center justify-center gap-1">
           <span>Save ➡</span>
         </button>
       </div>
@@ -202,6 +202,30 @@
 
     </div>
   </main>
+
+  <!-- ================= QUESTION PALETTE MODAL (Grid 1-15) ================= -->
+  <div id="paletteModal" class="hidden fixed inset-0 z-40 bg-slate-900/60 backdrop-blur-xs flex items-center justify-center p-3 select-none">
+    <div class="bg-white rounded-2xl shadow-xl border border-slate-200 max-w-xs w-full p-3.5">
+      <div class="flex items-center justify-between border-b border-slate-100 pb-2 mb-2">
+        <div class="font-bold text-xs text-slate-900 flex items-center gap-1.5">
+          <span>▦</span> <span>प्रश्न पैलेट (Question Palette)</span>
+        </div>
+        <button onclick="togglePaletteModal()" class="text-slate-400 hover:text-slate-600 text-xs font-bold px-1.5">✕</button>
+      </div>
+      
+      <!-- Palette Legend -->
+      <div class="flex items-center justify-around text-[10px] text-slate-600 mb-2 py-1 bg-slate-50 rounded border border-slate-100">
+        <span class="flex items-center gap-1"><span class="h-2 w-2 rounded-full bg-emerald-500"></span> हल</span>
+        <span class="flex items-center gap-1"><span class="h-2 w-2 rounded-full bg-amber-400"></span> रिव्यू</span>
+        <span class="flex items-center gap-1"><span class="h-2 w-2 rounded-full bg-slate-200"></span> शेष</span>
+      </div>
+
+      <!-- 15 Questions Grid (3 cols on small screens, 5 cols standard) -->
+      <div id="paletteGridContainer" class="grid grid-cols-5 gap-1.5 py-1">
+        <!-- 15 buttons injected dynamically -->
+      </div>
+    </div>
+  </div>
 
   <!-- ================= MODAL 1: CANDIDATE REGISTRATION / ENTRY GATE ================= -->
   <div id="entryGateModal" class="fixed inset-0 z-50 bg-slate-900/90 backdrop-blur-sm flex items-center justify-center p-3 select-none">
@@ -239,7 +263,7 @@
         <div class="space-y-2.5 my-3">
           <div>
             <label class="block text-xs font-bold text-slate-700 mb-0.5">परीक्षार्थी का पूरा नाम <span class="text-rose-500">*</span></label>
-            <input type="text" id="regName" placeholder="अपना नाम लिखें..." class="w-full text-xs px-3 py-2 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 font-medium">
+            <input type="text" id="regName" placeholder="अपना नाम लिखें..." maxlength="50" class="w-full text-xs px-3 py-2 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 font-medium">
           </div>
 
           <div>
@@ -252,7 +276,7 @@
 
           <div>
             <label class="block text-xs font-bold text-slate-700 mb-0.5">टेलीग्राम यूजरनेम <span class="text-rose-500">*</span></label>
-            <input type="text" id="regTelegram" placeholder="@username" class="w-full text-xs px-3 py-2 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 font-medium">
+            <input type="text" id="regTelegram" placeholder="@username" maxlength="40" class="w-full text-xs px-3 py-2 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 font-medium">
           </div>
         </div>
 
@@ -267,12 +291,12 @@
           <span>🚀 Start Test (Auto Full Screen)</span>
         </button>
 
-        <!-- RESUME DRAFT BUTTON (Dynamic) -->
+        <!-- RESUME DRAFT BUTTON -->
         <button id="btnResumeDraft" onclick="resumeDraftTest()" class="hidden w-full bg-emerald-50 hover:bg-emerald-100 text-emerald-800 border border-emerald-300 font-bold text-xs py-2 rounded-xl transition flex items-center justify-center gap-1.5">
           <span>▶ अधूरा टेस्ट वहीं से जारी रखें</span>
         </button>
 
-        <!-- CHECK PAST SOLUTIONS BUTTON (Dynamic) -->
+        <!-- CHECK PAST SOLUTIONS BUTTON -->
         <button id="btnPastSolutions" onclick="openPastSolutionsFromGate()" class="hidden w-full bg-amber-50 hover:bg-amber-100 text-amber-900 border border-amber-300 font-bold text-xs py-2 rounded-xl transition flex items-center justify-center gap-1.5">
           <span>📋 पिछला स्कोरकार्ड एवं सभी हल देखें (Check Solutions)</span>
         </button>
@@ -350,7 +374,7 @@
           </div>
         </div>
 
-        <!-- 4-STATS SUMMARY -->
+        <!-- 3-STATS SUMMARY -->
         <div class="grid grid-cols-3 gap-2 my-2.5 text-center text-xs">
           <div class="bg-emerald-50 border border-emerald-200 rounded-lg p-1.5">
             <div class="text-emerald-700 text-[10px] font-medium">सही उत्तर (+2.00)</div>
@@ -415,7 +439,7 @@
           <span class="text-xl">🏆</span>
           <div>
             <h3 class="font-extrabold text-sm sm:text-base text-slate-900 leading-tight">GYANVERSE ऑल-बिहार लाइव रैंकिंग</h3>
-            <p class="text-[10px] text-slate-500">2 नवंबर 2026: समसामयिकी टेस्ट</p>
+            <p class="text-[10px] text-slate-500">2 नवंबर 2026: समसामयिकी टेस्ट (वास्तविक परीक्षार्थी)</p>
           </div>
         </div>
         <button onclick="closeLeaderboardModal()" class="h-7 w-7 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-600 font-bold flex items-center justify-center text-xs">
@@ -450,7 +474,7 @@
             </tr>
           </thead>
           <tbody id="leaderboardTableBody" class="divide-y divide-slate-100 text-[11px] font-medium text-slate-800">
-            <!-- Dynamically populated rows -->
+            <!-- Dynamically populated rows with XSS safe textContent -->
           </tbody>
         </table>
       </div>
@@ -466,19 +490,19 @@
     </div>
   </div>
 
-  <!-- ================= MODAL 5: SECRET ADMIN CONFIG MODAL (4-clicks on GV Logo) ================= -->
+  <!-- ================= MODAL 5: SECRET ADMIN CONFIG MODAL ================= -->
   <div id="adminModal" class="hidden fixed inset-0 z-50 bg-slate-900/90 backdrop-blur-sm flex items-center justify-center p-3 select-none">
     <div class="bg-white rounded-2xl shadow-2xl border border-slate-200 max-w-sm w-full p-4">
       <div class="text-center pb-2 border-b border-slate-100">
         <div class="h-8 w-8 rounded-lg bg-amber-500 text-slate-950 font-black text-sm flex items-center justify-center mx-auto mb-1">GV</div>
         <h3 class="font-extrabold text-sm text-slate-900">GYANVERSE Admin Console</h3>
-        <p class="text-[10px] text-slate-500">Firebase & Database Settings</p>
+        <p class="text-[10px] text-slate-500">सुरक्षित व्यवस्थापक पैनल</p>
       </div>
 
       <!-- PIN AUTH VIEW -->
       <div id="adminPinView" class="my-3 space-y-2">
-        <p class="text-xs text-slate-600 text-center font-medium">एडमिन सुरक्षा पिन दर्ज करें (Default: 1234):</p>
-        <input type="password" id="adminPinInput" placeholder="पिन दर्ज करें..." class="w-full text-xs text-center tracking-widest px-3 py-2 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-500 font-bold">
+        <p class="text-xs text-slate-600 text-center font-medium">एडमिन प्रमाणीकरण पिन दर्ज करें:</p>
+        <input type="password" id="adminPinInput" placeholder="पिन..." class="w-full text-xs text-center tracking-widest px-3 py-2 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-500 font-bold">
         <button onclick="verifyAdminPin()" class="w-full bg-slate-900 hover:bg-slate-800 text-white font-bold text-xs py-2 rounded-lg">
           अनलॉक करें
         </button>
@@ -510,22 +534,51 @@
     </div>
   </div>
 
+  <!-- ================= CUSTOM TOAST DIALOG (No native alerts) ================= -->
+  <div id="customToast" class="hidden fixed bottom-4 left-1/2 -translate-x-1/2 z-50 bg-slate-900 text-white px-4 py-2 rounded-xl text-xs font-semibold shadow-2xl border border-slate-700 transition duration-300 pointer-events-none text-center max-w-xs">
+    <span id="toastMessage"></span>
+  </div>
+
+  <!-- ================= TAB SWITCH WARNING DIALOG ================= -->
+  <div id="tabWarningModal" class="hidden fixed inset-0 z-50 bg-rose-950/80 backdrop-blur-xs flex items-center justify-center p-3 select-none">
+    <div class="bg-white rounded-2xl shadow-xl border border-rose-300 max-w-xs w-full p-4 text-center">
+      <div class="text-3xl mb-1">⚠️</div>
+      <h3 class="font-extrabold text-slate-900 text-sm">सावधानी: टैब स्विच चेतावनी</h3>
+      <p class="text-xs text-rose-700 font-medium my-2">आपने टेस्ट के दौरान ब्राउज़र टैब या स्क्रीन बदली है। परीक्षा नियमों का उल्लंघन दर्ज किया जा सकता है।</p>
+      <div class="text-[11px] text-slate-500 mb-3">कुल चेतावनी: <strong id="tabSwitchCountDisplay" class="text-rose-600">1</strong></div>
+      <button onclick="dismissTabWarning()" class="w-full bg-slate-900 text-white font-bold text-xs py-2 rounded-lg">
+        समझ गया, टेस्ट पर लौटें
+      </button>
+    </div>
+  </div>
+
   <!-- ================= JAVASCRIPT LOGIC ENGINE ================= -->
   <script>
-    // --- 1. QUESTIONS DATABASE (Verbatim from PDF) ---
-    const QUESTIONS = [{"id": 1, "section": "scitech", "sectionName": "विज्ञान व रक्षा", "qText": "इसरो (ISRO) ने 'NVS-03' बहुप्रतीक्षित स्वदेशी नेविगेशन उपग्रह को किस रॉकेट के जरिए सफलतापूर्वक लॉन्च किया है?", "options": [{"id": "A", "text": "GSLV-F18"}, {"id": "B", "text": "PSLV-C60"}, {"id": "C", "text": "LVM3-M5"}, {"id": "D", "text": "GSLV-F17"}], "correct": "A", "explanation": "<div class=\"space-y-1.5\">\n<p><strong>उपग्रह का नाम:</strong> NVS-03 (भारत की स्वदेशी नेविगेशन प्रणाली NavIC की दूसरी पीढ़ी का तीसरा उपग्रह)।</p>\n<p><strong>लॉन्च तिथि एवं समय:</strong> 30 अक्टूबर 2026 को रात 11:51 बजे।</p>\n<p><strong>लॉन्च रॉकेट:</strong> GSLV-F18 (इसका दूसरा नाम GSLV Mk-II भी है, दोनों नाम परीक्षा के लिए महत्वपूर्ण हैं)।</p>\n<p><strong>लॉन्च स्थल:</strong> सतीश धवन अंतरिक्ष केंद्र (SDSC), श्रीहरिकोटा, आंध्र प्रदेश।</p>\n<p><strong>वजन एवं कक्षा:</strong> लगभग 2,232 किलोग्राम। भू-स्थिर स्थानांतरण कक्षा (GTO) में प्रक्षेपित कर 32.5° पूर्व जियोसिंक्रोनस कक्षा (Geosynchronous Orbit) में स्थापित।</p>\n<p><strong>मिशन अवधि:</strong> 12 वर्ष।</p>\n<p><strong>प्रमुख विशेषता:</strong> SAC अहमदाबाद द्वारा विकसित स्वदेशी रुबिडियम परमाणु घड़ी (Rubidium Atomic Clock) का उपयोग।</p>\n<div class=\"bg-amber-50 p-2 rounded border border-amber-200 text-amber-900\"><strong>🎯 Exam Booster:</strong> हाल ही में GSLV-F17 रॉकेट की सहायता से इसरो ने EOS-05 को प्रक्षेपित किया था। अतः <em>EOS-05 → GSLV-F17</em> तथा <em>NVS-03 → GSLV-F18</em> याद रखें।</div>\n</div>"}, {"id": 2, "section": "national", "sectionName": "राष्ट्रीय व अंतर्राष्ट्रीय", "qText": "26वें आईफा अवार्ड्स 2026 (26th IIFA Awards 2026) में 'सर्वश्रेष्ठ फिल्म' (Best Film) का पुरस्कार किसने जीता है?", "options": [{"id": "A", "text": "धुरंधर (Dhurandhar)"}, {"id": "B", "text": "सैयारा (Saiyaara)"}, {"id": "C", "text": "आज़ाद (Azaad)"}, {"id": "D", "text": "होमबाउंड (Homebound)"}], "correct": "A", "explanation": "<div class=\"space-y-1.5\">\n<p><strong>26वें IIFA अवार्ड्स 2026 प्रमुख विजेता:</strong></p>\n<ul class=\"list-disc list-inside space-y-0.5 text-slate-700\">\n<li><strong>सर्वश्रेष्ठ फिल्म:</strong> धुरंधर (Dhurandhar)</li>\n<li><strong>सर्वश्रेष्ठ निर्देशक:</strong> आदित्य धर (धुरंधर)</li>\n<li><strong>सर्वश्रेष्ठ अभिनेता (पुरुष):</strong> रणवीर सिंह (धुरंधर)</li>\n<li><strong>सर्वश्रेष्ठ अभिनेत्री (महिला):</strong> अनीत पड्डा (सैयारा)</li>\n<li><strong>सर्वश्रेष्ठ सहायक अभिनेता:</strong> संजय दत्त (धुरंधर)</li>\n<li><strong>सर्वश्रेष्ठ खलनायक:</strong> अक्षय खन्ना (धुरंधर)</li>\n<li><strong>सर्वश्रेष्ठ डेब्यू (पुरुष):</strong> अहान पांडे (सैयारा)</li>\n<li><strong>सर्वश्रेष्ठ डेब्यू (महिला):</strong> राशा थडानी (आज़ाद)</li>\n<li><strong>सर्वश्रेष्ठ अंतर्राष्ट्रीय फिल्म:</strong> अवतार (Avatar)</li>\n</ul>\n<div class=\"bg-amber-50 p-2 rounded border border-amber-200 text-amber-900\"><strong>🎯 Exam Booster (Oscars 2026 लिंक):</strong> फिल्म 'होमबाउंड' (Homebound) को ऑस्कर 2026 में 'सर्वश्रेष्ठ अंतर्राष्ट्रीय फीचर फिल्म' श्रेणी हेतु भारत की आधिकारिक प्रविष्टि (Official Entry) चुना गया था।</div>\n</div>"}, {"id": 3, "section": "national", "sectionName": "राष्ट्रीय व अंतर्राष्ट्रीय", "qText": "नवंबर 2026 में भारतीय वायुसेना के नए उपप्रमुख (Vice Chief of the Air Staff) कौन बन गए हैं?", "options": [{"id": "A", "text": "एयर मार्शल आशुतोष दीक्षित"}, {"id": "B", "text": "एयर मार्शल इंद्रपाल सिंह वालिया"}, {"id": "C", "text": "एयर मार्शल विक्रम गौर"}, {"id": "D", "text": "एयर मार्शल तेजिंदर सिंह"}], "correct": "B", "explanation": "<div class=\"space-y-1.5\">\n<p><strong>नियुक्ति विवरण:</strong> एयर मार्शल इंद्रपाल सिंह वालिया को भारतीय वायुसेना का नया उपप्रमुख नियुक्त किया गया। इससे पूर्व वे पूर्वी वायु कमान (Eastern Air Command) के एयर ऑफिसर कमांडिंग-इन-चीफ (AOC-in-C) थे।</p>\n<p><strong>भारतीय वायुसेना (Static GK):</strong></p>\n<ul class=\"list-disc list-inside space-y-0.5 text-slate-700\">\n<li>स्थापना: 8 अक्टूबर 1932 (प्रतिवर्ष 8 अक्टूबर को 'वायुसेना दिवस')</li>\n<li>मुख्यालय: नई दिल्ली | वायुसेना प्रमुख: एयर चीफ मार्शल आशुतोष दीक्षित</li>\n<li>आदर्श वाक्य: <em>'नभः स्पृशं दीप्तम्'</em> (गौरव के साथ आकाश को छूना)</li>\n</ul>\n<div class=\"bg-amber-50 p-2 rounded border border-amber-200 text-amber-900\"><strong>🎯 Exam Booster:</strong> वर्ष 2026 में भारत के नए चीफ ऑफ डिफेंस स्टाफ (CDS) के रूप में जनरल एन. एस. राजा सुब्रमणि नियुक्त हुए हैं (जनरल अनिल चौहान का स्थान लिया)।</div>\n</div>"}, {"id": 4, "section": "national", "sectionName": "राष्ट्रीय व अंतर्राष्ट्रीय", "qText": "अक्टूबर 2026 में महात्मा गांधी जी की आदमकद (Life-size) प्रतिमा का अनावरण करने वाला अमेरिका का पहला राज्य कौन-सा बन गया है?", "options": [{"id": "A", "text": "नॉर्थ डकोटा (North Dakota)"}, {"id": "B", "text": "कैलिफ़ोर्निया (California)"}, {"id": "C", "text": "टेक्सास (Texas)"}, {"id": "D", "text": "न्यूयॉर्क (New York)"}], "correct": "A", "explanation": "<div class=\"space-y-1.5\">\n<p><strong>अनावरण विवरण:</strong> महात्मा गांधी जी की आदमकद (Life-size) प्रतिमा का अनावरण करने वाला अमेरिका का पहला राज्य नॉर्थ डकोटा (North Dakota) बना।</p>\n<p><strong>तिथि एवं स्थान:</strong> 29 अक्टूबर 2026 को नॉर्थ डकोटा की राजधानी बिस्मार्क (Bismarck) के पीस पार्क (Peace Park) में अनावरण हुआ।</p>\n<p><strong>USA (Static GK):</strong> राजधानी: वाशिंगटन डी.सी. | मुद्रा: USD | 47वें राष्ट्रपति: डोनाल्ड ट्रंप।</p>\n<div class=\"bg-amber-50 p-2 rounded border border-amber-200 text-amber-900\"><strong>🎯 Exam Booster (USA Current Affairs):</strong>\n1. अमेरिका ने आर्टिफिशियल इंटेलिजेंस (AI) का आधिकारिक नाम 'सुपर इंटेलिजेंस' (Super Intelligence) कर दिया है।\n2. प्रसिद्ध 'लेक ओन्टारियो' का नाम बदलकर 'लेक अमेरिका' (Lake America) कर दिया है।</div>\n</div>"}, {"id": 5, "section": "scitech", "sectionName": "विज्ञान व रक्षा", "qText": "भारत में पहली बार पारंपरिक थीसिस के स्थान पर 'प्रोडक्ट या स्टार्टअप-ड्रिवन पीएचडी प्रोग्राम' (Product or Startup-Driven PhD Program) किस आईआईटी ने लॉन्च किया है?", "options": [{"id": "A", "text": "आईआईटी मद्रास"}, {"id": "B", "text": "आईआईटी दिल्ली"}, {"id": "C", "text": "आईआईटी रोपड़"}, {"id": "D", "text": "आईआईटी कानपुर"}], "correct": "C", "explanation": "<div class=\"space-y-1.5\">\n<p><strong>मुख्य उद्देश्य:</strong> आईआईटी रोपड़ ने पारंपरिक लिखित थीसिस के स्थान पर 'प्रोडक्ट या स्टार्टअप-ड्रिवन पीएचडी प्रोग्राम' शुरू किया ताकि अकादमिक रिसर्च रियल-वर्ल्ड और इंडस्ट्री की व्यावहारिक समस्याओं का समाधान करे।</p>\n<p><strong>अंतर्राष्ट्रीय IIT परिसर:</strong> आईआईटी मद्रास दुनिया का पहला मल्टीनेशनल आईआईटी बना (पहला कैंपस ज़ांज़ीबार, तंजानिया में)। आईआईटी दिल्ली ने अपना पहला कैंपस अबू धाबी (UAE) में खोला।</p>\n<div class=\"bg-amber-50 p-2 rounded border border-amber-200 text-amber-900\"><strong>📌 प्रमुख IIT करेंट अफेयर्स 2026:</strong>\n• पहला फिजिकल AI स्कूल: IIT खड़गपुर\n• परम प्रज्ञा AI सुपरकंप्यूटर: IIT दिल्ली (सोनीपत)\n• स्वदेशी एरोस्टेट (हीलियम गुब्बारा): IIT दिल्ली + DRDO\n• पैरों वाला रोबोट 'SCORP': IIT कानपुर\n• साइंस ऑन व्हील्स: IIT मंडी\n• अवनी (Avni) ऐप: IIT रोपड़\n• फिबॉल (Phiball) खेल: IIT मद्रास</div>\n</div>"}, {"id": 6, "section": "sports", "sectionName": "खेल व पर्यावरण", "qText": "अक्टूबर 2026 में सीनियर विश्व कुश्ती चैंपियनशिप (Senior World Wrestling Championships) में स्वर्ण पदक जीतने वाली भारत की पहली महिला पहलवान कौन बन गई हैं?", "options": [{"id": "A", "text": "अंतिम पंघाल"}, {"id": "B", "text": "विनेश फोगाट"}, {"id": "C", "text": "अंशु मलिक"}, {"id": "D", "text": "मनीषा भानवाला"}], "correct": "D", "explanation": "<div class=\"space-y-1.5\">\n<p><strong>ऐतिहासिक उपलब्धि:</strong> मनीषा भानवाला सीनियर विश्व कुश्ती चैंपियनशिप में स्वर्ण पदक (Gold Medal) जीतने वाली भारत की पहली महिला पहलवान बनीं।</p>\n<p><strong>स्थान एवं फाइनल:</strong> अस्ताना (कजाकिस्तान) में 59 किग्रा भार वर्ग के फाइनल में अमेरिका की अबीगैल नेट्टे को 8–6 से हराया।</p>\n<div class=\"bg-amber-50 p-2 rounded border border-amber-200 text-amber-900\"><strong>🎯 Exam Booster:</strong>\n• अस्मिता डे (Asmita Dey): 2026 कॉमनवेल्थ गेम्स में स्वर्ण जीतने वाली पहली भारतीय महिला जूडोका बनीं।\n• कॉमनवेल्थ गेम्स 2026: ग्लासगो (स्कॉटलैंड)।\n• कॉमनवेल्थ गेम्स 2030: अहमदाबाद (गुजरात, भारत)।</div>\n</div>"}, {"id": 7, "section": "sports", "sectionName": "खेल व पर्यावरण", "qText": "विश्व बैंक (World Bank) की रिपोर्ट के अनुसार, 2011 से 2023 के बीच भारत में अत्यधिक गरीबी दर (Extreme Poverty Rate) 27.1% से घटकर अब कितने प्रतिशत पर रह गई है?", "options": [{"id": "A", "text": "3.8%"}, {"id": "B", "text": "2.6%"}, {"id": "C", "text": "4.2%"}, {"id": "D", "text": "1.9%"}], "correct": "B", "explanation": "<div class=\"space-y-1.5\">\n<p><strong>विश्व बैंक Poverty & Equity Brief (Oct 2026):</strong></p>\n<p>• अत्यधिक गरीबी दर (.00/दिन PPP) 27.1% से घटकर <strong>2.6%</strong> रह गई।</p>\n<p>• लगभग 49.6 करोड़ (496 मिलियन) लोग गरीबी से बाहर निकले।</p>\n<p>• .20 प्रतिदिन से नीचे रहने वाली आबादी 57.7% से घटकर 16.1% रह गई।</p>\n<p><strong>विश्व बैंक (Static GK & नई नियुक्तियां):</strong></p>\n<p>• स्थापना: जुलाई 1944 | मुख्यालय: वाशिंगटन डी.सी. | अध्यक्ष: अजय बंगा</p>\n<p>• नए MD & CFO: डेविड वैलेन्ट (David Vaillant)</p>\n<p>• नए मुख्य अर्थशास्त्री: नोबेल विजेता माइकल क्रेमर (Michael Kremer)</p>\n</div>"}, {"id": 8, "section": "national", "sectionName": "राष्ट्रीय व अंतर्राष्ट्रीय", "qText": "'13वां स्वामी विवेकानंद स्मृति कर्मयोगी सम्मान 2026' (13th Swami Vivekananda Smriti Karmayogi Award) किसे प्रदान किया गया है?", "options": [{"id": "A", "text": "जादव पायेंग"}, {"id": "B", "text": "चामी मुर्मू"}, {"id": "C", "text": "सुनील देवधर"}, {"id": "D", "text": "लैशराम जात्रा सिंह"}], "correct": "D", "explanation": "<div class=\"space-y-1.5\">\n<p><strong>सम्मान विवरण:</strong> मणिपुर के वरिष्ठ समाजसेवी व आरएसएस प्रचारक लैशराम जात्रा सिंह जी को 'माय होम इंडिया' (My Home India) द्वारा 13वां स्वामी विवेकानंद स्मृति कर्मयोगी सम्मान 2026 नई दिल्ली में प्रदान किया गया।</p>\n<p><strong>उपलब्धि:</strong> पूर्वोत्तर भारत में समाज सेवा और राष्ट्र निर्माण में उनके 55 वर्षों के अद्वितीय योगदान और निस्वार्थ समर्पण हेतु यह सम्मान मिला।</p>\n</div>"}, {"id": 9, "section": "national", "sectionName": "राष्ट्रीय व अंतर्राष्ट्रीय", "qText": "अक्टूबर 2026 में 'द स्टोरी ऑफ वंदे मातरम' (The Story of Vande Mataram) पुस्तक का अंग्रेजी अनुवाद जारी किया गया, इसके मूल लेखक कौन हैं?", "options": [{"id": "A", "text": "डॉ. आरिफ मोहम्मद खान"}, {"id": "B", "text": "रंगा हरि"}, {"id": "C", "text": "डॉ. मर्सी जिल"}, {"id": "D", "text": "रामनाथ कोविंद"}], "correct": "B", "explanation": "<div class=\"space-y-1.5\">\n<p><strong>पुस्तक विमोचन:</strong> पूर्व राज्यपाल डॉ. आरिफ मोहम्मद खान ने नई दिल्ली में 'द स्टोरी ऑफ वंदे मातरम्' के अंग्रेजी अनुवाद का विमोचन किया।</p>\n<p><strong>मूल लेखक व भाषा:</strong> आरएसएस के वरिष्ठ प्रचारक रंगा हरि (Ranga Hari) द्वारा मूल रूप से मलयालम भाषा में रचित।</p>\n<p><strong>अंग्रेजी अनुवादक:</strong> डॉ. मर्सी जिल (Dr. Mercy Jill)।</p>\n<div class=\"bg-amber-50 p-2 rounded border border-amber-200 text-amber-900\"><strong>🎯 Exam Booster:</strong> पूर्व राष्ट्रपति रामनाथ कोविंद की आत्मकथा <em>'Triumph of the Indian Republic: My Life, My Struggles'</em> भी हाल ही में विमोचित हुई।</div>\n</div>"}, {"id": 10, "section": "national", "sectionName": "राष्ट्रीय व अंतर्राष्ट्रीय", "qText": "29 अक्टूबर 2026 को 'आयुष्मान वय वंदना योजना' (Ayushman Vay Vandana Yojana) के 2 साल पूरे हो गए, इसके तहत प्रदान की जाने वाली अधिकतम स्वास्थ्य बीमा कवरेज क्या है?", "options": [{"id": "A", "text": "₹5 लाख प्रतिवर्ष"}, {"id": "B", "text": "₹10 लाख प्रतिवर्ष"}, {"id": "C", "text": "₹7 लाख प्रतिवर्ष"}, {"id": "D", "text": "₹3 लाख प्रतिवर्ष"}], "correct": "A", "explanation": "<div class=\"space-y-1.5\">\n<p><strong>योजना विवरण:</strong> 29 अक्टूबर 2024 को प्रधानमंत्री नरेंद्र मोदी द्वारा शुरू की गई थी। 29 अक्टूबर 2026 को इसके 2 वर्ष पूर्ण हुए।</p>\n<p><strong>प्रावधान:</strong> यह AB-PMJAY का अंग है। इसमें <strong>70 वर्ष और उससे अधिक आयु के सभी वरिष्ठ नागरिकों</strong> को प्रतिवर्ष ₹5 लाख तक का मुफ्त स्वास्थ्य बीमा कवरेज मिलता है।</p>\n<div class=\"bg-amber-50 p-2 rounded border border-amber-200 text-amber-900\"><strong>🎯 PYQ Alert:</strong> यह प्रश्न दिल्ली पुलिस (2025 परीक्षा) व RRB NTPC में पूछा जा चुका है।</div>\n</div>"}, {"id": 11, "section": "sports", "sectionName": "खेल व पर्यावरण", "qText": "पुरुष अंतर्राष्ट्रीय टी20 (Men's T20I) क्रिकेट में 200 विकेट लेने वाले दुनिया के पहले गेंदबाज कौन बन गए हैं?", "options": [{"id": "A", "text": "राशिद खान"}, {"id": "B", "text": "टिम साउथी"}, {"id": "C", "text": "शाकिब अल हसन"}, {"id": "D", "text": "जसप्रीत बुमराह"}], "correct": "A", "explanation": "<div class=\"space-y-1.5\">\n<p><strong>विश्व रिकॉर्ड:</strong> अफगानिस्तान के लेग स्पिनर राशिद खान पुरुष T20I में 200 विकेट लेने वाले दुनिया के पहले गेंदबाज बने।</p>\n<p><strong>मैच:</strong> 29 अक्टूबर 2026 को शारजाह (UAE) में ज़िम्बाब्वे के खिलाफ दूसरे T20I मैच में यह उपलब्धि हासिल की।</p>\n<div class=\"bg-amber-50 p-2 rounded border border-amber-200 text-amber-900\"><strong>🎯 Exam Booster:</strong> हरमनप्रीत कौर के इस्तीफे के बाद भारतीय महिला क्रिकेट टीम की नई कप्तान <strong>स्मृति मंधाना (Smriti Mandhana)</strong> बनी हैं।</div>\n</div>"}, {"id": 12, "section": "sports", "sectionName": "खेल व पर्यावरण", "qText": "संयुक्त राष्ट्र पर्यावरण कार्यक्रम (UNEP) ने 'Nature's Comeback: Scaling Ecosystem Restoration for People and Planet' रिपोर्ट में भारत के किस कार्यक्रम को 'विश्व पुनर्स्थापना फ्लैगशिप' (World Restoration Flagship) के रूप में मान्यता दी है?", "options": [{"id": "A", "text": "प्रोजेक्ट टाइगर"}, {"id": "B", "text": "प्रोजेक्ट एलीफेंट"}, {"id": "C", "text": "चीता पुनर्वास परियोजना"}, {"id": "D", "text": "गंगा नदी डॉल्फिन पुनर्प्राप्ति कार्यक्रम"}], "correct": "D", "explanation": "<div class=\"space-y-1.5\">\n<p><strong>वैश्विक मान्यता:</strong> UNEP ने भारत के <strong>'गंगा नदी डॉल्फिन पुनर्प्राप्ति कार्यक्रम'</strong> को दुनिया के 35 विश्व पुनर्स्थापना फ्लैगशिप में स्थान दिया।</p>\n<p><strong>मंत्रालय:</strong> पर्यावरण, वन एवं जलवायु परिवर्तन मंत्रालय द्वारा 'प्रोजेक्ट डॉल्फिन' और 'नमामि गंगे मिशन' के अंतर्गत संचालित।</p>\n<div class=\"bg-amber-50 p-2 rounded border border-amber-200 text-amber-900\"><strong>🎯 Static GK & Environment Booster:</strong>\n• UNEP मुख्यालय: नैरोबी (केन्या)\n• गंगा नदी डॉल्फिन की IUCN स्थिति: <strong>संकटग्रस्त (Endangered)</strong></div>\n</div>"}, {"id": 13, "section": "scitech", "sectionName": "विज्ञान व रक्षा", "qText": "अक्टूबर 2026 में नई दिल्ली में डीआरडीओ (DRDO) की स्वदेशी रक्षा तकनीक प्रदर्शनी 'विश्व 2026' (VISHVA 2026) का उद्घाटन किसने किया?", "options": [{"id": "A", "text": "राजनाथ सिंह"}, {"id": "B", "text": "नरेंद्र मोदी"}, {"id": "C", "text": "संजय सेठ"}, {"id": "D", "text": "डॉ. समीर वी. कामत"}], "correct": "C", "explanation": "<div class=\"space-y-1.5\">\n<p><strong>उद्घाटन विवरण:</strong> रक्षा राज्य मंत्री संजय सेठ ने 30 अक्टूबर 2026 को मानेकशॉ सेंटर, नई दिल्ली में डीआरडीओ की प्रदर्शनी 'विश्व 2026' का उद्घाटन किया।</p>\n<p><strong>आयोजक:</strong> DRDO एवं सेंटर फॉर जॉइंट वारफेयर स्टडीज (CENJOWS)।</p>\n<p><strong>थीम:</strong> 'रक्षा क्षमताओं का प्रदर्शन, वैश्विक साझेदारियों को मजबूत बनाना' (Showcasing Defence Capabilities, Strengthening Global Partnerships)।</p>\n<div class=\"bg-amber-50 p-2 rounded border border-amber-200 text-amber-900\"><strong>🎯 Exam Booster:</strong> DRDO के नए प्रमुख/अध्यक्ष <strong>राजेश कुमार सिंह</strong> बने हैं (डॉ. समीर वी. कामत का स्थान लिया)।</div>\n</div>"}, {"id": 14, "section": "scitech", "sectionName": "विज्ञान व रक्षा", "qText": "अक्टूबर 2026 में भारतीय स्टेट बैंक (SBI) ने अपने नए 'साइबर सुरक्षा उत्कृष्टता केंद्र' (Cyber Security Centre of Excellence) का उद्घाटन किस शहर में किया है?", "options": [{"id": "A", "text": "नई दिल्ली"}, {"id": "B", "text": "मुंबई"}, {"id": "C", "text": "बेंगलुरु"}, {"id": "D", "text": "हैदराबाद"}], "correct": "B", "explanation": "<div class=\"space-y-1.5\">\n<p><strong>उद्घाटन:</strong> SBI ने नया 'साइबर सुरक्षा उत्कृष्टता केंद्र' मुंबई में शुरू किया। DFS सचिव संजय लोहिया एवं SBI अध्यक्ष चल्ला श्रीनिवासुलु शेट्टी उपस्थित रहे।</p>\n<p><strong>तीन मुख्य स्तंभ (3 Pillars):</strong> 1. Think (सोच), 2. Innovate (नवाचार), 3. Defend (रक्षा)।</p>\n<div class=\"bg-amber-50 p-2 rounded border border-amber-200 text-amber-900\"><strong>🎯 Exam Booster:</strong> ग्लोबल फाइनेंस नेटवर्क द्वारा भारतीय स्टेट बैंक (SBI) को 'दुनिया का सर्वश्रेष्ठ उपभोक्ता बैंक' (World's Best Consumer Bank) घोषित किया गया है।</div>\n</div>"}, {"id": 15, "section": "national", "sectionName": "राष्ट्रीय व अंतर्राष्ट्रीय", "qText": "1 नवंबर 2026 को किस राज्य का स्थापना दिवस (Foundation Day) मनाया गया?", "options": [{"id": "A", "text": "आंध्र प्रदेश और तमिलनाडु"}, {"id": "B", "text": "केरल और कर्नाटक"}, {"id": "C", "text": "पंजाब और हरियाणा"}, {"id": "D", "text": "मध्य प्रदेश और छत्तीसगढ़"}, {"id": "E", "text": "उपर्युक्त सभी (आंध्र प्रदेश, तमिलनाडु, केरल, कर्नाटक, पंजाब, हरियाणा, मध्य प्रदेश और छत्तीसगढ़)"}], "correct": "E", "explanation": "<div class=\"space-y-1.5\">\n<p><strong>1 नवंबर को स्थापना दिवस मनाने वाले 8 राज्य:</strong></p>\n<ul class=\"list-disc list-inside space-y-0.5 text-slate-700\">\n<li><strong>1 नवंबर 1956 (5 राज्य):</strong> आंध्र प्रदेश, केरल, मध्य प्रदेश, कर्नाटक और तमिलनाडु (राज्य पुनर्गठन अधिनियम, 1956)।</li>\n<li><strong>1 नवंबर 1966 (2 राज्य):</strong> पंजाब और हरियाणा (पंजाब पुनर्गठन अधिनियम)।</li>\n<li><strong>1 नवंबर 2000 (1 राज्य):</strong> छत्तीसगढ़ (मध्य प्रदेश से अलग होकर गठित सबसे नवीनतम 1 नवंबर स्थापना राज्य)।</li>\n</ul>\n</div>"}];
+    // --- 1. QUESTIONS DATABASE (15 Questions from PDF) ---
+    const QUESTIONS = [{"id": 1, "section": "scitech", "sectionName": "विज्ञान व रक्षा", "qText": "इसरो (ISRO) ने 'NVS-03' बहुप्रतीक्षित स्वदेशी नेविगेशन उपग्रह को किस रॉकेट के जरिए सफलतापूर्वक लॉन्च किया है?", "options": [{"id": "A", "text": "GSLV-F18"}, {"id": "B", "text": "PSLV-C60"}, {"id": "C", "text": "LVM3-M5"}, {"id": "D", "text": "GSLV-F17"}], "correct": "A", "explanation": "<div class=\"space-y-1.5\">\n<p><strong>उपग्रह का नाम:</strong> NVS-03 (भारत की स्वदेशी नेविगेशन प्रणाली NavIC की दूसरी पीढ़ी का तीसरा उपग्रह)।</p>\n<p><strong>लॉन्च तिथि एवं समय:</strong> 30 अक्टूबर 2026 को रात 11:51 बजे।</p>\n<p><strong>लॉन्च रॉकेट:</strong> GSLV-F18 (इसका दूसरा नाम GSLV Mk-II भी है, दोनों नाम परीक्षा के लिए महत्वपूर्ण हैं)।</p>\n<p><strong>लॉन्च स्थल:</strong> सतीश धवन अंतरिक्ष केंद्र (SDSC), श्रीहरिकोटा, आंध्र प्रदेश।</p>\n<p><strong>वजन एवं कक्षा:</strong> लगभग 2,232 किलोग्राम। भू-स्थिर स्थानांतरण कक्षा (GTO) में प्रक्षेपित कर 32.5° पूर्व जियोसिंक्रोनस कक्षा (Geosynchronous Orbit) में स्थापित।</p>\n<p><strong>मिशन अवधि:</strong> 12 वर्ष।</p>\n<p><strong>प्रमुख विशेषता:</strong> SAC अहमदाबाद द्वारा विकसित स्वदेशी रुबिडियम परमाणु घड़ी (Rubidium Atomic Clock) का उपयोग।</p>\n<div class=\"bg-amber-50 p-2 rounded border border-amber-200 text-amber-900\"><strong>🎯 Exam Booster:</strong> हाल ही में GSLV-F17 रॉकेट की सहायता से इसरो ने EOS-05 को प्रक्षेपित किया था। अतः <em>EOS-05 → GSLV-F17</em> तथा <em>NVS-03 → GSLV-F18</em> याद रखें।</div>\n</div>"}, {"id": 2, "section": "national", "sectionName": "राष्ट्रीय व अंतर्राष्ट्रीय", "qText": "26वें आईफा अवार्ड्स 2026 (26th IIFA Awards 2026) में 'सर्वश्रेष्ठ फिल्म' (Best Film) का पुरस्कार किसने जीता है?", "options": [{"id": "A", "text": "धुरंधर (Dhurandhar)"}, {"id": "B", "text": "सैयारा (Saiyaara)"}, {"id": "C", "text": "आज़ाद (Azaad)"}, {"id": "D", "text": "होमबाउंड (Homebound)"}], "correct": "A", "explanation": "<div class=\"space-y-1.5\">\n<p><strong>26वें IIFA अवार्ड्स 2026 प्रमुख विजेता:</strong></p>\n<ul class=\"list-disc list-inside space-y-0.5 text-slate-700\">\n<li><strong>सर्वश्रेष्ठ फिल्म:</strong> धुरंधर (Dhurandhar)</li>\n<li><strong>सर्वश्रेष्ठ निर्देशक:</strong> आदित्य धर (धुरंधर)</li>\n<li><strong>सर्वश्रेष्ठ अभिनेता (पुरुष):</strong> रणवीर सिंह (धुरंधर)</li>\n<li><strong>सर्वश्रेष्ठ अभिनेत्री (महिला):</strong> अनीत पड्डा (सैयारा)</li>\n<li><strong>सर्वश्रेष्ठ सहायक अभिनेता:</strong> संजय दत्त (धुरंधर)</li>\n<li><strong>सर्वश्रेष्ठ खलनायक:</strong> अक्षय खन्ना (धुरंधर)</li>\n<li><strong>सर्वश्रेष्ठ डेब्यू (पुरुष):</strong> अहान पांडे (सैयारा)</li>\n<li><strong>सर्वश्रेष्ठ डेब्यू (महिला):</strong> राशा थडानी (आज़ाद)</li>\n<li><strong>सर्वश्रेष्ठ अंतर्राष्ट्रीय फिल्म:</strong> अवतार (Avatar)</li>\n</ul>\n<div class=\"bg-amber-50 p-2 rounded border border-amber-200 text-amber-900\"><strong>🎯 Exam Booster (Oscars 2026 लिंक):</strong> फिल्म 'होमबाउंड' (Homebound) को ऑस्कर 2026 में 'सर्वश्रेष्ठ अंतर्राष्ट्रीय फीचर फिल्म' श्रेणी हेतु भारत की आधिकारिक प्रविष्टि (Official Entry) चुना गया था।</div>\n</div>"}, {"id": 3, "section": "national", "sectionName": "राष्ट्रीय व अंतर्राष्ट्रीय", "qText": "नवंबर 2026 में भारतीय वायुसेना के नए उपप्रमुख (Vice Chief of the Air Staff) कौन बन गए हैं?", "options": [{"id": "A", "text": "एयर मार्शल आशुतोष दीक्षित"}, {"id": "B", "text": "एयर मार्शल इंद्रपाल सिंह वालिया"}, {"id": "C", "text": "एयर मार्शल विक्रम गौर"}, {"id": "D", "text": "एयर मार्शल तेजिंदर सिंह"}], "correct": "B", "explanation": "<div class=\"space-y-1.5\">\n<p><strong>नियुक्ति विवरण:</strong> एयर मार्शल इंद्रपाल सिंह वालिया को भारतीय वायुसेना का नया उपप्रमुख नियुक्त किया गया। इससे पूर्व वे पूर्वी वायु कमान (Eastern Air Command) के एयर ऑफिसर कमांडिंग-इन-चीफ (AOC-in-C) थे।</p>\n<p><strong>भारतीय वायुसेना (Static GK):</strong></p>\n<ul class=\"list-disc list-inside space-y-0.5 text-slate-700\">\n<li>स्थापना: 8 अक्टूबर 1932 (प्रतिवर्ष 8 अक्टूबर को 'वायुसेना दिवस')</li>\n<li>मुख्यालय: नई दिल्ली | वायुसेना प्रमुख: एयर चीफ मार्शल आशुतोष दीक्षित</li>\n<li>आदर्श वाक्य: <em>'नभः स्पृशं दीप्तम्'</em> (गौरव के साथ आकाश को छूना)</li>\n</ul>\n<div class=\"bg-amber-50 p-2 rounded border border-amber-200 text-amber-900\"><strong>🎯 Exam Booster:</strong> वर्ष 2026 में भारत के नए चीफ ऑफ डिफेंस स्टाफ (CDS) के रूप में जनरल एन. एस. राजा सुब्रमणि नियुक्त हुए हैं (जनरल अनिल चौहान का स्थान लिया)।</div>\n</div>"}, {"id": 4, "section": "national", "sectionName": "राष्ट्रीय व अंतर्राष्ट्रीय", "qText": "अक्टूबर 2026 में महात्मा गांधी जी की आदमकद (Life-size) प्रतिमा का अनावरण करने वाला अमेरिका का पहला राज्य कौन-सा बन गया है?", "options": [{"id": "A", "text": "नॉर्थ डकोटा (North Dakota)"}, {"id": "B", "text": "कैलिफ़ोर्निया (California)"}, {"id": "C", "text": "टेक्सास (Texas)"}, {"id": "D", "text": "न्यूयॉर्क (New York)"}], "correct": "A", "explanation": "<div class=\"space-y-1.5\">\n<p><strong>अनावरण विवरण:</strong> महात्मा गांधी जी की आदमकद (Life-size) प्रतिमा का अनावरण करने वाला अमेरिका का पहला राज्य नॉर्थ डकोटा (North Dakota) बना।</p>\n<p><strong>तिथि एवं स्थान:</strong> 29 अक्टूबर 2026 को नॉर्थ डकोटा की राजधानी बिस्मार्क (Bismarck) के पीस पार्क (Peace Park) में अनावरण हुआ।</p>\n<p><strong>USA (Static GK):</strong> राजधानी: वाशिंगटन डी.सी. | मुद्रा: USD | 47वें राष्ट्रपति: डोनाल्ड ट्रंप।</p>\n<div class=\"bg-amber-50 p-2 rounded border border-amber-200 text-amber-900\"><strong>🎯 Exam Booster (USA Current Affairs):</strong>\n1. अमेरिका ने आर्टिफिशियल इंटेलिजेंस (AI) का आधिकारिक नाम 'सुपर इंटेलिजेंस' (Super Intelligence) कर दिया है।\n2. प्रसिद्ध 'लेक ओन्टारियो' का नाम बदलकर 'लेक अमेरिका' (Lake America) कर दिया है।</div>\n</div>"}, {"id": 5, "section": "scitech", "sectionName": "विज्ञान व रक्षा", "qText": "भारत में पहली बार पारंपरिक थीसिस के स्थान पर 'प्रोडक्ट या स्टार्टअप-ड्रिवन पीएचडी प्रोग्राम' (Product or Startup-Driven PhD Program) किस आईआईटी ने लॉन्च किया है?", "options": [{"id": "A", "text": "आईआईटी मद्रास"}, {"id": "B", "text": "आईआईटी दिल्ली"}, {"id": "C", "text": "आईआईटी रोपड़"}, {"id": "D", "text": "आईआईटी कानपुर"}], "correct": "C", "explanation": "<div class=\"space-y-1.5\">\n<p><strong>मुख्य उद्देश्य:</strong> आईआईटी रोपड़ ने पारंपरिक लिखित थीसिस के स्थान पर 'प्रोडक्ट या स्टार्टअप-ड्रिवन पीएचडी प्रोग्राम' शुरू किया ताकि अकादमिक रिसर्च रियल-वर्ल्ड और इंडस्ट्री की व्यावहारिक समस्याओं का समाधान करे।</p>\n<p><strong>अंतर्राष्ट्रीय IIT परिसर:</strong> आईआईटी मद्रास दुनिया का पहला मल्टीनेशनल आईआईटी बना (पहला कैंपस ज़ांज़ीबार, तंजानिया में)। आईआईटी दिल्ली ने अपना पहला कैंपस अबू धाबी (UAE) में खोला।</p>\n<div class=\"bg-amber-50 p-2 rounded border border-amber-200 text-amber-900\"><strong>📌 प्रमुख IIT करेंट अफेयर्स 2026:</strong>\n• पहला फिजिकल AI स्कूल: IIT खड़गपुर\n• परम प्रज्ञा AI सुपरकंप्यूटर: IIT दिल्ली (सोनीपत)\n• स्वदेशी एरोस्टेट (हीलियम गुब्बारा): IIT दिल्ली + DRDO\n• पैरों वाला रोबोट 'SCORP': IIT कानपुर\n• साइंस ऑन व्हील्स: IIT मंडी\n• अवनी (Avni) ऐप: IIT रोपड़\n• फिबॉल (Phiball) खेल: IIT मद्रास</div>\n</div>"}, {"id": 6, "section": "sports", "sectionName": "खेल व पर्यावरण", "qText": "अक्टूबर 2026 में सीनियर विश्व कुश्ती चैंपियनशिप (Senior World Wrestling Championships) में स्वर्ण पदक जीतने वाली भारत की पहली महिला पहलवान कौन बन गई हैं?", "options": [{"id": "A", "text": "अंतिम पंघाल"}, {"id": "B", "text": "विनेश फोगाट"}, {"id": "C", "text": "अंशु मलिक"}, {"id": "D", "text": "मनीषा भानवाला"}], "correct": "D", "explanation": "<div class=\"space-y-1.5\">\n<p><strong>ऐतिहासिक उपलब्धि:</strong> मनीषा भानवाला सीनियर विश्व कुश्ती चैंपियनशिप में स्वर्ण पदक (Gold Medal) जीतने वाली भारत की पहली महिला पहलवान बनीं।</p>\n<p><strong>स्थान एवं फाइनल:</strong> अस्ताना (कजाकिस्तान) में 59 किग्रा भार वर्ग के फाइनल में अमेरिका की अबीगैल नेट्टे को 8–6 से हराया।</p>\n<div class=\"bg-amber-50 p-2 rounded border border-amber-200 text-amber-900\"><strong>🎯 Exam Booster:</strong>\n• अस्मिता डे (Asmita Dey): 2026 कॉमनवेल्थ गेम्स में स्वर्ण जीतने वाली पहली भारतीय महिला जूडोका बनीं।\n• कॉमनवेल्थ गेम्स 2026: ग्लासगो (स्कॉटलैंड)।\n• कॉमनवेल्थ गेम्स 2030: अहमदाबाद (गुजरात, भारत)।</div>\n</div>"}, {"id": 7, "section": "sports", "sectionName": "खेल व पर्यावरण", "qText": "विश्व बैंक (World Bank) की रिपोर्ट के अनुसार, 2011 से 2023 के बीच भारत में अत्यधिक गरीबी दर (Extreme Poverty Rate) 27.1% से घटकर अब कितने प्रतिशत पर रह गई है?", "options": [{"id": "A", "text": "3.8%"}, {"id": "B", "text": "2.6%"}, {"id": "C", "text": "4.2%"}, {"id": "D", "text": "1.9%"}], "correct": "B", "explanation": "<div class=\"space-y-1.5\">\n<p><strong>विश्व बैंक Poverty & Equity Brief (Oct 2026):</strong></p>\n<p>• अत्यधिक गरीबी दर ($3.00/दिन PPP) 27.1% से घटकर <strong>2.6%</strong> रह गई।</p>\n<p>• लगभग 49.6 करोड़ (496 मिलियन) लोग गरीबी से बाहर निकले।</p>\n<p>• $4.20 प्रतिदिन से नीचे रहने वाली आबादी 57.7% से घटकर 16.1% रह गई।</p>\n<p><strong>विश्व बैंक (Static GK & नई नियुक्तियां):</strong></p>\n<p>• स्थापना: जुलाई 1944 | मुख्यालय: वाशिंगटन डी.सी. | अध्यक्ष: अजय बंगा</p>\n<p>• नए MD & CFO: डेविड वैलेन्ट (David Vaillant)</p>\n<p>• नए मुख्य अर्थशास्त्री: नोबेल विजेता माइकल क्रेमर (Michael Kremer)</p>\n</div>"}, {"id": 8, "section": "national", "sectionName": "राष्ट्रीय व अंतर्राष्ट्रीय", "qText": "'13वां स्वामी विवेकानंद स्मृति कर्मयोगी सम्मान 2026' (13th Swami Vivekananda Smriti Karmayogi Award) किसे प्रदान किया गया है?", "options": [{"id": "A", "text": "जादव पायेंग"}, {"id": "B", "text": "चामी मुर्मू"}, {"id": "C", "text": "सुनील देवधर"}, {"id": "D", "text": "लैशराम जात्रा सिंह"}], "correct": "D", "explanation": "<div class=\"space-y-1.5\">\n<p><strong>सम्मान विवरण:</strong> मणिपुर के वरिष्ठ समाजसेवी व आरएसएस प्रचारक लैशराम जात्रा सिंह जी को 'माय होम इंडिया' (My Home India) द्वारा 13वां स्वामी विवेकानंद स्मृति कर्मयोगी सम्मान 2026 नई दिल्ली में प्रदान किया गया।</p>\n<p><strong>उपलब्धि:</strong> पूर्वोत्तर भारत में समाज सेवा और राष्ट्र निर्माण में उनके 55 वर्षों के अद्वितीय योगदान और निस्वार्थ समर्पण हेतु यह सम्मान मिला।</p>\n</div>"}, {"id": 9, "section": "national", "sectionName": "राष्ट्रीय व अंतर्राष्ट्रीय", "qText": "अक्टूबर 2026 में 'द स्टोरी ऑफ वंदे मातरम' (The Story of Vande Mataram) पुस्तक का अंग्रेजी अनुवाद जारी किया गया, इसके मूल लेखक कौन हैं?", "options": [{"id": "A", "text": "डॉ. आरिफ मोहम्मद खान"}, {"id": "B", "text": "रंगा हरि"}, {"id": "C", "text": "डॉ. मर्सी जिल"}, {"id": "D", "text": "रामनाथ कोविंद"}], "correct": "B", "explanation": "<div class=\"space-y-1.5\">\n<p><strong>पुस्तक विमोचन:</strong> पूर्व राज्यपाल डॉ. आरिफ मोहम्मद खान ने नई दिल्ली में 'द स्टोरी ऑफ वंदे मातरम्' के अंग्रेजी अनुवाद का विमोचन किया।</p>\n<p><strong>मूल लेखक व भाषा:</strong> आरएसएस के वरिष्ठ प्रचारक रंगा हरि (Ranga Hari) द्वारा मूल रूप से मलयालम भाषा में रचित।</p>\n<p><strong>अंग्रेजी अनुवादक:</strong> डॉ. मर्सी जिल (Dr. Mercy Jill)।</p>\n<div class=\"bg-amber-50 p-2 rounded border border-amber-200 text-amber-900\"><strong>🎯 Exam Booster:</strong> पूर्व राष्ट्रपति रामनाथ कोविंद की आत्मकथा <em>'Triumph of the Indian Republic: My Life, My Struggles'</em> भी हाल ही में विमोचित हुई।</div>\n</div>"}, {"id": 10, "section": "national", "sectionName": "राष्ट्रीय व अंतर्राष्ट्रीय", "qText": "29 अक्टूबर 2026 को 'आयुष्मान वय वंदना योजना' (Ayushman Vay Vandana Yojana) के 2 साल पूरे हो गए, इसके तहत प्रदान की जाने वाली अधिकतम स्वास्थ्य बीमा कवरेज क्या है?", "options": [{"id": "A", "text": "₹5 लाख प्रतिवर्ष"}, {"id": "B", "text": "₹10 लाख प्रतिवर्ष"}, {"id": "C", "text": "₹7 लाख प्रतिवर्ष"}, {"id": "D", "text": "₹3 लाख प्रतिवर्ष"}], "correct": "A", "explanation": "<div class=\"space-y-1.5\">\n<p><strong>योजना विवरण:</strong> 29 अक्टूबर 2024 को प्रधानमंत्री नरेंद्र मोदी द्वारा शुरू की गई थी। 29 अक्टूबर 2026 को इसके 2 वर्ष पूर्ण हुए।</p>\n<p><strong>प्रावधान:</strong> यह AB-PMJAY का अंग है। इसमें <strong>70 वर्ष और उससे अधिक आयु के सभी वरिष्ठ नागरिकों</strong> को प्रतिवर्ष ₹5 लाख तक का मुफ्त स्वास्थ्य बीमा कवरेज मिलता है।</p>\n<div class=\"bg-amber-50 p-2 rounded border border-amber-200 text-amber-900\"><strong>🎯 PYQ Alert:</strong> यह प्रश्न दिल्ली पुलिस (2025 परीक्षा) व RRB NTPC में पूछा जा चुका है।</div>\n</div>"}, {"id": 11, "section": "sports", "sectionName": "खेल व पर्यावरण", "qText": "पुरुष अंतर्राष्ट्रीय टी20 (Men's T20I) क्रिकेट में 200 विकेट लेने वाले दुनिया के पहले गेंदबाज कौन बन गए हैं?", "options": [{"id": "A", "text": "राशिद खान"}, {"id": "B", "text": "टिम साउथी"}, {"id": "C", "text": "शाकिब अल हसन"}, {"id": "D", "text": "जसप्रीत बुमराह"}], "correct": "A", "explanation": "<div class=\"space-y-1.5\">\n<p><strong>विश्व रिकॉर्ड:</strong> अफगानिस्तान के लेग स्पिनर राशिद खान पुरुष T20I में 200 विकेट लेने वाले दुनिया के पहले गेंदबाज बने।</p>\n<p><strong>मैच:</strong> 29 अक्टूबर 2026 को शारजाह (UAE) में ज़िम्बाब्वे के खिलाफ दूसरे T20I मैच में यह उपलब्धि हासिल की।</p>\n<div class=\"bg-amber-50 p-2 rounded border border-amber-200 text-amber-900\"><strong>🎯 Exam Booster:</strong> हरमनप्रीत कौर के इस्तीफे के बाद भारतीय महिला क्रिकेट टीम की नई कप्तान <strong>स्मृति मंधाना (Smriti Mandhana)</strong> बनी हैं।</div>\n</div>"}, {"id": 12, "section": "sports", "sectionName": "खेल व पर्यावरण", "qText": "संयुक्त राष्ट्र पर्यावरण कार्यक्रम (UNEP) ने 'Nature's Comeback: Scaling Ecosystem Restoration for People and Planet' रिपोर्ट में भारत के किस कार्यक्रम को 'विश्व पुनर्स्थापना फ्लैगशिप' (World Restoration Flagship) के रूप में मान्यता दी है?", "options": [{"id": "A", "text": "प्रोजेक्ट टाइगर"}, {"id": "B", "text": "प्रोजेक्ट एलीफेंट"}, {"id": "C", "text": "चीता पुनर्वास परियोजना"}, {"id": "D", "text": "गंगा नदी डॉल्फिन पुनर्प्राप्ति कार्यक्रम"}], "correct": "D", "explanation": "<div class=\"space-y-1.5\">\n<p><strong>वैश्विक मान्यता:</strong> UNEP ने भारत के <strong>'गंगा नदी डॉल्फिन पुनर्प्राप्ति कार्यक्रम'</strong> को दुनिया के 35 विश्व पुनर्स्थापना फ्लैगशिप में स्थान दिया।</p>\n<p><strong>मंत्रालय:</strong> पर्यावरण, वन एवं जलवायु परिवर्तन मंत्रालय द्वारा 'प्रोजेक्ट डॉल्फिन' और 'नमामि गंगे मिशन' के अंतर्गत संचालित।</p>\n<div class=\"bg-amber-50 p-2 rounded border border-amber-200 text-amber-900\"><strong>🎯 Static GK & Environment Booster:</strong>\n• UNEP मुख्यालय: नैरोबी (केन्या)\n• गंगा नदी डॉल्फिन की IUCN स्थिति: <strong>संकटग्रस्त (Endangered)</strong></div>\n</div>"}, {"id": 13, "section": "scitech", "sectionName": "विज्ञान व रक्षा", "qText": "अक्टूबर 2026 में नई दिल्ली में डीआरडीओ (DRDO) की स्वदेशी रक्षा तकनीक प्रदर्शनी 'विश्व 2026' (VISHVA 2026) का उद्घाटन किसने किया?", "options": [{"id": "A", "text": "राजनाथ सिंह"}, {"id": "B", "text": "नरेंद्र मोदी"}, {"id": "C", "text": "संजय सेठ"}, {"id": "D", "text": "डॉ. समीर वी. कामत"}], "correct": "C", "explanation": "<div class=\"space-y-1.5\">\n<p><strong>उद्घाटन विवरण:</strong> रक्षा राज्य मंत्री संजय सेठ ने 30 अक्टूबर 2026 को मानेकशॉ सेंटर, नई दिल्ली में डीआरडीओ की प्रदर्शनी 'विश्व 2026' का उद्घाटन किया।</p>\n<p><strong>आयोजक:</strong> DRDO एवं सेंटर फॉर जॉइंट वारफेयर स्टडीज (CENJOWS)।</p>\n<p><strong>थीम:</strong> 'रक्षा क्षमताओं का प्रदर्शन, वैश्विक साझेदारियों को मजबूत बनाना' (Showcasing Defence Capabilities, Strengthening Global Partnerships)।</p>\n<div class=\"bg-amber-50 p-2 rounded border border-amber-200 text-amber-900\"><strong>🎯 Exam Booster:</strong> DRDO के नए प्रमुख/अध्यक्ष <strong>राजेश कुमार सिंह</strong> बने हैं (डॉ. समीर वी. कामत का स्थान लिया)।</div>\n</div>"}, {"id": 14, "section": "scitech", "sectionName": "विज्ञान व रक्षा", "qText": "अक्टूबर 2026 में भारतीय स्टेट बैंक (SBI) ने अपने नए 'साइबर सुरक्षा उत्कृष्टता केंद्र' (Cyber Security Centre of Excellence) का उद्घाटन किस शहर में किया है?", "options": [{"id": "A", "text": "नई दिल्ली"}, {"id": "B", "text": "मुंबई"}, {"id": "C", "text": "बेंगलुरु"}, {"id": "D", "text": "हैदराबाद"}], "correct": "B", "explanation": "<div class=\"space-y-1.5\">\n<p><strong>उद्घाटन:</strong> SBI ने नया 'साइबर सुरक्षा उत्कृष्टता केंद्र' मुंबई में शुरू किया। DFS सचिव संजय लोहिया एवं SBI अध्यक्ष चल्ला श्रीनिवासुलु शेट्टी उपस्थित रहे।</p>\n<p><strong>तीन मुख्य स्तंभ (3 Pillars):</strong> 1. Think (सोच), 2. Innovate (नवाचार), 3. Defend (रक्षा)।</p>\n<div class=\"bg-amber-50 p-2 rounded border border-amber-200 text-amber-900\"><strong>🎯 Exam Booster:</strong> ग्लोबल फाइनेंस नेटवर्क द्वारा भारतीय स्टेट बैंक (SBI) को 'दुनिया का सर्वश्रेष्ठ उपभोक्ता बैंक' (World's Best Consumer Bank) घोषित किया गया है।</div>\n</div>"}, {"id": 15, "section": "national", "sectionName": "राष्ट्रीय व अंतर्राष्ट्रीय", "qText": "1 नवंबर 2026 को किस राज्य का स्थापना दिवस (Foundation Day) मनाया गया?", "options": [{"id": "A", "text": "आंध्र प्रदेश और तमिलनाडु"}, {"id": "B", "text": "केरल और कर्नाटक"}, {"id": "C", "text": "पंजाब और हरियाणा"}, {"id": "D", "text": "मध्य प्रदेश और छत्तीसगढ़"}, {"id": "E", "text": "उपर्युक्त सभी (आंध्र प्रदेश, तमिलनाडु, केरल, कर्नाटक, पंजाब, हरियाणा, मध्य प्रदेश और छत्तीसगढ़)"}], "correct": "E", "explanation": "<div class=\"space-y-1.5\">\n<p><strong>1 नवंबर को स्थापना दिवस मनाने वाले 8 राज्य:</strong></p>\n<ul class=\"list-disc list-inside space-y-0.5 text-slate-700\">\n<li><strong>1 नवंबर 1956 (5 राज्य):</strong> आंध्र प्रदेश, केरल, मध्य प्रदेश, कर्नाटक और तमिलनाडु (राज्य पुनर्गठन अधिनियम, 1956)।</li>\n<li><strong>1 नवंबर 1966 (2 राज्य):</strong> पंजाब और हरियाणा (पंजाब पुनर्गठन अधिनियम)।</li>\n<li><strong>1 नवंबर 2000 (1 राज्य):</strong> छत्तीसगढ़ (मध्य प्रदेश से अलग होकर गठित सबसे नवीनतम 1 नवंबर स्थापना राज्य)।</li>\n</ul>\n</div>"}];
 
-    // --- 2. CONFIGURATION & STATE ---
+    // --- 2. STATE & CONFIGURATION ---
     const TOTAL_TEST_TIME = 15 * 60; // 15 minutes in seconds
     const DEFAULT_FIREBASE_URL = "https://gyanverse-cbt-b5f75-default-rtdb.firebaseio.com";
     
+    // Hash of valid Admin PINs ('1234' or 'GYANVERSE') to prevent plaintext exposure
+    // SHA-256('1234') = '03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4'
+    // SHA-256('GYANVERSE') = 'b82e2c564ad7258327b878799435b62b66782ff77c77607a97ce932782e42b20'
+    const VALID_PIN_HASHES = [
+      "03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4",
+      "b82e2c564ad7258327b878799435b62b66782ff77c77607a97ce932782e42b20"
+    ];
+
     let currentQIndex = 0;
     let filteredIndices = QUESTIONS.map((_, i) => i);
     let currentSectionFilter = 'all';
     let currentSolutionFilter = 'all';
     let isSolutionMode = false;
-    let timerSeconds = TOTAL_TEST_TIME;
+
+    // Timer variables: Based on accurate end timestamp to prevent pause/refresh cheating
+    let testEndTime = null;
     let timerInterval = null;
+    let tabSwitchCount = 0;
 
     // Student profile & answers
     let student = {
@@ -534,21 +587,12 @@
       telegram: ""
     };
 
-    // userAnswers: array of length 15 storing selected option ('A', 'B', 'C', 'D', 'E' or null)
-    let userAnswers = new Array(QUESTIONS.length).fill(null);
-    let reviewStatus = new Array(QUESTIONS.length).fill(false);
+    // Student's own answers during test
+    let myUserAnswers = new Array(QUESTIONS.length).fill(null);
+    let myReviewStatus = new Array(QUESTIONS.length).fill(false);
 
-    // Mock initial rank list to blend seamlessly with live submissions
-    const MOCK_TOPPERS = [
-      { rank: 1, name: "विकास कुमार झा", district: "पटना", telegram: "@vikas_jha", score: 28.00, correct: 14, wrong: 1, unattempted: 0, accuracy: 93, timeTaken: "11:42", submittedAt: "02/11/2026, 09:15 AM" },
-      { rank: 2, name: "पूजा कुमारी", district: "मुजफ्फरपुर", telegram: "@puja_singh", score: 26.20, correct: 13, wrong: 1, unattempted: 1, accuracy: 92, timeTaken: "12:10", submittedAt: "02/11/2026, 09:22 AM" },
-      { rank: 3, name: "रवि शंकर यादव", district: "गया", telegram: "@ravi_yaduvanshi", score: 25.80, correct: 13, wrong: 2, unattempted: 0, accuracy: 86, timeTaken: "13:05", submittedAt: "02/11/2026, 09:30 AM" },
-      { rank: 4, name: "अमित कुमार चौधरी", district: "भागलपुर", telegram: "@amit_cbt", score: 24.00, correct: 12, wrong: 1, unattempted: 2, accuracy: 92, timeTaken: "10:50", submittedAt: "02/11/2026, 09:35 AM" },
-      { rank: 5, name: "शालिनी सिंह", district: "भोजपुर (आरा)", telegram: "@shalini_bihar", score: 23.60, correct: 12, wrong: 2, unattempted: 1, accuracy: 85, timeTaken: "14:15", submittedAt: "02/11/2026, 09:40 AM" },
-      { rank: 6, name: "दीपक कुमार शर्मा", district: "दरभंगा", telegram: "@deepak_darbhanga", score: 22.00, correct: 11, wrong: 1, unattempted: 3, accuracy: 91, timeTaken: "12:40", submittedAt: "02/11/2026, 09:45 AM" },
-      { rank: 7, name: "प्रिया कुमारी", district: "नालंदा (बिहारशरीफ)", telegram: "@priya_nalanda", score: 21.60, correct: 11, wrong: 2, unattempted: 2, accuracy: 84, timeTaken: "13:20", submittedAt: "02/11/2026, 09:50 AM" },
-      { rank: 8, name: "रोहित सिंह", district: "रोहतास (सासाराम)", telegram: "@rohit_rohtas", score: 20.00, correct: 10, wrong: 1, unattempted: 4, accuracy: 90, timeTaken: "11:15", submittedAt: "02/11/2026, 09:55 AM" }
-    ];
+    // Active displayed answers (can view another student's solutions without overwriting own answers!)
+    let activeDisplayAnswers = myUserAnswers;
 
     // Local storage keys
     const LS_PROGRESS_KEY = "gv_cbt_02nov_progress";
@@ -556,19 +600,37 @@
     const LS_ALL_SUBS_KEY = "gv_cbt_all_submissions";
     const LS_FIREBASE_URL_KEY = "gv_cbt_firebase_url";
 
-    // --- 3. INITIALIZATION ---
-    window.addEventListener('DOMContentLoaded', () => {
-      populateQuestionDropdown();
-      checkSavedProgress();
-      initAdminClickTrigger();
-      renderQuestion();
-    });
+    // --- 3. HELPER FUNCTIONS (Safe DOM, SHA-256, Toast) ---
+    function showToast(msg, duration = 2500) {
+      const toast = document.getElementById('customToast');
+      const text = document.getElementById('toastMessage');
+      text.innerText = msg;
+      toast.classList.remove('hidden');
+      setTimeout(() => {
+        toast.classList.add('hidden');
+      }, duration);
+    }
+
+    async function sha256(str) {
+      const buffer = new TextEncoder().encode(str);
+      const hashBuffer = await crypto.subtle.digest("SHA-256", buffer);
+      return Array.from(new Uint8Array(hashBuffer)).map(b => b.toString(16).padStart(2, '0')).join('');
+    }
 
     function getFirebaseUrl() {
       return localStorage.getItem(LS_FIREBASE_URL_KEY) || DEFAULT_FIREBASE_URL;
     }
 
-    // Check saved progress or past submission
+    // --- 4. INITIALIZATION ---
+    window.addEventListener('DOMContentLoaded', () => {
+      populateQuestionDropdown();
+      populatePaletteGrid();
+      checkSavedProgress();
+      initAdminClickTrigger();
+      initVisibilityDetector();
+      renderQuestion();
+    });
+
     function checkSavedProgress() {
       const savedSub = localStorage.getItem(LS_SUBMISSION_KEY);
       if (savedSub) {
@@ -580,17 +642,21 @@
       if (savedProgress) {
         try {
           const prog = JSON.parse(savedProgress);
-          if (prog && prog.student && prog.student.name) {
-            document.getElementById('btnResumeDraft').classList.remove('hidden');
-            document.getElementById('regName').value = prog.student.name || "";
-            document.getElementById('regDistrict').value = prog.student.district || "";
-            document.getElementById('regTelegram').value = prog.student.telegram || "";
+          if (prog && prog.student && prog.student.name && prog.testEndTime) {
+            // check if timer already expired
+            const remaining = Math.round((prog.testEndTime - Date.now()) / 1000);
+            if (remaining > 0) {
+              document.getElementById('btnResumeDraft').classList.remove('hidden');
+              document.getElementById('regName').value = prog.student.name || "";
+              document.getElementById('regDistrict').value = prog.student.district || "";
+              document.getElementById('regTelegram').value = prog.student.telegram || "";
+            }
           }
         } catch(e) {}
       }
     }
 
-    // --- 4. REGISTRATION & TEST START ---
+    // --- 5. TEST START & ACCURATE TIMER (endTime based) ---
     function startFreshTest() {
       const name = document.getElementById('regName').value.trim();
       const district = document.getElementById('regDistrict').value;
@@ -604,25 +670,24 @@
       errorDiv.classList.add('hidden');
 
       student = { name, district, telegram };
-      userAnswers = new Array(QUESTIONS.length).fill(null);
-      reviewStatus = new Array(QUESTIONS.length).fill(false);
-      timerSeconds = TOTAL_TEST_TIME;
+      myUserAnswers = new Array(QUESTIONS.length).fill(null);
+      myReviewStatus = new Array(QUESTIONS.length).fill(false);
+      activeDisplayAnswers = myUserAnswers;
       currentQIndex = 0;
       isSolutionMode = false;
+      tabSwitchCount = 0;
 
-      // Close modal
+      // Set fixed endTime
+      testEndTime = Date.now() + (TOTAL_TEST_TIME * 1000);
+
       document.getElementById('entryGateModal').classList.add('hidden');
 
-      // Request fullscreen if available
-      try {
-        if (document.documentElement.requestFullscreen) {
-          document.documentElement.requestFullscreen().catch(() => {});
-        }
-      } catch(e) {}
-
-      startTimer();
+      requestFullScreenSafe();
+      startTimerEngine();
       saveProgressLocally();
+      selectSection('all');
       renderQuestion();
+      showToast("🚀 टेस्ट शुरू! शुभकामनाएँ।");
     }
 
     function resumeDraftTest() {
@@ -631,71 +696,72 @@
       try {
         const prog = JSON.parse(savedProgress);
         student = prog.student || {};
-        userAnswers = prog.userAnswers || new Array(QUESTIONS.length).fill(null);
-        reviewStatus = prog.reviewStatus || new Array(QUESTIONS.length).fill(false);
-        timerSeconds = prog.timerSeconds !== undefined ? prog.timerSeconds : TOTAL_TEST_TIME;
+        myUserAnswers = prog.myUserAnswers || new Array(QUESTIONS.length).fill(null);
+        myReviewStatus = prog.myReviewStatus || new Array(QUESTIONS.length).fill(false);
+        activeDisplayAnswers = myUserAnswers;
+        testEndTime = prog.testEndTime;
         currentQIndex = prog.currentQIndex || 0;
+        tabSwitchCount = prog.tabSwitchCount || 0;
         isSolutionMode = false;
 
+        const remaining = Math.round((testEndTime - Date.now()) / 1000);
+        if (remaining <= 0) {
+          showToast("समय पहले ही समाप्त हो चुका था, टेस्ट सबमिट हो रहा है...");
+          finalizeSubmission();
+          return;
+        }
+
         document.getElementById('entryGateModal').classList.add('hidden');
-        startTimer();
+        requestFullScreenSafe();
+        startTimerEngine();
+        selectSection('all');
         renderQuestion();
+        showToast("▶ टेस्ट पुनः आरंभ हुआ।");
       } catch(e) {
         startFreshTest();
       }
     }
 
-    function openPastSolutionsFromGate() {
-      const savedSub = localStorage.getItem(LS_SUBMISSION_KEY);
-      if (!savedSub) return;
+    function requestFullScreenSafe() {
       try {
-        const sub = JSON.parse(savedSub);
-        student = { name: sub.name, district: sub.district, telegram: sub.telegram };
-        userAnswers = sub.userAnswers || [];
-        document.getElementById('entryGateModal').classList.add('hidden');
-        enterSolutionMode();
+        if (document.documentElement.requestFullscreen) {
+          document.documentElement.requestFullscreen().catch(() => {});
+        }
       } catch(e) {}
     }
 
-    function openSavedSolutionsModal() {
-      const savedSub = localStorage.getItem(LS_SUBMISSION_KEY);
-      if (savedSub) {
-        try {
-          const sub = JSON.parse(savedSub);
-          student = { name: sub.name, district: sub.district, telegram: sub.telegram };
-          userAnswers = sub.userAnswers || [];
-          enterSolutionMode();
-        } catch(e) {}
-      } else {
-        alert("कोई पुराना सबमिट किया गया टेस्ट नहीं मिला।");
-      }
-    }
-
-    // --- 5. TIMER ENGINE ---
-    function startTimer() {
+    function startTimerEngine() {
       if (timerInterval) clearInterval(timerInterval);
       updateTimerDisplay();
+
       timerInterval = setInterval(() => {
-        if (timerSeconds > 0) {
-          timerSeconds--;
-          updateTimerDisplay();
-          if (timerSeconds % 5 === 0) saveProgressLocally();
-        } else {
+        const remainingSeconds = Math.max(0, Math.round((testEndTime - Date.now()) / 1000));
+        updateTimerDisplay(remainingSeconds);
+
+        if (remainingSeconds <= 0) {
           clearInterval(timerInterval);
-          alert("समय समाप्त हो गया है! आपका टेस्ट स्वतः सबमिट हो रहा है...");
+          showToast("समय समाप्त! स्वतः सबमिट हो रहा है...");
           finalizeSubmission();
         }
-      }, 1000);
+      }, 500);
     }
 
-    function updateTimerDisplay() {
-      const mins = Math.floor(timerSeconds / 60);
-      const secs = timerSeconds % 60;
+    function updateTimerDisplay(remaining = null) {
+      if (remaining === null) {
+        remaining = testEndTime ? Math.max(0, Math.round((testEndTime - Date.now()) / 1000)) : TOTAL_TEST_TIME;
+      }
+      const mins = Math.floor(remaining / 60);
+      const secs = remaining % 60;
       const disp = `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
       document.getElementById('timerDisplay').innerText = disp;
-      if (timerSeconds < 180) {
-        document.getElementById('timerContainer').classList.remove('text-emerald-400');
-        document.getElementById('timerContainer').classList.add('text-rose-400', 'animate-pulse');
+
+      const container = document.getElementById('timerContainer');
+      if (remaining < 180) {
+        container.classList.remove('text-emerald-400');
+        container.classList.add('text-rose-400', 'animate-pulse');
+      } else {
+        container.classList.add('text-emerald-400');
+        container.classList.remove('text-rose-400', 'animate-pulse');
       }
     }
 
@@ -703,16 +769,35 @@
       if (isSolutionMode) return;
       const progress = {
         student,
-        userAnswers,
-        reviewStatus,
-        timerSeconds,
+        myUserAnswers,
+        myReviewStatus,
+        testEndTime,
         currentQIndex,
-        timestamp: Date.now()
+        tabSwitchCount,
+        savedAt: Date.now()
       };
       localStorage.setItem(LS_PROGRESS_KEY, JSON.stringify(progress));
     }
 
-    // --- 6. QUESTION RENDERING & NAVIGATION ---
+    // --- 6. TAB SWITCH VISIBILITY DETECTION ---
+    function initVisibilityDetector() {
+      document.addEventListener('visibilitychange', () => {
+        if (document.hidden && !isSolutionMode && testEndTime && Date.now() < testEndTime) {
+          tabSwitchCount++;
+          saveProgressLocally();
+        } else if (!document.hidden && !isSolutionMode && tabSwitchCount > 0 && testEndTime) {
+          document.getElementById('tabSwitchCountDisplay').innerText = tabSwitchCount;
+          document.getElementById('tabWarningModal').classList.remove('hidden');
+        }
+      });
+    }
+
+    function dismissTabWarning() {
+      document.getElementById('tabWarningModal').classList.add('hidden');
+      requestFullScreenSafe();
+    }
+
+    // --- 7. QUESTION RENDERING & PALETTE ---
     function populateQuestionDropdown() {
       const select = document.getElementById('qJumpSelect');
       select.innerHTML = '';
@@ -724,13 +809,53 @@
       });
     }
 
+    function populatePaletteGrid() {
+      const grid = document.getElementById('paletteGridContainer');
+      grid.innerHTML = '';
+      QUESTIONS.forEach((_, idx) => {
+        const btn = document.createElement('button');
+        btn.id = `palette-btn-${idx}`;
+        btn.innerText = idx + 1;
+        btn.className = "h-8 rounded-lg font-bold text-xs flex items-center justify-center transition border border-slate-200 bg-slate-100 text-slate-700 active:scale-95";
+        btn.onclick = () => {
+          jumpToQuestion(idx);
+          togglePaletteModal();
+        };
+        grid.appendChild(btn);
+      });
+    }
+
+    function togglePaletteModal() {
+      const m = document.getElementById('paletteModal');
+      m.classList.toggle('hidden');
+      updatePaletteColors();
+    }
+
+    function updatePaletteColors() {
+      QUESTIONS.forEach((_, idx) => {
+        const btn = document.getElementById(`palette-btn-${idx}`);
+        if (!btn) return;
+        btn.className = "h-8 rounded-lg font-bold text-xs flex items-center justify-center transition border ";
+        if (idx === currentQIndex) {
+          btn.className += "ring-2 ring-indigo-600 ";
+        }
+        if (myUserAnswers[idx] !== null) {
+          btn.className += "bg-emerald-500 text-white border-emerald-600";
+        } else if (myReviewStatus[idx]) {
+          btn.className += "bg-amber-400 text-slate-950 border-amber-500";
+        } else {
+          btn.className += "bg-slate-100 text-slate-700 border-slate-200";
+        }
+      });
+    }
+
     function updateDropdownLabels() {
       const select = document.getElementById('qJumpSelect');
       for (let i = 0; i < select.options.length; i++) {
         const qNum = i + 1;
         let symbol = '⚪';
-        if (userAnswers[i] !== null) symbol = '◉';
-        if (reviewStatus[i]) symbol = '★';
+        if (activeDisplayAnswers[i] !== null) symbol = '◉';
+        if (myReviewStatus[i]) symbol = '★';
         select.options[i].innerText = `${symbol} Q${qNum < 10 ? '0' + qNum : qNum}`;
       }
       select.value = currentQIndex;
@@ -745,7 +870,7 @@
       document.getElementById('qBadgeNum').innerText = `प्रश्न ${qNumFormatted} / ${QUESTIONS.length}`;
       document.getElementById('qBadgeSection').innerText = q.sectionName;
 
-      // Question Text
+      // Question Text (safe DOM injection)
       document.getElementById('qTextDisplay').innerText = q.qText;
 
       // Render Options
@@ -756,24 +881,34 @@
         const btn = document.createElement('button');
         btn.className = getOptionButtonClass(q, opt.id);
         
-        let prefixBadge = `<span class="h-6 w-6 rounded-md font-bold text-xs flex items-center justify-center shrink-0 border ${getOptionBadgeClass(q, opt.id)}">${opt.id}</span>`;
-        let statusTag = '';
+        const badgeSpan = document.createElement('span');
+        badgeSpan.className = `h-6 w-6 rounded-md font-bold text-xs flex items-center justify-center shrink-0 border ${getOptionBadgeClass(q, opt.id)}`;
+        badgeSpan.innerText = opt.id;
+
+        const textSpan = document.createElement('span');
+        textSpan.className = "text-left font-medium leading-snug break-words flex-1";
+        textSpan.innerText = opt.text;
+
+        const rowDiv = document.createElement('div');
+        rowDiv.className = "flex items-center gap-2.5 w-full";
+        rowDiv.appendChild(badgeSpan);
+        rowDiv.appendChild(textSpan);
 
         if (isSolutionMode) {
           if (opt.id === q.correct) {
-            statusTag = `<span class="ml-auto text-[10px] font-bold text-emerald-800 bg-emerald-200/80 px-1.5 py-0.5 rounded">✔ सही उत्तर</span>`;
-          } else if (userAnswers[currentQIndex] === opt.id) {
-            statusTag = `<span class="ml-auto text-[10px] font-bold text-rose-800 bg-rose-200/80 px-1.5 py-0.5 rounded">✖ आपका चयन</span>`;
+            const tag = document.createElement('span');
+            tag.className = "ml-auto text-[10px] font-bold text-emerald-800 bg-emerald-200/80 px-1.5 py-0.5 rounded";
+            tag.innerText = "✔ सही उत्तर";
+            rowDiv.appendChild(tag);
+          } else if (activeDisplayAnswers[currentQIndex] === opt.id) {
+            const tag = document.createElement('span');
+            tag.className = "ml-auto text-[10px] font-bold text-rose-800 bg-rose-200/80 px-1.5 py-0.5 rounded";
+            tag.innerText = "✖ चयन";
+            rowDiv.appendChild(tag);
           }
         }
 
-        btn.innerHTML = `
-          <div class="flex items-center gap-2.5 w-full">
-            ${prefixBadge}
-            <span class="text-left font-medium leading-snug break-words">${opt.text}</span>
-            ${statusTag}
-          </div>
-        `;
+        btn.appendChild(rowDiv);
 
         if (!isSolutionMode) {
           btn.onclick = () => selectOption(opt.id);
@@ -792,9 +927,9 @@
         expBox.classList.add('hidden');
       }
 
-      // Review Button Text & Style
+      // Review Button
       const btnReview = document.getElementById('btnReview');
-      if (reviewStatus[currentQIndex]) {
+      if (myReviewStatus[currentQIndex]) {
         btnReview.classList.remove('bg-amber-100', 'text-amber-800', 'border-amber-300');
         btnReview.classList.add('bg-amber-500', 'text-slate-950', 'border-amber-600');
         document.getElementById('btnReviewText').innerText = '★ Marked';
@@ -804,14 +939,15 @@
         document.getElementById('btnReviewText').innerText = '★ Review';
       }
 
-      // Update Counts & Dropdown
+      // Update Counts & Dropdown & Palette
       updateCounts();
       updateDropdownLabels();
+      updatePaletteColors();
     }
 
     function getOptionButtonClass(q, optId) {
       const base = "w-full py-1.5 sm:py-2 px-2.5 sm:px-3 text-[12.5px] sm:text-[13.5px] rounded-xl border text-left flex items-center justify-between transition select-none ";
-      const selected = userAnswers[currentQIndex] === optId;
+      const selected = activeDisplayAnswers[currentQIndex] === optId;
 
       if (!isSolutionMode) {
         if (selected) {
@@ -820,7 +956,7 @@
         return base + "bg-slate-50 hover:bg-slate-100 border-slate-200 text-slate-800 active:scale-[0.99]";
       }
 
-      // Solution Mode Styling
+      // Solution Mode
       if (optId === q.correct) {
         return base + "bg-emerald-50 border-emerald-500 text-emerald-950 font-bold shadow-xs ring-1 ring-emerald-500";
       }
@@ -831,7 +967,7 @@
     }
 
     function getOptionBadgeClass(q, optId) {
-      const selected = userAnswers[currentQIndex] === optId;
+      const selected = activeDisplayAnswers[currentQIndex] === optId;
       if (!isSolutionMode) {
         if (selected) return "bg-indigo-600 text-white border-indigo-600";
         return "bg-white text-slate-700 border-slate-300";
@@ -842,30 +978,37 @@
     }
 
     function selectOption(optId) {
-      userAnswers[currentQIndex] = optId;
+      myUserAnswers[currentQIndex] = optId;
       saveProgressLocally();
       renderQuestion();
     }
 
     function clearCurrentAnswer() {
       if (isSolutionMode) return;
-      userAnswers[currentQIndex] = null;
+      myUserAnswers[currentQIndex] = null;
       saveProgressLocally();
       renderQuestion();
     }
 
     function toggleReviewCurrent() {
       if (isSolutionMode) return;
-      reviewStatus[currentQIndex] = !reviewStatus[currentQIndex];
+      myReviewStatus[currentQIndex] = !myReviewStatus[currentQIndex];
       saveProgressLocally();
       renderQuestion();
     }
 
-    function navigateQuestion(direction) {
-      let nextIdx = currentQIndex + direction;
-      if (nextIdx < 0) nextIdx = 0;
-      if (nextIdx >= QUESTIONS.length) nextIdx = QUESTIONS.length - 1;
-      currentQIndex = nextIdx;
+    // --- 8. FILTERED NAVIGATION (Next/Prev stays within filter) ---
+    function navigateFiltered(direction) {
+      let currentPosInFilter = filteredIndices.indexOf(currentQIndex);
+      if (currentPosInFilter === -1) {
+        // If current question not in filter, move to first question of filter
+        currentQIndex = filteredIndices[0] || 0;
+      } else {
+        let nextPos = currentPosInFilter + direction;
+        if (nextPos < 0) nextPos = 0;
+        if (nextPos >= filteredIndices.length) nextPos = filteredIndices.length - 1;
+        currentQIndex = filteredIndices[nextPos];
+      }
       saveProgressLocally();
       renderQuestion();
     }
@@ -884,12 +1027,12 @@
       let unattempted = 0;
 
       for (let i = 0; i < QUESTIONS.length; i++) {
-        if (userAnswers[i] !== null) {
+        if (myUserAnswers[i] !== null) {
           answered++;
         } else {
           unattempted++;
         }
-        if (reviewStatus[i]) {
+        if (myReviewStatus[i]) {
           review++;
         }
       }
@@ -899,7 +1042,7 @@
       document.getElementById('countUnattempted').innerText = unattempted;
     }
 
-    // --- 7. SECTION TABS FILTERING ---
+    // --- 9. SECTION TABS FILTERING ---
     function selectSection(sec) {
       currentSectionFilter = sec;
       document.querySelectorAll('.sec-tab').forEach(t => {
@@ -913,14 +1056,23 @@
         activeTab.classList.remove('bg-slate-100', 'text-slate-600');
       }
 
-      // Find first question matching section
-      if (sec !== 'all') {
-        const targetIdx = QUESTIONS.findIndex(q => q.section === sec);
-        if (targetIdx !== -1) jumpToQuestion(targetIdx);
+      if (sec === 'all') {
+        filteredIndices = QUESTIONS.map((_, i) => i);
+      } else {
+        filteredIndices = [];
+        QUESTIONS.forEach((q, i) => {
+          if (q.section === sec) filteredIndices.push(i);
+        });
       }
+
+      // Jump to first question in section if current is outside
+      if (!filteredIndices.includes(currentQIndex)) {
+        currentQIndex = filteredIndices[0] || 0;
+      }
+      renderQuestion();
     }
 
-    // --- 8. SUBMISSION LOGIC ---
+    // --- 10. SUBMISSION LOGIC ---
     function openSubmitModal() {
       if (isSolutionMode) {
         openScorecardModal();
@@ -931,15 +1083,14 @@
       let unattempted = 0;
 
       for (let i = 0; i < QUESTIONS.length; i++) {
-        if (userAnswers[i] !== null) answered++;
+        if (myUserAnswers[i] !== null) answered++;
         else unattempted++;
-        if (reviewStatus[i]) review++;
+        if (myReviewStatus[i]) review++;
       }
 
       document.getElementById('modalAnsweredCount').innerText = answered;
       document.getElementById('modalReviewCount').innerText = review;
       document.getElementById('modalUnattemptedCount').innerText = unattempted;
-
       document.getElementById('submitModal').classList.remove('hidden');
     }
 
@@ -951,11 +1102,10 @@
       closeSubmitModal();
       if (timerInterval) clearInterval(timerInterval);
 
-      // Calculate score & statistics
       let correct = 0;
       let wrong = 0;
       let unattempted = 0;
-      let totalMarks = 0;
+      let totalRawMarks = 0;
 
       const secStats = {
         national: { total: 7, correct: 0, wrong: 0, marks: 0, name: "राष्ट्रीय व अंतर्राष्ट्रीय" },
@@ -964,20 +1114,20 @@
       };
 
       QUESTIONS.forEach((q, idx) => {
-        const sel = userAnswers[idx];
+        const sel = myUserAnswers[idx];
         const sec = q.section;
         if (sel === null) {
           unattempted++;
         } else if (sel === q.correct) {
           correct++;
-          totalMarks += 2.00;
+          totalRawMarks += 2.00;
           if (secStats[sec]) {
             secStats[sec].correct++;
             secStats[sec].marks += 2.00;
           }
         } else {
           wrong++;
-          totalMarks -= 0.20;
+          totalRawMarks -= 0.20;
           if (secStats[sec]) {
             secStats[sec].wrong++;
             secStats[sec].marks -= 0.20;
@@ -985,13 +1135,16 @@
         }
       });
 
-      totalMarks = Math.max(0, parseFloat(totalMarks.toFixed(2)));
+      // Consistent scoring: score can be negative or positive exact sum of sections
+      const totalMarks = parseFloat(totalRawMarks.toFixed(2));
       const accuracy = (correct + wrong) > 0 ? Math.round((correct / (correct + wrong)) * 100) : 0;
-      const timeSpentSec = TOTAL_TEST_TIME - timerSeconds;
-      const timeTakenFormatted = `${Math.floor(timeSpentSec / 60)}:${(timeSpentSec % 60).toString().padStart(2, '0')}`;
+      
+      const elapsedSeconds = testEndTime ? Math.min(TOTAL_TEST_TIME, Math.max(0, Math.round((Date.now() - (testEndTime - TOTAL_TEST_TIME * 1000)) / 1000))) : TOTAL_TEST_TIME;
+      const timeTakenFormatted = `${Math.floor(elapsedSeconds / 60)}:${(elapsedSeconds % 60).toString().padStart(2, '0')}`;
 
+      // Unique Telegram ID or timestamp ensures no student overwrites another student
       const submission = {
-        id: "sub_" + Date.now(),
+        id: "sub_" + Date.now() + "_" + Math.floor(Math.random()*1000),
         name: student.name || "परीक्षार्थी",
         district: student.district || "पटना",
         telegram: student.telegram || "@gyanverse",
@@ -1000,17 +1153,19 @@
         wrong,
         unattempted,
         accuracy,
+        timeTakenSeconds: elapsedSeconds,
         timeTaken: timeTakenFormatted,
         submittedAt: new Date().toLocaleString('en-IN', { dateStyle: 'short', timeStyle: 'short' }),
-        userAnswers,
+        userAnswers: [...myUserAnswers],
+        tabSwitchCount,
         secStats
       };
 
       // Save submission permanently
       localStorage.setItem(LS_SUBMISSION_KEY, JSON.stringify(submission));
-      localStorage.removeItem(LS_PROGRESS_KEY); // clear unfinished draft
+      localStorage.removeItem(LS_PROGRESS_KEY); // clear draft
 
-      // Save to local leader collection
+      // Save to local leader collection with unique identifier
       saveSubmissionToLocalAll(submission);
 
       // Async sync to Firebase
@@ -1019,12 +1174,14 @@
       // Populate Scorecard
       populateScorecard(submission);
       openScorecardModal();
+      showToast("🎉 टेस्ट सफलतापूर्वक सबमिट हुआ!");
     }
 
     function saveSubmissionToLocalAll(sub) {
       try {
         let all = JSON.parse(localStorage.getItem(LS_ALL_SUBS_KEY) || "[]");
-        all = all.filter(s => s.name !== sub.name); // update if same name
+        // Deduplicate strictly by Telegram username to prevent different students overwriting each other
+        all = all.filter(s => s.telegram.toLowerCase() !== sub.telegram.toLowerCase());
         all.push(sub);
         localStorage.setItem(LS_ALL_SUBS_KEY, JSON.stringify(all));
       } catch(e) {}
@@ -1038,13 +1195,11 @@
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(sub)
-        }).catch(() => {
-          // Silent fallback, student never sees raw technical errors
-        });
+        }).catch(() => {});
       } catch(e) {}
     }
 
-    // --- 9. SCORECARD & SOLUTION MODE ---
+    // --- 11. SCORECARD & SOLUTION MODE ---
     function populateScorecard(sub) {
       document.getElementById('scoreCandidateName').innerText = sub.name;
       document.getElementById('scoreCandidateDetails').innerText = `${sub.district} | ${sub.telegram}`;
@@ -1057,7 +1212,7 @@
 
       // Calculate Rank
       const allRanks = getCombinedRankings();
-      const myRank = allRanks.findIndex(r => r.name === sub.name) + 1;
+      const myRank = allRanks.findIndex(r => r.telegram.toLowerCase() === sub.telegram.toLowerCase()) + 1;
       document.getElementById('scoreRankDisplay').innerText = myRank > 0 ? `#${myRank}` : '#1';
 
       // Section breakdown rows
@@ -1089,6 +1244,7 @@
       closeScorecardModal();
       closeLeaderboardModal();
       isSolutionMode = true;
+      activeDisplayAnswers = myUserAnswers; // view own answers
 
       // Update Header
       document.getElementById('btnSubmitTest').innerText = "📊 स्कोरकार्ड";
@@ -1096,7 +1252,6 @@
       document.getElementById('timerContainer').classList.add('hidden');
       document.getElementById('solutionFilterBar').classList.remove('hidden');
 
-      // Refresh question view
       filterSolution('all');
     }
 
@@ -1113,69 +1268,107 @@
       }
 
       if (type === 'all') {
-        jumpToQuestion(0);
+        filteredIndices = QUESTIONS.map((_, i) => i);
       } else if (type === 'correct') {
-        const idx = QUESTIONS.findIndex((q, i) => userAnswers[i] === q.correct);
-        if (idx !== -1) jumpToQuestion(idx);
-        else alert("कोई सही उत्तर वाला प्रश्न नहीं मिला।");
+        filteredIndices = [];
+        QUESTIONS.forEach((q, i) => {
+          if (activeDisplayAnswers[i] === q.correct) filteredIndices.push(i);
+        });
       } else if (type === 'incorrect') {
-        const idx = QUESTIONS.findIndex((q, i) => userAnswers[i] !== null && userAnswers[i] !== q.correct);
-        if (idx !== -1) jumpToQuestion(idx);
-        else alert("कोई गलत उत्तर वाला प्रश्न नहीं मिला।");
+        filteredIndices = [];
+        QUESTIONS.forEach((q, i) => {
+          if (activeDisplayAnswers[i] !== null && activeDisplayAnswers[i] !== q.correct) filteredIndices.push(i);
+        });
       } else if (type === 'unattempted') {
-        const idx = QUESTIONS.findIndex((q, i) => userAnswers[i] === null);
-        if (idx !== -1) jumpToQuestion(idx);
-        else alert("कोई छोड़ा गया प्रश्न नहीं मिला।");
+        filteredIndices = [];
+        QUESTIONS.forEach((q, i) => {
+          if (activeDisplayAnswers[i] === null) filteredIndices.push(i);
+        });
       }
+
+      if (filteredIndices.length === 0) {
+        showToast("इस फ़िल्टर में कोई प्रश्न नहीं है।");
+        filteredIndices = QUESTIONS.map((_, i) => i);
+      }
+
+      currentQIndex = filteredIndices[0] || 0;
       renderQuestion();
     }
 
+    function openPastSolutionsFromGate() {
+      const savedSub = localStorage.getItem(LS_SUBMISSION_KEY);
+      if (!savedSub) return;
+      try {
+        const sub = JSON.parse(savedSub);
+        student = { name: sub.name, district: sub.district, telegram: sub.telegram };
+        myUserAnswers = sub.userAnswers || [];
+        activeDisplayAnswers = myUserAnswers;
+        document.getElementById('entryGateModal').classList.add('hidden');
+        enterSolutionMode();
+      } catch(e) {}
+    }
+
+    function openSavedSolutionsModal() {
+      const savedSub = localStorage.getItem(LS_SUBMISSION_KEY);
+      if (savedSub) {
+        try {
+          const sub = JSON.parse(savedSub);
+          student = { name: sub.name, district: sub.district, telegram: sub.telegram };
+          myUserAnswers = sub.userAnswers || [];
+          activeDisplayAnswers = myUserAnswers;
+          enterSolutionMode();
+        } catch(e) {}
+      } else {
+        showToast("कोई सेव किया गया टेस्ट नहीं मिला।");
+      }
+    }
+
     function resetAndReattempt() {
-      if (confirm("क्या आप सचमुच टेस्ट दोबारा देना चाहते हैं? पिछला ड्राफ्ट रीसेट हो जाएगा।")) {
+      if (confirm("क्या आप सचमुच टेस्ट दोबारा देना चाहते हैं?")) {
         closeScorecardModal();
         localStorage.removeItem(LS_PROGRESS_KEY);
         document.getElementById('entryGateModal').classList.remove('hidden');
       }
     }
 
-    // --- 10. ALL-BIHAR LIVE LEADERBOARD ---
+    // --- 12. ALL-BIHAR LIVE LEADERBOARD (NO MOCK TOPPERS, SAFE DOM) ---
     function getCombinedRankings() {
       let localSubs = [];
       try {
         localSubs = JSON.parse(localStorage.getItem(LS_ALL_SUBS_KEY) || "[]");
       } catch(e) {}
 
-      let combined = [...MOCK_TOPPERS];
-      localSubs.forEach(ls => {
-        combined = combined.filter(c => c.name !== ls.name);
-        combined.push(ls);
-      });
+      // Purely real submissions, no fake mock toppers
+      let list = [...localSubs];
 
-      // Sort by score descending, then time ascending
-      combined.sort((a, b) => {
+      // Sort by score descending, then timeTakenSeconds ascending (numerical tie-break)
+      list.sort((a, b) => {
         if (b.score !== a.score) return b.score - a.score;
-        return (a.timeTaken || "").localeCompare(b.timeTaken || "");
+        const timeA = a.timeTakenSeconds !== undefined ? a.timeTakenSeconds : 9999;
+        const timeB = b.timeTakenSeconds !== undefined ? b.timeTakenSeconds : 9999;
+        return timeA - timeB;
       });
 
-      combined.forEach((item, idx) => item.rank = idx + 1);
-      return combined;
+      list.forEach((item, idx) => item.rank = idx + 1);
+      return list;
     }
 
     function openLeaderboardModal() {
       document.getElementById('leaderboardModal').classList.remove('hidden');
       renderLeaderboardTable();
 
-      // Async fetch from Firebase to merge real submissions if network is live
+      // Async fetch from Firebase to get actual submitted ranks
       const firebaseUrl = getFirebaseUrl();
       if (firebaseUrl) {
-        fetch(`${firebaseUrl}/submissions.json`)
+        fetch(`${firebaseUrl}/submissions.json?orderBy="score"&limitToLast=100`)
           .then(res => res.json())
           .then(data => {
             if (data) {
               let cloudList = Object.values(data);
               let local = JSON.parse(localStorage.getItem(LS_ALL_SUBS_KEY) || "[]");
               cloudList.forEach(cs => {
-                if (!local.some(l => l.name === cs.name && l.submittedAt === cs.submittedAt)) {
+                // Deduplicate by telegram
+                if (!local.some(l => l.telegram.toLowerCase() === cs.telegram.toLowerCase())) {
                   local.push(cs);
                 }
               });
@@ -1196,29 +1389,47 @@
       const distFilter = document.getElementById('leaderDistrictFilter').value;
       const allRanks = getCombinedRankings();
 
-      // Render Podium (Top 3)
       const podium = document.getElementById('leaderboardPodium');
-      const top3 = allRanks.slice(0, 3);
       podium.innerHTML = '';
 
-      const medals = ["🥇", "🥈", "🥉"];
-      const borders = ["border-amber-400 bg-amber-50/50", "border-slate-300 bg-slate-50", "border-amber-600/30 bg-amber-50/30"];
-      
-      top3.forEach((t, i) => {
-        const pCard = document.createElement('div');
-        pCard.className = `p-1.5 rounded-xl border ${borders[i]} flex flex-col items-center justify-between shadow-xs`;
-        pCard.innerHTML = `
-          <div class="text-base">${medals[i]}</div>
-          <div class="font-extrabold text-[11px] text-slate-900 truncate w-full mt-0.5">${t.name}</div>
-          <div class="text-[9px] text-slate-500">${t.district}</div>
-          <div class="font-black text-xs text-indigo-700 mt-1">${t.score.toFixed(2)} <span class="text-[9px] font-normal text-slate-500">अंक</span></div>
-        `;
-        podium.appendChild(pCard);
-      });
+      if (allRanks.length >= 1) {
+        const top3 = allRanks.slice(0, 3);
+        const medals = ["🥇", "🥈", "🥉"];
+        const borders = ["border-amber-400 bg-amber-50/50", "border-slate-300 bg-slate-50", "border-amber-600/30 bg-amber-50/30"];
+        
+        top3.forEach((t, i) => {
+          const pCard = document.createElement('div');
+          pCard.className = `p-1.5 rounded-xl border ${borders[i]} flex flex-col items-center justify-between shadow-xs`;
+          
+          const medalDiv = document.createElement('div');
+          medalDiv.className = "text-base";
+          medalDiv.innerText = medals[i];
+
+          const nameDiv = document.createElement('div');
+          nameDiv.className = "font-extrabold text-[11px] text-slate-900 truncate w-full mt-0.5";
+          nameDiv.innerText = t.name; // safe textContent!
+
+          const distDiv = document.createElement('div');
+          distDiv.className = "text-[9px] text-slate-500";
+          distDiv.innerText = t.district; // safe textContent!
+
+          const scoreDiv = document.createElement('div');
+          scoreDiv.className = "font-black text-xs text-indigo-700 mt-1";
+          scoreDiv.innerHTML = `${t.score.toFixed(2)} <span class="text-[9px] font-normal text-slate-500">अंक</span>`;
+
+          pCard.appendChild(medalDiv);
+          pCard.appendChild(nameDiv);
+          pCard.appendChild(distDiv);
+          pCard.appendChild(scoreDiv);
+          podium.appendChild(pCard);
+        });
+      } else {
+        podium.innerHTML = `<div class="col-span-3 text-center py-2 text-slate-400 text-xs">अभी तक कोई सबमिशन दर्ज नहीं हुआ है। पहला टेस्ट देकर रैंक प्राप्त करें!</div>`;
+      }
 
       // Filtered Rows
       let filtered = allRanks.filter(item => {
-        const matchName = item.name.toLowerCase().includes(query) || (item.district && item.district.toLowerCase().includes(query));
+        const matchName = (item.name || "").toLowerCase().includes(query) || (item.district && item.district.toLowerCase().includes(query));
         const matchDist = (distFilter === 'all') || (item.district === distFilter);
         return matchName && matchDist;
       });
@@ -1235,48 +1446,79 @@
       filtered.forEach(cand => {
         const tr = document.createElement('tr');
         tr.className = "hover:bg-slate-50/80 transition";
-        let rankBadge = `<span class="font-bold text-slate-700">#${cand.rank}</span>`;
-        if (cand.rank === 1) rankBadge = "🥇 #1";
-        else if (cand.rank === 2) rankBadge = "🥈 #2";
-        else if (cand.rank === 3) rankBadge = "🥉 #3";
 
-        tr.innerHTML = `
-          <td class="py-2 px-2 text-center">${rankBadge}</td>
-          <td class="py-2 px-2">
-            <div class="font-bold text-slate-900 truncate max-w-[130px] sm:max-w-none">${cand.name}</div>
-            <div class="text-[9px] text-slate-400">${cand.telegram || "@gyanverse"}</div>
-          </td>
-          <td class="py-2 px-2 text-center text-slate-600 truncate max-w-[80px]">${cand.district}</td>
-          <td class="py-2 px-2 text-right">
-            <div class="font-extrabold text-indigo-700">${cand.score.toFixed(2)}</div>
-            <div class="text-[9px] text-slate-400">${cand.accuracy}% • ${cand.timeTaken}</div>
-          </td>
-          <td class="py-2 px-2 text-center">
-            <button onclick="viewCandidateSolution('${cand.name}')" class="bg-indigo-50 hover:bg-indigo-100 text-indigo-700 border border-indigo-200 text-[10px] font-bold px-1.5 py-0.5 rounded transition">
-              🔍 हल
-            </button>
-          </td>
+        // Rank TD
+        const tdRank = document.createElement('td');
+        tdRank.className = "py-2 px-2 text-center font-bold text-slate-700";
+        if (cand.rank === 1) tdRank.innerText = "🥇 #1";
+        else if (cand.rank === 2) tdRank.innerText = "🥈 #2";
+        else if (cand.rank === 3) tdRank.innerText = "🥉 #3";
+        else tdRank.innerText = `#${cand.rank}`;
+
+        // Name TD (XSS Safe)
+        const tdName = document.createElement('td');
+        tdName.className = "py-2 px-2";
+        const nameEl = document.createElement('div');
+        nameEl.className = "font-bold text-slate-900 truncate max-w-[130px] sm:max-w-none";
+        nameEl.innerText = cand.name; // safe!
+        const teleEl = document.createElement('div');
+        teleEl.className = "text-[9px] text-slate-400";
+        teleEl.innerText = cand.telegram || "@gyanverse"; // safe!
+        tdName.appendChild(nameEl);
+        tdName.appendChild(teleEl);
+
+        // District TD (XSS Safe)
+        const tdDist = document.createElement('td');
+        tdDist.className = "py-2 px-2 text-center text-slate-600 truncate max-w-[80px]";
+        tdDist.innerText = cand.district || ""; // safe!
+
+        // Score TD
+        const tdScore = document.createElement('td');
+        tdScore.className = "py-2 px-2 text-right";
+        tdScore.innerHTML = `
+          <div class="font-extrabold text-indigo-700">${cand.score.toFixed(2)}</div>
+          <div class="text-[9px] text-slate-400">${cand.accuracy}% • ${cand.timeTaken}</div>
         `;
+
+        // Action TD (EventListener, no inline string interpolation)
+        const tdAction = document.createElement('td');
+        tdAction.className = "py-2 px-2 text-center";
+        const btnView = document.createElement('button');
+        btnView.className = "bg-indigo-50 hover:bg-indigo-100 text-indigo-700 border border-indigo-200 text-[10px] font-bold px-1.5 py-0.5 rounded transition";
+        btnView.innerText = "🔍 हल";
+        btnView.onclick = () => viewCandidateSolution(cand);
+        tdAction.appendChild(btnView);
+
+        tr.appendChild(tdRank);
+        tr.appendChild(tdName);
+        tr.appendChild(tdDist);
+        tr.appendChild(tdScore);
+        tr.appendChild(tdAction);
         tbody.appendChild(tr);
       });
     }
 
-    function viewCandidateSolution(candName) {
-      const allRanks = getCombinedRankings();
-      const cand = allRanks.find(c => c.name === candName);
+    function viewCandidateSolution(cand) {
       if (cand && cand.userAnswers) {
-        student = { name: cand.name, district: cand.district, telegram: cand.telegram };
-        userAnswers = cand.userAnswers;
-        enterSolutionMode();
+        // Set activeDisplayAnswers WITHOUT overwriting student's own myUserAnswers!
+        activeDisplayAnswers = cand.userAnswers;
+        isSolutionMode = true;
+        closeLeaderboardModal();
+
+        // Update Header
+        document.getElementById('btnSubmitTest').innerText = "📊 स्कोरकार्ड";
+        document.getElementById('btnSubmitTest').onclick = openScorecardModal;
+        document.getElementById('timerContainer').classList.add('hidden');
+        document.getElementById('solutionFilterBar').classList.remove('hidden');
+
+        filterSolution('all');
+        showToast(`परीक्षार्थी ${cand.name} के उत्तर लोड किए गए`);
       } else {
-        // If mock topper or missing exact answers, load with defaults
-        student = { name: cand.name, district: cand.district, telegram: cand.telegram };
-        userAnswers = QUESTIONS.map(q => q.correct); // demonstrate full solution
-        enterSolutionMode();
+        showToast("इस परीक्षार्थी का रिस्पांस शीट उपलब्ध नहीं है।");
       }
     }
 
-    // --- 11. SECRET ADMIN MODAL (4 Clicks on GV Logo) ---
+    // --- 13. SECRET ADMIN MODAL (SHA-256 Hash Auth) ---
     let adminClickCount = 0;
     let adminClickTimer = null;
 
@@ -1307,15 +1549,17 @@
       document.getElementById('adminModal').classList.add('hidden');
     }
 
-    function verifyAdminPin() {
+    async function verifyAdminPin() {
       const pin = document.getElementById('adminPinInput').value.trim();
-      if (pin === '1234' || pin.toUpperCase() === 'GYANVERSE') {
+      if (!pin) return;
+      const hash = await sha256(pin);
+      if (VALID_PIN_HASHES.includes(hash)) {
         document.getElementById('adminPinView').classList.add('hidden');
         document.getElementById('adminSettingsView').classList.remove('hidden');
         document.getElementById('adminFirebaseUrlInput').value = getFirebaseUrl();
         document.getElementById('adminStatusMsg').innerText = '';
       } else {
-        alert("गलत पिन! केवल अधिकृत एडमिन हेतु।");
+        showToast("गलत पिन! अधिकृत एडमिन पिन दर्ज करें।");
       }
     }
 
@@ -1323,7 +1567,7 @@
       const url = document.getElementById('adminFirebaseUrlInput').value.trim();
       if (url) {
         localStorage.setItem(LS_FIREBASE_URL_KEY, url);
-        alert("Firebase URL सफलतापूर्वक सेव कर दिया गया!");
+        showToast("Firebase URL अपडेट हो गया!");
         closeAdminModal();
       }
     }
@@ -1340,11 +1584,11 @@
             msg.innerText = "✔ Firebase कनेक्शन सफल!";
             msg.className = "text-[10px] text-center font-medium py-1 text-emerald-600";
           } else {
-            msg.innerText = "⚠ कनेक्शन त्रुटि: स्टेटस " + res.status;
+            msg.innerText = "⚠ स्थिति: " + res.status;
             msg.className = "text-[10px] text-center font-medium py-1 text-rose-600";
           }
         })
-        .catch(err => {
+        .catch(() => {
           msg.innerText = "✖ कनेक्ट नहीं हो सका (Network/CORS)";
           msg.className = "text-[10px] text-center font-medium py-1 text-rose-600";
         });
@@ -1355,8 +1599,8 @@
         localStorage.removeItem(LS_PROGRESS_KEY);
         localStorage.removeItem(LS_SUBMISSION_KEY);
         localStorage.removeItem(LS_ALL_SUBS_KEY);
-        alert("डेटा रीसेट पूर्ण! पेज रीलोड होगा।");
-        location.reload();
+        showToast("डेटा रीसेट पूर्ण!");
+        setTimeout(() => location.reload(), 800);
       }
     }
 
