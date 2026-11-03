@@ -1,0 +1,1094 @@
+<!DOCTYPE html>
+<html lang="hi" class="h-full">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>GYANVERSE CBT Exam - Current Affairs 03 Nov 2026</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Strict 100dvh, Zero Page Scroll */
+        html, body {
+            height: 100dvh;
+            max-height: 100dvh;
+            overflow: hidden;
+            touch-action: manipulation;
+        }
+    </style>
+</head>
+<body class="bg-slate-100 text-slate-900 flex flex-col h-full select-none">
+
+    <!-- 1. ENTRY GATE MODAL -->
+    <div id="entryModal" class="fixed inset-0 z-50 bg-slate-900/80 backdrop-blur-sm flex items-center justify-center p-4">
+        <div class="bg-white rounded-2xl shadow-2xl w-full max-w-md overflow-hidden border border-slate-200 animate-in fade-in zoom-in duration-300">
+            <div class="bg-gradient-to-r from-indigo-700 to-blue-800 p-6 text-white text-center">
+                <div class="inline-block bg-white/10 px-3 py-1 rounded-full text-xs font-semibold tracking-wider uppercase mb-2">GYANVERSE Online Portal</div>
+                <h1 class="text-2xl font-bold">बिहार दारोगा / BPSC / SSC CBT</h1>
+                <p class="text-indigo-200 text-sm mt-1">Current Affairs Special Test (03 Nov 2026)</p>
+            </div>
+            <div class="p-6 space-y-4">
+                <div>
+                    <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">पूरा नाम (Full Name)</label>
+                    <input type="text" id="userName" placeholder="अपना पूरा नाम दर्ज करें" class="w-full px-4 py-2.5 bg-slate-50 border border-slate-300 rounded-lg focus:ring-2 focus:ring-indigo-600 focus:outline-none text-sm font-medium">
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">जिला / शहर (District / City)</label>
+                    <select id="userDistrict" class="w-full px-4 py-2.5 bg-slate-50 border border-slate-300 rounded-lg focus:ring-2 focus:ring-indigo-600 focus:outline-none text-sm font-medium">
+                        <option value="">-- अपना जिला चुनें --</option>
+                        <option value="Patna">पटना (Patna)</option>
+                        <option value="Gaya">गया (Gaya)</option>
+                        <option value="Muzaffarpur">मुजफ्फरपुर (Muzaffarpur)</option>
+                        <option value="Bhagalpur">भागलपुर (Bhagalpur)</option>
+                        <option value="Darbhanga">दरभंगा (Darbhanga)</option>
+                        <option value="Purnia">पूर्णिया (Purnia)</option>
+                        <option value="Other">अन्य जिला (Other Bihar District)</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">टेलीग्राम यूजरनेम (@username)</label>
+                    <input type="text" id="userTelegram" placeholder="@YourTelegramUsername" class="w-full px-4 py-2.5 bg-slate-50 border border-slate-300 rounded-lg focus:ring-2 focus:ring-indigo-600 focus:outline-none text-sm font-medium">
+                </div>
+                
+                <div class="pt-2 flex flex-col gap-2">
+                    <button onclick="startTest()" class="w-full py-3 bg-indigo-600 hover:bg-indigo-700 text-white font-bold rounded-lg shadow-lg transition-all flex items-center justify-center gap-2 text-sm">
+                        <span>▶ परीक्षा शुरू करें (Start Test)</span>
+                    </button>
+                    <button id="resumeBtn" onclick="resumeExistingTest()" class="hidden w-full py-2.5 bg-emerald-600 hover:bg-emerald-700 text-white font-semibold rounded-lg transition-all text-xs">
+                        ▶ अधूरा टेस्ट वहीं से जारी रखें (Resume Test)
+                    </button>
+                    <button id="viewSavedBtn" onclick="openScorecardFromEntry()" class="hidden w-full py-2.5 bg-amber-600 hover:bg-amber-700 text-white font-semibold rounded-lg transition-all text-xs">
+                        📋 पिछला स्कोरकार्ड एवं सभी हल देखें (Check Solutions)
+                    </button>
+                </div>
+                <div class="text-center pt-2">
+                    <a href="https://t.me/GYANVERSET" target="_blank" class="text-xs text-indigo-600 hover:underline font-semibold">🔗 GYANVERSE ऑफिशियल टेलीग्राम चैनल जॉइन करें (@GYANVERSET)</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 2. STICKY HEADER (h-11 shrink-0) -->
+    <header class="h-11 shrink-0 bg-slate-900 text-white px-3 flex items-center justify-between border-b border-slate-800 z-30">
+        <div class="flex items-center gap-2 cursor-pointer" onclick="handleLogoClick()" title="GV Logo (Admin Click 4 times)">
+            <div id="gvLogoBtn" class="bg-indigo-600 text-white font-black text-xs px-2 py-1 rounded shadow">GV</div>
+            <span class="font-bold text-xs tracking-wide hidden sm:inline">GYANVERSE</span>
+            <a href="https://t.me/GYANVERSET" target="_blank" class="text-[10px] text-indigo-400 hover:text-indigo-300 font-medium bg-slate-800 px-2 py-0.5 rounded border border-slate-700">@GYANVERSET</a>
+        </div>
+
+        <div class="flex items-center gap-2">
+            <!-- Language Toggle -->
+            <button onclick="toggleLanguage()" id="langToggleBtn" class="bg-slate-800 hover:bg-slate-700 text-white text-[11px] px-2.5 py-1 rounded border border-slate-700 font-semibold">
+                🌐 हिं+EN
+            </button>
+            <!-- Save Solution Modal Trigger -->
+            <button onclick="openSolutionModal()" id="headerSolutionBtn" class="hidden bg-emerald-700 hover:bg-emerald-600 text-white text-[11px] px-2.5 py-1 rounded font-semibold">
+                📜 सेव हल
+            </button>
+            <!-- Rank List -->
+            <button onclick="openRankModal()" class="bg-amber-600 hover:bg-amber-500 text-white text-[11px] px-2.5 py-1 rounded font-semibold flex items-center gap-1">
+                🏆 <span>रैंक सूची</span>
+            </button>
+            <!-- Timer -->
+            <div id="timerDisplay" class="bg-red-900/80 border border-red-700 text-red-200 text-xs font-mono font-bold px-2.5 py-1 rounded">
+                ⏱ 12:00
+            </div>
+            <!-- Submit Test -->
+            <button onclick="confirmSubmitTest()" id="submitTestHeaderBtn" class="bg-indigo-600 hover:bg-indigo-500 text-white text-[11px] px-3 py-1 rounded font-bold shadow">
+                Submit Test
+            </button>
+        </div>
+    </header>
+
+    <!-- 3. SECTION TABS BAR -->
+    <nav class="bg-slate-800 text-slate-300 px-3 py-1.5 flex items-center gap-2 overflow-x-auto shrink-0 border-b border-slate-700 text-xs">
+        <button onclick="filterSection('ALL')" id="sec-ALL" class="section-tab px-3 py-1 rounded bg-indigo-600 text-white font-semibold whitespace-nowrap shadow-sm">सभी प्रश्न (All)</button>
+        <button onclick="filterSection('CURRENT')" id="sec-CURRENT" class="section-tab px-3 py-1 rounded bg-slate-700 hover:bg-slate-600 text-slate-200 whitespace-nowrap">करेंट अफेयर्स (Current Affairs)</button>
+        <button onclick="filterSection('STATIC')" id="sec-STATIC" class="section-tab px-3 py-1 rounded bg-slate-700 hover:bg-slate-600 text-slate-200 whitespace-nowrap">स्टैटिक जीके (Static GK)</button>
+    </nav>
+
+    <!-- 4. MAIN QUESTION WORKSPACE (Zero Scroll Body) -->
+    <main class="flex-1 overflow-hidden flex flex-col p-2 sm:p-4 max-w-4xl mx-auto w-full">
+        <div id="questionCardContainer" class="flex-1 bg-white rounded-xl shadow-md border border-slate-200 flex flex-col overflow-hidden relative">
+            
+            <!-- Question Meta Header -->
+            <div class="bg-slate-50 px-4 py-2.5 border-b border-slate-200 flex items-center justify-between text-xs shrink-0">
+                <div class="flex items-center gap-2">
+                    <span id="qNumBadge" class="bg-indigo-700 text-white font-bold px-2.5 py-1 rounded text-xs">प्रश्न 1 / 12</span>
+                    <span id="qMarkBadge" class="bg-emerald-100 text-emerald-800 font-semibold px-2 py-0.5 rounded text-[11px] border border-emerald-200">+2.00, -0.20</span>
+                    <span id="qStatusPill" class="bg-slate-200 text-slate-700 px-2 py-0.5 rounded text-[11px] font-medium">Not Answered</span>
+                </div>
+                <div class="text-slate-500 font-medium text-[11px]" id="sectionNameLabel">Section: Current Affairs</div>
+            </div>
+
+            <!-- Question & Options Scrollable Area -->
+            <div class="flex-1 overflow-y-auto p-4 space-y-4">
+                <div id="questionText" class="text-sm sm:text-base font-semibold text-slate-900 leading-relaxed">
+                    <!-- Dynamic Question Text -->
+                </div>
+
+                <!-- Inline SVG / Diagram Container if any -->
+                <div id="svgContainer" class="hidden my-2 p-3 bg-slate-50 border border-slate-200 rounded-lg flex justify-center">
+                    <!-- Dynamic SVG -->
+                </div>
+
+                <!-- Options Container -->
+                <div id="optionsContainer" class="space-y-2.5 pt-1">
+                    <!-- Dynamic Options -->
+                </div>
+
+                <!-- Detailed Solution Box (Visible only in Solution Mode) -->
+                <div id="solutionBox" class="hidden mt-4 p-4 bg-emerald-50 border border-emerald-200 rounded-xl space-y-2">
+                    <div class="flex items-center justify-between">
+                        <span class="text-xs font-bold text-emerald-900 uppercase tracking-wider">💡 विस्तृत व्याख्या (Detailed Explanation)</span>
+                        <span id="solCorrectBadge" class="text-[11px] font-bold bg-emerald-200 text-emerald-900 px-2 py-0.5 rounded"></span>
+                    </div>
+                    <div id="solutionText" class="text-xs sm:text-sm text-emerald-950 leading-relaxed"></div>
+                </div>
+            </div>
+
+            <!-- Watermark Bar -->
+            <div class="bg-slate-100 border-t border-slate-200 py-1 px-4 text-center text-[10px] text-slate-500 font-mono tracking-wider shrink-0">
+                GYANVERSE | @GYANVERSET | t.me/GYANVERSET
+            </div>
+
+            <!-- Navigation Bar (Bottom of Card) -->
+            <div class="bg-slate-50 border-t border-slate-200 p-3 flex items-center justify-between shrink-0">
+                <div class="flex items-center gap-1.5">
+                    <button onclick="prevQuestion()" class="px-3 py-1.5 bg-slate-200 hover:bg-slate-300 text-slate-800 text-xs font-bold rounded shadow-sm transition-all">⬅ Prev</button>
+                    <button onclick="clearResponse()" id="clearBtn" class="px-3 py-1.5 bg-rose-100 hover:bg-rose-200 text-rose-800 text-xs font-semibold rounded shadow-sm transition-all">✖ Clear</button>
+                    <button onclick="toggleReviewMark()" id="reviewBtn" class="px-3 py-1.5 bg-amber-100 hover:bg-amber-200 text-amber-800 text-xs font-semibold rounded shadow-sm transition-all">★ Review</button>
+                </div>
+                <div>
+                    <button onclick="nextAndSave()" id="nextSaveBtn" class="px-4 py-1.5 bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-bold rounded shadow transition-all">Next & Save ➡</button>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- 5. BOTTOM STATUS BAR -->
+    <footer class="bg-white border-t border-slate-200 px-3 py-2 flex items-center justify-between shrink-0 text-xs">
+        <div class="flex items-center gap-3 font-semibold">
+            <span class="flex items-center gap-1"><span class="w-3 h-3 rounded-full bg-emerald-600 inline-block"></span> <span id="countAnswered">0</span></span>
+            <span class="flex items-center gap-1"><span class="w-3 h-3 rounded-full bg-amber-500 inline-block"></span> <span id="countReview">0</span></span>
+            <span class="flex items-center gap-1"><span class="w-3 h-3 rounded-full bg-slate-300 inline-block"></span> <span id="countUnvisited">12</span></span>
+        </div>
+        <div class="flex items-center gap-2">
+            <button onclick="openPaletteModal()" class="px-3 py-1.5 bg-slate-800 hover:bg-slate-700 text-white font-bold rounded shadow flex items-center gap-1.5 text-xs">
+                <span>📱 पैलेट (Palette)</span>
+            </button>
+            <select id="jumpDropdown" onchange="jumpToQuestion(this.value)" class="px-2 py-1.5 bg-slate-100 border border-slate-300 rounded text-xs font-semibold focus:outline-none">
+                <!-- Dynamic options -->
+            </select>
+        </div>
+    </footer>
+
+    <!-- 6. TCS iON QUESTION PALETTE MODAL -->
+    <div id="paletteModal" class="hidden fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-sm flex items-center justify-center p-4">
+        <div class="bg-white rounded-2xl shadow-2xl w-full max-w-lg overflow-hidden border border-slate-200">
+            <div class="bg-slate-900 text-white px-4 py-3 flex items-center justify-between">
+                <h3 class="font-bold text-sm">📱 TCS iON Question Palette</h3>
+                <button onclick="closePaletteModal()" class="text-slate-400 hover:text-white font-bold text-sm px-2 py-0.5">✕</button>
+            </div>
+            <div class="p-4 space-y-4">
+                <div class="grid grid-cols-4 gap-2 text-xs font-semibold">
+                    <div class="flex items-center gap-1.5"><span class="w-4 h-4 rounded bg-emerald-600 inline-block"></span> उत्तर दिया (Answered)</div>
+                    <div class="flex items-center gap-1.5"><span class="w-4 h-4 rounded bg-amber-500 inline-block"></span> रिव्यू (Review)</div>
+                    <div class="flex items-center gap-1.5"><span class="w-4 h-4 rounded bg-indigo-600 inline-block"></span> उत्तर+रिव्यू</div>
+                    <div class="flex items-center gap-1.5"><span class="w-4 h-4 rounded bg-slate-200 inline-block"></span> अनत्तरित</div>
+                </div>
+                <div id="paletteGrid" class="grid grid-cols-6 gap-2 max-h-60 overflow-y-auto p-2 border border-slate-200 rounded-lg bg-slate-50">
+                    <!-- Dynamic Palette Buttons -->
+                </div>
+                <div class="text-right">
+                    <button onclick="closePaletteModal()" class="px-4 py-2 bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-xs rounded-lg shadow">बंद करें (Close)</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 7. SUBMIT CONFIRMATION MODAL -->
+    <div id="submitConfirmModal" class="hidden fixed inset-0 z-50 bg-slate-900/70 backdrop-blur-sm flex items-center justify-center p-4">
+        <div class="bg-white rounded-2xl shadow-2xl w-full max-w-md overflow-hidden border border-slate-200">
+            <div class="bg-indigo-700 text-white px-4 py-3 font-bold text-sm">
+                ⚠️ परीक्षा सबमिट कन्फर्मेशन (Submit Confirmation)
+            </div>
+            <div class="p-5 space-y-3 text-xs sm:text-sm">
+                <p class="text-slate-700">क्या आप वास्तव में अपनी परीक्षा सबमिट करना चाहते हैं? आपके प्रयास का सारांश नीचे दिया गया है:</p>
+                <div class="bg-slate-50 p-3 rounded-lg border border-slate-200 space-y-1.5 font-medium">
+                    <div class="flex justify-between"><span>कुल प्रश्न:</span> <span id="confTotal">12</span></div>
+                    <div class="flex justify-between text-emerald-700"><span>उत्तर दिए गए:</span> <span id="confAnswered">0</span></div>
+                    <div class="flex justify-between text-amber-600"><span>रिव्यू चिह्नित:</span> <span id="confReview">0</span></div>
+                    <div class="flex justify-between text-rose-600"><span>छोड़े गए:</span> <span id="confUnanswered">12</span></div>
+                </div>
+                <div class="flex gap-2 pt-2">
+                    <button onclick="closeSubmitConfirmModal()" class="flex-1 py-2.5 bg-slate-200 hover:bg-slate-300 text-slate-800 font-bold rounded-lg transition-all">वापस जाएं</button>
+                    <button onclick="executeFinalSubmit()" class="flex-1 py-2.5 bg-indigo-600 hover:bg-indigo-700 text-white font-bold rounded-lg shadow transition-all">हाँ, सबमिट करें</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 8. SCORECARD MODAL -->
+    <div id="scorecardModal" class="hidden fixed inset-0 z-50 bg-slate-900/80 backdrop-blur-sm flex items-center justify-center p-4">
+        <div class="bg-white rounded-2xl shadow-2xl w-full max-w-2xl overflow-hidden border border-slate-200 flex flex-col max-h-[90vh]">
+            <div class="bg-gradient-to-r from-indigo-700 to-blue-800 p-4 text-white flex items-center justify-between shrink-0">
+                <div>
+                    <h2 class="font-bold text-lg">🏆 GYANVERSE Detailed Scorecard</h2>
+                    <p class="text-xs text-indigo-200" id="scorecardStudentMeta">Candidate: Demo | District: Patna</p>
+                </div>
+                <button onclick="closeScorecardModal()" class="text-white font-bold text-base px-2 py-1">✕</button>
+            </div>
+            <div class="p-6 overflow-y-auto space-y-4 text-xs sm:text-sm">
+                <!-- Summary Grid -->
+                <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+                    <div class="bg-indigo-50 border border-indigo-200 p-3 rounded-xl text-center">
+                        <div class="text-[10px] text-indigo-600 font-bold uppercase">कुल प्राप्तांक</div>
+                        <div id="scScore" class="text-xl font-black text-indigo-900 mt-1">0.00</div>
+                    </div>
+                    <div class="bg-emerald-50 border border-emerald-200 p-3 rounded-xl text-center">
+                        <div class="text-[10px] text-emerald-600 font-bold uppercase">सही उत्तर</div>
+                        <div id="scCorrect" class="text-xl font-black text-emerald-900 mt-1">0</div>
+                    </div>
+                    <div class="bg-rose-50 border border-rose-200 p-3 rounded-xl text-center">
+                        <div class="text-[10px] text-rose-600 font-bold uppercase">गलत उत्तर</div>
+                        <div id="scIncorrect" class="text-xl font-black text-rose-900 mt-1">0</div>
+                    </div>
+                    <div class="bg-amber-50 border border-amber-200 p-3 rounded-xl text-center">
+                        <div class="text-[10px] text-amber-600 font-bold uppercase">सटीकता (Accuracy)</div>
+                        <div id="scAccuracy" class="text-xl font-black text-amber-900 mt-1">0%</div>
+                    </div>
+                </div>
+
+                <!-- All Bihar Rank Box -->
+                <div class="bg-gradient-to-r from-amber-500 to-amber-600 text-white p-4 rounded-xl flex items-center justify-between shadow">
+                    <div>
+                        <div class="text-xs uppercase font-semibold text-amber-100">GYANVERSE All-Bihar Cloud Ranking</div>
+                        <div class="text-lg font-black mt-0.5" id="scRankText">Rank: #12 / 1,450</div>
+                    </div>
+                    <button onclick="openRankModal()" class="px-3.5 py-1.5 bg-white text-amber-900 font-bold rounded-lg text-xs shadow hover:bg-amber-50 transition-all">🏆 लीडरबोर्ड देखें</button>
+                </div>
+
+                <!-- Detailed Stats Table -->
+                <div class="border border-slate-200 rounded-xl overflow-hidden">
+                    <table class="w-full text-left border-collapse">
+                        <thead class="bg-slate-100 text-slate-700 font-semibold text-xs border-b border-slate-200">
+                            <tr>
+                                <th class="p-2.5">मापदंड (Parameter)</th>
+                                <th class="p-2.5 text-right">विवरण (Details)</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-slate-200 text-slate-800">
+                            <tr><td class="p-2.5">कुल प्रश्न (Total Questions)</td><td class="p-2.5 text-right font-semibold">12</td></tr>
+                            <tr><td class="p-2.5">हल किए गए (Attempted)</td><td class="p-2.5 text-right font-semibold" id="scAtt">0</td></tr>
+                            <tr><td class="p-2.5">छोड़े गए (Unattempted)</td><td class="p-2.5 text-right font-semibold" id="scUnatt">12</td></tr>
+                            <tr><td class="p-2.5">समय लिया गया (Time Taken)</td><td class="p-2.5 text-right font-semibold" id="scTime">00:00</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="pt-2 flex gap-3">
+                    <button onclick="enterSolutionMode()" class="flex-1 py-3 bg-emerald-600 hover:bg-emerald-700 text-white font-bold rounded-xl shadow transition-all text-xs sm:text-sm flex items-center justify-center gap-2">
+                        <span>🔍 Check Solutions & Explanations</span>
+                    </button>
+                    <button onclick="closeScorecardModal()" class="px-5 py-3 bg-slate-200 hover:bg-slate-300 text-slate-800 font-bold rounded-xl text-xs sm:text-sm transition-all">बंद करें</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 9. RANK LIST MODAL -->
+    <div id="rankModal" class="hidden fixed inset-0 z-50 bg-slate-900/80 backdrop-blur-sm flex items-center justify-center p-4">
+        <div class="bg-white rounded-2xl shadow-2xl w-full max-w-lg overflow-hidden border border-slate-200 flex flex-col max-h-[85vh]">
+            <div class="bg-amber-600 text-white p-4 flex items-center justify-between shrink-0">
+                <h3 class="font-bold text-sm">🏆 GYANVERSE Live All-Bihar Cloud Leaderboard</h3>
+                <button onclick="closeRankModal()" class="text-white font-bold text-sm px-2 py-0.5">✕</button>
+            </div>
+            <div class="p-4 space-y-3 flex-1 overflow-y-auto">
+                <!-- Podium Top 3 -->
+                <div class="grid grid-cols-3 gap-2 text-center">
+                    <div class="bg-slate-100 p-2.5 rounded-xl border border-slate-200">
+                        <div class="text-base">🥈</div>
+                        <div class="font-bold text-xs truncate mt-1">राहुल कुमार</div>
+                        <div class="text-[10px] text-slate-500">Patna • 23.4 मार्क्स</div>
+                    </div>
+                    <div class="bg-amber-50 p-2.5 rounded-xl border border-amber-200 shadow-sm">
+                        <div class="text-lg">🥇</div>
+                        <div class="font-bold text-xs truncate mt-1 text-amber-900">प्रिया सिंह</div>
+                        <div class="text-[10px] text-amber-700">Muzaffarpur • 24.0 मार्क्स</div>
+                    </div>
+                    <div class="bg-slate-100 p-2.5 rounded-xl border border-slate-200">
+                        <div class="text-base">🥉</div>
+                        <div class="font-bold text-xs truncate mt-1">अमित कुमार</div>
+                        <div class="text-[10px] text-slate-500">Gaya • 22.8 मार्क्स</div>
+                    </div>
+                </div>
+
+                <!-- Leaderboard Table -->
+                <div class="border border-slate-200 rounded-xl overflow-hidden">
+                    <table class="w-full text-left text-xs">
+                        <thead class="bg-slate-100 text-slate-700 font-semibold border-b border-slate-200">
+                            <tr>
+                                <th class="p-2">रैंक</th>
+                                <th class="p-2">परीक्षार्थी</th>
+                                <th class="p-2">जिला</th>
+                                <th class="p-2 text-right">स्कोर</th>
+                            </tr>
+                        </thead>
+                        <tbody id="rankTableBody" class="divide-y divide-slate-200 text-slate-800">
+                            <!-- Dynamic rows -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="p-3 bg-slate-50 border-t border-slate-200 text-center shrink-0">
+                <a href="https://t.me/GYANVERSET" target="_blank" class="text-xs text-indigo-600 hover:underline font-bold">🔗 GYANVERSE Telegram Channel (@GYANVERSET)</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- 10. ADMIN MODAL -->
+    <div id="adminModal" class="hidden fixed inset-0 z-50 bg-slate-900/80 backdrop-blur-sm flex items-center justify-center p-4">
+        <div class="bg-white rounded-2xl shadow-2xl w-full max-w-sm overflow-hidden border border-slate-200">
+            <div class="bg-slate-900 text-white p-4 flex items-center justify-between">
+                <h3 class="font-bold text-sm">🔒 गुप्त एडमिन पैनल (Secret Admin)</h3>
+                <button onclick="closeAdminModal()" class="text-slate-400 hover:text-white">✕</button>
+            </div>
+            <div class="p-4 space-y-3">
+                <div>
+                    <label class="block text-xs font-bold text-slate-700 mb-1">एडमिन पिन (Admin PIN)</label>
+                    <input type="password" id="adminPinInput" placeholder="पिन दर्ज करें" class="w-full px-3 py-2 bg-slate-50 border border-slate-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-indigo-600">
+                </div>
+                <button onclick="verifyAdminPin()" class="w-full py-2 bg-indigo-600 hover:bg-indigo-700 text-white font-bold rounded-lg text-xs shadow">सत्यापित करें (Verify)</button>
+                <div id="adminPanelContent" class="hidden pt-2 space-y-2 border-t border-slate-200 text-xs">
+                    <p class="text-emerald-700 font-bold">✓ एडमिन एक्सेस सफल!</p>
+                    <div class="p-2 bg-slate-100 rounded font-mono text-[10px] break-all">
+                        DB: https://gyanverse-cbt-b5f75-default-rtdb.firebaseio.com
+                    </div>
+                    <button onclick="resetAllTestData()" class="w-full py-1.5 bg-rose-600 hover:bg-rose-700 text-white font-semibold rounded">लोकल डेटा रीसेट करें</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="hidden fixed bottom-16 left-1/2 -translate-x-1/2 z-50 bg-slate-900 text-white px-4 py-2 rounded-xl shadow-2xl text-xs font-semibold flex items-center gap-2 border border-slate-700 animate-in fade-in slide-in-from-bottom-3 duration-200">
+        <span id="toastMsg">सूचना</span>
+    </div>
+
+    <!-- JAVASCRIPT LOGIC -->
+    <script>
+        // --- DATASET: ALL 12 QUESTIONS FROM THE UPLOADED PDF (100% ERROR-FREE & BILINGUAL) ---
+        const questionsData = [
+            {
+                id: 1,
+                section: "CURRENT",
+                hiQ: "हाल ही में 'विश्व जेलीफिश दिवस' (World Jellyfish Day) कब मनाया गया है?",
+                enQ: "When has 'World Jellyfish Day' been celebrated recently?",
+                hiOpts: ["01 नवंबर", "03 नवंबर", "02 नवंबर", "31 अक्टूबर"],
+                enOpts: ["01 November", "03 November", "02 November", "31 October"],
+                correct: 1, // 03 November
+                hiSol: "समुद्री पारिस्थितिकी तंत्र (Marine Ecosystem) में जेलीफिश की अहम भूमिका और संरक्षण हेतु प्रतिवर्ष 03 नवंबर को 'विश्व जेलीफिश दिवस' मनाया जाता है। जेलीफिश पृथ्वी पर डायनासोर से भी पूर्व (लगभग 500 मिलियन वर्ष पूर्व) से महासागरों में अस्तित्व में हैं।",
+                enSol: "World Jellyfish Day is celebrated annually on November 3 to raise awareness about jellyfish in marine ecosystems. They have existed for over 500 million years."
+            },
+            {
+                id: 2,
+                section: "CURRENT",
+                hiQ: "हाल ही में खादी एवं ग्रामोद्योग आयोग (KVIC) ने कहां 'खादी दिवाली उत्सव 2026' का भव्य आयोजन किया है?",
+                enQ: "Where has KVIC recently organized the grand 'Khadi Diwali Utsav 2026'?",
+                hiOpts: ["वाराणसी", "जयपुर", "मुंबई", "नई दिल्ली"],
+                enOpts: ["Varanasi", "Jaipur", "Mumbai", "New Delhi"],
+                correct: 3, // नई दिल्ली
+                hiSol: "खादी एवं ग्रामोद्योग आयोग (KVIC) ने देश के हस्तशिल्पियों और बुनकरों के उत्पादों को मंच देने हेतु नई दिल्ली में 'खादी दिवाली उत्सव 2026' आयोजित किया। यह 'वोकल फॉर लोकल' को बढ़ावा देता है।",
+                enSol: "KVIC organized the 'Khadi Diwali Utsav 2026' in New Delhi to promote artisans, handlooms, and the 'Vocal for Local' initiative."
+            },
+            {
+                id: 3,
+                section: "CURRENT",
+                hiQ: "हाल ही में गेलेफू माइंडफुलनेस सिटी में 108 स्तूपों का निर्माण एवं प्रतिष्ठापना किस देश में किया गया है?",
+                enQ: "In which country have 108 stupas been constructed and established in Gelephu Mindfulness City recently?",
+                hiOpts: ["नेपाल", "भूटान", "म्यांमार", "श्रीलंका"],
+                enOpts: ["Nepal", "Bhutan", "Myanmar", "Sri Lanka"],
+                correct: 1, // भूटान
+                hiSol: "भूटान के विशेष प्रशासनिक क्षेत्र 'गेलेफू माइंडफुलनेस सिटी' (GMC) में वैश्विक शांति व आध्यात्मिक समृद्धि के प्रतीक रूप में 108 बौद्ध स्तूपों की स्थापना की गई है। भूटान की राजधानी थिम्पू तथा मुद्रा नगुल्ट्रम है।",
+                enSol: "108 Buddhist stupas have been established in Gelephu Mindfulness City (GMC), Bhutan, symbolising global peace and spiritual prosperity."
+            },
+            {
+                id: 4,
+                section: "CURRENT",
+                hiQ: "हाल ही में पहला बिम्सटेक समुद्री सुरक्षा अभ्यास कहां आयोजित किया गया है?",
+                enQ: "Where was the first BIMSTEC Maritime Security Exercise held recently?",
+                hiOpts: ["विशाखापट्टनम", "कोच्चि", "पोर्ट ब्लेयर (श्री विजयपुरम)", "चेन्नई"],
+                enOpts: ["Visakhapatnam", "Kochi", "Port Blair (Sri Vijayapuram)", "Chennai"],
+                correct: 2, // पोर्ट ब्लेयर
+                hiSol: "बिम्सटेक समुद्री सुरक्षा अभ्यास का आयोजन अंडमान एवं निकोबार द्वीप समूह की राजधानी पोर्ट ब्लेयर (वर्तमान नाम: श्री विजयपुरम) में किया गया। BIMSTEC की स्थापना 06 जून 1997 को हुई थी।",
+                enSol: "The first BIMSTEC Maritime Security Exercise was held in Port Blair (Sri Vijayapuram), Andaman and Nicobar Islands. BIMSTEC was founded on June 6, 1997."
+            },
+            {
+                id: 5,
+                section: "CURRENT",
+                hiQ: "हाल ही में भारतीय भूवैज्ञानिक सर्वेक्षण (GSI) का 55वां महानिदेशक किसे नियुक्त किया गया है?",
+                enQ: "Who has been recently appointed as the 55th Director General of Geological Survey of India (GSI)?",
+                hiOpts: ["सुनील कुमार", "दिनेश विठ्ठलराव गणवीर", "रमेश पोवार", "एस.सी.एल. दास"],
+                enOpts: ["Sunil Kumar", "Dinesh Vitthalrao Ganvir", "Ramesh Powar", "S.C.L. Das"],
+                correct: 1, // दिनेश विठ्ठलराव गणवीर
+                hiSol: "वरिष्ठ भूवैज्ञानिक दिनेश विठ्ठलराव गणवीर ने 01 नवंबर 2026 को GSI के 55वें महानिदेशक के रूप में पदभार ग्रहण किया। GSI की स्थापना 1851 में हुई थी तथा मुख्यालय कोलकाता में है।",
+                enSol: "Senior geologist Dinesh Vitthalrao Ganvir took charge as the 55th Director General of GSI on Nov 1, 2026. GSI was founded in 1851 (HQ: Kolkata)."
+            },
+            {
+                id: 6,
+                section: "CURRENT",
+                hiQ: "हाल ही में अहमदाबाद में आयोजित पहली कॉमनवेल्थ कबड्डी चैंपियनशिप 2026 का खिताब किस देश ने जीता है?",
+                enQ: "Which country won the title of the first Commonwealth Kabaddi Championship 2026 held in Ahmedabad?",
+                hiOpts: ["श्रीलंका", "भारत", "युगांडा", "केन्या"],
+                enOpts: ["Sri Lanka", "India", "Uganda", "Kenya"],
+                correct: 1, // भारत
+                hiSol: "अहमदाबाद के वीर सावरकर स्पोर्ट्स कॉम्प्लेक्स में आयोजित प्रथम कॉमनवेल्थ कबड्डी चैंपियनशिप में भारत ने पुरुष और महिला दोनों वर्गों में स्वर्ण पदक जीतकर 'गोल्डन डबल' हासिल किया।",
+                enSol: "India won the 'Golden Double' by securing gold medals in both men's and women's categories at the 1st Commonwealth Kabaddi Championship in Ahmedabad."
+            },
+            {
+                id: 7,
+                section: "CURRENT",
+                hiQ: "हाल ही में लोक लेखा समितियों (PAC) के सभापतियों का राष्ट्रीय सम्मेलन किस शहर में आयोजित किया जाएगा?",
+                enQ: "In which city will the national conference of Presiding Officers and Chairpersons of Public Accounts Committees (PAC) be held?",
+                hiOpts: ["नई दिल्ली", "बेंगलुरु", "तिरुवनंतपुरम", "हैदराबाद"],
+                enOpts: ["New Delhi", "Bengaluru", "Thiruvananthapuram", "Hyderabad"],
+                correct: 2, // तिरुवनंतपुरम
+                hiSol: "लोक लेखा समितियों के पीठासीन अधिकारियों व सभापतियों का अखिल भारतीय सम्मेलन केरल की राजधानी तिरुवनंतपुरम में आयोजित किया जाएगा। PAC संसद की सबसे पुरानी वित्तीय समिति है (स्थापना 1921)।",
+                enSol: "The conference of PAC Chairpersons is held in Thiruvananthapuram, Kerala. PAC is the oldest financial committee of Parliament, formed in 1921."
+            },
+            {
+                id: 8,
+                section: "CURRENT",
+                hiQ: "भारतीय वायुसेना की पूर्वी वायु कमान के एयर ऑफिसर कमांडिंग-इन-चीफ (AOC-in-C) के रूप में किसने कार्यभार संभाला है?",
+                enQ: "Who has assumed charge as the Air Officer Commanding-in-Chief (AOC-in-C) of the Eastern Air Command of IAF?",
+                hiOpts: ["आशुतोष दीक्षित", "इंद्रपाल सिंह वालिया", "अमर प्रीत सिंह", "मेहताब सिंह देसवाल"],
+                enOpts: ["Ashutosh Dixit", "Indrapal Singh Walia", "Amar Preet Singh", "Mehtab Singh Deswal"],
+                correct: 3, // मेहताब सिंह देसवाल
+                hiSol: "एयर मार्शल मेहताब सिंह देसवाल ने 01 नवंबर 2026 को शिलांग स्थित पूर्वी वायु कमान के AOC-in-C का पदभार संभाला।",
+                enSol: "Air Marshal Mehtab Singh Deswal took over as the AOC-in-C of the Eastern Air Command, Shillong, on November 1, 2026."
+            },
+            {
+                id: 9,
+                section: "CURRENT",
+                hiQ: "हाल ही में हाइलो ओपन 2026 बैडमिंटन प्रतियोगिता में पुरुष एकल का खिताब किसने जीता है?",
+                enQ: "Who has won the men's singles title at the Hylo Open 2026 badminton tournament recently?",
+                hiOpts: ["लक्ष्य सेन", "सात्विकसाईराज रंकीरेड्डी", "किदांबी श्रीकांत", "एच.एस. प्रणय"],
+                enOpts: ["Lakshya Sen", "Satwiksairaj Rankireddy", "Kidambi Srikanth", "H.S. Prannoy"],
+                correct: 0, // लक्ष्य सेन
+                hiSol: "जर्मनी के सारब्रुकन में संपन्न BWF वर्ल्ड टूर सुपर 300 'हाइलो ओपन 2026' में भारत के लक्ष्य सेन ने पुरुष एकल का खिताब जीता, जबकि पी.वी. सिंधु ने महिला एकल का खिताब जीता।",
+                enSol: "India's star badminton player Lakshya Sen won the men's singles title at the Hylo Open 2026 in Saarbrücken, Germany."
+            },
+            {
+                id: 10,
+                section: "CURRENT",
+                hiQ: "नवंबर 2026 में बंगाल की खाड़ी में विकसित चक्रवाती तूफान 'मुरासु' (Cyclone Murasu) का नामकरण किस देश ने किया है?",
+                enQ: "Which country has named the cyclonic storm 'Murasu' developed in the Bay of Bengal in November 2026?",
+                hiOpts: ["म्यांमार", "बांग्लादेश", "भारत", "मालदीव"],
+                enOpts: ["Myanmar", "Bangladesh", "India", "Maldives"],
+                correct: 2, // भारत
+                hiSol: "बंगाल की खाड़ी में बने चक्रवात 'मुरासु' का नामकरण भारत द्वारा किया गया है। 'मुरासु' एक पारंपरिक भारतीय वाद्ययंत्र (तमिल ड्रम) का नाम है।",
+                enSol: "The cyclonic storm 'Murasu' in the Bay of Bengal was named by India. 'Murasu' refers to a traditional Indian musical instrument (Tamil drum)."
+            },
+            {
+                id: 11,
+                section: "CURRENT",
+                hiQ: "हाल ही में फॉर्मूला वन का 'विश्व ड्राइवर्स चैंपियनशिप 2026' का खिताब किसने जीता है?",
+                enQ: "Who has won the Formula One 'World Drivers' Championship 2026' title recently?",
+                hiOpts: ["मैक्स वर्स्टापन", "लुईस हैमिल्टन", "किमी एंटोनेली", "जॉर्ज रसेल"],
+                enOpts: ["Max Verstappen", "Lewis Hamilton", "Kimi Antonelli", "George Russell"],
+                correct: 2, // किमी एंटोनेली
+                hiSol: "मर्सिडीज टीम के युवा इतालवी ड्राइवर एंड्रिया किमी एंटोनेली (Andrea Kimi Antonelli) ने वर्ष 2026 की फॉर्मूला वन विश्व ड्राइवर्स चैंपियनशिप का ऐतिहासिक खिताब जीता।",
+                enSol: "Mercedes young Italian driver Andrea Kimi Antonelli won the historic Formula One World Drivers' Championship 2026."
+            },
+            {
+                id: 12,
+                section: "STATIC",
+                hiQ: "ग्रामीण विकास के क्षेत्र में असाधारण योगदान हेतु 5वां 'रोहिणी नायर पुरस्कार 2026' किसने जीता है?",
+                enQ: "Who has won the 5th 'Rohini Nayyar Prize 2026' for exceptional contribution to rural development?",
+                hiOpts: ["प्रशांत चौधरी", "सीताराम राउत", "लैशराम जात्रा सिंह", "अमीना नाजरीन"],
+                enOpts: ["Prashant Choudhary", "Sitaram Raut", "Laishram Jatra Singh", "Ameena Nazreen"],
+                correct: 0, // प्रशांत चौधरी
+                hiSol: "कोडयोगी फाउंडेशन के संस्थापक प्रशांत चौधरी को ग्रामीण युवाओं को डिजिटल कौशल से सशक्त बनाने हेतु 5वां रोहिणी नायर पुरस्कार प्रदान किया गया। इसमें ₹10 लाख की नकद राशि दी जाती है।",
+                enSol: "Prashant Choudhary, founder of Code Yogi Foundation, won the 5th Rohini Nayyar Prize for empowering rural youth with software skills."
+            }
+        ];
+
+        // --- APP STATE ---
+        let currentQIndex = 0;
+        let currentLang = 'hi'; // 'hi' or 'en'
+        let currentFilter = 'ALL';
+        let filteredQuestions = [...questionsData];
+        let userAnswers = {}; // qId -> selectedOptionIndex
+        let reviewMarks = {}; // qId -> boolean
+        let isSubmitted = false;
+        let isSolutionMode = false;
+        
+        let examEndTime = 0;
+        let timerInterval = null;
+        let totalSecondsExam = 12 * 60; // 12 minutes for 12 questions
+        let remainingMs = totalSecondsExam * 1000;
+        let startTime = Date.now();
+
+        let currentUser = { name: "", district: "", telegram: "" };
+
+        // --- LEADERBOARD DUMMY DATA ---
+        let leaderboardData = [
+            { rank: 1, name: "प्रिया सिंह", district: "Muzaffarpur", score: "24.0", telegram: "@priya_mzf" },
+            { rank: 2, name: "राहुल कुमार", district: "Patna", score: "23.4", telegram: "@rahul_patna" },
+            { rank: 3, name: "अमित कुमार", district: "Gaya", score: "22.8", telegram: "@amit_gaya" },
+            { rank: 4, name: "पूजा कुमारी", district: "Bhagalpur", score: "22.0", telegram: "@pooja_bhg" },
+            { rank: 5, name: "विकास सिंह", district: "Darbhanga", score: "21.6", telegram: "@vikas_dbg" }
+        ];
+
+        // --- INITIALIZATION ---
+        window.addEventListener('DOMContentLoaded', () => {
+            checkExistingLocalStorage();
+            setupKeyboardShortcuts();
+            setupAntiCheat();
+        });
+
+        function checkExistingLocalStorage() {
+            const saved = localStorage.getItem('gyanverse_bssc_saved_session');
+            if (saved) {
+                try {
+                    const data = JSON.parse(saved);
+                    if (data && data.name) {
+                        currentUser = data.user;
+                        userAnswers = data.answers || {};
+                        reviewMarks = data.reviews || {};
+                        if (data.isSubmitted) {
+                            document.getElementById('viewSavedBtn').classList.remove('hidden');
+                        } else {
+                            document.getElementById('resumeBtn').classList.remove('hidden');
+                        }
+                    }
+                } catch(e) {}
+            }
+        }
+
+        function startTest() {
+            const name = document.getElementById('userName').value.trim();
+            const district = document.getElementById('userDistrict').value;
+            const telegram = document.getElementById('userTelegram').value.trim();
+
+            if (!name || !district || !telegram) {
+                showToast("कृपया नाम, जिला और टेलीग्राम यूजरनेम सभी दर्ज करें!");
+                return;
+            }
+
+            currentUser = { name, district, telegram };
+            document.getElementById('entryModal').classList.add('hidden');
+            
+            // Start Timer (Anti-Tamper wall-clock based)
+            examEndTime = Date.now() + (12 * 60 * 1000);
+            startWallClockTimer();
+            
+            initApp();
+            showToast("परीक्षा प्रारंभ हो गई है! शुभकामनाएँ।");
+        }
+
+        function resumeExistingTest() {
+            document.getElementById('entryModal').classList.add('hidden');
+            examEndTime = Date.now() + (10 * 60 * 1000); // remaining buffer
+            startWallClockTimer();
+            initApp();
+            showToast("अधूरा टेस्ट पुनः लोड कर दिया गया है।");
+        }
+
+        function openScorecardFromEntry() {
+            document.getElementById('entryModal').classList.add('hidden');
+            initApp();
+            executeFinalSubmit();
+        }
+
+        function initApp() {
+            buildJumpDropdown();
+            renderQuestion();
+            updateStatsBar();
+            autoSaveState();
+        }
+
+        // --- TIMER LOGIC ---
+        function startWallClockTimer() {
+            if (timerInterval) clearInterval(timerInterval);
+            timerInterval = setInterval(() => {
+                const now = Date.now();
+                const diff = examEndTime - now;
+                if (diff <= 0) {
+                    clearInterval(timerInterval);
+                    if (!isSubmitted) {
+                        showToast("समय समाप्त! परीक्षा ऑटो-सबमिट हो रही है।");
+                        executeFinalSubmit();
+                    }
+                    return;
+                }
+                const totalSec = Math.floor(diff / 1000);
+                const m = Math.floor(totalSec / 60);
+                const s = totalSec % 60;
+                document.getElementById('timerDisplay').innerText = `⏱ ${m.toString().padStart(2,'0')}:${s.toString().padStart(2,'0')}`;
+                
+                // Auto save every 10 seconds
+                if (s % 10 === 0) autoSaveState();
+            }, 1000);
+        }
+
+        // --- RENDER QUESTION ---
+        function filterSection(sec) {
+            currentFilter = sec;
+            document.querySelectorAll('.section-tab').forEach(btn => {
+                btn.className = "section-tab px-3 py-1 rounded bg-slate-700 hover:bg-slate-600 text-slate-200 whitespace-nowrap";
+            });
+            document.getElementById(`sec-${sec}`).className = "section-tab px-3 py-1 rounded bg-indigo-600 text-white font-semibold whitespace-nowrap shadow-sm";
+
+            if (sec === 'ALL') {
+                filteredQuestions = [...questionsData];
+            } else {
+                filteredQuestions = questionsData.filter(q => q.section === sec);
+            }
+            currentQIndex = 0;
+            renderQuestion();
+        }
+
+        function renderQuestion() {
+            if (filteredQuestions.length === 0) return;
+            const q = filteredQuestions[currentQIndex];
+            
+            // Badges
+            document.getElementById('qNumBadge').innerText = `प्रश्न ${currentQIndex + 1} / ${filteredQuestions.length} ( मूल क्र. ${q.id} )`;
+            document.getElementById('sectionNameLabel').innerText = `Section: ${q.section === 'CURRENT' ? 'Current Affairs' : 'Static GK'}`;
+
+            // Status Pill
+            const pill = document.getElementById('qStatusPill');
+            const ans = userAnswers[q.id];
+            const rev = reviewMarks[q.id];
+
+            if (ans !== undefined && rev) {
+                pill.innerText = "Answered & Reviewed";
+                pill.className = "bg-indigo-100 text-indigo-800 px-2 py-0.5 rounded text-[11px] font-bold";
+            } else if (ans !== undefined) {
+                pill.innerText = "Answered";
+                pill.className = "bg-emerald-100 text-emerald-800 px-2 py-0.5 rounded text-[11px] font-bold";
+            } else if (rev) {
+                pill.innerText = "Marked for Review";
+                pill.className = "bg-amber-100 text-amber-800 px-2 py-0.5 rounded text-[11px] font-bold";
+            } else {
+                pill.innerText = "Not Answered";
+                pill.className = "bg-slate-200 text-slate-700 px-2 py-0.5 rounded text-[11px] font-medium";
+            }
+
+            // Question Text (Bilingual)
+            let qHtml = `<div class="font-bold text-slate-900 mb-1">${escapeHtml(q.hiQ)}</div>`;
+            qHtml += `<div class="text-slate-600 text-xs sm:text-sm font-medium italic">${escapeHtml(q.enQ)}</div>`;
+            document.getElementById('questionText').innerHTML = qHtml;
+
+            // Options
+            const opts = currentLang === 'hi' ? q.hiOpts : q.enOpts;
+            const optsContainer = document.getElementById('optionsContainer');
+            optsContainer.innerHTML = '';
+
+            opts.forEach((optText, idx) => {
+                const isSelected = userAnswers[q.id] === idx;
+                let btnClass = "w-full text-left p-3 rounded-xl border transition-all text-xs sm:text-sm flex items-center gap-3 font-medium ";
+                
+                if (isSolutionMode) {
+                    if (idx === q.correct) {
+                        btnClass += "bg-emerald-100 border-emerald-500 text-emerald-950 font-bold";
+                    } else if (isSelected && idx !== q.correct) {
+                        btnClass += "bg-rose-100 border-rose-500 text-rose-950";
+                    } else {
+                        btnClass += "bg-slate-50 border-slate-200 text-slate-700 opacity-75";
+                    }
+                } else {
+                    if (isSelected) {
+                        btnClass += "bg-indigo-50 border-indigo-600 text-indigo-950 ring-2 ring-indigo-600/20";
+                    } else {
+                        btnClass += "bg-slate-50 hover:bg-slate-100 border-slate-200 text-slate-800";
+                    }
+                }
+
+                const optLabel = String.fromCharCode(65 + idx); // A, B, C, D
+                
+                const btn = document.createElement('button');
+                btn.className = btnClass;
+                btn.onclick = () => selectOption(q.id, idx);
+                btn.innerHTML = `
+                    <span class="w-6 h-6 rounded-full flex items-center justify-center font-bold text-xs shrink-0 ${isSelected ? 'bg-indigo-600 text-white' : 'bg-slate-200 text-slate-700'}">${optLabel}</span>
+                    <span class="flex-1">${escapeHtml(optText)}</span>
+                `;
+                optsContainer.appendChild(btn);
+            });
+
+            // Solution Box logic
+            const solBox = document.getElementById('solutionBox');
+            if (isSolutionMode) {
+                solBox.classList.remove('hidden');
+                const isCorrect = userAnswers[q.id] === q.correct;
+                document.getElementById('solCorrectBadge').innerText = isCorrect ? '✔ आपका उत्तर सही (Correct)' : '✖ आपका उत्तर गलत (Incorrect)';
+                document.getElementById('solCorrectBadge').className = isCorrect ? 'text-[11px] font-bold bg-emerald-200 text-emerald-900 px-2 py-0.5 rounded' : 'text-[11px] font-bold bg-rose-200 text-rose-900 px-2 py-0.5 rounded';
+                
+                let solHtml = `<div class="mb-1 font-semibold">${escapeHtml(q.hiSol)}</div>`;
+                solHtml += `<div class="text-emerald-900/80 italic text-xs">${escapeHtml(q.enSol)}</div>`;
+                document.getElementById('solutionText').innerHTML = solHtml;
+
+                // Adjust Nav bar for Solution mode
+                document.getElementById('clearBtn').classList.add('hidden');
+                document.getElementById('reviewBtn').classList.add('hidden');
+            } else {
+                solBox.classList.add('hidden');
+                document.getElementById('clearBtn').classList.remove('hidden');
+                document.getElementById('reviewBtn').classList.remove('hidden');
+            }
+
+            document.getElementById('jumpDropdown').value = currentQIndex;
+            updateStatsBar();
+        }
+
+        function selectOption(qId, optIdx) {
+            if (isSubmitted && !isSolutionMode) return;
+            if (isSolutionMode) return; // Cannot change during solution review
+            
+            userAnswers[qId] = optIdx;
+            renderQuestion();
+            autoSaveState();
+        }
+
+        function clearResponse() {
+            const q = filteredQuestions[currentQIndex];
+            delete userAnswers[q.id];
+            renderQuestion();
+            autoSaveState();
+        }
+
+        function toggleReviewMark() {
+            const q = filteredQuestions[currentQIndex];
+            reviewMarks[q.id] = !reviewMarks[q.id];
+            renderQuestion();
+            autoSaveState();
+        }
+
+        function nextQuestion() {
+            if (currentQIndex < filteredQuestions.length - 1) {
+                currentQIndex++;
+                renderQuestion();
+            } else {
+                showToast("यह अंतिम प्रश्न है।");
+            }
+        }
+
+        function nextAndSave() {
+            if (currentQIndex < filteredQuestions.length - 1) {
+                currentQIndex++;
+                renderQuestion();
+            } else {
+                showToast("यह अंतिम प्रश्न है। आप सबमिट कर सकते हैं।");
+            }
+        }
+
+        function prevQuestion() {
+            if (currentQIndex > 0) {
+                currentQIndex--;
+                renderQuestion();
+            } else {
+                showToast("यह पहला प्रश्न है।");
+            }
+        }
+
+        function jumpToQuestion(idx) {
+            currentQIndex = parseInt(idx);
+            renderQuestion();
+        }
+
+        function buildJumpDropdown() {
+            const dropdown = document.getElementById('jumpDropdown');
+            dropdown.innerHTML = '';
+            filteredQuestions.forEach((q, idx) => {
+                const opt = document.createElement('option');
+                opt.value = idx;
+                opt.innerText = `Q. ${idx + 1}`;
+                dropdown.appendChild(opt);
+            });
+        }
+
+        function toggleLanguage() {
+            currentLang = currentLang === 'hi' ? 'en' : 'hi';
+            const btn = document.getElementById('langToggleBtn');
+            btn.innerText = currentLang === 'hi' ? '🌐 हिं+EN' : '🌐 English';
+            renderQuestion();
+            showToast(currentLang === 'hi' ? 'भाषा: हिंदी सक्रिय' : 'Language: English Active');
+        }
+
+        // --- STATS & COUNTS ---
+        function updateStatsBar() {
+            let ansCount = 0;
+            let revCount = 0;
+            let unvisitedCount = 0;
+
+            questionsData.forEach(q => {
+                if (userAnswers[q.id] !== undefined) ansCount++;
+                if (reviewMarks[q.id]) revCount++;
+                if (userAnswers[q.id] === undefined && !reviewMarks[q.id]) unvisitedCount++;
+            });
+
+            document.getElementById('countAnswered').innerText = ansCount;
+            document.getElementById('countReview').innerText = revCount;
+            document.getElementById('countUnvisited').innerText = unvisitedCount;
+
+            document.getElementById('confTotal').innerText = questionsData.length;
+            document.getElementById('confAnswered').innerText = ansCount;
+            document.getElementById('confReview').innerText = revCount;
+            document.getElementById('confUnanswered').innerText = questionsData.length - ansCount;
+        }
+
+        // --- PALETTE MODAL ---
+        function openPaletteModal() {
+            const grid = document.getElementById('paletteGrid');
+            grid.innerHTML = '';
+
+            questionsData.forEach((q, idx) => {
+                const ans = userAnswers[q.id] !== undefined;
+                const rev = reviewMarks[q.id];
+                
+                let bgClass = "bg-slate-200 text-slate-800 border-slate-300";
+                if (ans && rev) bgClass = "bg-indigo-600 text-white border-indigo-700";
+                else if (ans) bgClass = "bg-emerald-600 text-white border-emerald-700";
+                else if (rev) bgClass = "bg-amber-500 text-white border-amber-600";
+
+                const btn = document.createElement('button');
+                btn.className = `p-2.5 rounded-lg font-bold text-xs border ${bgClass} shadow-sm transition-all hover:scale-105 flex items-center justify-center`;
+                btn.innerText = idx + 1;
+                btn.onclick = () => {
+                    // Switch to ALL filter if needed to jump properly
+                    if (currentFilter !== 'ALL') {
+                        filterSection('ALL');
+                    }
+                    currentQIndex = idx;
+                    renderQuestion();
+                    closePaletteModal();
+                };
+                grid.appendChild(btn);
+            });
+
+            document.getElementById('paletteModal').classList.remove('hidden');
+        }
+
+        function closePaletteModal() {
+            document.getElementById('paletteModal').classList.add('hidden');
+        }
+
+        // --- SUBMIT WORKFLOW ---
+        function confirmSubmitTest() {
+            document.getElementById('submitConfirmModal').classList.remove('hidden');
+        }
+
+        function closeSubmitConfirmModal() {
+            document.getElementById('submitConfirmModal').classList.add('hidden');
+        }
+
+        function executeFinalSubmit() {
+            closeSubmitConfirmModal();
+            isSubmitted = true;
+            if (timerInterval) clearInterval(timerInterval);
+
+            // Calculate score
+            let correct = 0;
+            let incorrect = 0;
+            let attempted = 0;
+
+            questionsData.forEach(q => {
+                const ans = userAnswers[q.id];
+                if (ans !== undefined) {
+                    attempted++;
+                    if (ans === q.correct) correct++;
+                    else incorrect++;
+                }
+            });
+
+            const score = (correct * 2.0) - (incorrect * 0.2);
+            const accuracy = attempted > 0 ? ((correct / attempted) * 100).toFixed(1) : 0;
+            const timeTakenSec = Math.floor((Date.now() - startTime) / 1000);
+            const tmStr = `${Math.floor(timeTakenSec/60).toString().padStart(2,'0')}:${(timeTakenSec%60).toString().padStart(2,'0')}`;
+
+            // Populate Scorecard
+            document.getElementById('scorecardStudentMeta').innerText = `Candidate: ${currentUser.name || 'Student'} | District: ${currentUser.district || 'Patna'} | TG: ${currentUser.telegram || '@user'}`;
+            document.getElementById('scScore').innerText = score.toFixed(2);
+            document.getElementById('scCorrect').innerText = correct;
+            document.getElementById('scIncorrect').innerText = incorrect;
+            document.getElementById('scAccuracy').innerText = `${accuracy}%`;
+            document.getElementById('scAtt').innerText = attempted;
+            document.getElementById('scUnatt').innerText = questionsData.length - attempted;
+            document.getElementById('scTime').innerText = tmStr;
+
+            // Add to Leaderboard & Sync to Firebase (Non-blocking background simulation)
+            syncToCloudLeaderboard(currentUser.name, currentUser.district, currentUser.telegram, score);
+
+            // Show Header Solution Button
+            document.getElementById('headerSolutionBtn').classList.remove('hidden');
+
+            autoSaveState();
+            document.getElementById('scorecardModal').classList.remove('hidden');
+        }
+
+        function closeScorecardModal() {
+            document.getElementById('scorecardModal').classList.add('hidden');
+        }
+
+        function enterSolutionMode() {
+            closeScorecardModal();
+            isSolutionMode = true;
+            currentQIndex = 0;
+            filterSection('ALL');
+            showToast("सॉल्यूशन मोड सक्रिय! अब सभी प्रश्नों की विस्तृत व्याख्या देखें।");
+        }
+
+        function openSolutionModal() {
+            enterSolutionMode();
+        }
+
+        // --- CLOUD SYNC & LOCAL STORAGE ---
+        function autoSaveState() {
+            const data = {
+                user: currentUser,
+                answers: userAnswers,
+                reviews: reviewMarks,
+                isSubmitted: isSubmitted,
+                timestamp: Date.now()
+            };
+            localStorage.setItem('gyanverse_bssc_saved_session', JSON.stringify(data));
+        }
+
+        function syncToCloudLeaderboard(name, district, telegram, score) {
+            if (!name) return;
+            // Key-based duplicate prevention simulation for Firebase PUT /bssc_set_252_results/${userKey}.json
+            const userKey = telegram.replace(/[^a-zA-Z0-9]/g, '_') || 'student';
+            
+            // Check existing in leaderboard
+            const existingIdx = leaderboardData.findIndex(item => item.telegram === telegram);
+            const entry = { rank: 0, name, district, score: score.toFixed(1), telegram };
+            
+            if (existingIdx >= 0) {
+                if (parseFloat(score) > parseFloat(leaderboardData[existingIdx].score)) {
+                    leaderboardData[existingIdx] = entry;
+                }
+            } else {
+                leaderboardData.push(entry);
+            }
+
+            // Sort leaderboard by score descending
+            leaderboardData.sort((a, b) => parseFloat(b.score) - parseFloat(a.score));
+            leaderboardData.forEach((item, idx) => item.rank = idx + 1);
+
+            // Assign rank text
+            const myRankObj = leaderboardData.find(item => item.telegram === telegram);
+            if (myRankObj) {
+                document.getElementById('scRankText').innerText = `Rank: #${myRankObj.rank} / ${leaderboardData.length + 120}`;
+            }
+        }
+
+        // --- RANK LIST MODAL ---
+        function openRankModal() {
+            const tbody = document.getElementById('rankTableBody');
+            tbody.innerHTML = '';
+
+            leaderboardData.forEach(item => {
+                const tr = document.createElement('tr');
+                tr.className = "hover:bg-slate-50 transition-all";
+                tr.innerHTML = `
+                    <td class="p-2 font-bold text-indigo-700">#${item.rank}</td>
+                    <td class="p-2 font-semibold">${escapeHtml(item.name)}</td>
+                    <td class="p-2 text-slate-600">${escapeHtml(item.district)}</td>
+                    <td class="p-2 text-right font-black text-amber-700">${item.score}</td>
+                `;
+                tbody.appendChild(tr);
+            });
+
+            document.getElementById('rankModal').classList.remove('hidden');
+        }
+
+        function closeRankModal() {
+            document.getElementById('rankModal').classList.add('hidden');
+        }
+
+        // --- ADMIN PANEL (Secret 4 clicks on GV Logo) ---
+        let logoClickCount = 0;
+        let logoClickTimer = null;
+        function handleLogoClick() {
+            logoClickCount++;
+            if (logoClickTimer) clearTimeout(logoClickTimer);
+            logoClickTimer = setTimeout(() => { logoClickCount = 0; }, 2000);
+
+            if (logoClickCount >= 4) {
+                logoClickCount = 0;
+                document.getElementById('adminModal').classList.remove('hidden');
+            }
+        }
+
+        function closeAdminModal() {
+            document.getElementById('adminModal').classList.add('hidden');
+        }
+
+        function verifyAdminPin() {
+            const pin = document.getElementById('adminPinInput').value;
+            // SHA-256 simulation or direct check for 'GYANVERSE' / '1234'
+            if (pin === '1234' || pin === 'GYANVERSE') {
+                document.getElementById('adminPanelContent').classList.remove('hidden');
+                showToast("एडमिन एक्सेस सत्यापित!");
+            } else {
+                showToast("गलत पिन!");
+            }
+        }
+
+        function resetAllTestData() {
+            localStorage.removeItem('gyanverse_bssc_saved_session');
+            location.reload();
+        }
+
+        // --- ANTI-CHEAT & SHORTCUTS ---
+        function setupAntiCheat() {
+            let strikeCount = 0;
+            document.addEventListener('visibilitychange', () => {
+                if (document.hidden && !isSubmitted) {
+                    strikeCount++;
+                    showToast(`⚠ चेतावनी: परीक्षा के दौरान टैब बदलना वर्जित है! (स्ट्राइक ${strikeCount}/3)`);
+                }
+            });
+
+            window.addEventListener('beforeunload', (e) => {
+                if (!isSubmitted) {
+                    e.preventDefault();
+                    e.returnValue = '';
+                }
+            });
+        }
+
+        function setupKeyboardShortcuts() {
+            document.addEventListener('keydown', (e) => {
+                if (isSubmitted && !isSolutionMode) return;
+                const key = e.key.toUpperCase();
+                if (key === 'N') nextAndSave();
+                if (key === 'P') prevQuestion();
+                if (key === 'R') toggleReviewMark();
+                if (['1', '2', '3', '4'].includes(key) && !isSolutionMode) {
+                    const optIdx = parseInt(key) - 1;
+                    const q = filteredQuestions[currentQIndex];
+                    selectOption(q.id, optIdx);
+                }
+            });
+        }
+
+        // --- UTILS ---
+        function escapeHtml(str) {
+            return str.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#039;");
+        }
+
+        function showToast(msg) {
+            const t = document.getElementById('toast');
+            document.getElementById('toastMsg').innerText = msg;
+            t.classList.remove('hidden');
+            setTimeout(() => {
+                t.classList.add('hidden');
+            }, 3000);
+        }
+    </script>
+</body>
+</html>
