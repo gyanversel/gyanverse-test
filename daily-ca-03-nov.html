@@ -93,8 +93,13 @@
       </a>
     </div>
 
-    <!-- Right: Language Toggle, Saved Solutions, Rank List, Live Timer, Submit -->
+    <!-- Right: Fullscreen Toggle, Language Toggle, Saved Solutions, Rank List, Live Timer, Submit -->
     <div class="flex items-center gap-1 sm:gap-1.5">
+      <!-- Fullscreen Toggle Button -->
+      <button id="headerFullscreenBtn" class="px-2 py-0.8 rounded bg-slate-800 hover:bg-slate-700 text-sky-300 border border-slate-700 text-[11px] font-bold flex items-center gap-1 transition shadow-sm" title="फुलस्क्रीन मोड (Toggle Fullscreen)">
+        <span id="fsIcon">⛶</span><span id="fsText" class="hidden xs:inline">फुलस्क्रीन</span>
+      </button>
+
       <!-- 1-Click Language Toggle -->
       <button id="langToggleBtn" class="px-2 py-0.8 rounded bg-slate-800 hover:bg-slate-700 text-[11px] font-bold text-amber-300 border border-slate-700 flex items-center gap-0.5 transition shadow-sm" title="भाषा बदलें / Change Language">
         🌐 हिं+EN
@@ -179,12 +184,12 @@
           <!-- Buttons Row -->
           <div class="space-y-2 pt-1">
             <button type="submit" id="startExamBtn" class="w-full py-2.5 rounded-xl bg-gradient-to-r from-amber-500 via-orange-500 to-amber-600 hover:from-amber-400 hover:to-orange-500 text-slate-950 font-black text-xs sm:text-sm tracking-wide shadow-lg active:scale-98 transition flex items-center justify-center gap-1.5">
-              <span>🚀</span> परीक्षा प्रारंभ करें (Start CBT Exam)
+              <span>⛶ 🚀</span> परीक्षा प्रारंभ करें (Start CBT Exam — Auto Full Screen)
             </button>
 
             <!-- Resume Incomplete Test Button (shown dynamically) -->
             <button type="button" id="resumeTestBtn" class="hidden w-full py-2 rounded-xl bg-blue-600/90 hover:bg-blue-500 text-white font-bold text-xs shadow transition flex items-center justify-center gap-1.5">
-              <span>▶</span> अधूरा टेस्ट वहीं से जारी रखें (Resume Test)
+              <span>⛶ ▶</span> अधूरा टेस्ट वहीं से जारी रखें (Resume Test — Full Screen)
             </button>
 
             <!-- View Previous Saved Solutions Button (shown dynamically) -->
@@ -430,6 +435,22 @@
     </section>
 
   </main>
+
+  <!-- ==================== FULLSCREEN REQUIRED PROMPT OVERLAY ==================== -->
+  <div id="fullscreenPromptOverlay" class="hidden fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/90 backdrop-blur-md">
+    <div class="max-w-sm w-full bg-slate-900 border border-amber-500/50 rounded-2xl p-5 text-center shadow-2xl space-y-3 animate-in fade-in zoom-in-95">
+      <div class="w-12 h-12 rounded-full bg-amber-500/20 text-amber-400 text-2xl flex items-center justify-center mx-auto border border-amber-500/30">
+        ⛶
+      </div>
+      <h3 class="text-white font-black text-base">फुलस्क्रीन मोड आवश्यक है</h3>
+      <p class="text-xs text-slate-300 leading-relaxed">
+        TCS iON परीक्षा नियमों के अनुसार टेस्ट केवल <strong>Full-Screen Mode</strong> में ही दिया जा सकता है। कृपया नीचे दिए गए बटन पर टैप करें।
+      </p>
+      <button id="activateFsPromptBtn" class="w-full py-2.5 rounded-xl bg-gradient-to-r from-amber-500 via-orange-500 to-amber-600 hover:from-amber-400 hover:to-orange-500 text-slate-950 font-black text-xs sm:text-sm tracking-wide shadow-lg active:scale-95 transition flex items-center justify-center gap-1.5">
+        <span>⛶</span> फुलस्क्रीन मोड सक्रिय करें (Enter Full Screen)
+      </button>
+    </div>
+  </div>
 
   <!-- ==================== TCS iON QUESTION PALETTE MODAL ==================== -->
   <div id="paletteModal" class="hidden fixed inset-0 z-50 flex items-center justify-center p-3 bg-slate-950/80 backdrop-blur-sm">
@@ -718,12 +739,63 @@
       }
     }
 
+    // --- Fullscreen API Support ---
+    function isCurrentlyFullscreen() {
+      return !!(document.fullscreenElement || document.webkitFullscreenElement || document.mozFullScreenElement || document.msFullscreenElement);
+    }
+
+    function requestAutoFullScreen() {
+      const elem = document.documentElement;
+      const req = elem.requestFullscreen || elem.webkitRequestFullscreen || elem.mozRequestFullScreen || elem.msRequestFullscreen;
+      if (req) {
+        req.call(elem).then(() => {
+          updateFullscreenButtonUI(true);
+        }).catch(err => {
+          console.log('Fullscreen request prevented or restricted:', err);
+          updateFullscreenButtonUI(false);
+        });
+      }
+    }
+
+    function toggleFullScreen() {
+      if (!isCurrentlyFullscreen()) {
+        requestAutoFullScreen();
+      } else {
+        const exit = document.exitFullscreen || document.webkitExitFullscreen || document.mozCancelFullScreen || document.msExitFullscreen;
+        if (exit) {
+          exit.call(document).then(() => {
+            updateFullscreenButtonUI(false);
+          }).catch(e => console.log(e));
+        }
+      }
+    }
+
+    function updateFullscreenButtonUI(isFs) {
+      const fsIcon = document.getElementById('fsIcon');
+      const fsText = document.getElementById('fsText');
+      const promptOverlay = document.getElementById('fullscreenPromptOverlay');
+
+      if (isFs) {
+        if (fsIcon) fsIcon.textContent = '✕⛶';
+        if (fsText) fsText.textContent = 'सामान्य';
+        if (promptOverlay) promptOverlay.classList.add('hidden');
+      } else {
+        if (fsIcon) fsIcon.textContent = '⛶';
+        if (fsText) fsText.textContent = 'फुलस्क्रीन';
+        // If test is currently active, prompt user to re-enter fullscreen
+        if (!STATE.isSubmitted && !document.getElementById('examScreen').classList.contains('hidden')) {
+          if (promptOverlay) promptOverlay.classList.remove('hidden');
+        }
+      }
+    }
+
     // --- Initialization & Setup ---
     document.addEventListener('DOMContentLoaded', () => {
       populateDistricts();
       setupEventListeners();
       checkSavedSession();
       renderSectionTabs();
+      updateFullscreenButtonUI(isCurrentlyFullscreen());
     });
 
     function populateDistricts() {
@@ -795,6 +867,9 @@
         alert('कृपया नाम, जिला और टेलीग्राम यूजरनेम सभी विवरण भरें!');
         return;
       }
+
+      // Auto Trigger Full Screen Mode on User Gesture
+      requestAutoFullScreen();
 
       STATE.candidate = { name, district, telegram };
 
@@ -1424,6 +1499,29 @@
 
     // --- Event Listeners Setup ---
     function setupEventListeners() {
+      // Fullscreen Header Button
+      document.getElementById('headerFullscreenBtn').addEventListener('click', () => {
+        toggleFullScreen();
+      });
+
+      // Prompt Overlay Activate Button
+      document.getElementById('activateFsPromptBtn').addEventListener('click', () => {
+        requestAutoFullScreen();
+      });
+
+      // Fullscreen Change Listeners
+      const handleFsChange = () => {
+        const isFs = isCurrentlyFullscreen();
+        updateFullscreenButtonUI(isFs);
+        if (!isFs && !STATE.isSubmitted && !document.getElementById('examScreen').classList.contains('hidden')) {
+          triggerAntiCheatStrike('फुलस्क्रीन छोड़ना वर्जित है!');
+        }
+      };
+      document.addEventListener('fullscreenchange', handleFsChange);
+      document.addEventListener('webkitfullscreenchange', handleFsChange);
+      document.addEventListener('mozfullscreenchange', handleFsChange);
+      document.addEventListener('MSFullscreenChange', handleFsChange);
+
       // Resume Button
       document.getElementById('resumeTestBtn').addEventListener('click', () => startOrResumeTest(true));
 
@@ -1623,9 +1721,10 @@
         else if (key === 'N') document.getElementById('navNextBtn').click();
         else if (key === 'P') document.getElementById('navPrevBtn').click();
         else if (key === 'R') document.getElementById('navReviewBtn').click();
+        else if (key === 'F') toggleFullScreen();
       });
 
-      // Anti-Cheat: Visibility Change & Fullscreen Detection
+      // Anti-Cheat: Visibility Change
       document.addEventListener('visibilitychange', () => {
         if (!STATE.isSubmitted && !document.getElementById('examScreen').classList.contains('hidden')) {
           if (document.hidden) {
