@@ -3,7 +3,7 @@
 <html lang="hi">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
   <title>GYANVERSE | BSSC (Inter Level, CGL-4), BSO, ASO — SET-253 (Bilingual CBT)</title>
   <script src="https://cdn.tailwindcss.com/3.4.17"></script>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+Devanagari:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -11,11 +11,16 @@
     html, body {
       height: 100dvh;
       max-height: 100dvh;
+      height: 100vh;
       overflow: hidden;
+      position: fixed;
+      width: 100%;
+      touch-action: manipulation;
       font-family: 'Inter', 'Noto Sans Devanagari', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
       background-color: #0b0f19;
       color: #f8fafc;
       user-select: none;
+      -webkit-user-select: none;
       -webkit-tap-highlight-color: transparent;
     }
     .thin-scroll::-webkit-scrollbar {
@@ -70,7 +75,7 @@
 
       <!-- Auto-Save Action Notices (If returning user) -->
       <div id="returningUserBanner" class="hidden mb-3.5 flex flex-col gap-2">
-        <button id="resumeTestBtn" onclick="resumeSavedTest()" class="w-full py-2.5 px-3 bg-gradient-to-r from-amber-600 to-amber-500 hover:from-amber-500 hover:to-amber-400 text-slate-950 font-bold text-xs rounded-xl shadow-lg flex items-center justify-center gap-2 transition-all">
+        <button id="resumeTestBtn" onclick="requestExamFullscreen(); resumeSavedTest();" ontouchstart="requestExamFullscreen(); resumeSavedTest();" class="w-full py-2.5 px-3 bg-gradient-to-r from-amber-600 to-amber-500 hover:from-amber-500 hover:to-amber-400 text-slate-950 font-bold text-xs rounded-xl shadow-lg flex items-center justify-center gap-2 transition-all">
           <span>▶</span>
           <span>अधूरा टेस्ट वहीं से जारी रखें (Resume Test)</span>
         </button>
@@ -138,7 +143,7 @@
           <p class="text-[10px] text-slate-400 mt-0.5">ऑल-बिहार क्लाउड लीडरबोर्ड रैंकिंग के लिए टेलीग्राम आईडी अनिवार्य है।</p>
         </div>
 
-        <button type="submit" class="w-full py-3 bg-gradient-to-r from-indigo-600 via-blue-600 to-emerald-600 hover:from-indigo-500 hover:to-emerald-500 text-white font-bold text-sm rounded-xl shadow-lg transition-all transform active:scale-[0.99] flex items-center justify-center gap-2 mt-2">
+        <button type="submit" onclick="requestExamFullscreen()" ontouchstart="requestExamFullscreen()" class="w-full py-3 bg-gradient-to-r from-indigo-600 via-blue-600 to-emerald-600 hover:from-indigo-500 hover:to-emerald-500 text-white font-bold text-sm rounded-xl shadow-lg transition-all transform active:scale-[0.99] flex items-center justify-center gap-2 mt-2">
           <span>🚀</span>
           <span>प्रवेश करें एवं परीक्षा शुरू करें (Auto Full Screen ⛶)</span>
         </button>
@@ -157,7 +162,7 @@
   </div>
 
   <!-- ==================== STICKY HEADER (h-11 shrink-0) ==================== -->
-  <header class="h-11 shrink-0 bg-slate-900 border-b border-slate-800 px-2 sm:px-3 flex items-center justify-between z-20">
+  <header class="h-10 shrink-0 bg-slate-900 border-b border-slate-800 px-2 sm:px-3 flex items-center justify-between z-20">
     <!-- Left branding -->
     <div class="flex items-center gap-1.5 sm:gap-2">
       <button id="adminTriggerBtn" onclick="handleAdminTrigger()" title="GYANVERSE" class="w-7 h-7 rounded-lg bg-gradient-to-br from-indigo-500 to-emerald-500 flex items-center justify-center text-xs font-black text-white shadow active:scale-95">
@@ -215,7 +220,7 @@
   </header>
 
   <!-- ==================== SECTION TABS (shrink-0) ==================== -->
-  <nav class="shrink-0 bg-slate-950 border-b border-slate-800/80 px-1 py-1">
+  <nav class="shrink-0 bg-slate-950 border-b border-slate-800/80 px-1 py-0.5">
     <div id="sectionTabs" class="flex gap-1 overflow-x-auto thin-scroll">
       <button onclick="switchSection('all')" data-sec="all" class="sec-tab flex-1 whitespace-nowrap text-center py-1 px-2 rounded-md text-[11px] font-semibold transition-all bg-indigo-600 text-white shadow">
         सभी प्रश्न (150)
@@ -249,11 +254,11 @@
   </nav>
 
   <!-- ==================== MAIN WORKSPACE (flex-1 min-h-0) ==================== -->
-  <main class="flex-1 min-h-0 flex flex-col justify-between overflow-hidden p-2 sm:p-3 bg-slate-950">
-    <div class="w-full max-w-3xl mx-auto flex-1 min-h-0 flex flex-col justify-between bg-slate-900 border border-slate-800 rounded-2xl shadow-xl overflow-hidden p-2.5 sm:p-3.5">
+  <main class="flex-1 min-h-0 flex flex-col justify-between overflow-hidden p-1 sm:p-2 bg-slate-950">
+    <div class="w-full max-w-3xl mx-auto flex-1 min-h-0 flex flex-col justify-between bg-slate-900 border border-slate-800 rounded-xl sm:rounded-2xl shadow-xl overflow-hidden p-2 sm:p-3">
       
       <!-- Top Card Header: Question Number, Section & Marking -->
-      <div class="shrink-0 flex items-center justify-between pb-2 border-b border-slate-800/80">
+      <div class="shrink-0 flex items-center justify-between pb-1.5 border-b border-slate-800/80">
         <div class="flex items-center gap-1.5">
           <span id="qNumberBadge" class="px-2 py-0.5 rounded-lg bg-indigo-600 text-white font-bold text-xs sm:text-sm">
             प्रश्न 1 / 150
@@ -301,7 +306,7 @@
       </div>
 
       <!-- Official GYANVERSE Watermark Strip -->
-      <div class="shrink-0 py-1 text-center bg-slate-950/60 border-y border-slate-800/60 text-[9.5px] sm:text-[10px] font-semibold text-slate-400 tracking-wider">
+      <div class="shrink-0 py-0.5 text-center bg-slate-950/60 border-y border-slate-800/60 text-[9px] sm:text-[9.5px] font-semibold text-slate-400 tracking-wider">
         <span>GYANVERSE</span> • <a href="https://t.me/GYANVERSET" target="_blank" class="text-sky-400 hover:underline">@GYANVERSET</a> • <span>t.me/GYANVERSET</span>
       </div>
 
@@ -312,28 +317,28 @@
 
       <!-- Action Navigation Bar -->
       <!-- Live Test Mode: 4 columns -->
-      <div id="liveNavRow" class="shrink-0 pt-1.5 border-t border-slate-800/80 grid grid-cols-4 gap-1.5">
-        <button onclick="navigateQuestion(-1)" class="py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold text-xs flex items-center justify-center gap-1 active:scale-95 transition-all">
+      <div id="liveNavRow" class="shrink-0 pt-1 border-t border-slate-800/80 grid grid-cols-4 gap-1">
+        <button onclick="navigateQuestion(-1)" class="py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold text-xs flex items-center justify-center gap-1 active:scale-95 transition-all">
           <span>⬅</span> <span>Prev</span>
         </button>
-        <button onclick="clearCurrentSelection()" class="py-2 rounded-xl bg-slate-800/80 hover:bg-slate-700/80 text-rose-300 border border-rose-500/20 font-bold text-xs flex items-center justify-center gap-1 active:scale-95 transition-all">
+        <button onclick="clearCurrentSelection()" class="py-1.5 rounded-lg bg-slate-800/80 hover:bg-slate-700/80 text-rose-300 border border-rose-500/20 font-bold text-xs flex items-center justify-center gap-1 active:scale-95 transition-all">
           <span>✖</span> <span>Clear</span>
         </button>
-        <button onclick="toggleReviewCurrent()" id="reviewBtn" class="py-2 rounded-xl bg-amber-500/10 hover:bg-amber-500/20 text-amber-300 border border-amber-500/30 font-bold text-xs flex items-center justify-center gap-1 active:scale-95 transition-all">
+        <button onclick="toggleReviewCurrent()" id="reviewBtn" class="py-1.5 rounded-lg bg-amber-500/10 hover:bg-amber-500/20 text-amber-300 border border-amber-500/30 font-bold text-xs flex items-center justify-center gap-1 active:scale-95 transition-all">
           <span>★</span> <span>Review</span>
         </button>
-        <button onclick="navigateQuestion(1)" class="py-2 rounded-xl bg-gradient-to-r from-indigo-600 to-blue-600 hover:from-indigo-500 hover:to-blue-500 text-white font-bold text-xs flex items-center justify-center gap-1 shadow active:scale-95 transition-all">
+        <button onclick="navigateQuestion(1)" class="py-1.5 rounded-lg bg-gradient-to-r from-indigo-600 to-blue-600 hover:from-indigo-500 hover:to-blue-500 text-white font-bold text-xs flex items-center justify-center gap-1 shadow active:scale-95 transition-all">
           <span>Next & Save</span> <span>➡</span>
         </button>
       </div>
 
       <!-- Solution Mode: 2 columns on extreme sides -->
       <div id="solutionNavRow" class="hidden shrink-0 pt-1.5 border-t border-slate-800/80 flex items-center justify-between gap-2">
-        <button onclick="navigateQuestion(-1)" class="w-36 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold text-xs flex items-center justify-center gap-1 active:scale-95 transition-all">
+        <button onclick="navigateQuestion(-1)" class="w-28 sm:w-36 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold text-xs flex items-center justify-center gap-1 active:scale-95 transition-all">
           <span>⬅</span> <span>पिछला (Prev)</span>
         </button>
         <span class="text-xs text-slate-400 font-semibold" id="solIndexIndicator">1 / 150</span>
-        <button onclick="navigateQuestion(1)" class="w-36 py-2 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-bold text-xs flex items-center justify-center gap-1 shadow active:scale-95 transition-all">
+        <button onclick="navigateQuestion(1)" class="w-28 sm:w-36 py-1.5 rounded-lg bg-indigo-600 hover:bg-indigo-500 text-white font-bold text-xs flex items-center justify-center gap-1 shadow active:scale-95 transition-all">
           <span>अगला (Next)</span> <span>➡</span>
         </button>
       </div>
@@ -342,7 +347,7 @@
   </main>
 
   <!-- ==================== BOTTOM STATUS & JUMP BAR ==================== -->
-  <footer class="shrink-0 bg-slate-900 border-t border-slate-800 px-2 sm:px-3 py-1 flex items-center justify-between text-xs z-10">
+  <footer class="shrink-0 h-9 bg-slate-900 border-t border-slate-800 px-2 sm:px-3 py-0.5 flex items-center justify-between text-xs z-10">
     <!-- Live Status Counts -->
     <div class="flex items-center gap-2 text-[11px] sm:text-xs">
       <span class="flex items-center gap-1 text-emerald-400 font-semibold" title="उत्तर दिया (Answered)">
@@ -4911,7 +4916,7 @@
 
       if (hasOptSvgs) {
         // 2x2 grid layout for figures!
-        optsContainer.className = "shrink-0 py-1.5 grid grid-cols-2 gap-2";
+        optsContainer.className = "shrink-0 py-1 grid grid-cols-2 gap-1.5";
         for (let i = 0; i < 4; i++) {
           const isSelected = (userAnswers[currentQIndex] === i);
           let borderClass = "border-slate-800 bg-slate-950/70 hover:bg-slate-800/80";
@@ -4939,7 +4944,7 @@
           const btn = document.createElement('button');
           btn.type = 'button';
           btn.onclick = () => handleOptionSelect(i);
-          btn.className = `opt-btn flex flex-col items-center justify-between p-2 rounded-xl border ${borderClass} transition-all active:scale-[0.98]`;
+          btn.className = `opt-btn flex flex-col items-center justify-between p-1 sm:p-1.5 rounded-lg border ${borderClass} transition-all active:scale-[0.98]`;
           
           btn.innerHTML = `
             <div class="flex items-center justify-between w-full mb-1">
@@ -4954,7 +4959,7 @@
         }
       } else {
         // Standard 1-column layout for text options
-        optsContainer.className = "shrink-0 py-2 space-y-1.5";
+        optsContainer.className = "shrink-0 py-1 space-y-1";
         for (let i = 0; i < 4; i++) {
           const isSelected = (userAnswers[currentQIndex] === i);
           let borderClass = "border-slate-800 bg-slate-950/70 hover:bg-slate-800/80 text-slate-200";
@@ -4987,7 +4992,7 @@
           const btn = document.createElement('button');
           btn.type = 'button';
           btn.onclick = () => handleOptionSelect(i);
-          btn.className = `opt-btn w-full text-left py-2 px-2.5 rounded-xl border ${borderClass} flex items-center justify-between text-[12.5px] sm:text-[14px] transition-all active:scale-[0.99]`;
+          btn.className = `opt-btn w-full text-left py-1.5 px-2 rounded-lg border ${borderClass} flex items-center justify-between text-[12.5px] sm:text-[14px] transition-all active:scale-[0.99]`;
 
           btn.innerHTML = `
             <div class="flex items-center gap-2">
