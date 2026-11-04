@@ -140,7 +140,7 @@
 
         <button type="submit" class="w-full py-3 bg-gradient-to-r from-indigo-600 via-blue-600 to-emerald-600 hover:from-indigo-500 hover:to-emerald-500 text-white font-bold text-sm rounded-xl shadow-lg transition-all transform active:scale-[0.99] flex items-center justify-center gap-2 mt-2">
           <span>🚀</span>
-          <span>प्रवेश करें एवं परीक्षा शुरू करें (Start CBT)</span>
+          <span>प्रवेश करें एवं परीक्षा शुरू करें (Auto Full Screen ⛶)</span>
         </button>
       </form>
 
@@ -199,6 +199,13 @@
         <span class="w-1.5 h-1.5 rounded-full bg-rose-500 animate-ping"></span>
         <span id="examTimer">02:15:00</span>
       </div>
+
+      
+      <!-- Fullscreen Toggle Button -->
+      <button id="fsHeaderBtn" onclick="toggleFullscreenManual()" title="फुल-स्क्रीन (Full Screen)" class="px-2 py-1 rounded-lg bg-slate-800 hover:bg-slate-700 border border-slate-700 text-[11px] font-bold text-slate-300 flex items-center gap-1 transition-colors">
+        <span id="fsHeaderBtnIcon">⛶</span>
+        <span id="fsHeaderBtnText" class="hidden sm:inline">फुल-स्क्रीन</span>
+      </button>
 
       <!-- Submit Test Button -->
       <button id="headerSubmitBtn" onclick="openSubmitConfirm()" class="px-2.5 py-1 rounded-lg bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 text-white font-bold text-[11.5px] sm:text-xs shadow transition-all active:scale-95">
@@ -702,6 +709,25 @@
           स्थानीय डेटा रीसेट करें (Clear LocalStorage)
         </button>
       </div>
+    </div>
+  </div>
+
+  
+  <!-- ==================== MANDATORY FULLSCREEN LOCK MODAL ==================== -->
+  <div id="fullscreenRequiredModal" class="fixed inset-0 z-50 hidden flex items-center justify-center bg-slate-950/95 backdrop-blur-md p-4">
+    <div class="w-full max-w-md bg-slate-900 border-2 border-rose-500 rounded-2xl shadow-2xl p-6 text-center">
+      <div class="w-16 h-16 rounded-full bg-rose-500/10 border border-rose-500/30 text-rose-400 flex items-center justify-center text-3xl mx-auto mb-3 animate-pulse">
+        ⛶
+      </div>
+      <h3 class="text-lg font-black text-white mb-1">फुल-स्क्रीन मोड अनिवार्य है!</h3>
+      <p class="text-xs text-rose-300 font-semibold mb-2">⚠ परीक्षा के दौरान फुल-स्क्रीन से बाहर आना सख्त वर्जित है।</p>
+      <p class="text-xs text-slate-400 mb-5 leading-relaxed">
+        TCS iON परीक्षा सुरक्षा नियमों के अनुसार यह टेस्ट केवल <b>100% फुल-स्क्रीन मोड</b> में ही दिया जा सकता है। कृपया नीचे दिए गए बटन पर क्लिक करके तुरंत फुल-स्क्रीन में वापस जाएँ।
+      </p>
+      <button onclick="requestExamFullscreen(); document.getElementById('fullscreenRequiredModal').classList.add('hidden');" class="w-full py-3.5 bg-gradient-to-r from-emerald-600 via-teal-600 to-cyan-600 hover:from-emerald-500 hover:to-cyan-500 text-white font-extrabold text-sm rounded-xl shadow-lg transition-all transform active:scale-95 flex items-center justify-center gap-2">
+        <span>⛶</span>
+        <span>फुल-स्क्रीन सक्रिय करें एवं परीक्षा जारी रखें</span>
+      </button>
     </div>
   </div>
 
@@ -4563,6 +4589,7 @@
       populateJumpSelect();
       loadAutoSaveState();
       setupAntiCheat();
+      setupFullscreenMonitoring();
       setupKeyboardShortcuts();
     });
 
@@ -4661,6 +4688,7 @@
 
         Object.keys(userAnswers).forEach(idx => visitedQuestions.add(parseInt(idx)));
 
+        requestExamFullscreen();
         document.getElementById('entryGate').classList.add('hidden');
         startWallClockTimer();
         renderCurrentQuestion();
@@ -4709,6 +4737,79 @@
 
       updateTimer();
       timerInterval = setInterval(updateTimer, 1000);
+    }
+
+    
+    // Fullscreen API implementation
+    function requestExamFullscreen() {
+      try {
+        const el = document.documentElement;
+        if (el.requestFullscreen) {
+          el.requestFullscreen().catch(() => {});
+        } else if (el.webkitRequestFullscreen) {
+          el.webkitRequestFullscreen();
+        } else if (el.mozRequestFullScreen) {
+          el.mozRequestFullScreen();
+        } else if (el.msRequestFullscreen) {
+          el.msRequestFullscreen();
+        }
+      } catch (e) {
+        console.warn("Fullscreen request error:", e);
+      }
+    }
+
+    function exitExamFullscreen() {
+      try {
+        if (document.exitFullscreen) document.exitFullscreen();
+        else if (document.webkitExitFullscreen) document.webkitExitFullscreen();
+        else if (document.mozCancelFullScreen) document.mozCancelFullScreen();
+        else if (document.msExitFullscreen) document.msExitFullscreen();
+      } catch (e) {}
+    }
+
+    function isCurrentlyFullscreen() {
+      return !!(document.fullscreenElement || document.webkitFullscreenElement || document.mozFullScreenElement || document.msFullscreenElement);
+    }
+
+    function toggleFullscreenManual() {
+      if (isCurrentlyFullscreen()) {
+        exitExamFullscreen();
+      } else {
+        requestExamFullscreen();
+      }
+    }
+
+    function setupFullscreenMonitoring() {
+      const events = ['fullscreenchange', 'webkitfullscreenchange', 'mozfullscreenchange', 'MSFullscreenChange'];
+      events.forEach(evt => {
+        document.addEventListener(evt, () => {
+          const isFS = isCurrentlyFullscreen();
+          const fsBtn = document.getElementById('fsHeaderBtn');
+          const fsBtnText = document.getElementById('fsHeaderBtnText');
+          if (fsBtn) {
+            if (isFS) {
+              fsBtn.className = "px-2 py-1 rounded-lg bg-emerald-600/20 border border-emerald-500/40 text-[11px] font-bold text-emerald-300 flex items-center gap-1 transition-colors";
+              if (fsBtnText) fsBtnText.textContent = "फुल-स्क्रीन 🟢";
+            } else {
+              fsBtn.className = "px-2 py-1 rounded-lg bg-slate-800 hover:bg-slate-700 border border-slate-700 text-[11px] font-bold text-slate-300 flex items-center gap-1 transition-colors";
+              if (fsBtnText) fsBtnText.textContent = "फुल-स्क्रीन";
+            }
+          }
+
+          if (!isExamSubmitted && currentUser) {
+            const entryGate = document.getElementById('entryGate');
+            const entryHidden = entryGate && entryGate.classList.contains('hidden');
+            if (entryHidden && !isFS) {
+              recordCheatStrike("फुल-स्क्रीन छोड़ना वर्जित है!");
+              const modal = document.getElementById('fullscreenRequiredModal');
+              if (modal) modal.classList.remove('hidden');
+            } else if (isFS) {
+              const modal = document.getElementById('fullscreenRequiredModal');
+              if (modal) modal.classList.add('hidden');
+            }
+          }
+        });
+      });
     }
 
     function setupAntiCheat() {
