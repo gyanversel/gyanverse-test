@@ -73,8 +73,13 @@
       </div>
     </div>
 
-    <!-- Right Controls: Saved Solutions, Rank List, Timer, Submit -->
+    <!-- Right Controls: Fullscreen Toggle, Saved Solutions, Rank List, Timer, Submit -->
     <div class="flex items-center space-x-1 sm:space-x-1.5">
+      <!-- Fullscreen Toggle Button -->
+      <button id="fullscreenToggleBtn" class="px-2 py-1 rounded bg-slate-100 hover:bg-slate-200 text-slate-700 text-[11px] font-bold border border-slate-300 flex items-center space-x-1 transition-colors" title="फुल-स्क्रीन टॉगल">
+        <span>⛶ फुल-स्क्रीन</span>
+      </button>
+
       <!-- Saved Solutions Button -->
       <button id="headerSavedSolBtn" class="hidden px-2.5 py-1 rounded-md bg-amber-50 hover:bg-amber-100 text-amber-700 text-[11px] font-bold border border-amber-200 items-center space-x-1">
         <span>📜 सेव हल</span>
@@ -115,6 +120,11 @@
           <p class="text-xs text-slate-500 font-medium">
             (अध्याय 11 - सम्पूर्ण अध्याय के 150 बहुविकल्पीय प्रश्न)
           </p>
+          <div class="pt-1">
+            <span class="inline-block px-2.5 py-1 rounded-md bg-emerald-50 text-emerald-800 text-[11px] font-bold border border-emerald-200">
+              ⛶ यह टेस्ट 100% फुल-स्क्रीन (Full Screen Mode) में खुलेगा
+            </span>
+          </div>
         </div>
 
         <!-- Exam Blueprint Pills -->
@@ -192,14 +202,14 @@
 
           <!-- Buttons -->
           <button type="submit" class="w-full py-2.5 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-extrabold text-sm shadow-md shadow-blue-500/20 active:scale-[0.98] transition-all flex items-center justify-center space-x-1.5">
-            <span>🚀 टेस्ट शुरू करें</span>
+            <span>⛶ फुल-स्क्रीन में टेस्ट शुरू करें</span>
           </button>
         </form>
 
         <!-- Resume or Saved Solutions action buttons if available -->
         <div id="entrySavedActions" class="space-y-2 pt-1 border-t border-slate-100">
           <button id="resumeTestBtn" class="hidden w-full py-2 rounded-xl bg-emerald-50 hover:bg-emerald-100 text-emerald-700 font-bold text-xs border border-emerald-300 transition-colors">
-            ▶ अधूरा टेस्ट वहीं से जारी रखें
+            ▶ अधूरा टेस्ट वहीं से जारी रखें (फुल-स्क्रीन)
           </button>
           <button id="checkPrevSolBtn" class="hidden w-full py-2 rounded-xl bg-blue-50 hover:bg-blue-100 text-blue-700 font-bold text-xs border border-blue-300 transition-colors">
             📋 पिछला स्कोरकार्ड एवं सभी हल देखें
@@ -407,6 +417,27 @@
   </main>
 
   <!-- ==================== MODALS ==================== -->
+
+  <!-- MODAL 0: FULLSCREEN ENFORCEMENT WARNING MODAL -->
+  <div id="fullscreenWarningModal" class="hidden fixed inset-0 z-50 bg-slate-900/80 backdrop-blur-xs flex items-center justify-center p-3">
+    <div class="w-full max-w-sm bg-white rounded-2xl shadow-2xl p-5 text-center space-y-3.5 border-2 border-rose-500 animate-in fade-in zoom-in-95">
+      <div class="w-12 h-12 rounded-full bg-rose-100 text-rose-600 mx-auto flex items-center justify-center text-2xl font-bold">
+        ⚠
+      </div>
+      <h3 class="font-black text-base text-slate-900">
+        फुल-स्क्रीन मोड अनिवार्य है!
+      </h3>
+      <p class="text-xs text-slate-600 leading-relaxed">
+        परीक्षा के नियमों के अनुसार टेस्ट हमेशा <strong>फुल-स्क्रीन (Full Screen)</strong> में ही दिया जा सकता है। स्क्रीन छोड़ना या मिनिमाइज करना वर्जित है।
+      </p>
+      <div class="py-1 px-3 bg-rose-50 rounded-lg text-rose-700 font-extrabold text-xs">
+        चेतावनी स्ट्राइक: <span id="fsStrikeCount">1/3</span>
+      </div>
+      <button id="reEnterFullscreenBtn" class="w-full py-2.5 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-extrabold text-xs sm:text-sm shadow-md active:scale-95 transition-all">
+        ⛶ पुनः फुल-स्क्रीन करें और जारी रखें
+      </button>
+    </div>
+  </div>
 
   <!-- MODAL 1: TCS iON QUESTION PALETTE MODAL -->
   <div id="paletteModal" class="hidden fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-xs flex items-center justify-center p-2 sm:p-4">
@@ -684,6 +715,44 @@
 
     let gvLogoClicks = 0;
     let gvClickTimer = null;
+
+    // --- FULLSCREEN CONTROLS ---
+    function isFullscreen() {
+      return !!(document.fullscreenElement || document.webkitFullscreenElement || document.mozFullScreenElement || document.msFullscreenElement);
+    }
+
+    function enterFullscreen() {
+      const elem = document.documentElement;
+      try {
+        if (elem.requestFullscreen) {
+          elem.requestFullscreen().catch(err => console.warn("Fullscreen request error:", err));
+        } else if (elem.webkitRequestFullscreen) {
+          elem.webkitRequestFullscreen();
+        } else if (elem.mozRequestFullScreen) {
+          elem.mozRequestFullScreen();
+        } else if (elem.msRequestFullscreen) {
+          elem.msRequestFullscreen();
+        }
+      } catch (err) {
+        console.warn("Fullscreen catch:", err);
+      }
+    }
+
+    function exitFullscreen() {
+      try {
+        if (document.exitFullscreen) {
+          document.exitFullscreen().catch(err => console.warn("Exit fullscreen error:", err));
+        } else if (document.webkitExitFullscreen) {
+          document.webkitExitFullscreen();
+        } else if (document.mozCancelFullScreen) {
+          document.mozCancelFullScreen();
+        } else if (document.msExitFullscreen) {
+          document.msExitFullscreen();
+        }
+      } catch (err) {
+        console.warn("Exit fullscreen catch:", err);
+      }
+    }
 
     // --- SANITIZE / ESCAPE HTML ---
     function escapeHtml(str) {
@@ -1106,6 +1175,9 @@
       state.isSubmitted = true;
       saveState();
 
+      // Exit fullscreen mode on submission so user can comfortably view scorecard
+      exitFullscreen();
+
       // Calculate Scores
       let correct = 0, wrong = 0, unattempted = 0;
       let sectionStats = [
@@ -1361,6 +1433,32 @@
     }
 
     function setupAntiCheat() {
+      // Fullscreen state listener
+      const handleFsChange = () => {
+        if (!state.isSubmitted && state.examEndTime) {
+          const inFull = isFullscreen();
+          const warnModal = document.getElementById('fullscreenWarningModal');
+          if (!inFull) {
+            state.antiCheatStrikes++;
+            warnModal.classList.remove('hidden');
+            document.getElementById('fsStrikeCount').innerText = `${state.antiCheatStrikes}/3`;
+            if (state.antiCheatStrikes >= 3) {
+              showToast("अधिकतम 3 स्ट्राइक होने के कारण परीक्षा स्वतः सबमिट की जा रही है!", "error");
+              finalSubmitExam();
+              warnModal.classList.add('hidden');
+            }
+          } else {
+            warnModal.classList.add('hidden');
+          }
+        }
+      };
+
+      document.addEventListener('fullscreenchange', handleFsChange);
+      document.addEventListener('webkitfullscreenchange', handleFsChange);
+      document.addEventListener('mozfullscreenchange', handleFsChange);
+      document.addEventListener('MSFullscreenChange', handleFsChange);
+
+      // Tab visibility listener
       document.addEventListener('visibilitychange', () => {
         if (!state.isSubmitted && state.examEndTime && document.visibilityState === 'hidden') {
           state.antiCheatStrikes++;
@@ -1391,16 +1489,38 @@
         else if (key === 'N') nextQuestion();
         else if (key === 'P') prevQuestion();
         else if (key === 'R') toggleReviewCurrent();
+        else if (key === 'F') enterFullscreen();
       });
     }
 
     // --- EVENT LISTENERS ---
     function setupEventListeners() {
+      // Fullscreen toggle button
+      document.getElementById('fullscreenToggleBtn').addEventListener('click', () => {
+        if (!isFullscreen()) {
+          enterFullscreen();
+          showToast("फुल-स्क्रीन मोड सक्रिय", "info");
+        } else {
+          exitFullscreen();
+          showToast("फुल-स्क्रीन से बाहर निकले", "warn");
+        }
+      });
+
+      // Re-enter Fullscreen button in warning modal
+      document.getElementById('reEnterFullscreenBtn').addEventListener('click', () => {
+        enterFullscreen();
+        document.getElementById('fullscreenWarningModal').classList.add('hidden');
+      });
+
+      // Registration Form Submission -> Enter Fullscreen & Start Test
       document.getElementById('regForm').addEventListener('submit', (e) => {
         e.preventDefault();
         currentUser.name = document.getElementById('regName').value.trim();
         currentUser.district = document.getElementById('regDistrict').value;
         currentUser.telegram = document.getElementById('regTelegram').value.trim();
+
+        // Always launch test in Fullscreen
+        enterFullscreen();
 
         document.getElementById('entryGateScreen').classList.add('hidden');
         document.getElementById('testWorkspaceScreen').classList.remove('hidden');
@@ -1409,6 +1529,7 @@
         startTimer();
       });
 
+      // Resume Test Button -> Enter Fullscreen & Continue
       document.getElementById('resumeTestBtn').addEventListener('click', () => {
         const saved = loadSavedState();
         if (saved) {
@@ -1417,6 +1538,9 @@
           state.reviewMarks = saved.testState.reviewMarks;
           state.visited = saved.testState.visited;
           state.remainingTime = saved.testState.remainingTime || (120 * 60);
+
+          // Always launch in Fullscreen
+          enterFullscreen();
 
           document.getElementById('entryGateScreen').classList.add('hidden');
           document.getElementById('testWorkspaceScreen').classList.remove('hidden');
