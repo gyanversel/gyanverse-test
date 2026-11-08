@@ -1,0 +1,1598 @@
+```html
+<!DOCTYPE html>
+<html lang="hi" class="h-full">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <title>GYANVERSE CBT | साप्ताहिक समसामयिकी (Weekly Current Affairs) 2026 | Top 90 MCQs</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Google Fonts: Inter & Noto Sans Devanagari -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+Devanagari:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    * {
+      font-family: 'Inter', 'Noto Sans Devanagari', -apple-system, BlinkMacSystemFont, sans-serif;
+      -webkit-tap-highlight-color: transparent;
+      box-sizing: border-box;
+    }
+    html, body {
+      height: 100dvh;
+      max-height: 100dvh;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      position: fixed;
+      width: 100%;
+      background-color: #ffffff;
+    }
+    /* Custom Scrollbar for internal scrollable elements */
+    ::-webkit-scrollbar {
+      width: 3px;
+      height: 3px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #f1f5f9;
+      border-radius: 4px;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #cbd5e1;
+      border-radius: 4px;
+    }
+    .modal-backdrop {
+      background-color: rgba(15, 23, 42, 0.65);
+      backdrop-filter: blur(4px);
+    }
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+  </style>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              50: '#eef2ff',
+              100: '#e0e7ff',
+              500: '#6366f1',
+              600: '#4f46e5',
+              700: '#4338ca',
+              800: '#3730a3',
+              900: '#312e81',
+            }
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-white text-slate-800 flex flex-col h-[100dvh] max-h-[100dvh] overflow-hidden select-none">
+
+  <!-- ==================== STICKY HEADER (h-11 / 44px) ==================== -->
+  <header class="h-11 shrink-0 bg-white border-b border-slate-200 px-2 sm:px-4 flex items-center justify-between z-30 shadow-xs">
+    <!-- Left: GV Admin Trigger + Brand + Telegram Link -->
+    <div class="flex items-center gap-1.5 sm:gap-2.5">
+      <div id="gv-logo-trigger" onclick="handleLogoClick()" title="GYANVERSE (Admin)" class="h-8 w-8 rounded-lg bg-gradient-to-tr from-blue-700 to-indigo-600 flex items-center justify-center text-white font-black text-xs shadow-xs cursor-pointer active:scale-95 transition-transform">
+        GV
+      </div>
+      <div class="flex flex-col">
+        <div class="flex items-center gap-1">
+          <span class="font-extrabold text-[13px] sm:text-sm tracking-tight text-slate-900 leading-none">GYANVERSE</span>
+          <span class="hidden sm:inline-block text-[10px] bg-blue-100 text-blue-700 font-semibold px-1.5 py-0.5 rounded">CBT</span>
+        </div>
+        <a href="https://t.me/GYANVERSET" target="_blank" class="text-[10px] text-blue-600 hover:text-blue-800 font-medium flex items-center gap-0.5 leading-none mt-0.5">
+          <span>@GYANVERSET</span>
+          <svg class="w-2.5 h-2.5 inline" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 00-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.74-.55 2.92-1.27 4.86-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .38z"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <!-- Right: Language Toggle + Saved Solutions + Rank List + Timer + Submit Button -->
+    <div class="flex items-center gap-1 sm:gap-2">
+      <!-- 1-Click Language Toggle -->
+      <button id="lang-toggle-btn" onclick="cycleLanguage()" class="h-7 px-2 text-[11px] font-semibold rounded-md border border-slate-300 bg-white text-slate-700 hover:bg-slate-100 flex items-center gap-1 transition-colors" title="भाषा बदलें / Change Language">
+        <span id="lang-toggle-text">🌐 हिं+EN</span>
+      </button>
+
+      <!-- Saved Solutions Button -->
+      <button id="header-saved-btn" onclick="openSavedSolutions()" class="hidden sm:flex h-7 px-2 text-[11px] font-semibold rounded-md border border-emerald-300 bg-emerald-50 text-emerald-800 hover:bg-emerald-100 items-center gap-1 transition-colors" title="सुरक्षित हल देखें">
+        <span>📜 सेव हल</span>
+      </button>
+
+      <!-- Rank List Button -->
+      <button onclick="openLeaderboardModal()" class="h-7 px-2 text-[11px] font-semibold rounded-md border border-amber-300 bg-amber-50 text-amber-800 hover:bg-amber-100 flex items-center gap-1 transition-colors" title="ऑल-बिहार मेरिट लिस्ट">
+        <span>🏆 <span class="hidden xs:inline">रैंक</span></span>
+      </button>
+
+      <!-- Timer Box (Visible only during live test) -->
+      <div id="timer-box" class="h-7 px-2 rounded-md bg-rose-50 border border-rose-200 text-rose-700 font-mono font-bold text-xs flex items-center gap-1">
+        <svg class="w-3.5 h-3.5 animate-pulse text-rose-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+        <span id="timer-display">90:00</span>
+      </div>
+
+      <!-- Submit Test Button (Test mode) -->
+      <button id="submit-test-btn" onclick="confirmSubmitTest()" class="h-7 px-2.5 text-[11px] font-bold rounded-md bg-blue-600 text-white hover:bg-blue-700 active:scale-95 transition-all shadow-xs flex items-center gap-1">
+        <span>सबमिट</span>
+      </button>
+
+      <!-- Exit Solution Mode Button (Solution mode only) -->
+      <button id="exit-sol-btn" onclick="exitSolutionMode()" class="hidden h-7 px-2.5 text-[11px] font-bold rounded-md bg-slate-800 text-white hover:bg-slate-900 active:scale-95 transition-all shadow-xs items-center gap-1">
+        <span>स्कोरकार्ड</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- ==================== MAIN WORKSPACE CONTAINER ==================== -->
+  <main id="app-workspace" class="flex-1 min-h-0 flex flex-col justify-between overflow-hidden relative bg-white">
+
+    <!-- 1. ENTRY GATE / REGISTRATION SCREEN -->
+    <div id="screen-entry" class="absolute inset-0 z-20 bg-slate-50 flex items-center justify-center p-3 sm:p-4 overflow-y-auto">
+      <div class="w-full max-w-md bg-white rounded-2xl border border-slate-200 shadow-lg p-5 sm:p-6 text-slate-800 flex flex-col gap-4">
+        <div class="text-center">
+          <div class="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-gradient-to-tr from-blue-700 to-indigo-600 text-white font-black text-xl shadow-md mb-2">
+            GV
+          </div>
+          <h1 class="text-base sm:text-lg font-black text-slate-900">GYANVERSE ACADEMY</h1>
+          <p class="text-xs font-semibold text-blue-700 mt-0.5">साप्ताहिक समसामयिकी 2026 | Top 90 MCQs</p>
+          <p class="text-[11px] text-slate-500 mt-0.5">2 नवंबर से 8 नवंबर 2026 | TCS iON Exam Pattern</p>
+        </div>
+
+        <!-- Incomplete Test Resume Banner (If present) -->
+        <div id="entry-resume-banner" class="hidden p-3 bg-amber-50 border border-amber-200 rounded-xl flex items-center justify-between">
+          <div>
+            <div class="text-xs font-bold text-amber-900">अधूरा टेस्ट उपलब्ध है</div>
+            <div class="text-[11px] text-amber-700">आपने पहले टेस्ट अधूरा छोड़ा था।</div>
+          </div>
+          <button onclick="resumeIncompleteTest()" class="px-2.5 py-1.5 bg-amber-600 text-white text-xs font-bold rounded-lg hover:bg-amber-700 active:scale-95 transition-all shadow-xs">
+            ▶ जारी रखें
+          </button>
+        </div>
+
+        <!-- Previous Submitted Result Banner (If present) -->
+        <div id="entry-solutions-banner" class="hidden p-3 bg-emerald-50 border border-emerald-200 rounded-xl flex items-center justify-between">
+          <div>
+            <div class="text-xs font-bold text-emerald-900">पिछला परिणाम उपलब्ध है</div>
+            <div class="text-[11px] text-emerald-700">स्कोरकार्ड व सभी 90 प्रश्नों के हल देखें।</div>
+          </div>
+          <button onclick="openSavedSolutions()" class="px-2.5 py-1.5 bg-emerald-600 text-white text-xs font-bold rounded-lg hover:bg-emerald-700 active:scale-95 transition-all shadow-xs">
+            📋 हल देखें
+          </button>
+        </div>
+
+        <!-- Registration Form -->
+        <form id="entry-form" onsubmit="handleStartTest(event)" class="flex flex-col gap-3">
+          <div>
+            <label class="block text-xs font-bold text-slate-700 mb-1">पूरा नाम (Full Name) <span class="text-rose-500">*</span></label>
+            <input type="text" id="reg-name" required placeholder="अपना नाम दर्ज करें..." class="w-full h-10 px-3 text-xs bg-slate-50 border border-slate-300 rounded-lg focus:outline-none focus:border-blue-600 focus:bg-white text-slate-900">
+          </div>
+
+          <div>
+            <label class="block text-xs font-bold text-slate-700 mb-1">जिला (District - Bihar) <span class="text-rose-500">*</span></label>
+            <select id="reg-district" required class="w-full h-10 px-3 text-xs bg-slate-50 border border-slate-300 rounded-lg focus:outline-none focus:border-blue-600 focus:bg-white text-slate-900">
+              <option value="" disabled selected>अपना जिला चुनें (38 Districts)...</option>
+              <option value="अररिया (Araria)">अररिया (Araria)</option>
+              <option value="अरवल (Arwal)">अरवल (Arwal)</option>
+              <option value="औरंगाबाद (Aurangabad)">औरंगाबाद (Aurangabad)</option>
+              <option value="बांका (Banka)">बांका (Banka)</option>
+              <option value="बेगूसराय (Begusarai)">बेगूसराय (Begusarai)</option>
+              <option value="भागलपुर (Bhagalpur)">भागलपुर (Bhagalpur)</option>
+              <option value="भोजपुर (Bhojpur)">भोजपुर (Bhojpur)</option>
+              <option value="बक्सर (Buxar)">बक्सर (Buxar)</option>
+              <option value="दरभंगा (Darbhanga)">दरभंगा (Darbhanga)</option>
+              <option value="पूर्वी चंपारण (East Champaran)">पूर्वी चंपारण (East Champaran)</option>
+              <option value="गया (Gaya)">गया (Gaya)</option>
+              <option value="गोपालगंज (Gopalganj)">गोपालगंज (Gopalganj)</option>
+              <option value="जमुई (Jamui)">जमुई (Jamui)</option>
+              <option value="जहानाबाद (Jehanabad)">जहानाबाद (Jehanabad)</option>
+              <option value="कैमूर (Kaimur)">कैमूर (Kaimur)</option>
+              <option value="कटिहार (Katihar)">कटिहार (Katihar)</option>
+              <option value="खगड़िया (Khagaria)">खगड़िया (Khagaria)</option>
+              <option value="किशनगंज (Kishanganj)">किशनगंज (Kishanganj)</option>
+              <option value="लखीसराय (Lakhisarai)">लखीसराय (Lakhisarai)</option>
+              <option value="मधेपुरा (Madhepura)">मधेपुरा (Madhepura)</option>
+              <option value="मधुबनी (Madhubani)">मधुबनी (Madhubani)</option>
+              <option value="मुंगेर (Munger)">मुंगेर (Munger)</option>
+              <option value="मुजफ्फरपुर (Muzaffarpur)">मुजफ्फरपुर (Muzaffarpur)</option>
+              <option value="नालंदा (Nalanda)">नालंदा (Nalanda)</option>
+              <option value="नवादा (Nawada)">नवादा (Nawada)</option>
+              <option value="पटना (Patna)">पटना (Patna)</option>
+              <option value="पूर्णिया (Purnia)">पूर्णिया (Purnia)</option>
+              <option value="रोहतास (Rohtas)">रोहतास (Rohtas)</option>
+              <option value="सहरसा (Saharsa)">सहरसा (Saharsa)</option>
+              <option value="समस्तीपुर (Samastipur)">समस्तीपुर (Samastipur)</option>
+              <option value="सारण (Saran)">सारण (Saran)</option>
+              <option value="शेखपुरा (Sheikhpura)">शेखपुरा (Sheikhpura)</option>
+              <option value="शिवहर (Sheohar)">शिवहर (Sheohar)</option>
+              <option value="सीतामढ़ी (Sitamarhi)">सीतामढ़ी (Sitamarhi)</option>
+              <option value="सुपौल (Supaul)">सुपौल (Supaul)</option>
+              <option value="सीवान (Siwan)">सीवान (Siwan)</option>
+              <option value="वैशाली (Vaishali)">वैशाली (Vaishali)</option>
+              <option value="पश्चिमी चंपारण (West Champaran)">पश्चिमी चंपारण (West Champaran)</option>
+            </select>
+          </div>
+
+          <div>
+            <label class="block text-xs font-bold text-slate-700 mb-1">टेलीग्राम यूजरनेम (Telegram @username) <span class="text-rose-500">*</span></label>
+            <input type="text" id="reg-telegram" required placeholder="@username..." class="w-full h-10 px-3 text-xs bg-slate-50 border border-slate-300 rounded-lg focus:outline-none focus:border-blue-600 focus:bg-white text-slate-900">
+            <span class="text-[10px] text-slate-400">रैंक लिस्ट में आपकी पहचान हेतु प्रयुक्त होगा।</span>
+          </div>
+
+          <div class="bg-blue-50/70 p-2.5 rounded-lg border border-blue-100 text-[11px] text-blue-900 leading-snug">
+            📌 <strong>परीक्षा नियम:</strong> कुल 90 प्रश्न | 90 मिनट | सही उत्तर: <strong>+2.00</strong> अंक | गलत उत्तर: <strong>-0.20</strong> अंक | पूर्णतः निष्पक्ष एंटी-चीट निगरानी सक्रिय।
+          </div>
+
+          <button type="submit" class="w-full h-11 bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-bold text-sm rounded-xl hover:from-blue-700 hover:to-indigo-700 active:scale-98 transition-all shadow-md flex items-center justify-center gap-2 mt-1">
+            <span>🚀 टेस्ट शुरू करें (Start Test)</span>
+          </button>
+        </form>
+
+        <div class="text-center pt-1 border-t border-slate-100 flex items-center justify-center gap-4 text-xs font-medium text-slate-600">
+          <button onclick="openLeaderboardModal()" class="hover:text-blue-600 flex items-center gap-1">
+            <span>🏆 ऑल-बिहार मेरिट लिस्ट</span>
+          </button>
+          <span>•</span>
+          <a href="https://t.me/GYANVERSET" target="_blank" class="hover:text-blue-600 flex items-center gap-1">
+            <span>📲 टेलीग्राम चैनल</span>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2. LIVE TEST / SOLUTION WORKSPACE (100% LOCKED MOBILE VIEWPORT) -->
+    <div id="screen-test" class="flex-1 min-h-0 flex flex-col justify-between overflow-hidden p-1.5 sm:p-2.5 bg-slate-50/50">
+
+      <!-- Dynamic Section Tabs Bar (h-7 shrink-0) -->
+      <div class="shrink-0 mb-1 flex items-center gap-1 overflow-x-auto no-scrollbar py-0.5">
+        <button onclick="setSectionFilter('all')" id="sec-btn-all" class="h-6 sm:h-7 px-2.5 text-[11px] font-bold rounded-lg whitespace-nowrap transition-colors bg-blue-600 text-white shadow-xs">
+          सभी (90)
+        </button>
+        <button onclick="setSectionFilter(1)" id="sec-btn-1" class="h-6 sm:h-7 px-2.5 text-[11px] font-medium rounded-lg whitespace-nowrap transition-colors bg-white text-slate-700 border border-slate-200 hover:bg-slate-100">
+          राष्ट्रीय/शासन (1-25)
+        </button>
+        <button onclick="setSectionFilter(2)" id="sec-btn-2" class="h-6 sm:h-7 px-2.5 text-[11px] font-medium rounded-lg whitespace-nowrap transition-colors bg-white text-slate-700 border border-slate-200 hover:bg-slate-100">
+          अंतर्राष्ट्रीय/रक्षा (26-50)
+        </button>
+        <button onclick="setSectionFilter(3)" id="sec-btn-3" class="h-6 sm:h-7 px-2.5 text-[11px] font-medium rounded-lg whitespace-nowrap transition-colors bg-white text-slate-700 border border-slate-200 hover:bg-slate-100">
+          विज्ञान/खेल (51-75)
+        </button>
+        <button onclick="setSectionFilter(4)" id="sec-btn-4" class="h-6 sm:h-7 px-2.5 text-[11px] font-medium rounded-lg whitespace-nowrap transition-colors bg-white text-slate-700 border border-slate-200 hover:bg-slate-100">
+          आर्थिकी/विविध (76-90)
+        </button>
+      </div>
+
+      <!-- MAIN QUESTION CARD (flex-1 min-h-0 flex flex-col justify-between) -->
+      <div class="flex-1 min-h-0 bg-white rounded-xl border border-slate-200 shadow-xs flex flex-col justify-between p-2 sm:p-3 overflow-hidden">
+
+        <!-- Question Meta Header -->
+        <div class="shrink-0 flex items-center justify-between pb-1 border-b border-slate-100 text-xs">
+          <div class="flex items-center gap-1.5">
+            <span id="q-number-badge" class="font-extrabold text-blue-700 bg-blue-50 px-2 py-0.5 rounded border border-blue-200 text-[11px] sm:text-xs">
+              प्रश्न 1 / 90
+            </span>
+            <span id="q-section-badge" class="hidden xs:inline-block text-[10px] text-slate-500 font-medium bg-slate-100 px-1.5 py-0.5 rounded">
+              राष्ट्रीय
+            </span>
+          </div>
+
+          <!-- Marking & Status Tags (Live Mode) / Result Badge (Solution Mode) -->
+          <div class="flex items-center gap-1 sm:gap-1.5 text-[10px] sm:text-[11px] font-semibold">
+            <!-- In Solution Mode: Result Indicator -->
+            <div id="sol-result-pill" class="hidden font-bold px-2 py-0.5 rounded-full text-[10.5px]"></div>
+
+            <!-- In Live Test Mode: Marking Tags -->
+            <div id="live-marks-pills" class="flex items-center gap-1">
+              <span class="text-emerald-700 bg-emerald-50 border border-emerald-200 px-1.5 py-0.5 rounded">+2.00</span>
+              <span class="text-rose-700 bg-rose-50 border border-rose-200 px-1.5 py-0.5 rounded">-0.20</span>
+              <span id="q-status-badge" class="text-slate-600 bg-slate-100 border border-slate-200 px-1.5 py-0.5 rounded hidden sm:inline-block">
+                ⚪ अनुत्तरित
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Question Text Area (Compact, crisp, fits naturally) -->
+        <div id="q-text-container" class="shrink-0 py-1 text-slate-900 leading-snug">
+          <!-- Hindi Question -->
+          <div id="q-text-hi" class="text-[12.5px] sm:text-[14px] font-semibold text-slate-900">
+            प्रश्न लोड हो रहा है...
+          </div>
+          <!-- English Question -->
+          <div id="q-text-en" class="text-[11px] sm:text-[12px] text-slate-500 font-medium mt-0.5">
+            Loading question...
+          </div>
+        </div>
+
+        <!-- OPTIONS CONTAINER: Dynamic based on Test vs Solution Mode -->
+        <!-- In Live Test Mode: 4 standard option rows -->
+        <!-- In Solution Mode: Compact 2x2 grid so options occupy only ~50px, giving full space to the solution! -->
+        <div id="options-container" class="shrink-0 py-1 transition-all">
+          <!-- Populated dynamically -->
+        </div>
+
+        <!-- SOLUTION EXPLANATION CONTAINER (100% VISIBLE BINA SCROLL KE) -->
+        <!-- Takes flexible space in Solution Mode, fully displaying both Hindi and English Key Facts -->
+        <div id="sol-explanation-box" class="hidden flex-1 min-h-0 bg-blue-50/80 border border-blue-200 rounded-xl p-2 sm:p-2.5 flex flex-col justify-center my-0.5 shadow-xs">
+          <div class="font-bold text-blue-900 text-[11.5px] sm:text-xs flex items-center gap-1 mb-1 shrink-0">
+            <span>📌 परीक्षा-उपयोगी सम्पूर्ण व्याख्या (Key Exam Facts):</span>
+          </div>
+          <div id="exp-text-hi" class="text-[12px] sm:text-[13px] text-slate-900 font-medium leading-relaxed"></div>
+          <div id="exp-text-en" class="text-[11px] sm:text-[11.5px] text-slate-600 font-normal leading-snug mt-1 pt-1 border-t border-blue-200/60"></div>
+        </div>
+
+        <!-- Watermark Strip (Shown only in Live Test Mode) -->
+        <div id="live-watermark" class="shrink-0 py-0.5 text-center text-[9.5px] text-slate-400 font-medium tracking-wide border-t border-slate-100">
+          GYANVERSE ACADEMY • @GYANVERSET • t.me/GYANVERSET
+        </div>
+
+        <!-- BOTTOM NAVIGATION BAR -->
+        <!-- Live Test Mode Navigation -->
+        <div id="nav-test-mode" class="shrink-0 grid grid-cols-5 gap-1 pt-1 border-t border-slate-100">
+          <button onclick="prevQuestion()" class="h-8 px-1 bg-slate-100 hover:bg-slate-200 text-slate-700 text-[11px] font-bold rounded-lg transition-colors flex items-center justify-center gap-0.5">
+            <span>⬅</span> <span class="hidden xs:inline">Prev</span>
+          </button>
+          <button onclick="clearCurrentAnswer()" class="h-8 px-1 bg-slate-100 hover:bg-rose-50 hover:text-rose-700 text-slate-600 text-[11px] font-bold rounded-lg transition-colors flex items-center justify-center gap-0.5">
+            <span>✖</span> <span class="hidden xs:inline">Clear</span>
+          </button>
+          <button onclick="openPaletteModal()" class="h-8 px-1 bg-indigo-50 hover:bg-indigo-100 text-indigo-700 border border-indigo-200 text-[11px] font-bold rounded-lg transition-colors flex items-center justify-center gap-0.5">
+            <span>📱</span> <span>पैलेट</span>
+          </button>
+          <button onclick="toggleReviewCurrent()" id="btn-review" class="h-8 px-1 bg-amber-50 hover:bg-amber-100 text-amber-800 border border-amber-200 text-[11px] font-bold rounded-lg transition-colors flex items-center justify-center gap-0.5">
+            <span>★</span> <span class="hidden xs:inline">Review</span>
+          </button>
+          <button onclick="nextQuestion()" class="h-8 px-1 bg-blue-600 hover:bg-blue-700 text-white text-[11px] font-bold rounded-lg transition-colors flex items-center justify-center gap-0.5 shadow-xs">
+            <span class="hidden xs:inline">Next</span> <span>➡</span>
+          </button>
+        </div>
+
+        <!-- Solution Mode Navigation (Clean, balanced 3-column layout) -->
+        <div id="nav-sol-mode" class="hidden shrink-0 grid grid-cols-3 gap-2 pt-1 border-t border-slate-100">
+          <button onclick="prevQuestion()" class="h-8 px-2 bg-slate-100 hover:bg-slate-200 text-slate-800 text-xs font-bold rounded-lg transition-colors flex items-center justify-center gap-1">
+            <span>⬅ पिछला प्रश्न</span>
+          </button>
+          <button onclick="openPaletteModal()" class="h-8 px-2 bg-indigo-50 hover:bg-indigo-100 text-indigo-800 border border-indigo-200 text-xs font-bold rounded-lg transition-colors flex items-center justify-center gap-1">
+            <span>📱 पैलेट (1-90)</span>
+          </button>
+          <button onclick="nextQuestion()" class="h-8 px-2 bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold rounded-lg transition-colors flex items-center justify-center gap-1 shadow-xs">
+            <span>अगला प्रश्न ➡</span>
+          </button>
+        </div>
+
+        <!-- Bottom Jump Select Row (Live Test Mode) -->
+        <div id="live-bottom-row" class="shrink-0 pt-0.5 flex items-center justify-between text-[10.5px] text-slate-500">
+          <div class="flex items-center gap-1 font-medium">
+            <span>जंप:</span>
+            <select id="jump-select" onchange="jumpToQuestion(parseInt(this.value))" class="h-5 text-[10.5px] bg-slate-50 border border-slate-200 rounded px-1 text-slate-800 font-semibold focus:outline-none">
+              <!-- Options populated by JS -->
+            </select>
+          </div>
+          <div class="flex items-center gap-2 text-[10px]">
+            <span class="flex items-center gap-0.5 text-emerald-600 font-bold"><span class="w-2 h-2 rounded-full bg-emerald-500 inline-block"></span> <span id="count-ans">0</span></span>
+            <span class="flex items-center gap-0.5 text-amber-600 font-bold"><span class="w-2 h-2 rounded-full bg-amber-500 inline-block"></span> <span id="count-rev">0</span></span>
+            <span class="flex items-center gap-0.5 text-slate-400 font-bold"><span class="w-2 h-2 rounded-full bg-slate-300 inline-block"></span> <span id="count-unatt">90</span></span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- 3. DETAILED SCORECARD SCREEN (Appears after Submission) -->
+    <div id="screen-scorecard" class="absolute inset-0 z-20 bg-slate-50 hidden flex-col justify-between p-3 sm:p-5 overflow-y-auto">
+      <div class="w-full max-w-lg mx-auto bg-white rounded-2xl border border-slate-200 shadow-md p-4 sm:p-6 flex flex-col gap-4 text-slate-800">
+
+        <!-- Scorecard Header -->
+        <div class="text-center border-b border-slate-100 pb-3">
+          <div class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-emerald-100 text-emerald-700 mb-1">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          </div>
+          <h2 class="text-lg font-black text-slate-900">परीक्षा परिणाम (CBT Scorecard)</h2>
+          <p id="score-student-info" class="text-xs text-slate-500 mt-0.5"></p>
+        </div>
+
+        <!-- Big Score Hero Card -->
+        <div class="bg-gradient-to-br from-blue-50 to-indigo-50 border border-blue-200 rounded-xl p-4 text-center">
+          <div class="text-xs font-bold text-blue-800 uppercase tracking-wider">कुल प्राप्तांक (Total Marks)</div>
+          <div class="text-3xl sm:text-4xl font-black text-blue-700 mt-1">
+            <span id="score-total-marks">0.00</span> <span class="text-sm font-semibold text-slate-500">/ 180.00</span>
+          </div>
+          <div class="flex items-center justify-center gap-4 mt-2 text-xs font-semibold text-slate-700">
+            <div>सटीकता (Accuracy): <span id="score-accuracy" class="text-emerald-700 font-bold">0%</span></div>
+            <div>•</div>
+            <div>समय (Time): <span id="score-time-taken" class="text-slate-800 font-bold">00:00</span></div>
+          </div>
+        </div>
+
+        <!-- 4 Stat Metric Cards -->
+        <div class="grid grid-cols-4 gap-2 text-center">
+          <div class="p-2 rounded-xl bg-emerald-50 border border-emerald-200">
+            <div class="text-[10px] font-bold text-emerald-800">सही</div>
+            <div id="score-correct-count" class="text-lg font-black text-emerald-600 mt-0.5">0</div>
+            <div class="text-[9px] text-emerald-700">+2.00 प्रत्येक</div>
+          </div>
+          <div class="p-2 rounded-xl bg-rose-50 border border-rose-200">
+            <div class="text-[10px] font-bold text-rose-800">गलत</div>
+            <div id="score-incorrect-count" class="text-lg font-black text-rose-600 mt-0.5">0</div>
+            <div class="text-[9px] text-rose-700">-0.20 प्रत्येक</div>
+          </div>
+          <div class="p-2 rounded-xl bg-slate-100 border border-slate-200">
+            <div class="text-[10px] font-bold text-slate-700">छोड़े गए</div>
+            <div id="score-unatt-count" class="text-lg font-black text-slate-600 mt-0.5">0</div>
+            <div class="text-[9px] text-slate-500">0.00 अंक</div>
+          </div>
+          <div class="p-2 rounded-xl bg-indigo-50 border border-indigo-200">
+            <div class="text-[10px] font-bold text-indigo-800">प्रयास</div>
+            <div id="score-att-count" class="text-lg font-black text-indigo-600 mt-0.5">0</div>
+            <div class="text-[9px] text-indigo-700">/ 90 प्रश्न</div>
+          </div>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="flex flex-col gap-2 pt-1">
+          <button onclick="enterSolutionMode()" class="w-full h-10 bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs rounded-xl active:scale-98 transition-all shadow-sm flex items-center justify-center gap-1.5">
+            <span>🔍 सभी 90 प्रश्नों के विस्तृत हल देखें (Check Solutions)</span>
+          </button>
+          <div class="grid grid-cols-2 gap-2">
+            <button onclick="openLeaderboardModal()" class="h-9 bg-amber-500 hover:bg-amber-600 text-white font-bold text-xs rounded-xl active:scale-98 transition-all shadow-xs flex items-center justify-center gap-1">
+              <span>🏆 ऑल-बिहार मेरिट लिस्ट</span>
+            </button>
+            <button onclick="retakeTestConfirm()" class="h-9 bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-xs rounded-xl active:scale-98 transition-all flex items-center justify-center gap-1">
+              <span>🔄 पुनः टेस्ट दें</span>
+            </button>
+          </div>
+          <a href="https://t.me/GYANVERSET" target="_blank" class="h-9 bg-blue-50 text-blue-700 hover:bg-blue-100 border border-blue-200 font-semibold text-xs rounded-xl flex items-center justify-center gap-1">
+            <span>📲 टेलीग्राम चैनल से जुड़ें (@GYANVERSET)</span>
+          </a>
+        </div>
+
+      </div>
+    </div>
+
+  </main>
+
+  <!-- ==================== TCS iON QUESTION PALETTE MODAL ==================== -->
+  <div id="modal-palette" class="fixed inset-0 z-50 modal-backdrop hidden flex items-center justify-center p-3">
+    <div class="w-full max-w-md bg-white rounded-2xl border border-slate-200 shadow-2xl flex flex-col max-h-[85vh] overflow-hidden">
+      <!-- Modal Header -->
+      <div class="h-11 shrink-0 px-3.5 bg-slate-50 border-b border-slate-200 flex items-center justify-between">
+        <div class="flex items-center gap-1.5 font-bold text-xs text-slate-800">
+          <span>📱 प्रश्न पैलेट (TCS iON Mode)</span>
+          <span class="text-[10px] bg-blue-100 text-blue-700 px-1.5 py-0.5 rounded">90 प्रश्न</span>
+        </div>
+        <button onclick="closePaletteModal()" class="w-7 h-7 rounded-full bg-slate-200 hover:bg-slate-300 text-slate-700 flex items-center justify-center text-xs font-bold">
+          ✕
+        </button>
+      </div>
+
+      <!-- Color Legend -->
+      <div class="shrink-0 p-2.5 bg-slate-50/70 border-b border-slate-200 grid grid-cols-2 gap-1.5 text-[10.5px]">
+        <div class="flex items-center gap-1 text-emerald-800 font-medium">
+          <span class="w-3.5 h-3.5 rounded bg-emerald-500 text-white font-bold flex items-center justify-center text-[9px]">◉</span>
+          <span>उत्तर दिया (Answered)</span>
+        </div>
+        <div class="flex items-center gap-1 text-amber-800 font-medium">
+          <span class="w-3.5 h-3.5 rounded bg-amber-500 text-white font-bold flex items-center justify-center text-[9px]">★</span>
+          <span>समीक्षा हेतु (Review)</span>
+        </div>
+        <div class="flex items-center gap-1 text-indigo-800 font-medium">
+          <span class="w-3.5 h-3.5 rounded bg-indigo-600 text-white font-bold flex items-center justify-center text-[9px]">★</span>
+          <span>उत्तर + समीक्षा (Ans+Rev)</span>
+        </div>
+        <div class="flex items-center gap-1 text-slate-600 font-medium">
+          <span class="w-3.5 h-3.5 rounded bg-slate-200 text-slate-700 font-bold flex items-center justify-center text-[9px]">⚪</span>
+          <span>अनुत्तरित (Unattempted)</span>
+        </div>
+      </div>
+
+      <!-- 90-Question Grid (Scrollable) -->
+      <div id="palette-grid" class="flex-1 min-h-0 overflow-y-auto p-3 grid grid-cols-6 sm:grid-cols-9 gap-1.5">
+        <!-- Buttons 1 to 90 generated dynamically -->
+      </div>
+
+      <!-- Modal Footer -->
+      <div class="shrink-0 p-2.5 bg-slate-50 border-t border-slate-200 flex justify-end">
+        <button onclick="closePaletteModal()" class="px-4 py-1.5 bg-slate-800 text-white text-xs font-bold rounded-lg hover:bg-slate-900">
+          बंद करें (Close)
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== SUBMIT CONFIRMATION MODAL ==================== -->
+  <div id="modal-submit-confirm" class="fixed inset-0 z-50 modal-backdrop hidden flex items-center justify-center p-3">
+    <div class="w-full max-w-sm bg-white rounded-2xl border border-slate-200 shadow-2xl p-4 sm:p-5 flex flex-col gap-3">
+      <div class="text-center">
+        <div class="w-10 h-10 rounded-full bg-blue-100 text-blue-700 flex items-center justify-center mx-auto mb-1">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+        </div>
+        <h3 class="text-sm sm:text-base font-bold text-slate-900">क्या आप टेस्ट सबमिट करना चाहते हैं?</h3>
+        <p class="text-xs text-slate-500 mt-0.5">सबमिट करने के बाद आपका अंतिम स्कोरकार्ड जारी होगा।</p>
+      </div>
+
+      <div class="bg-slate-50 rounded-xl p-2.5 border border-slate-200 flex flex-col gap-1.5 text-xs">
+        <div class="flex justify-between text-slate-700">
+          <span>कुल प्रश्न:</span> <span class="font-bold">90</span>
+        </div>
+        <div class="flex justify-between text-emerald-700">
+          <span>उत्तर दिए गए (Answered):</span> <span id="conf-ans" class="font-bold">0</span>
+        </div>
+        <div class="flex justify-between text-amber-700">
+          <span>समीक्षा हेतु (Marked for Review):</span> <span id="conf-rev" class="font-bold">0</span>
+        </div>
+        <div class="flex justify-between text-slate-500">
+          <span>छोड़े गए (Unattempted):</span> <span id="conf-unatt" class="font-bold">90</span>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-2 gap-2 pt-1">
+        <button onclick="closeSubmitConfirmModal()" class="h-9 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-xs">
+          वापस टेस्ट दें
+        </button>
+        <button onclick="finalSubmitExam()" class="h-9 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs shadow-xs">
+          हाँ, फाइनल सबमिट करें
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== ALL-BIHAR MERIT LIST (LEADERBOARD) MODAL ==================== -->
+  <div id="modal-leaderboard" class="fixed inset-0 z-50 modal-backdrop hidden flex items-center justify-center p-2.5 sm:p-4">
+    <div class="w-full max-w-xl bg-white rounded-2xl border border-slate-200 shadow-2xl flex flex-col max-h-[90vh] overflow-hidden">
+      <!-- Header -->
+      <div class="h-12 shrink-0 px-4 bg-slate-50 border-b border-slate-200 flex items-center justify-between">
+        <div class="flex items-center gap-1.5 font-bold text-sm text-slate-900">
+          <span>🏆 ऑल-बिहार लाइव मेरिट लिस्ट (Top Rankers)</span>
+        </div>
+        <button onclick="closeLeaderboardModal()" class="w-7 h-7 rounded-full bg-slate-200 hover:bg-slate-300 text-slate-700 flex items-center justify-center text-xs font-bold">
+          ✕
+        </button>
+      </div>
+
+      <!-- Filters & Search -->
+      <div class="shrink-0 p-2.5 bg-slate-50/70 border-b border-slate-200 grid grid-cols-1 sm:grid-cols-2 gap-2">
+        <input type="text" id="lb-search" oninput="renderLeaderboard()" placeholder="नाम या @username खोजें..." class="h-8 px-2.5 text-xs bg-white border border-slate-300 rounded-lg focus:outline-none focus:border-blue-600 text-slate-800">
+        <select id="lb-district-filter" onchange="renderLeaderboard()" class="h-8 px-2.5 text-xs bg-white border border-slate-300 rounded-lg focus:outline-none focus:border-blue-600 text-slate-800">
+          <option value="all">सभी जिले (All 38 Districts)</option>
+          <option value="पटना (Patna)">पटना (Patna)</option>
+          <option value="गया (Gaya)">गया (Gaya)</option>
+          <option value="मुजफ्फरपुर (Muzaffarpur)">मुजफ्फरपुर (Muzaffarpur)</option>
+          <option value="भागलपुर (Bhagalpur)">भागलपुर (Bhagalpur)</option>
+          <option value="दरभंगा (Darbhanga)">दरभंगा (Darbhanga)</option>
+          <option value="रोहतास (Rohtas)">रोहतास (Rohtas)</option>
+          <option value="नालंदा (Nalanda)">नालंदा (Nalanda)</option>
+          <option value="सारण (Saran)">सारण (Saran)</option>
+        </select>
+      </div>
+
+      <!-- Top 3 Podium Highlights -->
+      <div id="lb-podium" class="shrink-0 p-3 bg-gradient-to-r from-amber-50 via-yellow-50 to-amber-50 border-b border-amber-100 grid grid-cols-3 gap-2 text-center text-xs">
+        <!-- Rendered by JS -->
+      </div>
+
+      <!-- Table Container -->
+      <div class="flex-1 min-h-0 overflow-y-auto">
+        <table class="w-full text-left text-xs border-collapse">
+          <thead class="sticky top-0 bg-slate-100 text-slate-600 uppercase text-[10px] font-bold">
+            <tr>
+              <th class="py-2 px-3">रैंक</th>
+              <th class="py-2 px-3">विद्यार्थी / जिला</th>
+              <th class="py-2 px-3 text-right">अंक (Marks)</th>
+              <th class="py-2 px-3 text-right">सटीकता</th>
+            </tr>
+          </thead>
+          <tbody id="lb-table-body" class="divide-y divide-slate-100">
+            <!-- Populated by JS -->
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Footer -->
+      <div class="shrink-0 p-2.5 bg-slate-50 border-t border-slate-200 flex items-center justify-between text-[11px] text-slate-500">
+        <span>प्रत्येक विद्यार्थी का केवल सर्वश्रेष्ठ स्कोर सुरक्षित रहता है।</span>
+        <button onclick="closeLeaderboardModal()" class="px-3 py-1 bg-slate-800 text-white font-bold rounded-lg text-xs hover:bg-slate-900">
+          बंद करें
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== SECRET ADMIN PIN MODAL ==================== -->
+  <div id="modal-admin" class="fixed inset-0 z-50 modal-backdrop hidden flex items-center justify-center p-3">
+    <div class="w-full max-w-sm bg-white rounded-2xl border border-slate-200 shadow-2xl p-4 flex flex-col gap-3">
+      <div class="flex items-center justify-between border-b border-slate-100 pb-2">
+        <div class="text-xs font-bold text-slate-900 flex items-center gap-1">
+          <span>🔒 GYANVERSE Secret Admin Panel</span>
+        </div>
+        <button onclick="closeAdminModal()" class="w-6 h-6 rounded-full bg-slate-100 text-slate-600 text-xs font-bold">✕</button>
+      </div>
+
+      <!-- PIN Input -->
+      <div id="admin-pin-view" class="flex flex-col gap-2">
+        <label class="text-xs font-semibold text-slate-700">सुरक्षा पिन दर्ज करें (Security PIN):</label>
+        <input type="password" id="admin-pin-input" placeholder="Enter PIN..." class="h-9 px-3 text-xs border border-slate-300 rounded-lg focus:outline-none focus:border-blue-600">
+        <button onclick="verifyAdminPin()" class="h-9 bg-blue-600 text-white text-xs font-bold rounded-lg hover:bg-blue-700">
+          प्रमाणित करें (Unlock)
+        </button>
+      </div>
+
+      <!-- Unlocked Admin View -->
+      <div id="admin-panel-view" class="hidden flex flex-col gap-3">
+        <div class="text-[11px] text-slate-600">
+          <label class="font-bold text-slate-800 block mb-1">Firebase Realtime DB URL:</label>
+          <input type="text" id="admin-db-url" class="w-full h-8 px-2 text-[11px] font-mono border border-slate-300 rounded bg-slate-50 text-slate-700">
+        </div>
+        <div class="grid grid-cols-2 gap-2">
+          <button onclick="adminSaveDbUrl()" class="h-8 bg-blue-600 text-white text-[11px] font-bold rounded hover:bg-blue-700">
+            URL सहेजें
+          </button>
+          <button onclick="adminClearLocalLeaderboard()" class="h-8 bg-rose-600 text-white text-[11px] font-bold rounded hover:bg-rose-700">
+            लोकल डेटा साफ़ करें
+          </button>
+        </div>
+        <button onclick="adminExportJson()" class="h-8 bg-emerald-600 text-white text-[11px] font-bold rounded hover:bg-emerald-700">
+          डाउनलोड परिणाम (JSON)
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== SECURITY & WARNING TOAST ==================== -->
+  <div id="toast-warning" class="fixed top-4 left-1/2 -translate-x-1/2 z-50 bg-rose-600 text-white px-4 py-2.5 rounded-xl shadow-xl text-xs font-bold flex items-center gap-2 transition-all duration-300 opacity-0 pointer-events-none transform -translate-y-2">
+    <svg class="w-4 h-4 shrink-0 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg>
+    <span id="toast-msg">चेतावनी सूचना</span>
+  </div>
+
+  <!-- ==================== EMBEDDED JAVASCRIPT LOGIC ==================== -->
+  <script>
+    // 100% Sequential Source Questions (Exact 90 MCQs)
+    const QUESTIONS = [{"id": 1, "section_hi": "राष्ट्रीय एवं प्रशासनिक", "section_en": "National & Administrative", "q_hi": "नवंबर 2026 में भारतीय भूवैज्ञानिक सर्वेक्षण (GSI) के 55वें महानिदेशक (Director General) कौन बन गए हैं?", "q_en": "In November 2026, who became the 55th Director General of the Geological Survey of India (GSI)?", "options_hi": ["जनार्दन प्रसाद", "दिनेश विट्ठलराव गणवीर", "आशीष खन्ना", "डॉ. वीरेन्द्र कुमार"], "options_en": ["Janardan Prasad", "Dinesh Vitthalrao Ganvir", "Ashish Khanna", "Dr. Virendra Kumar"], "ans": "B", "exp_hi": "दिनेश विट्ठलराव गणवीर को भारतीय भूवैज्ञानिक सर्वेक्षण (GSI) का 55वां महानिदेशक नियुक्त किया गया है। GSI की स्थापना 1851 में हुई थी और इसका मुख्यालय कोलकाता (पश्चिम बंगाल) में स्थित है।", "exp_en": "Dinesh Vitthalrao Ganvir has been appointed as the 55th Director General of the Geological Survey of India (GSI). GSI was established in 1851 and is headquartered in Kolkata, West Bengal."}, {"id": 2, "section_hi": "विविध एवं शब्दावली", "section_en": "Terminology & Misc", "q_hi": "नवंबर 2026 में कॉलिन्स डिक्शनरी (Collins Dictionary) ने किस शब्द को 'Word of the Year 2026' घोषित किया?", "q_en": "In November 2026, which word was declared 'Word of the Year 2026' by Collins Dictionary?", "options_hi": ["Brat", "मॉगिंग (Mogging)", "AI", "Permacrisis"], "options_en": ["Brat", "Mogging", "AI", "Permacrisis"], "ans": "B", "exp_hi": "कॉलिन्स डिक्शनरी ने वर्ष 2026 के लिए 'मॉगिंग' (Mogging) को अपना 'वर्ड ऑफ द ईयर' घोषित किया है। यह शब्द शारीरिक आकर्षण, स्टाइल या व्यक्तित्व में दूसरों से अधिक प्रभावी व श्रेष्ठ दिखने के संदर्भ में प्रयुक्त होता है।", "exp_en": "Collins Dictionary named 'Mogging' as its Word of the Year 2026. The term refers to looking significantly more physically attractive, stylish, or impressive than others."}, {"id": 3, "section_hi": "बिहार विशेषांक", "section_en": "Bihar Special", "q_hi": "कौन-सा राज्य व्यापक गाद प्रबंधन नीति (Comprehensive Silt Management Policy) लागू करने वाला भारत का पहला राज्य बन गया है?", "q_en": "Which state has become the first state in India to implement a Comprehensive Silt Management Policy?", "options_hi": ["बिहार", "उत्तर प्रदेश", "असम", "पश्चिम बंगाल"], "options_en": ["Bihar", "Uttar Pradesh", "Assam", "West Bengal"], "ans": "A", "exp_hi": "बिहार देश का पहला राज्य बन गया है जिसने नदियों में गाद की समस्या से निपटने हेतु व्यापक गाद प्रबंधन नीति लागू की है। बिहार के मुख्यमंत्री: सम्राट चौधरी (भाजपा)। इस नीति से नदियों की जलधारण क्षमता बढ़ेगी और बाढ़ व कटाव में भारी कमी आएगी।", "exp_en": "Bihar has become the first state in India to implement a Comprehensive Silt Management Policy to tackle river siltation. Chief Minister of Bihar: Samrat Choudhary (BJP). This policy enhances water holding capacity and mitigates floods and erosion."}, {"id": 4, "section_hi": "कृषि एवं योजनाएं", "section_en": "Agriculture & Schemes", "q_hi": "प्रधानमंत्री मत्स्य संपदा योजना (PMMSY) के अंतर्गत भारत का पहला अधिसूचित जैविक मत्स्य पालन क्लस्टर (Organic Aquaculture Cluster) कहां बनाया जा रहा है?", "q_en": "Under the Pradhan Mantri Matsya Sampada Yojana (PMMSY), where is India's first notified Organic Aquaculture Cluster being developed?", "options_hi": ["वायनाड (केरल)", "सोरेंग (सिक्किम)", "माजुली (असम)", "किन्नौर (हिमाचल प्रदेश)"], "options_en": ["Wayanad (Kerala)", "Soreng (Sikkim)", "Majuli (Assam)", "Kinnaur (Himachal Pradesh)"], "ans": "B", "exp_hi": "सिक्किम के सोरेंग जिले में भारत का पहला अधिसूचित जैविक मत्स्य पालन क्लस्टर स्थापित किया जा रहा है। यह पहल प्रधानमंत्री मत्स्य संपदा योजना के तहत शत-प्रतिशत जैविक तरीके से मत्स्य पालन को बढ़ावा देने हेतु शुरू की गई है।", "exp_en": "India's first notified organic aquaculture cluster is being established in Soreng district of Sikkim under PMMSY to promote 100% organic fish farming."}, {"id": 5, "section_hi": "रक्षा एवं सुरक्षा", "section_en": "Defence & Security", "q_hi": "नवंबर 2026 में केंद्र सरकार ने अग्निपथ योजना के तहत 75% अग्निवीरों को कितने वर्ष का अतिरिक्त सेवा विस्तार देने की घोषणा की है?", "q_en": "In November 2026, the Central Government announced how many years of additional service extension for 75% Agniveers under the Agnipath scheme?", "options_hi": ["1 वर्ष", "2 वर्ष", "3 वर्ष", "4 वर्ष"], "options_en": ["1 Year", "2 Years", "3 Years", "4 Years"], "ans": "B", "exp_hi": "चीफ ऑफ डिफेंस स्टाफ (CDS) जनरल एन.एस. राजा सुब्रमण्यम की घोषणा के अनुसार, 75% अग्निवीरों की सेवा अवधि 2 वर्ष बढ़ाकर 4 से 6 वर्ष कर दी गई है। पहले की तरह 25% अग्निवीरों को मेरिट के आधार पर नियमित स्थायी सेना में शामिल किया जाएगा।", "exp_en": "CDS Gen N.S. Raja Subramaniam announced that service duration for 75% Agniveers has been extended by 2 years from 4 to 6 years, while 25% continue to be absorbed into permanent service based on merit."}, {"id": 6, "section_hi": "अंतर्राष्ट्रीय संगठन", "section_en": "International Organizations", "q_hi": "नवंबर 2026 में कौन-सा देश अंतर्राष्ट्रीय सौर गठबंधन (ISA) का 116वां सदस्य देश बन गया है?", "q_en": "In November 2026, which country became the 116th member nation of the International Solar Alliance (ISA)?", "options_hi": ["बहामास", "फिजी", "माल्टा", "साइप्रस"], "options_en": ["Bahamas", "Fiji", "Malta", "Cyprus"], "ans": "A", "exp_hi": "बहामास अंतर्राष्ट्रीय सौर गठबंधन (ISA) का 116वां सदस्य देश बन गया है। ISA स्थापना: 30 नवंबर 2015 को COP21 (पेरिस) में भारत और फ्रांस द्वारा; मुख्यालय: गुरुग्राम (हरियाणा); महानिदेशक: आशीष खन्ना। भारत को 2026-28 कार्यकाल के लिए लगातार तीसरी बार अंतर्राष्ट्रीय सौर गठबंधन का अध्यक्ष चुना गया है।", "exp_en": "The Bahamas joined as the 116th member of ISA. Founded on 30 Nov 2015 at COP21 Paris by India & France, headquartered in Gurugram, DG: Ashish Khanna. India was re-elected President for 2026-28 for a 3rd term."}, {"id": 7, "section_hi": "सैन्य अभ्यास", "section_en": "Military Exercises", "q_hi": "5 से 12 नवंबर 2026 तक बहुपक्षीय नौसैनिक अभ्यास 'मालाबार 2026' का आयोजन कहां किया जा रहा है?", "q_en": "Where is the multilateral naval exercise 'Malabar 2026' being hosted from 5 to 12 November 2026?", "options_hi": ["ऑस्ट्रेलिया", "जापान", "भारत", "अमेरिका"], "options_en": ["Australia", "Japan", "India", "USA"], "ans": "B", "exp_hi": "मालाबार 2026 नौसैनिक अभ्यास जापान में आयोजित किया गया। इसमें क्वाड (QUAD) देश—भारत, जापान, अमेरिका और ऑस्ट्रेलिया शामिल हैं। भारतीय नौसेना का प्रतिनिधित्व INS सह्याद्री ने किया। अभ्यास दो चरणों में हुआ: योकोसुका बंदरगाह चरण और होंशू के कांतो क्षेत्र में समुद्री चरण।", "exp_en": "Malabar 2026 was hosted in Japan featuring QUAD nations (India, Japan, USA, Australia). Indian Navy was represented by INS Sahyadri across harbor phase in Yokosuka and sea phase off Kanto, Honshu."}, {"id": 8, "section_hi": "खेल परिदृश्य", "section_en": "Sports", "q_hi": "नवंबर 2026 में पुरुष एशियन चैंपियंस ट्रॉफी 2026 हॉकी का खिताब किस टीम ने जीत लिया?", "q_en": "In November 2026, which team won the Men's Asian Champions Trophy 2026 Hockey title?", "options_hi": ["जापान", "मलेशिया", "भारत", "दक्षिण कोरिया"], "options_en": ["Japan", "Malaysia", "India", "South Korea"], "ans": "C", "exp_hi": "भारतीय हॉकी टीम ने पुरुष एशियन चैंपियंस ट्रॉफी 2026 का 9वां संस्करण जीतकर रिकॉर्ड छठी बार यह खिताब अपने नाम किया। उपविजेता: जापान; तीसरा स्थान: मलेशिया। आयोजन स्थल: पंजाब (सुरजीत सिंह स्टेडियम, जालंधर व ओलंपियन बलबीर सिंह सीनियर स्टेडियम, मोहाली)।", "exp_en": "Indian Hockey team clinched their record 6th title by winning the 9th edition of Men's Asian Champions Trophy 2026 in Punjab. Runner-up: Japan; 3rd: Malaysia."}, {"id": 9, "section_hi": "पुरस्कार एवं सम्मान", "section_en": "Awards & Honours", "q_hi": "नवंबर 2026 में जेम्स डायसन ग्लोबल सस्टेनेबिलिटी अवार्ड 2026 किसने जीता है?", "q_en": "In November 2026, who won the James Dyson Global Sustainability Award 2026?", "options_hi": ["डेविड एटनबरो", "एलरी ओंग (Ellerie Ong)", "सुनीता नारायण", "ग्रेटा थनबर्ग"], "options_en": ["David Attenborough", "Ellerie Ong", "Sunita Narain", "Greta Thunberg"], "ans": "B", "exp_hi": "एलरी ओंग को पर्यावरण संरक्षण और टिकाऊ नवाचार (Global Sustainability) में विशिष्ट योगदान के लिए जेम्स डायसन अवार्ड 2026 से सम्मानित किया गया।", "exp_en": "Ellerie Ong was conferred the James Dyson Award 2026 for outstanding contributions to environmental conservation and global sustainability innovation."}, {"id": 10, "section_hi": "नियुक्ति", "section_en": "Appointments", "q_hi": "नवंबर 2026 में भारतीय वायुसेना (IAF) के नए उपप्रमुख (Vice Chief of Air Staff) कौन बने हैं?", "q_en": "In November 2026, who took charge as the new Vice Chief of the Air Staff (IAF)?", "options_hi": ["एयर मार्शल ए.पी. सिंह", "एयर मार्शल इंद्रपाल सिंह वालिया", "एयर मार्शल नर्मदेश्वर तिवारी", "एयर मार्शल आशुतोष दीक्षित"], "options_en": ["Air Marshal A.P. Singh", "Air Marshal Inderpal Singh Walia", "Air Marshal Narmdeshwar Tiwari", "Air Marshal Ashutosh Dixit"], "ans": "B", "exp_hi": "एयर मार्शल इंद्रपाल सिंह वालिया को भारतीय वायुसेना का नया उपप्रमुख नियुक्त किया गया है।", "exp_en": "Air Marshal Inderpal Singh Walia has been appointed as the new Vice Chief of Air Staff of the Indian Air Force."}, {"id": 11, "section_hi": "पुरस्कार एवं सम्मान", "section_en": "Awards & Honours", "q_hi": "आईफा अवार्ड्स (IIFA Awards) 2026 में किस अभिनेत्री को सर्वश्रेष्ठ अभिनेत्री का पुरस्कार दिया गया?", "q_en": "In the IIFA Awards 2026, who won the Best Actress award?", "options_hi": ["दीपिका पादुकोण", "अनीत पड्डा", "आलिया भट्ट", "कृति सेनन"], "options_en": ["Deepika Padukone", "Aneet Padda", "Alia Bhatt", "Kriti Sanon"], "ans": "B", "exp_hi": "अनीत पड्डा को फिल्म 'सयारा' में शानदार अभिनय के लिए सर्वश्रेष्ठ अभिनेत्री का पुरस्कार मिला। IIFA 2026 प्रमुख विजेता: बेस्ट एक्टर - रणवीर सिंह (धुरंधर); बेस्ट फिल्म - धुरंधर; बेस्ट डायरेक्टर - आदित्य धर (धुरंधर); बेस्ट सपोर्टिंग एक्टर - संजय दत्त (धुरंधर); बेस्ट सपोर्टिंग एक्ट्रेस - हुमा कुरैशी (जॉली एलएलबी 3)।", "exp_en": "Aneet Padda won Best Actress for 'Sayaara'. Major IIFA 2026 winners: Best Actor - Ranveer Singh (Dhurandhar); Best Film - Dhurandhar; Best Director - Aditya Dhar (Dhurandhar); Best Supporting Actor - Sanjay Dutt; Best Supporting Actress - Huma Qureshi."}, {"id": 12, "section_hi": "विज्ञान एवं प्रौद्योगिकी", "section_en": "Science & Technology", "q_hi": "इसरो ने NVS-03 बहुप्रतीक्षित स्वदेशी नेविगेशन उपग्रह को किस रॉकेट के जरिए सफलतापूर्वक लॉन्च किया?", "q_en": "ISRO successfully launched the NVS-03 indigenous navigation satellite using which launch vehicle?", "options_hi": ["GSLV-F18", "PSLV-C58", "LVM3-M4", "SSLV-D3"], "options_en": ["GSLV-F18", "PSLV-C58", "LVM3-M4", "SSLV-D3"], "ans": "A", "exp_hi": "इसरो ने 30 अक्टूबर 2026 को सतीश धवन अंतरिक्ष केंद्र (श्रीहरिकोटा) से GSLV Mk II (GSLV-F18) द्वारा NVS-03 को भू-स्थिर स्थानांतरण कक्षा (GTO) में स्थापित किया। उपग्रह का वजन 2,232 किग्रा है और यह दूसरी पीढ़ी की नाविक (NavIC) नेविगेशन उपग्रह प्रणाली का हिस्सा है।", "exp_en": "ISRO launched NVS-03 on 30 Oct 2026 aboard GSLV Mk II (GSLV-F18) from SDSC Sriharikota into GTO. Weighing 2,232 kg, it is part of the 2nd-generation NavIC constellation."}, {"id": 13, "section_hi": "राष्ट्रीय एवं अवसंरचना", "section_en": "Infrastructure & Railways", "q_hi": "नवंबर 2026 में स्वीकृत उत्तरी बुलेट ट्रेन कॉरिडोर किन प्रमुख शहरों को आपस में जोड़ता है?", "q_en": "In November 2026, which major cities are connected by the approved Northern Bullet Train Corridor?", "options_hi": ["दिल्ली से मुंबई", "दिल्ली से सिलीगुड़ी और गुवाहाटी", "दिल्ली से वाराणसी", "कोलकाता से पटना"], "options_en": ["Delhi to Mumbai", "Delhi to Siliguri & Guwahati", "Delhi to Varanasi", "Kolkata to Patna"], "ans": "B", "exp_hi": "लगभग 1,500 किमी लंबा यह कॉरिडोर दिल्ली से शुरू होकर आगरा, कानपुर, लखनऊ, अयोध्या, वाराणसी, प्रयागराज, पटना, सिलीगुड़ी होते हुए गुवाहाटी तक जाएगा। इससे दिल्ली से सिलीगुड़ी की यात्रा का समय 20 घंटे से घटकर मात्र 6 घंटे रह जाएगा।", "exp_en": "The ~1,500 km corridor runs from Delhi via Agra, Kanpur, Lucknow, Ayodhya, Varanasi, Prayagraj, Patna, Siliguri to Guwahati, cutting Delhi-Siliguri travel time from 20 hours to just 6 hours."}, {"id": 14, "section_hi": "पुरस्कार एवं सम्मान", "section_en": "Awards & Honours", "q_hi": "ग्रामीण विकास हेतु 5वां रोहिणी नय्यर पुरस्कार 2026 (Rohini Nayyar Prize) किसे प्रदान किया गया?", "q_en": "Who was conferred the 5th Rohini Nayyar Prize 2026 for outstanding contribution to rural development?", "options_hi": ["प्रशांत चौधरी", "दीनानाथ राजपूत", "सेथरीचम संगतम", "डॉ. अभय बंग"], "options_en": ["Prashant Choudhary", "Deenanath Rajput", "Sethrichem Sangtam", "Dr. Abhay Bang"], "ans": "A", "exp_hi": "ग्रामीण विकास एवं आजीविका सुधार में उत्कृष्ट योगदान के लिए 5वां रोहिणी नय्यर पुरस्कार 2026 प्रशांत चौधरी को प्रदान किया गया।", "exp_en": "Prashant Choudhary was awarded the 5th Rohini Nayyar Prize 2026 for exemplary grassroots contributions to rural livelihood and community empowerment."}, {"id": 15, "section_hi": "खेल परिदृश्य", "section_en": "Sports", "q_hi": "अहमदाबाद में आयोजित पहली कॉमनवेल्थ कबड्डी चैंपियनशिप 2026 में पुरुष और महिला दोनों वर्गों का खिताब किस देश ने जीता?", "q_en": "Which country won both men's and women's titles at the inaugural Commonwealth Kabaddi Championship 2026 held in Ahmedabad?", "options_hi": ["ईरान", "पाकिस्तान", "भारत", "श्रीलंका"], "options_en": ["Iran", "Pakistan", "India", "Sri Lanka"], "ans": "C", "exp_hi": "वीर सावरकर स्पोर्ट्स कॉम्प्लेक्स (अहमदाबाद) में भारत ने पुरुष व महिला दोनों वर्गों में स्वर्ण पदक जीता। पुरुष फाइनल में भारत ने श्रीलंका को और महिला फाइनल में युगांडा को पराजित किया।", "exp_en": "At Veer Savarkar Sports Complex in Ahmedabad, India swept gold in both men's and women's categories, defeating Sri Lanka in the men's final and Uganda in the women's final."}, {"id": 16, "section_hi": "विज्ञान एवं खगोलिकी", "section_en": "Science & Astronomy", "q_hi": "माली के सहारा रेगिस्तान में 4.1 अरब वर्ष पुराना गुलाबी उल्कापिंड 'तेघाजा-01' (Teghaza 01) खोजा गया, इसका संबंध किस ग्रह से है?", "q_en": "A 4.1 billion-year-old pink meteorite named 'Teghaza 01' was discovered in the Sahara desert of Mali. Which planet is it associated with?", "options_hi": ["बुध", "शुक्र", "मंगल", "बृहस्पति"], "options_en": ["Mercury", "Venus", "Mars", "Jupiter"], "ans": "C", "exp_hi": "तेघाजा-01 उल्कापिंड कुल 8 टुकड़ों (800-900 ग्राम) में माली के तेघाजा नमक के मैदान से प्राप्त हुआ। यह पृथ्वी पर पाए गए मंगल ग्रह के 3 सबसे पुराने उल्कापिंडों में शामिल है (अन्य दो: एलन हिल्स 84001 और ब्लैक ब्यूटी)।", "exp_en": "Teghaza 01 meteorite (8 fragments, 800-900g) was recovered from the Teghaza salt flats in Mali. It ranks among Earth's top 3 oldest Martian meteorites (alongside Allan Hills 84001 and Black Beauty)."}, {"id": 17, "section_hi": "अंतर्राष्ट्रीय नियुक्तियां", "section_en": "International Appointments", "q_hi": "नवंबर 2026 में बुल्गारिया की पहली निर्वाचित महिला राष्ट्रपति कौन बन गई हैं?", "q_en": "In November 2026, who became the first elected female President of Bulgaria?", "options_hi": ["इलियाना इयोतोवा (Iliana Iotova)", "जॉर्जिया मेलोनी", "कैटालिन नोवाक", "क्रिस्टालिना जॉर्जीवा"], "options_en": ["Iliana Iotova", "Giorgia Meloni", "Katalin Novak", "Kristalina Georgieva"], "ans": "A", "exp_hi": "इलियाना इयोतोवा बुल्गारिया की पहली निर्वाचित महिला राष्ट्रपति बनी हैं।", "exp_en": "Iliana Iotova made history by becoming the first elected female President of Bulgaria."}, {"id": 18, "section_hi": "शिखर सम्मेलन एवं ऊर्जा", "section_en": "Summits & Energy", "q_hi": "नवंबर 2026 में भारत नवीकरणीय ऊर्जा शिखर सम्मेलन एवं एक्सपो 2026 का उद्घाटन कहां किया गया?", "q_en": "In November 2026, where was the India Renewable Energy Summit and Expo 2026 inaugurated?", "options_hi": ["मुंबई", "बेंगलुरु", "गांधीनगर", "नई दिल्ली"], "options_en": ["Mumbai", "Bengaluru", "Gandhinagar", "New Delhi"], "ans": "D", "exp_hi": "प्रधानमंत्री नरेंद्र मोदी ने भारत मंडपम (नई दिल्ली) में इसका उद्घाटन किया। थीम: 'निवेश करें, नवाचार करें, प्रेरणा दें' (Invest, Innovate and Inspire)। यह शिखर सम्मेलन अंतर्राष्ट्रीय सौर गठबंधन की 9वीं सभा और ग्रीन हाइड्रोजन पर 4थे अंतर्राष्ट्रीय सम्मेलन के साथ आयोजित हुआ।", "exp_en": "PM Narendra Modi inaugurated the summit at Bharat Mandapam, New Delhi under the theme 'Invest, Innovate and Inspire', alongside ISA's 9th Assembly and 4th International Green Hydrogen Conference."}, {"id": 19, "section_hi": "खेल परिदृश्य", "section_en": "Sports", "q_hi": "जर्मनी के सारब्रुकन में आयोजित हायलो ओपन (Hylo Open) 2026 बैडमिंटन प्रतियोगिता में महिला एकल का खिताब किसने जीता?", "q_en": "Who won the women's singles title at the Hylo Open 2026 badminton tournament held in Saarbrucken, Germany?", "options_hi": ["साइना नेहवाल", "पी.वी. सिंधु", "अन से-यंग", "कैरोलिना मारिन"], "options_en": ["Saina Nehwal", "P.V. Sindhu", "An Se-young", "Carolina Marin"], "ans": "B", "exp_hi": "भारत की स्टार बैडमिंटन खिलाड़ी पी.वी. सिंधु ने हायलो ओपन 2026 में महिला एकल का खिताब जीता, जबकि भारत के लक्ष्य सेन ने पुरुष एकल खिताब जीता।", "exp_en": "Star Indian shuttler P.V. Sindhu won the women's singles title at Hylo Open 2026, while Lakshya Sen won the men's singles title."}, {"id": 20, "section_hi": "राज्य नीतियां एवं शासन", "section_en": "State Governance", "q_hi": "नवंबर 2026 में किस राज्य ने सरकारी योजनाओं और गारंटी स्कीमों के प्रभाव का आकलन करने के लिए 'प्रोजेक्ट के-मॉनिटर' को मंजूरी दी?", "q_en": "In November 2026, which state government approved 'Project K-Monitor' to assess the ground impact of guarantee schemes and public welfare initiatives?", "options_hi": ["केरल", "कर्नाटक", "तेलंगाना", "तमिलनाडु"], "options_en": ["Kerala", "Karnataka", "Telangana", "Tamil Nadu"], "ans": "B", "exp_hi": "कर्नाटक सरकार ने गारंटी योजनाओं और विकासात्मक परियोजनाओं के वास्तविक जमीनी प्रभाव का डेटा-संचालित मूल्यांकन करने हेतु 'प्रोजेक्ट के-मॉनिटर' (Project K-Monitor) को मंजूरी दी।", "exp_en": "The Government of Karnataka approved 'Project K-Monitor' for data-driven real-time tracking and evaluation of flagship guarantee schemes and developmental programs."}, {"id": 21, "section_hi": "पुस्तकें एवं लेखक", "section_en": "Books & Authors", "q_hi": "'Endeavours: An Ensemble of My Life' नामक आत्मकथा/पुस्तक के लेखक कौन हैं?", "q_en": "Who is the author of the autobiography/book titled 'Endeavours: An Ensemble of My Life'?", "options_hi": ["रघुराम राजन", "एन.के. सिंह (N.K. Singh)", "शक्तिकांत दास", "अरविंद पनगढ़िया"], "options_en": ["Raghuram Rajan", "N.K. Singh", "Shaktikanta Das", "Arvind Panagariya"], "ans": "B", "exp_hi": "15वें वित्त आयोग के अध्यक्ष और पूर्व नौकरशाह एन.के. सिंह ने अपनी पुस्तक 'Endeavours: An Ensemble of My Life' में अपने नीतिगत और व्यक्तिगत अनुभवों को साझा किया है।", "exp_en": "Authored by N.K. Singh, Chairman of the 15th Finance Commission and veteran policymaker, chronicling his key public policy decisions and administrative journey."}, {"id": 22, "section_hi": "साहित्य एवं सम्मान", "section_en": "Literature & Awards", "q_hi": "वर्ष 2026 में केरल के सर्वोच्च साहित्यिक सम्मान '34वें एजुथच्चन पुरस्कार' (Ezhuthachan Puraskaram) से किसे सम्मानित किया गया?", "q_en": "Who was honoured with Kerala's highest literary award, the 34th Ezhuthachan Puraskaram, in 2026?", "options_hi": ["एम.टी. वासुदेवन नायर", "मैथिल राधाकृष्णन", "एस. हरीश", "के. सच्चिदानंदन"], "options_en": ["M.T. Vasudevan Nair", "Maythil Radhakrishnan", "S. Hareesh", "K. Satchidanandan"], "ans": "B", "exp_hi": "मलयालम साहित्य में असाधारण योगदान के लिए प्रसिद्ध लेखक मैथिल राधाकृष्णन को केरल के सर्वोच्च साहित्यिक सम्मान 34वें एजुथच्चन पुरस्कार 2026 से सम्मानित किया गया।", "exp_en": "Eminent writer Maythil Radhakrishnan received the 34th Ezhuthachan Puraskaram 2026 for his comprehensive and transformative contributions to Malayalam literature."}, {"id": 23, "section_hi": "सैन्य अभ्यास", "section_en": "Defence Exercises", "q_hi": "नवंबर 2026 में भारत और किस देश के बीच संयुक्त सैन्य अभ्यास 'टाइगर ट्राइंफ' (Tiger Triumph) का 5वां संस्करण आयोजित हुआ?", "q_en": "In November 2026, the 5th edition of the joint tri-services military exercise 'Tiger Triumph' was conducted between India and which country?", "options_hi": ["रूस", "जापान", "अमेरिका", "फ्रांस"], "options_en": ["Russia", "Japan", "USA", "France"], "ans": "C", "exp_hi": "भारत और अमेरिका के बीच द्विपक्षीय त्रि-सेवा सैन्य अभ्यास 'टाइगर ट्राइंफ' विशाखापट्टनम (आंध्र प्रदेश) के समुद्री युद्ध केंद्र में संपन्न हुआ। विशेषता: इसे टेबल-टॉप एक्सरसाइज के रूप में आयोजित किया गया और इसमें पहली बार एनडीआरएफ (NDRF) ने भी भाग लिया।", "exp_en": "Conducted between India and the United States at the Maritime Warfare Centre in Visakhapatnam. Notably organized as a table-top HADR exercise featuring NDRF participation for the first time."}, {"id": 24, "section_hi": "अंतर्राष्ट्रीय व्यक्तित्व", "section_en": "International Personalities", "q_hi": "नवंबर 2026 में अमेरिका की पहली अश्वेत महिला गवर्नर (First Black Female Governor) कौन बन गई हैं?", "q_en": "In November 2026, who created history by becoming the first Black female Governor in the United States?", "options_hi": ["कमला हैरिस", "कीशा लांस बॉटम्स (Keisha Lance Bottoms)", "स्टेसी अब्राम्स", "कारेन बास"], "options_en": ["Kamala Harris", "Keisha Lance Bottoms", "Stacey Abrams", "Karen Bass"], "ans": "B", "exp_hi": "कीशा लांस बॉटम्स अमेरिका के इतिहास में पहली अश्वेत महिला गवर्नर बनकर इतिहास रच चुकी हैं।", "exp_en": "Keisha Lance Bottoms created history as the first Black female Governor in the history of the United States."}, {"id": 25, "section_hi": "बिहार विशेषांक एवं सम्मान", "section_en": "Bihar Special & Awards", "q_hi": "किस राज्य की लघु डॉक्यूमेंट्री फिल्म 'मदर्स ऑफ करेज' (Mothers of Courage) को संयुक्त राष्ट्र SDG एक्शन अवार्ड 2026 से सम्मानित किया गया?", "q_en": "Which Indian state's short documentary film 'Mothers of Courage' was awarded the prestigious UN SDG Action Award 2026?", "options_hi": ["बिहार", "उत्तर प्रदेश", "मध्य प्रदेश", "ओडिशा"], "options_en": ["Bihar", "Uttar Pradesh", "Madhya Pradesh", "Odisha"], "ans": "A", "exp_hi": "बिहार राज्य की लघु डॉक्यूमेंट्री फिल्म 'मदर्स ऑफ करेज' को 29 अक्टूबर 2026 को रोम (इटली) में क्रिएटिविटी श्रेणी में UN SDG Action Award प्रदान किया गया। यह फिल्म बिहार में बालिकाओं की शिक्षा और महिलाओं के नेतृत्व वाले जन-आंदोलन 'शिक्षाग्रह' पर आधारित है।", "exp_en": "Bihar's short documentary 'Mothers of Courage' bagged the UN SDG Action Award in Rome under the Creativity category. It highlights girls' education and women-led community initiative 'Shikshagrah'."}, {"id": 26, "section_hi": "रक्षा एवं स्वदेशी तकनीक", "section_en": "Defence & Missile Tech", "q_hi": "नवंबर 2026 में डीआरडीओ (DRDO) ने ओडिशा के चांदीपुर से किस स्वदेशी मिसाइल का सफल परीक्षण किया?", "q_en": "In November 2026, DRDO successfully conducted flight tests of which indigenous tactical missile from Chandipur, Odisha?", "options_hi": ["अग्नि-प्राइम", "प्रलय", "आकाश-एनजी", "नाग"], "options_en": ["Agni-Prime", "Pralay", "Akash-NG", "Nag"], "ans": "B", "exp_hi": "प्रलय (Pralay) सतह-से-सतह पर मार करने वाली भारत की पहली स्वदेशी सामरिक क्वासी-बैलिस्टिक मिसाइल है। इसकी मारक क्षमता 150 से 500 किमी तक है और इसे डीआरडीओ द्वारा विकसित किया गया है।", "exp_en": "Pralay is India's indigenous solid-fuel surface-to-surface quasi-ballistic tactical missile developed by DRDO, having an operational strike range of 150 to 500 km."}, {"id": 27, "section_hi": "कूटनीति एवं संबंध", "section_en": "Diplomacy & Culture", "q_hi": "नवंबर 2026 में किस देश ने 108 बौद्ध स्तूपों के निर्माण के अवसर पर 76वां स्तूप प्रधानमंत्री नरेंद्र मोदी को समर्पित किया?", "q_en": "In November 2026, which country dedicated its 76th Stupa to Prime Minister Narendra Modi during the construction of 108 Buddhist stupas?", "options_hi": ["नेपाल", "श्रीलंका", "भूटान", "थाईलैंड"], "options_en": ["Nepal", "Sri Lanka", "Bhutan", "Thailand"], "ans": "C", "exp_hi": "भूटान ने दोनों देशों के प्रगाढ़ सांस्कृतिक व कूटनीतिक संबंधों के सम्मान में 108 स्तूपों में से 76वां स्तूप पीएम नरेंद्र मोदी को समर्पित किया।", "exp_en": "Bhutan dedicated the 76th stupa out of 108 stupas to PM Narendra Modi, celebrating enduring spiritual, cultural, and bilateral ties between the two nations."}, {"id": 28, "section_hi": "सम्मेलन एवं कृषि", "section_en": "Conferences & Agriculture", "q_hi": "2 से 4 नवंबर 2026 तक पहला अंतर्राष्ट्रीय मक्का सम्मेलन 2026 (1st International Maize Conference) कहां आयोजित किया गया?", "q_en": "Where was the 1st International Maize Conference 2026 held from 2 to 4 November 2026?", "options_hi": ["नई दिल्ली", "हैदराबाद", "वाराणसी", "लुधियाना"], "options_en": ["New Delhi", "Hyderabad", "Varanasi", "Ludhiana"], "ans": "B", "exp_hi": "हैदराबाद के जेडी कन्वेंशन सेंटर में पहला अंतर्राष्ट्रीय मक्का सम्मेलन आयोजित किया गया। थीम: 'बदलती दुनिया में भोजन, पशु आहार, चारा, ईंधन और स्थिरता के लिए मक्का क्रांति' (Maize Revolution for Food, Feed, Fodder, Fuel and Sustainability in the Changing World)।", "exp_en": "Hosted at JRC Convention Centre, Hyderabad under the theme 'Maize Revolution for Food, Feed, Fodder, Fuel and Sustainability in the Changing World'."}, {"id": 29, "section_hi": "विज्ञान एवं वेधशाला", "section_en": "Science & Geophysics", "q_hi": "नवंबर 2026 में केंद्रीय मंत्री डॉ. जितेंद्र सिंह ने देश की 183वीं भूकंपीय वेधशाला (Seismic Observatory) का उद्घाटन कहां किया?", "q_en": "In November 2026, Union Minister Dr. Jitendra Singh inaugurated the country's 183rd Seismic Observatory at which location?", "options_hi": ["किश्तवाड़ (जम्मू-कश्मीर)", "लेह (लद्दाख)", "शिमला (हिमाचल प्रदेश)", "देहरादून (उत्तराखंड)"], "options_en": ["Kishtwar (J&K)", "Leh (Ladakh)", "Shimla (Himachal Pradesh)", "Dehradun (Uttarakhand)"], "ans": "A", "exp_hi": "जम्मू-कश्मीर के किश्तवाड़ जिले में देश की 183वीं भूकंपीय वेधशाला स्थापित की गई है, जिससे हिमालयी क्षेत्र में भूकंपीय गतिविधियों की रीयल-टाइम निगरानी हो सकेगी।", "exp_en": "Set up in Kishtwar district of Jammu and Kashmir to provide real-time seismic monitoring and disaster readiness across vulnerable Himalayan tectonic zones."}, {"id": 30, "section_hi": "साहित्य एवं पुरस्कार", "section_en": "Literature & Awards", "q_hi": "सिकंदर महान की जीवनी 'Alexander: The God King Man' हेतु प्रतिष्ठित बैली गिफोर्ड नॉन-फिक्शन पुरस्कार 2026 किसने जीता?", "q_en": "Who won the prestigious Baillie Gifford Prize for Non-Fiction 2026 for the biography 'Alexander: The God King Man'?", "options_hi": ["विलियम डेलरिम्पल", "एडमंड रिचर्डसन (Edmund Richardson)", "रामचंद्र गुहा", "युवाल नोआ हरारी"], "options_en": ["William Dalrymple", "Edmund Richardson", "Ramachandra Guha", "Yuval Noah Harari"], "ans": "B", "exp_hi": "ब्रिटिश लेखक एडमंड रिचर्डसन को सिकंदर महान के ऐतिहासिक जीवन और मिथकों पर आधारित पुस्तक 'Alexander: The God King Man' के लिए बैली गिफोर्ड पुरस्कार प्रदान किया गया।", "exp_en": "British author Edmund Richardson received the Baillie Gifford Prize 2026 for his comprehensive historical work 'Alexander: The God King Man'."}, {"id": 31, "section_hi": "नीति आयोग एवं नवाचार", "section_en": "NITI Aayog & Rankings", "q_hi": "नीति आयोग द्वारा जारी 'इंडिया साइंस एंड टेक्नोलॉजी स्कोरबोर्ड' में किस राज्य ने शीर्ष स्थान प्राप्त किया?", "q_en": "Which state secured the top position in the 'India Science and Technology Scoreboard' released by NITI Aayog?", "options_hi": ["कर्नाटक", "तमिलनाडु", "महाराष्ट्र", "गुजरात"], "options_en": ["Karnataka", "Tamil Nadu", "Maharashtra", "Gujarat"], "ans": "B", "exp_hi": "नीति आयोग के साइंस एंड टेक्नोलॉजी स्कोरबोर्ड में तमिलनाडु ने प्रथम स्थान प्राप्त किया। अनुसंधान प्रकाशन में शीर्ष 3 राज्य: तमिलनाडु, उत्तर प्रदेश और महाराष्ट्र। पेटेंट आवेदन में शीर्ष 3 राज्य: तमिलनाडु, महाराष्ट्र और कर्नाटक।", "exp_en": "Tamil Nadu topped NITI Aayog's Science & Technology Scoreboard. Top 3 states in research publications: Tamil Nadu, UP, Maharashtra; in patent applications: Tamil Nadu, Maharashtra, Karnataka."}, {"id": 32, "section_hi": "शिक्षा एवं रैंकिंग", "section_en": "Education & Rankings", "q_hi": "क्यूएस एशिया यूनिवर्सिटी रैंकिंग 2027 (QS Asia University Rankings) में भारत में कौन-सा संस्थान शीर्ष पर रहा?", "q_en": "Which institution emerged as the top-ranked institution in India in the QS Asia University Rankings 2027?", "options_hi": ["आईआईएससी बेंगलुरु", "आईआईटी दिल्ली", "आईआईटी बॉम्बे", "आईआईटी मद्रास"], "options_en": ["IISc Bengaluru", "IIT Delhi", "IIT Bombay", "IIT Madras"], "ans": "B", "exp_hi": "आईआईटी दिल्ली एशिया में 66वें स्थान के साथ भारत में नंबर-1 रहा (पिछले वर्ष 59वें स्थान पर था)। अन्य भारतीय संस्थान: आईआईएससी बेंगलुरु (79वां), आईआईटी बॉम्बे (83वां), आईआईटी मद्रास (85वां)। एशिया में शीर्ष: यूनिवर्सिटी ऑफ हांगकांग (1st), पेकिंग यूनिवर्सिटी (2nd), सिंघुआ यूनिवर्सिटी (3rd)।", "exp_en": "IIT Delhi secured Asia Rank 66 to emerge as India's top university. Other Indian ranks: IISc (79), IIT Bombay (83), IIT Madras (85). Top in Asia: Univ. of Hong Kong (1st), Peking Univ. (2nd)."}, {"id": 33, "section_hi": "राज्य एवं दिवस", "section_en": "State Events & Days", "q_hi": "नवंबर 2026 में किस राज्य सरकार ने प्रतिवर्ष 28 नवंबर को 'आपदा प्रबंधन दिवस' (Disaster Management Day) के रूप में मनाने की घोषणा की?", "q_en": "In November 2026, which state government declared 28 November to be observed annually as 'Disaster Management Day'?", "options_hi": ["हिमाचल प्रदेश", "उत्तराखंड", "सिक्किम", "असम"], "options_en": ["Himachal Pradesh", "Uttarakhand", "Sikkim", "Assam"], "ans": "B", "exp_hi": "उत्तराखंड सरकार ने राज्य में आपदा जागरूकता और तैयारी को सुदृढ़ करने के उद्देश्य से प्रत्येक वर्ष 28 नवंबर को 'आपदा प्रबंधन दिवस' घोषित किया है।", "exp_en": "The Government of Uttarakhand officially declared November 28 as Disaster Management Day to enhance statewide resilience, mitigation preparedness, and community risk awareness."}, {"id": 34, "section_hi": "नौसेना एवं सुरक्षा", "section_en": "Maritime Security", "q_hi": "नवंबर 2026 में भारतीय नौसेना ने सोमालिया के तट के पास किस देश के अपहृत मछली पकड़ने वाले जहाज 'अजनी' (Al-Azni) को समुद्री लुटेरों से मुक्त कराया?", "q_en": "In November 2026, the Indian Navy rescued hijacked fishing vessel 'Al-Azni' belonging to which country off the coast of Somalia?", "options_hi": ["ओमान", "यमन", "ईरान", "पाकिस्तान"], "options_en": ["Oman", "Yemen", "Iran", "Pakistan"], "ans": "C", "exp_hi": "भारतीय नौसेना के युद्धपोत INS कोलकाता ने सोमालियाई समुद्री लुटेरों के चंगुल से ईरानी जहाज 'अजनी' को सफलतापूर्वक छुड़ाया। इस साहसिक ऑपरेशन में भारतीय वायुसेना के C-17 ग्लोबमास्टर से मार्कोस (MARCOS) कमांडो को सटीक एयरड्रॉप किया गया था।", "exp_en": "Indian Navy warship INS Kolkata intercepted and rescued hijacked Iranian fishing vessel 'Al-Azni' off Somalia, supported by IAF C-17 Globemaster precision air-drop of MARCOS commandos."}, {"id": 35, "section_hi": "पुस्तकें एवं पुरस्कार", "section_en": "Books & Awards", "q_hi": "किस भारतीय लेखिका ने अपनी पुस्तक 'The Tamils: A Portrait of a Community' के लिए सर्वश्रेष्ठ अंतर्राष्ट्रीय नॉन-फिक्शन पुस्तक का शारजाह पुरस्कार 2026 जीता?", "q_en": "Which Indian author won the Sharjah International Book Award 2026 for Best International Non-Fiction Book for 'The Tamils: A Portrait of a Community'?", "options_hi": ["अरुंधति रॉय", "निर्मला लक्ष्मण", "सुधा मूर्ति", "झुम्पा लाहिड़ी"], "options_en": ["Arundhati Roy", "Nirmala Lakshman", "Sudha Murty", "Jhumpa Lahiri"], "ans": "B", "exp_hi": "प्रसिद्ध भारतीय पत्रकार और लेखिका निर्मला लक्ष्मण को तमिल संस्कृति व समाज पर उनकी पुस्तक 'The Tamils: A Portrait of a Community' हेतु प्रतिष्ठित शारजाह अंतर्राष्ट्रीय पुस्तक पुरस्कार 2026 से नवाजा गया।", "exp_en": "Veteran journalist and author Nirmala Lakshman was honoured at Sharjah International Book Fair for her ethnographic chronicle exploring Tamil heritage, society, and identity."}, {"id": 36, "section_hi": "अर्थव्यवस्था एवं नीतियां", "section_en": "Economy & Schemes", "q_hi": "4 नवंबर 2026 को केंद्रीय मंत्रिमंडल ने लिथियम और निकल प्रसंस्करण संयंत्र स्थापित करने हेतु ₹2,814 करोड़ के साथ किस योजना को मंजूरी दी?", "q_en": "On 4 November 2026, the Union Cabinet approved which scheme with an outlay of ₹2,814 crore to establish lithium and nickel processing plants?", "options_hi": ["कैपेक्स सपोर्ट स्कीम (Capex Support Scheme)", "नेशनल मिनरल मिशन", "क्रिटिकल मिनरल बूस्ट योजना", "पीएम खनिज संपदा योजना"], "options_en": ["Capex Support Scheme", "National Mineral Mission", "Critical Mineral Boost Scheme", "PM Khanij Sampada Yojana"], "ans": "A", "exp_hi": "महत्वपूर्ण खनिज प्रसंस्करण (Critical Minerals Processing) को बढ़ावा देने हेतु कैपेक्स सपोर्ट स्कीम को मंजूरी मिली। योजना की अवधि: वित्त वर्ष 2026-27 से 2030-31 (5 वर्ष); इसके तहत 4 प्रमुख संयंत्रों (2 लिथियम व 2 निकल) की स्थापना पर 30% पूंजीगत सब्सिडी दी जाएगी।", "exp_en": "Approved to bolster domestic processing of critical clean-energy minerals from FY 2026-27 to 2030-31, providing a 30% capital expenditure subsidy for 4 major plants (2 lithium, 2 nickel)."}, {"id": 37, "section_hi": "पुरस्कार एवं सौर ऊर्जा", "section_en": "Energy & Awards", "q_hi": "नवंबर 2026 में किस मंत्रालय को 'पीएम सूर्यघर उत्कृष्टता पुरस्कार 2026' (PM Surya Ghar Excellence Award) से सम्मानित किया गया?", "q_en": "In November 2026, which Union Ministry was awarded the 'PM Surya Ghar Excellence Award 2026'?", "options_hi": ["सड़क परिवहन मंत्रालय", "रेल मंत्रालय", "रक्षा मंत्रालय", "शिक्षा मंत्रालय"], "options_en": ["Ministry of Road Transport", "Ministry of Railways", "Ministry of Defence", "Ministry of Education"], "ans": "B", "exp_hi": "उपराष्ट्रपति सी.पी. राधाकृष्णन ने भारत मंडपम में रेल मंत्रालय को पीएम सूर्यघर उत्कृष्टता पुरस्कार प्रदान किया। रेलवे को केंद्रीय मंत्रालयों/विभागों द्वारा अधिकतम सरकारी भवनों के छतों पर सौर ऊर्जा पैनल लगाने (सौरीकरण) की श्रेणी में प्रथम स्थान मिला।", "exp_en": "Presented by Vice President C.P. Radhakrishnan at Bharat Mandapam. Ministry of Railways ranked 1st among Central Ministries for rooftop solar installations across government buildings."}, {"id": 38, "section_hi": "इतिहास एवं राष्ट्रीय स्मारक", "section_en": "History & Memorials", "q_hi": "नवंबर 2026 में केंद्रीय गृह मंत्री अमित शाह ने 1857 के प्रथम स्वतंत्रता संग्राम के अमर शहीदों के सम्मान में निर्मित स्मारक का उद्घाटन कहां किया?", "q_en": "In November 2026, Union Home Minister Amit Shah inaugurated a grand memorial dedicated to the martyrs of the 1857 First War of Independence at which location?", "options_hi": ["मेरठ (उत्तर प्रदेश)", "अंबाला (हरियाणा)", "झांसी (उत्तर प्रदेश)", "ग्वालियर (मध्य प्रदेश)"], "options_en": ["Meerut (Uttar Pradesh)", "Ambala (Haryana)", "Jhansi (Uttar Pradesh)", "Gwalior (Madhya Pradesh)"], "ans": "B", "exp_hi": "अंबाला (हरियाणा) में 1857 के क्रांतिवीरों के शौर्य और बलिदान को समर्पित भव्य स्वतंत्रता सेनानी स्मारक का अनावरण गृह मंत्री अमित शाह ने किया।", "exp_en": "Inaugurated at Ambala, Haryana to commemorate the valour and supreme sacrifice of freedom fighters who sparked the 1857 revolt against British colonial rule."}, {"id": 39, "section_hi": "खगोल विज्ञान", "section_en": "Astronomy & Space", "q_hi": "नवंबर 2026 में कौन-सा खगोलीय पिंड (Asteroid) कुछ समय के लिए पृथ्वी का अस्थायी 'मिनीमून' (Minimoon) बन गया?", "q_en": "In November 2026, which near-Earth asteroid temporarily became Earth's 'mini-moon' under its gravitational pull?", "options_hi": ["2024 PT5", "2026 Q8", "2020 CD3", "2006 RH120"], "options_en": ["2024 PT5", "2026 Q8", "2020 CD3", "2006 RH120"], "ans": "B", "exp_hi": "हंगेरियन खगोलशास्त्री क्रिस्टियन सारनेकी द्वारा खोजा गया क्षुद्रग्रह '2026 Q8' पृथ्वी के गुरुत्वाकर्षण में फंसकर अस्थायी उपग्रह (मिनीमून) बन गया। मिनीमून ऐसे खगोलीय पिंड होते हैं जो कुछ हफ्तों या महीनों तक पृथ्वी की परिक्रमा करने के बाद वापस अंतरिक्ष में चले जाते हैं।", "exp_en": "Asteroid '2026 Q8', discovered by Hungarian astronomer Krisztian Sarneczky, was temporarily captured by Earth's gravity as a mini-moon before escaping back into solar orbit."}, {"id": 40, "section_hi": "पर्यावरण एवं महासागर", "section_en": "Environment & Oceans", "q_hi": "नवंबर 2026 में किन देशों ने संयुक्त रूप से 'बे ऑफ बंगाल नेटवर्क ऑफ ओशन रिसर्चर्स फॉर फिशरीज' (BOBNORF) लॉन्च किया?", "q_en": "In November 2026, which countries jointly launched the 'Bay of Bengal Network of Ocean Researchers for Fisheries' (BOBNORF)?", "options_hi": ["भारत, बांग्लादेश, म्यांमार", "भारत, श्रीलंका, बांग्लादेश, मालदीव", "भारत, थाईलैंड, इंडोनेशिया", "उपरोक्त सभी चारों देश"], "options_en": ["India, Bangladesh, Myanmar", "India, Sri Lanka, Bangladesh, Maldives", "India, Thailand, Indonesia", "All the above 4 nations"], "ans": "D", "exp_hi": "भारत, श्रीलंका, बांग्लादेश और मालदीव ने बंगाल की खाड़ी क्षेत्र में मत्स्य अनुसंधान और सतत समुद्री संपदा प्रबंधन हेतु BOBNORF नेटवर्क की स्थापना की।", "exp_en": "India, Sri Lanka, Bangladesh, and Maldives jointly launched the BOBNORF network to strengthen cooperative scientific ocean research and sustainable fisheries governance in the Bay of Bengal."}, {"id": 41, "section_hi": "खेल परिदृश्य", "section_en": "Sports", "q_hi": "नवंबर 2026 में क्रिस्टियानो रोनाल्डो ने किस देश की राष्ट्रीय फुटबॉल टीम से संन्यास की घोषणा की?", "q_en": "In November 2026, Cristiano Ronaldo announced his retirement from international football for which country's national team?", "options_hi": ["ब्राजील", "पुर्तगाल", "स्पेन", "अर्जेंटीना"], "options_en": ["Brazil", "Portugal", "Spain", "Argentina"], "ans": "B", "exp_hi": "पुर्तगाल के सर्वकालिक महानतम फुटबॉलर क्रिस्टियानो रोनाल्डो ने अंतर्राष्ट्रीय फुटबॉल से संन्यास का ऐलान किया।", "exp_en": "All-time legendary football superstar Cristiano Ronaldo officially called time on his illustrious international career representing Portugal."}, {"id": 42, "section_hi": "पशुपालन एवं जैव विविधता", "section_en": "Animal Husbandry & Conservation", "q_hi": "नवंबर 2026 में केंद्रीय मंत्री राजीव रंजन सिंह ने किस राज्य में स्वदेशी पशु नस्ल 'सिरी मवेशी' (Siri Cattle) के संरक्षण हेतु उत्कृष्टता केंद्र स्थापित करने की घोषणा की?", "q_en": "In November 2026, Union Minister Rajiv Ranjan Singh announced a Centre of Excellence to conserve indigenous 'Siri Cattle' in which state?", "options_hi": ["असम", "सिक्किम", "अरुणाचल प्रदेश", "मेघालय"], "options_en": ["Assam", "Sikkim", "Arunachal Pradesh", "Meghalaya"], "ans": "B", "exp_hi": "सिक्किम में हिमालयी स्वदेशी गोवंश 'सिरी मवेशी' के संरक्षण, नस्ल सुधार और दुग्ध उत्पादकता बढ़ाने के लिए सेंटर ऑफ एक्सीलेंस खोला जाएगा।", "exp_en": "Set up in Sikkim to safeguard and enhance breeding lines and milk yield of the rugged indigenous Himalayan Siri cattle breed."}, {"id": 43, "section_hi": "जैव विविधता एवं नई प्रजातियां", "section_en": "Biodiversity & Discoveries", "q_hi": "नवंबर 2026 में वैज्ञानिकों ने किस राज्य में मीठे पानी की कैटफिश की एक नई प्रजाति 'एक्सोस्टोमा नासीबारबेटम' (Exostoma nasibarbatum) की खोज की?", "q_en": "In November 2026, scientists discovered a new species of freshwater catfish named 'Exostoma nasibarbatum' in which state?", "options_hi": ["मिजोरम", "मणिपुर", "नागालैंड", "त्रिपुरा"], "options_en": ["Mizoram", "Manipur", "Nagaland", "Tripura"], "ans": "B", "exp_hi": "मणिपुर के चंदेल जिले में म्यांमार सीमा के पास छिंदविन नदी प्रणाली की सहायक भोपाला धारा में इस दुर्लभ कैटफिश प्रजाति की पहचान की गई।", "exp_en": "Identified in the Bhopala stream, a tributary of the Chindwin river basin in Chandel district, Manipur, adjacent to the Indo-Myanmar border."}, {"id": 44, "section_hi": "कॉर्पोरेट एवं बाजार", "section_en": "Corporate & Markets", "q_hi": "अक्टूबर 2026 में ₹13.5 लाख करोड़ के मार्केट कैपिटलाइजेशन के साथ भारत की दूसरी सबसे मूल्यवान कंपनी कौन बन गई?", "q_en": "In October 2026, which company became India's 2nd most valuable firm with a market capitalization reaching ₹13.5 lakh crore?", "options_hi": ["TCS", "Jio Platforms", "HDFC Bank", "Bharti Airtel"], "options_en": ["TCS", "Jio Platforms", "HDFC Bank", "Bharti Airtel"], "ans": "B", "exp_hi": "भारत की शीर्ष 3 सबसे मूल्यवान कंपनियां: 1st - Reliance Industries, 2nd - Jio Platforms, 3rd - Bharti Airtel।", "exp_en": "India's top 3 most valued listed enterprises: 1st - Reliance Industries, 2nd - Jio Platforms, 3rd - Bharti Airtel."}, {"id": 45, "section_hi": "पर्यटन एवं धरोहर", "section_en": "Tourism & Heritage", "q_hi": "अक्टूबर 2026 में किस पर्यटन स्थल को 'द वीक ऑफ हेरिटेज अवार्ड्स 2026' में रिवरसाइड हेरिटेज श्रेणी का सिल्वर बनयान अवार्ड मिला?", "q_en": "In October 2026, which destination won the Silver Banyan Award in Riverside Heritage category at 'The Week of Heritage Awards 2026'?", "options_hi": ["मांडू (मध्य प्रदेश)", "पतरातू (झारखंड)", "हम्पी (कर्नाटक)", "मझौली (असम)"], "options_en": ["Mandu (Madhya Pradesh)", "Patratu (Jharkhand)", "Hampi (Karnataka)", "Majhauli (Assam)"], "ans": "B", "exp_hi": "झारखंड के खूबसूरत प्राकृतिक व ऐतिहासिक स्थल पतरातू घाटी और डैम क्षेत्र को राष्ट्रीय स्तर का सिल्वर बनयान अवार्ड प्रदान किया गया।", "exp_en": "Patratu Valley and Dam in Jharkhand won the national Silver Banyan Award under the Riverside Heritage tourism category."}, {"id": 46, "section_hi": "अंतर्राष्ट्रीय संगठन", "section_en": "International Organizations", "q_hi": "नवंबर 2026 में किस देश को लगातार तीसरी बार अंतर्राष्ट्रीय सौर गठबंधन (ISA) का अध्यक्ष चुना गया है?", "q_en": "In November 2026, which country was re-elected as President of the International Solar Alliance (ISA) for a third consecutive term?", "options_hi": ["फ्रांस", "भारत", "जर्मनी", "जापान"], "options_en": ["France", "India", "Germany", "Japan"], "ans": "B", "exp_hi": "भारत को 2026 से 2028 तक के कार्यकाल के लिए लगातार तीसरी बार अंतर्राष्ट्रीय सौर गठबंधन (ISA) का अध्यक्ष और फ्रांस को सह-अध्यक्ष चुना गया है।", "exp_en": "India was elected President of ISA for a 3rd term (2026-2028) with France serving as Co-President."}, {"id": 47, "section_hi": "खेल परिदृश्य", "section_en": "Sports Records", "q_hi": "महिला टी20 क्रिकेट में सबसे कम (मात्र 14) गेंदों में अर्धशतक लगाने का विश्व रिकॉर्ड किस खिलाड़ी ने बना लिया?", "q_en": "Which cricketer set a world record for the fastest fifty in Women's T20 International history in just 14 balls?", "options_hi": ["स्मृति मंधाना", "प्रेमा रावत", "शेफाली वर्मा", "सोफी डिवाइन"], "options_en": ["Smriti Mandhana", "Prema Rawat", "Shafali Verma", "Sophie Devine"], "ans": "B", "exp_hi": "प्रेमा रावत ने मात्र 14 गेंदों पर तूफानी अर्धशतक जड़कर महिला टी20 अंतर्राष्ट्रीय क्रिकेट इतिहास का सबसे तेज अर्धशतक का विश्व रिकॉर्ड बनाया।", "exp_en": "Prema Rawat smashed the fastest half-century in Women's T20I cricket history off merely 14 deliveries."}, {"id": 48, "section_hi": "दिवस एवं पर्यावरण", "section_en": "Days & Ecology", "q_hi": "'अंतर्राष्ट्रीय बायोस्फीयर रिजर्व दिवस' (International Day for Biosphere Reserves) वर्ष 2026 में कब मनाया गया?", "q_en": "When was the 'International Day for Biosphere Reserves' observed globally in the year 2026?", "options_hi": ["1 नवंबर", "3 नवंबर", "5 नवंबर", "7 नवंबर"], "options_en": ["1 November", "3 November", "5 November", "7 November"], "ans": "B", "exp_hi": "यूनेस्को द्वारा जैव विविधता संरक्षण और सतत पारिस्थितिकी तंत्र को बढ़ावा देने हेतु प्रतिवर्ष 3 नवंबर को यह दिवस मनाया जाता है।", "exp_en": "Celebrated worldwide on November 3 under UNESCO auspices to highlight biosphere reserves in conserving ecosystems and supporting sustainable development."}, {"id": 49, "section_hi": "जीआई टैग एवं कृषि", "section_en": "GI Tags & Agriculture", "q_hi": "अक्टूबर 2026 में ऑस्ट्रेलिया को पहली बार निर्यात की गई 'तांदूर रेड ग्राम' (तांदूर तूर दाल) किस राज्य का जीआई टैग उत्पाद है?", "q_en": "Tandur Red Gram, exported commercially for the first time to Australia in October 2026, holds a Geographical Indication (GI) tag from which state?", "options_hi": ["आंध्र प्रदेश", "तेलंगाना", "महाराष्ट्र", "कर्नाटक"], "options_en": ["Andhra Pradesh", "Telangana", "Maharashtra", "Karnataka"], "ans": "B", "exp_hi": "तेलंगाना के तांदूर क्षेत्र की प्रसिद्ध उच्च प्रोटीन युक्त तूर दाल को जीआई टैग प्राप्त है और इसे पहली बार वाणिज्यिक स्तर पर ऑस्ट्रेलिया निर्यात किया गया।", "exp_en": "Telangana's GI-tagged Tandur Red Gram, famed for high protein content and fertile local black soil cultivation, was shipped commercially to Australia."}, {"id": 50, "section_hi": "पर्यावरण एवं अंतर्राष्ट्रीय", "section_en": "Environment & Disasters", "q_hi": "नवंबर 2026 में किस देश ने अल-नीनो (El Niño) के गंभीर सूखे और मौसमी प्रभावों से निपटने हेतु राष्ट्रीय आपातकाल की घोषणा की?", "q_en": "In November 2026, which South American country declared a national state of emergency to combat catastrophic droughts driven by El Niño?", "options_hi": ["चिली", "पेरू", "बोलीविया", "इक्वाडोर"], "options_en": ["Chile", "Peru", "Bolivia", "Ecuador"], "ans": "C", "exp_hi": "दक्षिण अमेरिकी देश बोलीविया ने अल-नीनो जनित भीषण सूखे, जल संकट और फसलों के नुकसान को देखते हुए राष्ट्रीय आपातकाल घोषित किया।", "exp_en": "Bolivia declared a nationwide state of emergency facing severe reservoir depletion, wildfire threats, and agricultural losses induced by the El Niño cycle."}, {"id": 51, "section_hi": "खेल परिदृश्य", "section_en": "Sports", "q_hi": "मोंटेनेग्रो के बुडवा में आयोजित 'विश्व बॉक्सिंग अंडर-19 चैंपियनशिप 2026' में भारत ने कुल कितने पदक जीते?", "q_en": "How many total medals did India win at the World Boxing U-19 Championship 2026 held in Budva, Montenegro?", "options_hi": ["2 पदक", "4 पदक", "6 पदक", "8 पदक"], "options_en": ["2 Medals", "4 Medals", "6 Medals", "8 Medals"], "ans": "B", "exp_hi": "भारत ने कुल 4 पदक जीते: 1 स्वर्ण (आदित्य - पुरुष 55 किग्रा), 1 रजत (मेघा शोक - महिला 80 किग्रा), 2 कांस्य (हर्षिका - महिला 65 किग्रा और प्राची टोकस - महिला 80+ किग्रा)।", "exp_en": "India finished with 4 medals: 1 Gold (Aditya, 55kg), 1 Silver (Megha Shoke, 80kg), and 2 Bronze (Harshika, 65kg & Prachi Tokas, 80+kg)."}, {"id": 52, "section_hi": "खेल परिदृश्य", "section_en": "Sports Records", "q_hi": "अंतर्राष्ट्रीय टी20 क्रिकेट में 150 विकेट पूरे करने वाले पहले भारतीय गेंदबाज कौन बन गए हैं?", "q_en": "Who became the first Indian bowler to complete 150 wickets in Men's T20 International cricket?", "options_hi": ["जसप्रीत बुमराह", "अर्शदीप सिंह", "युजवेंद्र चहल", "भुवनेश्वर कुमार"], "options_en": ["Jasprit Bumrah", "Arshdeep Singh", "Yuzvendra Chahal", "Bhuvneshwar Kumar"], "ans": "B", "exp_hi": "बाएं हाथ के तेज गेंदबाज अर्शदीप सिंह पुरुषों के अंतर्राष्ट्रीय टी20 क्रिकेट में 150 विकेट लेने वाले पहले भारतीय बॉलर बने।", "exp_en": "Left-arm pacer Arshdeep Singh achieved the milestone of becoming the first Indian bowler to scalp 150 T20I wickets."}, {"id": 53, "section_hi": "अंतर्राष्ट्रीय एवं व्यक्तित्व", "section_en": "International & Culture", "q_hi": "अक्टूबर 2026 में महात्मा गांधी जी की आदमकद (Life-size) प्रतिमा का अनावरण करने वाला अमेरिका का पहला राज्य कौन-सा बन गया?", "q_en": "In October 2026, which US state became the first to unveil a life-size statue of Mahatma Gandhi?", "options_hi": ["नॉर्थ डकोटा", "कैलिफोर्निया", "टेक्सास", "जॉर्जिया"], "options_en": ["North Dakota", "California", "Texas", "Georgia"], "ans": "A", "exp_hi": "नॉर्थ डकोटा अमेरिका का पहला राज्य बना जहां महात्मा गांधी की आदमकद प्रतिमा स्थापित कर शांति व अहिंसा के उनके वैश्विक संदेश को सम्मानित किया गया।", "exp_en": "North Dakota became the first state in the United States to erect and dedicate a life-size bronze statue honoring Mahatma Gandhi's gospel of non-violence."}, {"id": 54, "section_hi": "शिक्षा एवं नवाचार", "section_en": "Higher Education & Tech", "q_hi": "भारत में पहली बार पारंपरिक थीसिस के स्थान पर 'प्रोडक्ट या स्टार्टअप ड्रिवन' बिना थीसिस वाला पीएचडी प्रोग्राम किस IIT ने लॉन्च किया?", "q_en": "Which IIT introduced India's first thesis-free PhD program driven by product innovation and startup ventures?", "options_hi": ["आईआईटी दिल्ली", "आईआईटी रोपड़", "आईआईटी मद्रास", "आईआईटी कानपुर"], "options_en": ["IIT Delhi", "IIT Ropar", "IIT Madras", "IIT Kanpur"], "ans": "B", "exp_hi": "आईआईटी रोपड़ ने नवाचार और उद्यमिता को बढ़ावा देने के लिए अनुसंधानकर्ताओं को सीधे पेटेंट, वर्किंग प्रोटोटाइप या स्टार्टअप के आधार पर डॉक्टरेट डिग्री देने की नीति शुरू की।", "exp_en": "IIT Ropar pioneered a thesis-free doctoral degree pathway conferring PhDs based on registered patents, enterprise validation, and working prototypes."}, {"id": 55, "section_hi": "खेल परिदृश्य", "section_en": "Sports", "q_hi": "अक्टूबर 2026 में सीनियर विश्व कुश्ती चैंपियनशिप में स्वर्ण पदक जीतने वाली भारत की पहली महिला पहलवान कौन बन गई हैं?", "q_en": "Who became the first Indian female wrestler to win a Gold medal at the Senior World Wrestling Championship in October 2026?", "options_hi": ["विनेश फोगाट", "मनीषा भानवाला", "अंतिम पंघाल", "साक्षी मलिक"], "options_en": ["Vinesh Phogat", "Manisha Bhanwala", "Antim Panghal", "Sakshi Malik"], "ans": "B", "exp_hi": "मनीषा भानवाला ने सीनियर वर्ल्ड रेसलिंग चैंपियनशिप में स्वर्ण पदक जीतकर भारत का नाम इतिहास के स्वर्णिम पन्नों पर दर्ज कराया।", "exp_en": "Manisha Bhanwala scripted history by becoming the first Indian woman wrestler to clinch Gold at the Senior World Wrestling Championships."}, {"id": 56, "section_hi": "अर्थव्यवस्था एवं रिपोर्ट", "section_en": "Economy & World Bank", "q_hi": "विश्व बैंक की रिपोर्ट के अनुसार, 2011 से 2023 के बीच भारत में अत्यधिक गरीबी दर 27.1% से घटकर कितने प्रतिशत रह गई है?", "q_en": "According to the World Bank, India's extreme poverty rate ($2.15/day) plummeted from 27.1% in 2011 to what percentage in 2023?", "options_hi": ["5.5%", "2.6%", "4.1%", "1.8%"], "options_en": ["5.5%", "2.6%", "4.1%", "1.8%"], "ans": "B", "exp_hi": "विश्व बैंक के नवीनतम आंकड़ों के अनुसार, भारत में अत्यधिक गरीबी रेखा ($2.15/दिन) के नीचे रहने वाली आबादी 27.1% से भारी गिरावट के साथ मात्र 2.6% पर आ गई है।", "exp_en": "World Bank findings show that India drastically reduced extreme poverty ($2.15/day benchmark) from 27.1% in 2011 to just 2.6% by 2023."}, {"id": 57, "section_hi": "पुरस्कार एवं सम्मान", "section_en": "Awards & Honours", "q_hi": "13वां स्वामी विवेकानंद स्मृति कर्मयोगी सम्मान 2026 किसे प्रदान किया गया?", "q_en": "Who was awarded the prestigious 13th Swami Vivekananda Smriti Karmayogi Award 2026?", "options_hi": ["सोनम वांगचुक", "लैशराम यात्रा सिंह", "जादव पायेंग", "मेधा पाटकर"], "options_en": ["Sonam Wangchuk", "Laishram Yatra Singh", "Jadav Payeng", "Medha Patkar"], "ans": "B", "exp_hi": "पूर्वोत्तर क्षेत्र में समाजसेवा और युवा सशक्तिकरण हेतु मणिपुर के सामाजिक कार्यकर्ता लैशराम यात्रा सिंह को यह प्रतिष्ठित सम्मान मिला।", "exp_en": "Conferred upon Manipuri grassroots activist Laishram Yatra Singh for tireless social upliftment and youth empowerment in the North-East."}, {"id": 58, "section_hi": "पुस्तकें एवं लेखक", "section_en": "Books & Literature", "q_hi": "अक्टूबर 2026 में जारी 'The Story of Vande Mataram' पुस्तक के मूल लेखक कौन हैं?", "q_en": "Who is the original author of the book 'The Story of Vande Mataram' recently published in English translation?", "options_hi": ["बंकिम चंद्र चट्टोपाध्याय", "हंगा हरी (Hanga Hari)", "रवींद्रनाथ टैगोर", "अरबिंदो घोष"], "options_en": ["Bankim Chandra Chattopadhyay", "Hanga Hari", "Rabindranath Tagore", "Aurobindo Ghosh"], "ans": "B", "exp_hi": "राष्ट्रगीत 'वंदे मातरम्' के ऐतिहासिक सफर पर आधारित इस प्रसिद्ध पुस्तक का हाल ही में अंग्रेजी अनुवाद प्रकाशित किया गया है।", "exp_en": "The English translation of Hanga Hari's seminal historical treatise on the origin and nationalist journey of national song 'Vande Mataram' was published."}, {"id": 59, "section_hi": "स्वास्थ्य एवं सरकारी योजनाएं", "section_en": "Healthcare & Schemes", "q_hi": "आयुष्मान वय वंदना योजना के तहत 70 वर्ष या उससे अधिक आयु के वरिष्ठ नागरिकों को प्रतिवर्ष कितना स्वास्थ्य बीमा कवरेज मिलता है?", "q_en": "How much annual health insurance cover is provided to senior citizens aged 70 and above under the Ayushman Vaya Vandana Yojana?", "options_hi": ["₹3 लाख", "₹5 लाख", "₹10 लाख", "₹2 लाख"], "options_en": ["₹3 Lakh", "₹5 Lakh", "₹10 Lakh", "₹2 Lakh"], "ans": "B", "exp_hi": "29 अक्टूबर 2026 को इस योजना के 2 वर्ष पूरे हुए। यह आयुष्मान भारत योजना का विस्तार है जिसमें आय सीमा के बिना सभी 70+ बुजुर्गों को ₹5 लाख/वर्ष का मुफ्त इलाज मिलता है।", "exp_en": "Ayushman Vaya Vandana Yojana offers universal ₹5 lakh annual cashless health cover per family for all senior citizens aged 70+ regardless of income bracket."}, {"id": 60, "section_hi": "खेल परिदृश्य", "section_en": "Sports Records", "q_hi": "पुरुष अंतर्राष्ट्रीय टी20 क्रिकेट में 200 विकेट लेने वाले दुनिया के पहले गेंदबाज कौन बन गए हैं?", "q_en": "Who created history by becoming the world's first bowler to bag 200 wickets in Men's T20 Internationals?", "options_hi": ["राशिद खान (अफगानिस्तान)", "टिम साउदी", "शाकिब अल हसन", "वानिंदु हसरंगा"], "options_en": ["Rashid Khan (Afghanistan)", "Tim Southee", "Shakib Al Hasan", "Wanindu Hasaranga"], "ans": "A", "exp_hi": "अफगानिस्तान के स्टार स्पिनर राशिद खान पुरुषों के अंतर्राष्ट्रीय टी20 क्रिकेट इतिहास में 200 विकेट के जादुई आंकड़े तक पहुंचने वाले विश्व के पहले गेंदबाज बने।", "exp_en": "Afghan leg-spinning maestro Rashid Khan became the first cricketer in men's T20I history to achieve the monumental milestone of 200 wickets."}, {"id": 61, "section_hi": "पर्यावरण एवं संयुक्त राष्ट्र", "section_en": "Environment & UNEP", "q_hi": "संयुक्त राष्ट्र पर्यावरण कार्यक्रम (UNEP) ने अपनी वैश्विक रिपोर्ट में भारत के किस कार्यक्रम को 'विश्व पुनर्स्थापना फ्लैगशिप' के रूप में मान्यता दी?", "q_en": "In its global report, which Indian initiative was designated by the United Nations Environment Programme (UNEP) as a 'World Restoration Flagship'?", "options_hi": ["प्रोजेक्ट टाइगर", "गंगा नदी डॉल्फिन पुनर्प्राप्ति कार्यक्रम", "प्रोजेक्ट चीता", "राष्ट्रीय हरित भारत मिशन"], "options_en": ["Project Tiger", "Ganges River Dolphin Recovery Programme", "Project Cheetah", "National Green India Mission"], "ans": "B", "exp_hi": "UNEP की 'Nature's Comeback' रिपोर्ट में भारत के गंगा रिवर डॉल्फिन रिकवरी प्रोग्राम को विश्व स्तरीय इकोसिस्टम रेस्टोरेशन फ्लैगशिप घोषित किया गया।", "exp_en": "UNEP's 'Nature's Comeback' report recognized the Ganges River Dolphin Recovery Programme as an iconic World Restoration Flagship for freshwater ecosystem rejuvenation."}, {"id": 62, "section_hi": "रक्षा एवं प्रौद्योगिकी", "section_en": "Defence & Exhibitions", "q_hi": "अक्टूबर 2026 में नई दिल्ली में डीआरडीओ की स्वदेशी रक्षा तकनीक प्रदर्शनी 'विश्व 2026' (VISHWA 2026) का उद्घाटन किसने किया?", "q_en": "Who inaugurated DRDO's indigenous defence technology exhibition 'VISHWA 2026' in New Delhi?", "options_hi": ["राजनाथ सिंह", "संजय सेठ (रक्षा राज्य मंत्री)", "डॉ. समीर वी. कामत", "अमित शाह"], "options_en": ["Rajnath Singh", "Sanjay Seth (MoS Defence)", "Dr. Samir V. Kamat", "Amit Shah"], "ans": "B", "exp_hi": "रक्षा राज्य मंत्री संजय सेठ ने प्रदर्शनी का उद्घाटन किया। थीम: 'रक्षा क्षमताओं का प्रदर्शन, वैश्विक साझेदारियों को मजबूत बनाना' (Showcasing Defense Capabilities, Strengthening Global Partnerships)।", "exp_en": "Inaugurated by Minister of State for Defence Sanjay Seth under the theme 'Showcasing Defense Capabilities, Strengthening Global Partnerships'."}, {"id": 63, "section_hi": "बैंकिंग एवं साइबर सुरक्षा", "section_en": "Banking & Cyber Security", "q_hi": "अक्टूबर 2026 में भारतीय स्टेट बैंक (SBI) ने अपने अत्याधुनिक नए साइबर सुरक्षा उत्कृष्टता केंद्र का उद्घाटन किस शहर में किया?", "q_en": "In October 2026, State Bank of India (SBI) inaugurated its state-of-the-art Cyber Security Centre of Excellence in which city?", "options_hi": ["हैदराबाद", "बेंगलुरु", "मुंबई", "चेन्नई"], "options_en": ["Hyderabad", "Bengaluru", "Mumbai", "Chennai"], "ans": "C", "exp_hi": "डिजिटल बैंकिंग सुरक्षा को अभेद्य बनाने और साइबर हमलों से वित्तीय बुनियादी ढांचे की सुरक्षा हेतु एसबीआई ने मुंबई में इस केंद्र की स्थापना की।", "exp_en": "Established by SBI in Mumbai to build unassailable digital banking defense systems and shield financial architecture from sophisticated cyber threats."}, {"id": 64, "section_hi": "राष्ट्रीय एवं राज्य दिवस", "section_en": "States & Formation Days", "q_hi": "1 नवंबर 2026 को भारत के किन राज्यों ने अपना स्थापना दिवस मनाया?", "q_en": "On 1 November 2026, which Indian states celebrated their Statehood / Formation Day?", "options_hi": ["मध्य प्रदेश, छत्तीसगढ़, हरियाणा, पंजाब", "कर्नाटक, केरल, आंध्र प्रदेश, तमिलनाडु", "उपरोक्त सभी राज्य", "केवल हरियाणा और पंजाब"], "options_en": ["Madhya Pradesh, Chhattisgarh, Haryana, Punjab", "Karnataka, Kerala, Andhra Pradesh, Tamil Nadu", "All the above states", "Only Haryana and Punjab"], "ans": "C", "exp_hi": "1 नवंबर को आंध्र प्रदेश, तमिलनाडु, केरल, कर्नाटक, पंजाब, हरियाणा, मध्य प्रदेश और छत्तीसगढ़ राज्य अपना स्थापना दिवस मनाते हैं।", "exp_en": "November 1 marks the Foundation Day for 8 Indian states: Andhra Pradesh, Tamil Nadu, Kerala, Karnataka, Punjab, Haryana, Madhya Pradesh, and Chhattisgarh."}, {"id": 65, "section_hi": "ओलंपिक एवं खेल", "section_en": "Olympics & Slogans", "q_hi": "लॉस एंजिल्स ओलंपिक और पैरालंपिक खेल 2028 (LA 2028) का आधिकारिक स्लोगन क्या घोषित किया गया है?", "q_en": "What has been officially announced as the official motto/slogan for the Los Angeles Olympic and Paralympic Games 2028 (LA 2028)?", "options_hi": ["यूनाइटेड बाय इमोशन", "सितारों का संरेखण (Stars Align)", "शेयर द पैशन", "फास्टर, हायर, स्ट्रॉन्गर"], "options_en": ["United by Emotion", "Stars Align", "Share the Passion", "Faster, Higher, Stronger"], "ans": "B", "exp_hi": "आयोजन समिति ने LA 2028 गेम्स के लिए 'Stars Align' (सितारों का संरेखण) को आधिकारिक नारा घोषित किया है।", "exp_en": "The LA 2028 Organizing Committee unveiled 'Stars Align' as the official Games slogan, celebrating dreams, world-class excellence, and global harmony."}, {"id": 66, "section_hi": "जैव विविधता एवं अनुसंधान", "section_en": "Biodiversity & Discoveries", "q_hi": "वैज्ञानिकों ने सूक्ष्म स्थलीय घोंघे की एक नई सूक्ष्म प्रजाति 'डाइसेरिक्स टेलरेंसिस/कोल्हापुरेंसिस' की खोज कहां की?", "q_en": "Scientists discovered a rare micro terrestrial snail species 'Dicerix kolhaporensis' in which region?", "options_hi": ["वायनाड (केरल)", "कोल्हापुर (महाराष्ट्र)", "कुर्ग (कर्नाटक)", "महाबलेश्वर (महाराष्ट्र)"], "options_en": ["Wayanad (Kerala)", "Kolhapur (Maharashtra)", "Coorg (Karnataka)", "Mahabaleshwar (Maharashtra)"], "ans": "B", "exp_hi": "महाराष्ट्र के पश्चिमी घाट क्षेत्र कोल्हापुर में सूक्ष्म स्थलीय घोंघे की इस दुर्लभ और पारिस्थितिक रूप से संवेदनशील प्रजाति की खोज हुई।", "exp_en": "Discovered in the biodiverse Western Ghats of Kolhapur, Maharashtra, representing a rare endemic land snail species of high conservation interest."}, {"id": 67, "section_hi": "नियुक्तियां एवं ऊर्जा", "section_en": "Appointments & Energy", "q_hi": "भारतीय नवीकरणीय ऊर्जा विकास एजेंसी लिमिटेड (IREDA) के नए अध्यक्ष एवं प्रबंध निदेशक (CMD) कौन बने हैं?", "q_en": "Who took charge as the new Chairman and Managing Director (CMD) of the Indian Renewable Energy Development Agency (IREDA)?", "options_hi": ["प्रदीप कुमार दास", "जतिन कुमार नायक", "संतोष कुमार झा", "आर.के. त्यागी"], "options_en": ["Pradeep Kumar Das", "Jatin Kumar Nayak", "Santosh Kumar Jha", "R.K. Tyagi"], "ans": "B", "exp_hi": "जतिन कुमार नायक ने इरेडा (IREDA) के नए सीएमडी का कार्यभार संभाला है। IREDA भारत में हरित ऊर्जा परियोजनाओं के वित्तपोषण की प्रमुख एजेंसी है।", "exp_en": "Jatin Kumar Nayak took helm as CMD of IREDA, India's premier government non-banking financial institution financing green and renewable energy projects."}, {"id": 68, "section_hi": "खेल प्रशासन", "section_en": "Sports Administration", "q_hi": "कॉमनवेल्थ गेम्स 2030 की प्रस्तावित आयोजन समिति के बोर्ड में खिलाड़ी प्रतिनिधि के रूप में किन्हें नामित किया गया है?", "q_en": "Who were nominated as athlete representatives to the board of the proposed Commonwealth Games 2030 Organizing Committee?", "options_hi": ["साइना नेहवाल", "राहुल द्रविड़", "दोनों (A और B)", "अभिनव बिंद्रा"], "options_en": ["Saina Nehwal", "Rahul Dravid", "Both (A and B)", "Abhinav Bindra"], "ans": "C", "exp_hi": "बैडमिंटन लीजेंड साइना नेहवाल और महान क्रिकेटर राहुल द्रविड़ को कॉमनवेल्थ गेम्स 2030 आयोजन समिति बोर्ड में एथलीट प्रतिनिधि चुना गया।", "exp_en": "Legendary badminton icon Saina Nehwal and former Indian cricket head coach/captain Rahul Dravid were appointed as athlete representatives on the 2030 CWG board."}, {"id": 69, "section_hi": "कूटनीति एवं स्मारक", "section_en": "Diplomacy & Statues", "q_hi": "31 अक्टूबर 2026 (राष्ट्रीय एकता दिवस) को विदेश मंत्री डॉ. एस. जयशंकर ने अमेरिका के किस शहर में सरदार वल्लभभाई पटेल की प्रतिमा का अनावरण किया?", "q_en": "On National Unity Day (31 Oct 2026), External Affairs Minister Dr. S. Jaishankar unveiled a statue of Sardar Vallabhbhai Patel in which US city?", "options_hi": ["न्यूयॉर्क", "वाशिंगटन डीसी", "अटलांटा", "शिकागो"], "options_en": ["New York", "Washington D.C.", "Atlanta", "Chicago"], "ans": "C", "exp_hi": "विदेश मंत्री डॉ. एस. जयशंकर ने अटलांटा स्थित भारतीय महावाणिज्य दूतावास में लौह पुरुष सरदार वल्लभभाई पटेल की प्रतिमा का अनावरण किया।", "exp_en": "Unveiled at the Consulate General of India in Atlanta by EAM Dr. S. Jaishankar, honouring India's Iron Man on Rashtriya Ekta Diwas."}, {"id": 70, "section_hi": "सुरक्षा एवं सम्मान", "section_en": "Police & President's Colour", "q_hi": "नवंबर 2026 में केंद्रीय गृह मंत्री अमित शाह ने किस पुलिस बल को राष्ट्रपति पुलिस ध्वज (President's Colour) प्रदान किया?", "q_en": "In November 2026, Union Home Minister Amit Shah presented the President's Colour to which police force?", "options_hi": ["दिल्ली पुलिस", "चंडीगढ़ पुलिस", "मुंबई पुलिस", "उत्तर प्रदेश पुलिस"], "options_en": ["Delhi Police", "Chandigarh Police", "Mumbai Police", "Uttar Pradesh Police"], "ans": "B", "exp_hi": "चंडीगढ़ पुलिस को उनकी अनुकरणीय कर्तव्यनिष्ठा और उत्कृष्ट सेवा के लिए देश के सर्वोच्च सम्मान 'प्रेसिडेंट्स कलर' से अलंकृत किया गया।", "exp_en": "Chandigarh Police was honoured with the prestigious President's Colour in recognition of steadfast devotion to duty and distinguished public service."}, {"id": 71, "section_hi": "अंतर्राष्ट्रीय सम्मेलन", "section_en": "G20 Summits", "q_hi": "30 से 31 अक्टूबर 2026 तक G20 विदेश मंत्रियों की बैठक कहां आयोजित की गई?", "q_en": "Where was the G20 Foreign Ministers' Meeting held from 30 to 31 October 2026?", "options_hi": ["रियो डी जेनेरियो (ब्राजील)", "अटलांटा (अमेरिका)", "जोहान्सबर्ग (दक्षिण अफ्रीका)", "लंदन (ब्रिटेन)"], "options_en": ["Rio de Janeiro (Brazil)", "Atlanta (USA)", "Johannesburg (South Africa)", "London (UK)"], "ans": "B", "exp_hi": "अमेरिका के अटलांटा में संपन्न बैठक की मेजबानी अमेरिकी विदेश मंत्री मार्को रुबियो ने की, जिसमें भारत का प्रतिनिधित्व विदेश मंत्री डॉ. एस. जयशंकर ने किया। प्रमुख चर्चा: वैश्विक ऊर्जा सुरक्षा, आपूर्ति श्रृंखला और भू-राजनीतिक स्थिरता।", "exp_en": "Hosted in Atlanta, USA chaired by US Secretary of State Marco Rubio, with India represented by EAM Dr. S. Jaishankar, focusing on global supply chains and energy security."}, {"id": 72, "section_hi": "समुद्री अभ्यास एवं सुरक्षा", "section_en": "Maritime Exercises & BIMSTEC", "q_hi": "30 अक्टूबर से 3 नवंबर 2026 तक पहला बिमस्टेक समुद्री सुरक्षा अभ्यास (BIMSTEC Maritime Security Exercise) कहां आयोजित किया गया?", "q_en": "Where was the maiden BIMSTEC Maritime Security Exercise conducted from 30 October to 3 November 2026?", "options_hi": ["विशाखापट्टनम", "श्री विजयपुरम (अंडमान एवं निकोबार)", "कोलंबो (श्रीलंका)", "चटगांव (बांग्लादेश)"], "options_en": ["Visakhapatnam", "Sri Vijaya Puram (Andaman & Nicobar)", "Colombo (Sri Lanka)", "Chittagong (Bangladesh)"], "ans": "B", "exp_hi": "अंडमान और निकोबार के श्री विजयपुरम में आयोजित इस पहले अभ्यास में बिमस्टेक के सभी 7 सदस्य देश (भारत, बांग्लादेश, भूटान, म्यांमार, नेपाल, श्रीलंका, थाईलैंड) शामिल हुए। थीम: 'बिमस्टेक: समृद्ध, सुदृढ़ और खुला' (BIMSTEC: Prosperous, Resilient and Open)।", "exp_en": "Held in Sri Vijaya Puram (Andaman & Nicobar Islands) featuring all 7 member states, centered on maritime interoperability under the theme 'BIMSTEC: Prosperous, Resilient and Open'."}, {"id": 73, "section_hi": "मौसम एवं आपदा", "section_en": "Meteorology & Cyclones", "q_hi": "नवंबर 2026 में बंगाल की खाड़ी में बने चक्रवात 'मुरासू' (Cyclone Murasu) का नामकरण किस देश द्वारा किया गया?", "q_en": "Which country christened the tropical cyclone 'Murasu' that developed in the Bay of Bengal in November 2026?", "options_hi": ["ओमान", "बांग्लादेश", "भारत", "मालदीव"], "options_en": ["Oman", "Bangladesh", "India", "Maldives"], "ans": "C", "exp_hi": "आईएमडी (IMD) द्वारा बंगाल की खाड़ी में बने चक्रवात 'मुरासू' की चेतावनी जारी की गई। इसका नाम भारत द्वारा प्रस्तावित किया गया था (पिछले चक्रवात 'अर्नब' का नाम बांग्लादेश ने रखा था)।", "exp_en": "Cyclone 'Murasu' in the Bay of Bengal was named by India in accordance with the WMO/ESCAP tropical cyclone naming panel."}, {"id": 74, "section_hi": "खेल परिदृश्य", "section_en": "Motorsports & F1", "q_hi": "फॉर्मूला वन वर्ल्ड चैंपियनशिप 2026 जीतने वाले इतिहास के सबसे कम उम्र के चैंपियन कौन बन गए हैं?", "q_en": "Who became the youngest World Champion in Formula One history by winning the 2026 F1 Drivers' Championship?", "options_hi": ["मैक्स वेरस्टापेन", "किमी एंटोनेली (Kimi Antonelli)", "लुईस हैमिल्टन", "चार्ल्स लेक्लर"], "options_en": ["Max Verstappen", "Kimi Antonelli", "Lewis Hamilton", "Charles Leclerc"], "ans": "B", "exp_hi": "किमी एंटोनेली मात्र 20 वर्ष और 68 दिन की उम्र में फॉर्मूला वन खिताब जीतकर इतिहास के सबसे युवा एफ-1 चैंपियन बन गए हैं।", "exp_en": "Italian phenom Kimi Antonelli became the youngest F1 World Champion in history at the age of 20 years and 68 days."}, {"id": 75, "section_hi": "दिवस एवं पर्यावरण", "section_en": "Days & Biodiversity", "q_hi": "वर्ष 2026 में 'विश्व जेलिफ़िश दिवस' (World Jellyfish Day) कब मनाया गया?", "q_en": "When was 'World Jellyfish Day' celebrated worldwide in the year 2026?", "options_hi": ["1 नवंबर", "2 नवंबर", "3 नवंबर", "4 नवंबर"], "options_en": ["1 November", "2 November", "3 November", "4 November"], "ans": "C", "exp_hi": "समुद्री पारिस्थितिकी तंत्र में जेलिफ़िश की भूमिका और समुद्री जैव विविधता के संरक्षण के प्रति जागरूकता फैलाने हेतु हर साल 3 नवंबर को यह दिवस मनाया जाता है।", "exp_en": "Observed globally on November 3 to celebrate the evolutionary wonder of jellyfish and foster ocean ecosystem conservation."}, {"id": 76, "section_hi": "संसदीय समितियां एवं सम्मेलन", "section_en": "Parliament & PAC", "q_hi": "3 से 4 नवंबर 2026 को लोक लेखा समितियों (PAC) के सभापतियों का अखिल भारतीय सम्मेलन कहां आयोजित किया गया?", "q_en": "Where was the All India Conference of Chairpersons of Public Accounts Committees (PAC) held on 3-4 November 2026?", "options_hi": ["नई दिल्ली", "तिरुवनंतपुरम (केरल)", "जयपुर (राजस्थान)", "कोलकाता (पश्चिम बंगाल)"], "options_en": ["New Delhi", "Thiruvananthapuram (Kerala)", "Jaipur (Rajasthan)", "Kolkata (West Bengal)"], "ans": "B", "exp_hi": "उद्घाटनकर्ता: लोकसभा अध्यक्ष ओम बिरला। थीम: 'लेखा परीक्षा, जवाबदेही और सुशासन: लोक लेखा समितियों की बदलती भूमिका' (Audit, Accountability and Good Governance: The Evolving Role of PAC)।", "exp_en": "Inaugurated by Lok Sabha Speaker Om Birla in Thiruvananthapuram under the theme 'Audit, Accountability and Good Governance: The Evolving Role of PAC'."}, {"id": 77, "section_hi": "अंतर्राष्ट्रीय शांति एवं संयुक्त राष्ट्र", "section_en": "UN & Peacekeeping", "q_hi": "संयुक्त राष्ट्र ने पश्चिमी सहारा में अपना 35 साल पुराना शांति मिशन समाप्त करने की घोषणा की, इस मिशन का क्या नाम था?", "q_en": "The United Nations officially concluded its 35-year-old peacekeeping mission in Western Sahara. What was the name of this mission?", "options_hi": ["MINURSO (मिनुरसो)", "UNIFIL", "UNMISS", "MONUSCO"], "options_en": ["MINURSO", "UNIFIL", "UNMISS", "MONUSCO"], "ans": "A", "exp_hi": "पश्चिमी सहारा में मोरक्को और पोलिसारियो फ्रंट के मध्य संघर्ष विराम की निगरानी हेतु 1991 में स्थापित संयुक्त राष्ट्र शांति मिशन 'MINURSO' को 31 अक्टूबर 2026 को औपचारिक रूप से समाप्त कर दिया गया।", "exp_en": "Established in 1991 to monitor ceasefire between Morocco and Polisario Front, the UN Mission for the Referendum in Western Sahara (MINURSO) ended on 31 Oct 2026."}, {"id": 78, "section_hi": "तटरक्षक बल एवं अंतर्राष्ट्रीय सहयोग", "section_en": "Coast Guard & Maritime Ties", "q_hi": "अक्टूबर 2026 में भारतीय तटरक्षक बल के किस जहाज ने केन्या के मोम्बासा में संयुक्त प्रशिक्षण और टेबल-टॉप अभ्यास में भाग लिया?", "q_en": "Which Indian Coast Guard ship participated in joint maritime training and table-top exercises in Mombasa, Kenya in October 2026?", "options_hi": ["ICGS समुद्र पहरेदार", "ICGS वराह (Varaha)", "ICGS विक्रम", "ICGS शौर्य"], "options_en": ["ICGS Samudra Paheredar", "ICGS Varaha", "ICGS Vikram", "ICGS Shaurya"], "ans": "B", "exp_hi": "भारतीय तटरक्षक जहाज ICGS वराह ने केन्याई तटरक्षक सेवा के साथ समुद्री सुरक्षा, तटीय निगरानी और तेल रिसाव नियंत्रण पर संयुक्त अभ्यास किया।", "exp_en": "ICGS Varaha visited Mombasa to conduct cross-training exercises with the Kenya Coast Guard Service focusing on EEZ surveillance and pollution response."}, {"id": 79, "section_hi": "बैंकिंग एवं उच्च स्तरीय समितियां", "section_en": "Banking & Governance", "q_hi": "अक्टूबर 2026 में केंद्र सरकार ने बैंकिंग क्षेत्र में सुधारों हेतु गठित उच्च स्तरीय समिति का अध्यक्ष किसे नियुक्त किया?", "q_en": "In October 2026, whom did the Central Government appoint as Chairman of the High-Level Committee on Banking Sector Reforms?", "options_hi": ["सुरेश एन. पटेल", "उर्जित पटेल", "एम.के. जैन", "दिनेश खारा"], "options_en": ["Suresh N. Patel", "Urjit Patel", "M.K. Jain", "Dinesh Khara"], "ans": "A", "exp_hi": "'विकसित भारत' के विजन के अनुरूप सार्वजनिक और निजी बैंकों के संचालन, गवर्नेंस और वित्तीय जोखिम प्रबंधन में सुधार हेतु पूर्व सीवीसी सुरेश एन. पटेल की अध्यक्षता में कमेटी बनाई गई।", "exp_en": "The Centre constituted a high-level committee under former Central Vigilance Commissioner Suresh N. Patel to review and modernize bank governance, credit risk mitigation, and financial resilience."}, {"id": 80, "section_hi": "खेल परिदृश्य", "section_en": "Youth Olympics & Swimming", "q_hi": "सेनेगल के डकार में आयोजित यूथ ओलंपिक गेम्स 2026 में महिलाओं की 100 मीटर फ्रीस्टाइल तैराकी में कांस्य पदक जीतने वाली पहली भारतीय तैराक कौन बनी हैं?", "q_en": "Who scripted history as the first Indian swimmer to win a medal (Bronze) in the Women's 100m Freestyle at the Youth Olympic Games 2026 in Dakar, Senegal?", "options_hi": ["माना पटेल", "धिनिधि देसिंघु (Dhinidhi Desinghu)", "शिवानी कटारिया", "भक्ति शर्मा"], "options_en": ["Maana Patel", "Dhinidhi Desinghu", "Shivani Kataria", "Bhakti Sharma"], "ans": "B", "exp_hi": "कर्नाटक की युवा तैराक धिनिधि देसिंघु ने यूथ ओलंपिक इतिहास में तैराकी में पदक जीतने वाली पहली भारतीय महिला बनकर नया इतिहास रचा।", "exp_en": "Karnataka's teenage swimming sensation Dhinidhi Desinghu clinched Bronze in women's 100m freestyle, becoming India's first Youth Olympics swimming medalist."}, {"id": 81, "section_hi": "उद्योग एवं हथकरघा", "section_en": "MSME & Khadi", "q_hi": "31 अक्टूबर से 4 नवंबर 2026 तक खादी एवं ग्रामोद्योग आयोग (KVIC) ने 'खादी दीवाली उत्सव 2026' का आयोजन कहां किया?", "q_en": "Where did the Khadi and Village Industries Commission (KVIC) organize 'Khadi Diwali Utsav 2026' from 31 October to 4 November 2026?", "options_hi": ["लखनऊ", "गांधीनगर", "वाराणसी", "नई दिल्ली"], "options_en": ["Lucknow", "Gandhinagar", "Varanasi", "New Delhi"], "ans": "D", "exp_hi": "स्वदेशी उत्पादों, खादी वस्त्रों और ग्रामीण कारीगरों के हस्तशिल्प को बढ़ावा देने के लिए नई दिल्ली के कनॉट प्लेस में खादी दीवाली उत्सव का आयोजन किया गया।", "exp_en": "Organized at Connaught Place, New Delhi to popularize indigenous artisanal textiles, village craft heritage, and eco-friendly festive collections."}, {"id": 82, "section_hi": "रक्षा नियुक्तियां", "section_en": "Defence Appointments", "q_hi": "नवंबर 2026 में भारतीय वायुसेना की पूर्वी वायु कमान (Eastern Air Command) के एयर ऑफिसर कमांडिंग-इन-चीफ का पदभार किसने संभाला?", "q_en": "In November 2026, who took charge as Air Officer Commanding-in-Chief (AOC-in-C) of the Eastern Air Command (EAC), IAF?", "options_hi": ["एयर मार्शल अमर प्रीत सिंह", "एयर मार्शल मेहताब सिंह देशवाल", "एयर मार्शल सुजीत पुष्पकर धाकड़", "एयर मार्शल विभास पांडे"], "options_en": ["Air Marshal Amar Preet Singh", "Air Marshal Mehtab Singh Deshwal", "Air Marshal Sujeet Pushpakar Dhakad", "Air Marshal Vibhas Pande"], "ans": "B", "exp_hi": "एयर मार्शल मेहताब सिंह देशवाल ने शिलांग स्थित भारतीय वायुसेना की रणनीतिक पूर्वी वायु कमान के प्रमुख का कार्यभार संभाला।", "exp_en": "Air Marshal Mehtab Singh Deshwal took over the command of the strategic Eastern Air Command headquartered in Shillong, Meghalaya."}, {"id": 83, "section_hi": "भूगोल एवं आपदा", "section_en": "Geography & Volcanoes", "q_hi": "अक्टूबर 2026 में किस देश में स्थित प्रसिद्ध 'मायोन ज्वालामुखी' (Mayon Volcano) में भीषण विस्फोट देखा गया?", "q_en": "A massive volcanic eruption was witnessed in October 2026 at the famed 'Mayon Volcano' situated in which country?", "options_hi": ["इंडोनेशिया", "जापान", "फिलीपींस", "इटली"], "options_en": ["Indonesia", "Japan", "Philippines", "Italy"], "ans": "C", "exp_hi": "फिलीपींस के लुजोन द्वीप पर स्थित मायोन ज्वालामुखी अपने अत्यधिक सममित शंक्वाकार आकार के लिए प्रसिद्ध है, जिसमें हाल ही में लावा और राख का भारी उद्गार हुआ।", "exp_en": "Situated on Luzon island in the Philippines, Mayon volcano—renowned worldwide for its perfect conical shape—spewed large plumes of ash, gas, and lava."}, {"id": 84, "section_hi": "दिवस एवं आपदा प्रबंधन", "section_en": "Days & Disaster Awareness", "q_hi": "'विश्व सुनामी जागरूकता दिवस' (World Tsunami Awareness Day) वर्ष 2026 में कब मनाया गया?", "q_en": "When was 'World Tsunami Awareness Day' observed globally in the year 2026?", "options_hi": ["3 नवंबर", "5 नवंबर", "7 नवंबर", "9 नवंबर"], "options_en": ["3 November", "5 November", "7 November", "9 November"], "ans": "B", "exp_hi": "प्रतिवर्ष 5 नवंबर को यह दिवस मनाया जाता है। वर्ष 2026 की थीम: 'सुनामी के लिए तैयार रहें: लचीलापन आपसे शुरू होता है' (Be Tsunami Ready: Resilience Starts with You)।", "exp_en": "Observed on November 5 across the world. The theme for 2026 was 'Be Tsunami Ready: Resilience Starts with You'."}, {"id": 85, "section_hi": "दूरसंचार एवं वैश्विक नेतृत्व", "section_en": "Telecom & GSMA", "q_hi": "2027 से 2028 के कार्यकाल के लिए 'ग्लोबल सिस्टम फॉर मोबाइल कम्युनिकेशंस एसोसिएशन' (GSMA) के पुनः अध्यक्ष कौन चुने गए हैं?", "q_en": "Who has been re-elected as the Chairman of the Global System for Mobile Communications Association (GSMA) for the 2027-2028 term?", "options_hi": ["गोपाल विट्टल (Gopal Vittal)", "मुकेश अंबानी", "सुनील भारती मित्तल", "आकाश अंबानी"], "options_en": ["Gopal Vittal", "Mukesh Ambani", "Sunil Bharti Mittal", "Akash Ambani"], "ans": "A", "exp_hi": "भारती एयरटेल के प्रबंध निदेशक और सीईओ गोपाल विट्टल को वैश्विक दूरसंचार संगठन GSMA का लगातार दूसरी बार अध्यक्ष निर्वाचित किया गया।", "exp_en": "Gopal Vittal, Managing Director and CEO of Bharti Airtel, was unanimously re-elected Chairman of the GSMA Board for 2027-2028."}, {"id": 86, "section_hi": "खेल परिदृश्य", "section_en": "Boxing & Medals", "q_hi": "फिनलैंड के टाम्परे में आयोजित 46वें अंतर्राष्ट्रीय टैमर बॉक्सिंग टूर्नामेंट 2026 में भारत कुल 14 पदक जीतकर पदक तालिका में किस स्थान पर रहा?", "q_en": "India finished at which position in the medal tally by clinching 14 total medals at the 46th International Tammer Boxing Tournament 2026 in Tampere, Finland?", "options_hi": ["दूसरे स्थान पर", "पहले स्थान पर (Top)", "तीसरे स्थान पर", "चौथे स्थान पर"], "options_en": ["2nd Position", "1st Position (Top)", "3rd Position", "4th Position"], "ans": "B", "exp_hi": "भारतीय मुक्केबाजों ने शानदार प्रदर्शन करते हुए कुल 14 पदक (4 स्वर्ण, 2 रजत, 8 कांस्य) जीतकर पदक तालिका में शीर्ष स्थान प्राप्त किया। स्वर्ण पदक विजेता: आरती धारियाल, अंकुशिता बोरो, अरुंधति चौधरी और पवन बर्तवाल। रजत पदक: जैसमीन लंबोरिया और मोहम्मद हुसामुद्दीन।", "exp_en": "Indian boxers dominated the tournament with 14 medals (4 Gold, 2 Silver, 8 Bronze) to claim top position in the overall medal table."}, {"id": 87, "section_hi": "खेल परिदृश्य", "section_en": "Table Tennis", "q_hi": "वर्ल्ड टेबल टेनिस (WTT) फीडर चेन्नई 2026 में पुरुष एकल का खिताब किस भारतीय खिलाड़ी ने जीत लिया?", "q_en": "Which Indian paddler won the men's singles championship at the World Table Tennis (WTT) Feeder Chennai 2026?", "options_hi": ["शरथ कमल", "मानव ठक्कर", "हरमीत देसाई", "साथियान ज्ञानशेखरन"], "options_en": ["Sharath Kamal", "Manav Thakkar", "Harmeet Desai", "Sathiyan Gnanasekaran"], "ans": "B", "exp_hi": "मानव ठक्कर ने इंग्लैंड के सैमुअल वॉकर को हराकर अपने करियर का पहला अंतर्राष्ट्रीय पुरुष एकल खिताब जीता। मिश्रित युगल में मानव ठक्कर और तनीषा कोटेचा ने स्वर्ण जीता, जबकि पुरुष युगल में साथियान ज्ञानशेखरन और हरमीत देसाई विजयी रहे।", "exp_en": "Manav Thakkar defeated England's Samuel Walker to claim his maiden international men's singles title, alongside winning mixed doubles with Tanisha Kotecha."}, {"id": 88, "section_hi": "खेल परिदृश्य", "section_en": "Cricket", "q_hi": "नवंबर 2026 में अंतर्राष्ट्रीय क्रिकेट से संन्यास की घोषणा करने वाले ग्लेन मैक्सवेल किस देश के स्टार ऑलराउंडर हैं?", "q_en": "Glenn Maxwell, who announced his retirement from international cricket in November 2026, is a star all-rounder of which national cricket team?", "options_hi": ["न्यूजीलैंड", "इंग्लैंड", "ऑस्ट्रेलिया", "दक्षिण अफ्रीका"], "options_en": ["New Zealand", "England", "Australia", "South Africa"], "ans": "C", "exp_hi": "ऑस्ट्रेलिया के विस्फोटक ऑलराउंडर ग्लेन मैक्सवेल ने अंतर्राष्ट्रीय क्रिकेट से संन्यास का ऐलान किया। वे 2015 और 2023 के वनडे विश्व कप विजेता टीम के सदस्य रहे हैं।", "exp_en": "Dynamic Australian match-winner Glenn Maxwell called time on his illustrious international career, having won two ODI World Cups (2015, 2023) and the 2021 T20 World Cup."}, {"id": 89, "section_hi": "सांख्यिकी एवं केंद्रीय योजनाएं", "section_en": "Statistics & MoSPI", "q_hi": "केंद्रीय मंत्रिमंडल ने 'विस्तार योजना' (VISTAR Scheme) को 2026-27 से 2030-31 तक लागू करने हेतु कितना बजट स्वीकृत किया?", "q_en": "What financial outlay was approved by the Union Cabinet for implementing the 'VISTAR Scheme' from 2026-27 to 2030-31?", "options_hi": ["₹3,250 करोड़", "₹4,371.10 करोड़", "₹5,100 करोड़", "₹2,814 करोड़"], "options_en": ["₹3,250 Crore", "₹4,371.10 Crore", "₹5,100 Crore", "₹2,814 Crore"], "ans": "B", "exp_hi": "VISTAR का पूर्ण रूप: Viksit Bharat Initiative for Statistical Transformation, Analytics and Research। नोडल मंत्रालय: सांख्यिकी एवं कार्यक्रम कार्यान्वयन मंत्रालय (MoSPI)। इसका मुख्य उद्देश्य भारत की राष्ट्रीय सांख्यिकी प्रणाली का आधुनिकीकरण और त्वरित डेटा संग्रहण है।", "exp_en": "VISTAR stands for Viksit Bharat Initiative for Statistical Transformation, Analytics and Research, implemented by MoSPI with ₹4,371.10 Cr outlay to overhaul India's statistical apparatus."}, {"id": 90, "section_hi": "सामाजिक कल्याण एवं वरिष्ठ नागरिक", "section_en": "Social Justice & Senior Citizens", "q_hi": "नवंबर 2026 में केंद्रीय मंत्री डॉ. वीरेंद्र कुमार ने वरिष्ठ नागरिकों के सम्मान, गरिमा और कल्याण को समर्पित 'वयो सम्मान राष्ट्रीय अभियान' का शुभारंभ कहां से किया?", "q_en": "From where did Union Minister Dr. Virendra Kumar launch the 'Vayo Samman National Campaign' dedicated to senior citizens' health and dignity?", "options_hi": ["वाराणसी", "भोपाल", "जयपुर", "नई दिल्ली"], "options_en": ["Varanasi", "Bhopal", "Jaipur", "New Delhi"], "ans": "D", "exp_hi": "सामाजिक न्याय एवं अधिकारिता मंत्रालय द्वारा नई दिल्ली से 'वयो सम्मान राष्ट्रीय अभियान' प्रारंभ किया गया, जिसका उद्देश्य बुजुर्गों के स्वास्थ्य, अधिकारों और सामाजिक सुरक्षा को सुनिश्चित करना है।", "exp_en": "Launched in New Delhi by the Ministry of Social Justice and Empowerment to safeguard rights, healthcare, and social safety nets for elderly citizens."}];
+
+    // Application State
+    const TOTAL_QUESTIONS = QUESTIONS.length; // Exactly 90
+    const TEST_DURATION_MINS = 90;
+    const TIME_LIMIT_MS = TEST_DURATION_MINS * 60 * 1000;
+    const STORAGE_KEY = "gyanverse_cbt_weekly_ca_2026_state";
+    const LEADERBOARD_KEY = "gyanverse_cbt_weekly_ca_2026_leaderboard";
+    const FIREBASE_DB_URL_KEY = "gyanverse_cbt_firebase_url";
+
+    // Default Hardcoded Firebase Realtime DB URL
+    let firebaseDbUrl = localStorage.getItem(FIREBASE_DB_URL_KEY) || "https://gyanverse-cbt-b5f75-default-rtdb.firebaseio.com";
+
+    let state = {
+      user: null, // { name, district, telegram }
+      isLive: false,
+      isSubmitted: false,
+      isSolutionMode: false,
+      currentIndex: 0,
+      userAnswers: {}, // { qId: 'A'|'B'|'C'|'D' }
+      reviewMarks: {}, // { qId: true/false }
+      visited: {}, // { qId: true }
+      remainingMs: TIME_LIMIT_MS,
+      examEndTime: null,
+      strikes: 0,
+      langMode: 'bilingual', // 'bilingual' | 'hindi' | 'english'
+      sectionFilter: 'all' // 'all' | 1 | 2 | 3 | 4
+    };
+
+    let timerInterval = null;
+    let logoClickCount = 0;
+    let logoClickTimer = null;
+
+    // Sanitize user inputs against XSS
+    function escapeHtml(str) {
+      if (!str) return "";
+      return String(str)
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+    }
+
+    // ==================== INITIALIZATION ====================
+    window.addEventListener("DOMContentLoaded", () => {
+      loadSavedState();
+      setupSecurityListeners();
+      setupKeyboardShortcuts();
+      populateJumpSelect();
+    });
+
+    function loadSavedState() {
+      const saved = localStorage.getItem(STORAGE_KEY);
+      if (saved) {
+        try {
+          const parsed = JSON.parse(saved);
+          if (parsed && parsed.user) {
+            state.user = parsed.user;
+            state.userAnswers = parsed.userAnswers || {};
+            state.reviewMarks = parsed.reviewMarks || {};
+            state.visited = parsed.visited || {};
+            state.langMode = parsed.langMode || 'bilingual';
+
+            // Auto-fill user fields
+            document.getElementById("reg-name").value = parsed.user.name || "";
+            document.getElementById("reg-district").value = parsed.user.district || "";
+            document.getElementById("reg-telegram").value = parsed.user.telegram || "";
+
+            if (parsed.isSubmitted) {
+              state.isSubmitted = true;
+              document.getElementById("entry-solutions-banner").classList.remove("hidden");
+              document.getElementById("header-saved-btn").classList.remove("hidden");
+            } else if (parsed.isLive) {
+              document.getElementById("entry-resume-banner").classList.remove("hidden");
+            }
+          }
+        } catch (e) {
+          console.error("Error loading state", e);
+        }
+      }
+    }
+
+    function saveState() {
+      try {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify({
+          user: state.user,
+          isLive: state.isLive,
+          isSubmitted: state.isSubmitted,
+          userAnswers: state.userAnswers,
+          reviewMarks: state.reviewMarks,
+          visited: state.visited,
+          remainingMs: state.remainingMs,
+          langMode: state.langMode
+        }));
+      } catch (e) {
+        console.error("Error saving state", e);
+      }
+    }
+
+    // ==================== LANGUAGE TOGGLE ====================
+    function cycleLanguage() {
+      if (state.langMode === 'bilingual') {
+        state.langMode = 'hindi';
+      } else if (state.langMode === 'hindi') {
+        state.langMode = 'english';
+      } else {
+        state.langMode = 'bilingual';
+      }
+      updateLanguageToggleUI();
+      renderCurrentQuestion();
+      saveState();
+    }
+
+    function updateLanguageToggleUI() {
+      const btnText = document.getElementById("lang-toggle-text");
+      if (state.langMode === 'bilingual') {
+        btnText.innerText = "🌐 हिं+EN";
+      } else if (state.langMode === 'hindi') {
+        btnText.innerText = "🌐 हिंदी";
+      } else {
+        btnText.innerText = "🌐 English";
+      }
+    }
+
+    // ==================== TEST FLOW & WORKSPACE ====================
+    function handleStartTest(e) {
+      if (e) e.preventDefault();
+      const name = document.getElementById("reg-name").value.trim();
+      const district = document.getElementById("reg-district").value;
+      const telegram = document.getElementById("reg-telegram").value.trim();
+
+      if (!name || !district || !telegram) {
+        showToast("कृपया सभी आवश्यक विवरण भरें!");
+        return;
+      }
+
+      state.user = {
+        name: escapeHtml(name),
+        district: escapeHtml(district),
+        telegram: escapeHtml(telegram.startsWith('@') ? telegram : '@' + telegram)
+      };
+
+      state.isLive = true;
+      state.isSubmitted = false;
+      state.isSolutionMode = false;
+      state.currentIndex = 0;
+      state.userAnswers = {};
+      state.reviewMarks = {};
+      state.visited = { 1: true };
+      state.remainingMs = TIME_LIMIT_MS;
+      state.examEndTime = Date.now() + state.remainingMs;
+      state.strikes = 0;
+
+      startExamTimer();
+      showScreen('test');
+      renderCurrentQuestion();
+      updateStatusCounts();
+      saveState();
+      requestFullScreenSafely();
+    }
+
+    function resumeIncompleteTest() {
+      const saved = localStorage.getItem(STORAGE_KEY);
+      if (!saved) return;
+      const parsed = JSON.parse(saved);
+      state.user = parsed.user;
+      state.userAnswers = parsed.userAnswers || {};
+      state.reviewMarks = parsed.reviewMarks || {};
+      state.visited = parsed.visited || { 1: true };
+      state.isLive = true;
+      state.isSubmitted = false;
+      state.isSolutionMode = false;
+      state.remainingMs = parsed.remainingMs > 60000 ? parsed.remainingMs : 60000;
+      state.examEndTime = Date.now() + state.remainingMs;
+
+      startExamTimer();
+      showScreen('test');
+      renderCurrentQuestion();
+      updateStatusCounts();
+      requestFullScreenSafely();
+    }
+
+    function showScreen(screen) {
+      document.getElementById("screen-entry").classList.toggle("hidden", screen !== 'entry');
+      document.getElementById("screen-test").classList.toggle("hidden", screen !== 'test');
+      document.getElementById("screen-scorecard").classList.toggle("hidden", screen !== 'scorecard');
+
+      // Header buttons adaptation
+      document.getElementById("timer-box").classList.toggle("hidden", screen !== 'test' || state.isSolutionMode);
+      document.getElementById("submit-test-btn").classList.toggle("hidden", screen !== 'test' || state.isSolutionMode);
+      document.getElementById("exit-sol-btn").classList.toggle("hidden", !state.isSolutionMode || screen !== 'test');
+    }
+
+    // ==================== RENDERING QUESTIONS & SOLUTIONS ====================
+    function renderCurrentQuestion() {
+      const q = QUESTIONS[state.currentIndex];
+      if (!q) return;
+
+      state.visited[q.id] = true;
+
+      // Question Number & Section
+      document.getElementById("q-number-badge").innerText = `प्रश्न ${q.id} / ${TOTAL_QUESTIONS}`;
+      document.getElementById("q-section-badge").innerText = q.section_hi || "समसामयिकी";
+
+      // Question Text based on language mode
+      const qHi = document.getElementById("q-text-hi");
+      const qEn = document.getElementById("q-text-en");
+
+      if (state.langMode === 'bilingual') {
+        qHi.innerText = `Q.${q.id} ${q.q_hi}`;
+        qHi.classList.remove("hidden");
+        qEn.innerText = `Q.${q.id} ${q.q_en}`;
+        qEn.classList.remove("hidden");
+      } else if (state.langMode === 'hindi') {
+        qHi.innerText = `Q.${q.id} ${q.q_hi}`;
+        qHi.classList.remove("hidden");
+        qEn.classList.add("hidden");
+      } else {
+        qHi.classList.add("hidden");
+        qEn.innerText = `Q.${q.id} ${q.q_en}`;
+        qEn.classList.remove("hidden");
+      }
+
+      const selectedOpt = state.userAnswers[q.id];
+      const isReview = state.reviewMarks[q.id];
+
+      // Handle Header Status / Result Pill
+      const solResultPill = document.getElementById("sol-result-pill");
+      const liveMarksPills = document.getElementById("live-marks-pills");
+
+      if (state.isSolutionMode) {
+        solResultPill.classList.remove("hidden");
+        liveMarksPills.classList.add("hidden");
+
+        if (!selectedOpt) {
+          solResultPill.innerText = "⚪ अनुत्तरित (0.00)";
+          solResultPill.className = "font-bold px-2 py-0.5 rounded-full text-[10.5px] bg-slate-100 text-slate-700 border border-slate-300";
+        } else if (selectedOpt === q.ans) {
+          solResultPill.innerText = "✔ सही उत्तर (+2.00)";
+          solResultPill.className = "font-bold px-2 py-0.5 rounded-full text-[10.5px] bg-emerald-100 text-emerald-800 border border-emerald-300";
+        } else {
+          solResultPill.innerText = `✖ गलत उत्तर (-0.20) [चुना: ${selectedOpt}]`;
+          solResultPill.className = "font-bold px-2 py-0.5 rounded-full text-[10.5px] bg-rose-100 text-rose-800 border border-rose-300";
+        }
+      } else {
+        solResultPill.classList.add("hidden");
+        liveMarksPills.classList.remove("hidden");
+
+        const statusBadge = document.getElementById("q-status-badge");
+        if (selectedOpt && isReview) {
+          statusBadge.innerText = "★ उत्तर + समीक्षा";
+          statusBadge.className = "text-indigo-800 bg-indigo-50 border border-indigo-200 px-1.5 py-0.5 rounded";
+        } else if (selectedOpt) {
+          statusBadge.innerText = "◉ सेव किया";
+          statusBadge.className = "text-emerald-800 bg-emerald-50 border border-emerald-200 px-1.5 py-0.5 rounded";
+        } else if (isReview) {
+          statusBadge.innerText = "★ समीक्षा हेतु";
+          statusBadge.className = "text-amber-800 bg-amber-50 border border-amber-200 px-1.5 py-0.5 rounded";
+        } else {
+          statusBadge.innerText = "⚪ अनुत्तरित";
+          statusBadge.className = "text-slate-600 bg-slate-100 border border-slate-200 px-1.5 py-0.5 rounded";
+        }
+      }
+
+      // Render Options Container
+      const container = document.getElementById("options-container");
+      container.innerHTML = "";
+
+      const optLetters = ['A', 'B', 'C', 'D'];
+
+      if (state.isSolutionMode) {
+        // ==========================================
+        // SOLUTION MODE: ULTRA-COMPACT 2x2 GRID
+        // Leaves 100% of vertical space for the FULL explanation!
+        // No scrolling needed anywhere!
+        // ==========================================
+        container.className = "shrink-0 grid grid-cols-2 gap-1.5 py-1";
+
+        optLetters.forEach((letter, idx) => {
+          const isCorrect = q.ans === letter;
+          const isUserPick = selectedOpt === letter;
+
+          const card = document.createElement("div");
+          let baseCardClass = "p-1.5 rounded-lg border text-left text-[11px] sm:text-xs flex items-center gap-1.5 ";
+
+          if (isCorrect) {
+            baseCardClass += "bg-emerald-50 border-emerald-500 text-emerald-950 font-bold ring-1 ring-emerald-400";
+          } else if (isUserPick) {
+            baseCardClass += "bg-rose-50 border-rose-400 text-rose-950 font-semibold ring-1 ring-rose-300";
+          } else {
+            baseCardClass += "bg-white border-slate-200 text-slate-700 opacity-80";
+          }
+          card.className = baseCardClass;
+
+          let badgeClass = "w-4 h-4 rounded text-[10px] font-black flex items-center justify-center shrink-0 ";
+          let badgeText = letter;
+
+          if (isCorrect) {
+            badgeClass += "bg-emerald-600 text-white";
+            badgeText = "✔ " + letter;
+          } else if (isUserPick) {
+            badgeClass += "bg-rose-600 text-white";
+            badgeText = "✖ " + letter;
+          } else {
+            badgeClass += "bg-slate-100 text-slate-600 border border-slate-200";
+          }
+
+          const optHiText = q.options_hi[idx] || "";
+          const optEnText = q.options_en[idx] || "";
+
+          let optDisplay = state.langMode === 'english' ? optEnText : optHiText;
+
+          card.innerHTML = `
+            <div class="${badgeClass}">${badgeText}</div>
+            <div class="truncate font-semibold">${optDisplay}</div>
+          `;
+          container.appendChild(card);
+        });
+
+      } else {
+        // ==========================================
+        // LIVE TEST MODE: STANDARD FULL TAP BUTTONS
+        // ==========================================
+        container.className = "shrink-0 flex flex-col gap-1 sm:gap-1.5 py-1";
+
+        optLetters.forEach((letter, idx) => {
+          const btn = document.createElement("button");
+          btn.onclick = () => selectOption(letter);
+          btn.className = "w-full min-h-[38px] sm:min-h-[42px] px-2.5 py-1.5 rounded-lg border text-left text-[12px] sm:text-[13.5px] transition-all flex items-start gap-2 ";
+
+          let letterBadgeClass = "w-5 h-5 rounded-md flex items-center justify-center font-bold text-xs shrink-0 mt-0.5 ";
+
+          if (selectedOpt === letter) {
+            btn.className += "bg-blue-50 border-blue-600 text-blue-900 font-semibold shadow-xs ring-1 ring-blue-500";
+            letterBadgeClass += "bg-blue-600 text-white";
+          } else {
+            btn.className += "bg-white border-slate-200 text-slate-800 hover:bg-slate-50 hover:border-slate-300";
+            letterBadgeClass += "bg-slate-100 text-slate-700 border border-slate-200";
+          }
+
+          const optHiText = q.options_hi[idx] || "";
+          const optEnText = q.options_en[idx] || "";
+
+          let optHtml = `<div class="${letterBadgeClass}">${letter}</div><div class="flex-1 leading-tight">`;
+          if (state.langMode === 'bilingual') {
+            optHtml += `<div class="font-medium text-slate-900">${optHiText}</div><div class="text-[11px] sm:text-xs text-slate-500">${optEnText}</div>`;
+          } else if (state.langMode === 'hindi') {
+            optHtml += `<div class="font-medium text-slate-900">${optHiText}</div>`;
+          } else {
+            optHtml += `<div class="font-medium text-slate-900">${optEnText}</div>`;
+          }
+          optHtml += `</div>`;
+
+          btn.innerHTML = optHtml;
+          container.appendChild(btn);
+        });
+      }
+
+      // SOLUTION EXPLANATION CONTAINER (Full visibility without internal scroll!)
+      const expBox = document.getElementById("sol-explanation-box");
+      const watermark = document.getElementById("live-watermark");
+      const bottomRow = document.getElementById("live-bottom-row");
+
+      if (state.isSolutionMode) {
+        expBox.classList.remove("hidden");
+        watermark.classList.add("hidden");
+        bottomRow.classList.add("hidden");
+
+        const expHi = document.getElementById("exp-text-hi");
+        const expEn = document.getElementById("exp-text-en");
+
+        if (state.langMode === 'bilingual') {
+          expHi.innerText = q.exp_hi || "";
+          expHi.classList.remove("hidden");
+          expEn.innerText = q.exp_en || "";
+          expEn.classList.remove("hidden");
+        } else if (state.langMode === 'hindi') {
+          expHi.innerText = q.exp_hi || "";
+          expHi.classList.remove("hidden");
+          expEn.classList.add("hidden");
+        } else {
+          expHi.classList.add("hidden");
+          expEn.innerText = q.exp_en || "";
+          expEn.classList.remove("hidden");
+        }
+      } else {
+        expBox.classList.add("hidden");
+        watermark.classList.remove("hidden");
+        bottomRow.classList.remove("hidden");
+      }
+
+      // Sync Dropdown Jump
+      document.getElementById("jump-select").value = q.id;
+
+      // Sync Review button text
+      const revBtn = document.getElementById("btn-review");
+      if (state.reviewMarks[q.id]) {
+        revBtn.className = "h-8 px-1 bg-amber-500 text-white font-bold rounded-lg text-[11px] flex items-center justify-center gap-0.5";
+      } else {
+        revBtn.className = "h-8 px-1 bg-amber-50 hover:bg-amber-100 text-amber-800 border border-amber-200 text-[11px] font-bold rounded-lg transition-colors flex items-center justify-center gap-0.5";
+      }
+
+      updateStatusCounts();
+    }
+
+    // ==================== QUESTION NAVIGATION ====================
+    function selectOption(letter) {
+      if (state.isSolutionMode) return;
+      const q = QUESTIONS[state.currentIndex];
+      state.userAnswers[q.id] = letter;
+      renderCurrentQuestion();
+      saveState();
+    }
+
+    function clearCurrentAnswer() {
+      if (state.isSolutionMode) return;
+      const q = QUESTIONS[state.currentIndex];
+      delete state.userAnswers[q.id];
+      renderCurrentQuestion();
+      saveState();
+    }
+
+    function toggleReviewCurrent() {
+      if (state.isSolutionMode) return;
+      const q = QUESTIONS[state.currentIndex];
+      state.reviewMarks[q.id] = !state.reviewMarks[q.id];
+      renderCurrentQuestion();
+      saveState();
+    }
+
+    function nextQuestion() {
+      if (state.currentIndex < TOTAL_QUESTIONS - 1) {
+        state.currentIndex++;
+        renderCurrentQuestion();
+      } else {
+        if (!state.isSolutionMode) {
+          confirmSubmitTest();
+        }
+      }
+    }
+
+    function prevQuestion() {
+      if (state.currentIndex > 0) {
+        state.currentIndex--;
+        renderCurrentQuestion();
+      }
+    }
+
+    function jumpToQuestion(qId) {
+      const idx = QUESTIONS.findIndex(q => q.id === qId);
+      if (idx !== -1) {
+        state.currentIndex = idx;
+        renderCurrentQuestion();
+      }
+    }
+
+    function populateJumpSelect() {
+      const select = document.getElementById("jump-select");
+      select.innerHTML = "";
+      QUESTIONS.forEach(q => {
+        const opt = document.createElement("option");
+        opt.value = q.id;
+        opt.innerText = `Q.${q.id}`;
+        select.appendChild(opt);
+      });
+    }
+
+    function setSectionFilter(sec) {
+      state.sectionFilter = sec;
+      ['all', 1, 2, 3, 4].forEach(s => {
+        const btn = document.getElementById(`sec-btn-${s}`);
+        if (s === sec) {
+          btn.className = "h-6 sm:h-7 px-2.5 text-[11px] font-bold rounded-lg whitespace-nowrap transition-colors bg-blue-600 text-white shadow-xs";
+        } else {
+          btn.className = "h-6 sm:h-7 px-2.5 text-[11px] font-medium rounded-lg whitespace-nowrap transition-colors bg-white text-slate-700 border border-slate-200 hover:bg-slate-100";
+        }
+      });
+
+      // Jump to section's first question
+      if (sec === 1) jumpToQuestion(1);
+      else if (sec === 2) jumpToQuestion(26);
+      else if (sec === 3) jumpToQuestion(51);
+      else if (sec === 4) jumpToQuestion(76);
+    }
+
+    function updateStatusCounts() {
+      let ansCount = 0;
+      let revCount = 0;
+
+      QUESTIONS.forEach(q => {
+        if (state.userAnswers[q.id]) ansCount++;
+        if (state.reviewMarks[q.id]) revCount++;
+      });
+
+      const unattCount = TOTAL_QUESTIONS - ansCount;
+
+      document.getElementById("count-ans").innerText = ansCount;
+      document.getElementById("count-rev").innerText = revCount;
+      document.getElementById("count-unatt").innerText = unattCount;
+
+      // Sync submit confirmation modal numbers
+      document.getElementById("conf-ans").innerText = ansCount;
+      document.getElementById("conf-rev").innerText = revCount;
+      document.getElementById("conf-unatt").innerText = unattCount;
+    }
+
+    // ==================== TCS iON PALETTE MODAL ====================
+    function openPaletteModal() {
+      const grid = document.getElementById("palette-grid");
+      grid.innerHTML = "";
+
+      QUESTIONS.forEach((q, idx) => {
+        const btn = document.createElement("button");
+        btn.innerText = q.id;
+        btn.onclick = () => {
+          jumpToQuestion(q.id);
+          closePaletteModal();
+        };
+
+        const isAnswered = !!state.userAnswers[q.id];
+        const isReview = !!state.reviewMarks[q.id];
+        const isCurrent = state.currentIndex === idx;
+
+        let baseClass = "h-9 rounded-lg font-bold text-xs flex items-center justify-center transition-transform active:scale-90 ";
+
+        if (isCurrent) {
+          baseClass += "ring-2 ring-blue-700 ";
+        }
+
+        if (state.isSolutionMode) {
+          // In Solution Mode: show right / wrong / unattempted
+          const isCorrect = isAnswered && state.userAnswers[q.id] === q.ans;
+          if (isCorrect) {
+            btn.className = baseClass + "bg-emerald-500 text-white";
+          } else if (isAnswered) {
+            btn.className = baseClass + "bg-rose-500 text-white";
+          } else {
+            btn.className = baseClass + "bg-slate-200 text-slate-700";
+          }
+        } else {
+          // Live Test Mode: TCS iON standard colors
+          if (isAnswered && isReview) {
+            btn.className = baseClass + "bg-indigo-600 text-white";
+          } else if (isAnswered) {
+            btn.className = baseClass + "bg-emerald-500 text-white";
+          } else if (isReview) {
+            btn.className = baseClass + "bg-amber-500 text-white";
+          } else {
+            btn.className = baseClass + "bg-slate-100 border border-slate-300 text-slate-700";
+          }
+        }
+
+        grid.appendChild(btn);
+      });
+
+      document.getElementById("modal-palette").classList.remove("hidden");
+    }
+
+    function closePaletteModal() {
+      document.getElementById("modal-palette").classList.add("hidden");
+    }
+
+    // ==================== WALL-CLOCK TIMER & SUBMIT FLOW ====================
+    function startExamTimer() {
+      if (timerInterval) clearInterval(timerInterval);
+
+      timerInterval = setInterval(() => {
+        const now = Date.now();
+        state.remainingMs = Math.max(0, state.examEndTime - now);
+
+        const totalSecs = Math.floor(state.remainingMs / 1000);
+        const mins = Math.floor(totalSecs / 60);
+        const secs = totalSecs % 60;
+
+        document.getElementById("timer-display").innerText =
+          `${String(mins).padStart(2, '0')}:${String(secs).padStart(2, '0')}`;
+
+        if (state.remainingMs <= 0) {
+          clearInterval(timerInterval);
+          showToast("⏰ समय समाप्त! परीक्षा स्वतः सबमिट की जा रही है...");
+          finalSubmitExam();
+        }
+      }, 1000);
+    }
+
+    function confirmSubmitTest() {
+      updateStatusCounts();
+      document.getElementById("modal-submit-confirm").classList.remove("hidden");
+    }
+
+    function closeSubmitConfirmModal() {
+      document.getElementById("modal-submit-confirm").classList.add("hidden");
+    }
+
+    function finalSubmitExam() {
+      closeSubmitConfirmModal();
+      if (timerInterval) clearInterval(timerInterval);
+
+      state.isLive = false;
+      state.isSubmitted = true;
+
+      // Calculate Scores
+      let correct = 0;
+      let incorrect = 0;
+      let unattempted = 0;
+
+      QUESTIONS.forEach(q => {
+        const userChoice = state.userAnswers[q.id];
+        if (!userChoice) {
+          unattempted++;
+        } else if (userChoice === q.ans) {
+          correct++;
+        } else {
+          incorrect++;
+        }
+      });
+
+      const totalMarks = (correct * 2.0) - (incorrect * 0.20);
+      const attempted = correct + incorrect;
+      const accuracy = attempted > 0 ? Math.round((correct / attempted) * 100) : 0;
+      const timeTakenSecs = Math.floor((TIME_LIMIT_MS - state.remainingMs) / 1000);
+      const timeMins = Math.floor(timeTakenSecs / 60);
+      const timeSecs = timeTakenSecs % 60;
+      const timeString = `${String(timeMins).padStart(2, '0')}:${String(timeSecs).padStart(2, '0')}`;
+
+      // Populate Scorecard Screen
+      document.getElementById("score-student-info").innerText =
+        `${state.user.name} | ${state.user.district} | ${state.user.telegram}`;
+      document.getElementById("score-total-marks").innerText = totalMarks.toFixed(2);
+      document.getElementById("score-accuracy").innerText = `${accuracy}%`;
+      document.getElementById("score-time-taken").innerText = timeString;
+      document.getElementById("score-correct-count").innerText = correct;
+      document.getElementById("score-incorrect-count").innerText = incorrect;
+      document.getElementById("score-unatt-count").innerText = unattempted;
+      document.getElementById("score-att-count").innerText = attempted;
+
+      // Sync Leaderboard silently to Firebase and LocalStorage
+      syncScoreToLeaderboard({
+        name: state.user.name,
+        district: state.user.district,
+        telegram: state.user.telegram,
+        score: parseFloat(totalMarks.toFixed(2)),
+        correct,
+        incorrect,
+        accuracy,
+        time: timeString,
+        timestamp: Date.now()
+      });
+
+      showScreen('scorecard');
+      saveState();
+    }
+
+    // ==================== SOLUTION MODE ====================
+    function enterSolutionMode() {
+      state.isSolutionMode = true;
+      state.currentIndex = 0;
+
+      // Switch bottom bars
+      document.getElementById("nav-test-mode").classList.add("hidden");
+      document.getElementById("nav-sol-mode").classList.remove("hidden");
+
+      showScreen('test');
+      renderCurrentQuestion();
+    }
+
+    function exitSolutionMode() {
+      state.isSolutionMode = false;
+      showScreen('scorecard');
+    }
+
+    function openSavedSolutions() {
+      const saved = localStorage.getItem(STORAGE_KEY);
+      if (!saved) {
+        showToast("कोई सुरक्षित हल उपलब्ध नहीं है!");
+        return;
+      }
+      loadSavedState();
+      if (!state.isSubmitted) {
+        showToast("पहले टेस्ट सबमिट करें!");
+        return;
+      }
+      enterSolutionMode();
+    }
+
+    function retakeTestConfirm() {
+      if (confirm("क्या आप सचमुच टेस्ट फिर से देना चाहते हैं? पिछला प्रयास रीसेट हो जाएगा।")) {
+        showScreen('entry');
+      }
+    }
+
+    // ==================== ALL-BIHAR LEADERBOARD & FIREBASE ====================
+    function syncScoreToLeaderboard(record) {
+      // 1. LocalStorage Backup
+      let lb = getLocalLeaderboard();
+      const existingIdx = lb.findIndex(item => item.telegram.toLowerCase() === record.telegram.toLowerCase());
+
+      if (existingIdx !== -1) {
+        if (record.score > lb[existingIdx].score) {
+          lb[existingIdx] = record;
+        }
+      } else {
+        lb.push(record);
+      }
+
+      // Sort descending by score
+      lb.sort((a, b) => b.score - a.score || a.timestamp - b.timestamp);
+      localStorage.setItem(LEADERBOARD_KEY, JSON.stringify(lb));
+
+      // 2. Firebase Realtime Cloud Database Non-Blocking Background Sync
+      if (firebaseDbUrl) {
+        try {
+          const userKey = record.telegram.replace(/[^a-zA-Z0-9_]/g, "");
+          const endpoint = `${firebaseDbUrl.replace(/\/$/, '')}/weekly_ca_nov2026_results/${userKey}.json`;
+          fetch(endpoint, {
+            method: 'PUT',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(record)
+          }).catch(err => {
+            console.log("Firebase sync fallback to local storage (offline/restricted)", err);
+          });
+        } catch (e) {
+          console.log("Background cloud sync note", e);
+        }
+      }
+    }
+
+    function getLocalLeaderboard() {
+      const raw = localStorage.getItem(LEADERBOARD_KEY);
+      if (raw) {
+        try { return JSON.parse(raw); } catch (e) {}
+      }
+      // Seed initial sample toppers from Bihar for realistic competition
+      return [
+        { name: "अमित कुमार", district: "पटना (Patna)", telegram: "@amit_bpsc", score: 172.60, accuracy: 96, time: "48:12" },
+        { name: "प्रिया रंजन", district: "गया (Gaya)", telegram: "@priya_ranjan", score: 168.40, accuracy: 94, time: "52:40" },
+        { name: "राजीव नयन", district: "मुजफ्फरपुर (Muzaffarpur)", telegram: "@rajiv_nayan", score: 165.20, accuracy: 93, time: "55:18" },
+        { name: "स्नेहा सिंह", district: "रोहतास (Rohtas)", telegram: "@sneha_si", score: 161.80, accuracy: 91, time: "59:05" },
+        { name: "मनीष चौबे", district: "सारण (Saran)", telegram: "@manish_c", score: 158.40, accuracy: 89, time: "63:22" }
+      ];
+    }
+
+    function openLeaderboardModal() {
+      renderLeaderboard();
+      document.getElementById("modal-leaderboard").classList.remove("hidden");
+    }
+
+    function closeLeaderboardModal() {
+      document.getElementById("modal-leaderboard").classList.add("hidden");
+    }
+
+    function renderLeaderboard() {
+      const search = (document.getElementById("lb-search").value || "").toLowerCase();
+      const distFilter = document.getElementById("lb-district-filter").value;
+
+      let list = getLocalLeaderboard();
+
+      if (distFilter !== 'all') {
+        list = list.filter(item => item.district === distFilter);
+      }
+      if (search) {
+        list = list.filter(item =>
+          item.name.toLowerCase().includes(search) || item.telegram.toLowerCase().includes(search)
+        );
+      }
+
+      // Render Podium (Top 3)
+      const podium = document.getElementById("lb-podium");
+      podium.innerHTML = "";
+      const top3 = list.slice(0, 3);
+      const podiumBadges = ['🥇 प्रथम (#1)', '🥈 द्वितीय (#2)', '🥉 तृतीय (#3)'];
+
+      top3.forEach((item, idx) => {
+        const div = document.createElement("div");
+        div.className = "bg-white p-2 rounded-xl border border-amber-200 shadow-xs flex flex-col items-center";
+        div.innerHTML = `
+          <span class="text-[10px] font-bold text-amber-700">${podiumBadges[idx]}</span>
+          <span class="font-bold text-slate-900 text-xs truncate max-w-full mt-0.5">${item.name}</span>
+          <span class="text-[10px] text-slate-500 truncate max-w-full">${item.district.split(' ')[0]}</span>
+          <span class="text-xs font-black text-blue-700 mt-1">${item.score} अंक</span>
+        `;
+        podium.appendChild(div);
+      });
+
+      // Render Table Rows
+      const tbody = document.getElementById("lb-table-body");
+      tbody.innerHTML = "";
+
+      if (list.length === 0) {
+        tbody.innerHTML = `<tr><td colspan="4" class="text-center py-4 text-slate-400">कोई डेटा नहीं मिला</td></tr>`;
+        return;
+      }
+
+      list.forEach((item, idx) => {
+        const tr = document.createElement("tr");
+        tr.className = "hover:bg-slate-50";
+        tr.innerHTML = `
+          <td class="py-2 px-3 font-bold text-slate-700">#${idx + 1}</td>
+          <td class="py-2 px-3">
+            <div class="font-semibold text-slate-900">${item.name}</div>
+            <div class="text-[10px] text-slate-500">${item.district} • ${item.telegram}</div>
+          </td>
+          <td class="py-2 px-3 text-right font-black text-blue-700">${item.score}</td>
+          <td class="py-2 px-3 text-right text-emerald-700 font-semibold">${item.accuracy || 90}%</td>
+        `;
+        tbody.appendChild(tr);
+      });
+    }
+
+    // ==================== ANTI-CHEAT SECURITY ====================
+    function setupSecurityListeners() {
+      // Tab switch / background detection
+      document.addEventListener("visibilitychange", () => {
+        if (state.isLive && document.visibilityState === "hidden") {
+          triggerSecurityStrike("टैब बदलना या बैकग्राउंड में जाना");
+        }
+      });
+
+      // Fullscreen leave detection
+      document.addEventListener("fullscreenchange", () => {
+        if (state.isLive && !document.fullscreenElement) {
+          triggerSecurityStrike("फुल-स्क्रीन मोड छोड़ना");
+        }
+      });
+
+      // Beforeunload warning
+      window.addEventListener("beforeunload", (e) => {
+        if (state.isLive && !state.isSubmitted) {
+          e.preventDefault();
+          e.returnValue = "परीक्षा चल रही है! यदि आप बाहर जाएंगे तो प्रगति खो सकती है।";
+        }
+      });
+    }
+
+    function triggerSecurityStrike(reason) {
+      state.strikes++;
+      if (state.strikes >= 3) {
+        showToast("⚠ गंभीर उल्लंघन! 3 स्ट्राइक पूरी होने पर टेस्ट सबमिट किया गया।");
+        finalSubmitExam();
+      } else {
+        showToast(`⚠ चेतावनी: ${reason} वर्जित है! (स्ट्राइक ${state.strikes}/3)`);
+      }
+    }
+
+    function requestFullScreenSafely() {
+      try {
+        const docEl = document.documentElement;
+        if (docEl.requestFullscreen) docEl.requestFullscreen().catch(() => {});
+      } catch (e) {}
+    }
+
+    function setupKeyboardShortcuts() {
+      document.addEventListener("keydown", (e) => {
+        if (!state.isLive && !state.isSolutionMode) return;
+
+        // Keys 1, 2, 3, 4 or A, B, C, D
+        if (e.key === '1' || e.key.toUpperCase() === 'A') selectOption('A');
+        else if (e.key === '2' || e.key.toUpperCase() === 'B') selectOption('B');
+        else if (e.key === '3' || e.key.toUpperCase() === 'C') selectOption('C');
+        else if (e.key === '4' || e.key.toUpperCase() === 'D') selectOption('D');
+        // Navigation keys
+        else if (e.key.toUpperCase() === 'N' || e.key === 'ArrowRight') nextQuestion();
+        else if (e.key.toUpperCase() === 'P' || e.key === 'ArrowLeft') prevQuestion();
+        else if (e.key.toUpperCase() === 'R') toggleReviewCurrent();
+      });
+    }
+
+    // ==================== SECRET ADMIN PANEL ====================
+    function handleLogoClick() {
+      logoClickCount++;
+      clearTimeout(logoClickTimer);
+      logoClickTimer = setTimeout(() => { logoClickCount = 0; }, 1200);
+
+      if (logoClickCount >= 4) {
+        logoClickCount = 0;
+        openAdminModal();
+      }
+    }
+
+    function openAdminModal() {
+      document.getElementById("admin-pin-view").classList.remove("hidden");
+      document.getElementById("admin-panel-view").classList.add("hidden");
+      document.getElementById("admin-pin-input").value = "";
+      document.getElementById("modal-admin").classList.remove("hidden");
+    }
+
+    function closeAdminModal() {
+      document.getElementById("modal-admin").classList.add("hidden");
+    }
+
+    function verifyAdminPin() {
+      const pin = document.getElementById("admin-pin-input").value.trim();
+      if (pin === "1234" || pin.toUpperCase() === "GYANVERSE") {
+        document.getElementById("admin-pin-view").classList.add("hidden");
+        document.getElementById("admin-panel-view").classList.remove("hidden");
+        document.getElementById("admin-db-url").value = firebaseDbUrl;
+      } else {
+        showToast("❌ गलत पिन!");
+      }
+    }
+
+    function adminSaveDbUrl() {
+      const url = document.getElementById("admin-db-url").value.trim();
+      if (url) {
+        firebaseDbUrl = url;
+        localStorage.setItem(FIREBASE_DB_URL_KEY, url);
+        showToast("✅ Firebase URL सहेजा गया!");
+      }
+    }
+
+    function adminClearLocalLeaderboard() {
+      if (confirm("क्या आप स्थानीय मेरिट लिस्ट साफ़ करना चाहते हैं?")) {
+        localStorage.removeItem(LEADERBOARD_KEY);
+        showToast("✅ स्थानीय डेटा साफ़ हुआ!");
+        closeAdminModal();
+      }
+    }
+
+    function adminExportJson() {
+      const data = getLocalLeaderboard();
+      const blob = new Blob([JSON.stringify(data, null, 2)], { type: "application/json" });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = "gyanverse_cbt_results_backup.json";
+      a.click();
+    }
+
+    // ==================== TOAST MESSAGES ====================
+    let toastTimeout = null;
+    function showToast(msg) {
+      const toast = document.getElementById("toast-warning");
+      document.getElementById("toast-msg").innerText = msg;
+      toast.classList.remove("opacity-0", "-translate-y-2", "pointer-events-none");
+      toast.classList.add("opacity-100", "translate-y-0");
+
+      clearTimeout(toastTimeout);
+      toastTimeout = setTimeout(() => {
+        toast.classList.remove("opacity-100", "translate-y-0");
+        toast.classList.add("opacity-0", "-translate-y-2", "pointer-events-none");
+      }, 3500);
+    }
+  </script>
+</body>
+</html>
+```
