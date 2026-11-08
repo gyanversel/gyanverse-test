@@ -1,0 +1,1562 @@
+```html
+<!DOCTYPE html>
+<html lang="hi" class="h-full">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <title>ज्ञानवर्स एकेडमी - NCERT Class 9 Science Ch-1 (100 MCQs Mega CBT Test)</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Tiro+Devanagari+Hindi:ital@0;1&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      -webkit-tap-highlight-color: transparent;
+      box-sizing: border-box;
+      user-select: none;
+    }
+    html, body {
+      height: 100dvh;
+      max-height: 100dvh;
+      overflow: hidden;
+      font-family: 'Inter', 'Tiro Devanagari Hindi', sans-serif;
+      background-color: #f8fafc;
+      color: #0f172a;
+    }
+    /* Custom compact scrollbar */
+    ::-webkit-scrollbar {
+      width: 4px;
+      height: 4px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #f1f5f9;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #cbd5e1;
+      border-radius: 4px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #94a3b8;
+    }
+  </style>
+</head>
+<body class="h-[100dvh] max-h-[100dvh] flex flex-col bg-slate-100 overflow-hidden select-none">
+
+  <!-- ==================== 1. STICKY TOP HEADER ==================== -->
+  <header class="h-11 shrink-0 bg-white border-b border-slate-200 px-2 sm:px-3 flex items-center justify-between shadow-xs z-30">
+    <!-- Left: Brand, Admin Trigger & Telegram -->
+    <div class="flex items-center space-x-1.5 sm:space-x-2">
+      <!-- 4-click Secret Admin Trigger -->
+      <button id="adminTriggerBtn" onclick="handleAdminTrigger()" title="GYANVERSE" class="w-7 h-7 rounded-lg bg-indigo-600 text-white font-bold text-xs flex items-center justify-center shadow-xs hover:bg-indigo-700 active:scale-95 transition-transform">
+        GV
+      </button>
+      <div class="flex flex-col leading-tight">
+        <span class="font-bold text-xs sm:text-sm text-slate-800 tracking-tight flex items-center gap-1">
+          ज्ञानवर्स <span class="hidden xs:inline text-[9px] px-1 py-0.2 bg-indigo-100 text-indigo-700 rounded font-semibold">100 CBT</span>
+        </span>
+        <a href="https://t.me/GYANVERSET" target="_blank" rel="noopener noreferrer" class="text-[10px] text-indigo-600 hover:text-indigo-800 font-medium flex items-center">
+          @GYANVERSET
+        </a>
+      </div>
+    </div>
+
+    <!-- Center: Test Title Tag (Desktop/Tablet) -->
+    <div class="hidden md:flex items-center text-xs font-semibold text-slate-600 bg-slate-100 px-2.5 py-1 rounded-full border border-slate-200">
+      <span>NCERT Ch-1: हमारे आस-पास के पदार्थ (100 MCQ Mega Test)</span>
+    </div>
+
+    <!-- Right: Header Controls -->
+    <div class="flex items-center space-x-1 sm:space-x-1.5">
+      <!-- Fullscreen Toggle -->
+      <button id="fullscreenBtn" onclick="toggleFullscreen()" class="p-1.5 rounded-md text-slate-600 hover:text-indigo-600 hover:bg-slate-100 text-xs font-medium flex items-center gap-0.5 border border-slate-200 bg-slate-50" title="फुलस्क्रीन टॉगल करें">
+        <span id="fsIcon">⛶</span>
+      </button>
+
+      <!-- Saved Solutions Button -->
+      <button id="headerSavedSolBtn" onclick="openSavedSolutionsFromHeader()" class="hidden sm:flex px-2 py-1 rounded-md text-[11px] font-semibold text-emerald-700 bg-emerald-50 hover:bg-emerald-100 border border-emerald-200 items-center gap-1">
+        <span>📜</span><span>सेव हल</span>
+      </button>
+
+      <!-- Merit / Rank Button -->
+      <button onclick="openLeaderboardModal()" class="px-2 py-1 rounded-md text-[11px] font-semibold text-amber-700 bg-amber-50 hover:bg-amber-100 border border-amber-200 flex items-center gap-1">
+        <span>🏆</span><span class="hidden xs:inline">रैंक</span>
+      </button>
+
+      <!-- Countdown Timer (Visible only in live test) -->
+      <div id="timerContainer" class="hidden flex items-center bg-rose-50 text-rose-700 font-mono font-bold text-xs px-2 py-1 rounded-md border border-rose-200">
+        <span class="mr-1">⏱</span>
+        <span id="timerText">60:00</span>
+      </div>
+
+      <!-- Submit Test Button (Visible only in live test) -->
+      <button id="headerSubmitBtn" onclick="openSubmitModal()" class="hidden px-2.5 py-1 rounded-md text-xs font-bold bg-emerald-600 hover:bg-emerald-700 active:bg-emerald-800 text-white shadow-xs transition-colors">
+        जमा करें
+      </button>
+
+      <!-- Solution Mode: Scorecard Button -->
+      <button id="headerScorecardBtn" onclick="returnToScorecard()" class="hidden px-2.5 py-1 rounded-md text-xs font-bold bg-indigo-600 hover:bg-indigo-700 text-white shadow-xs">
+        स्कोरकार्ड
+      </button>
+    </div>
+  </header>
+
+  <!-- ==================== 2. MAIN WORKSPACE ==================== -->
+  <main class="flex-1 min-h-0 relative flex flex-col overflow-hidden">
+
+    <!-- SCREEN 1: ENTRY REGISTRATION GATE -->
+    <div id="entryScreen" class="absolute inset-0 z-20 bg-slate-100 flex items-center justify-center p-3 overflow-y-auto">
+      <div class="w-full max-w-md bg-white rounded-2xl shadow-md border border-slate-200 p-4 sm:p-5 flex flex-col space-y-3.5 my-auto">
+        <!-- Logo & Header -->
+        <div class="text-center space-y-1">
+          <div class="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-indigo-600 text-white font-black text-xl shadow-sm mb-1">
+            GV
+          </div>
+          <h1 class="text-base sm:text-lg font-bold text-slate-900 leading-tight">
+            ज्ञानवर्स एकेडमी (@GYANVERSET)
+          </h1>
+          <p class="text-xs text-indigo-700 font-semibold">
+            NCERT कक्षा 9 विज्ञान • अध्याय-1: हमारे आस-पास के पदार्थ
+          </p>
+          <div class="inline-block px-2.5 py-0.5 rounded-full bg-indigo-50 border border-indigo-200 text-indigo-800 font-bold text-[11px]">
+            🔥 100 प्रश्नों का संपूर्ण मेगा टेस्ट (Full Syllabus)
+          </div>
+          <p class="text-[11px] text-slate-500">
+            TCS iON परीक्षा पैटर्न • 100 प्रश्न • 60 मिनट • 200 अंक (+2.00 / -0.20)
+          </p>
+        </div>
+
+        <!-- Student Form -->
+        <form id="studentForm" onsubmit="handleStartTest(event)" class="space-y-2.5">
+          <div>
+            <label class="block text-[11px] font-bold text-slate-700 uppercase tracking-wider mb-1">
+              विद्यार्थी का पूरा नाम (Full Name) *
+            </label>
+            <input type="text" id="regName" required placeholder="अपना नाम दर्ज करें..." class="w-full h-9 px-3 text-xs sm:text-sm rounded-lg border border-slate-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 bg-slate-50 text-slate-900 font-medium">
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
+            <div>
+              <label class="block text-[11px] font-bold text-slate-700 uppercase tracking-wider mb-1">
+                जिला (District) *
+              </label>
+              <select id="regDistrict" required class="w-full h-9 px-2 text-xs rounded-lg border border-slate-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 bg-slate-50 text-slate-900 font-medium">
+                <option value="">-- जिला चुनें --</option>
+                <!-- 38 Bihar Districts -->
+                <option value="पटना">पटना</option>
+                <option value="गया">गया</option>
+                <option value="भागलपुर">भागलपुर</option>
+                <option value="मुजफ्फरपुर">मुजफ्फरपुर</option>
+                <option value="दरभंगा">दरभंगा</option>
+                <option value="पूर्णिया">पूर्णिया</option>
+                <option value="रोहतास">रोहतास</option>
+                <option value="नालंदा">नालंदा</option>
+                <option value="भोजपुर">भोजपुर</option>
+                <option value="सारण">सारण</option>
+                <option value="सीवान">सीवान</option>
+                <option value="गोपालगंज">गोपालगंज</option>
+                <option value="वैशाली">वैशाली</option>
+                <option value="समस्तीपुर">समस्तीपुर</option>
+                <option value="बेगूसराय">बेगूसराय</option>
+                <option value="खगड़िया">खगड़िया</option>
+                <option value="मुंगेर">मुंगेर</option>
+                <option value="जमुई">जमुई</option>
+                <option value="लखीसराय">लखीसराय</option>
+                <option value="शेखपुरा">शेखपुरा</option>
+                <option value="नवादा">नवादा</option>
+                <option value="औरंगाबाद">औरंगाबाद</option>
+                <option value="जहानाबाद">जहानाबाद</option>
+                <option value="अरवल">अरवल</option>
+                <option value="कैमूर">कैमूर</option>
+                <option value="बक्सर">बक्सर</option>
+                <option value="पश्चिमी चंपारण">पश्चिमी चंपारण</option>
+                <option value="पूर्वी चंपारण">पूर्वी चंपारण</option>
+                <option value="सीतामढ़ी">सीतामढ़ी</option>
+                <option value="शिवहर">शिवहर</option>
+                <option value="मधुबनी">मधुबनी</option>
+                <option value="सुपौल">सुपौल</option>
+                <option value="सहरसा">सहरसा</option>
+                <option value="मधेपुरा">मधेपुरा</option>
+                <option value="किशनगंज">किशनगंज</option>
+                <option value="कटिहार">कटिहार</option>
+                <option value="अररिया">अररिया</option>
+                <option value="बाँका">बाँका</option>
+              </select>
+            </div>
+
+            <div>
+              <label class="block text-[11px] font-bold text-slate-700 uppercase tracking-wider mb-1">
+                टेलीग्राम यूजरनेम (@) *
+              </label>
+              <input type="text" id="regTelegram" required placeholder="@username" class="w-full h-9 px-3 text-xs rounded-lg border border-slate-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 bg-slate-50 text-slate-900 font-medium">
+            </div>
+          </div>
+
+          <!-- Buttons & Resumption triggers -->
+          <div class="pt-1.5 space-y-2">
+            <button type="submit" class="w-full h-10 rounded-xl bg-indigo-600 hover:bg-indigo-700 active:scale-98 text-white font-bold text-xs sm:text-sm shadow-sm flex items-center justify-center space-x-1.5 transition-all">
+              <span>🚀</span>
+              <span>फुलस्क्रीन में 100 प्रश्नों का टेस्ट शुरू करें</span>
+            </button>
+
+            <!-- Resume Incomplete Test (shown if saved in localStorage) -->
+            <button type="button" id="resumeTestBtn" onclick="resumeOngoingTest()" class="hidden w-full h-9 rounded-xl bg-amber-50 hover:bg-amber-100 border border-amber-300 text-amber-800 font-bold text-xs flex items-center justify-center space-x-1">
+              <span>▶</span>
+              <span>अधूरा टेस्ट वहीं से जारी रखें (Resume Test)</span>
+            </button>
+
+            <!-- View Previous Saved Solutions -->
+            <button type="button" id="entrySavedSolBtn" onclick="openSavedSolutionsFromHeader()" class="hidden w-full h-9 rounded-xl bg-emerald-50 hover:bg-emerald-100 border border-emerald-300 text-emerald-800 font-bold text-xs flex items-center justify-center space-x-1">
+              <span>📋</span>
+              <span>पिछला स्कोरकार्ड एवं 100 हल देखें (Check Solutions)</span>
+            </button>
+
+            <!-- Leaderboard shortcut -->
+            <button type="button" onclick="openLeaderboardModal()" class="w-full h-8 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-700 font-medium text-xs flex items-center justify-center space-x-1">
+              <span>🏆</span>
+              <span>ऑल-बिहार लाइव मेरिट सूची (Leaderboard)</span>
+            </button>
+          </div>
+        </form>
+
+        <!-- Instructions footer -->
+        <div class="text-[10px] text-slate-500 border-t border-slate-100 pt-2 space-y-0.5">
+          <p>• <b>मार्किंग:</b> 100 प्रश्न • प्रत्येक सही उत्तर +2.00 अंक, गलत उत्तर -0.20 अंक की कटौती।</p>
+          <p>• <b>सुरक्षा:</b> टैब बदलना या फुलस्क्रीन छोड़ना वर्जित है (अधिकतम 3 स्ट्राइक पर ऑटो-सबमिट)।</p>
+          <p>• <b>ऑटो-सेव:</b> आपके सभी 100 उत्तर एवं शेष समय डिवाइस में निरंतर स्वतः सुरक्षित रहते हैं।</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- SCREEN 2: LIVE TEST & SOLUTION WORKSPACE -->
+    <div id="testScreen" class="hidden absolute inset-0 flex flex-col overflow-hidden bg-slate-50">
+
+      <!-- SUB-HEADER: 8 DYNAMIC SECTION TABS & STATUS BAR (shrink-0) -->
+      <div class="shrink-0 bg-white border-b border-slate-200 px-2 sm:px-3 py-1 flex flex-col space-y-1">
+        <!-- 8 Section Tabs Row (Scrollable cleanly) -->
+        <div class="flex items-center space-x-1 overflow-x-auto no-scrollbar py-0.5 text-[10.5px] sm:text-xs">
+          <button id="secTab1" onclick="jumpToSection('पदार्थ की परिभाषा एवं स्वरूप')" class="px-2.5 py-0.5 rounded-full font-semibold border border-indigo-200 bg-indigo-50 text-indigo-800 whitespace-nowrap">
+            1. स्वरूप (Q1-12)
+          </button>
+          <button id="secTab2" onclick="jumpToSection('कणों के अभिलाक्षणिक गुण एवं विसरण')" class="px-2.5 py-0.5 rounded-full font-medium text-slate-600 hover:bg-slate-100 border border-transparent whitespace-nowrap">
+            2. कण व विसरण (Q13-28)
+          </button>
+          <button id="secTab3" onclick="jumpToSection('पदार्थ की अवस्थाएँ एवं गुणधर्म')" class="px-2.5 py-0.5 rounded-full font-medium text-slate-600 hover:bg-slate-100 border border-transparent whitespace-nowrap">
+            3. अवस्थाएँ (Q29-45)
+          </button>
+          <button id="secTab4" onclick="jumpToSection('तापमान परिवर्तन एवं गुप्त ऊष्मा')" class="px-2.5 py-0.5 rounded-full font-medium text-slate-600 hover:bg-slate-100 border border-transparent whitespace-nowrap">
+            4. गुप्त ऊष्मा (Q46-60)
+          </button>
+          <button id="secTab5" onclick="jumpToSection('ऊर्ध्वपातन, निक्षेपण एवं दाब')" class="px-2.5 py-0.5 rounded-full font-medium text-slate-600 hover:bg-slate-100 border border-transparent whitespace-nowrap">
+            5. ऊर्ध्वपातन व दाब (Q61-72)
+          </button>
+          <button id="secTab6" onclick="jumpToSection('वाष्पीकरण एवं दैनिक जीवन')" class="px-2.5 py-0.5 rounded-full font-medium text-slate-600 hover:bg-slate-100 border border-transparent whitespace-nowrap">
+            6. वाष्पीकरण (Q73-85)
+          </button>
+          <button id="secTab7" onclick="jumpToSection('पदार्थ की 4थी एवं 5वीं अवस्था')" class="px-2.5 py-0.5 rounded-full font-medium text-slate-600 hover:bg-slate-100 border border-transparent whitespace-nowrap">
+            7. प्लाज़्मा व BEC (Q86-92)
+          </button>
+          <button id="secTab8" onclick="jumpToSection('मापन, मात्रक एवं कथन-कारण')" class="px-2.5 py-0.5 rounded-full font-medium text-slate-600 hover:bg-slate-100 border border-transparent whitespace-nowrap">
+            8. मात्रक व कूट (Q93-100)
+          </button>
+        </div>
+
+        <!-- Meta Bar: Question ID, Marks & Status -->
+        <div class="flex items-center justify-between text-xs text-slate-600 pt-0.5 border-t border-slate-100">
+          <div class="flex items-center space-x-2">
+            <span id="qNumberBadge" class="font-bold text-slate-800 bg-slate-100 px-2 py-0.5 rounded border border-slate-300">
+              प्रश्न 1 / 100
+            </span>
+            <span class="text-[11px] text-slate-500 font-medium">
+              अंक: <span class="text-emerald-700 font-bold">+2.00</span> | <span class="text-rose-600 font-bold">-0.20</span>
+            </span>
+          </div>
+          <!-- Live Question Status / Review Indicator -->
+          <div id="qStatusPill" class="flex items-center space-x-1 text-[11px]">
+            <span class="inline-block w-2 h-2 rounded-full bg-slate-400"></span>
+            <span id="qStatusText" class="text-slate-600 font-medium">अनुत्तरित</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- QUESTION CARD CONTAINER (flex-1 min-h-0 flex flex-col justify-between overflow-hidden) -->
+      <div class="flex-1 min-h-0 p-2 sm:p-3 flex flex-col justify-between overflow-hidden">
+        
+        <!-- CARD WORKSPACE (Inner flex container) -->
+        <div class="flex-1 min-h-0 bg-white rounded-xl border border-slate-200 shadow-xs p-2.5 sm:p-3.5 flex flex-col justify-between overflow-y-auto">
+          
+          <!-- Top Area: Watermark + Question Text + Optional Diagram -->
+          <div class="space-y-1.5 shrink-0">
+            <!-- Subtle Watermark Bar -->
+            <div class="flex items-center justify-between text-[10px] text-slate-400 font-semibold tracking-wider uppercase border-b border-slate-100 pb-1">
+              <span>GYANVERSE CBT • NCERT CH-1 (100 MEGA)</span>
+              <span>@GYANVERSET</span>
+            </div>
+
+            <!-- Question Prompt -->
+            <div id="questionText" class="text-[13px] sm:text-[14.5px] font-semibold text-slate-900 leading-snug pt-0.5 whitespace-pre-line">
+              <!-- Rendered via JS -->
+            </div>
+
+            <!-- Optional Inline Diagram Area (e.g. for Q71 State transitions) -->
+            <div id="diagramContainer" class="hidden my-1 bg-slate-50 border border-slate-200 rounded-lg p-1 flex items-center justify-center max-h-32 overflow-hidden">
+              <!-- Rendered via JS -->
+            </div>
+          </div>
+
+          <!-- Middle Area: Options List (A, B, C, D) -->
+          <div id="optionsList" class="my-1 sm:my-2 space-y-1.5 shrink-0">
+            <!-- Options dynamically rendered via JS -->
+          </div>
+
+          <!-- Solution Mode: Concise Step-by-Step Explanation Box (Visible only in Solution Mode) -->
+          <div id="solutionBox" class="hidden shrink-0 mt-1 bg-amber-50/95 border border-amber-300 rounded-xl p-2 sm:p-2.5 text-xs text-amber-950 overflow-y-auto max-h-24 sm:max-h-28">
+            <div class="flex items-center justify-between font-bold text-amber-900 mb-0.5 text-[11px] sm:text-xs">
+              <span class="flex items-center gap-1">💡 NCERT आधिकारिक वैज्ञानिक व्याख्या:</span>
+              <span id="solAnswerKeyBadge" class="bg-emerald-600 text-white px-1.5 py-0.2 rounded text-[10px]">
+                सही उत्तर: विकल्प B
+              </span>
+            </div>
+            <div id="solutionText" class="leading-relaxed font-normal text-[11px] sm:text-[12px]">
+              <!-- Explanation text rendered via JS -->
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- BOTTOM NAVIGATION BAR (shrink-0) -->
+      <footer class="shrink-0 h-12 bg-white border-t border-slate-200 px-2 sm:px-3 flex items-center justify-between shadow-xs z-20">
+        
+        <!-- Live Test Navigation Buttons (5 buttons) -->
+        <div id="liveNavButtons" class="w-full flex items-center justify-between gap-1 sm:gap-2">
+          <!-- Prev Button -->
+          <button onclick="prevQuestion()" class="h-9 px-2 sm:px-3 rounded-lg border border-slate-300 bg-white hover:bg-slate-100 text-slate-700 font-semibold text-xs flex items-center justify-center gap-1 active:scale-95 transition-all">
+            <span>⬅</span>
+            <span class="hidden xs:inline">पिछला</span>
+          </button>
+
+          <!-- Clear Button -->
+          <button onclick="clearCurrentResponse()" class="h-9 px-2 sm:px-2.5 rounded-lg border border-rose-200 bg-rose-50 hover:bg-rose-100 text-rose-700 font-semibold text-xs flex items-center justify-center gap-1 active:scale-95 transition-all" title="उत्तर साफ़ करें">
+            <span>✖</span>
+            <span class="hidden xs:inline">साफ़</span>
+          </button>
+
+          <!-- Review Button -->
+          <button id="reviewBtn" onclick="toggleMarkForReview()" class="h-9 px-2 sm:px-2.5 rounded-lg border border-amber-300 bg-amber-50 hover:bg-amber-100 text-amber-800 font-semibold text-xs flex items-center justify-center gap-1 active:scale-95 transition-all">
+            <span>★</span>
+            <span class="hidden xs:inline">समीक्षा</span>
+          </button>
+
+          <!-- Palette Modal Trigger Button -->
+          <button onclick="openPaletteModal()" class="h-9 px-2 sm:px-3 rounded-lg border border-indigo-300 bg-indigo-50 hover:bg-indigo-100 text-indigo-700 font-bold text-xs flex items-center justify-center gap-1 active:scale-95 transition-all">
+            <span>📱</span>
+            <span>पैलेट (100)</span>
+          </button>
+
+          <!-- Next / Save & Next Button -->
+          <button onclick="saveAndNextQuestion()" class="h-9 px-3 sm:px-4 rounded-lg bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs sm:text-sm flex items-center justify-center gap-1 shadow-xs active:scale-95 transition-all">
+            <span>सेव & अगला</span>
+            <span>➡</span>
+          </button>
+        </div>
+
+        <!-- Solution Mode Navigation Buttons (Collapsed 4 buttons) -->
+        <div id="solutionNavButtons" class="hidden w-full flex items-center justify-between gap-1.5 sm:gap-2">
+          <button onclick="prevQuestion()" class="h-9 px-2.5 sm:px-3 rounded-lg border border-slate-300 bg-white hover:bg-slate-100 text-slate-700 font-bold text-xs flex items-center gap-1">
+            <span>⬅</span><span>पिछला हल</span>
+          </button>
+
+          <button onclick="openPaletteModal()" class="h-9 px-2.5 sm:px-3 rounded-lg border border-indigo-300 bg-indigo-50 text-indigo-700 font-bold text-xs flex items-center gap-1">
+            <span>📱</span><span>100 प्रश्न</span>
+          </button>
+
+          <button onclick="returnToScorecard()" class="h-9 px-2.5 sm:px-3 rounded-lg bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-xs flex items-center gap-1">
+            <span>📊</span><span>स्कोरकार्ड</span>
+          </button>
+
+          <button onclick="nextQuestion()" class="h-9 px-2.5 sm:px-3 rounded-lg bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs flex items-center gap-1">
+            <span>अगला हल</span><span>➡</span>
+          </button>
+        </div>
+
+      </footer>
+
+    </div>
+
+    <!-- SCREEN 3: SCORECARD MODAL / OVERLAY -->
+    <div id="scorecardScreen" class="hidden absolute inset-0 z-30 bg-slate-900/60 backdrop-blur-xs flex items-center justify-center p-3 overflow-y-auto">
+      <div class="w-full max-w-md bg-white rounded-2xl shadow-xl border border-slate-200 p-4 sm:p-5 flex flex-col space-y-3 my-auto">
+        
+        <!-- Header -->
+        <div class="text-center space-y-0.5 border-b border-slate-100 pb-2">
+          <div class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-emerald-100 text-emerald-600 text-lg mb-1">
+            🏆
+          </div>
+          <h2 class="text-base sm:text-lg font-bold text-slate-900">
+            100 MCQ परीक्षा परिणाम (Scorecard)
+          </h2>
+          <p id="scoreStudentName" class="text-xs font-semibold text-indigo-700">
+            विद्यार्थी: 
+          </p>
+          <p class="text-[11px] text-slate-500">
+            NCERT Ch-1: हमारे आस-पास के पदार्थ • @GYANVERSET
+          </p>
+        </div>
+
+        <!-- Big Score Display -->
+        <div class="bg-gradient-to-br from-indigo-50 via-slate-50 to-indigo-100/50 rounded-xl p-3 border border-indigo-100 text-center space-y-1">
+          <div class="text-[11px] font-bold uppercase tracking-wider text-slate-500">
+            कुल प्राप्तांक (Total Score)
+          </div>
+          <div class="text-3xl font-black text-indigo-700 tracking-tight">
+            <span id="scoreTotalMarks">00.00</span> <span class="text-xs font-medium text-slate-500">/ 200.00</span>
+          </div>
+          <div class="text-xs font-semibold text-slate-600 flex items-center justify-center space-x-2">
+            <span>सटीकता: <b id="scoreAccuracy" class="text-emerald-700">0%</b></span>
+            <span>•</span>
+            <span>प्रतिशत: <b id="scorePercentage" class="text-indigo-700">0%</b></span>
+          </div>
+        </div>
+
+        <!-- 4-Box Stats Grid -->
+        <div class="grid grid-cols-4 gap-1.5 text-center">
+          <!-- Total Attempted -->
+          <div class="bg-slate-50 border border-slate-200 rounded-lg p-1.5">
+            <div class="text-[10px] text-slate-500 font-medium">प्रयास किए</div>
+            <div id="statAttempted" class="text-sm font-bold text-slate-800">0</div>
+          </div>
+          <!-- Correct -->
+          <div class="bg-emerald-50 border border-emerald-200 rounded-lg p-1.5">
+            <div class="text-[10px] text-emerald-700 font-medium">सही (✓)</div>
+            <div id="statCorrect" class="text-sm font-bold text-emerald-700">0</div>
+          </div>
+          <!-- Incorrect -->
+          <div class="bg-rose-50 border border-rose-200 rounded-lg p-1.5">
+            <div class="text-[10px] text-rose-700 font-medium">गलत (✗)</div>
+            <div id="statWrong" class="text-sm font-bold text-rose-700">0</div>
+          </div>
+          <!-- Skipped -->
+          <div class="bg-slate-100 border border-slate-200 rounded-lg p-1.5">
+            <div class="text-[10px] text-slate-600 font-medium">छूटे (⚪)</div>
+            <div id="statSkipped" class="text-sm font-bold text-slate-600">0</div>
+          </div>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="space-y-1.5 pt-1">
+          <!-- Check Solutions Button -->
+          <button onclick="enterSolutionMode()" class="w-full h-10 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs sm:text-sm shadow-sm flex items-center justify-center space-x-1.5">
+            <span>📋</span>
+            <span>सभी 100 प्रश्नों के हल देखें (Check Solutions)</span>
+          </button>
+
+          <!-- Leaderboard Button -->
+          <button onclick="openLeaderboardModal()" class="w-full h-9 rounded-xl bg-amber-50 hover:bg-amber-100 border border-amber-300 text-amber-800 font-bold text-xs flex items-center justify-center space-x-1">
+            <span>🏆</span>
+            <span>ऑल-बिहार मेरिट लिस्ट (Leaderboard)</span>
+          </button>
+
+          <!-- Re-take Test Button -->
+          <button onclick="retakeTestConfirm()" class="w-full h-8 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-700 font-medium text-xs flex items-center justify-center space-x-1">
+            <span>🔄</span>
+            <span>टेस्ट दोबारा दें (Re-take Test)</span>
+          </button>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ==================== 3. MODALS ==================== -->
+
+    <!-- MODAL A: TCS iON 100 QUESTION PALETTE MODAL -->
+    <div id="paletteModal" class="hidden absolute inset-0 z-40 bg-slate-900/60 backdrop-blur-xs flex items-end sm:items-center justify-center p-0 sm:p-4">
+      <div class="w-full sm:max-w-lg bg-white rounded-t-2xl sm:rounded-2xl shadow-2xl border border-slate-200 max-h-[85vh] flex flex-col overflow-hidden animate-in slide-in-from-bottom duration-200">
+        
+        <!-- Palette Header -->
+        <div class="p-3 border-b border-slate-200 flex items-center justify-between bg-slate-50">
+          <div class="flex items-center space-x-1.5">
+            <span class="text-base">📱</span>
+            <h3 class="font-bold text-slate-900 text-xs sm:text-sm">
+              100 प्रश्न पैलेट (Question Palette)
+            </h3>
+          </div>
+          <button onclick="closePaletteModal()" class="w-7 h-7 rounded-full bg-slate-200 text-slate-700 hover:bg-slate-300 font-bold text-sm flex items-center justify-center">
+            ✕
+          </button>
+        </div>
+
+        <!-- Color Legend -->
+        <div class="px-3 py-2 border-b border-slate-100 bg-white grid grid-cols-2 gap-1.5 text-[10px]">
+          <div class="flex items-center space-x-1.5">
+            <span class="w-3 h-3 rounded-full bg-emerald-600 inline-block"></span>
+            <span class="text-slate-700 font-medium">उत्तर दिया (<span id="palCountAnswered">0</span>)</span>
+          </div>
+          <div class="flex items-center space-x-1.5">
+            <span class="w-3 h-3 rounded-full bg-amber-500 inline-block"></span>
+            <span class="text-slate-700 font-medium">समीक्षा हेतु (<span id="palCountReview">0</span>)</span>
+          </div>
+          <div class="flex items-center space-x-1.5">
+            <span class="w-3 h-3 rounded-full bg-purple-600 inline-block"></span>
+            <span class="text-slate-700 font-medium">उत्तर + समीक्षा (<span id="palCountAnsReview">0</span>)</span>
+          </div>
+          <div class="flex items-center space-x-1.5">
+            <span class="w-3 h-3 rounded-full bg-slate-200 border border-slate-300 inline-block"></span>
+            <span class="text-slate-700 font-medium">अनुत्तरित (<span id="palCountUnattempted">100</span>)</span>
+          </div>
+        </div>
+
+        <!-- 100 Questions Grid (Compact 10 columns) -->
+        <div class="flex-1 overflow-y-auto p-3">
+          <div id="paletteGrid" class="grid grid-cols-8 sm:grid-cols-10 gap-1.5">
+            <!-- 100 Buttons rendered via JS -->
+          </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="p-2.5 border-t border-slate-200 bg-slate-50 flex justify-end">
+          <button onclick="closePaletteModal()" class="px-4 py-1.5 rounded-lg bg-indigo-600 text-white font-bold text-xs hover:bg-indigo-700">
+            बंद करें (Close)
+          </button>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- MODAL B: SUBMIT CONFIRMATION MODAL -->
+    <div id="submitModal" class="hidden absolute inset-0 z-40 bg-slate-900/60 backdrop-blur-xs flex items-center justify-center p-3">
+      <div class="w-full max-w-sm bg-white rounded-2xl shadow-2xl border border-slate-200 p-4 space-y-3">
+        <div class="text-center space-y-1">
+          <div class="w-10 h-10 rounded-full bg-amber-100 text-amber-700 flex items-center justify-center mx-auto text-lg">
+            ⚠
+          </div>
+          <h3 class="font-bold text-slate-900 text-sm sm:text-base">
+            क्या आप टेस्ट जमा करना चाहते हैं?
+          </h3>
+          <p class="text-xs text-slate-500">
+            अंतिम जमा के बाद आप उत्तर बदल नहीं सकेंगे।
+          </p>
+        </div>
+
+        <!-- Summary Table -->
+        <div class="bg-slate-50 rounded-xl p-2.5 border border-slate-200 space-y-1.5 text-xs">
+          <div class="flex justify-between">
+            <span class="text-slate-600">कुल प्रश्न:</span>
+            <span class="font-bold text-slate-900">100</span>
+          </div>
+          <div class="flex justify-between">
+            <span class="text-emerald-700 font-medium">उत्तर दिए गए:</span>
+            <span id="subCountAnswered" class="font-bold text-emerald-700">0</span>
+          </div>
+          <div class="flex justify-between">
+            <span class="text-amber-700 font-medium">समीक्षा हेतु चिह्नित:</span>
+            <span id="subCountReview" class="font-bold text-amber-700">0</span>
+          </div>
+          <div class="flex justify-between">
+            <span class="text-rose-600 font-medium">छूटे हुए (अनुत्तरित):</span>
+            <span id="subCountUnattempted" class="font-bold text-rose-600">100</span>
+          </div>
+        </div>
+
+        <!-- Buttons -->
+        <div class="grid grid-cols-2 gap-2 pt-1">
+          <button onclick="closeSubmitModal()" class="h-9 rounded-lg border border-slate-300 hover:bg-slate-100 text-slate-700 font-semibold text-xs">
+            वापस लौटें
+          </button>
+          <button onclick="finalizeSubmission()" class="h-9 rounded-lg bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs shadow-xs">
+            हाँ, जमा करें
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- MODAL C: ALL-BIHAR MERIT LIST & LEADERBOARD -->
+    <div id="leaderboardModal" class="hidden absolute inset-0 z-40 bg-slate-900/60 backdrop-blur-xs flex items-center justify-center p-2 sm:p-4">
+      <div class="w-full sm:max-w-md bg-white rounded-2xl shadow-2xl border border-slate-200 max-h-[90vh] flex flex-col overflow-hidden">
+        
+        <!-- Header -->
+        <div class="p-3 border-b border-slate-200 bg-slate-50 flex items-center justify-between">
+          <div class="flex items-center space-x-1.5">
+            <span class="text-lg">🏆</span>
+            <div>
+              <h3 class="font-bold text-slate-900 text-xs sm:text-sm leading-tight">
+                ऑल-बिहार लाइव मेरिट लिस्ट (100 MCQ)
+              </h3>
+              <p class="text-[10px] text-slate-500">
+                GYANVERSE ACADEMY (@GYANVERSET)
+              </p>
+            </div>
+          </div>
+          <button onclick="closeLeaderboardModal()" class="w-7 h-7 rounded-full bg-slate-200 text-slate-700 hover:bg-slate-300 font-bold text-sm flex items-center justify-center">
+            ✕
+          </button>
+        </div>
+
+        <!-- Filter & Search Controls -->
+        <div class="p-2 border-b border-slate-200 bg-white grid grid-cols-2 gap-1.5 text-xs">
+          <input type="text" id="leaderSearch" oninput="renderLeaderboard()" placeholder="नाम या टेलीग्राम खोजें..." class="h-8 px-2.5 rounded-lg border border-slate-300 text-xs focus:outline-none focus:ring-1 focus:ring-indigo-500">
+          <select id="leaderDistFilter" onchange="renderLeaderboard()" class="h-8 px-2 rounded-lg border border-slate-300 text-xs focus:outline-none focus:ring-1 focus:ring-indigo-500">
+            <option value="">सभी 38 जिले</option>
+            <option value="पटना">पटना</option>
+            <option value="गया">गया</option>
+            <option value="भागलपुर">भागलपुर</option>
+            <option value="मुजफ्फरपुर">मुजफ्फरपुर</option>
+            <option value="दरभंगा">दरभंगा</option>
+            <option value="पूर्णिया">पूर्णिया</option>
+            <option value="रोहतास">रोहतास</option>
+            <option value="नालंदा">नालंदा</option>
+            <option value="भोजपुर">भोजपुर</option>
+            <option value="सारण">सारण</option>
+          </select>
+        </div>
+
+        <!-- Leaderboard List -->
+        <div class="flex-1 overflow-y-auto p-2 space-y-1.5" id="leaderboardList">
+          <!-- Live Rows rendered via JS -->
+        </div>
+
+        <!-- Footer -->
+        <div class="p-2 border-t border-slate-200 bg-slate-50 flex justify-between items-center text-[11px]">
+          <span class="text-slate-500">लाइव क्लाउड सिंक सक्रिय</span>
+          <button onclick="closeLeaderboardModal()" class="px-3 py-1 rounded bg-slate-200 hover:bg-slate-300 text-slate-700 font-semibold text-xs">
+            बंद करें
+          </button>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- MODAL D: SECRET ADMIN MODAL (GV Logo 4 Clicks) -->
+    <div id="adminModal" class="hidden absolute inset-0 z-50 bg-slate-900/70 backdrop-blur-xs flex items-center justify-center p-3">
+      <div class="w-full max-w-sm bg-white rounded-2xl shadow-2xl border border-slate-200 p-4 space-y-3">
+        <div class="flex items-center justify-between border-b border-slate-100 pb-2">
+          <h3 class="font-bold text-slate-900 text-sm flex items-center gap-1.5">
+            <span>🛡</span><span>ज्ञानवर्स एडमिन पैनल</span>
+          </h3>
+          <button onclick="closeAdminModal()" class="w-6 h-6 rounded-full bg-slate-200 text-slate-700 font-bold text-xs flex items-center justify-center">
+            ✕
+          </button>
+        </div>
+
+        <div id="adminAuthSection" class="space-y-2">
+          <label class="block text-xs font-semibold text-slate-700">
+            एडमिन सुरक्षा पिन (PIN) दर्ज करें:
+          </label>
+          <input type="password" id="adminPinInput" placeholder="पिन: 1234" class="w-full h-9 px-3 rounded-lg border border-slate-300 text-xs focus:outline-none focus:ring-2 focus:ring-indigo-500">
+          <button onclick="verifyAdminPin()" class="w-full h-8 rounded-lg bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-xs">
+            सत्यापित करें (Unlock)
+          </button>
+        </div>
+
+        <div id="adminActionsSection" class="hidden space-y-2.5 pt-1 text-xs">
+          <div class="p-2 bg-emerald-50 text-emerald-800 rounded-lg font-semibold text-center border border-emerald-200">
+            ✓ एडमिन एक्सेस सक्रिय (Admin Authenticated)
+          </div>
+          <button onclick="clearLocalTestProgress()" class="w-full h-8 rounded-lg bg-rose-50 text-rose-700 border border-rose-300 font-semibold hover:bg-rose-100">
+            लोकल टेस्ट डेटा साफ़ करें (Reset Device Data)
+          </button>
+          <button onclick="seedDemoLeaderboard()" class="w-full h-8 rounded-lg bg-indigo-50 text-indigo-700 border border-indigo-300 font-semibold hover:bg-indigo-100">
+            टॉपर डेमो डेटा लोड करें (Seed Ranks)
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ANTI-CHEAT WARNING TOAST -->
+    <div id="cheatToast" class="hidden absolute top-3 left-1/2 -translate-x-1/2 z-50 bg-rose-600 text-white px-3 py-2 rounded-xl shadow-lg border border-rose-700 text-xs font-bold flex items-center space-x-2 animate-bounce">
+      <span>⚠</span>
+      <span id="cheatToastText">चेतावनी: परीक्षा के दौरान टैब बदलना या फुलस्क्रीन छोड़ना वर्जित है! (स्ट्राइक 1/3)</span>
+    </div>
+
+  </main>
+
+  <!-- ==================== 4. APPLICATION JAVASCRIPT LOGIC ==================== -->
+  <script>
+    /* --- Master Question Dataset (100 Questions) --- */
+    const QUESTIONS = [{"id": 1, "section": "पदार्थ की परिभाषा एवं स्वरूप", "q": "प्राचीन भारतीय दार्शनिकों ने पदार्थ को कितने मूल तत्वों (पंचतत्व) में वर्गीकृत किया था?", "options": ["तीन तत्वों में", "चार तत्वों में", "पाँच तत्वों में (वायु, पृथ्वी, अग्नि, जल, आकाश)", "सात तत्वों में"], "ans": 2, "exp": "प्राचीन भारतीय दार्शनिकों के अनुसार सभी वस्तुएँ (सजीव या निर्जीव) पाँच मूल तत्वों से बनी हैं, जिन्हें 'पंचतत्व' कहा गया: वायु, पृथ्वी, अग्नि, जल और आकाश।", "hasSvg": false}, {"id": 2, "section": "पदार्थ की परिभाषा एवं स्वरूप", "q": "वैज्ञानिक दृष्टिकोण से 'पदार्थ' (Matter) की सबसे सटीक परिभाषा क्या है?", "options": ["जिसमें केवल द्रव्यमान हो", "जो केवल स्थान (आयतन) घेरता हो", "जिसका द्रव्यमान हो और जो कुछ स्थान (आयतन) घेरता हो", "जो केवल आँखों से दिखाई दे"], "ans": 2, "exp": "प्रत्येक वस्तु जिसका द्रव्यमान (Mass) होता है और जो कुछ स्थान घेरती है (अर्थात जिसका आयतन होता है), उसे वैज्ञानिक भाषा में पदार्थ कहते हैं।", "hasSvg": false}, {"id": 3, "section": "पदार्थ की परिभाषा एवं स्वरूप", "q": "निम्नलिखित में से कौन-सा समूह केवल 'पदार्थ' के सही उदाहरणों को दर्शाता है?", "options": ["कुर्सी, वायु, बादाम, शीतल पेय", "स्नेह, विचार, घृणा, गंध", "शीत, विचार, कुर्सी, घृणा", "गंध, विचार, प्रेम, शीतल पेय"], "ans": 0, "exp": "कुर्सी, वायु, बादाम और शीतल पेय द्रव्यमान युक्त हैं और आयतन घेरते हैं, अतः ये पदार्थ हैं। स्नेह, विचार, घृणा और शीत केवल मानसिक अनुभूतियाँ हैं।", "hasSvg": false}, {"id": 4, "section": "पदार्थ की परिभाषा एवं स्वरूप", "q": "पदार्थ की भौतिक प्रकृति के संबंध में वैज्ञानिकों के दो समूहों की प्राचीन विचारधाराएँ क्या थीं?", "options": ["एक सतत (लकड़ी की तरह) तथा दूसरी कणिकीय (रेत की तरह)", "दोनों का मानना था कि पदार्थ केवल द्रव रूप में होता है", "दोनों का मानना था कि पदार्थ में कोई द्रव्यमान नहीं होता", "एक समूह पदार्थ को ऊर्जा तथा दूसरा प्रकाश मानता था"], "ans": 0, "exp": "एक विचारधारा का मानना था कि पदार्थ लकड़ी के टुकड़े की तरह सतत (Continuous) होते हैं, जबकि दूसरी विचारधारा मानती थी कि पदार्थ रेत की तरह के कणों (Particulate) से मिलकर बने हैं। अंततः कणिकीय स्वरूप सिद्ध हुआ।", "hasSvg": false}, {"id": 5, "section": "पदार्थ की परिभाषा एवं स्वरूप", "q": "क्रियाकलाप 1.1 के अनुसार, जल में शर्करा (चीनी) या नमक घोलने पर जल के स्तर में कोई बदलाव क्यों नहीं आता?", "options": ["चीनी के कण नष्ट हो जाते हैं", "चीनी के कण जल के कणों के बीच के रिक्त स्थानों में समावेशित हो जाते हैं", "जल का घनत्व अचानक शून्य हो जाता है", "नमक के कण बीकर की दीवारों से चिपक जाते हैं"], "ans": 1, "exp": "जब जल में शर्करा या नमक घोला जाता है, तो उसके कण जल के कणों के मध्य उपस्थित अंतराण्विक रिक्त स्थानों में समावेशित (Accommodate) हो जाते हैं, जिससे जल-स्तर में वृद्धि नहीं होती।", "hasSvg": false}, {"id": 6, "section": "पदार्थ की परिभाषा एवं स्वरूप", "q": "क्रियाकलाप 1.2 में पोटैशियम परमैंगनेट (KMnO₄) के 2-3 क्रिस्टल से लगभग 1000 लीटर जल रंगीन हो जाना क्या प्रमाणित करता है?", "options": ["पदार्थ के कण अत्यंत विशाल होते हैं", "KMnO₄ एक गैस है", "पदार्थ के कण अत्यधिक सूक्ष्म होते हैं और एक छोटे क्रिस्टल में करोड़ों सूक्ष्म कण होते हैं", "जल के कण गति नहीं करते"], "ans": 2, "exp": "यह प्रयोग दर्शाता है कि KMnO₄ के केवल एक छोटे क्रिस्टल में भी लाखों-करोड़ों सूक्ष्म कण होते हैं, जो बार-बार तनुकरण (Dilution) करने पर भी विभाजित होते रहते हैं।", "hasSvg": false}, {"id": 7, "section": "पदार्थ की परिभाषा एवं स्वरूप", "q": "यदि पोटैशियम परमैंगनेट के स्थान पर 2 mL डेटॉल (Dettol) का उपयोग किया जाए, तो बार-बार तनु करने पर भी उसकी महक क्यों मिलती रहती है?", "options": ["क्योंकि डेटॉल के कण समाप्त नहीं होते और अत्यधिक सूक्ष्म भागों में विभाजित होते रहते हैं", "क्योंकि डेटॉल का वाष्पीकरण नहीं होता", "क्योंकि डेटॉल जल में अघुलनशील है", "क्योंकि डेटॉल ठोस अवस्था में बदल जाता है"], "ans": 0, "exp": "डेटॉल के लगातार कई बार तनु करने पर भी उसकी महक का मिलना यह प्रमाणित करता है कि पदार्थ के कण इतने सूक्ष्म होते हैं कि हम उनकी कल्पना भी नहीं कर सकते।", "hasSvg": false}, {"id": 8, "section": "पदार्थ की परिभाषा एवं स्वरूप", "q": "अंतर्राष्ट्रीय मात्रक (SI) पद्धति के अनुसार 'आयतन' (Volume) का मानक मात्रक क्या है?", "options": ["लीटर (L)", "मिलीलीटर (mL)", "घन मीटर (m³)", "घन सेंटीमीटर (cm³)"], "ans": 2, "exp": "आयतन का SI मात्रक घन मीटर (m³) है। आयतन मापने का साधारण मात्रक लीटर (L) है, जहाँ 1 L = 1 dm³ = 1000 mL = 10³ cm³ होता है।", "hasSvg": false}, {"id": 9, "section": "पदार्थ की परिभाषा एवं स्वरूप", "q": "1 लीटर (1 L) आयतन का मान निम्नलिखित में से किसके बराबर होता है?", "options": ["1 dm³ तथा 1000 mL", "10 m³", "100 cm³", "10,000 mL"], "ans": 0, "exp": "NCERT फुटनोट के अनुसार: 1 L = 1 dm³, 1 L = 1000 mL, तथा 1 m³ = 1000 L = 10⁶ cm³ होता है।", "hasSvg": false}, {"id": 10, "section": "पदार्थ की परिभाषा एवं स्वरूप", "q": "प्राचीन काल में यूनानी (Greek) दार्शनिकों ने पदार्थ के वर्गीकरण के संदर्भ में क्या दृष्टिकोण अपनाया था?", "options": ["उन्होंने पदार्थ को 100 तत्वों में विभाजित किया", "उन्होंने भी भारतीय दार्शनिकों की भाँति पदार्थ को मूल तत्वों में वर्गीकृत किया था", "उन्होंने पदार्थ की अवधारणा को अस्वीकार कर दिया था", "उन्होंने केवल धातुओं को पदार्थ माना था"], "ans": 1, "exp": "NCERT के अनुसार, उस समय के यूनानी दार्शनिकों ने भी भारतीय दार्शनिकों की तरह ही पदार्थ को मूल तत्वों (पंचतत्व के समतुल्य) में वर्गीकृत किया था।", "hasSvg": false}, {"id": 11, "section": "पदार्थ की परिभाषा एवं स्वरूप", "q": "आधुनिक वैज्ञानिकों ने पदार्थ को किन दो प्रमुख आधारों पर वर्गीकृत किया है?", "options": ["रंग और गंध के आधार पर", "भौतिक गुणधर्म एवं रासायनिक प्रकृति के आधार पर", "केवल आकार एवं भार के आधार पर", "केवल जैविक एवं अजैविक प्रकृति के आधार पर"], "ans": 1, "exp": "आधुनिक वैज्ञानिकों ने पदार्थ को दो प्रमुख आधारों पर वर्गीकृत किया है: 1. भौतिक गुणधर्मों के आधार पर (ठोस, द्रव, गैस), तथा 2. रासायनिक प्रकृति के आधार पर (तत्व, यौगिक, मिश्रण)।", "hasSvg": false}, {"id": 12, "section": "पदार्थ की परिभाषा एवं स्वरूप", "q": "निम्नलिखित में से कौन-सा 'पदार्थ नहीं' है?", "options": ["शीतल पेय (Cold drink)", "इत्र की सुगंध (Smell of perfume)", "विचार (Thought)", "बादाम (Almonds)"], "ans": 2, "exp": "'विचार' (Thought) केवल एक मानसिक प्रक्रिया/अनुभूति है, इसका न कोई द्रव्यमान होता है और न यह स्थान घेरता है, अतः यह पदार्थ नहीं है। (इत्र के कण हवा में उपस्थित पदार्थ हैं)।", "hasSvg": false}, {"id": 13, "section": "कणों के अभिलाक्षणिक गुण एवं विसरण", "q": "पदार्थ के कणों के मुख्य तीन अभिलाक्षणिक गुण कौन-से हैं?", "options": ["कण स्थिर होते हैं, भारी होते हैं और अपारदर्शी होते हैं", "कणों के बीच रिक्त स्थान होता है, कण निरंतर गतिशील होते हैं और एक-दूसरे को आकर्षित करते हैं", "कण हमेशा चमकते हैं, गर्म होते हैं और कठोर होते हैं", "कण केवल सीधी रेखा में गति करते हैं और आकर्षित नहीं करते"], "ans": 1, "exp": "पदार्थ के कणों के तीन मूलभूत लक्षण: 1. कणों के बीच रिक्त स्थान (अंतराण्विक स्थान) होना, 2. कणों का निरंतर गतिशील होना (गतिज ऊर्जा), 3. कणों के बीच आकर्षण बल होना।", "hasSvg": false}, {"id": 14, "section": "कणों के अभिलाक्षणिक गुण एवं विसरण", "q": "कक्षा के किसी कोने में बुझी हुई अगरबत्ती की सुगंध लेने के लिए समीप जाना पड़ता है, लेकिन जलाने पर दूर से ही सुगंध मिल जाती है, क्यों?", "options": ["जलने पर अगरबत्ती हल्की हो जाती है", "तापमान बढ़ने पर कणों की गतिज ऊर्जा बढ़ जाती है और विसरण तीव्र हो जाता है", "जलने पर वायु की गति रुक जाती है", "बुझी अगरबत्ती के कण भारी होकर नष्ट हो जाते हैं"], "ans": 1, "exp": "अगरबत्ती जलाने पर तापमान बढ़ता है, जिससे वाष्पशील सुगंधित कणों की गतिज ऊर्जा बढ़ जाती है। उच्च गतिज ऊर्जा के कारण उनका वायु में विसरण बहुत तेज़ हो जाता है।", "hasSvg": false}, {"id": 15, "section": "कणों के अभिलाक्षणिक गुण एवं विसरण", "q": "दो विभिन्न पदार्थों के कणों का स्वतः एक-दूसरे में अंतःमिश्रित होना क्या कहलाता है?", "options": ["परासरण (Osmosis)", "वाष्पीकरण (Evaporation)", "विसरण (Diffusion)", "ऊर्ध्वपातन (Sublimation)"], "ans": 2, "exp": "दो विभिन्न पदार्थों के कणों का स्वतः (अपने आप) आपस में मिलना 'विसरण' (Diffusion) कहलाता है। यह कणों के रिक्त स्थानों में समावेश के कारण होता है।", "hasSvg": false}, {"id": 16, "section": "कणों के अभिलाक्षणिक गुण एवं विसरण", "q": "तापमान बढ़ाने पर विसरण (Diffusion) की दर पर क्या प्रभाव पड़ता है?", "options": ["विसरण की दर घट जाती है", "विसरण की दर बढ़ जाती है", "विसरण पूर्णतः रुक जाता है", "कोई प्रभाव नहीं पड़ता"], "ans": 1, "exp": "तापमान में वृद्धि करने पर पदार्थ के कणों की गतिज ऊर्जा बढ़ जाती है, जिससे कण अधिक तेजी से गति करते हैं और विसरण की दर बढ़ जाती है।", "hasSvg": false}, {"id": 17, "section": "कणों के अभिलाक्षणिक गुण एवं विसरण", "q": "जल से भरे दो गिलासों में से एक में नीली स्याही की बूँद तथा दूसरे में शहद की बूँद डालने पर स्याही जल्दी क्यों फैलती है?", "options": ["शहद का घनत्व और श्यानता स्याही से अधिक होती है, जिससे उसके कणों का विसरण धीमा होता है", "स्याही में कोई कण नहीं होते", "जल शहद को आकर्षित नहीं करता", "स्याही का तापमान शहद से अधिक होता है"], "ans": 0, "exp": "स्याही का घनत्व कम होने के कारण उसके कण जल में तेजी से विसरित होते हैं, जबकि गाढ़े शहद (उच्च श्यानता व घनत्व) के कणों का विसरण बहुत धीमा होता है।", "hasSvg": false}, {"id": 18, "section": "कणों के अभिलाक्षणिक गुण एवं विसरण", "q": "गर्म जल से भरे गिलास में कॉपर सल्फेट (CuSO₄) का क्रिस्टल डालने पर वह ठंडे जल की अपेक्षा जल्दी क्यों घुलता है?", "options": ["गर्म जल में कणों की गतिज ऊर्जा अधिक होने से विसरण तेज़ होता है", "ठंडे जल में आकर्षण बल शून्य होता है", "कॉपर सल्फेट गर्म जल में पिघल जाता है", "गर्म जल में कॉपर सल्फेट का द्रव्यमान घट जाता है"], "ans": 0, "exp": "उच्च तापमान पर जल के कणों की गतिज ऊर्जा अधिक होती है, जिससे विलेय और विलायक के कणों के टकराने और विसरित होने की दर तीव्र हो जाती है।", "hasSvg": false}, {"id": 19, "section": "कणों के अभिलाक्षणिक गुण एवं विसरण", "q": "क्रियाकलाप 1.6 में असम के 'ईदू-मिशमी' (Idy-Mishmi) नर्तकों की तरह एक-दूसरे को पीछे से कसकर पकड़ने वाली मानव श्रृंखला क्या दर्शाती है?", "options": ["कणों के बीच न्यूनतम आकर्षण बल", "कणों के बीच अत्यधिक मजबूत आकर्षण बल (जैसे ठोसों में)", "कणों की अनियमित गति", "पदार्थ का गैसीय स्वरूप"], "ans": 1, "exp": "ईदू-मिशमी नर्तकों द्वारा कमर से कसकर पकड़ी गई श्रृंखला पदार्थ के कणों के बीच कार्य करने वाले अधिकतम आकर्षण बल (जैसे ठोस अवस्था में) का प्रतीक है, जिसे तोड़ना सबसे कठिन होता है।", "hasSvg": false}, {"id": 20, "section": "कणों के अभिलाक्षणिक गुण एवं विसरण", "q": "लोहे की कील, चॉक का टुकड़ा और रबर बैंड में से किसके कणों के बीच सबसे प्रबल आकर्षण बल होता है?", "options": ["चॉक के टुकड़े में", "रबर बैंड में", "लोहे की कील में", "तीनों में समान बल होता है"], "ans": 2, "exp": "हथौड़ा मारने पर चॉक आसानी से टूट जाता है और रबर बैंड खिंच जाता है, लेकिन लोहे की कील नहीं टूटती। इससे सिद्ध होता है कि लोहे की कील के कणों में पारस्परिक आकर्षण बल सर्वाधिक प्रबल है।", "hasSvg": false}, {"id": 21, "section": "कणों के अभिलाक्षणिक गुण एवं विसरण", "q": "नल की धार को अपनी उंगली से काटने का प्रयास करने पर जल की धार अलग क्यों नहीं होती?", "options": ["जल के कणों के बीच आकर्षण बल उन्हें परस्पर जोड़े रखता है", "उंगली में कोई बल नहीं होता", "जल एक ठोस पदार्थ है", "जल के कण गति नहीं करते"], "ans": 0, "exp": "जल की धार न कटने का कारण यह है कि जल के कणों के बीच आकर्षण बल कार्य करता है जो उन्हें एक साथ बनाए रखता है।", "hasSvg": false}, {"id": 22, "section": "कणों के अभिलाक्षणिक गुण एवं विसरण", "q": "स्वीमिंग पूल में गोताखोर जल को आसानी से क्यों काट पाता है?", "options": ["क्योंकि द्रव के कणों के बीच रिक्त स्थान होता है और आकर्षण बल ठोसों की तुलना में दुर्बल होता है", "क्योंकि पानी में कोई द्रव्यमान नहीं होता", "क्योंकि गोताखोर का घनत्व पानी से कम होता है", "क्योंकि पानी के कण स्थिर होते हैं"], "ans": 0, "exp": "गोताखोर पानी को इसलिए काट पाता है क्योंकि द्रव के कणों के बीच पर्याप्त रिक्त स्थान होता है और उनके बीच का आकर्षण बल इतना दुर्बल होता है कि शारीरिक बल से उन्हें विस्थापित किया जा सकता है।", "hasSvg": false}, {"id": 23, "section": "कणों के अभिलाक्षणिक गुण एवं विसरण", "q": "पदार्थ के कणों की गतिज ऊर्जा (Kinetic Energy) किस कारक के सीधे समानुपाती होती है?", "options": ["दाब के", "आयतन के", "परम तापमान (Kelvin Temperature) के", "घनत्व के"], "ans": 2, "exp": "पदार्थ के कणों की गतिज ऊर्जा सीधे परम तापमान के समानुपाती होती है ($KE \\propto T$)। तापमान बढ़ने से कणों की चाल में वृद्धि होती है।", "hasSvg": false}, {"id": 24, "section": "कणों के अभिलाक्षणिक गुण एवं विसरण", "q": "गर्म पके हुए भोजन की गंध दूर तक क्यों पहुँच जाती है जबकि ठंडे भोजन की महक के लिए पास जाना पड़ता है?", "options": ["गर्म भोजन से निकलने वाले वाष्पशील कणों का विसरण उच्च तापमान के कारण बहुत तीव्र होता है", "ठंडे भोजन में कोई कण नहीं होते", "वायु ठंडे भोजन की गंध को सोख लेती है", "गर्म भोजन का रंग चटकीला होता है"], "ans": 0, "exp": "गर्म भोजन के वाष्पशील कणों में उच्च गतिज ऊर्जा होती है, जिससे वे वायु में अत्यधिक तीव्रता से विसरित होकर दूर तक पहुँच जाते हैं।", "hasSvg": false}, {"id": 25, "section": "कणों के अभिलाक्षणिक गुण एवं विसरण", "q": "चाय, कॉफी या नींबू-पानी बनाते समय एक पदार्थ के कण दूसरे पदार्थ के कणों में घुल जाना क्या प्रमाणित करता है?", "options": ["कणों का द्रव्यमान शून्य होता है", "पदार्थ के कणों के मध्य पर्याप्त रिक्त स्थान होता है", "पदार्थ केवल द्रव अवस्था में रह सकता है", "पदार्थ के कण स्थिर रहते हैं"], "ans": 1, "exp": "यह स्पष्ट रूप से दर्शाता है कि एक पदार्थ के कण दूसरे पदार्थ के कणों के बीच स्थित रिक्त स्थानों (अंतराण्विक अवकाश) में आसानी से समावेशित हो जाते हैं।", "hasSvg": false}, {"id": 26, "section": "कणों के अभिलाक्षणिक गुण एवं विसरण", "q": "ठोस, द्रव एवं गैस में कणों के बीच रिक्त स्थान (अंतराण्विक दूरी) का सही घटता क्रम क्या है?", "options": ["गैस > द्रव > ठोस", "ठोस > द्रव > गैस", "द्रव > ठोस > गैस", "गैस > ठोस > द्रव"], "ans": 0, "exp": "गैस के कणों के मध्य रिक्त स्थान सर्वाधिक, द्रवों में मध्यम, तथा ठोसों में न्यूनतम (नगण्य) होता है। अतः सही क्रम: गैस > द्रव > ठोस है।", "hasSvg": false}, {"id": 27, "section": "कणों के अभिलाक्षणिक गुण एवं विसरण", "q": "ठोस, द्रव एवं गैस में कणों के बीच आकर्षण बल का सही बढ़ता क्रम कौन-सा है?", "options": ["ठोस < द्रव < गैस", "गैस < द्रव < ठोस", "द्रव < ठोस < गैस", "गैस < ठोस < द्रव"], "ans": 1, "exp": "आकर्षण बल गैसों में न्यूनतम, द्रवों में मध्यम और ठोसों में अधिकतम होता है। अतः बढ़ता क्रम: गैस < द्रव < ठोस होगा।", "hasSvg": false}, {"id": 28, "section": "कणों के अभिलाक्षणिक गुण एवं विसरण", "q": "विसरण की दर (Rate of Diffusion) किस अवस्था में सबसे तेज और किसमें सबसे धीमी होती है?", "options": ["गैसों में सबसे तेज, ठोसों में सबसे धीमी", "ठोसों में सबसे तेज, गैसों में सबसे धीमी", "द्रवों में सबसे तेज, गैसों में सबसे धीमी", "तीनों अवस्थाओं में एक समान"], "ans": 0, "exp": "कणों की उच्च गति और अत्यधिक रिक्त स्थानों के कारण गैसों में विसरण सर्वाधिक तीव्र होता है, जबकि ठोसों में न्यूनतम होता है।", "hasSvg": false}, {"id": 29, "section": "पदार्थ की अवस्थाएँ एवं गुणधर्म", "q": "ठोस अवस्था (Solid State) के प्रमुख लक्षण निम्नलिखित में से कौन-से हैं?", "options": ["निश्चित आकार, स्पष्ट सीमाएँ तथा स्थिर आयतन", "अनिश्चित आकार तथा स्थिर आयतन", "निश्चित आकार तथा अनिश्चित आयतन", "अनिश्चित आकार, अनिश्चित सीमाएँ तथा अत्यधिक संपीड्यता"], "ans": 0, "exp": "ठोस पदार्थों का एक निश्चित आकार, स्पष्ट सीमाएँ तथा स्थिर आयतन होता है अर्थात इनमें नगण्य संपीड्यता होती है।", "hasSvg": false}, {"id": 30, "section": "पदार्थ की अवस्थाएँ एवं गुणधर्म", "q": "बाह्य बल लगाने पर ठोस के आकार में नगण्य परिवर्तन होना और बल हटाने पर पुनः मूल रूप में रहना क्या कहलाता है?", "options": ["तरलता (Fluidity)", "दृढ़ता (Rigidity)", "संपीड्यता (Compressibility)", "विसरण (Diffusion)"], "ans": 1, "exp": "बाह्य बल लगाने पर भी ठोस अपने आकार को बनाए रखते हैं। बल लगाने पर ठोस टूट सकते हैं लेकिन इनका आकार नहीं बदलता, इसलिए इन्हें दृढ़ (Rigid) कहा जाता है।", "hasSvg": false}, {"id": 31, "section": "पदार्थ की अवस्थाएँ एवं गुणधर्म", "q": "खींचने पर रबर बैंड का आकार बदल जाता है, फिर भी NCERT के अनुसार इसे ठोस क्यों माना जाता है?", "options": ["क्योंकि यह प्राकृतिक रबड़ से बना है", "क्योंकि बाह्य बल हटाने पर यह पुनः अपने मूल आकार में आ जाता है और अत्यधिक बल लगाने पर टूट जाता है", "क्योंकि इसका कोई निश्चित आयतन नहीं होता", "क्योंकि यह जल में तैरता है"], "ans": 1, "exp": "रबर बैंड पर जब तक बाह्य बल लगाया जाता है तब तक इसका आकार बदलता है, बल हटाने पर यह मूल आकार में लौट आता है तथा अत्यधिक बल पर टूट जाता है। अतः यह ठोस ही है।", "hasSvg": false}, {"id": 32, "section": "पदार्थ की अवस्थाएँ एवं गुणधर्म", "q": "विभिन्न आकार के बर्तनों में रखने पर शर्करा (चीनी) और नमक उन्हीं बर्तनों का आकार ले लेते हैं, फिर भी इन्हें ठोस क्यों माना जाता है?", "options": ["क्योंकि बर्तन का आकार बदलते ही इनका रासायनिक सूत्र बदल जाता है", "क्योंकि चाहे हम इन्हें हाथ में लें या जार में रखें, इनके व्यक्तिगत क्रिस्टलों का आकार कभी नहीं बदलता", "क्योंकि ये जल में अघुलनशील हैं", "क्योंकि ये कमरे के ताप पर गैस बन जाते हैं"], "ans": 1, "exp": "व्यक्तिगत क्रिस्टलों का आकार, कोण व आयतन सदैव निश्चित रहता है, चाहे उन्हें किसी भी बर्तन में रखा जाए। अतः चीनी और नमक ठोस हैं।", "hasSvg": false}, {"id": 33, "section": "पदार्थ की अवस्थाएँ एवं गुणधर्म", "q": "स्पंज (Sponge) को आसानी से संपीडित (दबाया) किया जा सकता है, फिर भी यह ठोस क्यों है?", "options": ["क्योंकि यह कृत्रिम पदार्थ है", "क्योंकि इसमें बहुत छोटे छिद्र होते हैं जिनमें वायु भरी होती है, दबाने पर वायु बाहर निकलती है", "क्योंकि स्पंज वास्तव में एक द्रव है", "क्योंकि इसका कोई द्रव्यमान नहीं होता"], "ans": 1, "exp": "स्पंज में असंख्य सूक्ष्म छिद्र होते हैं जिनमें हवा समाई रहती है। जब इसे दबाया जाता है तो वह हवा बाहर निकल जाती है जिससे इसका संपीड़न संभव होता है, मूल पदार्थ ठोस ही है।", "hasSvg": false}, {"id": 34, "section": "पदार्थ की अवस्थाएँ एवं गुणधर्म", "q": "द्रव अवस्था (Liquid State) के संबंध में कौन-सा कथन सत्य है?", "options": ["द्रव का निश्चित आकार और निश्चित आयतन होता है", "द्रव का आकार निश्चित नहीं होता लेकिन आयतन निश्चित होता है", "द्रव का आकार और आयतन दोनों अनिश्चित होते हैं", "द्रव में बहाव का गुण नहीं होता"], "ans": 1, "exp": "द्रव का कोई निश्चित आकार नहीं होता, जिस बर्तन में रखा जाए उसी का आकार ले लेते हैं; लेकिन इनका आयतन निश्चित रहता है। द्रवों में बहाव होता है अतः ये तरल (Fluid) कहलाते हैं।", "hasSvg": false}, {"id": 35, "section": "पदार्थ की अवस्थाएँ एवं गुणधर्म", "q": "द्रवों में विसरण के संदर्भ में कौन-सा तथ्य NCERT के अनुसार सही है?", "options": ["द्रवों में केवल ठोसों का विसरण संभव है", "द्रवों में केवल द्रवों का विसरण संभव है", "द्रवों में ठोस, द्रव और गैस तीनों का विसरण संभव है", "द्रवों में किसी भी पदार्थ का विसरण नहीं हो सकता"], "ans": 2, "exp": "द्रव में ठोस (जैसे शर्करा), द्रव (जैसे स्याही) और गैस (जैसे जल में ऑक्सीजन व कार्बन डाइऑक्साइड) तीनों अवस्थाओं का विसरण संभव है।", "hasSvg": false}, {"id": 36, "section": "पदार्थ की अवस्थाएँ एवं गुणधर्म", "q": "जलीय जीव-जंतु जल में जीवित रहने के लिए श्वास किस प्रकार लेते हैं?", "options": ["वे जल से बाहर आकर हवा में सांस लेते हैं", "वे जल में घुली (विसरित) ऑक्सीजन के कारण श्वास लेते हैं", "वे बिना ऑक्सीजन के जीवित रहते हैं", "वे केवल हाइड्रोजन गैस का उपयोग करते हैं"], "ans": 1, "exp": "वातावरण की गैसें (विशेषकर O₂ और CO₂) जल में विसरित होकर घुल जाती हैं। जलीय जीव जल में घुली इसी विसरित ऑक्सीजन का उपयोग श्वसन हेतु करते हैं।", "hasSvg": false}, {"id": 37, "section": "पदार्थ की अवस्थाएँ एवं गुणधर्म", "q": "द्रवों में विसरण की दर ठोसों की अपेक्षा अधिक क्यों होती है?", "options": ["क्योंकि द्रव के कण अत्यधिक भारी होते हैं", "क्योंकि द्रव अवस्था में कण स्वतंत्र रूप से गति करते हैं और कणों के बीच ठोस की तुलना में अधिक रिक्त स्थान होता है", "क्योंकि द्रवों का घनत्व ठोसों से अधिक होता है", "क्योंकि द्रवों का तापमान सदैव 100 °C होता है"], "ans": 1, "exp": "द्रव अवस्था में पदार्थ के कण अधिक स्वतंत्र होकर विचरण करते हैं तथा उनके बीच ठोस की अपेक्षा अधिक रिक्त स्थान होता है, जिससे विसरण तीव्रता से होता है।", "hasSvg": false}, {"id": 38, "section": "पदार्थ की अवस्थाएँ एवं गुणधर्म", "q": "गैसों की संपीड्यता (Compressibility) ठोसों एवं द्रवों की तुलना में काफी अधिक क्यों होती है?", "options": ["क्योंकि गैस के कणों का द्रव्यमान बहुत अधिक होता है", "क्योंकि गैस के कणों के बीच अत्यधिक रिक्त स्थान और नगण्य आकर्षण बल होता है", "क्योंकि गैसें दिखाई नहीं देतीं", "क्योंकि गैसों का आयतन शून्य होता है"], "ans": 1, "exp": "गैस के कणों के मध्य अत्यधिक अंतराण्विक अवकाश होने के कारण बाह्य दाब लगाकर उनके आयतन को अत्यधिक संपीड़ित किया जा सकता है।", "hasSvg": false}, {"id": 39, "section": "पदार्थ की अवस्थाएँ एवं गुणधर्म", "q": "रसोई गैस सिलेंडरों में उपयोग की जाने वाली LPG का पूरा नाम क्या है?", "options": ["द्रवीकृत पेट्रोलियम गैस (Liquefied Petroleum Gas)", "हल्की पेट्रोलियम गैस (Light Petroleum Gas)", "द्रवीकृत प्राकृतिक गैस (Liquefied Natural Gas)", "निम्न दाब गैस (Low Pressure Gas)"], "ans": 0, "exp": "LPG का पूर्ण रूप Liquefied Petroleum Gas (द्रवीकृत पेट्रोलियम गैस) है। यह उच्च संपीड्यता के कारण कम आयतन वाले सिलेंडरों में भरी जाती है।", "hasSvg": false}, {"id": 40, "section": "पदार्थ की अवस्थाएँ एवं गुणधर्म", "q": "आजकल वाहनों में प्रदूषण नियंत्रण हेतु ईंधन के रूप में प्रयुक्त CNG का पूरा नाम क्या है?", "options": ["सामान्य प्राकृतिक गैस (Common Natural Gas)", "संपीड़ित प्राकृतिक गैस (Compressed Natural Gas)", "कार्बन नाइट्रोजन गैस (Carbon Nitrogen Gas)", "शीतल प्राकृतिक गैस (Cooled Natural Gas)"], "ans": 1, "exp": "CNG का पूर्ण रूप Compressed Natural Gas (संपीड़ित प्राकृतिक गैस) है। उच्च संपीड्यता के कारण प्राकृतिक गैस को संपीड़ित कर सिलेंडरों में भरा जाता है।", "hasSvg": false}, {"id": 41, "section": "पदार्थ की अवस्थाएँ एवं गुणधर्म", "q": "किसी बर्तन की दीवारों पर गैस द्वारा डाला जाने वाला दबाव (Pressure) किसके कारण उत्पन्न होता है?", "options": ["गैस के भारी भार के कारण", "गैस के कणों द्वारा बर्तन की दीवार के प्रति इकाई क्षेत्रफल पर लगने वाले बल के कारण", "बर्तन के ठंडे होने के कारण", "गैस के कणों के स्थिर रहने के कारण"], "ans": 1, "exp": "गैसीय अवस्था में कण तीव्र और अनियमित गति करते हैं। इस अनियमित गति के कारण कण आपस में और बर्तन की दीवारों से टकराते हैं। प्रति इकाई क्षेत्रफल पर लगे बल से गैस का दबाव बनता है।", "hasSvg": false}, {"id": 42, "section": "पदार्थ की अवस्थाएँ एवं गुणधर्म", "q": "घनत्व (Density) की सही वैज्ञानिक परिभाषा क्या है?", "options": ["द्रव्यमान × आयतन", "द्रव्यमान प्रति इकाई आयतन (द्रव्यमान / आयतन)", "आयतन / द्रव्यमान", "भार × गुरुत्वीय त्वरण"], "ans": 1, "exp": "किसी तत्व अथवा पदार्थ के द्रव्यमान प्रति इकाई आयतन को 'घनत्व' कहते हैं। सूत्र: घनत्व = द्रव्यमान / आयतन ($D = M / V$)।", "hasSvg": false}, {"id": 43, "section": "पदार्थ की अवस्थाएँ एवं गुणधर्म", "q": "NCERT के अनुसार 'बढ़ते हुए घनत्व' का सही क्रम कौन-सा है?", "options": ["वायु < चिमनी का धुआँ < रुई < जल < शहद < चॉक < लोहा", "लोहा < चॉक < शहद < जल < रुई < चिमनी का धुआँ < वायु", "वायु < जल < रुई < शहद < चॉक < लोहा", "चिमनी का धुआँ < वायु < जल < रुई < लोहा < चॉक"], "ans": 0, "exp": "NCERT पाठ्यपुस्तक का आधिकारिक क्रम: वायु < चिमनी का धुआँ < रुई < जल < शहद < चॉक < लोहा। (रुई में वायु के समावेश से इसका घनत्व जल से कम होता है)।", "hasSvg": false}, {"id": 44, "section": "पदार्थ की अवस्थाएँ एवं गुणधर्म", "q": "सामान्यतः ठोस का घनत्व द्रव से अधिक होता है, लेकिन बर्फ (ठोस जल) द्रव जल पर क्यों तैरती है?", "options": ["बर्फ जल से भारी होती है", "बर्फ की पिंजरेनुमा त्रिविम संरचना में रिक्त स्थान अधिक होने से इसका घनत्व जल से कम होता है", "बर्फ का कोई आयतन नहीं होता", "बर्फ में हवा नहीं होती"], "ans": 1, "exp": "जब जल जमकर बर्फ बनता है तो उसकी पिंजरेनुमा जालक संरचना (Cage-like structure) बनती है, जिससे आयतन बढ़ जाता है और घनत्व द्रव जल की तुलना में कम हो जाता है, अतः बर्फ तैरती है।", "hasSvg": false}, {"id": 45, "section": "पदार्थ की अवस्थाएँ एवं गुणधर्म", "q": "हवा में हम आसानी से अपना हाथ चला सकते हैं, लेकिन एक ठोस लकड़ी के टुकड़े में हाथ चलाने हेतु कराटे में दक्ष होना पड़ता है, क्यों?", "options": ["हवा के कणों के बीच रिक्त स्थान बहुत अधिक और आकर्षण बल नगण्य होता है, जबकि लकड़ी में कण अत्यधिक दृढ़ता से बंधे होते हैं", "हवा में कोई कण नहीं होते", "लकड़ी में गतिज ऊर्जा अधिक होती है", "लकड़ी पारदर्शी नहीं होती"], "ans": 0, "exp": "हवा (गैस) के कणों के बीच का आकर्षण बल अत्यंत दुर्बल तथा रिक्त स्थान अत्यधिक होता है जिससे वे आसानी से विस्थापित हो जाते हैं; जबकि ठोस लकड़ी में प्रबल आकर्षण बल होने से अत्यधिक बाह्य बल की आवश्यकता होती है।", "hasSvg": false}, {"id": 46, "section": "तापमान परिवर्तन एवं गुप्त ऊष्मा", "q": "किसी ठोस पदार्थ को गर्म करने पर उसके कणों की गतिज ऊर्जा पर क्या प्रभाव पड़ता है?", "options": ["कणों की गतिज ऊर्जा घट जाती है", "कणों की गतिज ऊर्जा बढ़ जाती है जिससे वे तेजी से कंपन करने लगते हैं", "कणों की गतिज ऊर्जा अपरिवर्तित रहती है", "कण तुरंत नष्ट हो जाते हैं"], "ans": 1, "exp": "ठोस को ऊष्मा देने पर कणों की गतिज ऊर्जा बढ़ जाती है, जिससे कण अधिक तेजी से कंपन करते हैं और ऊष्मा कणों के आकर्षण बल को पार कर उन्हें स्वतंत्र गति करने देती है।", "hasSvg": false}, {"id": 47, "section": "तापमान परिवर्तन एवं गुप्त ऊष्मा", "q": "वायुमंडलीय दाब पर वह तापमान जिस पर कोई ठोस पिघलकर द्रव बन जाता है, क्या कहलाता है?", "options": ["क्वथनांक (Boiling point)", "गलनांक (Melting point)", "हिमांक (Freezing point)", "क्रांतिक तापमान (Critical temperature)"], "ans": 1, "exp": "जिस तापमान पर वायुमंडलीय दाब पर कोई ठोस पिघलकर द्रव अवस्था में परिवर्तित होता है, वह उसका 'गलनांक' (Melting Point) कहलाता है।", "hasSvg": false}, {"id": 48, "section": "तापमान परिवर्तन एवं गुप्त ऊष्मा", "q": "किसी ठोस का गलनांक (Melting Point) उसके कणों के विषय में क्या प्रदर्शित करता है?", "options": ["कणों का रंग और आकार", "कणों के बीच के आकर्षण बल का सामर्थ्य", "कणों की अम्लीय प्रकृति", "कणों की चालकता"], "ans": 1, "exp": "NCERT के अनुसार: किसी ठोस का गलनांक उसके कणों के बीच कार्य करने वाले पारस्परिक आकर्षण बल के सामर्थ्य (Strength) को दर्शाता है। उच्च गलनांक अधिक प्रबल आकर्षण बल को इंगित करता है।", "hasSvg": false}, {"id": 49, "section": "तापमान परिवर्तन एवं गुप्त ऊष्मा", "q": "NCERT पाठ्यपुस्तक के अनुसार शुद्ध बर्फ का सटीक गलनांक कितना होता है?", "options": ["273.16 K (0 °C)", "373 K (100 °C)", "212 K", "100 K"], "ans": 0, "exp": "NCERT के आधिकारिक पाठ के अनुसार बर्फ का सटीक गलनांक 273.16 K होता है। गणना की सुविधा हेतु इसे पूर्णांक में 273 K (या 0 °C) माना जाता है।", "hasSvg": false}, {"id": 50, "section": "तापमान परिवर्तन एवं गुप्त ऊष्मा", "q": "ठोस से द्रव अवस्था में परिवर्तन होने की प्रक्रिया को क्या कहा जाता है?", "options": ["वाष्पीकरण (Evaporation)", "संगलन (Fusion / Melting)", "संघनन (Condensation)", "निक्षेपण (Deposition)"], "ans": 1, "exp": "ठोस का द्रव अवस्था में बदलना 'संगलन' (Fusion या Melting) कहलाता है।", "hasSvg": false}, {"id": 51, "section": "तापमान परिवर्तन एवं गुप्त ऊष्मा", "q": "संगलन की प्रसुप्त (गुप्त) ऊष्मा (Latent Heat of Fusion) की सही परिभाषा क्या है?", "options": ["1 ग्राम ठोस को गर्म करने में लगी ऊष्मा", "वायुमंडलीय दाब पर 1 kg ठोस को उसके गलनांक पर द्रव में बदलने हेतु आवश्यक ऊष्मीय ऊर्जा", "1 लीटर जल को उबालने में लगी ऊर्जा", "बर्फ के तापमान को -10 °C से 0 °C तक लाने में लगी ऊष्मा"], "ans": 1, "exp": "वायुमंडलीय दाब पर 1 किलोग्राम ठोस को उसके गलनांक पर द्रव में बदलने के लिए जितनी ऊष्मीय ऊर्जा की आवश्यकता होती है, उसे 'संगलन की प्रसुप्त ऊष्मा' कहते हैं।", "hasSvg": false}, {"id": 52, "section": "तापमान परिवर्तन एवं गुप्त ऊष्मा", "q": "0 °C (273 K) पर जल के कणों की ऊर्जा समान तापमान पर बर्फ के कणों की ऊर्जा से अधिक क्यों होती है?", "options": ["क्योंकि जल के कणों ने संगलन की गुप्त ऊष्मा के रूप में अतिरिक्त ऊर्जा अवशोषित कर रखी होती है", "क्योंकि बर्फ का तापमान ऋणात्मक होता है", "क्योंकि जल का घनत्व कम होता है", "क्योंकि बर्फ के कणों में गतिज ऊर्जा अनंत होती है"], "ans": 0, "exp": "0 °C पर बर्फ जब जल बनती है तो वह संगलन की गुप्त ऊष्मा अवशोषित करती है। अतः 273 K पर जल के कणों में बर्फ के कणों की तुलना में अधिक ऊर्जा होती है।", "hasSvg": false}, {"id": 53, "section": "तापमान परिवर्तन एवं गुप्त ऊष्मा", "q": "वायुमंडलीय दाब पर वह तापमान जिस पर कोई द्रव उबलने लगता है, क्या कहलाता है?", "options": ["गलनांक (Melting point)", "क्वथनांक (Boiling point)", "उर्ध्वपातन बिंदु", "हिमांक"], "ans": 1, "exp": "वायुमंडलीय दाब पर वह तापमान जिस पर कोई द्रव उबलने लगता है, उसे उसका 'क्वथनांक' (Boiling Point) कहते हैं।", "hasSvg": false}, {"id": 54, "section": "तापमान परिवर्तन एवं गुप्त ऊष्मा", "q": "क्वथनांक (Boiling) किस प्रकार की परिघटना है, जबकि वाष्पीकरण (Evaporation) किस प्रकार की परिघटना है?", "options": ["क्वथनांक सतही है, वाष्पीकरण समष्टि है", "क्वथनांक समष्टि (Bulk) परिघटना है, जबकि वाष्पीकरण एक सतही (Surface) परिघटना है", "दोनों पूर्णतः सतही परिघटनाएँ हैं", "दोनों पूर्णतः समष्टि परिघटनाएँ हैं"], "ans": 1, "exp": "NCERT के अनुसार क्वथनांक एक समष्टि गुण (Bulk phenomenon) है जिसमें संपूर्ण द्रव के कण वाष्प में बदलते हैं, जबकि वाष्पीकरण केवल द्रव की सतह (Surface) से होता है।", "hasSvg": false}, {"id": 55, "section": "तापमान परिवर्तन एवं गुप्त ऊष्मा", "q": "जल का सामान्य क्वथनांक केल्विन (K) इकाई में कितना होता है?", "options": ["273 K", "300 K", "373 K", "473 K"], "ans": 2, "exp": "जल का क्वथनांक 100 °C होता है। केल्विन में: K = °C + 273 = 100 + 273 = 373 K (सटीक मान: 373.16 K)।", "hasSvg": false}, {"id": 56, "section": "तापमान परिवर्तन एवं गुप्त ऊष्मा", "q": "100 °C (373 K) तापमान पर उबलते जल की अपेक्षा भाप (Steam) से जलने पर अधिक तीव्र जलन क्यों होती है?", "options": ["क्योंकि भाप का तापमान 200 °C होता है", "क्योंकि भाप के कणों में वाष्पीकरण की गुप्त ऊष्मा के रूप में अतिरिक्त ऊर्जा होती है", "क्योंकि भाप जल से भारी होती है", "क्योंकि भाप में अम्ल होता है"], "ans": 1, "exp": "373 K पर भाप के कणों ने वाष्पीकरण की गुप्त ऊष्मा (Latent heat of vaporization) अवशोषित कर रखी होती है। इसलिए उसी तापमान पर जल की तुलना में भाप अधिक गंभीर जलन पैदा करती है।", "hasSvg": false}, {"id": 57, "section": "तापमान परिवर्तन एवं गुप्त ऊष्मा", "q": "अवस्था परिवर्तन के दौरान जब तक संपूर्ण पदार्थ अवस्था नहीं बदल लेता, थर्मामीटर का पाठ्यांक स्थिर क्यों रहता है?", "options": ["दी गई ऊष्मा गुप्त ऊष्मा के रूप में कणों के पारस्परिक आकर्षण बल को तोड़ने में व्यय होती है", "थर्मामीटर का पारा जम जाता है", "ऊष्मा बीकर द्वारा अवशोषित कर ली जाती है", "कणों की गतिज ऊर्जा समाप्त हो जाती है"], "ans": 0, "exp": "अवस्था परिवर्तन के दौरान तापमान में बिना किसी वृद्धि के दी जाने वाली ऊष्मा पदार्थ की अवस्था बदलने (आकर्षण बल को निष्प्रभावी करने) में छिपकर प्रयुक्त होती है, जिसे 'गुप्त ऊष्मा' कहते हैं।", "hasSvg": false}, {"id": 58, "section": "तापमान परिवर्तन एवं गुप्त ऊष्मा", "q": "273 K पर बर्फ को ठंडा करने पर तथा जल को इसी तापमान पर ठंडा करने पर शीतलता का प्रभाव किसमें अधिक होता है?", "options": ["जल में", "बर्फ में, क्योंकि इसमें संगलन की गुप्त ऊष्मा जितनी ऊर्जा कम होती है अतः यह अधिक ऊष्मा खींचती है", "दोनों में पूर्णतः समान", "शीतलता तापमान पर निर्भर नहीं करती"], "ans": 1, "exp": "273 K पर बर्फ के कणों में जल के कणों की तुलना में कम ऊर्जा होती है। अतः बर्फ परिवेश से संगलन की गुप्त ऊष्मा के बराबर अतिरिक्त ऊष्मा अवशोषित कर अधिक ठंडक उत्पन्न करती है।", "hasSvg": false}, {"id": 59, "section": "तापमान परिवर्तन एवं गुप्त ऊष्मा", "q": "सेल्सियस (°C) को केल्विन (K) में बदलने तथा केल्विन को सेल्सियस में बदलने का सही नियम क्या है?", "options": ["सेल्सियस में 273 जोड़ें (K = °C + 273), और केल्विन से 273 घटाएँ (°C = K - 273)", "दोनों में 273 जोड़ें", "दोनों में से 273 घटाएँ", "सेल्सियस को 273 से गुणा करें"], "ans": 0, "exp": "तापमान को सेल्सियस से केल्विन में बदलने के लिए 273 जोड़ना चाहिए, और केल्विन से सेल्सियस में बदलने के लिए 273 घटाना चाहिए।", "hasSvg": false}, {"id": 60, "section": "तापमान परिवर्तन एवं गुप्त ऊष्मा", "q": "गर्म करने पर पदार्थ की अवस्था परिवर्तन का सामान्य क्रम क्या होता है?", "options": ["ठोस → गैस → द्रव", "ठोस → द्रव → गैस", "द्रव → ठोस → गैस", "गैस → द्रव → ठोस"], "ans": 1, "exp": "साधारणतः गर्म करने पर ठोस द्रव में बदलता है और अधिक गर्म करने पर द्रव गैस में परिवर्तित होता है। ठंडा करने पर इसका विपरीत क्रम होता है।", "hasSvg": false}, {"id": 61, "section": "ऊर्ध्वपातन, निक्षेपण एवं दाब", "q": "द्रव अवस्था में परिवर्तित हुए बिना किसी ठोस का सीधे गैस में बदलने की प्रक्रिया क्या कहलाती है?", "options": ["वाष्पीकरण (Evaporation)", "ऊर्ध्वपातन (Sublimation)", "संघनन (Condensation)", "संगलन (Fusion)"], "ans": 1, "exp": "द्रव अवस्था में आए बिना ठोस अवस्था से सीधे गैस में बदलने की प्रक्रिया 'ऊर्ध्वपातन' (Sublimation) कहलाती है।", "hasSvg": false}, {"id": 62, "section": "ऊर्ध्वपातन, निक्षेपण एवं दाब", "q": "गैस से द्रव अवस्था में आए बिना सीधे ठोस अवस्था में बदलने की प्रक्रिया को आधुनिक शब्दावली में क्या कहते हैं?", "options": ["वाष्पीकरण", "निक्षेपण (Deposition)", "क्वथन", "संगलन"], "ans": 1, "exp": "गैसीय अवस्था से सीधे ठोस अवस्था में परिवर्तित होने की परिघटना 'निक्षेपण' (Deposition) कहलाती है (यद्यपि पारंपरिक रूप से इसे भी ऊर्ध्वपातन कहा जाता था)।", "hasSvg": false}, {"id": 63, "section": "ऊर्ध्वपातन, निक्षेपण एवं दाब", "q": "क्रियाकलाप 1.13 के अनुसार, अमोनियम क्लोराइड (NH₄Cl) या कपूर को चीनी की प्याली में गर्म करने पर क्या प्रेक्षित होता है?", "options": ["वे पहले पिघलकर द्रव बनते हैं", "वे बिना द्रव में बदले सीधे वाष्प बनते हैं और उल्टी कीप की ठंडी दीवार पर ठोस रूप में जम जाते हैं", "वे जलकर राख हो जाते हैं", "उनमें कोई परिवर्तन नहीं होता"], "ans": 1, "exp": "कपूर और अमोनियम क्लोराइड ऊर्ध्वपाती (Sublimable) पदार्थ हैं। गर्म करने पर वे सीधे वाष्प बनते हैं और कीप के ठंडे सिरे पर सीधे ठोस (Deposition) में रूपांतरित हो जाते हैं।", "hasSvg": false}, {"id": 64, "section": "ऊर्ध्वपातन, निक्षेपण एवं दाब", "q": "नैफ्थलीन (कपूर/डामर की गोलियाँ) को अलमारी में कपड़ों के बीच खुला रखने पर वे बिना कोई अवशेष छोड़े अदृश्य क्यों हो जाती हैं?", "options": ["कीड़े उन्हें खा जाते हैं", "ऊर्ध्वपातन (Sublimation) के कारण वे धीरे-धीरे सीधे कमरे के ताप पर वाष्प में बदल जाती हैं", "वे कपड़ों में तरल बनकर समा जाती हैं", "वे रासायनिक रूप से नष्ट हो जाती हैं"], "ans": 1, "exp": "नैफ्थलीन का ऊर्ध्वपातन होता है, जिसके कारण यह बिना द्रव में बदले सीधे वाष्प में बदल जाती है और पीछे कोई ठोस अवशेष नहीं छूटता।", "hasSvg": false}, {"id": 65, "section": "ऊर्ध्वपातन, निक्षेपण एवं दाब", "q": "सिलेंडर में भरी गैस पर पिस्टन द्वारा दबाव लगाने (संपीडन) और तापमान घटाने पर क्या होता है?", "options": ["गैस के कण दूर चले जाते हैं", "गैस के कण समीप आ जाते हैं और गैस द्रव में परिवर्तित हो जाती है", "गैस ठोस लोहे में बदल जाती है", "गैस का द्रव्यमान समाप्त हो जाता है"], "ans": 1, "exp": "दाब बढ़ाने पर गैस के कणों के बीच की दूरी कम हो जाती है और तापमान घटाने पर उनकी गतिज ऊर्जा घट जाती है, जिससे गैस द्रवीभूत (Liquefied) हो जाती है।", "hasSvg": false}, {"id": 66, "section": "ऊर्ध्वपातन, निक्षेपण एवं दाब", "q": "ठोस कार्बन डाइऑक्साइड (Solid CO₂) को 'शुष्क बर्फ' (Dry Ice) क्यों कहा जाता है?", "options": ["क्योंकि यह सफेद रंग की होती है", "क्योंकि 1 atm वायुमंडलीय दाब पर यह द्रव अवस्था में आए बिना सीधे गैस में बदल जाती है", "क्योंकि यह कभी पिघलती नहीं है", "क्योंकि यह जल से हल्की होती है"], "ans": 1, "exp": "ठोस CO₂ को उच्च दाब पर रखा जाता है। जब दाब घटकर 1 atm हो जाता है तो यह बिना द्रव बने सीधे गैस में परिवर्तित हो जाती है, जिससे यह सतह को गीला नहीं करती; अतः इसे शुष्क बर्फ कहते हैं।", "hasSvg": false}, {"id": 67, "section": "ऊर्ध्वपातन, निक्षेपण एवं दाब", "q": "दाब (Pressure) का अंतर्राष्ट्रीय मात्रक (SI Unit) क्या है?", "options": ["न्यूटन (N)", "पास्कल (Pa)", "बार (bar)", "टॉर (Torr)"], "ans": 1, "exp": "दाब का SI मात्रक पास्कल (Pa) है, जो $1\\text{ N/m}^2$ के बराबर होता है।", "hasSvg": false}, {"id": 68, "section": "ऊर्ध्वपातन, निक्षेपण एवं दाब", "q": "1 वायुमंडलीय दाब (1 atm) का मान पास्कल (Pa) में कितना होता है?", "options": ["1.01 × 10⁵ Pa", "1.01 × 10³ Pa", "9.8 × 10⁴ Pa", "760 × 10⁵ Pa"], "ans": 0, "exp": "NCERT फुटनोट के अनुसार: $1\\text{ atm} = 1.01 \\times 10^5\\text{ Pa}$। समुद्र की सतह पर वायुमंडलीय दाब 1 atm होता है जिसे सामान्य दाब कहते हैं।", "hasSvg": false}, {"id": 69, "section": "ऊर्ध्वपातन, निक्षेपण एवं दाब", "q": "गैस से द्रव में अवस्था परिवर्तन की प्रक्रिया क्या कहलाती है?", "options": ["वाष्पीकरण (Evaporation)", "संघनन (Condensation)", "संगलन (Fusion)", "निक्षेपण (Deposition)"], "ans": 1, "exp": "गैस (वाष्प) का ठंडा होकर द्रव में बदलना 'संघनन' (Condensation) कहलाता है (जैसे भाप का जल बनना)।", "hasSvg": false}, {"id": 70, "section": "ऊर्ध्वपातन, निक्षेपण एवं दाब", "q": "द्रव से ठोस अवस्था में परिवर्तन की प्रक्रिया को क्या कहा जाता है?", "options": ["संगलन", "जमना / दृढ़ीकरण (Solidification / Freezing)", "वाष्पीकरण", "ऊर्ध्वपातन"], "ans": 1, "exp": "द्रव का ठोस में बदलना 'जमना' (Solidification या Freezing) कहलाता है (जैसे जल का बर्फ बनना)।", "hasSvg": false}, {"id": 71, "section": "ऊर्ध्वपातन, निक्षेपण एवं दाब", "q": "NCERT चित्र 1.8 के अवस्था परिवर्तन चक्र में 'A' (ठोस → द्रव) और 'B' (द्रव → गैस) क्रमशः क्या हैं?", "options": ["संगलन एवं वाष्पीकरण", "जमना एवं संघनन", "ऊर्ध्वपातन एवं निक्षेपण", "क्वथन एवं द्रवीकरण"], "ans": 0, "exp": "चित्र 1.8 के अनुसार: A = संगलन (ठोस से द्रव), B = वाष्पीकरण (द्रव से गैस), C = संघनन (गैस से द्रव), D = जमना (द्रव से ठोस)।", "hasSvg": true}, {"id": 72, "section": "ऊर्ध्वपातन, निक्षेपण एवं दाब", "q": "किसी पदार्थ की भौतिक अवस्था (ठोस, द्रव या गैस) मुख्य रूप से किन दो कारकों द्वारा निर्धारित होती है?", "options": ["रंग और गंध द्वारा", "दाब और तापमान द्वारा", "केवल आयतन द्वारा", "केवल गुरुत्वाकर्षण द्वारा"], "ans": 1, "exp": "NCERT के निष्कर्ष के अनुसार: पदार्थ की अवस्थाएँ (ठोस, द्रव और गैस) मुख्यतः दाब (Pressure) और तापमान (Temperature) द्वारा तय होती हैं।", "hasSvg": false}, {"id": 73, "section": "वाष्पीकरण एवं दैनिक जीवन", "q": "वाष्पीकरण (Evaporation) की सही वैज्ञानिक परिभाषा क्या है?", "options": ["क्वथनांक पर द्रव का गैस में बदलना", "क्वथनांक से कम तापमान पर द्रव के वाष्प में परिवर्तित होने की सतही प्रक्रिया", "ठोस का सीधे गैस में बदलना", "गैस का द्रव में बदलना"], "ans": 1, "exp": "क्वथनांक से कम किसी भी तापमान पर द्रव की सतह के कणों का वाष्प में परिवर्तित होना 'वाष्पीकरण' कहलाता है। यह एक सतही परिघटना है।", "hasSvg": false}, {"id": 74, "section": "वाष्पीकरण एवं दैनिक जीवन", "q": "वाष्पीकरण की दर (Rate of Evaporation) किन-किन कारकों पर निर्भर करती है?", "options": ["सतह का क्षेत्रफल, तापमान, आर्द्रता तथा वायु की गति", "केवल द्रव के रंग पर", "केवल पात्र की धातु पर", "केवल वायुमंडलीय ऑक्सीजन पर"], "ans": 0, "exp": "वाष्पीकरण को प्रभावित करने वाले 4 मुख्य कारक हैं: 1. सतह का क्षेत्रफल बढ़ने पर दर बढ़ती है, 2. तापमान बढ़ने पर दर बढ़ती है, 3. आर्द्रता घटने पर दर बढ़ती है, 4. वायु की गति बढ़ने पर दर बढ़ती है।", "hasSvg": false}, {"id": 75, "section": "वाष्पीकरण एवं दैनिक जीवन", "q": "गीले कपड़ों को सुखाने के लिए उन्हें फैलाकर क्यों डाला जाता है?", "options": ["ताकि कपड़ों का रंग न उड़े", "सतह का क्षेत्रफल (Surface Area) बढ़ाने से वाष्पीकरण की दर बढ़ जाती है", "ताकि कपड़े भारी न हों", "ताकि आर्द्रता बढ़ जाए"], "ans": 1, "exp": "वाष्पीकरण एक सतही प्रक्रिया है। कपड़े फैलाने से सतह का क्षेत्रफल बढ़ जाता है, जिससे अधिक कण वाष्पीकृत होकर जल्दी सूखते हैं।", "hasSvg": false}, {"id": 76, "section": "वाष्पीकरण एवं दैनिक जीवन", "q": "हवा में विद्यमान जलवाष्प की मात्रा को वैज्ञानिक भाषा में क्या कहते हैं?", "options": ["तापमान", "आर्द्रता (Humidity)", "घनत्व", "श्यानता"], "ans": 1, "exp": "वायु में उपस्थित जलवाष्प (Water vapour) की मात्रा को 'आर्द्रता' (Humidity) कहते हैं। जब आर्द्रता अधिक होती है तो वाष्पीकरण की दर घट जाती है।", "hasSvg": false}, {"id": 77, "section": "वाष्पीकरण एवं दैनिक जीवन", "q": "बरसात के दिनों में गीले कपड़े देर से क्यों सूखते हैं?", "options": ["क्योंकि वायु में जलवाष्प की मात्रा (आर्द्रता) पहले से ही बहुत अधिक होती है जिससे वाष्पीकरण धीमा हो जाता है", "क्योंकि कपड़े जल से नफरत करते हैं", "क्योंकि वायु का घनत्व शून्य हो जाता है", "क्योंकि हवा नहीं चलती"], "ans": 0, "exp": "बरसात में वायु में पहले से ही जलवाष्प की मात्रा अधिक (उच्च आर्द्रता) होती है, जिसके कारण वाष्पीकरण की दर काफी घट जाती है और कपड़े देर से सूखते हैं।", "hasSvg": false}, {"id": 78, "section": "वाष्पीकरण एवं दैनिक जीवन", "q": "वाष्पीकरण के कारण शीतलता (Cooling) उत्पन्न होने का मुख्य वैज्ञानिक कारण क्या है?", "options": ["वाष्पीकृत कण अत्यधिक ठंडे होते हैं", "वाष्पीकरण के दौरान खोई हुई ऊर्जा को पुनः प्राप्त करने हेतु द्रव के कण अपने आसपास से ऊष्मा अवशोषित कर लेते हैं", "वाष्पीकरण से बर्फ बन जाती है", "वाष्पीकरण से वायु का तापमान बढ़ जाता है"], "ans": 1, "exp": "द्रव के कण वाष्पीकरण हेतु आवश्यक गुप्त ऊष्मा अपने आसपास या माध्यम से खींचते हैं। इस प्रकार आसपास से ऊष्मा अवशोषित होने पर वहाँ शीतलता (ठंडक) उत्पन्न हो जाती है।", "hasSvg": false}, {"id": 79, "section": "वाष्पीकरण एवं दैनिक जीवन", "q": "गर्म एवं शुष्क (Dry) दिन में डेजर्ट कूलर अधिक ठंडक क्यों करता है?", "options": ["क्योंकि शुष्क दिन में तापमान अधिक और आर्द्रता कम होती है, जिससे जल का वाष्पीकरण तीव्र होता है", "क्योंकि कूलर की मोटर तेज चलती है", "क्योंकि कूलर से बर्फ निकलती है", "क्योंकि शुष्क दिन में वायु ठंडी होती है"], "ans": 0, "exp": "गर्म और शुष्क दिन में तापमान उच्च तथा वायु में आर्द्रता न्यूनतम होती है। ये दोनों परिस्थितियाँ वाष्पीकरण की दर को बहुत बढ़ा देती हैं, जिससे कूलर अधिक शीतलता देता है।", "hasSvg": false}, {"id": 80, "section": "वाष्पीकरण एवं दैनिक जीवन", "q": "गर्मियों में मिट्टी के घड़े (मटके) का पानी ठंडा क्यों रहता है?", "options": ["घड़े की मिट्टी में रासायनिक बर्फ होती है", "घड़े के सूक्ष्म छिद्रों से रिसने वाले जल के निरंतर वाष्पीकरण से जल की ऊष्मा अवशोषित होती रहती है", "मिट्टी ऊष्मा की सुचालक होती है", "घड़े में प्रकाश प्रवेश नहीं कर पाता"], "ans": 1, "exp": "घड़े की दीवारों में उपस्थित सूक्ष्म रंध्रों से जल रिसकर बाहर आता है। इस जल के वाष्पीकरण हेतु गुप्त ऊष्मा घड़े और अंदर के जल से ली जाती है, जिससे पानी ठंडा बना रहता है।", "hasSvg": false}, {"id": 81, "section": "वाष्पीकरण एवं दैनिक जीवन", "q": "एसीटोन (नेल पॉलिश रिमूवर), पेट्रोल या इत्र हथेली पर लगाने पर तुरंत ठंडक का अनुभव क्यों होता है?", "options": ["ये पदार्थ बर्फ के बने होते हैं", "इनके कण हथेली या आसपास से वाष्पीकरण की गुप्त ऊष्मा लेकर तेजी से वाष्पीकृत होते हैं", "ये त्वचा को सुन्न कर देते हैं", "इनका क्वथनांक 200 °C होता है"], "ans": 1, "exp": "एसीटोन व पेट्रोल अत्यधिक वाष्पशील द्रव हैं। ये हथेली से ऊष्मा ऊर्जा अवशोषित कर तुरंत वाष्प बन जाते हैं, जिससे हथेली से ऊष्मा घटने पर ठंडक महसूस होती है।", "hasSvg": false}, {"id": 82, "section": "वाष्पीकरण एवं दैनिक जीवन", "q": "गर्म धूप वाले दिन की शाम को लोग अपनी छत या खुले आँगन में जल का छिड़काव क्यों करते हैं?", "options": ["धूल को चमकाने के लिए", "क्योंकि जल के वाष्पीकरण की विशाल गुप्त ऊष्मा गर्म सतह को तेजी से शीतल कर देती है", "ताकि छत गीली रहे", "छत का भार बढ़ाने के लिए"], "ans": 1, "exp": "जल की वाष्पीकरण की गुप्त ऊष्मा बहुत अधिक होती है। छिड़का गया जल छत की ऊष्मा को सोखकर वाष्प बनता है, जिससे गर्म सतह तुरंत ठंडी हो जाती है।", "hasSvg": false}, {"id": 83, "section": "वाष्पीकरण एवं दैनिक जीवन", "q": "गर्मियों में सूती (Cotton) कपड़े पहनना सबसे आरामदायक क्यों होता है?", "options": ["सूती कपड़े जल के अच्छे अवशोषक होते हैं, जो पसीने को सोखकर वायुमंडल में आसानी से वाष्पीकृत कर शीतलता प्रदान करते हैं", "सूती कपड़े शरीर को गर्म रखते हैं", "सूती कपड़ों में हवा नहीं जा सकती", "सूती कपड़े पसीना नहीं आने देते"], "ans": 0, "exp": "सूती वस्त्र पसीना सोखने में सक्षम होते हैं। सोखा गया पसीना जब वायुमंडल के संपर्क में आकर वाष्पीकृत होता है, तो शरीर से गुप्त ऊष्मा निकलती है और हमें शीतलता मिलती है।", "hasSvg": false}, {"id": 84, "section": "वाष्पीकरण एवं दैनिक जीवन", "q": "बर्फ़ीले शीतल जल से भरे गिलास की बाहरी सतह पर जल की छोटी-छोटी बूँदें क्यों दिखाई देने लगती हैं?", "options": ["गिलास के अंदर का पानी रिसकर बाहर आ जाता है", "वायु में उपस्थित जलवाष्प ठंडे गिलास के संपर्क में आकर अपनी ऊर्जा खो देती है और संघनित होकर द्रव बन जाती है", "गिलास की धातु पिघलने लगती है", "यह प्रकाश का अपवर्तन है"], "ans": 1, "exp": "वायु में हमेशा अदृश्य जलवाष्प मौजूद होती है। जब यह ठंडी बाहरी सतह से टकराती है, तो इसकी ऊर्जा कम हो जाती है और यह संघनित (Condense) होकर पानी की बूँदों में बदल जाती है।", "hasSvg": false}, {"id": 85, "section": "वाष्पीकरण एवं दैनिक जीवन", "q": "कप की अपेक्षा खुली प्लेट (रकाबी) से हम गर्म चाय या दूध जल्दी क्यों पी लेते हैं?", "options": ["प्लेट का रंग सफेद होता है", "प्लेट में सतह का क्षेत्रफल बढ़ जाने से वाष्पीकरण तीव्र होता है और चाय शीघ्र ठंडी हो जाती है", "प्लेट में चाय की मात्रा कम हो जाती है", "कप ऊष्मा का सुचालक होता है"], "ans": 1, "exp": "प्लेट में पृष्ठ का क्षेत्रफल अधिक होने के कारण वाष्पीकरण की दर तीव्र हो जाती है, जिससे चाय जल्दी ठंडी हो जाती है और आसानी से पी जा सकती है।", "hasSvg": false}, {"id": 86, "section": "पदार्थ की 4थी एवं 5वीं अवस्था", "q": "पदार्थ की चौथी अवस्था (Fourth State of Matter) किसे कहा जाता है?", "options": ["ठोस", "द्रव", "प्लाज़्मा (Plasma)", "बोस-आइंस्टाइन कंडनसेट"], "ans": 2, "exp": "NCERT 'इसे भी जानें' बॉक्स के अनुसार पदार्थ की चौथी अवस्था 'प्लाज़्मा' (Plasma) है।", "hasSvg": false}, {"id": 87, "section": "पदार्थ की 4थी एवं 5वीं अवस्था", "q": "प्लाज़्मा अवस्था में पदार्थ के कण किस रूप में विद्यमान होते हैं?", "options": ["अत्यधिक ठंडे बर्फ के रूप में", "अत्यधिक ऊर्जावान और अत्यधिक उत्तेजित आयनीकृत गैस (Ionised gas) के कणों के रूप में", "स्थिर धातुओं के रूप में", "बिना किसी विद्युत आवेश के"], "ans": 1, "exp": "प्लाज़्मा अवस्था में कण अत्यधिक ऊर्जावान तथा उत्तेजित होते हैं और वे आयनीकृत गैस (Ionised Gas) के रूप में होते हैं।", "hasSvg": false}, {"id": 88, "section": "पदार्थ की 4थी एवं 5वीं अवस्था", "q": "फ्लोरोसेंट ट्यूब और नियॉन साइन बल्ब में प्लाज़्मा चमकने का क्या कारण है?", "options": ["विद्युत ऊर्जा प्रवाहित होने पर गैस आयनीकृत (आवेशित) हो जाती है और एक विशेष रंग की चमक पैदा करती है", "बल्ब में कोयला जलता है", "बल्ब के अंदर जल भरा होता है", "यह केवल सूर्य के प्रकाश से चमकता है"], "ans": 0, "exp": "नियॉन बल्ब में नियॉन गैस और फ्लोरोसेंट ट्यूब में हीलियम या अन्य गैस होती है। विद्युत प्रवाहित होने पर गैस आयनीकृत होकर आवेशित प्लाज़्मा बनाती है जो चमकता है।", "hasSvg": false}, {"id": 89, "section": "पदार्थ की 4थी एवं 5वीं अवस्था", "q": "सूर्य एवं तारों में चमकने और विशाल ऊर्जा उत्पन्न होने का मूलभूत भौतिक कारण क्या है?", "options": ["कोयले का दहन", "उच्च तापमान के कारण उनके अंदर प्लाज़्मा का निर्माण होना", "लोहे का पिघलना", "वहाँ केवल ठोस बर्फ उपस्थित होना"], "ans": 1, "exp": "सूर्य एवं तारों के अत्यधिक उच्च तापमान के कारण उनमें उपस्थित गैसें प्लाज़्मा अवस्था में बदल जाती हैं। तारों की चमक प्लाज़्मा के कारण ही होती है।", "hasSvg": false}, {"id": 90, "section": "पदार्थ की 4थी एवं 5वीं अवस्था", "q": "सन् 1920 में पदार्थ की पाँचवीं अवस्था (Fifth State) के लिए सांख्यिकीय गणनाएँ किस भारतीय भौतिक वैज्ञानिक ने की थीं?", "options": ["सर सी. वी. रमन", "सत्येंद्रनाथ बोस (S.N. Bose)", "होमी जहांगीर भाभा", "जगदीश चंद्र बसु"], "ans": 1, "exp": "1920 में भारतीय भौतिक वैज्ञानिक सत्येंद्रनाथ बोस ने पदार्थ की 5वीं अवस्था हेतु महत्वपूर्ण गणनाएँ कीं, जिनके आधार पर अल्बर्ट आइंस्टाइन ने BEC की भविष्यवाणी की।", "hasSvg": false}, {"id": 91, "section": "पदार्थ की 4थी एवं 5वीं अवस्था", "q": "पदार्थ की पाँचवीं अवस्था को क्या नाम दिया गया है?", "options": ["बोस-आइंस्टाइन कंडनसेट (BEC)", "प्लाज़्मा संघनन", "परम ठोस अवस्था", "आयनिक अवस्था"], "ans": 0, "exp": "सत्येंद्रनाथ बोस और अल्बर्ट आइंस्टाइन के नाम पर पदार्थ की पाँचवीं अवस्था को 'बोस-आइंस्टाइन कंडनसेट' (Bose-Einstein Condensate - BEC) कहा गया।", "hasSvg": false}, {"id": 92, "section": "पदार्थ की 4थी एवं 5वीं अवस्था", "q": "सन् 2001 में किन तीन वैज्ञानिकों को 'बोस-आइंस्टाइन कंडनसेशन' की अवस्था प्रायोगिक रूप से प्राप्त करने हेतु भौतिकी का नोबेल पुरस्कार मिला?", "options": ["एरिक ए. कॉर्नेल, वुल्फगैंग केटरले और कार्ल ई. वेमैन", "नील्स बोर, रदरफोर्ड और थॉमसन", "मैक्स प्लांक, हाइजेनबर्ग और डिराक", "सी. वी. रमन, सत्येंद्रनाथ बोस और मेघनाद साहा"], "ans": 0, "exp": "अमेरिका के एरिक ए. कॉर्नेल (Eric Cornell), वुल्फगैंग केटरले (Wolfgang Ketterle) और कार्ल ई. वेमैन (Carl Wieman) को 2001 में BEC प्राप्त करने हेतु भौतिकी का नोबेल पुरस्कार दिया गया।", "hasSvg": false}, {"id": 93, "section": "मापन, मात्रक एवं कथन-कारण", "q": "बोस-आइंस्टाइन कंडनसेट (BEC) तैयार करने हेतु गैस का घनत्व सामान्य वायु के घनत्व की तुलना में कितना होना चाहिए?", "options": ["सामान्य वायु के घनत्व के 1/10 वें भाग जितना", "सामान्य वायु के घनत्व के 1/1,00,000 वें (एक लाखवें) भाग जितने कम घनत्व वाली गैस", "सामान्य वायु के घनत्व के 100 गुना अधिक", "समान घनत्व"], "ans": 1, "exp": "NCERT के अनुसार: सामान्य वायु के घनत्व के एक लाखवें (1/100,000) भाग जितने कम घनत्व वाली गैस को अत्यधिक कम तापमान पर सुपर-कूल करने से BEC बनता है।", "hasSvg": false}, {"id": 94, "section": "मापन, मात्रक एवं कथन-कारण", "q": "NCERT मात्रक सारणी के अनुसार 'संहति' (द्रव्यमान) और 'भार' के SI मात्रक क्रमशः क्या हैं?", "options": ["किलोग्राम (kg) तथा न्यूटन (N)", "न्यूटन (N) तथा किलोग्राम (kg)", "ग्राम (g) तथा डाइन (dyne)", "पास्कल (Pa) तथा जूल (J)"], "ans": 0, "exp": "द्रव्यमान (संहति) का SI मात्रक किलोग्राम (kg) है और भार (बल) का SI मात्रक न्यूटन (N) है।", "hasSvg": false}, {"id": 95, "section": "मापन, मात्रक एवं कथन-कारण", "q": "तापमान 373 °C को केल्विन (K) इकाई में परिवर्तित करने पर सही मान क्या होगा?", "options": ["100 K", "646 K", "273 K", "573 K"], "ans": 1, "exp": "सूत्र: $K = ^\\circ C + 273$। अतः मान = $373 + 273 = 646\\text{ K}$।", "hasSvg": false}, {"id": 96, "section": "मापन, मात्रक एवं कथन-कारण", "q": "तापमान 573 K को सेल्सियस (°C) इकाई में बदलने पर प्राप्त मान क्या होगा?", "options": ["300 °C", "846 °C", "273 °C", "100 °C"], "ans": 0, "exp": "सूत्र: $^\\circ C = K - 273$। अतः मान = $573 - 273 = 300\\text{ }^\\circ C$।", "hasSvg": false}, {"id": 97, "section": "मापन, मात्रक एवं कथन-कारण", "q": "घनत्व (Density) का अंतर्राष्ट्रीय SI मात्रक निम्नलिखित में से कौन-सा है?", "options": ["g/cm³", "kg m⁻³ (किलोग्राम प्रति घनमीटर)", "kg/m²", "Newton/m³"], "ans": 1, "exp": "घनत्व = द्रव्यमान / आयतन = $\\text{kg} / \\text{m}^3 = \\text{kg m}^{-3}$।", "hasSvg": false}, {"id": 98, "section": "मापन, मात्रक एवं कथन-कारण", "q": "कथन (A): गर्मियों में सूती वस्त्र पहनने से शरीर शीतल रहता है।\nकारण (R): सूती कपड़ा पसीना सोखकर वाष्पीकरण को सुगम बनाता है, जिससे वाष्पीकरण की गुप्त ऊष्मा शरीर से अवशोषित होती है।", "options": ["कथन (A) और कारण (R) दोनों सही हैं तथा (R), (A) की सही व्याख्या है", "कथन (A) सही है परन्तु (R) गलत है", "कथन (A) गलत है परन्तु (R) सही है", "दोनों कथन गलत हैं"], "ans": 0, "exp": "सूती वस्त्र पसीना सोखते हैं। जब पसीना वाष्पीकृत होता है, तो वह शरीर से आवश्यक वाष्पीकरण की गुप्त ऊष्मा लेता है, जिससे शरीर ठंडा रहता है। अतः दोनों सही हैं और व्याख्या भी सही है।", "hasSvg": false}, {"id": 99, "section": "मापन, मात्रक एवं कथन-कारण", "q": "कथन (A): 100 °C पर उबलते पानी की तुलना में 100 °C की भाप से जलना अधिक घातक होता है।\nकारण (R): भाप के कणों में वाष्पीकरण की प्रसुप्त ऊष्मा के रूप में अतिरिक्त ऊर्जा संचित होती है।", "options": ["कथन (A) और कारण (R) दोनों सही हैं तथा (R), (A) की सही व्याख्या है", "कथन (A) सही है लेकिन (R) गलत है", "कथन (A) गलत है लेकिन (R) सही है", "दोनों (A) और (R) असत्य हैं"], "ans": 0, "exp": "373 K (100 °C) पर भाप के कणों में समान तापमान के जल की अपेक्षा गुप्त ऊष्मा के रूप में अधिक आंतरिक ऊर्जा होती है, जो त्वचा पर संघनित होकर अधिक ऊष्मा मुक्त करती है।", "hasSvg": false}, {"id": 100, "section": "मापन, मात्रक एवं कथन-कारण", "q": "पदार्थ के अवस्था परिवर्तन के संदर्भ में कौन-सा युग्म सही सुमेलित है?\n1. ठोस से द्रव — संगलन\n2. द्रव से गैस — वाष्पीकरण\n3. गैस से ठोस — निक्षेपण\n4. ठोस से गैस — ऊर्ध्वपातन", "options": ["केवल 1 और 2", "केवल 2 और 4", "केवल 1, 2 और 3", "1, 2, 3 और 4 (सभी सही हैं)"], "ans": 3, "exp": "NCERT के अनुसार चारों प्रक्रम पूर्णतः सही सुमेलित हैं: ठोस से द्रव (संगलन), द्रव से गैस (वाष्पीकरण), गैस से ठोस (निक्षेपण), तथा ठोस से गैस (ऊर्ध्वपातन)।", "hasSvg": false}];
+
+    /* --- Application State --- */
+    const TOTAL_QUESTIONS = QUESTIONS.length;
+    const TIME_LIMIT_SECONDS = 60 * 60; // 60 minutes for 100 questions
+    const FIREBASE_DB_URL = "https://gyanverse-cbt-b5f75-default-rtdb.firebaseio.com";
+
+    let currentUser = null;
+    let currentQIndex = 0;
+    let userAnswers = new Array(TOTAL_QUESTIONS).fill(null);
+    let reviewStatus = new Array(TOTAL_QUESTIONS).fill(false);
+    let isTestSubmitted = false;
+    let isSolutionMode = false;
+    let examEndTime = null;
+    let timerInterval = null;
+    let cheatStrikes = 0;
+    let adminClickCount = 0;
+    let adminClickTimer = null;
+
+    /* --- On Window Load Initialization --- */
+    window.addEventListener('DOMContentLoaded', () => {
+      checkSavedProgress();
+      setupAntiCheat();
+      setupKeyboardShortcuts();
+    });
+
+    /* --- Check Saved LocalStorage Progress --- */
+    function checkSavedProgress() {
+      try {
+        const savedUser = localStorage.getItem('gv_ch1_100_user');
+        const savedAnswers = localStorage.getItem('gv_ch1_100_answers');
+        const savedSubmitted = localStorage.getItem('gv_ch1_100_submitted');
+
+        if (savedUser) {
+          currentUser = JSON.parse(savedUser);
+          document.getElementById('regName').value = currentUser.name || '';
+          document.getElementById('regDistrict').value = currentUser.district || '';
+          document.getElementById('regTelegram').value = currentUser.telegram || '';
+        }
+
+        if (savedSubmitted === 'true') {
+          document.getElementById('entrySavedSolBtn').classList.remove('hidden');
+          document.getElementById('headerSavedSolBtn').classList.remove('hidden');
+          if (savedAnswers) {
+            userAnswers = JSON.parse(savedAnswers);
+          }
+        } else if (savedUser && savedAnswers) {
+          document.getElementById('resumeTestBtn').classList.remove('hidden');
+        }
+      } catch (e) {
+        console.warn('Storage read error:', e);
+      }
+    }
+
+    /* --- Fullscreen Functions --- */
+    function toggleFullscreen() {
+      if (!document.fullscreenElement) {
+        document.documentElement.requestFullscreen().then(() => {
+          document.getElementById('fsIcon').innerText = '⛶';
+        }).catch((err) => {
+          console.warn('Fullscreen request failed:', err);
+        });
+      } else {
+        if (document.exitFullscreen) {
+          document.exitFullscreen().then(() => {
+            document.getElementById('fsIcon').innerText = '⛶';
+          });
+        }
+      }
+    }
+
+    function ensureFullscreen() {
+      if (!document.fullscreenElement && document.documentElement.requestFullscreen) {
+        document.documentElement.requestFullscreen().catch(() => {});
+      }
+    }
+
+    /* --- Start / Resume Test Handlers --- */
+    function handleStartTest(e) {
+      if (e) e.preventDefault();
+
+      const name = document.getElementById('regName').value.trim();
+      const district = document.getElementById('regDistrict').value;
+      const telegram = document.getElementById('regTelegram').value.trim();
+
+      if (!name || !district || !telegram) {
+        alert('कृपया सभी आवश्यक जानकारी दर्ज करें!');
+        return;
+      }
+
+      currentUser = { name, district, telegram };
+      localStorage.setItem('gv_ch1_100_user', JSON.stringify(currentUser));
+
+      // Reset state for new test
+      userAnswers = new Array(TOTAL_QUESTIONS).fill(null);
+      reviewStatus = new Array(TOTAL_QUESTIONS).fill(false);
+      isTestSubmitted = false;
+      isSolutionMode = false;
+      cheatStrikes = 0;
+
+      // Start Timer
+      examEndTime = Date.now() + (TIME_LIMIT_SECONDS * 1000);
+      localStorage.setItem('gv_ch1_100_endTime', examEndTime.toString());
+
+      // Attempt fullscreen
+      ensureFullscreen();
+
+      // Launch screen
+      launchTestInterface();
+    }
+
+    function resumeOngoingTest() {
+      const savedUser = localStorage.getItem('gv_ch1_100_user');
+      const savedAnswers = localStorage.getItem('gv_ch1_100_answers');
+      const savedReview = localStorage.getItem('gv_ch1_100_review');
+      const savedEndTime = localStorage.getItem('gv_ch1_100_endTime');
+
+      if (!savedUser) return;
+      currentUser = JSON.parse(savedUser);
+      if (savedAnswers) userAnswers = JSON.parse(savedAnswers);
+      if (savedReview) reviewStatus = JSON.parse(savedReview);
+
+      const remainingMs = savedEndTime ? (parseInt(savedEndTime) - Date.now()) : (TIME_LIMIT_SECONDS * 1000);
+      if (remainingMs > 5000) {
+        examEndTime = Date.now() + remainingMs;
+      } else {
+        examEndTime = Date.now() + (10 * 60 * 1000); // 10 min grace
+      }
+
+      ensureFullscreen();
+      launchTestInterface();
+    }
+
+    function launchTestInterface() {
+      document.getElementById('entryScreen').classList.add('hidden');
+      document.getElementById('scorecardScreen').classList.add('hidden');
+      document.getElementById('testScreen').classList.remove('hidden');
+
+      // Adjust Header for Live Test
+      document.getElementById('timerContainer').classList.remove('hidden');
+      document.getElementById('headerSubmitBtn').classList.remove('hidden');
+      document.getElementById('headerScorecardBtn').classList.add('hidden');
+      document.getElementById('liveNavButtons').classList.remove('hidden');
+      document.getElementById('solutionNavButtons').classList.add('hidden');
+      document.getElementById('solutionBox').classList.add('hidden');
+
+      startTimer();
+      renderCurrentQuestion();
+    }
+
+    /* --- Timer Logic --- */
+    function startTimer() {
+      if (timerInterval) clearInterval(timerInterval);
+
+      function updateTimer() {
+        const remaining = Math.max(0, Math.floor((examEndTime - Date.now()) / 1000));
+        const minutes = Math.floor(remaining / 60);
+        const seconds = remaining % 60;
+        document.getElementById('timerText').innerText = 
+          `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+
+        if (remaining <= 0) {
+          clearInterval(timerInterval);
+          alert('⏰ समय समाप्त! आपका 100 प्रश्नों का टेस्ट स्वतः जमा किया जा रहा है।');
+          finalizeSubmission();
+        }
+      }
+
+      updateTimer();
+      timerInterval = setInterval(updateTimer, 1000);
+    }
+
+    /* --- Question Rendering --- */
+    function renderCurrentQuestion() {
+      const q = QUESTIONS[currentQIndex];
+      const qNum = currentQIndex + 1;
+
+      // Section tabs active styling
+      updateActiveSectionTabs(q.section);
+
+      // Question Number & Meta
+      document.getElementById('qNumberBadge').innerText = `प्रश्न ${qNum} / ${TOTAL_QUESTIONS}`;
+
+      // Status Indicator
+      updateQuestionStatusBadge();
+
+      // Question Text
+      document.getElementById('questionText').innerHTML = escapeHtml(q.q);
+
+      // Diagram Container (e.g. for Q71 Phase Transitions)
+      const diagCont = document.getElementById('diagramContainer');
+      if (q.hasSvg) {
+        diagCont.classList.remove('hidden');
+        diagCont.innerHTML = renderPhaseChangeSvg();
+      } else {
+        diagCont.classList.add('hidden');
+        diagCont.innerHTML = '';
+      }
+
+      // Options Rendering
+      const optContainer = document.getElementById('optionsList');
+      optContainer.innerHTML = '';
+
+      const letters = ['A', 'B', 'C', 'D'];
+      const currentSelected = userAnswers[currentQIndex];
+
+      q.options.forEach((optText, idx) => {
+        const optBtn = document.createElement('button');
+        optBtn.type = 'button';
+        optBtn.className = getOptionButtonClasses(idx, currentSelected, q.ans);
+        
+        // Disable option selection if in solution mode
+        if (!isSolutionMode) {
+          optBtn.onclick = () => selectOption(idx);
+        }
+
+        // Option Content
+        let iconHtml = '';
+        if (isSolutionMode) {
+          if (idx === q.ans) {
+            iconHtml = '<span class="text-emerald-600 font-black ml-auto">✓ सही उत्तर</span>';
+          } else if (currentSelected === idx) {
+            iconHtml = '<span class="text-rose-600 font-black ml-auto">✗ आपका उत्तर</span>';
+          }
+        } else {
+          if (currentSelected === idx) {
+            iconHtml = '<span class="text-indigo-600 font-bold ml-auto text-xs bg-indigo-100 px-1.5 py-0.5 rounded">◉ सेव</span>';
+          }
+        }
+
+        optBtn.innerHTML = `
+          <div class="flex items-center w-full">
+            <span class="w-6 h-6 rounded-md ${getOptionLetterBadgeClass(idx, currentSelected, q.ans)} flex items-center justify-center font-bold text-xs shrink-0 mr-2.5">
+              ${letters[idx]}
+            </span>
+            <span class="text-[12px] sm:text-[13.5px] font-medium leading-snug text-left flex-1">
+              ${escapeHtml(optText)}
+            </span>
+            ${iconHtml}
+          </div>
+        `;
+
+        optContainer.appendChild(optBtn);
+      });
+
+      // Review Button State
+      const revBtn = document.getElementById('reviewBtn');
+      if (reviewStatus[currentQIndex]) {
+        revBtn.className = 'h-9 px-2 sm:px-2.5 rounded-lg border border-amber-500 bg-amber-500 text-white font-bold text-xs flex items-center justify-center gap-1 active:scale-95';
+      } else {
+        revBtn.className = 'h-9 px-2 sm:px-2.5 rounded-lg border border-amber-300 bg-amber-50 hover:bg-amber-100 text-amber-800 font-semibold text-xs flex items-center justify-center gap-1 active:scale-95';
+      }
+
+      // Solution Box Rendering
+      const solBox = document.getElementById('solutionBox');
+      if (isSolutionMode) {
+        solBox.classList.remove('hidden');
+        document.getElementById('solAnswerKeyBadge').innerText = `सही उत्तर: विकल्प ${letters[q.ans]}`;
+        document.getElementById('solutionText').innerHTML = escapeHtml(q.exp);
+      } else {
+        solBox.classList.add('hidden');
+      }
+    }
+
+    /* --- Inline SVG for Phase Changes (Question 71) --- */
+    function renderPhaseChangeSvg() {
+      return `
+        <svg viewBox="0 0 460 125" class="w-full max-w-md h-auto mx-auto select-none font-sans">
+          <!-- Solid Box -->
+          <rect x="15" y="42" width="75" height="38" rx="8" fill="#e0e7ff" stroke="#6366f1" stroke-width="2"/>
+          <text x="52" y="66" text-anchor="middle" font-size="13" font-weight="bold" fill="#312e81">ठोस</text>
+          
+          <!-- Liquid Box -->
+          <rect x="190" y="42" width="75" height="38" rx="8" fill="#e0f2fe" stroke="#0284c7" stroke-width="2"/>
+          <text x="227" y="66" text-anchor="middle" font-size="13" font-weight="bold" fill="#0369a1">द्रव</text>
+
+          <!-- Gas Box -->
+          <rect x="370" y="42" width="75" height="38" rx="8" fill="#fef3c7" stroke="#d97706" stroke-width="2"/>
+          <text x="407" y="66" text-anchor="middle" font-size="13" font-weight="bold" fill="#92400e">गैस</text>
+
+          <!-- Arrow A: Solid to Liquid -->
+          <line x1="95" y1="50" x2="182" y2="50" stroke="#4f46e5" stroke-width="1.8" marker-end="url(#arrowBlue)"/>
+          <text x="138" y="44" text-anchor="middle" font-size="10" font-weight="bold" fill="#4f46e5">A: संगलन</text>
+
+          <!-- Arrow D: Liquid to Solid -->
+          <line x1="182" y1="72" x2="95" y2="72" stroke="#4f46e5" stroke-width="1.8" marker-end="url(#arrowBlue)"/>
+          <text x="138" y="85" text-anchor="middle" font-size="10" font-weight="bold" fill="#4f46e5">D: जमना</text>
+
+          <!-- Arrow B: Liquid to Gas -->
+          <line x1="270" y1="50" x2="362" y2="50" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arrowLightBlue)"/>
+          <text x="316" y="44" text-anchor="middle" font-size="10" font-weight="bold" fill="#0284c7">B: वाष्पीकरण</text>
+
+          <!-- Arrow C: Gas to Liquid -->
+          <line x1="362" y1="72" x2="270" y2="72" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arrowLightBlue)"/>
+          <text x="316" y="85" text-anchor="middle" font-size="10" font-weight="bold" fill="#0284c7">C: संघनन</text>
+
+          <!-- Arrow E: Solid to Gas (Top Arc) -->
+          <path d="M 52 38 Q 227 -8 407 38" fill="none" stroke="#d97706" stroke-width="1.8" stroke-dasharray="3,2" marker-end="url(#arrowAmber)"/>
+          <text x="227" y="16" text-anchor="middle" font-size="11" font-weight="bold" fill="#b45309">E: ऊर्ध्वपातन (ठोस → गैस)</text>
+
+          <!-- Arrow F: Gas to Solid (Bottom Arc) -->
+          <path d="M 407 84 Q 227 132 52 84" fill="none" stroke="#059669" stroke-width="1.8" stroke-dasharray="3,2" marker-end="url(#arrowGreen)"/>
+          <text x="227" y="118" text-anchor="middle" font-size="11" font-weight="bold" fill="#047857">F: निक्षेपण (गैस → ठोस)</text>
+
+          <!-- Marker Definitions -->
+          <defs>
+            <marker id="arrowBlue" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+              <path d="M 0 1 L 8 5 L 0 9 z" fill="#4f46e5" />
+            </marker>
+            <marker id="arrowLightBlue" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+              <path d="M 0 1 L 8 5 L 0 9 z" fill="#0284c7" />
+            </marker>
+            <marker id="arrowAmber" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+              <path d="M 0 1 L 8 5 L 0 9 z" fill="#d97706" />
+            </marker>
+            <marker id="arrowGreen" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+              <path d="M 0 1 L 8 5 L 0 9 z" fill="#059669" />
+            </marker>
+          </defs>
+        </svg>
+      `;
+    }
+
+    /* --- Option Styling Helper --- */
+    function getOptionButtonClasses(idx, selected, correct) {
+      const base = "w-full py-2 px-2.5 rounded-lg border text-left transition-all active:scale-98 flex items-center";
+      if (isSolutionMode) {
+        if (idx === correct) {
+          return `${base} bg-emerald-50 border-emerald-500 text-emerald-900 ring-1 ring-emerald-500`;
+        } else if (selected === idx) {
+          return `${base} bg-rose-50 border-rose-500 text-rose-900 ring-1 ring-rose-500`;
+        } else {
+          return `${base} bg-white border-slate-200 text-slate-600 opacity-80`;
+        }
+      } else {
+        if (selected === idx) {
+          return `${base} bg-indigo-50 border-indigo-600 text-indigo-900 ring-1.5 ring-indigo-500 font-semibold shadow-xs`;
+        } else {
+          return `${base} bg-white hover:bg-slate-50 border-slate-200 text-slate-800`;
+        }
+      }
+    }
+
+    function getOptionLetterBadgeClass(idx, selected, correct) {
+      if (isSolutionMode) {
+        if (idx === correct) return "bg-emerald-600 text-white";
+        if (selected === idx) return "bg-rose-600 text-white";
+        return "bg-slate-100 text-slate-600";
+      } else {
+        if (selected === idx) return "bg-indigo-600 text-white";
+        return "bg-slate-100 text-slate-700";
+      }
+    }
+
+    /* --- Live Selection & Navigation --- */
+    function selectOption(idx) {
+      userAnswers[currentQIndex] = idx;
+      localStorage.setItem('gv_ch1_100_answers', JSON.stringify(userAnswers));
+      renderCurrentQuestion();
+    }
+
+    function clearCurrentResponse() {
+      userAnswers[currentQIndex] = null;
+      localStorage.setItem('gv_ch1_100_answers', JSON.stringify(userAnswers));
+      renderCurrentQuestion();
+    }
+
+    function toggleMarkForReview() {
+      reviewStatus[currentQIndex] = !reviewStatus[currentQIndex];
+      localStorage.setItem('gv_ch1_100_review', JSON.stringify(reviewStatus));
+      renderCurrentQuestion();
+    }
+
+    function nextQuestion() {
+      if (currentQIndex < TOTAL_QUESTIONS - 1) {
+        currentQIndex++;
+        renderCurrentQuestion();
+      }
+    }
+
+    function prevQuestion() {
+      if (currentQIndex > 0) {
+        currentQIndex--;
+        renderCurrentQuestion();
+      }
+    }
+
+    function saveAndNextQuestion() {
+      if (currentQIndex < TOTAL_QUESTIONS - 1) {
+        currentQIndex++;
+        renderCurrentQuestion();
+      } else {
+        openSubmitModal();
+      }
+    }
+
+    function jumpToQuestion(idx) {
+      if (idx >= 0 && idx < TOTAL_QUESTIONS) {
+        currentQIndex = idx;
+        renderCurrentQuestion();
+        closePaletteModal();
+      }
+    }
+
+    function jumpToSection(sectionName) {
+      const idx = QUESTIONS.findIndex(q => q.section === sectionName);
+      if (idx !== -1) {
+        currentQIndex = idx;
+        renderCurrentQuestion();
+      }
+    }
+
+    function updateActiveSectionTabs(activeSec) {
+      const map = {
+        'पदार्थ की परिभाषा एवं स्वरूप': 'secTab1',
+        'कणों के अभिलाक्षणिक गुण एवं विसरण': 'secTab2',
+        'पदार्थ की अवस्थाएँ एवं गुणधर्म': 'secTab3',
+        'तापमान परिवर्तन एवं गुप्त ऊष्मा': 'secTab4',
+        'ऊर्ध्वपातन, निक्षेपण एवं दाब': 'secTab5',
+        'वाष्पीकरण एवं दैनिक जीवन': 'secTab6',
+        'पदार्थ की 4थी एवं 5वीं अवस्था': 'secTab7',
+        'मापन, मात्रक एवं कथन-कारण': 'secTab8'
+      };
+
+      Object.entries(map).forEach(([sec, id]) => {
+        const btn = document.getElementById(id);
+        if (!btn) return;
+        if (sec === activeSec) {
+          btn.className = 'px-2.5 py-0.5 rounded-full font-semibold border border-indigo-200 bg-indigo-50 text-indigo-800 whitespace-nowrap';
+        } else {
+          btn.className = 'px-2.5 py-0.5 rounded-full font-medium text-slate-600 hover:bg-slate-100 border border-transparent whitespace-nowrap';
+        }
+      });
+    }
+
+    function updateQuestionStatusBadge() {
+      const textElem = document.getElementById('qStatusText');
+      const pillElem = document.getElementById('qStatusPill');
+      const hasAns = userAnswers[currentQIndex] !== null;
+      const isRev = reviewStatus[currentQIndex];
+
+      if (isSolutionMode) {
+        const isRight = userAnswers[currentQIndex] === QUESTIONS[currentQIndex].ans;
+        if (userAnswers[currentQIndex] === null) {
+          pillElem.innerHTML = '<span class="w-2 h-2 rounded-full bg-slate-400"></span><span class="text-slate-600 font-semibold">अनुत्तरित (Skipped)</span>';
+        } else if (isRight) {
+          pillElem.innerHTML = '<span class="w-2 h-2 rounded-full bg-emerald-600"></span><span class="text-emerald-700 font-bold">सही (+2.00)</span>';
+        } else {
+          pillElem.innerHTML = '<span class="w-2 h-2 rounded-full bg-rose-600"></span><span class="text-rose-700 font-bold">गलत (-0.20)</span>';
+        }
+        return;
+      }
+
+      if (hasAns && isRev) {
+        pillElem.innerHTML = '<span class="w-2 h-2 rounded-full bg-purple-600"></span><span class="text-purple-700 font-semibold">उत्तर + समीक्षा</span>';
+      } else if (hasAns) {
+        pillElem.innerHTML = '<span class="w-2 h-2 rounded-full bg-emerald-600"></span><span class="text-emerald-700 font-semibold">उत्तर दिया</span>';
+      } else if (isRev) {
+        pillElem.innerHTML = '<span class="w-2 h-2 rounded-full bg-amber-500"></span><span class="text-amber-700 font-semibold">समीक्षा हेतु</span>';
+      } else {
+        pillElem.innerHTML = '<span class="w-2 h-2 rounded-full bg-slate-400"></span><span class="text-slate-600 font-medium">अनुत्तरित</span>';
+      }
+    }
+
+    /* --- TCS iON 100-Question Palette Modal Logic --- */
+    function openPaletteModal() {
+      const grid = document.getElementById('paletteGrid');
+      grid.innerHTML = '';
+
+      let cAnswered = 0, cReview = 0, cAnsRev = 0, cUnatt = 0;
+
+      QUESTIONS.forEach((q, i) => {
+        const hasAns = userAnswers[i] !== null;
+        const isRev = reviewStatus[i];
+        const isCurrent = i === currentQIndex;
+
+        let bgClass = "bg-slate-100 text-slate-700 border-slate-300";
+
+        if (isSolutionMode) {
+          if (userAnswers[i] === null) {
+            bgClass = "bg-slate-100 text-slate-500 border-slate-300";
+          } else if (userAnswers[i] === q.ans) {
+            bgClass = "bg-emerald-600 text-white border-emerald-700";
+          } else {
+            bgClass = "bg-rose-600 text-white border-rose-700";
+          }
+        } else {
+          if (hasAns && isRev) {
+            bgClass = "bg-purple-600 text-white border-purple-700";
+            cAnsRev++;
+          } else if (hasAns) {
+            bgClass = "bg-emerald-600 text-white border-emerald-700";
+            cAnswered++;
+          } else if (isRev) {
+            bgClass = "bg-amber-500 text-white border-amber-600";
+            cReview++;
+          } else {
+            cUnatt++;
+          }
+        }
+
+        const ringClass = isCurrent ? "ring-2 ring-indigo-500 ring-offset-1 font-black" : "font-semibold";
+
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = `h-7.5 w-full rounded text-[11px] border ${bgClass} ${ringClass} flex items-center justify-center transition-transform active:scale-90`;
+        btn.innerText = i + 1;
+        btn.onclick = () => jumpToQuestion(i);
+        grid.appendChild(btn);
+      });
+
+      if (!isSolutionMode) {
+        document.getElementById('palCountAnswered').innerText = cAnswered;
+        document.getElementById('palCountReview').innerText = cReview;
+        document.getElementById('palCountAnsReview').innerText = cAnsRev;
+        document.getElementById('palCountUnattempted').innerText = cUnatt;
+      }
+
+      document.getElementById('paletteModal').classList.remove('hidden');
+    }
+
+    function closePaletteModal() {
+      document.getElementById('paletteModal').classList.add('hidden');
+    }
+
+    /* --- Submission & Scorecard --- */
+    function openSubmitModal() {
+      let cAnswered = 0, cReview = 0, cUnatt = 0;
+      userAnswers.forEach((ans, i) => {
+        if (ans !== null) cAnswered++;
+        else cUnatt++;
+        if (reviewStatus[i]) cReview++;
+      });
+
+      document.getElementById('subCountAnswered').innerText = cAnswered;
+      document.getElementById('subCountReview').innerText = cReview;
+      document.getElementById('subCountUnattempted').innerText = cUnatt;
+      document.getElementById('submitModal').classList.remove('hidden');
+    }
+
+    function closeSubmitModal() {
+      document.getElementById('submitModal').classList.add('hidden');
+    }
+
+    function finalizeSubmission() {
+      closeSubmitModal();
+      if (timerInterval) clearInterval(timerInterval);
+
+      isTestSubmitted = true;
+      localStorage.setItem('gv_ch1_100_submitted', 'true');
+      localStorage.setItem('gv_ch1_100_answers', JSON.stringify(userAnswers));
+
+      // Calculate Marks for 100 questions
+      let correct = 0, wrong = 0, attempted = 0;
+
+      QUESTIONS.forEach((q, i) => {
+        if (userAnswers[i] !== null) {
+          attempted++;
+          if (userAnswers[i] === q.ans) {
+            correct++;
+          } else {
+            wrong++;
+          }
+        }
+      });
+
+      const skipped = TOTAL_QUESTIONS - attempted;
+      const rawScore = (correct * 2.0) - (wrong * 0.20);
+      const totalScore = Math.max(0, parseFloat(rawScore.toFixed(2)));
+      const accuracy = attempted > 0 ? Math.round((correct / attempted) * 100) : 0;
+      const percentage = Math.round((totalScore / 200.0) * 100);
+
+      // Populate Scorecard
+      document.getElementById('scoreStudentName').innerText = 
+        `विद्यार्थी: ${currentUser ? currentUser.name : 'विद्यार्थी'} (${currentUser ? currentUser.district : ''})`;
+      document.getElementById('scoreTotalMarks').innerText = totalScore.toFixed(2);
+      document.getElementById('scoreAccuracy').innerText = `${accuracy}%`;
+      document.getElementById('scorePercentage').innerText = `${percentage}%`;
+
+      document.getElementById('statAttempted').innerText = attempted;
+      document.getElementById('statCorrect').innerText = correct;
+      document.getElementById('statWrong').innerText = wrong;
+      document.getElementById('statSkipped').innerText = skipped;
+
+      // Show Scorecard Modal
+      document.getElementById('scorecardScreen').classList.remove('hidden');
+
+      // Sync with Firebase Cloud in background
+      syncResultToFirebase(totalScore, correct, wrong, skipped, accuracy);
+    }
+
+    function enterSolutionMode() {
+      isSolutionMode = true;
+      document.getElementById('scorecardScreen').classList.add('hidden');
+      document.getElementById('testScreen').classList.remove('hidden');
+
+      // Adjust UI for Solution Mode
+      document.getElementById('timerContainer').classList.add('hidden');
+      document.getElementById('headerSubmitBtn').classList.add('hidden');
+      document.getElementById('headerScorecardBtn').classList.remove('hidden');
+      document.getElementById('liveNavButtons').classList.add('hidden');
+      document.getElementById('solutionNavButtons').classList.remove('hidden');
+
+      currentQIndex = 0;
+      renderCurrentQuestion();
+    }
+
+    function returnToScorecard() {
+      document.getElementById('scorecardScreen').classList.remove('hidden');
+    }
+
+    function openSavedSolutionsFromHeader() {
+      const savedUser = localStorage.getItem('gv_ch1_100_user');
+      const savedAnswers = localStorage.getItem('gv_ch1_100_answers');
+      if (savedUser) currentUser = JSON.parse(savedUser);
+      if (savedAnswers) userAnswers = JSON.parse(savedAnswers);
+
+      isTestSubmitted = true;
+      document.getElementById('entryScreen').classList.add('hidden');
+      enterSolutionMode();
+    }
+
+    function retakeTestConfirm() {
+      if (confirm('क्या आप 100 प्रश्नों का टेस्ट पुनः देना चाहते हैं? पिछले उत्तर रीसेट हो जाएंगे।')) {
+        localStorage.removeItem('gv_ch1_100_answers');
+        localStorage.removeItem('gv_ch1_100_review');
+        localStorage.removeItem('gv_ch1_100_submitted');
+        localStorage.removeItem('gv_ch1_100_endTime');
+        location.reload();
+      }
+    }
+
+    /* --- Firebase Realtime Database Sync --- */
+    function syncResultToFirebase(score, correct, wrong, skipped, accuracy) {
+      if (!currentUser || !currentUser.telegram) return;
+
+      const userKey = currentUser.telegram.replace(/[^a-zA-Z0-9_]/g, '');
+      const record = {
+        name: currentUser.name,
+        district: currentUser.district,
+        telegram: currentUser.telegram,
+        score: score,
+        correct: correct,
+        wrong: wrong,
+        skipped: skipped,
+        accuracy: accuracy,
+        timestamp: Date.now()
+      };
+
+      // Save locally to leaderboard cache
+      saveToLocalLeaderboard(record);
+
+      // Async fetch to Firebase
+      fetch(`${FIREBASE_DB_URL}/gyanverse_ncert_ch1_100q_results/${userKey}.json`, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(record)
+      }).catch(err => {
+        console.warn('Firebase silent sync note (offline fallback active):', err);
+      });
+    }
+
+    function saveToLocalLeaderboard(record) {
+      try {
+        let list = JSON.parse(localStorage.getItem('gv_ch1_100_leaderboard') || '[]');
+        const existingIdx = list.findIndex(item => item.telegram === record.telegram);
+        if (existingIdx !== -1) {
+          if (record.score >= list[existingIdx].score) {
+            list[existingIdx] = record;
+          }
+        } else {
+          list.push(record);
+        }
+        localStorage.setItem('gv_ch1_100_leaderboard', JSON.stringify(list));
+      } catch (e) {}
+    }
+
+    /* --- All-Bihar Leaderboard Rendering --- */
+    function openLeaderboardModal() {
+      document.getElementById('leaderboardModal').classList.remove('hidden');
+      renderLeaderboard();
+      fetchLeaderboardFromCloud();
+    }
+
+    function closeLeaderboardModal() {
+      document.getElementById('leaderboardModal').classList.add('hidden');
+    }
+
+    function fetchLeaderboardFromCloud() {
+      fetch(`${FIREBASE_DB_URL}/gyanverse_ncert_ch1_100q_results.json`)
+        .then(res => res.json())
+        .then(data => {
+          if (data) {
+            const list = Object.values(data);
+            localStorage.setItem('gv_ch1_100_leaderboard', JSON.stringify(list));
+            renderLeaderboard();
+          }
+        })
+        .catch(err => console.log('Offline leaderboard fallback'));
+    }
+
+    function renderLeaderboard() {
+      const listContainer = document.getElementById('leaderboardList');
+      const searchQuery = (document.getElementById('leaderSearch').value || '').toLowerCase();
+      const distFilter = document.getElementById('leaderDistFilter').value;
+
+      let list = [];
+      try {
+        list = JSON.parse(localStorage.getItem('gv_ch1_100_leaderboard') || '[]');
+      } catch (e) {}
+
+      // If empty, supply default top candidates
+      if (list.length === 0) {
+        list = [
+          { name: "राहुल राज", district: "पटना", telegram: "@rahul_bihar", score: 194.20, accuracy: 98 },
+          { name: "प्रिया कुमारी", district: "गया", telegram: "@priya_singh", score: 188.40, accuracy: 95 },
+          { name: "अमित कुमार", district: "मुजफ्फरपुर", telegram: "@amit_cbt", score: 182.00, accuracy: 92 },
+          { name: "सोनाली वर्मा", district: "दरभंगा", telegram: "@sonali_v", score: 176.80, accuracy: 89 },
+          { name: "दीपक कुमार", district: "रोहतास", telegram: "@deepak_r", score: 169.60, accuracy: 86 }
+        ];
+      }
+
+      // Filter
+      let filtered = list.filter(item => {
+        const matchName = item.name.toLowerCase().includes(searchQuery) || item.telegram.toLowerCase().includes(searchQuery);
+        const matchDist = distFilter === '' || item.district === distFilter;
+        return matchName && matchDist;
+      });
+
+      // Sort by score descending
+      filtered.sort((a, b) => b.score - a.score);
+
+      listContainer.innerHTML = '';
+
+      if (filtered.length === 0) {
+        listContainer.innerHTML = '<div class="text-center text-xs text-slate-500 py-6">कोई रिकॉर्ड नहीं मिला</div>';
+        return;
+      }
+
+      filtered.forEach((item, index) => {
+        const rank = index + 1;
+        let rankBadge = `<span class="w-6 h-6 rounded-full bg-slate-100 text-slate-700 font-bold text-xs flex items-center justify-center">${rank}</span>`;
+        if (rank === 1) rankBadge = `<span class="w-6 h-6 rounded-full bg-amber-100 text-amber-700 font-bold text-xs flex items-center justify-center">🥇</span>`;
+        if (rank === 2) rankBadge = `<span class="w-6 h-6 rounded-full bg-slate-200 text-slate-700 font-bold text-xs flex items-center justify-center">🥈</span>`;
+        if (rank === 3) rankBadge = `<span class="w-6 h-6 rounded-full bg-amber-200 text-amber-800 font-bold text-xs flex items-center justify-center">🥉</span>`;
+
+        const row = document.createElement('div');
+        row.className = "p-2 rounded-xl bg-slate-50 border border-slate-200 flex items-center justify-between text-xs";
+        row.innerHTML = `
+          <div class="flex items-center space-x-2">
+            ${rankBadge}
+            <div>
+              <div class="font-bold text-slate-800">${escapeHtml(item.name)}</div>
+              <div class="text-[10px] text-slate-500">${escapeHtml(item.district)} • <span class="text-indigo-600">${escapeHtml(item.telegram)}</span></div>
+            </div>
+          </div>
+          <div class="text-right">
+            <div class="font-black text-indigo-700 text-sm">${parseFloat(item.score).toFixed(2)} <span class="text-[10px] text-slate-500">अंक</span></div>
+            <div class="text-[10px] text-emerald-600 font-semibold">${item.accuracy}% सटीकता</div>
+          </div>
+        `;
+        listContainer.appendChild(row);
+      });
+    }
+
+    /* --- Anti-Cheat System --- */
+    function setupAntiCheat() {
+      document.addEventListener('visibilitychange', () => {
+        if (!isTestSubmitted && currentUser && document.visibilityState === 'hidden') {
+          handleCheatViolation();
+        }
+      });
+
+      document.addEventListener('fullscreenchange', () => {
+        if (!isTestSubmitted && currentUser && !document.fullscreenElement) {
+          handleCheatViolation();
+        }
+      });
+
+      window.addEventListener('beforeunload', (e) => {
+        if (!isTestSubmitted && currentUser) {
+          e.preventDefault();
+          e.returnValue = '';
+        }
+      });
+    }
+
+    function handleCheatViolation() {
+      cheatStrikes++;
+      const toast = document.getElementById('cheatToast');
+      const text = document.getElementById('cheatToastText');
+      text.innerText = `⚠ चेतावनी: परीक्षा के दौरान टैब बदलना या फुलस्क्रीन छोड़ना वर्जित है! (स्ट्राइक ${cheatStrikes}/3)`;
+      toast.classList.remove('hidden');
+
+      setTimeout(() => {
+        toast.classList.add('hidden');
+      }, 4000);
+
+      if (cheatStrikes >= 3) {
+        alert('🚨 3 सुरक्षा उल्लंघन दर्ज किए गए! परीक्षा स्वतः सबमिट की जा रही है।');
+        finalizeSubmission();
+      }
+    }
+
+    /* --- Keyboard Shortcuts --- */
+    function setupKeyboardShortcuts() {
+      document.addEventListener('keydown', (e) => {
+        if (isTestSubmitted || !currentUser) return;
+        const key = e.key.toUpperCase();
+
+        if (['1', 'A'].includes(key)) selectOption(0);
+        else if (['2', 'B'].includes(key)) selectOption(1);
+        else if (['3', 'C'].includes(key)) selectOption(2);
+        else if (['4', 'D'].includes(key)) selectOption(3);
+        else if (key === 'N') saveAndNextQuestion();
+        else if (key === 'P') prevQuestion();
+        else if (key === 'R') toggleMarkForReview();
+      });
+    }
+
+    /* --- 4-Click Admin Trigger --- */
+    function handleAdminTrigger() {
+      adminClickCount++;
+      clearTimeout(adminClickTimer);
+      adminClickTimer = setTimeout(() => {
+        adminClickCount = 0;
+      }, 1200);
+
+      if (adminClickCount >= 4) {
+        adminClickCount = 0;
+        document.getElementById('adminModal').classList.remove('hidden');
+        document.getElementById('adminAuthSection').classList.remove('hidden');
+        document.getElementById('adminActionsSection').classList.add('hidden');
+      }
+    }
+
+    function closeAdminModal() {
+      document.getElementById('adminModal').classList.add('hidden');
+      document.getElementById('adminPinInput').value = '';
+    }
+
+    function verifyAdminPin() {
+      const pin = document.getElementById('adminPinInput').value.trim();
+      if (pin === '1234' || pin.toUpperCase() === 'GYANVERSE') {
+        document.getElementById('adminAuthSection').classList.add('hidden');
+        document.getElementById('adminActionsSection').classList.remove('hidden');
+      } else {
+        alert('गलत पिन! एक्सेस अस्वीकृत।');
+      }
+    }
+
+    function clearLocalTestProgress() {
+      if (confirm('क्या आप स्थानीय डिवाइस का टेस्ट रिकॉर्ड रीसेट करना चाहते हैं?')) {
+        localStorage.clear();
+        alert('डेटा सफलतापूर्वक साफ़ किया गया!');
+        location.reload();
+      }
+    }
+
+    function seedDemoLeaderboard() {
+      const sample = [
+        { name: "राहुल राज", district: "पटना", telegram: "@rahul_bihar", score: 194.20, accuracy: 98 },
+        { name: "प्रिया कुमारी", district: "गया", telegram: "@priya_singh", score: 188.40, accuracy: 95 },
+        { name: "अमित कुमार", district: "मुजफ्फरपुर", telegram: "@amit_cbt", score: 182.00, accuracy: 92 },
+        { name: "सोनाली वर्मा", district: "दरभंगा", telegram: "@sonali_v", score: 176.80, accuracy: 89 },
+        { name: "दीपक कुमार", district: "रोहतास", telegram: "@deepak_r", score: 169.60, accuracy: 86 }
+      ];
+      localStorage.setItem('gv_ch1_100_leaderboard', JSON.stringify(sample));
+      alert('डेमो 100-MCQ टॉपर सूची लोड हो गई!');
+      renderLeaderboard();
+    }
+
+    /* --- XSS Sanitizer --- */
+    function escapeHtml(str) {
+      if (typeof str !== 'string') return str;
+      return str
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+    }
+  </script>
+</body>
+</html>
+```
