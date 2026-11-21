@@ -1,0 +1,1604 @@
+```html
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BAZARIO — जमुई (One City One Marketplace)</title>
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <script src="https://unpkg.com/lucide@0.460.0/dist/umd/lucide.min.js"></script>
+  <style>
+    body {
+      font-family: 'Inter', 'Noto Sans Devanagari', system-ui, -apple-system, sans-serif;
+      background-color: #f8fafc;
+      color: #0f172a;
+    }
+    .mode-pill.active {
+      background-color: #0f2942;
+      color: #ffffff;
+      box-shadow: 0 2px 6px rgba(15, 41, 66, 0.25);
+    }
+    .cat-chip.active {
+      background-color: #d97706;
+      color: #ffffff;
+      border-color: #d97706;
+    }
+    .no-scrollbar::-webkit-scrollbar { display: none; }
+    .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col">
+
+  <!-- TOP HEADER & 4-IN-1 MODE SWITCHER -->
+  <header class="bg-[#0f2942] text-white sticky top-0 z-40 shadow-md">
+    <div class="max-w-6xl mx-auto px-3 sm:px-5 py-3">
+      <div class="flex flex-wrap items-center justify-between gap-2">
+        <div class="flex items-center gap-2.5">
+          <div class="w-9 h-9 rounded-lg bg-amber-500 flex items-center justify-center text-[#0f2942] font-extrabold text-lg shadow">
+            B
+          </div>
+          <div>
+            <div class="flex items-center gap-2">
+              <h1 class="text-base sm:text-lg font-bold leading-tight tracking-wide">BAZARIO</h1>
+              <span class="text-[10px] sm:text-xs bg-amber-500/20 text-amber-300 border border-amber-400/40 px-2 py-0.5 rounded-full font-semibold">पायलट वर्ज़न • जमुई (811307)</span>
+            </div>
+            <p class="text-[11px] text-slate-300 hidden sm:block">ONE CITY – ONE MARKETPLACE – UNLIMITED SHOPS</p>
+          </div>
+        </div>
+
+        <div class="flex items-center gap-2">
+          <button id="btn-reset-demo" type="button" class="text-xs bg-white/10 hover:bg-white/20 text-slate-200 px-2.5 py-1.5 rounded-lg flex items-center gap-1 transition">
+            <i data-lucide="rotate-ccw" class="w-3.5 h-3.5"></i>
+            <span>रीसेट डेटा</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- 4-MODE NAVIGATION BAR -->
+      <nav class="mt-3 bg-white rounded-xl p-1 grid grid-cols-2 sm:grid-cols-4 gap-1 shadow-inner" aria-label="ऐप मोड">
+        <button type="button" data-mode="customer" class="mode-pill active text-xs sm:text-sm font-semibold py-2 px-2 rounded-lg flex items-center justify-center gap-1.5 text-slate-700 transition">
+          <i data-lucide="shopping-bag" class="w-4 h-4"></i>
+          <span>ग्राहक ऐप</span>
+        </button>
+        <button type="button" data-mode="merchant" class="mode-pill text-xs sm:text-sm font-semibold py-2 px-2 rounded-lg flex items-center justify-center gap-1.5 text-slate-700 transition">
+          <i data-lucide="store" class="w-4 h-4"></i>
+          <span>दुकानदार ऐप</span>
+          <span id="badge-merchant-orders" class="hidden bg-amber-500 text-white text-[10px] px-1.5 py-0.2 rounded-full">0</span>
+        </button>
+        <button type="button" data-mode="delivery" class="mode-pill text-xs sm:text-sm font-semibold py-2 px-2 rounded-lg flex items-center justify-center gap-1.5 text-slate-700 transition">
+          <i data-lucide="bike" class="w-4 h-4"></i>
+          <span>डिलीवरी पार्टनर</span>
+          <span id="badge-delivery-pool" class="hidden bg-emerald-600 text-white text-[10px] px-1.5 py-0.2 rounded-full">0</span>
+        </button>
+        <button type="button" data-mode="admin" class="mode-pill text-xs sm:text-sm font-semibold py-2 px-2 rounded-lg flex items-center justify-center gap-1.5 text-slate-700 transition">
+          <i data-lucide="shield-check" class="w-4 h-4"></i>
+          <span>एडमिन पैनल</span>
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <!-- MAIN CONTENT CONTAINER -->
+  <main id="app-root" class="flex-1 max-w-6xl w-full mx-auto px-3 sm:px-5 py-4 pb-24">
+    <!-- Rendered dynamically -->
+  </main>
+
+  <!-- FLOATING CART BAR (CUSTOMER MODE) -->
+  <div id="floating-cart-bar" class="hidden fixed bottom-3 left-1/2 -translate-x-1/2 w-[94%] max-w-xl bg-[#0f2942] text-white rounded-2xl shadow-2xl px-4 py-3 z-40 flex items-center justify-between border border-amber-400/40">
+    <div>
+      <div id="cart-bar-summary" class="text-sm font-bold">0 आइटम • ₹0</div>
+      <div id="cart-bar-shop" class="text-xs text-amber-300">दुकान</div>
+    </div>
+    <button id="btn-open-checkout" type="button" class="bg-amber-500 hover:bg-amber-600 text-[#0f2942] font-bold text-sm px-4 py-2 rounded-xl flex items-center gap-1.5 transition">
+      <span>चेकआउट करें</span>
+      <i data-lucide="arrow-right" class="w-4 h-4"></i>
+    </button>
+  </div>
+
+  <!-- MODAL BACKDROP -->
+  <div id="modal-overlay" class="hidden fixed inset-0 bg-slate-900/60 backdrop-blur-xs z-50 flex items-center justify-center p-3">
+    <div id="modal-box" class="bg-white rounded-2xl max-w-lg w-full max-h-[90vh] overflow-y-auto shadow-2xl p-5 relative">
+      <!-- Dynamic Modal Content -->
+    </div>
+  </div>
+
+  <!-- TOAST NOTIFICATION -->
+  <div id="toast-container" class="fixed top-20 right-4 z-50 flex flex-col gap-2 max-w-xs w-full pointer-events-none"></div>
+
+  <script>
+    (function () {
+      const STORAGE_KEY = 'jamui_marketplace_pilot_v1';
+
+      const JAMUI_AREAS = [
+        'महराजगंज मेन रोड',
+        'कचहरी रोड (जमुई कोर्ट)',
+        'स्टेशन रोड (सतगामा)',
+        'महिसौरी चौक',
+        'पुरानी बाजार',
+        'सदर अस्पताल रोड'
+      ];
+
+      const SHOP_CATEGORIES = [
+        'सभी',
+        'किराना स्टोर',
+        'सब्जी व फल',
+        'मेडिकल स्टोर',
+        'मिठाई व बेकरी',
+        'कपड़े की दुकान',
+        'स्टेशनरी व किताबें',
+        'इलेक्ट्रॉनिक्स व मोबाइल'
+      ];
+
+      function createInitialState() {
+        return {
+          currentMode: 'customer',
+          customerSubTab: 'market', // 'market' | 'orders' | 'favorites'
+          selectedArea: 'महराजगंज मेन रोड',
+          selectedCategory: 'सभी',
+          searchQuery: '',
+          activeShopId: null,
+          merchantShopId: 'shop-1',
+          deliveryOnline: true,
+          deliveryPartnerName: 'राहुल कुमार (जमुई)',
+          deliveryEarnings: 65,
+          favorites: ['shop-1', 'shop-3'],
+          cart: {
+            shopId: null,
+            items: [] // { productId, name, price, qty }
+          },
+          shops: [
+            {
+              id: 'shop-1',
+              name: 'गृहस्थी किराना एवं जनरल स्टोर',
+              category: 'किराना स्टोर',
+              area: 'महराजगंज मेन रोड',
+              owner: 'मनोज कुमार गुप्ता',
+              phone: '9835011223',
+              distanceKm: 0.6,
+              rating: 4.7,
+              status: 'approved', // 'approved' | 'pending' | 'blocked'
+              isOpen: true,
+              icon: 'shopping-basket',
+              products: [
+                { id: 'p-101', name: 'आशीर्वाद आटा (5 किग्रा)', price: 235, mrp: 260, stock: 24, brand: 'Aashirvaad', desc: 'ताज़ा चक्की आटा' },
+                { id: 'p-102', name: 'फॉर्च्यून सरसों तेल (1 लीटर)', price: 155, mrp: 175, stock: 30, brand: 'Fortune', desc: 'कच्ची घानी शुद्ध तेल' },
+                { id: 'p-103', name: 'टाटा नमक (1 किग्रा)', price: 28, mrp: 30, stock: 50, brand: 'Tata', desc: 'आयोडीन युक्त नमक' },
+                { id: 'p-104', name: 'बासमती चावल (1 किग्रा)', price: 95, mrp: 115, stock: 18, brand: 'India Gate', desc: 'प्रीमियम रोज़ाना चावल' }
+              ]
+            },
+            {
+              id: 'shop-2',
+              name: 'जमुई ताज़ा सब्जी एवं फल मंडी',
+              category: 'सब्जी व फल',
+              area: 'स्टेशन रोड (सतगामा)',
+              owner: 'रमेश प्रसाद',
+              phone: '9934022334',
+              distanceKm: 1.2,
+              rating: 4.5,
+              status: 'approved',
+              isOpen: true,
+              icon: 'apple',
+              products: [
+                { id: 'p-201', name: 'ताज़ा आलू (2 किग्रा)', price: 50, mrp: 60, stock: 40, brand: 'लोकल', desc: 'साफ और ताज़ा देसी आलू' },
+                { id: 'p-202', name: 'प्याज़ (1 किग्रा)', price: 42, mrp: 50, stock: 35, brand: 'लोकल', desc: 'नासिक लाल प्याज़' },
+                { id: 'p-203', name: 'सेब (1 किग्रा)', price: 140, mrp: 165, stock: 15, brand: 'हिमाचल', desc: 'मीठा और ताज़ा सेब' },
+                { id: 'p-204', name: 'टमाटर (1 किग्रा)', price: 36, mrp: 45, stock: 25, brand: 'लोकल', desc: 'ताज़ा लाल टमाटर' }
+              ]
+            },
+            {
+              id: 'shop-3',
+              name: 'जीवन रक्षा मेडिकल हॉल',
+              category: 'मेडिकल स्टोर',
+              area: 'सदर अस्पताल रोड',
+              owner: 'डॉ. संजीव सिन्हा',
+              phone: '9431033445',
+              distanceKm: 0.9,
+              rating: 4.9,
+              status: 'approved',
+              isOpen: true,
+              icon: 'pill',
+              products: [
+                { id: 'p-301', name: 'पैरासिटामोल 500mg (15 टैबलेट)', price: 22, mrp: 25, stock: 60, brand: 'Crocin', desc: 'बुखार व दर्द के लिए' },
+                { id: 'p-302', name: 'ओआरएस (ORS) पैकेट (200ml)', price: 20, mrp: 22, stock: 45, brand: 'Electral', desc: 'तुरंत ऊर्जा व हाइड्रेशन' },
+                { id: 'p-303', name: 'डेटॉल एंटीसेप्टिक लिक्विड (125ml)', price: 68, mrp: 75, stock: 20, brand: 'Dettol', desc: 'प्राथमिक उपचार के लिए' },
+                { id: 'p-304', name: 'डिजिटल थर्मामीटर', price: 180, mrp: 220, stock: 10, brand: 'Dr. Morepen', desc: 'सटीक तापमान मापक' }
+              ]
+            },
+            {
+              id: 'shop-4',
+              name: 'महिसौरी स्वीट्स एंड बेकरी',
+              category: 'मिठाई व बेकरी',
+              area: 'महिसौरी चौक',
+              owner: 'विकास कुमार',
+              phone: '9123444556',
+              distanceKm: 1.5,
+              rating: 4.6,
+              status: 'approved',
+              isOpen: true,
+              icon: 'cake-slice',
+              products: [
+                { id: 'p-401', name: 'शुद्ध घी मोतीचूर लड्डू (500 ग्राम)', price: 190, mrp: 220, stock: 16, brand: 'महिसौरी स्पेशल', desc: 'ताज़ा देसी घी से निर्मित' },
+                { id: 'p-402', name: 'काजू कतली (250 ग्राम)', price: 240, mrp: 270, stock: 12, brand: 'महिसौरी स्पेशल', desc: 'प्रीमियम काजू मिठाई' },
+                { id: 'p-403', name: 'मिल्क ब्रेड (400 ग्राम)', price: 40, mrp: 45, stock: 20, brand: 'Fresh Bake', desc: 'सुबह की ताज़ा बेकरी ब्रेड' }
+              ]
+            },
+            {
+              id: 'shop-5',
+              name: 'राज वस्त्रालय एवं रेडीमेड',
+              category: 'कपड़े की दुकान',
+              area: 'पुरानी बाजार',
+              owner: 'आनंद अग्रवाल',
+              phone: '9835255667',
+              distanceKm: 1.8,
+              rating: 4.4,
+              status: 'approved',
+              isOpen: true,
+              icon: 'shirt',
+              products: [
+                { id: 'p-501', name: 'कॉटन कैजुअल शर्ट (L)', price: 549, mrp: 799, stock: 14, brand: 'Cotton King', desc: '100% शुद्ध कॉटन शर्ट' },
+                { id: 'p-502', name: 'लेडीज प्रिंटेड कुर्ती (M)', price: 480, mrp: 650, stock: 18, brand: 'Jaipur Prints', desc: 'आरामदायक दैनिक कुर्ती' }
+              ]
+            },
+            {
+              id: 'shop-6',
+              name: 'विद्यार्थी स्टेशनरी एंड बुक डिपो',
+              category: 'स्टेशनरी व किताबें',
+              area: 'कचहरी रोड (जमुई कोर्ट)',
+              owner: 'सुनील झा',
+              phone: '9771066778',
+              distanceKm: 1.1,
+              rating: 4.8,
+              status: 'approved',
+              isOpen: true,
+              icon: 'book-open',
+              products: [
+                { id: 'p-601', name: 'क्लासमेट नोटबुक सेट (6 पीस)', price: 270, mrp: 310, stock: 30, brand: 'Classmate', desc: '172 पेज रूलिंग कॉपी' },
+                { id: 'p-602', name: 'बॉल पेन पैक (10 पेन)', price: 90, mrp: 100, stock: 50, brand: 'Cello', desc: 'स्मूथ राइटिंग ब्लू पेन' }
+              ]
+            }
+          ],
+          orders: [
+            {
+              id: 'JMU-1001',
+              shopId: 'shop-1',
+              shopName: 'गृहस्थी किराना एवं जनरल स्टोर',
+              shopArea: 'महराजगंज मेन रोड',
+              customerName: 'अमित कुमार',
+              customerPhone: '9835099887',
+              customerArea: 'कचहरी रोड (जमुई कोर्ट)',
+              items: [
+                { name: 'आशीर्वाद आटा (5 किग्रा)', qty: 1, price: 235 },
+                { name: 'टाटा नमक (1 किग्रा)', qty: 2, price: 28 }
+              ],
+              subtotal: 291,
+              deliveryFee: 25,
+              partnerPayout: 20,
+              platformCommission: 15,
+              total: 316,
+              paymentMethod: 'कैश ऑन डिलीवरी (COD)',
+              status: 'ready_for_pickup', // placed -> accepted -> ready_for_pickup -> out_for_delivery -> delivered | cancelled | rejected
+              otp: '4821',
+              partnerName: null,
+              rating: null,
+              createdAt: 'सुबह 08:25'
+            }
+          ],
+          complaints: [
+            {
+              id: 'CMP-101',
+              orderId: 'JMU-1001',
+              customerName: 'अमित कुमार',
+              message: 'कृपया पैकिंग मज़बूत रखें।',
+              status: 'open'
+            }
+          ]
+        };
+      }
+
+      let state = createInitialState();
+      try {
+        const saved = localStorage.getItem(STORAGE_KEY);
+        if (saved) {
+          const parsed = JSON.parse(saved);
+          if (parsed && Array.isArray(parsed.shops) && Array.isArray(parsed.orders)) {
+            state = Object.assign(createInitialState(), parsed);
+          }
+        }
+      } catch (e) {
+        // Fallback to initial state if storage is unavailable
+      }
+
+      function saveState() {
+        try {
+          localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+        } catch (e) {
+          // Ignore storage quota/sandbox restrictions
+        }
+      }
+
+      function showToast(message, type) {
+        const container = document.getElementById('toast-container');
+        if (!container) return;
+        const colors = type === 'error'
+          ? 'bg-rose-600 text-white'
+          : type === 'warning'
+            ? 'bg-amber-500 text-slate-900'
+            : 'bg-emerald-600 text-white';
+        const toast = document.createElement('div');
+        toast.className = `pointer-events-auto ${colors} px-4 py-2.5 rounded-xl shadow-lg text-xs sm:text-sm font-semibold flex items-center justify-between gap-2 transition-all`;
+        toast.innerHTML = `<span>${escapeHtml(message)}</span>`;
+        container.appendChild(toast);
+        setTimeout(() => {
+          toast.style.opacity = '0';
+          setTimeout(() => toast.remove(), 300);
+        }, 3000);
+      }
+
+      function escapeHtml(str) {
+        return String(str == null ? '' : str)
+          .replace(/&/g, '&amp;')
+          .replace(/</g, '&lt;')
+          .replace(/>/g, '&gt;')
+          .replace(/"/g, '&quot;');
+      }
+
+      function getShopById(id) {
+        return state.shops.find(s => s.id === id) || null;
+      }
+
+      function calcDeliveryFee(distanceKm) {
+        return Math.round(15 + (distanceKm || 1) * 10);
+      }
+
+      function getStatusLabel(status) {
+        const map = {
+          placed: { text: 'नया ऑर्डर (अप्रूवल बाकी)', cls: 'bg-amber-100 text-amber-800' },
+          accepted: { text: 'दुकानदार ने स्वीकार किया', cls: 'bg-blue-100 text-blue-800' },
+          ready_for_pickup: { text: 'पिकअप के लिए तैयार', cls: 'bg-purple-100 text-purple-800' },
+          out_for_delivery: { text: 'डिलीवरी रास्ते में', cls: 'bg-indigo-100 text-indigo-800' },
+          delivered: { text: 'डिलीवर हो गया', cls: 'bg-emerald-100 text-emerald-800' },
+          cancelled: { text: 'रद्द (Cancelled)', cls: 'bg-rose-100 text-rose-800' },
+          rejected: { text: 'अस्वीकृत (Rejected)', cls: 'bg-rose-100 text-rose-800' }
+        };
+        return map[status] || { text: status, cls: 'bg-slate-100 text-slate-700' };
+      }
+
+      function openModal(html) {
+        const overlay = document.getElementById('modal-overlay');
+        const box = document.getElementById('modal-box');
+        if (!overlay || !box) return;
+        box.innerHTML = html;
+        overlay.classList.remove('hidden');
+        if (window.lucide) window.lucide.createIcons();
+      }
+
+      function closeModal() {
+        const overlay = document.getElementById('modal-overlay');
+        if (overlay) overlay.classList.add('hidden');
+      }
+
+      function updateBadges() {
+        const merchantOrdersCount = state.orders.filter(o => o.shopId === state.merchantShopId && (o.status === 'placed' || o.status === 'accepted')).length;
+        const mBadge = document.getElementById('badge-merchant-orders');
+        if (mBadge) {
+          mBadge.textContent = String(merchantOrdersCount);
+          mBadge.classList.toggle('hidden', merchantOrdersCount === 0);
+        }
+
+        const deliveryPoolCount = state.orders.filter(o => o.status === 'ready_for_pickup' || o.status === 'out_for_delivery').length;
+        const dBadge = document.getElementById('badge-delivery-pool');
+        if (dBadge) {
+          dBadge.textContent = String(deliveryPoolCount);
+          dBadge.classList.toggle('hidden', deliveryPoolCount === 0);
+        }
+
+        const cartBar = document.getElementById('floating-cart-bar');
+        const cartSummary = document.getElementById('cart-bar-summary');
+        const cartShop = document.getElementById('cart-bar-shop');
+        if (cartBar && cartSummary && cartShop) {
+          const totalItems = state.cart.items.reduce((sum, i) => sum + i.qty, 0);
+          if (state.currentMode === 'customer' && totalItems > 0 && state.cart.shopId) {
+            const subtotal = state.cart.items.reduce((sum, i) => sum + i.price * i.qty, 0);
+            const shop = getShopById(state.cart.shopId);
+            cartSummary.textContent = `${totalItems} आइटम • ₹${subtotal}`;
+            cartShop.textContent = shop ? shop.name : 'दुकान';
+            cartBar.classList.remove('hidden');
+          } else {
+            cartBar.classList.add('hidden');
+          }
+        }
+      }
+
+      function render() {
+        document.querySelectorAll('.mode-pill').forEach(btn => {
+          btn.classList.toggle('active', btn.dataset.mode === state.currentMode);
+        });
+
+        const root = document.getElementById('app-root');
+        if (!root) return;
+
+        if (state.currentMode === 'customer') {
+          root.innerHTML = renderCustomerMode();
+        } else if (state.currentMode === 'merchant') {
+          root.innerHTML = renderMerchantMode();
+        } else if (state.currentMode === 'delivery') {
+          root.innerHTML = renderDeliveryMode();
+        } else {
+          root.innerHTML = renderAdminMode();
+        }
+
+        updateBadges();
+        if (window.lucide) window.lucide.createIcons();
+      }
+
+      /* ===================== 1. CUSTOMER MODE ===================== */
+      function renderCustomerMode() {
+        if (state.activeShopId) {
+          return renderShopDetail(state.activeShopId);
+        }
+
+        const approvedShops = state.shops.filter(s => s.status === 'approved');
+        const filteredShops = approvedShops.filter(s => {
+          const matchCat = state.selectedCategory === 'सभी' || s.category === state.selectedCategory;
+          const q = state.searchQuery.trim().toLowerCase();
+          const matchSearch = !q ||
+            s.name.toLowerCase().includes(q) ||
+            s.category.toLowerCase().includes(q) ||
+            s.area.toLowerCase().includes(q) ||
+            s.products.some(p => p.name.toLowerCase().includes(q));
+          const matchFav = state.customerSubTab !== 'favorites' || state.favorites.includes(s.id);
+          return matchCat && matchSearch && matchFav;
+        });
+
+        return `
+          <div class="space-y-4">
+            <!-- Sub-navigation & Jamui Location Strip -->
+            <div class="bg-white rounded-2xl p-3 sm:p-4 border border-slate-200 shadow-xs flex flex-col md:flex-row md:items-center justify-between gap-3">
+              <div class="flex items-center gap-2.5">
+                <div class="w-9 h-9 rounded-xl bg-amber-100 text-amber-700 flex items-center justify-center shrink-0">
+                  <i data-lucide="map-pin" class="w-5 h-5"></i>
+                </div>
+                <div>
+                  <div class="text-[11px] text-slate-500 font-semibold">आपका क्षेत्र (जमुई GPS लोकेशन)</div>
+                  <select id="select-customer-area" class="text-sm font-bold text-[#0f2942] bg-transparent focus:outline-none cursor-pointer">
+                    ${JAMUI_AREAS.map(a => `<option value="${escapeHtml(a)}" ${a === state.selectedArea ? 'selected' : ''}>${escapeHtml(a)}, जमुई</option>`).join('')}
+                  </select>
+                </div>
+              </div>
+
+              <div class="flex items-center gap-1.5 bg-slate-100 p-1 rounded-xl">
+                <button type="button" data-csub="market" class="csub-btn px-3 py-1.5 rounded-lg text-xs font-bold transition ${state.customerSubTab === 'market' ? 'bg-white text-[#0f2942] shadow-xs' : 'text-slate-600'}">
+                  आसपास की दुकानें
+                </button>
+                <button type="button" data-csub="orders" class="csub-btn px-3 py-1.5 rounded-lg text-xs font-bold transition ${state.customerSubTab === 'orders' ? 'bg-white text-[#0f2942] shadow-xs' : 'text-slate-600'}">
+                  मेरे ऑर्डर (${state.orders.length})
+                </button>
+                <button type="button" data-csub="favorites" class="csub-btn px-3 py-1.5 rounded-lg text-xs font-bold transition ${state.customerSubTab === 'favorites' ? 'bg-white text-[#0f2942] shadow-xs' : 'text-slate-600'}">
+                  पसंदीदा (${state.favorites.length})
+                </button>
+              </div>
+            </div>
+
+            ${state.customerSubTab === 'orders' ? renderCustomerOrders() : `
+              <!-- Search & Category Filter -->
+              <div class="space-y-3">
+                <div class="relative">
+                  <i data-lucide="search" class="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2"></i>
+                  <input id="input-customer-search" type="text" value="${escapeHtml(state.searchQuery)}" placeholder="जमुई में दुकान, किराना, दवाई या सामान खोजें..." class="w-full pl-10 pr-4 py-2.5 bg-white border border-slate-200 rounded-xl text-sm focus:outline-none focus:border-amber-500 shadow-xs" />
+                </div>
+
+                <div class="flex items-center gap-2 overflow-x-auto no-scrollbar pb-1">
+                  ${SHOP_CATEGORIES.map(cat => `
+                    <button type="button" data-cat="${escapeHtml(cat)}" class="cat-chip shrink-0 text-xs font-semibold px-3 py-1.5 rounded-full border border-slate-200 bg-white text-slate-700 transition ${state.selectedCategory === cat ? 'active' : ''}">
+                      ${escapeHtml(cat)}
+                    </button>
+                  `).join('')}
+                </div>
+              </div>
+
+              <!-- Nearby Shops Grid -->
+              <div>
+                <div class="flex items-center justify-between mb-2.5">
+                  <h2 class="text-sm sm:text-base font-bold text-[#0f2942]">
+                    ${state.customerSubTab === 'favorites' ? 'आपकी पसंदीदा दुकानें' : 'CUSTOMER NEARBY MARKET — जमुई'}
+                  </h2>
+                  <span class="text-xs text-slate-500 font-medium">${filteredShops.length} दुकानें उपलब्ध</span>
+                </div>
+
+                ${filteredShops.length === 0 ? `
+                  <div class="bg-white rounded-2xl p-8 text-center border border-slate-200">
+                    <p class="text-sm text-slate-600 font-medium">इस श्रेणी या खोज के लिए कोई दुकान नहीं मिली।</p>
+                  </div>
+                ` : `
+                  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3.5">
+                    ${filteredShops.map(shop => {
+                      const isFav = state.favorites.includes(shop.id);
+                      const delFee = calcDeliveryFee(shop.distanceKm);
+                      return `
+                        <div class="bg-white rounded-2xl border border-slate-200 p-4 shadow-xs hover:shadow-md transition flex flex-col justify-between">
+                          <div>
+                            <div class="flex items-start justify-between gap-2">
+                              <div class="flex items-center gap-2.5">
+                                <div class="w-11 h-11 rounded-xl bg-[#0f2942]/5 text-[#0f2942] flex items-center justify-center shrink-0">
+                                  <i data-lucide="${escapeHtml(shop.icon || 'store')}" class="w-5 h-5"></i>
+                                </div>
+                                <div>
+                                  <span class="text-[10px] font-bold uppercase tracking-wide text-amber-700 bg-amber-50 px-2 py-0.5 rounded-md">${escapeHtml(shop.category)}</span>
+                                  <h3 class="text-sm font-bold text-slate-900 mt-1 leading-snug">${escapeHtml(shop.name)}</h3>
+                                </div>
+                              </div>
+                              <button type="button" data-fav-shop="${shop.id}" class="p-1.5 rounded-lg hover:bg-slate-100 transition" title="पसंदीदा में जोड़ें">
+                                <i data-lucide="heart" class="w-4 h-4 ${isFav ? 'fill-rose-500 text-rose-500' : 'text-slate-400'}"></i>
+                              </button>
+                            </div>
+
+                            <div class="mt-3 flex flex-wrap items-center gap-x-3 gap-y-1 text-xs text-slate-600">
+                              <span class="flex items-center gap-1"><i data-lucide="map-pin" class="w-3.5 h-3.5 text-slate-400"></i> ${escapeHtml(shop.area)}</span>
+                              <span class="flex items-center gap-1 font-semibold text-emerald-700"><i data-lucide="star" class="w-3.5 h-3.5 fill-emerald-500 text-emerald-500"></i> ${shop.rating}</span>
+                            </div>
+                          </div>
+
+                          <div class="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between">
+                            <div class="text-xs text-slate-500">
+                              <span>${shop.distanceKm} किमी</span> • <span>डिलीवरी ₹${delFee}</span>
+                            </div>
+                            <button type="button" data-open-shop="${shop.id}" class="bg-[#0f2942] hover:bg-[#1a3d5f] text-white text-xs font-bold px-3.5 py-2 rounded-xl transition">
+                              सामान देखें
+                            </button>
+                          </div>
+                        </div>
+                      `;
+                    }).join('')}
+                  </div>
+                `}
+              </div>
+            `}
+          </div>
+        `;
+      }
+
+      function renderShopDetail(shopId) {
+        const shop = getShopById(shopId);
+        if (!shop) {
+          state.activeShopId = null;
+          return renderCustomerMode();
+        }
+        return `
+          <div class="space-y-4">
+            <button type="button" id="btn-back-to-market" class="inline-flex items-center gap-1.5 text-xs sm:text-sm font-bold text-[#0f2942] bg-white border border-slate-200 px-3 py-1.5 rounded-xl hover:bg-slate-50">
+              <i data-lucide="arrow-left" class="w-4 h-4"></i>
+              <span>सभी दुकानों पर वापस जाएं</span>
+            </button>
+
+            <div class="bg-white rounded-2xl p-4 sm:p-5 border border-slate-200 shadow-xs flex flex-wrap items-center justify-between gap-3">
+              <div>
+                <span class="text-xs font-bold text-amber-700 bg-amber-50 px-2.5 py-0.5 rounded-full">${escapeHtml(shop.category)}</span>
+                <h2 class="text-lg sm:text-xl font-extrabold text-[#0f2942] mt-1.5">${escapeHtml(shop.name)}</h2>
+                <p class="text-xs sm:text-sm text-slate-600 mt-0.5">${escapeHtml(shop.area)}, जमुई • ${shop.distanceKm} किमी दूर • डिलीवरी शुल्क ₹${calcDeliveryFee(shop.distanceKm)}</p>
+              </div>
+              <div class="text-right">
+                <div class="inline-flex items-center gap-1 bg-emerald-50 text-emerald-700 px-3 py-1 rounded-xl text-sm font-bold">
+                  <i data-lucide="star" class="w-4 h-4 fill-emerald-500 text-emerald-500"></i> ${shop.rating}
+                </div>
+                <div class="text-[11px] text-slate-500 mt-1">संपर्क: ${escapeHtml(shop.phone)}</div>
+              </div>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3.5">
+              ${shop.products.map(prod => {
+                const inCart = state.cart.shopId === shop.id ? state.cart.items.find(i => i.productId === prod.id) : null;
+                const qty = inCart ? inCart.qty : 0;
+                const discountPct = prod.mrp > prod.price ? Math.round(((prod.mrp - prod.price) / prod.mrp) * 100) : 0;
+                return `
+                  <div class="bg-white rounded-2xl border border-slate-200 p-4 flex flex-col justify-between shadow-xs">
+                    <div>
+                      <div class="flex items-start justify-between gap-2">
+                        <span class="text-[10px] font-bold text-slate-500 bg-slate-100 px-2 py-0.5 rounded-md">${escapeHtml(prod.brand)}</span>
+                        ${discountPct > 0 ? `<span class="text-[10px] font-bold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-md">${discountPct}% छूट</span>` : ''}
+                      </div>
+                      <h3 class="text-sm font-bold text-slate-900 mt-2">${escapeHtml(prod.name)}</h3>
+                      <p class="text-xs text-slate-500 mt-0.5">${escapeHtml(prod.desc)}</p>
+                    </div>
+
+                    <div class="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between">
+                      <div>
+                        <span class="text-base font-extrabold text-[#0f2942]">₹${prod.price}</span>
+                        ${prod.mrp > prod.price ? `<span class="text-xs text-slate-400 line-through ml-1">₹${prod.mrp}</span>` : ''}
+                        <div class="text-[11px] ${prod.stock > 0 ? 'text-emerald-600' : 'text-rose-600'} font-medium">
+                          ${prod.stock > 0 ? `स्टॉक: ${prod.stock}` : 'स्टॉक समाप्त'}
+                        </div>
+                      </div>
+
+                      ${prod.stock <= 0 ? `
+                        <span class="text-xs font-bold text-slate-400 px-3 py-1.5 bg-slate-100 rounded-xl">अनुपलब्ध</span>
+                      ` : qty === 0 ? `
+                        <button type="button" data-add-cart="${shop.id}|${prod.id}" class="bg-amber-500 hover:bg-amber-600 text-[#0f2942] text-xs font-bold px-3.5 py-2 rounded-xl transition">
+                          + कार्ट में जोड़ें
+                        </button>
+                      ` : `
+                        <div class="flex items-center gap-2 bg-[#0f2942] text-white rounded-xl px-2 py-1">
+                          <button type="button" data-qty-delta="${prod.id}|-1" class="w-6 h-6 rounded-lg hover:bg-white/20 font-bold">-</button>
+                          <span class="text-xs font-bold w-4 text-center">${qty}</span>
+                          <button type="button" data-qty-delta="${prod.id}|1" class="w-6 h-6 rounded-lg hover:bg-white/20 font-bold">+</button>
+                        </div>
+                      `}
+                    </div>
+                  </div>
+                `;
+              }).join('')}
+            </div>
+          </div>
+        `;
+      }
+
+      function renderCustomerOrders() {
+        if (state.orders.length === 0) {
+          return `<div class="bg-white rounded-2xl p-8 text-center border border-slate-200 text-sm text-slate-600">अभी तक कोई ऑर्डर नहीं किया गया है।</div>`;
+        }
+        return `
+          <div class="space-y-3.5">
+            ${state.orders.map(order => {
+              const st = getStatusLabel(order.status);
+              const steps = ['placed', 'accepted', 'ready_for_pickup', 'out_for_delivery', 'delivered'];
+              const currentIdx = steps.indexOf(order.status);
+              return `
+                <div class="bg-white rounded-2xl border border-slate-200 p-4 shadow-xs space-y-3">
+                  <div class="flex flex-wrap items-start justify-between gap-2">
+                    <div>
+                      <div class="flex items-center gap-2">
+                        <span class="text-sm font-extrabold text-[#0f2942]">#${escapeHtml(order.id)}</span>
+                        <span class="text-[11px] font-bold px-2.5 py-0.5 rounded-full ${st.cls}">${escapeHtml(st.text)}</span>
+                      </div>
+                      <div class="text-xs text-slate-600 mt-1 font-semibold">${escapeHtml(order.shopName)} (${escapeHtml(order.shopArea)})</div>
+                      <div class="text-[11px] text-slate-500">ग्राहक पता: ${escapeHtml(order.customerArea)} • ${escapeHtml(order.paymentMethod)}</div>
+                    </div>
+                    <div class="text-right">
+                      <div class="text-base font-extrabold text-[#0f2942]">₹${order.total}</div>
+                      <div class="text-[11px] font-bold text-amber-700 bg-amber-50 px-2 py-0.5 rounded-md mt-1">डिलीवरी OTP: ${escapeHtml(order.otp)}</div>
+                    </div>
+                  </div>
+
+                  <div class="text-xs text-slate-700 bg-slate-50 rounded-xl p-2.5">
+                    ${order.items.map(i => `${escapeHtml(i.name)} × ${i.qty} (₹${i.price * i.qty})`).join(' • ')}
+                  </div>
+
+                  ${currentIdx >= 0 ? `
+                    <div class="grid grid-cols-5 gap-1 pt-1">
+                      ${['ऑर्डर', 'स्वीकृत', 'तैयार', 'रास्ते में', 'डिलीवर'].map((lbl, idx) => `
+                        <div class="text-center">
+                          <div class="h-1.5 rounded-full ${idx <= currentIdx ? 'bg-emerald-500' : 'bg-slate-200'}"></div>
+                          <div class="text-[10px] mt-1 font-semibold ${idx <= currentIdx ? 'text-emerald-700' : 'text-slate-400'}">${lbl}</div>
+                        </div>
+                      `).join('')}
+                    </div>
+                  ` : ''}
+
+                  <div class="flex flex-wrap items-center justify-between gap-2 pt-2 border-t border-slate-100 text-xs">
+                    <div class="text-slate-600">
+                      ${order.partnerName ? `<span class="font-semibold text-indigo-700">डिलीवरी पार्टनर: ${escapeHtml(order.partnerName)}</span>` : 'ओपन डिलीवरी नेटवर्क: पार्टनर प्रतीक्षारत'}
+                    </div>
+                    <div class="flex items-center gap-2">
+                      ${(order.status === 'placed' || order.status === 'accepted') ? `
+                        <button type="button" data-cancel-order="${order.id}" class="text-rose-600 hover:bg-rose-50 font-bold px-2.5 py-1 rounded-lg border border-rose-200">ऑर्डर रद्द करें</button>
+                      ` : ''}
+                      ${order.status === 'delivered' && !order.rating ? `
+                        <button type="button" data-rate-order="${order.id}" class="text-amber-700 hover:bg-amber-50 font-bold px-2.5 py-1 rounded-lg border border-amber-200">रेटिंग दें ★</button>
+                      ` : order.rating ? `<span class="font-bold text-emerald-700">आपकी रेटिंग: ${order.rating} ★</span>` : ''}
+                      <button type="button" data-complain-order="${order.id}" class="text-slate-600 hover:bg-slate-100 font-semibold px-2.5 py-1 rounded-lg border border-slate-200">शिकायत/सहायता</button>
+                    </div>
+                  </div>
+                </div>
+              `;
+            }).join('')}
+          </div>
+        `;
+      }
+
+      /* ===================== 2. MERCHANT MODE ===================== */
+      function renderMerchantMode() {
+        const shop = getShopById(state.merchantShopId) || state.shops[0];
+        const shopOrders = state.orders.filter(o => o.shopId === shop.id);
+        const completedOrders = shopOrders.filter(o => o.status === 'delivered');
+        const grossSales = completedOrders.reduce((sum, o) => sum + o.subtotal, 0);
+        const commission = Math.round(grossSales * 0.05);
+        const netEarnings = grossSales - commission;
+
+        return `
+          <div class="space-y-4">
+            <!-- Merchant Selector & Register Button -->
+            <div class="bg-white rounded-2xl p-4 border border-slate-200 shadow-xs flex flex-wrap items-center justify-between gap-3">
+              <div>
+                <div class="text-xs text-slate-500 font-semibold">सक्रिय दुकानदार डैशबोर्ड</div>
+                <select id="select-merchant-shop" class="mt-0.5 text-sm sm:text-base font-bold text-[#0f2942] bg-slate-50 border border-slate-200 rounded-xl px-3 py-1.5">
+                  ${state.shops.map(s => `<option value="${s.id}" ${s.id === shop.id ? 'selected' : ''}>${escapeHtml(s.name)} (${escapeHtml(s.area)})</option>`).join('')}
+                </select>
+              </div>
+              <button type="button" id="btn-open-register-shop" class="bg-amber-500 hover:bg-amber-600 text-[#0f2942] text-xs sm:text-sm font-bold px-4 py-2 rounded-xl flex items-center gap-1.5 transition">
+                <i data-lucide="plus-circle" class="w-4 h-4"></i>
+                <span>नई दुकान रजिस्टर करें</span>
+              </button>
+            </div>
+
+            <!-- Earnings KPIs -->
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+              <div class="bg-white p-3.5 rounded-2xl border border-slate-200">
+                <div class="text-xs text-slate-500">कुल ऑर्डर</div>
+                <div class="text-xl font-extrabold text-[#0f2942] mt-1">${shopOrders.length}</div>
+              </div>
+              <div class="bg-white p-3.5 rounded-2xl border border-slate-200">
+                <div class="text-xs text-slate-500">कुल बिक्री (डिलीवर)</div>
+                <div class="text-xl font-extrabold text-emerald-700 mt-1">₹${grossSales}</div>
+              </div>
+              <div class="bg-white p-3.5 rounded-2xl border border-slate-200">
+                <div class="text-xs text-slate-500">प्लेटफॉर्म कमीशन (5%)</div>
+                <div class="text-xl font-extrabold text-amber-600 mt-1">₹${commission}</div>
+              </div>
+              <div class="bg-white p-3.5 rounded-2xl border border-slate-200">
+                <div class="text-xs text-slate-500">शुद्ध दुकानदार कमाई</div>
+                <div class="text-xl font-extrabold text-[#0f2942] mt-1">₹${netEarnings}</div>
+              </div>
+            </div>
+
+            <!-- Order Management -->
+            <div class="bg-white rounded-2xl border border-slate-200 p-4 shadow-xs">
+              <h2 class="text-base font-bold text-[#0f2942] mb-3">ऑर्डर मैनेजमेंट (Order Management)</h2>
+              ${shopOrders.length === 0 ? `<p class="text-xs text-slate-500">इस दुकान के लिए अभी कोई ऑर्डर नहीं है। ग्राहक ऐप से ऑर्डर करके टेस्ट करें।</p>` : `
+                <div class="space-y-3">
+                  ${shopOrders.map(o => {
+                    const st = getStatusLabel(o.status);
+                    return `
+                      <div class="border border-slate-200 rounded-xl p-3 flex flex-wrap items-center justify-between gap-3">
+                        <div>
+                          <div class="flex items-center gap-2">
+                            <span class="text-sm font-bold text-[#0f2942]">#${escapeHtml(o.id)}</span>
+                            <span class="text-[11px] font-bold px-2 py-0.5 rounded-full ${st.cls}">${escapeHtml(st.text)}</span>
+                          </div>
+                          <div class="text-xs text-slate-600 mt-1">ग्राहक: ${escapeHtml(o.customerName)} (${escapeHtml(o.customerArea)}) • ₹${o.subtotal}</div>
+                          <div class="text-[11px] text-slate-500 mt-0.5">${o.items.map(i => `${escapeHtml(i.name)} × ${i.qty}`).join(', ')}</div>
+                        </div>
+                        <div class="flex items-center gap-2">
+                          ${o.status === 'placed' ? `
+                            <button type="button" data-m-action="accept|${o.id}" class="bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold px-3 py-1.5 rounded-lg">स्वीकार करें</button>
+                            <button type="button" data-m-action="reject|${o.id}" class="bg-rose-100 hover:bg-rose-200 text-rose-700 text-xs font-bold px-3 py-1.5 rounded-lg">अस्वीकार</button>
+                          ` : o.status === 'accepted' ? `
+                            <button type="button" data-m-action="ready|${o.id}" class="bg-purple-600 hover:bg-purple-700 text-white text-xs font-bold px-3 py-1.5 rounded-lg">ऑर्डर तैयार है (डिलीवरी भेजें)</button>
+                          ` : ''}
+                        </div>
+                      </div>
+                    `;
+                  }).join('')}
+                </div>
+              `}
+            </div>
+
+            <!-- Product Management -->
+            <div class="bg-white rounded-2xl border border-slate-200 p-4 shadow-xs">
+              <div class="flex items-center justify-between mb-3">
+                <h2 class="text-base font-bold text-[#0f2942]">प्रोडक्ट और स्टॉक मैनेजमेंट</h2>
+                <button type="button" id="btn-open-add-product" class="bg-[#0f2942] hover:bg-[#1a3d5f] text-white text-xs font-bold px-3 py-1.5 rounded-xl flex items-center gap-1">
+                  <i data-lucide="plus" class="w-3.5 h-3.5"></i> नया प्रोडक्ट जोड़ें
+                </button>
+              </div>
+              <div class="overflow-x-auto">
+                <table class="w-full text-left text-xs">
+                  <thead>
+                    <tr class="border-b border-slate-200 text-slate-500">
+                      <th class="py-2 pr-3">प्रोडक्ट</th>
+                      <th class="py-2 pr-3">ब्रांड</th>
+                      <th class="py-2 pr-3">कीमत</th>
+                      <th class="py-2 pr-3">स्टॉक</th>
+                      <th class="py-2 text-right">अपडेट</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    ${shop.products.map(p => `
+                      <tr class="border-b border-slate-100">
+                        <td class="py-2.5 pr-3 font-semibold text-slate-800">${escapeHtml(p.name)}</td>
+                        <td class="py-2.5 pr-3 text-slate-600">${escapeHtml(p.brand)}</td>
+                        <td class="py-2.5 pr-3 font-bold text-[#0f2942]">₹${p.price}</td>
+                        <td class="py-2.5 pr-3 font-bold ${p.stock > 0 ? 'text-emerald-700' : 'text-rose-600'}">${p.stock}</td>
+                        <td class="py-2.5 text-right">
+                          <button type="button" data-stock-add="${shop.id}|${p.id}" class="text-xs font-bold bg-slate-100 hover:bg-slate-200 px-2.5 py-1 rounded-lg">+5 स्टॉक</button>
+                        </td>
+                      </tr>
+                    `).join('')}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        `;
+      }
+
+      /* ===================== 3. DELIVERY PARTNER MODE ===================== */
+      function renderDeliveryMode() {
+        const poolOrders = state.orders.filter(o => o.status === 'ready_for_pickup');
+        const activeDeliveries = state.orders.filter(o => o.status === 'out_for_delivery');
+        const completedDeliveries = state.orders.filter(o => o.status === 'delivered');
+
+        return `
+          <div class="space-y-4">
+            <div class="bg-white rounded-2xl p-4 border border-slate-200 shadow-xs flex flex-wrap items-center justify-between gap-3">
+              <div class="flex items-center gap-3">
+                <div class="w-11 h-11 rounded-xl bg-emerald-100 text-emerald-700 flex items-center justify-center">
+                  <i data-lucide="bike" class="w-6 h-6"></i>
+                </div>
+                <div>
+                  <div class="text-sm font-extrabold text-[#0f2942]">${escapeHtml(state.deliveryPartnerName)}</div>
+                  <div class="text-xs text-slate-500">OPEN DELIVERY NETWORK • जमुई सिटी ज़ोन</div>
+                </div>
+              </div>
+              <div class="flex items-center gap-3">
+                <div class="text-right">
+                  <div class="text-[11px] text-slate-500">आज की कमाई</div>
+                  <div class="text-base font-extrabold text-emerald-700">₹${state.deliveryEarnings}</div>
+                </div>
+                <button type="button" id="btn-toggle-duty" class="px-3.5 py-2 rounded-xl text-xs font-bold transition ${state.deliveryOnline ? 'bg-emerald-600 text-white' : 'bg-slate-200 text-slate-700'}">
+                  ${state.deliveryOnline ? 'ऑनलाइन (सक्रिय)' : 'ऑफलाइन'}
+                </button>
+              </div>
+            </div>
+
+            ${!state.deliveryOnline ? `
+              <div class="bg-amber-50 border border-amber-200 rounded-2xl p-6 text-center text-sm font-semibold text-amber-800">
+                आप अभी ऑफलाइन हैं। शहर की किसी भी दुकान के नए ऑर्डर देखने के लिए "ऑनलाइन" मोड चालू करें।
+              </div>
+            ` : `
+              <!-- Active Deliveries -->
+              ${activeDeliveries.length > 0 ? `
+                <div class="bg-indigo-50 border border-indigo-200 rounded-2xl p-4 space-y-3">
+                  <h2 class="text-sm font-extrabold text-indigo-900">चल रही डिलीवरी (Active Delivery)</h2>
+                  ${activeDeliveries.map(o => `
+                    <div class="bg-white rounded-xl p-3.5 border border-indigo-100 flex flex-wrap items-center justify-between gap-3">
+                      <div>
+                        <div class="text-sm font-bold text-[#0f2942]">#${escapeHtml(o.id)} • ${escapeHtml(o.shopName)}</div>
+                        <div class="text-xs text-slate-600 mt-0.5">पिकअप: ${escapeHtml(o.shopArea)} → ड्रॉप: <strong>${escapeHtml(o.customerArea)}</strong> (${escapeHtml(o.customerName)})</div>
+                        <div class="text-xs text-emerald-700 font-bold mt-1">डिलीवरी कमाई: ₹${o.partnerPayout} • ग्राहक से लेना है: ${o.paymentMethod.includes('COD') ? '₹' + o.total : '₹0 (ऑनलाइन पेड)'}</div>
+                      </div>
+                      <div class="flex items-center gap-2">
+                        <input id="otp-input-${o.id}" type="text" maxlength="4" placeholder="ग्राहक OTP (${escapeHtml(o.otp)})" class="w-36 px-3 py-1.5 text-xs border border-slate-300 rounded-lg focus:outline-none focus:border-indigo-500" />
+                        <button type="button" data-d-complete="${o.id}" class="bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold px-3.5 py-2 rounded-lg">डिलीवर करें</button>
+                      </div>
+                    </div>
+                  `).join('')}
+                </div>
+              ` : ''}
+
+              <!-- Open Delivery Pool -->
+              <div class="bg-white rounded-2xl border border-slate-200 p-4 shadow-xs">
+                <div class="flex items-center justify-between mb-3">
+                  <h2 class="text-base font-bold text-[#0f2942]">ओपन डिलीवरी पूल (शहर की सभी दुकानों के तैयार ऑर्डर)</h2>
+                  <span class="text-xs font-bold text-purple-700 bg-purple-50 px-2.5 py-0.5 rounded-full">${poolOrders.length} उपलब्ध</span>
+                </div>
+                ${poolOrders.length === 0 ? `<p class="text-xs text-slate-500">अभी कोई ऑर्डर पिकअप के लिए तैयार नहीं है। दुकानदार ऐप में किसी ऑर्डर को "ऑर्डर तैयार है" मार्क करें।</p>` : `
+                  <div class="space-y-2.5">
+                    ${poolOrders.map(o => `
+                      <div class="border border-slate-200 rounded-xl p-3 flex flex-wrap items-center justify-between gap-3">
+                        <div>
+                          <div class="text-sm font-bold text-[#0f2942]">#${escapeHtml(o.id)} • ${escapeHtml(o.shopName)}</div>
+                          <div class="text-xs text-slate-600 mt-0.5">${escapeHtml(o.shopArea)} → ${escapeHtml(o.customerArea)}</div>
+                          <div class="text-xs font-bold text-emerald-700 mt-1">आपकी कमाई: ₹${o.partnerPayout}</div>
+                        </div>
+                        <button type="button" data-d-accept="${o.id}" class="bg-[#0f2942] hover:bg-[#1a3d5f] text-white text-xs font-bold px-4 py-2 rounded-xl">ऑर्डर स्वीकार करें</button>
+                      </div>
+                    `).join('')}
+                  </div>
+                `}
+              </div>
+
+              <!-- Completed Deliveries -->
+              <div class="bg-white rounded-2xl border border-slate-200 p-4 shadow-xs">
+                <h2 class="text-sm font-bold text-[#0f2942] mb-2">पूरी की गई डिलीवरी (${completedDeliveries.length})</h2>
+                ${completedDeliveries.length === 0 ? `<p class="text-xs text-slate-500">अभी तक कोई डिलीवरी पूरी नहीं हुई है।</p>` : `
+                  <div class="space-y-2">
+                    ${completedDeliveries.map(o => `
+                      <div class="flex items-center justify-between text-xs bg-slate-50 p-2.5 rounded-xl">
+                        <span><strong>#${escapeHtml(o.id)}</strong> • ${escapeHtml(o.shopName)} → ${escapeHtml(o.customerArea)}</span>
+                        <span class="font-bold text-emerald-700">+₹${o.partnerPayout}</span>
+                      </div>
+                    `).join('')}
+                  </div>
+                `}
+              </div>
+            `}
+          </div>
+        `;
+      }
+
+      /* ===================== 4. ADMIN CONTROL PANEL ===================== */
+      function renderAdminMode() {
+        const approvedCount = state.shops.filter(s => s.status === 'approved').length;
+        const pendingShops = state.shops.filter(s => s.status === 'pending');
+        const deliveredOrders = state.orders.filter(o => o.status === 'delivered');
+        const gmv = deliveredOrders.reduce((s, o) => s + o.total, 0);
+        const totalCommission = deliveredOrders.reduce((s, o) => s + o.platformCommission + (o.deliveryFee - o.partnerPayout), 0);
+
+        return `
+          <div class="space-y-4">
+            <!-- Admin KPIs -->
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+              <div class="bg-white p-4 rounded-2xl border border-slate-200">
+                <div class="text-xs text-slate-500">सक्रिय दुकानें (जमुई)</div>
+                <div class="text-2xl font-extrabold text-[#0f2942] mt-1">${approvedCount} <span class="text-xs font-normal text-slate-400">/ 100 लक्ष्य</span></div>
+              </div>
+              <div class="bg-white p-4 rounded-2xl border border-slate-200">
+                <div class="text-xs text-slate-500">कुल ऑर्डर</div>
+                <div class="text-2xl font-extrabold text-[#0f2942] mt-1">${state.orders.length}</div>
+              </div>
+              <div class="bg-white p-4 rounded-2xl border border-slate-200">
+                <div class="text-xs text-slate-500">कुल व्यापार (GMV)</div>
+                <div class="text-2xl font-extrabold text-emerald-700 mt-1">₹${gmv}</div>
+              </div>
+              <div class="bg-white p-4 rounded-2xl border border-slate-200">
+                <div class="text-xs text-slate-500">प्लेटफॉर्म शुद्ध आय</div>
+                <div class="text-2xl font-extrabold text-amber-600 mt-1">₹${totalCommission}</div>
+              </div>
+            </div>
+
+            <!-- Pilot Launch Progress -->
+            <div class="bg-white rounded-2xl border border-slate-200 p-4 shadow-xs">
+              <h2 class="text-sm font-bold text-[#0f2942] mb-2">जमुई पायलट लॉन्च लक्ष्य (Phase 1 Target)</h2>
+              <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 text-xs">
+                <div class="bg-slate-50 p-3 rounded-xl">
+                  <div class="text-slate-500">दुकानें</div>
+                  <div class="font-bold text-[#0f2942] mt-0.5">${approvedCount} / 100</div>
+                </div>
+                <div class="bg-slate-50 p-3 rounded-xl">
+                  <div class="text-slate-500">डिलीवरी पार्टनर</div>
+                  <div class="font-bold text-[#0f2942] mt-0.5">1 / 50 (डेमो)</div>
+                </div>
+                <div class="bg-slate-50 p-3 rounded-xl">
+                  <div class="text-slate-500">ग्राहक</div>
+                  <div class="font-bold text-[#0f2942] mt-0.5">12 / 500 (डेमो)</div>
+                </div>
+                <div class="bg-slate-50 p-3 rounded-xl">
+                  <div class="text-slate-500">दैनिक ऑर्डर लक्ष्य</div>
+                  <div class="font-bold text-[#0f2942] mt-0.5">${state.orders.length} / 50–100</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Shop Approval & Management -->
+            <div class="bg-white rounded-2xl border border-slate-200 p-4 shadow-xs">
+              <h2 class="text-base font-bold text-[#0f2942] mb-3">दुकान अप्रूवल और नियंत्रण (${pendingShops.length} पेंडिंग)</h2>
+              <div class="space-y-2">
+                ${state.shops.map(s => `
+                  <div class="flex flex-wrap items-center justify-between gap-2 border border-slate-100 bg-slate-50 rounded-xl p-3 text-xs">
+                    <div>
+                      <span class="font-bold text-slate-900">${escapeHtml(s.name)}</span>
+                      <span class="text-slate-500"> • ${escapeHtml(s.category)} • ${escapeHtml(s.area)}</span>
+                    </div>
+                    <div class="flex items-center gap-2">
+                      <span class="px-2 py-0.5 rounded-full font-bold ${s.status === 'approved' ? 'bg-emerald-100 text-emerald-700' : s.status === 'pending' ? 'bg-amber-100 text-amber-800' : 'bg-rose-100 text-rose-700'}">
+                        ${s.status === 'approved' ? 'अप्रूव्ड' : s.status === 'pending' ? 'अप्रूवल बाकी' : 'ब्लॉक्ड'}
+                      </span>
+                      ${s.status !== 'approved' ? `
+                        <button type="button" data-admin-shop="approve|${s.id}" class="bg-emerald-600 text-white font-bold px-2.5 py-1 rounded-lg">अप्रूव करें</button>
+                      ` : `
+                        <button type="button" data-admin-shop="block|${s.id}" class="bg-rose-100 text-rose-700 font-bold px-2.5 py-1 rounded-lg">ब्लॉक</button>
+                      `}
+                    </div>
+                  </div>
+                `).join('')}
+              </div>
+            </div>
+
+            <!-- Live Order Monitor & Complaints -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
+              <div class="bg-white rounded-2xl border border-slate-200 p-4 shadow-xs">
+                <h2 class="text-sm font-bold text-[#0f2942] mb-2">लाइव ऑर्डर मॉनिटरिंग</h2>
+                <div class="space-y-2 max-h-64 overflow-y-auto">
+                  ${state.orders.map(o => {
+                    const st = getStatusLabel(o.status);
+                    return `
+                      <div class="text-xs border border-slate-100 rounded-xl p-2.5 flex items-center justify-between">
+                        <div>
+                          <div class="font-bold">#${escapeHtml(o.id)} • ${escapeHtml(o.shopName)}</div>
+                          <div class="text-slate-500">${escapeHtml(o.customerName)} → ${escapeHtml(o.customerArea)} • ₹${o.total}</div>
+                        </div>
+                        <span class="px-2 py-0.5 rounded-full font-bold ${st.cls}">${escapeHtml(st.text)}</span>
+                      </div>
+                    `;
+                  }).join('')}
+                </div>
+              </div>
+
+              <div class="bg-white rounded-2xl border border-slate-200 p-4 shadow-xs">
+                <h2 class="text-sm font-bold text-[#0f2942] mb-2">शिकायत निवारण (Complaints)</h2>
+                <div class="space-y-2 max-h-64 overflow-y-auto">
+                  ${state.complaints.map(c => `
+                    <div class="text-xs border border-slate-100 rounded-xl p-2.5 flex items-center justify-between gap-2">
+                      <div>
+                        <div class="font-bold">${escapeHtml(c.customerName)} (#${escapeHtml(c.orderId)})</div>
+                        <div class="text-slate-600">${escapeHtml(c.message)}</div>
+                      </div>
+                      ${c.status === 'open' ? `
+                        <button type="button" data-resolve-cmp="${c.id}" class="bg-[#0f2942] text-white font-bold px-2.5 py-1 rounded-lg shrink-0">हल करें</button>
+                      ` : `<span class="text-emerald-700 font-bold">समाधान हो गया</span>`}
+                    </div>
+                  `).join('')}
+                </div>
+              </div>
+            </div>
+          </div>
+        `;
+      }
+
+      /* ===================== MODALS & ACTIONS ===================== */
+      function openCheckoutModal() {
+        const shop = getShopById(state.cart.shopId);
+        if (!shop || state.cart.items.length === 0) return;
+        const subtotal = state.cart.items.reduce((s, i) => s + i.price * i.qty, 0);
+        const delFee = calcDeliveryFee(shop.distanceKm);
+        const total = subtotal + delFee;
+
+        openModal(`
+          <div class="flex items-center justify-between border-b border-slate-200 pb-3 mb-4">
+            <h3 class="text-base font-extrabold text-[#0f2942]">ऑर्डर कन्फर्म करें (Checkout)</h3>
+            <button type="button" data-close-modal="1" class="text-slate-400 hover:text-slate-700 font-bold text-lg">✕</button>
+          </div>
+          <div class="space-y-3 text-xs sm:text-sm">
+            <div class="bg-slate-50 p-3 rounded-xl">
+              <div class="font-bold text-[#0f2942]">${escapeHtml(shop.name)}</div>
+              <div class="mt-1 space-y-1 text-xs text-slate-600">
+                ${state.cart.items.map(i => `<div class="flex justify-between"><span>${escapeHtml(i.name)} × ${i.qty}</span><span>₹${i.price * i.qty}</span></div>`).join('')}
+              </div>
+              <div class="border-t border-slate-200 mt-2 pt-2 space-y-1 text-xs">
+                <div class="flex justify-between"><span>सामान का मूल्य</span><span>₹${subtotal}</span></div>
+                <div class="flex justify-between"><span>डिलीवरी शुल्क (${shop.distanceKm} किमी)</span><span>₹${delFee}</span></div>
+                <div class="flex justify-between font-extrabold text-sm text-[#0f2942]"><span>कुल देय राशि</span><span>₹${total}</span></div>
+              </div>
+            </div>
+
+            <div>
+              <label class="block text-xs font-bold text-slate-700 mb-1">आपका नाम</label>
+              <input id="chk-name" type="text" value="समीर कुमार" class="w-full px-3 py-2 border border-slate-300 rounded-xl text-sm" />
+            </div>
+            <div>
+              <label class="block text-xs font-bold text-slate-700 mb-1">मोबाइल नंबर</label>
+              <input id="chk-phone" type="tel" value="9835012345" class="w-full px-3 py-2 border border-slate-300 rounded-xl text-sm" />
+            </div>
+            <div>
+              <label class="block text-xs font-bold text-slate-700 mb-1">डिलीवरी पता (${escapeHtml(state.selectedArea)}, जमुई)</label>
+              <input id="chk-addr" type="text" value="${escapeHtml(state.selectedArea)}, जमुई - 811307" class="w-full px-3 py-2 border border-slate-300 rounded-xl text-sm" />
+            </div>
+            <div>
+              <label class="block text-xs font-bold text-slate-700 mb-1">भुगतान का तरीका</label>
+              <select id="chk-pay" class="w-full px-3 py-2 border border-slate-300 rounded-xl text-sm bg-white">
+                <option value="कैश ऑन डिलीवरी (COD)">कैश ऑन डिलीवरी (COD)</option>
+                <option value="ऑनलाइन पेमेंट (UPI / कार्ड)">ऑनलाइन पेमेंट (UPI / कार्ड)</option>
+              </select>
+            </div>
+            <button type="button" id="btn-place-order" class="w-full bg-amber-500 hover:bg-amber-600 text-[#0f2942] font-extrabold py-2.5 rounded-xl text-sm transition">
+              ऑर्डर पक्का करें (₹${total})
+            </button>
+          </div>
+        `);
+      }
+
+      function openRegisterShopModal() {
+        openModal(`
+          <div class="flex items-center justify-between border-b border-slate-200 pb-3 mb-4">
+            <h3 class="text-base font-extrabold text-[#0f2942]">नई दुकान रजिस्टर करें (जमुई)</h3>
+            <button type="button" data-close-modal="1" class="text-slate-400 hover:text-slate-700 font-bold text-lg">✕</button>
+          </div>
+          <div class="space-y-3 text-sm">
+            <input id="reg-shop-name" type="text" placeholder="दुकान का नाम (जैसे: माँ तारा किराना)" class="w-full px-3 py-2 border border-slate-300 rounded-xl" />
+            <input id="reg-owner-name" type="text" placeholder="दुकानदार का नाम" class="w-full px-3 py-2 border border-slate-300 rounded-xl" />
+            <input id="reg-shop-phone" type="tel" placeholder="मोबाइल नंबर" class="w-full px-3 py-2 border border-slate-300 rounded-xl" />
+            <select id="reg-shop-cat" class="w-full px-3 py-2 border border-slate-300 rounded-xl bg-white">
+              ${SHOP_CATEGORIES.filter(c => c !== 'सभी').map(c => `<option value="${escapeHtml(c)}">${escapeHtml(c)}</option>`).join('')}
+            </select>
+            <select id="reg-shop-area" class="w-full px-3 py-2 border border-slate-300 rounded-xl bg-white">
+              ${JAMUI_AREAS.map(a => `<option value="${escapeHtml(a)}">${escapeHtml(a)}</option>`).join('')}
+            </select>
+            <button type="button" id="btn-submit-shop" class="w-full bg-[#0f2942] hover:bg-[#1a3d5f] text-white font-bold py-2.5 rounded-xl">रजिस्ट्रेशन सबमिट करें</button>
+          </div>
+        `);
+      }
+
+      function openAddProductModal() {
+        openModal(`
+          <div class="flex items-center justify-between border-b border-slate-200 pb-3 mb-4">
+            <h3 class="text-base font-extrabold text-[#0f2942]">नया प्रोडक्ट जोड़ें</h3>
+            <button type="button" data-close-modal="1" class="text-slate-400 hover:text-slate-700 font-bold text-lg">✕</button>
+          </div>
+          <div class="space-y-3 text-sm">
+            <input id="new-prod-name" type="text" placeholder="प्रोडक्ट का नाम" class="w-full px-3 py-2 border border-slate-300 rounded-xl" />
+            <div class="grid grid-cols-2 gap-2">
+              <input id="new-prod-price" type="number" placeholder="कीमत (₹)" class="w-full px-3 py-2 border border-slate-300 rounded-xl" />
+              <input id="new-prod-stock" type="number" placeholder="स्टॉक संख्या" class="w-full px-3 py-2 border border-slate-300 rounded-xl" />
+            </div>
+            <input id="new-prod-brand" type="text" placeholder="ब्रांड (जैसे: Amul / लोकल)" class="w-full px-3 py-2 border border-slate-300 rounded-xl" />
+            <input id="new-prod-desc" type="text" placeholder="संक्षिप्त विवरण" class="w-full px-3 py-2 border border-slate-300 rounded-xl" />
+            <button type="button" id="btn-submit-product" class="w-full bg-amber-500 hover:bg-amber-600 text-[#0f2942] font-bold py-2.5 rounded-xl">प्रोडक्ट अपलोड करें</button>
+          </div>
+        `);
+      }
+
+      /* ===================== GLOBAL EVENT DELEGATION ===================== */
+      document.addEventListener('click', function (e) {
+        const target = e.target;
+
+        // Mode switch
+        const modeBtn = target.closest('.mode-pill');
+        if (modeBtn) {
+          state.currentMode = modeBtn.dataset.mode;
+          state.activeShopId = null;
+          saveState();
+          render();
+          return;
+        }
+
+        // Reset Demo
+        if (target.closest('#btn-reset-demo')) {
+          state = createInitialState();
+          saveState();
+          render();
+          showToast('डेमो डेटा सफलतापूर्वक रीसेट किया गया।', 'success');
+          return;
+        }
+
+        // Close modal
+        if (target.closest('[data-close-modal]') || target.id === 'modal-overlay') {
+          closeModal();
+          return;
+        }
+
+        // Customer sub-tabs
+        const csub = target.closest('.csub-btn');
+        if (csub) {
+          state.customerSubTab = csub.dataset.csub;
+          state.activeShopId = null;
+          saveState();
+          render();
+          return;
+        }
+
+        // Category chip
+        const catBtn = target.closest('.cat-chip');
+        if (catBtn) {
+          state.selectedCategory = catBtn.dataset.cat;
+          saveState();
+          render();
+          return;
+        }
+
+        // Favorite toggle
+        const favBtn = target.closest('[data-fav-shop]');
+        if (favBtn) {
+          const sid = favBtn.dataset.favShop;
+          const idx = state.favorites.indexOf(sid);
+          if (idx >= 0) {
+            state.favorites.splice(idx, 1);
+            showToast('पसंदीदा लिस्ट से हटाया गया।', 'warning');
+          } else {
+            state.favorites.push(sid);
+            showToast('पसंदीदा दुकानों में जोड़ा गया।', 'success');
+          }
+          saveState();
+          render();
+          return;
+        }
+
+        // Open shop detail
+        const openShopBtn = target.closest('[data-open-shop]');
+        if (openShopBtn) {
+          state.activeShopId = openShopBtn.dataset.openShop;
+          saveState();
+          render();
+          return;
+        }
+
+        // Back to market
+        if (target.closest('#btn-back-to-market')) {
+          state.activeShopId = null;
+          saveState();
+          render();
+          return;
+        }
+
+        // Add to cart
+        const addBtn = target.closest('[data-add-cart]');
+        if (addBtn) {
+          const [shopId, prodId] = addBtn.dataset.addCart.split('|');
+          const shop = getShopById(shopId);
+          const prod = shop && shop.products.find(p => p.id === prodId);
+          if (!shop || !prod) return;
+
+          if (state.cart.shopId && state.cart.shopId !== shopId && state.cart.items.length > 0) {
+            openModal(`
+              <h3 class="text-base font-extrabold text-[#0f2942] mb-2">नया कार्ट शुरू करें?</h3>
+              <p class="text-xs sm:text-sm text-slate-600 mb-4">पहले चरण में एक समय में एक ही दुकान से ऑर्डर किया जा सकता है। क्या आप पिछली दुकान का कार्ट खाली करके इस दुकान से सामान जोड़ना चाहते हैं?</p>
+              <div class="flex justify-end gap-2">
+                <button type="button" data-close-modal="1" class="px-3.5 py-2 rounded-xl text-xs font-bold bg-slate-100 text-slate-700">नहीं</button>
+                <button type="button" id="btn-replace-cart" data-payload="${shopId}|${prodId}" class="px-3.5 py-2 rounded-xl text-xs font-bold bg-amber-500 text-[#0f2942]">हाँ, नया कार्ट बनाएं</button>
+              </div>
+            `);
+            return;
+          }
+
+          state.cart.shopId = shopId;
+          state.cart.items.push({ productId: prod.id, name: prod.name, price: prod.price, qty: 1 });
+          saveState();
+          render();
+          showToast(`${prod.name} कार्ट में जोड़ा गया।`, 'success');
+          return;
+        }
+
+        if (target.closest('#btn-replace-cart')) {
+          const [shopId, prodId] = target.closest('#btn-replace-cart').dataset.payload.split('|');
+          const shop = getShopById(shopId);
+          const prod = shop && shop.products.find(p => p.id === prodId);
+          if (shop && prod) {
+            state.cart = { shopId: shopId, items: [{ productId: prod.id, name: prod.name, price: prod.price, qty: 1 }] };
+            closeModal();
+            saveState();
+            render();
+            showToast('नया कार्ट तैयार है।', 'success');
+          }
+          return;
+        }
+
+        // Qty delta
+        const qtyBtn = target.closest('[data-qty-delta]');
+        if (qtyBtn) {
+          const [prodId, deltaStr] = qtyBtn.dataset.qtyDelta.split('|');
+          const delta = parseInt(deltaStr, 10);
+          const item = state.cart.items.find(i => i.productId === prodId);
+          if (item) {
+            item.qty += delta;
+            if (item.qty <= 0) {
+              state.cart.items = state.cart.items.filter(i => i.productId !== prodId);
+              if (state.cart.items.length === 0) state.cart.shopId = null;
+            }
+            saveState();
+            render();
+          }
+          return;
+        }
+
+        // Open checkout
+        if (target.closest('#btn-open-checkout')) {
+          openCheckoutModal();
+          return;
+        }
+
+        // Place order
+        if (target.closest('#btn-place-order')) {
+          const name = (document.getElementById('chk-name').value || '').trim();
+          const phone = (document.getElementById('chk-phone').value || '').trim();
+          const addr = (document.getElementById('chk-addr').value || '').trim();
+          const pay = document.getElementById('chk-pay').value;
+          if (!name || !phone || !addr) {
+            showToast('कृपया नाम, मोबाइल और पता भरें।', 'error');
+            return;
+          }
+          const shop = getShopById(state.cart.shopId);
+          if (!shop) return;
+          const subtotal = state.cart.items.reduce((s, i) => s + i.price * i.qty, 0);
+          const delFee = calcDeliveryFee(shop.distanceKm);
+          const otp = String(Math.floor(1000 + Math.random() * 9000));
+          const orderId = 'JMU-' + String(1001 + state.orders.length);
+
+          state.orders.unshift({
+            id: orderId,
+            shopId: shop.id,
+            shopName: shop.name,
+            shopArea: shop.area,
+            customerName: name,
+            customerPhone: phone,
+            customerArea: addr,
+            items: state.cart.items.map(i => ({ name: i.name, qty: i.qty, price: i.price })),
+            subtotal: subtotal,
+            deliveryFee: delFee,
+            partnerPayout: Math.max(15, delFee - 5),
+            platformCommission: Math.round(subtotal * 0.05),
+            total: subtotal + delFee,
+            paymentMethod: pay,
+            status: 'placed',
+            otp: otp,
+            partnerName: null,
+            rating: null,
+            createdAt: 'अभी'
+          });
+
+          state.cart = { shopId: null, items: [] };
+          state.activeShopId = null;
+          state.customerSubTab = 'orders';
+          state.merchantShopId = shop.id;
+          closeModal();
+          saveState();
+          render();
+          showToast(`ऑर्डर #${orderId} सफलतापूर्वक हो गया! अब दुकानदार ऐप से स्वीकार करें।`, 'success');
+          return;
+        }
+
+        // Cancel order
+        const cancelBtn = target.closest('[data-cancel-order]');
+        if (cancelBtn) {
+          const oid = cancelBtn.dataset.cancelOrder;
+          const order = state.orders.find(o => o.id === oid);
+          if (order && (order.status === 'placed' || order.status === 'accepted')) {
+            order.status = 'cancelled';
+            saveState();
+            render();
+            showToast(`ऑर्डर #${oid} रद्द कर दिया गया।`, 'warning');
+          }
+          return;
+        }
+
+        // Rate order
+        const rateBtn = target.closest('[data-rate-order]');
+        if (rateBtn) {
+          const oid = rateBtn.dataset.rateOrder;
+          openModal(`
+            <h3 class="text-base font-extrabold text-[#0f2942] mb-2">दुकान और डिलीवरी को रेटिंग दें</h3>
+            <p class="text-xs text-slate-600 mb-3">ऑर्डर #${escapeHtml(oid)} के लिए अपना अनुभव चुनें:</p>
+            <div class="flex justify-center gap-2 mb-4">
+              ${[1, 2, 3, 4, 5].map(n => `<button type="button" data-submit-rate="${oid}|${n}" class="px-3.5 py-2 rounded-xl bg-amber-50 hover:bg-amber-500 hover:text-white text-amber-700 font-extrabold text-sm border border-amber-200">${n} ★</button>`).join('')}
+            </div>
+          `);
+          return;
+        }
+
+        const submitRate = target.closest('[data-submit-rate]');
+        if (submitRate) {
+          const [oid, r] = submitRate.dataset.submitRate.split('|');
+          const order = state.orders.find(o => o.id === oid);
+          if (order) {
+            order.rating = Number(r);
+            closeModal();
+            saveState();
+            render();
+            showToast('रेटिंग देने के लिए धन्यवाद!', 'success');
+          }
+          return;
+        }
+
+        // Complaint modal
+        const cmpBtn = target.closest('[data-complain-order]');
+        if (cmpBtn) {
+          const oid = cmpBtn.dataset.complainOrder;
+          openModal(`
+            <h3 class="text-base font-extrabold text-[#0f2942] mb-2">शिकायत एवं ग्राहक सहायता</h3>
+            <p class="text-xs text-slate-600 mb-3">ऑर्डर #${escapeHtml(oid)} से जुड़ी समस्या लिखें:</p>
+            <textarea id="cmp-text" rows="3" placeholder="अपनी समस्या यहाँ लिखें..." class="w-full p-3 border border-slate-300 rounded-xl text-sm mb-3"></textarea>
+            <div class="flex justify-end gap-2">
+              <button type="button" data-close-modal="1" class="px-3.5 py-2 rounded-xl text-xs font-bold bg-slate-100">रद्द करें</button>
+              <button type="button" id="btn-submit-cmp" data-oid="${escapeHtml(oid)}" class="px-4 py-2 rounded-xl text-xs font-bold bg-[#0f2942] text-white">शिकायत भेजें</button>
+            </div>
+          `);
+          return;
+        }
+
+        if (target.closest('#btn-submit-cmp')) {
+          const oid = target.closest('#btn-submit-cmp').dataset.oid;
+          const msg = (document.getElementById('cmp-text').value || '').trim();
+          if (!msg) {
+            showToast('कृपया समस्या लिखें।', 'error');
+            return;
+          }
+          state.complaints.unshift({
+            id: 'CMP-' + String(101 + state.complaints.length),
+            orderId: oid,
+            customerName: 'ग्राहक (जमुई)',
+            message: msg,
+            status: 'open'
+          });
+          closeModal();
+          saveState();
+          render();
+          showToast('शिकायत एडमिन पैनल में दर्ज हो गई है।', 'success');
+          return;
+        }
+
+        // Merchant actions
+        const mAction = target.closest('[data-m-action]');
+        if (mAction) {
+          const [act, oid] = mAction.dataset.mAction.split('|');
+          const order = state.orders.find(o => o.id === oid);
+          if (order) {
+            if (act === 'accept') {
+              order.status = 'accepted';
+              showToast(`ऑर्डर #${oid} स्वीकार किया गया।`, 'success');
+            } else if (act === 'reject') {
+              order.status = 'rejected';
+              showToast(`ऑर्डर #${oid} अस्वीकार किया गया।`, 'warning');
+            } else if (act === 'ready') {
+              order.status = 'ready_for_pickup';
+              showToast(`ऑर्डर #${oid} ओपन डिलीवरी नेटवर्क में भेजा गया!`, 'success');
+            }
+            saveState();
+            render();
+          }
+          return;
+        }
+
+        if (target.closest('#btn-open-register-shop')) {
+          openRegisterShopModal();
+          return;
+        }
+
+        if (target.closest('#btn-submit-shop')) {
+          const name = (document.getElementById('reg-shop-name').value || '').trim();
+          const owner = (document.getElementById('reg-owner-name').value || '').trim();
+          const phone = (document.getElementById('reg-shop-phone').value || '').trim();
+          const cat = document.getElementById('reg-shop-cat').value;
+          const area = document.getElementById('reg-shop-area').value;
+          if (!name || !owner || !phone) {
+            showToast('कृपया सभी विवरण भरें।', 'error');
+            return;
+          }
+          state.shops.push({
+            id: 'shop-' + String(state.shops.length + 1),
+            name: name,
+            category: cat,
+            area: area,
+            owner: owner,
+            phone: phone,
+            distanceKm: 1.0,
+            rating: 4.5,
+            status: 'pending',
+            isOpen: true,
+            icon: 'store',
+            products: [
+              { id: 'p-new-1', name: 'नमूना प्रोडक्ट (कीमत अपडेट करें)', price: 100, mrp: 120, stock: 10, brand: 'लोकल', desc: 'नई दुकान का शुरुआती सामान' }
+            ]
+          });
+          closeModal();
+          saveState();
+          render();
+          showToast('दुकान रजिस्टर हो गई! एडमिन पैनल से अप्रूवल करें।', 'success');
+          return;
+        }
+
+        if (target.closest('#btn-open-add-product')) {
+          openAddProductModal();
+          return;
+        }
+
+        if (target.closest('#btn-submit-product')) {
+          const name = (document.getElementById('new-prod-name').value || '').trim();
+          const price = Number(document.getElementById('new-prod-price').value);
+          const stock = Number(document.getElementById('new-prod-stock').value);
+          const brand = (document.getElementById('new-prod-brand').value || 'लोकल').trim();
+          const desc = (document.getElementById('new-prod-desc').value || 'गुणवत्तापूर्ण उत्पाद').trim();
+          if (!name || !price || price <= 0) {
+            showToast('कृपया सही नाम और कीमत दर्ज करें।', 'error');
+            return;
+          }
+          const shop = getShopById(state.merchantShopId);
+          if (shop) {
+            shop.products.unshift({
+              id: 'p-' + Date.now(),
+              name: name,
+              price: price,
+              mrp: Math.round(price * 1.1),
+              stock: stock > 0 ? stock : 10,
+              brand: brand,
+              desc: desc
+            });
+            closeModal();
+            saveState();
+            render();
+            showToast(`${name} सफलतापूर्वक जोड़ा गया!`, 'success');
+          }
+          return;
+        }
+
+        const stockBtn = target.closest('[data-stock-add]');
+        if (stockBtn) {
+          const [sid, pid] = stockBtn.dataset.stockAdd.split('|');
+          const shop = getShopById(sid);
+          const prod = shop && shop.products.find(p => p.id === pid);
+          if (prod) {
+            prod.stock += 5;
+            saveState();
+            render();
+            showToast(`${prod.name} का स्टॉक +5 बढ़ाया गया।`, 'success');
+          }
+          return;
+        }
+
+        // Delivery Partner actions
+        if (target.closest('#btn-toggle-duty')) {
+          state.deliveryOnline = !state.deliveryOnline;
+          saveState();
+          render();
+          return;
+        }
+
+        const dAccept = target.closest('[data-d-accept]');
+        if (dAccept) {
+          const oid = dAccept.dataset.dAccept;
+          const order = state.orders.find(o => o.id === oid);
+          if (order && order.status === 'ready_for_pickup') {
+            order.status = 'out_for_delivery';
+            order.partnerName = state.deliveryPartnerName;
+            saveState();
+            render();
+            showToast(`ऑर्डर #${oid} पिकअप किया गया! ग्राहक OTP से डिलीवर करें।`, 'success');
+          }
+          return;
+        }
+
+        const dComplete = target.closest('[data-d-complete]');
+        if (dComplete) {
+          const oid = dComplete.dataset.dComplete;
+          const order = state.orders.find(o => o.id === oid);
+          const inputEl = document.getElementById('otp-input-' + oid);
+          const enteredOtp = inputEl ? inputEl.value.trim() : '';
+          if (!order) return;
+          if (enteredOtp !== order.otp) {
+            showToast(`गलत OTP! सही ग्राहक OTP (${order.otp}) दर्ज करें।`, 'error');
+            return;
+          }
+          order.status = 'delivered';
+          state.deliveryEarnings += order.partnerPayout;
+          saveState();
+          render();
+          showToast(`ऑर्डर #${oid} डिलीवर हुआ! ₹${order.partnerPayout} कमाई जुड़ी।`, 'success');
+          return;
+        }
+
+        // Admin actions
+        const adminShopBtn = target.closest('[data-admin-shop]');
+        if (adminShopBtn) {
+          const [act, sid] = adminShopBtn.dataset.adminShop.split('|');
+          const shop = getShopById(sid);
+          if (shop) {
+            shop.status = act === 'approve' ? 'approved' : 'blocked';
+            saveState();
+            render();
+            showToast(`${shop.name} की स्थिति अपडेट हुई।`, 'success');
+          }
+          return;
+        }
+
+        const cmpResolveBtn = target.closest('[data-resolve-cmp]');
+        if (cmpResolveBtn) {
+          const cid = cmpResolveBtn.dataset.resolveCmp;
+          const cmp = state.complaints.find(c => c.id === cid);
+          if (cmp) {
+            cmp.status = 'resolved';
+            saveState();
+            render();
+            showToast('शिकायत का समाधान दर्ज किया गया।', 'success');
+          }
+          return;
+        }
+      });
+
+      document.addEventListener('change', function (e) {
+        if (e.target.id === 'select-customer-area') {
+          state.selectedArea = e.target.value;
+          saveState();
+          render();
+        } else if (e.target.id === 'select-merchant-shop') {
+          state.merchantShopId = e.target.value;
+          saveState();
+          render();
+        }
+      });
+
+      document.addEventListener('input', function (e) {
+        if (e.target.id === 'input-customer-search') {
+          state.searchQuery = e.target.value;
+          saveState();
+          const pos = e.target.selectionStart;
+          render();
+          const newInput = document.getElementById('input-customer-search');
+          if (newInput) {
+            newInput.focus();
+            newInput.setSelectionRange(pos, pos);
+          }
+        }
+      });
+
+      render();
+    })();
+  </script>
+</body>
+</html>
+```
