@@ -63,12 +63,12 @@
         <button type="button" data-mode="merchant" class="mode-pill text-xs sm:text-sm font-semibold py-2 px-2 rounded-lg flex items-center justify-center gap-1.5 text-slate-700 transition">
           <i data-lucide="store" class="w-4 h-4"></i>
           <span>दुकानदार ऐप</span>
-          <span id="badge-merchant-orders" class="hidden bg-amber-500 text-white text-[10px] px-1.5 py-0.2 rounded-full">0</span>
+          <span id="badge-merchant-orders" class="hidden bg-amber-500 text-white text-[10px] px-1.5 py-0.5 rounded-full">0</span>
         </button>
         <button type="button" data-mode="delivery" class="mode-pill text-xs sm:text-sm font-semibold py-2 px-2 rounded-lg flex items-center justify-center gap-1.5 text-slate-700 transition">
           <i data-lucide="bike" class="w-4 h-4"></i>
           <span>डिलीवरी पार्टनर</span>
-          <span id="badge-delivery-pool" class="hidden bg-emerald-600 text-white text-[10px] px-1.5 py-0.2 rounded-full">0</span>
+          <span id="badge-delivery-pool" class="hidden bg-emerald-600 text-white text-[10px] px-1.5 py-0.5 rounded-full">0</span>
         </button>
         <button type="button" data-mode="admin" class="mode-pill text-xs sm:text-sm font-semibold py-2 px-2 rounded-lg flex items-center justify-center gap-1.5 text-slate-700 transition">
           <i data-lucide="shield-check" class="w-4 h-4"></i>
@@ -96,7 +96,7 @@
   </div>
 
   <!-- MODAL BACKDROP -->
-  <div id="modal-overlay" class="hidden fixed inset-0 bg-slate-900/60 backdrop-blur-xs z-50 flex items-center justify-center p-3">
+  <div id="modal-overlay" class="hidden fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 flex items-center justify-center p-3">
     <div id="modal-box" class="bg-white rounded-2xl max-w-lg w-full max-h-[90vh] overflow-y-auto shadow-2xl p-5 relative">
       <!-- Dynamic Modal Content -->
     </div>
@@ -145,6 +145,7 @@
           deliveryCodLimit: 1500,
           deliveryOrderValueLimit: 1000,
           deliveryKycVerified: true,
+          nextOrderNum: 1002,
           favorites: ['shop-1', 'shop-3'],
           cart: {
             shopId: null,
@@ -457,7 +458,7 @@
         return `
           <div class="space-y-4">
             <!-- Sub-navigation & Jamui Location Strip -->
-            <div class="bg-white rounded-2xl p-3 sm:p-4 border border-slate-200 shadow-xs flex flex-col md:flex-row md:items-center justify-between gap-3">
+            <div class="bg-white rounded-2xl p-3 sm:p-4 border border-slate-200 shadow-sm flex flex-col md:flex-row md:items-center justify-between gap-3">
               <div class="flex items-center gap-2.5">
                 <div class="w-9 h-9 rounded-xl bg-amber-100 text-amber-700 flex items-center justify-center shrink-0">
                   <i data-lucide="map-pin" class="w-5 h-5"></i>
@@ -471,13 +472,13 @@
               </div>
 
               <div class="flex items-center gap-1.5 bg-slate-100 p-1 rounded-xl">
-                <button type="button" data-csub="market" class="csub-btn px-3 py-1.5 rounded-lg text-xs font-bold transition ${state.customerSubTab === 'market' ? 'bg-white text-[#0f2942] shadow-xs' : 'text-slate-600'}">
+                <button type="button" data-csub="market" class="csub-btn px-3 py-1.5 rounded-lg text-xs font-bold transition ${state.customerSubTab === 'market' ? 'bg-white text-[#0f2942] shadow-sm' : 'text-slate-600'}">
                   आसपास की दुकानें
                 </button>
-                <button type="button" data-csub="orders" class="csub-btn px-3 py-1.5 rounded-lg text-xs font-bold transition ${state.customerSubTab === 'orders' ? 'bg-white text-[#0f2942] shadow-xs' : 'text-slate-600'}">
+                <button type="button" data-csub="orders" class="csub-btn px-3 py-1.5 rounded-lg text-xs font-bold transition ${state.customerSubTab === 'orders' ? 'bg-white text-[#0f2942] shadow-sm' : 'text-slate-600'}">
                   मेरे ऑर्डर (${state.orders.length})
                 </button>
-                <button type="button" data-csub="favorites" class="csub-btn px-3 py-1.5 rounded-lg text-xs font-bold transition ${state.customerSubTab === 'favorites' ? 'bg-white text-[#0f2942] shadow-xs' : 'text-slate-600'}">
+                <button type="button" data-csub="favorites" class="csub-btn px-3 py-1.5 rounded-lg text-xs font-bold transition ${state.customerSubTab === 'favorites' ? 'bg-white text-[#0f2942] shadow-sm' : 'text-slate-600'}">
                   पसंदीदा (${state.favorites.length})
                 </button>
               </div>
@@ -488,7 +489,7 @@
               <div class="space-y-3">
                 <div class="relative">
                   <i data-lucide="search" class="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2"></i>
-                  <input id="input-customer-search" type="text" value="${escapeHtml(state.searchQuery)}" placeholder="जमुई में दुकान, किराना, दवाई या सामान खोजें..." class="w-full pl-10 pr-4 py-2.5 bg-white border border-slate-200 rounded-xl text-sm focus:outline-none focus:border-amber-500 shadow-xs" />
+                  <input id="input-customer-search" type="text" value="${escapeHtml(state.searchQuery)}" placeholder="जमुई में दुकान, किराना, दवाई या सामान खोजें..." class="w-full pl-10 pr-4 py-2.5 bg-white border border-slate-200 rounded-xl text-sm focus:outline-none focus:border-amber-500 shadow-sm" />
                 </div>
 
                 <div class="flex items-center gap-2 overflow-x-auto no-scrollbar pb-1">
@@ -519,7 +520,7 @@
                       const isFav = state.favorites.includes(shop.id);
                       const delFee = calcDeliveryFee(shop.distanceKm);
                       return `
-                        <div class="bg-white rounded-2xl border border-slate-200 p-4 shadow-xs hover:shadow-md transition flex flex-col justify-between">
+                        <div class="bg-white rounded-2xl border border-slate-200 p-4 shadow-sm hover:shadow-md transition flex flex-col justify-between">
                           <div>
                             <div class="flex items-start justify-between gap-2">
                               <div class="flex items-center gap-2.5">
@@ -546,9 +547,7 @@
                             <div class="text-xs text-slate-500">
                               <span>${shop.distanceKm} किमी</span> • <span>डिलीवरी ₹${delFee}</span>
                             </div>
-                            <button type="button" data-open-shop="${shop.id}" class="bg-[#0f2942] hover:bg-[#1a3d5f] text-white text-xs font-bold px-3.5 py-2 rounded-xl transition">
-                              सामान देखें
-                            </button>
+                            ${shop.isOpen ? `<button type="button" data-open-shop="${shop.id}" class="bg-[#0f2942] hover:bg-[#1a3d5f] text-white text-xs font-bold px-3.5 py-2 rounded-xl transition">सामान देखें</button>` : `<span class="text-xs font-bold text-rose-600 bg-rose-50 px-3 py-1.5 rounded-xl">अभी बंद है</span>`}
                           </div>
                         </div>
                       `;
@@ -574,7 +573,7 @@
               <span>सभी दुकानों पर वापस जाएं</span>
             </button>
 
-            <div class="bg-white rounded-2xl p-4 sm:p-5 border border-slate-200 shadow-xs flex flex-wrap items-center justify-between gap-3">
+            <div class="bg-white rounded-2xl p-4 sm:p-5 border border-slate-200 shadow-sm flex flex-wrap items-center justify-between gap-3">
               <div>
                 <span class="text-xs font-bold text-amber-700 bg-amber-50 px-2.5 py-0.5 rounded-full">${escapeHtml(shop.category)}</span>
                 <h2 class="text-lg sm:text-xl font-extrabold text-[#0f2942] mt-1.5">${escapeHtml(shop.name)}</h2>
@@ -594,7 +593,7 @@
                 const qty = inCart ? inCart.qty : 0;
                 const discountPct = prod.mrp > prod.price ? Math.round(((prod.mrp - prod.price) / prod.mrp) * 100) : 0;
                 return `
-                  <div class="bg-white rounded-2xl border border-slate-200 p-4 flex flex-col justify-between shadow-xs">
+                  <div class="bg-white rounded-2xl border border-slate-200 p-4 flex flex-col justify-between shadow-sm">
                     <div>
                       <div class="flex items-start justify-between gap-2">
                         <span class="text-[10px] font-bold text-slate-500 bg-slate-100 px-2 py-0.5 rounded-md">${escapeHtml(prod.brand)}</span>
@@ -646,7 +645,7 @@
               const steps = ['placed', 'accepted', 'ready_for_pickup', 'out_for_delivery', 'delivered'];
               const currentIdx = steps.indexOf(order.status);
               return `
-                <div class="bg-white rounded-2xl border border-slate-200 p-4 shadow-xs space-y-3">
+                <div class="bg-white rounded-2xl border border-slate-200 p-4 shadow-sm space-y-3">
                   <div class="flex flex-wrap items-start justify-between gap-2">
                     <div>
                       <div class="flex items-center gap-2">
@@ -710,17 +709,22 @@
         return `
           <div class="space-y-4">
             <!-- Merchant Selector & Register Button -->
-            <div class="bg-white rounded-2xl p-4 border border-slate-200 shadow-xs flex flex-wrap items-center justify-between gap-3">
+            <div class="bg-white rounded-2xl p-4 border border-slate-200 shadow-sm flex flex-wrap items-center justify-between gap-3">
               <div>
                 <div class="text-xs text-slate-500 font-semibold">सक्रिय दुकानदार डैशबोर्ड</div>
                 <select id="select-merchant-shop" class="mt-0.5 text-sm sm:text-base font-bold text-[#0f2942] bg-slate-50 border border-slate-200 rounded-xl px-3 py-1.5">
                   ${state.shops.map(s => `<option value="${s.id}" ${s.id === shop.id ? 'selected' : ''}>${escapeHtml(s.name)} (${escapeHtml(s.area)})</option>`).join('')}
                 </select>
               </div>
-              <button type="button" id="btn-open-register-shop" class="bg-amber-500 hover:bg-amber-600 text-[#0f2942] text-xs sm:text-sm font-bold px-4 py-2 rounded-xl flex items-center gap-1.5 transition">
-                <i data-lucide="plus-circle" class="w-4 h-4"></i>
-                <span>नई दुकान रजिस्टर करें</span>
-              </button>
+              <div class="flex flex-wrap items-center gap-2">
+                <button type="button" id="btn-toggle-shop-open" class="${shop.isOpen ? 'bg-emerald-600 text-white' : 'bg-rose-100 text-rose-700'} text-xs sm:text-sm font-bold px-3.5 py-2 rounded-xl transition">
+                  ${shop.isOpen ? 'दुकान खुली है (Open)' : 'दुकान बंद है (Closed)'}
+                </button>
+                <button type="button" id="btn-open-register-shop" class="bg-amber-500 hover:bg-amber-600 text-[#0f2942] text-xs sm:text-sm font-bold px-4 py-2 rounded-xl flex items-center gap-1.5 transition">
+                  <i data-lucide="plus-circle" class="w-4 h-4"></i>
+                  <span>नई दुकान रजिस्टर करें</span>
+                </button>
+              </div>
             </div>
 
             <!-- Earnings KPIs -->
@@ -744,7 +748,7 @@
             </div>
 
             <!-- Order Management -->
-            <div class="bg-white rounded-2xl border border-slate-200 p-4 shadow-xs">
+            <div class="bg-white rounded-2xl border border-slate-200 p-4 shadow-sm">
               <h2 class="text-base font-bold text-[#0f2942] mb-3">ऑर्डर मैनेजमेंट (Order Management)</h2>
               ${shopOrders.length === 0 ? `<p class="text-xs text-slate-500">इस दुकान के लिए अभी कोई ऑर्डर नहीं है। ग्राहक ऐप से ऑर्डर करके टेस्ट करें।</p>` : `
                 <div class="space-y-3">
@@ -776,7 +780,7 @@
             </div>
 
             <!-- Product Management -->
-            <div class="bg-white rounded-2xl border border-slate-200 p-4 shadow-xs">
+            <div class="bg-white rounded-2xl border border-slate-200 p-4 shadow-sm">
               <div class="flex items-center justify-between mb-3">
                 <h2 class="text-base font-bold text-[#0f2942]">प्रोडक्ट और स्टॉक मैनेजमेंट</h2>
                 <button type="button" id="btn-open-add-product" class="bg-[#0f2942] hover:bg-[#1a3d5f] text-white text-xs font-bold px-3 py-1.5 rounded-xl flex items-center gap-1">
@@ -822,7 +826,7 @@
 
         return `
           <div class="space-y-4">
-            <div class="bg-white rounded-2xl p-4 border border-slate-200 shadow-xs flex flex-wrap items-center justify-between gap-3">
+            <div class="bg-white rounded-2xl p-4 border border-slate-200 shadow-sm flex flex-wrap items-center justify-between gap-3">
               <div class="flex items-center gap-3">
                 <div class="w-11 h-11 rounded-xl bg-emerald-100 text-emerald-700 flex items-center justify-center">
                   <i data-lucide="bike" class="w-6 h-6"></i>
@@ -844,7 +848,7 @@
             </div>
 
             <!-- Safety & COD Limit Bar -->
-            <div class="bg-white rounded-2xl p-3.5 border border-slate-200 shadow-xs flex flex-wrap items-center justify-between gap-3 text-xs">
+            <div class="bg-white rounded-2xl p-3.5 border border-slate-200 shadow-sm flex flex-wrap items-center justify-between gap-3 text-xs">
               <div class="flex flex-wrap items-center gap-3">
                 <span class="inline-flex items-center gap-1 font-bold text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-lg">
                   <i data-lucide="badge-check" class="w-3.5 h-3.5"></i> KYC सत्यापित
@@ -880,7 +884,7 @@
                         <div class="text-xs text-emerald-700 font-bold mt-1">डिलीवरी कमाई: ₹${o.partnerPayout} • ग्राहक से लेना है: ${o.paymentMethod.includes('COD') ? '₹' + o.total : '₹0 (ऑनलाइन पेड)'}</div>
                       </div>
                       <div class="flex items-center gap-2">
-                        <input id="otp-input-${o.id}" type="text" maxlength="4" placeholder="ग्राहक OTP (${escapeHtml(o.otp)})" class="w-36 px-3 py-1.5 text-xs border border-slate-300 rounded-lg focus:outline-none focus:border-indigo-500" />
+                        <input id="otp-input-${o.id}" type="text" maxlength="4" placeholder="4-अंकीय ग्राहक OTP" class="w-36 px-3 py-1.5 text-xs border border-slate-300 rounded-lg focus:outline-none focus:border-indigo-500" />
                         <button type="button" data-d-complete="${o.id}" class="bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold px-3.5 py-2 rounded-lg">डिलीवर करें</button>
                       </div>
                     </div>
@@ -889,7 +893,7 @@
               ` : ''}
 
               <!-- Open Delivery Pool -->
-              <div class="bg-white rounded-2xl border border-slate-200 p-4 shadow-xs">
+              <div class="bg-white rounded-2xl border border-slate-200 p-4 shadow-sm">
                 <div class="flex items-center justify-between mb-3">
                   <h2 class="text-base font-bold text-[#0f2942]">ओपन डिलीवरी पूल (शहर की सभी दुकानों के तैयार ऑर्डर)</h2>
                   <span class="text-xs font-bold text-purple-700 bg-purple-50 px-2.5 py-0.5 rounded-full">${poolOrders.length} उपलब्ध</span>
@@ -921,7 +925,7 @@
               </div>
 
               <!-- Completed Deliveries -->
-              <div class="bg-white rounded-2xl border border-slate-200 p-4 shadow-xs">
+              <div class="bg-white rounded-2xl border border-slate-200 p-4 shadow-sm">
                 <h2 class="text-sm font-bold text-[#0f2942] mb-2">पूरी की गई डिलीवरी (${completedDeliveries.length})</h2>
                 ${completedDeliveries.length === 0 ? `<p class="text-xs text-slate-500">अभी तक कोई डिलीवरी पूरी नहीं हुई है।</p>` : `
                   <div class="space-y-2">
@@ -970,7 +974,7 @@
             </div>
 
             <!-- Pilot Launch Progress -->
-            <div class="bg-white rounded-2xl border border-slate-200 p-4 shadow-xs">
+            <div class="bg-white rounded-2xl border border-slate-200 p-4 shadow-sm">
               <h2 class="text-sm font-bold text-[#0f2942] mb-2">जमुई पायलट लॉन्च लक्ष्य (Phase 1 Target)</h2>
               <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 text-xs">
                 <div class="bg-slate-50 p-3 rounded-xl">
@@ -993,7 +997,7 @@
             </div>
 
             <!-- Open Delivery Safety Controls -->
-            <div class="bg-white rounded-2xl border border-slate-200 p-4 shadow-xs">
+            <div class="bg-white rounded-2xl border border-slate-200 p-4 shadow-sm">
               <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
                 <h2 class="text-base font-bold text-[#0f2942]">ओपन डिलीवरी सुरक्षा नियंत्रण (Safety &amp; Fraud Controls)</h2>
                 <span class="text-xs font-semibold text-slate-500">पार्टनर बकाया COD: <strong class="text-[#0f2942]">₹${state.deliveryCodCollected}</strong></span>
@@ -1021,7 +1025,7 @@
             </div>
 
             <!-- Shop Approval & Management -->
-            <div class="bg-white rounded-2xl border border-slate-200 p-4 shadow-xs">
+            <div class="bg-white rounded-2xl border border-slate-200 p-4 shadow-sm">
               <h2 class="text-base font-bold text-[#0f2942] mb-3">दुकान अप्रूवल और नियंत्रण (${pendingShops.length} पेंडिंग)</h2>
               <div class="space-y-2">
                 ${state.shops.map(s => `
@@ -1047,7 +1051,7 @@
 
             <!-- Live Order Monitor & Complaints -->
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
-              <div class="bg-white rounded-2xl border border-slate-200 p-4 shadow-xs">
+              <div class="bg-white rounded-2xl border border-slate-200 p-4 shadow-sm">
                 <h2 class="text-sm font-bold text-[#0f2942] mb-2">लाइव ऑर्डर मॉनिटरिंग</h2>
                 <div class="space-y-2 max-h-64 overflow-y-auto">
                   ${state.orders.map(o => {
@@ -1065,7 +1069,7 @@
                 </div>
               </div>
 
-              <div class="bg-white rounded-2xl border border-slate-200 p-4 shadow-xs">
+              <div class="bg-white rounded-2xl border border-slate-200 p-4 shadow-sm">
                 <h2 class="text-sm font-bold text-[#0f2942] mb-2">शिकायत निवारण (Complaints)</h2>
                 <div class="space-y-2 max-h-64 overflow-y-auto">
                   ${state.complaints.map(c => `
@@ -1302,13 +1306,19 @@
           return;
         }
 
-        // Qty delta
+        // Qty delta with stock check
         const qtyBtn = target.closest('[data-qty-delta]');
         if (qtyBtn) {
           const [prodId, deltaStr] = qtyBtn.dataset.qtyDelta.split('|');
           const delta = parseInt(deltaStr, 10);
           const item = state.cart.items.find(i => i.productId === prodId);
+          const shop = getShopById(state.cart.shopId);
+          const prod = shop && shop.products.find(pr => pr.id === prodId);
           if (item) {
+            if (delta > 0 && prod && item.qty + delta > prod.stock) {
+              showToast(`अधिकतम उपलब्ध स्टॉक (${prod.stock}) से ज़्यादा नहीं जोड़ सकते।`, 'warning');
+              return;
+            }
             item.qty += delta;
             if (item.qty <= 0) {
               state.cart.items = state.cart.items.filter(i => i.productId !== prodId);
@@ -1337,11 +1347,29 @@
             return;
           }
           const shop = getShopById(state.cart.shopId);
-          if (!shop) return;
+          if (!shop || shop.status !== 'approved' || !shop.isOpen) {
+            state.cart = { shopId: null, items: [] };
+            closeModal();
+            saveState();
+            render();
+            showToast('यह दुकान अभी बंद या ब्लॉक है। ऑर्डर नहीं हो सकता।', 'error');
+            return;
+          }
+          for (const ci of state.cart.items) {
+            const sp = shop.products.find(pr => pr.id === ci.productId);
+            if (!sp || sp.stock < ci.qty) {
+              showToast(`${ci.name} का पर्याप्त स्टॉक उपलब्ध नहीं है।`, 'error');
+              return;
+            }
+          }
+          for (const ci of state.cart.items) {
+            const sp = shop.products.find(pr => pr.id === ci.productId);
+            if (sp) sp.stock -= ci.qty;
+          }
           const subtotal = state.cart.items.reduce((s, i) => s + i.price * i.qty, 0);
           const delFee = calcDeliveryFee(shop.distanceKm);
           const otp = String(Math.floor(1000 + Math.random() * 9000));
-          const orderId = 'JMU-' + String(1001 + state.orders.length);
+          const orderId = 'JMU-' + String(state.nextOrderNum++);
 
           state.orders.unshift({
             id: orderId,
@@ -1477,6 +1505,20 @@
           return;
         }
 
+        if (target.closest('#btn-toggle-shop-open')) {
+          const shop = getShopById(state.merchantShopId);
+          if (shop) {
+            shop.isOpen = !shop.isOpen;
+            if (!shop.isOpen && state.cart.shopId === shop.id) {
+              state.cart = { shopId: null, items: [] };
+            }
+            saveState();
+            render();
+            showToast(shop.isOpen ? 'दुकान अब ग्राहकों के लिए खुली है।' : 'दुकान अस्थायी रूप से बंद की गई।', 'warning');
+          }
+          return;
+        }
+
         if (target.closest('#btn-open-register-shop')) {
           openRegisterShopModal();
           return;
@@ -1493,7 +1535,7 @@
             return;
           }
           state.shops.push({
-            id: 'shop-' + String(state.shops.length + 1),
+            id: 'shop-' + Date.now(),
             name: name,
             category: cat,
             area: area,
@@ -1610,7 +1652,7 @@
           const enteredOtp = inputEl ? inputEl.value.trim() : '';
           if (!order) return;
           if (enteredOtp !== order.otp) {
-            showToast(`गलत OTP! सही ग्राहक OTP (${order.otp}) दर्ज करें।`, 'error');
+            showToast('गलत OTP! कृपया ग्राहक से सही 4-अंकीय OTP पूछें।', 'error');
             return;
           }
           order.status = 'delivered';
@@ -1631,6 +1673,10 @@
           const shop = getShopById(sid);
           if (shop) {
             shop.status = act === 'approve' ? 'approved' : 'blocked';
+            if (shop.status === 'blocked') {
+              if (state.cart.shopId === shop.id) state.cart = { shopId: null, items: [] };
+              if (state.activeShopId === shop.id) state.activeShopId = null;
+            }
             saveState();
             render();
             showToast(`${shop.name} की स्थिति अपडेट हुई।`, 'success');
@@ -1686,6 +1732,10 @@
             newInput.setSelectionRange(pos, pos);
           }
         }
+      });
+
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape') closeModal();
       });
 
       render();
