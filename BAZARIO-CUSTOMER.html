@@ -1,0 +1,645 @@
+```html
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BAZARIO ग्राहक ऐप — जमुई (811307)</title>
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <script src="https://unpkg.com/lucide@0.460.0/dist/umd/lucide.min.js"></script>
+  <style>
+    body { font-family: 'Inter', 'Noto Sans Devanagari', system-ui, sans-serif; background: #f8fafc; color: #0f172a; }
+    .cat-chip.active { background: #d97706; color: #fff; border-color: #d97706; }
+    .nav-tab.active { color: #0f2942; background: #ffffff; box-shadow: 0 1px 4px rgba(0,0,0,0.08); }
+    .no-scrollbar::-webkit-scrollbar { display: none; }
+    .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col">
+
+  <header class="bg-[#0f2942] text-white sticky top-0 z-40 shadow-md">
+    <div class="max-w-5xl mx-auto px-3 sm:px-5 py-3 flex flex-wrap items-center justify-between gap-2">
+      <div class="flex items-center gap-2.5">
+        <div class="w-9 h-9 rounded-lg bg-amber-500 flex items-center justify-center text-[#0f2942] font-extrabold text-lg">B</div>
+        <div>
+          <div class="flex items-center gap-2">
+            <h1 class="text-base sm:text-lg font-extrabold tracking-wide">BAZARIO</h1>
+            <span class="text-[10px] sm:text-xs bg-amber-500/20 text-amber-300 border border-amber-400/40 px-2 py-0.5 rounded-full font-semibold">ग्राहक ऐप • जमुई</span>
+          </div>
+          <p class="text-[11px] text-slate-300 hidden sm:block">ONE CITY – ONE MARKETPLACE – UNLIMITED SHOPS</p>
+        </div>
+      </div>
+
+      <div class="flex items-center gap-2">
+        <div class="bg-slate-800/80 p-1 rounded-xl flex items-center gap-1 text-xs font-bold">
+          <button type="button" data-tab="market" class="nav-tab active px-3 py-1.5 rounded-lg text-slate-300 transition">बाज़ार</button>
+          <button type="button" data-tab="orders" class="nav-tab px-3 py-1.5 rounded-lg text-slate-300 transition">ऑर्डर (<span id="hdr-order-count">0</span>)</button>
+          <button type="button" data-tab="favorites" class="nav-tab px-3 py-1.5 rounded-lg text-slate-300 transition">पसंदीदा</button>
+          <button type="button" data-tab="profile" class="nav-tab px-3 py-1.5 rounded-lg text-slate-300 transition">प्रोफ़ाइल</button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main id="app-root" class="flex-1 max-w-5xl w-full mx-auto px-3 sm:px-5 py-4 pb-24"></main>
+
+  <!-- FLOATING CART BAR -->
+  <div id="floating-cart-bar" class="hidden fixed bottom-3 left-1/2 -translate-x-1/2 w-[94%] max-w-xl bg-[#0f2942] text-white rounded-2xl shadow-2xl px-4 py-3 z-40 flex items-center justify-between border border-amber-400/40">
+    <div>
+      <div id="cart-bar-summary" class="text-sm font-bold">0 आइटम • ₹0</div>
+      <div id="cart-bar-shop" class="text-xs text-amber-300">दुकान</div>
+    </div>
+    <button id="btn-open-checkout" type="button" class="bg-amber-500 hover:bg-amber-600 text-[#0f2942] font-bold text-sm px-4 py-2 rounded-xl flex items-center gap-1.5">
+      <span>चेकआउट करें</span>
+      <i data-lucide="arrow-right" class="w-4 h-4"></i>
+    </button>
+  </div>
+
+  <!-- MODAL -->
+  <div id="modal-overlay" class="hidden fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 flex items-center justify-center p-3">
+    <div id="modal-box" class="bg-white rounded-2xl max-w-lg w-full max-h-[90vh] overflow-y-auto shadow-2xl p-5 relative"></div>
+  </div>
+
+  <div id="toast-container" class="fixed top-20 right-4 z-50 flex flex-col gap-2 max-w-xs w-full pointer-events-none"></div>
+
+  <script>
+    (function () {
+      const STORAGE_KEY = 'bazario_jamui_shared_v1';
+      const JAMUI_AREAS = [
+        'महराजगंज मेन रोड',
+        'कचहरी रोड (जमुई कोर्ट)',
+        'स्टेशन रोड (सतगामा)',
+        'महिसौरी चौक',
+        'पुरानी बाजार',
+        'सदर अस्पताल रोड'
+      ];
+      const SHOP_CATEGORIES = [
+        'सभी', 'किराना स्टोर', 'सब्जी व फल', 'मेडिकल स्टोर', 'मिठाई व बेकरी', 'कपड़े की दुकान', 'स्टेशनरी व किताबें', 'इलेक्ट्रॉनिक्स व मोबाइल'
+      ];
+
+      function defaultSharedState() {
+        return {
+          nextOrderNum: 1002,
+          deliveryOnline: true,
+          deliveryPartnerName: 'राहुल कुमार (जमुई)',
+          deliveryEarnings: 65,
+          deliveryCodCollected: 0,
+          deliveryCodLimit: 1500,
+          deliveryOrderValueLimit: 1000,
+          shops: [
+            {
+              id: 'shop-1', name: 'गृहस्थी किराना एवं जनरल स्टोर', category: 'किराना स्टोर', area: 'महराजगंज मेन रोड',
+              owner: 'मनोज कुमार गुप्ता', phone: '9835011223', distanceKm: 0.6, rating: 4.7, status: 'approved', isOpen: true, icon: 'shopping-basket',
+              products: [
+                { id: 'p-101', name: 'आशीर्वाद आटा (5 किग्रा)', price: 235, mrp: 260, stock: 24, brand: 'Aashirvaad', desc: 'ताज़ा चक्की आटा' },
+                { id: 'p-102', name: 'फॉर्च्यून सरसों तेल (1 लीटर)', price: 155, mrp: 175, stock: 30, brand: 'Fortune', desc: 'कच्ची घानी शुद्ध तेल' },
+                { id: 'p-103', name: 'टाटा नमक (1 किग्रा)', price: 28, mrp: 30, stock: 50, brand: 'Tata', desc: 'आयोडीन युक्त नमक' },
+                { id: 'p-104', name: 'बासमती चावल (1 किग्रा)', price: 95, mrp: 115, stock: 18, brand: 'India Gate', desc: 'प्रीमियम रोज़ाना चावल' }
+              ]
+            },
+            {
+              id: 'shop-2', name: 'जमुई ताज़ा सब्जी एवं फल मंडी', category: 'सब्जी व फल', area: 'स्टेशन रोड (सतगामा)',
+              owner: 'रमेश प्रसाद', phone: '9934022334', distanceKm: 1.2, rating: 4.5, status: 'approved', isOpen: true, icon: 'apple',
+              products: [
+                { id: 'p-201', name: 'ताज़ा आलू (2 किग्रा)', price: 50, mrp: 60, stock: 40, brand: 'लोकल', desc: 'साफ और ताज़ा देसी आलू' },
+                { id: 'p-202', name: 'प्याज़ (1 किग्रा)', price: 42, mrp: 50, stock: 35, brand: 'लोकल', desc: 'नासिक लाल प्याज़' },
+                { id: 'p-203', name: 'सेब (1 किग्रा)', price: 140, mrp: 165, stock: 15, brand: 'हिमाचल', desc: 'मीठा और ताज़ा सेब' },
+                { id: 'p-204', name: 'टमाटर (1 किग्रा)', price: 36, mrp: 45, stock: 25, brand: 'लोकल', desc: 'ताज़ा लाल टमाटर' }
+              ]
+            },
+            {
+              id: 'shop-3', name: 'जीवन रक्षा मेडिकल हॉल', category: 'मेडिकल स्टोर', area: 'सदर अस्पताल रोड',
+              owner: 'डॉ. संजीव सिन्हा', phone: '9431033445', distanceKm: 0.9, rating: 4.9, status: 'approved', isOpen: true, icon: 'pill',
+              products: [
+                { id: 'p-301', name: 'पैरासिटामोल 500mg (15 टैबलेट)', price: 22, mrp: 25, stock: 60, brand: 'Crocin', desc: 'बुखार व दर्द के लिए' },
+                { id: 'p-302', name: 'ओआरएस (ORS) पैकेट', price: 20, mrp: 22, stock: 45, brand: 'Electral', desc: 'तुरंत ऊर्जा व हाइड्रेशन' },
+                { id: 'p-303', name: 'डेटॉल एंटीसेप्टिक (125ml)', price: 68, mrp: 75, stock: 20, brand: 'Dettol', desc: 'प्राथमिक उपचार के लिए' }
+              ]
+            },
+            {
+              id: 'shop-4', name: 'महिसौरी स्वीट्स एंड बेकरी', category: 'मिठाई व बेकरी', area: 'महिसौरी चौक',
+              owner: 'विकास कुमार', phone: '9123444556', distanceKm: 1.5, rating: 4.6, status: 'approved', isOpen: true, icon: 'cake-slice',
+              products: [
+                { id: 'p-401', name: 'शुद्ध घी मोतीचूर लड्डू (500 ग्राम)', price: 190, mrp: 220, stock: 16, brand: 'महिसौरी स्पेशल', desc: 'ताज़ा देसी घी से निर्मित' },
+                { id: 'p-402', name: 'काजू कतली (250 ग्राम)', price: 240, mrp: 270, stock: 12, brand: 'महिसौरी स्पेशल', desc: 'प्रीमियम काजू मिठाई' }
+              ]
+            },
+            {
+              id: 'shop-5', name: 'राज वस्त्रालय एवं रेडीमेड', category: 'कपड़े की दुकान', area: 'पुरानी बाजार',
+              owner: 'आनंद अग्रवाल', phone: '9835255667', distanceKm: 1.8, rating: 4.4, status: 'approved', isOpen: true, icon: 'shirt',
+              products: [
+                { id: 'p-501', name: 'कॉटन कैजुअल शर्ट (L)', price: 549, mrp: 799, stock: 14, brand: 'Cotton King', desc: '100% शुद्ध कॉटन शर्ट' },
+                { id: 'p-502', name: 'लेडीज प्रिंटेड कुर्ती (M)', price: 480, mrp: 650, stock: 18, brand: 'Jaipur Prints', desc: 'आरामदायक दैनिक कुर्ती' }
+              ]
+            },
+            {
+              id: 'shop-6', name: 'विद्यार्थी स्टेशनरी एंड बुक डिपो', category: 'स्टेशनरी व किताबें', area: 'कचहरी रोड (जमुई कोर्ट)',
+              owner: 'सुनील झा', phone: '9771066778', distanceKm: 1.1, rating: 4.8, status: 'approved', isOpen: true, icon: 'book-open',
+              products: [
+                { id: 'p-601', name: 'क्लासमेट नोटबुक सेट (6 पीस)', price: 270, mrp: 310, stock: 30, brand: 'Classmate', desc: '172 पेज रूलिंग कॉपी' },
+                { id: 'p-602', name: 'बॉल पेन पैक (10 पेन)', price: 90, mrp: 100, stock: 50, brand: 'Cello', desc: 'स्मूथ राइटिंग ब्लू पेन' }
+              ]
+            }
+          ],
+          orders: [
+            {
+              id: 'JMU-1001', shopId: 'shop-1', shopName: 'गृहस्थी किराना एवं जनरल स्टोर', shopArea: 'महराजगंज मेन रोड',
+              customerName: 'अमित कुमार', customerPhone: '9835099887', customerArea: 'कचहरी रोड (जमुई कोर्ट)',
+              items: [{ name: 'आशीर्वाद आटा (5 किग्रा)', qty: 1, price: 235 }, { name: 'टाटा नमक (1 किग्रा)', qty: 2, price: 28 }],
+              subtotal: 291, discount: 0, deliveryFee: 25, partnerPayout: 20, platformCommission: 15, total: 316,
+              paymentMethod: 'कैश ऑन डिलीवरी (COD)', status: 'ready_for_pickup', otp: '4821', partnerName: null, rating: null, createdAt: 'आज 08:25 AM'
+            }
+          ],
+          complaints: [{ id: 'CMP-101', orderId: 'JMU-1001', customerName: 'अमित कुमार', message: 'कृपया पैकिंग मज़बूत रखें।', status: 'open' }]
+        };
+      }
+
+      let shared = defaultSharedState();
+      let ui = {
+        tab: 'market',
+        selectedArea: 'महराजगंज मेन रोड',
+        selectedCategory: 'सभी',
+        searchQuery: '',
+        activeShopId: null,
+        favorites: ['shop-1', 'shop-3'],
+        cart: { shopId: null, items: [] },
+        promoCode: '',
+        profile: { name: '', phone: '', address: 'महराजगंज मेन रोड, जमुई - 811307' }
+      };
+
+      function loadShared() {
+        try {
+          const raw = localStorage.getItem(STORAGE_KEY);
+          if (raw) {
+            const p = JSON.parse(raw);
+            if (p && Array.isArray(p.shops) && Array.isArray(p.orders)) shared = Object.assign(defaultSharedState(), p);
+          }
+        } catch (e) {}
+      }
+      function saveShared() {
+        try { localStorage.setItem(STORAGE_KEY, JSON.stringify(shared)); } catch (e) {}
+      }
+      loadShared();
+      window.addEventListener('storage', function (e) { if (e.key === STORAGE_KEY) { loadShared(); render(); } });
+
+      function escapeHtml(str) {
+        return String(str == null ? '' : str).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+      }
+      function showToast(msg, type) {
+        const c = document.getElementById('toast-container');
+        if (!c) return;
+        const cls = type === 'error' ? 'bg-rose-600 text-white' : type === 'warning' ? 'bg-amber-500 text-slate-900' : 'bg-emerald-600 text-white';
+        const d = document.createElement('div');
+        d.className = `pointer-events-auto ${cls} px-4 py-2.5 rounded-xl shadow-lg text-xs sm:text-sm font-semibold`;
+        d.textContent = msg;
+        c.appendChild(d);
+        setTimeout(() => { d.style.opacity = '0'; setTimeout(() => d.remove(), 300); }, 3000);
+      }
+      function openModal(html) {
+        const o = document.getElementById('modal-overlay'), b = document.getElementById('modal-box');
+        if (!o || !b) return;
+        b.innerHTML = html;
+        o.classList.remove('hidden');
+        if (window.lucide) window.lucide.createIcons();
+      }
+      function closeModal() {
+        const o = document.getElementById('modal-overlay');
+        if (o) o.classList.add('hidden');
+      }
+      function getShop(id) { return shared.shops.find(s => s.id === id) || null; }
+      function calcDeliveryFee(dist) { return Math.round(15 + (dist || 1) * 10); }
+      function getStatusLabel(st) {
+        const m = {
+          placed: { text: 'ऑर्डर प्राप्त (अप्रूवल बाकी)', cls: 'bg-amber-100 text-amber-800' },
+          accepted: { text: 'दुकानदार ने स्वीकार किया', cls: 'bg-blue-100 text-blue-800' },
+          ready_for_pickup: { text: 'पिकअप के लिए तैयार', cls: 'bg-purple-100 text-purple-800' },
+          out_for_delivery: { text: 'डिलीवरी रास्ते में', cls: 'bg-indigo-100 text-indigo-800' },
+          delivered: { text: 'डिलीवर हो गया', cls: 'bg-emerald-100 text-emerald-800' },
+          cancelled: { text: 'रद्द (Cancelled)', cls: 'bg-rose-100 text-rose-800' },
+          rejected: { text: 'अस्वीकृत (Rejected)', cls: 'bg-rose-100 text-rose-800' }
+        };
+        return m[st] || { text: st, cls: 'bg-slate-100 text-slate-700' };
+      }
+
+      function updateCartBar() {
+        const bar = document.getElementById('floating-cart-bar');
+        const sumEl = document.getElementById('cart-bar-summary');
+        const shopEl = document.getElementById('cart-bar-shop');
+        const cnt = ui.cart.items.reduce((s, i) => s + i.qty, 0);
+        if (cnt > 0 && ui.cart.shopId) {
+          const sub = ui.cart.items.reduce((s, i) => s + i.price * i.qty, 0);
+          const sh = getShop(ui.cart.shopId);
+          sumEl.textContent = `${cnt} आइटम • ₹${sub}`;
+          shopEl.textContent = sh ? sh.name : '';
+          bar.classList.remove('hidden');
+        } else {
+          bar.classList.add('hidden');
+        }
+      }
+
+      function render() {
+        document.querySelectorAll('.nav-tab').forEach(b => b.classList.toggle('active', b.dataset.tab === ui.tab));
+        const oc = document.getElementById('hdr-order-count');
+        if (oc) oc.textContent = String(shared.orders.length);
+
+        const root = document.getElementById('app-root');
+        if (!root) return;
+
+        if (ui.activeShopId) {
+          root.innerHTML = renderShopDetail(ui.activeShopId);
+        } else if (ui.tab === 'orders') {
+          root.innerHTML = renderOrders();
+        } else if (ui.tab === 'profile') {
+          root.innerHTML = renderProfile();
+        } else {
+          root.innerHTML = renderMarket();
+        }
+        updateCartBar();
+        if (window.lucide) window.lucide.createIcons();
+      }
+
+      function renderMarket() {
+        const approved = shared.shops.filter(s => s.status === 'approved');
+        const q = ui.searchQuery.trim().toLowerCase();
+        const list = approved.filter(s => {
+          const mCat = ui.selectedCategory === 'सभी' || s.category === ui.selectedCategory;
+          const mFav = ui.tab !== 'favorites' || ui.favorites.includes(s.id);
+          const mQ = !q || s.name.toLowerCase().includes(q) || s.area.toLowerCase().includes(q) || s.products.some(p => p.name.toLowerCase().includes(q));
+          return mCat && mFav && mQ;
+        });
+
+        return `
+          <div class="space-y-4">
+            <div class="bg-white rounded-2xl p-3.5 border border-slate-200 shadow-sm flex flex-wrap items-center justify-between gap-3">
+              <div class="flex items-center gap-2.5">
+                <div class="w-9 h-9 rounded-xl bg-amber-100 text-amber-700 flex items-center justify-center"><i data-lucide="map-pin" class="w-5 h-5"></i></div>
+                <div>
+                  <div class="text-[11px] text-slate-500 font-semibold">आपकी GPS लोकेशन (जमुई)</div>
+                  <select id="select-area" class="text-sm font-bold text-[#0f2942] bg-transparent focus:outline-none">
+                    ${JAMUI_AREAS.map(a => `<option value="${escapeHtml(a)}" ${a === ui.selectedArea ? 'selected' : ''}>${escapeHtml(a)}, जमुई</option>`).join('')}
+                  </select>
+                </div>
+              </div>
+              <span class="text-xs font-semibold text-amber-700 bg-amber-50 px-3 py-1 rounded-full">प्रोमो कोड: JAMUI10 (10% छूट)</span>
+            </div>
+
+            <div class="relative">
+              <i data-lucide="search" class="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2"></i>
+              <input id="input-search" type="text" value="${escapeHtml(ui.searchQuery)}" placeholder="जमुई में दुकान, किराना, दवाई या सामान खोजें..." class="w-full pl-10 pr-4 py-2.5 bg-white border border-slate-200 rounded-xl text-sm shadow-sm focus:outline-none focus:border-amber-500" />
+            </div>
+
+            <div class="flex items-center gap-2 overflow-x-auto no-scrollbar pb-1">
+              ${SHOP_CATEGORIES.map(c => `<button type="button" data-cat="${escapeHtml(c)}" class="cat-chip shrink-0 text-xs font-semibold px-3 py-1.5 rounded-full border border-slate-200 bg-white text-slate-700 ${ui.selectedCategory === c ? 'active' : ''}">${escapeHtml(c)}</button>`).join('')}
+            </div>
+
+            <div class="flex items-center justify-between">
+              <h2 class="text-sm sm:text-base font-bold text-[#0f2942]">${ui.tab === 'favorites' ? 'पसंदीदा दुकानें' : 'CUSTOMER NEARBY MARKET — जमुई'}</h2>
+              <span class="text-xs text-slate-500">${list.length} दुकानें</span>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3.5">
+              ${list.map(s => {
+                const fav = ui.favorites.includes(s.id);
+                return `
+                  <div class="bg-white rounded-2xl border border-slate-200 p-4 shadow-sm flex flex-col justify-between">
+                    <div>
+                      <div class="flex items-start justify-between gap-2">
+                        <div class="flex items-center gap-2.5">
+                          <div class="w-10 h-10 rounded-xl bg-[#0f2942]/5 text-[#0f2942] flex items-center justify-center"><i data-lucide="${escapeHtml(s.icon || 'store')}" class="w-5 h-5"></i></div>
+                          <div>
+                            <span class="text-[10px] font-bold text-amber-700 bg-amber-50 px-2 py-0.5 rounded">${escapeHtml(s.category)}</span>
+                            <h3 class="text-sm font-bold text-slate-900 mt-1">${escapeHtml(s.name)}</h3>
+                          </div>
+                        </div>
+                        <button type="button" data-fav="${s.id}" class="p-1.5 rounded-lg hover:bg-slate-100"><i data-lucide="heart" class="w-4 h-4 ${fav ? 'fill-rose-500 text-rose-500' : 'text-slate-400'}"></i></button>
+                      </div>
+                      <div class="mt-3 flex items-center gap-3 text-xs text-slate-600">
+                        <span>${escapeHtml(s.area)}</span> • <span class="text-emerald-700 font-bold">★ ${s.rating}</span>
+                      </div>
+                    </div>
+                    <div class="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between">
+                      <span class="text-xs text-slate-500">${s.distanceKm} किमी • डिलीवरी ₹${calcDeliveryFee(s.distanceKm)}</span>
+                      ${s.isOpen ? `<button type="button" data-open-shop="${s.id}" class="bg-[#0f2942] hover:bg-[#1a3d5f] text-white text-xs font-bold px-3.5 py-2 rounded-xl">सामान देखें</button>` : `<span class="text-xs font-bold text-rose-600 bg-rose-50 px-3 py-1.5 rounded-xl">अभी बंद है</span>`}
+                    </div>
+                  </div>
+                `;
+              }).join('')}
+            </div>
+          </div>
+        `;
+      }
+
+      function renderShopDetail(shopId) {
+        const s = getShop(shopId);
+        if (!s || s.status !== 'approved' || !s.isOpen) { ui.activeShopId = null; return renderMarket(); }
+        return `
+          <div class="space-y-4">
+            <button type="button" id="btn-back" class="inline-flex items-center gap-1.5 text-xs font-bold text-[#0f2942] bg-white border border-slate-200 px-3 py-1.5 rounded-xl">
+              <i data-lucide="arrow-left" class="w-4 h-4"></i> सभी दुकानों पर वापस जाएं
+            </button>
+            <div class="bg-white rounded-2xl p-4 border border-slate-200 shadow-sm flex flex-wrap items-center justify-between gap-3">
+              <div>
+                <span class="text-xs font-bold text-amber-700 bg-amber-50 px-2.5 py-0.5 rounded-full">${escapeHtml(s.category)}</span>
+                <h2 class="text-lg font-extrabold text-[#0f2942] mt-1">${escapeHtml(s.name)}</h2>
+                <p class="text-xs text-slate-600">${escapeHtml(s.area)}, जमुई • ${s.distanceKm} किमी • डिलीवरी ₹${calcDeliveryFee(s.distanceKm)}</p>
+              </div>
+              <div class="text-right text-xs text-slate-500">
+                <div class="font-bold text-emerald-700 text-sm">★ ${s.rating}</div>
+                <div>संपर्क: ${escapeHtml(s.phone)}</div>
+              </div>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3.5">
+              ${s.products.map(p => {
+                const inC = ui.cart.shopId === s.id ? ui.cart.items.find(i => i.productId === p.id) : null;
+                const qty = inC ? inC.qty : 0;
+                return `
+                  <div class="bg-white rounded-2xl border border-slate-200 p-4 flex flex-col justify-between shadow-sm">
+                    <div>
+                      <span class="text-[10px] font-bold text-slate-500 bg-slate-100 px-2 py-0.5 rounded">${escapeHtml(p.brand)}</span>
+                      <h3 class="text-sm font-bold text-slate-900 mt-2">${escapeHtml(p.name)}</h3>
+                      <p class="text-xs text-slate-500 mt-0.5">${escapeHtml(p.desc)}</p>
+                    </div>
+                    <div class="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between">
+                      <div>
+                        <span class="text-base font-extrabold text-[#0f2942]">₹${p.price}</span>
+                        ${p.mrp > p.price ? `<span class="text-xs text-slate-400 line-through ml-1">₹${p.mrp}</span>` : ''}
+                        <div class="text-[11px] ${p.stock > 0 ? 'text-emerald-600' : 'text-rose-600'} font-medium">${p.stock > 0 ? 'स्टॉक: ' + p.stock : 'स्टॉक समाप्त'}</div>
+                      </div>
+                      ${p.stock <= 0 ? `<span class="text-xs font-bold text-slate-400 px-3 py-1.5 bg-slate-100 rounded-xl">अनुपलब्ध</span>` :
+                        qty === 0 ? `<button type="button" data-add="${s.id}|${p.id}" class="bg-amber-500 hover:bg-amber-600 text-[#0f2942] text-xs font-bold px-3.5 py-2 rounded-xl">+ कार्ट में जोड़ें</button>` :
+                        `<div class="flex items-center gap-2 bg-[#0f2942] text-white rounded-xl px-2 py-1">
+                          <button type="button" data-qdelta="${p.id}|-1" class="w-6 h-6 rounded font-bold">-</button>
+                          <span class="text-xs font-bold w-4 text-center">${qty}</span>
+                          <button type="button" data-qdelta="${p.id}|1" class="w-6 h-6 rounded font-bold">+</button>
+                        </div>`}
+                    </div>
+                  </div>
+                `;
+              }).join('')}
+            </div>
+          </div>
+        `;
+      }
+
+      function renderOrders() {
+        if (!shared.orders.length) return `<div class="bg-white rounded-2xl p-8 text-center border text-sm text-slate-600">अभी कोई ऑर्डर नहीं है।</div>`;
+        return `<div class="space-y-3.5">${shared.orders.map(o => {
+          const st = getStatusLabel(o.status);
+          const steps = ['placed', 'accepted', 'ready_for_pickup', 'out_for_delivery', 'delivered'];
+          const idx = steps.indexOf(o.status);
+          return `
+            <div class="bg-white rounded-2xl border border-slate-200 p-4 shadow-sm space-y-3">
+              <div class="flex flex-wrap justify-between gap-2">
+                <div>
+                  <div class="flex items-center gap-2">
+                    <span class="text-sm font-extrabold text-[#0f2942]">#${escapeHtml(o.id)}</span>
+                    <span class="text-[11px] font-bold px-2.5 py-0.5 rounded-full ${st.cls}">${escapeHtml(st.text)}</span>
+                  </div>
+                  <div class="text-xs font-semibold text-slate-600 mt-1">${escapeHtml(o.shopName)} (${escapeHtml(o.shopArea)})</div>
+                  <div class="text-[11px] text-slate-500">${escapeHtml(o.createdAt || '')} • ${escapeHtml(o.paymentMethod)}</div>
+                </div>
+                <div class="text-right">
+                  <div class="text-base font-extrabold text-[#0f2942]">₹${o.total}</div>
+                  <div class="text-[11px] font-bold text-amber-700 bg-amber-50 px-2 py-0.5 rounded mt-1">डिलीवरी OTP: ${escapeHtml(o.otp)}</div>
+                </div>
+              </div>
+              <div class="text-xs bg-slate-50 p-2.5 rounded-xl text-slate-700">${o.items.map(i => `${escapeHtml(i.name)} × ${i.qty}`).join(' • ')}</div>
+              ${idx >= 0 ? `<div class="grid grid-cols-5 gap-1">${['ऑर्डर', 'स्वीकृत', 'तैयार', 'रास्ते में', 'डिलीवर'].map((l, i) => `<div class="text-center"><div class="h-1.5 rounded-full ${i <= idx ? 'bg-emerald-500' : 'bg-slate-200'}"></div><div class="text-[10px] mt-1 font-semibold ${i <= idx ? 'text-emerald-700' : 'text-slate-400'}">${l}</div></div>`).join('')}</div>` : ''}
+              <div class="flex flex-wrap justify-between items-center gap-2 pt-2 border-t border-slate-100 text-xs">
+                <span class="text-slate-600">${o.partnerName ? 'डिलीवरी पार्टनर: ' + escapeHtml(o.partnerName) : 'ओपन डिलीवरी नेटवर्क: पार्टनर प्रतीक्षारत'}</span>
+                <div class="flex gap-2">
+                  ${(o.status === 'placed' || o.status === 'accepted') ? `<button type="button" data-cancel="${o.id}" class="text-rose-600 font-bold px-2.5 py-1 rounded-lg border border-rose-200">रद्द करें</button>` : ''}
+                  ${o.status === 'delivered' && !o.rating ? `<button type="button" data-rate="${o.id}" class="text-amber-700 font-bold px-2.5 py-1 rounded-lg border border-amber-200">रेटिंग दें ★</button>` : o.rating ? `<span class="text-emerald-700 font-bold">रेटिंग: ${o.rating} ★</span>` : ''}
+                  <button type="button" data-cmp="${o.id}" class="text-slate-600 font-semibold px-2.5 py-1 rounded-lg border border-slate-200">शिकायत</button>
+                </div>
+              </div>
+            </div>
+          `;
+        }).join('')}</div>`;
+      }
+
+      function renderProfile() {
+        return `
+          <div class="bg-white rounded-2xl border border-slate-200 p-5 shadow-sm max-w-lg mx-auto space-y-3">
+            <h2 class="text-base font-extrabold text-[#0f2942]">ग्राहक प्रोफ़ाइल और सहेजा गया पता</h2>
+            <div>
+              <label class="block text-xs font-bold text-slate-600 mb-1">आपका नाम</label>
+              <input id="prof-name" type="text" value="${escapeHtml(ui.profile.name)}" placeholder="अपना नाम लिखें" class="w-full px-3 py-2 border border-slate-300 rounded-xl text-sm" />
+            </div>
+            <div>
+              <label class="block text-xs font-bold text-slate-600 mb-1">मोबाइल नंबर</label>
+              <input id="prof-phone" type="tel" value="${escapeHtml(ui.profile.phone)}" placeholder="10-अंकीय मोबाइल नंबर" class="w-full px-3 py-2 border border-slate-300 rounded-xl text-sm" />
+            </div>
+            <div>
+              <label class="block text-xs font-bold text-slate-600 mb-1">डिफ़ॉल्ट डिलीवरी पता (जमुई)</label>
+              <input id="prof-addr" type="text" value="${escapeHtml(ui.profile.address)}" class="w-full px-3 py-2 border border-slate-300 rounded-xl text-sm" />
+            </div>
+            <button type="button" id="btn-save-profile" class="w-full bg-[#0f2942] text-white font-bold py-2.5 rounded-xl text-sm">प्रोफ़ाइल सेव करें</button>
+          </div>
+        `;
+      }
+
+      document.addEventListener('click', function (e) {
+        const t = e.target;
+        const tabBtn = t.closest('.nav-tab');
+        if (tabBtn) { ui.tab = tabBtn.dataset.tab; ui.activeShopId = null; render(); return; }
+        if (t.closest('[data-close-modal]') || t.id === 'modal-overlay') { closeModal(); return; }
+
+        const catBtn = t.closest('.cat-chip');
+        if (catBtn) { ui.selectedCategory = catBtn.dataset.cat; render(); return; }
+
+        const favBtn = t.closest('[data-fav]');
+        if (favBtn) {
+          const id = favBtn.dataset.fav;
+          const i = ui.favorites.indexOf(id);
+          if (i >= 0) ui.favorites.splice(i, 1); else ui.favorites.push(id);
+          render();
+          return;
+        }
+
+        const openBtn = t.closest('[data-open-shop]');
+        if (openBtn) { ui.activeShopId = openBtn.dataset.openShop; render(); return; }
+        if (t.closest('#btn-back')) { ui.activeShopId = null; render(); return; }
+
+        const addBtn = t.closest('[data-add]');
+        if (addBtn) {
+          const [sid, pid] = addBtn.dataset.add.split('|');
+          const s = getShop(sid), p = s && s.products.find(x => x.id === pid);
+          if (!s || !p) return;
+          if (ui.cart.shopId && ui.cart.shopId !== sid && ui.cart.items.length > 0) {
+            ui.cart = { shopId: sid, items: [{ productId: p.id, name: p.name, price: p.price, qty: 1 }] };
+            showToast('पिछला कार्ट बदलकर नया कार्ट बनाया गया।', 'warning');
+          } else {
+            ui.cart.shopId = sid;
+            ui.cart.items.push({ productId: p.id, name: p.name, price: p.price, qty: 1 });
+            showToast(`${p.name} कार्ट में जोड़ा गया।`, 'success');
+          }
+          render();
+          return;
+        }
+
+        const qBtn = t.closest('[data-qdelta]');
+        if (qBtn) {
+          const [pid, dStr] = qBtn.dataset.qdelta.split('|');
+          const d = parseInt(dStr, 10);
+          const item = ui.cart.items.find(i => i.productId === pid);
+          const s = getShop(ui.cart.shopId), p = s && s.products.find(x => x.id === pid);
+          if (item) {
+            if (d > 0 && p && item.qty + d > p.stock) { showToast(`अधिकतम स्टॉक ${p.stock} उपलब्ध है।`, 'warning'); return; }
+            item.qty += d;
+            if (item.qty <= 0) { ui.cart.items = ui.cart.items.filter(i => i.productId !== pid); if (!ui.cart.items.length) ui.cart.shopId = null; }
+            render();
+          }
+          return;
+        }
+
+        if (t.closest('#btn-open-checkout')) {
+          const s = getShop(ui.cart.shopId);
+          if (!s) return;
+          const sub = ui.cart.items.reduce((a, b) => a + b.price * b.qty, 0);
+          const del = calcDeliveryFee(s.distanceKm);
+          const disc = ui.promoCode.toUpperCase() === 'JAMUI10' ? Math.round(sub * 0.1) : 0;
+          const tot = sub - disc + del;
+          openModal(`
+            <div class="flex justify-between items-center border-b pb-3 mb-3">
+              <h3 class="text-base font-extrabold text-[#0f2942]">चेकआउट (${escapeHtml(s.name)})</h3>
+              <button type="button" data-close-modal="1" class="font-bold text-slate-400">✕</button>
+            </div>
+            <div class="space-y-3 text-xs sm:text-sm">
+              <div class="bg-slate-50 p-3 rounded-xl space-y-1">
+                ${ui.cart.items.map(i => `<div class="flex justify-between"><span>${escapeHtml(i.name)} × ${i.qty}</span><span>₹${i.price * i.qty}</span></div>`).join('')}
+                <div class="border-t pt-1.5 flex justify-between"><span>डिलीवरी शुल्क</span><span>₹${del}</span></div>
+                ${disc > 0 ? `<div class="flex justify-between text-emerald-700 font-bold"><span>JAMUI10 छूट</span><span>-₹${disc}</span></div>` : ''}
+                <div class="flex justify-between font-extrabold text-sm text-[#0f2942]"><span>कुल देय</span><span>₹${tot}</span></div>
+              </div>
+              <div class="flex gap-2">
+                <input id="chk-promo" type="text" value="${escapeHtml(ui.promoCode)}" placeholder="प्रोमो कोड (JAMUI10)" class="flex-1 px-3 py-2 border rounded-xl text-xs" />
+                <button type="button" id="btn-apply-promo" class="bg-slate-800 text-white px-3 py-2 rounded-xl text-xs font-bold">लागू करें</button>
+              </div>
+              <input id="chk-name" type="text" value="${escapeHtml(ui.profile.name)}" placeholder="आपका नाम *" class="w-full px-3 py-2 border rounded-xl" />
+              <input id="chk-phone" type="tel" value="${escapeHtml(ui.profile.phone)}" placeholder="मोबाइल नंबर *" class="w-full px-3 py-2 border rounded-xl" />
+              <input id="chk-addr" type="text" value="${escapeHtml(ui.profile.address || ui.selectedArea + ', जमुई')}" placeholder="डिलीवरी पता *" class="w-full px-3 py-2 border rounded-xl" />
+              <select id="chk-pay" class="w-full px-3 py-2 border rounded-xl bg-white">
+                <option value="कैश ऑन डिलीवरी (COD)">कैश ऑन डिलीवरी (COD)</option>
+                <option value="ऑनलाइन पेमेंट (UPI / कार्ड)">ऑनलाइन पेमेंट (UPI / कार्ड)</option>
+              </select>
+              <button type="button" id="btn-place-order" class="w-full bg-amber-500 hover:bg-amber-600 text-[#0f2942] font-extrabold py-2.5 rounded-xl">ऑर्डर पक्का करें (₹${tot})</button>
+            </div>
+          `);
+          return;
+        }
+
+        if (t.closest('#btn-apply-promo')) {
+          ui.promoCode = (document.getElementById('chk-promo').value || '').trim();
+          closeModal();
+          document.getElementById('btn-open-checkout').click();
+          return;
+        }
+
+        if (t.closest('#btn-place-order')) {
+          const name = (document.getElementById('chk-name').value || '').trim();
+          const phone = (document.getElementById('chk-phone').value || '').trim();
+          const addr = (document.getElementById('chk-addr').value || '').trim();
+          const pay = document.getElementById('chk-pay').value;
+          if (!name || !phone || !addr) { showToast('कृपया नाम, मोबाइल और पता भरें।', 'error'); return; }
+          const s = getShop(ui.cart.shopId);
+          if (!s || s.status !== 'approved' || !s.isOpen) { showToast('दुकान अभी उपलब्ध नहीं है।', 'error'); return; }
+          for (const ci of ui.cart.items) {
+            const sp = s.products.find(x => x.id === ci.productId);
+            if (!sp || sp.stock < ci.qty) { showToast(`${ci.name} का स्टॉक कम है।`, 'error'); return; }
+          }
+          for (const ci of ui.cart.items) {
+            const sp = s.products.find(x => x.id === ci.productId);
+            if (sp) sp.stock -= ci.qty;
+          }
+          const sub = ui.cart.items.reduce((a, b) => a + b.price * b.qty, 0);
+          const disc = ui.promoCode.toUpperCase() === 'JAMUI10' ? Math.round(sub * 0.1) : 0;
+          const del = calcDeliveryFee(s.distanceKm);
+          const oid = 'JMU-' + String(shared.nextOrderNum++);
+          const otp = String(Math.floor(1000 + Math.random() * 9000));
+
+          ui.profile = { name, phone, address: addr };
+          shared.orders.unshift({
+            id: oid, shopId: s.id, shopName: s.name, shopArea: s.area,
+            customerName: name, customerPhone: phone, customerArea: addr,
+            items: ui.cart.items.map(i => ({ name: i.name, qty: i.qty, price: i.price })),
+            subtotal: sub, discount: disc, deliveryFee: del, partnerPayout: Math.max(15, del - 5),
+            platformCommission: Math.round(sub * 0.05), total: sub - disc + del,
+            paymentMethod: pay, status: 'placed', otp: otp, partnerName: null, rating: null, createdAt: 'अभी'
+          });
+          ui.cart = { shopId: null, items: [] };
+          ui.promoCode = '';
+          ui.activeShopId = null;
+          ui.tab = 'orders';
+          saveShared();
+          closeModal();
+          render();
+          showToast(`ऑर्डर #${oid} सफलतापूर्वक दर्ज हुआ!`, 'success');
+          return;
+        }
+
+        if (t.closest('#btn-save-profile')) {
+          ui.profile.name = (document.getElementById('prof-name').value || '').trim();
+          ui.profile.phone = (document.getElementById('prof-phone').value || '').trim();
+          ui.profile.address = (document.getElementById('prof-addr').value || '').trim();
+          showToast('प्रोफ़ाइल सेव हो गई!', 'success');
+          return;
+        }
+
+        const cBtn = t.closest('[data-cancel]');
+        if (cBtn) {
+          const o = shared.orders.find(x => x.id === cBtn.dataset.cancel);
+          if (o && (o.status === 'placed' || o.status === 'accepted')) { o.status = 'cancelled'; saveShared(); render(); showToast('ऑर्डर रद्द हुआ।', 'warning'); }
+          return;
+        }
+
+        const rBtn = t.closest('[data-rate]');
+        if (rBtn) {
+          const oid = rBtn.dataset.rate;
+          openModal(`<h3 class="font-bold text-[#0f2942] mb-3">ऑर्डर #${escapeHtml(oid)} को रेटिंग दें</h3><div class="flex justify-center gap-2">${[1,2,3,4,5].map(n => `<button type="button" data-srate="${oid}|${n}" class="px-3.5 py-2 bg-amber-50 border border-amber-200 rounded-xl font-bold text-amber-700">${n} ★</button>`).join('')}</div>`);
+          return;
+        }
+        const srBtn = t.closest('[data-srate]');
+        if (srBtn) {
+          const [oid, r] = srBtn.dataset.srate.split('|');
+          const o = shared.orders.find(x => x.id === oid);
+          if (o) { o.rating = Number(r); saveShared(); closeModal(); render(); showToast('धन्यवाद!', 'success'); }
+          return;
+        }
+
+        const cmpBtn = t.closest('[data-cmp]');
+        if (cmpBtn) {
+          const oid = cmpBtn.dataset.cmp;
+          openModal(`<h3 class="font-bold text-[#0f2942] mb-2">शिकायत (#${escapeHtml(oid)})</h3><textarea id="cmp-msg" rows="3" class="w-full p-2.5 border rounded-xl text-sm mb-3" placeholder="समस्या लिखें..."></textarea><button type="button" id="btn-scmp" data-oid="${escapeHtml(oid)}" class="w-full bg-[#0f2942] text-white font-bold py-2 rounded-xl text-sm">भेजें</button>`);
+          return;
+        }
+        if (t.closest('#btn-scmp')) {
+          const oid = t.closest('#btn-scmp').dataset.oid;
+          const msg = (document.getElementById('cmp-msg').value || '').trim();
+          if (!msg) return;
+          shared.complaints.unshift({ id: 'CMP-' + Date.now(), orderId: oid, customerName: ui.profile.name || 'ग्राहक', message: msg, status: 'open' });
+          saveShared(); closeModal(); showToast('शिकायत दर्ज की गई।', 'success');
+          return;
+        }
+      });
+
+      document.addEventListener('change', function (e) {
+        if (e.target.id === 'select-area') { ui.selectedArea = e.target.value; render(); }
+      });
+      document.addEventListener('input', function (e) {
+        if (e.target.id === 'input-search') {
+          ui.searchQuery = e.target.value;
+          const pos = e.target.selectionStart;
+          render();
+          const el = document.getElementById('input-search');
+          if (el) { el.focus(); el.setSelectionRange(pos, pos); }
+        }
+      });
+      document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeModal(); });
+
+      render();
+    })();
+  </script>
+</body>
+</html>
+```
