@@ -805,8 +805,10 @@
                         <td class="py-2.5 pr-3 text-slate-600">${escapeHtml(p.brand)}</td>
                         <td class="py-2.5 pr-3 font-bold text-[#0f2942]">₹${p.price}</td>
                         <td class="py-2.5 pr-3 font-bold ${p.stock > 0 ? 'text-emerald-700' : 'text-rose-600'}">${p.stock}</td>
-                        <td class="py-2.5 text-right">
-                          <button type="button" data-stock-add="${shop.id}|${p.id}" class="text-xs font-bold bg-slate-100 hover:bg-slate-200 px-2.5 py-1 rounded-lg">+5 स्टॉक</button>
+                        <td class="py-2.5 text-right space-x-1 whitespace-nowrap">
+                          <button type="button" data-stock-add="${shop.id}|${p.id}" class="text-xs font-bold bg-slate-100 hover:bg-slate-200 px-2 py-1 rounded-lg">+5 स्टॉक</button>
+                          <button type="button" data-edit-prod="${shop.id}|${p.id}" class="text-xs font-bold bg-amber-100 hover:bg-amber-200 text-amber-800 px-2 py-1 rounded-lg">एडिट</button>
+                          <button type="button" data-del-prod="${shop.id}|${p.id}" class="text-xs font-bold bg-rose-100 hover:bg-rose-200 text-rose-700 px-2 py-1 rounded-lg">हटाएं</button>
                         </td>
                       </tr>
                     `).join('')}
@@ -1159,6 +1161,47 @@
               ${JAMUI_AREAS.map(a => `<option value="${escapeHtml(a)}">${escapeHtml(a)}</option>`).join('')}
             </select>
             <button type="button" id="btn-submit-shop" class="w-full bg-[#0f2942] hover:bg-[#1a3d5f] text-white font-bold py-2.5 rounded-xl">रजिस्ट्रेशन सबमिट करें</button>
+          </div>
+        `);
+      }
+
+      function openEditProductModal(shopId, prodId) {
+        const shop = getShopById(shopId);
+        const prod = shop && shop.products.find(pr => pr.id === prodId);
+        if (!prod) return;
+        openModal(`
+          <div class="flex items-center justify-between border-b border-slate-200 pb-3 mb-4">
+            <h3 class="text-base font-extrabold text-[#0f2942]">प्रोडक्ट एडिट करें</h3>
+            <button type="button" data-close-modal="1" class="text-slate-400 hover:text-slate-700 font-bold text-lg">✕</button>
+          </div>
+          <div class="space-y-3 text-sm">
+            <div>
+              <label class="block text-xs font-bold text-slate-700 mb-1">प्रोडक्ट का नाम</label>
+              <input id="edit-prod-name" type="text" value="${escapeHtml(prod.name)}" class="w-full px-3 py-2 border border-slate-300 rounded-xl" />
+            </div>
+            <div class="grid grid-cols-3 gap-2">
+              <div>
+                <label class="block text-xs font-bold text-slate-700 mb-1">बिक्री कीमत (₹)</label>
+                <input id="edit-prod-price" type="number" value="${prod.price}" class="w-full px-3 py-2 border border-slate-300 rounded-xl" />
+              </div>
+              <div>
+                <label class="block text-xs font-bold text-slate-700 mb-1">MRP (₹)</label>
+                <input id="edit-prod-mrp" type="number" value="${prod.mrp}" class="w-full px-3 py-2 border border-slate-300 rounded-xl" />
+              </div>
+              <div>
+                <label class="block text-xs font-bold text-slate-700 mb-1">स्टॉक</label>
+                <input id="edit-prod-stock" type="number" value="${prod.stock}" class="w-full px-3 py-2 border border-slate-300 rounded-xl" />
+              </div>
+            </div>
+            <div>
+              <label class="block text-xs font-bold text-slate-700 mb-1">ब्रांड</label>
+              <input id="edit-prod-brand" type="text" value="${escapeHtml(prod.brand)}" class="w-full px-3 py-2 border border-slate-300 rounded-xl" />
+            </div>
+            <div>
+              <label class="block text-xs font-bold text-slate-700 mb-1">विवरण</label>
+              <input id="edit-prod-desc" type="text" value="${escapeHtml(prod.desc)}" class="w-full px-3 py-2 border border-slate-300 rounded-xl" />
+            </div>
+            <button type="button" id="btn-save-edit-product" data-payload="${shopId}|${prodId}" class="w-full bg-[#0f2942] hover:bg-[#1a3d5f] text-white font-bold py-2.5 rounded-xl">बदलाव सेव करें</button>
           </div>
         `);
       }
@@ -1587,6 +1630,57 @@
             saveState();
             render();
             showToast(`${name} सफलतापूर्वक जोड़ा गया!`, 'success');
+          }
+          return;
+        }
+
+        const editProdBtn = target.closest('[data-edit-prod]');
+        if (editProdBtn) {
+          const [sid, pid] = editProdBtn.dataset.editProd.split('|');
+          openEditProductModal(sid, pid);
+          return;
+        }
+
+        if (target.closest('#btn-save-edit-product')) {
+          const [sid, pid] = target.closest('#btn-save-edit-product').dataset.payload.split('|');
+          const shop = getShopById(sid);
+          const prod = shop && shop.products.find(pr => pr.id === pid);
+          const name = (document.getElementById('edit-prod-name').value || '').trim();
+          const price = Number(document.getElementById('edit-prod-price').value);
+          const mrp = Number(document.getElementById('edit-prod-mrp').value);
+          const stock = Number(document.getElementById('edit-prod-stock').value);
+          const brand = (document.getElementById('edit-prod-brand').value || 'लोकल').trim();
+          const desc = (document.getElementById('edit-prod-desc').value || '').trim();
+          if (!prod || !name || !price || price <= 0) {
+            showToast('कृपया सही नाम और कीमत दर्ज करें।', 'error');
+            return;
+          }
+          prod.name = name;
+          prod.price = price;
+          prod.mrp = mrp >= price ? mrp : price;
+          prod.stock = stock >= 0 ? stock : 0;
+          prod.brand = brand;
+          prod.desc = desc;
+          closeModal();
+          saveState();
+          render();
+          showToast(`${name} सफलतापूर्वक अपडेट हुआ!`, 'success');
+          return;
+        }
+
+        const delProdBtn = target.closest('[data-del-prod]');
+        if (delProdBtn) {
+          const [sid, pid] = delProdBtn.dataset.delProd.split('|');
+          const shop = getShopById(sid);
+          if (shop) {
+            shop.products = shop.products.filter(pr => pr.id !== pid);
+            if (state.cart.shopId === sid) {
+              state.cart.items = state.cart.items.filter(i => i.productId !== pid);
+              if (state.cart.items.length === 0) state.cart.shopId = null;
+            }
+            saveState();
+            render();
+            showToast('प्रोडक्ट हटाया गया।', 'warning');
           }
           return;
         }
